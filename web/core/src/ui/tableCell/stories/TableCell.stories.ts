@@ -25,7 +25,7 @@ export type TYCoreTableCellMeta = IYCoreTableCellProps & IYCoreTableCellStorySlo
 
 const storyItem = {
   id: '1',
-  label: 'Ячейка 1',
+  label: 'Cell 1',
 }
 const storyItemLabel = 'label'
 
@@ -77,33 +77,33 @@ const meta: Meta<TYCoreTableCellMeta> = {
   argTypes: {
     sticky: {
       type: 'boolean',
-      description: 'Зафиксировать ячейку',
+      description: 'Make the cell sticky',
       ...getComponentStateTable(sticky),
     },
     bordered: {
       type: 'boolean',
-      description: 'Отображать границу ячейки',
+      description: 'Show the cell border',
       ...getComponentStateTable(bordered),
     },
     align: {
       control: { type: 'select' },
       options: Object.values(ETableCellAlign),
-      description: 'Выравнивание ячейки',
+      description: 'Cell alignment',
       ...getComponentStateTable(align),
     },
     item: {
       control: { type: 'object' },
-      description: 'Данные ячейки',
+      description: 'Cell data',
       ...getComponentStateTable(storyItem),
     },
     itemLabel: {
       type: 'string',
-      description: 'Метка для данных ячейки',
+      description: 'Cell data label',
       ...getComponentStateTable(storyItemLabel),
     },
     disabled: {
       type: 'boolean',
-      description: 'Деактивировать ячейку',
+      description: 'Disable the cell',
       ...getComponentStateTable(disabled),
     },
     ellipsis: yCoreTextStoryMeta.argTypes?.ellipsis,
@@ -112,7 +112,7 @@ const meta: Meta<TYCoreTableCellMeta> = {
     // Story Controls
     showCellSlot: {
       type: 'boolean',
-      description: 'Показать слот "cell"',
+      description: 'Show the "cell" slot',
       ...storyControlsTable,
     },
   },

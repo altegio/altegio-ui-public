@@ -110,13 +110,13 @@ export const States: Story = {
     props: { items: args.items },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YButtonDropdown [items]="items" label="Обычная"></YButtonDropdown>
+        <YButtonDropdown [items]="items" label="Default"></YButtonDropdown>
 
-        <YButtonDropdown [items]="items" label="Заблокированная" [disabled]="true"></YButtonDropdown>
+        <YButtonDropdown [items]="items" label="Disabled" [disabled]="true"></YButtonDropdown>
         
-        <YButtonDropdown [items]="items" label="Загрузка" [loading]="true"></YButtonDropdown>
+        <YButtonDropdown [items]="items" label="Loading" [loading]="true"></YButtonDropdown>
 
-        <YButtonDropdown [items]="items" label="Открытое" [isOpen]="true"></YButtonDropdown>
+        <YButtonDropdown [items]="items" label="Open" [isOpen]="true"></YButtonDropdown>
       </div>
     `,
   }),
@@ -155,7 +155,7 @@ export const FullWidth: Story = {
     template: `
       <div style="min-height: 100px;">
         <YButtonDropdown
-          label="Растянутая кнопка"
+          label="Full-width button"
           [fullWidth]="true"
           [items]="items"
         ></YButtonDropdown>

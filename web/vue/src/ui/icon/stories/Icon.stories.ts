@@ -7,7 +7,7 @@ import yCoreIconStoryMeta from '~core/ui/icon/stories/Icon.stories'
 type TVueIconStoryMeta = IYVueIconProps
 
 /**
- * Vue-обертка над Core Icon
+ * Vue wrapper for Core Icon
  */
 const meta: Meta<TVueIconStoryMeta> = {
   title: 'Icons/✅ Icon',

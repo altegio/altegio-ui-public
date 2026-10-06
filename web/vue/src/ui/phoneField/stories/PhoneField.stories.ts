@@ -16,7 +16,7 @@ import type { PhoneFieldChangeEvent, SelectOptionEvent } from '~core/ui/phoneFie
 type TYVuePhoneFieldStoryMeta = IYVuePhoneFieldProps & ICorePhoneFieldStoryProps & TYVuePhoneFieldEvents
 
 /**
- * Vue-обертка над Core PhoneField
+ * Vue wrapper for Core PhoneField
  */
 const meta: Meta<TYVuePhoneFieldStoryMeta> = {
   title: 'Inputs/🔍 PhoneField',
@@ -71,9 +71,9 @@ const meta: Meta<TYVuePhoneFieldStoryMeta> = {
       template: `
         <div style="padding: 50px 50px 300px; margin: 20px; border: 1px dashed black; border-radius: 8px">
         
-          <p>KeepAlive тест:</p>
+          <p>KeepAlive example:</p>
           
-          <button @click="changeVisibility" style="margin-bottom: 20px"> Видимость компонента: {{isVisible}}</button>
+          <button @click="changeVisibility" style="margin-bottom: 20px"> Component visibility: {{isVisible}}</button>
           
           <keep-alive>
             <YPhoneField
@@ -89,12 +89,12 @@ const meta: Meta<TYVuePhoneFieldStoryMeta> = {
                 #empty-state-actions
               >
                 <YButton
-                  label="Основное действие"
+                  label="Primary action"
                   variant="primary"
                 ></YButton>
       
                 <YButton
-                  label="Второстепенное действие"
+                  label="Secondary action"
                   variant="outline"
                 ></YButton>
               </template>

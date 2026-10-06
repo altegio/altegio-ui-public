@@ -12,7 +12,7 @@ import { YIcon } from '~vue/ui/icon'
 type TVueLinkStoryMeta = IYVueLinkProps & IYCoreLinkStoryProps
 
 /**
- * Vue-обертка над CoreLink
+ * Vue wrapper for CoreLink
  */
 const meta: Meta<TVueLinkStoryMeta> = {
   title: '⚙️ Link',
@@ -48,7 +48,7 @@ const meta: Meta<TVueLinkStoryMeta> = {
     ...yCoreLinkStoryMeta.argTypes,
     showIcon: {
       type: 'boolean',
-      description: 'Показать иконку в ссылке',
+      description: 'Show an icon in the link',
       ...storyControlsTable,
     },
   },

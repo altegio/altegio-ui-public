@@ -8,7 +8,7 @@ import type { SelectOptionEvent, FocusEvent, BlurEvent, ChangeEvent } from '~cor
 import { useArgs } from '@storybook/preview-api'
 
 /**
- * Angular-обертка над Core AutocompleteField
+ * Angular wrapper for Core AutocompleteField
  */
 const meta: Meta<TYCoreAutocompleteFieldStoryMeta> = {
   title: 'Inputs/⚙️ AutocompleteField',

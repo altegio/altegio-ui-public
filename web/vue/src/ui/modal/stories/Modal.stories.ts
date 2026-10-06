@@ -14,7 +14,7 @@ import yCoreModalStoryMeta from '~core/ui/modal/stories/Modal.stories'
 type TVueModalStoryMeta = IYVueModalProps
 
 /**
- * Vue-обертка над Modal
+ * Vue wrapper for Modal
  */
 const meta: Meta<TVueModalStoryMeta> = {
   title: '⚙️ Modal',
@@ -101,7 +101,7 @@ const meta: Meta<TVueModalStoryMeta> = {
           @press-escape="handlePressEscape"
         >
           <template v-if="args.showContentSlot" #content>
-            <h3>Заголовок модалки</h3>
+            <h3>Modal heading</h3>
 
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
@@ -111,12 +111,12 @@ const meta: Meta<TVueModalStoryMeta> = {
 
           <template v-if="args.showActivatorSlot" #activator>
             <YButton
-              label="Открыть модалку"
+              label="Open modal"
             />
           </template>
 
           <template v-if="args.showCloseSlot" #close>
-            <div>Слот закрытия</div>
+            <div>Close slot</div>
           </template>
         </YModal>
       </div>
@@ -127,12 +127,12 @@ const meta: Meta<TVueModalStoryMeta> = {
     ...omit(yCoreModalStoryMeta.argTypes ?? {}, ['open']),
     modelValue: {
       type: 'boolean',
-      description: 'v-model обертка над свойством open открытия модалки',
+      description: 'v-model for the modal open property',
       ...getComponentContentTable(),
     },
     enableTeleport: {
       type: 'boolean',
-      description: 'переносит элемент модалки в YGlobalProvider',
+      description: 'Moves the modal element into YGlobalProvider',
       ...getComponentStateTable(),
     },
   },

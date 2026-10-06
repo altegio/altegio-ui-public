@@ -4,7 +4,7 @@ import { YPagination } from '~ng/ui/pagination'
 import yCorePaginationStoryMeta from '~core/ui/pagination/stories/Pagination.stories'
 
 /**
- * Angular-обертка над Core Pagination
+ * Angular wrapper for Core Pagination
  */
 const meta: Meta<YPagination> = {
   title: '⚠️ Pagination',

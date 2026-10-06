@@ -38,9 +38,8 @@ export type TYCoreSelectFieldStoryMeta = IYCoreSelectFieldExternalProps & ICoreS
 
 /**
  * ## Core SelectField
- * Поле с множественным выбором значения из выпадающего списка. При клике выводится выпадающий список доступных атрибутов и позволяет выбрать один или несколько из списка
+ * A field for selecting one or more values from a dropdown. Click to open the available options.
  *
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components-(IN-PROGRESS)?node-id=2419-44553&t=Iz28MHkztahONBwi-4)
  */
 
 const meta: Meta<TYCoreSelectFieldStoryMeta> = {
@@ -165,66 +164,66 @@ const meta: Meta<TYCoreSelectFieldStoryMeta> = {
     ),
     filterValue: {
       type: 'string',
-      description: 'Значение инпута для фильтрации items',
+      description: 'Input value used to filter items',
       ...getComponentStateTable(),
     },
     isFilterable: {
       type: 'boolean',
-      description: 'Дает возможность вводить в инпут данные для фильтрации items',
+      description: 'Allow text input to filter items',
       ...getComponentStateTable(),
     },
 
     isCustomFilter: {
       type: 'boolean',
-      description: 'Возвращает событие input и отключает фильтрацию на уровне SelectField',
+      description: 'Emit input events and disable built-in SelectField filtering',
       ...getComponentStateTable(),
     },
 
     filterCallback: {
       type: 'function',
-      description: 'Коллбэк для фильтрации items',
+      description: 'Callback used to filter items',
       ...getComponentStateTable(),
     },
 
     value: {
       control: { type: 'object' },
-      description: 'Выбранное значение из списка items',
+      description: 'Selected value from the items list',
       ...getComponentStateTable(),
     },
 
     itemValue: {
       type: 'string',
-      description: 'Значение поля, которое будет использоваться для выбора айтемов в dropdown',
+      description: 'Item field used as the dropdown selection value',
       ...getComponentStateTable(),
     },
 
     isMapOptions: {
       type: 'boolean',
-      description: 'Проп, который отвечает за то, что будет отдавать компонент при отключенном отдает item/ при включенном item[itemValue]',
+      description: 'When disabled, emit the entire item; when enabled, emit item[itemValue]',
       ...getComponentStateTable(),
     },
 
     onSelect: {
       type: 'function',
-      description: 'Событие выбора значения из выпадающего списка',
+      description: 'Dropdown selection event',
       ...getComponentEmitsTable(),
     },
 
     showDropdownListTop: {
       type: 'boolean',
-      description: 'Показать слот dropdown-list-top, который над списком',
+      description: 'Show the dropdown-list-top slot above the list',
       ...storyControlsTable,
     },
 
     showDropdownListBottom: {
       type: 'boolean',
-      description: 'Показать слот dropdown-list-bottom, который позволяет добавить контент снизу dropdown',
+      description: 'Show the dropdown-list-bottom slot below the dropdown',
       ...storyControlsTable,
     },
 
     showBefore: {
       type: 'boolean',
-      description: 'Показать слот before, который позволяет добавить контент перед dropdown',
+      description: 'Show the before slot before the dropdown',
       ...storyControlsTable,
     },
   },
@@ -259,5 +258,5 @@ type Story = StoryObj<TYCoreSelectFieldStoryMeta>
 
 export const Default: Story = {
   args: {},
-  parameters: { docs: { description: { story: 'Базовый пример использования компонента' } } },
+  parameters: { docs: { description: { story: 'Basic usage example' } } },
 }

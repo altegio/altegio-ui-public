@@ -8,7 +8,7 @@ import { useArgs } from '@storybook/preview-api'
 type TVueSegmentControlStoryMeta = IYVueSegmentControlProps
 
 /**
- * Vue-обертка над Core SegmentControl
+ * Vue wrapper for Core SegmentControl
  */
 const meta: Meta<TVueSegmentControlStoryMeta> = {
   title: '✅ SegmentControl',

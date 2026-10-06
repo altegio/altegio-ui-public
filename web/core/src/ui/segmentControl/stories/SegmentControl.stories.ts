@@ -63,12 +63,12 @@ const meta: Meta<TYCoreSegmentControlMeta> = {
     },
     value: {
       type: 'string',
-      description: 'Значение активного option при включенном режиме manual',
+      description: 'Active option value in manual mode',
       ...getComponentStateTable(value),
     },
     manual: {
       type: 'boolean',
-      description: 'Ручной режим управления активным сегментом',
+      description: 'Control the active segment manually',
       ...getComponentStateTable(manual),
     },
     size: {
@@ -81,7 +81,7 @@ const meta: Meta<TYCoreSegmentControlMeta> = {
     },
     onClick: {
       type: 'function',
-      description: 'Событие клика на сегмент',
+      description: 'Segment click event',
       ...getComponentEmitsTable(),
     },
   },
@@ -90,21 +90,21 @@ const meta: Meta<TYCoreSegmentControlMeta> = {
       {
         active: true,
         disabled: false,
-        text: 'Сегмент 1',
+        text: 'Segment 1',
         icon: yInfoIcon,
         value: '1',
       },
       {
         active: false,
         disabled: false,
-        text: 'Сегмент 2',
+        text: 'Segment 2',
         icon: yInfoIcon,
         value: '2',
       },
       {
         active: false,
         disabled: false,
-        text: 'Сегмент 3',
+        text: 'Segment 3',
         icon: yInfoIcon,
         value: '3',
       },

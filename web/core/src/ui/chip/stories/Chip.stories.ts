@@ -23,7 +23,7 @@ import {
 } from '~core/ui/chip/models/types'
 
 const iconOptions = {
-  'без иконки': undefined,
+  'No icon': undefined,
   info: yInfo,
   magic: yMagic,
 }
@@ -74,12 +74,12 @@ const meta: Meta<TChipStoryMeta> = {
   argTypes: {
     labelText: {
       control: 'text',
-      description: 'Текст Chip',
+      description: 'Chip text',
       ...getComponentContentTable(labelText),
     },
     iconLeft: {
       control: 'select',
-      description: 'Отображение иконки слева',
+      description: 'Show the left icon',
       options: Object.keys(iconOptions),
       mapping: iconOptions,
       ...getComponentContentTable(),
@@ -90,13 +90,13 @@ const meta: Meta<TChipStoryMeta> = {
         EYSizes.SMALL,
         EYSizes.LARGE,
       ],
-      description: 'Размер Chip',
+      description: 'Chip size',
       ...getComponentStateTable(size),
     },
     active: {
       ...getComponentStateTable(active),
       ...activeArgType,
-      description: 'Делает компонент выбранным',
+      description: 'Mark the component as selected',
     },
     disabled: {
       ...getComponentStateTable(disabled),

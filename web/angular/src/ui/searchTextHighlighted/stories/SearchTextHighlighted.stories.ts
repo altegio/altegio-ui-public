@@ -4,7 +4,7 @@ import { YSearchTextHighlighted } from '~ng/ui/searchTextHighlighted'
 import yCoreSearchTextHighlightedStoryMeta from '~core/ui/searchTextHighlighted/stories/SearchTextHighlighted.stories'
 
 /**
- * Angular-обертка над Core SearchTextHighlighted
+ * Angular wrapper for Core SearchTextHighlighted
  */
 const meta: Meta<YSearchTextHighlighted> = {
   title: '🔍 SearchTextHighlighted',

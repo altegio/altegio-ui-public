@@ -23,9 +23,8 @@ export interface IYCoreLabelStoryProps extends ITextStoryProps {}
 const { text } = { ...createCoreTooltipProps() }
 
 /**
- * Тултип с текстом и ссылкой
- * [Old Ui Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components-(IN-PROGRESS)?node-id=1844-17952&t=NW9k1HqNTmxWjtIW-4)
- * Базовый пример использования компонента
+ * Tooltip with text and a link
+ * Basic usage example
  */
 
 const meta: Meta<TTooltipStoryMeta> = {
@@ -51,8 +50,8 @@ const meta: Meta<TTooltipStoryMeta> = {
     const contentSlotTemplate = () => {
       return isSlotExists
           ? html`
-            <div slot="content">Контент со
-              <y-core-link href="https://www.google.com" target="_blank">ссылкой</y-core-link>
+            <div slot="content">Content with a
+              <y-core-link href="https://www.google.com" target="_blank">link</y-core-link>
 
               <div>${contentSlotText()}</div>
             </div>`
@@ -66,7 +65,7 @@ const meta: Meta<TTooltipStoryMeta> = {
           .disabled=${disabled ?? false}
           .placement=${placement}
         >
-          <div slot="activator">Активатор</div>
+          <div slot="activator">Activator</div>
           ${contentSlotTemplate()}
         </y-core-tooltip>
       </div>
@@ -75,27 +74,27 @@ const meta: Meta<TTooltipStoryMeta> = {
   argTypes: {
     text: {
       type: 'string',
-      description: 'Текст тултипа',
+      description: 'Tooltip text',
       ...getComponentContentTable(text),
     },
 
     disabled: {
       type: 'boolean',
       control: 'boolean',
-      description: 'Управление активностью компонента',
+      description: 'Control the active state',
       ...getComponentStateTable(text),
     },
 
     placement: {
       control: 'select',
       options: Object.values(EYCoreDropdownPlacement),
-      description: 'Расположение выпадающей области',
+      description: 'Dropdown placement',
     },
 
     // Story Controls
     isSlotExists: {
       type: 'boolean',
-      description: 'Использовать слот?',
+      description: 'Use the content slot',
       control: 'boolean',
       ...storyControlsTable,
     },
@@ -104,7 +103,7 @@ const meta: Meta<TTooltipStoryMeta> = {
   },
   args: {
     ...createCoreTooltipProps(),
-    text: 'Базовый текст для тултипа',
+    text: 'Sample tooltip text',
     isLongText: false,
     isSlotExists: true,
   },

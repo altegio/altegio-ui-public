@@ -140,39 +140,39 @@ const meta: Meta<TYCoreFieldInputMeta> = {
     },
     hideSpaceLeft: {
       type: 'boolean',
-      description: 'Убрать отступ слева',
+      description: 'Remove left padding',
       ...getComponentStateTable(hideSpaceLeft),
     },
     hideSpaceRight: {
       type: 'boolean',
-      description: 'Убрать отступ справа',
+      description: 'Remove right padding',
       ...getComponentStateTable(hideSpaceRight),
     },
 
     // Component Events
     onInput: {
       type: 'function',
-      description: 'Событие ввода',
+      description: 'Input event',
       ...getComponentEmitsTable(),
     },
     onBlur: {
       type: 'function',
-      description: 'Событие фокуса',
+      description: 'Focus event',
       ...getComponentEmitsTable(),
     },
     onFocus: {
       type: 'function',
-      description: 'Событие фокуса',
+      description: 'Focus event',
       ...getComponentEmitsTable(),
     },
     onKeydown: {
       type: 'function',
-      description: 'Событие нажатия клавиши',
+      description: 'Key press event',
       ...getComponentEmitsTable(),
     },
     onRender: {
       type: 'function',
-      description: 'Первая отрисовка компонента',
+      description: 'Initial component render',
       ...getComponentEmitsTable(),
     },
   },

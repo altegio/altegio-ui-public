@@ -49,32 +49,32 @@ const { variant, hostStyles, disabled, loading, target, href, alignment, fullWid
 }
 
 /**
- * Пропы для истории компонента SimpleButton
+ * SimpleButton story properties
  */
 export interface ISimpleButtonStoryProps extends IYCoreSimpleButtonProps, ITextStoryProps {
 
-  /** Текст, отображаемый в кнопке */
+  /** Text displayed in the button */
   text: string
 }
 
 /**
- * События компонента SimpleButton
+ * SimpleButton events
  */
 export interface ISimpleButtonStoryEmits {
 
-  /** Событие клика по кнопке. Срабатывает при нажатии на кнопку, если она не заблокирована */
+  /** Button click event. Emitted when the button is clicked unless it is disabled */
   onClick: () => void
 }
 
 /**
- * Слоты компонента SimpleButton
+ * SimpleButton slots
  */
 export interface ISimpleButtonStorySlots {
 
   /**
-   * Показать содержимое default слота.
-   * Default слот предназначен для размещения любого контента внутри кнопки:
-   * текста, иконок, их комбинаций и других элементов.
+   * Show the default slot content.
+   * The default slot accepts button content:
+   * text, icons, combinations of these, and other elements.
    */
   showDefaultSlot: boolean
 }
@@ -123,65 +123,65 @@ const meta: TSimpleButtonStoryMeta = {
     variant: {
       control: { type: 'select' },
       description:
-        '**Вариант стилизации кнопки**\n\n- `primary` - основная кнопка с акцентным цветом\n- `outline` - кнопка с прозрачным фоном и обводкой\n- `outline-filled` - кнопка с белым фоном и обводкой\n- `text` - текстовая кнопка без фона и обводки',
+        '**Button style**\n\n- `primary`: accent-colored button\n- `outline`: transparent background with a border\n- `outline-filled`: white background with a border\n- `text`: no background or border',
       options: Object.values(EYCoreSimpleButtonVariant),
       ...getComponentStateTable(variant),
     },
     size: {
       ...sizeArgType(sizes),
       description:
-        '**Размер кнопки**\n\n- `small` - компактная кнопка для плотных интерфейсов\n- `medium` - стандартный размер для большинства случаев\n- `large` - крупная кнопка для важных действий',
+        '**Button size**\n\n- `small`: compact button for dense interfaces\n- `medium`: standard size for most uses\n- `large`: larger button for prominent actions',
       table: {
         type: { summary: 'small | medium | large' },
         defaultValue: { summary: EYSizes.SMALL },
-        category: 'Размеры',
+        category: 'Sizes',
       },
       ...getComponentStateTable(size),
     },
     disabled: {
       ...disabledArgType,
       description:
-        '**Заблокированное состояние**\n\nКогда `true`, кнопка становится неактивной и не реагирует на взаимодействие. Визуально отображается с пониженной контрастностью.',
+        '**Disabled state**\n\nWhen `true`, the button does not respond to interaction and appears with reduced contrast.',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
-        category: 'Состояние',
+        category: 'State',
       },
       ...getComponentStateTable(disabled),
     },
     loading: {
       ...loadingArgType,
       description:
-        '**Состояние загрузки**\n\nКогда `true`, отображается индикатор загрузки и кнопка становится неактивной. Используется для асинхронных операций.',
+        '**Loading state**\n\nWhen `true`, a loading indicator appears and the button becomes inactive. Use during asynchronous operations.',
       ...getComponentStateTable(loading),
     },
     alignment: {
       control: { type: 'select' },
       description:
-        '**Вариант выравнивания контента кнопки**\n\n- `start` - по левому краю\n- `center` - по центру\n- `end` - по правому краю.',
+        '**Button content alignment**\n\n- `start`: left aligned\n- `center`: centered\n- `end`: right aligned',
       options: Object.values(EYCoreSimpleButtonContentAlignment),
       ...getComponentStateTable(alignment),
     },
     fullWidth: {
       type: 'boolean',
-      description: '**Растянуть на всю ширину**\n\nКогда `true`, кнопка занимает всю доступную ширину родительского контейнера.',
+      description: '**Full width**\n\nWhen `true`, the button fills the available width of its parent container.',
       ...getComponentStateTable(fullWidth),
     },
     // Пропы для режима ссылки
     href: {
       ...hrefArgType,
       description:
-        '**URL ссылки**\n\nКогда указан, кнопка рендерится как элемент `<a>` вместо `<button>`. Поддерживаются все стандартные URL форматы.',
+        '**Link URL**\n\nWhen set, the button renders as an `<a>` rather than a `<button>`. Standard URL formats are supported.',
       ...getComponentStateTable(href),
     },
     target: {
       ...targetArgType,
       description:
-        '**Цель открытия ссылки**\n\nРаботает только когда указан `href`. Стандартные значения:\n- `_self` - в том же окне\n- `_blank` - в новом окне\n- `_parent` - в родительском фрейме\n- `_top` - в верхнем фрейме',
+        '**Link target**\n\nRequires `href`. Standard values:\n- `_self`: current browsing context\n- `_blank`: new browsing context\n- `_parent`: parent frame\n- `_top`: top-level frame',
       ...getComponentStateTable(target),
     },
     loaderVariant: {
-      description: '**Вариант индикатора загрузки**\n\n- `black` - черный\n- `white` - белый\n- `yellow` - желтый',
+      description: '**Loading indicator color**\n\n- `black`\n- `white`\n- `yellow`',
       control: { type: 'select' },
       options: Object.values(EYCoreLoaderVariant),
       ...getComponentStateTable(loaderVariant),
@@ -189,7 +189,7 @@ const meta: TSimpleButtonStoryMeta = {
     hostStyles: {
       type: 'string',
       description:
-        '**Пользовательские CSS стили**\n\nСтрока с CSS стилями, которые будут применены к корневому элементу кнопки. Позволяет тонко настроить внешний вид.',
+        '**Custom CSS styles**\n\nCSS declarations applied to the root button element to customize its appearance.',
       ...getComponentStateTable(hostStyles),
     },
 
@@ -197,7 +197,7 @@ const meta: TSimpleButtonStoryMeta = {
     onClick: {
       type: 'function',
       description:
-        '**Событие клика**\n\nСрабатывает при клике на кнопку. Не срабатывает, если кнопка заблокирована (`disabled`) или в состоянии загрузки (`loading`).',
+        '**Click event**\n\nEmitted when the button is clicked. Not emitted while `disabled` or `loading` is true.',
       ...getComponentEmitsTable(),
     },
 
@@ -205,14 +205,14 @@ const meta: TSimpleButtonStoryMeta = {
     showDefaultSlot: {
       type: 'boolean',
       description:
-        '** Показать контент в default слоте**\n\nDefault слот для размещения любого содержимого кнопки. Может содержать текст, иконки и другие элементы.',
+        '**Show default slot content**\n\nThe default slot accepts text, icons, and other button content.',
       ...getComponentSlotsTable('default', 'nothing'),
     },
 
     // Дополнительные Story Controls
     text: {
       type: 'string',
-      description: '** Текст кнопки**\n\nТекст, который будет отображаться в компоненте через default слот.',
+      description: '**Button text**\n\nText displayed through the default slot.',
       ...storyControlsTable,
     },
     isLongText: isLongTextArgType,
@@ -264,9 +264,9 @@ export const States: Story = {
   parameters: SIMPLE_BUTTON_STORIES_CONFIG.States.parameters,
   render: () => html`
   <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-    <y-core-simple-button> Обычная </y-core-simple-button>
-    <y-core-simple-button .disabled=${true}> Заблокированная </y-core-simple-button>
-    <y-core-simple-button .loading=${true}> Загрузка </y-core-simple-button>
+    <y-core-simple-button> Default </y-core-simple-button>
+    <y-core-simple-button .disabled=${true}> Disabled </y-core-simple-button>
+    <y-core-simple-button .loading=${true}> Loading </y-core-simple-button>
   </div>
 `,
 }
@@ -275,7 +275,7 @@ export const PseudoStates: Story = {
   parameters: SIMPLE_BUTTON_STORIES_CONFIG.PseudoStates.parameters,
   render: () => html`
   <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-    <y-core-simple-button> Обычная </y-core-simple-button>
+    <y-core-simple-button> Default </y-core-simple-button>
 
     <y-core-simple-button
       style="
@@ -307,10 +307,10 @@ export const LinkMode: Story = {
     <div style="display: flex; gap: 16px; flex-wrap: wrap;">
       <y-core-simple-button href="https://example.com" target="_blank">
         <y-core-icon .icon=${ySearch} size="16px"></y-core-icon>
-        Внешняя ссылка
+        External link
       </y-core-simple-button>
 
-      <y-core-simple-button href="/internal-page"> Внутренняя ссылка </y-core-simple-button>
+      <y-core-simple-button href="/internal-page"> Internal link </y-core-simple-button>
     </div>
   `,
 }

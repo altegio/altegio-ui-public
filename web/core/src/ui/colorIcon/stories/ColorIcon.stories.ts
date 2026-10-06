@@ -60,7 +60,7 @@ const meta: TYCoreColorIconMeta = {
     variant: {
       control: 'select',
       options: Object.values(EYCoreColorIconVariant),
-      description: 'Вариант иконки',
+      description: 'Icon variant',
       ...getComponentStateTable(variant),
     },
     disabled: {

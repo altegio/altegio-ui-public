@@ -12,7 +12,7 @@ import {
 } from '~ng/ui/cardButton/models/types'
 
 /**
- * Angular-обертка над CardButton
+ * Angular wrapper for CardButton
  */
 const meta: Meta<YCardButton> = {
   title: 'Cards/✅ CardButton',

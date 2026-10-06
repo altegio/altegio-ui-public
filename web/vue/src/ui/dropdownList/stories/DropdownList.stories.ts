@@ -15,7 +15,7 @@ type TDropdownListStoryMeta = IYVueDropdownListProps & {
 }
 
 /**
- * Vue-обертка над DropdownList
+ * Vue wrapper for DropdownList
  */
 const meta: Meta<TDropdownListStoryMeta> = {
   title: '✅ DropdownList',
@@ -43,11 +43,11 @@ const meta: Meta<TDropdownListStoryMeta> = {
 
         <template v-if="args.showListSlot" #list="{ items, itemLabel }">
           <div>
-            <p>Свой шаблон для списка</p>
+            <p>Custom list template</p>
 
             <ul>
               <li v-for="item in items" :key="item.id">
-                Новый элемент: {{ item[itemLabel] }}
+                New item: {{ item[itemLabel] }}
               </li>
             </ul>
           </div>
@@ -55,28 +55,28 @@ const meta: Meta<TDropdownListStoryMeta> = {
 
         <template v-if="args.showItemOuterSlot" #item-outer="{ item, itemLabel }">
           <p>
-            Свой шаблон для всех элементов без ячейки списка:
+            Custom template outside the cell for every item:
             {{ item[itemLabel] }}
           </p>
         </template>
 
         <template v-if="args.showItemInnerSlot" #item-inner="{ item, itemLabel }">
           <p>
-            Свой шаблон для всех элементов внутри ячейки списка:
+            Custom template inside the cell for every item:
             {{ item[itemLabel] }}
           </p>
         </template>
 
         <template v-if="args.showItem2OuterSlot" #item-outer-2="{ item, itemLabel }">
           <p>
-            Свой шаблон для второго элемента без ячейки списка:
+            Custom template outside the cell for the second item:
             {{ item[itemLabel] }}
           </p>
         </template>
 
         <template v-if="args.showItem2InnerSlot" #item-inner-2="{ item, itemLabel }">
           <p>
-            Свой шаблон для второго элемента внутри ячейки списка:
+            Custom template inside the cell for the second item:
             {{ item[itemLabel] }}
           </p>
         </template>
@@ -95,22 +95,22 @@ const meta: Meta<TDropdownListStoryMeta> = {
     // Story Controls
     showItemOuterSlot: {
       type: 'boolean',
-      description: 'Показать слот "item-outer"',
+      description: 'Show the "item-outer" slot',
       ...storyControlsTable,
     },
     showItemInnerSlot: {
       type: 'boolean',
-      description: 'Показать слот "item-inner"',
+      description: 'Show the "item-inner" slot',
       ...storyControlsTable,
     },
     showItem2OuterSlot: {
       type: 'boolean',
-      description: 'Показать слот "item-2-outer"',
+      description: 'Show the "item-2-outer" slot',
       ...storyControlsTable,
     },
     showItem2InnerSlot: {
       type: 'boolean',
-      description: 'Показать слот "item-2-inner"',
+      description: 'Show the "item-2-inner" slot',
       ...storyControlsTable,
     },
   },

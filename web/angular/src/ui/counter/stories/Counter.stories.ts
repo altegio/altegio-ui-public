@@ -4,7 +4,7 @@ import { YCounter } from '~ng/ui/counter'
 import yCoreCounterStoryMeta from '~core/ui/counter/stories/Counter.stories'
 
 /**
- * Angular-обертка над Core Counter
+ * Angular wrapper for Core Counter
  */
 const meta: Meta<YCounter> = {
   title: '✅ Counter',

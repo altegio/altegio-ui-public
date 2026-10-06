@@ -5,7 +5,7 @@ import yCoreTagStoryMeta, { type TYCoreTagMeta } from '~core/ui/tag/stories/Tag.
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
 /**
- * Angular-обертка над Core Tag
+ * Angular wrapper for Core Tag
  */
 const meta: Meta<TYCoreTagMeta> = {
   title: '🔍 Tag',

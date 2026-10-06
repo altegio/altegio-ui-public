@@ -1,10 +1,10 @@
 import type { IShowErrorsStoryProps } from '../argTypes'
 
-export const SINGLE_ERROR: IShowErrorsStoryProps['showErrors'] = ['Должен состоять из латинских букв, содержать хотя бы одну заглавную букву и число без использования пробелов']
+export const SINGLE_ERROR: IShowErrorsStoryProps['showErrors'] = ['Use Latin letters with at least one uppercase letter and one number, without spaces']
 
 export const MULTIPLE_ERRORS: IShowErrorsStoryProps['showErrors'] = [
-  'Должен состоять из латинских букв',
-  'Должен содержать хотя бы одну заглавную букву',
-  'Должен содержать числа',
-  'Не должен содержать символы или пробел',
+  'Use Latin letters',
+  'Include at least one uppercase letter',
+  'Include a number',
+  'Do not include symbols or spaces',
 ]

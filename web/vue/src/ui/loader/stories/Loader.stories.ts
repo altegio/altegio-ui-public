@@ -7,7 +7,7 @@ import { type IYVueLoaderProps } from '~vue/ui/loader/models/types'
 type TVueLoaderStoryMeta = IYVueLoaderProps
 
 /**
- * Vue-обертка над Core Loader
+ * Vue wrapper for Core Loader
  */
 const meta: Meta<TVueLoaderStoryMeta> = {
   title: '⚠️ Loader',

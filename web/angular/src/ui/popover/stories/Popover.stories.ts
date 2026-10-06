@@ -5,7 +5,7 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { action } from '@storybook/addon-actions'
 
 /**
- * Angular-обертка над Core Popover
+ * Angular wrapper for Core Popover
  */
 const meta: Meta<YPopover> = {
   title: 'Tips/⚠️ Popover',
@@ -47,11 +47,11 @@ const meta: Meta<YPopover> = {
             (submit)="onSubmit()"
           >
             <div popover-activator>
-              <span>Нажмите на меня</span>
+              <span>Click me</span>
             </div>
             
             <div popover-content>
-                <span style="width: 218px;display: block;">{{isLongText ? LOREM_IPSUM : 'Контент поповера'}}</span>
+                <span style="width: 218px;display: block;">{{isLongText ? LOREM_IPSUM : 'Popover content'}}</span>
             </div>
           </YPopover>
         </div>`,

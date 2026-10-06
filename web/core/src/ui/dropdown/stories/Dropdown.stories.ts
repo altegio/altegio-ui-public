@@ -24,9 +24,9 @@ export interface IYCoreDropdownStorySlots {
 }
 
 export const mapTriggerToLabel: Record<EYCoreDropdownTrigger, string> = {
-  [EYCoreDropdownTrigger.CLICK]: 'Нажмите меня',
-  [EYCoreDropdownTrigger.HOVER]: 'Наведите меня',
-  [EYCoreDropdownTrigger.MANUAL]: 'Управление вручную',
+  [EYCoreDropdownTrigger.CLICK]: 'Click me',
+  [EYCoreDropdownTrigger.HOVER]: 'Hover over me',
+  [EYCoreDropdownTrigger.MANUAL]: 'Manual control',
 }
 
 const {
@@ -97,7 +97,7 @@ const meta: TYCoreMetaDropdown = {
         ${
           showContentSlot
             ? 'showContentSlot'
-            : 'Содержимое выпадающей области'
+            : 'Dropdown content'
         }
       </div>
     </y-core-dropdown>
@@ -106,68 +106,68 @@ const meta: TYCoreMetaDropdown = {
     trigger: {
       control: 'select',
       options: Object.values(EYCoreDropdownTrigger),
-      description: 'Тип активации выпадающей области',
+      description: 'Dropdown trigger',
       ...getComponentStateTable(trigger),
     },
     isOpen: {
       control: 'boolean',
-      description: 'Управление видимостью выпадающей области в режиме manual',
+      description: 'Control dropdown visibility in manual mode',
       ...getComponentStateTable(isOpen),
     },
     placement: {
       control: 'select',
       options: Object.values(EYCoreDropdownPlacement),
-      description: 'Расположение выпадающей области',
+      description: 'Dropdown placement',
       ...getComponentStateTable(placement),
     },
     strategy: {
       control: 'select',
       options: Object.values(EYCoreDropdownStrategy),
-      description: 'Стратегия позиционирования',
+      description: 'Positioning strategy',
       ...getComponentStateTable(strategy),
     },
     offset: {
       control: 'number',
-      description: 'Смещение выпадающей области',
+      description: 'Dropdown offset',
       ...getComponentStateTable(offset),
     },
     padding: {
       control: 'number',
-      description: 'Отступы выпадающей области',
+      description: 'Dropdown padding',
       ...getComponentStateTable(padding),
     },
     transition: {
       control: 'select',
       options: ['fade'],
-      description: 'Тип анимации появления выпадающей области',
+      description: 'Dropdown entrance animation',
       ...getComponentStateTable(transition),
     },
     disabled: {
       control: 'boolean',
-      description: 'Управление активностью компонента',
+      description: 'Control the active state',
       ...getComponentStateTable(disabled),
     },
     inline: {
       control: 'boolean',
-      description: 'Управление режимом inline у активатора',
+      description: 'Control the inline mode of the activator',
       ...getComponentStateTable(inline),
     },
 
     showActivatorSlot: {
       control: 'boolean',
-      description: 'Показать слот "activator"',
+      description: 'Show the "activator" slot',
       ...storyControlsTable,
     },
     showContentSlot: {
       control: 'boolean',
-      description: 'Показать слот "content"',
+      description: 'Show the "content" slot',
       ...storyControlsTable,
     },
 
     onVisible: onVisibleEmit,
     onClickOutside: {
       ...onVisibleEmit,
-      description: 'Событие срабатывает при клике вне выпадающей области',
+      description: 'Emitted when clicking outside the dropdown',
     },
   },
   args: {

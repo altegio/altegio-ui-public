@@ -174,28 +174,28 @@ const meta: Meta<TYCoreTextareaMeta> = {
     // Component Props
     clearable: {
       type: 'boolean',
-      description: 'Делает поле очищаемым',
+      description: 'Allow the field to be cleared',
       ...getComponentStateTable(clearable),
     },
     // Story Controls
     showBeforeSlot: {
       type: 'boolean',
-      description: 'Показать компонент "BeforeSlot"',
+      description: 'Show the "BeforeSlot" component',
       ...storyControlsTable,
     },
     showAfterSlot: {
       type: 'boolean',
-      description: 'Показать компонент "AfterSlot"',
+      description: 'Show the "AfterSlot" component',
       ...storyControlsTable,
     },
     locatorLabel: {
       type: 'string',
-      description: 'Локатор для лейбла',
+      description: 'Data locator for the label',
       ...getComponentContentTable(),
     },
     locatorError: {
       type: 'string',
-      description: 'Локатор для ошибки',
+      description: 'Data locator for the error',
       ...getComponentContentTable(),
     },
     isLongText: isLongTextArgType,
@@ -203,7 +203,7 @@ const meta: Meta<TYCoreTextareaMeta> = {
     // Component Events
     onClear: {
       type: 'function',
-      description: 'Событие очистки',
+      description: 'Clear event',
       ...getComponentEmitsTable(),
     },
   },
@@ -228,11 +228,11 @@ type Story = StoryObj<IYCoreTextareaProps>
 export const Playground: Story = { args: {} }
 
 export const WithMaxlength: Story = {
-  name: 'С ограничением по символам',
+  name: 'With a character limit',
   args: {
     maxlength: 250,
-    value: 'Поле с ограничением по символам',
-    labelText: 'Комментарий',
-    placeholder: 'Введите текст...',
+    value: 'Field with a character limit',
+    labelText: 'Comment',
+    placeholder: 'Enter text...',
   },
 }

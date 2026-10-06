@@ -2,25 +2,25 @@ import fs from 'fs'
 
 export const createDirectory = (directory: string): string | null => {
   try {
-    if (fs.existsSync(directory)) throw new Error(`Директория "${directory}" уже существует`)
+    if (fs.existsSync(directory)) throw new Error(`Directory "${directory}" already exists`)
 
     fs.mkdirSync(
       directory,
       { recursive: true },
     )
 
-    console.log(`✅ Директория создана: ${directory}`)
+    console.log(`✅ Directory created: ${directory}`)
 
     return directory
   } catch(error) {
-    console.error(`❌ Ошибка создания директории: ${error instanceof Error ? error.message : String(error)}`)
+    console.error(`❌ Failed to create directory: ${error instanceof Error ? error.message : String(error)}`)
     return null
   }
 }
 
 export const createFile = (filePath: string, content: string): string | null => {
   try {
-    if (fs.existsSync(filePath)) throw new Error(`Файл "${filePath}" уже существует`)
+    if (fs.existsSync(filePath)) throw new Error(`File "${filePath}" already exists`)
 
     fs.writeFileSync(
       filePath,
@@ -28,11 +28,11 @@ export const createFile = (filePath: string, content: string): string | null => 
       'utf-8',
     )
 
-    console.log(`✅ Файл создан: ${filePath}`)
+    console.log(`✅ File created: ${filePath}`)
 
     return filePath
   } catch(error) {
-    console.error(`❌ Ошибка создания файла: ${error instanceof Error ? error.message : String(error)}`)
+    console.error(`❌ Failed to create file: ${error instanceof Error ? error.message : String(error)}`)
     return null
   }
 }
@@ -45,11 +45,11 @@ export const appendToFile = (filePath: string, content: string): string | null =
       'utf-8',
     )
 
-    console.log(`✅ Содержимое добавлено в файл: ${filePath}`)
+    console.log(`✅ Content appended to file: ${filePath}`)
 
     return filePath
   } catch(error) {
-    console.error(`❌ Ошибка добавления содержимого в файл: ${error instanceof Error ? error.message : String(error)}`)
+    console.error(`❌ Failed to append content to file: ${error instanceof Error ? error.message : String(error)}`)
     return null
   }
 }
@@ -61,12 +61,12 @@ export const renameDirectory = (oldPath: string, newPath: string): boolean => {
       newPath,
     )
 
-    console.log(`✅ Директория переименована: ${oldPath} -> ${newPath}`)
+    console.log(`✅ Directory renamed: ${oldPath} -> ${newPath}`)
 
     return true
   } catch(error) {
     console.error(
-      `❌ Ошибка переименования директории ${oldPath} в ${newPath}:`,
+      `❌ Failed to rename directory ${oldPath} to ${newPath}:`,
       error,
     )
     return false
@@ -80,12 +80,12 @@ export const renameFile = (oldPath: string, newPath: string): boolean => {
       newPath,
     )
 
-    console.log(`✅ Файл переименован: ${oldPath} -> ${newPath}`)
+    console.log(`✅ File renamed: ${oldPath} -> ${newPath}`)
 
     return true
   } catch(error) {
     console.error(
-      `❌ Ошибка переименования файла ${oldPath} в ${newPath}:`,
+      `❌ Failed to rename file ${oldPath} to ${newPath}:`,
       error,
     )
     return false
@@ -100,7 +100,7 @@ export const readFile = (filePath: string): string | null => {
     )
   } catch(error) {
     console.error(
-      `❌ Ошибка чтения файла ${filePath}:`,
+      `❌ Failed to read file ${filePath}:`,
       error,
     )
     return null
@@ -121,12 +121,12 @@ export const updateFile = (filePath: string, updateFn: (content: string) => stri
       updatedContent,
     )
 
-    console.log(`✅ Файл обновлен: ${filePath}`)
+    console.log(`✅ File updated: ${filePath}`)
 
     return true
   } catch(error) {
     console.error(
-      `❌ Ошибка обновления файла ${filePath}:`,
+      `❌ Failed to update file ${filePath}:`,
       error,
     )
     return false

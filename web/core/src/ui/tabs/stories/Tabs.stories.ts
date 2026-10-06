@@ -141,16 +141,16 @@ const meta: Meta<TYCoreTabsStoryMeta> = {
     tabs: {
       ...itemsArgType,
       ...getComponentStateTable(tabs),
-      description: 'Массив Tab\'ов',
+      description: 'Tab items',
     },
     value: {
       type: 'number',
-      description: 'Индекс активного Tab\'а',
+      description: 'Index of the active tab',
       ...getComponentStateTable(value),
     },
     showDefaultSlot: {
       type: 'boolean',
-      description: 'Показать слот "default" - слот для массива Tab',
+      description: 'Show the "default" slot - slot for tab items',
       ...storyControlsTable,
     },
   },

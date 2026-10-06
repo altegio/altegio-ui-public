@@ -7,7 +7,7 @@ import yCoreFieldIconStoryMeta from '~core/ui/fieldIcon/stories/FieldIcon.storie
 type TVueFieldIconStoryMeta = IYVueFieldIconProps
 
 /**
- * Vue-обертка над Core FieldIcon
+ * Vue wrapper for Core FieldIcon
  */
 const meta: Meta<TVueFieldIconStoryMeta> = {
   title: 'Inputs/Partials/⚠️ FieldIcon',

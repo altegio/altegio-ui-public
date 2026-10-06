@@ -4,7 +4,7 @@ import { YCardIcon } from '~ng/ui/cardIcon'
 import yCardIconStoryMeta from '~core/ui/cardIcon/stories/CardIcon.stories'
 
 /**
- * Angular-обертка над CardIcon
+ * Angular wrapper for CardIcon
  */
 const meta: Meta<YCardIcon> = {
   title: 'Cards/Partials/✅ CardIcon',

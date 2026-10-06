@@ -19,15 +19,15 @@ import { EYSizes } from '~web/shared/types/global'
  * Используется для обеспечения единообразия между фреймворками
  */
 export const ICON_BUTTON_STORIES_CONFIG: Record<string, IStoryConfig> = {
-  Playground: { parameters: { docs: { title: 'Playground', description: { story: 'Интерактивная площадка для экспериментов с компонентом.\nИспользуйте контролы для изменения свойств и изучения поведения кнопки с иконкой.' } } } },
-  Variants: { parameters: { docs: { title: 'Варианты кнопок', description: { story: 'Демонстрация всех доступных вариантов стилизации для кнопок с иконками.' } } } },
-  Sizes: { parameters: { docs: { title: 'Размеры кнопок', description: { story: 'Демонстрация всех доступных размеров кнопок с иконками.' } } } },
-  States: { parameters: { docs: { title: 'Состояния кнопок', description: { story: 'Демонстрация различных состояний: обычное, заблокированное, загрузка.' } } } },
-  PseudoStates: { parameters: { docs: { title: 'Псевдо-состояния', description: { story: 'Демонстрация псевдо-состояний с помощью CSS классов.\nНаведите курсор на кнопки, чтобы увидеть hover эффект.' } } } },
-  FullWidth: { parameters: { docs: { title: 'Полная ширина', description: { story: 'Демонстрация кнопки с иконкой, растянутой на всю ширину контейнера.' } } }, args: { fullWidth: true } },
-  LinkMode: { parameters: { docs: { title: 'Режим ссылки', description: { story: 'Кнопка с иконкой может работать как ссылка при указании href.' } } } },
-  IconVariety: { parameters: { docs: { title: 'Разнообразие иконок', description: { story: 'Демонстрация различных иконок в кнопках.' } } } },
-  ComplexDemo: { parameters: { docs: { title: 'Комплексная демонстрация', description: { story: 'Демонстрация всех вариантов и размеров в одной таблице.' } } } },
+  Playground: { parameters: { docs: { title: 'Playground', description: { story: 'Try the icon button interactively.\nUse the controls to explore its properties and behavior.' } } } },
+  Variants: { parameters: { docs: { title: 'Button variants', description: { story: 'All available icon button styling variants.' } } } },
+  Sizes: { parameters: { docs: { title: 'Button sizes', description: { story: 'All available icon button sizes.' } } } },
+  States: { parameters: { docs: { title: 'Button states', description: { story: 'Default, disabled, and loading states.' } } } },
+  PseudoStates: { parameters: { docs: { title: 'Pseudo states', description: { story: 'Pseudo states applied through CSS classes.\nHover over the buttons to see the effect.' } } } },
+  FullWidth: { parameters: { docs: { title: 'Full width', description: { story: 'An icon button that fills its container.' } } }, args: { fullWidth: true } },
+  LinkMode: { parameters: { docs: { title: 'Link mode', description: { story: 'An icon button can act as a link when href is set.' } } } },
+  IconVariety: { parameters: { docs: { title: 'Icon options', description: { story: 'Buttons with different icons.' } } } },
+  ComplexDemo: { parameters: { docs: { title: 'Combined example', description: { story: 'All variants and sizes in a single table.' } } } },
 } as const
 
 /**
@@ -36,25 +36,25 @@ export const ICON_BUTTON_STORIES_CONFIG: Record<string, IStoryConfig> = {
 export const createIconButtonDescription = (frameworkName: EFrameworkName, frameworkSpecifics = '') => `
 ## ${frameworkName} IconButton
 
-Компонент кнопки с иконкой, основанный на SimpleButton. Предназначен для действий, где иконка может заменить текст или дополнить его. Может быть как обычной кнопкой, так и ссылкой.
+An icon button built on SimpleButton. Use it for actions where an icon replaces or complements a text label. It can also act as a link.
 
-### Основные возможности:
-- 4 варианта стилизации: primary, outline, outline-filled, text
-- 3 размера: small, medium, large
-- Автоматическое определение размера иконки в зависимости от размера кнопки (16px для small/medium, 24px для large)
-- Состояния: обычное, заблокированное, загрузка
-- Режим ссылки с поддержкой target
-- Полная ширина (fullWidth) - растягивает кнопку на всю ширину контейнера
-- Поддержка всех иконок из дизайн-системы
+### Features:
+- 4 styling variants: primary, outline, outline-filled, text
+- 3 sizes: small, medium, large
+- Automatic icon sizing: 16px for small and medium buttons, 24px for large buttons
+- States: default, disabled, and loading
+- Link mode with target support
+- Full width (fullWidth): fills the container width
+- Supports all design system icons
 
-### Отличия от SimpleButton:
-- Принимает обязательное свойство \`icon\` вместо слота
-- Автоматически управляет размером иконки
-- Оптимизирован для компактного отображения действий
+### Differences from SimpleButton:
+- Requires the \`icon\` property instead of an icon slot
+- Sizes the icon automatically
+- Designed for compact action controls
 
 ${frameworkSpecifics}
 
-Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-DS-%7C-Testing?node-id=755-926&node-type=canvas&t=9mNzpOaA0dv7yCWO-0)`
+`
 
 /**
  * Создает параметры для истории IconButton

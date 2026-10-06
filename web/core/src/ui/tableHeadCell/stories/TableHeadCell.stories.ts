@@ -27,7 +27,7 @@ export type TYCoreTableHeadCellMeta = IYCoreTableHeadCellProps & IYCoreTableHead
 
 const storyHeader = {
   id: '1',
-  label: 'Колонка 1',
+  label: 'Column 1',
 }
 const storyHeaderLabel = 'label'
 
@@ -95,37 +95,37 @@ const meta: Meta<TYCoreTableHeadCellMeta> = {
 
     sortable: {
       type: 'boolean',
-      description: 'Сортировка',
+      description: 'Sorting',
       ...getComponentStateTable(false),
     },
     sortDirection: {
       control: { type: 'select' },
-      description: 'Направление сортировки',
+      description: 'Sort direction',
       options: Object.values(ESort),
       ...getComponentStateTable(sortDirection),
     },
     header: {
       control: { type: 'object' },
-      description: 'Данные колонки',
+      description: 'Column data',
       ...getComponentStateTable(storyHeader),
     },
     headerLabel: {
       type: 'string',
-      description: 'Метка для данных колонки',
+      description: 'Column data label',
       ...getComponentStateTable(storyHeaderLabel),
     },
 
     // Story Controls
     showHintSlot: {
       type: 'boolean',
-      description: 'Показать слот "hint"',
+      description: 'Show the "hint" slot',
       ...storyControlsTable,
     },
 
     // Story Actions
     onSort: {
       type: 'function',
-      description: 'Событие ввода',
+      description: 'Input event',
       ...getComponentEmitsTable(),
     },
   },

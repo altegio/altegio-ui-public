@@ -37,7 +37,7 @@ async function main() {
   try {
     await fs.access(DIST_ROOT);
   } catch {
-    console.error(`[minify-ng-dist] Не найден каталог: ${DIST_ROOT}. Сначала выполните сборку ng-packagr.`);
+    console.error(`[minify-ng-dist] Directory not found: ${DIST_ROOT}. Run the ng-packagr build first.`);
     process.exit(1);
   }
 
@@ -49,11 +49,11 @@ async function main() {
   }
 
   if (filesToMinify.length === 0) {
-    console.log('[minify-ng-dist] Файлы .mjs не найдены, ничего минифицировать.');
+    console.log('[minify-ng-dist] No .mjs files found; nothing to minify.');
     return;
   }
 
-  console.log(`[minify-ng-dist] Найдено файлов для минификации: ${filesToMinify.length}`);
+  console.log(`[minify-ng-dist] Files to minify: ${filesToMinify.length}`);
 
   // Ограничим одновременную обработку, чтобы не съесть всю память
   const CONCURRENCY = 8;
@@ -71,11 +71,11 @@ async function main() {
 
   await runBatch();
 
-  console.log('[minify-ng-dist] Минификация завершена.');
+  console.log('[minify-ng-dist] Minification completed.');
 }
 
 main().catch((err) => {
-  console.error('[minify-ng-dist] Ошибка:', err);
+  console.error('[minify-ng-dist] Error:', err);
   process.exit(1);
 });
 

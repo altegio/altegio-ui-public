@@ -12,7 +12,7 @@ import { action } from '@storybook/addon-actions'
 type TVueTooltipStoryMeta = IYVueTooltipProps & IYCoreLabelStoryProps
 
 /**
- * Vue-обертка над Core Tooltip
+ * Vue wrapper for Core Tooltip
  */
 const meta: Meta<TVueTooltipStoryMeta> = {
   title: '⚠️ Tooltip',
@@ -33,11 +33,11 @@ const meta: Meta<TVueTooltipStoryMeta> = {
     
       <YTooltip v-bind="args" :text="computedText">
         <template #activator>
-          <YSimpleButton @click="onButtonClick">Наведи на меня</YSimpleButton>
+          <YSimpleButton @click="onButtonClick">Hover over me</YSimpleButton>
         </template>
         
         <template v-if="args.isSlotExists" #content>
-          Контент со <YLink href="https://www.google.com" target="_blank">ссылкой</YLink>
+          Content with a <YLink href="https://www.google.com" target="_blank">link</YLink>
           
           <div v-if="args.isLongText">{{ computedText }}</div>
         </template>

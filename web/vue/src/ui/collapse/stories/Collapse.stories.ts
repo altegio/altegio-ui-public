@@ -21,7 +21,7 @@ type TVueCollapseStoryMeta = IYVueCollapseProps & TYCoreCollapseMeta & {
 }
 
 /**
- * Vue-обертка над Core Collapse
+ * Vue wrapper for Core Collapse
  */
 const meta: Meta<TVueCollapseStoryMeta> = {
   title: '✅ Collapse',
@@ -67,9 +67,9 @@ const meta: Meta<TVueCollapseStoryMeta> = {
             <template #label>
               <div style="display: flex; align-items: center;gap: 8px;">
                 <span>LabelSlot{{ i }}</span>
-                
+
                 <YTag size="small" :variant="i % 2 ? 'accent' : 'discovery'">TagLabel</YTag>
-                
+
                 <YIcon :icon="yInfo" size="16px" />
               </div>
             </template>
@@ -77,7 +77,7 @@ const meta: Meta<TVueCollapseStoryMeta> = {
             <template #annotation>
               AnnotationSlot{{ i }}
             </template>
-            
+
             <template #content>${LOREM_IPSUM} ${LOREM_IPSUM}</template>
           </YCollapseItem>
         </YCollapse>
@@ -140,22 +140,22 @@ export const WithNestedItems: Story = {
 
             <template #label>
               <div style="display: flex; align-items: center;gap: 8px;">
-                <span>Родительский элемент {{ i }}</span>
-                
-                <YTag size="small" :variant="i % 2 ? 'accent' : 'discovery'">Уровень 1</YTag>
-                
+                <span>Parent item {{ i }}</span>
+
+                <YTag size="small" :variant="i % 2 ? 'accent' : 'discovery'">Level 1</YTag>
+
                 <YIcon :icon="yInfo" size="16px" />
               </div>
             </template>
 
             <template #annotation>
-              Описание родительского элемента {{ i }}
+              Parent item description {{ i }}
             </template>
-            
+
             <template #content>
               <div style="padding: 16px 0;">
-                <p style="margin: 0 0 16px 0; color: #666;">Содержимое родительского элемента {{ i }}</p>
-                
+                <p style="margin: 0 0 16px 0; color: #666;">Parent item content {{ i }}</p>
+
                 <YCollapse :model-value="[]" draggable type="multiple" :allowCrossLevelMove="true">
                   <YCollapseItem v-for="j in 3" :key="\`\${i}-\${j}\`" :value="\`\${i}-\${j}\`">
                     <template #after>
@@ -164,39 +164,39 @@ export const WithNestedItems: Story = {
 
                     <template #label>
                       <div style="display: flex; align-items: center;gap: 6px;">
-                        <span>Дочерний элемент {{ i }}.{{ j }}</span>
-                        
-                        <YTag size="small" variant="neutral">Уровень 2</YTag>
+                        <span>Child item {{ i }}.{{ j }}</span>
+
+                        <YTag size="small" variant="neutral">Level 2</YTag>
                       </div>
                     </template>
 
                     <template #annotation>
-                      Описание дочернего элемента {{ i }}.{{ j }}
+                      Child item description {{ i }}.{{ j }}
                     </template>
-                    
+
                     <template #content>
                       <YCollapse :model-value="[]" draggable type="multiple" :allowCrossLevelMove="true">
                         <YCollapseItem v-for="k in 3" :key="\`\${i}-\${j}-\${k}\`" :value="\`\${i}-\${j}-\${k}\`">
                           <template #after>
                             <YIcon :icon="yCopy" size="14px" />
                           </template>
-      
+
                           <template #label>
                             <div style="display: flex; align-items: center;gap: 6px;">
-                              <span>Дочерний элемент {{ i }}.{{ j }}.{{ k }}</span>
-                              
-                              <YTag size="small" variant="neutral">Уровень 3</YTag>
+                              <span>Child item {{ i }}.{{ j }}.{{ k }}</span>
+
+                              <YTag size="small" variant="neutral">Level 3</YTag>
                             </div>
                           </template>
-      
+
                           <template #annotation>
-                            Описание дочернего элемента {{ i }}.{{ j }}.{{ k }}
+                            Child item description {{ i }}.{{ j }}.{{ k }}
                           </template>
-                          
+
                           <template #content>
                             <div style="padding: 12px 0;">
                               <p style="margin: 0; font-size: 14px; color: #888;">
-                                Содержимое дочернего элемента {{ i }}.{{ j }}.{{ k }} ${LOREM_IPSUM.slice(0, 100)}...
+                                Child item content {{ i }}.{{ j }}.{{ k }} ${LOREM_IPSUM.slice(0, 100)}...
                               </p>
                             </div>
                           </template>
@@ -287,34 +287,34 @@ export const WithLargeContent: Story = {
             contentBlocks.push(`
               <div style="margin-bottom: 24px;">
                 <h3 style="margin: 0 0 12px 0; color: #333; font-size: 18px; font-weight: 600;">
-                  Раздел ${i} элемента ${itemIndex}
+                  Section ${i} of item ${itemIndex}
                 </h3>
-                
+
                 <p style="margin: 0 0 12px 0; line-height: 1.6; color: #555;">
-                  ${LOREM_IPSUM} Это дополнительный текст для увеличения объема контента в разделе ${i}.
+                  ${LOREM_IPSUM} This sample text adds more content to section ${i}.
                 </p>
-                
+
                 <p style="margin: 0 0 12px 0; line-height: 1.6; color: #555;">
-                  ${LOREM_IPSUM} Еще больше текста для проверки поведения скролла при открытии элементов коллапса.
-                  Этот контент должен значительно превышать высоту экрана, чтобы протестировать корректность работы
-                  с прокруткой страницы. Важно убедиться, что позиция скролла остается стабильной.
+                  ${LOREM_IPSUM} Additional text demonstrates scrolling when accordion items expand.
+                  This content extends well beyond the viewport to demonstrate
+                  page scrolling. Check that the scroll position remains stable.
                 </p>
-                
+
                 <ul style="margin: 0 0 12px 0; padding-left: 20px; color: #666;">
-                  <li>Пункт списка 1 для раздела ${i}</li>
-                  
-                  <li>Пункт списка 2 для раздела ${i}</li>
-                  
-                  <li>Пункт списка 3 для раздела ${i}</li>
-                  
-                  <li>Пункт списка 4 для раздела ${i}</li>
+                  <li>List item 1 for section ${i}</li>
+
+                  <li>List item 2 for section ${i}</li>
+
+                  <li>List item 3 for section ${i}</li>
+
+                  <li>List item 4 for section ${i}</li>
                 </ul>
-                
+
                 <div style="background: #f5f5f5; padding: 16px; border-radius: 8px; margin-bottom: 16px;">
-                  <strong>Информационный блок ${i}:</strong>
+                  <strong>Information panel ${i}:</strong>
 
 <br>
-                  Этот блок содержит важную информацию для раздела ${i} элемента ${itemIndex}.
+                  This panel contains information for section ${i} of item ${itemIndex}.
                   ${LOREM_IPSUM.slice(0, 200)}
                 </div>
               </div>
@@ -337,11 +337,11 @@ export const WithLargeContent: Story = {
       template: `
         <div>
           <div style="margin-bottom: 24px; padding: 16px; background: #e3f2fd; border-radius: 8px;">
-            <h2 style="margin: 0 0 8px 0; color: #1976d2;">Тест коллапса с большим контентом</h2>
-            
+            <h2 style="margin: 0 0 8px 0; color: #1976d2;">Accordion with long content</h2>
+
             <p style="margin: 0; color: #1565c0;">
-              Откройте несколько элементов подряд и проверьте, что позиция скролла остается стабильной.
-              Каждый элемент содержит много контента, превышающего высоту экрана.
+              Expand several items in sequence and check that the scroll position stays stable.
+              Each item contains more content than fits in the viewport.
             </p>
           </div>
 
@@ -357,30 +357,30 @@ export const WithLargeContent: Story = {
 
               <template #label>
                 <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="font-weight: 500;">Элемент с большим контентом {{ i }}</span>
-                  
+                  <span style="font-weight: 500;">Item with long content {{ i }}</span>
+
                   <YTag size="small" :variant="i % 3 === 0 ? 'accent' : i % 3 === 1 ? 'discovery' : 'success'">
-                    {{ i % 3 === 0 ? 'Высокий' : i % 3 === 1 ? 'Очень высокий' : 'Максимальный' }} контент
+                    {{ i % 3 === 0 ? 'Tall' : i % 3 === 1 ? 'Very tall' : 'Maximum height' }} content
                   </YTag>
-                  
+
                   <YIcon :icon="yInfo" size="16px" />
                 </div>
               </template>
 
               <template #annotation>
-                Элемент {{ i }} содержит очень много контента для проверки поведения скролла
+                Item {{ i }} contains long content to demonstrate scrolling
               </template>
-              
+
               <template #content>
                 <div style="padding: 20px 0;" v-html="generateLargeContent(i)"></div>
-                
+
                 <div style="margin-top: 32px; padding: 20px; background: #fff3e0; border-radius: 8px; border-left: 4px solid #ff9800;">
-                  <h4 style="margin: 0 0 12px 0; color: #f57c00;">Заключительный блок элемента {{ i }}</h4>
-                  
+                  <h4 style="margin: 0 0 12px 0; color: #f57c00;">Final panel of item {{ i }}</h4>
+
                   <p style="margin: 0; color: #ef6c00;">
-                    Это последний блок контента в элементе {{ i }}. Если вы видите этот текст,
-                    значит весь контент элемента был корректно отображен. Общая высота контента 
-                    этого элемента значительно превышает высоту экрана.
+                    This is the final content panel in item {{ i }}. If you can see this text,
+                    the entire item has rendered. Its total content height
+                    is much greater than the viewport height.
                   </p>
                 </div>
               </template>
@@ -388,11 +388,11 @@ export const WithLargeContent: Story = {
           </YCollapse>
 
           <div style="margin-top: 40px; padding: 16px; background: #f3e5f5; border-radius: 8px;">
-            <h3 style="margin: 0 0 8px 0; color: #7b1fa2;">Конец страницы</h3>
-            
+            <h3 style="margin: 0 0 8px 0; color: #7b1fa2;">End of page</h3>
+
             <p style="margin: 0; color: #8e24aa;">
-              Этот блок помогает понять, что вы достигли конца страницы и можете 
-              протестировать поведение скролла при открытии элементов выше.
+              This panel marks the end of the page. You can now
+              check the scroll position when expanding items above.
             </p>
           </div>
         </div>

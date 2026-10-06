@@ -17,7 +17,7 @@ type TVueRadioButtonGroupStoryMeta = IYVueRadioButtonGroupProps & {
 }
 
 /**
- * Vue-обертка над Core RadioButtonGroup
+ * Vue wrapper for Core RadioButtonGroup
  */
 const meta: Meta<TVueRadioButtonGroupStoryMeta> = {
   title: '⚠️ RadioButtonGroup',
@@ -44,8 +44,8 @@ const meta: Meta<TVueRadioButtonGroupStoryMeta> = {
       },
       template: `
       <YRadioButtonGroup v-bind="args" v-model="vModelValue">
-        <YRadioButton  v-for="i in 3" :key="i" :label-text="'Радио-кнопка со значением ' + i" :value="i">
-          <template #annotation>Текст аннотации</template>
+        <YRadioButton  v-for="i in 3" :key="i" :label-text="'Radio button with value ' + i" :value="i">
+          <template #annotation>Annotation text</template>
         </YRadioButton>
       </YRadioButtonGroup>
     `,

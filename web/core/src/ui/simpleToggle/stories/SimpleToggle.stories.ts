@@ -26,7 +26,6 @@ type TYCoreToggleStoryMeta = IYCoreSimpleToggleProps & TYCoreSimpleToggleEvents
 /**
  * ## Core SimpleToggle
  *
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-DS-%7C-Testing?node-id=594-29290&t=wZdipmZtbbg9NfuM-4)
  */
 const meta: Meta<TYCoreToggleStoryMeta> = {
   title: '⚙️ Toggle',
@@ -68,7 +67,7 @@ const meta: Meta<TYCoreToggleStoryMeta> = {
   argTypes: {
     checked: {
       type: 'boolean',
-      description: 'Активное состояние',
+      description: 'Active state',
       ...getComponentStateTable(checked),
     },
     disabled: {

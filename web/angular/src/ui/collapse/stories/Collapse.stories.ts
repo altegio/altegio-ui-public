@@ -13,7 +13,7 @@ import { YIcon } from '~ng/ui/icon'
 import { yCopy, yInfo } from '~shared/icons'
 
 /**
- * Angular-обертка над CoreCollapse
+ * Angular wrapper for CoreCollapse
  */
 const meta: Meta<YCollapse> = {
   title: 'Collapse/🔍 Collapse',
@@ -129,22 +129,22 @@ export const WithNestedItems: Story = {
             <YCollapseItem [value]="i">
               <ng-template #collapseItemLabel>
                 <div style="display: flex; align-items: center; gap: 8px;">
-                  <span>Родительский элемент {{ i }}</span>
+                  <span>Parent item {{ i }}</span>
                   
-                  <YTag size="small" variant="accent">Уровень 1</YTag>
+                  <YTag size="small" variant="accent">Level 1</YTag>
                   
                   <YIcon [icon]="yInfo" size="16px" />
                 </div>
               </ng-template>
 
               <ng-template #collapseItemAnnotation>
-                Описание родительского элемента {{ i }}
+                Parent item description {{ i }}
               </ng-template>
 
               <ng-template #collapseItemContent>
                 <div style="padding: 16px 0;">
                   <p style="margin: 0 0 16px 0; color: #666;">
-                    Содержимое родительского элемента {{ i }}
+                    Parent item content {{ i }}
                   </p>
 
                   <!-- Вложенный Collapse -->
@@ -153,14 +153,14 @@ export const WithNestedItems: Story = {
                       <YCollapseItem [value]="i + '-' + j">
                         <ng-template #collapseItemLabel>
                           <div style="display: flex; align-items: center; gap: 6px;">
-                            <span>Дочерний элемент {{ i }}.{{ j }}</span>
+                            <span>Child item {{ i }}.{{ j }}</span>
                             
-                            <YTag size="small" variant="neutral">Уровень 2</YTag>
+                            <YTag size="small" variant="neutral">Level 2</YTag>
                           </div>
                         </ng-template>
 
                         <ng-template #collapseItemAnnotation>
-                          Описание дочернего элемента {{ i }}.{{ j }}
+                          Child item description {{ i }}.{{ j }}
                         </ng-template>
 
                         <ng-template #collapseItemContent>
@@ -171,20 +171,20 @@ export const WithNestedItems: Story = {
                               <YCollapseItem [value]="i + '-' + j + '-' + k">
                                 <ng-template #collapseItemLabel>
                                   <div style="display: flex; align-items: center; gap: 6px;">
-                                    <span>Дочерний элемент {{ i }}.{{ j }}.{{ k }}</span>
+                                    <span>Child item {{ i }}.{{ j }}.{{ k }}</span>
                                     
-                                    <YTag size="small" variant="neutral">Уровень 3</YTag>
+                                    <YTag size="small" variant="neutral">Level 3</YTag>
                                   </div>
                                 </ng-template>
         
                                 <ng-template #collapseItemAnnotation>
-                                  Описание дочернего элемента {{ i }}.{{ j }}.{{ k }}
+                                  Child item description {{ i }}.{{ j }}.{{ k }}
                                 </ng-template>
         
                                 <ng-template #collapseItemContent>
                                   <div style="padding: 12px 0;">
                                     <p style="margin: 0; font-size: 14px; color: #888;">
-                                      Содержимое дочернего элемента {{ i }}.{{ j }}.{{ k }}. ${LOREM_IPSUM.slice(0, 100)}...
+                                      Child item content {{ i }}.{{ j }}.{{ k }}. ${LOREM_IPSUM.slice(0, 100)}...
                                     </p>
                                   </div>
                                 </ng-template>

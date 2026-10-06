@@ -4,7 +4,7 @@ import yCoreEmptyStateStoryMeta, { type IYCoreEmptyStateStoryProps } from '~core
 import { YButton } from '~ng/ui/button'
 
 /**
- * Angular-обертка над Core EmptyState
+ * Angular wrapper for Core EmptyState
  */
 const meta: Meta<YEmptyState & IYCoreEmptyStateStoryProps> = {
   title: '✅ EmptyState',
@@ -30,12 +30,12 @@ const meta: Meta<YEmptyState & IYCoreEmptyStateStoryProps> = {
             @if (isActionsSlotExists) {
               <YButton
                 variant="primary"
-                label="Основная кнопка"
+                label="Primary button"
               ></YButton>
     
               <YButton
                 variant="outline"
-                label="Второстепенная кнопка"
+                label="Secondary button"
               ></YButton>
             }
           </YEmptyState>

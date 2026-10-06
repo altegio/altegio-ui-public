@@ -7,7 +7,7 @@ import yCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapp
 type TVueFieldWrapperStoryMeta = IYVueFieldWrapperProps
 
 /**
- * Vue-обертка над Core FieldWrapper
+ * Vue wrapper for Core FieldWrapper
  */
 const meta: Meta<TVueFieldWrapperStoryMeta> = {
   title: 'Inputs/Partials/⚠️ FieldWrapper',

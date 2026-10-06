@@ -8,7 +8,7 @@ import { type IYVueDropdownProps } from '~vue/ui/dropdown/models/types'
 type TVueDropdownStoryMeta = IYVueDropdownProps
 
 /**
- * Vue-обертка над DropdownCell
+ * Vue wrapper for DropdownCell
  */
 const meta: Meta<TVueDropdownStoryMeta> = {
   title: '✅ Dropdown',

@@ -28,7 +28,7 @@ type IYCoreErrorMeta = IYCoreErrorExternalProps & IYCoreErrorStoryProps
 
 /**
  * ## Error
- * Базовый error для полей ввода
+ * Error message for input fields
  */
 const meta: Meta<IYCoreErrorMeta> = {
   title: '⚙️ Error',

@@ -7,7 +7,7 @@ import yCoreCardIconStoryMeta from '~core/ui/cardIcon/stories/CardIcon.stories'
 type TVueCardIconStoryMeta = IYVueCardIconProps
 
 /**
- * Vue-обертка над Core CardIcon
+ * Vue wrapper for Core CardIcon
  * вспомогательный компонент для CardButton/CardSelect
  */
 const meta: Meta<TVueCardIconStoryMeta> = {

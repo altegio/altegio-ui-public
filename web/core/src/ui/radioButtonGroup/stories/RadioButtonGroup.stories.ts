@@ -34,7 +34,6 @@ const { value, size, alignment, direction } = { ...createCoreRadioButtonGroupPro
 /**
  * ## Core RadioButtonGroup
  *
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components--IN-PROGRESS-?node-id=594-29322&p=f&m=dev)
  */
 const meta: Meta<TYCoreRadioButtonGroupStoryMeta> = {
   title: '⚠️ RadioButtonGroup',
@@ -65,16 +64,16 @@ const meta: Meta<TYCoreRadioButtonGroupStoryMeta> = {
         ?label-tooltip-active=${labelTooltipActive}
         @change=${onChange}
       >
-        <y-core-radio-button value="1" label-text="Радио-кнопка со значением 1"
-          ><div slot="annotation">Текст аннотации</div></y-core-radio-button
+        <y-core-radio-button value="1" label-text="Radio button with value 1"
+          ><div slot="annotation">Annotation text</div></y-core-radio-button
         >
 
-        <y-core-radio-button value="2" label-text="Радио-кнопка со значением 2"
-          ><div slot="annotation">Текст аннотации</div></y-core-radio-button
+        <y-core-radio-button value="2" label-text="Radio button with value 2"
+          ><div slot="annotation">Annotation text</div></y-core-radio-button
         >
 
-        <y-core-radio-button value="3" label-text="Радио-кнопка со значением 3"
-          ><div slot="annotation">Текст аннотации</div></y-core-radio-button
+        <y-core-radio-button value="3" label-text="Radio button with value 3"
+          ><div slot="annotation">Annotation text</div></y-core-radio-button
         >
       </y-core-radio-button-group>
     `
@@ -82,7 +81,7 @@ const meta: Meta<TYCoreRadioButtonGroupStoryMeta> = {
   argTypes: {
     value: {
       type: 'string',
-      description: 'Текущее значение группы',
+      description: 'Current group value',
       ...getComponentStateTable(value),
     },
     size: {
@@ -91,13 +90,13 @@ const meta: Meta<TYCoreRadioButtonGroupStoryMeta> = {
     },
     direction: {
       control: { type: 'radio' },
-      description: 'Направление расположения радио-кнопок',
+      description: 'Radio button layout direction',
       options: Object.values(EYCoreRadioButtonGroupDirection),
       ...getComponentStateTable(direction),
     },
     alignment: {
       control: { type: 'radio' },
-      description: 'Выравнивание контента радио-кнопки',
+      description: 'Radio button content alignment',
       options: Object.values(EYCoreLabelAlignment),
       ...getComponentContentTable(alignment),
     },
@@ -107,7 +106,7 @@ const meta: Meta<TYCoreRadioButtonGroupStoryMeta> = {
     labelTooltipActive: yCoreLabelStoryMeta.argTypes?.tooltipActive,
     onChange: {
       type: 'function',
-      description: 'Событие изменение выбора радиокнопки',
+      description: 'Radio selection change event',
       ...getComponentEmitsTable(),
     },
   },

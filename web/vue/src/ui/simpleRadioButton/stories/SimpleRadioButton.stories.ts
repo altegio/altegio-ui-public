@@ -9,7 +9,7 @@ import { getComponentContentTable } from '~shared/.storybook/tables'
 type TVueSimpleRadioButtonStoryMeta = IYVueSimpleRadioButtonProps
 
 /**
- * Vue-обертка над Core SimpleRadioButton
+ * Vue wrapper for Core SimpleRadioButton
  */
 const meta: Meta<TVueSimpleRadioButtonStoryMeta> = {
   title: '⚙️ SimpleRadioButton',
@@ -39,7 +39,7 @@ const meta: Meta<TVueSimpleRadioButtonStoryMeta> = {
     modelValue: {
       type: 'boolean',
       description:
-        'Дефолтный v-model над базовым checked value. Подробнее - https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#checked',
+        'Default v-model for the checked value. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#checked',
       ...getComponentContentTable(),
     },
   },

@@ -57,11 +57,11 @@ export const States: Story = {
     components: { YBrandButton },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YBrandButton>Обычная</YBrandButton>
+        <YBrandButton>Default</YBrandButton>
         
-        <YBrandButton text="Заблокированная" :disabled="true">Заблокированная</YBrandButton>
+        <YBrandButton text="Disabled" :disabled="true">Disabled</YBrandButton>
         
-        <YBrandButton text="Загрузка" :loading="true">Загрузка</YBrandButton>
+        <YBrandButton text="Loading" :loading="true">Loading</YBrandButton>
       </div>
     `,
   }),
@@ -80,7 +80,7 @@ export const Variants: Story = {
           v-for="variant in brandButtonVariants"
           :key="variant"
           :variant="variant"
-          text="Вариант"
+          text="Variant"
         >
         </YBrandButton>
       </div>

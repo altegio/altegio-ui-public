@@ -20,7 +20,7 @@ const { size, value, disabled, variant, withPlusSign, locator } = createCoreCoun
 
 /**
  * ## Core Counter
- * Базовый counter
+ * Counter component
  */
 
 const meta: Meta<IYCoreCounterExternalProps> = {
@@ -54,12 +54,12 @@ const meta: Meta<IYCoreCounterExternalProps> = {
   argTypes: {
     locator: {
       type: 'string',
-      description: 'Локатор',
+      description: 'Data locator',
       ...getComponentStateTable(locator),
     },
     value: {
       type: 'number',
-      description: 'Значение счетчика',
+      description: 'Counter value',
       control: {
         type: 'number',
         min: 0,
@@ -70,14 +70,14 @@ const meta: Meta<IYCoreCounterExternalProps> = {
     },
     withPlusSign: {
       control: 'boolean',
-      description: 'Добавить знак + перед числом',
+      description: 'Add a plus sign before the number',
       type: 'boolean',
       ...getComponentStateTable(withPlusSign),
     },
     variant: {
       control: 'select',
       options: Object.values(EYCoreCounterVariant),
-      description: 'Параметр отвечает за цвет компонента',
+      description: 'Component color',
       ...getComponentStateTable(variant),
     },
     size: {
@@ -85,7 +85,7 @@ const meta: Meta<IYCoreCounterExternalProps> = {
         EYSizes.SMALL,
         EYSizes.MEDIUM,
       ]),
-      description: 'Параметр отвечает за размер компонента',
+      description: 'Component size',
       ...getComponentStateTable(size),
     },
     disabled: {

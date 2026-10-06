@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions'
 import { YSimpleButton } from '~ng/ui/simpleButton'
 
 /**
- * Angular-обертка над Core Tooltip
+ * Angular wrapper for Core Tooltip
  */
 const meta: Meta<YTooltip & IYCoreLabelStoryProps> = {
   title: 'Tips/⚠️ Tooltip',
@@ -28,12 +28,12 @@ const meta: Meta<YTooltip & IYCoreLabelStoryProps> = {
     <div style="padding:50px calc(50% - 100px); width: fit-content">
       <YTooltip [text]="computedText" [disabled]="disabled" [placement]="placement">
         <div activator>
-          <YSimpleButton (click)="onClick($event)">Наведи на меня</YSimpleButton>
+          <YSimpleButton (click)="onClick($event)">Hover over me</YSimpleButton>
         </div>
         
         @if (isSlotExists) {
           <div content>
-            Слот с контентом
+            Content slot
   
             @if (isLongText) {
               <div>{{ computedText }}</div> 

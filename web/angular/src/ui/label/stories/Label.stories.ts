@@ -9,7 +9,7 @@ type TYNgLabelStoryMeta = YLabel & {
 }
 
 /**
- * Angular-обертка над Core Label
+ * Angular wrapper for Core Label
  */
 const meta: Meta<TYNgLabelStoryMeta> = {
   title: 'Inputs/Partials/🔍 Label',

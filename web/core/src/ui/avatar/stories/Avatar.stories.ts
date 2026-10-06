@@ -23,19 +23,18 @@ const iconOptions = {
 }
 
 /**
- * ## Аватар
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components-(IN-PROGRESS)?node-id=2152-8128&t=UHE9iX3bdxjp7Vvd-0)
+ * ## Avatar
  *
- * Компонент для отображения аватара пользователя.
+ * Displays a user avatar.
  *
- * ### Варианты использования
- * - Отображение фотографии пользователя
- * - Отображение инициалов при отсутствии фото
- * - Разные размеры для разных контекстов
+ * ### Use cases
+ * - Display a user photo
+ * - Display initials when no photo is available
+ * - Choose a size to suit the context
  *
- * ### Примечание
- * Для тестирования компонента можно использовать сервис https://i.pravatar.cc
- * Поддерживает различные разрешения, например:
+ * ### Note
+ * Use https://i.pravatar.cc for sample avatar images
+ * Several image sizes are available, for example:
  * - https://i.pravatar.cc/150
  * - https://i.pravatar.cc/300
  * - https://i.pravatar.cc/500
@@ -66,29 +65,29 @@ const meta: Meta<IYCoreAvatarExternalProps> = {
     size: {
       control: 'select',
       options: [EYSizes.LARGE, EYSizes.MEDIUM, EYSizes.SMALL, EYSizes.EXTRA_SMALL],
-      description: 'Размер аватара',
+      description: 'Avatar size',
       ...getComponentContentTable(size),
     },
     initials: {
       control: 'text',
-      description: 'Инициалы пользователя',
+      description: 'User initials',
       ...getComponentContentTable(initials),
     },
     photo: {
       control: 'text',
-      description: 'URL фотографии',
+      description: 'Photo URL',
       ...getComponentContentTable(photo),
     },
     icon: {
       control: { type: 'select' },
-      description: 'Управляет отображаемой в кнопке иконкой',
+      description: 'Icon displayed in the button',
       options: Object.keys(iconOptions),
       mapping: iconOptions,
       ...getComponentContentTable(icon),
     },
     disabled: {
       control: 'boolean',
-      description: 'Управляет состоянием "disabled" аватара',
+      description: 'Avatar disabled state',
       ...getComponentContentTable(disabled),
     },
   },

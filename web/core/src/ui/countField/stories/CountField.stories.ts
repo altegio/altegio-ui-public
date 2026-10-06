@@ -127,17 +127,17 @@ const meta: Meta<TYCoreCountFieldMeta> = {
   argTypes: {
     min: {
       type: 'number',
-      description: 'Минимальное значение',
+      description: 'Minimum value',
       ...getComponentStateTable(min),
     },
     max: {
       type: 'number',
-      description: 'Максимальное значение',
+      description: 'Maximum value',
       ...getComponentStateTable(max),
     },
     onChangedValue: {
       type: 'function',
-      description: 'Событие изменения значения',
+      description: 'Value change event',
       ...getComponentEmitsTable(),
     },
     ...omit(yCoreFieldWrapperStoryMeta.argTypes ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon', 'onClick', 'onClickOutside', 'onMouseEnter', 'onMouseLeave']),

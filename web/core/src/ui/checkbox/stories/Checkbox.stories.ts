@@ -43,9 +43,8 @@ const yCoreLabelStoryMetaOmitKeys = [
 
 /**
  * ## Core Checkbox
- * Комплексный чекбокс с лейблом и аннотацией
+ * Checkbox with a label and supporting text
  *
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-DS-%7C-Testing?node-id=533-17346&t=qt4fcISx5UOUpGXS-4)
  */
 const meta: Meta<TYCoreCheckboxStoryMeta> = {
   title: '✅ Checkbox',
@@ -138,8 +137,8 @@ const meta: Meta<TYCoreCheckboxStoryMeta> = {
       yCoreLabelStoryMeta.args ?? {},
       [...yCoreLabelStoryMetaOmitKeys],
     ),
-    labelText: 'Текст лейбла',
-    labelTooltipText: 'Текст тултипа',
+    labelText: 'Label text',
+    labelTooltipText: 'Tooltip text',
     labelOverflowDebounce: yCoreLabelStoryMeta.args?.debounce,
     labelTooltipPlacement: yCoreLabelStoryMeta.args?.tooltipPlacement,
 
@@ -147,7 +146,7 @@ const meta: Meta<TYCoreCheckboxStoryMeta> = {
       yCoreAnnotationStoryMeta.args ?? {},
       ['text'],
     ),
-    annotationText: 'Текст аннотации',
+    annotationText: 'Annotation text',
 
     isLongText: yCoreLabelStoryMeta.args?.isLongText,
     showErrors: yCoreErrorStoryMeta.args?.showErrors,

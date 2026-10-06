@@ -26,7 +26,7 @@ type TYCoreAnnotationMeta = IYCoreAnnotationExternalProps & IYCoreAnnotationStor
 
 /**
  * ## Core Annotation
- * Базовый annotation для полей ввода
+ * Supporting text for input fields
  */
 const meta: Meta<TYCoreAnnotationMeta> = {
   title: '⚙️ Annotation',
@@ -61,7 +61,7 @@ const meta: Meta<TYCoreAnnotationMeta> = {
     },
     text: {
       type: 'string',
-      description: 'Текст аннотации',
+      description: 'Annotation text',
       control: 'text',
       ...getComponentContentTable(text),
     },

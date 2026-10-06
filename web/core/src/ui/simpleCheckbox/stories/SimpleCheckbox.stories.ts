@@ -29,7 +29,6 @@ type TYCoreCheckboxStoryMeta = IYCoreSimpleCheckboxProps &
 /**
  * ## Core SimpleCheckbox
  *
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-DS-%7C-Testing?node-id=600-29917&t=nbpquxpb5oQDbg8H-4)
  */
 const meta: Meta<TYCoreCheckboxStoryMeta> = {
   title: '⚙️ Checkbox',
@@ -70,7 +69,7 @@ const meta: Meta<TYCoreCheckboxStoryMeta> = {
     },
     indeterminate: {
       type: 'boolean',
-      description: 'Управляет визуальным отоборажением чекбокса, изменяя его иконку на `indeterminate` (применимо в деревьях прав, услуг и тд). При этом не влияет на `checked` параметр',
+      description: 'Display the `indeterminate` icon, for example in permission or service trees. Does not change the `checked` value',
       ...getComponentStateTable(indeterminate),
     },
     size: {
@@ -94,7 +93,7 @@ const meta: Meta<TYCoreCheckboxStoryMeta> = {
     },
     onChecked: {
       type: 'function',
-      description: 'Событие изменение статуса чекбокса',
+      description: 'Checkbox change event',
       ...getComponentEmitsTable(),
     },
   },

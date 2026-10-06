@@ -18,7 +18,7 @@ type TVueCountFieldStoryMeta = IYVueCountFieldProps & TYCoreCountFieldMeta & {
 }
 
 /**
- * Vue-обертка над CoreCountField
+ * Vue wrapper for CoreCountField
  */
 const meta: Meta<TVueCountFieldStoryMeta> = {
   title: '✅ CountField',
@@ -88,7 +88,7 @@ const meta: Meta<TVueCountFieldStoryMeta> = {
     ),
     modelValue: {
       type: 'number',
-      description: 'Дефолтный v-model над базовым input value. Подробнее - https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#value',
+      description: 'Default v-model for the input value. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value',
       ...getComponentContentTable(),
     },
   },

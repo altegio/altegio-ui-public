@@ -110,11 +110,11 @@ const meta: Meta<IYCore${this.pascalComponentName}Props> = {
   argTypes: {
     externalProp: {
       type: 'string',
-      description: 'external проп',
+      description: 'External property',
     },
     internalProp: {
       type: 'string',
-      description: 'external проп',
+      description: 'Internal property',
     },
   },
   args: {
@@ -158,7 +158,7 @@ export const createCore${this.pascalComponentName}Props = (): IYCore${this.pasca
 
   createCssVariables() {
     return `:host {
-  /* Общие */
+  /* General */
 
   --y-core-${this.dash(this.pascalComponentName)}-display: block;
   --y-core-${this.dash(this.pascalComponentName)}-color: var(--y-core-color-text-primary);
@@ -221,16 +221,16 @@ const {
 
 // Unit test cases:
 const slotDefaultTestCases: TSlotTestCase[] = [
-  { slot: 'default', case: 'с контентом', content: text },
-  { slot: 'default', case: 'без контента', content: empty },
+  { slot: 'default', case: 'with content', content: text },
+  { slot: 'default', case: 'without content', content: empty },
 ]
 const propExternalPropTestCases: TPropTestCase<IYCore${this.pascalComponentName}Props, 'externalProp'>[] = [
-  { prop: 'externalProp', case: 'с контентом', value: text },
-  { prop: 'externalProp', case: 'без контента', value: empty },
+  { prop: 'externalProp', case: 'with content', value: text },
+  { prop: 'externalProp', case: 'without content', value: empty },
 ]
 const propInternalPropTestCases: TPropTestCase<IYCore${this.pascalComponentName}Props, 'internalProp'>[] = [
-  { prop: 'internalProp', case: 'с контентом', value: text },
-  { prop: 'internalProp', case: 'без контента', value: empty },
+  { prop: 'internalProp', case: 'with content', value: text },
+  { prop: 'internalProp', case: 'without content', value: empty },
 ]
 
 describe(
@@ -256,7 +256,7 @@ describe(
           () => {
             for (const testCase of slotDefaultTestCases) {
               it(
-                \`Slot "\${testCase.slot}" должен быть \${testCase.case}\`,
+                \`Slot "\${testCase.slot}" should render \${testCase.case}\`,
                 async() => {
                   await updateComponent({ slots: { [testCase.slot]: testCase.content } })
 
@@ -274,7 +274,7 @@ describe(
               ...propInternalPropTestCases,
             ]) {
               it(
-                \`Prop "\${testCase.prop}" должен быть \${testCase.case}\`,
+                \`Prop "\${testCase.prop}": \${testCase.case}\`,
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -367,7 +367,7 @@ describe(
 
     for (const { host, root } of CSSVariablesHostToRootCases) {
       it(
-        \`Host CSS переменная \${host} в стилях должна иметь значение :root CSS переменной \${root}\`,
+        \`Host CSS variable \${host} should reference the :root CSS variable \${root}\`,
         () => {
           const shadowRoot = getWCShadowRoot(component)
 
@@ -383,7 +383,7 @@ describe(
 
     for (const { host, value } of CSSVariablesHostToValueCases) {
       it(
-        \`Вычисленная Host CSS переменная \${host} в созданном компоненте должна иметь значение из токенов: \${value}\`,
+        \`Computed host CSS variable \${host} should resolve to the token value: \${value}\`,
         () => {
           const shadowRoot = getWCShadowRoot(component)
 

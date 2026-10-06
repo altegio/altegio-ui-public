@@ -10,7 +10,7 @@ import { I18nPlugin } from '~core/ui/globalProvider/plugins/i18n'
 type TVueCalendarStoryMeta = IYVueCalendarProps & TStoryProps
 
 /**
- * Vue-обертка над Core Calendar
+ * Vue wrapper for Core Calendar
  */
 const meta: Meta<TVueCalendarStoryMeta> = {
   title: '✅ Calendar',
@@ -53,7 +53,7 @@ export const WithRussianLocale: Story = {
       </YGlobalProvider>
     `,
   }),
-  name: 'С русской локализацией через GlobalProvider',
+  name: 'With the Russian locale via GlobalProvider',
 }
 
 export const WithEnglishLocale: Story = {
@@ -69,5 +69,5 @@ export const WithEnglishLocale: Story = {
       </YGlobalProvider>
     `,
   }),
-  name: 'С английской локализацией через GlobalProvider',
+  name: 'With the English locale via GlobalProvider',
 }

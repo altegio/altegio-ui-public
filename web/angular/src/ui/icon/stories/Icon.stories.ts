@@ -4,7 +4,7 @@ import { YIcon } from '~ng/ui/icon'
 import yCoreIconStoryMeta from '~core/ui/icon/stories/Icon.stories'
 
 /**
- * Angular-обертка над Core Icon
+ * Angular wrapper for Core Icon
  */
 const meta: Meta<YIcon> = {
   title: 'Icons/🔍 Icon',

@@ -16,7 +16,7 @@ import type { ChangeEvent, SelectOptionEvent } from '~core/ui/autocompleteField/
 type TYVueAutocompleteFieldStoryMeta = IYVueAutocompleteFieldProps & ICoreAutocompleteFieldStoryProps & TYVueAutocompleteFieldEvents
 
 /**
- * Vue-обертка над Core AutocompleteField
+ * Vue wrapper for Core AutocompleteField
  */
 const meta: Meta<TYVueAutocompleteFieldStoryMeta> = {
   title: 'Inputs/🔍 AutocompleteField',
@@ -78,12 +78,12 @@ const meta: Meta<TYVueAutocompleteFieldStoryMeta> = {
               #empty-state-actions
             >
               <YButton
-                label="Основное действие"
+                label="Primary action"
                 variant="primary"
               ></YButton>
     
               <YButton
-                label="Второстепенное действие"
+                label="Secondary action"
                 variant="outline"
               ></YButton>
             </template>

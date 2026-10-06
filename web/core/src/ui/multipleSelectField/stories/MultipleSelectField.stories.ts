@@ -27,9 +27,8 @@ export type TYCoreMultipleSelectFieldStoryMeta = IYCoreMultipleSelectFieldProps 
 
 /**
  * ## Core MultipleSelectField
- * Поле с множественным выбором значения из выпадающего списка. При клике выводится выпадающий список доступных атрибутов и позволяет выбрать один или несколько из списка
+ * A field for selecting one or more values from a dropdown. Click to open the available options.
  *
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components-(IN-PROGRESS)?node-id=3729-33866&t=Iz28MHkztahONBwi-4)
  */
 const meta: Meta<TYCoreMultipleSelectFieldStoryMeta> = {
   title: 'Inputs/✅ MultipleSelectField',
@@ -128,7 +127,7 @@ const meta: Meta<TYCoreMultipleSelectFieldStoryMeta> = {
     ...yCoreSelectFieldStoryMeta.argTypes ?? {},
     value: {
       control: { type: 'object' },
-      description: 'Массив выбранных значений из списка items',
+      description: 'Selected values from the items list',
       ...getComponentStateTable(),
     },
   },
@@ -146,5 +145,5 @@ type Story = StoryObj<TYCoreMultipleSelectFieldStoryMeta>
 
 export const Default: Story = {
   args: {},
-  parameters: { docs: { description: { story: 'Базовый пример использования компонента' } } },
+  parameters: { docs: { description: { story: 'Basic usage example' } } },
 }

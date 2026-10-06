@@ -116,14 +116,14 @@ const meta: Meta<TYCoreToggleStoryMeta> = {
       [...yCoreLabelStoryMetaOmitKeys],
     ),
 
-    labelText: 'Текст лейбла',
-    labelTooltipText: 'Текст тултипа',
+    labelText: 'Label text',
+    labelTooltipText: 'Tooltip text',
     labelOverflowDebounce: yCoreLabelStoryMeta.args?.debounce,
     ...omit(
       yCoreAnnotationStoryMeta.args ?? {},
       ['text'],
     ),
-    annotationText: 'Текст аннотации',
+    annotationText: 'Annotation text',
 
     onChecked: fn(),
     isLongText: false,

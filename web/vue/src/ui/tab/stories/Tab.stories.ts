@@ -10,7 +10,7 @@ import { EYSizes } from '~shared/types/global.ts'
 import { yAi } from '~shared/icons'
 
 /**
- * Vue-обертка над Core Tab
+ * Vue wrapper for Core Tab
  */
 const meta: Meta<IYVueTabProps> = {
   title: '✅ Tab',

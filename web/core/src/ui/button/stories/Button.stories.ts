@@ -32,7 +32,6 @@ type TButtonStoryMeta = Meta<IYCoreButtonProps & ITextStoryProps & ISimpleButton
 /**
  * ## Core Button
  *
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-DS-%7C-Testing?node-id=628-18395&node-type=frame&t=CakTFQ7LsTZhQvrF-0)
  */
 const meta: TButtonStoryMeta = {
   title: 'Buttons/✅ Button',
@@ -80,19 +79,19 @@ const meta: TButtonStoryMeta = {
     ),
     label: {
       type: 'string',
-      description: 'Текст кнопки',
+      description: 'Button text',
       ...getComponentContentTable(label),
     },
     iconLeft: {
       control: { type: 'select' },
-      description: 'Иконка перед контентом кнопки',
+      description: 'Icon before the button content',
       options: Object.keys(iconOptions),
       mapping: iconOptions,
       ...getComponentContentTable(iconLeft),
     },
     iconRight: {
       control: { type: 'select' },
-      description: 'Иконка после контента кнопки',
+      description: 'Icon after the button content',
       options: Object.keys(iconOptions),
       mapping: iconOptions,
       ...getComponentContentTable(iconRight),
@@ -104,7 +103,7 @@ const meta: TButtonStoryMeta = {
       ['text', 'showDefaultSlot', 'hostStyles'],
     ),
     ...createCoreButtonProps(),
-    label: 'Кнопка (label prop)',
+    label: 'Button (label prop)',
   },
 } satisfies TButtonStoryMeta
 

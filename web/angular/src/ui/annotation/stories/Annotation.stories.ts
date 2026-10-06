@@ -5,7 +5,7 @@ import yCoreAnnotationStoryMeta, { type IYCoreAnnotationStoryProps } from '~core
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
 /**
- * Angular-обертка над Core Annotation
+ * Angular wrapper for Core Annotation
  */
 const meta: Meta<YAnnotation & IYCoreAnnotationStoryProps> = {
   title: '⚙️ Annotation',

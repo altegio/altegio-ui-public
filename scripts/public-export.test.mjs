@@ -13,6 +13,7 @@ test('public snapshots preserve code and remove private delivery credentials and
     writeFileSync(join(directory, '.npmrc'), '//private.example/:_authToken=' + 'NpmToken.' + 'fixture-token\n');
     writeFileSync(join(directory, '.gitlab-ci.yml'), 'deploy:\n  script: publish-to-private-service\n');
     writeFileSync(join(directory, 'package.json'), JSON.stringify({ name: '@platform/altegio-ui', repository: 'internal', scripts: { build: 'vite build' } }));
+    writeFileSync(join(directory, 'CHANGELOG.md'), '# Changes\nВнутреннее изменение INTERNAL-123\n');
     writeFileSync(join(directory, 'README.md'), '[Component](https://gitlab.altegio.dev/project/commit/123)\n[Docs](https://example.com/docs)\n');
     mkdirSync(join(directory, 'web'));
     writeFileSync(join(directory, 'web', 'component.ts'), 'export const value = 42;\n');
@@ -24,6 +25,12 @@ test('public snapshots preserve code and remove private delivery credentials and
     assert.equal(pkg.repository.url, `git+${target}`);
     assert.deepEqual(pkg.scripts, { build: 'vite build' });
     assert.equal(readFileSync(join(directory, 'README.md'), 'utf8'), 'Component\n[Docs](https://example.com/docs)\n');
+    const changelog = readFileSync(join(directory, 'CHANGELOG.md'), 'utf8');
+    assert.match(changelog, /public snapshots/);
+    assert.match(changelog, /https:\/\/github\.com\/altegio\/altegio-ui-public\/commits\/main\//);
+    assert.doesNotMatch(changelog, /[А-Яа-яЁё]|INTERNAL-123/);
+    sanitize(directory);
+    assert.equal(readFileSync(join(directory, 'CHANGELOG.md'), 'utf8'), changelog);
     assert.equal(readFileSync(join(directory, 'web', 'component.ts'), 'utf8'), 'export const value = 42;\n');
   } finally { rmSync(directory, { recursive: true, force: true }); }
 });

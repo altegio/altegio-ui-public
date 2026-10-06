@@ -11,7 +11,7 @@ import { getComponentContentTable } from '~shared/.storybook/tables'
 type TVueSimpleToggleStoryMeta = IYVueSimpleToggleProps
 
 /**
- * Vue-обертка над SimpleToggle
+ * Vue wrapper for SimpleToggle
  */
 const meta: Meta<TVueSimpleToggleStoryMeta> = {
   title: '⚙️ SimpleToggle',
@@ -46,7 +46,7 @@ const meta: Meta<TVueSimpleToggleStoryMeta> = {
     ),
     modelValue: {
       type: 'boolean',
-      description: 'Дефолтный v-model над базовым checked value. Подробнее - https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#checked',
+      description: 'Default v-model for the checked value. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#checked',
       ...getComponentContentTable(),
     },
   },

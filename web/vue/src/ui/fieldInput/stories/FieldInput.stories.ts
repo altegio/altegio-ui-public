@@ -10,7 +10,7 @@ type TVueFieldInputStoryMeta = IYVueFieldInputProps & {
 }
 
 /**
- * Vue-обертка над Core FieldInput
+ * Vue wrapper for Core FieldInput
  */
 const meta: Meta<TVueFieldInputStoryMeta> = {
   title: 'Inputs/Partials/⚠️ FieldInput',

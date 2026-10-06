@@ -43,9 +43,8 @@ const yCoreLabelStoryMetaOmitKeys = [
 
 /**
  * ## Core RadioButton
- * Комплексная радио кнопка с лейблом и аннотацией
+ * Radio button with a label and supporting text
  *
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components--IN-PROGRESS-?node-id=594-29322&p=f&m=dev)
  */
 const meta: Meta<TYCoreRadioButtonStoryMeta> = {
   title: '✅ RadioButton',
@@ -134,15 +133,15 @@ const meta: Meta<TYCoreRadioButtonStoryMeta> = {
       yCoreLabelStoryMeta.args ?? {},
       [...yCoreLabelStoryMetaOmitKeys],
     ),
-    labelText: 'Текст лейбла',
-    labelTooltipText: 'Текст тултипа',
+    labelText: 'Label text',
+    labelTooltipText: 'Tooltip text',
     labelOverflowDebounce: yCoreLabelStoryMeta.args?.debounce,
 
     ...omit(
       yCoreAnnotationStoryMeta.args ?? {},
       ['text'],
     ),
-    annotationText: 'Текст аннотации',
+    annotationText: 'Annotation text',
 
     isLongText: yCoreLabelStoryMeta.args?.isLongText,
     showErrors: yCoreErrorStoryMeta.args?.showErrors,

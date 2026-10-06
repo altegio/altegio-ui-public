@@ -87,7 +87,7 @@ const meta: TYCoreCardButtonMeta = {
         }
 
         ${hasAnnotationSlot
-          ? html`<span slot="annotation">Слот с текстом аннотации</span>`
+          ? html`<span slot="annotation">Slot for annotation text</span>`
           : nothing
         }
       </y-core-card-button>
@@ -100,13 +100,13 @@ const meta: TYCoreCardButtonMeta = {
     // Story Controls
     annotation: {
       type: 'string',
-      description: 'Подпись под заголовком',
+      description: 'Supporting text below the heading',
       ...getComponentContentTable(annotation),
     },
 
     hasAnnotationSlot: {
       type: 'boolean',
-      description: 'Показать слот аннотации',
+      description: 'Show the annotation slot',
       ...storyControlsTable,
     },
     ...pick(yCoreCardWrapperStoryMeta.argTypes ?? {}, ['showCardIcon']),

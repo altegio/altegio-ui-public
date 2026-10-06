@@ -14,7 +14,7 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 type TVueCollapseItemStoryMeta = IYVueCollapseItemProps & TYCoreCollapseItemMeta
 
 /**
- * Vue-обертка над Core CollapseItem
+ * Vue wrapper for Core CollapseItem
  */
 const meta: Meta<TVueCollapseItemStoryMeta> = {
   title: '✅ CollapseItem',

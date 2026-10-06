@@ -30,7 +30,6 @@ type TYCorePopoverMeta = Meta<IYCorePopoverProps & TYCorePopoverActionEvents & I
 /**
  * ## Core Popover
  *
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components-(IN-PROGRESS)?node-id=1844-17952&t=26Sg15e6zMoONphe-0)
  */
 const meta: TYCorePopoverMeta = {
   title: 'Popover',
@@ -73,10 +72,10 @@ const meta: TYCorePopoverMeta = {
         @cancel=${onCancel}
         @submit=${onSubmit}
       >
-        <y-core-button label="Нажмите меня" slot="activator"></y-core-button>
+        <y-core-button label="Click me" slot="activator"></y-core-button>
         
         <div slot="content">
-          <span style="width: 218px;display: block;">${isLongText ? LOREM_IPSUM : 'Контент поповера'}</span>
+          <span style="width: 218px;display: block;">${isLongText ? LOREM_IPSUM : 'Popover content'}</span>
         </div>
       </y-core-popover>
     </div>
@@ -85,30 +84,30 @@ const meta: TYCorePopoverMeta = {
     ...yCoreTipStoryMeta.argTypes,
     submitText: {
       type: 'string',
-      description: 'Текст кнопки подтверждения',
+      description: 'Confirm button text',
       ...getComponentContentTable(submitText),
     },
     cancelText: {
       type: 'string',
-      description: 'Текст кнопки отмены',
+      description: 'Cancel button text',
       ...getComponentContentTable(cancelText),
     },
     onCancel: {
       type: 'function',
-      description: 'Событие закрытие поповера',
+      description: 'Popover close event',
       ...getComponentEmitsTable(),
     },
     onSubmit: {
       type: 'function',
-      description: 'Событие подтверждение целевого действия',
+      description: 'Action confirmation event',
       ...getComponentEmitsTable(),
     },
     isLongText: isLongTextArgType,
   },
   args: {
     ...yCoreTipStoryMeta.args,
-    submitText: 'Далее',
-    cancelText: 'Отмена',
+    submitText: 'Next',
+    cancelText: 'Cancel',
     onCancel: fn(),
     onSubmit: fn(),
   },

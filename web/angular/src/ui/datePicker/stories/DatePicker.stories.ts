@@ -12,7 +12,7 @@ import {
 type TAngularDatePickerMeta = IYNgDatePickerProps & IYCoreDatePickerStoryProps
 
 /**
- * Angular-обертка над DatePicker
+ * Angular wrapper for DatePicker
  */
 const meta: Meta<TAngularDatePickerMeta> = {
   title: 'Inputs/🔍 DatePicker',

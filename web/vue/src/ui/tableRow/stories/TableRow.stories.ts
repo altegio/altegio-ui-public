@@ -9,7 +9,7 @@ import yCoreTableRowStoryMeta, {
 type TVueTableRowStoryMeta = IYVueTableRowProps & TYCoreTableRowMeta
 
 /**
- * Vue-обертка над Core TableRow
+ * Vue wrapper for Core TableRow
  */
 const meta: Meta<TVueTableRowStoryMeta> = {
   title: '⚠️ TableRow',

@@ -10,7 +10,7 @@ import { EYSizes } from '~shared/types/global.ts'
 import { yAi } from '~shared/icons'
 
 /**
- * Angular-обертка над Core Tab
+ * Angular wrapper for Core Tab
  */
 const meta: Meta<IYNgTabProps> = {
   title: '⚙️ Tab',

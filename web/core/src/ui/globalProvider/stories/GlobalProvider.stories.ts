@@ -18,10 +18,10 @@ import '~core/ui/globalProvider'
 /**
  * ## CoreGlobalProvider
  *
- * GlobalProvider - компонент-обертка, который предоставляет глобальный контекст для вложенных компонентов.
- * Используется для управления общими данными, состояниями и сервисами приложения.
+ * GlobalProvider supplies a shared context to nested components.
+ * Use it to manage shared application data, state, and services.
  *
- * Поддерживает систему плагинов для расширения функциональности.
+ * Plugins extend its functionality.
  */
 const meta: Meta<IYCoreGlobalProviderProps & TYCoreGlobalProviderEvents> = {
   title: '✅ GlobalProvider',
@@ -35,7 +35,7 @@ const meta: Meta<IYCoreGlobalProviderProps & TYCoreGlobalProviderEvents> = {
   argTypes: {
     plugins: {
       control: false,
-      description: 'Плагины для глобального провайдера',
+      description: 'Global provider plugins',
     },
   },
 }
@@ -44,7 +44,7 @@ export default meta
 type Story = StoryObj<IYCoreGlobalProviderProps & TYCoreGlobalProviderEvents>
 
 /**
- * Базовый пример с плагином очереди
+ * Basic example with the queue plugin
  */
 export const Empty: Story = {
   render: ({ onReady }) => {

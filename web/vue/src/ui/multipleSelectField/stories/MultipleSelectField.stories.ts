@@ -13,7 +13,7 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 type TVueMultipleSelectFieldStoryMeta = IYVueMultipleSelectFieldProps & TYCoreMultipleSelectFieldStoryMeta
 
 /**
- * Vue-обертка над MultipleSelectField
+ * Vue wrapper for MultipleSelectField
  */
 const meta: Meta<TVueMultipleSelectFieldStoryMeta> = {
   title: 'Inputs/✅ MultipleSelectField',
@@ -44,7 +44,7 @@ const meta: Meta<TVueMultipleSelectFieldStoryMeta> = {
     template: `
       <div style="padding: 50px 50px 300px; margin: 20px; border: 1px dashed black; border-radius: 8px">
         <button @click="isCheckKeepAlive = !isCheckKeepAlive">
-          Проверка keep-alive: {{isCheckKeepAlive ? 'первый компонент' : 'второй компонент'}}
+          Keep-alive example: {{isCheckKeepAlive ? 'first component' : 'second component'}}
         </button>
 
         <hr />
@@ -112,7 +112,7 @@ const meta: Meta<TVueMultipleSelectFieldStoryMeta> = {
 
     modelValue: {
       type: 'string',
-      description: 'Дефолтный v-model над базовым input value. Подробнее - https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#value',
+      description: 'Default v-model for the input value. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value',
       ...getComponentContentTable(),
     },
   },

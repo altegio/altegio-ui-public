@@ -18,7 +18,7 @@ type TYNgToggleControlValueTypes = TYNgControlValueTypes<TYNgToggleModel>
 type TYNgToggleMeta = YToggle & Omit<IYCoreToggleStoryProps, 'checked'> & TYNgToggleControlValueTypes
 
 /**
- * Angular-обертка над Core Toggle
+ * Angular wrapper for Core Toggle
  */
 const meta: Meta<TYNgToggleMeta> = {
   title: 'Toggle/✅ Toggle',
@@ -74,12 +74,12 @@ const meta: Meta<TYNgToggleMeta> = {
     ...omit(yCoreToggleStoryMeta.argTypes ?? {}, ['checked', 'onChecked']),
     ngModel: {
       type: 'boolean',
-      description: 'Состояние тоггла',
+      description: 'Toggle checked state',
       ...getComponentStateTable(DEFAULT_CHECKED_VALUE),
     },
     ngModelChange: {
       type: 'function',
-      description: 'Событие изменения ngModel',
+      description: 'ngModel change event',
       ...getComponentEmitsTable(),
     },
   },

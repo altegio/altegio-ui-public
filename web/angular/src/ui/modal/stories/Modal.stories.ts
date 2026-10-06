@@ -7,7 +7,7 @@ import { YButton } from '~ng/ui/button'
 import yCoreModalStoryMeta from '~core/ui/modal/stories/Modal.stories'
 
 /**
- * Angular-обертка над Core Modal
+ * Angular wrapper for Core Modal
  */
 const meta: Meta<YModal> = {
   title: 'Modals/🔍 Modal',
@@ -80,7 +80,7 @@ const meta: Meta<YModal> = {
         >
           @if (showContentSlot) {
             <div content>
-              <h3>Заголовок модалки</h3>
+              <h3>Modal heading</h3>
 
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
@@ -91,13 +91,13 @@ const meta: Meta<YModal> = {
 
           @if (showActivatorSlot) {
             <div activator>
-              <YButton label="Открыть модалку" />
+              <YButton label="Open modal" />
             </div>
           }
 
           @if (showCloseSlot) {
             <div close>
-              <div>Слот закрытия</div>
+              <div>Close slot</div>
             </div>
           }
         </YModal>

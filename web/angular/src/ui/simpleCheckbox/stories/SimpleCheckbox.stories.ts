@@ -6,7 +6,7 @@ import { useArgs } from '@storybook/preview-api'
 import type { SimpleCheckboxCheckedEvent } from '../models/types'
 
 /**
- * Angular-обертка над Core SimpleCheckbox
+ * Angular wrapper for Core SimpleCheckbox
  */
 const meta: Meta<YSimpleCheckbox> = {
   title: 'Checkbox/🔍 SimpleCheckbox',

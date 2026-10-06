@@ -11,7 +11,7 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 type TVueTagStoryMeta = IYVueTagProps & TYCoreTagMeta
 
 /**
- * Vue-обертка над Core Tag
+ * Vue wrapper for Core Tag
  */
 const meta: Meta<TVueTagStoryMeta> = {
   title: '✅ Tag',

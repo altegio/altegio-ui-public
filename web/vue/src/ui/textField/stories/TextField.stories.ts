@@ -18,7 +18,7 @@ type TVueTextFieldStoryMeta = IYVueTextFieldProps & TYCoreTextFieldMeta & {
 }
 
 /**
- * Vue-обертка над CoreTextField
+ * Vue wrapper for CoreTextField
  */
 const meta: Meta<TVueTextFieldStoryMeta> = {
   title: 'Inputs/✅ TextField',
@@ -109,7 +109,7 @@ const meta: Meta<TVueTextFieldStoryMeta> = {
     ),
     modelValue: {
       type: 'string',
-      description: 'Дефолтный v-model над базовым input value. Подробнее - https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#value',
+      description: 'Default v-model for the input value. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value',
       ...getComponentContentTable(),
     },
     onUpdateModelValue: yCoreTextFieldStoryMeta.argTypes?.onInput,
@@ -131,36 +131,36 @@ type Story = StoryObj<typeof meta>
 export const Playground: Story = {}
 
 export const WithPhoneMask: Story = {
-  name: 'С маской телефона',
+  name: 'With a phone mask',
   args: {
-    labelText: 'Номер телефона',
+    labelText: 'Phone number',
     placeholder: '+7 (999) 999-99-99',
     maskOptions: MASK_EXAMPLES.phone,
   },
 }
 
 export const WithNumberMask: Story = {
-  name: 'С маской числа',
+  name: 'With a number mask',
   args: {
-    labelText: 'Сумма',
+    labelText: 'Amount',
     placeholder: '0,00',
     maskOptions: MASK_EXAMPLES.number,
   },
 }
 
 export const WithDateMask: Story = {
-  name: 'С маской даты',
+  name: 'With a date mask',
   args: {
-    labelText: 'Дата',
-    placeholder: 'дд/мм/гггг',
+    labelText: 'Date',
+    placeholder: 'dd/mm/yyyy',
     maskOptions: MASK_EXAMPLES.date,
   },
 }
 
 export const WithCardMask: Story = {
-  name: 'С маской карты',
+  name: 'With a card mask',
   args: {
-    labelText: 'Номер карты',
+    labelText: 'Card number',
     placeholder: '9999 9999 9999 9999',
     maskOptions: MASK_EXAMPLES.card,
   },

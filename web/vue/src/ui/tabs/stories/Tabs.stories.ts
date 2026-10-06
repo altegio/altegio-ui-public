@@ -10,7 +10,7 @@ import { YTab } from '~vue/ui/tab'
 type TVueTabsStoryMeta = IYVueTabsProps & IYVueCoreTabsProps & TYCoreTabsStoryMeta
 
 /**
- * Vue-обертка над Core Tabs
+ * Vue wrapper for Core Tabs
  */
 const meta: Meta<TVueTabsStoryMeta> = {
   title: '✅ Tabs',
@@ -53,7 +53,7 @@ const meta: Meta<TVueTabsStoryMeta> = {
     showDefaultSlot: yCoreTabsStoryMeta.argTypes?.showDefaultSlot,
     modelValue: {
       type: 'number',
-      description: 'Индекс активного Tab\'а',
+      description: 'Index of the active tab',
       ...getComponentStateTable(0),
     },
   },

@@ -5,17 +5,17 @@ import { createChoices, validateComponentName } from '~cli/utils/commandPrompts'
 
 export const getPromptUpdateOptions = async(): Promise<IUpdateCommandOptions> => {
   const platform = await select({
-    message: 'Выберите платформу:',
+    message: 'Select a platform:',
     choices: createChoices(EPlatform),
   })
 
   const oldName = await input({
-    message: 'Введите текущее название компонента (kebab-case):',
+    message: 'Enter the current component name (kebab-case):',
     validate: validateComponentName,
   })
 
   const newName = await input({
-    message: 'Введите новое название компонента (kebab-case):',
+    message: 'Enter the new component name (kebab-case):',
     validate: validateComponentName,
   })
 

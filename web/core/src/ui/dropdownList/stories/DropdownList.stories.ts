@@ -98,30 +98,30 @@ const meta: TDropdownListStoryMeta = {
     },
     itemLabel: {
       type: 'string',
-      description: 'Имя поля, которое будет использоваться для отображения текста в ячейке',
+      description: 'Item field used to display text in the cell',
       ...getComponentStateTable(itemLabel),
     },
 
     onItemClick: {
       type: 'function',
-      description: 'Событие клика по элементу',
+      description: 'Item click event',
       ...getComponentEmitsTable(),
     },
 
     // Story Controls
     showTopSlot: {
       type: 'boolean',
-      description: 'Показать слот "top"',
+      description: 'Show the "top" slot',
       ...storyControlsTable,
     },
     showBottomSlot: {
       type: 'boolean',
-      description: 'Показать слот "bottom"',
+      description: 'Show the "bottom" slot',
       ...storyControlsTable,
     },
     showListSlot: {
       type: 'boolean',
-      description: 'Показать слот "list"',
+      description: 'Show the "list" slot',
       ...storyControlsTable,
     },
   },

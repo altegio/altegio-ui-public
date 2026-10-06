@@ -30,9 +30,8 @@ const iconOptions = {
 
 /**
  * ## Core Empty State
- * Предоставляет информацию пользователю, что произошло и как действовать в случаях, когда контент страницы или блока отсутствует или недоступен.
+ * Explains why content is missing or unavailable and suggests what to do next.
  *
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-|-Components--IN-PROGRESS-?node-id=3732-7852&p=f&m=dev)
  */
 const meta: Meta<TYCoreEmptyStateStoryMeta> = {
   title: '✅ Empty State',
@@ -54,12 +53,12 @@ const meta: Meta<TYCoreEmptyStateStoryMeta> = {
       return html`
         <div slot="actions">
           <y-core-button
-            label="Основная кнопка"
+            label="Primary button"
             variant="primary"
           ></y-core-button>
 
           <y-core-button
-            label="Второстепенная кнопка"
+            label="Secondary button"
             variant="outline"
           ></y-core-button>
         </div>
@@ -98,20 +97,20 @@ const meta: Meta<TYCoreEmptyStateStoryMeta> = {
     },
     icon: {
       control: { type: 'select' },
-      description: 'Управляет отображаемой иконкой',
+      description: 'Icon to display',
       options: Object.keys(iconOptions),
       mapping: iconOptions,
       ...getComponentContentTable(icon?.name),
     },
     isActionsSlotExists: {
       control: { type: 'boolean' },
-      description: 'Отрисовать слот с кнопками?',
+      description: 'Show the action buttons slot',
       ...storyControlsTable,
     },
   },
   args: {
-    title: 'По вашему запросу ничего не найдено',
-    description: 'Попробуйте ввести другое название или создать новый тип абонемента',
+    title: 'No results found',
+    description: 'Try a different name or create a new membership type',
     isActionsSlotExists: false,
     icon,
     size,

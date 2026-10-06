@@ -34,7 +34,6 @@ type TYCoreModalStoryMeta = Meta<
 /**
  * ## Core Modal
  *
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components--IN-PROGRESS-?node-id=6748-1960&m=dev)
  */
 const meta: TYCoreModalStoryMeta = {
   title: '⚙️ Modal',
@@ -93,7 +92,7 @@ const meta: TYCoreModalStoryMeta = {
           ${showContentSlot
             ? html`
                 <div slot="content">
-                  <h3>Заголовок модалки</h3>
+                  <h3>Modal heading</h3>
 
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
@@ -105,7 +104,7 @@ const meta: TYCoreModalStoryMeta = {
 
           ${showActivatorSlot
             ? html` <y-core-button
-                label="Открыть модалку"
+                label="Open modal"
                 slot="activator"
               >
               </y-core-button>`
@@ -117,7 +116,7 @@ const meta: TYCoreModalStoryMeta = {
   argTypes: {
     open: {
       type: 'boolean',
-      description: 'Открытое состояние',
+      description: 'Open state',
       ...getComponentStateTable(open),
     },
     size: {
@@ -126,68 +125,68 @@ const meta: TYCoreModalStoryMeta = {
     },
     variant: {
       control: { type: 'select' },
-      description: 'Стиль модалки',
+      description: 'Modal style',
       options: Object.values(EYCoreModalVariant),
       ...getComponentStateTable(variant),
     },
     width: {
       type: 'string',
-      description: 'Кастомная ширина модалки',
+      description: 'Custom modal width',
       ...getComponentStateTable(width),
     },
     hideOverlay: {
       type: 'boolean',
-      description: 'Скрыть подложку',
+      description: 'Hide the backdrop',
       ...getComponentStateTable(hideOverlay),
     },
     preventEscape: {
       type: 'boolean',
-      description: 'Игнорировать закрытие модалки по клавише Escape',
+      description: 'Prevent the Escape key from closing the modal',
       ...getComponentStateTable(preventEscape),
     },
     fullScreen: {
       type: 'boolean',
-      description: 'На весь экран',
+      description: 'Full screen',
       ...getComponentStateTable(fullScreen),
     },
     onOpen: {
       type: 'function',
-      description: 'Событие открытия модалки',
+      description: 'Modal open event',
       ...getComponentEmitsTable(),
     },
     onClose: {
       type: 'function',
-      description: 'Событие закрытия модалки',
+      description: 'Modal close event',
       ...getComponentEmitsTable(),
     },
     onClickCloseIcon: {
       type: 'function',
-      description: 'Событие клика на иконку закрытия',
+      description: 'Close icon click event',
       ...getComponentEmitsTable(),
     },
     onClickOverlay: {
       type: 'function',
-      description: 'Событие клика на подложку',
+      description: 'Backdrop click event',
       ...getComponentEmitsTable(),
     },
     onClickActivator: {
       type: 'function',
-      description: 'Событие клика на элемент-активатор',
+      description: 'Activator click event',
       ...getComponentEmitsTable(),
     },
     onPressEscape: {
       type: 'function',
-      description: 'Событие нажатия клавиши Escape',
+      description: 'Escape key press event',
       ...getComponentEmitsTable(),
     },
     showContentSlot: {
       type: 'boolean',
-      description: 'Показать слот "content" - слот контента внутри модалки',
+      description: 'Show the "content" slot - content inside the modal',
       ...storyControlsTable,
     },
     showActivatorSlot: {
       type: 'boolean',
-      description: 'Показать слот "activator" - слот активатора открытия модалки',
+      description: 'Show the "activator" slot - activator that opens the modal',
       ...storyControlsTable,
     },
   },

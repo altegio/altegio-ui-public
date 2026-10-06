@@ -43,13 +43,13 @@ export abstract class ComponentUpdater implements IComponentUpdater {
 
   protected validatePaths() {
     if (!fs.existsSync(this.oldComponentPath)) {
-      console.error(`❌ Ошибка: Компонент ${this.options.oldName} не найден в ${this.oldComponentPath}`)
+      console.error(`❌ Component ${this.options.oldName} was not found at ${this.oldComponentPath}`)
 
       return false
     }
 
     if (fs.existsSync(this.newComponentPath)) {
-      console.error(`❌ Ошибка: Компонент ${this.options.newName} уже существует в ${this.newComponentPath}`)
+      console.error(`❌ Component ${this.options.newName} already exists at ${this.newComponentPath}`)
 
       return false
     }

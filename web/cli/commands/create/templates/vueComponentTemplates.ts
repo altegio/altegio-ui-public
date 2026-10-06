@@ -42,7 +42,7 @@ import Y${this.pascalComponentName} from '../${this.pascal(this.options.name)}.v
 import y${this.pascalComponentName}StoryMeta from '~core/ui/${this.camelComponentName}/stories/${this.pascal(this.options.name)}.stories'
 
 /**
- * Vue-обертка над ${this.pascalComponentName}
+ * Vue wrapper for ${this.pascalComponentName}
  */
 const meta: Meta<typeof Y${this.pascalComponentName}> = {
   title: '${this.pascalComponentName}',
@@ -127,18 +127,18 @@ const { externalProp: defaultExternalProp, internalProp: defaultInternalProp } =
 
 // Unit test cases:
 const slotDefaultTestCases: TSlotTestCase[] = [
-  { slot: 'default', case: 'с контентом', content: text },
-  { slot: 'default', case: 'без контента', content: empty },
+  { slot: 'default', case: 'with content', content: text },
+  { slot: 'default', case: 'without content', content: empty },
 ]
 const propExternalPropTestCases: TPropTestCase<IYVue${this.pascalComponentName}Props, 'externalProp'>[] = [
-  { prop: 'externalProp', case: 'с контентом', value: text },
-  { prop: 'externalProp', case: 'без контента', value: empty },
-  { prop: 'externalProp', case: 'без значения', value: defaultExternalProp },
+  { prop: 'externalProp', case: 'with content', value: text },
+  { prop: 'externalProp', case: 'without content', value: empty },
+  { prop: 'externalProp', case: 'without a value', value: defaultExternalProp },
 ]
 const propInternalPropTestCases: TPropTestCase<IYVue${this.pascalComponentName}Props, 'internalProp'>[] = [
-  { prop: 'internalProp', case: 'с контентом', value: text },
-  { prop: 'internalProp', case: 'без контента', value: empty },
-  { prop: 'internalProp', case: 'без значения', value: defaultInternalProp },
+  { prop: 'internalProp', case: 'with content', value: text },
+  { prop: 'internalProp', case: 'without content', value: empty },
+  { prop: 'internalProp', case: 'without a value', value: defaultInternalProp },
 ]
 
 describe(
@@ -161,7 +161,7 @@ describe(
           () => {
             for (const testCase of slotDefaultTestCases) {
               it(
-                \`Slot "\${testCase.slot}" должен быть \${testCase.case}\`,
+                \`Slot "\${testCase.slot}" should render \${testCase.case}\`,
                 () => {
                   const wrapper = mount(
                     Y${this.pascalComponentName},
@@ -183,7 +183,7 @@ describe(
               ...propInternalPropTestCases,
             ]) {
               it(
-                \`Prop "\${testCase.prop}" должен изменить свойство \${testCase.prop} у core компонента\`,
+                \`Prop "\${testCase.prop}" should update property \${testCase.prop} on the core component\`,
                 () => {
                   const wrapper = mount(
                     Y${this.pascalComponentName},

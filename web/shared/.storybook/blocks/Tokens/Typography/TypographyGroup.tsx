@@ -47,7 +47,7 @@ export const TypographyGroup = ({ category, name, group }: TTypographyGroupProps
             copyToClipboard(tokenName)
             show({
               title: category,
-              content: `${variableName}: успешно скопирован.`,
+              content: `${variableName}: copied successfully.`,
               duration: 2000
             })
           }}>

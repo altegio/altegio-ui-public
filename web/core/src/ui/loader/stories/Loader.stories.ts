@@ -20,7 +20,6 @@ const { size, variant } = createCoreLoaderProps()
 /**
  * ## Core Loader
  *
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-|-Components-(IN-PROGRESS)?node-id=1359-2918&p=f&t=Kx0H6q9cba8lY24I-0)
  */
 const meta: Meta<IYCoreLoaderProps> = {
   title: 'Loader',
@@ -51,7 +50,7 @@ const meta: Meta<IYCoreLoaderProps> = {
     },
     variant: {
       control: { type: 'select' },
-      description: 'Стиль кнопки',
+      description: 'Button style',
       options: Object.values(EYCoreLoaderVariant),
       ...getComponentStateTable(variant),
     },

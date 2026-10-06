@@ -1,24 +1,25 @@
 # GlobalProvider
 
 ## Core
-Корневой компонент для всех компонентов, которые используют глобальные данные.
+The root provider for components that share global state.
 
 ## Context API
 
-GlobalProvider предоставляет контекст для управления глобальными модулями и их элементами.
+GlobalProvider exposes a context for managing shared modules and their items.
 
-### Основные интерфейсы
+### Main interfaces
 
-- `IGlobalContext` - главный контекст для управления модулями
-- `IQueueModule` - модуль для управления очередью элементов
-- `IQueueModuleItem` - элемент очереди модуля
+- `IGlobalContext` - the context for managing modules
+- `IQueueModule` - a module for managing a queue of items
+- `IQueueModuleItem` - an item in a queue module
 
-### Использование контекста
+### Consume the context
 
 ```typescript
-// Получение контекста
+// Consume the provider context
 import { consume } from '@lit/context';
-import { globalContextCreated } from './context';
+import { LitElement } from 'lit';
+import { globalContextCreated, type IGlobalContext } from './context';
 
 class YourComponent extends LitElement {
   @consume({ context: globalContextCreated })
@@ -26,81 +27,81 @@ class YourComponent extends LitElement {
 }
 ```
 
-### Работа с модулями
+### Manage modules
+
+These examples run within this component directory and assume an available `globalContext`. Import `QueueModule` from `./context` when creating queue modules.
 
 ```typescript
-// Добавление или обновление модуля
-const module = globalContext.putModule({
-  id: 'moduleId',
-  // дополнительные свойства
-});
+// Add or update a module
+const module = globalContext.putModule(
+  new QueueModule({ id: 'moduleId' })
+);
 
-// Получение существующего модуля
+// Get an existing module
 const existingModule = globalContext.getModule('moduleId');
 
-// Получение всех модулей
+// Get all modules
 const allModules = globalContext.getModules();
 
-// Удаление модуля
+// Remove a module
 globalContext.removeModule('moduleId');
 
-// Подписка на обновления модулей
+// Subscribe to module updates
 globalContext.onUpdated((module) => {
   console.log('Module updated:', module);
 });
 ```
 
-### Работа с модулем QueueModule
+### Use QueueModule
 
 ```typescript
-// Добавление модуля QueueModule
-const module = globalContext.putModule(
-  new QueueModule({
-    id: 'moduleId',  // обязательное поле, идентификатор модуля
-    defaultDelay: 0, // опциональное поле, задержка по умолчанию для элементов, по умолчанию 0, если меньше или равно 0, счетчик для удаления элемента не будет запущен
-  })
-);
+// Create a QueueModule
+const module = new QueueModule({
+  id: 'moduleId',  // required module identifier
+  defaultDelay: 0, // default item lifetime in milliseconds; a value of 0 or less disables automatic removal
+});
+globalContext.putModule(module);
 
-// Добавление/обновление элемента в очереди модуля
+// Add or update a queue item
 const item = module.putItem(
   {
-    id: 'itemId', // обязательное поле, идентификатор элемента
-    timeout: 0, // поле будет создано если указан второй аргумент putItem, задержка удаления элемента, по умолчанию 0, если меньше или равно 0, счетчик для удаления элемента не будет запущен
-    // дополнительные свойства
+    id: 'itemId', // required item identifier
+    // additional properties
   },
-  0,  // опциональная задержка удаления
+  0,  // optional item lifetime in milliseconds
 );
 
-// Получение элемента
-const item = module.getItem('itemId');
+// Get an item
+const existingItem = module.getItem('itemId');
 
-// Получение всех элементов
+// Get all items
 const allItems = module.getItems();
 
-// Удаление элемента
+// Remove an item
 const removedItemId = module.removeItem('itemId');
 
-// Очистка очереди модуля
+// Clear the queue
 module.clearAll();
 
-// Подписка на обновления элементов
+// Subscribe to item updates
 module.onUpdated((item) => {
   console.log('Item updated:', item);
 });
 
-// Подписка на завершение очереди
+// Subscribe to queue completion
 module.onCompleted(() => {
   console.log('Queue is empty');
 });
 ```
 
-### Особенности
-- Элементы могут быть автоматически удалены после указанного времени (defaultDelay)
-- Модули поддерживают систему подписок на обновления и завершение очереди
-- modules в globalContext иммутабельны, для добавления/обновления модуля используется putModule, для удаления модуля используется removeModule
-- queue в QueueModule иммутабельны, для добавления/обновления элемента используется putItem, для удаления элемента используется removeItem
+### Behavior
 
-## Блок-схема работы GlobalProvider
+- Items can be removed automatically after `defaultDelay` milliseconds, or after the delay passed to `putItem`.
+- Modules provide subscriptions for updates and queue completion.
+- The `globalContext.modules` collection rejects direct writes and deletions. Use `putModule` to add or update a module and `removeModule` to remove it.
+- The `QueueModule.queue` collection rejects direct writes and deletions. Use `putItem`, `removeItem`, or `clearAll` to change it.
+
+## GlobalProvider flow
 
 ```mermaid
 graph TD
@@ -113,18 +114,18 @@ graph TD
     C --> G[IQueueModuleItem 2]
     C --> H[IQueueModuleItem ...]
     
-    subgraph "Жизненный цикл элемента модуля очереди"
-        I[Создание элемента] --> J[Время жизни]
-        J --> K[Автоудаление]
+    subgraph "Queue item lifecycle"
+        I[Create item] --> J[Item lifetime]
+        J --> K[Automatic removal]
     end
     
-    subgraph "События контекста провайдера"
-        L[onUpdated] --> M[Добавление/обновление/удаление модуля]
+    subgraph "Provider context events"
+        L[onUpdated] --> M[Add, update, or remove a module]
     end
 
-    subgraph "События модуля очереди"
-        N[onUpdated] --> O[Добавление/обновление/удаление элемента]
-        P[onCompleted] --> Q[Очередь пуста]
+    subgraph "Queue module events"
+        N[onUpdated] --> O[Add, update, or remove an item]
+        P[onCompleted] --> Q[Queue is empty]
     end
 ```
 

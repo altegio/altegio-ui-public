@@ -36,15 +36,15 @@ import {
 import { ySearch } from '~web/shared/icons'
 
 const autocompleteOptions = [
-  { id: 1, value: 'Клиентская база' },
-  { id: 2, value: 'Клиенты', additionalInfo: ['+7 (999) 999-99-99', 'test@test.ru'] },
-  { id: 3, value: 'Кладовая' },
-  { id: 4, value: 'Классный руководитель' },
-  { id: 5, value: 'Клей' },
-  { id: 6, value: 'Александр' },
-  { id: 7, value: 'Алексей' },
-  { id: 8, value: 'Алтуфьево' },
-  { id: 9, value: 'Аллилуя' },
+  { id: 1, value: 'Client directory' },
+  { id: 2, value: 'Clients', additionalInfo: ['+7 (999) 999-99-99', 'test@test.ru'] },
+  { id: 3, value: 'Storage' },
+  { id: 4, value: 'Class teacher' },
+  { id: 5, value: 'Glue' },
+  { id: 6, value: 'Alexander' },
+  { id: 7, value: 'Alex' },
+  { id: 8, value: 'Altufyevo' },
+  { id: 9, value: 'Alleluia' },
 ]
 
 export interface ICoreAutocompleteFieldStoryProps extends
@@ -66,10 +66,9 @@ const {
 
 /**
  * ## Core AutocompleteField
- * Поле для ввода текста с поиском по возможным значениям.
- * Когда пользователь начинает вводить текст в поле, компонент предлагает варианты завершения и показывает их в выпадающем списке.
- * Можно выбрать одну из подсказок или написать значение вручную.
- * Ссылка на [Figma](http://figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components?node-id=320-9023&p=f&t=TTp6vH3pAAplo1sa-0)
+ * A text field with suggestions based on the input value.
+ * As the user types, matching suggestions appear in a dropdown.
+ * Select a suggestion or enter a custom value.
  */
 
 const meta: Meta<TYCoreAutocompleteFieldStoryMeta> = {
@@ -124,12 +123,12 @@ const meta: Meta<TYCoreAutocompleteFieldStoryMeta> = {
       return html`
         <div slot="actions">
           <y-core-button
-            label="Основная кнопка"
+            label="Primary button"
             variant="primary"
           ></y-core-button>
 
           <y-core-button
-            label="Второстепенная кнопка"
+            label="Secondary button"
             variant="outline"
           ></y-core-button>
         </div>
@@ -203,43 +202,43 @@ const meta: Meta<TYCoreAutocompleteFieldStoryMeta> = {
 
     showIconSlot: {
       type: 'boolean',
-      description: 'Пример иконки в поле ввода',
+      description: 'Show an icon in the input field',
       ...storyControlsTable,
     },
 
     onSelectOption: {
       type: 'function',
-      description: 'Событие выбора значения из выпадающего списка',
+      description: 'Dropdown selection event',
       ...getComponentEmitsTable(),
     },
 
     searchFunction: {
       type: 'function',
-      description: 'Функция поиска опций для автокомплита',
+      description: 'Search function for autocomplete suggestions',
       ...getComponentStateTable(searchFunction),
     },
 
     onChange: {
       type: 'function',
-      description: 'Событие, которое всплывает как по вводу телефона, так и по смене страны',
+      description: 'Event emitted when the phone number or country changes',
       ...getComponentEmitsTable(),
     },
 
     disabledAutocomplete: {
       type: 'boolean',
-      description: 'Дизейблит выпадающее меню',
+      description: 'Disable the dropdown',
       ...getComponentStateTable(disabledAutocomplete),
     },
 
     dropdownItems: {
       control: { type: 'object' },
-      description: 'Опции для автокомплита',
+      description: 'Autocomplete suggestions',
       ...storyControlsTable,
     },
 
     minSearchLength: {
       type: 'number',
-      description: 'Минимальное количество символов, с которого начинается поиск',
+      description: 'Minimum number of characters before searching',
       ...getComponentStateTable(minSearchLength),
     },
   },
@@ -284,5 +283,5 @@ type Story = StoryObj<TYCoreAutocompleteFieldStoryMeta>
 
 export const Default: Story = {
   args: {},
-  parameters: { docs: { description: { story: 'Базовый пример использования компонента' } } },
+  parameters: { docs: { description: { story: 'Basic usage example' } } },
 }

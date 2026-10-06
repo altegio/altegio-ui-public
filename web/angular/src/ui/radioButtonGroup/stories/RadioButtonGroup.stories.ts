@@ -5,7 +5,7 @@ import yCoreRadioButtonGroupStoryMeta from '~core/ui/radioButtonGroup/stories/Ra
 import { YRadioButton } from '~ng/ui/radioButton'
 
 /**
- * Angular-обертка над Core RadioButtonGroup
+ * Angular wrapper for Core RadioButtonGroup
  */
 const meta: Meta<YRadioButtonGroup> = {
   title: 'RadioButton/⚠️ RadioButtonGroup',
@@ -31,9 +31,9 @@ const meta: Meta<YRadioButtonGroup> = {
         [labelTooltipActive]="labelTooltipActive"
       >
         @for (i of [1, 2, 3]; track i) {
-          <YRadioButton [value]="i" labelText="Радио-кнопка со значением {{ i }}">
+          <YRadioButton [value]="i" labelText="Radio button with value {{ i }}">
             <div radio-button-annotation>
-              Текст аннотации {{ i }}
+              Annotation text {{ i }}
             </div>
           </YRadioButton>
           }

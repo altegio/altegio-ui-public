@@ -44,5 +44,5 @@ type Story = StoryObj
 
 export const Playground: Story = {
   args: {},
-  parameters: { docs: { description: { story: 'Базовый пример использования компонента' } } },
+  parameters: { docs: { description: { story: 'Basic usage example' } } },
 }

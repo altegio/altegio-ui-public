@@ -10,7 +10,7 @@ import yCoreCardButtonStoryMeta from '~core/ui/cardButton/stories/CardButton.sto
 type TVueCardButtonStoryMeta = IYVueCardButtonProps
 
 /**
- * Vue-обертка над Core CardButton
+ * Vue wrapper for Core CardButton
  */
 const meta: Meta<TVueCardButtonStoryMeta> = {
   title: 'Cards/✅ CardButton',

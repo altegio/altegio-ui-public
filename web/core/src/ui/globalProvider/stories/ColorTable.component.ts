@@ -184,26 +184,26 @@ export class YColorTable extends LitElement {
   private getColorTypeLabel(colorType: EColorType) {
     switch (colorType) {
       case EColorType.light:
-        return 'Светлый'
+        return 'Light'
       case EColorType.lighter:
-        return 'Бледный'
+        return 'Pale'
       case EColorType.bright:
-        return 'Яркий'
+        return 'Bright'
       case EColorType.dark:
-        return 'Темный'
+        return 'Dark'
     }
   }
 
   private getRawColorTypeLabel(colorType: TColorTypeRaw) {
     switch (colorType) {
       case 'light':
-        return 'Светлый'
+        return 'Light'
       case 'lighter':
-        return 'Бледный'
+        return 'Pale'
       case 'bright':
-        return 'Яркий'
+        return 'Bright'
       case 'dark':
-        return 'Темный'
+        return 'Dark'
     }
   }
 
@@ -265,7 +265,7 @@ export class YColorTable extends LitElement {
 
                     <y-core-table-cell>
                         <div slot="cell">
-                            Светлая
+                            Light
                         </div>
                     </y-core-table-cell>
                     ${this.getTableColorColumns(colorToken, 'lightMode')}
@@ -280,7 +280,7 @@ export class YColorTable extends LitElement {
 
                     <y-core-table-cell>
                         <div slot="cell">
-                            Тёмная
+                            Dark
                         </div>
                     </y-core-table-cell>
                     ${this.getTableColorColumns(colorToken, 'darkMode')}
@@ -295,7 +295,7 @@ export class YColorTable extends LitElement {
       return nothing
     }
     return html`
-            ${this.colorType ? html`<div>Тема текущего цвета: ${this.getColorTypeLabel(this.colorType)}</div>` : ''}
+            ${this.colorType ? html`<div>Current color theme: ${this.getColorTypeLabel(this.colorType)}</div>` : ''}
             <div>
                 <button @click=${() => { this.exportJson() }}>Export</button>
             </div>
@@ -306,19 +306,19 @@ export class YColorTable extends LitElement {
                         <div class="row">
                             <y-core-table-head-cell>
                                 <div slot="cell">
-                                    Текущий
+                                    Current
                                 </div>
                             </y-core-table-head-cell>
                             
                             <y-core-table-head-cell>
                                 <div slot="cell">
-                                    Токен
+                                    Token
                                 </div>
                             </y-core-table-head-cell>
 
                             <y-core-table-head-cell>
                                 <div slot="cell">
-                                    Тема
+                                    Theme
                                 </div>
                             </y-core-table-head-cell>
                             

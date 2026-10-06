@@ -44,7 +44,7 @@ const { debounce, alignment, wrap, required, text, tooltipText, tooltipActive, s
 
 /**
  * ## Label
- * Базовый label для полей ввода
+ * Label for input fields
  */
 const meta: Meta<IYCoreLabelStoryMeta> = {
   title: '⚙️️ Label',
@@ -89,38 +89,38 @@ const meta: Meta<IYCoreLabelStoryMeta> = {
     required: requiredArgType,
     debounce: {
       type: 'number',
-      description: 'Задержка перед появлением / исчезновением троеточия в label, при нехватке места. Необходимо для минимального количества вычислений / перерисовок“)',
+      description: 'Delay before updating label ellipsis when space is limited; reduces layout calculations and rendering',
       ...getComponentContentTable(debounce),
     },
     text: {
       type: 'string',
-      description: 'Текст лейбла',
+      description: 'Label text',
       ...getComponentContentTable(text),
     },
     tooltipText: {
       type: 'string',
-      description: 'Текст подсказки',
+      description: 'Hint text',
       ...getComponentContentTable(tooltipText),
     },
     wrap: {
       type: 'boolean',
-      description: 'Перенос текста лейбла',
+      description: 'Wrap label text',
       ...getComponentContentTable(wrap),
     },
     alignment: {
       control: 'select',
-      description: 'Выравнивание контента',
+      description: 'Content alignment',
       options: Object.values(EYCoreLabelAlignment),
       ...getComponentContentTable(alignment),
     },
     tooltipActive: {
       type: 'boolean',
-      description: 'Состояние активности тултипа',
+      description: 'Tooltip active state',
       ...getComponentStateTable(tooltipActive),
     },
     size: {
       control: 'select',
-      description: 'Размер лейбла',
+      description: 'Label size',
       options: Object.values([
         EYCoreTextSize.A2_REGULAR,
         EYCoreTextSize.P2_REGULAR,
@@ -129,7 +129,7 @@ const meta: Meta<IYCoreLabelStoryMeta> = {
     },
     variant: {
       control: 'select',
-      description: 'Вариант лейбла',
+      description: 'Label variant',
       options: Object.values([
         EYCoreTextVariant.PRIMARY,
         EYCoreTextVariant.SECONDARY,
@@ -139,7 +139,7 @@ const meta: Meta<IYCoreLabelStoryMeta> = {
     tooltipContentSlot: {
       type: 'string',
       description:
-        '**Наполнение слота "tooltip-content"**.\n\nСлот отображается при отсутствии текста в tooltipText',
+        '**Tooltip content slot**\n\nDisplayed when tooltipText is empty.',
       ...getComponentSlotsTable('tooltip-content', 'nothing'),
     },
 
@@ -160,7 +160,7 @@ const meta: Meta<IYCoreLabelStoryMeta> = {
     variant,
     tooltipActive,
     tooltipPlacement,
-    tooltipContentSlot: 'Контент в слоте tooltip-content',
+    tooltipContentSlot: 'Content in the tooltip-content slot',
   },
 } satisfies Meta<IYCoreLabelStoryMeta>
 

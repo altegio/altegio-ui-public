@@ -60,17 +60,17 @@ export class YCoreTestConsumer extends LitElement {
     return items.length > 0
       ? items.map((item) => html`
           <div class="card bg-level-3">
-            <div>Элемент ID: ${item.id}</div>
+            <div>Item ID: ${item.id}</div>
             
             <hr />
             <button
               data-item-id=${item.id}
               data-module-id=${module.id}
               @click=${this.onDeleteModuleItem}
-            >Удалить элемент</button>
+            >Remove item</button>
           </div>
         `)
-      : html`<div>Элементов нет</div>`
+      : html`<div>No items</div>`
   }
 
   protected renderModules() {
@@ -84,17 +84,17 @@ export class YCoreTestConsumer extends LitElement {
       ? queueModules.map((module) => {
         return html`
             <div class="card bg-level-2">
-              <div>Модуль ID: ${module.id}</div>
+              <div>Module ID: ${module.id}</div>
               
               <hr />
               <button
                 data-id=${module.id}
                 @click=${this.onDeleteModule}
-              >Удалить модуль</button>
+              >Remove module</button>
               
               <hr />
               
-              <div>Добавление элементов в очередь модуля</div>
+              <div>Add items to the module queue</div>
               
               <br />
               
@@ -102,11 +102,11 @@ export class YCoreTestConsumer extends LitElement {
                 <button
                   data-module-id=${module.id}
                   @click=${this.onAddModuleItem}
-                >Добавить элемент</button>
+                >Add item</button>
                 <button
                   data-module-id=${module.id}
                   @click=${this.onAddModuleItemDirectly}
-                >Добавить элемент напрямую</button>
+                >Add item directly</button>
               </div>
               
               <hr />
@@ -117,7 +117,7 @@ export class YCoreTestConsumer extends LitElement {
             </div>
           `
       })
-      : html`<div>Модулей очереди нет</div>`
+      : html`<div>No queue modules</div>`
   }
 
   private onDeleteModuleItem = (e: Event) => {
@@ -132,7 +132,7 @@ export class YCoreTestConsumer extends LitElement {
 
     // eslint-disable-next-line no-console
     console.log(
-      '[onDeleteModuleItem]: Удаление элемента из модуля',
+      '[onDeleteModuleItem]: Removing an item from the module',
       module,
       moduleId,
       itemId,
@@ -183,7 +183,7 @@ export class YCoreTestConsumer extends LitElement {
     module.onUpdated((item) => {
       // eslint-disable-next-line no-console
       console.log(
-        `[module:${module.id}][updated]: Очередь обновилась`,
+        `[module:${module.id}][updated]: Queue updated`,
         item,
       )
 
@@ -193,7 +193,7 @@ export class YCoreTestConsumer extends LitElement {
     module.onCompleted((item) => {
       // eslint-disable-next-line no-console
       console.log(
-        `[module:${module.id}][completed]: Очередь завершилась`,
+        `[module:${module.id}][completed]: Queue completed`,
         item,
       )
     })
@@ -277,12 +277,12 @@ export class YCoreTestConsumer extends LitElement {
   protected render() {
     return html`
       <div class="card bg-level-1">
-        <div>Управление модулями очереди</div>
+        <div>Queue module management</div>
         
         <br />
         
         <label>
-          <span>Задержка по умолчанию:</span>
+          <span>Default delay:</span>
           <input
             type="number"
             .value=${this.defaultDelay.toString()}
@@ -290,14 +290,14 @@ export class YCoreTestConsumer extends LitElement {
           />
         </label>
         
-        <div><small>Если задержка меньше или равна 0, таймер автоудаления не будет запущен для элементов очереди</small></div>
+        <div><small>When the delay is zero or negative, queue items are not removed automatically</small></div>
         
         <hr />
         
         <div class="wrap">
           <button
             @click=${this.onAddModule}
-          >Добавить модуль</button>
+          >Add module</button>
         </div>
 
         <hr />

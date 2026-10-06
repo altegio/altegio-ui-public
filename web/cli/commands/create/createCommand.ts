@@ -23,7 +23,7 @@ const COMPONENT_BUILDERS: TComponentBuilders = {
 export const addCreateCommand = (program: Command): Command => {
   const createCommand = program
     .command('create')
-    .description('Создать новый компонент')
+    .description('Create a new component')
     .action(async() => {
       try {
         const options = await getPromptCreateOptions()
@@ -31,7 +31,7 @@ export const addCreateCommand = (program: Command): Command => {
         const success = builder.create()
 
         if (success) {
-          console.log('✅ Компонент успешно создан')
+          console.log('✅ Component created successfully')
 
           await execAsync(
             'pnpm vars-build',
@@ -45,20 +45,20 @@ export const addCreateCommand = (program: Command): Command => {
             },
           )
 
-          console.log('✅ Переменные окружения успешно обновлены')
+          console.log('✅ Design variables rebuilt successfully')
         } else {
-          console.error('❌ Ошибка при создании компонента')
+          console.error('❌ Failed to create component')
         }
       } catch(error: unknown) {
         console.error(
-          '❌ Произошла ошибка:',
-          error instanceof Error ? error.message : 'Неизвестная ошибка',
+          '❌ An error occurred:',
+          error instanceof Error ? error.message : 'Unknown error',
         )
       }
     })
     .addHelpOption(new Option(
       '-h, --help',
-      'Помощь',
+      'Display help',
     ))
 
   return createCommand

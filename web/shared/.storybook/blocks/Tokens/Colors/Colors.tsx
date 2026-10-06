@@ -30,7 +30,7 @@ export const Colors = ({ colors }: TColorsProps) => {
                 copyToClipboard(color.token)
                 show({
                   title: category,
-                  content: `${color.name}: успешно скопирован.`,
+                  content: `${color.name}: copied successfully.`,
                   duration: 2000
                 })
               }

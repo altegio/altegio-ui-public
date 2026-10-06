@@ -7,7 +7,7 @@ import yCoreSearchTextHighlightedStoryMeta from '~core/ui/searchTextHighlighted/
 type TVueSearchTextHighlightedStoryMeta = IYVueSearchTextHighlightedProps
 
 /**
- * Vue-обертка над Core SearchTextHighlighted
+ * Vue wrapper for Core SearchTextHighlighted
  */
 const meta: Meta<TVueSearchTextHighlightedStoryMeta> = {
   title: '⚠️ SearchTextHighlighted',

@@ -35,7 +35,6 @@ const { size, variant } = { ...createCoreButtonGroupProps() }
 /**
  * ## Core ButtonGroup
  *
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components-(IN-PROGRESS)?node-id=2503-5950&m=dev)
  */
 const meta: TButtonGroupStoryMeta = {
   title: '✅ ButtonGroup',
@@ -86,7 +85,7 @@ const meta: TButtonGroupStoryMeta = {
     variant: {
       control: { type: 'select' },
       description:
-        '**Вариант стилизации кнопки**\n\n- `primary` - основная кнопка с акцентным цветом\n- `outline` - кнопка с прозрачным фоном и обводкой\n- `outline-filled` - кнопка с белым фоном и обводкой',
+        '**Button style**\n\n- `primary`: accent-colored button\n- `outline`: transparent background with a border\n- `outline-filled`: white background with a border',
       options: Object.values(EYCoreButtonGroupVariant),
       ...getComponentStateTable(variant),
     },

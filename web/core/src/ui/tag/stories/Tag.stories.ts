@@ -40,7 +40,7 @@ const meta: Meta<TYCoreTagMeta> = {
   argTypes: {
     locator: {
       type: 'string',
-      description: 'Локатор',
+      description: 'Data locator',
       ...getComponentStateTable(locator),
     },
     size: {
@@ -50,14 +50,14 @@ const meta: Meta<TYCoreTagMeta> = {
         EYSizes.MEDIUM,
         EYSizes.LARGE,
       ],
-      description: 'Размер тега',
+      description: 'Tag size',
       ...getComponentStateTable(size),
 
     },
     variant: {
       control: 'select',
       options: Object.values(EYCoreTagVariant),
-      description: 'Вариант тега',
+      description: 'Tag variant',
       ...getComponentStateTable(variant),
     },
     disabled: {
@@ -68,23 +68,23 @@ const meta: Meta<TYCoreTagMeta> = {
       control: { type: 'select' },
       options: Object.keys(iconOptions),
       mapping: iconOptions,
-      description: 'Иконка перед контентом тега',
+      description: 'Icon before the tag content',
       ...getComponentContentTable(iconLeft),
 
     },
     locatorLabel: {
       control: 'text',
-      description: 'Дата-локатор для лейбла',
+      description: 'Data locator for the label',
       ...getComponentContentTable(locatorLabel),
     },
     locatorIcon: {
       control: 'text',
-      description: 'Дата-локатор для иконки',
+      description: 'Data locator for the icon',
       ...getComponentContentTable(locatorIcon),
     },
     text: {
       control: 'text',
-      description: 'Слот с текстом тега',
+      description: 'Slot for tag text',
       ...storyControlsTable,
     },
     isLongText: isLongTextArgType,
@@ -160,7 +160,7 @@ export const WithIcon: Story = {
   args: { iconLeft: yRocket },
   render: (args) => html`
     <y-core-tag .iconLeft=${args.iconLeft}>
-      С иконкой
+      With an icon
     </y-core-tag>
   `,
 }
@@ -170,13 +170,13 @@ export const Disabled: Story = {
   render: () => html`
     <div style="display: flex; flex-direction: column; gap: 16px;">
       <div>
-        <h3>Базовое disabled состояние:</h3>
+        <h3>Default disabled state:</h3>
         
-        <y-core-tag disabled>Недоступно</y-core-tag>
+        <y-core-tag disabled>Unavailable</y-core-tag>
       </div>
 
       <div>
-        <h3>Disabled состояния для всех вариантов:</h3>
+        <h3>Disabled states for all variants:</h3>
         
         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
           <y-core-tag variant="accent" disabled>Accent</y-core-tag>
@@ -196,12 +196,12 @@ export const Disabled: Story = {
       </div>
 
       <div>
-        <h3>Disabled с иконкой:</h3>
-        <y-core-tag .iconLeft=${yRocket} disabled>С иконкой слева</y-core-tag>
+        <h3>Disabled with an icon:</h3>
+        <y-core-tag .iconLeft=${yRocket} disabled>With a left icon</y-core-tag>
         </div>
 
       <div>
-        <h3>Disabled для разных размеров:</h3>
+        <h3>Disabled at different sizes:</h3>
 
         <div style="display: flex; gap: 8px; align-items: center;">
           <y-core-tag size="small" disabled>Small</y-core-tag>
@@ -220,43 +220,43 @@ export const Examples: Story = {
   render: () => html`
     <div style="display: flex; flex-direction: column; gap: 16px;">
       <div>
-        <h3>Статусы:</h3>
+        <h3>Status examples:</h3>
         
         <div style="display: flex; gap: 8px;">
-          <y-core-tag variant="success">Доступно</y-core-tag>
+          <y-core-tag variant="success">Available</y-core-tag>
           
-          <y-core-tag variant="danger">Отменено</y-core-tag>
+          <y-core-tag variant="danger">Canceled</y-core-tag>
           
-          <y-core-tag variant="warning">Отсутствует</y-core-tag>
+          <y-core-tag variant="warning">Unavailable</y-core-tag>
         </div>
       </div>
 
       <div>
-        <h3>Информационные:</h3>
+        <h3>Information examples:</h3>
         
         <div style="display: flex; gap: 8px;">
-          <y-core-tag variant="information">Новый</y-core-tag>
+          <y-core-tag variant="information">New</y-core-tag>
           
-          <y-core-tag variant="discovery">Обновлено</y-core-tag>
+          <y-core-tag variant="discovery">Updated</y-core-tag>
           
-          <y-core-tag variant="accent">Что нового</y-core-tag>
+          <y-core-tag variant="accent">What is new</y-core-tag>
         </div>
       </div>
 
       <div>
-        <h3>В контексте:</h3>
+        <h3>In context:</h3>
         
         <div style="display: flex; flex-direction: column; gap: 8px; padding: 16px; background: #f5f5f5; border-radius: 8px;">
           <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span>Ноготочки</span>
+            <span>Manicure</span>
             
-            <y-core-tag variant="warning" size="small">Нет мест</y-core-tag>
+            <y-core-tag variant="warning" size="small">Fully booked</y-core-tag>
           </div>
           
           <div style="display: flex; gap: 8px; align-items: center;">
-            <y-core-tag variant="muted" size="small">1 ч 30 мин</y-core-tag>
+            <y-core-tag variant="muted" size="small">1 h 30 min</y-core-tag>
             
-            <y-core-tag variant="muted" size="small">Кабинет 45</y-core-tag>
+            <y-core-tag variant="muted" size="small">Room 45</y-core-tag>
           </div>
         </div>
       </div>

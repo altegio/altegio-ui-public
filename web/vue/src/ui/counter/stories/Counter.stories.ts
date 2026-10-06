@@ -7,7 +7,7 @@ import YCoreCounterStoryMeta from '~core/ui/counter/stories/Counter.stories'
 type TVueCounterStoryMeta = IYVueCounterProps
 
 /**
- * Vue-обертка над Core Counter
+ * Vue wrapper for Core Counter
  */
 const meta: Meta<TVueCounterStoryMeta> = {
   title: '✅ Counter',

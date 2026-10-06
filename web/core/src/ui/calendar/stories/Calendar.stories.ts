@@ -32,8 +32,8 @@ type TYCoreCalendarMeta = IYCoreCalendarProps & TYCoreCalendarEvents & TStoryPro
 /**
  * ## Core Calendar
  *
- * Компонент календаря с поддержкой локализации и выбора диапазона дат.
- * Для правильной работы локализации календаря необходимо использовать GlobalProvider с плагином I18nPlugin.
+ * A calendar with locale support and date range selection.
+ * To localize the calendar, wrap it in GlobalProvider with I18nPlugin.
  */
 const meta: Meta<TYCoreCalendarMeta> = {
   title: '✅ Calendar',
@@ -68,46 +68,46 @@ const meta: Meta<TYCoreCalendarMeta> = {
   argTypes: {
     isRange: {
       control: 'boolean',
-      description: 'Режим выбора диапазона дат',
+      description: 'Date range selection mode',
       ...getComponentStateTable(isRange),
     },
     disabled: {
       control: 'boolean',
-      description: 'Управление активностью компонента',
+      description: 'Control the active state',
       ...getComponentStateTable(disabled),
     },
     headerSelectors: {
       control: 'boolean',
-      description: 'Режим отображения селекторов месяца и года',
+      description: 'Month and year selector display mode',
       ...getComponentStateTable(headerSelectors),
     },
     minDate: {
       control: 'date',
-      description: 'Ограничение минимальной даты',
+      description: 'Earliest selectable date',
       ...getComponentContentTable(minDate),
     },
     maxDate: {
       control: 'date',
-      description: 'Ограничение максимальной даты',
+      description: 'Latest selectable date',
       ...getComponentContentTable(maxDate),
     },
     localeData: {
       control: { type: 'select' },
       options: Object.keys(locales),
       mapping: locales,
-      description: 'Локализация календаря',
+      description: 'Calendar locale',
       ...storyControlsTable,
     },
     onSelect: onSelectEmit,
   },
-  args: { headerSelectors, disabled, isRange, minDate, maxDate, onSelect: fn(), localeData: locales['ru-RU'] },
+  args: { headerSelectors, disabled, isRange, minDate, maxDate, onSelect: fn(), localeData: locales['en-US'] },
 }
 
 export default meta
 type Story = StoryObj<TYCoreCalendarMeta>
 
 /**
- * Базовый пример календаря с возможностью настройки параметров
+ * Basic calendar with configurable properties
  */
 export const Playground: Story = { args: {} }
 

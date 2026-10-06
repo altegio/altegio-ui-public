@@ -9,7 +9,7 @@ import {
 } from '~ng/ui/fieldInput/models/types'
 
 /**
- * Angular-обертка над Core FieldInput
+ * Angular wrapper for Core FieldInput
  */
 const meta: Meta<YFieldInput> = {
   title: 'Inputs/Partials/🔍 FieldInput',

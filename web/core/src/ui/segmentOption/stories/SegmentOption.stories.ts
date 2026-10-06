@@ -47,7 +47,6 @@ const iconOptions = {
 /**
  * ## Core SegmentOption
  *
- * * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components-(IN-PROGRESS)?node-id=1951-4023&t=gYQc2Dy7GgoQzXEK-0)
  */
 const meta: Meta<TYCoreSegmentOptionMeta> = {
   title: '⚙️ SegmentOption',
@@ -98,7 +97,7 @@ const meta: Meta<TYCoreSegmentOptionMeta> = {
     },
     icon: {
       control: { type: 'select' },
-      description: 'Управляет отображаемой в кнопке иконкой',
+      description: 'Icon displayed in the button',
       options: Object.keys(iconOptions),
       mapping: iconOptions,
       ...getComponentContentTable(icon),
@@ -115,17 +114,17 @@ const meta: Meta<TYCoreSegmentOptionMeta> = {
     // Story Controls
     showIcon: {
       type: 'boolean',
-      description: 'Для просмотра варианта сегмента с иконкой',
+      description: 'Show the segment with an icon',
       ...storyControlsTable,
     },
     text: {
       type: 'string',
-      description: 'Текст который будет отображаться в компоненте через слот',
+      description: 'Text displayed through the component slot',
       ...storyControlsTable,
     },
     onClick: {
       type: 'function',
-      description: 'Событие клика на сегмент',
+      description: 'Segment click event',
       ...getComponentEmitsTable(),
     },
   },
@@ -133,7 +132,7 @@ const meta: Meta<TYCoreSegmentOptionMeta> = {
     ...createCoreSegmentOptionProps(),
     icon: iconOptions.info,
     showIcon: false,
-    text: 'Сегмент',
+    text: 'Segment',
     value: '',
     onClick: fn(),
   },

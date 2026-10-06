@@ -10,7 +10,7 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 type TVueTextStoryMeta = IYVueTextProps & IYCoreTextStoryProps
 
 /**
- * Vue-обертка над Core Text
+ * Vue wrapper for Core Text
  */
 const meta: Meta<TVueTextStoryMeta> = {
   title: '✅ Text',

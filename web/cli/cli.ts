@@ -3,7 +3,7 @@ import { addCreateCommand, addUpdateCommand } from './commands'
 
 const program = new Command()
 program.name('yds')
-program.description('CLI для управления компонентами платформ')
+program.description('Manage Altegio UI components across supported platforms')
 program.helpInformation()
 
 const createCommand = addCreateCommand(program)

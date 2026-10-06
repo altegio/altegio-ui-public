@@ -7,7 +7,7 @@ import yCoreCardRadioStoryMeta from '~core/ui/cardRadio/stories/CardRadio.storie
 type TVueCardRadioStoryMeta = IYVueCardRadioProps
 
 /**
- * Vue-обертка над Core CardRadio
+ * Vue wrapper for Core CardRadio
  * вспомогательный компонент для CardButton/CardSelect
  */
 const meta: Meta<TVueCardRadioStoryMeta> = {

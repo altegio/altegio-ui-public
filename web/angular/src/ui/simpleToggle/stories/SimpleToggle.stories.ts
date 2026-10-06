@@ -8,7 +8,7 @@ import yCoreSimpleToggleStoryMeta from '~core/ui/simpleToggle/stories/SimpleTogg
 import type { SimpleToggleCheckedEvent } from '~core/ui/simpleToggle/models/types/events'
 
 /**
- * Angular-обертка над Core SimpleToggle
+ * Angular wrapper for Core SimpleToggle
  */
 const meta: Meta<YSimpleToggle> = {
   title: 'Toggle/🔍 SimpleToggle',

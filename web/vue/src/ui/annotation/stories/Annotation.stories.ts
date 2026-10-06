@@ -9,7 +9,7 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 type TVueAnnotationStoryMeta = IYVueAnnotationProps & IYCoreAnnotationStoryProps
 
 /**
- * Vue-обертка над Core Annotation
+ * Vue wrapper for Core Annotation
  */
 const meta: Meta<TVueAnnotationStoryMeta> = {
   title: '⚙️ Annotation',

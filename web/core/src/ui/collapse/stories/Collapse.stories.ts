@@ -165,34 +165,34 @@ const meta: Meta<TYCoreCollapseMeta> = {
     ...pick(yCoreCollapseItemStoryMeta.argTypes ?? {}, ['variant']),
     value: {
       type: 'string',
-      description: 'Значение "value"',
+      description: 'Value',
       ...getComponentStateTable(value),
     },
     type: {
       control: { type: 'select' },
-      description: 'Тип раскрытия один/многие',
+      description: 'Expansion mode: one item or multiple items',
       options: Object.values(EYCoreCollapseType),
       ...getComponentStateTable(type),
     },
     draggable: {
       control: { type: 'boolean' },
-      description: 'Возможность перетаскивания',
+      description: 'Allow dragging',
       ...getComponentStateTable(draggable),
     },
     allowCrossLevelMove: {
       control: { type: 'boolean' },
-      description: 'Возможность перетаскивания сквозь уровни иерархии',
+      description: 'Allow dragging across hierarchy levels',
       ...getComponentStateTable(allowCrossLevelMove),
     },
     onCollapseChange: {
       type: 'function',
-      description: 'Событие изменения значения',
+      description: 'Value change event',
       ...getComponentEmitsTable(),
     },
 
     onCollapseMove: {
       type: 'function',
-      description: 'Событие перетаскивания',
+      description: 'Drag event',
       ...getComponentEmitsTable(),
     },
   },

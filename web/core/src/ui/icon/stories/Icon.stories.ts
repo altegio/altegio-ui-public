@@ -31,7 +31,7 @@ export const iconOptions = yIconsSet.reduce<Record<string, IYIcon>>(
 
 /**
  * ## Core Icon
- * Базовый компонент иконки
+ * Icon component
  */
 const meta: Meta<IYCoreIconExternalProps & IInputStoryEvents> = {
   title: 'Icons/✅ Icon',
@@ -53,12 +53,12 @@ const meta: Meta<IYCoreIconExternalProps & IInputStoryEvents> = {
       control: { type: 'select' },
       options: Object.keys(iconOptions),
       mapping: iconOptions,
-      description: 'Иконка для отображения',
+      description: 'Icon to display',
       ...getComponentContentTable(icon.name),
     },
     size: {
       type: 'string',
-      description: 'Размер иконки, width и height. Подробнее - https://developer.mozilla.org/ru/docs/Web/CSS/width / https://developer.mozilla.org/ru/docs/Web/CSS/height',
+      description: 'Icon width and height. See https://developer.mozilla.org/en-US/docs/Web/CSS/width / https://developer.mozilla.org/en-US/docs/Web/CSS/height',
       ...getComponentContentTable(size),
     },
   },
@@ -73,5 +73,5 @@ type Story = StoryObj<IYCoreIconExternalProps & IInputStoryEvents>
 
 export const Playground: Story = {
   args: {},
-  parameters: { docs: { description: { story: 'Базовый пример использования компонента' } } },
+  parameters: { docs: { description: { story: 'Basic usage example' } } },
 }

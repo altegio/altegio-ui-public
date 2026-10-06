@@ -34,7 +34,7 @@ type IYCoreLinkMeta = IYCoreLinkProps & IYCoreLinkStoryProps
 
 /**
  * ## Link
- * Базовый link для текста
+ * Text link component
  */
 const meta: Meta<IYCoreLinkMeta> = {
   title: '⚙️ Link',
@@ -81,23 +81,23 @@ const meta: Meta<IYCoreLinkMeta> = {
     },
     text: {
       type: 'string',
-      description: 'Текст который будет отображаться в компоненте через слот',
+      description: 'Text displayed through the component slot',
       ...getComponentStateTable(target),
     },
     textWrap: {
       type: 'boolean',
-      description: 'Текст ссылки будет переноситься по словам',
+      description: 'Wrap link text at word boundaries',
       ...getComponentStateTable(textWrap),
     },
     isLongText: isLongTextArgType,
     showIcon: {
       type: 'boolean',
-      description: 'Для просмотра варианта ссылки с иконкой',
+      description: 'Show the link with an icon',
       ...storyControlsTable,
     },
   },
   args: {
-    text: 'Ссылка',
+    text: 'Link',
     href: '#',
     showIcon: false,
   },

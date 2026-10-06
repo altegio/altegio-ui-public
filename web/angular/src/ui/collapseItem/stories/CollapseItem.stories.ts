@@ -11,7 +11,7 @@ import { yCopy, yDragAndDrop, yInfo } from '~shared/icons'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
 /**
- * Angular-обертка над CoreCollapseItem
+ * Angular wrapper for CoreCollapseItem
  */
 const meta: Meta<YCollapseItem> = {
   title: 'Collapse/🔍 CollapseItem',

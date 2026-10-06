@@ -37,7 +37,7 @@ export const Effects = ({ effects }: TEffectsProps) => {
             copyToClipboard(token)
             show({
               title: key,
-              content: `${token}: успешно скопирован.`,
+              content: `${token}: copied successfully.`,
               duration: 2000
             })
           }}>

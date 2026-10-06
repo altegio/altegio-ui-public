@@ -46,7 +46,7 @@ const meta: YCoreTipMeta = {
       <div style="width: 300px; height: 300px; border: 1px dashed; display: flex; justify-content: center; align-items: center;border-radius: 10px;">
         <y-core-tip .type=${type} .trigger=${trigger} .isOpen=${isOpen} .placement=${placement} .strategy=${strategy} .offset=${offset} .padding=${padding} .transition=${transition} .inline=${inline}>
           <y-core-simple-button slot="activator">
-            <span>Нажмите меня</span>
+            <span>Click me</span>
           </y-core-simple-button>
 
           <div slot="content">${tipContent}</div>
@@ -58,18 +58,18 @@ const meta: YCoreTipMeta = {
     ...yCoreDropdownStoryMeta.argTypes,
     type: {
       control: 'select',
-      description: 'Цвет выпадающей области и текста',
+      description: 'Dropdown and text color',
       options: Object.values(EYCoreTipType),
     },
     onVisible: onVisibleEmit,
     tipContent: {
       type: 'string',
-      description: 'Текст который будет отображаться в компоненте через слот',
+      description: 'Text displayed through the component slot',
       ...storyControlsTable,
     },
     disabled: {
       control: 'boolean',
-      description: 'Управление активностью компонента',
+      description: 'Control the active state',
     },
   },
   args: {
@@ -78,7 +78,7 @@ const meta: YCoreTipMeta = {
     type,
     offset,
     onVisible: fn(),
-    tipContent: 'Подсказка',
+    tipContent: 'Hint',
   },
 } satisfies YCoreTipMeta
 

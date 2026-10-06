@@ -9,7 +9,7 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 type TVueLabelStoryMeta = IYVueLabelProps & IYCoreLabelStoryProps
 
 /**
- * Vue-обертка над Core Label
+ * Vue wrapper for Core Label
  */
 const meta: Meta<TVueLabelStoryMeta> = {
   title: '⚙️ Label',

@@ -5,12 +5,12 @@ import { createChoices, validateComponentName } from '~cli/utils/commandPrompts'
 
 export const getPromptCreateOptions = async(): Promise<ICreateCommandOptions> => {
   const platform = await select({
-    message: 'Выберите платформу:',
+    message: 'Select a platform:',
     choices: createChoices(EPlatform),
   })
 
   const name = await input({
-    message: 'Введите название компонента (kebab-case):',
+    message: 'Enter the component name (kebab-case):',
     validate: validateComponentName,
   })
 

@@ -127,49 +127,49 @@ const meta: YCoreFieldWrapperMeta = {
     // Story Controls
     showFieldAvatar: {
       type: 'boolean',
-      description: 'Показать компонент "FieldAvatar"',
+      description: 'Show the "FieldAvatar" component',
       ...storyControlsTable,
     },
     showFieldInput: {
       type: 'boolean',
-      description: 'Показать компонент "FieldInput"',
+      description: 'Show the "FieldInput" component',
       ...storyControlsTable,
     },
     showFieldIcon: {
       type: 'boolean',
-      description: 'Показать компонент "FieldIcon"',
+      description: 'Show the "FieldIcon" component',
       ...storyControlsTable,
     },
 
     // Component Events
     onClick: {
       type: 'function',
-      description: 'Событие клика',
+      description: 'Click event',
       ...getComponentEmitsTable(),
     },
     onClickOutside: {
       type: 'function',
-      description: 'Событие клика вне компонента',
+      description: 'Outside click event',
       ...getComponentEmitsTable(),
     },
     onBlur: {
       type: 'function',
-      description: 'Событие фокуса',
+      description: 'Focus event',
       ...getComponentEmitsTable(),
     },
     onFocus: {
       type: 'function',
-      description: 'Событие потери фокуса',
+      description: 'Blur event',
       ...getComponentEmitsTable(),
     },
     onMouseEnter: {
       type: 'function',
-      description: 'Событие наведения мыши',
+      description: 'Mouse enter event',
       ...getComponentEmitsTable(),
     },
     onMouseLeave: {
       type: 'function',
-      description: 'Событие потери наведения мыши',
+      description: 'Mouse leave event',
       ...getComponentEmitsTable(),
     },
   },

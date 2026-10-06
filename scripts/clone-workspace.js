@@ -16,35 +16,35 @@ function runCommand(command, cwd = process.cwd()) {
       encoding: 'utf8'
     });
   } catch (error) {
-    console.error(`Ошибка выполнения команды: ${command}`);
+    console.error(`Command failed: ${command}`);
     console.error(error.message);
     process.exit(1);
   }
 }
 
 function copyDirectory(source, target) {
-  log(`Копирование ${source} в ${target}...`);
+  log(`Copying ${source} to ${target}...`);
   
   if (existsSync(target)) {
-    log(`Папка ${target} уже существует, удаляем...`);
+    log(`Directory ${target} already exists; removing it...`);
     rmSync(target, { recursive: true, force: true });
   }
   
   if (!existsSync(source)) {
-    log(`Предупреждение: папка ${source} не найдена, пропускаем...`);
+    log(`Warning: directory ${source} not found; skipping...`);
     return;
   }
   
   cpSync(source, target, { recursive: true });
-  log(`Папка ${source} успешно скопирована в ${target}`);
+  log(`Directory ${source} copied to ${target}`);
 }
 
 function main() {
-  log('Начинаем копирование папок в workspace...');
+  log('Copying directories to the workspace...');
   
   // Создаем папку workspace если её нет
   if (!existsSync(WORKSPACE_DIR)) {
-    log(`Создаем папку ${WORKSPACE_DIR}...`);
+    log(`Creating directory ${WORKSPACE_DIR}...`);
     mkdirSync(WORKSPACE_DIR, { recursive: true });
   }
   
@@ -72,19 +72,19 @@ function main() {
   // Копируем содержимое ng-package конфигов в angular
   const ngPackageSource = join(process.cwd(), 'configs/ng-package');
   if (existsSync(ngPackageSource)) {
-    log(`Копирование содержимого ${ngPackageSource} в ${angularTarget}...`);
+    log(`Copying ${ngPackageSource} contents to ${angularTarget}...`);
     cpSync(ngPackageSource, angularTarget, { recursive: true });
-    log(`Содержимое ng-package конфигов успешно скопировано в ${angularTarget}`);
+    log(`ng-package configuration copied to ${angularTarget}`);
   } else {
-    log(`Предупреждение: папка ${ngPackageSource} не найдена, пропускаем...`);
+    log(`Warning: directory ${ngPackageSource} not found; skipping...`);
   }
   
-  log('Все папки успешно скопированы в workspace/');
+  log('All directories copied to workspace/');
   log(`Angular: ${angularTarget}`);
-  log(`Core (внутри angular/src): ${coreTarget}`);
-  log(`Shared (внутри angular/src): ${sharedTarget}`);
-  log(`Tokens (внутри angular/src): ${tokensTarget}`);
-  log(`Ng-package конфиги и tsconfig.json скопированы в: ${angularTarget}`);
+  log(`Core (in angular/src): ${coreTarget}`);
+  log(`Shared (in angular/src): ${sharedTarget}`);
+  log(`Tokens (in angular/src): ${tokensTarget}`);
+  log(`ng-package configuration and tsconfig.json copied to: ${angularTarget}`);
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

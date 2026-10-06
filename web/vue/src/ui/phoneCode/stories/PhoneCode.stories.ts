@@ -7,7 +7,7 @@ import yCorePhoneCodeStoryMeta from '~core/ui/phoneCode/stories/PhoneCode.storie
 type TVuePhoneCodeStoryMeta = IYVuePhoneCodeProps
 
 /**
- * Vue-обертка над Core PhoneCode
+ * Vue wrapper for Core PhoneCode
  */
 const meta: Meta<TVuePhoneCodeStoryMeta> = {
   title: 'Inputs/Partials/⚠️ PhoneCode',

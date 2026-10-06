@@ -7,7 +7,7 @@ import { omit } from 'radash'
 import { action } from '@storybook/addon-actions'
 
 /**
- * Angular-обертка над Core PhoneCode
+ * Angular wrapper for Core PhoneCode
  */
 const meta: Meta<YPhoneCode> = {
   title: 'Inputs/Partials/⚠️ PhoneCode',

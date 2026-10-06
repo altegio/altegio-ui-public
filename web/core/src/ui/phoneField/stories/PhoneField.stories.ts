@@ -68,8 +68,7 @@ const {
 
 /**
  * ## Core PhoneField
- * Поле ввода с маской для телефонного номера. Помогает пользователям вводить номер в нужном формате, исключая ошибки и путаницу.
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components--IN-PROGRESS-?node-id=3105-90058&m=dev)
+ * A masked phone number field that helps users enter numbers in the correct format.
  */
 
 const meta: Meta<TYCorePhoneFieldStoryMeta> = {
@@ -127,12 +126,12 @@ const meta: Meta<TYCorePhoneFieldStoryMeta> = {
       return html`
         <div slot="actions">
           <y-core-button
-            label="Основная кнопка"
+            label="Primary button"
             variant="primary"
           ></y-core-button>
 
           <y-core-button
-            label="Второстепенная кнопка"
+            label="Secondary button"
             variant="outline"
           ></y-core-button>
         </div>
@@ -203,61 +202,61 @@ const meta: Meta<TYCorePhoneFieldStoryMeta> = {
 
     onSelectOption: {
       type: 'function',
-      description: 'Событие выбора значения из выпадающего списка',
+      description: 'Dropdown selection event',
       ...getComponentEmitsTable(),
     },
 
     searchFunction: {
       type: 'function',
-      description: 'Функция поиска опций для автокомплита',
+      description: 'Search function for autocomplete suggestions',
       ...getComponentStateTable(searchFunction),
     },
 
     onChange: {
       type: 'function',
-      description: 'Событие, которое всплывает как по вводу телефона, так и по смене страны',
+      description: 'Event emitted when the phone number or country changes',
       ...getComponentEmitsTable(),
     },
 
     withoutCodeSelection: {
       type: 'boolean',
-      description: 'Дает возможность выбрать код страны',
+      description: 'Allow country code selection',
       ...getComponentStateTable(withoutCodeSelection),
     },
 
     disabledAutocomplete: {
       type: 'boolean',
-      description: 'Дизейблит выпадающее меню',
+      description: 'Disable the dropdown',
       ...getComponentStateTable(disabledAutocomplete),
     },
 
     optionPhonePrivacyEnabled: {
       type: 'boolean',
-      description: 'Скрывает часть цифр номеров телефонов в выпадающем списке',
+      description: 'Mask part of the phone numbers in the dropdown',
       ...getComponentStateTable(optionPhonePrivacyEnabled),
     },
 
     defaultCountryId: {
       type: 'number',
-      description: 'ID страны, которое определяет какой код будет в инпуте по дефолту',
+      description: 'Country ID used to choose the default dialing code',
       ...getComponentStateTable(defaultCountryId),
     },
 
     countries: {
       control: { type: 'object' },
-      description: 'Кастомная мапа стран для выбора кода',
+      description: 'Custom country map for dialing code selection',
       ...getComponentContentTable(countries),
     },
 
     dropdownItems: {
       control: { type: 'object' },
-      description: 'Опции для автокомплита',
+      description: 'Autocomplete suggestions',
       ...storyControlsTable,
     },
 
     minSearchLength: {
       type: 'number',
-      description: 'МИнимальное количество символов, с которого начинается поиск',
+      description: 'Minimum number of characters before searching',
       ...getComponentStateTable(minSearchLength),
     },
   },
@@ -305,5 +304,5 @@ type Story = StoryObj<TYCorePhoneFieldStoryMeta>
 
 export const Default: Story = {
   args: {},
-  parameters: { docs: { description: { story: 'Базовый пример использования компонента' } } },
+  parameters: { docs: { description: { story: 'Basic usage example' } } },
 }

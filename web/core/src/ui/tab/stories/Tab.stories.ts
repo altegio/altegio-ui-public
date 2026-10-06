@@ -1,6 +1,6 @@
 /**
  * ## Tab
- * Компонент таба для компонента табов
+ * Individual tab for the tabs component
  */
 import { html } from 'lit/static-html.js'
 import type { Meta, StoryObj } from '@storybook/web-components'
@@ -96,68 +96,68 @@ const meta: Meta<IYCoreTabStoryMeta> = {
       control: { type: 'select' },
       options: Object.keys(iconOptions),
       mapping: iconOptions,
-      description: 'Иконка слева от текста',
+      description: 'Icon to the left of the text',
       ...getComponentContentTable(),
     },
     leftIconSize: {
       type: 'string',
-      description: 'Размер иконки слева, width и height. Подробнее - https://developer.mozilla.org/ru/docs/Web/CSS/width / https://developer.mozilla.org/ru/docs/Web/CSS/height',
+      description: 'Left icon width and height. See https://developer.mozilla.org/en-US/docs/Web/CSS/width / https://developer.mozilla.org/en-US/docs/Web/CSS/height',
       ...getComponentContentTable(leftIconSize),
     },
     locator: {
       type: 'string',
-      description: 'Локатор',
+      description: 'Data locator',
       ...getComponentContentTable(locator),
     },
     locatorCounter: {
       type: 'string',
-      description: 'Локатор счетчика',
+      description: 'Data locator for the counter',
       ...getComponentContentTable(locatorTag),
     },
     locatorTag: {
       type: 'string',
-      description: 'Локатор тега',
+      description: 'Data locator for the tag',
       ...getComponentContentTable(locatorCounter),
     },
     text: {
       type: 'string',
-      description: 'Текст',
+      description: 'Text',
       ...getComponentContentTable(text),
     },
     isCounterVisible: {
       type: 'boolean',
-      description: 'Делает счетчик видимым',
+      description: 'Show the counter',
       ...getComponentContentTable(isCounterVisible),
     },
     counterValue: {
       type: 'number',
-      description: 'Значение для счетчика',
+      description: 'Counter value',
       ...getComponentContentTable(counterValue),
     },
     isTagVisible: {
       type: 'boolean',
-      description: 'Делает тег справа от текста видимым (также нужно указать еще текст для тега)',
+      description: 'Show a tag to the right of the text; tag text is also required',
       ...getComponentContentTable(isTagVisible),
     },
     tagText: {
       type: 'string',
-      description: 'Текст внутри тега',
+      description: 'Tag text',
       ...getComponentContentTable(tagText),
     },
     tagVariant: {
       control: 'select',
       options: Object.values(EYCoreTagVariant),
-      description: 'Вариант тега',
+      description: 'Tag variant',
       ...getComponentContentTable(tagVariant),
     },
     showBeforeSlot: {
       type: 'boolean',
-      description: 'Показать слот "before" - слот контента перед текстом таба',
+      description: 'Show the "before" slot - content before the tab text',
       ...storyControlsTable,
     },
     showAfterSlot: {
       type: 'boolean',
-      description: 'Показать слот "after" - слот контента после текста таба',
+      description: 'Show the "after" slot - content after the tab text',
       ...storyControlsTable,
     },
   },

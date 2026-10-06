@@ -4,7 +4,7 @@ import { YCardRadio } from '~ng/ui/cardRadio'
 import yCardRadioStoryMeta from '~core/ui/cardRadio/stories/CardRadio.stories'
 
 /**
- * Angular-обертка над CardRadio
+ * Angular wrapper for CardRadio
  */
 const meta: Meta<YCardRadio> = {
   title: 'Cards/Partials/✅ CardRadio',

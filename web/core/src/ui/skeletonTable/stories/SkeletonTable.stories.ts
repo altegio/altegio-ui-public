@@ -59,12 +59,12 @@ const meta: Meta<IYCoreSkeletonTableProps> = {
     ),
     columns: {
       control: { type: 'object' },
-      description: 'Колонки таблицы',
+      description: 'Table columns',
       ...getComponentStateTable(storyColumns),
     },
     rows: {
       control: { type: 'object' },
-      description: 'Строки таблицы',
+      description: 'Table rows',
       ...getComponentStateTable(storyRows),
     },
   },

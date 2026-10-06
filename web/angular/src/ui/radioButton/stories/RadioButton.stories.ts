@@ -13,7 +13,7 @@ import type { IYCoreRadioButtonStoryProps } from '~core/ui/radioButton/stories/R
 import type { TYNgControlValueTypes } from '~web/angular/src/types/ControlValueAccessorTypes'
 
 /**
- * Angular-обертка над Core RadioButton
+ * Angular wrapper for Core RadioButton
  */
 
 type TYRadioButtonStoriesMeta = IYCoreRadioButtonStoryProps & IYNgRadioButtonProps & TYNgControlValueTypes<TYNgRadioButtonModel>
@@ -75,12 +75,12 @@ const meta: Meta<TYRadioButtonStoriesMeta> = {
     ...omit({ ...yCoreRadioButtonStoryMeta.argTypes }, ['checked', 'onChecked']),
     ngModel: {
       type: 'boolean',
-      description: 'Состояние RadioButton',
+      description: 'RadioButton checked state',
       ...getComponentStateTable(DEFAULT_CHECKED_VALUE),
     },
     ngModelChange: {
       type: 'function',
-      description: 'Событие изменения ngModel',
+      description: 'ngModel change event',
       ...getComponentEmitsTable(),
     },
   },

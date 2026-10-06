@@ -17,7 +17,7 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 type NgTextareaMeta = YTextarea & TYCoreTextareaMeta & TYNgControlValueTypes<TYNgTextareaModel>
 
 /**
- * Angular-обертка над Core Textarea
+ * Angular wrapper for Core Textarea
  */
 const meta: Meta<NgTextareaMeta> = {
   title: 'Inputs/🔍 TextArea',
@@ -113,12 +113,12 @@ const meta: Meta<NgTextareaMeta> = {
     ),
     ngModel: {
       type: 'string',
-      description: 'Значение ngModel в Textarea',
+      description: 'Textarea ngModel value',
       ...getComponentStateTable(''),
     },
     ngModelChange: {
       type: 'function',
-      description: 'Событие изменения ngModel',
+      description: 'ngModel change event',
       ...getComponentEmitsTable(),
     },
   },
@@ -139,17 +139,17 @@ export const WithMaxlength: Story = {
 }
 
 export const WithRequiredValidation: Story = {
-  name: 'Обязательное поле',
+  name: 'Required field',
   args: {
-    labelText: 'Описание',
-    placeholder: 'Введите описание',
+    labelText: 'Description',
+    placeholder: 'Enter a description',
     required: true,
-    errors: ['Поле обязательно для заполнения'],
+    errors: ['This field is required'],
   },
 }
 
 export const WithFormControlAutoRequired: Story = {
-  name: 'Автоопределение required из formControl',
+  name: 'Infer required from formControl',
   render: (args) => ({
     props: {
       ...args,
@@ -161,9 +161,9 @@ export const WithFormControlAutoRequired: Story = {
       <div style="padding: 20px; max-width: 500px;">
         <YTextarea
           [formControl]="descriptionControl"
-          [labelText]="'Описание'"
-          [placeholder]="'Введите описание'"
-          [errors]="['Поле обязательно для заполнения']"
+          [labelText]="'Description'"
+          [placeholder]="'Enter a description'"
+          [errors]="['This field is required']"
         />
       </div>
     `,
@@ -171,11 +171,11 @@ export const WithFormControlAutoRequired: Story = {
 }
 
 export const WithAutoErrorMessages: Story = {
-  name: 'Автоматическое извлечение ошибок из formControl',
+  name: 'Extract errors from formControl',
   render: () => {
     const requiredValidator: ValidatorFn = (control) => {
       if (!control.value) {
-        return { required: { message: 'Поле обязательно для заполнения' } }
+        return { required: { message: 'This field is required' } }
       }
       return null
     }
@@ -183,7 +183,7 @@ export const WithAutoErrorMessages: Story = {
     const noNumbersValidator: ValidatorFn = (control) => {
       const value = control.value as string
       if (value && (/\d/).test(value)) {
-        return { noNumbers: { message: 'Текст не может содержать цифры' } }
+        return { noNumbers: { message: 'Text must not contain numbers' } }
       }
       return null
     }
@@ -198,18 +198,18 @@ export const WithAutoErrorMessages: Story = {
           <div style="display: flex; flex-direction: column; gap: 16px;">
             <YTextarea
               [formControl]="descriptionControl"
-              [labelText]="'Описание'"
-              [placeholder]="'Введите описание'"
+              [labelText]="'Description'"
+              [placeholder]="'Enter a description'"
               [rows]="4"
             />
 
             <div style="font-size: 12px; color: #666;">
               <div>
-                1. Поле является обязательным
+                1. The field is required
               </div>
 
               <div>
-                2. Поле не может содержать цифры
+                2. The field must not contain numbers
               </div>
             </div>
           </div>

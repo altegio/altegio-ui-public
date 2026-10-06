@@ -13,7 +13,7 @@ const COMPONENT_UPDATERS: TComponentUpdaters = {
 export const addUpdateCommand = (program: Command): Command => {
   const updateCommand = program
     .command('update')
-    .description('Обновить существующий компонент')
+    .description('Update an existing component')
     .action(async() => {
       try {
         const options = await getPromptUpdateOptions()
@@ -21,7 +21,7 @@ export const addUpdateCommand = (program: Command): Command => {
         const success = updater.update()
 
         if (success) {
-          console.log('✅ Компонент успешно обновлен')
+          console.log('✅ Component updated successfully')
 
           await execAsync(
             'pnpm vars-build',
@@ -35,14 +35,14 @@ export const addUpdateCommand = (program: Command): Command => {
             },
           )
 
-          console.log('✅ Переменные окружения успешно обновлены')
+          console.log('✅ Design variables rebuilt successfully')
         } else {
-          console.error('❌ Ошибка при обновлении компонента')
+          console.error('❌ Failed to update component')
         }
       } catch(error: unknown) {
         console.error(
-          '❌ Произошла ошибка:',
-error instanceof Error ? error.message : 'Неизвестная ошибка',
+          '❌ An error occurred:',
+          error instanceof Error ? error.message : 'Unknown error',
         )
       }
     })

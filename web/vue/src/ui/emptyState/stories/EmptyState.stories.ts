@@ -9,7 +9,7 @@ import yCoreEmptyStateStoryMeta, {
 type TVueEmptyStateStoryMeta = IYVueEmptyStateProps & IYCoreEmptyStateStoryProps
 
 /**
- * Vue-обертка над Core Empty State
+ * Vue wrapper for Core Empty State
  */
 const meta: Meta<TVueEmptyStateStoryMeta> = {
   title: '✅ EmptyState',
@@ -29,12 +29,12 @@ const meta: Meta<TVueEmptyStateStoryMeta> = {
             v-if="args.isActionsSlotExists"
           >
             <YButton
-              label="Основное действие"
+              label="Primary action"
               variant="primary"
             ></YButton>
   
             <YButton
-              label="Второстепенное действие"
+              label="Secondary action"
               variant="outline"
             ></YButton>
           </template>

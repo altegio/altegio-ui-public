@@ -9,13 +9,13 @@ export const paletteProps: IPaletteProps = {
 
 const accentColor: InputType = {
   type: 'string',
-  description: 'Основной цвет в hex формате',
+  description: 'Primary color in hexadecimal format',
   ...getComponentColorThemeTable(paletteProps.accentColor),
 }
 
 const useDarkTheme: InputType = {
   type: 'boolean',
-  description: 'Включить темную тему',
+  description: 'Enable the dark theme',
   ...getComponentColorThemeTable(paletteProps.useDarkTheme),
 }
 

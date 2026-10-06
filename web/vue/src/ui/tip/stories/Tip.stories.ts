@@ -8,7 +8,7 @@ import yCoreTipStoryMeta from '~core/ui/tip/stories/Tip.stories'
 type TVueTipStoryMeta = IYVueTipProps
 
 /**
- * Vue-обертка над Tip
+ * Vue wrapper for Tip
  */
 const meta: Meta<TVueTipStoryMeta> = {
   title: '⚠️ Tip',
@@ -27,7 +27,7 @@ const meta: Meta<TVueTipStoryMeta> = {
       <div style="width: 300px; height: 300px; border: 1px dashed; display: flex; justify-content: center; align-items: center;border-radius: 10px;">
         <YTip v-bind="args">
           <template #activator>
-            <YButton label="Нажмите меня" />
+            <YButton label="Click me" />
           </template>
           
           <template #content>{{ args.tipContent }}</template>

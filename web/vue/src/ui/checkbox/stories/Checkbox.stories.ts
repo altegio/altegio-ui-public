@@ -13,7 +13,7 @@ import { type IYVueCheckboxProps } from '~vue/ui/checkbox/models/types'
 type TVueCheckboxStoryMeta = IYVueCheckboxProps & IYCoreCheckboxStoryProps
 
 /**
- * Vue-обертка над Core Checkbox
+ * Vue wrapper for Core Checkbox
  */
 const meta: Meta<TVueCheckboxStoryMeta> = {
   title: '✅ Checkbox',
@@ -69,7 +69,7 @@ const meta: Meta<TVueCheckboxStoryMeta> = {
     modelValue: {
       type: 'boolean',
       description:
-        'Дефолтный v-model над базовым checked value. Подробнее - https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#checked',
+        'Default v-model for the checked value. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#checked',
       ...getComponentContentTable(),
     },
   },

@@ -15,7 +15,7 @@ import { YCardSelect } from '~vue/ui/cardSelect'
 type TVueCardSelectStoryMeta = IYVueCardSelectProps & IYCoreCardSelectStorySlots
 
 /**
- * Vue-обертка над Core CardSelect
+ * Vue wrapper for Core CardSelect
  */
 const meta: Meta<TVueCardSelectStoryMeta> = {
   title: 'Cards/✅ CardSelect',

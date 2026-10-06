@@ -5,7 +5,7 @@ import yCoreTipStoryMeta from '~core/ui/tip/stories/Tip.stories'
 import '~core/ui/simpleButton'
 
 /**
- * Angular-обертка над Core Tip
+ * Angular wrapper for Core Tip
  */
 const meta: Meta<YTip> = {
   title: 'Tips/🔍 Tip',
@@ -33,7 +33,7 @@ const meta: Meta<YTip> = {
           [inline]="inline"
         >
           <div tip-activator>
-            <span>Нажмите меня</span>
+            <span>Click me</span>
           </div>
           
           <div tip-content>

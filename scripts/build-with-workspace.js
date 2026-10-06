@@ -18,29 +18,29 @@ function runCommand(command, cwd = process.cwd()) {
       encoding: 'utf8'
     });
   } catch (error) {
-    console.error(`Ошибка выполнения команды: ${command}`);
+    console.error(`Command failed: ${command}`);
     console.error(error.message);
     process.exit(1);
   }
 }
 
 function checkWorkspace() {  
-  log('Workspace найден, обновляем папки...');
+  log('Workspace found; refreshing directories...');
   runCommand('pnpm run clone-workspace');
 }
 
 function fixPaths() {
-  log('Исправляем пути в Angular библиотеке...');
+  log('Updating Angular library import paths...');
   runCommand('pnpm run fix-workspace-imports');
-  log('Исправлены пути в Angular библиотеке!');
+  log('Angular library import paths updated.');
 }
 
 function installWorkspaceDeps() {
-  log('Устанавливаем зависимости в workspace...');
+  log('Installing workspace dependencies...');
   const workspacePath = join(process.cwd(), WORKSPACE_DIR, 'angular');
   
   if (existsSync(join(workspacePath, 'package.json'))) {
-    log('Устанавливаем зависимости в workspace/angular...');
+    log('Installing workspace/angular dependencies...');
     
     // Проверяем наличие pnpm-lock.yaml в workspace
     const hasLockfile = existsSync(join(workspacePath, 'pnpm-lock.yaml'));
@@ -49,22 +49,22 @@ function installWorkspaceDeps() {
       ? 'pnpm install --frozen-lockfile' 
       : 'pnpm install --no-frozen-lockfile';
     
-    log(`Используем команду: ${installCommand}`);
+    log(`Running command: ${installCommand}`);
     runCommand(installCommand, workspacePath);
-    log('Зависимости в workspace установлены!');
+    log('Workspace dependencies installed.');
   } else {
-    log('package.json не найден в workspace/angular');
+    log('No package.json found in workspace/angular');
   }
 }
 
 function buildAngular() {
-  log('Собираем Angular библиотеку с workspace...');
+  log('Building the Angular library from the workspace...');
   runCommand('pnpm run ng-build');
-  log('Angular библиотека успешно собрана!');
+  log('Angular library built successfully.');
 }
 
 function main() {
-  log('Начинаем сборку с workspace...');
+  log('Starting the workspace build...');
   
   // Проверяем и копируем workspace если нужно
   checkWorkspace();
@@ -78,7 +78,7 @@ function main() {
   // Собираем Angular библиотеку
   buildAngular();
   
-  log('Сборка завершена успешно!');
+  log('Build completed successfully.');
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

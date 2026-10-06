@@ -34,28 +34,28 @@ import { ESort } from '~shared/types/global'
 const headers: TYVueTableHeaders = {
   services: {
     id: 'services',
-    label: 'Услуги',
+    label: 'Services',
     gridTemplate: 'minmax(300px, 1fr)',
     align: 'left',
     sortable: true,
   },
   total: {
     id: 'total',
-    label: 'Сумма выручки, ₽',
+    label: 'Revenue, $',
     gridTemplate: 'max-content',
     align: 'right',
   },
   average: {
     id: 'average',
-    label: 'Ср. чек, ₽',
+    label: 'Average transaction, $',
     gridTemplate: 'minmax(100px, 200px)',
     align: 'right',
-    hint: 'Средний чек за покупку',
+    hint: 'Average transaction amount',
   },
   status: {
     id: 'status',
     gridTemplate: '130px',
-    label: 'Статус услуги',
+    label: 'Service status',
     align: 'left',
   },
 }
@@ -78,7 +78,7 @@ const items: TYVueTableItems = [
     },
     status: {
       id: 'item-status-1',
-      label: 'Активно',
+      label: 'Active',
       status: true,
     },
   },
@@ -86,7 +86,7 @@ const items: TYVueTableItems = [
     rowId: 'item-2',
     services: {
       id: 'item-service-2',
-      label: 'Блондирование волос',
+      label: 'Hair bleaching',
     },
     total: {
       id: 'item-total-2',
@@ -98,7 +98,7 @@ const items: TYVueTableItems = [
     },
     status: {
       id: 'item-status-2',
-      label: 'Отключено',
+      label: 'Inactive',
       status: false,
     },
   },
@@ -106,7 +106,7 @@ const items: TYVueTableItems = [
     rowId: 'item-3',
     services: {
       id: 'item-service-3',
-      label: 'Стрижка женская',
+      label: 'Haircut',
     },
     total: {
       id: 'item-total-3',
@@ -118,7 +118,7 @@ const items: TYVueTableItems = [
     },
     status: {
       id: 'item-status-3',
-      label: 'Активно',
+      label: 'Active',
       status: true,
     },
   },
@@ -126,7 +126,7 @@ const items: TYVueTableItems = [
     rowId: 'item-4',
     services: {
       id: 'item-service-4',
-      label: 'Тонирование волос',
+      label: 'Hair toning',
     },
     total: {
       id: 'item-total-4',
@@ -138,7 +138,7 @@ const items: TYVueTableItems = [
     },
     status: {
       id: 'item-status-4',
-      label: 'Активно',
+      label: 'Active',
       status: true,
     },
   },
@@ -146,7 +146,7 @@ const items: TYVueTableItems = [
     rowId: 'item-5',
     services: {
       id: 'item-service-5',
-      label: 'Стрижка женская',
+      label: 'Haircut',
     },
     total: {
       id: 'item-total-5',
@@ -158,7 +158,7 @@ const items: TYVueTableItems = [
     },
     status: {
       id: 'item-status-5',
-      label: 'Активно',
+      label: 'Active',
       status: true,
     },
   },
@@ -186,8 +186,7 @@ type TVueTableStoryMeta = IYVueTableProps & {
 } & TYCoreTableMeta
 
 /**
- * Составной Vue-компонент YTable
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components-(IN-PROGRESS)?node-id=2113-6857&p=f&t=trRvI3Uj84kWcK6f-0)
+ * Composite YTable component for Vue
  */
 const meta: Meta<TVueTableStoryMeta> = {
   title: '✅ Table',
@@ -241,34 +240,34 @@ const meta: Meta<TVueTableStoryMeta> = {
           @update:itemsPerPage="args.onUpdateItemsPerPage"
         >
           <template v-if="args.showHeadHintAverageSlot" #head-hint-average>
-            Кастомный слот
+            Custom slot
           </template>
 
           <template v-if="args.showHeadCellTotal" #head-cell-total>
-            Кастомный слот
+            Custom slot
           </template>
 
           <template v-if="args.showHeadCell" #head-cell>
-            Кастомный слот
+            Custom slot
           </template>
 
           <template v-if="args.showCellColStatusSlot" #cell-col-status>
-            Кастомный слот
+            Custom slot
           </template>
 
           <template v-if="args.showCellSlot" #cell>
-            Кастомный слот
+            Custom slot
           </template>
 
           <template v-if="args.showRowOuterItem1Slot" #row-outer-item-1>
             <div slot="body">
-              Кастомный слот
+              Custom slot
             </div>
           </template>
 
           <template v-if="args.showRowInnerItem1Slot" #row-inner-item-1>
             <div>
-              Кастомный слот
+              Custom slot
             </div>
           </template>
 
@@ -286,13 +285,13 @@ const meta: Meta<TVueTableStoryMeta> = {
 
           <template v-if="args.showRowOuterSlot" #row-outer="{ row }">
             <div slot="body">
-              Кастомный слот row-outer
+              Custom slot row-outer
             </div>
           </template>
 
           <template v-if="args.showRowInnerSlot" #row-inner="{ row }">
             <div>
-              {{ row.rowId }} - Кастомный слот row-inner
+              {{ row.rowId }} - Custom slot row-inner
             </div>
           </template>
         </YTable>
@@ -318,114 +317,114 @@ const meta: Meta<TVueTableStoryMeta> = {
     ),
     headers: {
       control: { type: 'object' },
-      description: 'Загаловки таблицы',
+      description: 'Table headings',
       ...getComponentStateTable({}),
     },
     items: {
       control: { type: 'object' },
-      description: 'Данные таблицы',
+      description: 'Table data',
       ...getComponentStateTable({}),
     },
     showPagination: {
       type: 'boolean',
-      description: 'Показать пагинацию',
+      description: 'Show pagination',
       ...storyControlsTable,
     },
     hideHeader: {
       type: 'boolean',
-      description: 'Скрыть заголовок',
+      description: 'Hide the header',
       ...getComponentStateTable({}),
     },
 
     // Story Controls
     addDraggingPlugin: {
       type: 'boolean',
-      description: 'Добавить Dragging плагин',
+      description: 'Add the Dragging plugin',
       ...storyControlsTable,
     },
     showHeadHintAverageSlot: {
       type: 'boolean',
-      description: 'Показать слот "head-hint-average"',
+      description: 'Show the "head-hint-average" slot',
       ...storyControlsTable,
     },
     showHeadCellTotal: {
       type: 'boolean',
-      description: 'Показать слот "head-cell-total"',
+      description: 'Show the "head-cell-total" slot',
       ...storyControlsTable,
     },
     showHeadCell: {
       type: 'boolean',
-      description: 'Показать слот "head-cell"',
+      description: 'Show the "head-cell" slot',
       ...storyControlsTable,
     },
     showRowOuterItem1Slot: {
       type: 'boolean',
-      description: 'Показать слот "row-outer-item-1"',
+      description: 'Show the "row-outer-item-1" slot',
       ...storyControlsTable,
     },
     showRowInnerItem1Slot: {
       type: 'boolean',
-      description: 'Показать слот "row-inner-item-1"',
+      description: 'Show the "row-inner-item-1" slot',
       ...storyControlsTable,
     },
     showRowOuterSlot: {
       type: 'boolean',
-      description: 'Показать слот "row-outer"',
+      description: 'Show the "row-outer" slot',
       ...storyControlsTable,
     },
     showRowInnerSlot: {
       type: 'boolean',
-      description: 'Показать слот "row-inner"',
+      description: 'Show the "row-inner" slot',
       ...storyControlsTable,
     },
     showCellColStatusSlot: {
       type: 'boolean',
-      description: 'Показать слот "cell-col-status"',
+      description: 'Show the "cell-col-status" slot',
       ...storyControlsTable,
     },
     showCellSlot: {
       type: 'boolean',
-      description: 'Показать слот "cell"',
+      description: 'Show the "cell" slot',
       ...storyControlsTable,
     },
     showCellOuterColStatusSlot: {
       type: 'boolean',
-      description: 'Показать слот "cell-outer-col-status"',
+      description: 'Show the "cell-outer-col-status" slot',
       ...storyControlsTable,
     },
     showCellOuterSlot: {
       type: 'boolean',
-      description: 'Показать слот "cell-outer"',
+      description: 'Show the "cell-outer" slot',
       ...storyControlsTable,
     },
     onTableRowDrag: {
       type: 'function',
-      description: 'Событие "table-row-drag"',
+      description: '"table-row-drag" event',
       ...storyControlsTable,
     },
     onTableRowDrop: {
       type: 'function',
-      description: 'Событие "table-row-drop"',
+      description: '"table-row-drop" event',
       ...storyControlsTable,
     },
     onSort: {
       type: 'function',
-      description: 'Событие "sort"',
+      description: '"sort" event',
       ...storyControlsTable,
     },
     onUpdateSelected: {
       type: 'function',
-      description: 'Событие "update:selected"',
+      description: '"update:selected" event',
       ...storyControlsTable,
     },
     onUpdatePage: {
       type: 'function',
-      description: 'Событие "update:page"',
+      description: '"update:page" event',
       ...storyControlsTable,
     },
     onUpdateItemsPerPage: {
       type: 'function',
-      description: 'Событие "update:itemsPerPage"',
+      description: '"update:itemsPerPage" event',
       ...storyControlsTable,
     },
   },
@@ -523,13 +522,13 @@ export const DraggingMultipleTables: Story = {
     template: `
       <div>
         <div>
-          <h2>Таблица 1</h2>
+          <h2>Table 1</h2>
           
           <YTable :headers="args.headers" :items="firstTableItems" :plugins="plugins" />
         </div>
         
         <div>
-          <h2>Таблица 2</h2>
+          <h2>Table 2</h2>
           
           <YTable :headers="args.headers" :items="secondTableItems" :plugins="plugins" />
         </div>

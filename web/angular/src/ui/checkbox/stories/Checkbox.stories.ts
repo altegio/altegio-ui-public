@@ -14,8 +14,8 @@ type TYNgCheckboxControlValueTypes = TYNgControlValueTypes<TYNgCheckboxModel>
 type TYNgCheckboxMeta = YCheckbox & Omit<TYCoreCheckboxStoryMeta, 'checked'> & TYNgCheckboxControlValueTypes
 
 /**
- * Angular-обертка над Core Checkbox
- * Комплексный чекбокс с лейблом и аннотацией
+ * Angular wrapper for Core Checkbox
+ * Checkbox with a label and supporting text
  */
 const meta: Meta<TYNgCheckboxMeta> = {
   title: 'Checkbox/✅ Checkbox',
@@ -80,12 +80,12 @@ const meta: Meta<TYNgCheckboxMeta> = {
     ...omit(yCoreCheckboxStoryMeta.argTypes ?? {}, ['checked', 'onChecked']),
     ngModel: {
       type: 'boolean',
-      description: 'Состояние чекбокса',
+      description: 'Checkbox checked state',
       ...getComponentStateTable(false),
     },
     ngModelChange: {
       type: 'function',
-      description: 'Событие изменения ngModel',
+      description: 'ngModel change event',
       ...getComponentEmitsTable(),
     },
   },

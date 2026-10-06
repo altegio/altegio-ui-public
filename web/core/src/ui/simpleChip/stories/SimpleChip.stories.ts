@@ -59,14 +59,14 @@ const meta: Meta<IYCoreSimpleChipProps & TYCoreSimpleChipEvents> = {
         EYSizes.SMALL,
         EYSizes.MEDIUM,
       ],
-      description: 'Размер тега',
+      description: 'Tag size',
       ...getComponentStateTable(size),
 
     },
     variant: {
       control: 'select',
       options: Object.values(EYCoreSimpleChipVariant),
-      description: 'Вариант тега',
+      description: 'Tag variant',
       ...getComponentStateTable(variant),
     },
     disabled: {
@@ -75,7 +75,7 @@ const meta: Meta<IYCoreSimpleChipProps & TYCoreSimpleChipEvents> = {
     },
     onClickIconEmit: {
       ...onClick,
-      description: 'Событие срабатывает при клике на иконку закрытия',
+      description: 'Emitted when the close icon is clicked',
     },
   },
   args: {

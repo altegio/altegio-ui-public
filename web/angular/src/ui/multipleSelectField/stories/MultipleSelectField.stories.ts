@@ -10,7 +10,7 @@ import { action } from '@storybook/addon-actions'
 import { useArgs } from '@storybook/preview-api'
 
 /**
- * Angular-обертка над MultipleSelectField
+ * Angular wrapper for MultipleSelectField
  */
 const meta: Meta<YMultipleSelectField & TYCoreMultipleSelectFieldStoryMeta> = {
   title: 'Unverified/Inputs/MultipleSelectField',

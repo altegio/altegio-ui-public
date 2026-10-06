@@ -54,24 +54,24 @@ const meta: Meta<TYCoreTableRowMeta> = {
   argTypes: {
     stripe: {
       type: 'boolean',
-      description: 'Показать загрузку',
+      description: 'Show loading',
       ...getComponentStateTable(stripe),
     },
     selectable: {
       type: 'boolean',
-      description: 'Показ чекбокса',
+      description: 'Show the checkbox',
       ...getComponentStateTable(selectable),
     },
     disabled: {
       type: 'boolean',
-      description: 'Отключить все действия со строкой',
+      description: 'Disable all row interactions',
       ...getComponentStateTable(disabled),
     },
 
     // Story Controls
     showDefaultSlot: {
       type: 'boolean',
-      description: 'Показать слот "default"',
+      description: 'Show the "default" slot',
       ...storyControlsTable,
     },
   },

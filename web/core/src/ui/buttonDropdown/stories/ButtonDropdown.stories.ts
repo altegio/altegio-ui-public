@@ -31,17 +31,17 @@ import {
 const SIZES = [EYSizes.SMALL, EYSizes.MEDIUM, EYSizes.LARGE] as const
 
 /**
- * Пропы для истории компонента ButtonDropdown
+ * ButtonDropdown story properties
  */
 export interface IButtonDropdownStoryProps extends IYCoreButtonDropdownProps, ITextStoryProps {}
 
 /**
- * Слоты компонента ButtonDropdown
+ * ButtonDropdown slots
  */
 /**
- * Слоты компонента ButtonDropdown:
- * - showActivatorSlot: Показать содержимое activator слота. Activator слот предназначен для размещения любого контента, по клику на который активируется откытие дроп-дуана.
- * - showContentSlot: Показать содержимое content слота. Content слот предназначен для размещения любого контента, который отображается в открытом дроп-дауне.
+ * ButtonDropdown slots:
+ * - showActivatorSlot: Show activator slot content. Clicking this content opens the dropdown.
+ * - showContentSlot: Show content slot content. This content appears in the open dropdown.
  */
 export interface IButtonDropdownStorySlots {
   showActivatorSlot: boolean
@@ -124,31 +124,31 @@ const meta: TButtonDropdownStoryMeta = {
     ...pick(yCoreDropdownStoryMeta.argTypes ?? {}, [...yCoreDropdownPickKeys]),
     variant: {
       control: { type: 'select' },
-      description: 'Стиль кнопки',
+      description: 'Button style',
       options: Object.values(EYCoreSimpleButtonVariant),
       ...getComponentStateTable(variant),
     },
     iconType: {
       control: { type: 'radio' },
       options: Object.values(EYCoreButtonDropdownIconTypes),
-      description: 'Тип иконки (слева/справа)',
+      description: 'Icon placement (left or right)',
       ...getComponentStateTable(iconType),
     },
     autoClose: {
       control: { type: 'boolean' },
-      description: 'Закрывает выпадающее меню при клике на slot content',
+      description: 'Close the dropdown when its content slot is clicked',
       ...getComponentStateTable(autoClose),
     },
     showActivatorSlot: {
       type: 'boolean',
       description:
-        '** Показать контент в activator слоте**\n\nActivator слот для размещения любого контента, по клику на который активируется откытие дроп-дуана',
+        '**Show activator slot content**\n\nClicking the activator content opens the dropdown.',
       ...getComponentSlotsTable('activator', 'nothing'),
     },
     showContentSlot: {
       type: 'boolean',
       description:
-        '** Показать контент в default слоте**\n\nContent слот для размещения любого контента, который отображается в открытом дроп-дауне.',
+        '**Show content slot content**\n\nContent displayed inside the open dropdown.',
       ...getComponentSlotsTable('content', 'nothing'),
     },
   },
@@ -230,24 +230,24 @@ export const States: Story = {
     return html`
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
         <y-core-button-dropdown
-          label="Обычная"
+          label="Default"
           .items=${args.items}
         ></y-core-button-dropdown>
 
         <y-core-button-dropdown
-          label="Заблокированная"
+          label="Disabled"
           .disabled=${true}
           .items=${args.items}
         ></y-core-button-dropdown>
 
         <y-core-button-dropdown
-          label="Загрузка"
+          label="Loading"
           .loading=${true}
           .items=${args.items}
         ></y-core-button-dropdown>
 
         <y-core-button-dropdown
-          label="Открытое"
+          label="Open"
           .isOpen=${true}
           .items=${args.items}
         ></y-core-button-dropdown>
@@ -285,7 +285,7 @@ export const FullWidth: Story = {
     return html`
       <div style="min-height: 100px;">
         <y-core-button-dropdown
-          label="Растянутая кнопка"
+          label="Full-width button"
           .fullWidth=${true}
           .items=${args.items}
         ></y-core-button-dropdown>

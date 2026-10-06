@@ -8,7 +8,7 @@ import yCoreDatePickerStoryMeta, { type IYCoreDatePickerStoryProps } from '~core
 type TVueDatePickerStoryMeta = IYVueDatePickerProps & IYCoreDatePickerStoryProps
 
 /**
- * Vue-обертка над DatePicker
+ * Vue wrapper for DatePicker
  */
 const meta: Meta<TVueDatePickerStoryMeta> = {
   title: 'Inputs/✅ DatePicker',

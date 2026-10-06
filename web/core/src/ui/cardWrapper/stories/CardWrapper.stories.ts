@@ -129,34 +129,34 @@ const meta: YCoreCardWrapperMeta = {
     // Story Controls
     showCardIcon: {
       type: 'boolean',
-      description: 'Показать компонент "CardIcon"',
+      description: 'Show the "CardIcon" component',
       ...storyControlsTable,
     },
     showCardRadio: {
       type: 'boolean',
-      description: 'Показать компонент "CardRadio"',
+      description: 'Show the "CardRadio" component',
       ...storyControlsTable,
     },
     showCardCheckbox: {
       type: 'boolean',
-      description: 'Показать компонент "CardCheckbox"',
+      description: 'Show the "CardCheckbox" component',
       ...storyControlsTable,
     },
 
     // Component Events
     onClick: {
       type: 'function',
-      description: 'Событие клика',
+      description: 'Click event',
       ...getComponentEmitsTable(),
     },
     onFocus: {
       type: 'function',
-      description: 'Событие фокуса',
+      description: 'Focus event',
       ...getComponentEmitsTable(),
     },
     onBlur: {
       type: 'function',
-      description: 'Событие потери фокуса',
+      description: 'Blur event',
       ...getComponentEmitsTable(),
     },
   },

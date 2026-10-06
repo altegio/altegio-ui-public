@@ -47,12 +47,12 @@ const meta: Meta = {
     variant: {
       control: { type: 'select' },
       description:
-        '**Бренд**\n\nОпределяет стиль и иконку кнопки. Каждый бренд имеет свои цвета и SVG-иконку.',
+        '**Brand**\n\nSelects the button style and icon. Each brand has its own colors and SVG icon.',
       options: brandButtonVariants,
       table: {
         type: { summary: 'EYCoreBrandButtonVariant' },
         defaultValue: { summary: EYCoreBrandButtonVariant.WhatsApp },
-        category: 'Внешний вид',
+        category: 'Appearance',
       },
       ...getComponentStateTable(EYCoreBrandButtonVariant.WhatsApp),
     },
@@ -60,20 +60,20 @@ const meta: Meta = {
       ...simpleButtonStoryMeta.argTypes.size,
       options: brandButtonSizes,
       description:
-        '**Размер кнопки**\n\n- `small` — компактная кнопка (18px иконка)\n- `medium` — стандартная кнопка (20px иконка)\n- `large` — крупная кнопка (22px иконка)',
+        '**Button size**\n\n- `small`: compact button (18px icon)\n- `medium`: standard button (20px icon)\n- `large`: larger button (22px icon)',
     },
     disabled: { ...simpleButtonStoryMeta.argTypes.disabled },
     loading: { ...simpleButtonStoryMeta.argTypes.loading },
     text: {
       type: 'string',
-      description: '**Текст кнопки**\n\nТекст, который будет отображаться в компоненте',
-      ...getComponentContentTable('Войти через WhatsApp'),
+      description: '**Button text**\n\nText displayed in the component.',
+      ...getComponentContentTable('Sign in with WhatsApp'),
     },
 
     click: {
       type: 'function',
       description:
-        '**Событие клика**\n\nСрабатывает при клике на кнопку. Не срабатывает, если кнопка заблокирована (`disabled`) или в состоянии загрузки (`loading`).',
+        '**Click event**\n\nEmitted when the button is clicked. Not emitted while `disabled` or `loading` is true.',
       ...getComponentEmitsTable(),
     },
   },
@@ -82,7 +82,7 @@ const meta: Meta = {
     size: simpleButtonStoryMeta.args.size || EYSizes.SMALL,
     disabled: simpleButtonStoryMeta.args.disabled || false,
     loading: simpleButtonStoryMeta.args.loading || false,
-    text: 'Войти через WhatsApp',
+    text: 'Sign in with WhatsApp',
   },
 }
 
@@ -107,8 +107,8 @@ export const States: Story = {
   parameters: BRAND_BUTTON_STORIES_CONFIG.States.parameters,
   render: () => html`
     <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-      <y-core-brand-button variant=${EYCoreBrandButtonVariant.WhatsApp} text="Обычная">Обычная</y-core-brand-button>
-      <y-core-brand-button variant=${EYCoreBrandButtonVariant.WhatsApp} text="Заблокированная" .disabled=${true}></y-core-brand-button>
+      <y-core-brand-button variant=${EYCoreBrandButtonVariant.WhatsApp} text="Default">Default</y-core-brand-button>
+      <y-core-brand-button variant=${EYCoreBrandButtonVariant.WhatsApp} text="Disabled" .disabled=${true}></y-core-brand-button>
       <y-core-brand-button variant=${EYCoreBrandButtonVariant.WhatsApp} .loading=${true}></y-core-brand-button>
     </div>
   `,
@@ -118,7 +118,7 @@ export const Variants: Story = {
   parameters: BRAND_BUTTON_STORIES_CONFIG.Variants.parameters,
   render: () => html`
     <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-      <y-core-brand-button variant=${EYCoreBrandButtonVariant.WhatsApp} text="Вариант"></y-core-brand-button>
+      <y-core-brand-button variant=${EYCoreBrandButtonVariant.WhatsApp} text="Variant"></y-core-brand-button>
     </div>
   `,
 }

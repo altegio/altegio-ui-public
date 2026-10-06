@@ -11,7 +11,7 @@ import { QueuePlugin } from '~core/ui/globalProvider/plugins/queue'
 type TVueGlobalProviderStoryMeta = IYVueGlobalProviderProps
 
 /**
- * Vue-обертка над Core GlobalProvider
+ * Vue wrapper for Core GlobalProvider
  */
 const meta: Meta<TVueGlobalProviderStoryMeta> = {
   title: '✅ GlobalProvider',
@@ -67,7 +67,7 @@ export const WithTestConsumer: Story = {
 }
 
 /**
- * Пример с компонентом локализации (русский)
+ * Example with the Russian locale
  */
 export const WithI18nConsumerRu: Story = {
   render: () => ({

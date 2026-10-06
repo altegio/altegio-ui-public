@@ -6,7 +6,7 @@ import { YSegmentControl } from '~ng/ui/segmentControl'
 import { action } from '@storybook/addon-actions'
 
 /**
- * Angular-обертка над Core SegmentControl
+ * Angular wrapper for Core SegmentControl
  */
 const meta: Meta<YSegmentControl> = {
   title: 'SegmentControl/✅ SegmentControl',

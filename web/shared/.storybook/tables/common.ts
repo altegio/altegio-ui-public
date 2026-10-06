@@ -4,8 +4,8 @@ type TDefaultValueType = unknown
 
 export const storyControlsTable: InputType = {
   table: {
-    category: 'Вспомогательные параметры для тестирования',
-    defaultValue: { summary: 'Не требуется' },
+    category: 'Testing controls',
+    defaultValue: { summary: 'Not required' },
   },
 } as const
 
@@ -21,30 +21,30 @@ const convertToString = (value: TDefaultValueType): string => {
 
 export const getComponentContentTable = (defaultValue?: TDefaultValueType): InputType => ({
   table: {
-    category: 'Входящие параметры',
-    subcategory: 'Контентное наполнение',
+    category: 'Properties',
+    subcategory: 'Content',
     defaultValue: { summary: convertToString(defaultValue) },
   },
 })
 
 export const getComponentStateTable = (defaultValue?: TDefaultValueType): InputType => ({
   table: {
-    category: 'Входящие параметры',
-    subcategory: 'Состояние',
+    category: 'Properties',
+    subcategory: 'State',
     defaultValue: { summary: convertToString(defaultValue) },
   },
 })
 
 export const getComponentEmitsTable = (defaultValue?: TDefaultValueType): InputType => ({
   table: {
-    category: 'Генерируемые события',
+    category: 'Events',
     defaultValue: { summary: convertToString(defaultValue) },
   },
 })
 
 export const getComponentSlotsTable = (slotName: string, defaultValue: TDefaultValueType): InputType => ({
   table: {
-    category: 'Слоты',
+    category: 'Slots',
     type: { summary: `slot: #${slotName}` },
     defaultValue: { summary: convertToString(defaultValue) },
   },
@@ -52,7 +52,7 @@ export const getComponentSlotsTable = (slotName: string, defaultValue: TDefaultV
 
 export const getComponentColorThemeTable = (defaultValue?: TDefaultValueType): InputType => ({
   table: {
-    category: 'Цветовая палитра',
+    category: 'Color palette',
     defaultValue: { summary: convertToString(defaultValue) },
   },
 })

@@ -16,16 +16,16 @@ import { GlobalContextService } from '../classes/GlobalContext.service'
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="container">
-      <h3>Компонент работы с локализацией</h3>
+      <h3>Localization example</h3>
 
       <div class="locale-info">
-        <p>Текущая локализация: <strong>{{ localeName() }}</strong></p>
+        <p>Current locale: <strong>{{ localeName() }}</strong></p>
 
-        <p>Код языка: <strong>{{ localeCode() }}</strong></p>
+        <p>Language code: <strong>{{ localeCode() }}</strong></p>
       </div>
 
       <div class="calendar-section">
-        <h4>Календарь с текущей локализацией:</h4>
+        <h4>Calendar using the current locale:</h4>
 
         <div class="calendar-wrapper">
           <YCalendar
@@ -40,7 +40,7 @@ import { GlobalContextService } from '../classes/GlobalContext.service'
           class="primary-button"
           (click)="toggleLocale()"
         >
-          Переключить язык
+          Switch language
         </button>
       </div>
     </div>
@@ -124,7 +124,7 @@ export class I18nConsumer {
     effect(() => {
       this.localeToggler() // Для триггера
       const module = this.localeModule()
-      this.localeName.set(module?.locale.name ?? 'Не указано')
+      this.localeName.set(module?.locale.name ?? 'Not specified')
       this.localeCode.set(module?.locale.shortCode ?? 'ru')
     })
   }

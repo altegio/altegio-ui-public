@@ -13,7 +13,7 @@ import { type IYVueToggleProps } from '~vue/ui/toggle/models/types'
 type TVueToggleStoryMeta = IYVueToggleProps & IYCoreToggleStoryProps
 
 /**
- * Vue-обертка над Core Toggle
+ * Vue wrapper for Core Toggle
  */
 const meta: Meta<TVueToggleStoryMeta> = {
   title: '✅ Toggle',
@@ -75,7 +75,7 @@ const meta: Meta<TVueToggleStoryMeta> = {
     ),
     modelValue: {
       type: 'boolean',
-      description: 'Дефолтный v-model над базовым checked value. Подробнее - https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#checked',
+      description: 'Default v-model for the checked value. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#checked',
       ...getComponentContentTable(),
     },
   },

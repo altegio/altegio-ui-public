@@ -12,7 +12,7 @@ import { I18nPlugin } from '~core/ui/globalProvider/plugins/i18n'
 import { en } from '~core/i18n'
 
 /**
- * Angular-обертка над GlobalProvider
+ * Angular wrapper for GlobalProvider
  */
 const meta: Meta<YGlobalProvider> = {
   title: '🔍 GlobalProvider',

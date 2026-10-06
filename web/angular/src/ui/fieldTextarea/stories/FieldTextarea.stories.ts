@@ -9,7 +9,7 @@ import {
 } from '~ng/ui/fieldTextarea/models/types'
 
 /**
- * Angular-обертка над Core FieldTextarea
+ * Angular wrapper for Core FieldTextarea
  */
 const meta: Meta<YFieldTextarea> = {
   title: 'Inputs/Partials/🔍 FieldTextarea',

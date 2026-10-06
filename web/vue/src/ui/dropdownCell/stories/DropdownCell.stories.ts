@@ -7,7 +7,7 @@ import yCoreDropdownCellStoryMeta from '~core/ui/dropdownCell/stories/DropdownCe
 type TVueDropdownCellStoryMeta = IYVueDropdownCellProps
 
 /**
- * Vue-обертка над Core DropdownCell
+ * Vue wrapper for Core DropdownCell
  */
 const meta: Meta<TVueDropdownCellStoryMeta> = {
   title: '✅ DropdownCell',

@@ -22,7 +22,7 @@ type TVueFieldTextareaStoryMeta = IYVueFieldTextareaProps & TYCoreFieldTextareaM
 }
 
 /**
- * Vue-обертка над Core FieldTextarea
+ * Vue wrapper for Core FieldTextarea
  */
 const meta: Meta<TVueFieldTextareaStoryMeta> = {
   title: 'Inputs/Partials/⚠️ FieldTextarea',

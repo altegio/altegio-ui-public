@@ -7,7 +7,7 @@ import {
 } from '~ng/ui/dropdownList/models/types'
 
 /**
- * Angular-обертка над Core DropdownList
+ * Angular wrapper for Core DropdownList
  */
 const meta: Meta<YDropdownList> = {
   title: '✅ DropdownList',

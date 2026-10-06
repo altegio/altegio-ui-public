@@ -53,12 +53,12 @@ const meta: IYCoreCardHeaderMeta = {
     ...pick(yCoreCardWrapperStoryMeta.argTypes ?? {}, ['disabled', 'size']),
     headerText: {
       type: 'string',
-      description: 'Текст заголовка',
+      description: 'Heading text',
       ...getComponentContentTable(headerText),
     },
     tagText: {
       type: 'string',
-      description: 'Текст тега',
+      description: 'Tag text',
       ...getComponentContentTable(tagText),
     },
     tagVariant: yCoreTagStoryMeta.argTypes?.variant,

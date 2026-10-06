@@ -16,7 +16,7 @@ import yFunctionalModalStoryMeta from '~core/ui/functionalModal/stories/Function
 type TVueFunctionalModalStoryMeta = IYVueFunctionalModalProps
 
 /**
- * Vue-обертка над FunctionalModal
+ * Vue wrapper for FunctionalModal
  */
 const meta: Meta<TVueFunctionalModalStoryMeta> = {
   title: '✅ FunctionalModal',
@@ -120,7 +120,7 @@ const meta: Meta<TVueFunctionalModalStoryMeta> = {
           @submit="handleSubmit"
         >
           <template v-if="args.showHeaderSlot" #header>
-            Это слот header
+            Header slot content
           </template>
 
           <template v-if="args.showContentSlot" #content>
@@ -131,20 +131,20 @@ const meta: Meta<TVueFunctionalModalStoryMeta> = {
 
           <template v-if="args.showActivatorSlot" #activator>
             <YButton
-              label="Открыть модалку"
+              label="Open modal"
             />
           </template>
 
           <template v-if="args.showActionsSlot" #actions>
-            <span>Это слот actions</span>
+            <span>Actions slot content</span>
           </template>
 
           <template v-if="args.showBeforeActionsSlot" #before-actions>
-            Это слот before-actions
+            Before-actions slot content
           </template>
 
           <template v-if="args.showFooterSlot" #footer>
-            Это слот footer
+            Footer slot content
           </template>
         </YFunctionalModal>
       </div>
@@ -155,12 +155,12 @@ const meta: Meta<TVueFunctionalModalStoryMeta> = {
     ...omit(yFunctionalModalStoryMeta.argTypes ?? {}, ['open']),
     modelValue: {
       type: 'boolean',
-      description: 'v-model обертка над свойством open открытия модалки',
+      description: 'v-model for the modal open property',
       ...getComponentContentTable(),
     },
     enableTeleport: {
       type: 'boolean',
-      description: 'переносит элемент модалки в YGlobalProvider',
+      description: 'Moves the modal element into YGlobalProvider',
       ...getComponentStateTable(),
     },
   },

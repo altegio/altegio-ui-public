@@ -13,7 +13,7 @@ import { type IYVueRadioButtonProps } from '~vue/ui/radioButton/models/types'
 type TVueRadioButtonStoryMeta = IYVueRadioButtonProps & IYCoreRadioButtonStoryProps
 
 /**
- * Vue-обертка над Core RadioButton
+ * Vue wrapper for Core RadioButton
  */
 const meta: Meta<TVueRadioButtonStoryMeta> = {
   title: '✅ RadioButton',
@@ -69,7 +69,7 @@ const meta: Meta<TVueRadioButtonStoryMeta> = {
     modelValue: {
       type: 'boolean',
       description:
-        'Дефолтный v-model над базовым checked value. Подробнее - https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#checked',
+        'Default v-model for the checked value. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#checked',
       ...getComponentContentTable(),
     },
   },

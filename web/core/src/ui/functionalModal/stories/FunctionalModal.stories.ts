@@ -26,7 +26,7 @@ const { open, size, width, hideOverlay, hideFooter, preventEscape, fullScreen, h
 
 export interface IYCoreFunctionalModalStoryProps extends IYCoreFunctionalModalProps {
 
-  /** Текст, отображаемый в блоке content */
+  /** Text displayed in the content area */
   contentText: string
 }
 
@@ -47,7 +47,6 @@ type TYCoreFunctionalModalStoryMeta = Meta<
 /**
  * ## Core Functional Modal
  *
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components--IN-PROGRESS-?node-id=5662-17791&t=pmL5ndRgd30cWCR1-4)
  */
 const meta: TYCoreFunctionalModalStoryMeta = {
   title: '✅ Functional Modal',
@@ -121,7 +120,7 @@ const meta: TYCoreFunctionalModalStoryMeta = {
         >
           ${showHeaderMediaSlot ? html` <img style="width: 100%" slot="header-media" src="https://cs13.pikabu.ru/post_img/big/2020/01/17/5/1579242654187294635.jpg" /> ` : nothing}
 
-          ${showHeaderSlot ? html` <span slot="header"> Это слот header </span> ` : nothing}
+          ${showHeaderSlot ? html` <span slot="header"> Header slot content </span> ` : nothing}
 
           ${showContentSlot
             ? html` <y-core-text
@@ -135,15 +134,15 @@ const meta: TYCoreFunctionalModalStoryMeta = {
           ${showActivatorSlot
             ? html`
                 <y-core-button
-                  label="Открыть модалку"
+                  label="Open modal"
                   slot="activator"
                 >
                 </y-core-button>
               `
             : nothing}
-          ${showActionsSlot ? html` <span slot="actions"> Это слот actions </span> ` : nothing}
-          ${showBeforeActionsSlot ? html` <span slot="before-actions"> Это слот before-actions </span> ` : nothing}
-          ${showFooterSlot ? html` <span slot="footer"> Это слот footer </span> ` : nothing}
+          ${showActionsSlot ? html` <span slot="actions"> Actions slot content </span> ` : nothing}
+          ${showBeforeActionsSlot ? html` <span slot="before-actions"> Before-actions slot content </span> ` : nothing}
+          ${showFooterSlot ? html` <span slot="footer"> Footer slot content </span> ` : nothing}
         </y-core-functional-modal>
       </div>
     `
@@ -151,7 +150,7 @@ const meta: TYCoreFunctionalModalStoryMeta = {
   argTypes: {
     open: {
       type: 'boolean',
-      description: 'Открытое состояние',
+      description: 'Open state',
       ...getComponentStateTable(open),
     },
     size: {
@@ -160,124 +159,124 @@ const meta: TYCoreFunctionalModalStoryMeta = {
     },
     width: {
       type: 'string',
-      description: 'Кастомная ширина модалки',
+      description: 'Custom modal width',
       ...getComponentStateTable(width),
     },
     hideOverlay: {
       type: 'boolean',
-      description: 'Скрыть подложку',
+      description: 'Hide the backdrop',
       ...getComponentStateTable(hideOverlay),
     },
     hideFooter: {
       type: 'boolean',
-      description: 'Скрыть футер',
+      description: 'Hide the footer',
       ...getComponentStateTable(hideFooter),
     },
     preventEscape: {
       type: 'boolean',
-      description: 'Игнорировать закрытие модалки по клавише Escape',
+      description: 'Prevent the Escape key from closing the modal',
       ...getComponentStateTable(preventEscape),
     },
     fullScreen: {
       type: 'boolean',
-      description: 'На весь экран',
+      description: 'Full screen',
       ...getComponentStateTable(fullScreen),
     },
     heading: {
       type: 'string',
-      description: 'Заголовок модалки',
+      description: 'Modal heading',
       ...getComponentStateTable(heading),
     },
     subHeading: {
       type: 'string',
-      description: 'Подзаголовок модалки',
+      description: 'Modal subheading',
       ...getComponentStateTable(subHeading),
     },
     locale: {
       control: { type: 'select' },
       options: Object.keys(locales),
       mapping: locales,
-      description: 'Локализация календаря',
+      description: 'Calendar locale',
       ...getComponentStateTable(locale),
     },
     onOpen: {
       type: 'function',
-      description: 'Событие открытия модалки',
+      description: 'Modal open event',
       ...getComponentEmitsTable(),
     },
     onClose: {
       type: 'function',
-      description: 'Событие закрытия модалки',
+      description: 'Modal close event',
       ...getComponentEmitsTable(),
     },
     onClickCloseIcon: {
       type: 'function',
-      description: 'Событие клика на иконку закрытия',
+      description: 'Close icon click event',
       ...getComponentEmitsTable(),
     },
     onClickOverlay: {
       type: 'function',
-      description: 'Событие клика на подложку',
+      description: 'Backdrop click event',
       ...getComponentEmitsTable(),
     },
     onClickActivator: {
       type: 'function',
-      description: 'Событие клика на элемент-активатор',
+      description: 'Activator click event',
       ...getComponentEmitsTable(),
     },
     onPressEscape: {
       type: 'function',
-      description: 'Событие нажатия клавиши Escape',
+      description: 'Escape key press event',
       ...getComponentEmitsTable(),
     },
     onCancel: {
       type: 'function',
-      description: 'Событие нажатия кнопки "Отменить"',
+      description: 'Cancel button click event',
       ...getComponentEmitsTable(),
     },
     onSubmit: {
       type: 'function',
-      description: 'Событие нажатия кнопки "Хорошо"',
+      description: 'Confirm button click event',
       ...getComponentEmitsTable(),
     },
     showHeaderMediaSlot: {
       type: 'boolean',
-      description: 'Показать слот "header-media" - слот для медиа внутри модалки',
+      description: 'Show the "header-media" slot - media inside the modal',
       ...storyControlsTable,
     },
     showHeaderSlot: {
       type: 'boolean',
-      description: 'Показать слот "header" - слот заголовка внутри модалки',
+      description: 'Show the "header" slot - heading inside the modal',
       ...storyControlsTable,
     },
     showContentSlot: {
       type: 'boolean',
-      description: 'Показать слот "content" - слот контента внутри модалки',
+      description: 'Show the "content" slot - content inside the modal',
       ...storyControlsTable,
     },
     showActivatorSlot: {
       type: 'boolean',
-      description: 'Показать слот "activator" - слот активатора открытия модалки',
+      description: 'Show the "activator" slot - activator that opens the modal',
       ...storyControlsTable,
     },
     showActionsSlot: {
       type: 'boolean',
-      description: 'Показать слот "actions" - слот действий модалки',
+      description: 'Show the "actions" slot - modal actions',
       ...storyControlsTable,
     },
     showBeforeActionsSlot: {
       type: 'boolean',
-      description: 'Показать слот "before-actions" - слот действий модалки',
+      description: 'Show the "before-actions" slot - modal actions',
       ...storyControlsTable,
     },
     showFooterSlot: {
       type: 'boolean',
-      description: 'Показать слот "footer" - слот включающий в себя "before-actions" и "actions"',
+      description: 'Show the "footer" slot - slot containing "before-actions" and "actions"',
       ...storyControlsTable,
     },
     contentText: {
       type: 'string',
-      description: '** Текст контент**\n\nТекст, который будет отображаться в компоненте через content слот.',
+      description: '**Content text**\n\nText displayed through the content slot.',
       ...storyControlsTable,
     },
   },
@@ -291,8 +290,8 @@ const meta: TYCoreFunctionalModalStoryMeta = {
     onPressEscape: action('press-escape'),
     onCancel: action('cancel'),
     onSubmit: action('submit'),
-    heading: 'Хотите покинуть страницу?',
-    subHeading: 'Вы не завершили подключение',
+    heading: 'Leave this page?',
+    subHeading: 'You have not finished the setup',
     contentText: LOREM_IPSUM,
     showHeaderMediaSlot: false,
     showHeaderSlot: false,
@@ -301,7 +300,7 @@ const meta: TYCoreFunctionalModalStoryMeta = {
     showActionsSlot: false,
     showBeforeActionsSlot: false,
     showFooterSlot: false,
-    locale: locales['ru-RU'],
+    locale: locales['en-US'],
   },
 } satisfies TYCoreFunctionalModalStoryMeta
 

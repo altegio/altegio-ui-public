@@ -48,36 +48,36 @@ const meta: Meta<IYCoreSearchTextHighlightedProps> = {
     ...omit(yCoreTextStoryMeta.argTypes ?? {}, ['text', 'isLongText']),
     search: {
       type: 'string',
-      description: 'Часть поискового запроса',
+      description: 'Search query fragment',
       ...getComponentContentTable(search),
     },
     text: {
       type: 'string',
-      description: 'Искомый текст',
+      description: 'Text to search',
       ...getComponentContentTable(text),
     },
     caseSensitive: {
       type: 'boolean',
-      description: 'Делает подсветку зависимой от регистра',
+      description: 'Enable case-sensitive highlighting',
       ...getComponentStateTable(caseSensitive),
     },
     stopHighlight: {
       type: 'boolean',
-      description: 'Убирает функционал выделения текста',
+      description: 'Disable text highlighting',
       ...getComponentStateTable(stopHighlight),
     },
     ignoredSymbols: {
       control: { type: 'object' },
-      description: 'Символы, которые пропускаются при вводе',
+      description: 'Characters ignored during input',
       ...getComponentStateTable(ignoredSymbols),
     },
     highlightTextVariant: {
       ...yCoreTextStoryMeta.argTypes?.variant,
-      description: 'Стиль выделенного текста',
+      description: 'Highlighted text style',
     },
     highlightTextSize: {
       ...yCoreTextStoryMeta.argTypes?.size,
-      description: 'Размер выделенного текста',
+      description: 'Highlighted text size',
     },
   },
   args: {

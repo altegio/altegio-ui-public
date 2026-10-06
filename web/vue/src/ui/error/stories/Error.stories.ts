@@ -9,7 +9,7 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 type TVueErrorStoryMeta = IYVueErrorProps & IYCoreErrorStoryProps
 
 /**
- * Vue-обертка над Core Error
+ * Vue wrapper for Core Error
  */
 const meta: Meta<TVueErrorStoryMeta> = {
   title: '⚙️ Error',

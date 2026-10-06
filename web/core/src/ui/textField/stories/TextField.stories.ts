@@ -132,23 +132,23 @@ const meta: Meta<TYCoreTextFieldMeta> = {
     // Component Props
     clearable: {
       type: 'boolean',
-      description: 'Делает поле очищаемым',
+      description: 'Allow the field to be cleared',
       ...getComponentStateTable(clearable),
     },
     maskOptions: {
-      description: 'Конфигурация маски Maskito',
+      description: 'Maskito mask configuration',
       ...getComponentStateTable(maskOptions),
     },
 
     // Story Controls
     showBeforeSlot: {
       type: 'boolean',
-      description: 'Показать компонент "BeforeSlot"',
+      description: 'Show the "BeforeSlot" component',
       ...storyControlsTable,
     },
     showAfterSlot: {
       type: 'boolean',
-      description: 'Показать компонент "AfterSlot"',
+      description: 'Show the "AfterSlot" component',
       ...storyControlsTable,
     },
     isLongText: isLongTextArgType,
@@ -157,7 +157,7 @@ const meta: Meta<TYCoreTextFieldMeta> = {
     // Component Events
     onClear: {
       type: 'function',
-      description: 'Событие очистки',
+      description: 'Clear event',
       ...getComponentEmitsTable(),
     },
   },

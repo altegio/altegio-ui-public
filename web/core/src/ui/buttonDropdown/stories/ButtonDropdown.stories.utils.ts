@@ -34,7 +34,7 @@ export const BUTTON_DROPDOWN_STORIES_CONFIG: Record<string, IStoryConfig> = {
         title: 'Playground',
         description: {
           story:
-            'Интерактивная площадка для экспериментов с компонентом.\nИспользуйте контролы для изменения свойств и изучения поведения дроп-даун кнопки.',
+            'Try the dropdown button interactively.\nUse the controls to explore its properties and behavior.',
         },
       },
     },
@@ -42,31 +42,31 @@ export const BUTTON_DROPDOWN_STORIES_CONFIG: Record<string, IStoryConfig> = {
   Variants: {
     parameters: {
       docs: {
-        title: 'Варианты дроп-дауна',
-        description: { story: 'Демонстрация всех доступных вариантов стилизации.' },
+        title: 'Dropdown variants',
+        description: { story: 'All available styling variants.' },
       },
     },
     args: { items: [...DEFAULT_ITEMS] },
   },
   Sizes: {
-    parameters: { docs: { title: 'Размеры кнопок', description: { story: 'Демонстрация всех доступных размеров.' } } },
+    parameters: { docs: { title: 'Button sizes', description: { story: 'All available sizes.' } } },
     args: { items: [...DEFAULT_ITEMS] },
   },
   States: {
     parameters: {
       docs: {
-        title: 'Состояния кнопок',
-        description: { story: 'Демонстрация различных состояний: обычное, заблокированное, загрузка, открытое.' },
+        title: 'Button states',
+        description: { story: 'Default, disabled, loading, and open states.' },
       },
     },
     args: { items: DEFAULT_ITEMS },
   },
   IconType: {
-    parameters: { docs: { title: 'Тип иконки', description: { story: 'Демонстрация типа иконки.' } } },
+    parameters: { docs: { title: 'Icon placement', description: { story: 'Icon placement options.' } } },
     args: { items: DEFAULT_ITEMS },
   },
   FullWidth: {
-    parameters: { docs: { title: 'Полная ширина', description: { story: 'Демонстрация растянутой кнопки.' } } },
+    parameters: { docs: { title: 'Full width', description: { story: 'A button that fills its container.' } } },
     args: { items: DEFAULT_ITEMS },
   },
 } as const
@@ -77,28 +77,28 @@ export const BUTTON_DROPDOWN_STORIES_CONFIG: Record<string, IStoryConfig> = {
 export const createButtonDropdownDescription = (frameworkName: EFrameworkName, frameworkSpecifics = '') => `
 ## ${frameworkName} ButtonDropdown
 
-Базовый компонент дроп-даун кнопки.
-Поддерживает различные варианты отображения, размеры, состояния загрузки, блокировки, автозакрытия.
+A button that opens a dropdown.
+Supports multiple variants and sizes, loading and disabled states, and automatic closing.
 
-### Основные возможности:
-- 4 варианта стилизации: primary, outline, text, outline-filled
-- 3 размера: small, medium, large
-- Состояния: обычное, заблокированное, загрузка, открытое
-- Полная ширина (fullWidth) - растягивает кнопку на всю ширину контейнера
-- Тип иконки: левая/правая
-- Автозакрытие: возможность автозакрытия после клика на элемент дроп-дауна
+### Features:
+- 4 styling variants: primary, outline, text, outline-filled
+- 3 sizes: small, medium, large
+- States: default, disabled, loading, and open
+- Full width (fullWidth): fills the container width
+- Icon placement: left or right
+- Automatic closing after clicking a dropdown item
 
-### Слоты:
-- **activator** - слот для размещения любого контента, по клику на который активируется откытие дроп-дуана.
-- **content** - слот для размещения любого контента, который отображается в открытом дроп-дауне.
+### Slots:
+- **activator** - slot for content that opens the dropdown when clicked.
+- **content** - slot for content displayed inside the open dropdown.
 
-### События:
-- **onItemClick** - событие клика по элементу дроп-дауна
-- **onVisible** - событие показа дроп-дауна
+### Events:
+- **onItemClick** - dropdown item click event
+- **onVisible** - dropdown visibility event
 
 ${frameworkSpecifics}
 
-Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components--IN-PROGRESS-?node-id=4140-8661&t=Pqc3nun6vr8LqliW-1)`
+`
 
 /**
  * Создает параметры для истории ButtonDropdown

@@ -10,7 +10,7 @@ import { storyControlsTable } from '~shared/.storybook/tables'
 type IYNgLinkStoryMeta = YLink & IYCoreLinkStoryProps
 
 /**
- * Angular-обертка над Core Link
+ * Angular wrapper for Core Link
  */
 const meta: Meta<IYNgLinkStoryMeta> = {
   title: '🔍 Link',
@@ -41,7 +41,7 @@ const meta: Meta<IYNgLinkStoryMeta> = {
     ...yCoreLinkStoryMeta.argTypes,
     showIcon: {
       type: 'boolean',
-      description: 'Показать иконку в ссылке',
+      description: 'Show an icon in the link',
       ...storyControlsTable,
     },
   },

@@ -30,7 +30,7 @@ type TYCoreTextMeta = IYCoreTextProps & IYCoreTextStoryProps
 
 /**
  * ## Core Text
- * Базовый text для полей ввода
+ * Text component for input fields
  */
 const meta: Meta<TYCoreTextMeta> = {
   title: '✅ Text',
@@ -66,43 +66,43 @@ const meta: Meta<TYCoreTextMeta> = {
   argTypes: {
     size: {
       control: { type: 'select' },
-      description: 'Размер текста',
+      description: 'Text size',
       options: Object.values(EYCoreTextSize),
       ...getComponentStateTable(size),
     },
     variant: {
       control: { type: 'select' },
-      description: 'Стиль текста',
+      description: 'Text style',
       options: Object.values(EYCoreTextVariant),
       ...getComponentStateTable(variant),
     },
     ellipsis: {
       type: 'boolean',
-      description: 'Ограничение длины текста',
+      description: 'Truncate text',
       ...getComponentStateTable(ellipsis),
     },
     lineclamp: {
       type: 'number',
-      description: 'Количество строк при ограничении длины текста',
+      description: 'Maximum number of lines when truncating text',
       ...getComponentStateTable(lineclamp),
     },
     locator: {
       type: 'string',
-      description: 'Вспомогательный дата-атрибут для реализации BB-тестов',
+      description: 'Data attribute for browser-based tests',
       ...getComponentStateTable(locator),
     },
 
     // Story Controls
     text: {
       type: 'string',
-      description: 'Текст который будет отображаться в компоненте через слот',
+      description: 'Text displayed through the component slot',
       ...storyControlsTable,
     },
     isLongText: isLongTextArgType,
   },
   args: {
     ...createCoreTextProps(),
-    text: 'Текст',
+    text: 'Text',
     isLongText: false,
   },
 } satisfies Meta<TYCoreTextMeta>

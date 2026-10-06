@@ -9,7 +9,7 @@ import yCoreTableCellStoryMeta, {
 type TVueTableCellStoryMeta = IYVueTableCellProps & TYCoreTableCellMeta
 
 /**
- * Vue-обертка над Core TableCell
+ * Vue wrapper for Core TableCell
  */
 const meta: Meta<TVueTableCellStoryMeta> = {
   title: '⚠️ TableCell',

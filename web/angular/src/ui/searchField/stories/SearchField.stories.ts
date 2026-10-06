@@ -37,7 +37,7 @@ const YCoreTextFieldStoryOmitKeys: (keyof TYCoreTextFieldMeta)[] = [
 ]
 
 /**
- * Angular-обертка над Core SearchField
+ * Angular wrapper for Core SearchField
  */
 const meta: Meta<TYNgSearchFieldMeta> = {
   title: 'Inputs/🔍 SearchField',
@@ -104,22 +104,22 @@ const meta: Meta<TYNgSearchFieldMeta> = {
     ),
     ngModel: {
       type: 'string',
-      description: 'Значение ngModel в SearchField',
+      description: 'SearchField ngModel value',
       ...getComponentStateTable(''),
     },
     locatorClearIcon: {
       type: 'string',
-      description: 'Локатор для иконки очистки поля',
+      description: 'Data locator for the clear icon',
       ...getComponentStateTable(''),
     },
     ngModelChange: {
       type: 'function',
-      description: 'Событие изменения ngModel',
+      description: 'ngModel change event',
       ...getComponentEmitsTable(),
     },
     searchIconClick: {
       type: 'function',
-      description: 'Событие клика по иконке поиска',
+      description: 'Search icon click event',
       ...getComponentEmitsTable(),
     },
   },
@@ -138,9 +138,9 @@ type Story = StoryObj<TYNgSearchFieldMeta>
 export const Playground: Story = {}
 
 export const WithError: Story = {
-  name: 'С отображением ошибки',
+  name: 'With an error',
   args: {
     error: true,
-    errors: ['В поиск можно писать только текст'],
+    errors: ['Enter text only in the search field'],
   },
 }

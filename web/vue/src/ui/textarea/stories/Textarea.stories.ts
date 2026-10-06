@@ -17,7 +17,7 @@ type TVueTextareaStoryMeta = IYVueTextareaProps & TYCoreTextareaMeta & {
 }
 
 /**
- * Vue-обертка над Core Textarea
+ * Vue wrapper for Core Textarea
  */
 const meta: Meta<TVueTextareaStoryMeta> = {
   title: 'Inputs/✅ TextArea',
@@ -120,7 +120,7 @@ const meta: Meta<TVueTextareaStoryMeta> = {
     ),
     modelValue: {
       type: 'string',
-      description: 'Дефолтный v-model над базовым textarea value',
+      description: 'Default v-model for the textarea value',
       ...getComponentContentTable(),
     },
     onUpdateModelValue: yCoreTextareaStoryMeta.argTypes?.onInput,
@@ -130,7 +130,7 @@ const meta: Meta<TVueTextareaStoryMeta> = {
       yCoreTextareaStoryMeta.args ?? {},
       ['value', 'onBlur', 'onFocus', 'onKeydown', 'onRenderTextarea', 'onMouseLeave', 'onMouseEnter', 'onClear', 'onInput', 'onClick', 'onClickOutside'],
     ),
-    modelValue: 'Текст для textarea',
+    modelValue: 'Sample textarea content',
   },
 }
 

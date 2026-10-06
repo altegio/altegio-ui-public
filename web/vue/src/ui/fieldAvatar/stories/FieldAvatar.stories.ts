@@ -7,7 +7,7 @@ import yCoreFieldAvatarStoryMeta from '~core/ui/fieldAvatar/stories/FieldAvatar.
 type TVueFieldAvatarStoryMeta = IYVueFieldAvatarProps
 
 /**
- * Vue-обертка над Core FieldAvatar
+ * Vue wrapper for Core FieldAvatar
  */
 const meta: Meta<TVueFieldAvatarStoryMeta> = {
   title: 'Inputs/Partials/⚠️ FieldAvatar',

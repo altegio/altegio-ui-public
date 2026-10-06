@@ -8,7 +8,7 @@ import yCorePopoverStoryMeta from '~core/ui/popover/stories/Popover.stories'
 type TVuePopoverStoryMeta = IYVuePopoverProps
 
 /**
- * Vue-обертка над Popover
+ * Vue wrapper for Popover
  */
 const meta: Meta<TVuePopoverStoryMeta> = {
   title: '⚠️ Popover',
@@ -27,7 +27,7 @@ const meta: Meta<TVuePopoverStoryMeta> = {
       <div style="width: 300px; height: 300px; border: 1px dashed; display: flex; justify-content: center; align-items: center;border-radius: 10px;">
         <YPopover v-bind="args">
           <template #activator>
-            <YSimpleButton label="Нажмите меня" />
+            <YSimpleButton label="Click me" />
           </template>
 
           <template #content>{{ args.tipContent }}</template>

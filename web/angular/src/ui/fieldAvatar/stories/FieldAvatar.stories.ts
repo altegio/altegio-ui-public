@@ -4,7 +4,7 @@ import { YFieldAvatar } from '~ng/ui/fieldAvatar'
 import yCoreFieldAvatarStoryMeta from '~core/ui/fieldAvatar/stories/FieldAvatar.stories'
 
 /**
- * Angular-обертка над Core FieldAvatar
+ * Angular wrapper for Core FieldAvatar
  */
 const meta: Meta<YFieldAvatar> = {
   title: 'Inputs/Partials/⚠️ FieldAvatar',

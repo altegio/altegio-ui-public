@@ -10,7 +10,7 @@ import { useArgs } from '@storybook/preview-api'
 import { type YNgSelectFieldInputEvent } from '~ng/ui/selectField/models/types'
 
 /**
- * Angular-обертка над Core SelectField
+ * Angular wrapper for Core SelectField
  */
 const meta: Meta<YSelectField & TYCoreSelectFieldStoryMeta> = {
   title: 'Inputs/🔍 SelectField',

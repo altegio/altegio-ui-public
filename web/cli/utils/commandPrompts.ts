@@ -18,7 +18,7 @@ export const createChoices = <T extends EPlatform>(enumObject: Record<string, T>
  * @returns {true | string} true если значение корректно, текст ошибки если нет
  */
 export const validateComponentName = (value: string) => {
-  if (!value) return 'Название не может быть пустым'
-  if (!isKebabCase(value)) return 'Используйте формат kebab-case'
+  if (!value) return 'Component name cannot be empty'
+  if (!isKebabCase(value)) return 'Use kebab-case'
   return true
 }

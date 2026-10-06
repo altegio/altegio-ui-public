@@ -4,25 +4,25 @@ import { EYSizes } from '~shared/types/global'
 
 export const error: InputType = {
   type: 'boolean',
-  description: 'Состояние ошибки',
+  description: 'Error state',
   ...getComponentStateTable(),
 }
 
 export const loading: InputType = {
   type: 'boolean',
-  description: 'Состояние загрузки',
+  description: 'Loading state',
   ...getComponentStateTable(),
 }
 
 export const errors: InputType = {
   control: { type: 'object' },
-  description: 'Массив с текстовыми ошибками, отображаемыми в аннотации',
+  description: 'Error messages displayed in the annotation',
   ...getComponentContentTable(),
 }
 
 export const items: InputType = {
   control: { type: 'object' },
-  description: 'Массив с элементами c обязательным id и [content] полем, отображаемыми в списке',
+  description: 'List items with a required id and a [content] field',
   ...getComponentContentTable(),
 }
 
@@ -31,7 +31,7 @@ export const size = (sizes?: readonly EYSizes[]): InputType => {
     type: 'string',
     control: 'radio',
     options: sizes ? [...sizes] : Object.values(EYSizes),
-    description: 'Размер компонента',
+    description: 'Component size',
     ...getComponentStateTable(),
   }
 }
@@ -41,37 +41,37 @@ export const numericSize = (sizes?: readonly number[] | readonly `${number}`[]):
     type: 'string',
     control: 'radio',
     options: sizes ? [...sizes] : Array.from({ length: 9 }, (_, i) => (i + 1) * 4),
-    description: 'Размер компонента',
+    description: 'Component size',
     ...getComponentStateTable(),
   }
 }
 
 export const hoverable: InputType = {
   type: 'boolean',
-  description: 'Делает компонент доступным для hover',
+  description: 'Enables the hover state',
   ...getComponentStateTable(),
 }
 
 export const focusable: InputType = {
   type: 'boolean',
-  description: 'Делает компонент доступным для focus',
+  description: 'Enables the focus state',
   ...getComponentStateTable(),
 }
 
 export const hideSpaceLeft: InputType = {
   type: 'boolean',
-  description: 'Убрать отступ слева',
+  description: 'Remove left padding',
   ...getComponentStateTable(),
 }
 
 export const hideSpaceRight: InputType = {
   type: 'boolean',
-  description: 'Убрать отступ справа',
+  description: 'Remove right padding',
   ...getComponentStateTable(),
 }
 
 export const onClick: InputType = {
   type: 'boolean',
-  description: 'Обработчик кликов',
+  description: 'Click handler',
   ...getComponentEmitsTable(),
 }

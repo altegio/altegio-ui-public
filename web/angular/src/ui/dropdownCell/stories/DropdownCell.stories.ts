@@ -4,7 +4,7 @@ import { YDropdownCell } from '~ng/ui/dropdownCell'
 import yCoreDropdownCellStoryMeta from '~core/ui/dropdownCell/stories/DropdownCell.stories'
 
 /**
- * Angular-обертка над Core DropdownCell
+ * Angular wrapper for Core DropdownCell
  */
 const meta: Meta<YDropdownCell> = {
   title: '✅ DropdownCell',

@@ -29,7 +29,6 @@ type TYCoreSimpleRadioButtonStoryMeta = IYCoreSimpleRadioButtonProps &
 /**
  * ## Core SimpleRadioButton
  *
- * Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components--IN-PROGRESS-?node-id=594-29322&p=f&m=dev)
  */
 const meta: Meta<TYCoreSimpleRadioButtonStoryMeta> = {
   title: '⚙️ RadioButton',
@@ -89,7 +88,7 @@ const meta: Meta<TYCoreSimpleRadioButtonStoryMeta> = {
     },
     onChecked: {
       type: 'function',
-      description: 'Событие изменение статуса радиокнопки',
+      description: 'Radio button change event',
       ...getComponentEmitsTable(),
     },
   },

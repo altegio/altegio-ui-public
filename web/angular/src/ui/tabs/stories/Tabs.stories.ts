@@ -9,7 +9,7 @@ import { YTab } from '~ng/ui/tab'
 type TYNgTabsMeta = YTabs & IYNgTabsProps & TYCoreTabsStoryMeta
 
 /**
- * Angular-обертка над Tabs
+ * Angular wrapper for Tabs
  */
 const meta: Meta<TYNgTabsMeta> = {
   title: '⚙️ Tabs',

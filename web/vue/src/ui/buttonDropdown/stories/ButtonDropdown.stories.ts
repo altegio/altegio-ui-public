@@ -23,7 +23,7 @@ import type { IYVueButtonDropdownProps } from '~vue/ui/buttonDropdown/models/typ
 type TVueButtonDropdownStoryMeta = IYVueButtonDropdownProps
 
 /**
- * Vue-обертка над Core ButtonDropdown
+ * Vue wrapper for Core ButtonDropdown
  */
 const meta: Meta<TVueButtonDropdownStoryMeta> = {
   title: 'Buttons/✅ ButtonDropdown',
@@ -72,7 +72,7 @@ const meta: Meta<TVueButtonDropdownStoryMeta> = {
     ...omit(yCoreButtonDropdownStoryMeta.argTypes ?? {}, ['isOpen']),
     modelValue: {
       type: 'boolean',
-      description: 'Дефолтный v-model над базовым is-open value',
+      description: 'Default v-model for the is-open value',
       ...getComponentContentTable(),
     },
   },
@@ -152,13 +152,13 @@ export const States: Story = {
     },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YButtonDropdown :items="items" label="Обычная"></YButtonDropdown>
+        <YButtonDropdown :items="items" label="Default"></YButtonDropdown>
         
-        <YButtonDropdown :items="items" label="Заблокированная" :disabled="true"></YButtonDropdown>
+        <YButtonDropdown :items="items" label="Disabled" :disabled="true"></YButtonDropdown>
         
-        <YButtonDropdown :items="items" label="Загрузка" :loading="true"></YButtonDropdown>
+        <YButtonDropdown :items="items" label="Loading" :loading="true"></YButtonDropdown>
 
-        <YButtonDropdown :items="items" label="Открытое" :is-open="true"></YButtonDropdown>
+        <YButtonDropdown :items="items" label="Open" :is-open="true"></YButtonDropdown>
       </div>
     `,
   }),
@@ -201,7 +201,7 @@ export const FullWidth: Story = {
     template: `
       <div style="min-height: 100px;">
         <YButtonDropdown
-          label="Растянутая кнопка"
+          label="Full-width button"
           :fullWidth="true"
           :items="items"
         ></YButtonDropdown>

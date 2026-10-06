@@ -4,7 +4,7 @@ import { YFieldIcon } from '~ng/ui/fieldIcon'
 import yCoreFieldIconStoryMeta from '~core/ui/fieldIcon/stories/FieldIcon.stories'
 
 /**
- * Angular-обертка над Core FieldIcon
+ * Angular wrapper for Core FieldIcon
  */
 const meta: Meta<YFieldIcon> = {
   title: 'Inputs/Partials/⚠️ FieldIcon',

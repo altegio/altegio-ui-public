@@ -13,7 +13,7 @@ import { omit } from 'radash'
 import { action } from '@storybook/addon-actions'
 
 /**
- * Angular-обертка над Core FieldWrapper
+ * Angular wrapper for Core FieldWrapper
  */
 const meta: Meta<YFieldWrapper> = {
   title: 'Inputs/Partials/🔍 FieldWrapper',

@@ -9,7 +9,7 @@ import { getComponentContentTable } from '~shared/.storybook/tables'
 type TVueSimpleCheckboxStoryMeta = IYVueSimpleCheckboxProps
 
 /**
- * Vue-обертка над Core SimpleCheckbox
+ * Vue wrapper for Core SimpleCheckbox
  */
 const meta: Meta<TVueSimpleCheckboxStoryMeta> = {
   title: '⚙️ SimpleCheckbox',
@@ -39,7 +39,7 @@ const meta: Meta<TVueSimpleCheckboxStoryMeta> = {
     modelValue: {
       type: 'boolean',
       description:
-        'Дефолтный v-model над базовым checked value. Подробнее - https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#checked',
+        'Default v-model for the checked value. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#checked',
       ...getComponentContentTable(),
     },
   },

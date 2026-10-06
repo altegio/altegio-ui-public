@@ -1,11 +1,11 @@
-# Упрощенный API для таблицы через утилиты маппинга
+# Vue table mapping utilities
 
-## Проблема
+## Manual mapping
 
-Текущее использование таблицы требует много шаблонного кода для преобразования простых данных:
+Mapping plain application data to the table’s cell structure manually can require repetitive code:
 
 ```typescript
-// Старый способ - много кода
+// Build table rows and cells manually
 const sortedListNew = computed((): IYVueTableItem[] => {
   return sortedList.value.map(item => {
     const result: IYVueTableItem = {
@@ -44,9 +44,11 @@ const sortedListNew = computed((): IYVueTableItem[] => {
 })
 ```
 
-## Решение: Утилиты маппинга
+## Use the mapping utilities
 
-### Базовый пример
+The `~vue` alias in these examples is configured inside this repository. For other projects, use an import path supported by your build setup. The snippets assume your application provides `sortedList` and the report event handlers.
+
+### Basic example
 
 ```vue
 <template>
@@ -57,8 +59,8 @@ const sortedListNew = computed((): IYVueTableItem[] => {
   >
     <template #row-inner="{ row }">
       <reports-list-row-new
-        v-if="row.report"
-        :report="row.report"
+        v-if="row.actions?.report"
+        :report="row.actions.report"
         @open:report="openReportAction"
         @delete:report="tryDeleteReport"
         @duplicate:report="tryDuplicateReport"
@@ -71,82 +73,87 @@ const sortedListNew = computed((): IYVueTableItem[] => {
 import { computed } from 'vue'
 import { createSimpleTable, type ISimpleTableHeader } from '~vue/ui/table/utils/mappers'
 
-// Простое определение колонок
+// Define the columns
 const columns: ISimpleTableHeader[] = [
-  { key: 'name', label: 'Название', sortable: true, gridTemplate: 'minmax(200px, 1fr)' },
-  { key: 'author', label: 'Автор', gridTemplate: '150px' },
-  { key: 'lastReportUpdatedDate', label: 'Дата обновления', gridTemplate: '180px' },
+  { key: 'name', label: 'Name', sortable: true, gridTemplate: 'minmax(200px, 1fr)' },
+  { key: 'author', label: 'Author', gridTemplate: '150px' },
+  { key: 'lastReportUpdatedDate', label: 'Last updated', gridTemplate: '180px' },
   { key: 'actions', label: '', gridTemplate: '100px' }
 ]
 
-// Простые данные (ваши исходные объекты)
+// Map your application data to plain rows
 const simpleData = computed(() => {
   return sortedList.value.map(item => ({
     id: item.id,
     name: item.name,
     author: item.author,
     lastReportUpdatedDate: item.lastReportUpdatedDate ?? '',
-    // Для кастомного контента можно добавить дополнительные поля
+    // Add cell properties for custom content
     actions: { label: '', report: item },
-    // Сохраняем оригинальный объект для слота
-    report: item
   }))
 })
 
-// Автоматическое преобразование в формат таблицы
-const { headers: tableHeaders, items: tableItems } = computed(() => {
-  return createSimpleTable(simpleData.value, columns, {
-    rowIdField: 'id',
-    autoEllipsis: true
-  })
-})
+// Convert the rows to the table format
+const table = computed(() => createSimpleTable(simpleData.value, columns, {
+  rowIdField: 'id',
+  autoEllipsis: true
+}))
+const tableHeaders = computed(() => table.value.headers)
+const tableItems = computed(() => table.value.items)
 </script>
 ```
 
-### Автоматическое создание колонок
+### Generate columns automatically
 
 ```typescript
 import { createHeadersFromObject } from '~vue/ui/table/utils/mappers'
 
-// Автоматически создает колонки из первого объекта данных
+// Generate columns from the first data object
 const columns = computed(() => {
   if (simpleData.value.length === 0) return []
-  
-  return createHeadersFromObject(simpleData.value[0], {
-    // Переопределяем только нужные свойства
-    name: { label: 'Название отчета', sortable: true, gridTemplate: 'minmax(200px, 1fr)' },
-    author: { label: 'Автор отчета', gridTemplate: '150px' },
-    lastReportUpdatedDate: { label: 'Дата обновления', gridTemplate: '180px' },
-    actions: { label: 'Действия', sortable: false, gridTemplate: '100px' }
+
+  const { id, ...cellData } = simpleData.value[0]
+  return createHeadersFromObject(cellData, {
+    // Override the properties you need
+    name: { label: 'Report name', sortable: true, gridTemplate: 'minmax(200px, 1fr)' },
+    author: { label: 'Report author', gridTemplate: '150px' },
+    lastReportUpdatedDate: { label: 'Last updated', gridTemplate: '180px' },
+    actions: { label: 'Actions', sortable: false, gridTemplate: '100px' }
   })
 })
 ```
 
-### Расширенные опции маппинга
+### Mapping options
 
 ```typescript
-const mappingOptions = {
-  // Поле для rowId (по умолчанию 'id')
+import type { ITableMappingOptions } from '~vue/ui/table/utils/mappers'
+
+const mappingOptions: ITableMappingOptions = {
+  // Field used for rowId (defaults to 'id')
   rowIdField: 'id',
-  
-  // Кастомная генерация ID для строк
-  generateRowId: (row, index) => `report-${row.id}`,
-  
-  // Кастомная генерация ID для ячеек
+
+  // Generate row IDs when the ID field is absent
+  generateRowId: (_, index) => `report-${index}`,
+
+  // Generate cell IDs
   generateCellId: (rowId, columnKey, value) => `${rowId}-${columnKey}`,
-  
-  // Автоматически добавлять ellipsis для длинных строк
+
+  // Enable ellipsis for string values longer than 50 characters
   autoEllipsis: true
 }
 
-const { headers, items } = computed(() => {
-  return createSimpleTable(simpleData.value, columns.value, mappingOptions)
-})
+const table = computed(() => createSimpleTable(
+  simpleData.value,
+  columns.value,
+  mappingOptions
+))
+const headers = computed(() => table.value.headers)
+const items = computed(() => table.value.items)
 ```
 
-### Пример для сложных данных
+### Object-valued cells
 
-Если у вас есть сложные данные в ячейках, вы можете передать объекты:
+Pass an object as a cell value to provide a label and additional rendering properties:
 
 ```typescript
 const simpleData = computed(() => {
@@ -154,12 +161,12 @@ const simpleData = computed(() => {
     id: item.id,
     name: item.name,
     author: item.author,
-    // Сложная ячейка с дополнительными данными
+    // A cell with additional data
     status: {
       label: item.status,
       status: item.isActive,
       ellipsis: false,
-      // Любые дополнительные поля для кастомного рендеринга
+      // Additional properties for custom rendering
       customData: item
     },
     actions: { 
@@ -171,9 +178,9 @@ const simpleData = computed(() => {
 })
 ```
 
-### Прямое использование функций маппинга
+### Use the mapping functions directly
 
-Если нужен больший контроль, можно использовать функции напрямую:
+Map headers and rows separately when you need more control:
 
 ```typescript
 import { mapHeaders, mapTableData } from '~vue/ui/table/utils/mappers'
@@ -187,36 +194,36 @@ const tableItems = computed(() => mapTableData(
 ))
 ```
 
-## API утилит
+## Utility API
 
 ### `createSimpleTable(data, columns, options?)`
-Основная функция для преобразования простых данных в формат таблицы.
+Returns `{ headers, items }` in the table’s expected format.
 
 ### `mapHeaders(columns)`
-Преобразует простые заголовки в формат таблицы.
+Converts column definitions into table headers.
 
 ### `mapTableData(data, columns, options?)`
-Преобразует данные в формат таблицы.
+Converts plain rows into table items.
 
 ### `createHeadersFromObject(sample, overrides?)`
-Автоматически создает заголовки из объекта-примера.
+Creates a column for each key in a sample object, with optional property overrides.
 
-## Типы
+## Types
 
-- `ISimpleTableRow` - интерфейс для строки простых данных
-- `ISimpleTableHeader` - интерфейс для заголовка
-- `ITableMappingOptions` - опции маппинга
+- `ISimpleTableRow` - plain data row
+- `ISimpleTableHeader` - column definition
+- `ITableMappingOptions` - mapping options
 
-## Сравнение объема кода
+## Code size
 
-**Старый способ**: ~40 строк кода для маппинга данных
-**Новый способ**: ~10 строк кода
+**Manual mapping**: about 40 lines to map the example data
+**Mapping utilities**: about 10 lines for the equivalent mapping
 
-## Совместимость
+## Integration notes
 
-- Все ID поля генерируются автоматически
-- Плагины работают как раньше (Dragging и т.д.)
-- Селекция строк работает через rowId
-- Все слоты и события полностью поддерживаются
-- Полная обратная совместимость с существующим API
-- Никаких изменений в компоненте YTable 
+- Row IDs use `rowIdField` when present; otherwise they are generated. Cell IDs are generated automatically.
+- The mapped data uses the existing table structure, including headers and cell objects.
+- Row selection uses `rowId`.
+- Use the table’s existing slots and events to render and interact with mapped cells.
+- The utilities can be used alongside manual table data mapping.
+- No changes to the `YTable` component are required.

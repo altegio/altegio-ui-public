@@ -27,6 +27,17 @@ export function sanitize(directory) {
   if (existsSync(npmrc)) writeFileSync(npmrc, 'registry=https://registry.npmjs.org/\n');
   const ci = join(directory, '.gitlab-ci.yml');
   if (existsSync(ci)) writeFileSync(ci, '# Internal delivery configuration is maintained in the source repository.\n');
+  const changelog = join(directory, 'CHANGELOG.md');
+  if (existsSync(changelog)) {
+    writeFileSync(changelog, `# Changelog
+
+This repository publishes the current Altegio UI code as public snapshots.
+
+Each update is recorded in the [public commit history](https://github.com/altegio/altegio-ui-public/commits/main/). Snapshot commits describe the public code state; they do not represent package releases.
+
+See the [README](./README.md) for setup, build, test, and component development instructions.
+`);
+  }
   const packagePath = join(directory, 'package.json');
   if (existsSync(packagePath)) {
     const pkg = JSON.parse(readFileSync(packagePath, 'utf8'));

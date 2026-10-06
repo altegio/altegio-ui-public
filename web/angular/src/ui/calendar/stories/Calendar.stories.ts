@@ -11,7 +11,7 @@ import { action } from '@storybook/addon-actions'
 type TYCalendarStoryMeta = YCalendar & TStoryProps
 
 /**
- * Angular-обертка над Calendar
+ * Angular wrapper for Calendar
  */
 const meta: Meta<TYCalendarStoryMeta> = {
   title: '✅ Calendar',
@@ -57,7 +57,7 @@ type Story = StoryObj<YCalendar>
 export const Playground: Story = { args: {} }
 
 /**
- * С русской локализацией
+ * With the Russian locale
  */
 export const WithRussianLocale: Story = {
   render: (args) => ({
@@ -73,7 +73,7 @@ export const WithRussianLocale: Story = {
 }
 
 /**
- * С английской локализацией
+ * With the English locale
  */
 export const WithEnglishLocale: Story = {
   render: (args) => ({

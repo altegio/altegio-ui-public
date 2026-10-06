@@ -28,7 +28,7 @@ export const Icons = ({ icons }: TIconsProps) => {
           onClick={() => {
             copyToClipboard(icon.name)
             show({
-              content: `${icon.name}: успешно скопирован.`,
+              content: `${icon.name}: copied successfully.`,
               duration: 2000
             })
           }}

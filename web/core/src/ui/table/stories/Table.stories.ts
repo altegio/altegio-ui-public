@@ -106,54 +106,54 @@ const meta: TYCoreTableMeta = {
   argTypes: {
     loading: {
       type: 'boolean',
-      description: 'Показать загрузку',
+      description: 'Show loading',
       ...getComponentStateTable(loading),
     },
     disabled: {
       type: 'boolean',
-      description: 'Деактивировать таблицу',
+      description: 'Disable the table',
       ...getComponentStateTable(disabled),
     },
     hideHead: {
       type: 'boolean',
-      description: 'Скрыть slot "head"',
+      description: 'Hide the "head" slot',
       ...getComponentStateTable(hideHead),
     },
     hideBar: {
       type: 'boolean',
-      description: 'Скрыть slot "bar"',
+      description: 'Hide the "bar" slot',
       ...getComponentStateTable(hideBar),
     },
 
     // Story Controls
     showActionsSlot: {
       type: 'boolean',
-      description: 'Показать слот "actions"',
+      description: 'Show the "actions" slot',
       ...storyControlsTable,
     },
     showHeadSlot: {
       type: 'boolean',
-      description: 'Показать слот "head"',
+      description: 'Show the "head" slot',
       ...storyControlsTable,
     },
     showBarSlot: {
       type: 'boolean',
-      description: 'Показать слот "bar"',
+      description: 'Show the "bar" slot',
       ...storyControlsTable,
     },
     showBodySlot: {
       type: 'boolean',
-      description: 'Показать слот "body"',
+      description: 'Show the "body" slot',
       ...storyControlsTable,
     },
     showPaginationSlot: {
       type: 'boolean',
-      description: 'Показать слот "pagination"',
+      description: 'Show the "pagination" slot',
       ...storyControlsTable,
     },
     showPlaceholderSlot: {
       type: 'boolean',
-      description: 'Показать слот "placeholder"',
+      description: 'Show the "placeholder" slot',
       ...storyControlsTable,
     },
   },

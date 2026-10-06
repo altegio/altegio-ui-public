@@ -7,7 +7,7 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 type IYCoreErrorStoryMeta = YError & IYCoreErrorStoryProps
 
 /**
- * Angular-обертка над Core Error
+ * Angular wrapper for Core Error
  */
 const meta: Meta<IYCoreErrorStoryMeta> = {
   title: '⚙️ Error',

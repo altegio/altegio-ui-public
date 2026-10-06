@@ -17,14 +17,14 @@ import type { IStoryConfig } from '~web/shared/.storybook/types'
  * Используется для обеспечения единообразия между фреймворками
  */
 export const SIMPLE_BUTTON_STORIES_CONFIG: Record<string, IStoryConfig> = {
-  Playground: { parameters: { docs: { title: 'Playground', description: { story: 'Интерактивная площадка для экспериментов с компонентом.\nИспользуйте контролы для изменения свойств и изучения поведения кнопки.' } } } },
-  Variants: { parameters: { docs: { title: 'Варианты кнопок', description: { story: 'Демонстрация всех доступных вариантов стилизации.' } } } },
-  Sizes: { parameters: { docs: { title: 'Размеры кнопок', description: { story: 'Демонстрация всех доступных размеров.' } } } },
-  States: { parameters: { docs: { title: 'Состояния кнопок', description: { story: 'Демонстрация различных состояний: обычное, заблокированное, загрузка.' } } } },
-  PseudoStates: { parameters: { docs: { title: 'Псевдо-состояния', description: { story: 'Демонстрация псевдо-состояний с помощью CSS классов.\nНаведите курсор на кнопки, чтобы увидеть hover эффект.' } } } },
-  FullWidth: { parameters: { docs: { title: 'Полная ширина', description: { story: 'Демонстрация кнопки, растянутой на всю ширину контейнера.' } } }, args: { fullWidth: true } },
-  LinkMode: { parameters: { docs: { title: 'Режим ссылки', description: { story: 'Кнопка может работать как ссылка при указании href.' } } } },
-  ComplexDemo: { parameters: { docs: { title: 'Комплексная демонстрация', description: { story: 'Демонстрация всех вариантов и размеров в одной таблице.' } } } },
+  Playground: { parameters: { docs: { title: 'Playground', description: { story: 'Try the button interactively.\nUse the controls to explore its properties and behavior.' } } } },
+  Variants: { parameters: { docs: { title: 'Button variants', description: { story: 'All available styling variants.' } } } },
+  Sizes: { parameters: { docs: { title: 'Button sizes', description: { story: 'All available sizes.' } } } },
+  States: { parameters: { docs: { title: 'Button states', description: { story: 'Default, disabled, and loading states.' } } } },
+  PseudoStates: { parameters: { docs: { title: 'Pseudo states', description: { story: 'Pseudo states applied through CSS classes.\nHover over the buttons to see the effect.' } } } },
+  FullWidth: { parameters: { docs: { title: 'Full width', description: { story: 'A button that fills its container.' } } }, args: { fullWidth: true } },
+  LinkMode: { parameters: { docs: { title: 'Link mode', description: { story: 'The button can act as a link when href is set.' } } } },
+  ComplexDemo: { parameters: { docs: { title: 'Combined example', description: { story: 'All variants and sizes in a single table.' } } } },
 } as const
 
 /**
@@ -33,24 +33,24 @@ export const SIMPLE_BUTTON_STORIES_CONFIG: Record<string, IStoryConfig> = {
 export const createSimpleButtonDescription = (frameworkName: EFrameworkName, frameworkSpecifics = '') => `
 ## ${frameworkName} SimpleButton
 
-Базовый компонент кнопки, который может быть как обычной кнопкой, так и ссылкой.
-Поддерживает различные варианты отображения, размеры, состояния загрузки и блокировки.
+A button that can also act as a link.
+Supports multiple variants and sizes, and loading and disabled states.
 
-### Основные возможности:
-- 4 варианта стилизации: primary, outline, outline-filled, text
-- 3 размера: small, medium, large
-- Состояния: обычное, заблокированное, загрузка
-- Режим ссылки с поддержкой target
-- Полная ширина (fullWidth) - растягивает кнопку на всю ширину контейнера
-- Гибкая настройка через hostStyles
-- Default слот для размещения любого контента: текста, иконок, их комбинаций
+### Features:
+- 4 styling variants: primary, outline, outline-filled, text
+- 3 sizes: small, medium, large
+- States: default, disabled, and loading
+- Link mode with target support
+- Full width (fullWidth): fills the container width
+- Customizable through hostStyles
+- Default slot for content such as text, icons, or both
 
-### Слоты:
-- **default** - основной слот для контента кнопки (текст, иконки, другие элементы)
+### Slots:
+- **default** - main slot for button content (text, icons, and other elements)
 
 ${frameworkSpecifics}
 
-Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components?node-id=628-18303&p=f&m=dev)`
+`
 
 /**
  * Создает параметры для истории SimpleButton

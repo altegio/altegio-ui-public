@@ -49,7 +49,7 @@ const createCalendarTemplate = ({
 }
 
 /**
- * Пример календаря с русской локализацией
+ * Calendar with the Russian locale
  */
 export const RussianCalendar: Story = {
   render: (args) => createCalendarTemplate(args),
@@ -62,11 +62,11 @@ export const RussianCalendar: Story = {
     maxDate: undefined,
     onSelect: fn(),
   },
-  name: 'Русская локализация',
+  name: 'Russian locale',
 }
 
 /**
- * Пример календаря с английской локализацией
+ * Calendar with the English locale
  */
 export const EnglishCalendar: Story = {
   render: (args) => createCalendarTemplate(args),
@@ -74,42 +74,42 @@ export const EnglishCalendar: Story = {
     ...RussianCalendar.args,
     localeData: en,
   },
-  name: 'Английская локализация',
+  name: 'English locale',
 }
 
 /**
- * Календарь с ограничением дат (текущий месяц, с 5 по 25 число)
+ * Calendar restricted to days 5–25 of the current month
  */
 export const DateRangeCalendar: Story = {
   render: (args) => createCalendarTemplate(args),
   args: {
-    ...RussianCalendar.args,
+    ...EnglishCalendar.args,
     minDate: new Date(new Date().getFullYear(), new Date().getMonth(), 5).toISOString(),
     maxDate: new Date(new Date().getFullYear(), new Date().getMonth(), 25).toISOString(),
   },
-  name: 'С ограничением дат',
+  name: 'With date limits',
 }
 
 /**
- * Календарь для выбора диапазона дат
+ * Date range calendar
  */
 export const RangeDateCalendar: Story = {
   render: (args) => createCalendarTemplate(args),
   args: {
-    ...RussianCalendar.args,
+    ...EnglishCalendar.args,
     isRange: true,
   },
-  name: 'Выбор диапазона дат',
+  name: 'Date range selection',
 }
 
 /**
- * Неактивный календарь
+ * Disabled calendar
  */
 export const DisabledCalendar: Story = {
   render: (args) => createCalendarTemplate(args),
   args: {
-    ...RussianCalendar.args,
+    ...EnglishCalendar.args,
     disabled: true,
   },
-  name: 'Неактивный календарь',
+  name: 'Disabled calendar',
 }

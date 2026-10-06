@@ -14,7 +14,7 @@ import { YFieldIcon } from '~vue/ui/fieldIcon'
 type TVueSelectFieldStoryMeta = IYVueSelectFieldProps & TYCoreSelectFieldStoryMeta
 
 /**
- * Vue-обертка над Core SelectField
+ * Vue wrapper for Core SelectField
  */
 const meta: Meta<TVueSelectFieldStoryMeta> = {
   title: 'Inputs/✅ SelectField',
@@ -123,7 +123,7 @@ const meta: Meta<TVueSelectFieldStoryMeta> = {
         </YSelectField>
 
         <p style="margin: 40px 0 10px; font-size: 12px;">
-          Компонент размером в 200px
+          Component with a width of 200px
         </p>
         
         <YSelectField 

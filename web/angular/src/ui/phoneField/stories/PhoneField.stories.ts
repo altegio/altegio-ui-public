@@ -8,7 +8,7 @@ import type { SelectOptionEvent, FocusEvent, BlurEvent, PhoneFieldChangeEvent } 
 import { useArgs } from '@storybook/preview-api'
 
 /**
- * Angular-обертка над Core PhoneField
+ * Angular wrapper for Core PhoneField
  */
 const meta: Meta<TYCorePhoneFieldStoryMeta> = {
   title: 'Inputs/🔍 PhoneField',

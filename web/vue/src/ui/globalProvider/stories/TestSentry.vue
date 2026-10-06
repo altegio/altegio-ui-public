@@ -1,16 +1,16 @@
 <template>
   <div class="test-sentry">
     <YButton
-      label="Синхронная ошибка"
+      label="Synchronous error"
       @click="throwError"
     />
 
     <y-button @click="throwAsyncError">
-      Асинхронная ошибка
+      Asynchronous error
     </y-button>
 
     <y-button @click="throwRenderError">
-      Ошибка рендеринга
+      Rendering error
     </y-button>
 
     <!-- <div v-if="shouldRenderError">
@@ -28,7 +28,7 @@
   const shouldRenderError = ref(false)
 
   const throwError = () => {
-    throw new Error('Тестовая синхронная ошибка из TestSentry компонента from core')
+    throw new Error('Sample synchronous error from the TestSentry core component')
   }
 
   const throwAsyncError = async() => {
@@ -36,7 +36,7 @@
       await new Promise((_, reject) => {
         setTimeout(
           () => {
-            reject(new Error('Тестовая асинхронная ошибка из TestSentry компонента'))
+            reject(new Error('Sample asynchronous error from the TestSentry component'))
           },
           100,
         )

@@ -68,9 +68,9 @@ export const States: Story = {
   render: () => ({
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YBrandButton variant="${EYCoreBrandButtonVariant.WhatsApp}" text="Обычная"></YBrandButton>
-        <YBrandButton variant="${EYCoreBrandButtonVariant.WhatsApp}" [disabled]="true" text="Заблокированная"></YBrandButton>
-        <YBrandButton variant="${EYCoreBrandButtonVariant.WhatsApp}" [loading]="true" text="Загрузка"></YBrandButton>
+        <YBrandButton variant="${EYCoreBrandButtonVariant.WhatsApp}" text="Default"></YBrandButton>
+        <YBrandButton variant="${EYCoreBrandButtonVariant.WhatsApp}" [disabled]="true" text="Disabled"></YBrandButton>
+        <YBrandButton variant="${EYCoreBrandButtonVariant.WhatsApp}" [loading]="true" text="Loading"></YBrandButton>
       </div>
     `,
   }),
@@ -85,7 +85,7 @@ export const Variants: Story = {
         <YBrandButton
           *ngFor="let variant of brandButtonVariants"
           [variant]="variant"
-          [text]="'Войти через ' + variant"
+          [text]="'Sign in with ' + variant"
         />
       </div>
     `,

@@ -8,7 +8,7 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 type TYCoreTextMeta = YText & IYCoreTextStoryProps
 
 /**
- * Angular-обертка над Text
+ * Angular wrapper for Text
  */
 const meta: Meta<TYCoreTextMeta> = {
   title: '🔍 Text',

@@ -31,14 +31,14 @@ function getPrereleaseNpmVersions(packageName) {
 
     return [];
   } catch (e) {
-    log(`Ошибка при получении версий npm пакета: ${e.message}`);
+    log(`Failed to fetch npm package versions: ${e.message}`);
     return [];
   }
 }
 
 function getMergedBranches(fetchDepth = 50, hours = 24) {
   try {
-    log(`Получаю список коммитов в main за последние ${hours} часа`)
+    log(`Fetching main commits from the last ${hours} hours`)
 
     execSync(`git fetch origin --depth=${fetchDepth}`, { encoding: 'utf8', stdio: 'pipe' });
 
@@ -54,13 +54,13 @@ function getMergedBranches(fetchDepth = 50, hours = 24) {
       let match = line.match(/Merge branch '([^']+)' into 'main'/)
 
       if (match) {
-        log(`Найдена ветка ${match[1]}`)
+        log(`Branch found: ${match[1]}`)
         branchNames.add(match[1])
       }
     }
     return Array.from(branchNames.values());
   } catch (e) {
-    log(`Ошибка при получении списка влитых веток: ${e.message}`);
+    log(`Failed to retrieve merged branches: ${e.message}`);
     return [];
   }
 }
@@ -69,7 +69,7 @@ function parsePrereleaseVersion(version) {
   // Найдём первую часть (semver) и вторую (branch.build)
   const dashIndex = version.indexOf('-');
   if (dashIndex === -1) {
-    throw new Error(`Некорректный формат prerelease версии: ${version}`);
+    throw new Error(`Invalid prerelease version format: ${version}`);
   }
 
   const semVer = version.slice(0, dashIndex);
@@ -78,7 +78,7 @@ function parsePrereleaseVersion(version) {
   // Последняя точка разделяет branch и build
   const lastDotIndex = rest.lastIndexOf('.');
   if (lastDotIndex === -1) {
-    throw new Error(`Некорректный формат prerelease версии: ${version}`);
+    throw new Error(`Invalid prerelease version format: ${version}`);
   }
 
   const branchName = rest.slice(0, lastDotIndex);
@@ -103,18 +103,18 @@ function filterPrereleaseVersionsByBranches(prereleaseVersions, branchNames) {
 }
 
 async function main() {
-  log('Начинаем отчистку prerelease версий')
+  log('Starting prerelease cleanup')
 
   const packageName = readPackageName();
   const branchHistoryHours = process.env.BRANCH_HISTORY_HOURS || 24
   const gitFetchDepth = process.env.GIT_FETCH_DEPTH || 50
 
-  log(`Конфигурация: ${branchHistoryHours}ч, глубина: ${gitFetchDepth}`)
+  log(`Configuration: ${branchHistoryHours} hours of branch history, fetch depth: ${gitFetchDepth}`)
 
   const prereleaseVersions = getPrereleaseNpmVersions(packageName)
 
   if (prereleaseVersions.length === 0) {
-    log('Prerelease версии не найдены')
+    log('No prerelease versions found')
     return
   }
 
@@ -123,16 +123,16 @@ async function main() {
   const filteredPrereleaseVersions = filterPrereleaseVersionsByBranches(prereleaseVersions, mergedBranches)
 
   if (filteredPrereleaseVersions.length === 0) {
-    log('Не найдено prerelease версий, которые были влиты в main за последние 24 часа')
+    log('No prerelease versions merged into main in the last 24 hours')
     return
   }
 
-  log(`Найденные prerelease версии которые были влиты в main за последние 24 часа:`)
+  log(`Prerelease versions merged into main in the last 24 hours:`)
   log(filteredPrereleaseVersions.join(' | '))
-  log('Пожалуйста удалите их из Nexus')
+  log('Remove these versions from Nexus')
 }
 
 main().catch(err => {
-  log(`Фатальная ошибка: ${err}`);
+  log(`Fatal error: ${err}`);
   process.exit(1);
 });

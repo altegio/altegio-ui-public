@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms'
 type YSimpleRadioButtonStory = IYNgSimpleRadioButtonProps & TYNgControlValueTypes<TYNgSimpleRadioButtonModel>
 
 /**
- * Angular-обертка над Core SimpleRadioButton
+ * Angular wrapper for Core SimpleRadioButton
  */
 const meta: Meta<YSimpleRadioButtonStory> = {
   title: 'RadioButton/🔍 SimpleRadioButton',
@@ -57,12 +57,12 @@ const meta: Meta<YSimpleRadioButtonStory> = {
     ...omit({ ...yCoreSimpleRadioButtonStoryMeta.argTypes }, ['checked', 'onChecked']),
     ngModel: {
       type: 'boolean',
-      description: 'Состояние SimpleRadioButton',
+      description: 'SimpleRadioButton checked state',
       ...getComponentStateTable(DEFAULT_CHECKED_VALUE),
     },
     ngModelChange: {
       type: 'function',
-      description: 'Событие изменения ngModel',
+      description: 'ngModel change event',
       ...getComponentEmitsTable(),
     },
   },

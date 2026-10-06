@@ -13,7 +13,7 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 type TVueButtonStoryMeta = IYVueButtonProps & IYCoreButtonExternalProps & IPaletteProps
 
 /**
- * Vue-обертка над Core Button
+ * Vue wrapper for Core Button
  */
 const meta: Meta<TVueButtonStoryMeta> = {
   title: 'Buttons/✅ Button',

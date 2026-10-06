@@ -1,15 +1,15 @@
 <template>
   <div class="container">
-    <h3>Компонент работы с локализацией</h3>
+    <h3>Localization example</h3>
 
     <div class="locale-info">
-      <p>Текущая локализация: <strong>{{ localeName }}</strong></p>
+      <p>Current locale: <strong>{{ localeName }}</strong></p>
 
-      <p>Код языка: <strong>{{ localeCode }}</strong></p>
+      <p>Language code: <strong>{{ localeCode }}</strong></p>
     </div>
 
     <div class="calendar-section">
-      <h4>Календарь с текущей локализацией:</h4>
+      <h4>Calendar using the current locale:</h4>
 
       <div class="calendar-wrapper">
         <YCalendar v-model="selectedDate" />
@@ -21,7 +21,7 @@
         class="primary-button"
         @click="toggleLocale"
       >
-        Переключить язык
+        Switch language
       </button>
     </div>
   </div>
@@ -43,7 +43,7 @@
   const localeModule = computed(() => globalContext?.value?.getModule(LOCALE_MODULE_ID) as ILocaleModule | undefined)
 
   // Состояние локализации
-  const localeName = computed(() => localeModule.value?.locale.name ?? 'Не указано')
+  const localeName = computed(() => localeModule.value?.locale.name ?? 'Not specified')
   const localeCode = computed(() => localeModule.value?.locale.shortCode ?? 'ru')
 
   // Состояние календаря

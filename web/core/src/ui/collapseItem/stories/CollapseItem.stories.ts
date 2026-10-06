@@ -112,80 +112,80 @@ const meta: Meta<TYCoreCollapseItemMeta> = {
   argTypes: {
     label: {
       type: 'string',
-      description: 'Текст "label"',
+      description: 'Label text',
       ...getComponentStateTable(label),
     },
     annotation: {
       type: 'string',
-      description: 'Текст "annotation"',
+      description: 'Annotation text',
       ...getComponentStateTable(annotation),
     },
     opened: {
       type: 'boolean',
-      description: 'Состояние "opened"',
+      description: 'Opened state',
       ...getComponentStateTable(opened),
     },
     loading: {
       type: 'boolean',
-      description: 'Состояние загрузки',
+      description: 'Loading state',
       ...getComponentStateTable(loading),
     },
     shallow: {
       type: 'boolean',
-      description: 'Упрощённый режим рендеринга — отображается только слот "before" (drag-иконка)',
+      description: 'Simplified rendering: only the "before" slot (drag icon) is displayed',
       ...getComponentStateTable(shallow),
     },
     value: {
       type: 'string',
-      description: 'Значение "value"',
+      description: 'Value',
       ...getComponentStateTable(value),
     },
     variant: {
       control: { type: 'select' },
-      description: 'Вариант компонента',
+      description: 'Component variant',
       options: Object.values(EYCoreCollapseItemVariant),
       ...getComponentStateTable(variant),
     },
 
     showAfterSlot: {
       type: 'boolean',
-      description: 'Показать слот "after". Слот "after" отображается в конце CollapseItem, перед Toggle иконкой, после слота "main", "label" и "annotation"',
+      description: 'Show the "after" slot. The "after" slot appears at the end of CollapseItem, before the toggle icon and after the "main", "label", and "annotation" slots',
       ...storyControlsTable,
     },
     showBeforeSlot: {
       type: 'boolean',
-      description: 'Показать слот "before". Слот "before" отображается в начале CollapseItem, перед слотами "avatar", "main", "label" и "annotation"',
+      description: 'Show the "before" slot. The "before" slot appears at the start of CollapseItem, before the "avatar", "main", "label", and "annotation" slots',
       ...storyControlsTable,
     },
     showAvatarSlot: {
       type: 'boolean',
-      description: 'Показать слот "avatar". Слот "avatar" отображается в CollapseItem, перед слотами "main", "label" и "annotation"',
+      description: 'Show the "avatar" slot. The "avatar" slot appears before the "main", "label", and "annotation" slots',
       ...storyControlsTable,
     },
     showMainSlot: {
       type: 'boolean',
-      description: 'Показать слот "main". Слот "main" отображается в CollapseItem его наличие полностью заменит слоты "label" и "annotation"',
+      description: 'Show the "main" slot. The "main" slot replaces the "label" and "annotation" slots',
       ...storyControlsTable,
     },
     showLabelSlot: {
       type: 'boolean',
-      description: 'Показать слот "label". Слот "label" отображается в CollapseItem, внутри слота "main", перед слотом "annotation"',
+      description: 'Show the "label" slot. The "label" slot appears inside "main", before "annotation"',
       ...storyControlsTable,
     },
     showAnnotationSlot: {
       type: 'boolean',
-      description: 'Показать слот "annotation". Слот "annotation" отображается в CollapseItem, внутри слота "main", после слота "label"',
+      description: 'Show the "annotation" slot. The "annotation" slot appears inside "main", after "label"',
       ...storyControlsTable,
     },
     showContentSlot: {
       type: 'boolean',
-      description: 'Показать слот "content". Слот "content" отображается в CollapseItem в открытом состоянии в контентной области',
+      description: 'Show the "content" slot. The "content" slot appears in the content area when the item is expanded',
       ...storyControlsTable,
     },
 
     onCollapseItemClick: {
       type: 'function',
-      description: 'Событие клика по активатору',
+      description: 'Activator click event',
       ...getComponentEmitsTable(),
     },
   },

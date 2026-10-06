@@ -60,7 +60,7 @@ const meta: TIconButtonStoryMeta = {
     // Основное содержимое
     icon: {
       control: { type: 'select' },
-      description: '**Иконка кнопки**\n\nОбязательное свойство. Иконка автоматически изменяет размер в зависимости от размера кнопки.',
+      description: '**Button icon**\n\nRequired. The icon size adjusts to the button size.',
       options: Object.keys(iconButtonIcons),
       mapping: iconButtonIcons,
       ...getComponentContentTable(icon),

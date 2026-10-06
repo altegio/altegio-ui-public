@@ -26,26 +26,26 @@ export const COLOR_ICON_STORIES_CONFIG: Record<string, IStoryConfig> = {
         title: 'Playground',
         description: {
           story:
-            'Интерактивная площадка для экспериментов с компонентом.\nИспользуйте контролы для изменения свойств и изучения поведения ColorIcon.',
+            'Try ColorIcon interactively.\nUse the controls to explore its properties and behavior.',
         },
       },
     },
   },
-  IconVariety: { parameters: { docs: { title: 'Разнообразие иконок', description: { story: 'Демонстрация различных иконок.' } } } },
-  Sizes: { parameters: { docs: { title: 'Размеры иконки', description: { story: 'Демонстрация всех доступных размеров.' } } } },
+  IconVariety: { parameters: { docs: { title: 'Icon options', description: { story: 'Different icon options.' } } } },
+  Sizes: { parameters: { docs: { title: 'Icon sizes', description: { story: 'All available sizes.' } } } },
   Variants: {
     parameters: {
       docs: {
-        title: 'Варианты цветов иконки',
-        description: { story: 'Демонстрация всех доступных вариантов цветов' },
+        title: 'Icon color variants',
+        description: { story: 'All available color variants' },
       },
     },
   },
   States: {
     parameters: {
       docs: {
-        title: 'Состояния иконки',
-        description: { story: 'Демонстрация различных состояний: обычное, заблокированное' },
+        title: 'Icon states',
+        description: { story: 'Default and disabled states' },
       },
     },
   },
@@ -64,18 +64,18 @@ const variants = Object.values(EYCoreColorIconVariant)
 export const createColorIconDescription = (frameworkName: EFrameworkName, frameworkSpecifics = '') => `
 ## ${frameworkName} ColorIcon
 
-Компонент с иконкой, заключенной в круг.
-Поддерживает различные варианты иконок, цветов, размеров, состояние блокировки.
+An icon displayed inside a circle.
+Supports different icons, colors, sizes, and a disabled state.
 
-### Основные возможности:
-- любой вариант иконки
-- ${sizes.length} размера: ${sizes.join(', ')}
-- ${variants.length} варианта цвета: ${variants.join(', ')}
-- Состояния: обычное, заблокированное
+### Features:
+- any icon
+- ${sizes.length} sizes: ${sizes.join(', ')}
+- ${variants.length} color variants: ${variants.join(', ')}
+- States: default and disabled
 
 ${frameworkSpecifics}
 
-Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components?node-id=3783-9559&m=dev)`
+`
 
 /**
  * Создает параметры для истории ColorIcon

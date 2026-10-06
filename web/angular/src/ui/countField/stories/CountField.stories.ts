@@ -18,7 +18,7 @@ type TYNgCountFieldControlValueTypes = TYNgControlValueTypes<TYNgCountFieldModel
 type TYNgCountFieldMeta = YCountField & Omit<TYCoreCountFieldMeta, 'value'> & TYNgCountFieldControlValueTypes
 
 /**
- * Angular-обертка над Core CountField
+ * Angular wrapper for Core CountField
  */
 const meta: Meta<TYNgCountFieldMeta> = {
   title: '🔍 CountField',
@@ -91,12 +91,12 @@ const meta: Meta<TYNgCountFieldMeta> = {
     ...omit(yCoreCountFieldStoryMeta.argTypes ?? {}, ['readonly', 'value', 'onChangedValue']),
     ngModel: {
       type: 'number',
-      description: 'Состояние счётчика',
+      description: 'Counter value',
       ...getComponentStateTable(DEFAULT_NUMBER_VALUE),
     },
     ngModelChange: {
       type: 'function',
-      description: 'Событие изменения ngModel',
+      description: 'ngModel change event',
       ...getComponentEmitsTable(),
     },
   },

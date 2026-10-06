@@ -7,7 +7,7 @@ import yCoreCardCheckboxStoryMeta from '~core/ui/cardCheckbox/stories/CardCheckb
 type TVueCardCheckboxStoryMeta = IYVueCardCheckboxProps
 
 /**
- * Vue-обертка над Core CardCheckbox
+ * Vue wrapper for Core CardCheckbox
  * вспомогательный компонент для CardButton/CardSelect
  */
 const meta: Meta<TVueCardCheckboxStoryMeta> = {

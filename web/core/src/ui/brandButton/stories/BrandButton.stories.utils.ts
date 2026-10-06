@@ -19,10 +19,10 @@ import { EYCoreBrandButtonVariant } from '../models/types/external'
  * Используется для обеспечения единообразия между фреймворками
  */
 export const BRAND_BUTTON_STORIES_CONFIG: Record<string, IStoryConfig> = {
-  Playground: { parameters: { docs: { title: 'Playground', description: { story: 'Интерактивная площадка для экспериментов с компонентом.\nИспользуйте контролы для изменения свойств и изучения поведения брендированной кнопки.' } } } },
-  Variants: { parameters: { docs: { title: 'Брендовые варианты', description: { story: 'Демонстрация всех доступных брендовых вариантов кнопки.' } } } },
-  Sizes: { parameters: { docs: { title: 'Размеры кнопок', description: { story: 'Демонстрация всех доступных размеров брендированных кнопок.' } } } },
-  States: { parameters: { docs: { title: 'Состояния кнопок', description: { story: 'Демонстрация различных состояний: обычное, заблокированное, загрузка.' } } } },
+  Playground: { parameters: { docs: { title: 'Playground', description: { story: 'Try the brand button interactively.\nUse the controls to explore its properties and behavior.' } } } },
+  Variants: { parameters: { docs: { title: 'Brand variants', description: { story: 'All available brand button variants.' } } } },
+  Sizes: { parameters: { docs: { title: 'Button sizes', description: { story: 'All available brand button sizes.' } } } },
+  States: { parameters: { docs: { title: 'Button states', description: { story: 'Default, disabled, and loading states.' } } } },
 } as const
 
 /**
@@ -31,25 +31,25 @@ export const BRAND_BUTTON_STORIES_CONFIG: Record<string, IStoryConfig> = {
 export const createBrandButtonDescription = (frameworkName: EFrameworkName, frameworkSpecifics = '') => `
 ## ${frameworkName} BrandButton
 
-Компонент брендированной кнопки для авторизации или действий через сторонние сервисы. Основан на SimpleButton, но стилизуется иконкой и цветами бренда.
+A branded button for signing in or interacting with third-party services. Built on SimpleButton with the service icon and brand colors.
 
-### Основные возможности:
-- Брендовые варианты: WhatsApp
-- 3 размера: small, medium, large  
-- Автоматическое определение размера иконки в зависимости от размера кнопки (18px для small, 20px для medium, 22px для large)
-- Состояния: обычное, заблокированное, загрузка
-- Автоматическая стилизация цветов и иконок бренда
-- Поддержка всех пропсов SimpleButton
+### Features:
+- Brand variants: WhatsApp
+- 3 sizes: small, medium, large
+- Automatic icon sizing: 18px for small, 20px for medium, and 22px for large buttons
+- States: default, disabled, and loading
+- Automatic brand colors and icons
+- Supports all SimpleButton properties
 
-### Отличия от SimpleButton:
-- Принимает обязательное свойство \`variant\` для выбора бренда
-- Автоматически применяет цвета и иконки бренда
-- Оптимизирован для авторизации через сторонние сервисы
-- Иконка бренда отображается автоматически
+### Differences from SimpleButton:
+- Requires the \`variant\` property to select the brand
+- Applies brand colors and icons automatically
+- Designed for signing in through third-party services
+- The brand icon is displayed automatically
 
 ${frameworkSpecifics}
 
-Ссылка на [Figma](https://www.figma.com/design/0eI55yqAEchWUmRQCIQVYu/YC-Web-%7C-Components?node-id=7254-10990&m=dev)`
+`
 
 /**
  * Создает параметры для истории BrandButton

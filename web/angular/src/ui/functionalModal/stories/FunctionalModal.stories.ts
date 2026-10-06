@@ -10,7 +10,7 @@ import yCoreFunctionalModalStoryMeta from '~core/ui/functionalModal/stories/Func
 import { LOREM_IPSUM } from '~shared/.storybook/constants/text'
 
 /**
- * Angular-обертка над Core FunctionalModal
+ * Angular wrapper for Core FunctionalModal
  */
 const meta: Meta<YFunctionalModal> = {
   title: 'Modals/⚠️ FunctionalModal',
@@ -101,7 +101,7 @@ const meta: Meta<YFunctionalModal> = {
           }
 
           @if (showHeaderSlot) {
-            <span header>Это слот header</span>
+            <span header>Header slot content</span>
           }
 
           @if (showContentSlot) {
@@ -114,25 +114,25 @@ const meta: Meta<YFunctionalModal> = {
 
           @if (showActivatorSlot) {
             <div activator>
-              <YButton label="Открыть модалку" />
+              <YButton label="Open modal" />
             </div>
           }
 
           @if (showActionsSlot) {
             <span actions>
-              Это слот actions
+              Actions slot content
             </span>
           }
 
           @if (showBeforeActionsSlot) {
             <span before-actions>
-              Это слот before-actions
+              Before-actions slot content
             </span>
           }
 
           @if (showFooterSlot) {
             <span footer>
-              Это слот footer
+              Footer slot content
             </span>
           }
         </YFunctionalModal>

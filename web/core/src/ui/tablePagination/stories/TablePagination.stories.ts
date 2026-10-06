@@ -21,7 +21,7 @@ import { getComponentStateTable, getComponentEmitsTable } from '~shared/.storybo
 
 const { counterText, optionsItemsPerPage } = createCoreTablePaginationProps()
 
-const storyCounterText = 'промокодов на странице'
+const storyCounterText = 'promo codes per page'
 const storyOptionsItemsPerPage: number[] = [10, 25, 50]
 
 export type TYCoreTablePaginationMeta = Meta<IYCoreTablePaginationProps & TYCorePaginationEvents & TYCoreTablePaginationEvents>
@@ -81,17 +81,17 @@ const meta: TYCoreTablePaginationMeta = {
 
     counterText: {
       type: 'string',
-      description: 'Текст счетчика',
+      description: 'Counter text',
       ...getComponentStateTable(counterText),
     },
     optionsItemsPerPage: {
       control: { type: 'object' },
-      description: 'Массив с опциями количества элементов на странице',
+      description: 'Options for the number of items per page',
       ...getComponentStateTable(optionsItemsPerPage),
     },
     onChangeItemsPerPage: {
       type: 'function',
-      description: 'Событие изменение количества элементов на странице',
+      description: 'Items per page change event',
       ...getComponentEmitsTable(),
     },
   },

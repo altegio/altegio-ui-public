@@ -5,7 +5,7 @@ import { SINGLE_ERROR } from '../constants'
 
 export const isLongText: InputType = {
   type: 'boolean',
-  description: 'Использовать длинный текст для демонстрации',
+  description: 'Use long sample text',
   control: 'boolean',
   ...storyControlsTable,
 }
@@ -13,7 +13,7 @@ export const isLongText: InputType = {
 export const showErrors: InputType = {
   control: { type: 'select' },
 
-  description: 'Отображает одну или несколько ошибок, поле `errors` имеет приоритет над этим аргументом',
+  description: 'Displays one or more errors; the `errors` property takes precedence',
   options: [
     'none',
     'single',

@@ -18,7 +18,7 @@ import { ySearch, yCopy } from '~shared/icons'
 type IYStoryBookTextFieldMeta = YTextField & TYCoreTextFieldMeta & TYNgControlValueTypes<TYNgTextFieldModel>
 
 /**
- * Angular-обертка над Core InputField
+ * Angular wrapper for Core InputField
  */
 const meta: Meta<IYStoryBookTextFieldMeta> = {
   title: 'Inputs/✅ TextField',
@@ -105,22 +105,22 @@ const meta: Meta<IYStoryBookTextFieldMeta> = {
     ...omit(yCoreTextFieldStoryMeta.argTypes ?? {}, ['readonly', 'value', 'onInput']),
     ngModel: {
       type: 'string',
-      description: 'Значение ngModel в TextField',
+      description: 'TextField ngModel value',
       ...getComponentStateTable(''),
     },
     ngModelChange: {
       type: 'function',
-      description: 'Событие изменения ngModel',
+      description: 'ngModel change event',
       ...getComponentEmitsTable(),
     },
     locatorLabel: {
       type: 'string',
-      description: 'Локатор для лейбла',
+      description: 'Data locator for the label',
       ...getComponentContentTable(),
     },
     locatorError: {
       type: 'string',
-      description: 'Локатор для ошибки',
+      description: 'Data locator for the error',
       ...getComponentContentTable(),
     },
   },
@@ -143,46 +143,46 @@ export const Playground: Story = {
 }
 
 export const WithPhoneMask: Story = {
-  name: 'С маской телефона',
+  name: 'With a phone mask',
   args: {
-    labelText: 'Номер телефона',
+    labelText: 'Phone number',
     placeholder: '+7 (999) 999-99-99',
     maskOptions: MASK_EXAMPLES.phone,
   },
 }
 
 export const WithNumberMask: Story = {
-  name: 'С маской числа',
+  name: 'With a number mask',
   args: {
-    labelText: 'Сумма',
+    labelText: 'Amount',
     placeholder: '0,00',
     maskOptions: MASK_EXAMPLES.number,
   },
 }
 
 export const WithCardMask: Story = {
-  name: 'С маской карты и отображением ошибки',
+  name: 'With a card mask and an error',
   args: {
-    labelText: 'Номер карты',
+    labelText: 'Card number',
     placeholder: '9999 9999 9999 9999',
     maskOptions: MASK_EXAMPLES.card,
     error: true,
-    errors: ['Ошибка ввода'],
+    errors: ['Invalid input'],
   },
 }
 
 export const WithRequiredValidation: Story = {
-  name: 'Обязательное поле',
+  name: 'Required field',
   args: {
-    labelText: 'Обязательное поле',
-    placeholder: 'Введите значение',
+    labelText: 'Required field',
+    placeholder: 'Enter a value',
     required: true,
-    errors: ['Поле обязательно для заполнения'],
+    errors: ['This field is required'],
   },
 }
 
 export const WithFormControlAutoRequired: Story = {
-  name: 'Автоопределение required из formControl',
+  name: 'Infer required from formControl',
   render: (args) => ({
     props: {
       ...args,
@@ -193,20 +193,20 @@ export const WithFormControlAutoRequired: Story = {
     template: `
       <YTextField
         [formControl]="nameControl"
-        [labelText]="'Имя'"
-        [placeholder]="'Введите имя'"
-        [errors]="['Поле обязательно для заполнения']"
+        [labelText]="'Name'"
+        [placeholder]="'Enter a name'"
+        [errors]="['This field is required']"
       />
     `,
   }),
 }
 
 export const WithAutoErrorMessages: Story = {
-  name: 'Автоматическое извлечение ошибок из formControl',
+  name: 'Extract errors from formControl',
   render: () => {
     const requiredValidator: ValidatorFn = (control) => {
       if (!control.value) {
-        return { required: { message: 'Поле обязательно для заполнения' } }
+        return { required: { message: 'This field is required' } }
       }
       return null
     }
@@ -214,7 +214,7 @@ export const WithAutoErrorMessages: Story = {
     const fullNameValidator: ValidatorFn = (control) => {
       const value = control.value as string
       if (value && (/\d/).test(value)) {
-        return { fullName: { message: 'Имя не может содержать цифры' } }
+        return { fullName: { message: 'The name must not contain numbers' } }
       }
       return null
     }
@@ -228,17 +228,17 @@ export const WithAutoErrorMessages: Story = {
         <div style="display: flex; flex-direction: column; gap: 16px;">
           <YTextField
             [formControl]="nameControl"
-            [labelText]="'Имя'"
-            [placeholder]="'Введите имя'"
+            [labelText]="'Name'"
+            [placeholder]="'Enter a name'"
           />
 
           <div style="font-size: 12px; color: #666;">
             <div>
-              1. Поле является обязательным
+              1. The field is required
             </div>
 
             <div>
-              2. Поле не может содержать цифры
+              2. The field must not contain numbers
             </div>
           </div>
         </div>

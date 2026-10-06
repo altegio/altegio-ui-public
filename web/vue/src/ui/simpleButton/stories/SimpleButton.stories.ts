@@ -119,11 +119,11 @@ export const States: Story = {
     components: { YSimpleButton },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YSimpleButton>Обычная</YSimpleButton>
+        <YSimpleButton>Default</YSimpleButton>
         
-        <YSimpleButton :disabled="true">Заблокированная</YSimpleButton>
+        <YSimpleButton :disabled="true">Disabled</YSimpleButton>
         
-        <YSimpleButton :loading="true">Загрузка</YSimpleButton>
+        <YSimpleButton :loading="true">Loading</YSimpleButton>
       </div>
     `,
   }),
@@ -135,7 +135,7 @@ export const PseudoStates: Story = {
     components: { YSimpleButton },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YSimpleButton>Обычная</YSimpleButton>
+        <YSimpleButton>Default</YSimpleButton>
         
         <YSimpleButton 
           style="--y-core-simple-button-variant-primary-background-color: var(--y-core-simple-button-variant-primary-hover-background-color);"
@@ -165,7 +165,7 @@ export const FullWidth: Story = {
       <div>
         <YSimpleButton :fullWidth="true">
           <YIcon :icon="ySearch" size="16px"></YIcon>
-          Кнопка на всю ширину
+          Full-width button
         </YSimpleButton>
       </div>
     `,
@@ -183,11 +183,11 @@ export const LinkMode: Story = {
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
         <YSimpleButton href="https://example.com" target="_blank">
           <YIcon :icon="ySearch" size="16px"></YIcon>
-          Внешняя ссылка
+          External link
         </YSimpleButton>
         
         <YSimpleButton href="/internal-page">
-          Внутренняя ссылка
+          Internal link
         </YSimpleButton>
       </div>
     `,

@@ -36,9 +36,9 @@ async function replaceAliasesInFile(filePath) {
   while ((cssMatch = cssImportPattern.exec(content)) !== null) {
     const [fullMatch, varName, cssPath] = cssMatch;
     const resolvedCssPath = resolveCssPath(filePath, cssPath);
-    log(`CSS импорт в ${filePath}: ${cssPath} -> ${resolvedCssPath}`);
+    log(`CSS import in ${filePath}: ${cssPath} -> ${resolvedCssPath}`);
     const cssContent = await readCssFile(resolvedCssPath);
-    log(`CSS контент для ${varName}: ${cssContent.length} символов`);
+    log(`CSS content for ${varName}: ${cssContent.length} characters`);
     const replacement = `const ${varName} = \`${cssContent}\`;`;
     updatedContent = updatedContent.replace(fullMatch, replacement);
     hasChanges = true;
@@ -107,7 +107,7 @@ async function replaceAliasesInFile(filePath) {
 
   if (hasChanges) {
     writeFileSync(filePath, updatedContent, 'utf8');
-    log(`Обновлен файл: ${filePath}`);
+    log(`File updated: ${filePath}`);
   }
 }
 
@@ -268,7 +268,7 @@ async function readCssFile(cssPath) {
       return content.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$\{/g, '\\${');
     }
   } catch (error) {
-    log(`Предупреждение: не удалось прочитать CSS файл ${cssPath}: ${error.message}`);
+    log(`Warning: failed to read CSS file ${cssPath}: ${error.message}`);
   }
   return ''; // возвращаем пустую строку если файл не найден
 }
@@ -309,7 +309,7 @@ async function processWithPostCSS(content, cssPath) {
 
     return result.css;
   } catch (error) {
-    log(`Ошибка обработки PostCSS для ${cssPath}: ${error.message}`);
+    log(`PostCSS processing failed for ${cssPath}: ${error.message}`);
     return content; // возвращаем исходный контент при ошибке
   }
 }
@@ -325,21 +325,21 @@ async function processCssVariables(content) {
   for (const match of componentMatches) {
     const [fullMatch, componentVariableName] = match;
     foundComponent = true;
-    log(`Найдена CSS переменная $component: $${componentVariableName}`);
+    log(`CSS variable found: $component: $${componentVariableName}`);
     
     // Загружаем маппинг компонентов из константового файла
     const componentMapping = await loadComponentMapping();
     
     const componentValue = componentMapping[componentVariableName];
     if (componentValue) {
-      log(`Заменяем все .$(component) на .${componentValue}`);
+      log(`Replacing all .$(component) occurrences with .${componentValue}`);
       
       // Заменяем все использования .$(component) на реальное значение компонента
       content = content.replace(/\.\$\(component\)/g, `.${componentValue}`);
       
-      log(`Заменены все .$(component) на .${componentValue}`);
+      log(`Replaced all .$(component) occurrences with .${componentValue}`);
     } else {
-      log(`Предупреждение: не найден маппинг для переменной ${componentVariableName}`);
+      log(`Warning: no mapping found for variable ${componentVariableName}`);
     }
   }
   
@@ -350,7 +350,7 @@ async function processCssVariables(content) {
   const newLength = content.length;
   
   if (originalLength !== newLength) {
-    log(`Удалены все строки $component: (сэкономлено ${originalLength - newLength} символов)`);
+    log(`Removed all $component declarations (saved ${originalLength - newLength} characters)`);
   }
   
   return content;
@@ -380,7 +380,7 @@ async function loadComponentMapping() {
       }
       
       componentMappingCache = mapping;
-      log(`Загружено ${Object.keys(mapping).length} констант компонентов из web/shared/constants/index.ts`);
+      log(`Loaded ${Object.keys(mapping).length} component constants from web/shared/constants/index.ts`);
       
       return mapping;
     }
@@ -401,13 +401,13 @@ async function loadComponentMapping() {
       }
       
       componentMappingCache = mapping;
-      log(`Загружено ${Object.keys(mapping).length} констант компонентов из build файла`);
+      log(`Loaded ${Object.keys(mapping).length} component constants from the build output`);
       
       return mapping;
     }
     
   } catch (error) {
-    log(`Ошибка загрузки маппинга компонентов: ${error.message}`);
+    log(`Failed to load component mappings: ${error.message}`);
   }
   
   // Fallback: пустой маппинг
@@ -462,24 +462,24 @@ function injectCssTokens(content) {
     
     // Добавляем токены в :host блок или создаем новый
     if (content.includes(':host {')) {
-      content = content.replace(':host {', `:host {\n  /* Токены */\n${tokensVariables}`);
+      content = content.replace(':host {', `:host {\n  /* Tokens */\n${tokensVariables}`);
     } else {
-      content = `:host {\n  /* Токены */\n${tokensVariables}}\n\n` + content;
+      content = `:host {\n  /* Tokens */\n${tokensVariables}}\n\n` + content;
     }
-    log(`Встроены CSS токены (${tokensVariables.split('\n').length - 1} переменных)`);
+    log(`Embedded CSS tokens (${tokensVariables.split('\n').length - 1} variables)`);
     
     return content;
   } catch (error) {
-    log(`Предупреждение: не удалось встроить токены: ${error.message}`);
+    log(`Warning: failed to embed tokens: ${error.message}`);
     return content;
   }
 }
 
 async function main() {
-  log('Начинаем замену алиасов на относительные пути...');
+  log('Replacing aliases with relative paths...');
   
   if (!existsSync(WORKSPACE_ANGULAR_DIR)) {
-    log('Папка workspace/angular не найдена!');
+    log('Directory workspace/angular not found.');
     process.exit(1);
   }
   
@@ -487,7 +487,7 @@ async function main() {
   const pattern = join(WORKSPACE_ANGULAR_DIR, '**/*.ts');
   const files = await glob(pattern, { ignore: ['**/node_modules/**', '**/*.d.ts'] });
   
-  log(`Найдено ${files.length} TypeScript файлов для обработки`);
+  log(`TypeScript files to process: ${files.length}`);
   
   let processedCount = 0;
   for (const file of files) {
@@ -495,8 +495,8 @@ async function main() {
     processedCount++;
   }
   
-  log(`Обработано ${processedCount} файлов`);
-  log('Замена алиасов завершена!');
+  log(`Processed ${processedCount} files`);
+  log('Alias replacement completed.');
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

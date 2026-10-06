@@ -7,7 +7,7 @@ import yCorePaginationStoryMeta from '~core/ui/pagination/stories/Pagination.sto
 type TVuePaginationStoryMeta = IYVuePaginationProps
 
 /**
- * Vue-обертка над Core Pagination
+ * Vue wrapper for Core Pagination
  */
 const meta: Meta<TVuePaginationStoryMeta> = {
   title: '⚠️ Pagination',

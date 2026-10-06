@@ -5,7 +5,7 @@ import { isKebabCase } from './regex'
 export const createPlatformOption = () => {
   const platform = new Option(
     '-p, --platform <platform>',
-    'Платформа',
+    'Platform',
   )
   platform.choices(Object.values(EPlatform))
   platform.makeOptionMandatory()
@@ -20,7 +20,7 @@ export const createNameOption = (flag: string, description: string) => {
   )
   name.makeOptionMandatory()
   name.argParser((input) => {
-    if (!isKebabCase(input)) throw new InvalidArgumentError('Название компонента должно быть в формате kebab-case.')
+    if (!isKebabCase(input)) throw new InvalidArgumentError('Component name must be in kebab-case.')
     return input
   })
 

@@ -148,7 +148,7 @@ export const FullWidth: Story = {
     template: `
     
       <div>
-        <YSimpleButton [fullWidth]="true">Кнопка на всю ширину</YSimpleButton>
+        <YSimpleButton [fullWidth]="true">Full-width button</YSimpleButton>
       </div>
     `,
   }),

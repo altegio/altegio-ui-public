@@ -3,48 +3,48 @@ import { getComponentEmitsTable } from '~shared/.storybook/tables'
 
 export const onInputEmit: InputType = {
   type: 'function',
-  description: 'Событие ввода',
+  description: 'Input event',
   ...getComponentEmitsTable(),
 }
 
 export const onBlurEmit: InputType = {
   type: 'function',
-  description: 'Собтыие потери фокуса',
+  description: 'Blur event',
   ...getComponentEmitsTable(),
 }
 
 export const onFocusEmit: InputType = {
   type: 'function',
-  description: 'Событие получения фокуса',
+  description: 'Focus event',
   ...getComponentEmitsTable(),
 }
 
 export const onClearEmit: InputType = {
   type: 'function',
-  description: 'Событие очистки',
+  description: 'Clear event',
   ...getComponentEmitsTable(),
 }
 
 export const onKeydownEmit: InputType = {
   type: 'function',
-  description: 'Событие нажатия на кнопку клавиатуры',
+  description: 'Key press event',
   ...getComponentEmitsTable(),
 }
 
 export const onCheckedEmit: InputType = {
   type: 'function',
-  description: 'Событие изменения состояния',
+  description: 'State change event',
   ...getComponentEmitsTable(),
 }
 
 export const onVisibleEmit: InputType = {
   type: 'function',
-  description: 'Событие изменение показа элемента',
+  description: 'Visibility change event',
   ...getComponentEmitsTable(),
 }
 
 export const onSelectEmit: InputType = {
   type: 'function',
-  description: 'Событие выбора элемента',
+  description: 'Item selection event',
   ...getComponentEmitsTable(),
 }

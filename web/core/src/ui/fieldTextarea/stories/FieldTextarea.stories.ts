@@ -112,12 +112,12 @@ const meta: Meta<TYCoreFieldTextareaMeta> = {
 
     rows: {
       type: 'number',
-      description: 'Количество строк',
+      description: 'Number of rows',
       ...getComponentStateTable(rows),
     },
     resize: {
       control: { type: 'select' },
-      description: 'Определяет, можно ли изменять размер текстовой области',
+      description: 'Controls whether the textarea can be resized',
       options: Object.values(EYTextareaResize),
       ...getComponentStateTable(resize),
     },

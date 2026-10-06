@@ -66,27 +66,27 @@ const meta: TYCorePaginationMeta = {
   argTypes: {
     disabled: {
       type: 'boolean',
-      description: 'Деактивировать пагинацию',
+      description: 'Disable pagination',
       ...getComponentStateTable(disabled),
     },
     itemsPerPage: {
       type: 'number',
-      description: 'Количество элементов на странице',
+      description: 'Items per page',
       ...getComponentStateTable(itemsPerPage),
     },
     page: {
       type: 'number',
-      description: 'Текущая страница',
+      description: 'Current page',
       ...getComponentStateTable(page),
     },
     total: {
       type: 'number',
-      description: 'Количество элементов',
+      description: 'Total number of items',
       ...getComponentStateTable(total),
     },
     onChangePage: {
       type: 'function',
-      description: 'Событие изменение страницы',
+      description: 'Page change event',
       ...getComponentEmitsTable(),
     },
   },

@@ -16,7 +16,7 @@ import {
 } from '~ng/ui/cardSelect/models/types'
 
 /**
- * Angular-обертка над CardSelect
+ * Angular wrapper for CardSelect
  */
 const meta: Meta<YCardSelect> = {
   title: 'Cards/✅ CardSelect',

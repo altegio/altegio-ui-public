@@ -4,7 +4,7 @@ import { YCardCheckbox } from '~ng/ui/cardCheckbox'
 import yCardCheckboxStoryMeta from '~core/ui/cardCheckbox/stories/CardCheckbox.stories'
 
 /**
- * Angular-обертка над CardCheckbox
+ * Angular wrapper for CardCheckbox
  */
 const meta: Meta<YCardCheckbox> = {
   title: 'Cards/Partials/✅ CardCheckbox',

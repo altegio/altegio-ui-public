@@ -37,7 +37,7 @@ const YCoreTextFieldStoryOmitKeys: (keyof TYCoreTextFieldMeta)[] = [
 ]
 
 /**
- * Vue-обертка над TextField c иконкой поиска
+ * Vue wrapper for TextField with a search icon
  */
 const meta: Meta<TSearchFieldStoryMeta> = {
   title: 'Inputs/✅ SearchField',
@@ -89,17 +89,17 @@ const meta: Meta<TSearchFieldStoryMeta> = {
     ),
     modelValue: {
       type: 'string',
-      description: 'Дефолтный v-model над базовым input value. Подробнее - https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#value',
+      description: 'Default v-model for the input value. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value',
       ...getComponentContentTable(),
     },
     locatorClearIcon: {
       type: 'string',
-      description: 'Локатор для иконки очистки поля',
+      description: 'Data locator for the clear icon',
       ...getComponentContentTable(),
     },
     onClickSearchIcon: {
       type: 'function',
-      description: 'Событие клика по иконке поиска',
+      description: 'Search icon click event',
       ...getComponentEmitsTable(),
     },
     onUpdateModelValue: yCoreTextFieldStoryMeta.argTypes?.onInput,
@@ -122,9 +122,9 @@ type Story = StoryObj<typeof meta>
 export const Playground: Story = {}
 
 export const WithError: Story = {
-  name: 'С отображением ошибки',
+  name: 'With an error',
   args: {
     error: true,
-    errors: ['В поиск можно писать только текст'],
+    errors: ['Enter text only in the search field'],
   },
 }
