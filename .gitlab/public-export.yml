@@ -1,0 +1,23 @@
+Public code export:
+  stage: Prepare
+  image: node:22.15.0-alpine
+  before_script:
+    - apk add --no-cache git tar
+  resource_group: altegio-ui-public-export
+  interruptible: true
+  timeout: 10 minutes
+  tags:
+    - ci
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "public-code-export"'
+    - when: never
+  script:
+    - node --test scripts/public-export.test.mjs
+    - |
+      if [ "$CI_PIPELINE_SOURCE" = "push" ] && [ "$CI_COMMIT_BRANCH" = "$CI_DEFAULT_BRANCH" ]; then
+        node scripts/public-export.mjs publish
+      else
+        node scripts/public-export.mjs check
+      fi
