@@ -1,0 +1,76 @@
+:host {
+  /* Общие */
+  --y-core-simple-button-width: var(--y-core-button-width, auto);
+  --y-core-simple-button-border-size: 1px;
+
+  /* Размеры */
+
+  /* Small */
+  --y-core-simple-button-size-small-border-radius: var(--y-core-size-radius-2-x);
+  --y-core-simple-button-size-small-padding-y: var(--y-core-size-spacing-2-x);
+  --y-core-simple-button-size-small-padding-x: var(--y-core-size-spacing-3-x);
+  --y-core-simple-button-size-small-font-size: var(--y-core-typography-annotation-a-2-medium-font-size);
+  --y-core-simple-button-size-small-line-height: var(--y-core-typography-annotation-a-2-medium-line-height);
+  --y-core-simple-button-size-small-font-weight: var(--y-core-typography-annotation-a-2-medium-font-weight);
+  --y-core-simple-button-size-small-gap: var(--y-core-size-spacing-x);
+
+  /* Medium */
+  --y-core-simple-button-size-medium-border-radius: var(--y-core-size-radius-2-5-x);
+  --y-core-simple-button-size-medium-padding-y: var(--y-core-size-spacing-2-5-x);
+  --y-core-simple-button-size-medium-padding-x: var(--y-core-size-spacing-4-x);
+  --y-core-simple-button-size-medium-font-size: var(--y-core-typography-paragraph-p-2-medium-font-size);
+  --y-core-simple-button-size-medium-line-height: var(--y-core-typography-paragraph-p-2-medium-line-height);
+  --y-core-simple-button-size-medium-font-weight: var(--y-core-typography-paragraph-p-2-medium-font-weight);
+  --y-core-simple-button-size-medium-gap: var(--y-core-size-spacing-x);
+
+  /* Large */
+  --y-core-simple-button-size-large-border-radius: var(--y-core-size-radius-3-x);
+  --y-core-simple-button-size-large-padding-y: var(--y-core-size-spacing-3-x);
+  --y-core-simple-button-size-large-padding-x: var(--y-core-size-spacing-4-x);
+  --y-core-simple-button-size-large-font-size: var(--y-core-typography-paragraph-p-1-medium-font-size);
+  --y-core-simple-button-size-large-line-height: var(--y-core-typography-paragraph-p-1-medium-line-height);
+  --y-core-simple-button-size-large-font-weight: var(--y-core-typography-paragraph-p-1-medium-font-weight);
+  --y-core-simple-button-size-large-gap: var(--y-core-size-spacing-2-x);
+
+  /* Цвета */
+
+  /* Primary */
+  --y-core-simple-button-variant-primary-color: var(--y-core-color-text-on-accent);
+  --y-core-simple-button-variant-primary-border: transparent;
+  --y-core-simple-button-variant-primary-background-color: var(--y-core-color-surface-accent);
+  --y-core-simple-button-variant-primary-disabled-color: var(--y-core-color-text-tertiary);
+  --y-core-simple-button-variant-primary-disabled-border: transparent;
+  --y-core-simple-button-variant-primary-disabled-background-color: var(--y-core-color-surface-accent-low);
+  --y-core-simple-button-variant-primary-loading-color: var(--y-core-color-icon-primary);
+  --y-core-simple-button-variant-primary-hover-background-color: var(--y-core-color-surface-accent-high);
+
+  /* Outline */
+  --y-core-simple-button-variant-outline-color: var(--y-core-color-text-primary);
+  --y-core-simple-button-variant-outline-border: var(--y-core-color-stroke-primary);
+  --y-core-simple-button-variant-outline-background-color: transparent;
+  --y-core-simple-button-variant-outline-disabled-color: var(--y-core-color-text-tertiary);
+  --y-core-simple-button-variant-outline-disabled-border: var(--y-core-color-stroke-primary);
+  --y-core-simple-button-variant-outline-disabled-background-color: transparent;
+  --y-core-simple-button-variant-outline-loading-color: var(--y-core-color-icon-primary);
+  --y-core-simple-button-variant-outline-hover-background-color: var(--y-core-color-surface-secondary);
+
+  /* Outline-filled */
+  --y-core-simple-button-variant-outline-filled-color: var(--y-core-color-text-primary);
+  --y-core-simple-button-variant-outline-filled-border: var(--y-core-color-stroke-primary);
+  --y-core-simple-button-variant-outline-filled-background-color: var(--y-core-color-surface-primary);
+  --y-core-simple-button-variant-outline-filled-disabled-color: var(--y-core-color-text-tertiary);
+  --y-core-simple-button-variant-outline-filled-disabled-border: var(--y-core-color-stroke-primary);
+  --y-core-simple-button-variant-outline-filled-disabled-background-color: var(--y-core-color-surface-primary);
+  --y-core-simple-button-variant-outline-filled-loading-color: var(--y-core-color-icon-primary);
+  --y-core-simple-button-variant-outline-filled-hover-background-color: var(--y-core-color-other-base);
+
+  /* text */
+  --y-core-simple-button-variant-text-color: var(--y-core-color-text-primary);
+  --y-core-simple-button-variant-text-border: transparent;
+  --y-core-simple-button-variant-text-background-color: transparent;
+  --y-core-simple-button-variant-text-disabled-color: var(--y-core-color-text-tertiary);
+  --y-core-simple-button-variant-text-disabled-border: transparent;
+  --y-core-simple-button-variant-text-disabled-background-color: transparent;
+  --y-core-simple-button-variant-text-loading-color: var(--y-core-color-icon-primary);
+  --y-core-simple-button-variant-text-hover-background-color: var(--y-core-color-surface-secondary);
+}

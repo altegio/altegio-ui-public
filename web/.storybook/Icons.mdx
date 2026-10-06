@@ -1,0 +1,15 @@
+import {Meta} from '@storybook/blocks'
+import {Icons} from '~shared/.storybook/blocks'
+import {ToastProvider} from '~shared/.storybook/blocks'
+import {yIconsSet} from '~web/shared/icons'
+
+
+<Meta title="Tokens/Icons" />
+# Icon Tokens
+> При нажатии на карточку, вы копируете название иконки для импорта
+
+<ToastProvider>
+  <Icons
+    icons={yIconsSet}
+  />
+</ToastProvider>

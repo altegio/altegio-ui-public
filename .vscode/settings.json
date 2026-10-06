@@ -1,0 +1,8 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.format.enable": true,
+  "eslint.options": {
+    "overrideConfigFile": "configs/eslint.config.mjs"
+  },
+  "stylelint.configFile": "configs/.stylelintrc.json"
+}

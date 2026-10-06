@@ -1,0 +1,6 @@
+export { default as renderIcon } from './icon'
+export { default as renderText } from './text'
+export { default as renderLabel } from './label'
+export { default as renderError } from './error'
+export { default as renderAnnotation } from './annotation'
+export { default as renderTag } from './tag'

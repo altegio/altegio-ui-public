@@ -1,0 +1,52 @@
+.sb-stories-table {
+  margin-bottom: 32px;
+
+  &__cell {
+    &--divided {
+      position: relative;
+      width: 180px;
+      height: 60px;
+      background-image: linear-gradient(to bottom left, white 49%, hsl(203deg 50% 30% / 15%) 50%, white 51%);
+
+      & > *:first-child,
+      & > *:last-child {
+        position: absolute;
+      }
+
+      & > *:first-child {
+        top: 12px;
+        right: 12px;
+      }
+
+      & > *:last-child {
+        bottom: 12px;
+        left: 12px;
+      }
+    }
+
+    &__title {
+      font-size: 13px !important;
+      font-weight: 700;
+      line-height: 16px;
+      color: #5C6870 !important;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+    }
+
+    &__item {
+      font-size: 16px !important;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+
+    &__story {
+      iframe {
+        min-height: 100px;
+      }
+    }
+  }
+}

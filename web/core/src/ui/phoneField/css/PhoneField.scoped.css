@@ -1,0 +1,49 @@
+$component: $YCorePhoneFieldTagName;
+
+.$(component) {
+  display: var(--y-core-phone-field-display);
+  flex-direction: column;
+  gap: var(--y-core-phone-field-gap);
+  min-width: var(--y-core-phone-field-min-width);
+  max-width: var(--y-core-phone-field-max-width);
+  font-family: var(--y-core-font-family);
+
+  &__activator {
+    --y-core-input-flex-wrap: wrap;
+    --y-core-input-min-width: 0;
+  }
+
+  &__content {
+    --y-core-dropdown-list-min-width: var(--y-core-phone-field-min-width);
+    --y-core-dropdown-list-max-width: var(--y-core-phone-field-max-width);
+
+    max-width: var(--y-core-phone-field-max-width);
+    min-height: var(--y-core-phone-field-dropdown-min-height);
+    margin-top: var(--y-core-phone-field-content-margin-top);
+  }
+
+  &__list-item-append {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__list-items {
+    position: relative;
+  }
+
+  &__list-loader {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--y-core-phone-field-loader-background-color);
+  }
+
+  &__annotation_hide {
+    display: none;
+  }
+}

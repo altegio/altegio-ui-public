@@ -1,0 +1,53 @@
+:host {
+  /* Размеры */
+
+  /* Default */
+  --y-core-color-icon-default-size: var(--y-core-size-spacing-12-x);
+  --y-core-color-icon-default-radius: calc(var(--y-core-size-radius-4-x) * 5);
+
+  /* 24_x */
+  --y-core-color-icon-24-size: var(--y-core-size-spacing-6-x);
+
+  /* 32_x */
+  --y-core-color-icon-32-size: var(--y-core-size-spacing-8-x);
+
+  /* 40_x */
+  --y-core-color-icon-40-size: var(--y-core-size-spacing-10-x);
+
+    /* 48_x */
+  --y-core-color-icon-48-size: var(--y-core-size-spacing-12-x);
+
+    /* 64_x */
+  --y-core-color-icon-64-size: calc(var(--y-core-size-spacing-8-x) * 2);
+
+  /* Варианты */
+
+  /* Default */
+  --y-core-color-icon-default-background-color: var(--y-core-color-surface-tertiary);
+  --y-core-color-icon-default-icon-color: var(--y-core-color-icon-primary);
+
+  /* Grey */
+  --y-core-color-icon-grey-background-color: var(--y-core-color-surface-tertiary);
+  --y-core-color-icon-grey-icon-color: var(--y-core-color-icon-primary);
+  --y-core-color-icon-grey-disabled-icon-color: var(--y-core-color-icon-tertiary);
+
+  /* Red */
+  --y-core-color-icon-red-background-color: var(--y-core-color-surface-negative-low);
+  --y-core-color-icon-red-icon-color: var(--y-core-color-icon-negative);
+
+  /* Green */
+  --y-core-color-icon-green-background-color: var(--y-core-color-surface-positive-low);
+  --y-core-color-icon-green-icon-color: var(--y-core-color-icon-positive);
+
+  /* Yellowish */
+  --y-core-color-icon-yellowish-background-color: var(--y-core-color-calm-surface-yellow-low);
+  --y-core-color-icon-yellowish-icon-color: var(--y-core-color-calm-surface-orange);
+
+  /* Blue */
+  --y-core-color-icon-blue-background-color: var(--y-core-color-calm-surface-blue-low);
+  --y-core-color-icon-blue-icon-color: var(--y-core-color-calm-surface-blue);
+
+  /* Violet */
+  --y-core-color-icon-violet-background-color: var(--y-core-color-calm-surface-purple-low);
+  --y-core-color-icon-violet-icon-color: var(--y-core-color-calm-surface-purple);
+}

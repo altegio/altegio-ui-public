@@ -1,0 +1,74 @@
+@import url('./segment-option.mixins.css');
+
+$component: $YCoreSegmentOptionTagName;
+
+.$(component) {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: var(--y-core-segment-option-primary-color);
+  cursor: pointer;
+  background-color: var(--y-core-segment-option-background-color);
+
+  &_active {
+    cursor: default;
+    background-color: var(--y-core-segment-option-active-background-color);
+    box-shadow: var(--y-core-segment-option-active-drop-shadow);
+  }
+
+  &_disabled {
+    color: var(--y-core-segment-option-tertiary-color);
+    cursor: not-allowed;
+  }
+
+  &_hovered,
+  &:not(.$(component)_disabled, .$(component)_active):hover {
+    color: var(--y-core-segment-option-secondary-color);
+  }
+
+  &_size {
+    &_small {
+      @mixin segment-option-size
+        --y-core-segment-option-size-small-height,
+        --y-core-segment-option-size-small-padding-x,
+        --y-core-segment-option-size-small-padding-y,
+        --y-core-segment-option-size-small-font-size,
+        --y-core-segment-option-size-small-line-height,
+        --y-core-segment-option-size-small-font-weight,
+        --y-core-segment-option-size-small-border-radius,
+        --y-core-segment-option-size-small-gap;
+    }
+
+    &_medium {
+      @mixin segment-option-size
+        --y-core-segment-option-size-medium-height,
+        --y-core-segment-option-size-medium-padding-x,
+        --y-core-segment-option-size-medium-padding-y,
+        --y-core-segment-option-size-medium-font-size,
+        --y-core-segment-option-size-medium-line-height,
+        --y-core-segment-option-size-medium-font-weight,
+        --y-core-segment-option-size-medium-border-radius,
+        --y-core-segment-option-size-medium-gap;
+    }
+
+    &_large {
+      @mixin segment-option-size
+        --y-core-segment-option-size-large-height,
+        --y-core-segment-option-size-large-padding-x,
+        --y-core-segment-option-size-large-padding-y,
+        --y-core-segment-option-size-large-font-size,
+        --y-core-segment-option-size-large-line-height,
+        --y-core-segment-option-size-large-font-weight,
+        --y-core-segment-option-size-large-border-radius,
+        --y-core-segment-option-size-large-gap;
+    }
+  }
+}
+
+.$(component)__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

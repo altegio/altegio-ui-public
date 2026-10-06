@@ -1,0 +1,17 @@
+$component: $YCoreSimpleToggleTagName;
+
+@define-mixin toggle-size
+  $width,
+  $height,
+  $padding,
+  $thumb-size
+{
+  width: var($width);
+  height: var($height);
+  padding: var($padding);
+
+  .$(component)__switch-thumb {
+    width: var($thumb-size);
+    height: var($thumb-size);
+  }
+}

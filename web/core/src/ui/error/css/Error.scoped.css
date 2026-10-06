@@ -1,0 +1,8 @@
+$component: $YCoreErrorTagName;
+
+.$(component) {
+  &__list {
+    padding-left: var(--y-core-error-list-padding-left);
+    margin: 0;
+  }
+}

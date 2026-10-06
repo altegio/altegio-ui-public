@@ -1,0 +1,13 @@
+$component: $YCoreSelectFieldTagName;
+
+:host {
+  /* Размеры */
+  --y-core-select-field-min-width: 88px;
+  --y-core-select-field-max-width: 404px;
+  --y-core-dropdown-content-max-width: 404px;
+  --y-core-dropdown-activator-width: 100%;
+  --y-core-dropdown-max-width: 100%;
+
+  /* Общие */
+  --y-core-select-field-color: var(--y-core-color-text-primary);
+}

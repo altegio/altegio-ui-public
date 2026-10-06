@@ -1,0 +1,292 @@
+{
+  "text_primary": {
+    "type": "COLOR",
+    "value": "#262626",
+    "cssValue": "#262626"
+  },
+  "text_secondary": {
+    "type": "COLOR",
+    "value": "rgba(38, 38, 38, 0.6)",
+    "cssValue": "rgba(38, 38, 38, 0.6)"
+  },
+  "text_tertiary": {
+    "type": "COLOR",
+    "value": "rgba(38, 38, 38, 0.26)",
+    "cssValue": "rgba(38, 38, 38, 0.26)"
+  },
+  "text_positive": {
+    "type": "COLOR",
+    "value": "#29c235",
+    "cssValue": "#29c235"
+  },
+  "text_negative": {
+    "type": "COLOR",
+    "value": "#f72c32",
+    "cssValue": "#f72c32"
+  },
+  "text_negative_low": {
+    "type": "COLOR",
+    "value": "rgba(247, 44, 50, 0.25)",
+    "cssValue": "rgba(247, 44, 50, 0.25)"
+  },
+  "text_warning": {
+    "type": "COLOR",
+    "value": "#d97f02",
+    "cssValue": "#d97f02"
+  },
+  "text_warning_low": {
+    "type": "COLOR",
+    "value": "rgba(217, 127, 2, 0.25)",
+    "cssValue": "rgba(217, 127, 2, 0.25)"
+  },
+  "text_accent": {
+    "type": "COLOR",
+    "value": "#ffcb00",
+    "cssValue": "#ffcb00"
+  },
+  "icon_primary": {
+    "type": "COLOR",
+    "value": "#262626",
+    "cssValue": "#262626"
+  },
+  "icon_secondary": {
+    "type": "COLOR",
+    "value": "rgba(38, 38, 38, 0.6)",
+    "cssValue": "rgba(38, 38, 38, 0.6)"
+  },
+  "icon_tertiary": {
+    "type": "COLOR",
+    "value": "rgba(38, 38, 38, 0.26)",
+    "cssValue": "rgba(38, 38, 38, 0.26)"
+  },
+  "icon_positive": {
+    "type": "COLOR",
+    "value": "#29c235",
+    "cssValue": "#29c235"
+  },
+  "icon_negative": {
+    "type": "COLOR",
+    "value": "#f72c32",
+    "cssValue": "#f72c32"
+  },
+  "icon_negative_low": {
+    "type": "COLOR",
+    "value": "rgba(247, 44, 50, 0.25)",
+    "cssValue": "rgba(247, 44, 50, 0.25)"
+  },
+  "icon_warning": {
+    "type": "COLOR",
+    "value": "#d97f02",
+    "cssValue": "#d97f02"
+  },
+  "icon_accent": {
+    "type": "COLOR",
+    "value": "#ffcb00",
+    "cssValue": "#ffcb00"
+  },
+  "icon_accent_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 203, 0, 0.3)",
+    "cssValue": "rgba(255, 203, 0, 0.3)"
+  },
+  "icon_accent_high": {
+    "type": "COLOR",
+    "value": "#ffa800",
+    "cssValue": "#ffa800"
+  },
+  "stroke_primary": {
+    "type": "COLOR",
+    "value": "rgba(38, 38, 38, 0.15)",
+    "cssValue": "rgba(38, 38, 38, 0.15)"
+  },
+  "stroke_primary_low": {
+    "type": "COLOR",
+    "value": "rgba(38, 38, 38, 0.05)",
+    "cssValue": "rgba(38, 38, 38, 0.05)"
+  },
+  "stroke_primary_high": {
+    "type": "COLOR",
+    "value": "rgba(38, 38, 38, 0.25)",
+    "cssValue": "rgba(38, 38, 38, 0.25)"
+  },
+  "stroke_secondary": {
+    "type": "COLOR",
+    "value": "rgba(38, 38, 38, 0.03)",
+    "cssValue": "rgba(38, 38, 38, 0.03)"
+  },
+  "stroke_secondary_low": {
+    "type": "COLOR",
+    "value": "#ffffff",
+    "cssValue": "#ffffff"
+  },
+  "stroke_positive": {
+    "type": "COLOR",
+    "value": "#29c235",
+    "cssValue": "#29c235"
+  },
+  "stroke_negative": {
+    "type": "COLOR",
+    "value": "#f72c32",
+    "cssValue": "#f72c32"
+  },
+  "stroke_warning": {
+    "type": "COLOR",
+    "value": "#d97f02",
+    "cssValue": "#d97f02"
+  },
+  "stroke_accent": {
+    "type": "COLOR",
+    "value": "#ffcb00",
+    "cssValue": "#ffcb00"
+  },
+  "surface_primary": {
+    "type": "COLOR",
+    "value": "#ffffff",
+    "cssValue": "#ffffff"
+  },
+  "surface_primary_high": {
+    "type": "COLOR",
+    "value": "rgba(38, 38, 38, 0.02)",
+    "cssValue": "rgba(38, 38, 38, 0.02)"
+  },
+  "surface_secondary": {
+    "type": "COLOR",
+    "value": "rgba(38, 38, 38, 0.03)",
+    "cssValue": "rgba(38, 38, 38, 0.03)"
+  },
+  "surface_secondary_low": {
+    "type": "COLOR",
+    "value": "rgba(38, 38, 38, 0.02)",
+    "cssValue": "rgba(38, 38, 38, 0.02)"
+  },
+  "surface_secondary_high": {
+    "type": "COLOR",
+    "value": "rgba(38, 38, 38, 0.05)",
+    "cssValue": "rgba(38, 38, 38, 0.05)"
+  },
+  "surface_secondary_fill": {
+    "type": "COLOR",
+    "value": "#f8f8f9",
+    "cssValue": "#f8f8f9"
+  },
+  "surface_tertiary": {
+    "type": "COLOR",
+    "value": "rgba(38, 38, 38, 0.07)",
+    "cssValue": "rgba(38, 38, 38, 0.07)"
+  },
+  "surface_tertiary_low": {
+    "type": "COLOR",
+    "value": "rgba(38, 38, 38, 0.05)",
+    "cssValue": "rgba(38, 38, 38, 0.05)"
+  },
+  "surface_tertiary_high": {
+    "type": "COLOR",
+    "value": "rgba(38, 38, 38, 0.2)",
+    "cssValue": "rgba(38, 38, 38, 0.2)"
+  },
+  "surface_positive": {
+    "type": "COLOR",
+    "value": "#29c235",
+    "cssValue": "#29c235"
+  },
+  "surface_positive_low": {
+    "type": "COLOR",
+    "value": "rgba(41, 194, 53, 0.22)",
+    "cssValue": "rgba(41, 194, 53, 0.22)"
+  },
+  "surface_negative": {
+    "type": "COLOR",
+    "value": "#f72c32",
+    "cssValue": "#f72c32"
+  },
+  "surface_negative_low": {
+    "type": "COLOR",
+    "value": "rgba(247, 44, 50, 0.15)",
+    "cssValue": "rgba(247, 44, 50, 0.15)"
+  },
+  "surface_negative_high": {
+    "type": "COLOR",
+    "value": "#d1050b",
+    "cssValue": "#d1050b"
+  },
+  "surface_warning": {
+    "type": "COLOR",
+    "value": "rgba(255, 203, 0, 0.1)",
+    "cssValue": "rgba(255, 203, 0, 0.1)"
+  },
+  "surface_accent": {
+    "type": "COLOR",
+    "value": "#ffcb00",
+    "cssValue": "#ffcb00"
+  },
+  "other_contrast": {
+    "type": "COLOR",
+    "value": "#ffffff",
+    "cssValue": "#ffffff"
+  },
+  "other_invert": {
+    "type": "COLOR",
+    "value": "#444951",
+    "cssValue": "#444951"
+  },
+  "other_link": {
+    "type": "COLOR",
+    "value": "#003acc",
+    "cssValue": "#003acc"
+  },
+  "other_overlay_60": {
+    "type": "COLOR",
+    "value": "rgba(0, 0, 0, 0.6)",
+    "cssValue": "rgba(0, 0, 0, 0.6)"
+  },
+  "other_base": {
+    "type": "COLOR",
+    "value": "#f3f3f3",
+    "cssValue": "#f3f3f3"
+  },
+  "text_on_accent": {
+    "type": "COLOR",
+    "value": "#262626",
+    "cssValue": "#262626"
+  },
+  "icon_on_accent": {
+    "type": "COLOR",
+    "value": "#262626",
+    "cssValue": "#262626"
+  },
+  "surface_accent_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 203, 0, 0.3)",
+    "cssValue": "rgba(255, 203, 0, 0.3)"
+  },
+  "other_brand_whatsapp": {
+    "type": "COLOR",
+    "value": "#0077ff",
+    "cssValue": "#0077ff"
+  },
+  "other_brand_whatsapp_high": {
+    "type": "COLOR",
+    "value": "#0273f8",
+    "cssValue": "#0273f8"
+  },
+  "surface_accent_high": {
+    "type": "COLOR",
+    "value": "#ffa800",
+    "cssValue": "#ffa800"
+  },
+  "static_white": {
+    "type": "COLOR",
+    "value": "#ffffff",
+    "cssValue": "#ffffff"
+  },
+  "shadow_accent": {
+    "type": "COLOR",
+    "value": "#ffcb00",
+    "cssValue": "#ffcb00"
+  },
+  "static_black": {
+    "type": "COLOR",
+    "value": "#000000",
+    "cssValue": "#000000"
+  }
+}

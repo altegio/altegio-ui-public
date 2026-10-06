@@ -1,0 +1,18 @@
+$component: $YCorePhoneFieldTagName;
+
+:host {
+  /* Размеры */
+  --y-core-phone-field-min-width: 88px;
+  --y-core-phone-field-max-width: 404px;
+  --y-core-phone-field-dropdown-min-height: 200px;
+  --y-core-dropdown-content-max-width: 404px;
+  --y-core-dropdown-activator-width: 100%;
+  --y-core-dropdown-max-width: 100%;
+
+  /* Общие */
+  --y-core-phone-field-display: flex;
+  --y-core-phone-field-color: var(--y-core-color-text-primary);
+  --y-core-phone-field-gap: var(--y-core-size-spacing-x);
+  --y-core-phone-field-content-margin-top: var(--y-core-size-spacing-x);
+  --y-core-phone-field-loader-background-color: var(--y-core-color-surface-primary);
+}

@@ -1,0 +1,78 @@
+$component: $YCoreColorIconTagName;
+
+:host {
+  display: inline-block;
+}
+
+.$(component) {
+  --y-core-color-icon-size: var(--y-core-color-icon-default-size);
+  --y-core-color-background-color: var(--y-core-color-icon-default-background-color);
+  --y-core-color-icon-color: var(--y-core-color-icon-default-icon-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--y-core-color-icon-size);
+  height: var(--y-core-color-icon-size);
+  color: var(--y-core-color-icon-color);
+  background-color: var(--y-core-color-background-color);
+  border-radius: var(--y-core-color-icon-default-radius);
+
+  &_size {
+    &_24 {
+      --y-core-color-icon-size: var(--y-core-color-icon-24-size);
+    }
+
+    &_32 {
+      --y-core-color-icon-size: var(--y-core-color-icon-32-size);
+    }
+
+    &_40 {
+      --y-core-color-icon-size: var(--y-core-color-icon-40-size);
+    }
+
+    &_48 {
+      --y-core-color-icon-size: var(--y-core-color-icon-48-size);
+    }
+
+    &_64 {
+      --y-core-color-icon-size: var(--y-core-color-icon-64-size);
+    }
+  }
+
+  &_variant {
+    &_grey {
+      --y-core-color-background-color: var(--y-core-color-icon-grey-background-color);
+      --y-core-color-icon-color: var(--y-core-color-icon-grey-icon-color);
+
+      &.$(component)_disabled {
+        --y-core-color-icon-color: var(--y-core-color-icon-grey-disabled-icon-color);
+      }
+    }
+
+    &_red {
+      --y-core-color-background-color: var(--y-core-color-icon-red-background-color);
+      --y-core-color-icon-color: var(--y-core-color-icon-red-icon-color);
+    }
+
+    &_green {
+      --y-core-color-background-color: var( --y-core-color-icon-green-background-color);
+      --y-core-color-icon-color: var( --y-core-color-icon-green-icon-color);
+    }
+
+    &_yellowish {
+      --y-core-color-background-color: var( --y-core-color-icon-yellowish-background-color);
+      --y-core-color-icon-color: var( --y-core-color-icon-yellowish-icon-color);
+    }
+
+    &_blue {
+      --y-core-color-background-color: var( --y-core-color-icon-blue-background-color);
+      --y-core-color-icon-color: var( --y-core-color-icon-blue-icon-color);
+    }
+
+    &_violet {
+      --y-core-color-background-color: var( --y-core-color-icon-violet-background-color);
+      --y-core-color-icon-color: var( --y-core-color-icon-violet-icon-color);
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@define-mixin y-scrollbar {
+  @supports selector(::-webkit-scrollbar) {
+    &::-webkit-scrollbar {
+      box-sizing: border-box;
+      width: 6px;
+      padding: 0 2px;
+      background: transparent;
+      border-color: transparent;
+    }
+    
+    &::-webkit-scrollbar-track {
+      width: 10px;
+      background: transparent;
+      border-color: transparent;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      width: 6px;
+      background: var(--y-core-color-icon-secondary);
+      background-clip: padding-box;
+      border-radius: var(--y-core-size-radius-2-x);
+    }
+
+    &::-webkit-scrollbar-thumb:hover,
+    &::-webkit-scrollbar-thumb:active {
+      background: var(--y-core-color-icon-primary);
+      background-clip: padding-box;
+    }
+  }
+
+  @supports (scrollbar-color: auto) {
+    scrollbar-color: var(--y-core-color-icon-secondary) transparent;
+    scrollbar-width: thin;
+  }
+} 

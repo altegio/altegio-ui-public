@@ -1,0 +1,6 @@
+import { YCoreAnnotationTagName, YCoreInputTagName } from '~shared/constants'
+
+export const slotCases: { slotName: string; wc: typeof YCoreInputTagName | typeof YCoreAnnotationTagName }[] = [
+  { slotName: 'before', wc: YCoreInputTagName },
+  { slotName: 'annotation', wc: YCoreAnnotationTagName },
+]

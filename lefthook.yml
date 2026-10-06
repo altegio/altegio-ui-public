@@ -1,0 +1,31 @@
+# Ref: https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+
+commit-msg:
+  commands:
+    commitlint:
+      run: pnpm exec commitlint -g ./configs/commitlint.config.ts --edit
+
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      glob: "web/**/*.{js,cjs,mjs,ts,mts,vue}"
+      run: pnpm exec eslint {staged_files} -c ./configs/eslint.config.mjs --fix
+      stage_fixed: true
+    stylelint:
+      glob: "web/**/*.{css}"
+      run: pnpm exec stylelint {staged_files} -c ./configs/.stylelintrc.json --fix
+      stage_fixed: true
+    litlint:
+      glob: "web/core/**/*.{js,cjs,mjs,ts,mts}"
+      run: pnpm exec lit-analyzer {staged_files} --strict
+    vue-tsc:
+      glob: "web/**/*.{vue}"
+      run: ./scripts/vue-tsc-lint.sh {staged_files}
+
+pre-push:
+  commands:
+    require-up-to-date-main:
+      run: |
+        git fetch origin main
+        git merge-base --is-ancestor origin/main HEAD || (echo 'Ваша ветка не содержит последние изменения из main. Подливаем main...' && git merge --no-edit origin/main || (echo 'Конфликты при мерже с main! Решите их вручную.' && exit 1))

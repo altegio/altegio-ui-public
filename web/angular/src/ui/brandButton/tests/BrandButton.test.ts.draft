@@ -1,0 +1,113 @@
+import { describe, expect, it } from 'vitest'
+import { Component } from '@angular/core'
+import { TestBed } from '~ng/tests/setup'
+import { YCoreBrandButtonTagName } from '~shared/constants'
+import type { TPropTestCase, TSlotTestCase } from '~shared/types/tests'
+import { text, empty } from '~shared/tests/slotContents'
+import { YBrandButton } from '~ng/ui/brandButton/BrandButton.component.ts'
+import {
+  createNgBrandButtonProps,
+  type IYNgBrandButtonProps,
+} from '~ng/ui/brandButton/models/types'
+
+const tagName = YCoreBrandButtonTagName
+
+interface ICreateComponentArgs {
+  slots?: {
+    default?: string
+  }
+  props?: Partial<IYNgBrandButtonProps>
+}
+const createComponent = async({ slots, props }: ICreateComponentArgs) => {
+  TestBed.resetTestingModule()
+  await TestBed.configureTestingModule({ imports: [YBrandButton] }).compileComponents()
+
+  @Component({
+    template: `<YBrandButton [externalProp]="externalProp" [internalProp]="internalProp">${slots?.default}</YBrandButton>`,
+    imports: [YBrandButton],
+    standalone: true,
+  })
+  class TestComponent {
+    externalProp = props?.externalProp
+    internalProp = props?.internalProp
+  }
+  return TestComponent
+}
+
+const { externalProp: defaultExternalProp, internalProp: defaultInternalProp } = createNgBrandButtonProps()
+
+// Unit test cases:
+const slotDefaultTestCases: TSlotTestCase[] = [
+  { slot: 'default', case: 'с контентом', content: text },
+  { slot: 'default', case: 'без контента', content: empty },
+]
+const propExternalPropTestCases: TPropTestCase<IYNgBrandButtonProps, 'externalProp'>[] = [
+  { prop: 'externalProp', case: 'с контентом', value: text },
+  { prop: 'externalProp', case: 'без контента', value: empty },
+  { prop: 'externalProp', case: 'без значения', value: defaultExternalProp },
+]
+const propInternalPropTestCases: TPropTestCase<IYNgBrandButtonProps, 'internalProp'>[] = [
+  { prop: 'internalProp', case: 'с контентом', value: text },
+  { prop: 'internalProp', case: 'без контента', value: empty },
+  { prop: 'internalProp', case: 'без значения', value: defaultInternalProp },
+]
+
+describe(
+  'Angular/YBrandButton',
+  () => {
+    describe(
+      'Unit',
+      () => {
+        describe(
+          'Slots',
+          () => {
+            for (const testCase of slotDefaultTestCases) {
+              it(
+                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                async() => {
+                  const component = await createComponent({
+                    slots: { [testCase.slot]: testCase.content },
+                    props: {},
+                  })
+                  const fixture = TestBed.createComponent(component)
+                  fixture.detectChanges()
+
+                  await fixture.whenStable()
+
+                  expect((fixture.nativeElement as HTMLElement).textContent).toBe(testCase.content)
+                },
+              )
+            }
+          },
+        )
+
+        describe(
+          'Props',
+          () => {
+            for (const testCase of [
+              ...propExternalPropTestCases,
+              ...propInternalPropTestCases,
+            ]) {
+              it(
+                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+                async() => {
+                  const component = await createComponent({
+                    slots: {},
+                    props: { [testCase.prop]: testCase.value },
+                  })
+                  const fixture = TestBed.createComponent(component)
+                  fixture.detectChanges()
+
+                  await fixture.whenStable()
+
+                  const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
+                  expect(coreElement?.[testCase.prop]).toBe(testCase.expected)
+                },
+              )
+            }
+          },
+        )
+      },
+    )
+  },
+)

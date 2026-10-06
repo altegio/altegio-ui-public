@@ -1,0 +1,7 @@
+
+$component: $YCoreIconButtonTagName;
+
+:host {
+    display: flex;
+}
+

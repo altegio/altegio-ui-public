@@ -1,0 +1,100 @@
+:host {
+  /* Размеры */
+
+  /* Headers */
+
+  /* H1 Semibold */
+  --y-core-text-size-h1-semibold-font-size: var(--y-core-typography-header-h-1-semibold-font-size);
+  --y-core-text-size-h1-semibold-line-height: var(--y-core-typography-header-h-1-semibold-line-height);
+  --y-core-text-size-h1-semibold-font-weight: var(--y-core-typography-header-h-1-semibold-font-weight);
+
+  /* H2 Semibold */
+  --y-core-text-size-h2-semibold-font-size: var(--y-core-typography-header-h-2-semibold-font-size);
+  --y-core-text-size-h2-semibold-line-height: var(--y-core-typography-header-h-2-semibold-line-height);
+  --y-core-text-size-h2-semibold-font-weight: var(--y-core-typography-header-h-2-semibold-font-weight);
+
+  /* H3 Semibold */
+  --y-core-text-size-h3-semibold-font-size: var(--y-core-typography-header-h-3-semibold-font-size);
+  --y-core-text-size-h3-semibold-line-height: var(--y-core-typography-header-h-3-semibold-line-height);
+  --y-core-text-size-h3-semibold-font-weight: var(--y-core-typography-header-h-3-semibold-font-weight);
+
+  /* H4 Semibold */
+  --y-core-text-size-h4-semibold-font-size: var(--y-core-typography-header-h-4-semibold-font-size);
+  --y-core-text-size-h4-semibold-line-height: var(--y-core-typography-header-h-4-semibold-line-height);
+  --y-core-text-size-h4-semibold-font-weight: var(--y-core-typography-header-h-4-semibold-font-weight);
+
+  /* Paragraphs */
+
+  /* P1 Regular */
+  --y-core-text-size-p1-regular-font-size: var(--y-core-typography-paragraph-p-1-regular-font-size);
+  --y-core-text-size-p1-regular-line-height: var(--y-core-typography-paragraph-p-1-regular-line-height);
+  --y-core-text-size-p1-regular-font-weight: var(--y-core-typography-paragraph-p-1-regular-font-weight);
+
+  /* P1 Medium */
+  --y-core-text-size-p1-medium-font-size: var(--y-core-typography-paragraph-p-1-medium-font-size);
+  --y-core-text-size-p1-medium-line-height: var(--y-core-typography-paragraph-p-1-medium-line-height);
+  --y-core-text-size-p1-medium-font-weight: var(--y-core-typography-paragraph-p-1-medium-font-weight);
+
+  /* P2 Regular */
+  --y-core-text-size-p2-regular-font-size: var(--y-core-typography-paragraph-p-2-regular-font-size);
+  --y-core-text-size-p2-regular-line-height: var(--y-core-typography-paragraph-p-2-regular-line-height);
+  --y-core-text-size-p2-regular-font-weight: var(--y-core-typography-paragraph-p-2-regular-font-weight);
+
+  /* P2 Medium */
+  --y-core-text-size-p2-medium-font-size: var(--y-core-typography-paragraph-p-2-medium-font-size);
+  --y-core-text-size-p2-medium-line-height: var(--y-core-typography-paragraph-p-2-medium-line-height);
+  --y-core-text-size-p2-medium-font-weight: var(--y-core-typography-paragraph-p-2-medium-font-weight);
+
+  /* Subheads */
+
+  /* S1 Medium */
+  --y-core-text-size-s1-medium-font-size: var(--y-core-typography-subhead-s-1-medium-font-size);
+  --y-core-text-size-s1-medium-line-height: var(--y-core-typography-subhead-s-1-medium-line-height);
+  --y-core-text-size-s1-medium-font-weight: var(--y-core-typography-subhead-s-1-medium-font-weight);
+
+  /* S1 Semibold */
+  --y-core-text-size-s1-semibold-font-size: var(--y-core-typography-subhead-s-1-semibold-font-size);
+  --y-core-text-size-s1-semibold-line-height: var(--y-core-typography-subhead-s-1-semibold-line-height);
+  --y-core-text-size-s1-semibold-font-weight: var(--y-core-typography-subhead-s-1-semibold-font-weight);
+
+  /* Annotations */
+
+  /* A1 Regular */
+  --y-core-text-size-a1-regular-font-size: var(--y-core-typography-annotation-a-1-regular-font-size);
+  --y-core-text-size-a1-regular-line-height: var(--y-core-typography-annotation-a-1-regular-line-height);
+  --y-core-text-size-a1-regular-font-weight: var(--y-core-typography-annotation-a-1-regular-font-weight);
+
+  /* A1 Medium */
+  --y-core-text-size-a1-medium-font-size: var(--y-core-typography-annotation-a-1-medium-font-size);
+  --y-core-text-size-a1-medium-line-height: var(--y-core-typography-annotation-a-1-medium-line-height);
+  --y-core-text-size-a1-medium-font-weight: var(--y-core-typography-annotation-a-1-medium-font-weight);
+
+  /* A2 Regular */
+  --y-core-text-size-a2-regular-font-size: var(--y-core-typography-annotation-a-2-regular-font-size);
+  --y-core-text-size-a2-regular-line-height: var(--y-core-typography-annotation-a-2-regular-line-height);
+  --y-core-text-size-a2-regular-font-weight: var(--y-core-typography-annotation-a-2-regular-font-weight);
+
+  /* A2 Medium */
+  --y-core-text-size-a2-medium-font-size: var(--y-core-typography-annotation-a-2-medium-font-size);
+  --y-core-text-size-a2-medium-line-height: var(--y-core-typography-annotation-a-2-medium-line-height);
+  --y-core-text-size-a2-medium-font-weight: var(--y-core-typography-annotation-a-2-medium-font-weight);
+
+  /* A3 Medium */
+  --y-core-text-size-a3-medium-font-size: var(--y-core-typography-annotation-a-3-medium-font-size);
+  --y-core-text-size-a3-medium-line-height: var(--y-core-typography-annotation-a-3-medium-line-height);
+  --y-core-text-size-a3-medium-font-weight: var(--y-core-typography-annotation-a-3-medium-font-weight);
+
+  /* A4 Medium */
+  --y-core-text-size-a4-medium-font-size: var(--y-core-typography-annotation-a-4-medium-font-size);
+  --y-core-text-size-a4-medium-line-height: var(--y-core-typography-annotation-a-4-medium-line-height);
+  --y-core-text-size-a4-medium-font-weight: var(--y-core-typography-annotation-a-4-medium-font-weight);
+
+  /* Цвета */
+  --y-core-text-color-primary: var(--y-core-color-text-primary);
+  --y-core-text-color-secondary: var(--y-core-color-text-secondary);
+  --y-core-text-color-tertiary: var(--y-core-color-text-tertiary);
+  --y-core-text-color-positive: var(--y-core-color-text-positive);
+  --y-core-text-color-negative: var(--y-core-color-text-negative);
+  --y-core-text-color-warning: var(--y-core-color-text-warning);
+  --y-core-text-color-accent: var(--y-core-color-text-accent);
+}

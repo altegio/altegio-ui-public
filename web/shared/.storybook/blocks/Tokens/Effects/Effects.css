@@ -1,0 +1,29 @@
+.sb-stories-effects-tokens {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+  padding-top: 64px;
+  border-top: 1px solid rgb(43 49 52 / 15%);
+
+  &__card {
+    display: flex;
+    gap: 20px;
+    padding: 16px;
+    padding-right: 8px;
+    color: rgb(43 49 52 / 60%);
+    cursor: pointer;
+    border: 1px solid rgb(43 49 52 / 15%);
+    border-radius: 20px;
+    
+    &_hatch {
+      background: repeating-linear-gradient(-45deg, #cecece 0, #cecece 2px, transparent 1px, transparent 15px);
+    }
+
+    &-block {
+      width: 131px;
+      height: 131px;
+      background-color: white;
+      border-radius: 20px;
+    }
+  }
+}

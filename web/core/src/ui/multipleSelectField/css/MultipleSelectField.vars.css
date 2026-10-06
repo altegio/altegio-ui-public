@@ -1,0 +1,12 @@
+:host {
+  /* Размеры */
+  --y-core-multiple-select-field-min-width: 88px;
+  --y-core-multiple-select-field-max-width: 404px;
+  --y-core-dropdown-content-max-width: 404px;
+  --y-core-dropdown-activator-width: 100%;
+  --y-core-dropdown-max-width: 100%;
+
+  /* Общие */
+  --y-core-multiple-select-field-display: flex;
+  --y-core-multiple-select-field-color: var(--y-core-color-text-primary);
+}

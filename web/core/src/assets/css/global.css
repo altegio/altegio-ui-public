@@ -1,0 +1,14 @@
+@import url('./mixins/scrollbar.css');
+
+body {
+  font-family: var(--y-core-font-family);
+}
+
+div[slot],
+span[slot] {
+  display: contents;
+}
+
+.y-scrollbar {
+  @mixin y-scrollbar;
+}

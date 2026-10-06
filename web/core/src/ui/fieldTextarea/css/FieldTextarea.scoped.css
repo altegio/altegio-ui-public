@@ -1,0 +1,83 @@
+@import url('./FieldTextarea.mixins.css');
+@import url('../../../assets/css/mixins/scrollbar.css');
+
+$component: $YCoreFieldTextareaTagName;
+
+:host {
+  display: flex;
+  flex-grow: 1;
+}
+.$(component) {
+  display: flex;
+  width: 100%;
+  font-family: var(--y-core-font-family);
+  color: var(--y-core-field-textarea-default-color);
+  outline: none;
+  background: transparent;
+  border: none;
+  
+  @mixin y-scrollbar;
+
+  &::placeholder {
+    color: var(--y-core-field-textarea-placeholder-color);
+  }
+
+  &:disabled,
+  &_disabled {
+    color: var(--y-core-field-textarea-disabled-color);
+  }
+
+  &_size {
+    &_small {
+      @mixin field-textarea-size
+        --y-core-field-textarea-size-small-padding-y,
+        --y-core-field-textarea-size-small-padding-x,
+        --y-core-field-textarea-size-small-font-size,
+        --y-core-field-textarea-size-small-line-height;
+    }
+
+    &_medium {
+      @mixin field-textarea-size
+        --y-core-field-textarea-size-medium-padding-y,
+        --y-core-field-textarea-size-medium-padding-x,
+        --y-core-field-textarea-size-medium-font-size,
+        --y-core-field-textarea-size-medium-line-height;
+    }
+
+    &_large {
+      @mixin field-textarea-size
+        --y-core-field-textarea-size-large-padding-y,
+        --y-core-field-textarea-size-large-padding-x,
+        --y-core-field-textarea-size-large-font-size,
+        --y-core-field-textarea-size-large-line-height;
+    }
+  }
+
+  &_hide-space {
+    &-left {
+      padding-left: 0;
+    }
+
+    &-right {
+      padding-right: 0;
+    }
+  }
+
+  &_resize {
+    &_none {
+      resize: none;
+    }
+
+    &_both {
+      resize: both;
+    }
+
+    &_horizontal {
+      resize: horizontal;
+    }
+
+    &_vertical {
+      resize: vertical;
+    }
+  }
+}

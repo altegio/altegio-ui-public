@@ -1,0 +1,10 @@
+@import url('../../../assets/css/mixins.css');
+
+@define-mixin modal-size $width {
+  width: 100%;
+  max-width: var($width);
+}
+
+@define-mixin modal-variant $bg-color {
+  background-color: var($bg-color);
+}

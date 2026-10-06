@@ -1,0 +1,112 @@
+{
+  "spacing_0_5_x": {
+    "type": "FLOAT",
+    "value": 2,
+    "cssValue": "2px"
+  },
+  "spacing_x": {
+    "type": "FLOAT",
+    "value": 4,
+    "cssValue": "4px"
+  },
+  "spacing_1_5_x": {
+    "type": "FLOAT",
+    "value": 6,
+    "cssValue": "6px"
+  },
+  "spacing_2_x": {
+    "type": "FLOAT",
+    "value": 8,
+    "cssValue": "8px"
+  },
+  "spacing_2_5_x": {
+    "type": "FLOAT",
+    "value": 10,
+    "cssValue": "10px"
+  },
+  "spacing_3_x": {
+    "type": "FLOAT",
+    "value": 12,
+    "cssValue": "12px"
+  },
+  "spacing_4_x": {
+    "type": "FLOAT",
+    "value": 16,
+    "cssValue": "16px"
+  },
+  "spacing_5_x": {
+    "type": "FLOAT",
+    "value": 20,
+    "cssValue": "20px"
+  },
+  "spacing_6_x": {
+    "type": "FLOAT",
+    "value": 24,
+    "cssValue": "24px"
+  },
+  "spacing_7_x": {
+    "type": "FLOAT",
+    "value": 28,
+    "cssValue": "28px"
+  },
+  "spacing_8_x": {
+    "type": "FLOAT",
+    "value": 32,
+    "cssValue": "32px"
+  },
+  "spacing_9_x": {
+    "type": "FLOAT",
+    "value": 36,
+    "cssValue": "36px"
+  },
+  "spacing_10_x": {
+    "type": "FLOAT",
+    "value": 40,
+    "cssValue": "40px"
+  },
+  "spacing_11_x": {
+    "type": "FLOAT",
+    "value": 44,
+    "cssValue": "44px"
+  },
+  "spacing_12_x": {
+    "type": "FLOAT",
+    "value": 48,
+    "cssValue": "48px"
+  },
+  "radius_x": {
+    "type": "FLOAT",
+    "value": 4,
+    "cssValue": "4px"
+  },
+  "radius_1_5_x": {
+    "type": "FLOAT",
+    "value": 6,
+    "cssValue": "6px"
+  },
+  "radius_2_x": {
+    "type": "FLOAT",
+    "value": 8,
+    "cssValue": "8px"
+  },
+  "radius_2_5_x": {
+    "type": "FLOAT",
+    "value": 10,
+    "cssValue": "10px"
+  },
+  "radius_3_x": {
+    "type": "FLOAT",
+    "value": 12,
+    "cssValue": "12px"
+  },
+  "radius_4_x": {
+    "type": "FLOAT",
+    "value": 16,
+    "cssValue": "16px"
+  },
+  "radius_5_x": {
+    "type": "FLOAT",
+    "value": 20,
+    "cssValue": "20px"
+  }
+}

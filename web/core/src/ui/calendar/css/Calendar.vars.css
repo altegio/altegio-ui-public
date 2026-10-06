@@ -1,0 +1,21 @@
+:host {
+  /* Общие */
+  --y-core-calendar-max-width: 444px;
+  --y-core-calendar-min-width: 195px;
+  --y-core-calendar-grid-margin-top: var(--y-core-size-spacing-2-x);
+  --y-core-calendar-week-day-margin-bottom: var(--y-core-size-spacing-x);
+  --y-core-calendar-week-day-padding-y: var(--y-core-size-spacing-2-x);
+  --y-core-calendar-week-day-padding-x: var(--y-core-size-spacing-3-x);
+  --y-core-calendar-day-radius: var(--y-core-size-radius-2-x);
+  --y-core-calendar-day-padding-y: var(--y-core-size-spacing-2-x);
+  --y-core-calendar-day-padding-x: var(--y-core-size-spacing-3-x);
+  --y-core-calendar-day-background-hover: var(--y-core-color-surface-secondary-high);
+  --y-core-calendar-selected-day-background: var(--y-core-color-surface-accent);
+  --y-core-calendar-selected-day-background-hover: var(--y-core-color-surface-accent-high);
+  --y-core-calendar-selected-day-background-disabled: var(--y-core-color-surface-accent-low);
+  --y-core-calendar-range-day-background: var(--y-core-color-surface-tertiary);
+  --y-core-calendar-range-day-background-hover: var(--y-core-color-surface-tertiary-high);
+  --y-core-calendar-range-day-background-disabled: var(--y-core-color-surface-tertiary-low);
+  --y-core-calendar-day-today-line-color: var(--y-core-color-icon-accent);
+  --y-core-calendar-day-today-line-color-on-selected: var(--y-core-color-icon-primary);
+}

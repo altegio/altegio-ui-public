@@ -1,0 +1,364 @@
+{
+  "name": "@platform/altegio-ui",
+  "description": "Altegio design system (UIKit)",
+  "author": "Altegio Platform Team",
+  "version": "1.135.0",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/web/core/index.mjs",
+  "module": "dist/web/core/index.mjs",
+  "files": [
+    "dist/"
+  ],
+  "bin": {
+    "yds": "./web/cli/build/yds.mjs"
+  },
+  "exports": {
+    ".": "./dist/web/core/index.mjs",
+    "./core": {
+      "import": "./dist/web/core/index.mjs",
+      "types": "./dist/web/core/index.d.ts"
+    },
+    "./core/": {
+      "import": "./dist/web/core/index.mjs",
+      "types": "./dist/web/core/index.d.ts"
+    },
+    "./ng/count-field": {
+      "import": "./dist/web/angular/esm2022/ui/countField/index.mjs",
+      "types": "./dist/web/angular/ui/countField/index.d.ts"
+    },
+    "./vue": {
+      "import": "./dist/web/vue/index.mjs",
+      "types": "./dist/web/vue/index.d.ts"
+    },
+    "./vue/": {
+      "import": "./dist/web/vue/index.mjs",
+      "types": "./dist/web/vue/index.d.ts"
+    },
+    "./assets/": "./dist/web/assets/",
+    "./icons": {
+      "import": "./dist/web/assets/icons/index.ts",
+      "types": "./dist/web/assets/icons/index.d.ts"
+    },
+    "./tokens": {
+      "import": "./dist/web/assets/tokens/index.ts",
+      "types": "./dist/web/assets/tokens/index.d.ts"
+    },
+    "./ng/global-provider": {
+      "import": "./dist/web/angular/esm2022/ui/globalProvider/index.mjs",
+      "types": "./dist/web/angular/ui/globalProvider/index.d.ts"
+    },
+    "./ng/loader": {
+      "import": "./dist/web/angular/esm2022/ui/loader/index.mjs",
+      "types": "./dist/web/angular/ui/loader/index.d.ts"
+    },
+    "./ng/icons": {
+      "import": "./dist/web/angular/esm2022/shared/icons/index.mjs",
+      "types": "./dist/web/angular/shared/icons/index.d.ts"
+    },
+    "./ng/icon": {
+      "import": "./dist/web/angular/esm2022/ui/icon/index.mjs",
+      "types": "./dist/web/angular/ui/icon/index.d.ts"
+    },
+    "./ng/checkbox": {
+      "import": "./dist/web/angular/esm2022/ui/checkbox/index.mjs",
+      "types": "./dist/web/angular/ui/checkbox/index.d.ts"
+    },
+    "./ng/tag": {
+      "import": "./dist/web/angular/esm2022/ui/tag/index.mjs",
+      "types": "./dist/web/angular/ui/tag/index.d.ts"
+    },
+    "./ng/simple-button": {
+      "import": "./dist/web/angular/esm2022/ui/simpleButton/index.mjs",
+      "types": "./dist/web/angular/ui/simpleButton/index.d.ts"
+    },
+    "./ng/button": {
+      "import": "./dist/web/angular/esm2022/ui/button/index.mjs",
+      "types": "./dist/web/angular/ui/button/index.d.ts"
+    },
+    "./ng/icon-button": {
+      "import": "./dist/web/angular/esm2022/ui/iconButton/index.mjs",
+      "types": "./dist/web/angular/ui/iconButton/index.d.ts"
+    },
+    "./ng/radio-button": {
+      "import": "./dist/web/angular/esm2022/ui/radioButton/index.mjs",
+      "types": "./dist/web/angular/ui/radioButton/index.d.ts"
+    },
+    "./ng/text-field": {
+      "import": "./dist/web/angular/esm2022/ui/textField/index.mjs",
+      "types": "./dist/web/angular/ui/textField/index.d.ts"
+    },
+    "./ng/textarea": {
+      "import": "./dist/web/angular/esm2022/ui/textarea/index.mjs",
+      "types": "./dist/web/angular/ui/textarea/index.d.ts"
+    },
+    "./ng/search-field": {
+      "import": "./dist/web/angular/esm2022/ui/searchField/index.mjs",
+      "types": "./dist/web/angular/ui/searchField/index.d.ts"
+    },
+    "./ng/toggle": {
+      "import": "./dist/web/angular/esm2022/ui/toggle/index.mjs",
+      "types": "./dist/web/angular/ui/toggle/index.d.ts"
+    },
+    "./ng/modal": {
+      "import": "./dist/web/angular/esm2022/ui/modal/index.mjs",
+      "types": "./dist/web/angular/ui/modal/index.d.ts"
+    },
+    "./ng/functional-modal": {
+      "import": "./dist/web/angular/esm2022/ui/functionalModal/index.mjs",
+      "types": "./dist/web/angular/ui/functionalModal/index.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "ng/global-provider": [
+        "./dist/web/angular/ui/globalProvider/index.d.ts"
+      ],
+      "ng/loader": [
+        "./dist/web/angular/ui/loader/index.d.ts"
+      ],
+      "ng/icons": [
+        "./dist/web/angular/shared/icons/index.d.ts"
+      ],
+      "ng/icon": [
+        "./dist/web/angular/ui/icon/index.d.ts"
+      ],
+      "ng/checkbox": [
+        "./dist/web/angular/ui/checkbox/index.d.ts"
+      ],
+      "ng/tag": [
+        "./dist/web/angular/ui/tag/index.d.ts"
+      ],
+      "ng/simple-button": [
+        "./dist/web/angular/ui/simpleButton/index.d.ts"
+      ],
+      "ng/button": [
+        "./dist/web/angular/ui/button/index.d.ts"
+      ],
+      "ng/icon-button": [
+        "./dist/web/angular/ui/iconButton/index.d.ts"
+      ],
+      "ng/radio-button": [
+        "./dist/web/angular/ui/radioButton/index.d.ts"
+      ],
+      "ng/text-field": [
+        "./dist/web/angular/ui/textField/index.d.ts"
+      ],
+      "ng/textarea": [
+        "./dist/web/angular/ui/textarea/index.d.ts"
+      ],
+      "ng/search-field": [
+        "./dist/web/angular/ui/searchField/index.d.ts"
+      ],
+      "ng/toggle": [
+        "./dist/web/angular/ui/toggle/index.d.ts"
+      ],
+      "ng/count-field": [
+        "./dist/web/angular/ui/countField/index.d.ts"
+      ],
+      "ng/modal": [
+        "./dist/web/angular/ui/modal/index.d.ts"
+      ],
+      "ng/functional-modal": [
+        "./dist/web/angular/ui/functionalModal/index.d.ts"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/altegio/altegio-ui-public.git"
+  },
+  "scripts": {
+    "clone-workspace": "node scripts/clone-workspace.js",
+    "fix-workspace-imports": "node scripts/fix-workspace-imports.js",
+    "replace-aliases-to-relative": "node scripts/replace-aliases-to-relative.js",
+    "lib-build-core": "vite build -c ./configs/vite/lib/core.vite.config.ts",
+    "lib-build-vue": "vite build -c ./configs/vite/lib/vue.vite.config.ts",
+    "lib-build-ng": "vite build -c ./configs/vite/lib/ng.vite.config.ts",
+    "ng-build": "ng-packagr -p workspace/angular/ng-package.json --config workspace/angular/tsconfig.lib.json && node ./scripts/minify-ng-dist.mjs",
+    "ng-build:raw": "ng-packagr -p workspace/angular/ng-package.json --config workspace/angular/tsconfig.lib.json",
+    "build-with-workspace": "node scripts/build-with-workspace.js",
+    "lint-commit": "commitlint -g ./configs/commitlint.config.ts --from HEAD~1 --to HEAD --verbose",
+    "lint-es": "eslint ./web/* -c ./configs/eslint.config.mjs",
+    "lint-es-fix": "eslint ./web/* -c ./configs/eslint.config.mjs --fix",
+    "lint-style": "stylelint ./web/**/*.css --ignore-path ./configs/.stylelintignore -c ./configs/.stylelintrc.json",
+    "lint-style-fix": "stylelint ./web/**/*.css --ignore-path ./configs/.stylelintignore -c ./configs/.stylelintrc.json --fix",
+    "lint-code": "pnpm lint-es && pnpm lint-style",
+    "lint-code-fix": "pnpm lint-es-fix && pnpm lint-style-fix",
+    "story-dev": "pnpm -r run story-dev-core --no-open & pnpm -r run story-dev-vue --no-open & pnpm -r run story-dev-ng --no-open & wait-on http://localhost:6006 http://localhost:6007 http://localhost:6008 && pnpm run story-dev-web",
+    "story-dev-web": "storybook dev -c ./web/.storybook -p 6005",
+    "story-dev-core": "storybook dev -c ./web/core/.storybook -p 6006",
+    "story-dev-vue": "storybook dev -c ./web/vue/.storybook -p 6007",
+    "story-dev-ng": "storybook dev -c ./web/angular/.storybook -p 6008",
+    "story-build:public": "STORYBOOK_PUBLIC_BUILD=1 pnpm story-build",
+    "story-build": "pnpm story-build-web && pnpm story-build-core && pnpm story-build-vue && pnpm story-build-ng",
+    "story-build-web": "STORYBOOK_BASE_URL=\"${STORYBOOK_BASE_URL}\" storybook build -c ./web/.storybook -o \"${STORYBOOK_OUTPUT_DIR}\"",
+    "story-build-core": "STORYBOOK_BASE_URL=\"${STORYBOOK_BASE_URL}\" storybook build -c ./web/core/.storybook -o \"${STORYBOOK_OUTPUT_DIR}/core\"",
+    "story-build-vue": "STORYBOOK_BASE_URL=\"${STORYBOOK_BASE_URL}\" storybook build -c ./web/vue/.storybook -o \"${STORYBOOK_OUTPUT_DIR}/vue\"",
+    "story-build-ng": "STORYBOOK_BASE_URL=\"${STORYBOOK_BASE_URL}\" storybook build -c ./web/angular/.storybook -o \"${STORYBOOK_OUTPUT_DIR}/angular\"",
+    "wc-analyze": "lit-analyzer 'web/core/**/*.{js,ts}'",
+    "icons-build": "svg-to-ts-files --config ./configs/.svg-to-tsrc",
+    "vars-build": "vite build -c ./configs/vite/vars.vite.config.ts",
+    "prepare-env": "[ -f .env.local ] || cp .env.example .env.local",
+    "cli-build": "vite build -c ./configs/vite/cli.vite.config.ts && pnpm link --global",
+    "test-unit-core": "vitest run --c ./configs/vitest/vitest.config.ts --project core",
+    "test-unit-vue": "vitest run --c ./configs/vitest/vitest.config.ts --project vue",
+    "test-unit-ng": "vitest run --c ./configs/vitest/vitest.config.ts --project angular",
+    "test-unit": "vitest run --c ./configs/vitest/vitest.config.ts",
+    "test-unit-report": "vitest run --c ./configs/vitest/vitest.config.ts --coverage --reporter=verbose",
+    "test-coverage": "vitest --ui --c ./configs/vitest/vitest.config.ts --coverage",
+    "test-css": "test-storybook -c ./web/core/.storybook",
+    "extract-ts-from-vue": "node ./tools/vue-ts-extract.js",
+    "check-types": "pnpm run extract-ts-from-vue && type-coverage --project tsconfig.json",
+    "check-types-report": "pnpm run extract-ts-from-vue && typescript-coverage-report --project tsconfig.json",
+    "cleanup-prereleases": "node scripts/cleanup-prereleases.js"
+  },
+  "peerDependencies": {
+    "@angular/core": "^18",
+    "vue": "^3"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    },
+    "@angular/core": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^18.2.13",
+    "angular-eslint": "20.3.0",
+    "@angular/animations": "^19.2.14",
+    "@angular/cli": "^18.2.13",
+    "@angular/common": "^19.2.14",
+    "@angular/compiler": "^19.2.14",
+    "@angular/compiler-cli": "^19.2.14",
+    "@angular/core": "^19.2.14",
+    "@angular/platform-browser": "^19.2.14",
+    "@angular/platform-browser-dynamic": "^19.2.14",
+    "@angular/forms": "^19.2.14",
+    "@anolilab/semantic-release-clean-package-json": "^3.0.2",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/types": "^19.8.1",
+    "@eslint/js": "^9.31.0",
+    "@inquirer/prompts": "^7.6.0",
+    "@mdx-js/language-service": "^0.7.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/gitlab": "^13.2.6",
+    "@semantic-release/npm": "^12.0.2",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "@sentry/browser": "^9.39.0",
+    "@sentry/vite-plugin": "^3.6.0",
+    "@storybook/addon-actions": "^8.6.14",
+    "@storybook/addon-controls": "^8.6.14",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/addon-links": "^8.6.14",
+    "@storybook/addon-onboarding": "^8.6.14",
+    "@storybook/angular": "^8.6.14",
+    "@storybook/blocks": "^8.6.14",
+    "@storybook/builder-vite": "^8.6.14",
+    "@storybook/csf": "^0.1.13",
+    "@storybook/manager-api": "^8.6.14",
+    "@storybook/preview-api": "^8.6.14",
+    "@storybook/test": "^8.6.14",
+    "@storybook/test-runner": "^0.23.0",
+    "@storybook/vue3": "^8.6.14",
+    "@storybook/vue3-vite": "^8.6.14",
+    "@storybook/web-components": "^8.6.14",
+    "@storybook/web-components-vite": "^8.6.14",
+    "@stylistic/eslint-plugin": "^5.2.2",
+    "@stylistic/eslint-plugin-js": "^4.4.1",
+    "@types/glob": "^8.1.0",
+    "@types/node": "^24.0.14",
+    "@types/react": "^19.1.8",
+    "@typescript-eslint/parser": "^8.38.0",
+    "@vee-validate/zod": "^4.15.1",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vitest/browser": "^3.2.4",
+    "@vitest/coverage-v8": "3.2.4",
+    "@vitest/ui": "^3.2.4",
+    "@vue/compiler-sfc": "^3.5.18",
+    "@vue/test-utils": "^2.4.6",
+    "autoprefixer": "^10.4.21",
+    "commander": "^14.0.0",
+    "esbuild": "^0.25.9",
+    "eslint": "^9.32.0",
+    "eslint-plugin-compat": "^6.0.2",
+    "eslint-plugin-lit": "^2.1.1",
+    "eslint-plugin-sonarjs": "^3.0.4",
+    "eslint-plugin-vue": "^10.3.0",
+    "glob": "^11.0.3",
+    "happy-dom": "^18.0.1",
+    "jsdom": "^26.1.0",
+    "lefthook": "^1.12.2",
+    "lit-analyzer": "^2.0.3",
+    "ng-packagr": "^18.2.1",
+    "playwright": "^1.54.1",
+    "postcss": "^8.5.6",
+    "postcss-custom-media": "^11.0.6",
+    "postcss-import": "^16.1.1",
+    "postcss-mixins": "^12.1.2",
+    "postcss-nested": "^7.0.2",
+    "postcss-simple-vars": "^7.0.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "rgb2hex": "^0.2.5",
+    "semantic-release": "^24.2.7",
+    "semantic-ui-react": "^2.1.5",
+    "storybook": "^8.6.14",
+    "stylelint": "^16.22.0",
+    "stylelint-config-recess-order": "^7.1.0",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-order": "^7.0.0",
+    "svg-to-ts": "^12.0.0",
+    "ts-lit-plugin": "^2.0.2",
+    "type-coverage": "^2.29.7",
+    "typescript": "^5.8.3",
+    "typescript-coverage-report": "^1.1.1",
+    "typescript-eslint": "^8.38.0",
+    "vee-validate": "^4.15.1",
+    "vite": "^6.3.5",
+    "vite-bundle-analyzer": "^0.22.3",
+    "vite-plugin-checker": "^0.9.3",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^3.2.4",
+    "vue": "^3.5.18",
+    "vue-tsc": "^3.0.3",
+    "wait-on": "^8.0.4",
+    "zod": "^4.0.11",
+    "zone.js": "^0.15.1"
+  },
+  "packageManager": "pnpm@9.10.0",
+  "engines": {
+    "node": ">=20.15.1 <=22.15.0",
+    "pnpm": ">=9.10.0"
+  },
+  "typeCoverage": {
+    "atLeast": 99,
+    "ignoreFiles": [
+      "**/.storybook/**/*",
+      "**/configs/**/*",
+      "**/cli/**/**/*",
+      "**/*.js"
+    ]
+  },
+  "resolutions": {
+    "@inquirer/core": "10.1.4"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.2",
+    "@lit/context": "^1.1.6",
+    "@maskito/core": "^3.10.0",
+    "@maskito/kit": "^3.10.0",
+    "colord": "^2.9.3",
+    "dayjs": "^1.11.13",
+    "lit": "^3.3.1",
+    "radash": "^12.1.1"
+  },
+  "private": true
+}

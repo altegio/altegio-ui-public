@@ -1,0 +1,11 @@
+$component: $YCoreSegmentOptionTagName;
+
+@define-mixin segment-option-size $height, $padding-x, $padding-y, $font-size, $line-height, $font-weight, $border-radius, $gap {
+  gap: var($gap);
+  height: var($height);
+  padding: var($padding-y) var($padding-x);
+  font-size: var($font-size);
+  font-weight: var($font-weight);
+  line-height: var($line-height);
+  border-radius: var($border-radius);
+}

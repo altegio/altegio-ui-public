@@ -1,0 +1,118 @@
+$component: $YCoreTagTagName;
+
+:host {
+  display: inline-flex;
+}
+
+.$(component) {
+  display: inline-flex;
+  gap: var(--y-core-tag-gap);
+  align-items: center;
+  height: fit-content;
+  font-family: var(--y-core-tag-font-family);
+  white-space: nowrap;
+  border-radius: var(--y-core-tag-border-radius);
+  transition: var(--y-core-transition-duration) var(--y-core-transition-timing);
+  transition-property: background-color, color;
+
+  &__icon {
+    display: inline-flex;
+  }
+
+  /* Размеры */
+  &_size {
+    &_small {
+      padding: var(--y-core-tag-padding-small-y) var(--y-core-tag-padding-small-x);
+      font-size: var(--y-core-tag-font-size-small);
+      font-weight: var(--y-core-tag-font-size-small-font-weight);
+      line-height: var(--y-core-tag-font-size-small-line-height);
+    }
+
+    &_medium {
+      padding: var(--y-core-tag-padding-medium-y) var(--y-core-tag-padding-medium-x);
+      font-size: var(--y-core-tag-font-size-medium);
+      font-weight: var(--y-core-tag-font-size-medium-font-weight);
+      line-height: var(--y-core-tag-font-size-medium-line-height);
+    }
+
+    &_large {
+      padding: var(--y-core-tag-padding-large-y) var(--y-core-tag-padding-large-x);
+      font-size: var(--y-core-tag-font-size-large);
+      font-weight: var(--y-core-tag-font-size-large-font-weight);
+      line-height: var(--y-core-tag-font-size-large-line-height);
+      border-radius: var(--y-core-tag-border-radius-large);
+    }
+  }
+
+  /* Варианты */
+  &_variant {
+    &_accent {
+      color: var(--y-core-tag-color-accent);
+      background-color: var(--y-core-tag-bg-accent);
+
+      &.$(component)_disabled {
+        color: var(--y-core-tag-color-accent-disabled);
+      }
+    }
+
+    &_muted {
+      color: var(--y-core-tag-color-muted);
+      background-color: var(--y-core-tag-bg-muted);
+
+      &.$(component)_disabled {
+        color: var(--y-core-tag-color-muted-disabled);
+      }
+    }
+
+    &_danger {
+      color: var(--y-core-tag-color-danger);
+      background-color: var(--y-core-tag-bg-danger);
+
+      &.$(component)_disabled {
+        color: var(--y-core-tag-color-danger-disabled);
+      }
+    }
+
+    &_success {
+      color: var(--y-core-tag-color-success);
+      background-color: var(--y-core-tag-bg-success);
+
+      &.$(component)_disabled {
+        color: var(--y-core-tag-color-success-disabled);
+      }
+    }
+
+    &_warning {
+      color: var(--y-core-tag-color-warning);
+      background-color: var(--y-core-tag-bg-warning);
+
+      &.$(component)_disabled {
+        color: var(--y-core-tag-color-warning-disabled);
+      }
+    }
+
+    &_information {
+      color: var(--y-core-tag-color-information);
+      background-color: var(--y-core-tag-bg-information);
+
+      &.$(component)_disabled {
+        color: var(--y-core-tag-color-information-disabled);
+      }
+    }
+
+    &_discovery {
+      color: var(--y-core-tag-color-discovery);
+      background-color: var(--y-core-tag-bg-discovery);
+
+      &.$(component)_disabled {
+        color: var(--y-core-tag-color-discovery-disabled);
+      }
+    }
+  }
+
+  /* Disabled состояние */
+  &_disabled {
+    cursor: not-allowed;
+  }
+
+}

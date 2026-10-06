@@ -1,0 +1,11 @@
+$component: $YCoreCardSelectTagName;
+
+:host {
+  display: var(--y-card-select-display);
+}
+
+.$(component) {
+  &__main {
+    flex: 1;
+  }
+}

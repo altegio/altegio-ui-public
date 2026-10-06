@@ -1,0 +1,19 @@
+:host {
+  /* Общие */
+
+  --y-core-loader-display: block;
+
+  /* Размеры */
+
+  --y-core-loader-size-extra-small: var(--y-core-size-spacing-4-x);
+  --y-core-loader-size-small: var(--y-core-size-spacing-5-x);
+  --y-core-loader-size-medium: var(--y-core-size-spacing-6-x);
+  --y-core-loader-size-large: var(--y-core-size-spacing-8-x);
+  --y-core-loader-size-extra-large: var(--y-core-size-spacing-12-x);
+
+  /* Цвета */
+
+  --y-core-loader-color-black: var(--y-core-color-icon-primary);
+  --y-core-loader-color-white: var(--y-core-color-other-contrast);
+  --y-core-loader-color-yellow: var(--y-core-color-icon-accent);
+}

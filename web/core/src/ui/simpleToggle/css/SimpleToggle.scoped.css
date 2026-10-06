@@ -1,0 +1,92 @@
+@import url('./SimpleToggle.mixins.css');
+@import url('../../../assets/css/mixins.css');
+
+$component: $YCoreSimpleToggleTagName;
+
+.$(component) {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--y-core-simple-toggle-unchecked-bg-default);
+  border: none;
+  border-radius: var(--y-core-simple-toggle-radius);
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &__switch-thumb {
+    background-color: var(--y-core-simple-toggle-thumb-bg);
+    border-radius: var(--y-core-simple-toggle-thumb-radius);
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 10%);
+    transition: inherit;
+  }
+
+  &_size {
+    &_small {
+      @mixin toggle-size
+        --y-core-simple-toggle-size-small-width,
+        --y-core-simple-toggle-size-small-height,
+        --y-core-simple-toggle-size-small-padding,
+        --y-core-simple-toggle-size-small-thumb-size;
+    }
+
+    &_medium {
+      @mixin toggle-size
+        --y-core-simple-toggle-size-medium-width,
+        --y-core-simple-toggle-size-medium-height,
+        --y-core-simple-toggle-size-medium-padding,
+        --y-core-simple-toggle-size-medium-thumb-size;
+    }
+  }
+
+  @mixin hover-device {
+    &:hover {
+      &:not(.$(component)_disabled) {
+        &:not(.$(component)_checked) {
+          background-color: var(--y-core-simple-toggle-unchecked-bg-hover);
+        }
+        &.$(component)_checked {
+          background-color: var(--y-core-simple-toggle-checked-bg-hover);
+        }
+      }
+    }
+  }
+
+  &_hovered {
+    @mixin hover-device {
+      &:not(.$(component)_disabled) {
+        &:not(.$(component)_checked) {
+          background-color: var(--y-core-simple-toggle-unchecked-bg-hover);
+      }
+      &.$(component)_checked {
+          background-color: var(--y-core-simple-toggle-checked-bg-hover);
+        }
+      }
+    }
+  }
+
+  &_disabled {
+    cursor: not-allowed;
+    background-color: var(--y-core-simple-toggle-unchecked-bg-disabled);
+
+    &.$(component)_checked {
+      background-color: var(--y-core-simple-toggle-checked-bg-disabled);
+    }
+  }
+
+  &_checked {
+    background-color: var(--y-core-simple-toggle-checked-bg-default);
+
+    &.$(component)_size {
+      &_small {
+        .$(component)__switch-thumb {
+          margin-left: var(--y-core-simple-toggle-size-small-thumb-size);
+        }
+      }
+
+      &_medium {
+        .$(component)__switch-thumb {
+          margin-left: var(--y-core-simple-toggle-size-medium-thumb-size);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@import url('./Avatar.mixins.css');
+
+$component: $YCoreAvatarTagName;
+
+.$(component) {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: var(--y-font-family);
+  font-weight: 500;
+  color: var(--y-avatar-text-color);
+  background-color: var(--y-avatar-bg);
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+
+  &__initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &_disabled {
+    opacity: 0.75;
+  }
+
+  &_size {
+    &_extra-small {
+      @mixin avatar-size var(--y-avatar-size-extra-small), var(--y-avatar-font-size-extra-small), var(--y-avatar-line-height-extra-small), var(--y-avatar-radius-extra-small);
+    }
+
+    &_small {
+      @mixin avatar-size var(--y-avatar-size-small), var(--y-avatar-font-size-small), var(--y-avatar-line-height-small), var(--y-avatar-radius-small);
+    }
+
+    &_medium {
+      @mixin avatar-size var(--y-avatar-size-medium), var(--y-avatar-font-size-medium), var(--y-avatar-line-height-medium), var(--y-avatar-radius-medium);
+    }
+
+    &_large {
+      @mixin avatar-size var(--y-avatar-size-large), var(--y-avatar-font-size-large), var(--y-avatar-line-height-large), var(--y-avatar-radius-large);
+    }
+  }
+
+  &_type {
+    &_photo {
+      padding: 0;
+    }
+  }
+}

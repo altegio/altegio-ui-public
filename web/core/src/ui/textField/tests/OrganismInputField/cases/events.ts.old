@@ -1,0 +1,43 @@
+import { text } from '~shared/tests/slotContents'
+
+const inputEventName = 'input'
+const focusEventName = 'focus'
+const blurEventName = 'blur'
+const clearEventName = 'clear'
+
+const ngInputEventName = 'inputEvent'
+const ngFocusEventName = 'focusEvent'
+const ngBlurEventName = 'blurEvent'
+const ngClearEventName = 'clearEvent'
+
+const inputEvent = new CustomEvent(
+  inputEventName,
+  { detail: { value: text } },
+)
+const focusEvent = new CustomEvent(
+  focusEventName,
+  { detail: null },
+)
+const blurEvent = new CustomEvent(
+  blurEventName,
+  { detail: null },
+)
+const clearEvent = new CustomEvent(
+  clearEventName,
+  { detail: null },
+)
+
+type TEventTestCase = {
+  eventName: string
+  ngEventName: string
+  payload: unknown
+  event: CustomEvent
+  case: string
+}
+
+export const eventsCases: TEventTestCase[] = [
+  { eventName: inputEventName, ngEventName: ngInputEventName, payload: { value: text }, event: inputEvent, case: 'при вводе текста' },
+  { eventName: focusEventName, ngEventName: ngFocusEventName, payload: null, event: focusEvent, case: 'при фокусе' },
+  { eventName: blurEventName, ngEventName: ngBlurEventName, payload: null, event: blurEvent, case: 'при потере фокуса' },
+  { eventName: clearEventName, ngEventName: ngClearEventName, payload: null, event: clearEvent, case: 'при очистке' },
+]

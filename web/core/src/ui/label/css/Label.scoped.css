@@ -1,0 +1,60 @@
+$component: $YCoreLabelTagName;
+
+:host {
+  display: flex;
+}
+
+.$(component) {
+  display: flex;
+  width: 100%;
+
+  &_wrap {
+    .$(component)__content {
+      white-space: normal;
+    }
+  }
+
+  &_top {
+    align-items: flex-start;
+  }
+
+  &_center {
+    align-items: center;
+  }
+
+  &_disabled {
+    cursor: not-allowed;
+
+    .$(component)__tooltip {
+      color: var(--y-core-label-color-tooltip-disabled);
+    }
+  }
+
+  &__container {
+    max-width: 100%;
+  }
+
+  &__content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  &__asterisk {
+    margin-left: 4px;
+  }
+
+  &__tooltip {
+    margin-left: var(--y-core-label-margin-left-tooltip);
+    color: var(--y-core-label-color-tooltip);
+
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &__tooltip-activator {
+    display: flex;
+  }
+}

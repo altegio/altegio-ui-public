@@ -1,0 +1,43 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+.pnpm-store
+node_modules
+dist
+dist-ssr
+storybook-static
+storybook-static-public
+*.local
+web/shared/constants/build
+web/shared/assets/css/build
+web/shared/assets/scss/build
+web/cli/build
+publish-dir
+
+# Workspace for cloned repositories
+workspace/
+
+# Editor directories and files
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Tests
+__screenshots__
+coverage
+
+# Git Hooks
+.tsconfig-vue-lint.json

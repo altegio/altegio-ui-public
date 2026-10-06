@@ -1,0 +1,10 @@
+@define-mixin field-input-size
+  $padding-y,
+  $padding-x,
+  $font-size,
+  $line-height
+{
+  padding: var($padding-y) var($padding-x);
+  font-size: var($font-size);
+  line-height: var($line-height);
+}

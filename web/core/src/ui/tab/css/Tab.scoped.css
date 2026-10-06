@@ -1,0 +1,55 @@
+
+$component: $YCoreTabTagName;
+
+:host {
+  display: var(--y-tab-display);
+}
+
+.$(component) {
+  position: relative;
+  display: var(--y-tab-display);
+  gap: var(--y-core-size-spacing-x);
+  align-items: center;
+  max-width: 100%;
+  padding: var(--y-core-size-spacing-3-x);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background-color: var(--y-core-color-surface-secondary-high);
+  }
+
+  &__text {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__left-icon {
+    color: var(--y-left-icon-color);
+
+    &_active {
+      --y-left-icon-color: var(--y-core-color-icon-primary);
+    }
+
+    &_disabled  {
+      --y-left-icon-color: var(--y-core-color-icon-tertiary);
+    }
+  }
+
+  &__activator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+
+    &_active {
+      background-color: var(--y-core-color-stroke-accent);
+    }
+
+    :has(&_active) &_disabled {
+      background-color: var(--y-core-color-calm-stroke-yellow-low);
+    }
+  }
+}

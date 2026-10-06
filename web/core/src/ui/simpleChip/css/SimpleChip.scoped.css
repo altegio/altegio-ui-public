@@ -1,0 +1,93 @@
+$component: $YCoreSimpleChipTagName;
+
+:host {
+  display: inline-flex;
+}
+.$(component) {
+  display: inline-flex;
+  gap: var(--y-core-simple-chip-gap);
+  align-items: center;
+  height: fit-content;
+  font-family: var(--y-core-simple-chip-font-family);
+  border-radius: var(--y-core-simple-chip-border-radius);
+  transition: var(--y-core-transition-duration) var(--y-core-transition-timing);
+  transition-property: background-color, color;
+
+  &__icon {
+    display: inline-flex;
+    cursor: pointer;
+    transition: .2s linear;
+  }
+  
+  &_disabled {
+    cursor: not-allowed;
+    
+    .$(component)__icon {
+      cursor: not-allowed;
+    }
+  }
+  
+  &_readonly {
+    cursor: default;
+    
+    .$(component)__icon {
+      cursor: default;
+    }
+  }
+
+  /* Размеры */
+  &_size {
+    &_small {
+      padding: var(--y-core-simple-chip-size-small-padding-y) var(--y-core-simple-chip-size-small-padding-right) var(--y-core-simple-chip-size-small-padding-y) var(--y-core-simple-chip-size-small-padding-left);
+      font-size: var(--y-core-simple-chip-size-small-font-size);
+      font-weight: var(--y-core-simple-chip-size-small-font-weight);
+      line-height: var(--y-core-simple-chip-size-small-line-height);
+    }
+
+    &_medium {
+      padding: var(--y-core-simple-chip-size-medium-padding-y) var(--y-core-simple-chip-size-medium-padding-right) var(--y-core-simple-chip-size-medium-padding-y) var(--y-core-simple-chip-size-medium-padding-left);
+      font-size: var(--y-core-simple-chip-size-medium-font-size);
+      font-weight: var(--y-core-simple-chip-size-medium-font-weight);
+      line-height: var(--y-core-simple-chip-size-medium-line-height);
+    }
+  }
+
+  &_variant {
+    &_muted {
+      color: var(--y-core-simple-chip-color-muted);
+      background-color: var(--y-core-simple-chip-bg-muted);
+
+      .$(component)__icon {
+        color: var(--y-core-simple-chip-icon-color-muted);
+      }
+
+      &:not(.$(component)_disabled, .$(component)_readonly) {
+        .$(component)__icon:hover {
+          color: var(--y-core-simple-chip-icon-color-muted-hover);
+        }
+      }
+
+      &.$(component)_disabled {
+        color: var(--y-core-simple-chip-color-muted-disabled);
+      }
+    }
+
+    &_danger {
+      color: var(--y-core-simple-chip-color-danger);
+      background-color: var(--y-core-simple-chip-bg-danger);
+
+      &.$(component)_disabled {
+        color: var(--y-core-simple-chip-color-danger-disabled);
+      }
+    }
+
+    &_warning {
+      color: var(--y-core-simple-chip-color-warning);
+      background-color: var(--y-core-simple-chip-bg-warning);
+
+      &.$(component)_disabled {
+        color: var(--y-core-simple-chip-color-warning-disabled);
+      }
+    }
+  }
+}

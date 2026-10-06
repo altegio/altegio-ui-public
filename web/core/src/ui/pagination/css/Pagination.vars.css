@@ -1,0 +1,4 @@
+:host {
+  /* Общие */
+  --y-core-pagination-gap: var(--y-core-size-spacing-x);
+}

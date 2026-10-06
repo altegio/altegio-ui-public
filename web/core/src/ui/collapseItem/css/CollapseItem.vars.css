@@ -1,0 +1,22 @@
+:host {
+  /* Общие */
+  --y-core-collapse-item-radius: var(--y-core-size-radius-3-x);
+  --y-core-collapse-item-padding-x: var(--y-core-size-spacing-3-x);
+  --y-core-collapse-item-padding-y: var(--y-core-size-spacing-2-x);
+  --y-core-collapse-item-border-color: var(--y-core-color-stroke-primary);
+  --y-core-collapse-item-toggle-slot-color: var(--y-core-color-icon-primary);
+  --y-core-collapse-item-toggle-icon-color: var(--y-core-color-icon-secondary);
+
+  /* Основной контент */
+  --y-core-collapse-item-main-gap: var(--y-core-size-spacing-0-5-x);
+
+  /* Варианты */
+  --y-core-collapse-item-variant-primary-background-color: var(--y-core-color-surface-secondary);
+  --y-core-collapse-item-variant-primary-background-color-hover: var(--y-core-color-surface-secondary-high);
+  --y-core-collapse-item-variant-secondary-background-color: var(--y-core-color-surface-primary);
+  --y-core-collapse-item-variant-secondary-background-color-hover: var(--y-core-color-surface-secondary-high);
+
+  /* Контент */
+  --y-core-collapse-item-content-margin-horizontal: var(--y-core-size-spacing-3-x);
+  --y-core-collapse-item-content-margin-top: var(--y-core-size-spacing-2-x);
+}

@@ -1,0 +1,54 @@
+$component: $YCoreTipTagName;
+
+:host {
+  font-family: var(--y-core-font-family);
+}
+
+.$(component) {
+  &__content {
+    position: relative;
+    padding: var(--y-core-tip-content-padding-y) var(--y-core-tip-content-padding-x);
+    font-size: var(--y-core-tip-text-font-size);
+    font-weight: var(--y-core-tip-text-font-weight);
+    line-height: var(--y-core-tip-text-line-height);
+    border-radius: var(--y-core-tip-content-border-radius);
+  }
+
+  &__arrow {
+    position: absolute;
+    display: flex;
+    width: 24px;
+    height: 7px;
+    pointer-events: none;
+
+    svg {
+      width: 100%;
+      white-space: normal;
+    }
+  }
+
+  &_type {
+    &_invert {
+      .$(component)__content {
+        color: var(--y-core-tip-type-invert-color);
+        background-color: var(--y-core-tip-type-invert-background-color);
+      }
+
+      .$(component)__arrow {
+        fill: var(--y-core-tip-type-invert-background-color);
+      }
+    }
+
+    &_primary {
+      .$(component)__content {
+        color: var(--y-core-tip-type-primary-color);
+        background-color: var(--y-core-tip-type-primary-background-color);
+        box-shadow: var(--y-core-tip-type-primary-shadow);
+      }
+
+      .$(component)__arrow {
+        fill: var(--y-core-tip-type-primary-background-color);
+      }
+    }
+  }
+}

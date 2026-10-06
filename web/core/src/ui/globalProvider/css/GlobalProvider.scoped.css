@@ -1,0 +1,5 @@
+$component: $YCoreGlobalProviderTagName;
+
+.$(component) {
+  font-family: var(--y-core-font-family);
+}

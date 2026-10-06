@@ -1,0 +1,95 @@
+import { describe, expect, it } from 'vitest'
+import { mount } from '@vue/test-utils'
+
+import { YCoreTableHeadCellTagName } from '~shared/constants'
+import type { TPropTestCase, TSlotTestCase } from '~shared/types/tests'
+import { text, empty } from '~shared/tests/slotContents'
+
+import YTableHeadCell from '~vue/ui/tableHeadCell/TableHeadCell.vue'
+import {
+  createVueTableHeadCellProps,
+  type IYVueTableHeadCellProps,
+} from '~vue/ui/tableHeadCell/models/types'
+import { YCoreTableHeadCell } from '~core/ui/tableHeadCell'
+
+const tagName = YCoreTableHeadCellTagName
+
+const { externalProp: defaultExternalProp, internalProp: defaultInternalProp } = createVueTableHeadCellProps()
+
+// Unit test cases:
+const slotDefaultTestCases: TSlotTestCase[] = [
+  { slot: 'default', case: 'с контентом', content: text },
+  { slot: 'default', case: 'без контента', content: empty },
+]
+const propExternalPropTestCases: TPropTestCase<IYVueTableHeadCellProps, 'externalProp'>[] = [
+  { prop: 'externalProp', case: 'с контентом', value: text },
+  { prop: 'externalProp', case: 'без контента', value: empty },
+  { prop: 'externalProp', case: 'без значения', value: defaultExternalProp },
+]
+const propInternalPropTestCases: TPropTestCase<IYVueTableHeadCellProps, 'internalProp'>[] = [
+  { prop: 'internalProp', case: 'с контентом', value: text },
+  { prop: 'internalProp', case: 'без контента', value: empty },
+  { prop: 'internalProp', case: 'без значения', value: defaultInternalProp },
+]
+
+describe(
+  'Vue/YTableHeadCell',
+  () => {
+    beforeAll(() => {
+      if (!customElements.get(tagName)) {
+        customElements.define(
+          tagName,
+          YCoreTableHeadCell,
+        )
+      }
+    })
+
+    describe(
+      'Unit',
+      () => {
+        describe(
+          'Slots',
+          () => {
+            for (const testCase of slotDefaultTestCases) {
+              it(
+                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                () => {
+                  const wrapper = mount(
+                    YTableHeadCell,
+                    { slots: { default: testCase.content } },
+                  )
+
+                  expect(wrapper.text()).toBe(testCase.content)
+                },
+              )
+            }
+          },
+        )
+
+        describe(
+          'Props',
+          () => {
+            for (const testCase of [
+              ...propExternalPropTestCases,
+              ...propInternalPropTestCases,
+            ]) {
+              it(
+                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+                () => {
+                  const wrapper = mount(
+                    YTableHeadCell,
+                    { props: { [testCase.prop]: testCase.value } },
+                  )
+
+                  const coreElement = wrapper.find(tagName).element as YCoreTableHeadCell
+
+                  expect(coreElement[testCase.prop]).toBe(testCase.expected)
+                },
+              )
+            }
+          },
+        )
+      },
+    )
+  },
+)

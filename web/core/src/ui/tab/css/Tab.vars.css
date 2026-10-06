@@ -1,0 +1,6 @@
+:host {
+  /* Общие */
+
+  --y-tab-display: flex;
+  --y-left-icon-color: var(--y-core-color-icon-secondary);
+}

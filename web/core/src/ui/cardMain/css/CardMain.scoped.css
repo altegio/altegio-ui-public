@@ -1,0 +1,48 @@
+$component: $YCoreCardMainTagName;
+
+:host {
+  display: block;
+}
+
+.$(component) {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &_size {
+    &_small {
+      padding: var(--y-core-card-main-size-small-padding-y) var(--y-core-card-main-size-small-padding-x);
+
+      &.$(component)_has-annotation {
+        gap: var(--y-core-card-main-size-small-gap);
+      }
+    }
+
+    &_medium {
+      padding: var(--y-core-card-main-size-medium-padding-y) var(--y-core-card-main-size-medium-padding-x);
+
+      &.$(component)_has-annotation {
+        gap: var(--y-core-card-main-size-medium-gap);
+      }
+    }
+
+    &_large {
+      padding: var(--y-core-card-main-size-large-padding-y) var(--y-core-card-main-size-large-padding-x);
+
+      &.$(component)_has-annotation {
+        gap: var(--y-core-card-main-size-large-gap);
+      }
+    }
+  }
+
+  &_hide-space {
+    &-left {
+      padding-left: 0;
+    }
+
+    &-right {
+      padding-right: 0;
+    }
+  }
+}

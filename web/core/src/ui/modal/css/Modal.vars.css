@@ -1,0 +1,21 @@
+:host {
+  /* Размеры */
+  --y-core-modal-size-small-width: 460px;
+  --y-core-modal-size-large-width: 964px;
+
+  /* Отступы */
+  --y-core-modal-padding: var(--y-core-modal-custom-padding, var(--y-core-size-spacing-5-x));
+
+  /* Цвета */
+  --y-core-modal-overlay-color: var(--y-core-color-other-overlay-60);
+  --y-core-modal-variant-primary-background-color: var(--y-core-color-surface-primary);
+  --y-core-modal-variant-secondary-background-color: var(--y-core-color-other-base);
+
+  /* Z-индексы */
+  --y-core-modal-z-index: var(--y-core-modal-custom-z-index, 6000);
+  --y-core-modal-overlay-z-index: var(--y-core-modal-custom-overlay-z-index, 6000);
+
+  /* Параметры анимации переходов */
+  --y-core-fade-transition-duration: 300ms;
+  --y-core-fade-transition-duration-timing-function: ease-out;
+}

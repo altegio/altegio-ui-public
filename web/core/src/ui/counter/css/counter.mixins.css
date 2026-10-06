@@ -1,0 +1,37 @@
+$component: $YCoreCounterTagName;
+
+@define-mixin counter-size
+  $height,
+  $min-width,
+  $min-height,
+  $font-size,
+  $line-height,
+  $font-weight,
+  $border-radius,
+  $padding-y,
+  $padding-x,
+{
+  min-width: var($min-width);
+  height: var($height);
+  min-height: var($min-height);
+  padding: var($padding-y) var($padding-x);
+  font-size: var($font-size);
+  font-weight: var($font-weight);
+  line-height: var($line-height);
+  border-radius: var($border-radius);
+}
+
+@define-mixin counter-variant
+  $color,
+  $bg-color,
+  $disabled-color,
+  $disabled-bg-color
+{
+  color: var($color);
+  background-color: var($bg-color);
+
+  &.$(component)_disabled {
+    color: var($disabled-color);
+    background-color: var($disabled-bg-color);
+  }
+}

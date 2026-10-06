@@ -1,0 +1,45 @@
+$component: $YCoreDropdownCellTagName;
+
+:host {
+  display: block;
+}
+
+.$(component) {
+  display: flex;
+  align-items: center;
+  width: var(--y-core-dropdown-cell-default-width);
+  padding: var(--y-core-dropdown-cell-padding-y) var(--y-core-dropdown-cell-padding-x);
+  font-family: var(--y-core-font-family);
+  font-size: var(--y-core-dropdown-cell-size-p2-regular-font-size);
+  font-weight: var(--y-core-dropdown-cell-size-p2-regular-font-weight);
+  line-height: var(--y-core-dropdown-cell-size-p2-regular-line-height);
+  color: var(--y-core-dropdown-cell-default-color);
+  cursor: pointer;
+  background-color: var(--y-core-dropdown-cell-default-background-color);
+
+  &:hover {
+    background-color: var(--y-core-dropdown-cell-default-hover-background-color);
+  }
+  
+  &__prepend {
+    display: flex;
+    align-items: center;
+    padding-right: var(--y-core-dropdown-cell-padding-left-content);
+
+    &_hidden {
+      display: none;
+    }
+  }
+  
+  &__append {
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: var(--y-core-dropdown-cell-padding-right-content);
+
+    &_hidden {
+      display: none;
+    }
+  }
+}

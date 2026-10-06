@@ -1,0 +1,46 @@
+$component: $YCoreCardButtonTagName;
+
+:host {
+  display: inline-block;
+}
+
+.$(component) {
+  &__main {
+    flex: 1;
+  }
+
+  &__after {
+    display: flex;
+    align-items: center;
+  }
+
+  &__after-icon {
+    color: var(--y-core-color-icon-secondary);
+  }
+
+  &_size {
+    &_small {
+      .$(component)__after {
+        padding: var(--y-core-card-button-after-small-padding-y) var(--y-core-card-button-after-small-padding-x);
+      }
+    }
+
+    &_medium {
+      .$(component)__after {
+        padding: var(--y-core-card-button-after-medium-padding-y) var(--y-core-card-button-after-medium-padding-x);
+      }
+    }
+
+    &_large {
+      .$(component)__after {
+        padding: var(--y-core-card-button-after-large-padding-y) var(--y-core-card-button-after-large-padding-x);
+      }
+    }
+  }
+
+  &_disabled {
+    .$(component)__after-icon {
+      color: var(--y-core-color-icon-tertiary);
+    }
+  }
+}

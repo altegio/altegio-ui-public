@@ -1,0 +1,15 @@
+$component: $YCoreDropdownCellTextTagName;
+
+.$(component) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--y-core-cell-text-gap);
+
+  &__subtitle {
+    ::slotted(*) {
+      display: flex;
+      flex-direction: column;
+      gap: var(--y-core-cell-text-subtitle-gap);
+    }
+  }
+}

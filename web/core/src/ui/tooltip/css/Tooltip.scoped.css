@@ -1,0 +1,7 @@
+.y-core-tooltip {
+  &__content {
+    max-width: var(--y-core-tooltip-max-width);
+    word-break: normal;
+  }
+}
+

@@ -1,0 +1,27 @@
+:host {
+  /* Общие */
+  --y-core-card-wrapper-border-radius: var(--y-core-size-radius-3-x);
+
+  /* Состояния */
+
+  /* Default */
+  --y-core-card-wrapper-border-color: var(--y-core-color-stroke-primary);
+  --y-core-card-wrapper-border-width: 1px;
+  --y-core-card-wrapper-default-background-color: var(--y-core-color-surface-primary);
+
+  /* Focused */
+  --y-core-card-wrapper-focused-border-color: var(--y-core-color-stroke-primary-low);
+  --y-core-card-wrapper-focused-background-color: var(--y-core-color-surface-primary-high);
+
+  /* Hovered */
+  --y-core-card-wrapper-hovered-border-color: var(--y-core-color-stroke-primary);
+  --y-core-card-wrapper-hovered-background-color: var(--y-core-color-surface-primary-high);
+
+  /* Disabled */
+  --y-core-card-wrapper-disabled-border-color: var(--y-core-color-stroke-primary);
+  --y-core-card-wrapper-disabled-background-color: var(--y-core-color-surface-primary);
+
+  /* Checked */
+  --y-core-card-wrapper-checked-border-width: 2px;
+  --y-core-card-wrapper-checked-border-color: var(--y-core-color-stroke-accent);
+}

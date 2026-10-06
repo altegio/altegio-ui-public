@@ -1,0 +1,38 @@
+:host {
+  /* Общие */
+  --y-atom-avatar-display: block;
+  --y-avatar-gap: var(--y-core-size-spacing-2-5-x);
+
+  /* Размеры */
+  --y-avatar-size-extra-small: var(--y-core-component-avatar-size-100);
+  --y-avatar-size-small: var(--y-core-component-avatar-size-300);
+  --y-avatar-size-medium: var(--y-core-component-avatar-size-500);
+  --y-avatar-size-large: var(--y-core-component-avatar-size-800);
+
+  /* Extra small */
+  --y-avatar-font-size-extra-small: var(--y-core-component-avatar-initial-font-size-size-100);
+  --y-avatar-line-height-extra-small: var(--y-core-component-avatar-initial-line-height-size-100);
+
+  /* Small */
+  --y-avatar-font-size-small: var(--y-core-component-avatar-initial-font-size-size-300);
+  --y-avatar-line-height-small: var(--y-core-component-avatar-initial-line-height-size-300);
+
+  /* Medium */
+  --y-avatar-font-size-medium: var(--y-core-component-avatar-initial-font-size-size-500);
+  --y-avatar-line-height-medium: var(--y-core-component-avatar-initial-line-height-size-500);
+
+  /* Large */
+  --y-avatar-font-size-large: var(--y-core-component-avatar-initial-font-size-size-800);
+  --y-avatar-line-height-large: var(--y-core-component-avatar-initial-line-height-size-800);
+
+  /* Радиусы */
+
+  --y-avatar-radius-extra-small: var(--y-core-size-radius-x);
+  --y-avatar-radius-small: var(--y-core-size-radius-1-5-x);
+  --y-avatar-radius-medium: var(--y-core-size-radius-2-x);
+  --y-avatar-radius-large: var(--y-core-size-radius-3-x);
+
+  /* Цвета */
+  --y-avatar-bg: var(--y-core-color-calm-surface-purple-low);
+  --y-avatar-text-color: var(--y-core-color-calm-icon-purple);
+}

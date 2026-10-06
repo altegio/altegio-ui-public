@@ -1,0 +1,10 @@
+$component: $YCoreCountFieldTagName;
+
+:host {
+  display: var(--y-core-count-field-display);
+}
+
+.$(component) {
+  display: var(--y-core-count-field-display);
+  font-family: var(--y-core-font-family);
+}

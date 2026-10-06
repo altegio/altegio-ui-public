@@ -1,0 +1,26 @@
+$component: $YCoreFieldAvatarTagName;
+
+:host {
+  display: inline-flex;
+}
+
+.$(component) {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &_size {
+    &_small {
+      padding: var(--y-core-field-avatar-size-small-padding-y) var(--y-core-field-avatar-size-small-padding-right) var(--y-core-field-avatar-size-small-padding-y) var(--y-core-field-avatar-size-small-padding-left);
+    }
+
+    &_medium {
+      padding: var(--y-core-field-avatar-size-medium-padding-y) var(--y-core-field-avatar-size-medium-padding-x);
+    }
+
+    &_large {
+      padding: var(--y-core-field-avatar-size-large-padding-y) var(--y-core-field-avatar-size-large-padding-x);
+    }
+  }
+}

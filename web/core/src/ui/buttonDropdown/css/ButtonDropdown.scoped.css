@@ -1,0 +1,22 @@
+$component: $YCoreButtonDropdownTagName;
+
+.$(component) {
+  --y-core-dropdown-width: fit-content;
+
+  &_full-width {
+    --y-core-dropdown-width: 100%;
+    --y-core-dropdown-activator-width: 100%;
+    --y-core-dropdown-activator-width-inline: 100%;
+  }
+
+  &__dropdown {
+    &-label {
+      display: -webkit-box;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+}

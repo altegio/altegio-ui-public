@@ -1,0 +1,172 @@
+@import url('./text.mixins.css');
+
+$component: $YCoreTextTagName;
+
+:host {
+  display: flex;
+}
+
+.$(component) {
+  display: inline-flex;
+  align-items: inherit;
+  justify-content: inherit;
+  width: 100%;
+  max-width: 100%;
+  font-family: var(--y-core-font-family);
+
+  &_size {
+    &_h1-semibold {
+      @mixin text-styles 
+          --y-core-text-size-h1-semibold-font-size,
+          --y-core-text-size-h1-semibold-font-weight,
+          --y-core-text-size-h1-semibold-line-height;
+    }
+
+    &_h2-semibold {
+      @mixin text-styles 
+          --y-core-text-size-h2-semibold-font-size,
+          --y-core-text-size-h2-semibold-font-weight,
+          --y-core-text-size-h2-semibold-line-height;
+    }
+
+    &_h3-semibold {
+      @mixin text-styles 
+          --y-core-text-size-h3-semibold-font-size,
+          --y-core-text-size-h3-semibold-font-weight,
+          --y-core-text-size-h3-semibold-line-height;
+    }
+
+    &_h4-semibold {
+      @mixin text-styles 
+          --y-core-text-size-h4-semibold-font-size,
+          --y-core-text-size-h4-semibold-font-weight,
+          --y-core-text-size-h4-semibold-line-height;
+    }
+
+    &_p1-regular {
+      @mixin text-styles 
+          --y-core-text-size-p1-regular-font-size,
+          --y-core-text-size-p1-regular-font-weight,
+          --y-core-text-size-p1-regular-line-height;
+    }
+
+    &_p1-medium {
+      @mixin text-styles 
+          --y-core-text-size-p1-medium-font-size,
+          --y-core-text-size-p1-medium-font-weight,
+          --y-core-text-size-p1-medium-line-height;
+    }
+
+    &_p2-regular {
+      @mixin text-styles 
+          --y-core-text-size-p2-regular-font-size,
+          --y-core-text-size-p2-regular-font-weight,
+          --y-core-text-size-p2-regular-line-height;
+    }
+
+    &_p2-medium {
+      @mixin text-styles 
+          --y-core-text-size-p2-medium-font-size,
+          --y-core-text-size-p2-medium-font-weight,
+          --y-core-text-size-p2-medium-line-height;
+    }
+
+    &_s1-medium {
+      @mixin text-styles 
+          --y-core-text-size-s1-medium-font-size,
+          --y-core-text-size-s1-medium-font-weight,
+          --y-core-text-size-s1-medium-line-height;
+    }
+
+    &_s1-semibold {
+      @mixin text-styles 
+          --y-core-text-size-s1-semibold-font-size,
+          --y-core-text-size-s1-semibold-font-weight,
+          --y-core-text-size-s1-semibold-line-height;
+    }
+
+    &_a1-regular {
+      @mixin text-styles 
+          --y-core-text-size-a1-regular-font-size,
+          --y-core-text-size-a1-regular-font-weight,
+          --y-core-text-size-a1-regular-line-height;
+    }
+
+    &_a1-medium {
+      @mixin text-styles 
+          --y-core-text-size-a1-medium-font-size,
+          --y-core-text-size-a1-medium-font-weight,
+          --y-core-text-size-a1-medium-line-height;
+    }
+
+    &_a2-regular {
+      @mixin text-styles 
+          --y-core-text-size-a2-regular-font-size,
+          --y-core-text-size-a2-regular-font-weight,
+          --y-core-text-size-a2-regular-line-height;
+    }
+
+    &_a2-medium {
+      @mixin text-styles 
+          --y-core-text-size-a2-medium-font-size,
+          --y-core-text-size-a2-medium-font-weight,
+          --y-core-text-size-a2-medium-line-height;
+    }
+
+    &_a3-medium {
+      @mixin text-styles 
+          --y-core-text-size-a3-medium-font-size,
+          --y-core-text-size-a3-medium-font-weight,
+          --y-core-text-size-a3-medium-line-height;
+    }
+
+    &_a4-medium {
+      @mixin text-styles 
+          --y-core-text-size-a4-medium-font-size,
+          --y-core-text-size-a4-medium-font-weight,
+          --y-core-text-size-a4-medium-line-height;
+    }
+  }
+
+  &_variant {
+    &_text {
+      color: var(--y-core-text-color-secondary);
+    }
+
+    &_primary {
+      color: var(--y-core-text-color-primary);
+    }
+
+    &_secondary {
+      color: var(--y-core-text-color-secondary);
+    }
+
+    &_tertiary {
+      color: var(--y-core-text-color-tertiary);
+    }
+
+    &_positive {
+      color: var(--y-core-text-color-positive);
+    }
+
+    &_negative {
+      color: var(--y-core-text-color-negative);
+    }
+
+    &_warning {
+      color: var(--y-core-text-color-warning);
+    }
+
+    &_accent {
+      color: var(--y-core-text-color-accent);
+    }
+  }
+
+  &_ellipsis {
+    display: -webkit-box;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+  }
+}

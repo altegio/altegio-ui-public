@@ -1,0 +1,7 @@
+:host {
+  /* Общие */
+
+  --y-core-date-picker-calendar-padding-x: var(--y-core-size-spacing-5-x);
+  --y-core-date-picker-calendar-padding-y: var(--y-core-size-spacing-4-x);
+  --y-core-date-picker-calendar-max-width: 307px;
+}

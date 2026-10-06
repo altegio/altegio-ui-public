@@ -1,0 +1,58 @@
+{
+  "srcFiles": [
+    "./web/shared/icons/lib/**/*.svg"
+  ],
+  "outputDirectory": "./web/shared/icons",
+  "typeName": "TYIcons",
+  "interfaceName": "IYIcon",
+  "modelFileName": "y-icons",
+  "prefix": "y",
+  "exportCompleteIconSet": true,
+  "completeIconSetName": "y-icons-set",
+  "generateType": true,
+  "generateTypeObject": true,
+  "compileSources": false,
+  "svgoConfig": {
+    "multipass": true,
+    "floatPrecision": 4,
+    "plugins": [
+      {
+        "name": "preset-default"
+      },
+      {
+        "name": "removeAttributesBySelector",
+        "params": {
+          "selector": "svg",
+          "attributes": [
+            "xml:space",
+            "id",
+            "baseProfile"
+          ]
+        }
+      },
+      {
+        "name": "removeAttrs",
+        "params": {
+          "attrs": [
+            "data-*",
+            "data.*",
+            "fill",
+            "stroke"
+          ]
+        }
+      },
+      {
+        "name": "convertStyleToAttrs",
+        "params": {
+          "keepImportant": true
+        }
+      },
+      {
+        "name": "removeDimensions"
+      },
+      {
+        "name": "sortAttrs"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+:host {
+  /* Общие */
+
+  --y-core-dropdown-activator-width: unset;
+  --y-core-dropdown-activator-width-inline: auto;
+  --y-core-dropdown-content-width: unset;
+  --y-core-dropdown-width: unset;
+  --y-core-dropdown-max-width: unset;
+  --y-core-dropdown-activator-max-width: unset;
+  --y-core-dropdown-content-max-width: unset;
+
+}

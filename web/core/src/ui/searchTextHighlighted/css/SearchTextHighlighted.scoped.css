@@ -1,0 +1,6 @@
+$component: $YCoreSearchTextHighlightedTagName;
+
+.$(component) {
+  display: var(--y-core-search-text-highlighted-display);
+  font-family: var(--y-core-font-family);
+}

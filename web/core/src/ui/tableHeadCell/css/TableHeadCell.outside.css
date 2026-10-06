@@ -1,0 +1,9 @@
+$headCell: $YCoreTableHeadCellTagName;
+
+$(headCell) {
+  &[sticky] {
+    & + & {
+      left: 44px;
+    }
+  }
+}

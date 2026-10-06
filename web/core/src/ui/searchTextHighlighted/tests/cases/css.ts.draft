@@ -1,0 +1,15 @@
+import { COLORS } from '~root/tokens'
+
+export const CSSVariablesHostToRootCases = [
+  {
+    host: '--y-core---search-highlighted-text-color',
+    root: '--y-core-color-text-primary',
+  },
+]
+
+export const CSSVariablesHostToValueCases = [
+  {
+    host: '--y-core---search-highlighted-text-color',
+    value: COLORS.text_primary.cssValue,
+  },
+]

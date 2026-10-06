@@ -1,0 +1,70 @@
+$component: $YCorePhoneCodeTagName;
+
+:host {
+  display: inline-flex;
+}
+.$(component) {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--y-core-font-family);
+  user-select: none;
+
+  &_disabled {
+    color: var(--y-core-phone-code-color-disabled);
+    cursor: not-allowed;
+  }
+
+  &_readonly {
+    cursor: default;
+  }
+
+  &__icon-container {
+    display: flex;
+  }
+
+  &::before {
+    position: absolute;
+    top: var(--y-core-phone-code-spacing);
+    left: var(--y-core-phone-code-spacing);
+    display: inline-flex;
+    height: calc(100% - (2 * var(--y-core-phone-code-spacing)));
+    content: "";
+    background-color: var(--y-core-phone-code-background-color-hover);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &:not(&_disabled, &_readonly):hover::before {
+    opacity: 1;
+  }
+
+  &_size {
+    &_small {
+      padding: var(--y-core-phone-code-size-small-padding-y) var(--y-core-phone-code-size-small-padding-right) var(--y-core-phone-code-size-small-padding-y) var(--y-core-phone-code-size-small-padding-left);
+
+      &::before {
+        width: calc(100% - (var(--y-core-phone-code-spacing) + var(--y-core-phone-code-size-small-padding-right)));
+        border-radius: var(--y-core-phone-code-size-small-border-radius);
+      }
+    }
+
+    &_medium {
+      padding: var(--y-core-phone-code-size-medium-padding-y) var(--y-core-phone-code-size-medium-padding-right) var(--y-core-phone-code-size-medium-padding-y) var(--y-core-phone-code-size-medium-padding-left);
+
+      &::before {
+        width: calc(100% - (var(--y-core-phone-code-spacing) + var(--y-core-phone-code-size-medium-padding-right)));
+        border-radius: var(--y-core-phone-code-size-medium-border-radius);
+      }
+    }
+
+    &_large {
+      padding: var(--y-core-phone-code-size-large-padding-y) var(--y-core-phone-code-size-large-padding-right) var(--y-core-phone-code-size-large-padding-y) var(--y-core-phone-code-size-large-padding-left);
+
+      &::before {
+        width: calc(100% - (var(--y-core-phone-code-spacing) + var(--y-core-phone-code-size-large-padding-right)));
+        border-radius: var(--y-core-phone-code-size-large-border-radius);
+      }
+    }
+  }
+}
