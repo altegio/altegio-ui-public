@@ -1,0 +1,104 @@
+import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
+import { YCoreTableTagName } from '~shared/constants'
+import { useCoreTests } from '~shared/tests/core'
+import type { TSlotTestCase, TPropTestCase } from '~shared/types/tests'
+import { text, empty } from '~shared/tests/slotContents'
+import {
+  createCoreTableProps,
+  type IYCoreTableProps,
+} from '~core/ui/table/models/types'
+import '~core/ui/table'
+
+const tagName = YCoreTableTagName
+
+const {
+  component,
+  updateComponent,
+  resetComponent,
+  injectComponentToBody,
+  removeComponent,
+} = useCoreTests(
+  tagName,
+  createCoreTableProps(),
+)
+
+// Unit test cases:
+const slotDefaultTestCases: TSlotTestCase[] = [
+  { slot: 'default', case: 'с контентом', content: text },
+  { slot: 'default', case: 'без контента', content: empty },
+]
+const propLoadingPropTestCases: TPropTestCase<IYCoreTableProps, 'loading'>[] = [
+  { prop: 'loading', case: 'true', value: true },
+  { prop: 'loading', case: 'false', value: false },
+]
+const propDisabledPropTestCases: TPropTestCase<IYCoreTableProps, 'disabled'>[] = [
+  { prop: 'disabled', case: 'true', value: true },
+  { prop: 'disabled', case: 'false', value: false },
+]
+
+describe(
+  'Core/YTable',
+  () => {
+    beforeAll(() => {
+      injectComponentToBody()
+    })
+
+    afterEach(async() => {
+      await resetComponent()
+    })
+
+    afterAll(() => {
+      removeComponent()
+    })
+
+    describe(
+      'Unit',
+      () => {
+        describe(
+          'Slots',
+          () => {
+            for (const testCase of slotDefaultTestCases) {
+              it(
+                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                async() => {
+                  await updateComponent({ slots: { [testCase.slot]: testCase.content } })
+
+                  expect(component.textContent).toBe(testCase.content)
+                },
+              )
+            }
+          },
+        )
+        describe(
+          'Props',
+          () => {
+            for (const testCase of [
+              ...propLoadingPropTestCases,
+              ...propDisabledPropTestCases,
+            ]) {
+              it(
+                `Prop "${testCase.prop}" должен быть ${testCase.case}`,
+                async() => {
+                  await updateComponent({ props: { [testCase.prop]: testCase.value } })
+
+                  expect(component[testCase.prop]).toBe(testCase.value)
+                },
+              )
+            }
+          },
+        )
+        describe(
+          'Events',
+          () => {
+            it(
+              'Events tests',
+              () => {
+                expect(true).toBe(true)
+              },
+            )
+          },
+        )
+      },
+    )
+  },
+)

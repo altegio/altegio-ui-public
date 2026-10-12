@@ -1,0 +1,23 @@
+$component: $YCoreTablePaginationTagName;
+
+:host {
+  grid-column: 1 / max;
+}
+.$(component) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--y-core-table-pagination-gap);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--y-core-table-pagination-padding);
+
+  &__counter {
+    display: flex;
+    gap: var(--y-core-table-pagination-counter-gap);
+    align-items: center;
+
+    &-select {
+      max-width: 88px;
+    }
+  }
+}

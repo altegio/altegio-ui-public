@@ -1,0 +1,6 @@
+:host {
+  /* Общие размеры */
+  --y-core-label-margin-left-tooltip: var(--y-core-size-spacing-x);
+  --y-core-label-color-tooltip: var(--y-core-color-icon-secondary);
+  --y-core-label-color-tooltip-disabled: var(--y-core-color-icon-tertiary);
+}

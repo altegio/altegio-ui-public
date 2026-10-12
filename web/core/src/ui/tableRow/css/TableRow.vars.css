@@ -1,0 +1,9 @@
+:host {
+  /* Общие */
+
+  --y-core-table-row-slot-padding-y: var(--y-core-size-spacing-2-x);
+  --y-core-table-row-slot-padding-x: var(--y-core-size-spacing-3-x);
+  --y-core-table-row-default-background-color: var(--y-core-color-surface-primary);
+  --y-core-table-row-stripe-background-color: #f8f8f9;
+  --y-core-table-row-sticky-background-color: var(--y-core-color-surface-primary);
+}

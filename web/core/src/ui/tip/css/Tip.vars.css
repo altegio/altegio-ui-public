@@ -1,0 +1,18 @@
+:host {
+  /* Типы */
+  --y-core-tip-type-invert-background-color: var(--y-core-color-other-invert);
+  --y-core-tip-type-invert-color: var(--y-core-color-surface-primary);
+  --y-core-tip-type-primary-background-color: var(--y-core-color-surface-primary);
+  --y-core-tip-type-primary-color: var(--y-core-color-text-primary);
+  --y-core-tip-type-primary-shadow: var(--y-core-effects-card-drop-shadow);
+
+  /* Содержимое */
+  --y-core-tip-content-padding-x: var(--y-core-size-spacing-4-x);
+  --y-core-tip-content-padding-y: var(--y-core-size-spacing-3-x);
+  --y-core-tip-content-border-radius: var(--y-core-size-radius-2-x);
+
+  /* Текст */
+  --y-core-tip-text-font-size: var(--y-core-typography-annotation-a-2-regular-font-size);
+  --y-core-tip-text-line-height: var(--y-core-typography-annotation-a-2-regular-line-height);
+  --y-core-tip-text-font-weight: var(--y-core-typography-annotation-a-2-regular-font-weight);
+}

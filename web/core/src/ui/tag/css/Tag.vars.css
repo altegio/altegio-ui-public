@@ -1,0 +1,52 @@
+:host {
+  /* Общие */
+  --y-core-tag-font-family: var(--y-core-font-family);
+  --y-core-tag-border-radius: var(--y-core-size-radius-x);
+
+  /* Размеры */
+  --y-core-tag-padding-small-x: var(--y-core-size-spacing-x);
+  --y-core-tag-padding-small-y: var(--y-core-size-spacing-0-5-x);
+  --y-core-tag-padding-medium-x: var(--y-core-size-spacing-2-x);
+  --y-core-tag-padding-medium-y: var(--y-core-size-spacing-x);
+  --y-core-tag-font-size-small: var(--y-core-typography-annotation-a-3-medium-font-size);
+  --y-core-tag-font-size-small-line-height: var(--y-core-typography-annotation-a-3-medium-line-height);
+  --y-core-tag-font-size-small-font-weight: var(--y-core-typography-annotation-a-3-medium-font-weight);
+  --y-core-tag-font-size-medium: var(--y-core-typography-annotation-a-2-medium-font-size);
+  --y-core-tag-font-size-medium-line-height: var(--y-core-typography-annotation-a-2-medium-line-height);
+  --y-core-tag-font-size-medium-font-weight: var(--y-core-typography-annotation-a-2-medium-font-weight);
+  --y-core-tag-padding-large-x: var(--y-core-size-spacing-2-x);
+  --y-core-tag-padding-large-y: var(--y-core-size-spacing-1-5-x);
+  --y-core-tag-font-size-large: var(--y-core-typography-paragraph-p-2-medium-font-size);
+  --y-core-tag-font-size-large-line-height: var(--y-core-typography-paragraph-p-2-medium-line-height);
+  --y-core-tag-font-size-large-font-weight: var(--y-core-typography-paragraph-p-2-medium-font-weight);
+  --y-core-tag-border-radius-large: var(--y-core-size-radius-2-x);
+
+
+  /* Цвета текста */
+  --y-core-tag-color-accent: var(--y-core-color-text-primary);
+  --y-core-tag-color-accent-disabled: var(--y-core-color-text-tertiary);
+  --y-core-tag-color-muted: var(--y-core-color-text-primary);
+  --y-core-tag-color-muted-disabled: var(--y-core-color-text-tertiary);
+  --y-core-tag-color-danger: var(--y-core-color-calm-text-red);
+  --y-core-tag-color-danger-disabled: var(--y-core-color-calm-text-red-low);
+  --y-core-tag-color-success: var(--y-core-color-calm-text-green);
+  --y-core-tag-color-success-disabled: var(--y-core-color-calm-text-green-low);
+  --y-core-tag-color-warning: var(--y-core-color-calm-text-orange);
+  --y-core-tag-color-warning-disabled: var(--y-core-color-calm-text-orange-low);
+  --y-core-tag-color-information: var(--y-core-color-calm-text-blue);
+  --y-core-tag-color-information-disabled: var(--y-core-color-calm-text-blue-low);
+  --y-core-tag-color-discovery: var(--y-core-color-calm-text-purple);
+  --y-core-tag-color-discovery-disabled: var(--y-core-color-calm-text-purple-low);
+
+  /* Цвета фона */
+  --y-core-tag-bg-accent: var(--y-core-color-calm-surface-yellow-low);
+  --y-core-tag-bg-muted: var(--y-core-color-surface-tertiary);
+  --y-core-tag-bg-danger: var(--y-core-color-calm-surface-red-low);
+  --y-core-tag-bg-success: var(--y-core-color-calm-surface-green-low);
+  --y-core-tag-bg-warning: var(--y-core-color-calm-surface-orange-low);
+  --y-core-tag-bg-information: var(--y-core-color-calm-surface-blue-low);
+  --y-core-tag-bg-discovery: var(--y-core-color-calm-surface-purple-low);
+
+  /* Отступы */
+  --y-core-tag-gap: var(--y-core-size-spacing-x);
+}

@@ -1,0 +1,32 @@
+:host {
+  /* Общие */
+  --y-core-field-input-cursor: text;
+
+  /* Цвета */
+  --y-core-field-input-default-color: var(--y-core-color-text-primary);
+  --y-core-field-input-disabled-color: var(--y-core-color-text-tertiary);
+  --y-core-field-input-placeholder-color: var(--y-core-color-text-tertiary);
+
+  /* Размеры */
+
+  /* Small */
+  --y-core-field-input-outer-size-small-padding-y: var(--y-core-size-spacing-1-5-x);
+  --y-core-field-input-size-small-padding-x: var(--y-core-size-spacing-3-x);
+  --y-core-field-input-size-small-padding-y: var(--y-core-field-input-outer-size-small-padding-y);
+  --y-core-field-input-size-small-font-size: var(--y-core-typography-paragraph-p-2-regular-font-size);
+  --y-core-field-input-size-small-line-height: var(--y-core-typography-paragraph-p-2-regular-line-height);
+
+  /* Medium */
+  --y-core-field-input-outer-size-medium-padding-y: var(--y-core-size-spacing-2-x);
+  --y-core-field-input-size-medium-padding-x: var(--y-core-size-spacing-3-x);
+  --y-core-field-input-size-medium-padding-y: var(--y-core-field-input-outer-size-medium-padding-y);
+  --y-core-field-input-size-medium-font-size: var(--y-core-typography-paragraph-p-1-regular-font-size);
+  --y-core-field-input-size-medium-line-height: var(--y-core-typography-paragraph-p-1-regular-line-height);
+
+  /* Large */
+  --y-core-field-input-outer-size-large-padding-y: var(--y-core-size-spacing-3-x);
+  --y-core-field-input-size-large-padding-x: var(--y-core-size-spacing-3-x);
+  --y-core-field-input-size-large-padding-y: var(--y-core-field-input-outer-size-large-padding-y);
+  --y-core-field-input-size-large-font-size: var(--y-core-typography-paragraph-p-1-regular-font-size);
+  --y-core-field-input-size-large-line-height: var(--y-core-typography-paragraph-p-1-regular-line-height);
+}

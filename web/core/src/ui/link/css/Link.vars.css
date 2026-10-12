@@ -1,0 +1,8 @@
+:host {
+    /* Общие */
+    --y-core-link-display: inline-flex;
+    --y-core-link-text-white-space: nowrap;
+
+    /* Цвета */
+    --y-core-link-color: var(--y-core-color-other-link);
+}

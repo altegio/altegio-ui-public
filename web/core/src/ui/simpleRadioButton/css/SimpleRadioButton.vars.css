@@ -1,0 +1,35 @@
+:host {
+  /* Размеры */
+
+  /* Small */
+  --y-core-simple-radio-button-size-small-width: 20px;
+  --y-core-simple-radio-button-size-small-height: 20px;
+  --y-core-simple-radio-button-size-small-padding: var(--y-core-size-spacing-0-5-x);
+
+  /* Medium */
+  --y-core-simple-radio-button-size-medium-width: 24px;
+  --y-core-simple-radio-button-size-medium-height: 24px;
+  --y-core-simple-radio-button-size-medium-padding: var(--y-core-size-spacing-0-5-x);
+
+  /* Цвета состояний */
+
+  /* Default */
+  --y-core-simple-radio-button-default-background-color: var(--y-core-color-surface-primary);
+  --y-core-simple-radio-button-default-border-color: var(--y-core-color-stroke-primary);
+  --y-core-simple-radio-button-default-hover-background-color: var(--y-core-color-surface-primary-high);
+  --y-core-simple-radio-button-default-hover-border-color: var(--y-core-color-stroke-primary-high);
+
+  /* Checked */
+  --y-core-simple-radio-button-checked-background-color: var(--y-core-color-surface-accent);
+  --y-core-simple-radio-button-checked-border-color: var(--y-core-color-stroke-primary);
+  --y-core-simple-radio-button-checked-hover-background-color: var(--y-core-color-surface-accent-high);
+  --y-core-simple-radio-button-checked-hover-border-color: var(--y-core-color-stroke-primary-high);
+
+  /* Error */
+  --y-core-simple-radio-button-error-background-color: var(--y-core-color-surface-negative);
+  --y-core-simple-radio-button-error-border-color: var(--y-core-color-surface-negative);
+
+  /* Disabled */
+  --y-core-simple-radio-button-disabled-color: var(--y-core-color-stroke-primary-low);
+  --y-core-simple-radio-button-disabled-checked-color: var(--y-core-color-surface-accent-low);
+}

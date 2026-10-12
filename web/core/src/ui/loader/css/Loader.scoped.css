@@ -1,0 +1,62 @@
+$component: $YCoreLoaderTagName;
+
+.$(component) {
+  display: var(--y-core-loader-display);
+
+  &_size {
+    &_extra-small {
+      width: var(--y-core-loader-size-extra-small);
+      height: var(--y-core-loader-size-extra-small);
+    }
+
+    &_small {
+      width: var(--y-core-loader-size-small);
+      height: var(--y-core-loader-size-small);
+    }
+
+    &_medium {
+      width: var(--y-core-loader-size-medium);
+      height: var(--y-core-loader-size-medium);
+    }
+
+    &_large {
+      width: var(--y-core-loader-size-large);
+      height: var(--y-core-loader-size-large);
+    }
+
+    &_extra-large {
+      width: var(--y-core-loader-size-extra-large);
+      height: var(--y-core-loader-size-extra-large);
+    }
+  }
+
+  &_variant {
+    &_black {
+      color: var(--y-core-loader-color-black);
+    }
+
+    &_white {
+      color: var(--y-core-loader-color-white);
+    }
+
+    &_yellow {
+      color: var(--y-core-loader-color-yellow);
+    }
+  }
+
+  svg {
+    fill: currentcolor;
+    stroke: currentcolor;
+  }
+
+  path {
+    transform-origin: center;
+    animation: spin 1s infinite linear;
+  }
+
+  @keyframes spin {
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+}

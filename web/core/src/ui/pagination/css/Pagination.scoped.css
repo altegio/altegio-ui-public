@@ -1,0 +1,7 @@
+$component: $YCorePaginationTagName;
+
+.$(component) {
+  display: inline-flex;
+  gap: var(--y-core-pagination-gap);
+  align-items: center;
+}

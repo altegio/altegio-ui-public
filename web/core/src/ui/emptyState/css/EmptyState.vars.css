@@ -1,0 +1,16 @@
+:host {
+  /* Общие */
+  --y-core-empty-state-gap: var(--y-core-size-spacing-4-x);
+  --y-core-empty-state-medium-padding: var(--y-core-size-spacing-4-x);
+  --y-core-empty-state-small-padding: var(--y-core-size-spacing-3-x);
+  --y-core-empty-state-content-gap: var(--y-core-size-spacing-2-x);
+
+  /* Иконка */
+  --y-core-empty-state-background-color: var(--y-core-color-surface-tertiary);
+  --y-core-empty-state-icon-container-radius: calc(var(--y-core-size-radius-4-x) * 5);
+  --y-core-empty-state-medium-icon-container-size: 48px;
+  --y-core-empty-state-small-icon-container-size: 32px;
+
+  /* Кнопки */
+  --y-core-empty-state-actions-gap: var(--y-core-size-spacing-2-x);
+}

@@ -1,0 +1,59 @@
+@import url('../../../assets/css/mixins/scrollbar.css');
+
+$component: $YCoreTextareaTagName;
+
+:host {
+  display: block;
+}
+
+.$(component) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--y-core-textarea-gap);
+  max-width: 100%;
+  
+  @mixin y-scrollbar;
+
+  &__field-wrapper-inner {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  &__counter {
+    font-size: var(--y-core-textarea-counter-font-size);
+    font-weight: var(--y-core-textarea-counter-font-weight);
+    line-height: var(--y-core-textarea-counter-line-height);
+    color: var(--y-core-textarea-counter-color);
+
+    &_disabled {
+      color: var(--y-core-textarea-counter-disabled-color);
+    }
+  }
+
+  &__field-wrapper {
+    align-self: stretch;
+
+    &_resize {
+      &_none {
+        resize: none;
+      }
+  
+      &_both {
+        overflow: auto;
+        resize: both;
+      }
+  
+      &_horizontal {
+        overflow-x: auto;
+        resize: horizontal;
+      }
+  
+      &_vertical {
+        overflow: auto;
+        overflow-y: auto;
+        resize: vertical;
+      }
+    }
+  }
+}

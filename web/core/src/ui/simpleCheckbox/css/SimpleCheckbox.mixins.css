@@ -1,0 +1,24 @@
+$component: $YCoreSimpleCheckboxTagName;
+
+@define-mixin checkbox-size
+  $width,
+  $height,
+  $padding,
+  $icon-checked-width,
+  $icon-checked-height
+{
+  width: var($width);
+  height: var($height);
+  padding: var($padding);
+
+  .$(component)__icon-checked {
+    width: var($icon-checked-width);
+    height: var($icon-checked-height);
+  }
+}
+
+@define-mixin checkbox-shadow
+  $color
+{
+  box-shadow: 0 0 0 1px $color;
+}

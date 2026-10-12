@@ -1,0 +1,23 @@
+$component: $YCorePopoverTagName;
+
+.$(component) {
+  display: var(--y-core-popover-display);
+  font-family: var(--y-core-font-family);
+
+  &__actions {
+    display: flex;
+    gap: var(--y-core-popover-action-gap);
+    justify-content: flex-end;
+    margin-top: var(--y-core-popover-margin-top);
+  }
+
+  &_type {
+    &_invert {
+      .$(component)__cancel {
+        /* TODO: использовать HostStyle; Пример в SimpleButton  */
+
+        --y-core-simple-button-variant-text-color: var(--y-core-color-other-contrast)
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+$component: $YCoreEmptyStateTagName;
+
+.$(component) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--y-core-empty-state-gap);
+  align-items: center;
+  padding: var(--y-core-empty-state-medium-padding);
+
+  &__icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--y-core-empty-state-medium-icon-container-size);
+    height: var(--y-core-empty-state-medium-icon-container-size);
+    background-color: var(--y-core-empty-state-background-color);
+    border-radius: var(--y-core-empty-state-icon-container-radius);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--y-core-empty-state-content-gap);
+    align-items: center;
+    text-align: center;
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--y-core-empty-state-actions-gap);
+
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &_size {
+    &-small {
+      padding: var(--y-core-empty-state-small-padding);
+
+      .$(component)__icon-container {
+        width: var(--y-core-empty-state-small-icon-container-size);
+        height: var(--y-core-empty-state-small-icon-container-size);
+      }
+    }
+  }
+}

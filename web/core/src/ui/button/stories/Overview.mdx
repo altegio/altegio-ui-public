@@ -1,0 +1,23 @@
+import { Meta } from '@storybook/blocks'
+import { BlockWrap, BlockCol, BlockTable } from '~shared/.storybook/blocks'
+import * as Buttons from './Button.stories';
+import { EYCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
+import { EYSizes } from '~shared/types/global';
+
+<Meta of={Buttons}  />
+
+<BlockTable
+  of={Buttons.Playground}
+  cols={{
+    arg: 'size',
+    items: [
+      EYSizes.SMALL,
+      EYSizes.MEDIUM,
+      EYSizes.LARGE,
+    ]
+  }}
+  rows={{
+    arg: 'variant',
+    items: Object.values(EYCoreSimpleButtonVariant)
+  }}
+/>

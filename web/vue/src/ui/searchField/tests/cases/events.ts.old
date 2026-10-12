@@ -1,0 +1,15 @@
+// import { eventsCases } from '~core/ui/inputField/tests/cases/events'
+
+// type TVueSearchFieldEmitName = 'update:modelValue' | 'blur' | 'focus' | 'clear'
+
+// const mapEmitName: Record<string, TVueSearchFieldEmitName> = {
+//   'input-emit': 'update:modelValue',
+//   'blur-emit': 'blur',
+//   'focus-emit': 'focus',
+//   'clear-emit': 'clear',
+// }
+
+// export const eventsVueCases = eventsCases.map((eventCase) => ({
+//   ...eventCase,
+//   emitName: mapEmitName[eventCase.eventName],
+// }))

@@ -1,0 +1,28 @@
+$component: $YCorePhoneCodeTagName;
+
+:host {
+  /* Общие */
+  --y-core-phone-code-background-color-hover: var(--y-core-color-surface-secondary);
+  --y-core-phone-code-color-disabled: var(--y-core-color-icon-tertiary);
+
+  /* Sizes */
+  --y-core-phone-code-spacing: var(--y-core-size-spacing-x);
+
+  /* Small */
+  --y-core-phone-code-size-small-padding-y: var(--y-core-size-spacing-1-5-x);
+  --y-core-phone-code-size-small-padding-left: var(--y-core-size-spacing-3-x);
+  --y-core-phone-code-size-small-padding-right: var(--y-core-size-spacing-2-x);
+  --y-core-phone-code-size-small-border-radius: var(--y-core-size-radius-1-5-x);
+
+  /* Medium */
+  --y-core-phone-code-size-medium-padding-y: var(--y-core-size-spacing-2-x);
+  --y-core-phone-code-size-medium-padding-left: var(--y-core-size-spacing-3-x);
+  --y-core-phone-code-size-medium-padding-right: var(--y-core-size-spacing-2-x);
+  --y-core-phone-code-size-medium-border-radius: var(--y-core-size-radius-2-x);
+
+  /* Large */
+  --y-core-phone-code-size-large-padding-y: var(--y-core-size-spacing-3-x);
+  --y-core-phone-code-size-large-padding-left: var(--y-core-size-spacing-3-x);
+  --y-core-phone-code-size-large-padding-right: var(--y-core-size-spacing-2-x);
+  --y-core-phone-code-size-large-border-radius: var(--y-core-size-radius-2-5-x);
+}

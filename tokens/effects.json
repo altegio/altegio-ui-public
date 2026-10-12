@@ -1,0 +1,17 @@
+{
+  "card_drop_shadow": {
+    "type": "DROP_SHADOW",
+    "value": "0px 2px 24px 0px rgba(0, 0, 0, 0.08)",
+    "cssValue": "0px 2px 24px 0px rgba(0, 0, 0, 0.08)"
+  },
+  "pop_up_drop_shadow": {
+    "type": "DROP_SHADOW",
+    "value": "0px 12px 40px 0px rgba(0, 0, 0, 0.12)",
+    "cssValue": "0px 12px 40px 0px rgba(0, 0, 0, 0.12)"
+  },
+  "modal_drop_shadow": {
+    "type": "DROP_SHADOW",
+    "value": "0px 12px 48px 0px rgba(0, 0, 0, 0.24)",
+    "cssValue": "0px 12px 48px 0px rgba(0, 0, 0, 0.24)"
+  }
+}

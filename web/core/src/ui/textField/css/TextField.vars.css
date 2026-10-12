@@ -1,0 +1,6 @@
+:host {
+  --y-core-text-field-display: block;
+
+  /* Размеры */
+  --y-core-text-field-gap: var(--y-core-size-spacing-x);
+}

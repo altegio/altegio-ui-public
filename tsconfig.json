@@ -1,0 +1,82 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "ES2020",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationMap": true,
+    "plugins": [
+      {
+        "name": "ts-lit-plugin",
+        "strict": true,
+        "rules": {
+          "no-missing-import": "off",
+        }
+      },
+      {
+        "name": "@mdx-js/typescript-plugin"
+      }
+    ],
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "allowJs": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "~web/*": [
+        "./web/*"
+      ],
+      "~core/*": [
+        "./web/core/src/*"
+      ],
+      "~vue/*": [
+        "./web/vue/src/*"
+      ],
+      "~ng/*": [
+        "./web/angular/src/*"
+      ],
+      "~shared/*": [
+        "./web/shared/*"
+      ],
+      "~cli/*": [
+        "./web/cli/*"
+      ],
+      "~tokens/*": [
+        "./tokens/*"
+      ],
+      "~configs/*": [
+        "./configs/*"
+      ],
+      "~root/*": [
+        "./*"
+      ],
+    },
+    "types": [
+      "vite/client"
+    ]
+  },
+  "mdx": {
+    "checkMdx": true
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true,
+    "compilationMode": "partial",
+  },
+  "include": ["web", "web/**/.storybook/**/*", "tokens/**/*", "configs/**/*.ts"],
+  // "exclude": ["web/**/*.stories.ts"] - ESLint валится при валидации *.stories.ts
+}

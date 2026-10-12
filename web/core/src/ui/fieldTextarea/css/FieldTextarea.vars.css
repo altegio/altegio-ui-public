@@ -1,0 +1,26 @@
+:host {
+  /* Цвета */
+  --y-core-field-textarea-default-color: var(--y-core-color-text-primary);
+  --y-core-field-textarea-disabled-color: var(--y-core-color-text-tertiary);
+  --y-core-field-textarea-placeholder-color: var(--y-core-color-text-tertiary);
+
+  /* Размеры */
+
+  /* Small */
+  --y-core-field-textarea-size-small-padding-x: var(--y-core-size-spacing-3-x);
+  --y-core-field-textarea-size-small-padding-y: var(--y-core-size-spacing-1-5-x);
+  --y-core-field-textarea-size-small-font-size: var(--y-core-typography-paragraph-p-2-regular-font-size);
+  --y-core-field-textarea-size-small-line-height: var(--y-core-typography-paragraph-p-2-regular-line-height);
+
+  /* Medium */
+  --y-core-field-textarea-size-medium-padding-x: var(--y-core-size-spacing-3-x);
+  --y-core-field-textarea-size-medium-padding-y: var(--y-core-size-spacing-2-x);
+  --y-core-field-textarea-size-medium-font-size: var(--y-core-typography-paragraph-p-1-regular-font-size);
+  --y-core-field-textarea-size-medium-line-height: var(--y-core-typography-paragraph-p-1-regular-line-height);
+
+  /* Large */
+  --y-core-field-textarea-size-large-padding-x: var(--y-core-size-spacing-3-x);
+  --y-core-field-textarea-size-large-padding-y: var(--y-core-size-spacing-3-x);
+  --y-core-field-textarea-size-large-font-size: var(--y-core-typography-paragraph-p-1-regular-font-size);
+  --y-core-field-textarea-size-large-line-height: var(--y-core-typography-paragraph-p-1-regular-line-height);
+}

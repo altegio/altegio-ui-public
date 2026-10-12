@@ -1,0 +1,49 @@
+:host {
+  /* Размеры */
+
+  /* Small */
+  --y-core-simple-checkbox-size-small-width: 20px;
+  --y-core-simple-checkbox-size-small-height: 20px;
+  --y-core-simple-checkbox-size-small-padding: var(--y-core-size-spacing-0-5-x);
+  --y-core-simple-checkbox-size-small-icon-checked-width: 12px;
+  --y-core-simple-checkbox-size-small-icon-checked-height: 12px;
+
+  /* Medium */
+  --y-core-simple-checkbox-size-medium-width: 24px;
+  --y-core-simple-checkbox-size-medium-height: 24px;
+  --y-core-simple-checkbox-size-medium-padding: var(--y-core-size-spacing-0-5-x);
+  --y-core-simple-checkbox-size-medium-icon-checked-width: 16px;
+  --y-core-simple-checkbox-size-medium-icon-checked-height: 16px;
+
+  /* Цвета состояний */
+
+  /* Default */
+  --y-core-simple-checkbox-default-background-color: var(--y-core-color-surface-primary);
+  --y-core-simple-checkbox-default-border-color: var(--y-core-color-stroke-primary);
+  --y-core-simple-checkbox-default-icon-color: var(--y-core-color-icon-on-accent);
+  --y-core-simple-checkbox-default-hover-background-color: var(--y-core-color-surface-primary-high);
+  --y-core-simple-checkbox-default-hover-border-color: var(--y-core-color-stroke-primary-high);
+
+  /* Checked */
+  --y-core-simple-checkbox-checked-background-color: var(--y-core-color-surface-accent);
+  --y-core-simple-checkbox-checked-border-color: var(--y-core-color-surface-accent);
+  --y-core-simple-checkbox-checked-hover-background-color: var(--y-core-color-surface-accent-high);
+  --y-core-simple-checkbox-checked-hover-border-color: var(--y-core-color-surface-accent-high);
+  --y-core-simple-checkbox-checked-hover-icon-color: var(--y-core-color-icon-on-accent);
+
+  /* Indeterminate */
+  --y-core-simple-checkbox-indeterminate-icon-color: var(--y-core-color-icon-accent);
+  --y-core-simple-checkbox-indeterminate-hover-background-color: var(--y-core-color-surface-primary-high);
+  --y-core-simple-checkbox-indeterminate-hover-border-color: var(--y-core-color-stroke-primary-high);
+  --y-core-simple-checkbox-indeterminate-hover-icon-color: var(--y-core-color-surface-accent-high);
+
+  /* Error */
+  --y-core-simple-checkbox-error-background-color: var(--y-core-color-surface-negative);
+  --y-core-simple-checkbox-error-border-color: var(--y-core-color-surface-negative);
+  --y-core-simple-checkbox-error-icon-color: var(--y-core-color-other-contrast);
+
+  /* Disabled */
+  --y-core-simple-checkbox-disabled-color: var(--y-core-color-stroke-primary-low);
+  --y-core-simple-checkbox-disabled-checked-color: var(--y-core-color-surface-accent-low);
+  --y-core-simple-checkbox-disabled-icon-color: var(--y-core-color-icon-tertiary);
+}

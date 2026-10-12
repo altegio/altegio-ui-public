@@ -1,0 +1,41 @@
+$component: $YCoreTableTagName;
+
+:host {
+  display: inline-grid;
+  width: 100%;
+  overflow: auto;
+}
+.$(component) {
+  position: relative;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / max;
+  width: 100%;
+  font-family: var(--y-core-font-family);
+
+  slot {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / max;
+  }
+
+  slot[name="placeholder"] {
+    position: absolute;
+    inset: 0;
+    grid-template-rows: subgrid;
+    grid-row: 1 / max;
+  }
+
+  &_loading {
+    slot:not([name="placeholder"]) {
+      visibility: hidden;
+    }
+  }
+
+  &:not(&_loading) {
+    slot[name="placeholder"] {
+      display: none;
+      visibility: hidden;
+    }
+  }
+}

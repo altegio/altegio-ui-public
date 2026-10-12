@@ -1,0 +1,22 @@
+:host {
+  /* Общие */
+
+  /* Цвет */
+  --y-core-field-icon-default-color: var(--y-core-color-icon-secondary);
+  --y-core-field-icon-disabled-color: var(--y-core-color-icon-tertiary);
+  --y-core-field-icon-hover-color: var(--y-core-color-icon-primary);
+
+  /* Размеры */
+
+  /* Small */
+  --y-core-field-icon-size-small-padding-x: var(--y-core-size-spacing-2-5-x);
+  --y-core-field-icon-size-small-padding-y: var(--y-core-size-spacing-2-x);
+
+  /* Medium */
+  --y-core-field-icon-size-medium-padding-x: var(--y-core-size-spacing-2-5-x);
+  --y-core-field-icon-size-medium-padding-y: var(--y-core-size-spacing-2-5-x);
+
+  /* Large */
+  --y-core-field-icon-size-large-padding-x: var(--y-core-size-spacing-2-5-x);
+  --y-core-field-icon-size-large-padding-y: var(--y-core-size-spacing-3-x);
+}

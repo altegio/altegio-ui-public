@@ -1,0 +1,6 @@
+@import url('../../../public/fonts/inter/inter.css');
+@import url('../../../../core/src/assets/css/index.css');
+
+.sbdocs-content {
+  max-width: 1400px !important;
+}

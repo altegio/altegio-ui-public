@@ -1,0 +1,91 @@
+import { text } from '~shared/tests/slotContents'
+import { EYSizes } from '~shared/types/global'
+import type { TPropTestCase } from '~shared/types/tests'
+import { type IYCoreInputFieldProps, EYCoreInputTypeProp } from '../../models/types'
+import { type IYCoreLabelExternalProps } from '~core/ui/label/models/types'
+import { type IYCoreAnnotationExternalProps } from '~core/ui/annotation/models/types'
+import { type MaskitoOptions } from '@maskito/core'
+
+export const testMaskOptions: MaskitoOptions = { mask: /^\d+$/ }
+export const testErrors = [
+  text,
+  text,
+]
+
+export const sizes = Object.values(EYSizes).filter((size) => size !== EYSizes.EXTRA_LARGE && size !== EYSizes.EXTRA_SMALL)
+
+export const propValueCases: TPropTestCase<IYCoreInputFieldProps, 'value'>[] = [
+  { prop: 'value', case: 'с текстом', value: text },
+  { prop: 'value', case: 'без текста', value: '' },
+]
+export const propNameCases: TPropTestCase<IYCoreInputFieldProps, 'name'>[] = [
+  { prop: 'name', case: 'с текстом', value: text },
+  { prop: 'name', case: 'без текста', value: '' },
+]
+export const propPlaceholderCases: TPropTestCase<IYCoreInputFieldProps, 'placeholder'>[] = [
+  { prop: 'placeholder', case: 'с текстом', value: text },
+  { prop: 'placeholder', case: 'без текста', value: '' },
+]
+export const propAutofocusCases: TPropTestCase<IYCoreInputFieldProps, 'autofocus'>[] = [
+  { prop: 'autofocus', case: 'true', value: true },
+  { prop: 'autofocus', case: 'false', value: false },
+]
+export const propTypeCases: TPropTestCase<IYCoreInputFieldProps, 'type'>[] = Object.values(EYCoreInputTypeProp).map((type) => ({
+  prop: 'type',
+  case: type,
+  value: type,
+}))
+export const propDisabledCases: TPropTestCase<IYCoreInputFieldProps, 'disabled'>[] = [
+  { prop: 'disabled', case: 'true', value: true },
+  { prop: 'disabled', case: 'false', value: false },
+]
+export const propReadonlyCases: TPropTestCase<IYCoreInputFieldProps, 'readonly'>[] = [
+  { prop: 'readonly', case: 'true', value: true },
+  { prop: 'readonly', case: 'false', value: false },
+]
+export const propRequiredCases: TPropTestCase<IYCoreInputFieldProps, 'required'>[] = [
+  { prop: 'required', case: 'true', value: true },
+  { prop: 'required', case: 'false', value: false },
+]
+export const propMaxlengthCases: TPropTestCase<IYCoreInputFieldProps, 'maxlength'>[] = [
+  { prop: 'maxlength', case: '10', value: 10 },
+  { prop: 'maxlength', case: '0', value: 0 },
+]
+export const propMaskOptionsCases: TPropTestCase<IYCoreInputFieldProps, 'maskOptions'>[] = [
+  { prop: 'maskOptions', case: 'с маской', value: testMaskOptions },
+  { prop: 'maskOptions', case: 'без маски', value: undefined },
+]
+export const propErrorsCases: TPropTestCase<IYCoreInputFieldProps, 'errors'>[] = [
+  { prop: 'errors', case: 'с ошибками', value: testErrors },
+  { prop: 'errors', case: 'с одной ошибкой', value: [testErrors[0]] },
+  { prop: 'errors', case: 'без ошибок', value: [] },
+]
+export const propClearableCases: TPropTestCase<IYCoreInputFieldProps, 'clearable'>[] = [
+  { prop: 'clearable', case: 'с очисткой', value: true },
+  { prop: 'clearable', case: 'без очистки', value: false },
+]
+export const propSizeCases: TPropTestCase<IYCoreInputFieldProps, 'size'>[] = sizes.map((size) => ({
+  prop: 'size',
+  case: size,
+  value: size,
+}))
+
+type TPropLabel<K extends keyof IYCoreInputFieldProps, T extends keyof IYCoreLabelExternalProps> = TPropTestCase<IYCoreInputFieldProps, K> & { labelProp: T }
+type TPropAnnotation<K extends keyof IYCoreInputFieldProps, T extends keyof IYCoreAnnotationExternalProps> = TPropTestCase<IYCoreInputFieldProps, K> & { annotationProp: T }
+
+export const propLabelOverflowDebounceCases: (TPropLabel<'labelOverflowDebounce', 'debounce'>)[] = [
+  { prop: 'labelOverflowDebounce', labelProp: 'debounce', case: '100', value: 100 },
+  { prop: 'labelOverflowDebounce', labelProp: 'debounce', case: '0', value: 0 },
+]
+export const propLabelTextCases: TPropLabel<'labelText', 'text'>[] = [
+  { prop: 'labelText', labelProp: 'text', case: 'с текстом', value: text },
+  { prop: 'labelText', labelProp: 'text', case: 'без текста', value: '' },
+]
+export const propLabelTooltipTextCases: TPropLabel<'labelTooltipText', 'tooltipText'>[] = [
+  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'с текстом', value: text },
+  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'без текста', value: '' },
+]
+export const propAnnotationTextCases: TPropAnnotation<'annotationText', 'text'>[] = [
+  { prop: 'annotationText', annotationProp: 'text', case: 'с текстом', value: text },
+  { prop: 'annotationText', annotationProp: 'text', case: 'без текста', value: '' },
+]

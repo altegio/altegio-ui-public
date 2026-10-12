@@ -1,0 +1,10 @@
+$component: $YCoreCollapseTagName;
+
+:host {
+  display: block;
+}
+.$(component) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--y-core-collapse-gap);
+}

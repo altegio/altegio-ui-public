@@ -1,0 +1,7 @@
+$component: $YCoreAnnotationTagName;
+
+.$(component) {
+  &_disabled {
+    cursor: not-allowed;
+  }
+}

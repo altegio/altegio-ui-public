@@ -1,0 +1,52 @@
+$component: $YCoreChipTagName;
+
+:host {
+  display: inline-flex;
+}
+
+.$(component) {
+  display: flex;
+  gap: var(--y-core-chip-gap);
+  align-items: center;
+  color: var(--y-core-chip-color-default);
+  background-color: var(--y-core-chip-bg-default);
+  border-radius: var(--y-core-chip-border-radius);
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:not(&_disabled, &_active):hover {
+    background-color: var(--y-core-chip-bg-hover);
+  }
+
+  &_size {
+    &_small {
+      gap: var(--y-core-chip-size-small-gap);
+      padding: var(--y-core-chip-size-small-padding-y) var(--y-core-chip-size-small-padding-x);
+    }
+
+    &_large {
+      gap: var(--y-core-chip-size-large-gap);
+      padding: var(--y-core-chip-size-large-padding-y) var(--y-core-chip-size-large-padding-x);
+    }
+  }
+
+  &_active {
+    color: var(--y-core-chip-color-active);
+    background-color: var(--y-core-chip-bg-active);
+    
+    > .$(component)__text {
+      --y-core-text-color-primary: var(--y-core-chip-color-active);
+    }
+  }
+
+  &_disabled {
+    color: var(--y-core-chip-color-disabled);
+    background-color: var(--y-core-chip-bg-disabled);
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+:host {
+  /* Общие */
+
+  --y-core-segment-control-display: flex;
+
+  /* Размеры */
+
+  --y-core-segment-control-border-size: 1px;
+  --y-core-segment-control-size-border-radius: var(--y-core-size-radius-2-x);
+  --y-core-segment-control-size-padding: var(--y-core-size-spacing-0-5-x);
+  --y-core-segment-control-size-gap: var(--y-core-size-spacing-0-5-x);
+
+  /* Цвета */
+
+  --y-core-segment-control-border-color: var(--y-core-color-stroke-primary-low);
+  --y-core-segment-control-background-color: var(--y-core-color-surface-secondary)
+}

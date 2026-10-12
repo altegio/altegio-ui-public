@@ -1,0 +1,41 @@
+@import url('../../../assets/css/mixins.css');
+
+$component: $YCoreSimpleButtonTagName;
+
+@define-mixin button-size $padding-y, $padding-x, $font-size, $line-height, $font-weight, $border-radius, $gap {
+  padding: var($padding-y) var($padding-x);
+  font-size: var($font-size);
+  font-weight: var($font-weight);
+  line-height: var($line-height);
+  border-radius:
+    var(--y-core-simple-button-border-top-left-radius, var($border-radius))
+    var(--y-core-simple-button-border-top-right-radius, var($border-radius))
+    var(--y-core-simple-button-border-bottom-right-radius, var($border-radius))
+    var(--y-core-simple-button-border-bottom-left-radius, var($border-radius));
+
+  .$(component)__content {
+    gap: var($gap);
+  }
+}
+
+@define-mixin button-variant $color, $border, $bg-color, $disabled-color, $disabled-border, $disabled-bg-color, $loading-color, $hover-bg-color {
+  color: var($color);
+  background-color: var($bg-color);
+  box-shadow: var(--y-core-simple-button-box-shadow-override, inset 0 0 0 var(--y-core-simple-button-border-size) var($border));
+  
+  &.$(component)_disabled {
+    color: var($disabled-color);
+    background-color: var($disabled-bg-color);
+    box-shadow: var(--y-core-simple-button-box-shadow-override, inset 0 0 0 var(--y-core-simple-button-border-size) var($disabled-border));
+  }
+
+  @mixin hover-device {
+    &:not(.$(component)_disabled, .$(component)_loading):hover {
+      background-color: var($hover-bg-color);
+    }
+  }
+
+  &:not(.$(component)_disabled):not(.$(component)_loading):active {
+    background-color: var($hover-bg-color);
+  }
+}

@@ -1,0 +1,58 @@
+$component: $YCoreToggleTagName;
+
+:host {
+  display: flex;
+}
+
+.$(component) {
+  display: inline-flex;
+  gap: var(--y-core-toggle-x-gap);
+  max-width: var(--y-core-toggle-max-width);
+  cursor: pointer;
+
+  &_disabled {
+    cursor: not-allowed;
+  }
+
+  &_alignment {
+    &-top {
+      align-items: flex-start;
+
+      .$(component)__toggle {
+        align-items: flex-start;
+      }
+    }
+
+    &-center {
+      align-items: center;
+
+      .$(component)__toggle {
+        align-items: center;
+      }
+    }
+  }
+
+  &__toggle {
+    display: flex;
+    height: 100%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--y-core-toggle-info-gap);
+    align-items: flex-start;
+  }
+
+  &__label {
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &__annotation {
+    &_hidden {
+      display: none;
+    }
+  }
+}

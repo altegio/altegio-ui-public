@@ -1,0 +1,39 @@
+
+$component: $YCoreTabsTagName;
+
+.$(component) {
+  position: relative;
+  display: var(--y-tabs-display);
+  font-family: var(--y-font-family);
+
+  &__tabs-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__scroll-left-btn, &__scroll-right-btn {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    max-height: 100%;
+    background: var(--y-core-color-other-contrast);
+  }
+
+  &__scroll-left-btn {
+    left: 0;
+  }
+
+  &__scroll-right-btn {
+    right: 0;
+  }
+}

@@ -1,0 +1,9 @@
+:host {
+  /* Общие */
+  --y-core-table-cell-size: 20px;
+  --y-core-table-cell-padding-y: var(--y-core-size-spacing-2-x);
+  --y-core-table-cell-padding-x: var(--y-core-size-spacing-3-x);
+  --y-core-table-cell-border-color: var(--y-core-color-stroke-primary);
+  --y-core-table-cell-default-background-color: var(--y-core-color-surface-primary);
+  --y-core-table-cell-stripe-background-color: var(--y-core-color-surface-secondary);
+}

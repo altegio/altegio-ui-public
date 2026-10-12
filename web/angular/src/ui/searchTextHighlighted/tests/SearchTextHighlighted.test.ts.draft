@@ -1,0 +1,113 @@
+import { describe, expect, it } from 'vitest'
+import { Component } from '@angular/core'
+import { TestBed } from '~ng/tests/setup'
+import { YCoreSearchTextHighlightedTagName } from '~shared/constants'
+import type { TPropTestCase, TSlotTestCase } from '~shared/types/tests'
+import { text, empty } from '~shared/tests/slotContents'
+import { YSearchTextHighlighted } from '~ng/ui/_/searchTextHighlighted/SearchTextHighlighted.component'
+import {
+  createNgSearchTextHighlightedProps,
+  type IYNgSearchTextHighlightedProps,
+} from '~ng/ui/_/searchTextHighlighted/models/types'
+
+const tagName = YCoreSearchTextHighlightedTagName
+
+interface ICreateComponentArgs {
+  slots?: {
+    default?: string
+  }
+  props?: Partial<IYNgSearchTextHighlightedProps>
+}
+const createComponent = async({ slots, props }: ICreateComponentArgs) => {
+  TestBed.resetTestingModule()
+  await TestBed.configureTestingModule({ imports: [YSearchTextHighlighted] }).compileComponents()
+
+  @Component({
+    template: `<YSearchTextHighlighted [externalProp]="externalProp" [internalProp]="internalProp">${slots?.default}</YSearchTextHighlighted>`,
+    imports: [YSearchTextHighlighted],
+    standalone: true,
+  })
+  class TestComponent {
+    externalProp = props?.externalProp
+    internalProp = props?.internalProp
+  }
+  return TestComponent
+}
+
+const { externalProp: defaultExternalProp, internalProp: defaultInternalProp } = createNgSearchTextHighlightedProps()
+
+// Unit test cases:
+const slotDefaultTestCases: TSlotTestCase[] = [
+  { slot: 'default', case: 'с контентом', content: text },
+  { slot: 'default', case: 'без контента', content: empty },
+]
+const propExternalPropTestCases: TPropTestCase<IYNgSearchTextHighlightedProps, 'externalProp'>[] = [
+  { prop: 'externalProp', case: 'с контентом', value: text },
+  { prop: 'externalProp', case: 'без контента', value: empty },
+  { prop: 'externalProp', case: 'без значения', value: defaultExternalProp },
+]
+const propInternalPropTestCases: TPropTestCase<IYNgSearchTextHighlightedProps, 'internalProp'>[] = [
+  { prop: 'internalProp', case: 'с контентом', value: text },
+  { prop: 'internalProp', case: 'без контента', value: empty },
+  { prop: 'internalProp', case: 'без значения', value: defaultInternalProp },
+]
+
+describe(
+  'Angular/YSearchTextHighlighted',
+  () => {
+    describe(
+      'Unit',
+      () => {
+        describe(
+          'Slots',
+          () => {
+            for (const testCase of slotDefaultTestCases) {
+              it(
+                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                async() => {
+                  const component = await createComponent({
+                    slots: { [testCase.slot]: testCase.content },
+                    props: {},
+                  })
+                  const fixture = TestBed.createComponent(component)
+                  fixture.detectChanges()
+
+                  await fixture.whenStable()
+
+                  expect((fixture.nativeElement as HTMLElement).textContent).toBe(testCase.content)
+                },
+              )
+            }
+          },
+        )
+
+        describe(
+          'Props',
+          () => {
+            for (const testCase of [
+              ...propExternalPropTestCases,
+              ...propInternalPropTestCases,
+            ]) {
+              it(
+                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+                async() => {
+                  const component = await createComponent({
+                    slots: {},
+                    props: { [testCase.prop]: testCase.value },
+                  })
+                  const fixture = TestBed.createComponent(component)
+                  fixture.detectChanges()
+
+                  await fixture.whenStable()
+
+                  const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
+                  expect(coreElement?.[testCase.prop]).toBe(testCase.expected)
+                },
+              )
+            }
+          },
+        )
+      },
+    )
+  },
+)

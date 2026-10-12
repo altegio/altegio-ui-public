@@ -1,0 +1,49 @@
+$component: $YCoreAutocompleteFieldTagName;
+
+.$(component) {
+  display: var(--y-core-autocomplete-field-display);
+  flex-direction: column;
+  gap: var(--y-core-autocomplete-field-gap);
+  min-width: var(--y-core-autocomplete-field-min-width);
+  max-width: var(--y-core-autocomplete-field-max-width);
+  font-family: var(--y-font-family);
+
+  &__activator {
+    --y-input-flex-wrap: wrap;
+    --y-input-min-width: 0;
+  }
+
+  &__content {
+    --y-atom-dropdown-list-min-width: var(--y-core-autocomplete-field-min-width);
+    --y-atom-dropdown-list-max-width: var(--y-core-autocomplete-field-max-width);
+
+    max-width: var(--y-core-autocomplete-field-max-width);
+    margin-top: var(--y-core-autocomplete-field-content-margin-top);
+    margin-bottom: var(--y-core-autocomplete-field-content-margin-bottom);
+  }
+
+  &__list-item-append {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__list-items {
+    position: relative;
+    min-height: var(--y-core-autocomplete-field-dropdown-content-min-height);
+  }
+
+  &__list-loader {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    background-color: var(--y-core-autocomplete-field-loader-background-color);
+  }
+
+  &__annotation_hide {
+    display: none;
+  }
+}

@@ -1,0 +1,309 @@
+import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
+
+import { YCoreInputFieldTagName, YCoreInputTagName, YCoreLabelTagName, YCoreAnnotationTagName, YCoreErrorTagName } from '~shared/constants'
+import { text, textWithTag } from '~shared/tests/slotContents'
+import { useCoreTests } from '~shared/tests/core'
+import { getWCShadowRoot } from '~shared/tests/utils'
+import {
+  createCoreInputProps,
+  type IYCoreInputInputEvent,
+} from '~core/ui/inputField/models/types'
+import '~core/ui/inputField'
+
+import { slotCases } from './cases/slots'
+import { propSizeCases, propValueCases, propNameCases, propPlaceholderCases, propAutofocusCases, propTypeCases, propDisabledCases, propRequiredCases, propMaxlengthCases, propMaskOptionsCases, propErrorsCases, propClearableCases, propLabelOverflowDebounceCases, propLabelTextCases, propLabelTooltipTextCases, propAnnotationTextCases, propReadonlyCases } from './cases/props'
+import { eventsCases } from './cases/events'
+
+const tagName = YCoreInputFieldTagName
+
+const {
+  component,
+  updateComponent,
+  resetComponent,
+  injectComponentToBody,
+  removeComponent,
+} = useCoreTests(
+  tagName,
+  createCoreInputProps(),
+)
+
+type TSubComponent = typeof YCoreInputTagName | typeof YCoreLabelTagName | typeof YCoreAnnotationTagName | typeof YCoreErrorTagName
+const getSubWC = <T extends TSubComponent>(primaryWC: HTMLElement, secondaryWC: T) => {
+  const subWC = getWCShadowRoot(primaryWC).querySelector(secondaryWC)
+  if (!subWC) throw new Error(`${secondaryWC} not found`)
+  return subWC
+}
+
+const getSlotContentSubWC = (WC: HTMLElement, slotName: string) => {
+  const slotElement = getWCShadowRoot(WC).querySelector(`slot[name="${slotName}"]`)
+  if (!slotElement) throw new Error(`Slot ${slotName} not found`)
+
+  const subWCSlotElement = (slotElement as HTMLSlotElement).assignedNodes()[0] as HTMLSlotElement
+  const subWCSlotNodes = subWCSlotElement.assignedNodes()[0] as HTMLSlotElement
+  const subWCSlotContent = subWCSlotNodes.innerHTML
+
+  return subWCSlotContent
+}
+
+describe(
+  'Core/YCoreInputField/Unit',
+  () => {
+    beforeAll(() => {
+      injectComponentToBody()
+    })
+
+    afterEach(async() => {
+      await resetComponent()
+    })
+
+    afterAll(() => {
+      removeComponent()
+    })
+
+    describe(
+      'Slots',
+      () => {
+        for (const { slotName, wc } of slotCases) {
+          it(
+            `Должен отрендерить слот "${slotName}" в ${wc}`,
+            async() => {
+              await updateComponent({ slots: { [slotName]: textWithTag } })
+
+              const subWC = getSubWC(
+                component,
+                wc,
+              )
+
+              const slotContent = getSlotContentSubWC(
+                subWC,
+                slotName,
+              )
+
+              expect(slotContent).toBe(textWithTag)
+            },
+          )
+        }
+      },
+    )
+
+    describe(
+      'Props',
+      () => {
+        for (const { prop, case: propCase, value } of [
+          ...propValueCases,
+          ...propNameCases,
+          ...propPlaceholderCases,
+          ...propAutofocusCases,
+          ...propTypeCases,
+          ...propReadonlyCases,
+          ...propMaxlengthCases,
+          ...propMaskOptionsCases,
+          ...propClearableCases,
+          ...propSizeCases,
+        ]) {
+          it(
+            `Проп "${prop}" должен быть "${propCase}" и передан в input`,
+            async() => {
+              await updateComponent({ props: { [prop]: value } })
+
+              const inputElement = getSubWC(
+                component,
+                YCoreInputTagName,
+              )
+
+              expect(inputElement[prop]).toBe(value)
+            },
+          )
+        }
+
+        for (const { prop, case: propCase, value } of propDisabledCases) {
+          it(
+            `Проп "${prop}" должен быть "${propCase}" и передан в input, label и annotation`,
+            async() => {
+              await updateComponent({ props: { [prop]: value, labelText: text } })
+
+              const inputElement = getSubWC(
+                component,
+                YCoreInputTagName,
+              )
+              const labelElement = getSubWC(
+                component,
+                YCoreLabelTagName,
+              )
+              const annotationElement = getSubWC(
+                component,
+                YCoreAnnotationTagName,
+              )
+
+              expect(inputElement.disabled).toBe(value)
+              expect(labelElement.disabled).toBe(value)
+              expect(annotationElement.disabled).toBe(value)
+            },
+          )
+        }
+
+        for (const { prop, case: propCase, value } of propRequiredCases) {
+          it(
+            `Проп "${prop}" должен быть "${propCase}" и передан в input и label`,
+            async() => {
+              await updateComponent({ props: { [prop]: value } })
+
+              const inputElement = getSubWC(
+                component,
+                YCoreInputTagName,
+              )
+              const labelElement = getSubWC(
+                component,
+                YCoreLabelTagName,
+              )
+
+              expect(inputElement.required).toBe(value)
+              expect(labelElement.required).toBe(value)
+            },
+          )
+        }
+
+        for (const { prop, case: propCase, value } of propErrorsCases) {
+          it(
+            `Проп "${prop}" должен быть "${propCase}" и передан в input и error`,
+            async() => {
+              await updateComponent({ props: { [prop]: value } })
+
+              const inputElement = getSubWC(
+                component,
+                YCoreInputTagName,
+              )
+
+              expect(inputElement.error).toBe(Boolean(value?.length))
+
+              if (value?.length) {
+                const errorElement = getSubWC(
+                  component,
+                  YCoreErrorTagName,
+                )
+                expect(errorElement.errors).toBe(value)
+              } else {
+                expect(() => getSubWC(
+                  component,
+                  YCoreErrorTagName,
+                )).toThrow(`${YCoreErrorTagName} not found`)
+              }
+            },
+          )
+        }
+
+        for (const { prop, case: propCase, value, labelProp } of propLabelTextCases) {
+          it(
+            `Проп "${prop}" должен быть "${propCase}" и передан в label`,
+            async() => {
+              await updateComponent({ props: { [prop]: value } })
+
+              if (value) {
+                const labelElement = getSubWC(
+                  component,
+                  YCoreLabelTagName,
+                )
+                expect(labelElement[labelProp]).toBe(value)
+              } else {
+                expect(() => getSubWC(
+                  component,
+                  YCoreLabelTagName,
+                )).toThrow(`${YCoreLabelTagName} not found`)
+              }
+            },
+          )
+        }
+
+        for (const { prop, case: propCase, value, labelProp } of [
+          ...propLabelOverflowDebounceCases,
+          ...propLabelTooltipTextCases,
+        ]) {
+          it(
+            `Проп "${prop}" должен быть "${propCase}" и передан в label`,
+            async() => {
+              await updateComponent({
+                props: {
+                  [prop]: value,
+                  labelText: text,
+                },
+              })
+
+              const labelElement = getSubWC(
+                component,
+                YCoreLabelTagName,
+              )
+
+              expect(labelElement[labelProp]).toBe(value)
+            },
+          )
+        }
+
+        for (const { prop, case: propCase, value, annotationProp } of propAnnotationTextCases) {
+          it(
+            `Проп "${prop}" должен быть "${propCase}" и передан в annotation`,
+            async() => {
+              await updateComponent({ props: { [prop]: value } })
+
+              const annotationElement = getSubWC(
+                component,
+                YCoreAnnotationTagName,
+              )
+
+              expect(annotationElement[annotationProp]).toBe(value)
+            },
+          )
+        }
+      },
+    )
+
+    describe(
+      'Events',
+      () => {
+        for (const { eventName, payload, event, case: eventCase } of eventsCases) {
+          it(
+            `Должен вызывать событие "${eventName}" ${eventCase}`,
+            () => {
+              const inputElement = getSubWC(
+                component,
+                YCoreInputTagName,
+              )
+
+              const handler = vi.fn()
+              component.addEventListener(
+                eventName,
+                handler,
+              )
+
+              inputElement.dispatchEvent(event)
+
+              expect(handler).toHaveBeenCalledTimes(1)
+              expect(JSON.stringify((handler.mock.calls[0][0] as CustomEvent<IYCoreInputInputEvent>).detail)).toBe(JSON.stringify(payload))
+            },
+          )
+
+          it(
+            `Не должен вызывать событие "${eventName}" ${eventCase} если компонент disabled`,
+            async() => {
+              await updateComponent({ props: { disabled: true } })
+
+              const inputElement = getSubWC(
+                component,
+                YCoreInputTagName,
+              )
+
+              const handler = vi.fn()
+              component.addEventListener(
+                eventName,
+                handler,
+              )
+
+              inputElement.dispatchEvent(event)
+
+              expect(handler).not.toHaveBeenCalled()
+            },
+          )
+        }
+      },
+    )
+  },
+)

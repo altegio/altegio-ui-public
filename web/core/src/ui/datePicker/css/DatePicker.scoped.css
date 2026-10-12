@@ -1,0 +1,20 @@
+$component: $YCoreDatePickerTagName;
+
+.$(component) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--y-core-size-spacing-x);
+  font-family: var(--y-core-font-family);
+
+  &__calendar {
+    padding: var(--y-core-date-picker-calendar-padding-y) var(--y-core-date-picker-calendar-padding-x);
+  }
+  
+  &__dropdown-content {
+    max-width: var(--y-core-date-picker-calendar-max-width);
+  }
+
+  &__label {
+    width: fit-content;
+  }
+}

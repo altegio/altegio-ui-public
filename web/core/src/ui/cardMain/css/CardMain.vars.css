@@ -1,0 +1,18 @@
+:host {
+  /* Размеры */
+
+  /* Small */
+  --y-core-card-main-size-small-gap: var(--y-core-size-spacing-x);
+  --y-core-card-main-size-small-padding-y: var(--y-core-size-spacing-4-x);
+  --y-core-card-main-size-small-padding-x: var(--y-core-size-spacing-4-x);
+
+  /* Medium */
+  --y-core-card-main-size-medium-gap: var(--y-core-size-spacing-x);
+  --y-core-card-main-size-medium-padding-y: var(--y-core-size-spacing-5-x);
+  --y-core-card-main-size-medium-padding-x: var(--y-core-size-spacing-5-x);
+
+  /* Large */
+  --y-core-card-main-size-large-gap: var(--y-core-size-spacing-x);
+  --y-core-card-main-size-large-padding-y: var(--y-core-size-spacing-5-x);
+  --y-core-card-main-size-large-padding-x: var(--y-core-size-spacing-5-x);
+}

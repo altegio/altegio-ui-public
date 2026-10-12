@@ -1,0 +1,15 @@
+:host {
+  /* Размеры */
+
+  /* Small */
+  --y-core-card-radio-small-padding-y: var(--y-core-size-spacing-4-x);
+  --y-core-card-radio-small-padding-x: var(--y-core-size-spacing-4-x);
+
+  /* Medium */
+  --y-core-card-radio-medium-padding-y: var(--y-core-size-spacing-5-x);
+  --y-core-card-radio-medium-padding-x: var(--y-core-size-spacing-5-x);
+
+  /* Large */
+  --y-core-card-radio-large-padding-y: var(--y-core-size-spacing-5-x);
+  --y-core-card-radio-large-padding-x: var(--y-core-size-spacing-5-x);
+}

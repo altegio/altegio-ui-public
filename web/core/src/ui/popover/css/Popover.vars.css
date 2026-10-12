@@ -1,0 +1,7 @@
+:host {
+  /* Общие */
+
+  --y-core-popover-display: block;
+  --y-core-popover-margin-top: var(--y-core-size-spacing-4-x);
+  --y-core-popover-action-gap: var(--y-core-size-spacing-2-x);
+}

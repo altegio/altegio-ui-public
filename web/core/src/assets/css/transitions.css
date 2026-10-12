@@ -1,0 +1,17 @@
+.fade-active {
+  transition: opacity var(--y-core-fade-transition-duration, 150ms) var(--y-core-fade-transition-duration-timing-function, ease);
+}
+
+.fade-enter-to,
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.no-animation {
+  transition: none;
+}

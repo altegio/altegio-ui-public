@@ -1,0 +1,25 @@
+:host {
+  /* Общие */
+  --y-core-button-icon-left-color-disabled: var(--y-core-color-icon-tertiary);
+  --y-core-button-icon-right-color-disabled: var(--y-core-color-icon-tertiary);
+}
+
+:host([variant='primary']) {
+  --y-core-button-icon-left-color: var(--y-core-color-icon-on-accent);
+  --y-core-button-icon-right-color: var(--y-core-color-icon-on-accent);
+}
+
+:host([variant='outline']) {
+  --y-core-button-icon-left-color: var(--y-core-color-icon-primary);
+  --y-core-button-icon-right-color: var(--y-core-color-icon-primary);
+}
+
+:host([variant='outline-filled']) {
+  --y-core-button-icon-left-color: var(--y-core-color-icon-primary);
+  --y-core-button-icon-right-color: var(--y-core-color-icon-primary);
+}
+
+:host([variant='text']) {
+  --y-core-button-icon-left-color: var(--y-core-color-icon-primary);
+  --y-core-button-icon-right-color: var(--y-core-color-icon-primary);
+}

@@ -1,0 +1,11 @@
+$component: $YCoreCardHeaderTagName;
+
+:host {
+  display: flex;
+}
+
+.$(component) {
+  display: flex;
+  gap: var(--y-core-card-header-gap);
+  align-items: center;
+}

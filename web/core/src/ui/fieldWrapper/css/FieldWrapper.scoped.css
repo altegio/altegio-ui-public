@@ -1,0 +1,70 @@
+@import url('./FieldWrapper.mixins.css');
+
+$component: $YCoreFieldWrapperTagName;
+
+:host {
+  display: flex;
+}
+
+.$(component) {
+  box-sizing: border-box;
+  display: inline-flex;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--y-core-field-wrapper-default-background-color);
+  box-shadow: inset 0 0 0 var(--y-core-field-wrapper-border-width) var(--y-core-field-wrapper-border-color);
+  transition: box-shadow 0.3s ease;
+
+  &:not(&_error, &_disabled, &_readonly, &_focused):hover,
+  &:not(&_error, &_disabled, &_readonly, &_focused)&_hovered {
+    --y-core-field-wrapper-border-color: var(--y-core-field-wrapper-default-hover-border-color)
+  }
+
+  &_disabled {
+    color: var(--y-core-field-wrapper-disabled-color);
+    cursor: not-allowed;
+    background-color: var(--y-core-field-wrapper-disabled-background-color);
+
+    --y-core-field-wrapper-border-color: var(--y-core-field-wrapper-disabled-border-color)
+  }
+
+  &_readonly {
+    background-color: var(--y-core-field-wrapper-readonly-background-color);
+  }
+
+  &_focused:not(&_error, &_disabled, &_readonly) {
+    box-shadow: inset 0 0 0 1px var(--y-core-field-wrapper-focused-border-color),
+      0 0 0 1px var(--y-core-field-wrapper-focused-border-color);
+  }
+  
+  &_error {
+    --y-core-field-wrapper-border-color: var(--y-core-field-wrapper-error-border-color)
+  }
+
+  &_clickable {
+    cursor: pointer;
+  }
+
+  &_size {
+    &_small {
+      @mixin field-wrapper-size
+        --y-core-field-wrapper-size-small-font-size,
+        --y-core-field-wrapper-size-small-line-height,
+        --y-core-field-wrapper-size-small-border-radius;
+    }
+
+    &_medium {
+      @mixin field-wrapper-size
+        --y-core-field-wrapper-size-medium-font-size,
+        --y-core-field-wrapper-size-medium-line-height,
+        --y-core-field-wrapper-size-medium-border-radius;
+    }
+
+    &_large {
+      @mixin field-wrapper-size
+        --y-core-field-wrapper-size-large-font-size,
+        --y-core-field-wrapper-size-large-line-height,
+        --y-core-field-wrapper-size-large-border-radius;
+    }
+  }
+}

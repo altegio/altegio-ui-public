@@ -1,0 +1,36 @@
+:host {
+  /* Общие */
+  --y-core-simple-toggle-radius: var(--y-core-size-radius-4-x);
+  --y-core-simple-toggle-border-size: 1px;
+
+  /* Размеры */
+
+  /* Small */
+  --y-core-simple-toggle-size-small-width: 36px;
+  --y-core-simple-toggle-size-small-height: 20px;
+  --y-core-simple-toggle-size-small-padding: var(--y-core-size-spacing-0-5-x);
+  --y-core-simple-toggle-size-small-thumb-size: 16px;
+
+  /* Medium */
+  --y-core-simple-toggle-size-medium-width: 56px;
+  --y-core-simple-toggle-size-medium-height: 32px;
+  --y-core-simple-toggle-size-medium-padding: var(--y-core-size-spacing-x);
+  --y-core-simple-toggle-size-medium-thumb-size: 24px;
+
+  /* Цвета состояний */
+
+  /* Unchecked */
+  --y-core-simple-toggle-unchecked-bg-default: var(--y-core-color-surface-tertiary);
+  --y-core-simple-toggle-unchecked-bg-hover: var(--y-core-color-surface-tertiary-high);
+  --y-core-simple-toggle-unchecked-bg-disabled: var(--y-core-color-surface-tertiary-low);
+
+  /* Checked */
+  --y-core-simple-toggle-checked-bg-default: var(--y-core-color-surface-accent);
+  --y-core-simple-toggle-checked-bg-hover: var(--y-core-color-surface-accent-high);
+  --y-core-simple-toggle-checked-bg-disabled: var(--y-core-color-surface-accent-low);
+
+  /* Thumb */
+  --y-core-simple-toggle-thumb-bg: var(--y-core-color-surface-primary);
+  --y-core-simple-toggle-thumb-radius: 9999px;
+  --y-core-simple-toggle-thumb-box-shadow: 0 1px 2px 0 rgb(33 47 65 / 35%);
+}

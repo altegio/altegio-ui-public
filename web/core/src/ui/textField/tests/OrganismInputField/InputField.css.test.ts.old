@@ -1,0 +1,61 @@
+import { beforeAll, describe, expect, it } from 'vitest'
+import { useCoreTests } from '~shared/tests/core'
+import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
+
+import { YCoreInputFieldTagName } from '~shared/constants'
+import {
+  createCoreInputFieldProps,
+} from '~core/ui/inputField/models/types'
+import '~core/ui/inputField'
+import {
+  CSSVariablesHostToRootCases,
+  CSSVariablesHostToValueCases,
+} from '~core/ui/inputField/tests/cases/css'
+
+const tagName = YCoreInputFieldTagName
+
+const {
+  component,
+  injectComponentToBody,
+} = useCoreTests(
+  tagName,
+  createCoreInputFieldProps(),
+)
+
+describe(
+  'Core/YCoreInputField/CSS',
+  () => {
+    beforeAll(() => {
+      injectComponentToBody()
+    })
+
+    for (const { host, root } of CSSVariablesHostToRootCases) {
+      it.skip(
+        `Host CSS переменная ${host} в стилях должна иметь значение :root CSS переменной ${root}`,
+        () => {
+          const shadowRoot = getWCShadowRoot(component)
+
+          const hostCSSVariableValue = getHostCSSVariableValue(
+            shadowRoot.adoptedStyleSheets,
+            host,
+          )
+
+          expect(hostCSSVariableValue).toBe(`var(${root})`)
+        },
+      )
+    }
+
+    for (const { host, value } of CSSVariablesHostToValueCases) {
+      it.skip(
+        `Вычисленная Host CSS переменная ${host} в созданном компоненте должна иметь значение из токенов: ${value}`,
+        () => {
+          const shadowRoot = getWCShadowRoot(component)
+
+          const varValue = getComputedStyle(shadowRoot.host).getPropertyValue(host)
+
+          expect(varValue).toBe(value)
+        },
+      )
+    }
+  },
+)

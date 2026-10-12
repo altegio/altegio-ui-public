@@ -1,0 +1,36 @@
+$component: $YCoreDropdownTagName;
+
+:host {
+  font-family: var(--y-core-font-family);
+}
+
+.$(component) {
+  position: relative;
+  width: var(--y-core-dropdown-width);
+  max-width: var(--y-core-dropdown-max-width);
+
+  &_disabled {
+    .$(component)__activator {
+      cursor: unset;
+    }
+  }
+
+  &__activator {
+    display: block;
+    width: var(--y-core-dropdown-activator-width);
+    max-width: var(--y-core-dropdown-activator-max-width);
+
+    &_inline {
+      display: inline-block;
+      width: var(--y-core-dropdown-activator-width-inline);
+      max-width: unset;
+    }
+  }
+
+  &__content {
+    position: fixed;
+    z-index: var(--y-core-z-index-100);
+    width: var(--y-core-dropdown-content-width);
+    max-width: var(--y-core-dropdown-content-max-width);
+  }
+}

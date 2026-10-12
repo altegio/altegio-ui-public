@@ -1,0 +1,24 @@
+$component: $YCoreLinkTagName;
+
+/* Текст ссылки не переносится */
+.$(component) {
+  display: var(--y-core-link-display);
+  align-items: center;
+  font-size: inherit;
+  color: var(--y-core-link-color);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &__text {
+    white-space: var(--y-core-link-text-white-space);
+  }
+}
+
+/* Текст ссылки переносится по словам */
+.$(component)_text-wrap {
+  --y-core-link-display: inline;
+  --y-core-link-text-white-space: normal;
+}

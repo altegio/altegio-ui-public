@@ -1,0 +1,43 @@
+:host {
+  /* Общие */
+  --y-core-field-wrapper-border-width: 1px;
+
+  /* Цвета состояний */
+
+  /* Default */
+  --y-core-field-wrapper-border-color: var(--y-core-color-stroke-primary);
+  --y-core-field-wrapper-default-hover-border-color: var(--y-core-color-stroke-primary-high);
+  --y-core-field-wrapper-default-background-color: var(--y-core-color-surface-primary);
+  --y-core-field-wrapper-default-color: var(--y-core-color-text-primary);
+
+  /* Disabled */
+  --y-core-field-wrapper-disabled-border-color: var(--y-core-color-stroke-primary);
+  --y-core-field-wrapper-disabled-background-color: var(--y-core-color-surface-primary-high);
+  --y-core-field-wrapper-disabled-color: var(--y-core-color-text-tertiary);
+
+  /* Readonly */
+  --y-core-field-wrapper-readonly-background-color: var(--y-core-color-surface-primary-high);
+
+  /* Focused */
+  --y-core-field-wrapper-focused-border-color: var(--y-core-color-stroke-accent);
+
+  /* Error */
+  --y-core-field-wrapper-error-border-color: var(--y-core-color-stroke-negative);
+
+  /* Размеры */
+
+  /* Small */
+  --y-core-field-wrapper-size-small-font-size: var(--y-core-typography-paragraph-p-2-regular-font-size);
+  --y-core-field-wrapper-size-small-line-height: var(--y-core-typography-paragraph-p-2-regular-line-height);
+  --y-core-field-wrapper-size-small-border-radius: var(--y-core-size-radius-2-x);
+
+  /* Medium */
+  --y-core-field-wrapper-size-medium-font-size: var(--y-core-typography-paragraph-p-1-regular-font-size);
+  --y-core-field-wrapper-size-medium-line-height: var(--y-core-typography-paragraph-p-1-regular-line-height);
+  --y-core-field-wrapper-size-medium-border-radius: var(--y-core-size-radius-2-5-x);
+
+  /* Large */
+  --y-core-field-wrapper-size-large-font-size: var(--y-core-typography-paragraph-p-1-regular-font-size);
+  --y-core-field-wrapper-size-large-line-height: var(--y-core-typography-paragraph-p-1-regular-line-height);
+  --y-core-field-wrapper-size-large-border-radius: var(--y-core-size-radius-3-x);
+}

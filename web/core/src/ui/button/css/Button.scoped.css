@@ -1,0 +1,41 @@
+$component: $YCoreButtonTagName;
+
+:host {
+  display: inline-block !important;
+  width: fit-content !important;
+}
+
+:host([full-width]) {
+  display: block !important;
+  width: 100% !important;
+}
+
+.$(component) {
+  &_disabled {
+    .$(component)__icon-left {
+      color: var(--y-core-button-icon-left-color-disabled);
+    }
+
+    .$(component)__icon-right {
+      color: var(--y-core-button-icon-right-color-disabled);
+    }
+  }
+
+  &__icon-left {
+    flex-shrink: 0;
+    color: var(--y-core-button-icon-left-color);
+  }
+
+  &__icon-right {
+    flex-shrink: 0;
+    color: var(--y-core-button-icon-right-color);
+  }
+  
+  &__text {
+    flex: 1 1 auto;
+
+    &_align-start {
+      text-align: start;
+    }
+  }
+}

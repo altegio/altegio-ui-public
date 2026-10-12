@@ -1,0 +1,45 @@
+$component: $YCoreTableCellTagName;
+
+:host {
+  box-sizing: border-box;
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+}
+
+:host([sticky]) {
+  position: sticky;
+  left: 0;
+}
+
+:host([bordered]) {
+  border-right: 1px solid var(--y-core-table-cell-border-color);
+}
+
+.$(component) {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--y-core-table-cell-padding-y) var(--y-core-table-cell-padding-x);
+
+  &_align {
+    &_left {
+      justify-content: flex-start;
+    }
+
+    &_right {
+      justify-content: flex-end;
+    }
+
+    &_center {
+      justify-content: center;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    min-width: var(--y-core-table-cell-size);
+    min-height: var(--y-core-table-cell-size);
+  }
+}

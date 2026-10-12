@@ -1,0 +1,25 @@
+$component: $YCoreCardCheckboxTagName;
+
+:host {
+  display: inline-flex;
+}
+
+.$(component) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_size {
+    &_small {
+      padding: var(--y-core-card-checkbox-small-padding-y) var(--y-core-card-checkbox-small-padding-x);
+    }
+
+    &_medium {
+      padding: var(--y-core-card-checkbox-medium-padding-y) var(--y-core-card-checkbox-medium-padding-x);
+    }
+
+    &_large {
+      padding: var(--y-core-card-checkbox-large-padding-y) var(--y-core-card-checkbox-large-padding-x);
+    }
+  }
+}

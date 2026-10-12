@@ -1,0 +1,7 @@
+@import url('../../../../shared/assets/css/build/root-css-variables.css');
+@import url('../../../../shared/assets/css/build/root-css-breakpoints.css');
+
+:root {
+  --y-core-font-family: inter;
+  --y-core-z-index-100: 100;
+}

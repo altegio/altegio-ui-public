@@ -1,0 +1,18 @@
+$component: $YCoreTextFieldTagName;
+
+:host {
+  display: var(--y-core-text-field-display);
+}
+
+.$(component) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--y-core-text-field-gap);
+  max-width: 100%;
+
+  &__annotation {
+    &_hide {
+      display: none;
+    }
+  }
+}

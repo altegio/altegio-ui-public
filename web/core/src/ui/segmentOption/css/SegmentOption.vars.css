@@ -1,0 +1,44 @@
+:host {
+  /* Размеры */
+
+  /* Small */
+  --y-core-segment-option-size-small-height: 28px;
+  --y-core-segment-option-size-small-border-radius: var(--y-core-size-radius-1-5-x);
+  --y-core-segment-option-size-small-padding-x: var(--y-core-size-spacing-3-x);
+  --y-core-segment-option-size-small-padding-y: var(--y-core-size-spacing-x);
+  --y-core-segment-option-size-small-font-size: var(--y-core-typography-annotation-a-2-medium-font-size);
+  --y-core-segment-option-size-small-line-height: var(--y-core-typography-annotation-a-2-medium-line-height);
+  --y-core-segment-option-size-small-font-weight: var(--y-core-typography-annotation-a-2-medium-font-weight);
+  --y-core-segment-option-size-small-gap: var(--y-core-size-spacing-x);
+
+  /* Medium */
+  --y-core-segment-option-size-medium-height: 36px;
+  --y-core-segment-option-size-medium-border-radius: var(--y-core-size-radius-2-x);
+  --y-core-segment-option-size-medium-padding-x: var(--y-core-size-spacing-3-x);
+  --y-core-segment-option-size-medium-padding-y: var(--y-core-size-spacing-2-x);
+  --y-core-segment-option-size-medium-font-size: var(--y-core-typography-paragraph-p-2-medium-font-size);
+  --y-core-segment-option-size-medium-line-height: var(--y-core-typography-paragraph-p-2-medium-line-height);
+  --y-core-segment-option-size-medium-font-weight: var(--y-core-typography-paragraph-p-2-medium-font-weight);
+  --y-core-segment-option-size-medium-gap: var(--y-core-size-spacing-x);
+
+  /* Large */
+  --y-core-segment-option-size-large-height: 44px;
+  --y-core-segment-option-size-large-border-radius: var(--y-core-size-radius-2-5-x);
+  --y-core-segment-option-size-large-padding-x: var(--y-core-size-spacing-3-x);
+  --y-core-segment-option-size-large-padding-y: var(--y-core-size-spacing-2-x);
+  --y-core-segment-option-size-large-font-size: var(--y-core-typography-paragraph-p-1-medium-font-size);
+  --y-core-segment-option-size-large-line-height: var(--y-core-typography-paragraph-p-1-medium-line-height);
+  --y-core-segment-option-size-large-font-weight: var(--y-core-typography-paragraph-p-1-medium-font-weight);
+  --y-core-segment-option-size-large-gap: var(--y-core-size-spacing-2-x);
+
+  /* Цвета */
+
+  --y-core-segment-option-primary-color: var(--y-core-color-text-primary);
+  --y-core-segment-option-secondary-color: var(--y-core-color-text-secondary);
+  --y-core-segment-option-tertiary-color: var(--y-core-color-text-tertiary);
+  --y-core-segment-option-background-color: transparent;
+  --y-core-segment-option-active-background-color: var(--y-core-color-surface-primary);
+
+  /* Эффекты */
+  --y-core-segment-option-active-drop-shadow: var(--y-core-effects-card-drop-shadow);
+}

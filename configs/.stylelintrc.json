@@ -1,0 +1,19 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-recess-order"],
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["define-mixin", "mixin", "mixin-content"]
+      }
+    ],
+    "custom-property-pattern": null,
+    "selector-class-pattern": [
+      "^[a-z]+(-[a-z]+)*(__[a-z]+(-[a-z]+)*)?(_[a-z]+(-[a-z]+)*)?$",
+      {
+        "message": "Expected class selector to follow BEM convention (e.g., .block, .block__element, .block_modifier, .block__element_modifier)",
+        "resolveNestedSelectors": true
+      }
+    ]
+  }
+}

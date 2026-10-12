@@ -1,0 +1,43 @@
+.sb-stories-icons-tokens {
+  --icon-content-box-width: 120px;
+  --icon-content-box-gap: 16px;
+  --icons-in-row: 15;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--icon-content-box-gap);
+  min-width: calc( (var(--icon-content-box-width) + var(--icon-content-box-gap)) * var(--icons-in-row));
+  padding: 40px 0;
+
+  &__icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+    width: var(--icon-content-box-width);
+    height: 60px;
+    padding: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    border: 1px solid rgb(43 49 52);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    
+    &-name {
+      margin: 0 !important;
+      font-size: 10px;
+      font-weight: 400;
+    }
+
+    &-svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    &:hover {
+      box-shadow: 0 0 0 2px rgb(43 49 52);
+    }
+  }
+}
