@@ -23,10 +23,23 @@ test('published entry points and CLI resolve to files in the package', () => {
   assert.match(execFileSync(process.execPath, [fileURLToPath(cli), '--help'], { encoding: 'utf8' }), /yds/)
 })
 
-test('Vue declarations expose Vue components to NodeNext consumers', () => {
+test('npm pack includes every public entry point', () => {
+  const pack = JSON.parse(execFileSync('npm', ['pack', '--dry-run', '--json', '--ignore-scripts'], { cwd: root, encoding: 'utf8' }))[0]
+  const files = new Set(pack.files.map(({ path }) => path))
+  for (const [name, exportValue] of Object.entries(packageJson.exports)) {
+    const targets = typeof exportValue === 'string' ? [exportValue] : Object.values(exportValue)
+    for (const target of targets) {
+      const path = target.replace(/^\.\//, '')
+      assert.ok(path.endsWith('/') ? [...files].some(file => file.startsWith(path)) : files.has(path), `${name}: ${target}`)
+    }
+  }
+  assert.ok(files.has(packageJson.bin.yds.replace(/^\.\//, '')), packageJson.bin.yds)
+})
+
+test('Vue declarations preserve the Maskito number API for NodeNext consumers', () => {
   const consumer = new URL(`../.package-compat-${randomUUID()}.mts`, import.meta.url)
   try {
-    writeFileSync(consumer, "import { YButton } from '@platform/altegio-ui/vue'\ntype Button = typeof YButton\n")
+    writeFileSync(consumer, "import { YButton, maskitoNumberOptionsGenerator } from '@platform/altegio-ui/vue'\nimport { maskitoNumberOptionsGenerator as directMaskitoNumber } from '@maskito/kit'\ntype Button = typeof YButton\nmaskitoNumberOptionsGenerator({ thousandSeparator: ' ', precision: 2, max: 1000 })\ndirectMaskitoNumber({ thousandSeparator: ' ', precision: 2, max: 1000 })\n")
     const program = ts.createProgram([fileURLToPath(consumer)], {
       module: ts.ModuleKind.NodeNext,
       moduleResolution: ts.ModuleResolutionKind.NodeNext,

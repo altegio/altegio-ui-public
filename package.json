@@ -328,7 +328,7 @@
   },
   "packageManager": "pnpm@10.34.5",
   "engines": {
-    "node": ">=24.15.0 <25",
+    "node": "^22.15.0 || ^24.15.0",
     "pnpm": ">=10.34.5 <11"
   },
   "typeCoverage": {
@@ -353,8 +353,8 @@
     "@floating-ui/dom": "^1.8.0",
     "@inquirer/prompts": "^8.7.2",
     "@lit/context": "^1.1.6",
-    "@maskito/core": "^5.6.0",
-    "@maskito/kit": "^5.6.0",
+    "@maskito/core": "^3.10.0",
+    "@maskito/kit": "^3.10.0",
     "colord": "^2.10.0",
     "commander": "^14.0.3",
     "dayjs": "^1.11.23",

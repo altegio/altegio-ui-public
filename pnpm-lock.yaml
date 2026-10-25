@@ -25,11 +25,11 @@ importers:
         specifier: ^1.1.6
         version: 1.1.6
       '@maskito/core':
-        specifier: ^5.6.0
-        version: 5.6.0
+        specifier: ^3.10.0
+        version: 3.11.1
       '@maskito/kit':
-        specifier: ^5.6.0
-        version: 5.6.0(@maskito/core@5.6.0)
+        specifier: ^3.10.0
+        version: 3.11.1(@maskito/core@3.11.1)
       colord:
         specifier: ^2.10.0
         version: 2.10.0
@@ -1968,13 +1968,13 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@maskito/core@5.6.0':
-    resolution: {integrity: sha512-CchnaPiXWy4llMEsb6AG4o7CwlyS2j/1ttHQXo0FMnLhcA5OwlFgMpEb6gCZkUN5a0Bns8UTjm7eUpVBHRoqUQ==}
+  '@maskito/core@3.11.1':
+    resolution: {integrity: sha512-zN5k/BiZXblo8mEFhsGnnXBCqKMkjEGArorOOcpB1/ymZyqF12Dk6IipEsSE6abMnWw4YF2tukzfq73BFZKz8A==}
 
-  '@maskito/kit@5.6.0':
-    resolution: {integrity: sha512-QbOElQlC/fUlZG7KhNKDDTovXCp1hnm9BT6JzffW/y3hKEepDn3iWAbUxi4mHnQEkrWw24LWI1j8VENdlGgmbQ==}
+  '@maskito/kit@3.11.1':
+    resolution: {integrity: sha512-KOBUqxRz383xJWCoe+Emwxv2oAzUrZobIN+Gntmi5Py2S10XbqYnGX/6W7QHN8CUK2Nx11d3HsxbEQaq5Hinjg==}
     peerDependencies:
-      '@maskito/core': ^5.6.0
+      '@maskito/core': ^3.11.1
 
   '@mdn/browser-compat-data@5.7.6':
     resolution: {integrity: sha512-7xdrMX0Wk7grrTZQwAoy1GkvPMFoizStUoL+VmtUkAxegbCCec+3FKwOM6yc/uGU5+BEczQHXAlWiqvM8JeENg==}
@@ -11021,11 +11021,11 @@ snapshots:
   '@lmdb/lmdb-win32-x64@3.5.6':
     optional: true
 
-  '@maskito/core@5.6.0': {}
+  '@maskito/core@3.11.1': {}
 
-  '@maskito/kit@5.6.0(@maskito/core@5.6.0)':
+  '@maskito/kit@3.11.1(@maskito/core@3.11.1)':
     dependencies:
-      '@maskito/core': 5.6.0
+      '@maskito/core': 3.11.1
 
   '@mdn/browser-compat-data@5.7.6': {}
 

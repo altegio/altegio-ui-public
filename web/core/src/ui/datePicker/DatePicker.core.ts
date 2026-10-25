@@ -2,7 +2,7 @@ import { html, css, unsafeCSS, nothing } from 'lit'
 import { customElement, property, state, query } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { Maskito, maskitoTransform } from '@maskito/core'
-import { maskitoDate, maskitoDateRange, type MaskitoDateParams } from '@maskito/kit'
+import { maskitoDateOptionsGenerator, maskitoDateRangeOptionsGenerator, type MaskitoDateParams } from '@maskito/kit'
 import { autoPlacement as autoPlacementMiddleware } from '@floating-ui/dom'
 import { provide } from '@lit/context'
 
@@ -159,15 +159,14 @@ export class YCoreDatePicker
 
   private get fieldMaskOptions() {
     const params: MaskitoDateParams = {
-      mode: 'dd/mm/yyyy',
-      separator: '.',
+      mode: FORMAT_DATE_DMY.toLowerCase() as MaskitoDateParams['mode'],
       min: this.computedMinDate.toDate(),
       max: this.computedMaxDate.toDate(),
     }
 
     return this.isRange
-      ? maskitoDateRange({ ...params, rangeSeparator: RANGE_SEPARATOR })
-      : maskitoDate(params)
+      ? maskitoDateRangeOptionsGenerator({ ...params, rangeSeparator: RANGE_SEPARATOR })
+      : maskitoDateOptionsGenerator(params)
   }
 
   private get isDeleteIcon() {

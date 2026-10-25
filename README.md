@@ -6,7 +6,7 @@ The [public repository](https://github.com/altegio/altegio-ui-public) receives c
 
 ## Quick start
 
-Use Node.js **24.20.0** and pnpm **10.34.5**. The supported Node.js range is `24.15.x`–`24.x`. Git and Make are required for the commands below.
+Use Node.js **24.20.0** and pnpm **10.34.5** to build this repository. The published package supports Node.js `22.15.x`–`22.x` and `24.15.x`–`24.x`. Its Vue and Angular peers are optional; the Angular integration requires Angular 22. Git and Make are required for the commands below.
 
 ```bash
 git clone https://github.com/altegio/altegio-ui-public.git
