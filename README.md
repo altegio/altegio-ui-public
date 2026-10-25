@@ -25,6 +25,10 @@ pnpm story-dev
 | Vue | http://localhost:6007 | `pnpm story-dev-vue` |
 | Angular | http://localhost:6008 | `pnpm story-dev-ng` |
 
+## Migrating from 1.x
+
+The modernized package keeps Maskito 3, so Vue consumers can continue using `maskitoNumberOptionsGenerator` with `precision`. Angular consumers must upgrade from Angular 18 to Angular 22 before moving to the new major version. Node 20 consumers must move to Node 22.15+ or 24.15+.
+
 ## Repository layout
 
 | Directory | Contents |
