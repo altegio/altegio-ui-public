@@ -2,7 +2,6 @@ import { describe, expect, it, vi } from 'vitest'
 import { Component } from '@angular/core'
 
 import { TestBed } from '~ng/tests/setup'
-import { dispatchEvent } from '~shared/tests/utils'
 
 import { YCoreButtonDropdownTagName } from '~shared/constants'
 
@@ -140,14 +139,11 @@ describe(
                 handleAction,
               )
 
-              dispatchEvent(
-                coreElement,
-                'item-click',
-                {
-                  bubbles: true,
-                  cancelable: true,
-                },
-              )
+              coreElement.dispatchEvent(new CustomEvent('item-click', {
+                detail: { item: { id: 'example' } },
+                bubbles: true,
+                cancelable: true,
+              }))
 
               expect(handleAction).toHaveBeenCalledTimes(1)
             },

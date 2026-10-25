@@ -1,7 +1,7 @@
 import { html, nothing } from 'lit'
 import type { Meta, StoryObj } from '@storybook/web-components'
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/preview-api'
+import { action } from 'storybook/actions'
+import { useArgs } from 'storybook/preview-api'
 import {
   createCoreCollapseItemProps,
   EYCoreCollapseItemVariant,

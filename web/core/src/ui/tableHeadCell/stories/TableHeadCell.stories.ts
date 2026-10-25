@@ -1,5 +1,5 @@
 import { html } from 'lit'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import type { Meta, StoryObj } from '@storybook/web-components'
 
 import {

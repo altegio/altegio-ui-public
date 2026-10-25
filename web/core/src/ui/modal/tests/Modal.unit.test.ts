@@ -216,6 +216,23 @@ describe(
       },
     )
 
+    it('moves focus into the dialog and restores it after closing', async() => {
+      const trigger = document.createElement('button')
+      document.body.append(trigger)
+      trigger.focus()
+
+      try {
+        await updateComponent({ props: { open: true } })
+        const dialog = getLocalRootElement()
+        await vi.waitFor(() => { expect(component.shadowRoot?.activeElement).toBe(dialog) })
+
+        await updateComponent({ props: { open: false } })
+        await vi.waitFor(() => { expect(document.activeElement).toBe(trigger) })
+      } finally {
+        trigger.remove()
+      }
+    })
+
     describe(
       'Events',
       () => {

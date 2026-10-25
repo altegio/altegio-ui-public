@@ -4,7 +4,7 @@ import { YPhoneCode } from '~ng/ui/phoneCode'
 import yCorePhoneCodeStoryMeta from '~core/ui/phoneCode/stories/PhoneCode.stories'
 
 import { omit } from 'radash'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 
 /**
  * Angular wrapper for Core PhoneCode

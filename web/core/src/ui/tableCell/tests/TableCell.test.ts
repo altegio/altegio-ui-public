@@ -1,7 +1,7 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
 import { YCoreTableCellTagName as tagName, YCoreTextTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
-import { getElementClasses, getShadowRootElement, getWCShadowRoot } from '~shared/tests/utils'
+import { getElementClasses, getShadowRootElement, getWCShadowRoot, trimTextContent } from '~shared/tests/utils'
 import {
   createCoreTableCellProps,
 } from '~core/ui/tableCell/models/types'
@@ -138,7 +138,7 @@ describe(
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
                   const textComponent = getWCShadowRoot(component).querySelector(YCoreTextTagName)
-                  const actualContent = textComponent?.textContent?.trim()
+                  const actualContent = trimTextContent(textComponent?.textContent)
                   expect(actualContent).toBe(testCase.expected)
                 },
               )
@@ -156,7 +156,7 @@ describe(
                   })
 
                   const textComponent = getWCShadowRoot(component).querySelector(YCoreTextTagName)
-                  const actualContent = textComponent?.textContent?.trim()
+                  const actualContent = trimTextContent(textComponent?.textContent)
                   expect(actualContent).toBe(testCase.expected)
                 },
               )

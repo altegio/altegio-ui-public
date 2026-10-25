@@ -21,7 +21,6 @@ import {
   propCalendarHeaderSelectorsCases,
   propErrorsCases,
 } from './cases/props'
-import { dispatchEvent } from '~shared/tests/utils'
 
 const tagName = YCoreDatePickerTagName
 
@@ -145,14 +144,11 @@ describe(
                   handleAction,
                 )
 
-                dispatchEvent(
-                  coreElement,
-                  'pick',
-                  {
-                    bubbles: true,
-                    cancelable: true,
-                  },
-                )
+                coreElement.dispatchEvent(new CustomEvent('pick', {
+                  detail: { value: '01.01.2025' },
+                  bubbles: true,
+                  cancelable: true,
+                }))
 
                 expect(handleAction).toHaveBeenCalled()
               },

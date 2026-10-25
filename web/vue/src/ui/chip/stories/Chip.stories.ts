@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { useArgs } from '@storybook/preview-api'
-import { action } from '@storybook/addon-actions'
+import { useArgs } from 'storybook/preview-api'
+import { action } from 'storybook/actions'
 
 import YCoreChipStoryMeta from '~core/ui/chip/stories/Chip.stories'
 import { YChip } from '~vue/ui/chip'

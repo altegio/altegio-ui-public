@@ -7,7 +7,7 @@ import { paletteArgTypes, paletteProps } from '~shared/.storybook/argTypes'
 import yCoreButtonStoryMeta from '~core/ui/button/stories/Button.stories'
 import { YGlobalProvider } from '~ng/ui/globalProvider'
 import { YButton } from '~ng/ui/button'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 
 const meta: Meta<YButton & IPaletteProps> = {
   title: 'Buttons/✅ Button',

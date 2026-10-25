@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { ref, computed } from 'vue'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import { pick, omit } from 'radash'
 
 import { YTable } from '~vue/ui/table'

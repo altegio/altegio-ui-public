@@ -1,6 +1,6 @@
 Public code export:
   stage: Deployment
-  image: node:22.15.0-alpine
+  image: node:24.20.0-alpine
   before_script:
     - apk add --no-cache git tar
   resource_group: altegio-ui-public-export
@@ -11,6 +11,7 @@ Public code export:
   needs:
     - job: lib-build
       optional: true
+    - job: test
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'

@@ -3,8 +3,8 @@ import { omit } from 'radash'
 import { FormsModule } from '@angular/forms'
 
 import type { Meta, StoryObj } from '@storybook/angular'
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/preview-api'
+import { action } from 'storybook/actions'
+import { useArgs } from 'storybook/preview-api'
 
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import type { TYCoreTextFieldMeta } from '~core/ui/textField/stories/TextField.stories'

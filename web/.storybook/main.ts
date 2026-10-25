@@ -1,13 +1,12 @@
 import type { StorybookConfig } from '@storybook/web-components-vite'
-import commonViteConfig from '../../configs/vite/shared/common.vite.config'
+import commonViteConfig from '../../configs/vite/shared/common.vite.config.ts'
 
 const config: StorybookConfig = {
   framework: '@storybook/web-components-vite',
   stories: ['./*.mdx'],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-controls',
+    '@storybook/addon-docs',
+    '@storybook/addon-a11y',
   ],
   refs: (_, { configType }) => {
     if (configType === 'DEVELOPMENT') {

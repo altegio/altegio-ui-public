@@ -1,8 +1,8 @@
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import type { Meta, StoryObj } from '@storybook/web-components'
 import { html } from 'lit'
 import { ifDefined } from 'lit/directives/if-defined.js'
-import { useArgs } from '@storybook/preview-api'
+import { useArgs } from 'storybook/preview-api'
 
 import { items as itemsArgType, type ITextStoryProps, size as sizeArgType } from '~shared/.storybook/argTypes'
 import { getComponentEmitsTable, getComponentStateTable } from '~shared/.storybook/tables'

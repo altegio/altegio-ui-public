@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { computed } from 'vue'
 import { omit } from 'radash'
-import { useArgs } from '@storybook/preview-api'
-import { action } from '@storybook/addon-actions'
+import { useArgs } from 'storybook/preview-api'
+import { action } from 'storybook/actions'
 
 import { YCountField } from '~vue/ui/countField'
 import { type IYVueCountFieldProps } from '~vue/ui/countField/models/types'

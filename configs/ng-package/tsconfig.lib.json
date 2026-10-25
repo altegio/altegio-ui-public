@@ -1,8 +1,11 @@
 {
-  "extends": "../../node_modules/ng-packagr/lib/ts/conf/tsconfig.ngc.json",
+  "extends": "../../node_modules/ng-packagr/src/lib/ts/conf/tsconfig.ngc.json",
   "compilerOptions": {
-     "resolveJsonModule": true,
-     "esModuleInterop": true,
-     "useDefineForClassFields": false
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "useDefineForClassFields": false,
+    "module": "esnext",
+    "lib": ["dom", "es2022"],
+    "types": ["vite/client"]
   }
 }

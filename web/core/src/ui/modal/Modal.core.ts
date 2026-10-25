@@ -27,7 +27,7 @@ import ModalVarsCSS from './css/Modal.vars.css?inline'
 import ModalScopedCSS from './css/Modal.scoped.css?inline'
 import { withLocator } from '~core/utils/locator'
 
-const { open, size, variant, width, preventEscape, hideOverlay, fullScreen } = createCoreModalProps()
+const { open, size, variant, width, preventEscape, hideOverlay, fullScreen, dialogLabel } = createCoreModalProps()
 
 @customElement(tagName)
 @withLocator(tagName)
@@ -39,6 +39,7 @@ export class YCoreModal extends LitElement implements IYCoreModalProps {
   @property({ type: Boolean, attribute: 'prevent-escape' }) preventEscape: IYCoreModalProps['preventEscape'] = preventEscape
   @property({ type: Boolean, attribute: 'hide-overlay' }) hideOverlay: IYCoreModalProps['hideOverlay'] = hideOverlay
   @property({ type: Boolean, attribute: 'full-screen' }) fullScreen: IYCoreModalProps['fullScreen'] = fullScreen
+  @property({ type: String, attribute: 'dialog-label' }) dialogLabel: IYCoreModalProps['dialogLabel'] = dialogLabel
 
   @bubblingEvent(OpenEvent, { name: 'open' })
   protected _open!: TDispatcher<OpenEvent>
@@ -59,9 +60,11 @@ export class YCoreModal extends LitElement implements IYCoreModalProps {
   protected _pressEscape!: TDispatcher<PressEscapeEvent>
 
   @query(`.${tagName}__overlay`) private overlay?: HTMLElement
+  @query('[role="dialog"]') private dialog?: HTMLElement
 
   @state() private isOpen = false
   @state() private transition?: IElementTransition
+  private previousFocusedElement?: HTMLElement
 
   protected get baseClass() {
     return tagName
@@ -118,8 +121,12 @@ export class YCoreModal extends LitElement implements IYCoreModalProps {
   }
 
   private openModal() {
+    const focusedElement = this.getDeepActiveElement()
+    this.previousFocusedElement = focusedElement instanceof HTMLElement ? focusedElement : undefined
     this.isOpen = true
     this._open()
+
+    void this.updateComplete.then(() => this.dialog?.focus({ preventScroll: true }))
 
     requestAnimationFrame(this.animateOnEnter)
   }
@@ -127,6 +134,8 @@ export class YCoreModal extends LitElement implements IYCoreModalProps {
   private closeModal() {
     this.isOpen = false
     this._close()
+
+    void this.updateComplete.then(() => this.previousFocusedElement?.focus({ preventScroll: true }))
 
     requestAnimationFrame(this.animateOnLeave)
   }
@@ -154,11 +163,52 @@ export class YCoreModal extends LitElement implements IYCoreModalProps {
     this.openModal()
   }
 
+  private getFocusableElements(): HTMLElement[] {
+    const elements: HTMLElement[] = []
+    const selector = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'
+    const visit = (element: Element) => {
+      if (element.matches(selector) && element.getClientRects().length) elements.push(element as HTMLElement)
+      const children = element instanceof HTMLSlotElement
+        ? element.assignedElements({ flatten: true })
+        : Array.from(element.shadowRoot?.children ?? element.children)
+      children.forEach(visit)
+    }
+    if (this.dialog) visit(this.dialog)
+    return elements
+  }
+
+  private getDeepActiveElement(): Element | null {
+    let active: Element | null = document.activeElement
+    while (active?.shadowRoot?.activeElement) active = active.shadowRoot.activeElement
+    return active
+  }
+
+  private cycleFocus(event: KeyboardEvent) {
+    const elements = this.getFocusableElements()
+    event.preventDefault()
+    if (!elements.length) {
+      this.dialog?.focus()
+      return
+    }
+    const current = elements.indexOf(this.getDeepActiveElement() as HTMLElement)
+    const offset = event.shiftKey ? -1 : 1
+    const next = current < 0
+      ? event.shiftKey ? elements.length - 1 : 0
+      : (current + offset + elements.length) % elements.length
+    elements[next].focus()
+  }
+
   private handleKeydown = (event: KeyboardEvent) => {
-    event.stopPropagation()
     if (!this.isOpen) return
 
+    if (event.key === 'Tab') {
+      this.cycleFocus(event)
+      return
+    }
+
     if (!this.preventEscape && event.code === 'Escape') {
+      event.preventDefault()
+      event.stopPropagation()
       this._pressEscape()
       this.closeModal()
     }
@@ -188,7 +238,8 @@ export class YCoreModal extends LitElement implements IYCoreModalProps {
         style=${this.computedStyles}
         role="dialog"
         aria-modal="true"
-        aria-labelledby="modal-title"
+        aria-label=${this.dialogLabel || 'Dialog'}
+        tabindex="-1"
       >
         <slot name="content"></slot>
 

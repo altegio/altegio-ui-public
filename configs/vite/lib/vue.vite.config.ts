@@ -1,13 +1,13 @@
 import { defineConfig, mergeConfig } from 'vite'
 import path from 'path'
-import baseConfig from '../shared/base.vite.config'
-import commonVueViteConfig from '../shared/commonVue.vite.config'
-import { getRollupOptionsInput } from '../utils/helpers'
+import baseConfig from '../shared/base.vite.config.ts'
+import commonVueViteConfig from '../shared/commonVue.vite.config.ts'
+import { getRollupOptionsInput } from '../utils/helpers.ts'
 
 export const VUE_PATH = 'web/vue'
-const LIB_ENTRY_PATH = path.resolve(__dirname, `../../../${VUE_PATH}/src/index.ts`)
+const LIB_ENTRY_PATH = path.resolve(import.meta.dirname, `../../../${VUE_PATH}/src/index.ts`)
 const DEV_ENTRY_PATH = `/${VUE_PATH}/playground/index.html`
-const ROLLUP_OPTIONS_INPUT_PATH = path.resolve(__dirname, `../../../${VUE_PATH}/src/**/index.ts`)
+const ROLLUP_OPTIONS_INPUT_PATH = path.resolve(import.meta.dirname, `../../../${VUE_PATH}/src/**/index.ts`)
 
 const rollupOptionsInput = getRollupOptionsInput({
   inputFilePath: (file) => {
@@ -24,6 +24,7 @@ export default defineConfig(mergeConfig(
     libEntryPath: LIB_ENTRY_PATH,
     devEntryPath: DEV_ENTRY_PATH,
     rollupOptionsInput,
+    dtsRoot: path.resolve(import.meta.dirname, '../vue-types'),
     dtsExclude: [
       'web/**/*.stories.ts',
       'web/**/*.test.ts',

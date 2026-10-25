@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/angular'
 import yCoreSegmentControlStoryMeta from '~core/ui/segmentControl/stories/SegmentControl.stories'
 
 import { YSegmentControl } from '~ng/ui/segmentControl'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 
 /**
  * Angular wrapper for Core SegmentControl

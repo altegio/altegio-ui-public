@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { ref } from 'vue'
-import { useArgs } from '@storybook/preview-api'
+import { useArgs } from 'storybook/preview-api'
 
 import { EYCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
 import type { IYVueCardSelectProps } from '~vue/ui/cardSelect/models/types'

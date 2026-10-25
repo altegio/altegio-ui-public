@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 
 import { YAutocompleteField } from '~ng/ui/autocompleteField'
 import yCoreAutocompleteFieldStoryMeta, { type TYCoreAutocompleteFieldStoryMeta } from '~core/ui/autocompleteField/stories/AutocompleteField.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import type { SelectOptionEvent, FocusEvent, BlurEvent, ChangeEvent } from '~core/ui/autocompleteField/models/types'
-import { useArgs } from '@storybook/preview-api'
+import { useArgs } from 'storybook/preview-api'
 
 /**
  * Angular wrapper for Core AutocompleteField

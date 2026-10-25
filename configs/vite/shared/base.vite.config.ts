@@ -1,7 +1,7 @@
 import { defineConfig, mergeConfig, type UserConfig } from 'vite'
 import dts, { type PluginOptions } from 'vite-plugin-dts'
 import checker from 'vite-plugin-checker'
-import commonViteConfig from './common.vite.config'
+import commonViteConfig from './common.vite.config.ts'
 // import { sentryVitePlugin } from '@sentry/vite-plugin'
 // import { version } from '../../../package.json'
 import path from 'path'
@@ -14,6 +14,7 @@ type TBaseViteConfigPayload = {
   rollupOptionsExternal?: string[]
   dtsInclude?: PluginOptions['include']
   dtsExclude?: PluginOptions['exclude']
+  dtsRoot?: string
   publicDir?: UserConfig['publicDir']
 }
 // const env = loadEnv(
@@ -29,6 +30,7 @@ export default ({
   rollupOptionsExternal,
   dtsInclude,
   dtsExclude,
+  dtsRoot,
   publicDir,
 }: TBaseViteConfigPayload) => defineConfig(mergeConfig(
   commonViteConfig,
@@ -40,13 +42,12 @@ export default ({
         formats: ['es'],
       },
       emptyOutDir: false,
-      rollupOptions: {
+      rolldownOptions: {
         input: rollupOptionsInput,
         output: {
           format: 'es',
           entryFileNames: '[name].mjs',
           chunkFileNames: `${basePath}/[name].mjs`,
-          manualChunks: { main: [libEntryPath] },
           assetFileNames: `${basePath}/[name].[ext]`,
         },
         external: rollupOptionsExternal,
@@ -57,14 +58,16 @@ export default ({
       checker({
         typescript: true,
         vueTsc: true,
+        enableBuild: false,
       }),
       dts({
-        outDir: `dist/${basePath}`,
+        root: dtsRoot,
+        outDir: path.resolve(import.meta.dirname, '../../../dist', basePath),
         rollupTypes: true,
-        include: dtsInclude,
-        exclude: dtsExclude,
+        include: dtsRoot && dtsInclude ? [dtsInclude].flat().map(glob => path.resolve(import.meta.dirname, '../../../', glob)) : dtsInclude,
+        exclude: dtsRoot && dtsExclude ? [dtsExclude].flat().map(glob => path.resolve(import.meta.dirname, '../../../', glob)) : dtsExclude,
         pathsToAliases: false,
-        tsconfigPath: path.resolve(__dirname, '../../../tsconfig.json'),
+        tsconfigPath: path.resolve(import.meta.dirname, '../../../tsconfig.json'),
         insertTypesEntry: true,
         staticImport: true,
       }),

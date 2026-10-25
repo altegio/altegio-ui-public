@@ -4,8 +4,8 @@ export NODE_OPTIONS=--max-old-space-size=8192
 
 export CORE_TYPES=./dist/web/core/index.d.ts
 export VUE_TYPES=./dist/web/vue/index.d.ts
-export NG_TYPES=./dist/web/angular/index.d.ts
-export WC_TYPES=./web/shared/constants/build/index.d.mts
+export NG_TYPES=./dist/web/angular/types/altegio-ui-workspace.d.ts
+export WC_TYPES=./web/shared/constants/build/index.d.ts
 export WEB_ASSETS_PATH=./dist/web/assets
 export FONTS_PATH=./dist/fonts/
 export BREAKPOINTS_SCSS=./web/shared/assets/scss/build/breakpoints.scss
@@ -36,6 +36,7 @@ lib-build:
 	pnpm lib-build-core
 	pnpm lib-build-vue
 	pnpm build-with-workspace
+	pnpm cli-build:bundle
 	# Подмешивание типов констант тегов WC к сборкам фреймворков
 	cat $$WC_TYPES >> $$CORE_TYPES
 	cat $$WC_TYPES >> $$VUE_TYPES
@@ -48,14 +49,14 @@ lib-build:
 	cp -r $$ICONS_PATH/* $$WEB_ASSETS_PATH/icons
 	cp -r $$TOKENS_PATH/* $$WEB_ASSETS_PATH/tokens
 	# Package assets expose JavaScript and declarations to NodeNext consumers.
-	pnpm exec tsc --module nodenext --moduleResolution nodenext --target es2022 --declaration --skipLibCheck --rootDir web/shared/constants/tokens --outDir $$WEB_ASSETS_PATH/tokens web/shared/constants/tokens/index.ts
+	pnpm exec tsc --ignoreConfig --module nodenext --moduleResolution nodenext --target es2022 --declaration --skipLibCheck --rootDir web/shared/constants/tokens --outDir $$WEB_ASSETS_PATH/tokens web/shared/constants/tokens/index.ts
 	# Private package compatibility aliases are omitted from public snapshots.
 	@if [ -f scripts/private-icon-compat.mjs ]; then node scripts/private-icon-compat.mjs; fi
+	pnpm build-icons-dist
 	cp -r $$CORE_CSS $$WEB_ASSETS_PATH/css
 	echo $$FONTS_IMPORTS >> $$WEB_ASSETS_PATH/css/altegio-ui-with-fonts.css
 	cat $$CORE_CSS >> $$WEB_ASSETS_PATH/css/altegio-ui-with-fonts.css
 	rm -rf $$CORE_CSS $$FONTS_PATH
-	ls -lhR $$WEB_ASSETS_PATH
 
 publish: init lint lib-build
 	pnpm publish
@@ -73,25 +74,7 @@ storybook-public-build:
 	pnpm story-build:public
 
 test-unit:
-	# Установка браузера для playwright
 	pnpm exec playwright install chromium
-	
-	# Установка зависимостей с полным восстановлением Ubuntu репозиториев
-	pnpm exec playwright install-deps chromium || \
-		(echo "Retry #1: Complete Ubuntu repositories restoration..." && \
-		 mkdir -p /tmp/apt-fix && \
-		 echo "deb http://archive.ubuntu.com/ubuntu/ noble main restricted universe multiverse" > /tmp/apt-fix/sources.list && \
-		 echo "deb http://archive.ubuntu.com/ubuntu/ noble-updates main restricted universe multiverse" >> /tmp/apt-fix/sources.list && \
-		 echo "deb http://security.ubuntu.com/ubuntu/ noble-security main restricted universe multiverse" >> /tmp/apt-fix/sources.list && \
-		 echo "deb http://archive.ubuntu.com/ubuntu/ noble-backports main restricted universe multiverse" >> /tmp/apt-fix/sources.list && \
-		 mv /etc/apt/sources.list.d/* /tmp/apt-fix/ 2>/dev/null || true && \
-		 cp /tmp/apt-fix/sources.list /etc/apt/sources.list && \
-		 rm -rf /var/lib/apt/lists/* && \
-		 apt-get update && \
-		 apt-get install -y libnspr4 libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libxkbcommon0 libatspi2.0-0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libcairo2 libpango-1.0-0 libasound2t64 libglib2.0-0 libx11-6 libxcb1 libxext6 && \
-		 pnpm exec playwright install-deps chromium)
-
-	# Запуск юнит-тестов
 	pnpm test-unit-report
 
 prepare-gitlab-registry-branch:

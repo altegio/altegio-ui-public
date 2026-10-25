@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/angular'
 import { YFieldInput } from '~ng/ui/fieldInput'
 import yCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
 import { omit } from 'radash'
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/preview-api'
+import { action } from 'storybook/actions'
+import { useArgs } from 'storybook/preview-api'
 import {
   type YNgFieldInputInputEvent,
 } from '~ng/ui/fieldInput/models/types'

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { YDropdownList } from '~ng/ui/dropdownList'
 import yCoreDropdownListStoryMeta from '~core/ui/dropdownList/stories/DropdownList.stories'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 import {
   type YNgDropdownListItemClickEvent,
 } from '~ng/ui/dropdownList/models/types'

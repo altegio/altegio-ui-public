@@ -3,18 +3,12 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output } from '
 import '~core/ui/modal'
 import {
   createNgModalProps,
-  type OpenEvent,
-  type CloseEvent,
   type IYNgModalProps,
-  type ClickCloseIconEvent,
-  type ClickOverlayEvent,
-  type ClickActivatorEvent,
-  type PressEscapeEvent,
 } from '~ng/ui/modal/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { cleanupInnerHTML } from '~shared/utils'
 
-const { open, size, variant, width, hideOverlay, preventEscape, fullScreen } = createNgModalProps()
+const { open, size, variant, width, hideOverlay, preventEscape, fullScreen, dialogLabel } = createNgModalProps()
 
 @Component({
   selector: 'YModal',
@@ -29,6 +23,7 @@ const { open, size, variant, width, hideOverlay, preventEscape, fullScreen } = c
       [hideOverlay]="hideOverlay"
       [preventEscape]="preventEscape"
       [fullScreen]="fullScreen"
+      [attr.dialog-label]="dialogLabel"
       (open)="handleOpen($event)"
       (close)="handleClose($event)"
       (click-close-icon)="handleClickCloseIcon($event)"
@@ -66,35 +61,36 @@ export class YModal implements IYNgModalProps {
   @Input() @DefaultValue(hideOverlay) hideOverlay: IYNgModalProps['hideOverlay'] = hideOverlay
   @Input() @DefaultValue(preventEscape) preventEscape: IYNgModalProps['preventEscape'] = preventEscape
   @Input() @DefaultValue(fullScreen) fullScreen: IYNgModalProps['fullScreen'] = fullScreen
+  @Input() @DefaultValue(dialogLabel) dialogLabel: IYNgModalProps['dialogLabel'] = dialogLabel
 
   @Output() openEvent = new EventEmitter()
   handleOpen(event: Event) {
-    this.openEvent.emit(event as OpenEvent)
+    this.openEvent.emit(event)
   }
 
   @Output() closeEvent = new EventEmitter()
   handleClose(event: Event) {
-    this.closeEvent.emit(event as CloseEvent)
+    this.closeEvent.emit(event)
   }
 
   @Output() clickCloseIconEvent = new EventEmitter()
   handleClickCloseIcon(event: Event) {
-    this.clickCloseIconEvent.emit(event as ClickCloseIconEvent)
+    this.clickCloseIconEvent.emit(event)
   }
 
   @Output() clickOverlayEvent = new EventEmitter()
   handleClickOverlay(event: Event) {
-    this.clickOverlayEvent.emit(event as ClickOverlayEvent)
+    this.clickOverlayEvent.emit(event)
   }
 
   @Output() clickActivatorEvent = new EventEmitter()
   handleClickActivator(event: Event) {
-    this.clickActivatorEvent.emit(event as ClickActivatorEvent)
+    this.clickActivatorEvent.emit(event)
   }
 
   @Output() pressEscapeEvent = new EventEmitter()
   handlePressEscape(event: Event) {
-    this.pressEscapeEvent.emit(event as PressEscapeEvent)
+    this.pressEscapeEvent.emit(event)
   }
 
   protected cleanupHTML = cleanupInnerHTML

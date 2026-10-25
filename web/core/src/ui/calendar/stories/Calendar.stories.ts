@@ -1,7 +1,7 @@
 import { html } from 'lit'
 import { ifDefined } from 'lit/directives/if-defined.js'
 import type { Meta, StoryObj } from '@storybook/web-components'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import { onSelectEmit } from '~shared/.storybook/argTypes'
 import {
   createCoreCalendarExternalProps,

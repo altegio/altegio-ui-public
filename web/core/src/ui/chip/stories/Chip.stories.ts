@@ -1,7 +1,7 @@
 import { html } from 'lit'
 import type { Meta, StoryObj } from '@storybook/web-components'
-import { useArgs } from '@storybook/preview-api'
-import { action } from '@storybook/addon-actions'
+import { useArgs } from 'storybook/preview-api'
+import { action } from 'storybook/actions'
 
 import { EYSizes } from '~shared/types/global'
 import { getComponentContentTable, getComponentStateTable } from '~shared/.storybook/tables'

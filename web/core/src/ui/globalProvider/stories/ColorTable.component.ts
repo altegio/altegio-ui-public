@@ -111,8 +111,8 @@ export class YColorTable extends LitElement {
     if (this.transformers && this.extendedTransformers) {
       const splittedValues = inputValue.split(',')
       let errorMessage = ''
-      // eslint-disable-next-line sonarjs/slow-regex
-      if (splittedValues.length === 4 && !splittedValues.some((splittedValue) => !(/^.*[hsl\d]+.*$/).test(splittedValue))) {
+
+      if (splittedValues.length === 4 && !splittedValues.some((splittedValue) => !(/[hsl\d]/).test(splittedValue))) {
         this._transformersChanged({
           detail: {
             ...this.transformers,

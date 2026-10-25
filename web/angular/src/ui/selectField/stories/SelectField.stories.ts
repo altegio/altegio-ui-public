@@ -5,8 +5,8 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { ySearch } from '~shared/icons'
 import { YFieldIcon } from '~ng/ui/fieldIcon'
 import { omit } from 'radash'
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/preview-api'
+import { action } from 'storybook/actions'
+import { useArgs } from 'storybook/preview-api'
 import { type YNgSelectFieldInputEvent } from '~ng/ui/selectField/models/types'
 
 /**

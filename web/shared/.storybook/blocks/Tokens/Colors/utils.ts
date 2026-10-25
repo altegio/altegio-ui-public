@@ -1,7 +1,7 @@
 import { cssVarPrefix, ECssVarTokenPrefixes, generateCssVariable } from '~tokens/index'
 import type { IColorToken, TColorsByCategories } from './models/types'
 import type { IToken, TTokensJSON } from '~tokens/index'
-import rgb2hex from 'rgb2hex'
+import { colord } from 'colord'
 
 const getCategoryAndColorName = (name: string): Pick<IColorToken, 'category' | 'name'> => {
   const [
@@ -13,10 +13,11 @@ const getCategoryAndColorName = (name: string): Pick<IColorToken, 'category' | '
 }
 
 const parseColor = (tokenName: string, tokenData: IToken): IColorToken => {
-  const { hex, alpha } = rgb2hex(String(tokenData.value))
+  const { r, g, b, a } = colord(String(tokenData.value)).toRgb()
+  const hex = `#${[r, g, b].map((value) => value.toString(16).padStart(2, '0')).join('')}`
   return {
     ...getCategoryAndColorName(tokenName),
-    colorHex: `${hex}, ${alpha * 100}%`,
+    colorHex: `${hex}, ${a * 100}%`,
     color: String(tokenData.value),
     token: generateCssVariable(
       cssVarPrefix,

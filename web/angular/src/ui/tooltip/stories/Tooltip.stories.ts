@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular'
 import { YTooltip } from '~ng/ui/tooltip'
 import yCoreTooltipStoryMeta, { type IYCoreLabelStoryProps } from '~core/ui/tooltip/stories/Tooltip.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 import { YSimpleButton } from '~ng/ui/simpleButton'
 
 /**

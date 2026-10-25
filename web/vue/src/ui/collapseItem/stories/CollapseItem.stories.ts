@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/preview-api'
+import { action } from 'storybook/actions'
+import { useArgs } from 'storybook/preview-api'
 import type { CollapseItemClickEvent } from '~core/ui/collapseItem/models/types'
 import { YCollapseItem } from '~vue/ui/collapseItem'
 import { type IYVueCollapseItemProps } from '~vue/ui/collapseItem/models/types'

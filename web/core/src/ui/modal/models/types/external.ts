@@ -13,6 +13,7 @@ export interface IYCoreModalExternalProps {
   hideOverlay: boolean | undefined
   preventEscape: boolean | undefined
   fullScreen: boolean | undefined
+  dialogLabel: string | undefined
 }
 
 export const createCoreModalExternalProps = (): IYCoreModalExternalProps => {
@@ -24,5 +25,6 @@ export const createCoreModalExternalProps = (): IYCoreModalExternalProps => {
     hideOverlay: false,
     preventEscape: false,
     fullScreen: false,
+    dialogLabel: 'Dialog',
   }
 }

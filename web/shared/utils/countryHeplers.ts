@@ -1,5 +1,5 @@
 import type { TYCountry } from '~shared/types/country'
-import type { MaskitoMask, MaskitoMaskExpression } from '@maskito/core/src/lib/types/mask'
+import type { MaskitoMask, MaskitoMaskExpression } from '@maskito/core'
 
 const COUNTRY_MASK_DIGIT_SYMBOL = 'x'
 const COUNTRY_MASK_SEPARATE_SYMBOL = '?'

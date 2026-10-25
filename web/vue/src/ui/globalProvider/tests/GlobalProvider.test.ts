@@ -81,7 +81,7 @@ describe(
             coreElement.firstUpdated()
 
             const testConsumer = wrapper.findComponent(TestConsumer)
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             const globalContext = testConsumer.vm.globalContext
 
             expect(globalContext).toBeDefined()

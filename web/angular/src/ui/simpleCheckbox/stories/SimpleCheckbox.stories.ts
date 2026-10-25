@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { YSimpleCheckbox } from '~ng/ui/simpleCheckbox'
 import yCoreSimpleCheckboxStoryMeta from '~core/ui/simpleCheckbox/stories/SimpleCheckbox.stories'
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/preview-api'
+import { action } from 'storybook/actions'
+import { useArgs } from 'storybook/preview-api'
 import type { SimpleCheckboxCheckedEvent } from '../models/types'
 
 /**

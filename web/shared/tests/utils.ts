@@ -156,6 +156,10 @@ export const dispatchEvent = (node: Node, eventName: string, eventInitDetails: E
   node.dispatchEvent(event)
 }
 
+export const trimTextContent = (value: string | null | undefined): string | undefined => {
+  return typeof value === 'string' ? value.trim() : undefined
+}
+
 /**
  * Генерирует тестовый случай для свойства компонента.
  * @template T - Тип объекта с тестируемыми свойствами

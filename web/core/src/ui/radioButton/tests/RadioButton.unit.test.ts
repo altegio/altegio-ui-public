@@ -12,6 +12,7 @@ import {
   getElementClasses,
   getShadowElement,
   getShadowRootElement,
+  trimTextContent,
 } from '~shared/tests/utils'
 import { createCoreRadioButtonExternalProps } from '../models/types'
 import {
@@ -29,7 +30,7 @@ import {
 import type { YCoreSimpleRadioButton, YCoreLabel, YCoreAnnotation, YCoreError } from '~core/index'
 
 import '~core/ui/radioButton'
-import { userEvent } from '@vitest/browser/context'
+import { userEvent } from 'vitest/browser'
 
 const {
   component,
@@ -278,7 +279,7 @@ describe(
 
               const annotationElement = getAnnotationElement()
 
-              expect(annotationElement?.textContent?.trim()).toBe(testCase.expected)
+              expect(trimTextContent(annotationElement?.textContent)).toBe(testCase.expected)
             },
           )
         }

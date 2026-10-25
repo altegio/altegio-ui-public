@@ -1,11 +1,11 @@
 import { dash } from 'radash'
 
-import colors from './colors.json'
-import extendedColors from './extended_colours.json'
-import sizes from './sizes.json'
-import typography from './typography.json'
-import effects from './effects.json'
-import avatar from './avatar.json'
+import colors from './colors.json' with { type: 'json' }
+import extendedColors from './extended_colours.json' with { type: 'json' }
+import sizes from './sizes.json' with { type: 'json' }
+import typography from './typography.json' with { type: 'json' }
+import effects from './effects.json' with { type: 'json' }
+import avatar from './avatar.json' with { type: 'json' }
 
 type TTokenValue = string | number
 

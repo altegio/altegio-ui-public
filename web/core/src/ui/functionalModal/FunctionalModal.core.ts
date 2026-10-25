@@ -36,7 +36,7 @@ import YCoreFunctionalModalVarsCSS from '~core/ui/functionalModal/css/Functional
 import YCoreFunctionalModalScopedCSS from '~core/ui/functionalModal/css/FunctionalModal.scoped.css?inline'
 import { withLocator } from '~core/utils/locator'
 
-const { open, size, width, preventEscape, hideOverlay, hideFooter, fullScreen, heading, subHeading } = createCoreFunctionalModalProps()
+const { open, size, width, preventEscape, hideOverlay, hideFooter, fullScreen, heading, subHeading, dialogLabel } = createCoreFunctionalModalProps()
 
 const RESIZE_OBSERVER_DELAY_MS = 100
 
@@ -52,6 +52,7 @@ export class YCoreFunctionalModal extends LocalizedElement implements IYCoreFunc
   @property({ type: Boolean, attribute: 'full-screen' }) fullScreen: IYCoreFunctionalModalProps['fullScreen'] = fullScreen
   @property({ type: String }) heading: IYCoreFunctionalModalProps['heading'] = heading
   @property({ type: String, attribute: 'sub-heading' }) subHeading: IYCoreFunctionalModalProps['subHeading'] = subHeading
+  @property({ type: String, attribute: 'dialog-label' }) dialogLabel: IYCoreFunctionalModalProps['dialogLabel'] = dialogLabel
 
   @bubblingEvent(OpenEvent, { name: 'open' })
   protected _open!: TDispatcher<OpenEvent>
@@ -236,6 +237,7 @@ export class YCoreFunctionalModal extends LocalizedElement implements IYCoreFunc
         .hideOverlay=${this.hideOverlay || this.isFullScreen}
         .preventEscape=${this.preventEscape}
         .fullScreen=${this.isFullScreen}
+        .dialogLabel=${this.heading || this.dialogLabel}
         variant="primary"
         @open=${this._open}
         @close=${this._close}

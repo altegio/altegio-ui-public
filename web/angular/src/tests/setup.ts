@@ -1,12 +1,12 @@
 import '@angular/compiler'
-import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing'
+import { BrowserTestingModule, platformBrowserTesting } from '@angular/platform-browser/testing'
 import { TestBed } from '@angular/core/testing'
 import 'zone.js'
 import 'zone.js/testing'
 
 TestBed.initTestEnvironment(
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting(),
+  BrowserTestingModule,
+  platformBrowserTesting(),
 )
 
 export { TestBed }

@@ -1,8 +1,8 @@
 import { html, nothing } from 'lit'
 import type { Meta, StoryObj } from '@storybook/web-components'
-import { useArgs } from '@storybook/preview-api'
+import { useArgs } from 'storybook/preview-api'
 import { ifDefined } from 'lit/directives/if-defined.js'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import { omit } from 'radash'
 
 import '~core/ui/phoneField'

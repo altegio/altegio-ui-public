@@ -10,7 +10,7 @@ import '~core/ui/fieldInput'
 import { yChevronDown } from '~shared/icons'
 
 import { omit } from 'radash'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 
 /**
  * Angular wrapper for Core FieldWrapper

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 import yCoreBrandButtonStoryMeta from '~core/ui/brandButton/stories/BrandButton.stories'
 
 import { YBrandButton } from '~ng/ui/brandButton'

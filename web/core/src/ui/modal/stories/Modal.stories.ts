@@ -1,7 +1,7 @@
 import { html, nothing } from 'lit'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 import type { Meta, StoryObj } from '@storybook/web-components'
-import { useArgs } from '@storybook/preview-api'
+import { useArgs } from 'storybook/preview-api'
 
 import '~core/ui/modal'
 import '~core/ui/button'

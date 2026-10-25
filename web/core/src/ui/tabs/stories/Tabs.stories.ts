@@ -4,7 +4,7 @@
 import { html } from 'lit/static-html.js'
 import type { Meta, StoryObj } from '@storybook/web-components'
 
-import { useState, useEffect } from '@storybook/preview-api'
+import { useState, useEffect } from 'storybook/preview-api'
 
 import { YCoreTabsTagName as tagName } from '~shared/constants'
 import { items as itemsArgType } from '~shared/.storybook/argTypes'

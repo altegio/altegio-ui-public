@@ -1,5 +1,4 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core'
-import { NgTemplateOutlet } from '@angular/common'
 
 import '~core/ui/autocompleteField'
 import {
@@ -40,7 +39,6 @@ const {
   selector: 'YAutocompleteField',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [NgTemplateOutlet],
   template: `
     <y-core-autocomplete-field
       [value]="value"

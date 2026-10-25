@@ -1,7 +1,7 @@
 import { LitElement, html, css, unsafeCSS } from 'lit'
 import { customElement, property, query } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
-import { Maskito } from '@maskito/core'
+import { Maskito, type MaskitoPostprocessor } from '@maskito/core'
 
 import {
   createCoreCountFieldProps,
@@ -30,9 +30,7 @@ import {
 } from '~core/ui/fieldWrapper/providers'
 import { booleanConverter } from '~core/utils/converters'
 import { yMinus, yPlus } from '~shared/icons'
-import type { YCoreTextField } from '~core/index'
-import type { MaskitoPostprocessor } from '@maskito/core/src/lib/types/mask-processors'
-import type { ElementState } from '@maskito/core/src/lib/types/element-state'
+import type { YCoreTextField } from '~core/ui/textField'
 import type { TTimeout } from '~shared/types/global'
 import { withLocator } from '~core/utils/locator'
 
@@ -40,6 +38,8 @@ enum EChangeValueType {
   INCREASE,
   DECREASE,
 }
+
+type ElementState = Parameters<MaskitoPostprocessor>[0]
 
 const { min,
   max,

@@ -235,7 +235,7 @@ describe(
 
             component.dispatchEvent(new MouseEvent('click'))
 
-            expect(clickHandler).not.toBeCalled()
+            expect(clickHandler).not.toHaveBeenCalled()
           },
         )
       },

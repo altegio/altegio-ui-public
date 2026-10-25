@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/preview-api'
+import { action } from 'storybook/actions'
+import { useArgs } from 'storybook/preview-api'
 
 import { YFunctionalModal } from '~ng/ui/functionalModal'
 

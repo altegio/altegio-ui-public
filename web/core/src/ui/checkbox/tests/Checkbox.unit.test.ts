@@ -13,6 +13,7 @@ import {
   getElementClasses,
   getShadowElement,
   getShadowRootElement,
+  trimTextContent,
 } from '~shared/tests/utils'
 import { type IYCoreCheckboxExternalProps, createCoreCheckboxExternalProps } from '../models/types'
 import { EYSizes } from '~shared/types/global'
@@ -21,7 +22,7 @@ import type { YCoreSimpleCheckbox, YCoreLabel, YCoreAnnotation, YCoreError } fro
 
 import '~core/ui/checkbox'
 import { EYCoreLabelAlignment } from '~core/ui/label/models/types'
-import { userEvent } from '@vitest/browser/context'
+import { userEvent } from 'vitest/browser'
 
 const {
   component,
@@ -332,7 +333,7 @@ describe(
 
               const annotationElement = getAnnotationElement()
 
-              expect(annotationElement?.textContent?.trim()).toBe(testCase.expected)
+              expect(trimTextContent(annotationElement?.textContent)).toBe(testCase.expected)
             },
           )
         }

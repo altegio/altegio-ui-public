@@ -10,7 +10,7 @@ import {
   EFFECTS,
   AVATAR,
   type TTokensJSON,
-} from '../../../tokens'
+} from '../../../tokens/index.ts'
 
 interface IExtractConstsFromTokensPluginOptions {
   outPath: string
@@ -49,7 +49,7 @@ export default function extractConstsFromTokensPlugin(
   return {
     name: 'extract-consts-from-tokens',
     buildStart() {
-      const filePath = path.resolve(__dirname, `../../../${outPath}/${fileName}`)
+      const filePath = path.resolve(import.meta.dirname, `../../../${outPath}/${fileName}`)
       const dirPath = path.dirname(filePath)
 
       // Создаем директории рекурсивно, если они не существуют

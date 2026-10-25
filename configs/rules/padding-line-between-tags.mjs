@@ -84,7 +84,7 @@ function checkNewline(context) {
     // Позиция начала шаблона в файле
     const templateStart = block.range[0]
 
-    const sourceCode = context.getSourceCode()
+    const sourceCode = context.sourceCode
     const templateText = sourceCode.getText(block)
     const lines = templateText.split('\n')
 

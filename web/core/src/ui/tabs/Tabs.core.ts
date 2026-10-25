@@ -237,7 +237,7 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
     slotElements.forEach((el) => {
       if (el.tagName === tabTagNameUpperCase) return nodeList.push(el as YCoreTab)
 
-      const tabEl = el.querySelector(tabTagName)
+      const tabEl = el.querySelector<YCoreTab>(tabTagName)
 
       if (tabEl) nodeList.push(tabEl)
     })

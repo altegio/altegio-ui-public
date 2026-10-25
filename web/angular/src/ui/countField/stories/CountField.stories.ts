@@ -1,7 +1,7 @@
 import { omit } from 'radash'
 import { FormsModule } from '@angular/forms'
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/preview-api'
+import { action } from 'storybook/actions'
+import { useArgs } from 'storybook/preview-api'
 import type { Meta, StoryObj } from '@storybook/angular'
 import { getComponentStateTable, getComponentEmitsTable } from '~shared/.storybook/tables'
 

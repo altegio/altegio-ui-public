@@ -18,6 +18,7 @@ export interface IYVueFunctionalModalProps {
   fullScreen?: IYCoreFunctionalModalProps['fullScreen']
   heading?: IYCoreFunctionalModalProps['heading']
   subHeading?: IYCoreFunctionalModalProps['subHeading']
+  dialogLabel?: IYCoreFunctionalModalProps['dialogLabel']
   locale?: IYCoreFunctionalModalProps['locale']
   enableTeleport?: boolean
 }
@@ -34,6 +35,7 @@ export const createVueFunctionalModalProps = (): TDefinedVueProps<IYVueFunctiona
     fullScreen: props.fullScreen,
     heading: props.heading,
     subHeading: props.subHeading,
+    dialogLabel: props.dialogLabel,
     locale: locale ? () => locale : undefined,
     enableTeleport: false,
   }

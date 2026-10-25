@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 
 import { YPhoneField } from '~ng/ui/phoneField'
 import yCorePhoneFieldStoryMeta, { type TYCorePhoneFieldStoryMeta } from '~core/ui/phoneField/stories/PhoneField.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import type { SelectOptionEvent, FocusEvent, BlurEvent, PhoneFieldChangeEvent } from '~core/ui/phoneField/models/types'
-import { useArgs } from '@storybook/preview-api'
+import { useArgs } from 'storybook/preview-api'
 
 /**
  * Angular wrapper for Core PhoneField

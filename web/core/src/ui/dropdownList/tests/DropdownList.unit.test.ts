@@ -5,7 +5,7 @@ import {
   createCoreDropdownListProps,
 } from '~core/ui/dropdownList/models/types'
 import '~core/ui/dropdownList'
-import { getWCShadowRoot } from '~shared/tests/utils'
+import { getWCShadowRoot, trimTextContent } from '~shared/tests/utils'
 import {
   slotTopTestCases,
   slotListTestCases,
@@ -99,7 +99,7 @@ describe(
               })
 
               const listItems = getWCShadowRoot(component).querySelectorAll(YCoreDropdownCellTagName)
-              const textContent = (listItems[0].textContent ?? '').trim()
+              const textContent = trimTextContent(listItems[0].textContent)
 
               expect(Boolean(textContent)).toBe(testCase.expected)
             },

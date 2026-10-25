@@ -1,8 +1,8 @@
 import { computed } from 'vue'
 import { omit } from 'radash'
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/preview-api'
+import { action } from 'storybook/actions'
+import { useArgs } from 'storybook/preview-api'
 
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { getComponentContentTable } from '~shared/.storybook/tables'

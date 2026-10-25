@@ -13,6 +13,7 @@ export interface IYVueModalProps {
   hideOverlay: IYVueCoreModalProps['hideOverlay']
   preventEscape: IYVueCoreModalProps['preventEscape']
   fullScreen: IYVueCoreModalProps['fullScreen']
+  dialogLabel: IYVueCoreModalProps['dialogLabel']
   enableTeleport: boolean | undefined
 }
 
@@ -30,6 +31,7 @@ export const createVueModalProps = (): TDefinedVueProps<IYVueModalProps> => {
     hideOverlay,
     preventEscape,
     fullScreen,
+    dialogLabel,
   } = createCoreModalProps()
 
   return {
@@ -40,6 +42,7 @@ export const createVueModalProps = (): TDefinedVueProps<IYVueModalProps> => {
     hideOverlay,
     preventEscape,
     fullScreen,
+    dialogLabel,
     enableTeleport: false,
   }
 }

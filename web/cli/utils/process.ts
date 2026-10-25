@@ -18,7 +18,6 @@ export const execAsync = (
     onDataStderr?: (data: string) => void
   } = {},
 ) => new Promise<{ stdout: string; stderr: string }>((resolve, reject) => {
-  // eslint-disable-next-line sonarjs/os-command
   const childProcess = exec(
     command,
     (error, stdout, stderr) => {

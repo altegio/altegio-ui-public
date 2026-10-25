@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
-import { userEvent } from '@vitest/browser/context'
+import { userEvent } from 'vitest/browser'
 import { capitalize } from 'radash'
 import { type Dayjs } from 'dayjs'
 import { formatDate, parseDate, FORMAT_MONTH, FORMAT_YEAR } from '~shared/utils/dateTime'

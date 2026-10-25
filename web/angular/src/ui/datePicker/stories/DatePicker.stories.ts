@@ -4,7 +4,7 @@ import { YDatePicker } from '~ng/ui/datePicker'
 import yCoreDatePickerStoryMeta, { type IYCoreDatePickerStoryProps } from '~core/ui/datePicker/stories/DatePicker.stories'
 import { omit } from 'radash'
 import type { IYNgDatePickerProps } from '~ng/ui/datePicker/models/types'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 import {
   type PickEvent,
 } from '~ng/ui/datePicker/models/types'

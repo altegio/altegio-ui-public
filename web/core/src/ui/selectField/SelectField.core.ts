@@ -286,6 +286,8 @@ export class YCoreSelectField extends LitElement {
 
     const tryScroll = () => {
       // Ищем в shadowRoot, так как элементы рендерятся там
+      // The locator changes with the selected item, so a static @query cannot represent it.
+      // eslint-disable-next-line lit/prefer-query-decorators
       const selectedItemElement = this.shadowRoot?.querySelector<HTMLElement>(`[locator="${YCoreDropdownCellTagName}_${this.selectedItemByValue?.id}"]`)
 
       if (selectedItemElement) {

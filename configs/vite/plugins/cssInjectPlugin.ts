@@ -27,7 +27,7 @@ export default function cssInjectPlugin({
   return {
     name: 'css-inject',
     buildStart() {
-      const filePath = path.resolve(__dirname, `../../../${outPath}/${fileName}`)
+      const filePath = path.resolve(import.meta.dirname, `../../../${outPath}/${fileName}`)
       const dirPath = path.dirname(filePath)
 
       // Создаем директории рекурсивно, если они не существуют

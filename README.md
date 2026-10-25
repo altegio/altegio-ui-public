@@ -6,7 +6,7 @@ The [public repository](https://github.com/altegio/altegio-ui-public) receives c
 
 ## Quick start
 
-Use Node.js **22.15.0** and pnpm **9.10.0**. The supported Node.js range is `20.15.1`–`22.15.0`. Git and Make are required for the commands below.
+Use Node.js **24.20.0** and pnpm **10.34.5**. The supported Node.js range is `24.15.x`–`24.x`. Git and Make are required for the commands below.
 
 ```bash
 git clone https://github.com/altegio/altegio-ui-public.git

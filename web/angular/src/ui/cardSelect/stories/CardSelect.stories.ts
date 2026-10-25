@@ -8,8 +8,8 @@ import { yMagic } from '~shared/icons'
 import { YCardSelect } from '~ng/ui/cardSelect'
 import { YCardIcon } from '~ng/ui/cardIcon'
 import { YCardCheckbox } from '~ng/ui/cardCheckbox'
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/preview-api'
+import { action } from 'storybook/actions'
+import { useArgs } from 'storybook/preview-api'
 import {
   type YNgCardSelectFocusEvent,
   type YNgCardSelectBlurEvent,

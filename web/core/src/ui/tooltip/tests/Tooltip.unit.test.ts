@@ -1,4 +1,4 @@
-import { getWCShadowRoot } from '~shared/tests/utils'
+import { getWCShadowRoot, trimTextContent } from '~shared/tests/utils'
 import { createCoreTooltipProps } from '~core/ui/tooltip/models/types'
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest'
 import { YCoreTooltipTagName } from '~shared/constants'
@@ -84,9 +84,9 @@ describe(
                   const contentSlotElement = getWCShadowRoot(component).querySelector('[slot="content"]')
 
                   if (testCase.props?.text) {
-                    expect(contentSlotElement?.textContent?.trim()).toContain(testCase.props.text)
+                    expect(trimTextContent(contentSlotElement?.textContent)).toContain(testCase.props.text)
                   } else {
-                    expect(contentSlotElement?.textContent?.trim()).toBe(empty)
+                    expect(trimTextContent(contentSlotElement?.textContent)).toBe(empty)
                   }
                 },
               )

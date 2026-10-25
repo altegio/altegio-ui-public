@@ -34,11 +34,13 @@ export default {
           'type',
           'main',
           'module',
+          'bin',
           'files',
           'exports',
           'repository',
           'peerDependencies',
           'peerDependenciesMeta',
+          'dependencies',
           'engines',
           'browserslist'
         ]

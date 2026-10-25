@@ -202,7 +202,7 @@ export class YTextField extends ControlValueAccessorBase<TYNgTextFieldModel> imp
   constructor(@Optional() @Self() @Inject(NgControl) public ngControl?: NgControl) {
     super()
     if (this.ngControl) {
-      this.ngControl.valueAccessor = this as never
+      this.ngControl.valueAccessor = this
     }
   }
 

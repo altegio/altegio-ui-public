@@ -1,10 +1,10 @@
 import { ref, computed } from 'vue'
 import { throttle } from 'radash'
-import { BREAKPOINTS } from '~shared/constants/breakpoints'
+import { BREAKPOINTS, getActiveBreakpoint, type TBreakpointKey } from '~shared/constants/breakpoints'
 
-export type TBreakpointKey = keyof typeof BREAKPOINTS
+export type { TBreakpointKey } from '~shared/constants/breakpoints'
 
-const width = ref(window.document.documentElement.clientWidth)
+const width = ref(typeof window === 'undefined' ? 0 : window.document.documentElement.clientWidth)
 
 const updateWidth = throttle({ interval: 50 }, () => { width.value = window.document.documentElement.clientWidth })
 
@@ -13,14 +13,7 @@ if (typeof window !== 'undefined') {
 }
 
 export const active = computed(() => {
-  const entries = Object.entries(BREAKPOINTS) as [TBreakpointKey, number][]
-  entries.sort((a, b) => a[1] - b[1])
-
-  for (const [key] of entries) {
-    if (smallerOrEqual(key).value) return key
-  }
-
-  return undefined
+  return getActiveBreakpoint(width.value)
 })
 
 export const between = (minKey: TBreakpointKey, maxKey: TBreakpointKey) => computed(() => width.value >= BREAKPOINTS[minKey] && width.value <= BREAKPOINTS[maxKey])

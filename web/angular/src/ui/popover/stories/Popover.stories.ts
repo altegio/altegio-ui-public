@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular'
 import { YPopover } from '~ng/ui/popover'
 import yCorePopoverStoryMeta from '~core/ui/popover/stories/Popover.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 
 /**
  * Angular wrapper for Core Popover

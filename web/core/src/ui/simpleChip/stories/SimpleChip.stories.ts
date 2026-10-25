@@ -21,7 +21,7 @@ import {
   onClick,
 } from '~shared/.storybook/argTypes'
 import { EYSizes } from '~shared/types/global'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 
 /**
  * ## Core Chip

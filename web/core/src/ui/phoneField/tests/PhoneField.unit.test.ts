@@ -22,7 +22,7 @@ import {
   createCorePhoneFieldProps,
 } from '~core/ui/phoneField/models/types'
 import { wrapperEvents, fieldEvents } from '~core/ui/phoneField/tests/cases/events'
-import { userEvent } from '@vitest/browser/context'
+import { userEvent } from 'vitest/browser'
 import { searchNumberValue, text, textWithTag } from '~shared/tests/slotContents'
 import {
   autocompleteOptions,

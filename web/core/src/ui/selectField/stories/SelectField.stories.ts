@@ -21,7 +21,7 @@ import {
 
 import { YCoreSelectFieldTagName as tagName } from '~shared/constants'
 import { getComponentEmitsTable, getComponentStateTable, storyControlsTable } from '~shared/.storybook/tables'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import { ySearch } from '~shared/icons'
 
 type TSelectFieldWithSlots = {

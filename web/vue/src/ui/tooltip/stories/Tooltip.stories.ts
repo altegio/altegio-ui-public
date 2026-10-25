@@ -7,7 +7,7 @@ import { YTooltip } from '~vue/ui/tooltip'
 import { type IYVueTooltipProps } from '~vue/ui/tooltip/models/types'
 import YCoreTooltipStoryMeta, { type IYCoreLabelStoryProps } from '~core/ui/tooltip/stories/Tooltip.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 
 type TVueTooltipStoryMeta = IYVueTooltipProps & IYCoreLabelStoryProps
 

@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, describe, expect, it, afterAll } from 'vitest'
-import { getShadowRootElement, getElementClasses, getWCShadowRoot } from '~shared/tests/utils'
+import { getShadowRootElement, getElementClasses, getWCShadowRoot, trimTextContent } from '~shared/tests/utils'
 import { useCoreTests } from '~shared/tests/core'
 import { createCoreCounterProps } from '~core/ui/counter/models/types'
 import { YCoreCounterTagName } from '~shared/constants'
@@ -136,7 +136,7 @@ describe(
 
               const shadowRoot = getWCShadowRoot(component)
 
-              expect(shadowRoot.textContent?.trim()).toBe(expected)
+              expect(trimTextContent(shadowRoot.textContent)).toBe(expected)
             },
           )
         }
@@ -149,7 +149,7 @@ describe(
 
               const shadowRoot = getWCShadowRoot(component)
 
-              expect(shadowRoot.textContent?.trim()).toBe(expected)
+              expect(trimTextContent(shadowRoot.textContent)).toBe(expected)
             },
           )
         }
@@ -162,7 +162,7 @@ describe(
 
               const shadowRoot = getWCShadowRoot(component)
 
-              expect(shadowRoot.textContent?.trim()).toBe(expected)
+              expect(trimTextContent(shadowRoot.textContent)).toBe(expected)
             },
           )
         }

@@ -443,18 +443,6 @@ describe(
         )
       },
     )
-
-    describe(
-      'CSS',
-      () => {
-        it(
-          'CSS tests',
-          () => {
-            expect(true).toBe(true)
-          },
-        )
-      },
-    )
   },
 )
 

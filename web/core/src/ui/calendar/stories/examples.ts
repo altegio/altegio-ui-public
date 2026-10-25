@@ -1,6 +1,6 @@
 import { html } from 'lit'
 import { ifDefined } from 'lit/directives/if-defined.js'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import type { StoryObj } from '@storybook/web-components'
 import { I18nPlugin } from '~core/ui/globalProvider/plugins/i18n'
 import { ru, en } from '~core/i18n'

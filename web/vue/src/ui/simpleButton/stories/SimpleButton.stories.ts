@@ -10,7 +10,7 @@ import yCoreSimpleButtonStoryMeta from '~core/ui/simpleButton/stories/SimpleButt
 import { YIcon } from '~vue/ui/icon'
 import { ySearch } from '~shared/icons/build/y-search.icon'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 
 type TVueSimpleButtonStoryMeta = IYVueSimpleButtonProps
 

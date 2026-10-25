@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { CommonModule } from '@angular/common'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import { omit } from 'radash'
 
 import { YGlobalProvider } from '../GlobalProvider.component'

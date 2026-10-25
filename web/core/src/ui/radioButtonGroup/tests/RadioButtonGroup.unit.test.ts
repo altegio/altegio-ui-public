@@ -22,7 +22,7 @@ import {
   propDirectionTestCases,
 } from './cases/props'
 import type { /* YCoreRadioButton, */ YCoreLabel } from '~core/index'
-import { userEvent } from '@vitest/browser/context'
+import { userEvent } from 'vitest/browser'
 
 const {
   component,

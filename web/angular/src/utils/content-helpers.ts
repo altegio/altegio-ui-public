@@ -8,12 +8,12 @@ export const hasContent = (viewRef: EmbeddedViewRef<unknown>): boolean => {
 }
 
 export const checkMultipleSlots =
-(templates: Record<string, TemplateRef<unknown> | undefined>):
-Record<string, boolean> => Object.fromEntries(Object.entries(templates)
-  .map(([key, template]) => {
-    if (!template) return [key, false]
-    const view = template.createEmbeddedView({})
-    const hasActualContent = hasContent(view)
-    view.destroy()
-    return [key, hasActualContent]
-  }))
+  (templates: Record<string, TemplateRef<unknown> | undefined>):
+  Record<string, boolean> => Object.fromEntries(Object.entries(templates)
+    .map(([key, template]) => {
+      if (!template) return [key, false]
+      const view = template.createEmbeddedView({})
+      const hasActualContent = hasContent(view)
+      view.destroy()
+      return [key, hasActualContent]
+    }))

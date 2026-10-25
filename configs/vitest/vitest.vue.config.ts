@@ -1,6 +1,6 @@
 import { defineConfig, mergeConfig } from 'vitest/config'
-import commonVueViteConfig from '../vite/shared/commonVue.vite.config'
-import testViteConfig from './shared/test.vitest.config'
+import commonVueViteConfig from '../vite/shared/commonVue.vite.config.ts'
+import testViteConfig from './shared/test.vitest.config.ts'
 
 export default mergeConfig(
   commonVueViteConfig,
@@ -13,4 +13,4 @@ export default mergeConfig(
       },
     }),
   ),
-) 
+)

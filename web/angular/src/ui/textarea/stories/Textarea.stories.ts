@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { FormsModule, ReactiveFormsModule, FormControl, Validators, type ValidatorFn } from '@angular/forms'
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/preview-api'
+import { action } from 'storybook/actions'
+import { useArgs } from 'storybook/preview-api'
 
 import { YTextarea } from '~ng/ui/textarea'
 import yCoreTextareaStoryMeta, { type TYCoreTextareaMeta, WithMaxlength as CoreWithMaxlength } from '~core/ui/textarea/stories/Textarea.stories'

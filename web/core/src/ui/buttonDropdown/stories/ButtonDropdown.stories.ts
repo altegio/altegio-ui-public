@@ -1,9 +1,9 @@
 import { html } from 'lit'
 import { ifDefined } from 'lit/directives/if-defined.js'
 import { omit, pick } from 'radash'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import { type Meta, type StoryObj } from '@storybook/web-components'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 
 import '~core/ui/buttonDropdown'
 

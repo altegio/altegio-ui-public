@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
-import { userEvent } from '@storybook/test'
+import { userEvent } from 'storybook/test'
 import {
   YCorePopoverTagName,
   YCoreTipTagName,
@@ -10,7 +10,7 @@ import {
   createCorePopoverProps,
 } from '~core/ui/popover/models/types'
 import '~core/ui/popover'
-import { getWCShadowRoot } from '~shared/tests/utils'
+import { getWCShadowRoot, trimTextContent } from '~shared/tests/utils'
 import {
   slotActivatorTestCases,
   slotContentTestCases,
@@ -85,7 +85,7 @@ describe(
             await updateComponent({ props: { [propSubmitTextTestCases.prop]: propSubmitTextTestCases.value } })
             const buttonElement = getWCShadowRoot(component).querySelectorAll(`${YCoreSimpleButtonTagName}[variant="primary"]`)
 
-            expect(buttonElement[0].textContent?.trim()).toBe(propSubmitTextTestCases.value)
+            expect(trimTextContent(buttonElement[0].textContent)).toBe(propSubmitTextTestCases.value)
           },
         )
 
@@ -95,7 +95,7 @@ describe(
             await updateComponent({ props: { [propCancelTextTestCases.prop]: propCancelTextTestCases.value } })
             const buttonElement = getWCShadowRoot(component).querySelectorAll(`${YCoreSimpleButtonTagName}[variant="text"]`)
 
-            expect(buttonElement[0].textContent?.trim()).toBe(propCancelTextTestCases.value)
+            expect(trimTextContent(buttonElement[0].textContent)).toBe(propCancelTextTestCases.value)
           },
         )
       },

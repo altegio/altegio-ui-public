@@ -1,5 +1,5 @@
 import { html } from 'lit'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import type { StoryObj } from '@storybook/web-components'
 import { ifDefined } from 'lit/directives/if-defined.js'
 
@@ -38,7 +38,7 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
 import { createSimpleButtonParameters, SIMPLE_BUTTON_STORIES_CONFIG } from './SimpleButton.stories.utils'
 import { EFrameworkName } from '~web/shared/.storybook/enums/frameworkName'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 import { EYCoreLoaderVariant } from '../../loader/models/types'
 
 const sizes = [EYSizes.SMALL, EYSizes.MEDIUM, EYSizes.LARGE] as const

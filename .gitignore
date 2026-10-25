@@ -36,7 +36,10 @@ workspace/
 *.sw?
 
 # Tests
+.vitest/
 __screenshots__
+!web/**/tests/__screenshots__/
+!web/**/tests/__screenshots__/**
 coverage
 
 # Git Hooks

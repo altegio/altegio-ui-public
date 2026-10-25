@@ -39,7 +39,7 @@ import {
 } from '~core/ui/multipleSelectField/tests/cases/props'
 import { text, textWithTag } from '~shared/tests/slotContents'
 import { wrapperEvents } from '~core/ui/multipleSelectField/tests/cases/events'
-import { userEvent } from '@vitest/browser/context'
+import { userEvent } from 'vitest/browser'
 import { dropdownListSlotsTestCases } from '~core/ui/multipleSelectField/tests/cases/slots'
 
 const tagName = YCoreMultipleSelectFieldTagName

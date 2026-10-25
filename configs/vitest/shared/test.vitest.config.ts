@@ -1,9 +1,11 @@
 import { defineConfig, mergeConfig } from 'vitest/config'
-import commonViteConfig from '../../vite/shared/common.vite.config'
+import { playwright } from '@vitest/browser-playwright'
+import commonViteConfig from '../../vite/shared/common.vite.config.ts'
 
 export default mergeConfig(
   commonViteConfig,
   defineConfig({
+    root: process.cwd(),
     server: {
       watch: null,
     },
@@ -14,7 +16,7 @@ export default mergeConfig(
       ],
       browser: {
         enabled: true,
-        provider: 'playwright',
+        provider: playwright(),
         headless: true,
         instances: [
           {

@@ -6,7 +6,7 @@ import { paletteArgTypes, paletteProps } from '~shared/.storybook/argTypes'
 
 
 import './ColorTable.component'
-import { useArgs } from '@storybook/preview-api'
+import { useArgs } from 'storybook/preview-api'
 import type { InputTransformersEvent, TColorTokenTransformersRaw } from '../context/types/color'
 import { colorTokenTransformersRaw } from '../context/constants/color-token-transformers'
 

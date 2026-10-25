@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { computed } from 'vue'
 import { omit } from 'radash'
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/preview-api'
+import { action } from 'storybook/actions'
+import { useArgs } from 'storybook/preview-api'
 
 import type { CollapseChangeEvent, CollapseMoveEvent } from '~core/ui/collapse/models/types'
 import { YCollapse } from '~vue/ui/collapse'

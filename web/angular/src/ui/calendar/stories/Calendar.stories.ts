@@ -6,7 +6,7 @@ import yCalendarStoryMeta, { type TStoryProps } from '~core/ui/calendar/stories/
 import { I18nPlugin } from '~core/ui/globalProvider/plugins/i18n'
 import { en, ru } from '~core/i18n'
 import { I18nCalendar } from '~ng/ui/calendar/stories/I18nCalendar.component'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 
 type TYCalendarStoryMeta = YCalendar & TStoryProps
 

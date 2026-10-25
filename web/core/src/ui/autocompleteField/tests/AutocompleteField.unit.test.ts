@@ -22,7 +22,7 @@ import {
   createCoreAutocompleteFieldProps,
 } from '~core/ui/autocompleteField/models/types'
 import { wrapperEvents, fieldEvents } from '~core/ui/autocompleteField/tests/cases/events'
-import { userEvent } from '@vitest/browser/context'
+import { userEvent } from 'vitest/browser'
 import { text, textWithTag } from '~shared/tests/slotContents'
 import {
   autocompleteOptions,

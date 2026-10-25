@@ -1,7 +1,7 @@
 import { html } from 'lit'
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 import type { Meta, StoryObj } from '@storybook/web-components'
-import { useArgs } from '@storybook/preview-api'
+import { useArgs } from 'storybook/preview-api'
 
 import '~core/ui/simpleCheckbox'
 

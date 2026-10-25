@@ -7,6 +7,7 @@
         "ignoreAtRules": ["define-mixin", "mixin", "mixin-content"]
       }
     ],
+    "at-rule-prelude-no-invalid": [true, { "ignoreAtRules": ["define-mixin", "mixin", "mixin-content"] }],
     "custom-property-pattern": null,
     "selector-class-pattern": [
       "^[a-z]+(-[a-z]+)*(__[a-z]+(-[a-z]+)*)?(_[a-z]+(-[a-z]+)*)?$",

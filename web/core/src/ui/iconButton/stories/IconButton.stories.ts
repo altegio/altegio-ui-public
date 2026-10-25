@@ -18,7 +18,7 @@ import yCoreSimpleButtonStoryMeta, { type ISimpleButtonStoryEmits } from '~core/
 
 import { createIconButtonParameters, ICON_BUTTON_STORIES_CONFIG, iconButtonSizes, iconButtonIcons } from './IconButton.stories.utils'
 import { EFrameworkName } from '~web/shared/.storybook/enums/frameworkName'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 
 
 const { icon } = { ...createCoreIconButtonExternalProps() }

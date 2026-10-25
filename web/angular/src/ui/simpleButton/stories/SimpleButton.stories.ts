@@ -9,7 +9,7 @@ import { YIcon } from '~ng/ui/icon'
 import { ySearch } from '~shared/icons/build/y-search.icon'
 import yCoreSimpleButtonStoryMeta from '~core/ui/simpleButton/stories/SimpleButton.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 import { createSimpleButtonParameters, SIMPLE_BUTTON_STORIES_CONFIG } from '~core/ui/simpleButton/stories/SimpleButton.stories.utils'
 import { EFrameworkName } from '~web/shared/.storybook/enums/frameworkName'
 

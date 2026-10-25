@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite'
 import path from 'path'
-import baseConfig from '../shared/base.vite.config'
-import { getRollupOptionsInput } from '../utils/helpers'
+import baseConfig from '../shared/base.vite.config.ts'
+import { getRollupOptionsInput } from '../utils/helpers.ts'
 
 export const CORE_PATH = 'web/core'
-const LIB_ENTRY_PATH = path.resolve(__dirname, `../../../${CORE_PATH}/src/index.ts`)
+const LIB_ENTRY_PATH = path.resolve(import.meta.dirname, `../../../${CORE_PATH}/src/index.ts`)
 const DEV_ENTRY_PATH = `/${CORE_PATH}/playground/index.html`
-const ROLLUP_OPTIONS_INPUT_PATH = path.resolve(__dirname, `../../../${CORE_PATH}/src/**/index.ts`)
+const ROLLUP_OPTIONS_INPUT_PATH = path.resolve(import.meta.dirname, `../../../${CORE_PATH}/src/**/index.ts`)
 
 const rollupOptionsInput = getRollupOptionsInput({
   inputFilePath: (file) => {
@@ -29,6 +29,6 @@ export default defineConfig(
       'web/angular/**/*',
       'web/vue/**/*',
     ],
-    publicDir: path.resolve(__dirname, `../../../web/shared/public`),
+    publicDir: path.resolve(import.meta.dirname, `../../../web/shared/public`),
   }),
 )

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { EFrameworkName } from '~shared/.storybook/enums/frameworkName'

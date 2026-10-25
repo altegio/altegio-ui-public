@@ -214,7 +214,7 @@ export class YTextarea extends ControlValueAccessorBase<TYNgTextareaModel> imple
   constructor(@Optional() @Self() @Inject(NgControl) public ngControl?: NgControl) {
     super()
     if (this.ngControl) {
-      this.ngControl.valueAccessor = this as never
+      this.ngControl.valueAccessor = this
     }
   }
 

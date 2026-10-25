@@ -1,14 +1,12 @@
-import commonViteConfig from '../../../configs/vite/shared/common.vite.config'
-import commonVueViteConfig from '../../../configs/vite/shared/commonVue.vite.config'
+import commonViteConfig from '../../../configs/vite/shared/common.vite.config.ts'
+import commonVueViteConfig from '../../../configs/vite/shared/commonVue.vite.config.ts'
 import type { StorybookConfig } from '@storybook/vue3-vite'
 
 const config: StorybookConfig = {
   stories: ['../src/ui/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    '@storybook/addon-onboarding',
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-controls',
+    '@storybook/addon-docs',
+    '@storybook/addon-a11y',
   ],
   framework: {
     name: '@storybook/vue3-vite',

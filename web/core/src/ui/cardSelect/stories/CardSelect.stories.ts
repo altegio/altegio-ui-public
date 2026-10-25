@@ -1,7 +1,7 @@
 import { html, nothing } from 'lit'
 import { pick } from 'radash'
 import type { Meta, StoryObj } from '@storybook/web-components'
-import { useArgs } from '@storybook/preview-api'
+import { useArgs } from 'storybook/preview-api'
 
 import {
   createCoreCardSelectProps,

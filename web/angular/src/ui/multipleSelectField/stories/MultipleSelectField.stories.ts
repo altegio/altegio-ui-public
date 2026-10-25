@@ -6,8 +6,8 @@ import {
   type YNgMultipleSelectFieldInputEvent,
 } from '../models/types'
 import { omit } from 'radash'
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/preview-api'
+import { action } from 'storybook/actions'
+import { useArgs } from 'storybook/preview-api'
 
 /**
  * Angular wrapper for MultipleSelectField

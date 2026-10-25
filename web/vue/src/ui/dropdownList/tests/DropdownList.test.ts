@@ -19,7 +19,7 @@ import {
   propItemLabelTestCases,
   propMinWidthTestCases,
 } from './cases/props'
-import { getWCShadowRoot } from '~shared/tests/utils'
+import { getWCShadowRoot, trimTextContent } from '~shared/tests/utils'
 
 const tagName = YCoreDropdownListTagName
 
@@ -213,7 +213,7 @@ describe(
 
                   await wrapper.vm.$nextTick()
 
-                  const textContent = (getWCShadowRoot(coreElement.element).textContent ?? '').trim()
+                  const textContent = trimTextContent(getWCShadowRoot(coreElement.element).textContent)
 
                   expect(Boolean(textContent)).toBe(testCase.expected)
                 },

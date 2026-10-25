@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { computed } from 'vue'
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/preview-api'
+import { action } from 'storybook/actions'
+import { useArgs } from 'storybook/preview-api'
 
 import type { InputEvent, BlurEvent, FocusEvent, KeydownEvent, RenderEvent, MouseEnterEvent, MouseLeaveEvent, ClickOutsideEvent, ClearEvent } from '~core/ui/textarea/models/types'
 import { YTextarea } from '~vue/ui/textarea'

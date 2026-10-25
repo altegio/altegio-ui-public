@@ -1,10 +1,10 @@
 import type { ReactiveController, ReactiveControllerHost } from 'lit'
-import { BREAKPOINTS } from '~shared/constants/breakpoints'
+import { BREAKPOINTS, getActiveBreakpoint, type TBreakpointKey } from '~shared/constants/breakpoints'
 
-export type TBreakpointKey = keyof typeof BREAKPOINTS
+export type { TBreakpointKey } from '~shared/constants/breakpoints'
 
 export class BreakpointsController implements ReactiveController {
-  private width = window.innerWidth
+  private width = typeof window === 'undefined' ? 0 : window.innerWidth
   private host: ReactiveControllerHost
 
   constructor(host: ReactiveControllerHost) {
@@ -14,11 +14,11 @@ export class BreakpointsController implements ReactiveController {
   }
 
   hostConnected() {
-    window.addEventListener('resize', this.onResize)
+    if (typeof window !== 'undefined') window.addEventListener('resize', this.onResize)
   }
 
   hostDisconnected() {
-    window.removeEventListener('resize', this.onResize)
+    if (typeof window !== 'undefined') window.removeEventListener('resize', this.onResize)
   }
 
   private onResize = () => {
@@ -30,17 +30,7 @@ export class BreakpointsController implements ReactiveController {
   }
 
   get active(): TBreakpointKey {
-    const entries = Object.entries(BREAKPOINTS) as [TBreakpointKey, number][]
-    entries.sort((a, b) => a[1] - b[1])
-    let current: TBreakpointKey = entries[0][0]
-    for (const [key, value] of entries) {
-      if (this.width >= value) {
-        current = key
-      } else {
-        break
-      }
-    }
-    return current
+    return getActiveBreakpoint(this.width)
   }
 
   between(minKey: TBreakpointKey, maxKey: TBreakpointKey): boolean {

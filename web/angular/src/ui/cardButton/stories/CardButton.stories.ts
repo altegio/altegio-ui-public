@@ -5,7 +5,7 @@ import { yMagic } from '~shared/icons'
 import yCardButtonStoryMeta from '~core/ui/cardButton/stories/CardButton.stories'
 import { YCardButton } from '~ng/ui/cardButton'
 import { YCardIcon } from '~ng/ui/cardIcon'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 import {
   type YNgCardButtonFocusEvent,
   type YNgCardButtonBlurEvent,

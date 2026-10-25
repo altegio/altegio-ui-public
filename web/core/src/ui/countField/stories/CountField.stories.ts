@@ -23,8 +23,8 @@ import yCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.sto
 import type { IYCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
 import yCoreErrorStoryMeta from '~core/ui/error/stories/Error.stories'
 import { getComponentEmitsTable, getComponentStateTable } from '~shared/.storybook/tables'
-import { useArgs } from '@storybook/preview-api'
-import { action } from '@storybook/addon-actions'
+import { useArgs } from 'storybook/preview-api'
+import { action } from 'storybook/actions'
 import type { BlurEvent } from '~core/ui/cardWrapper/models/types'
 import type { KeydownEvent } from '~core/ui/fieldInput/models/types'
 

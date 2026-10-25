@@ -1,6 +1,6 @@
 import { html } from 'lit'
 import type { Meta, StoryObj } from '@storybook/web-components'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 import { repeat } from 'lit/directives/repeat.js'
 import { integerSequence } from '~shared/utils/integerSequence'
 

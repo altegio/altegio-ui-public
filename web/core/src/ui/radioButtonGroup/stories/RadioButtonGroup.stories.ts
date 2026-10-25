@@ -21,8 +21,8 @@ import {
 import { EYSizes } from '~shared/types/global'
 import '~core/ui/radioButtonGroup'
 import '~core/ui/radioButton'
-import { useArgs } from '@storybook/preview-api'
-import { action } from '@storybook/addon-actions'
+import { useArgs } from 'storybook/preview-api'
+import { action } from 'storybook/actions'
 import { EYCoreLabelAlignment } from '../../label/models/types'
 import yCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
 

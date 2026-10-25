@@ -2,7 +2,7 @@ import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest
 import { YCoreFunctionalModalTagName as tagName, YCoreModalTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { createCoreFunctionalModalProps } from '~core/ui/functionalModal/models/types'
-import { getShadowElement } from '~shared/tests/utils'
+import { getShadowElement, trimTextContent } from '~shared/tests/utils'
 import '~core/ui/functionalModal'
 import type { YCoreModal } from '~core/ui/modal'
 
@@ -132,7 +132,7 @@ describe('Core/YCoreFunctionalModal/Unit', () => {
 
           const yCoreText = header?.querySelector('y-core-text')
           expect(yCoreText).not.toBeNull()
-          expect(yCoreText?.textContent?.trim()).toBe(testCase.expected)
+          expect(trimTextContent(yCoreText?.textContent)).toBe(testCase.expected)
         },
       )
     }
@@ -148,7 +148,7 @@ describe('Core/YCoreFunctionalModal/Unit', () => {
 
           const yCoreTexts = header?.querySelectorAll('y-core-text')
 
-          expect(yCoreTexts?.[1]?.textContent?.trim()).toBe(testCase.expected)
+          expect(trimTextContent(yCoreTexts?.[1]?.textContent)).toBe(testCase.expected)
         },
       )
     }

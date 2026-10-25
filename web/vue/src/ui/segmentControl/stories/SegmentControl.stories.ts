@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import { YSegmentControl } from '~vue/ui/segmentControl'
 import { type IYVueSegmentControlProps } from '~vue/ui/segmentControl/models/types'
 import ySegmentControlStoryMeta from '~core/ui/segmentControl/stories/SegmentControl.stories'
-import { useArgs } from '@storybook/preview-api'
+import { useArgs } from 'storybook/preview-api'
 
 type TVueSegmentControlStoryMeta = IYVueSegmentControlProps
 

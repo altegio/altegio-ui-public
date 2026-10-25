@@ -23,7 +23,14 @@ export const propsTestCases: TPropTestCase<IYCoreFieldWrapperProps, keyof IYCore
   { prop: 'size', case: 'large', value: 'large' },
 ]
 
-export const eventsTestCases = [
+export const eventsTestCases: {
+  name: string
+  description: string
+  event: Event
+  handler: () => void
+  expectedCallCount: number
+  props?: Partial<IYCoreFieldWrapperProps>
+}[] = [
   {
     name: 'click',
     description: 'Должен генерировать событие click при клике',

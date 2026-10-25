@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { omit } from 'radash'
 import { computed } from 'vue'
-import { useArgs } from '@storybook/preview-api'
-import { action } from '@storybook/addon-actions'
+import { useArgs } from 'storybook/preview-api'
+import { action } from 'storybook/actions'
 
 import type { RadioButtonGroupChangeEvent } from '~core/ui/radioButtonGroup/models/types'
 import yCoreRadioButtonGroupStoryMeta, {

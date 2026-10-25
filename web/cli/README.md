@@ -10,12 +10,12 @@ Install the project dependencies and generate shared assets with `make init` fro
 pnpm cli-build
 ```
 
-This creates `web/cli/build/yds.mjs` and links the `yds` command globally through pnpm. If pnpm reports that its global executable directory is missing, configure it with `pnpm setup` and reopen your shell before running the build again.
+This creates `dist/web/cli/yds.mjs` and links the `yds` command globally through pnpm. If pnpm reports that its global executable directory is missing, configure it with `pnpm setup` and reopen your shell before running the build again.
 
 You can also run the generated executable directly:
 
 ```bash
-node web/cli/build/yds.mjs --help
+node dist/web/cli/yds.mjs --help
 ```
 
 ## Create a component

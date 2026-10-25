@@ -1,7 +1,7 @@
 import { html, nothing } from 'lit'
-import { fn } from '@storybook/test'
-import { action } from '@storybook/addon-actions'
-import { useArgs } from '@storybook/preview-api'
+import { fn } from 'storybook/test'
+import { action } from 'storybook/actions'
+import { useArgs } from 'storybook/preview-api'
 import type { Meta, StoryObj } from '@storybook/web-components'
 import { omit, pick } from 'radash'
 

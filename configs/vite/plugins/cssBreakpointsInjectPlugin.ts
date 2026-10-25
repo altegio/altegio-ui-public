@@ -1,8 +1,8 @@
 import type { Plugin } from 'vite'
 import { dash } from 'radash'
-import { BREAKPOINTS } from '../../../web/shared/constants/breakpoints'
+import { BREAKPOINTS } from '../../../web/shared/constants/breakpoints.ts'
 
-import cssInjectPlugin from './cssInjectPlugin'
+import cssInjectPlugin from './cssInjectPlugin.ts'
 
 interface ICssBreakpointsInjectPluginOptions {
   outPath: string

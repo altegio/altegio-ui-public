@@ -1,12 +1,12 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
-import { userEvent } from '@vitest/browser/context'
+import { userEvent } from 'vitest/browser'
 import { useCoreTests } from '~shared/tests/core'
 import { YCoreAnnotationTagName, YCoreSimpleToggleTagName, YCoreLabelTagName, YCoreToggleTagName } from '~shared/constants'
 import type { YCoreSimpleToggle, YCoreLabel } from '~core/index'
 import { createCoreToggleExternalProps, type IYCoreToggleExternalProps } from '~core/ui/toggle/models/types'
 import type { TPropTestCase } from '~shared/types/tests'
 import { empty, text } from '~shared/tests/slotContents'
-import { getShadowElement } from '~shared/tests/utils'
+import { getShadowElement, trimTextContent } from '~shared/tests/utils'
 import { EYSizes } from '~shared/types/global'
 import { EYCoreLabelAlignment } from '~core/ui/label/models/types'
 import '~core/ui/toggle'
@@ -133,7 +133,7 @@ describe(
 
               const annotationTextElement = getLocalShadowElement(YCoreAnnotationTagName)
 
-              expect(annotationTextElement?.textContent?.trim()).toBe(testCase.expected)
+              expect(trimTextContent(annotationTextElement?.textContent)).toBe(testCase.expected)
             },
           )
         }

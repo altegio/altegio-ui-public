@@ -1,6 +1,6 @@
 import { html } from 'lit'
-import { fn } from '@storybook/test'
-import { useArgs } from '@storybook/preview-api'
+import { fn } from 'storybook/test'
+import { useArgs } from 'storybook/preview-api'
 import type { Meta, StoryObj } from '@storybook/web-components'
 
 import '~core/ui/simpleToggle'

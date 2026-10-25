@@ -1,6 +1,6 @@
 import React from 'react'
 import type { ModuleExport } from 'storybook/internal/types'
-import { useOf } from '@storybook/blocks'
+import { useOf } from '@storybook/addon-docs/blocks'
 import '../../assets/css/iframe.css'
 import './Col.css'
 

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 import yCoreChipStoryMeta from '~core/ui/chip/stories/Chip.stories'
 import type { IYNgChipProps } from '~ng/ui/chip/models/types'
 import { YChip } from '~ng/ui/chip'
-import { useArgs } from '@storybook/preview-api'
+import { useArgs } from 'storybook/preview-api'
 
 const meta: Meta<IYNgChipProps> = {
   title: '✅ Chip',

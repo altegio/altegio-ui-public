@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { prefix } from '../../../web/shared/utils/componentsConfig'
+import { prefix } from '../../../web/shared/utils/componentsConfig.ts'
 
 export default defineConfig(
   {
     build: {
-      rollupOptions: {
+      rolldownOptions: {
         external: ['vue'],
         output: {
           globals: {

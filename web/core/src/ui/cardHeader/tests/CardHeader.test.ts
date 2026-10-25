@@ -74,7 +74,8 @@ describe(
               const shadowRoot = getWCShadowRoot(component)
               const titleElement = shadowRoot.querySelector('.y-core-card-header__title')
 
-              expect(titleElement?.textContent?.trim()).toBe(testCase.value || undefined)
+              const titleText = titleElement?.textContent
+              expect(titleText ? titleText.trim() : undefined).toBe(testCase.value || undefined)
             },
           )
         }

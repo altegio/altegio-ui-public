@@ -76,6 +76,12 @@ export default tslint.config(
       '@typescript-eslint/prefer-function-type': 'off',
       '@typescript-eslint/no-dynamic-delete': 'off',
       '@typescript-eslint/prefer-nullish-coalescing': 'off',
+      // Runtime coercions guard values received through DOM attributes and component props.
+      '@typescript-eslint/no-unnecessary-type-conversion': 'off',
+      // Public string unions intentionally compare against their corresponding string enums.
+      '@typescript-eslint/no-unsafe-enum-comparison': 'off',
+      '@typescript-eslint/no-unsafe-enum-assignment': 'off',
+      '@typescript-eslint/no-generated-empty-object-type': 'off',
 
       // lit
       'lit/no-native-attributes': 'off',
@@ -125,6 +131,8 @@ export default tslint.config(
       'sonarjs/no-nested-conditional': 'off',
       'sonarjs/no-selector-parameter': 'off',
       'sonarjs/redundant-type-aliases': 'off',
+      // Component prop types intentionally spell out undefined alongside optional keys.
+      'sonarjs/no-redundant-optional': 'off',
 
       // Цикломатическая сложность
       complexity: ['error', { max: 6 }],
@@ -187,6 +195,7 @@ export default tslint.config(
         'warn',
         {
           ignore: ['div', 'span'],
+          ignoreParents: ['/^y-core-/'],
         },
       ],
       'vue/script-indent': ['error', 2, { baseIndent: 1 }],
@@ -209,10 +218,12 @@ export default tslint.config(
       complexity: 'off',
       // Когнитивная сложность
       'sonarjs/cognitive-complexity': 'off',
+      '@typescript-eslint/no-unnecessary-type-conversion': 'off',
+      '@typescript-eslint/no-unnecessary-type-assertion': 'off',
     },
   },
   {
-    files: ['**/web/**/*.test.ts'],
+    files: ['**/web/**/*.test.ts', '**/web/**/tests/**/*.ts'],
     rules: {
       complexity: 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
@@ -220,6 +231,27 @@ export default tslint.config(
       'sonarjs/no-nested-functions': 'off',
       'max-nested-callbacks': 'off',
       'max-lines-per-function': 'off',
+      'sonarjs/prefer-specific-assertions': 'off',
+      '@typescript-eslint/unbound-method': 'off',
+      '@typescript-eslint/no-unnecessary-type-conversion': 'off',
+      '@typescript-eslint/no-unnecessary-type-assertion': 'off',
+      // Existing skipped cases document behavior that is not yet implemented.
+      'sonarjs/no-skipped-tests': 'off',
+    },
+  },
+  {
+    files: ['**/web/vue/**/tests/**/*.ts'],
+    rules: {
+      // Vue Test Utils exposes component instance methods through an any-typed wrapper.
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+    },
+  },
+  {
+    files: ['**/web/vue/src/ui/table/Table.vue'],
+    rules: {
+      // This slot belongs to a custom element, not a Vue slot.
+      'vue/no-deprecated-slot-attribute': 'off',
     },
   },
   {

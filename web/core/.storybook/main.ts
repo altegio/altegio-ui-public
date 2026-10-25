@@ -1,14 +1,12 @@
-import commonViteConfig from '../../../configs/vite/shared/common.vite.config'
+import commonViteConfig from '../../../configs/vite/shared/common.vite.config.ts'
 
 import type { StorybookConfig } from '@storybook/web-components-vite'
 
 const config: StorybookConfig = {
   stories: ['../src/ui/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-controls',
-    '@storybook/addon-interactions',
+    '@storybook/addon-docs',
+    '@storybook/addon-a11y',
   ],
   framework: {
     name: '@storybook/web-components-vite',

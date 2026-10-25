@@ -4,20 +4,12 @@ import { type YCoreFunctionalModal } from '~core/ui/functionalModal'
 import '~core/ui/functionalModal'
 import {
   createNgFunctionalModalProps,
-  type OpenEvent,
-  type CloseEvent,
   type IYNgFunctionalModalProps,
-  type ClickCloseIconEvent,
-  type ClickOverlayEvent,
-  type ClickActivatorEvent,
-  type PressEscapeEvent,
-  type CancelEvent,
-  type SubmitEvent,
 } from './models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { cleanupInnerHTML } from '~shared/utils'
 
-const { open, size, width, hideOverlay, hideFooter, preventEscape, fullScreen, heading, subHeading, locale } = createNgFunctionalModalProps()
+const { open, size, width, hideOverlay, hideFooter, preventEscape, fullScreen, heading, subHeading, dialogLabel, locale } = createNgFunctionalModalProps()
 
 @Component({
   selector: 'YFunctionalModal',
@@ -35,6 +27,7 @@ const { open, size, width, hideOverlay, hideFooter, preventEscape, fullScreen, h
       [fullScreen]="fullScreen"
       [heading]="heading"
       [subHeading]="subHeading"
+      [attr.dialog-label]="dialogLabel"
       [locale]="locale"
       (open)="handleOpen($event)"
       (close)="handleClose($event)"
@@ -127,46 +120,47 @@ export class YFunctionalModal implements IYNgFunctionalModalProps {
   @Input() @DefaultValue(fullScreen) fullScreen: IYNgFunctionalModalProps['fullScreen'] = fullScreen
   @Input() @DefaultValue(heading) heading: IYNgFunctionalModalProps['heading'] = heading
   @Input() @DefaultValue(subHeading) subHeading: IYNgFunctionalModalProps['subHeading'] = subHeading
+  @Input() @DefaultValue(dialogLabel) dialogLabel: IYNgFunctionalModalProps['dialogLabel'] = dialogLabel
   @Input() @DefaultValue(locale) locale: IYNgFunctionalModalProps['locale'] = locale
 
   @Output() openEvent = new EventEmitter()
   handleOpen(event: Event) {
-    this.openEvent.emit(event as OpenEvent)
+    this.openEvent.emit(event)
   }
 
   @Output() closeEvent = new EventEmitter()
   handleClose(event: Event) {
-    this.closeEvent.emit(event as CloseEvent)
+    this.closeEvent.emit(event)
   }
 
   @Output() clickCloseIconEvent = new EventEmitter()
   handleClickCloseIcon(event: Event) {
-    this.clickCloseIconEvent.emit(event as ClickCloseIconEvent)
+    this.clickCloseIconEvent.emit(event)
   }
 
   @Output() clickOverlayEvent = new EventEmitter()
   handleClickOverlay(event: Event) {
-    this.clickOverlayEvent.emit(event as ClickOverlayEvent)
+    this.clickOverlayEvent.emit(event)
   }
 
   @Output() clickActivatorEvent = new EventEmitter()
   handleClickActivator(event: Event) {
-    this.clickActivatorEvent.emit(event as ClickActivatorEvent)
+    this.clickActivatorEvent.emit(event)
   }
 
   @Output() pressEscapeEvent = new EventEmitter()
   handlePressEscape(event: Event) {
-    this.pressEscapeEvent.emit(event as PressEscapeEvent)
+    this.pressEscapeEvent.emit(event)
   }
 
   @Output() cancelEvent = new EventEmitter()
   handleCancel(event: Event) {
-    this.cancelEvent.emit(event as CancelEvent)
+    this.cancelEvent.emit(event)
   }
 
   @Output() submitEvent = new EventEmitter()
   handleSubmit(event: Event) {
-    this.submitEvent.emit(event as SubmitEvent)
+    this.submitEvent.emit(event)
   }
 
   @ViewChild('functionalModal', { static: true })

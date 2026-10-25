@@ -8,6 +8,7 @@ import {
   getElementClasses,
   getShadowRootElement,
   getWCShadowRoot,
+  trimTextContent,
 } from '~shared/tests/utils'
 import { EYSizes } from '~shared/types/global'
 import type { TPropTestCase, TSlotTestCase } from '~shared/types/tests'
@@ -121,7 +122,7 @@ describe(
               await updateComponent({ props: { title: testCase.value } })
 
               const rootElement = getLocalRootElement()
-              expect(rootElement?.textContent?.trim()).toBe(testCase.expected)
+              expect(trimTextContent(rootElement?.textContent)).toBe(testCase.expected)
             },
           )
         }

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { randomUUID } from 'node:crypto'
-import { existsSync, rmSync, writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
 import { test } from 'node:test'
 import { build } from 'esbuild'
@@ -8,6 +9,36 @@ import ts from 'typescript'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 const hasPrivateAliases = existsSync(new URL('./private-icon-compat.mjs', import.meta.url))
+const packageJson = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
+
+test('published entry points and CLI resolve to files in the package', () => {
+  for (const [name, exportValue] of Object.entries(packageJson.exports)) {
+    const targets = typeof exportValue === 'string' ? [exportValue] : Object.values(exportValue)
+    for (const target of targets) {
+      assert.ok(existsSync(new URL(`../${target}`, import.meta.url)), `${name}: ${target}`)
+    }
+  }
+  const cli = new URL(`../${packageJson.bin.yds}`, import.meta.url)
+  assert.ok(existsSync(cli), packageJson.bin.yds)
+  assert.match(execFileSync(process.execPath, [fileURLToPath(cli), '--help'], { encoding: 'utf8' }), /yds/)
+})
+
+test('Vue declarations expose Vue components to NodeNext consumers', () => {
+  const consumer = new URL(`../.package-compat-${randomUUID()}.mts`, import.meta.url)
+  try {
+    writeFileSync(consumer, "import { YButton } from '@platform/altegio-ui/vue'\ntype Button = typeof YButton\n")
+    const program = ts.createProgram([fileURLToPath(consumer)], {
+      module: ts.ModuleKind.NodeNext,
+      moduleResolution: ts.ModuleResolutionKind.NodeNext,
+      target: ts.ScriptTarget.ES2022,
+      noEmit: true,
+      skipLibCheck: true,
+    })
+    assert.deepEqual(ts.getPreEmitDiagnostics(program).map(item => ts.flattenDiagnosticMessageText(item.messageText, '\n')), [])
+  } finally {
+    rmSync(consumer, { force: true })
+  }
+})
 
 test('published tokens preserve values and resolve for NodeNext consumers', async () => {
   const tokens = await import('@platform/altegio-ui/tokens')
@@ -39,6 +70,7 @@ test('published tokens preserve values and resolve for NodeNext consumers', asyn
 test('published icons keep the consumer names supported by this build', async () => {
   const names = ['yClientGroup', 'yServiceClient']
   if (hasPrivateAliases) names.push('y' + 'Clients', 'y' + 'ClientService')
+  const directImport = await import('@platform/altegio-ui/icons')
   const { outputFiles } = await build({
     stdin: {
       contents: `export { ${names.join(', ')} } from '@platform/altegio-ui/icons'`,
@@ -53,8 +85,25 @@ test('published icons keep the consumer names supported by this build', async ()
   const icons = await import(`data:text/javascript;base64,${Buffer.from(outputFiles[0].text).toString('base64')}`)
   assert.equal(icons.yClientGroup.name, 'clients')
   assert.equal(icons.yServiceClient.name, 'client_service')
+  assert.equal(directImport.yClientGroup.name, 'clients')
+  assert.equal(directImport.yServiceClient.name, 'client_service')
   if (hasPrivateAliases) {
     assert.equal(icons['y' + 'Clients'], icons.yClientGroup)
     assert.equal(icons['y' + 'ClientService'], icons.yServiceClient)
+  }
+
+  const consumer = new URL(`../.package-compat-${randomUUID()}.mts`, import.meta.url)
+  try {
+    writeFileSync(consumer, "import { yClientGroup } from '@platform/altegio-ui/icons'\nconsole.log(yClientGroup.name)\n")
+    const program = ts.createProgram([fileURLToPath(consumer)], {
+      module: ts.ModuleKind.NodeNext,
+      moduleResolution: ts.ModuleResolutionKind.NodeNext,
+      target: ts.ScriptTarget.ES2022,
+      noEmit: true,
+      skipLibCheck: true,
+    })
+    assert.deepEqual(ts.getPreEmitDiagnostics(program).map(item => ts.flattenDiagnosticMessageText(item.messageText, '\n')), [])
+  } finally {
+    rmSync(consumer, { force: true })
   }
 })

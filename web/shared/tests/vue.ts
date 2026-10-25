@@ -57,9 +57,9 @@ export const useVueTests = <T>(
     render(this: T & ITestBedInstance<T>) {
       const slots = Object.entries(this.componentSlots || {})
         .reduce<Record<string, () => unknown>>((acc, [slotKey, slotValue]) => {
-        acc[slotKey] = () => slotValue
-        return acc
-      }, {})
+          acc[slotKey] = () => slotValue
+          return acc
+        }, {})
 
       return h(
         component as ComponentPublicInstance<T>,
@@ -71,7 +71,7 @@ export const useVueTests = <T>(
   })
   const wrapper = mount(TestBed) as VueWrapper<T & ITestBedInstance<T>>
 
-  // eslint-disable-next-line complexity
+
   const updateTestBed = async(options?: ComponentMountingOptions<T> & { providers?: Record<string, unknown> }) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
     wrapper.vm.componentProps = (options?.props as any) || {}

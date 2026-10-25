@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import { useArgs } from '@storybook/preview-api'
+import { useArgs } from 'storybook/preview-api'
 
 import { YSimpleToggle } from '~ng/ui/simpleToggle'
 
