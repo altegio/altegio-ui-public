@@ -5,6 +5,7 @@ import {
   YCoreFieldInputTagName,
   YCorePhoneFieldTagName,
   YCoreDropdownCellTagName,
+  YCoreDropdownCellTextTagName,
   YCoreAnnotationTagName,
   YCoreDropdownListTagName,
   YCorePhoneCodeTagName,
@@ -41,6 +42,8 @@ import {
   propValueCases, propWithoutCodeSelectionCases, searchFunction,
 } from '~core/ui/phoneField/tests/cases/props'
 import { defaultCountriesData } from '~shared/utils/countries'
+import { en, type ILocale } from '~core/i18n'
+import type { YCoreDropdownCellText } from '~core/ui/dropdownCellText'
 
 const tagName = YCorePhoneFieldTagName
 
@@ -488,6 +491,62 @@ describe(
             expect(handler).toHaveBeenCalled()
 
             expect(JSON.stringify((handler.mock.calls[0][0] as CustomEvent<TYCorePhoneFieldAutocompleteOption>).detail)).toBe(JSON.stringify(autocompleteOptions[0]))
+          },
+        )
+      },
+    )
+
+    describe(
+      'Country names',
+      () => {
+        const latviaId = 2
+
+        const getCountryTitle = async({ lang, locale }: { lang?: string; locale?: ILocale }) => {
+          const wrapper = document.createElement('div')
+          if (lang) wrapper.lang = lang
+
+          const phoneField = document.createElement(tagName)
+          if (locale) phoneField.locale = locale
+
+          wrapper.appendChild(phoneField)
+          document.body.appendChild(wrapper)
+
+          try {
+            await phoneField.updateComplete
+            getSubWC(phoneField, YCorePhoneCodeTagName).click()
+
+            return await vi.waitFor(() => {
+              const cellText = getWCShadowRoot(phoneField)
+                .querySelector<YCoreDropdownCellText>(`[locator="${YCoreDropdownCellTagName}_${latviaId}"] ${YCoreDropdownCellTextTagName}`)
+              const label = cellText?.label ?? ''
+              if (!label.includes('(') || label.endsWith('()')) throw new Error('Country names are not loaded')
+
+              return label
+            })
+          } finally {
+            wrapper.remove()
+          }
+        }
+
+        it(
+          'Uses English names without a configured locale or page language',
+          async() => {
+            expect(await getCountryTitle({})).toBe('+371 (Latvia)')
+          },
+        )
+
+        it(
+          'Uses the language of the nearest lang attribute',
+          async() => {
+            expect(await getCountryTitle({ lang: 'hu' })).toBe('+371 (Lettország)')
+            expect(await getCountryTitle({ lang: 'ru-RU' })).toBe('+371 (Латвия)')
+          },
+        )
+
+        it(
+          'Prefers the configured locale over the lang attribute',
+          async() => {
+            expect(await getCountryTitle({ lang: 'hu', locale: en })).toBe('+371 (Latvia)')
           },
         )
       },

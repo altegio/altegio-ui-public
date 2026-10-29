@@ -1,5 +1,30 @@
 import type { ILocale } from './types'
 import type { TYCountryNameMappedById } from '~shared/types/country'
+import { defaultCountriesData } from '~shared/utils/countries'
+import { getLanguageShortCode } from './language'
+
+/**
+ * Country names in any language from Intl, English names where Intl has none
+ * @param language BCP 47 language tag
+ * @param fallback English country names
+ */
+const getDisplayCountryNames = (language: string, fallback: TYCountryNameMappedById): TYCountryNameMappedById => {
+  let displayNames: Intl.DisplayNames
+
+  try {
+    if (!Intl.DisplayNames.supportedLocalesOf(language).length) return fallback
+
+    displayNames = new Intl.DisplayNames(language, { type: 'region', fallback: 'none' })
+  } catch {
+    return fallback
+  }
+
+  return Object.fromEntries(Object.values(defaultCountriesData).map(({ id, iso2 }) => {
+    const title = displayNames.of(iso2)
+
+    return [id, title ? { title, fullTitle: title } : fallback[id]]
+  }))
+}
 
 /**
  * Сервис локализации для использования в компонентах
@@ -137,15 +162,16 @@ export class LocaleService {
 
   /**
    * Получить список стран
+   * @param language Language of the names, the locale language by default
    */
-  public async getCountries(): Promise<TYCountryNameMappedById> {
-    const shortCode = this.currentLocale.shortCode
-    switch (shortCode) {
+  public async getCountries(language: string = this.currentLocale.code): Promise<TYCountryNameMappedById> {
+    switch (getLanguageShortCode(language)) {
+      case 'ru':
+        return (await import('./locale/countries/ru')).countries
       case 'en':
         return (await import('./locale/countries/en')).countries
-      case 'ru':
       default:
-        return (await import('./locale/countries/ru')).countries
+        return getDisplayCountryNames(language, (await import('./locale/countries/en')).countries)
     }
   }
 }

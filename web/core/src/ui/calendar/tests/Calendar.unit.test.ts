@@ -13,7 +13,7 @@ import {
 } from '~core/ui/calendar/models/types'
 import '~core/ui/calendar'
 import type { YCoreButton } from '~core/ui/button'
-import { ru } from '~core/i18n'
+import { en } from '~core/i18n'
 
 const tagName = YCoreCalendarTagName
 
@@ -195,7 +195,7 @@ describe(
           )
         }
 
-        it('Должен использовать русскую ru по умолчанию', async() => {
+        it('Uses the page language locale, English here, by default', async() => {
           await updateComponent({ props: { date: '01-01-2025' } })
 
           const monthButton = getLocalShadowElement(`${YCoreButtonTagName}.${tagName}__month-button`) as YCoreButton | null
@@ -203,7 +203,7 @@ describe(
           const date = new Date()
           date.setMonth(0)
 
-          const expectedMonth = date.toLocaleString(ru.code, { month: 'long' })
+          const expectedMonth = date.toLocaleString(en.code, { month: 'long' })
 
           expect(monthButton?.label?.toLowerCase()).toContain(expectedMonth.toLowerCase())
         })

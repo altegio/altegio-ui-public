@@ -8,7 +8,7 @@ import type { ILocaleModule } from '~core/ui/globalProvider/context/modules'
 import { globalContextCreated } from '~core/ui/globalProvider/context'
 import { LOCALE_MODULE_ID } from '~core/ui/globalProvider/plugins/i18n'
 import { consume } from '@lit/context'
-import { ru as defaultLocale } from './locale'
+import { resolveLanguage, resolveLocale } from './language'
 import { parseDate } from '~shared/utils/dateTime'
 import dayjs from 'dayjs'
 
@@ -18,7 +18,7 @@ import dayjs from 'dayjs'
  * Автоматически подписывается на изменения локали и предоставляет методы для работы с ней
  */
 export class LocalizedElement extends LitElement {
-  @property({ type: Object, attribute: false }) locale: ILocale | undefined = defaultLocale
+  @property({ type: Object, attribute: false }) locale: ILocale | undefined = undefined
 
   /**
    * Текущая локализация
@@ -62,7 +62,7 @@ export class LocalizedElement extends LitElement {
     // 1. Локаль заданная через свойство компонента
     // 2. Текущая локаль компонента
     // 3. Локаль из модуля
-    // 4. Дефолтная локаль
+    // 4. Встроенная локаль языка контента
     if (this.locale) {
       return this.locale
     }
@@ -76,7 +76,14 @@ export class LocalizedElement extends LitElement {
       return localeModule.locale
     }
 
-    return defaultLocale
+    return resolveLocale(this.getLanguage())
+  }
+
+  /**
+   * Content language: the configured locale, otherwise the nearest `lang` attribute or the browser language
+   */
+  protected getLanguage(): string {
+    return (this.locale ?? this.getLocaleModule()?.locale)?.code ?? resolveLanguage(this)
   }
 
   /**

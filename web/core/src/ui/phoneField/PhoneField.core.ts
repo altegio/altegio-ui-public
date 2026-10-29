@@ -764,7 +764,7 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
     const localeService = this.getLocaleService()
 
     if (localeService) {
-      localeService.getCountries().then((countries) => {
+      localeService.getCountries(this.getLanguage()).then((countries) => {
         this.countryNames = countries
       })
     }
