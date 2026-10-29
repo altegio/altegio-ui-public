@@ -3,7 +3,6 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     fileParallelism: true,
-    maxWorkers: process.env.CI ? 1 : 3,
     coverage: {
       enabled: false,
       provider: 'v8',
