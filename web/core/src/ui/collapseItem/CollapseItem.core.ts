@@ -205,7 +205,7 @@ export class YCoreCollapseItem
     if (!content) return
 
     if (!this.computedOpened) {
-      // Если было auto, переведём в текущую высоту, чтобы анимация закрытия сработала
+      // Switch from auto to a fixed height first, otherwise the collapse transition has nothing to animate from
       if (this.contentHeightAuto) {
         content.style.height = `${content.scrollHeight}px`
       }
@@ -224,7 +224,7 @@ export class YCoreCollapseItem
         this.contentHeightAuto = false
 
         this.contentHeight = content.scrollHeight
-        // После завершения анимации переведём высоту в auto, чтобы динамический контент не обрезался
+        // Switch to height: auto after the transition so dynamic content is not clipped
         this.scheduleTransitionToAuto()
       } else {
         this.contentHeight = 0
@@ -236,20 +236,20 @@ export class YCoreCollapseItem
     if (event.propertyName !== 'height') return
     if (!this.contentElement) return
 
-    // Если элемент открыт и не в состоянии загрузки, фиксируем auto
+    // An open item that is not loading keeps height: auto
     if (this.computedOpened && !this.loading) {
       this.contentHeightAuto = true
     }
   }
 
   private scheduleTransitionToAuto: () => void = () => {
-    // На всякий случай сбросим предыдущий таймер
+    // Clear any pending timer first
     if (this.transitionToAutoTimeout) {
       clearTimeout(this.transitionToAutoTimeout)
       this.transitionToAutoTimeout = null
     }
 
-    // Сеттим height: auto по окончании анимации, чтобы контент растягивался
+    // Set height: auto once the transition ends so the content can grow
     this.transitionToAutoTimeout = window.setTimeout(() => {
       this.contentHeightAuto = this.computedOpened
       this.transitionToAutoTimeout = null
@@ -260,7 +260,7 @@ export class YCoreCollapseItem
     if (!this.contentElement || this.resizeObserver) return
 
     this.resizeObserver = new ResizeObserver(() => {
-      // При ресайзе контента обновляем высоту, только если элемент открыт
+      // Update the height on content resize, but only while the item is open
       requestAnimationFrame(() => {
         if (this.computedOpened && !this.contentHeightAuto && this.contentElement) {
           this.contentHeight = this.contentElement.scrollHeight
@@ -272,14 +272,14 @@ export class YCoreCollapseItem
     this.observeAssignedElements()
 
     if (!this.hasTransitionListener) {
-      // отслеживаем окончание анимации, чтобы установить height: auto
+      // Switch to height: auto when the transition ends
       this.contentElement.addEventListener('transitionend', this.handleTransitionEnd)
       this.hasTransitionListener = true
     }
   }
 
   private unobserveContent: () => void = () => {
-    // отключаем обсерверы при размантировании
+    // Disconnect the observers on unmount
     if (this.resizeObserver) {
       this.resizeObserver.disconnect()
       this.resizeObserver = undefined
@@ -296,10 +296,10 @@ export class YCoreCollapseItem
   private observeAssignedElements: () => void = () => {
     if (!this.resizeObserver || !this.contentSlotElement) return
 
-    // Получаем элементы слота в DOM
+    // Elements assigned to the content slot
     const assigned = this.contentSlotElement.assignedElements({ flatten: true })
 
-    // Навешиваем обзерверы на элементы слота
+    // Observe each slotted element
     assigned.forEach((el) => {
       if (!this.observedTargets.has(el) && this.resizeObserver) {
         this.resizeObserver.observe(el)
@@ -329,13 +329,13 @@ export class YCoreCollapseItem
       return
     }
 
-    // Пересчитываем высоту только если изменились свойства,
-    // которые влияют на состояние открытия/закрытия
+    // Recalculate the height only when a property that affects
+    // the open/closed state has changed
     if (this.hasOpenStateChanged(changedProperties)) {
       this.updateContentHeight()
     }
 
-    // Гарантируем подключение ResizeObserver после инициализации DOM
+    // Make sure the ResizeObserver is connected once the DOM is ready
     this.observeContent()
   }
 
@@ -343,10 +343,10 @@ export class YCoreCollapseItem
   disconnectedCallback(): void {
     super.disconnectedCallback()
 
-    // Отменяем отложенные вызовы debounce при отключении компонента
+    // Cancel pending debounced calls when the component is disconnected
     this.updateContentHeight.cancel()
 
-    // Отвязываем ResizeObserver
+    // Disconnect the ResizeObserver
     this.unobserveContent()
   }
 

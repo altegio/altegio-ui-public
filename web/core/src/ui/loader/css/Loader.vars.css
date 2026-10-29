@@ -1,9 +1,9 @@
 :host {
-  /* Общие */
+  /* General */
 
   --y-core-loader-display: block;
 
-  /* Размеры */
+  /* Sizes */
 
   --y-core-loader-size-extra-small: var(--y-core-size-spacing-4-x);
   --y-core-loader-size-small: var(--y-core-size-spacing-5-x);
@@ -11,7 +11,7 @@
   --y-core-loader-size-large: var(--y-core-size-spacing-8-x);
   --y-core-loader-size-extra-large: var(--y-core-size-spacing-12-x);
 
-  /* Цвета */
+  /* Colors */
 
   --y-core-loader-color-black: var(--y-core-color-icon-primary);
   --y-core-loader-color-white: var(--y-core-color-other-contrast);

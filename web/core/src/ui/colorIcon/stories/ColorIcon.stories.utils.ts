@@ -2,22 +2,22 @@ import { EYCoreColorIconVariant, EYCoreColorIconSize } from '~core/ui/colorIcon/
 import { yRocket } from '~shared/icons'
 
 /**
- * ## Служебные утилиты для историй ColorIcon
+ * ## Story helpers for ColorIcon
  *
- * Этот файл содержит все вспомогательные функции, константы и типы для валидации историй.
- * Вынесено в отдельный файл, чтобы не засорять Storybook автодоки.
+ * Helper functions, constants and types used to validate the stories.
+ * Kept in a separate file so they do not show up in the Storybook autodocs.
  */
 
 import type { EFrameworkName } from '~web/shared/.storybook/enums/frameworkName'
 import type { IStoryConfig } from '~web/shared/.storybook/types'
 
 // =============================================================================
-// КОНФИГУРАЦИЯ ИСТОРИЙ
+// STORY CONFIGURATION
 // =============================================================================
 
 /**
- * Конфигурация всех доступных историй
- * Используется для обеспечения единообразия между фреймворками
+ * Configuration of all available stories
+ * Keeps the stories consistent across frameworks
  */
 export const COLOR_ICON_STORIES_CONFIG: Record<string, IStoryConfig> = {
   Playground: {
@@ -53,13 +53,13 @@ export const COLOR_ICON_STORIES_CONFIG: Record<string, IStoryConfig> = {
 } as const
 
 /**
- * Вспомогательные переменные для JSDoc описания
+ * Values listed in the generated description
  */
 const sizes = Object.values(EYCoreColorIconSize)
 const variants = Object.values(EYCoreColorIconVariant)
 
 /**
- * Создает JSDoc описание для ColorIcon с указанием фреймворка
+ * Builds the ColorIcon description for the given framework
  */
 export const createColorIconDescription = (frameworkName: EFrameworkName, frameworkSpecifics = '') => `
 ## ${frameworkName} ColorIcon
@@ -78,7 +78,7 @@ ${frameworkSpecifics}
 `
 
 /**
- * Создает параметры для истории ColorIcon
+ * Builds the story parameters for ColorIcon
  */
 export const createColorIconParameters = (frameworkName: EFrameworkName, frameworkSpecifics = '') => ({
   controls: { sort: 'alpha' },

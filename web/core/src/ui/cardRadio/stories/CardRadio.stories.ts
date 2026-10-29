@@ -13,7 +13,7 @@ type TYCoreCardRadioMeta = Meta<IYCoreCardRadioProps>
 
 /**
  * ## Core CardRadio
- * вспомогательный компонент для CardButton/CardSelect
+ * Helper component used by CardButton and CardSelect
  */
 const meta: TYCoreCardRadioMeta = {
   title: 'Cards/Partials/✅ CardRadio',

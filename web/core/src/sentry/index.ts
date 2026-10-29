@@ -16,13 +16,13 @@ interface IErrorContext {
 }
 
 /**
- * Проверяет, исходит ли ошибка от дизайн-системы
- * Смотрим только на первую строку стека, чтобы понять, где именно возникла ошибка, а не весь путь до нее
+ * Checks whether an error comes from the design system.
+ * Only the top of the stack is checked, to find where the error was thrown rather than the whole call path.
  */
 // const isErrorFromDesignSystem = (stack?: string): boolean => {
 //   if (!stack) return false
 //
-//   // Берем первую строку источника ошибки
+//   // Take the top stack frames
 //   const stackLines = stack.split('\n').slice(0, 3)
 //   const topStackLines = stackLines.join('\n')
 //
@@ -61,7 +61,7 @@ class DesignSystemSentry {
     //       isFromDesignSystem,
     //     )
     //
-    //     // Возвращаем событие только если ошибка исходит от дизайн-системы
+    //     // Report the event only when the error comes from the design system
     //     return isFromDesignSystem ? event : null
     //   },
     // })

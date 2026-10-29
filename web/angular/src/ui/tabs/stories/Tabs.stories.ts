@@ -20,8 +20,8 @@ const meta: Meta<TYNgTabsMeta> = {
     'angular',
     'autodocs',
   ],
-  // TODO при изменении value через controls происходит перерисовка всего
-  //  компонента и плавная анимация не работает PFW-1520
+  // TODO: Changing the value through controls re-renders the whole
+  //  component, so the transition animation does not play
   render: (args) => {
     const valueRef = { current: args.value }
 

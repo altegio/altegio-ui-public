@@ -1,12 +1,12 @@
 import { exec } from 'child_process'
 
 /**
- * Асинхронно выполняет команду в дочернем процессе
- * @param {string} command - Команда для выполнения
- * @param {Object} options - Опции
- * @param {function(string):void} [options.onDataStdout] - Колбэк для обработки данных из stdout
- * @param {function(string):void} [options.onDataStderr] - Колбэк для обработки данных из stderr
- * @returns {Promise<{stdout: string, stderr: string}>} Промис с результатом выполнения команды
+ * Runs a command in a child process
+ * @param {string} command - Command to run
+ * @param {Object} options - Options
+ * @param {function(string):void} [options.onDataStdout] - Callback for stdout chunks
+ * @param {function(string):void} [options.onDataStderr] - Callback for stderr chunks
+ * @returns {Promise<{stdout: string, stderr: string}>} Promise with the command output
  */
 export const execAsync = (
   command: string,

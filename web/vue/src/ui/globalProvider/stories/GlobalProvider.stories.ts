@@ -73,7 +73,7 @@ export const WithI18nConsumerRu: Story = {
   render: () => ({
     components: { YGlobalProvider, I18nConsumer },
     setup() {
-      // Создаем плагин локализации с русской локалью
+      // Localization plugin with the Russian locale
       const i18nPlugin = new I18nPlugin(ru)
       const queuePlugin = new QueuePlugin({
         id: 'queue',

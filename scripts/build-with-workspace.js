@@ -42,13 +42,13 @@ function buildAngular() {
 function main() {
   log('Starting the workspace build...');
   
-  // Проверяем и копируем workspace если нужно
+  // Refresh the workspace copy of the Angular, core and shared sources
   checkWorkspace();
   
-  // Исправляем пути
+  // Point the copied sources at their workspace locations
   fixPaths();
   
-  // Собираем Angular библиотеку
+  // Build the Angular library with ng-packagr
   buildAngular();
   
   log('Build completed successfully.');

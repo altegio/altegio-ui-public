@@ -1,8 +1,8 @@
 /**
- * ## Служебные утилиты для историй Angular BrandButton
+ * ## Story helpers for the Angular BrandButton
  *
- * Этот файл содержит все вспомогательные функции, константы и типы для валидации историй.
- * Вынесено в отдельный файл, чтобы не засорять Storybook автодоки.
+ * Helper functions, constants and types used to validate the stories.
+ * Kept in a separate file so they do not show up in the Storybook autodocs.
  */
 
 import { EFrameworkName } from '~web/shared/.storybook/enums/frameworkName'
@@ -13,11 +13,11 @@ import {
   brandButtonVariants,
 } from '~core/ui/brandButton/stories/BrandButton.stories.utils'
 
-// Реэкспортируем конфигурацию историй из Core
+// Re-export the shared story configuration from core
 export { BRAND_BUTTON_STORIES_CONFIG, brandButtonSizes, brandButtonVariants }
 
 /**
- * Создает параметры для истории Angular BrandButton
+ * Builds the story parameters for the Angular BrandButton
  */
 export const createAngularBrandButtonParameters = (frameworkSpecifics = '') => ({
   controls: { sort: 'alpha' },

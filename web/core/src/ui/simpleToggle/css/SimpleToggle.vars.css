@@ -1,9 +1,9 @@
 :host {
-  /* Общие */
+  /* General */
   --y-core-simple-toggle-radius: var(--y-core-size-radius-4-x);
   --y-core-simple-toggle-border-size: 1px;
 
-  /* Размеры */
+  /* Sizes */
 
   /* Small */
   --y-core-simple-toggle-size-small-width: 36px;
@@ -17,7 +17,7 @@
   --y-core-simple-toggle-size-medium-padding: var(--y-core-size-spacing-x);
   --y-core-simple-toggle-size-medium-thumb-size: 24px;
 
-  /* Цвета состояний */
+  /* State colors */
 
   /* Unchecked */
   --y-core-simple-toggle-unchecked-bg-default: var(--y-core-color-surface-tertiary);

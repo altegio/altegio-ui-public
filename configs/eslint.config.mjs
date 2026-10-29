@@ -134,15 +134,15 @@ export default tslint.config(
       // Component prop types intentionally spell out undefined alongside optional keys.
       'sonarjs/no-redundant-optional': 'off',
 
-      // Цикломатическая сложность
+      // Cyclomatic complexity
       complexity: ['error', { max: 6 }],
 
-      // Когнитивная сложность
+      // Cognitive complexity
       'sonarjs/cognitive-complexity': ['error', 6],
 
-      // // Дополнительные правила для контроля сложности
-      'max-depth': ['error', { max: 2 }], // глубина вложенности
-      'max-nested-callbacks': ['error', { max: 2 }], // вложенные колбэки
+      // Further limits that keep functions small and flat
+      'max-depth': ['error', { max: 2 }], // nesting depth
+      'max-nested-callbacks': ['error', { max: 2 }], // nested callbacks
       'max-lines-per-function': ['error', { max: 120, skipBlankLines: true, skipComments: true }],
     },
   },  
@@ -214,9 +214,9 @@ export default tslint.config(
   {
     files: ['**/web/**/*.stories.ts'],
     rules: {
-      // Цикломатическая сложность
+      // Cyclomatic complexity
       complexity: 'off',
-      // Когнитивная сложность
+      // Cognitive complexity
       'sonarjs/cognitive-complexity': 'off',
       '@typescript-eslint/no-unnecessary-type-conversion': 'off',
       '@typescript-eslint/no-unnecessary-type-assertion': 'off',

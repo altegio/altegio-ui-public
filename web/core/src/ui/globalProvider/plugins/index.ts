@@ -4,24 +4,24 @@ export * from './queue'
 export * from './palette'
 
 /**
- * Базовый интерфейс для плагинов глобального провайдера
+ * Base interface for global provider plugins
  *
- * Этот интерфейс должны реализовывать все плагины для GlobalProvider.
- * Он определяет основные методы жизненного цикла плагина.
+ * Every GlobalProvider plugin implements this interface.
+ * It defines the plugin lifecycle methods.
  *
  * @example
  * ```typescript
- * // Пример создания простого плагина
+ * // A minimal plugin
  * class MyPlugin implements IGlobalProviderPlugin {
  *   id = 'my-plugin';
  *
  *   init(context: IGlobalContext): void {
- *     // Инициализация плагина
+ *     // Set up the plugin
  *     console.log('MyPlugin initialized');
  *   }
  *
  *   destroy(context: IGlobalContext): void {
- *     // Освобождение ресурсов
+ *     // Release resources
  *     console.log('MyPlugin destroyed');
  *   }
  * }
@@ -30,43 +30,43 @@ export * from './palette'
 export interface IGlobalProviderPlugin {
 
   /**
-   * Уникальный идентификатор плагина
+   * Unique plugin ID
    *
-   * Должен быть уникальным среди всех используемых плагинов.
-   * Используется для поиска плагинов в массиве плагинов GlobalProvider.
+   * Must be unique among all plugins in use.
+   * GlobalProvider uses it to find plugins in its plugin list.
    */
   id: string
 
   /**
-   * Метод инициализации плагина
+   * Initializes the plugin
    *
-   * Вызывается автоматически при добавлении плагина в GlobalProvider.
-   * Используется для настройки плагина и добавления данных в глобальный контекст.
+   * Called automatically when the plugin is added to GlobalProvider.
+   * Use it to configure the plugin and add its data to the global context.
    *
-   * @param context - Глобальный контекст для взаимодействия
+   * @param context - Global context
    */
   init(context: IGlobalContext): void
 
   /**
-   * Метод уничтожения плагина
+   * Destroys the plugin
    *
-   * Вызывается автоматически при удалении плагина из GlobalProvider.
-   * Используется для освобождения ресурсов и очистки данных.
-   * Необязательный метод - если не реализован, при удалении плагина никаких действий не выполняется.
+   * Called automatically when the plugin is removed from GlobalProvider.
+   * Use it to release resources and clean up data.
+   * Optional: if it is not implemented, removing the plugin does nothing.
    *
-   * @param context - Глобальный контекст для взаимодействия
+   * @param context - Global context
    */
   destroy?(context: IGlobalContext): void
 }
 
 /**
- * Инициализирует все переданные плагины
+ * Initializes all given plugins
  *
- * Последовательно вызывает метод `init` для каждого плагина из массива.
- * Используется внутри GlobalProvider при инициализации или обновлении списка плагинов.
+ * Calls `init` on each plugin in order.
+ * GlobalProvider uses it when the plugin list is set or updated.
  *
- * @param plugins - Массив плагинов для инициализации
- * @param context - Глобальный контекст для передачи в плагины
+ * @param plugins - Plugins to initialize
+ * @param context - Global context passed to the plugins
  */
 export function installPlugins(
   plugins: IGlobalProviderPlugin[] | undefined,
@@ -80,13 +80,13 @@ export function installPlugins(
 }
 
 /**
- * Уничтожает все переданные плагины
+ * Destroys all given plugins
  *
- * Последовательно вызывает метод `destroy` для каждого плагина из массива, если метод определен.
- * Используется внутри GlobalProvider при удалении или замене плагинов.
+ * Calls `destroy` on each plugin in order, when the plugin defines it.
+ * GlobalProvider uses it when plugins are removed or replaced.
  *
- * @param plugins - Массив плагинов для уничтожения
- * @param context - Глобальный контекст для передачи в плагины
+ * @param plugins - Plugins to destroy
+ * @param context - Global context passed to the plugins
  */
 export function uninstallPlugins(
   plugins: IGlobalProviderPlugin[] | undefined,

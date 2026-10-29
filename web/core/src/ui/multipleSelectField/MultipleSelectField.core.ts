@@ -369,7 +369,7 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
   private handleClick = (event: Event) => {
     if (this.computedDisabledOrReadonly) return
 
-    // Если дропдаун только что открылся по фокусу, не закрываем его
+    // Ignore a click that arrives right after the focus that opened the dropdown, so it does not close it again
     const diffTimeBetweenFocusAndClick = event.timeStamp - this.lastFocusTime
     if (this.isOpened && diffTimeBetweenFocusAndClick < CLICK_OUTSIDE_DELAY) return
 
@@ -404,7 +404,7 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
 
     if (this.computedDisabledOrReadonly) return
 
-    // Если дропдаун только что открылся по фокусу, не закрываем его
+    // Ignore a click that arrives right after the focus that opened the dropdown, so it does not close it again
     const diffTimeBetweenFocusAndClick = event.timeStamp - this.lastFocusTime
     if (this.isOpened && diffTimeBetweenFocusAndClick < CLICK_OUTSIDE_DELAY) return
 

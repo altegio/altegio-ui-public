@@ -14,7 +14,7 @@ export interface IRenderAnnotationOptions extends Partial<IYCoreAnnotationProps>
 }
 
 /**
- * Опции для рендеринга аннотации
+ * Options for rendering an annotation
  * @interface IRenderAnnotationOptions
  */
 export default ({ className, handleSlotAnnotationChange, ...props }: IRenderAnnotationOptions) => {

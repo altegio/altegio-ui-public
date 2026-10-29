@@ -13,7 +13,7 @@ export default {
   plugins: [
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
-    // Не создаём changelog для feature ветвей
+    // Only main releases update CHANGELOG.md; feature-branch prereleases skip it
     ...(isMainBranch ? [
       [
         '@semantic-release/changelog',
@@ -47,7 +47,7 @@ export default {
       }
     ],
     '@semantic-release/npm',
-    // Создаём tag в package.json только для main ветки
+    // Only main releases commit the new version in package.json and CHANGELOG.md back to the repository
     ...(isMainBranch ? [
       [
         '@semantic-release/git',

@@ -1,9 +1,9 @@
 :host {
-  /* Общие */
+  /* General */
   --y-atom-avatar-display: block;
   --y-avatar-gap: var(--y-core-size-spacing-2-5-x);
 
-  /* Размеры */
+  /* Sizes */
   --y-avatar-size-extra-small: var(--y-core-component-avatar-size-100);
   --y-avatar-size-small: var(--y-core-component-avatar-size-300);
   --y-avatar-size-medium: var(--y-core-component-avatar-size-500);
@@ -25,14 +25,14 @@
   --y-avatar-font-size-large: var(--y-core-component-avatar-initial-font-size-size-800);
   --y-avatar-line-height-large: var(--y-core-component-avatar-initial-line-height-size-800);
 
-  /* Радиусы */
+  /* Radii */
 
   --y-avatar-radius-extra-small: var(--y-core-size-radius-x);
   --y-avatar-radius-small: var(--y-core-size-radius-1-5-x);
   --y-avatar-radius-medium: var(--y-core-size-radius-2-x);
   --y-avatar-radius-large: var(--y-core-size-radius-3-x);
 
-  /* Цвета */
+  /* Colors */
   --y-avatar-bg: var(--y-core-color-calm-surface-purple-low);
   --y-avatar-text-color: var(--y-core-color-calm-icon-purple);
 }

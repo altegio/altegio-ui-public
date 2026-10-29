@@ -47,7 +47,7 @@ $component: $YCoreCollapseItemTagName;
     height: 0;
     overflow: hidden;
 
-    /* Добавляем аппаратное ускорение */
+    /* Promote to its own compositing layer for smoother animation */
     transform: translateZ(0);
     transition: height 0.3s, margin 0s 0.3s;
     will-change: height;

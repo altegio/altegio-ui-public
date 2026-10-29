@@ -55,7 +55,7 @@ export const createCoreTextFieldExternalProps = (): IYCoreTextFieldExternalProps
 }
 
 /**
- * Интерфейс для SearchField оберток
+ * Props interface for the SearchField wrappers
  */
 export interface IYCoreSearchFieldExternalProps extends Omit<IYCoreTextFieldExternalProps,
   'clearable' | 'maskOptions' | 'value' | 'readonly' | 'required' | 'maxlength' | 'type'> {

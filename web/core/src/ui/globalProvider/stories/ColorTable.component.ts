@@ -147,7 +147,7 @@ export class YColorTable extends LitElement {
   }
 
   private exportJson() {
-    const json = JSON.stringify(this.transformers, null, 2) // красиво форматированный JSON
+    const json = JSON.stringify(this.transformers, null, 2) // pretty-printed JSON
     const blob = new Blob([json], { type: 'application/json' })
     const url = URL.createObjectURL(blob)
 

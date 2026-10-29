@@ -325,7 +325,7 @@ describe(
       },
     )
 
-    // TODO: разобраться с тестированием кастомных евентов - https://tracker.yandex.ru/PFW-518
+    // TODO: Figure out how to test the custom events
     describe(
       'Events',
       () => {

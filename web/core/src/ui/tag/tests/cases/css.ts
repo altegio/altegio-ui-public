@@ -1,12 +1,12 @@
 import { COLORS, EXTENDED_COLORS } from '~root/tokens'
 
-// Маппинг CSS-переменных хоста к корневым CSS-переменным
+// Host CSS variables mapped to the root CSS variables
 export const CSSVariablesHostToRootCases = [
-  // Общие
+  // General
   { host: '--y-core-tag-font-family', root: '--y-core-font-family' },
   { host: '--y-core-tag-border-radius', root: '--y-core-size-radius-x' },
 
-  // Размеры
+  // Sizes
   { host: '--y-core-tag-padding-small-x', root: '--y-core-size-spacing-x' },
   { host: '--y-core-tag-padding-small-y', root: '--y-core-size-spacing-0-5-x' },
   { host: '--y-core-tag-padding-medium-x', root: '--y-core-size-spacing-2-x' },
@@ -23,7 +23,7 @@ export const CSSVariablesHostToRootCases = [
   { host: '--y-core-tag-font-size-large-line-height', root: '--y-core-typography-paragraph-p-2-medium-line-height' },
   { host: '--y-core-tag-font-size-large-font-weight', root: '--y-core-typography-paragraph-p-2-medium-font-weight' },
 
-  // Цвета текста
+  // Text colors
   { host: '--y-core-tag-color-accent', root: '--y-core-color-text-primary' },
   { host: '--y-core-tag-color-accent-disabled', root: '--y-core-color-text-tertiary' },
   { host: '--y-core-tag-color-muted', root: '--y-core-color-text-primary' },
@@ -39,7 +39,7 @@ export const CSSVariablesHostToRootCases = [
   { host: '--y-core-tag-color-discovery', root: '--y-core-color-calm-text-purple' },
   { host: '--y-core-tag-color-discovery-disabled', root: '--y-core-color-calm-text-purple-low' },
 
-  // Цвета фона
+  // Background colors
   { host: '--y-core-tag-bg-accent', root: '--y-core-color-calm-surface-yellow-low' },
   { host: '--y-core-tag-bg-muted', root: '--y-core-color-surface-tertiary' },
   { host: '--y-core-tag-bg-danger', root: '--y-core-color-calm-surface-red-low' },
@@ -48,13 +48,13 @@ export const CSSVariablesHostToRootCases = [
   { host: '--y-core-tag-bg-information', root: '--y-core-color-calm-surface-blue-low' },
   { host: '--y-core-tag-bg-discovery', root: '--y-core-color-calm-surface-purple-low' },
 
-  // Отступы
+  // Spacing
   { host: '--y-core-tag-gap', root: '--y-core-size-spacing-x' },
 ]
 
-// Маппинг CSS-переменных хоста к ожидаемым значениям
+// Host CSS variables mapped to the expected values
 export const CSSVariablesHostToValueCases = [
-  // Цвета текста
+  // Text colors
   { host: '--y-core-tag-color-accent', value: COLORS.text_primary.cssValue },
   { host: '--y-core-tag-color-accent-disabled', value: COLORS.text_tertiary.cssValue },
   { host: '--y-core-tag-color-muted', value: COLORS.text_primary.cssValue },
@@ -70,7 +70,7 @@ export const CSSVariablesHostToValueCases = [
   { host: '--y-core-tag-color-discovery', value: EXTENDED_COLORS.calm_text_purple.cssValue },
   { host: '--y-core-tag-color-discovery-disabled', value: EXTENDED_COLORS.calm_text_purple_low.cssValue },
 
-  // Цвета фона
+  // Background colors
   { host: '--y-core-tag-bg-accent', value: EXTENDED_COLORS.calm_surface_yellow_low.cssValue },
   { host: '--y-core-tag-bg-muted', value: COLORS.surface_tertiary.cssValue },
   { host: '--y-core-tag-bg-danger', value: EXTENDED_COLORS.calm_surface_red_low.cssValue },

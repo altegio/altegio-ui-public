@@ -62,6 +62,6 @@ export const en: ILocale = {
         maximumFractionDigits: 2,
       },
     },
-    firstDayOfWeek: 0, // Воскресенье
+    firstDayOfWeek: 0, // Sunday
   },
 }

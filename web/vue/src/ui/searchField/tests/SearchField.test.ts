@@ -76,13 +76,13 @@ describe(
       },
     )
 
-    // TODO: Написать тесты для событий
+    // TODO: Add event tests
     // describe(
     //   'Events',
     //   () => {
     //     for (const { emitName, event, payload, case: eventCase } of eventsVueCases) {
     //       it.skip(
-    //         `Должен вызывать событие "${emitName}" ${eventCase}`,
+    //         `Should emit "${emitName}" ${eventCase}`,
     //         () => {
     //           const wrapper = mount(
     //             YSearchField,
@@ -98,7 +98,7 @@ describe(
     //       )
 
     //       it.skip(
-    //         `Не должен вызывать событие "${emitName}" ${eventCase} если компонент disabled`,
+    //         `Should not emit "${emitName}" ${eventCase} when the component is disabled`,
     //         () => {
     //           const wrapper = mount(
     //             YSearchField,

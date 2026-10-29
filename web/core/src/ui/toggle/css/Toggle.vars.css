@@ -1,5 +1,5 @@
 :host {
-  /* Общие размеры */
+  /* General sizes */
   --y-core-toggle-max-width: var(--y-core-toggle-custom-max-width, 100%);
   --y-core-toggle-x-gap: var(--y-core-size-spacing-2-x);
   --y-core-toggle-info-gap: var(--y-core-size-spacing-0-5-x);

@@ -2,10 +2,10 @@ import type { EPlatform } from '~cli/types'
 import { isKebabCase } from '~cli/utils/regex'
 
 /**
- * Создает массив опций для выбора из enum объекта
- * @template {EPlatform} T - Тип enum (EPlatform)
- * @param {Record<string, T>} enumObject - Enum объект для преобразования в опции
- * @returns {Array<{name: T, value: T}>} Массив опций для выбора
+ * Builds prompt choices from an enum object
+ * @template {EPlatform} T - Enum type (EPlatform)
+ * @param {Record<string, T>} enumObject - Enum object to convert into choices
+ * @returns {Array<{name: T, value: T}>} Choices for the prompt
  */
 export const createChoices = <T extends EPlatform>(enumObject: Record<string, T>) => Object.values(enumObject).map((value) => ({
   name: value,
@@ -13,9 +13,9 @@ export const createChoices = <T extends EPlatform>(enumObject: Record<string, T>
 }))
 
 /**
- * Проверяет корректность названия компонента
- * @param {string} value - Проверяемое значение
- * @returns {true | string} true если значение корректно, текст ошибки если нет
+ * Validates a component name
+ * @param {string} value - Value to validate
+ * @returns {true | string} true for a valid name, otherwise the error message
  */
 export const validateComponentName = (value: string) => {
   if (!value) return 'Component name cannot be empty'

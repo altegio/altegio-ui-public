@@ -1,4 +1,4 @@
-// TODO: PFW-1080 - не получилось реализовать слоты
+// TODO: Slots are not supported in this story yet
 
 import type { Meta, StoryObj } from '@storybook/angular'
 import { CommonModule } from '@angular/common'

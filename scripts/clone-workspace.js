@@ -42,7 +42,7 @@ function copyDirectory(source, target) {
 function main() {
   log('Copying directories to the workspace...');
   
-  // Создаем папку workspace если её нет
+  // Create the workspace directory if it is missing
   if (!existsSync(WORKSPACE_DIR)) {
     log(`Creating directory ${WORKSPACE_DIR}...`);
     mkdirSync(WORKSPACE_DIR, { recursive: true });
@@ -50,17 +50,17 @@ function main() {
   
   const workspacePath = join(process.cwd(), WORKSPACE_DIR);
   
-  // Копируем angular папку
+  // The Angular package is built from a copy of web/angular
   const angularSource = join(process.cwd(), 'web/angular');
   const angularTarget = join(workspacePath, 'angular');
   copyDirectory(angularSource, angularTarget);
   
-  // Копируем core папку внутрь angular/src
+  // ng-packagr only compiles files inside the package, so core is copied into angular/src
   const coreSource = join(process.cwd(), 'web/core');
   const coreTarget = join(angularTarget, 'src/core');
   copyDirectory(coreSource, coreTarget);
   
-  // Копируем shared папку внутрь angular/src
+  // shared is copied into angular/src for the same reason
   const sharedSource = join(process.cwd(), 'web/shared');
   const sharedTarget = join(angularTarget, 'src/shared');
   copyDirectory(sharedSource, sharedTarget);
@@ -69,7 +69,7 @@ function main() {
   const tokensTarget = join(angularTarget, 'src/tokens')
   copyDirectory(tokensSource, tokensTarget);
   
-  // Копируем содержимое ng-package конфигов в angular
+  // Copy the ng-package configuration files into the Angular package root
   const ngPackageSource = join(process.cwd(), 'configs/ng-package');
   if (existsSync(ngPackageSource)) {
     log(`Copying ${ngPackageSource} contents to ${angularTarget}...`);

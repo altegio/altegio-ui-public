@@ -167,7 +167,7 @@ const meta: TSimpleButtonStoryMeta = {
       description: '**Full width**\n\nWhen `true`, the button fills the available width of its parent container.',
       ...getComponentStateTable(fullWidth),
     },
-    // Пропы для режима ссылки
+    // Props for link mode
     href: {
       ...hrefArgType,
       description:
@@ -193,7 +193,7 @@ const meta: TSimpleButtonStoryMeta = {
       ...getComponentStateTable(hostStyles),
     },
 
-    // События
+    // Events
     onClick: {
       type: 'function',
       description:
@@ -201,7 +201,7 @@ const meta: TSimpleButtonStoryMeta = {
       ...getComponentEmitsTable(),
     },
 
-    // Слоты (Story Controls)
+    // Slots (Story Controls)
     showDefaultSlot: {
       type: 'boolean',
       description:
@@ -209,7 +209,7 @@ const meta: TSimpleButtonStoryMeta = {
       ...getComponentSlotsTable('default', 'nothing'),
     },
 
-    // Дополнительные Story Controls
+    // Additional Story Controls
     text: {
       type: 'string',
       description: '**Button text**\n\nText displayed through the default slot.',

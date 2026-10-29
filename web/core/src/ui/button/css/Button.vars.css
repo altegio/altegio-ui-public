@@ -1,5 +1,5 @@
 :host {
-  /* Общие */
+  /* General */
   --y-core-button-icon-left-color-disabled: var(--y-core-color-icon-tertiary);
   --y-core-button-icon-right-color-disabled: var(--y-core-color-icon-tertiary);
 }

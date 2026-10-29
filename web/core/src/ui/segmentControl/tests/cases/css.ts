@@ -1,7 +1,7 @@
 import { COLORS, SIZES } from '~root/tokens'
 
 export const CSSVariablesHostToRootCases = [
-  // Цвета
+  // Colors
   {
     host: '--y-core-segment-control-border-color',
     root: '--y-core-color-stroke-primary-low',
@@ -11,7 +11,7 @@ export const CSSVariablesHostToRootCases = [
     root: '--y-core-color-surface-secondary',
   },
 
-  // Размеры
+  // Sizes
   {
     host: '--y-core-segment-control-size-border-radius',
     root: '--y-core-size-radius-2-x',
@@ -27,13 +27,13 @@ export const CSSVariablesHostToRootCases = [
 ]
 
 export const CSSVariablesHostToValueCases = [
-  // Общие
+  // General
   {
     host: '--y-core-segment-control-display',
     value: 'flex',
   },
 
-  // Цвета
+  // Colors
   {
     host: '--y-core-segment-control-border-color',
     value: COLORS.stroke_primary_low.cssValue,
@@ -43,7 +43,7 @@ export const CSSVariablesHostToValueCases = [
     value: COLORS.surface_secondary.cssValue,
   },
 
-  // Размеры
+  // Sizes
   {
     host: '--y-core-segment-control-border-size',
     value: '1px',

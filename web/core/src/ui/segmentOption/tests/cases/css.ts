@@ -1,7 +1,7 @@
 import { COLORS, EFFECTS, SIZES, TYPOGRAPHY } from '~root/tokens'
 
 export const CSSVariablesHostToRootCases = [
-  // Цвета
+  // Colors
   {
     host: '--y-core-segment-option-primary-color',
     root: '--y-core-color-text-primary',
@@ -19,13 +19,13 @@ export const CSSVariablesHostToRootCases = [
     root: '--y-core-color-surface-primary',
   },
 
-  // Эффекты
+  // Effects
   {
     host: '--y-core-segment-option-active-drop-shadow',
     root: '--y-core-effects-card-drop-shadow',
   },
 
-  // Размеры - Small
+  // Sizes - Small
   {
     host: '--y-core-segment-option-size-small-border-radius',
     root: '--y-core-size-radius-1-5-x',
@@ -55,7 +55,7 @@ export const CSSVariablesHostToRootCases = [
     root: '--y-core-size-spacing-x',
   },
 
-  // Размеры - Medium
+  // Sizes - Medium
   {
     host: '--y-core-segment-option-size-medium-border-radius',
     root: '--y-core-size-radius-2-x',
@@ -85,7 +85,7 @@ export const CSSVariablesHostToRootCases = [
     root: '--y-core-size-spacing-x',
   },
 
-  // Размеры - Large
+  // Sizes - Large
   {
     host: '--y-core-segment-option-size-large-border-radius',
     root: '--y-core-size-radius-2-5-x',
@@ -117,7 +117,7 @@ export const CSSVariablesHostToRootCases = [
 ]
 
 export const CSSVariablesHostToValueCases = [
-  // Цвета
+  // Colors
   {
     host: '--y-core-segment-option-primary-color',
     value: COLORS.text_primary.cssValue,
@@ -139,13 +139,13 @@ export const CSSVariablesHostToValueCases = [
     value: COLORS.surface_primary.cssValue,
   },
 
-  // Эффекты
+  // Effects
   {
     host: '--y-core-segment-option-active-drop-shadow',
     value: EFFECTS.card_drop_shadow.cssValue,
   },
 
-  // Размеры - Small
+  // Sizes - Small
   {
     host: '--y-core-segment-option-size-small-height',
     value: '28px',
@@ -179,7 +179,7 @@ export const CSSVariablesHostToValueCases = [
     value: SIZES.spacing_x.cssValue,
   },
 
-  // Размеры - Medium
+  // Sizes - Medium
   {
     host: '--y-core-segment-option-size-medium-height',
     value: '36px',
@@ -213,7 +213,7 @@ export const CSSVariablesHostToValueCases = [
     value: SIZES.spacing_x.cssValue,
   },
 
-  // Размеры - Large
+  // Sizes - Large
   {
     host: '--y-core-segment-option-size-large-height',
     value: '44px',

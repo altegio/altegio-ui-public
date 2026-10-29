@@ -1,7 +1,7 @@
 /**
- * ## Служебные утилиты для историй Vue BrandButton
+ * ## Story helpers for the Vue BrandButton
  *
- * Этот файл содержит все вспомогательные функции, константы и типы для валидации историй.
+ * Helper functions, constants and types used to validate the stories.
  */
 
 import { EFrameworkName } from '~web/shared/.storybook/enums/frameworkName'
@@ -12,11 +12,11 @@ import {
   brandButtonSizes,
 } from '~core/ui/brandButton/stories/BrandButton.stories.utils'
 
-// Реэкспортируем конфигурацию историй из Core
+// Re-export the shared story configuration from core
 export { BRAND_BUTTON_STORIES_CONFIG, brandButtonVariants, brandButtonSizes }
 
 /**
- * Создает параметры для истории Vue BrandButton
+ * Builds the story parameters for the Vue BrandButton
  */
 export const createVueBrandButtonParameters = (frameworkSpecifics = '') => ({
   controls: { sort: 'alpha' },

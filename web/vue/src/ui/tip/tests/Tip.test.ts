@@ -26,7 +26,7 @@ describe(
   'Vue/YTip',
   () => {
     beforeAll(() => {
-      // настройка перед запуском тестов
+      // register the core component before the tests run
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
@@ -63,7 +63,7 @@ describe(
         describe(
           'Props',
           () => {
-            // контейнер для рендера ShadowRoot
+            // container that hosts the rendered shadow root
             let container: HTMLElement
 
             beforeEach(() => {

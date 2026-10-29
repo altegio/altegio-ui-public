@@ -36,20 +36,20 @@
   import { LOCALE_MODULE_ID } from '~core/ui/globalProvider/plugins/i18n'
   import { YCalendar } from '~vue/ui/calendar'
 
-  // Получаем глобальный контекст через inject
+  // Read the global context through inject()
   const globalContext = inject<Ref<IGlobalContext | undefined>>('globalContext')
 
-  // Получаем модуль локализации
+  // Locale module from the global context
   const localeModule = computed(() => globalContext?.value?.getModule(LOCALE_MODULE_ID) as ILocaleModule | undefined)
 
-  // Состояние локализации
+  // Locale state
   const localeName = computed(() => localeModule.value?.locale.name ?? 'Not specified')
   const localeCode = computed(() => localeModule.value?.locale.shortCode ?? 'ru')
 
-  // Состояние календаря
+  // Calendar state
   const selectedDate = ref(new Date().toISOString().split('T')[0])
 
-  // Переключение языка
+  // Switch the language
   const toggleLocale = () => {
     if (!localeModule.value) {
       return

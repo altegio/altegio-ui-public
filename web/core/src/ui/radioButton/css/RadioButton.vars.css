@@ -1,12 +1,12 @@
 :host {
-  /* Общие размеры */
+  /* General sizes */
   --y-core-radio-button-max-width: 600px;
   --y-core-radio-button-x-gap: var(--y-core-size-spacing-2-x);
   --y-core-radio-button-info-gap: var(--y-core-size-spacing-0-5-x);
 
-  /* Размеры ошибки */
+  /* Error message */
 
-  /* Общие */
+  /* General */
   --y-core-radio-button-error-margin-top: var(--y-core-size-spacing-0-5-x);
 
   /* Small */

@@ -251,7 +251,7 @@ export class YCoreCalendar
   }
 
   private resetDropdowns(): void {
-    // Сброс состояния
+    // Close both dropdowns
     this.isMonthDropdownVisible = false
     this.isYearDropdownVisible = false
   }

@@ -256,7 +256,7 @@ declare global {
     [YCoreSegmentOptionTagName]: YCoreSegmentOption
     [YCoreCounterTagName]: YCoreCounter
 
-    // Продуктовые компоненты
+    // Product components
     [YCoreTagTagName]: YCoreTag
     [YCoreToggleTagName]: YCoreToggle
     [YCoreCheckboxTagName]: YCoreCheckbox

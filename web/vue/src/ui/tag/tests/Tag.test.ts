@@ -65,7 +65,7 @@ describe(
             )
             const coreElement = wrapper.find(tagName)
 
-            // По умолчанию должен быть medium
+            // Defaults to medium
             expect(coreElement.element.size).toBe(EYSizes.MEDIUM)
           },
         )
@@ -93,7 +93,7 @@ describe(
             )
             const coreElement = wrapper.find(tagName)
 
-            // По умолчанию должен быть accent
+            // Defaults to accent
             expect(coreElement.element.variant).toBe(EYCoreTagVariant.ACCENT)
           },
         )
@@ -121,7 +121,7 @@ describe(
             )
             const coreElement = wrapper.find(tagName)
 
-            // По умолчанию должен быть false
+            // Defaults to false
             expect(coreElement.element.disabled).toBe(false)
           },
         )

@@ -1,9 +1,9 @@
 import type { ReactiveController, ReactiveControllerHost } from 'lit'
 
 /**
- * Интерфейс для хоста, который может использовать EventInterceptorController.
- * Расширяет ReactiveControllerHost из библиотеки lit и добавляет свойства disabled, loading и readonly
- * и методы для управления слушателями событий.
+ * Host that can use EventInterceptorController.
+ * Extends lit's ReactiveControllerHost with the disabled, loading and readonly properties
+ * and the methods that manage event listeners.
  */
 interface IEventInterceptorHost extends ReactiveControllerHost {
   disabled?: boolean
@@ -14,9 +14,9 @@ interface IEventInterceptorHost extends ReactiveControllerHost {
 }
 
 /**
- * Тип, описывающий элемент с контроллером перехвата событий.
- * Расширяет IEventInterceptorHost и добавляет свойство для хранения экземпляра контроллера
- * и опциональный метод connectedCallback.
+ * Element with an attached event interceptor controller.
+ * Extends IEventInterceptorHost with a property that holds the controller instance
+ * and an optional connectedCallback method.
  */
 type TEventInterceptorElement = IEventInterceptorHost & {
   _eventInterceptor?: EventInterceptorController
@@ -24,9 +24,9 @@ type TEventInterceptorElement = IEventInterceptorHost & {
 }
 
 /**
- * Контроллер для перехвата и блокировки событий DOM.
- * Реализует интерфейс ReactiveController из библиотеки lit.
- * Используется для предотвращения обработки событий, когда элемент отключен (disabled), загружается (loading) или только для чтения (readonly).
+ * Controller that intercepts and blocks DOM events.
+ * Implements lit's ReactiveController interface.
+ * Blocks event handling while the element is disabled, loading or readonly.
  */
 class EventInterceptorController implements ReactiveController {
   private disabledOrLoadingEvents = [
@@ -90,38 +90,38 @@ class EventInterceptorController implements ReactiveController {
   ]
 
   /**
-   * Флаг, указывающий, активны ли в данный момент слушатели для disabled/loading.
+   * Whether the disabled/loading listeners are currently attached.
    */
   private isDisabledOrLoadingListening = false
 
   /**
-   * Флаг, указывающий, активны ли в данный момент слушатели для readonly.
+   * Whether the readonly listeners are currently attached.
    */
   private isReadonlyListening = false
 
   /**
-   * Создает экземпляр контроллера и регистрирует его в хосте.
-   * @param host - Элемент-хост, к которому прикрепляется контроллер
+   * Creates the controller and registers it with the host.
+   * @param host - Host element the controller is attached to
    */
   constructor(private host: IEventInterceptorHost) {
     this.host.addController(this)
   }
 
   /**
-   * Обработчик событий, который блокирует их распространение и действия по умолчанию.
-   * @param e - Объект события DOM
+   * Event handler that prevents the default action and stops propagation.
+   * @param e - DOM event
    */
   private handleEvent = (e: Event) => {
     if (e.type === 'keydown') {
       const keyEvent = e as KeyboardEvent
-      // набор клавиш для навигации
+      // keys used for page navigation
       const navigationKeys = ['Tab']
       const ctrlComboKeys = ['KeyA', 'KeyC']
 
-      // разрешаем копирование и выделение
+      // allow select-all and copy
       if ((keyEvent.ctrlKey || keyEvent.metaKey) && ctrlComboKeys.includes(keyEvent.code)) return
 
-      // разрешаем навигацию по странице клавишами
+      // allow keyboard navigation through the page
       if (navigationKeys.includes(keyEvent.key)) return
     }
 
@@ -131,8 +131,8 @@ class EventInterceptorController implements ReactiveController {
   }
 
   /**
-   * Настраивает слушатели событий для disabled/loading состояний.
-   * @param shouldListen - Флаг, указывающий, должны ли быть активированы слушатели
+   * Attaches or detaches the listeners for the disabled/loading states.
+   * @param shouldListen - Whether the listeners should be attached
    */
   private setupDisabledAndLoadingListeners(shouldListen: boolean) {
     if (shouldListen === this.isDisabledOrLoadingListening) return
@@ -157,8 +157,8 @@ class EventInterceptorController implements ReactiveController {
   }
 
   /**
-   * Настраивает слушатели событий для readonly состояния.
-   * @param shouldListen - Флаг, указывающий, должны ли быть активированы слушатели
+   * Attaches or detaches the listeners for the readonly state.
+   * @param shouldListen - Whether the listeners should be attached
    */
   private setupReadonlyListeners(shouldListen: boolean) {
     if (shouldListen === this.isReadonlyListening) return
@@ -183,7 +183,7 @@ class EventInterceptorController implements ReactiveController {
   }
 
   /**
-   * Обновляет состояние слушателей в зависимости от свойств хоста.
+   * Syncs the listeners with the host properties.
    */
   private setupListeners() {
     const isDisabledOrLoading = Boolean(this.host.disabled) || Boolean(this.host.loading)
@@ -194,16 +194,16 @@ class EventInterceptorController implements ReactiveController {
   }
 
   /**
-   * Метод жизненного цикла, вызываемый при подключении хоста к DOM.
-   * Активирует слушатели событий, если хост отключен (disabled) или загружается (loading) или доступен только для чтения (readonly).
+   * Lifecycle callback called when the host is connected to the DOM.
+   * Attaches the listeners if the host is disabled, loading or readonly.
    */
   hostConnected() {
     this.setupListeners()
   }
 
   /**
-   * Метод жизненного цикла, вызываемый при отключении хоста от DOM.
-   * Деактивирует все слушатели событий.
+   * Lifecycle callback called when the host is disconnected from the DOM.
+   * Detaches all listeners.
    */
   hostDisconnected() {
     this.setupDisabledAndLoadingListeners(false)
@@ -211,8 +211,8 @@ class EventInterceptorController implements ReactiveController {
   }
 
   /**
-   * Метод жизненного цикла, вызываемый при обновлении хоста.
-   * Обновляет состояние слушателей событий в зависимости от свойств disabled, loading и readonly.
+   * Lifecycle callback called after the host updates.
+   * Syncs the listeners with the disabled, loading and readonly properties.
    */
   hostUpdated() {
     this.setupListeners()
@@ -220,7 +220,7 @@ class EventInterceptorController implements ReactiveController {
 }
 
 /**
- * Тип, описывающий объект с свойствами disabled, loading и readonly.
+ * Object with the disabled, loading and readonly properties.
  */
 type HasDisabledOrLoadingOrReadonly = {
   disabled: boolean | undefined
@@ -229,14 +229,14 @@ type HasDisabledOrLoadingOrReadonly = {
 }
 
 /**
- * Тип, описывающий объект с опциональным методом connectedCallback.
+ * Object with an optional connectedCallback method.
  */
 type HasConnectedCallback = {
   connectedCallback?: () => void
 }
 
 /**
- * Тип конструктора для классов, которые могут использовать декоратор interceptEvents.
+ * Constructor type for classes that can use the interceptEvents decorator.
  */
 type Constructor<T> = {
   new (...args: unknown[]): T
@@ -244,9 +244,9 @@ type Constructor<T> = {
 }
 
 /**
- * Декоратор для классов, который добавляет функциональность перехвата событий.
- * Когда элемент отключен (disabled = true) или загружается (loading = true) или доступен только для чтения (readonly = true),
- * все DOM события будут перехватываться и блокироваться.
+ * Class decorator that adds event interception.
+ * While the element is disabled (disabled = true), loading (loading = true) or readonly (readonly = true),
+ * DOM events are intercepted and blocked.
  *
  * @example
  * ```ts
@@ -261,11 +261,11 @@ type Constructor<T> = {
  *   @property({ type: Boolean, reflect: true })
  *   readonly = false;
  *
- *   // ... остальной код элемента
+ *   // ... the rest of the element
  * }
  * ```
  *
- * @returns Декоратор класса, который добавляет контроллер перехвата событий
+ * @returns Class decorator that attaches the event interceptor controller
  */
 export const interceptEvents = <T extends HasDisabledOrLoadingOrReadonly>() => {
   return (target: Constructor<T>) => {

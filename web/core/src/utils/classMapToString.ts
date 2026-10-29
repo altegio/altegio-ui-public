@@ -1,7 +1,7 @@
 /**
- * Преобразует объект классов в строку
- * @param classMap - Объект классов
- * @returns Строка с классами
+ * Converts a class map into a class string
+ * @param classMap - Map of class names to flags
+ * @returns Space-separated class names
  */
 export default (classMap: Record<string, boolean>) => {
   return Object.entries(classMap)

@@ -91,29 +91,29 @@ defineCustomElement(YCoreTextareaTagName, YCoreTextarea)
 })
 
 /**
- * Angular-обертка Textarea
+ * Angular wrapper for Textarea
  *
- * Поддерживает работу с `FormControl` и `ngModel`
+ * Works with both `FormControl` and `ngModel`.
  *
- * Автоматическое определение `required`:
- * - Из `Validators.required` в FormControl
- * - Из кастомных валидаторов с ключом 'required'
+ * `required` is detected automatically from:
+ * - `Validators.required` on the FormControl
+ * - custom validators that return a 'required' error key
  *
- * Автоматическое извлечение ошибок из FormControl:
- * - Только кастомные валидаторы с форматом: `{ errorKey: { message: 'текст ошибки' } }`
- * - Стандартные Angular валидаторы (`Validators.required`, `Validators.minLength` и т.д.)
- *   не содержат текст ошибки и требуют явной передачи через `[errors]`
+ * Errors are read from the FormControl automatically only for custom validators
+ * that return `{ errorKey: { message: 'Error text' } }`.
+ * Built-in Angular validators (`Validators.required`, `Validators.minLength`, etc.)
+ * carry no message text, so pass their messages through `[errors]`.
  *
- * Позволяет явно определить `required` и ошибки через инпуты.
- * Явное определение имеет приоритет над автоматическим
+ * `required` and errors can also be set explicitly through inputs;
+ * explicit values take precedence over the detected ones.
  *
  * @example
- * // С formControl
+ * // With formControl
  * <YTextarea [formControl]="descriptionControl" />
  *
  * @example
- * // С ngModel
- * <YTextarea [(ngModel)]="description" [required]="true" [errors]="['Обязательное поле']" />
+ * // With ngModel
+ * <YTextarea [(ngModel)]="description" [required]="true" [errors]="['This field is required']" />
  */
 export class YTextarea extends ControlValueAccessorBase<TYNgTextareaModel> implements IYNgTextareaProps, OnInit, OnChanges {
   @Input() @DefaultValue(name) name: IYNgTextareaProps['name'] = name
@@ -166,8 +166,8 @@ export class YTextarea extends ControlValueAccessorBase<TYNgTextareaModel> imple
   }
 
   /**
-   * Извлекает ошибки из formControl.
-   * Поддерживает только кастомные валидаторы формата: { errorKey: { message: 'текст' } }
+   * Collects error messages from the form control.
+   * Only custom validators that return `{ errorKey: { message: 'Error text' } }` are supported.
    */
   private extractErrorsFromControl = computed<string[] | undefined>(() => {
     this.controlStatusChanged()
@@ -188,10 +188,10 @@ export class YTextarea extends ControlValueAccessorBase<TYNgTextareaModel> imple
   })
 
   /**
- * Приоритет определения `required`
- * 1. Явно переданное свойство `[required]`
- * 2. Наличие `Validators.required` или кастомного валидатора с ключом `'required'` в `FormControl`
- * 3. По умолчанию — `false`
+   * `required` is resolved in this order:
+   * 1. The explicit `[required]` input
+   * 2. `Validators.required` or a custom validator with the `'required'` key on the `FormControl`
+   * 3. Otherwise `false`
   */
   computedRequired = computed<boolean>(() => {
     if (this.requiredExplicitlySet()) {
@@ -201,13 +201,13 @@ export class YTextarea extends ControlValueAccessorBase<TYNgTextareaModel> imple
     const control = this.ngControl?.control
     if (!control) return false
 
-    // Проверяем стандартный Validators.required
+    // Built-in Validators.required
     // eslint-disable-next-line @typescript-eslint/unbound-method
     if (control.hasValidator(Validators.required)) {
       return true
     }
 
-    // Проверяем кастомный валидатор, который возвращает ошибку с ключом 'required'
+    // Custom validator that returns a 'required' error key
     return this.hasCustomRequiredValidator(control)
   })
 
@@ -271,7 +271,7 @@ export class YTextarea extends ControlValueAccessorBase<TYNgTextareaModel> imple
     this.setFormControlValidators()
     this.errorsSignal.set(this.errors)
 
-    // Подписка на изменения статуса внешнего FormControl
+    // Track status changes of an external FormControl
     if (this.ngControl?.control) {
       this.ngControl.control.statusChanges.subscribe(() => {
         this.controlStatusChanged.update((v) => v + 1)
@@ -280,12 +280,12 @@ export class YTextarea extends ControlValueAccessorBase<TYNgTextareaModel> imple
   }
 
   private setFormControlValidators() {
-    // Если используется внешний formControl, не нужно настраивать валидаторы
+    // An external form control brings its own validators
     if (this.ngControl?.control) {
       return
     }
 
-    // Настраиваем валидаторы для внутреннего formControl (для ngModel)
+    // Set up validators on the internal form control used with ngModel
     const control = this.formControl()
     const validators: ValidatorFn[] = []
 

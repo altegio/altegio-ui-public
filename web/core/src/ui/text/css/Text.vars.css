@@ -1,5 +1,5 @@
 :host {
-  /* Размеры */
+  /* Sizes */
 
   /* Headers */
 
@@ -89,7 +89,7 @@
   --y-core-text-size-a4-medium-line-height: var(--y-core-typography-annotation-a-4-medium-line-height);
   --y-core-text-size-a4-medium-font-weight: var(--y-core-typography-annotation-a-4-medium-font-weight);
 
-  /* Цвета */
+  /* Colors */
   --y-core-text-color-primary: var(--y-core-color-text-primary);
   --y-core-text-color-secondary: var(--y-core-color-text-secondary);
   --y-core-text-color-tertiary: var(--y-core-color-text-tertiary);

@@ -1,5 +1,5 @@
 :host {
-  /* Размеры */
+  /* Sizes */
 
   /* Small */
   --y-core-counter-size-small-height: 18px;
@@ -23,7 +23,7 @@
   --y-core-counter-size-medium-padding-y: 0px;
   --y-core-counter-size-medium-padding-x: var(--y-core-size-spacing-x-2, 8px);
 
-  /* Цвета */
+  /* Colors */
 
   /* Primary */
   --y-core-counter-variant-primary-color: var(--y-core-color-text-on-accent);

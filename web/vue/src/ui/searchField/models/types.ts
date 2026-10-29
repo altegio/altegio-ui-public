@@ -74,25 +74,25 @@ export const createVueSearchFieldProps = (): TDefinedVueProps<IYVueSearchFieldPr
 }
 
 /**
- * Значение ввода для события update:modelValue
- * Соответствует detail.value из core InputEvent
+ * Input value for the update:modelValue event
+ * Matches detail.value of the core InputEvent
  */
 export type TYSearchFieldEvent = InputEvent
 
-/** Событие blur компонента SearchField */
+/** SearchField blur event */
 export type TYSearchBlurEvent = BlurEvent
 
-/** Событие focus компонента SearchField */
+/** SearchField focus event */
 export type TYSearchFocusEvent = FocusEvent
 
-/** Событие очистки значения (clear) */
+/** Clear event */
 export type TYSearchClearEvent = ClearEvent
 
-/** Событие клика по иконке поиска */
+/** Search icon click event */
 export type TYSearchClickSearchIconEvent = Event
 
 /**
- * События, которые эмитит YSearchField
+ * Events emitted by YSearchField
  *
  * - update:modelValue: (value: string) => void
  * - blur: (event: BlurEvent) => void

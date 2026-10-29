@@ -1,18 +1,18 @@
 /**
- * ## Служебные утилиты для историй Vue ColorIcon
+ * ## Story helpers for the Vue ColorIcon
  *
- * Этот файл содержит все вспомогательные функции, константы и типы для валидации историй.
- * Вынесено в отдельный файл, чтобы не засорять Storybook автодоки.
+ * Helper functions, constants and types used to validate the stories.
+ * Kept in a separate file so they do not show up in the Storybook autodocs.
  */
 
 import { EFrameworkName } from '~web/shared/.storybook/enums/frameworkName'
 import { COLOR_ICON_STORIES_CONFIG, createColorIconDescription, defaultIcon } from '~core/ui/colorIcon/stories/ColorIcon.stories.utils'
 
-// Реэкспортируем конфигурацию историй из Core
+// Re-export the shared story configuration from core
 export { COLOR_ICON_STORIES_CONFIG, defaultIcon }
 
 /**
- * Создает параметры для истории Vue IconButton
+ * Builds the story parameters for the Vue ColorIcon
  */
 export const createVueColorIconParameters = (frameworkSpecifics = '') => ({
   controls: { sort: 'alpha' },

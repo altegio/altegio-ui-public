@@ -1,12 +1,12 @@
 :host {
-  /* Общие размеры */
+  /* General sizes */
   --y-core-checkbox-max-width: 600px;
   --y-core-checkbox-x-gap: var(--y-core-size-spacing-2-x);
   --y-core-checkbox-info-gap: var(--y-core-size-spacing-0-5-x);
 
-  /* Размеры ошибки */
+  /* Error message */
 
-  /* Общие */
+  /* General */
   --y-core-checkbox-error-margin-top: var(--y-core-size-spacing-0-5-x);
 
   /* Small */

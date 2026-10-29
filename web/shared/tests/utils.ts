@@ -4,9 +4,9 @@ type TGeneratePropTestCase = <T, K extends keyof T>(testCasesKey: K, testVariabl
 type TGeneratePropTestCases = <T, K extends keyof T>(testCasesKey: K, testVariablesArray: T[K][], defaultValues?: T, calculateExpected?: (value: T[K]) => unknown) => TPropTestCase<T, K>[]
 
 /**
- * Создает промис, который резолвится через указанное количество миллисекунд
- * @param {number} ms - Количество миллисекунд для ожидания
- * @returns {Promise<void>} Промис, который резолвится после указанной задержки
+ * Returns a promise that resolves after the given number of milliseconds
+ * @param {number} ms - Milliseconds to wait
+ * @returns {Promise<void>} Promise that resolves after the delay
  */
 export const sleep = (ms: number) => new Promise((resolve) => setTimeout(
   resolve,
@@ -14,52 +14,52 @@ export const sleep = (ms: number) => new Promise((resolve) => setTimeout(
 ))
 
 /**
- * Дебаг утилита для ожидания стабилизации компонента
- * !!! Должна использоваться только для отладки тестов
- * @param {string} tagName - Имя тега веб-компонента
- * @returns {Promise<void>} Промис, который резолвится после стабилизации компонента
+ * Debug helper that waits until a component settles
+ * !!! Use it only while debugging tests
+ * @param {string} tagName - Web component tag name
+ * @returns {Promise<void>} Promise that resolves once the component has settled
  * @description
- * Функция последовательно ожидает:
- * 1. Определение веб-компонента в customElements
- * 2. Выполнение всех микротасков
- * 3. Выполнение всех макротасков
- * 4. Завершение следующего фрейма рендеринга
+ * Waits, in order, for:
+ * 1. The web component to be defined in customElements
+ * 2. Pending microtasks
+ * 3. Pending macrotasks
+ * 4. The next animation frame
  */
 export const debugWaitForStability = async(tagName: string) => {
-  // Ждем определения компонента
+  // Wait for the component definition
   await customElements.whenDefined(tagName)
-  // Ждем микротаски
+  // Flush microtasks
   await Promise.resolve()
-  // Ждем макротаски
+  // Flush macrotasks
   await sleep(0)
-  // Ждем фрейм рендеринга
+  // Wait for the next animation frame
   await new Promise((resolve) => requestAnimationFrame(resolve))
 }
 
 
 /**
- * Создает класс с модификатором.
- * @param baseClass - Базовый класс.
- * @param modifier - Модификатор.
- * @returns Строка с классом и модификатором.
+ * Builds a class name with a modifier.
+ * @param baseClass - Base class name.
+ * @param modifier - Modifier.
+ * @returns The class name with the modifier.
  */
 export const classWithModifier = (baseClass: string, modifier: string) => `${baseClass}_${modifier}`
 
 /**
- * Возвращает элемент по селектору внутри компонента.
- * @param component - Компонент (HTMLElement).
- * @param selector - Селектор элемента.
- * @returns Элемент или null.
+ * Finds an element by selector inside the component's shadow root.
+ * @param component - Component (HTMLElement).
+ * @param selector - Element selector.
+ * @returns The element or null.
  */
 export const getShadowElement = (component: HTMLElement, selector: string) => {
   return component.shadowRoot?.querySelector(selector)
 }
 
 /**
- * Возвращает корневой элемент компонента.
- * @param component - Компонент (HTMLElement).
- * @param baseClass - Базовый класс корневого элемента.
- * @returns Корневой элемент или null.
+ * Returns the component's root element.
+ * @param component - Component (HTMLElement).
+ * @param baseClass - Base class of the root element.
+ * @returns The root element or null.
  */
 export const getShadowRootElement = (component: HTMLElement, baseClass: string) => {
   return getShadowElement(
@@ -69,28 +69,28 @@ export const getShadowRootElement = (component: HTMLElement, baseClass: string) 
 }
 
 /**
- * Возвращает массив классов элемента.
- * @param element - Элемент.
- * @returns Массив классов.
+ * Returns the element's class list as an array.
+ * @param element - Element.
+ * @returns Class names.
  */
 export const getElementClasses = (element: Element | null | undefined) => {
   return Array.from(element?.classList ?? [])
 }
 
 /**
- * Возвращает массив селекторов стилей.
- * @param adoptedStyleSheets - Массив стилевых таблиц.
- * @returns Массив селекторов стилей.
+ * Returns the selectors of all style rules.
+ * @param adoptedStyleSheets - Style sheets.
+ * @returns Style rule selectors.
  */
 export const getStylesSelectors = (adoptedStyleSheets: CSSStyleSheet[]) => Array.from(adoptedStyleSheets)
   .flatMap((sheet) => Array.from(sheet.cssRules))
   .map((rule) => (rule as CSSStyleRule).selectorText)
 
 /**
- * Возвращает правило стиля по селектору.
- * @param adoptedStyleSheets - Массив стилевых таблиц.
- * @param cssClasses - Селекторы стиля.
- * @returns {CSSStyleRule | undefined} Правило стиля или undefined.
+ * Returns the style rule with the given selector.
+ * @param adoptedStyleSheets - Style sheets.
+ * @param cssClasses - Rule selector.
+ * @returns {CSSStyleRule | undefined} The style rule or undefined.
  */
 export const getStyleRule = (adoptedStyleSheets: CSSStyleSheet[], selector: string) => {
   const result = Array.from(adoptedStyleSheets)
@@ -107,9 +107,9 @@ export const getStyleRule = (adoptedStyleSheets: CSSStyleSheet[], selector: stri
 }
 
 /**
- * Возвращает корневой элемент компонента.
- * @param component - Компонент (HTMLElement).
- * @returns {ShadowRoot} Корневой элемент или ошибку.
+ * Returns the component's shadow root.
+ * @param component - Component (HTMLElement).
+ * @returns {ShadowRoot} The shadow root; throws if it is missing.
  */
 export const getWCShadowRoot = (component: HTMLElement) => {
   const shadowRoot = component.shadowRoot
@@ -120,10 +120,10 @@ export const getWCShadowRoot = (component: HTMLElement) => {
 }
 
 /**
- * Возвращает значение Host CSS переменной
- * @param adoptedStyleSheets - Массив стилевых таблиц
- * @param variableName - Имя переменной
- * @returns Значение переменной
+ * Returns the value of a CSS variable declared on :host
+ * @param adoptedStyleSheets - Style sheets
+ * @param variableName - Variable name
+ * @returns Variable value
  */
 export const getHostCSSVariableValue = (
   adoptedStyleSheets: CSSStyleSheet[],
@@ -142,10 +142,10 @@ export const getHostCSSVariableValue = (
 }
 
 /**
- * Создает и отправляет событие на указанный узел DOM.
- * @param node - DOM-узел, на котором будет отправлено событие
- * @param eventName - Имя события
- * @param eventInitDetails - Объект с настройками события
+ * Creates an event and dispatches it on the given DOM node.
+ * @param node - DOM node to dispatch the event on
+ * @param eventName - Event name
+ * @param eventInitDetails - Event init options
  */
 export const dispatchEvent = (node: Node, eventName: string, eventInitDetails: EventInit) => {
   const event = new Event(
@@ -161,14 +161,14 @@ export const trimTextContent = (value: string | null | undefined): string | unde
 }
 
 /**
- * Генерирует тестовый случай для свойства компонента.
- * @template T - Тип объекта с тестируемыми свойствами
- * @template K - Тип ключа свойства (должен быть ключом T)
- * @param {K} testCaseKey - Ключ тестового случая (имя свойства)
- * @param {T[K]} testCaseValue - Значение для тестирования
- * @param {T[K]} [defaultValue] - Значение по умолчанию
- * @param {(value: T[K]) => unknown} [calculateExpected] - Функция для вычисления ожидаемого значения
- * @returns {Object} Объект с параметрами тестового случая
+ * Builds a test case for a component property.
+ * @template T - Object with the properties under test
+ * @template K - Property key (a key of T)
+ * @param {K} testCaseKey - Test case key (property name)
+ * @param {T[K]} testCaseValue - Value to test
+ * @param {T[K]} [defaultValue] - Default value
+ * @param {(value: T[K]) => unknown} [calculateExpected] - Computes the expected value
+ * @returns {Object} Test case parameters
  */
 const generatePropTestCase: TGeneratePropTestCase = (testCaseKey, testCaseValue, defaultValue, calculateExpected) => {
   let expected: unknown = testCaseValue ?? defaultValue
@@ -186,14 +186,14 @@ const generatePropTestCase: TGeneratePropTestCase = (testCaseKey, testCaseValue,
 }
 
 /**
- * Генерирует массив тестовых случаев для свойства компонента.
- * @template T - Тип объекта с тестируемыми свойствами
- * @template K - Тип ключа свойства (должен быть ключом T)
- * @param {K} testCasesKey - Ключ тестового случая (имя свойства)
- * @param {T[K][]} testVariablesArray - Массив значений для тестирования
- * @param {T} [defaultValues] - Объект со значениями по умолчанию
- * @param {(value: T[K]) => unknown} [calculateExpected] - Функция для вычисления ожидаемого значения
- * @returns {TPropTestCase<T, K>[]} Массив объектов с параметрами тестовых случаев
+ * Builds test cases for a component property.
+ * @template T - Object with the properties under test
+ * @template K - Property key (a key of T)
+ * @param {K} testCasesKey - Test case key (property name)
+ * @param {T[K][]} testVariablesArray - Values to test
+ * @param {T} [defaultValues] - Default values
+ * @param {(value: T[K]) => unknown} [calculateExpected] - Computes the expected value
+ * @returns {TPropTestCase<T, K>[]} Test case parameters
  */
 export const generatePropTestCases: TGeneratePropTestCases = (testCasesKey, testVariablesArray, defaultValues, calculateExpected) => {
   return testVariablesArray.map((testCaseValue) => generatePropTestCase(

@@ -4,21 +4,21 @@ import type { IGlobalContext } from '../../context'
 import { PaletteModule } from '../../context/modules/PaletteModule'
 
 /**
- * Идентификатор модуля палитры в контексте
+ * ID of the palette module in the context
  */
 export const PALETTE_MODULE_ID = 'palette'
 
 /**
- * Плагин для управления палитрой в GlobalProvider
+ * GlobalProvider plugin that manages the color palette
  *
- * Использует PaletteModule для хранения данных локализации в глобальном контексте.
+ * Stores the palette data in the global context through a PaletteModule.
  *
  * @example
  * ```typescript
- * // Создание экземпляра плагина с русской локализацией
+ * // Create the plugin with a yellow accent color and the light theme
  * const palettePlugin = new PalettePlugin('#ffcb00', false);
  *
- * // Использование плагина в GlobalProvider
+ * // Pass the plugin to GlobalProvider
  * <YGlobalProvider :plugins="[palettePlugin]">
  *   <YourComponent />
  * </YGlobalProvider>
@@ -30,24 +30,24 @@ export class PalettePlugin implements IGlobalProviderPlugin {
   private context?: IGlobalContext
 
   /**
-   * Создает экземпляр плагина палитры
+   * Creates the palette plugin
    *
-   * @param accentColor - Основной цвет, используемый для генерации палитры
-   * @param useDarkTheme - Флаг для включения тёмной темы
+   * @param accentColor - Accent color the palette is generated from
+   * @param useDarkTheme - Enables the dark theme
    */
   constructor(private accentColor: string, private useDarkTheme = false) {}
 
   /**
-   * Инициализирует палитру в глобальном контексте
+   * Sets up the palette in the global context
    *
-   * Создает модуль палитры и добавляет его в глобальный контекст.
+   * Creates the palette module and adds it to the global context.
    *
-   * @param context - Глобальный контекст для установки палитры
+   * @param context - Global context to add the palette to
    */
   init(context: IGlobalContext): void {
     this.context = context
 
-    // Создаем и добавляем модуль локализации в контекст
+    // Create the palette module and add it to the context
     this.paletteModule = new PaletteModule({
       id: PALETTE_MODULE_ID,
       accentColor: colord(this.accentColor),

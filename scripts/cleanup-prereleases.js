@@ -66,7 +66,7 @@ function getMergedBranches(fetchDepth = 50, hours = 24) {
 }
 
 function parsePrereleaseVersion(version) {
-  // Найдём первую часть (semver) и вторую (branch.build)
+  // Split "1.2.3-branch.build" into the semver part and the "branch.build" suffix
   const dashIndex = version.indexOf('-');
   if (dashIndex === -1) {
     throw new Error(`Invalid prerelease version format: ${version}`);
@@ -75,7 +75,7 @@ function parsePrereleaseVersion(version) {
   const semVer = version.slice(0, dashIndex);
   const rest = version.slice(dashIndex + 1);
 
-  // Последняя точка разделяет branch и build
+  // The last dot separates the branch name from the build number
   const lastDotIndex = rest.lastIndexOf('.');
   if (lastDotIndex === -1) {
     throw new Error(`Invalid prerelease version format: ${version}`);

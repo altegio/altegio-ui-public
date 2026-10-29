@@ -197,7 +197,7 @@ describe(
           },
         )
 
-        // PFW-1189 - вернул возможность отлавливать события, тк потребовалась их обработка для отображения тултипа на мобилках
+        // Skipped: disabled controls still emit click events because the mobile tooltip needs them
         it.skip(
           'Не должен вызывать обработчик клика, если чекбокс отключен',
           async() => {

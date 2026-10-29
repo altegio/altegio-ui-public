@@ -1,7 +1,7 @@
 $component: $YCoreSimpleButtonTagName;
 
 :host .$(component) {
-  /* Общие */
+  /* General */
   --y-core-simple-button-size-small-padding-x: var(--y-core-simple-button-size-small-padding-y);
   --y-core-simple-button-size-medium-padding-x: var(--y-core-size-spacing-3-x);
   --y-core-simple-button-size-medium-padding-y: var(--y-core-size-spacing-3-x);

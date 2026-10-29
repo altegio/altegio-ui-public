@@ -38,7 +38,7 @@ import { withLocator } from '~core/utils/locator'
 const { value, type, variant, draggable, allowCrossLevelMove } = createCoreCollapseProps()
 const CLONE_Z_INDEX = 9999
 const CLONE_OPACITY = 0.8
-const DRAG_THRESHOLD = 15 // Минимальное расстояние в пикселях для активации drag
+const DRAG_THRESHOLD = 15 // Minimum pointer movement in pixels before a drag starts
 
 @customElement(tagName)
 @withLocator(tagName)
@@ -72,7 +72,7 @@ export class YCoreCollapse
     gapValue: 8,
     touchStartTimeout: null,
     sourceItemClone: null,
-    dragReady: false, // Готовность к drag после истечения таймера
+    dragReady: false, // Set once the touch hold timer has elapsed
   }
 
   @bubblingEvent(
@@ -111,29 +111,29 @@ export class YCoreCollapse
 
   private scrollToActiveItem = (itemValue: TCollapseItemValueSingle) => {
     setTimeout(() => {
-      // Ищем активный элемент только среди прямых дочерних элементов текущего collapse
+      // Look for the active item among this collapse's direct children only
       const activeItem = this.querySelector<YCoreCollapseItem>(`${this.tagName.toLowerCase()}[data-uid="${this.dataset.uid}"] > ${YCoreCollapseItemTagName}[value="${itemValue}"]`)
 
       if (activeItem && this.value === itemValue) {
-        // Прокручиваем плавно к активному элементу
+        // Scroll smoothly to the active item
         activeItem.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
           inline: 'nearest',
         })
       }
-    }, 350) // 300 ms время css анимации + 50 ms запас
+    }, 350) // 300 ms CSS transition + 50 ms margin
   }
 
   private handleCollapseChange = (event: Event) => {
-    // Не блокируем всплытие события полностью, чтобы v-click-outside мог работать
+    // Keep the item event from reaching parent collapses. It is a custom event, so native click handlers such as v-click-outside still work.
     event.stopPropagation()
 
     const itemValue = (event as CollapseItemClickEvent).detail.value
 
     if (this.type === EYCoreCollapseType.SINGLE) {
       this.setSingleValue(itemValue)
-      // Прокручиваем к активному элементу после анимации
+      // Scroll to the active item once the transition ends
       this.scrollToActiveItem(itemValue)
     } else {
       this.setMultipleValue(itemValue)
@@ -266,7 +266,7 @@ export class YCoreCollapse
     const sourceItem = this.findSourceItem() || this.touchDragState.sourceItem
     if (!sourceItem) return
 
-    // Находим родительский Collapse для sourceItem
+    // Find the Collapse that owns sourceItem
     const parentCollapse = sourceItem.closest(tagName)
     if (!parentCollapse) return
 
@@ -335,7 +335,7 @@ export class YCoreCollapse
 
     touchDragState.touchStartTimeout = setTimeout(() => {
       touchDragState.touchStartTimeout = null
-      touchDragState.dragReady = true // Отмечаем готовность к drag, но не активируем его
+      touchDragState.dragReady = true // The item may now be dragged; the drag itself starts on touch move
     }, TOUCH_DRAG_DELAY)
   }
 
@@ -449,7 +449,7 @@ export class YCoreCollapse
       return
     }
 
-    // Если drag был активен, обрабатываем как перетаскивание
+    // An active touch drag ends as a drop
     if (active) {
       preventAndStopEvent(event)
 
@@ -465,7 +465,7 @@ export class YCoreCollapse
       }
     }
 
-    // Если drag не был активен, не блокируем событие - позволяем сработать клику
+    // Without an active drag the event is left alone so the click still fires
     this.resetTouchDragState()
   }
 

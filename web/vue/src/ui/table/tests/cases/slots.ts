@@ -53,7 +53,7 @@ export const slotCellTestCases: TSlotTestCase[] = [
   { slot: 'cell', case: 'без контента', content: empty },
 ]
 
-// Динамические слоты для заголовков
+// Dynamic header slots
 export const slotHeadHintDynamicTestCases: TSlotTestCase[] = [
   { slot: `head-hint-${testHeaders.id.id}`, case: 'с контентом', content: text },
   { slot: `head-hint-${testHeaders.id.id}`, case: 'без контента', content: empty },
@@ -64,7 +64,7 @@ export const slotHeadCellDynamicTestCases: TSlotTestCase[] = [
   { slot: `head-cell-${testHeaders.name.id}`, case: 'без контента', content: empty },
 ]
 
-// Динамические слоты для строк
+// Dynamic row slots
 export const slotRowFirstDynamicTestCases: TSlotTestCase[] = [
   { slot: `row-first-${testItems[0].rowId}`, case: 'с контентом', content: text },
   { slot: `row-first-${testItems[0].rowId}`, case: 'без контента', content: empty },
@@ -75,7 +75,7 @@ export const slotRowLastDynamicTestCases: TSlotTestCase[] = [
   { slot: `row-last-${testItems[0].rowId}`, case: 'без контента', content: empty },
 ]
 
-// Динамические слоты для ячеек
+// Dynamic cell slots
 export const slotCellOuterDynamicTestCases: TSlotTestCase[] = [
   { slot: `cell-outer-${testItems[0].rowId}`, case: 'с контентом', content: text },
   { slot: `cell-outer-${testItems[0].rowId}`, case: 'без контента', content: empty },

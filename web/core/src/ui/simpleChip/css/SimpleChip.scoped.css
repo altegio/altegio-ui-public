@@ -35,7 +35,7 @@ $component: $YCoreSimpleChipTagName;
     }
   }
 
-  /* Размеры */
+  /* Sizes */
   &_size {
     &_small {
       padding: var(--y-core-simple-chip-size-small-padding-y) var(--y-core-simple-chip-size-small-padding-right) var(--y-core-simple-chip-size-small-padding-y) var(--y-core-simple-chip-size-small-padding-left);

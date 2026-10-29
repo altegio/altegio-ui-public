@@ -20,16 +20,16 @@ export interface ITestBedInstance<T> {
 }
 
 /**
- * Хелпер для тестирования Vue компонентов.
- * @param component - Vue компонент для тестирования.
- * @param defaultOptions - Опции по умолчанию для монтирования.
+ * Test helper for Vue components.
+ * @param component - Vue component under test.
+ * @param defaultOptions - Default mounting options.
  * @returns {
  *  wrapper: VueWrapper<ComponentPublicInstance>,
  *  updateComponent: (options: ComponentMountingOptions<ComponentPublicInstance>) => Promise<void>,
  *  resetComponent: () => Promise<void>,
  *  removeComponent: () => void,
  *  initCoreComponent: (tagName: string, coreComponent: CustomElementConstructor) => void,
- * } Объект с компонентом, функцией обновления, сброса, удаления и инициализации core компонента.
+ * } The wrapper plus helpers to update, reset and remove it and to register the core component.
  */
 export const useVueTests = <T>(
   component: T,
@@ -83,9 +83,9 @@ export const useVueTests = <T>(
   }
 
   /**
-   * Инициализация core компонента
-   * @param tagName - Имя тега core компонента
-   * @param coreComponent - Конструктор core компонента
+   * Registers the core component
+   * @param tagName - Core component tag name
+   * @param coreComponent - Core component constructor
    */
   const initCoreComponent = (tagName: string, coreComponent: CustomElementConstructor) => {
     if (!customElements.get(tagName)) {
@@ -94,15 +94,15 @@ export const useVueTests = <T>(
   }
 
   /**
-   * Обновление компонента
-   * @param options - Опции для обновления
+   * Updates the component
+   * @param options - Mounting options to apply
    */
   const updateComponent = async(options?: ComponentMountingOptions<T>) => {
     await updateTestBed(options)
   }
 
   /**
-   * Сброс компонента к состоянию по умолчанию
+   * Resets the component to its default state
    */
   const resetComponent = async() => {
     await updateTestBed({
@@ -118,7 +118,7 @@ export const useVueTests = <T>(
   }
 
   /**
-   * Удаление компонента
+   * Removes the component
    */
   const removeComponent = () => {
     wrapper.unmount()

@@ -11,11 +11,11 @@ export interface IRenderIconOptions {
 }
 
 /**
- * Опции для рендеринга иконки
+ * Options for rendering an icon
  * @interface IRenderIconOptions
- * @property {IYIcon} [icon] - Иконка для отображения
- * @property {string} [size] - Размер иконки
- * @property {string} [className] - CSS класс для иконки
+ * @property {IYIcon} [icon] - Icon to render
+ * @property {string} [size] - Icon size
+ * @property {string} [className] - CSS class for the icon
  */
 export default ({ icon, size, className }: IRenderIconOptions) => {
   if (!icon) return nothing

@@ -11,16 +11,16 @@ import type {
 import type { TYCoreCalendarEvents } from '~core/ui/calendar/models/types/events'
 import type { ILocale } from '~core/i18n'
 
-// Импортируем компоненты
+// Register the components
 import '~core/ui/calendar'
 import '~core/ui/globalProvider'
 
-// Определяем тип для метаинформации историй
+// Story meta type
 type TYCoreCalendarMeta = IYCoreCalendarProps & TYCoreCalendarEvents & { localeData: ILocale }
 type Story = StoryObj<TYCoreCalendarMeta>
 
 /**
- * Функция для создания шаблона календаря с плагином локализации
+ * Builds a calendar template wrapped in a localization plugin
  */
 const createCalendarTemplate = ({
   disabled,
@@ -31,7 +31,7 @@ const createCalendarTemplate = ({
   onSelect,
   localeData,
 }: TYCoreCalendarMeta) => {
-  // Создаем плагин локализации с выбранной локалью
+  // Localization plugin with the selected locale
   const i18nPlugin = new I18nPlugin(localeData)
 
   return html`

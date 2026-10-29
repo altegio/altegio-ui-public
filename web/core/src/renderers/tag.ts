@@ -10,7 +10,7 @@ export interface IRenderTagOptions extends Partial<IYCoreTagProps> {
 }
 
 /**
- * Опции для рендеринга тега
+ * Options for rendering a tag
  * @interface IRenderTagOptions
  */
 export default ({ text, className, ...props }: IRenderTagOptions) => {

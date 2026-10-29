@@ -256,7 +256,7 @@ export const WithLargeContent: Story = {
   args: {
     ...meta.args,
     modelValue: [],
-    type: 'single', // Используем single режим для демонстрации автоскролла
+    type: 'single', // single mode demonstrates the auto-scroll
   },
   render: (args) => {
     const [, updateArgs] = useArgs()
@@ -278,11 +278,11 @@ export const WithLargeContent: Story = {
           set: handleUpdateModelValue,
         })
 
-        // Генерируем большое количество контента
+        // Generate a lot of content
         const generateLargeContent = (itemIndex: number) => {
           const contentBlocks = []
 
-          // Добавляем заголовки и параграфы
+          // Add headings and paragraphs
           for (let i = 1; i <= 15; i++) {
             contentBlocks.push(`
               <div style="margin-bottom: 24px;">

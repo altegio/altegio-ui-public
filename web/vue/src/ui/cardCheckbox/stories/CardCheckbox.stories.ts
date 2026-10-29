@@ -8,7 +8,7 @@ type TVueCardCheckboxStoryMeta = IYVueCardCheckboxProps
 
 /**
  * Vue wrapper for Core CardCheckbox
- * вспомогательный компонент для CardButton/CardSelect
+ * Helper component used by CardButton and CardSelect
  */
 const meta: Meta<TVueCardCheckboxStoryMeta> = {
   title: 'Cards/Partials/✅ CardCheckbox',

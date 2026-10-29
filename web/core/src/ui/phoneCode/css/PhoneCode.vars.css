@@ -1,7 +1,7 @@
 $component: $YCorePhoneCodeTagName;
 
 :host {
-  /* Общие */
+  /* General */
   --y-core-phone-code-background-color-hover: var(--y-core-color-surface-secondary);
   --y-core-phone-code-color-disabled: var(--y-core-color-icon-tertiary);
 

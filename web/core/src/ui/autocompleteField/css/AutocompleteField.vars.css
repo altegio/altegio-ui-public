@@ -1,7 +1,7 @@
 $component: $YCoreAutocompleteFieldTagName;
 
 :host {
-  /* Размеры */
+  /* Sizes */
   --y-core-autocomplete-field-min-width: 88px;
   --y-core-autocomplete-field-max-width: 404px;
   --y-core-autocomplete-field-dropdown-min-height: 200px;
@@ -10,7 +10,7 @@ $component: $YCoreAutocompleteFieldTagName;
   --y-core-dropdown-activator-width: 100%;
   --y-core-dropdown-max-width: 100%;
 
-  /* Общие */
+  /* General */
   --y-core-autocomplete-field-display: flex;
   --y-core-autocomplete-field-color: var(--y-core-color-text-primary);
   --y-core-autocomplete-field-gap: var(--y-core-size-spacing-x);

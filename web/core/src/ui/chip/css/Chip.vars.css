@@ -1,8 +1,8 @@
 :host {
-  /* Общие */
+  /* General */
   --y-core-chip-border-radius: var(--y-core-size-radius-2-x);
   
-  /* Размеры */
+  /* Sizes */
 
   /* Small */
   --y-core-chip-size-small-gap: var(--y-core-size-spacing-x);
@@ -14,14 +14,14 @@
   --y-core-chip-size-large-padding-y: var(--y-core-size-spacing-3-x);
   --y-core-chip-size-large-padding-x: var(--y-core-size-spacing-3-x);
   
-  /* Цвета */
+  /* Colors */
 
-  /* Цвет текста */
+  /* Text color */
   --y-core-chip-color-default: var(--y-core-color-icon-secondary);
   --y-core-chip-color-active: var(--y-core-color-other-contrast);
   --y-core-chip-color-disabled: var(--y-core-color-text-tertiary);
   
-  /* Цвет фона */
+  /* Background color */
   --y-core-chip-bg-default: var(--y-core-color-surface-tertiary);
   --y-core-chip-bg-active: var(--y-core-color-other-invert);
   --y-core-chip-bg-disabled: var(--y-core-color-surface-tertiary-low);

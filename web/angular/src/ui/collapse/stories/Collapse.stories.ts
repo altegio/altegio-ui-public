@@ -147,7 +147,7 @@ export const WithNestedItems: Story = {
                     Parent item content {{ i }}
                   </p>
 
-                  <!-- Вложенный Collapse -->
+                  <!-- Nested Collapse -->
                   <YCollapse [value]="[]" type="multiple" [draggable]="true" [allowCrossLevelMove]="true">
                     @for (j of ['1','2','3']; track j) {
                       <YCollapseItem [value]="i + '-' + j">
@@ -165,7 +165,7 @@ export const WithNestedItems: Story = {
 
                         <ng-template #collapseItemContent>
                           <div style="padding: 12px 0;">
-                          <!-- Вложенный Collapse -->
+                          <!-- Nested Collapse -->
                           <YCollapse [value]="[]" type="multiple" [draggable]="true" [allowCrossLevelMove]="true">
                             @for (k of ['1','2','3']; track j) {
                               <YCollapseItem [value]="i + '-' + j + '-' + k">

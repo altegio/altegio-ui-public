@@ -29,10 +29,10 @@ const cssCustomMediaContent = (() => {
 })()
 
 /**
- * Опции для плагина cssBreakpointsInjectPlugin
+ * Options for cssBreakpointsInjectPlugin
  * @interface cssBreakpointsInjectPluginOptions
- * @property {string} [outPath='dist'] - Путь для сохранения CSS файла, относительно корня проекта, без слэша на конце
- * @property {string} [fileName='injected.css'] - Имя выходного CSS файла, относительно outPath
+ * @property {string} [outPath='dist'] - Output directory for the CSS file, relative to the project root, without a trailing slash
+ * @property {string} [fileName='injected.css'] - Output CSS file name, relative to outPath
  */
 export default function cssBreakpointsInjectPlugin(
   {

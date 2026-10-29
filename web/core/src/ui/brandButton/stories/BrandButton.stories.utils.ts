@@ -1,8 +1,8 @@
 /**
- * ## Служебные утилиты для историй BrandButton
+ * ## Story helpers for BrandButton
  *
- * Этот файл содержит все вспомогательные функции, константы и типы для валидации историй.
- * Вынесено в отдельный файл, чтобы не засорять Storybook автодоки.
+ * Helper functions, constants and types used to validate the stories.
+ * Kept in a separate file so they do not show up in the Storybook autodocs.
  */
 
 import type { EFrameworkName } from '~web/shared/.storybook/enums/frameworkName'
@@ -11,12 +11,12 @@ import { EYSizes } from '~web/shared/types/global'
 import { EYCoreBrandButtonVariant } from '../models/types/external'
 
 // =============================================================================
-// КОНФИГУРАЦИЯ ИСТОРИЙ
+// STORY CONFIGURATION
 // =============================================================================
 
 /**
- * Конфигурация всех доступных историй
- * Используется для обеспечения единообразия между фреймворками
+ * Configuration of all available stories
+ * Keeps the stories consistent across frameworks
  */
 export const BRAND_BUTTON_STORIES_CONFIG: Record<string, IStoryConfig> = {
   Playground: { parameters: { docs: { title: 'Playground', description: { story: 'Try the brand button interactively.\nUse the controls to explore its properties and behavior.' } } } },
@@ -26,7 +26,7 @@ export const BRAND_BUTTON_STORIES_CONFIG: Record<string, IStoryConfig> = {
 } as const
 
 /**
- * Создает JSDoc описание для BrandButton с указанием фреймворка
+ * Builds the BrandButton description for the given framework
  */
 export const createBrandButtonDescription = (frameworkName: EFrameworkName, frameworkSpecifics = '') => `
 ## ${frameworkName} BrandButton
@@ -52,7 +52,7 @@ ${frameworkSpecifics}
 `
 
 /**
- * Создает параметры для истории BrandButton
+ * Builds the story parameters for BrandButton
  */
 export const createBrandButtonParameters = (frameworkName: EFrameworkName, frameworkSpecifics = '') => ({
   controls: { sort: 'alpha' },

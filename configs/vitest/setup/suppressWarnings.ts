@@ -7,11 +7,11 @@ const ignoreMessages: Record<ConsoleMethod, string[]> = {
     'Lit is in dev mode.',
     'scheduled an update (generally because a property was set) after an update completed',
     'sanitizing HTML stripped some content',
-    '[Vue warn]: Missing required prop', // TODO: Добавить обязательные пропы в тесты
-    'has no corresponding declaration.', // TODO: Проверить типы во Vue компонентах
+    '[Vue warn]: Missing required prop', // TODO: Pass the required props in the tests
+    'has no corresponding declaration.', // TODO: Fix the Vue component type declarations
   ],
   error: [
-    'NG0303: Can\'t bind to', // TODO: Проверить ошибки в Angular компонентах
+    'NG0303: Can\'t bind to', // TODO: Fix the Angular component bindings
   ],
 }
 

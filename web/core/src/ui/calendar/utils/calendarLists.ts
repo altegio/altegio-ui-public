@@ -20,9 +20,9 @@ export const getMonthList = (): IDropdownListItem[] => {
 }
 
 /**
- * Получить список годов в заданном диапазоне
- * @param minDate Минимальная дата
- * @param maxDate Максимальная дата
+ * Returns the years within the given range
+ * @param minDate Minimum date
+ * @param maxDate Maximum date
  */
 export const getYearsList = (minDate = '', maxDate = ''): IDropdownListItem[] => {
   const minYear = minDate ? parseDate(minDate).year() : getDefaultMinDate().year()

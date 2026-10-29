@@ -1,5 +1,5 @@
 :host {
-  /* Размеры */
+  /* Sizes */
 
   /* Small */
   --y-core-simple-checkbox-size-small-width: 20px;
@@ -15,7 +15,7 @@
   --y-core-simple-checkbox-size-medium-icon-checked-width: 16px;
   --y-core-simple-checkbox-size-medium-icon-checked-height: 16px;
 
-  /* Цвета состояний */
+  /* State colors */
 
   /* Default */
   --y-core-simple-checkbox-default-background-color: var(--y-core-color-surface-primary);

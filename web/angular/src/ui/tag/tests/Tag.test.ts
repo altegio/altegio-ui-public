@@ -104,7 +104,7 @@ describe(
             await fixture.whenStable()
 
             const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
-            // По умолчанию должен быть medium
+            // Defaults to medium
             expect(coreElement?.size).toBe(EYSizes.MEDIUM)
           },
         )
@@ -134,7 +134,7 @@ describe(
             await fixture.whenStable()
 
             const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
-            // По умолчанию должен быть accent
+            // Defaults to accent
             expect(coreElement?.variant).toBe(EYCoreTagVariant.ACCENT)
           },
         )
@@ -164,7 +164,7 @@ describe(
             await fixture.whenStable()
 
             const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
-            // По умолчанию должен быть false
+            // Defaults to false
             expect(coreElement?.disabled).toBe(false)
           },
         )

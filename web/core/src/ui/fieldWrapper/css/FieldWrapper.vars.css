@@ -1,8 +1,8 @@
 :host {
-  /* Общие */
+  /* General */
   --y-core-field-wrapper-border-width: 1px;
 
-  /* Цвета состояний */
+  /* State colors */
 
   /* Default */
   --y-core-field-wrapper-border-color: var(--y-core-color-stroke-primary);
@@ -24,7 +24,7 @@
   /* Error */
   --y-core-field-wrapper-error-border-color: var(--y-core-color-stroke-negative);
 
-  /* Размеры */
+  /* Sizes */
 
   /* Small */
   --y-core-field-wrapper-size-small-font-size: var(--y-core-typography-paragraph-p-2-regular-font-size);

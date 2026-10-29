@@ -7,10 +7,10 @@ export interface IRenderTextOptions {
 }
 
 /**
- * Опции для рендеринга текста
+ * Options for rendering text
  * @interface IRenderTextOptions
- * @property {string} [text] - Текст для отображения
- * @property {string} [className] - CSS класс для текста
+ * @property {string} [text] - Text to render
+ * @property {string} [className] - CSS class for the text
  */
 export default ({ text, className }: IRenderTextOptions) => {
   if (!text) return nothing

@@ -190,7 +190,7 @@ describe(
           },
         )
 
-        // Необходимо переписывать Core компонент, чтобы он выдал не нативные клики, а кастомные евенты, иначе disabled аттрибут на кнопке не отрабатывает
+        // Skipped: the core button emits native clicks, so the disabled attribute does not block them. The core component has to emit custom events instead.
         it.skip(
           'Не должен вызывать обработчик клика, если кнопка отключена',
           async() => {

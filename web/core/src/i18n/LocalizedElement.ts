@@ -13,56 +13,56 @@ import { parseDate } from '~shared/utils/dateTime'
 import dayjs from 'dayjs'
 
 /**
- * Базовый класс для компонентов с поддержкой локализации
+ * Base class for components that support localization
  *
- * Автоматически подписывается на изменения локали и предоставляет методы для работы с ней
+ * Subscribes to locale changes automatically and provides helpers for working with the locale
  */
 export class LocalizedElement extends LitElement {
   @property({ type: Object, attribute: false }) locale: ILocale | undefined = undefined
 
   /**
-   * Текущая локализация
+   * Current locale
    */
   @state() protected currentLocale: ILocale | null = null
   @state() protected currentLocaleService: LocaleService | null = null
 
   /**
-   * Глобальный контекст
+   * Global context
    */
   @consume({ context: globalContextCreated, subscribe: true })
   @state() protected globalContext!: IGlobalContext
 
   /**
-   * Текущая дата
+   * Current date
    */
   @state() protected currentDate = parseDate()
 
   /**
-   * Обработчик для обновления Global Provider
+   * Handler for Global Provider updates
    */
   @state() protected globalContextUpdateHandler: (() => void) | null = null
 
   /**
-   * Обработчик для обновления модуля локализации
+   * Handler for locale module updates
    */
   @state() protected moduleUpdateHandler: (() => void) | null = null
 
   /**
-   * Получить модуль локализации из контекста
+   * Returns the locale module from the context
    */
   protected getLocaleModule(): ILocaleModule | undefined {
     return this.getGlobalContext()?.getModule(LOCALE_MODULE_ID) as ILocaleModule | undefined
   }
 
   /**
-   * Получить текущую локаль
+   * Returns the current locale
    */
   protected getLocale(): ILocale {
-    // Приоритеты:
-    // 1. Локаль заданная через свойство компонента
-    // 2. Текущая локаль компонента
-    // 3. Локаль из модуля
-    // 4. Встроенная локаль языка контента
+    // Resolution order:
+    // 1. The locale set through the component property
+    // 2. The component's current locale
+    // 3. The locale from the module
+    // 4. The built-in locale for the content language
     if (this.locale) {
       return this.locale
     }
@@ -87,14 +87,14 @@ export class LocalizedElement extends LitElement {
   }
 
   /**
-   * Получить глобальный контекст
+   * Returns the global context
    */
   protected getGlobalContext(): IGlobalContext | undefined {
     return this.globalContext
   }
 
   /**
-   * Получить сервис локализации
+   * Returns the localization service
    */
   protected getLocaleService(): LocaleService | null {
     return this.currentLocaleService
@@ -105,7 +105,7 @@ export class LocalizedElement extends LitElement {
   }
 
   /**
-   * Подписаться на изменения локали
+   * Subscribes to locale changes
    */
   private subscribeToLocaleChanges(): void {
     this.clearGlobalContextHandler()
@@ -117,7 +117,7 @@ export class LocalizedElement extends LitElement {
       const localeModule = this.getLocaleModule()
       if (!localeModule) return
 
-      // Инициализируем начальное значение локали
+      // Apply the initial locale
       this.updateLocalFromModule(localeModule)
 
       this.moduleUpdateHandler = () => {
@@ -125,14 +125,14 @@ export class LocalizedElement extends LitElement {
 
         this.requestUpdate()
       }
-      // Подписываемся на обновления
+      // Listen for updates
       localeModule.onUpdated(this.moduleUpdateHandler)
     }
     globalContext.onUpdated(this.globalContextUpdateHandler)
   }
 
   /**
-   * Обновляет состояние локали и сервиса локализации
+   * Updates the locale state and the localization service
    */
   private updateLocaleState(locale: ILocale) {
     this.currentLocale = locale
@@ -146,13 +146,13 @@ export class LocalizedElement extends LitElement {
   }
 
   /**
-   * Обновляет текущую локаль на основе модуля
+   * Updates the current locale from the module
    */
   private updateLocalFromModule(localeModule: ILocaleModule): void {
-    // Не обновляем локаль, если она задана явно через свойство компонента
+    // An explicit locale property takes precedence over the module
     if (this.locale) return
 
-    // Используем локаль из модуля
+    // Use the module's locale
     this.updateLocaleState(localeModule.locale)
   }
 
@@ -169,7 +169,7 @@ export class LocalizedElement extends LitElement {
   }
 
   /**
-   * Обработка изменения свойства locale
+   * Handles changes to the locale property
    */
   private handleLocaleChange(): void {
     if (this.locale) {

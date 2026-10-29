@@ -52,7 +52,7 @@ export default function extractConstsFromTokensPlugin(
       const filePath = path.resolve(import.meta.dirname, `../../../${outPath}/${fileName}`)
       const dirPath = path.dirname(filePath)
 
-      // Создаем директории рекурсивно, если они не существуют
+      // Create the output directory, including missing parents
       if (!fs.existsSync(dirPath)) {
         fs.mkdirSync(dirPath, { recursive: true })
       }

@@ -13,7 +13,7 @@ import { YIcon } from '~ng/ui/icon'
 import { yInfo } from '~shared/icons'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-// Тип для компонента с дополнительными пропсами
+// Component type extended with the story-only props
 type NgTextareaMeta = YTextarea & TYCoreTextareaMeta & TYNgControlValueTypes<TYNgTextareaModel>
 
 /**

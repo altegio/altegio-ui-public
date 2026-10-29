@@ -23,9 +23,9 @@ export class YCoreTestConsumer extends LitElement {
   connectedCallback() {
     super.connectedCallback()
 
-    // Подписываемся на обновление глобального контекста
+    // Listen for global context updates
     this.globalContext.onUpdated((module) => {
-      // Если добавился новый модуль - подписываемся на его события
+      // Subscribe to the events of a newly added queue module
       if (module && module instanceof QueueModule) {
         this.setupModuleListeners(module)
       }
@@ -33,22 +33,22 @@ export class YCoreTestConsumer extends LitElement {
       this.requestUpdate()
     })
 
-    // Подписываемся на все существующие модули очереди
+    // Subscribe to all existing queue modules
     this.setupExistingModuleListeners()
   }
 
   /**
-   * Устанавливает подписки на существующие модули очереди
+   * Subscribes to the existing queue modules
    */
   private setupExistingModuleListeners() {
-    // Получаем все модули из глобального контекста
+    // All modules from the global context
     const modules = this.globalContext.getModules()
 
-    // Отфильтровываем только модули QueueModule
+    // Keep only the QueueModule instances
     const queueModules = modules.filter((module) => module instanceof QueueModule)
 
 
-    // Подписываемся на события каждого модуля
+    // Subscribe to the events of each module
     queueModules.forEach((module) => {
       this.setupModuleListeners(module)
     })
@@ -74,10 +74,10 @@ export class YCoreTestConsumer extends LitElement {
   }
 
   protected renderModules() {
-    // Получаем все модули из глобального контекста
+    // All modules from the global context
     const modules = this.globalContext.getModules()
 
-    // Отфильтровываем только модули QueueModule
+    // Keep only the QueueModule instances
     const queueModules = modules.filter((module) => module instanceof QueueModule) as IQueueModule[]
 
     return queueModules.length > 0
@@ -126,7 +126,7 @@ export class YCoreTestConsumer extends LitElement {
 
     if (!moduleId || !itemId) return
 
-    // Получаем модуль напрямую из контекста
+    // Read the module directly from the context
     const module = this.globalContext.getModule(moduleId) as IQueueModule | undefined
     if (!module || !(module instanceof QueueModule)) return
 
@@ -147,7 +147,7 @@ export class YCoreTestConsumer extends LitElement {
 
     if (!moduleId) return
 
-    // Получаем модуль напрямую из контекста
+    // Read the module directly from the context
     const module = this.globalContext.getModule(moduleId) as IQueueModule | undefined
     if (!module || !(module instanceof QueueModule)) return
 
@@ -159,7 +159,7 @@ export class YCoreTestConsumer extends LitElement {
     const moduleId = (e.target as HTMLElement).dataset.moduleId
     if (!moduleId) return
 
-    // Получаем модуль напрямую из контекста
+    // Read the module directly from the context
     const module = this.globalContext.getModule(moduleId) as IQueueModule | undefined
     if (!module || !(module instanceof QueueModule)) return
 
@@ -168,18 +168,18 @@ export class YCoreTestConsumer extends LitElement {
   }
 
   private onAddModule = () => {
-    // Создаем новый модуль напрямую
+    // Create a new module directly
     const id = Date.now().toString()
     const module = new QueueModule({ id, defaultDelay: this.defaultDelay })
 
-    // Добавляем его в глобальный контекст
+    // Add it to the global context
     this.globalContext.putModule(module)
 
-    // Подписка добавляется автоматически в обработчике globalContext.onUpdated
+    // The globalContext.onUpdated handler subscribes to it automatically
   }
 
   private setupModuleListeners(module: QueueModule) {
-    // Подписываемся на события модуля
+    // Subscribe to the module events
     module.onUpdated((item) => {
       // eslint-disable-next-line no-console
       console.log(
@@ -203,14 +203,14 @@ export class YCoreTestConsumer extends LitElement {
     const id = (e.target as HTMLElement).dataset.id
     if (!id) return
 
-    // Получаем модуль напрямую из контекста
+    // Read the module directly from the context
     const module = this.globalContext.getModule(id) as IQueueModule | undefined
     if (!module || !(module instanceof QueueModule)) return
 
-    // Очищаем очередь перед удалением
+    // Clear the queue before removing the module
     module.clearAll()
 
-    // Удаляем модуль
+    // Remove the module
     this.globalContext.removeModule(id)
   }
 

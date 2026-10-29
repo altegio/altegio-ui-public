@@ -8,7 +8,7 @@ type TVueCardRadioStoryMeta = IYVueCardRadioProps
 
 /**
  * Vue wrapper for Core CardRadio
- * вспомогательный компонент для CardButton/CardSelect
+ * Helper component used by CardButton and CardSelect
  */
 const meta: Meta<TVueCardRadioStoryMeta> = {
   title: 'Cards/Partials/✅ CardRadio',

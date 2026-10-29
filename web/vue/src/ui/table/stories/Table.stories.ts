@@ -478,10 +478,10 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-// Базовый вариант
+// Basic example
 export const Playground: Story = { args: { total: 0 } }
 
-// С пагинацией
+// With pagination
 export const WithPagination: Story = { args: { showPagination: true, total: yTablePaginationStoryMeta.args?.total } }
 
 // Loading
@@ -499,14 +499,14 @@ export const Disabled: Story = { args: { disabled: true } }
 // Sticky
 export const Sticky: Story = { args: { sticky: true } }
 
-// С rowKey
+// With rowKey
 const itemsWithRowKey: TYVueTableItems = items.map((item, index) => ({
   ...item,
   rowKey: `unique-key-${index + 1}`,
 }))
 export const WithRowKey: Story = { args: { items: itemsWithRowKey } }
 
-// Перетаскивание из таблицы в таблицу
+// Dragging rows between tables
 export const DraggingMultipleTables: Story = {
   render: (args) => ({
     components: { YTable },

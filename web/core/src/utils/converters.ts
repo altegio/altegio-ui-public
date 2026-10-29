@@ -1,7 +1,7 @@
 import type { ComplexAttributeConverter } from 'lit'
 
 /**
- * Преобразование строки в булево значение
+ * Converts a string attribute to a boolean
  */
 export const booleanConverter: ComplexAttributeConverter<boolean> = {
   toAttribute: (value: boolean) => value ? '' : null,
@@ -13,8 +13,8 @@ export const booleanConverter: ComplexAttributeConverter<boolean> = {
 }
 
 /**
- * Двунаправленное преобразование массива из атрибута
- * в свойство следующего формата:
+ * Converts an array between the attribute and the property
+ * in both directions:
  *
  * array-attribute='1, "2", 3' to [1, '2', 3]
  */
@@ -32,7 +32,7 @@ export const arrayConverter: ComplexAttributeConverter<unknown[]> = {
 }
 
 /**
- * Преобразование строки в число
+ * Converts a string attribute to a number
  */
 export const numberConverter: ComplexAttributeConverter<number> = {
   toAttribute: (value: number) => String(value),

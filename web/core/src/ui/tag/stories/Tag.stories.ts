@@ -100,7 +100,7 @@ const meta: Meta<TYCoreTagMeta> = {
 
 export default meta
 
-// Базовый пример
+// Basic example
 export const Basic: Story = {
 
   render: (args) => {
@@ -121,7 +121,7 @@ export const Basic: Story = {
   },
 }
 
-// Все варианты
+// All variants
 export const AllVariants: Story = {
   render: () => html`
     <div style="display: flex; gap: 8px; flex-wrap: wrap;">
@@ -142,7 +142,7 @@ export const AllVariants: Story = {
   `,
 }
 
-// Размеры
+// Sizes
 export const Sizes: Story = {
   render: () => html`
     <div style="display: flex; gap: 8px; align-items: center;">
@@ -155,7 +155,7 @@ export const Sizes: Story = {
   `,
 }
 
-// С иконкой
+// With an icon
 export const WithIcon: Story = {
   args: { iconLeft: yRocket },
   render: (args) => html`
@@ -165,7 +165,7 @@ export const WithIcon: Story = {
   `,
 }
 
-// Отключенное состояние
+// Disabled state
 export const Disabled: Story = {
   render: () => html`
     <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -215,7 +215,7 @@ export const Disabled: Story = {
   `,
 }
 
-// Примеры использования
+// Usage examples
 export const Examples: Story = {
   render: () => html`
     <div style="display: flex; flex-direction: column; gap: 16px;">

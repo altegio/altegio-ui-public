@@ -1,8 +1,8 @@
 :host {
-  /* Общие */
+  /* General */
   --y-core-card-wrapper-border-radius: var(--y-core-size-radius-3-x);
 
-  /* Состояния */
+  /* States */
 
   /* Default */
   --y-core-card-wrapper-border-color: var(--y-core-color-stroke-primary);

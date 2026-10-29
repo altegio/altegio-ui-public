@@ -1,9 +1,9 @@
 import type { THandler } from '../types'
 
 /**
- * Выполняет все обработчики в массиве
- * @param {THandler<P>[]} arrayHandlers - Массив обработчиков
- * @param {P} payload - Аргумент для обработчиков
+ * Calls every handler in the list
+ * @param {THandler<P>[]} arrayHandlers - Handlers to call
+ * @param {P} payload - Argument passed to each handler
  */
 export const executeHandlers = <P>(arrayHandlers: THandler<P>[], payload?: P) => {
   arrayHandlers.forEach((handler) => {

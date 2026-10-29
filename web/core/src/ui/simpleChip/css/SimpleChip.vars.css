@@ -1,9 +1,9 @@
 :host {
-  /* Общие */
+  /* General */
   --y-core-simple-chip-font-family: var(--y-core-font-family);
   --y-core-simple-chip-border-radius: var(--y-core-size-radius-x);
 
-  /* Размеры */
+  /* Sizes */
 
   /* Small */
   --y-core-simple-chip-size-small-padding-right: var(--y-core-size-spacing-2-5-x);
@@ -21,7 +21,7 @@
   --y-core-simple-chip-size-medium-line-height: var(--y-core-typography-paragraph-p-2-medium-line-height);
   --y-core-simple-chip-size-medium-font-weight: var(--y-core-typography-paragraph-p-2-medium-font-weight);
   
-  /* Цвета текста */
+  /* Text colors */
   --y-core-simple-chip-color-muted: var(--y-core-color-text-primary);
   --y-core-simple-chip-color-muted-disabled: var(--y-core-color-text-tertiary);
   --y-core-simple-chip-color-danger: var(--y-core-color-calm-text-red);
@@ -29,15 +29,15 @@
   --y-core-simple-chip-color-warning: var(--y-core-color-text-primary);
   --y-core-simple-chip-color-warning-disabled: var(--y-core-color-calm-text-orange-low);
 
-  /* Цвета иконок */
+  /* Icon colors */
   --y-core-simple-chip-icon-color-muted: var(--y-core-color-icon-secondary);
   --y-core-simple-chip-icon-color-muted-hover: var(--y-core-color-icon-primary);
   
-  /* Цвета фона */
+  /* Background colors */
   --y-core-simple-chip-bg-muted: var(--y-core-color-surface-tertiary);
   --y-core-simple-chip-bg-danger: var(--y-core-color-calm-surface-red-low);
   --y-core-simple-chip-bg-warning: var(--y-core-color-calm-surface-orange-low);
   
-  /* Отступы */
+  /* Spacing */
   --y-core-simple-chip-gap: var(--y-core-size-spacing-x);
 }

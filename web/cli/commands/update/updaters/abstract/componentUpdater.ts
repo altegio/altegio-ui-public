@@ -145,7 +145,7 @@ export abstract class ComponentUpdater implements IComponentUpdater {
         ),
         replace: `${pascal(CORE_PLATFORM)}${pascal(this.options.newName)}`,
       },
-      // Импорты
+      // Import paths
       {
         search: new RegExp(
           `/${pascal(this.options.oldName)}`,
@@ -160,7 +160,7 @@ export abstract class ComponentUpdater implements IComponentUpdater {
         ),
         replace: `/${pascal(this.options.newName)}`,
       },
-      // CSS + Теги компонентов
+      // CSS selectors and component tag names
       {
         search: new RegExp(
           dash(this.options.oldName),
@@ -179,7 +179,7 @@ export abstract class ComponentUpdater implements IComponentUpdater {
       )
       .filter((file): file is fs.Dirent => !file.isDirectory())
       .map((file) => {
-        // Получаем относительный путь от oldComponentPath
+        // Path relative to oldComponentPath
         const relativePath = path.relative(this.oldComponentPath, path.join(file.parentPath || this.oldComponentPath, file.name))
         return relativePath
       })

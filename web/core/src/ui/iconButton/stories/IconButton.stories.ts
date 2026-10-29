@@ -57,7 +57,7 @@ const meta: TIconButtonStoryMeta = {
       ['text', 'showDefaultSlot', 'isLongText', 'alignment'],
     ),
 
-    // Основное содержимое
+    // Main content
     icon: {
       control: { type: 'select' },
       description: '**Button icon**\n\nRequired. The icon size adjusts to the button size.',

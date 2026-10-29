@@ -1,7 +1,7 @@
 $component: $YCoreSimpleButtonTagName;
 
 :host([data-variant="whatsapp"]) {
-  /* Общие */
+  /* General */
   --y-core-simple-button-variant-primary-background-color: var(--y-core-color-other-brand-whatsapp);
   --y-core-simple-button-variant-primary-color: var(--y-core-color-other-contrast);
   --y-core-simple-button-variant-primary-disabled-background-color: rgb(37 211 102 / 30%);

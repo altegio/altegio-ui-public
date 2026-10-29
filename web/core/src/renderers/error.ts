@@ -12,7 +12,7 @@ export interface IRenderErrorOptions extends Partial<IYCoreErrorProps> {
 }
 
 /**
- * Опции для рендеринга ошибки
+ * Options for rendering an error
  * @interface IRenderErrorOptions
  */
 export default ({ className, ...props }: IRenderErrorOptions) => {

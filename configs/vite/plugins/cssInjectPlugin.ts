@@ -9,15 +9,15 @@ interface ICssInjectPluginOptions {
   fileName: string
 }
 
-// TODO: Вынести в отдельную утилитарную функцию для форматирования чисел или найти готовое решение
+// TODO: Move to a shared number-formatting helper or use an existing library
 const bytesToKb = (bytes: number) => (bytes / 1024).toFixed(2)
 
 /**
- * Опции для плагина cssInjectPlugin
+ * Options for cssInjectPlugin
  * @interface ICssInjectPluginOptions
- * @property {string} [outPath='dist'] - Путь для сохранения CSS файла, относительно корня проекта, без слэша на конце
- * @property {string} [cssContent=''] - Содержимое CSS для инъекции
- * @property {string} [fileName='injected.css'] - Имя выходного CSS файла, относительно outPath
+ * @property {string} [outPath='dist'] - Output directory for the CSS file, relative to the project root, without a trailing slash
+ * @property {string} [cssContent=''] - CSS to write into the file
+ * @property {string} [fileName='injected.css'] - Output CSS file name, relative to outPath
  */
 export default function cssInjectPlugin({
   outPath = 'dist',
@@ -30,7 +30,7 @@ export default function cssInjectPlugin({
       const filePath = path.resolve(import.meta.dirname, `../../../${outPath}/${fileName}`)
       const dirPath = path.dirname(filePath)
 
-      // Создаем директории рекурсивно, если они не существуют
+      // Create the output directory, including missing parents
       if (!fs.existsSync(dirPath)) {
         fs.mkdirSync(dirPath, { recursive: true })
       }

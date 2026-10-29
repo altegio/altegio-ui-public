@@ -8,7 +8,7 @@ type TVueCardIconStoryMeta = IYVueCardIconProps
 
 /**
  * Vue wrapper for Core CardIcon
- * вспомогательный компонент для CardButton/CardSelect
+ * Helper component used by CardButton and CardSelect
  */
 const meta: Meta<TVueCardIconStoryMeta> = {
   title: 'Cards/Partials/✅ CardIcon',

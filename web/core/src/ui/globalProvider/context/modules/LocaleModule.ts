@@ -4,42 +4,42 @@ import type { THandler } from '../types'
 import { executeHandlers } from '../utils'
 
 /**
- * Интерфейс модуля локализации
+ * Locale module interface
  */
 export interface ILocaleModule extends IModule {
 
   /**
-   * Текущая локализация
+   * Current locale
    */
   locale: ILocale
 
 
   /**
-   * Обработчики изменения локализации
+   * Locale change handlers
    */
   updatedHandlers: THandler<ILocale>[]
 
   /**
-   * Установить локализацию
-   * @param locale Объект локализации
+   * Sets the locale
+   * @param locale Locale object
    */
   setLocale: (locale: ILocale) => void
 
   /**
-   * Подписаться на изменение локализации
-   * @param handler Обработчик изменения локализации
+   * Subscribes to locale changes
+   * @param handler Locale change handler
    */
   onUpdated: (handler: THandler<ILocale>) => void
 
   /**
-   * Удалить обработчик
-   * @param handler Обработчик изменения локализации
+   * Removes a handler
+   * @param handler Locale change handler
    */
   clearHandler: (handler: THandler<ILocale>) => void
 }
 
 /**
- * Модуль локализации
+ * Locale module
  * @implements {ILocaleModule}
  */
 export class LocaleModule implements ILocaleModule {
@@ -53,27 +53,27 @@ export class LocaleModule implements ILocaleModule {
   }
 
   /**
-   * Установить локализацию
-   * @param locale Объект локализации
+   * Sets the locale
+   * @param locale Locale object
    */
   setLocale(locale: ILocale): void {
     this.locale = locale
 
-    // Уведомляем подписчиков
+    // Notify the subscribers
     this.update(locale)
   }
 
   /**
-   * Подписаться на изменение локализации
-   * @param handler Обработчик изменения локализации
+   * Subscribes to locale changes
+   * @param handler Locale change handler
    */
   onUpdated(handler: THandler<ILocale>): void {
     this.updatedHandlers.push(handler)
   }
 
   /**
-   * Удалить обработчик
-   * @param handler Обработчик изменения локализации
+   * Removes a handler
+   * @param handler Locale change handler
    */
   clearHandler(handler: THandler<ILocale>) {
     const handlerIndex = this.updatedHandlers.indexOf(handler)
@@ -83,7 +83,7 @@ export class LocaleModule implements ILocaleModule {
   }
 
   /**
-   * Уведомляет всех подписчиков об изменении локализации
+   * Notifies all subscribers about the locale change
    * @private
    */
   update(locale: ILocale): void {

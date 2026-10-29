@@ -26,23 +26,23 @@ const MUTATION_ERROR = '[QueueModule] Прямая мутация очереди
   'Используйте методы putItem(), removeItem() или clearAll() для изменения состояния.'
 
 /**
- * Модуль очереди
+ * Queue module
  * @class QueueModule
  * @implements {IQueueModule}
- * @property {TId} id - Идентификатор модуля
- * @property {number} defaultDelay - Задержка по умолчанию
- * @property {TTimeout | null} completedTimeout - Таймаут завершения очереди
- * @property {THandler<IQueueModuleItem>[]} updatedHandlers - Массив обработчиков обновлений
- * @property {THandler<IQueueModuleItem>[]} completedHandlers - Массив обработчиков завершения очереди
- * @property {Record<TId, IQueueModuleItem>} queue - Хранилище элементов очереди
- * @method putItem - Добавляет/редактирует элемент в очередь
- * @method getItem - Получает элемент из очереди
- * @method removeItem - Удаляет элемент из очереди
- * @method getItems - Получает все элементы из очереди
- * @method clearAll - Очищает очередь
- * @method onCompleted - Добавляет обработчик завершения очереди
- * @method onUpdated - Добавляет обработчик обновления очереди
- * @method editDefaultDelay - Редактирует задержку по умолчанию
+ * @property {TId} id - Module ID
+ * @property {number} defaultDelay - Default item delay
+ * @property {TTimeout | null} completedTimeout - Timer that completes the queue
+ * @property {THandler<IQueueModuleItem>[]} updatedHandlers - Queue update handlers
+ * @property {THandler<IQueueModuleItem>[]} completedHandlers - Queue completion handlers
+ * @property {Record<TId, IQueueModuleItem>} queue - Queue item storage
+ * @method putItem - Adds or replaces a queue item
+ * @method getItem - Returns a queue item
+ * @method removeItem - Removes a queue item
+ * @method getItems - Returns all queue items
+ * @method clearAll - Clears the queue
+ * @method onCompleted - Registers a queue completion handler
+ * @method onUpdated - Registers a queue update handler
+ * @method editDefaultDelay - Changes the default delay
  */
 export class QueueModule implements IQueueModule {
   id: string

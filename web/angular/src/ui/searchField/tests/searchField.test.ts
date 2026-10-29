@@ -113,6 +113,6 @@ describe(
       },
     )
 
-    // TODO: Написать тесты для событий
+    // TODO: Add event tests
   },
 )

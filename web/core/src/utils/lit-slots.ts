@@ -1,5 +1,5 @@
 /**
- * Функция определяет пустой слот или нет у WebComponents
+ * Checks whether a web component slot has content
  */
 export const hasSlotContent = (el: HTMLSlotElement) => {
   const slotElems = el.assignedNodes({ flatten: true })

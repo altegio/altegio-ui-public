@@ -5,7 +5,7 @@ import type { ILocale } from './types'
 type TLocale = 'ru-RU' | 'en-US'
 
 /**
- * Объект со всеми доступными локализациями
+ * All available locales
  */
 export const locales: Record<TLocale, ILocale> = {
   'ru-RU': ru,

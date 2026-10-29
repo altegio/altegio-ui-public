@@ -133,12 +133,12 @@ describe(
                   const slotElement = coreElement?.shadowRoot?.querySelector(`slot[name="${testCase.slot}"]`) as HTMLSlotElement | null
                   expect(slotElement).toBeTruthy()
 
-                  // Проверка содержимого слотов
+                  // Check the slot content
                   if (slotElement) {
                     const assignedElements = slotElement.assignedElements()
                     expect(assignedElements.length).toBeGreaterThan(0)
 
-                    // Проверяем, что содержимое слота содержит наш текст
+                    // The slot must contain the passed text
                     const slotContent = assignedElements[0]?.textContent?.trim()
                     expect(slotContent).toContain(testCase.content)
                   }
@@ -193,7 +193,7 @@ describe(
               const textareaComponent = textareaDebugElement.componentInstance as YTextarea
               const newValue = 'текст'
 
-              // Эмулируем событие ввода
+              // Simulate an input event
               const mockEvent = new CustomEvent('input', { detail: { value: newValue } })
               coreElement?.dispatchEvent(mockEvent)
 
@@ -217,7 +217,7 @@ describe(
               const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
               const mockEvent = new Event('focus')
 
-              // Эмулируем событие фокуса
+              // Simulate a focus event
               coreElement?.dispatchEvent(mockEvent)
 
               expect(componentInstance.handleFocus).toHaveBeenCalled()
@@ -237,7 +237,7 @@ describe(
               const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
               const mockEvent = new Event('blur')
 
-              // Эмулируем событие потери фокуса
+              // Simulate a blur event
               coreElement?.dispatchEvent(mockEvent)
 
               expect(componentInstance.handleBlur).toHaveBeenCalled()
@@ -257,7 +257,7 @@ describe(
               const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
               const mockEvent = new Event('clear')
 
-              // Эмулируем событие очистки
+              // Simulate a clear event
               coreElement?.dispatchEvent(mockEvent)
 
               expect(componentInstance.handleClear).toHaveBeenCalled()

@@ -2,16 +2,16 @@ import type { HslaColor } from 'colord'
 
 export enum EColorType {
 
-  /** Яркий */
+  /** Bright */
   bright = 1,
 
-  /** Светлый */
+  /** Light */
   light = 2,
 
-  /** Бледный */
+  /** Lighter */
   lighter = 3,
 
-  /** Темный */
+  /** Dark */
   dark = 4,
 }
 

@@ -1,7 +1,7 @@
 /**
- * Создает последовательность целых чисел от 1 до n
- * @param {number} n - Конечное число последовательности
- * @returns {number[]} Массив целых чисел от 1 до n
+ * Creates a sequence of integers from 1 to n
+ * @param {number} n - Last number of the sequence
+ * @returns {number[]} Integers from 1 to n
  * @example
  * integerSequence(3) // [1, 2, 3]
  */

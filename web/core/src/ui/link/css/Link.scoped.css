@@ -1,6 +1,6 @@
 $component: $YCoreLinkTagName;
 
-/* Текст ссылки не переносится */
+/* Link text does not wrap by default */
 .$(component) {
   display: var(--y-core-link-display);
   align-items: center;
@@ -17,7 +17,7 @@ $component: $YCoreLinkTagName;
   }
 }
 
-/* Текст ссылки переносится по словам */
+/* Link text wraps at word boundaries */
 .$(component)_text-wrap {
   --y-core-link-display: inline;
   --y-core-link-text-white-space: normal;

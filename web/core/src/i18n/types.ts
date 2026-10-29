@@ -1,15 +1,15 @@
 /**
- * Тип направления текста (слева направо или справа налево)
+ * Text direction (left to right or right to left)
  */
 export type TDirectionType = 'ltr' | 'rtl'
 
 /**
- * Интерфейс с текстовыми сообщениями для локализации
+ * Localized text messages
  */
 export type TMessages = Record<string, string>
 
 /**
- * Форматтеры для работы с датами и числами
+ * Date and number formatters
  */
 export interface IFormatters {
   date: {
@@ -37,29 +37,29 @@ export interface IFormatters {
     currency: Intl.NumberFormatOptions
     percent: Intl.NumberFormatOptions
   }
-  firstDayOfWeek: 0 | 1 // 0 - Воскресенье, 1 - Понедельник
+  firstDayOfWeek: 0 | 1 // 0 - Sunday, 1 - Monday
 }
 
 /**
- * Интерфейс локализации
+ * Locale definition
  */
 export interface ILocale {
 
-  /** Название языка */
+  /** Language name */
   name: string
 
-  /** Код языка (ISO) */
+  /** Language code (ISO) */
   code: string
 
-  /** Короткий код языка (ISO) */
+  /** Short language code (ISO) */
   shortCode: string
 
-  /** Направление текста */
+  /** Text direction */
   dir: TDirectionType
 
-  /** Текстовые сообщения */
+  /** Text messages */
   messages: TMessages
 
-  /** Форматтеры для дат и чисел */
+  /** Date and number formatters */
   formatters: IFormatters
 }

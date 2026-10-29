@@ -5,21 +5,21 @@ import { ru } from '~core/i18n'
 import { LocaleModule } from '../../context/modules'
 
 /**
- * Идентификатор модуля локализации в контексте
+ * ID of the locale module in the context
  */
 export const LOCALE_MODULE_ID = 'locale'
 
 /**
- * Плагин для управления локализацией в GlobalProvider
+ * GlobalProvider plugin that manages the locale
  *
- * Использует LocaleModule для хранения данных локализации в глобальном контексте.
+ * Stores the locale data in the global context through a LocaleModule.
  *
  * @example
  * ```typescript
- * // Создание экземпляра плагина с русской локализацией
- * const i18nPlugin = new I18nPlugin(ru);
+ * // Create the plugin with the English locale
+ * const i18nPlugin = new I18nPlugin(en);
  *
- * // Использование плагина в GlobalProvider
+ * // Pass the plugin to GlobalProvider
  * <YGlobalProvider :plugins="[i18nPlugin]">
  *   <YourComponent />
  * </YGlobalProvider>
@@ -27,12 +27,12 @@ export const LOCALE_MODULE_ID = 'locale'
  *
  * @example
  * ```typescript
- * // Получение модуля локализации из контекста
+ * // Read the locale module from the context
  * const localeModule = context.getModule(LOCALE_MODULE_ID) as ILocaleModule;
  *
- * // Переключение локализации
+ * // Switch the locale
  * if (localeModule) {
- *   localeModule.setLocale(en);
+ *   localeModule.setLocale(ru);
  * }
  * ```
  */
@@ -42,24 +42,24 @@ export class I18nPlugin implements IGlobalProviderPlugin {
   private context?: IGlobalContext
 
   /**
-   * Создает экземпляр плагина локализации
+   * Creates the localization plugin
    *
-   * @param locale - Объект локализации для инициализации плагина
-   * По умолчанию используется русская локализация из '~core/i18n'
+   * @param locale - Initial locale.
+   * Defaults to the Russian locale from '~core/i18n'
    */
   constructor(private locale: ILocale = ru) {}
 
   /**
-   * Инициализирует локализацию в глобальном контексте
+   * Sets up localization in the global context
    *
-   * Создает модуль локализации и добавляет его в глобальный контекст.
+   * Creates the locale module and adds it to the global context.
    *
-   * @param context - Глобальный контекст для установки локализации
+   * @param context - Global context to add the locale to
    */
   init(context: IGlobalContext): void {
     this.context = context
 
-    // Создаем и добавляем модуль локализации в контекст
+    // Create the locale module and add it to the context
     this.localeModule = new LocaleModule({
       id: LOCALE_MODULE_ID,
       locale: this.locale,
@@ -69,24 +69,24 @@ export class I18nPlugin implements IGlobalProviderPlugin {
   }
 
   /**
-   * Возвращает текущую локализацию плагина
+   * Returns the plugin's current locale
    *
-   * @returns Текущий объект локализации, используемый плагином
+   * @returns Current locale object used by the plugin
    */
   getLocale(): ILocale {
-    // Если есть модуль, получаем локализацию из него, иначе из плагина
+    // Prefer the module's locale; fall back to the one passed to the plugin
     return this.localeModule?.locale || this.locale
   }
 
   /**
-   * Устанавливает новую локализацию
+   * Sets a new locale
    *
-   * @param locale - Новый объект локализации для установки
+   * @param locale - New locale object
    */
   setLocale(locale: ILocale): void {
     this.locale = locale
 
-    // Если модуль существует, обновляем локализацию в нем
+    // Update the module's locale when the module exists
     if (this.localeModule) {
       this.localeModule.setLocale(locale)
     }

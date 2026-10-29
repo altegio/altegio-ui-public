@@ -1,12 +1,12 @@
 :host {
-  /* Общие */
+  /* General */
 
-  /* Цвет */
+  /* Color */
   --y-core-field-icon-default-color: var(--y-core-color-icon-secondary);
   --y-core-field-icon-disabled-color: var(--y-core-color-icon-tertiary);
   --y-core-field-icon-hover-color: var(--y-core-color-icon-primary);
 
-  /* Размеры */
+  /* Sizes */
 
   /* Small */
   --y-core-field-icon-size-small-padding-x: var(--y-core-size-spacing-2-5-x);

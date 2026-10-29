@@ -1,10 +1,10 @@
 import type { ILocale } from '../types'
 
 /**
- * Функция для определения пользовательской локализации
+ * Defines a custom locale
  *
- * @param locale Объект локализации
- * @returns Объект локализации
+ * @param locale Locale object
+ * @returns The same locale object
  */
 export function defineLocale(locale: ILocale): ILocale {
   return locale

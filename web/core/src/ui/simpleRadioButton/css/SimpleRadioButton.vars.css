@@ -1,5 +1,5 @@
 :host {
-  /* Размеры */
+  /* Sizes */
 
   /* Small */
   --y-core-simple-radio-button-size-small-width: 20px;
@@ -11,7 +11,7 @@
   --y-core-simple-radio-button-size-medium-height: 24px;
   --y-core-simple-radio-button-size-medium-padding: var(--y-core-size-spacing-0-5-x);
 
-  /* Цвета состояний */
+  /* State colors */
 
   /* Default */
   --y-core-simple-radio-button-default-background-color: var(--y-core-color-surface-primary);

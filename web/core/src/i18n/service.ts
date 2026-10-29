@@ -27,38 +27,38 @@ const getDisplayCountryNames = (language: string, fallback: TYCountryNameMappedB
 }
 
 /**
- * Сервис локализации для использования в компонентах
+ * Localization service used by components
  */
 export class LocaleService {
   private currentLocale: ILocale
 
   /**
-   * Создать новый экземпляр сервиса локализации
-   * @param initialLocale Начальная локализация
+   * Creates a localization service
+   * @param initialLocale Initial locale
    */
   constructor(initialLocale: ILocale) {
     this.currentLocale = initialLocale
   }
 
   /**
-   * Получить текущую локализацию
+   * Returns the current locale
    */
   public getLocale(): ILocale {
     return this.currentLocale
   }
 
   /**
-   * Установить локализацию
-   * @param locale Новая локализация
+   * Sets the locale
+   * @param locale New locale
    */
   public setLocale(locale: ILocale): void {
     this.currentLocale = locale
   }
 
   /**
-   * Форматировать дату согласно указанному формату
-   * @param date Дата для форматирования
-   * @param format Формат даты
+   * Formats a date with the given format
+   * @param date Date to format
+   * @param format Date format
    */
   public formatDate(date: Date, format: keyof ILocale['formatters']['date']): string {
     const options = this.currentLocale.formatters.date[format]
@@ -66,9 +66,9 @@ export class LocaleService {
   }
 
   /**
-   * Форматировать месяц
-   * @param date Дата
-   * @param format Формат месяца
+   * Formats a month name
+   * @param date Date
+   * @param format Month format
    */
   public formatMonth(date: Date, format: keyof ILocale['formatters']['date']['month'] = 'long'): string {
     const options = this.currentLocale.formatters.date.month[format]
@@ -76,9 +76,9 @@ export class LocaleService {
   }
 
   /**
-   * Форматировать день недели
-   * @param date Дата
-   * @param format Формат дня недели
+   * Formats a weekday name
+   * @param date Date
+   * @param format Weekday format
    */
   public formatWeekday(date: Date, format: keyof ILocale['formatters']['date']['weekday'] = 'short'): string {
     const options = this.currentLocale.formatters.date.weekday[format]
@@ -86,9 +86,9 @@ export class LocaleService {
   }
 
   /**
-   * Форматировать число
-   * @param value Число
-   * @param format Формат числа
+   * Formats a number
+   * @param value Number
+   * @param format Number format
    */
   public formatNumber(value: number, format: keyof ILocale['formatters']['number']): string {
     const options = this.currentLocale.formatters.number[format]
@@ -96,21 +96,21 @@ export class LocaleService {
   }
 
   /**
-   * Получить дни недели в нужном формате
-   * @param format Формат дней недели
+   * Returns the weekday names in the given format
+   * @param format Weekday format
    */
   public getWeekDays(format: keyof ILocale['formatters']['date']['weekday'] = 'short'): string[] {
     const days: string[] = []
     const date = new Date()
 
-    // Устанавливаем на первый день недели согласно локализации
+    // First day of the week for the current locale
     const firstDay = this.currentLocale.formatters.firstDayOfWeek
     const currentDay = date.getDay()
 
-    // Устанавливаем дату на первый день недели
+    // Move the date back to the first day of the week
     date.setDate(date.getDate() - (currentDay - firstDay + (currentDay < firstDay ? 7 : 0)))
 
-    // Получаем 7 дней
+    // Collect the 7 days
     for (let i = 0; i < 7; i++) {
       days.push(this.formatWeekday(date, format))
       date.setDate(date.getDate() + 1)
@@ -120,8 +120,8 @@ export class LocaleService {
   }
 
   /**
-   * Получить список месяцев
-   * @param format Формат названия месяца
+   * Returns the list of months
+   * @param format Month name format
    */
   public getMonths(format: keyof ILocale['formatters']['date']['month'] = 'long'): { id: string; label: string }[] {
     const months = []
@@ -140,28 +140,28 @@ export class LocaleService {
   }
 
   /**
-   * Получить направление текста
+   * Returns the text direction
    */
   public getDirection(): ILocale['dir'] {
     return this.currentLocale.dir
   }
 
   /**
-   * Получить код языка
+   * Returns the language code
    */
   public getLanguageCode(): ILocale['code'] {
     return this.currentLocale.code
   }
 
   /**
-   * Получить первый день недели
+   * Returns the first day of the week
    */
   public getFirstDayOfWeek(): ILocale['formatters']['firstDayOfWeek'] {
     return this.currentLocale.formatters.firstDayOfWeek
   }
 
   /**
-   * Получить список стран
+   * Returns the list of countries
    * @param language Language of the names, the locale language by default
    */
   public async getCountries(language: string = this.currentLocale.code): Promise<TYCountryNameMappedById> {

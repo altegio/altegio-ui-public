@@ -1,6 +1,6 @@
 import { COLORS, SIZES } from '~root/tokens'
 
-// TODO: Добавить тесты для stripe-background-color когда появится токен
+// TODO: Add tests for stripe-background-color once its token exists
 export const CSSVariablesHostToRootCases = [
   { host: '--y-core-table-row-slot-padding-y', root: '--y-core-size-spacing-2-x' },
   { host: '--y-core-table-row-slot-padding-x', root: '--y-core-size-spacing-3-x' },

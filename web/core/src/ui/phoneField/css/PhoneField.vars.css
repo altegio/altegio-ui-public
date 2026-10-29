@@ -1,7 +1,7 @@
 $component: $YCorePhoneFieldTagName;
 
 :host {
-  /* Размеры */
+  /* Sizes */
   --y-core-phone-field-min-width: 88px;
   --y-core-phone-field-max-width: 404px;
   --y-core-phone-field-dropdown-min-height: 200px;
@@ -9,7 +9,7 @@ $component: $YCorePhoneFieldTagName;
   --y-core-dropdown-activator-width: 100%;
   --y-core-dropdown-max-width: 100%;
 
-  /* Общие */
+  /* General */
   --y-core-phone-field-display: flex;
   --y-core-phone-field-color: var(--y-core-color-text-primary);
   --y-core-phone-field-gap: var(--y-core-size-spacing-x);

@@ -1,8 +1,8 @@
 /**
- * ## Служебные утилиты для историй ButtonDropdown
+ * ## Story helpers for ButtonDropdown
  *
- * Этот файл содержит все вспомогательные функции, константы и типы для валидации историй.
- * Вынесено в отдельный файл, чтобы не засорять Storybook автодоки.
+ * Helper functions, constants and types used to validate the stories.
+ * Kept in a separate file so they do not show up in the Storybook autodocs.
  */
 
 import type { EFrameworkName } from '~web/shared/.storybook/enums/frameworkName'
@@ -20,12 +20,12 @@ export type TButtonDropdownStoryEmits = TEventsStoryArgs<{
 const DEFAULT_ITEMS = yCoreDropdownListStoryMeta.args?.items?.slice(0, 2) ?? []
 
 // =============================================================================
-// КОНФИГУРАЦИЯ ИСТОРИЙ
+// STORY CONFIGURATION
 // =============================================================================
 
 /**
- * Конфигурация всех доступных историй
- * Используется для обеспечения единообразия между фреймворками
+ * Configuration of all available stories
+ * Keeps the stories consistent across frameworks
  */
 export const BUTTON_DROPDOWN_STORIES_CONFIG: Record<string, IStoryConfig> = {
   Playground: {
@@ -72,7 +72,7 @@ export const BUTTON_DROPDOWN_STORIES_CONFIG: Record<string, IStoryConfig> = {
 } as const
 
 /**
- * Создает JSDoc описание для ButtonDropdown с указанием фреймворка
+ * Builds the ButtonDropdown description for the given framework
  */
 export const createButtonDropdownDescription = (frameworkName: EFrameworkName, frameworkSpecifics = '') => `
 ## ${frameworkName} ButtonDropdown
@@ -101,7 +101,7 @@ ${frameworkSpecifics}
 `
 
 /**
- * Создает параметры для истории ButtonDropdown
+ * Builds the story parameters for ButtonDropdown
  */
 export const createButtonDropdownParameters = (frameworkName: EFrameworkName, frameworkSpecifics = '') => ({
   controls: { sort: 'alpha' },

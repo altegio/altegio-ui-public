@@ -63,7 +63,7 @@ export * from './ui/searchField'
 export * from './ui/tab'
 export * from './ui/tabs'
 export * from './ui/colorIcon'
-// export * from './ui/pagination' // TODO: потестить, провалидировать и добавлять в экспорт
+// export * from './ui/pagination' // TODO: test and validate the component before exporting it
 
 export { BREAKPOINTS } from '~shared/constants/breakpoints'
 export * as breakpoints from './utils/breakpoints'

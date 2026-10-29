@@ -1,5 +1,5 @@
 :host {
-  /* Общие */
+  /* General */
   --y-core-calendar-max-width: 444px;
   --y-core-calendar-min-width: 195px;
   --y-core-calendar-grid-margin-top: var(--y-core-size-spacing-2-x);

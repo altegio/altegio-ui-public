@@ -22,18 +22,18 @@ export const createTransition = (element: HTMLElement, classes: ITransitionClass
     toClass: string,
   ): Promise<void> => {
     return new Promise((resolve) => {
-      // Начальное состояние
+      // Initial state
       element.classList.add(initialClass)
 
-      // Форсируем reflow
+      // Force a reflow so the browser applies the initial state
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       element.offsetHeight
 
-      // Добавляем активные классы
+      // Add the active classes
       element.classList.add(activeClass)
       element.classList.add(toClass)
       element.classList.remove(initialClass)
-      // Проверяем, есть ли transition на элементе
+      // Check whether the element has a transition
       const computedStyle = window.getComputedStyle(element)
       const hasTransition = computedStyle.transitionDuration !== '0s'
 

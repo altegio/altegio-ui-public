@@ -1,7 +1,7 @@
 export interface IYCoreTableHeadCellInternalProps {
 
   /**
-   * @internal Указывает, есть ли hint контент. Управляется из фреймворков.
+   * @internal Whether hint content is present. Set by the framework wrappers.
    */
   hasHint?: boolean
 }

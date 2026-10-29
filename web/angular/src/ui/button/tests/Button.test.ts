@@ -109,19 +109,19 @@ const fullWidthTestCases: TPropTestCase<IYNgButtonProps, 'fullWidth'>[] = [
     prop: 'fullWidth',
     case: 'true',
     value: true,
-    expected: '', // Для boolean атрибутов: true -> пустая строка (атрибут присутствует)
+    expected: '', // Boolean attributes: true -> empty string (attribute present)
   },
   {
     prop: 'fullWidth',
     case: 'false',
     value: false,
-    expected: null, // false -> атрибут отсутствует (null)
+    expected: null, // false -> attribute absent (null)
   },
   {
     prop: 'fullWidth',
     case: 'без значения (по умолчанию)',
     value: undefined,
-    expected: defaultFullWidth ? '' : null, // зависит от дефолтного значения
+    expected: defaultFullWidth ? '' : null, // depends on the default value
   },
 ]
 

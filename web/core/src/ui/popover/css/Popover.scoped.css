@@ -14,7 +14,7 @@ $component: $YCorePopoverTagName;
   &_type {
     &_invert {
       .$(component)__cancel {
-        /* TODO: использовать HostStyle; Пример в SimpleButton  */
+        /* TODO: Use HostStyle instead; see SimpleButton for an example */
 
         --y-core-simple-button-variant-text-color: var(--y-core-color-other-contrast)
       }

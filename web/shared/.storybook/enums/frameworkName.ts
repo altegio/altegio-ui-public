@@ -1,5 +1,5 @@
 /**
- * Перечисление названий фреймворков для единообразного использования в историях
+ * Framework names used consistently across the stories
  */
 export enum EFrameworkName {
   LIT = 'Core',

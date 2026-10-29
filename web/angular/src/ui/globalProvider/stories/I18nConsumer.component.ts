@@ -106,23 +106,23 @@ import { GlobalContextService } from '../classes/GlobalContext.service'
   ],
 })
 export class I18nConsumer {
-  // Выбранная дата для календаря
+  // Date selected in the calendar
   selectedDate = new Date().toISOString().split('T')[0]
 
-  // Используем inject для получения контекста
+  // Read the global context through inject()
   private globalContext = inject(GlobalContextService).getContext()
   private localeToggler = signal(false)
   localeName = signal('')
   localeCode = signal('')
 
-  // Получаем модуль локализации
+  // Locale module from the global context
   localeModule = computed(() => {
     return this.globalContext()?.getModule(LOCALE_MODULE_ID) as ILocaleModule | undefined
   })
 
   constructor() {
     effect(() => {
-      this.localeToggler() // Для триггера
+      this.localeToggler() // re-run the effect when the locale is toggled
       const module = this.localeModule()
       this.localeName.set(module?.locale.name ?? 'Not specified')
       this.localeCode.set(module?.locale.shortCode ?? 'ru')
@@ -130,14 +130,14 @@ export class I18nConsumer {
   }
 
   /**
-   * Обработчик выбора даты в календаре
+   * Handles date selection in the calendar
    */
   onDateSelect(event: Event) {
     this.selectedDate = event as unknown as string
   }
 
   /**
-   * Переключает языковую локализацию
+   * Toggles the locale
    */
   toggleLocale() {
     const localeModule = this.localeModule()
@@ -145,7 +145,7 @@ export class I18nConsumer {
       return
     }
 
-    // Переключаем между русским и английским языком
+    // Switch between the Russian and English locales
     const currentLocale = localeModule.locale
     localeModule.setLocale(currentLocale.shortCode === 'en' ? ru : en)
     this.localeToggler.set(!this.localeToggler())

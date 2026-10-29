@@ -48,7 +48,7 @@ type Story = StoryObj<IYCoreGlobalProviderProps & TYCoreGlobalProviderEvents>
  */
 export const Empty: Story = {
   render: ({ onReady }) => {
-    // Создаем экземпляр плагина очереди
+    // Create the queue plugin
     const queuePlugin = new QueuePlugin({
       id: 'queue',
       defaultDelay: 1000,

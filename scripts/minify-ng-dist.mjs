@@ -55,7 +55,7 @@ async function main() {
 
   console.log(`[minify-ng-dist] Files to minify: ${filesToMinify.length}`);
 
-  // Ограничим одновременную обработку, чтобы не съесть всю память
+  // Limit concurrent minification to keep memory usage bounded
   const CONCURRENCY = 8;
   let index = 0;
 

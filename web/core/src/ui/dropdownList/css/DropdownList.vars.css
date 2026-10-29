@@ -1,17 +1,17 @@
 :host {
-  /* Размеры */
+  /* Sizes */
   --y-core-dropdown-list-min-height: 36px;
   --y-core-dropdown-list-max-height: 278px;
   --y-core-dropdown-list-min-width: 88px;
   --y-core-dropdown-list-max-width: 404px;
 
-  /* Общие */
+  /* General */
   --y-core-dropdown-list-display: flex;
   --y-core-dropdown-list-flex-direction: column;
   --y-core-dropdown-list-gap: 0px;
   --y-core-dropdown-list-padding-x: 0px;
 
-  /* С токенами */
+  /* Token-based values */
   --y-core-dropdown-list-background: var(--y-core-color-surface-primary);
   --y-core-dropdown-list-padding-y: var(--y-core-size-spacing-x);
   --y-core-dropdown-list-shadow: var(--y-core-effects-pop-up-drop-shadow);

@@ -379,7 +379,7 @@ describe(
       },
     )
 
-    // TODO: разобраться с тестированием кастомных евентов
+    // TODO: Figure out how to test the custom events
     describe(
       'Events',
       () => {

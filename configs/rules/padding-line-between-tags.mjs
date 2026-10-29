@@ -3,9 +3,9 @@ import { ESLintUtils } from '@typescript-eslint/utils'
 const createRule = ESLintUtils.RuleCreator((name) => `https://wiki.yandex.ru/product/platform-front-web/linting/${name}`)
 
 /**
- * Проверяет, является ли часть строки закрывающим тегом.
- * @param {string} part - Часть строки для проверки.
- * @returns {boolean} True, если это закрывающий тег, иначе false.
+ * Checks whether a string fragment is a closing tag.
+ * @param {string} part - Fragment to check.
+ * @returns {boolean} True for a closing tag, otherwise false.
  */
 const isClosingTag = (part) => {
   if (!part) return false
@@ -14,9 +14,9 @@ const isClosingTag = (part) => {
 }
 
 /**
- * Проверяет, является ли часть строки открывающим тегом.
- * @param {string} part - Часть строки для проверки.
- * @returns {boolean} True, если это открывающий тег, иначе false.
+ * Checks whether a string fragment is an opening tag.
+ * @param {string} part - Fragment to check.
+ * @returns {boolean} True for an opening tag, otherwise false.
  */
 const isOpeningTag = (part) => {
   if (!part) return false
@@ -25,9 +25,9 @@ const isOpeningTag = (part) => {
 }
 
 /**
- * Проверяет, является ли часть строки самозакрывающимся тегом.
- * @param {string} part - Часть строки для проверки.
- * @returns {boolean} True, если это самозакрывающийся тег, иначе false.
+ * Checks whether a string fragment is a self-closing tag.
+ * @param {string} part - Fragment to check.
+ * @returns {boolean} True for a self-closing tag, otherwise false.
  */
 const isSelfClosingTag = (part) => {
   if (!part) return false
@@ -36,9 +36,9 @@ const isSelfClosingTag = (part) => {
 }
 
 /**
- * Возвращает уровень отступа строки (количество пробелов, деленное на 2).
- * @param {string} str - Строка для анализа.
- * @returns {number} Уровень отступа.
+ * Returns the indentation level of a line (leading spaces divided by 2).
+ * @param {string} str - Line to analyze.
+ * @returns {number} Indentation level.
  */
 const getIndent = (str) => {
   if (!str) return 0
@@ -48,17 +48,17 @@ const getIndent = (str) => {
 }
 
 /**
- * Находит позицию закрывающего тега для текущего открывающего тега.
- * @param {Array<Object>} tags - Массив всех тегов в шаблоне.
- * @param {number} startIndex - Индекс открывающего тега.
- * @returns {number} Индекс закрывающего тега.
+ * Finds the closing tag that matches the given opening tag.
+ * @param {Array<Object>} tags - All tags found in the template.
+ * @param {number} startIndex - Index of the opening tag.
+ * @returns {number} Index of the matching closing tag.
  */
 const findClosingTagPosition = (tags, startIndex) => {
   const openingTag = tags[startIndex]
   const tagName = openingTag.content.match(/<([^\s>]+)/)[1]
   let depth = 1
 
-  // Проходим по всем тегам, чтобы найти соответствующий закрывающий тег
+  // Walk forward until the matching closing tag is found
   for (let i = startIndex + 1; i < tags.length; i++) {
     const currentTag = tags?.[i]?.content
     if (currentTag?.includes(`<${tagName}`)) {
@@ -75,13 +75,13 @@ const findClosingTagPosition = (tags, startIndex) => {
 }
 
 /**
- * Основная функция, которая проверяет наличие переноса строки между тегами.
- * @param {Object} context - Контекст ESLint.
- * @returns {Function} Функция, которая проверяет блок шаблона.
+ * Rule entry point: reports sibling tags that are not separated by a line break.
+ * @param {Object} context - ESLint rule context.
+ * @returns {Function} Visitor that checks a template block.
  */
 function checkNewline(context) {
   return (block) => {
-    // Позиция начала шаблона в файле
+    // Offset of the template block within the file
     const templateStart = block.range[0]
 
     const sourceCode = context.sourceCode
@@ -89,17 +89,17 @@ function checkNewline(context) {
     const lines = templateText.split('\n')
 
     /**
-     * Получает информацию о многострочном теге.
-     * @param {number} startLine - Начальная строка тега.
-     * @param {number} startIndex - Начальный индекс в строке.
-     * @returns {Object} Информация о теге (конечная строка, конечный столбец, содержимое).
+     * Collects a tag that spans several lines.
+     * @param {number} startLine - Line where the tag starts.
+     * @param {number} startIndex - Column where the tag starts.
+     * @returns {Object} Tag end line, end column and content.
      */
     const getMultilineTagInfo = (startLine, startIndex) => {
       let content = lines[startLine].slice(startIndex)
       let currentLine = startLine
       let endColumn = content.length
 
-      // Собираем содержимое тега, пока не найдем закрывающий символ '>'
+      // Keep appending lines until the tag's closing '>' is reached
       while (!content.includes('>') && currentLine < lines.length - 1) {
         currentLine++
         content += lines[currentLine]
@@ -113,17 +113,17 @@ function checkNewline(context) {
       }
     }
 
-    // Собираем все теги из шаблона в один массив
+    // Collect every tag in the template into one flat list
     const allTags = []
     lines.forEach((line, lineIndex) => {
       const currentLineNumber = lineIndex + block.loc.start.line
       let match
       const tagRegex = /<\/?[^>]+>?/g
 
-      // Находим все теги в текущей строке
+      // Find all tags on the current line
       while ((match = tagRegex.exec(line)) !== null) {
         if (!line.slice(match.index).includes('>')) {
-          // Если тег многострочный, обрабатываем его отдельно
+          // Multi-line tags need their full content collected first
           const multilineInfo = getMultilineTagInfo(lineIndex, match.index)
           allTags.push({
             content: multilineInfo.content.match(/<[^>]+>/)?.[0],
@@ -134,7 +134,7 @@ function checkNewline(context) {
             endLineNumber: block.loc.start.line + multilineInfo.endLine,
           })
         } else {
-          // Если тег однострочный, добавляем его в массив
+          // Single-line tag: record it as is
           allTags.push({
             content: match[0],
             position: match.index,
@@ -147,19 +147,19 @@ function checkNewline(context) {
       }
     })
 
-    // Проверяем наличие переноса строки между тегами
+    // Check that adjacent tags are separated by a line break
     for (let i = 0; i < allTags.length - 1; i++) {
       const currentTag = allTags[i]
       const nextTag = allTags[i + 1]
 
-      // Если текущий тег — закрывающий или самозакрывающийся, а следующий — открывающий или самозакрывающийся
+      // A closing or self-closing tag followed by an opening or self-closing tag needs a line break between them
       if ((isClosingTag(currentTag.content) || isSelfClosingTag(currentTag.content)) && (isOpeningTag(nextTag.content) || isSelfClosingTag(nextTag.content))) {
         const nextTagEndIndex = isSelfClosingTag(nextTag.content) ? i + 1 : findClosingTagPosition(allTags, i + 1)
 
         const nextTagEnd = allTags[nextTagEndIndex]
         const lineDifference = nextTag.lineNumber - currentTag.endLineNumber
 
-        // Если между тегами нет переноса строки, сообщаем об ошибке
+        // The tags sit on the same or adjacent lines: report it
         if (lineDifference <= 1) {
           context.report({
             messageId: 'missingLineBreak',
@@ -176,16 +176,16 @@ function checkNewline(context) {
             fix(fixer) {
               const indent = getIndent(nextTag.fullLine)
 
-              // Вычисляем позицию для вставки переноса строки
+              // Compute the character offset where the line break is inserted
               let position = 0
               for (let lineIndex = 0; lineIndex < currentTag.endLineNumber - block.loc.start.line; lineIndex++) {
-                position += lines[lineIndex].length + 1 // +1 для учета символа новой строки
+                position += lines[lineIndex].length + 1 // +1 for the newline character
               }
               position += currentTag.columnEnd
 
               const range = [templateStart + position, templateStart + position]
 
-              // Вставляем перенос строки с учетом отступа
+              // Insert the line break and keep the current indentation
               if (currentTag.lineNumber === nextTag.lineNumber) {
                 return fixer.insertTextAfterRange(range, '\n\n' + ' '.repeat(indent * 2))
               }

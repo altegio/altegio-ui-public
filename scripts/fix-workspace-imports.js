@@ -20,7 +20,7 @@ async function replaceAliasesInFile(filePath) {
     return;
   }
 
-  // Проверяем, что это файл, а не папка
+  // Skip directories that match the glob
   const stat = statSync(filePath);
   if (!stat.isFile()) {
     return;
@@ -30,7 +30,7 @@ async function replaceAliasesInFile(filePath) {
   let updatedContent = content;
   let hasChanges = false;
 
-  // Обрабатываем CSS импорты отдельно (они async)
+  // CSS imports are inlined as strings; reading them is async, so they are handled before the alias rewrites
   const cssImportPattern = /import\s+(\w+)\s+from\s+['"]([^'"]*\.css)(\?inline)?['"]/g;
   let cssMatch;
   while ((cssMatch = cssImportPattern.exec(content)) !== null) {
@@ -44,45 +44,45 @@ async function replaceAliasesInFile(filePath) {
     hasChanges = true;
   }
 
-  // Замены для алиасов (синхронные)
+  // Synchronous alias rewrites
   const replacements = [
     
-    // Заменяем ?inline импорты на обычные (удаляем ?inline) - для других типов файлов
+    // Drop the ?inline suffix from the remaining (non-CSS) imports
     { from: /import\s+(.+?)\s+from\s+['"](.+?)\?inline['"]/g, to: (match, importName, path) => {
       return `import ${importName} from '${path}'`;
     }},
     
-    // ~ng/* -> относительные пути в src/
+    // ~ng/* -> relative path inside src/
     { from: /from ['"]~ng\/(.+?)['"]/g, to: (match, path) => {
       const relativePath = getRelativePathFromSrc(filePath, path);
       return `from '${relativePath}'`;
     }},
     
-    // ~core/* -> относительные пути к core/
+    // ~core/* -> relative path to the copied core sources
     { from: /from ['"]~core\/(.+?)['"]/g, to: (match, path) => {
       const relativePath = getRelativePathToCore(filePath, path);
       return `from '${relativePath}'`;
     }},
     
-    // ~shared/* -> относительные пути к shared/
+    // ~shared/* -> relative path to the copied shared sources
     { from: /from ['"]~shared\/(.+?)['"]/g, to: (match, path) => {
       const relativePath = getRelativePathToShared(filePath, path);
       return `from '${relativePath}'`;
     }},
     
-    // ~web/* -> относительные пути к shared/ (внутри workspace)
+    // ~web/shared/* -> relative path to the shared copy inside the workspace
     { from: /from ['"]~web\/shared\/(.+?)['"]/g, to: (match, path) => {
       const relativePath = getRelativePathToShared(filePath, path);
       return `from '${relativePath}'`;
     }},
     
-    // ~tokens/* -> относительные пути к tokens/
+    // ~tokens/* -> relative path to the copied tokens
     { from: /from ['"]~tokens\/(.+?)['"]/g, to: (match, path) => {
       const relativePath = getRelativePathToTokens(filePath, path);
       return `from '${relativePath}'`;
     }},
     
-    // Также заменяем импорты без 'from' (например, import '~core/ui/text')
+    // Side-effect imports without "from", e.g. import '~core/ui/text'
     { from: /import ['"]~core\/(.+?)['"]/g, to: (match, path) => {
       const relativePath = getRelativePathToCore(filePath, path);
       return `import '${relativePath}'`;
@@ -112,15 +112,15 @@ async function replaceAliasesInFile(filePath) {
 }
 
 function getRelativePathFromSrc(fromFile, targetPath) {
-  // Получаем путь от текущего файла к src/
+  // Path of the current file relative to the Angular package root
   const fromFileRelative = fromFile.replace(`${WORKSPACE_ANGULAR_DIR}/`, '');
-  const fromFileDir = fromFileRelative.split('/').slice(0, -1); // убираем имя файла
+  const fromFileDir = fromFileRelative.split('/').slice(0, -1); // drop the file name
   
   let upLevels = 0;
   if (fromFileDir[0] === 'src') {
-    upLevels = fromFileDir.length - 1; // количество папок внутри src/
+    upLevels = fromFileDir.length - 1; // number of directories below src/
   } else {
-    return `./${targetPath}`; // если файл не в src/, возвращаем как есть
+    return `./${targetPath}`; // files outside src/ keep the path as is
   }
   
   const upPath = upLevels > 0 ? '../'.repeat(upLevels) : './';
@@ -131,18 +131,18 @@ function getRelativePathToCore(fromFile, targetPath) {
   const fromFileRelative = fromFile.replace(`${WORKSPACE_ANGULAR_DIR}/`, '');
   const fromFileDir = fromFileRelative.split('/').slice(0, -1);
   
-  // Если файл уже находится внутри core/src/, используем относительный путь
+  // Files inside the core copy resolve the path relative to core/src/
   if (fromFileRelative.startsWith('src/core/src/')) {
-    // Определяем сколько уровней нужно подняться от текущей папки до core/src/
-    const coreSubPath = fromFileDir.slice(3); // убираем 'src/core/src'
+    // Count how many levels to go up from the current directory to core/src/
+    const coreSubPath = fromFileDir.slice(3); // drop 'src/core/src'
     const upLevels = coreSubPath.length;
     const upPath = upLevels > 0 ? '../'.repeat(upLevels) : './';
     return `${upPath}${targetPath}`;
   }
   
-  // Теперь core находится в src/core
+  // Any other file in src/ reaches core through src/core
   if (fromFileDir[0] === 'src') {
-    let upLevels = fromFileDir.length - 1; // количество папок внутри src/
+    let upLevels = fromFileDir.length - 1; // number of directories below src/
     const upPath = upLevels > 0 ? '../'.repeat(upLevels) : './';
     return `${upPath}core/src/${targetPath}`;
   } else {
@@ -154,18 +154,18 @@ function getRelativePathToShared(fromFile, targetPath) {
   const fromFileRelative = fromFile.replace(`${WORKSPACE_ANGULAR_DIR}/`, '');
   const fromFileDir = fromFileRelative.split('/').slice(0, -1);
   
-  // Если файл уже находится внутри shared/, используем относительный путь
+  // Files inside the shared copy resolve the path relative to shared/
   if (fromFileRelative.startsWith('src/shared/')) {
-    // Определяем сколько уровней нужно подняться от текущей папки до shared/
-    const sharedSubPath = fromFileDir.slice(2); // убираем 'src/shared'
+    // Count how many levels to go up from the current directory to shared/
+    const sharedSubPath = fromFileDir.slice(2); // drop 'src/shared'
     const upLevels = sharedSubPath.length;
     const upPath = upLevels > 0 ? '../'.repeat(upLevels) : './';
     return `${upPath}${targetPath}`;
   }
   
-  // Теперь shared находится в src/shared
+  // Any other file in src/ reaches shared through src/shared
   if (fromFileDir[0] === 'src') {
-    let upLevels = fromFileDir.length - 1; // количество папок внутри src/
+    let upLevels = fromFileDir.length - 1; // number of directories below src/
     const upPath = upLevels > 0 ? '../'.repeat(upLevels) : './';
     return `${upPath}shared/${targetPath}`;
   } else {
@@ -177,18 +177,18 @@ function getRelativePathToTokens(fromFile, targetPath) {
   const fromFileRelative = fromFile.replace(`${WORKSPACE_ANGULAR_DIR}/`, '');
   const fromFileDir = fromFileRelative.split('/').slice(0, -1);
   
-  // Если файл уже находится внутри tokens/, используем относительный путь
+  // Files inside the tokens copy resolve the path relative to tokens/
   if (fromFileRelative.startsWith('src/tokens/')) {
-    // Определяем сколько уровней нужно подняться от текущей папки до tokens/
-    const tokensSubPath = fromFileDir.slice(2); // убираем 'src/tokens'
+    // Count how many levels to go up from the current directory to tokens/
+    const tokensSubPath = fromFileDir.slice(2); // drop 'src/tokens'
     const upLevels = tokensSubPath.length;
     const upPath = upLevels > 0 ? '../'.repeat(upLevels) : './';
     return `${upPath}${targetPath}`;
   }
   
-  // Теперь tokens находится в src/tokens
+  // Any other file in src/ reaches tokens through src/tokens
   if (fromFileDir[0] === 'src') {
-    let upLevels = fromFileDir.length - 1; // количество папок внутри src/
+    let upLevels = fromFileDir.length - 1; // number of directories below src/
     const upPath = upLevels > 0 ? '../'.repeat(upLevels) : './';
     return `${upPath}tokens/${targetPath}`;
   } else {
@@ -199,48 +199,48 @@ function getRelativePathToTokens(fromFile, targetPath) {
 
 
 function resolveCssPath(fromFile, cssPath) {
-  // Обрабатываем алиас ~core/
+  // ~core/ alias
   if (cssPath.startsWith('~core/')) {
     const corePath = cssPath.replace('~core/', 'src/core/src/');
     return join(WORKSPACE_ANGULAR_DIR, corePath);
   }
   
-  // Обрабатываем алиас ~shared/
+  // ~shared/ alias
   if (cssPath.startsWith('~shared/')) {
     const sharedPath = cssPath.replace('~shared/', 'src/shared/');
     return join(WORKSPACE_ANGULAR_DIR, sharedPath);
   }
   
-  // Обрабатываем алиас ~ng/
+  // ~ng/ alias
   if (cssPath.startsWith('~ng/')) {
     const ngPath = cssPath.replace('~ng/', 'src/');
     return join(WORKSPACE_ANGULAR_DIR, ngPath);
   }
   
-  // Обрабатываем алиас ~tokens/
+  // ~tokens/ alias
   if (cssPath.startsWith('~tokens/')) {
     const tokensPath = cssPath.replace('~tokens/', 'src/tokens/');
     return join(WORKSPACE_ANGULAR_DIR, tokensPath);
   }
   
-  // Обрабатываем алиас ~web/shared/ -> мапим на shared/ внутри workspace
+  // ~web/shared/ alias -> the shared copy inside the workspace
   if (cssPath.startsWith('~web/shared/')) {
     const sharedPath = cssPath.replace('~web/shared/', 'src/shared/');
     return join(WORKSPACE_ANGULAR_DIR, sharedPath);
   }
   
-  // Если путь уже относительный (начинается с ./ или ../), разрешаем его
+  // Relative paths (./ or ../) resolve against the importing file
   if (cssPath.startsWith('./') || cssPath.startsWith('../')) {
     const fromDir = fromFile.split('/').slice(0, -1).join('/');
     return join(fromDir, cssPath);
   }
   
-  // Если путь абсолютный в workspace
+  // Absolute paths are already workspace paths
   if (cssPath.startsWith('/')) {
     return join(WORKSPACE_ANGULAR_DIR, cssPath.slice(1));
   }
   
-  // Иначе считаем его относительным к текущему файлу
+  // Anything else is treated as relative to the importing file
   const fromDir = fromFile.split('/').slice(0, -1).join('/');
   return join(fromDir, cssPath);
 }
@@ -250,37 +250,37 @@ async function readCssFile(cssPath) {
     if (existsSync(cssPath)) {
       let content = readFileSync(cssPath, 'utf8');
       
-      // Добавляем токены CSS в .vars.css файлы (до PostCSS)
+      // Inject the design token variables into .vars.css files before PostCSS runs
       if (cssPath.includes('.vars.css')) {
         content = injectCssTokens(content);
       }
       
-      // Обрабатываем CSS через PostCSS сначала
+      // Resolve imports, mixins and nesting with PostCSS first
       content = await processWithPostCSS(content, cssPath);
       
-      // Затем обрабатываем CSS переменные компонентов (после PostCSS)
+      // Then substitute the component tag names (needs the PostCSS output)
       content = await processCssVariables(content);
       
-      // Финальная очистка: удаляем все оставшиеся $component строки
+      // Remove any $component declarations that are still left
       content = content.replace(/\$component:\s*\$[A-Za-z0-9_]+;?\s*(?:\r?\n)?/g, '');
       
-      // Экранируем обратные слеши и бэктики для template literal
+      // Escape backslashes, backticks and ${ so the CSS can be embedded in a template literal
       return content.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$\{/g, '\\${');
     }
   } catch (error) {
     log(`Warning: failed to read CSS file ${cssPath}: ${error.message}`);
   }
-  return ''; // возвращаем пустую строку если файл не найден
+  return ''; // a missing file is inlined as an empty string
 }
 
 async function processWithPostCSS(content, cssPath) {
   try {
 
-    // Настройка PostCSS плагинов
+    // PostCSS plugins
     const plugins = [
       postcssImport({
         resolve: (id, basedir) => {
-          // Обрабатываем алиасы для imports в CSS
+          // Resolve path aliases in CSS @import statements
           if (id.startsWith('~core/')) {
             return join(WORKSPACE_ANGULAR_DIR, 'src/core/', id.replace('~core/', ''));
           }
@@ -293,7 +293,7 @@ async function processWithPostCSS(content, cssPath) {
           return id;
         }
       }),
-      // Убираем postcss-simple-vars - переменные компонентов обрабатываем вручную
+      // postcss-simple-vars is not used here: processCssVariables() substitutes the component variables
       postcssMixins({
         mixinsDir: join(process.cwd(), 'web/core/src/assets/css/mixins')
       }),
@@ -310,15 +310,15 @@ async function processWithPostCSS(content, cssPath) {
     return result.css;
   } catch (error) {
     log(`PostCSS processing failed for ${cssPath}: ${error.message}`);
-    return content; // возвращаем исходный контент при ошибке
+    return content; // fall back to the unprocessed CSS on error
   }
 }
 
 async function processCssVariables(content) {
-  // Эта функция обрабатывает замену компонентов и УДАЛЯЕТ все $component строки
-  // PostCSS миксины и вложенности обрабатываются в processWithPostCSS
+  // Replaces .$(component) selectors with the component tag name and REMOVES every $component declaration.
+  // Mixins and nesting have already been handled by processWithPostCSS().
   
-  // Ищем все строки с $component: (могут быть несколько в разных файлах)
+  // Find every $component declaration (inlined imports may bring in several)
   const componentMatches = content.matchAll(/\$component:\s*\$([A-Za-z0-9_]+);\s*(?:\r?\n)?/g);
   let foundComponent = false;
   
@@ -327,14 +327,14 @@ async function processCssVariables(content) {
     foundComponent = true;
     log(`CSS variable found: $component: $${componentVariableName}`);
     
-    // Загружаем маппинг компонентов из константового файла
+    // Map the tag-name constant to its value
     const componentMapping = await loadComponentMapping();
     
     const componentValue = componentMapping[componentVariableName];
     if (componentValue) {
       log(`Replacing all .$(component) occurrences with .${componentValue}`);
       
-      // Заменяем все использования .$(component) на реальное значение компонента
+      // Replace every .$(component) selector with the actual tag name
       content = content.replace(/\.\$\(component\)/g, `.${componentValue}`);
       
       log(`Replaced all .$(component) occurrences with .${componentValue}`);
@@ -343,8 +343,8 @@ async function processCssVariables(content) {
     }
   }
   
-  // ВАЖНО: Удаляем ВСЕ строки с $component: независимо от того, нашли ли маппинг
-  // Это гарантирует, что невалидный CSS не попадёт в финальный файл
+  // IMPORTANT: remove EVERY $component declaration, whether or not a mapping was found,
+  // so that no invalid CSS reaches the output
   const originalLength = content.length;
   content = content.replace(/\$component:\s*\$[A-Za-z0-9_]+;\s*(?:\r?\n)?/g, '');
   const newLength = content.length;
@@ -364,13 +364,13 @@ async function loadComponentMapping() {
   }
   
   try {
-    // Загружаем константы из исходного файла
+    // Read the tag-name constants from the source file
     const constantsPath = join(process.cwd(), 'web/shared/constants/index.ts');
     if (existsSync(constantsPath)) {
       const constantsContent = readFileSync(constantsPath, 'utf8');
       const mapping = {};
       
-      // Парсим экспорты констант
+      // Parse the exported *TagName constants
       const exportPattern = /export const ([A-Za-z0-9_]+TagName) = ['"]([^'"]+)['"]/g;
       let match;
       
@@ -385,7 +385,7 @@ async function loadComponentMapping() {
       return mapping;
     }
     
-    // Fallback: пытаемся загрузить из собранного файла
+    // Fallback: load the constants from the built file
     const builtPath = join(process.cwd(), 'web/shared/constants/build/index.cjs');
     if (existsSync(builtPath)) {
       const { createRequire } = await import('module');
@@ -410,13 +410,13 @@ async function loadComponentMapping() {
     log(`Failed to load component mappings: ${error.message}`);
   }
   
-  // Fallback: пустой маппинг
+  // Fallback: an empty mapping
   return {};
 }
 
 function injectCssTokens(content) {
   try {
-    // Читаем токены из JSON файлов и генерируем CSS переменные
+    // Read the design tokens from the JSON files and generate CSS custom properties
     const tokensDir = join(WORKSPACE_ANGULAR_DIR, 'src/tokens');
     const tokensFiles = {
       colors: 'colors.json',
@@ -436,7 +436,7 @@ function injectCssTokens(content) {
       avatar: 'component'
     };
 
-    // Функция для преобразования camelCase/snake_case в kebab-case (аналог dash из radash)
+    // Converts camelCase/snake_case to kebab-case (same as dash() from radash)
     const toKebabCase = (str) => {
       return str
         .replace(/([A-Z])/g, '-$1')  // camelCase -> kebab-case
@@ -460,7 +460,7 @@ function injectCssTokens(content) {
     //   }
     // }
     
-    // Добавляем токены в :host блок или создаем новый
+    // Add the tokens to the existing :host block or create a new one
     if (content.includes(':host {')) {
       content = content.replace(':host {', `:host {\n  /* Tokens */\n${tokensVariables}`);
     } else {
@@ -483,7 +483,7 @@ async function main() {
     process.exit(1);
   }
   
-  // Находим все TypeScript файлы в workspace/angular
+  // Process every TypeScript file in workspace/angular
   const pattern = join(WORKSPACE_ANGULAR_DIR, '**/*.ts');
   const files = await glob(pattern, { ignore: ['**/node_modules/**', '**/*.d.ts'] });
   

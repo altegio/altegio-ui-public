@@ -1,31 +1,31 @@
 #!/bin/bash -e
 
-# Скрипт для проверки только staged Vue файлов
-# Создает временный tsconfig.json который extends основной и включает только переданные файлы
+# Type-checks only the staged Vue files.
+# Writes a temporary tsconfig that extends the main one and includes only the given files.
 
 TMP=.tsconfig-vue-lint.json
 
-# Создаем начало файла
+# Start the temporary config
 cat >$TMP <<EOF
 {
   "extends": "./tsconfig.json",
   "include": [
 EOF
 
-# Добавляем переданные файлы
+# Add the files passed as arguments
 for file in "$@"; do
   echo "    \"$file\"," >> $TMP
 done
 
-# Закрываем массив include
+# Close the include array
 cat >>$TMP <<EOF
     "**/*.d.ts"
   ]
 }
 EOF
 
-# Запускаем vue-tsc с временным конфигом
+# Run vue-tsc with the temporary config
 npx vue-tsc --project $TMP --noEmit --skipLibCheck
 
-# Удаляем временный файл
+# Remove the temporary config
 rm -f $TMP 

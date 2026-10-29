@@ -45,19 +45,18 @@ export class YCoreAvatar extends LitElement implements IYCoreAvatarExternalProps
   }
 
   /**
-   * Преобразует строку с именем пользователя в инициалы.
+   * Converts the user name string into initials.
    *
    * @example
-   * "Иван" -> "И"
-   * "Иван Петров" -> "ИП"
-   * "иван петров" -> "ИП"
-   * "  Иван  Петров  " -> "ИП"
+   * "Anna" -> "A"
+   * "Anna Smith" -> "AS"
+   * "anna smith" -> "AS"
    * "" -> ""
    *
-   * @returns {string} Инициалы пользователя в верхнем регистре.
-   * Возвращает пустую строку, если this.initials не определено.
-   * Для одного слова возвращает только первую букву.
-   * Для нескольких слов берет первые буквы первых двух слов.
+   * @returns {string} Upper-case initials.
+   * Returns an empty string when this.initials is not set.
+   * A single word gives one letter; otherwise the first letters of the first two words are used.
+   * Words are split on single spaces, so "Anna  Smith" (two spaces) gives "A".
    */
   private get initialsFromString() {
     if (!this.initials) return ''

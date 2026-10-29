@@ -13,7 +13,7 @@ type TYCoreCardCheckboxMeta = Meta<IYCoreCardCheckboxProps>
 
 /**
  * ## Core CardCheckbox
- * вспомогательный компонент для CardButton/CardSelect
+ * Helper component used by CardButton and CardSelect
  */
 const meta: TYCoreCardCheckboxMeta = {
   title: 'Cards/Partials/✅ CardCheckbox',

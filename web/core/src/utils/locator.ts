@@ -2,16 +2,16 @@ import type { ReactiveController, ReactiveControllerHost } from 'lit'
 import type { ReactiveElement } from 'lit'
 
 /**
- * Интерфейс хоста, который может использовать LocatorController.
- * Расширяет ReactiveControllerHost из библиотеки lit и добавляет свойство locator.
+ * Host that can use LocatorController.
+ * Extends lit's ReactiveControllerHost with the locator property.
  */
 interface ILocatorHost extends ReactiveControllerHost, HTMLElement {
   locator?: string
 }
 
 /**
- * Контроллер, который поддерживает атрибут data-locator в актуальном состоянии.
- * Приоритет: проп locator → уже выставленный потребителем data-locator → имя тега.
+ * Controller that keeps the data-locator attribute up to date.
+ * Precedence: the locator prop → a data-locator already set by the consumer → the tag name.
  */
 class LocatorController implements ReactiveController {
   constructor(
@@ -22,7 +22,7 @@ class LocatorController implements ReactiveController {
   }
 
   /**
-   * Применяет значение локатора к хосту.
+   * Applies the locator value to the host.
    */
   private apply() {
     if (this.host.locator) {
@@ -37,15 +37,15 @@ class LocatorController implements ReactiveController {
   }
 
   /**
-   * Метод жизненного цикла, вызываемый при подключении хоста к DOM.
+   * Lifecycle callback called when the host is connected to the DOM.
    */
   hostConnected() {
     this.apply()
   }
 
   /**
-   * Метод жизненного цикла, вызываемый после обновления хоста.
-   * Нужен, чтобы динамическое изменение locator доезжало до data-locator.
+   * Lifecycle callback called after the host updates.
+   * Propagates runtime changes of locator to data-locator.
    */
   hostUpdated() {
     this.apply()
@@ -53,7 +53,7 @@ class LocatorController implements ReactiveController {
 }
 
 /**
- * Тип элемента с прикреплённым контроллером локатора.
+ * Element with an attached locator controller.
  */
 type TLocatorElement = ILocatorHost & {
   _locatorController?: LocatorController
@@ -61,7 +61,7 @@ type TLocatorElement = ILocatorHost & {
 }
 
 /**
- * Тип конструктора для классов, которые могут использовать декоратор withLocator.
+ * Constructor type for classes that can use the withLocator decorator.
  */
 type TConstructor<T> = {
   new (...args: unknown[]): T
@@ -69,14 +69,14 @@ type TConstructor<T> = {
 }
 
 /**
- * Декоратор для классов, который делает локатор компонента управляемым снаружи.
+ * Class decorator that lets consumers control the component locator.
  *
- * Объявляет реактивное свойство locator и выставляет data-locator по правилу:
- * проп locator → уже выставленный потребителем data-locator → fallback (имя тега).
+ * Declares a reactive locator property and sets data-locator using this precedence:
+ * the locator prop → a data-locator already set by the consumer → the fallback (tag name).
  *
- * Переобъявляет свойство locator через createProperty и затирает опции локального @property locator, если он объявлен в классе.
- * Порядок декораторов важен: @withLocator должен стоять ниже @customElement, иначе observedAttributes не успеет подхватить locator и путь через атрибут молча перестанет работать (путь через DOM-свойство продолжит работать).
- * Если locator был задан, а затем сброшен в undefined, data-locator сохраняет прежнее значение и не возвращается к имени тега.
+ * Redeclares locator through createProperty, overriding the options of a local @property locator if the class declares one.
+ * Decorator order matters: @withLocator must come below @customElement, otherwise observedAttributes misses locator and setting it through the attribute silently stops working (the DOM property still works).
+ * If locator is set and then reset to undefined, data-locator keeps the previous value instead of falling back to the tag name.
  *
  * @example
  * ```ts
@@ -85,8 +85,8 @@ type TConstructor<T> = {
  * class MyElement extends LitElement {}
  * ```
  *
- * @param fallback - Значение data-locator по умолчанию, обычно имя тега.
- * @returns Декоратор класса.
+ * @param fallback - Default data-locator value, usually the tag name.
+ * @returns Class decorator.
  */
 export const withLocator = (fallback: string) => {
   return <T extends object>(target: TConstructor<T>) => {

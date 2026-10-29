@@ -67,7 +67,7 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
     if (tabElements) this.initialize(Array.from(tabElements))
 
 
-    // Используется для изначальной отрисовки кнопок для скролла
+    // Show the scroll buttons after the first render
     setTimeout(() => {
       this.updateScrollButtons()
     })
@@ -107,7 +107,7 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
     this.removeTabsContainerEventListeners()
   }
 
-  // Метод для ручной реинициализации снаружи(если потребуется)
+  // Lets consumers re-initialize the tabs manually when needed
   public reinitialize(tabElements?: YCoreTab[] | NodeListOf<YCoreTab>) {
     this.destroy()
 
@@ -142,7 +142,7 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
     const canScrollLeft = scrollLeft > 0
     const canScrollRight = scrollLeft < scrollWidth - clientWidth
 
-    // Обновляем состояния только при реальных изменениях
+    // Update the state only when the visibility actually changes
     if (this.showLeftButton !== canScrollLeft || this.showRightButton !== canScrollRight) {
       this.showLeftButton = canScrollLeft
       this.showRightButton = canScrollRight
@@ -156,7 +156,7 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
 
     const { deltaY, deltaX } = ev
 
-    // Для работы горизонтального скролла при скролле по горизонтали и вертикали
+    // Use the dominant axis so both vertical and horizontal wheel gestures scroll the tabs horizontally
     const offset = Math.abs(deltaY) > Math.abs(deltaX) ? deltaY : deltaX
 
     this.tabsContainer.scrollLeft += offset
@@ -165,14 +165,14 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
   private handleItemClick(event: Event, index: number) {
     if (!event.currentTarget) return
 
-    // Делаем новый элемент активным (появляется его полоса)
+    // Activate the clicked tab (its highlight bar appears)
     const detail = { value: index }
 
     this._changeActiveTab({ detail })
   }
 
   private async moveHighlightBar(prevActiveIndex: number, index: number) {
-    // Клик на текущий активный — ничего не делаем
+    // Clicking the active tab does nothing
     if (prevActiveIndex === index) return
 
     const newActiveTab = this.tabElements?.[index]
@@ -189,22 +189,22 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
     const prevActiveRect = prevActiveTab.getBoundingClientRect()
     const offsetX = prevActiveRect.left - newActiveTabRect.left
 
-    // Смещаем подсветку на место предыдущего активного Tab для последующей анимации
+    // Move the new highlight bar to the previous tab's position so it can slide over
     nextHighlightBar.style.transform = `translateX(${offsetX}px)`
 
-    // Ждем перерисовки
+    // Wait for a repaint
     await new Promise((resolve) => setTimeout(resolve))
 
-    // Возвращаем плавно элемент подсветки на место
+    // Slide the highlight bar back into place
     nextHighlightBar.style.transition = 'transform 0.3s ease, width 0.3s ease'
     nextHighlightBar.style.transform = 'translateX(0px)'
 
-    // Ждём окончания анимации
+    // Wait for the transition to finish
     await new Promise((resolve) => {
       nextHighlightBar.addEventListener('transitionend', resolve, { once: true })
     })
 
-    // Возвращаем полосу в исходное состояние
+    // Reset the bar's inline styles
     nextHighlightBar.style.transition = 'none'
     nextHighlightBar.style.transform = 'none'
   }
@@ -232,8 +232,8 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
 
     const tabTagNameUpperCase = tabTagName.toUpperCase()
 
-    // Ищем элементы <y-core-tab> даже в тех случаях,
-    // где есть обертки, например, YTab в Ng/Tab
+    // Find <y-core-tab> elements even when they are wrapped,
+    // e.g. YTab inside the Angular Tab component
     slotElements.forEach((el) => {
       if (el.tagName === tabTagNameUpperCase) return nodeList.push(el as YCoreTab)
 
@@ -249,7 +249,7 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
     const parent = this.tabsContainer
     if (!parent || !element) return
 
-    // Требуется для корректного проскролливания при первичной отрисовке
+    // Wait a tick so the initial scroll lands on the right position
     if (needNextTick) await new Promise((resolve) => setTimeout(resolve, 50))
 
     const parentWidth = parent.clientWidth
@@ -336,12 +336,12 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
         })
       },
       {
-        root: this.tabsContainer, // Контейнер со скроллом
-        threshold: 0.99, // Считается видимым, если 99% элемента в зоне видимости
+        root: this.tabsContainer, // the scrollable container
+        threshold: 0.99, // a tab counts as visible when 99% of it is in view
       },
     )
 
-    // Наблюдаем за всеми табами контейнера
+    // Observe every tab in the container
     Array.from(this.tabElements).forEach((child) => {
       this.intersectionObserver?.observe(child)
     })
@@ -358,11 +358,11 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
   }
 
   protected scrollToLeft() {
-    this.scrollByDirection(-1) // -1 = на один элемент влево
+    this.scrollByDirection(-1) // -1 = one tab to the left
   }
 
   protected scrollToRight() {
-    this.scrollByDirection(1) // 1 = на один элемент вправо
+    this.scrollByDirection(1) // 1 = one tab to the right
   }
 
   protected scrollByDirection(direction: number) {
@@ -388,7 +388,7 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
 
     if (visibleTabsIndexes.length === 0) return null
 
-    // Получаем индекс следующего элемента, который хотим отобразить
+    // Index of the next tab to bring into view
     return isToLeft
       ? visibleTabsIndexes[0]
       : visibleTabsIndexes[visibleTabsIndexes.length - 1]
@@ -399,7 +399,7 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
 
     const tabElement = this.tabElements[tabIndex]
 
-    // Смещение скролла для табов на ширину кнопки навигации
+    // Keep the tab clear of the navigation buttons when scrolled into view
     tabElement.style.scrollMarginRight = NAV_BUTTON_WIDTH
     tabElement.style.scrollMarginLeft = NAV_BUTTON_WIDTH
 

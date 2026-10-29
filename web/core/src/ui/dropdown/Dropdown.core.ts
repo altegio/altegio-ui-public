@@ -292,18 +292,18 @@ export class YCoreDropdown extends LitElement implements IYCoreDropdownProps {
   }
 
   private resetComponent(): void {
-    // Сброс анимации
+    // Cancel running animations
     this.animation?.abortEnter()
     this.animation?.abortLeave()
 
-    // Сброс состояния
+    // Reset the internal state
     this.isContentVisible = false
     this.animation = undefined
     this.minContentWidth = 0
     this.maxContentWidth = null
     this.resizeObserver = undefined
 
-    // Сброс свойств
+    // Restore the default property values
     this.isOpen = isOpen
   }
 

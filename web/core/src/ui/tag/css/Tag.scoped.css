@@ -19,7 +19,7 @@ $component: $YCoreTagTagName;
     display: inline-flex;
   }
 
-  /* Размеры */
+  /* Sizes */
   &_size {
     &_small {
       padding: var(--y-core-tag-padding-small-y) var(--y-core-tag-padding-small-x);
@@ -44,7 +44,7 @@ $component: $YCoreTagTagName;
     }
   }
 
-  /* Варианты */
+  /* Variants */
   &_variant {
     &_accent {
       color: var(--y-core-tag-color-accent);
@@ -110,7 +110,7 @@ $component: $YCoreTagTagName;
     }
   }
 
-  /* Disabled состояние */
+  /* Disabled state */
   &_disabled {
     cursor: not-allowed;
   }

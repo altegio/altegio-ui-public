@@ -7,23 +7,23 @@ import { generateTransformersFromJson } from '../utils/color'
 import { colorTokenTransformersRaw } from '../constants/color-token-transformers'
 
 /**
- * Интерфейс модуля палитры
+ * Palette module interface
  */
 export interface IPaletteModule extends IModule {
 
   /**
-   * Основной цвет, используемый для генерации палитры
+   * Accent color the palette is generated from
    */
   accentColor: Colord
 
   /**
-   * Флаг для включения тёмной темы
+   * Enables the dark theme
    */
   useDarkTheme: boolean
 }
 
 /**
- * Модуль локализации
+ * Palette module
  * @implements {IPaletteModule}
  */
 export class PaletteModule implements IPaletteModule {

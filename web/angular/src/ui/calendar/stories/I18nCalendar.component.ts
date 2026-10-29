@@ -10,7 +10,7 @@ import { YCalendar } from '~ng/ui/calendar/Calendar.component'
   template: ' <YCalendar [date]="selectedDate" (selectEvent)="onDateSelect($event)"></YCalendar> ',
 })
 export class I18nCalendar {
-  // Выбранная дата для календаря
+  // Date selected in the calendar
   selectedDate = new Date().toISOString().split('T')[0]
 
   onDateSelect(event: Event) {

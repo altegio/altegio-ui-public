@@ -26,7 +26,7 @@ const config: StorybookConfig = {
       }
     }
 
-    // Получаем базовый путь из переменных окружения или используем относительные пути
+    // Base URL comes from the environment; an empty value keeps paths relative
     const baseUrl = process.env.STORYBOOK_BASE_URL || ''
     return {
       vue: {
@@ -46,7 +46,7 @@ const config: StorybookConfig = {
   async viteFinal(config, { configType }) {
     const { mergeConfig } = await import('vite')
 
-    // В продакшене устанавливаем базовый путь из переменных окружения
+    // Production builds take the base path from the environment
     const base = configType === 'PRODUCTION'
       ? process.env.STORYBOOK_BASE_URL || '/'
       : '/'

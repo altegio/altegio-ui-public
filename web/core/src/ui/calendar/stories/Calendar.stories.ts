@@ -19,7 +19,7 @@ import { getComponentContentTable, getComponentStateTable, storyControlsTable } 
 import { locales } from '~core/i18n/locales'
 import type { ILocale } from '~core/i18n'
 
-// Импортируем примеры использования календаря
+// Calendar usage examples
 import * as Examples from './examples'
 import dayjs from 'dayjs'
 import { formatDate } from '~shared/utils/dateTime'
@@ -111,11 +111,11 @@ type Story = StoryObj<TYCoreCalendarMeta>
  */
 export const Playground: Story = { args: {} }
 
-// Экспортируем примеры календаря с разными локализациями
+// Calendar examples with different locales
 export const RussianLocale = Examples.RussianCalendar
 export const EnglishLocale = Examples.EnglishCalendar
 
-// Экспортируем примеры с различными функциональными возможностями
+// Calendar examples for individual features
 export const DateRange = Examples.DateRangeCalendar
 export const RangeSelection = Examples.RangeDateCalendar
 export const Disabled = Examples.DisabledCalendar

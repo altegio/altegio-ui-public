@@ -285,7 +285,7 @@ export class YCoreSelectField extends LitElement {
     if (!this.selectedItemByValue) return
 
     const tryScroll = () => {
-      // Ищем в shadowRoot, так как элементы рендерятся там
+      // Look in the shadowRoot because the items are rendered there
       // The locator changes with the selected item, so a static @query cannot represent it.
       // eslint-disable-next-line lit/prefer-query-decorators
       const selectedItemElement = this.shadowRoot?.querySelector<HTMLElement>(`[locator="${YCoreDropdownCellTagName}_${this.selectedItemByValue?.id}"]`)
@@ -340,7 +340,7 @@ export class YCoreSelectField extends LitElement {
 
   private handleClick = (event: Event) => {
     if (this.computedDisabledOrReadonly) return
-    // Если дропдаун только что открылся по фокусу, не закрываем его.
+    // Ignore a click that arrives right after the focus that opened the dropdown, so it does not close it again
     const diffTimeBetweenFocusAndClick = event.timeStamp - this.lastFocusTime
     if (this.isOpened && diffTimeBetweenFocusAndClick < 150) return
 
@@ -365,7 +365,7 @@ export class YCoreSelectField extends LitElement {
 
     if (this.computedDisabledOrReadonly) return
 
-    // Если дропдаун только что открылся по фокусу, не закрываем его
+    // Ignore a click that arrives right after the focus that opened the dropdown, so it does not close it again
     const diffTimeBetweenFocusAndClick = event.timeStamp - this.lastFocusTime
     if (this.isOpened && diffTimeBetweenFocusAndClick < 150) return
 

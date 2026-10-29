@@ -10,7 +10,7 @@ const ROLLUP_OPTIONS_INPUT_PATH = path.resolve(import.meta.dirname, `../../../${
 
 const rollupOptionsInput = getRollupOptionsInput({
   inputFilePath: (file) => {
-    // Находим файл в папке src, убираем расширение и ui папку из пути
+    // Turn the file path under src/ into an entry name: drop the .ts extension and the ui/ segment
     const filePath = (file.match(/\/src\/(.+)$/)?.[1] || '').replace(/(ui\/)|\.ts$/g, '')
     return `${NG_PATH}/${filePath}`
   },

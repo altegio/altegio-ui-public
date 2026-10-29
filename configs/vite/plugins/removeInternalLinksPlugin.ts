@@ -5,7 +5,7 @@ const INTERNAL_DOMAINS = [
   'figma.com',
 ]
 
-const INTERNAL_TERMS = [ // При добавлении новых элементов экранировать спецсимволы
+const INTERNAL_TERMS = [ // Entries are regular expressions: escape special characters
   'Ссылка на \\[Figma\\]'
 ]
 

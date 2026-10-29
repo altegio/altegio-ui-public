@@ -3,7 +3,7 @@ import type { IGlobalProviderPlugin } from '../../plugins'
 export interface IYCoreGlobalProviderExternalProps {
 
   /**
-   * Плагины для глобального провайдера
+   * Global provider plugins
    */
   plugins?: IGlobalProviderPlugin[]
 }

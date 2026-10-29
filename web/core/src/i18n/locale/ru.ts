@@ -62,6 +62,6 @@ export const ru: ILocale = {
         maximumFractionDigits: 2,
       },
     },
-    firstDayOfWeek: 1, // Понедельник
+    firstDayOfWeek: 1, // Monday
   },
 }

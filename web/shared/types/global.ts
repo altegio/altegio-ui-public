@@ -16,7 +16,7 @@ export enum EYSizes {
 
 export type TYSizes = `${EYSizes}`
 
-// Определяем тип для таймера, который работает в браузере
+// Timer handle type as returned by setTimeout in the browser
 export type TTimeout = ReturnType<typeof setTimeout>
 
 export enum ESort {

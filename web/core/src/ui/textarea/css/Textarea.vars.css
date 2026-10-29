@@ -1,8 +1,8 @@
 :host {
-  /* Размеры */
+  /* Sizes */
   --y-core-textarea-gap: var(--y-core-size-spacing-x);
 
-  /* Счетчик */
+  /* Counter */
   --y-core-textarea-counter-font-size: var(--y-core-typography-annotation-a-2-regular-font-size);
   --y-core-textarea-counter-font-weight: var(--y-core-typography-annotation-a-2-regular-font-weight);
   --y-core-textarea-counter-line-height: var(--y-core-typography-annotation-a-2-regular-line-height);

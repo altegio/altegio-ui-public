@@ -1,5 +1,5 @@
-# Поднимаем лимит heap Node: type-aware линтинг eslint (strictTypeChecked + projectService)
-# по ~1900 файлам не помещается в дефолтные ~2 ГБ V8 и падает с OOM (актуально для локального запуска, напр. в WSL)
+# Raise the Node heap limit: type-aware ESLint (strictTypeChecked + projectService) over ~1900 files
+# does not fit into the default ~2 GB V8 heap and runs out of memory, e.g. in local WSL runs.
 export NODE_OPTIONS=--max-old-space-size=8192
 
 export CORE_TYPES=./dist/web/core/index.d.ts
@@ -20,7 +20,7 @@ init:
 	corepack prepare --activate
 	pnpm install --frozen-lockfile
 	pnpm exec lefthook install
-	pnpm prepare-env # Копирует .env.example в .env.local, если .env.local не существует
+	pnpm prepare-env # Copies .env.example to .env.local unless .env.local already exists
 	pnpm vars-build
 
 lint:
@@ -29,7 +29,7 @@ lint:
 	pnpm exec lit-analyzer 'web/core/**/*.{js,ts}' --strict
 
 lib-build:
-	# Очистка папки перед сборкой
+	# Start from a clean output directory
 	rm -rf ./dist
 
 	pnpm vars-build
@@ -37,12 +37,12 @@ lib-build:
 	pnpm lib-build-vue
 	pnpm build-with-workspace
 	pnpm cli-build:bundle
-	# Подмешивание типов констант тегов WC к сборкам фреймворков
+	# Append the web component tag-name types to the core, Vue and Angular type declarations
 	cat $$WC_TYPES >> $$CORE_TYPES
 	cat $$WC_TYPES >> $$VUE_TYPES
 	cat $$WC_TYPES >> $$NG_TYPES
 
-	# Подмешивание статических ресурсов
+	# Copy shared static assets (fonts, icons, tokens, SCSS breakpoints) into the package
 	mkdir -p $$WEB_ASSETS_PATH/fonts $$WEB_ASSETS_PATH/css $$WEB_ASSETS_PATH/icons $$WEB_ASSETS_PATH/scss $$WEB_ASSETS_PATH/tokens
 	cat $$BREAKPOINTS_SCSS >> $$WEB_ASSETS_PATH/scss/breakpoints.scss
 	cp -r $$FONTS_PATH/* $$WEB_ASSETS_PATH/fonts
@@ -62,13 +62,13 @@ publish: init lint lib-build
 	pnpm publish
 
 storybook-build:
-	# Очистка папки перед сборкой
+	# Start from a clean output directory
 	rm -rf ./storybook-static
 
 	pnpm story-build
 
 storybook-public-build:
-	# Очистка папки перед сборкой
+	# Start from a clean output directory
 	rm -rf ./storybook-static-public
 
 	pnpm story-build:public
@@ -85,10 +85,10 @@ prepare-gitlab-registry-branch:
 	git merge origin/main
 
 pull:
-	# Получение последних изменений из основной ветки
+	# Pull the latest changes from main
 	git pull origin main --no-ff
 
-	# Установка зависимостей и подготовка окружения
+	# Install dependencies and prepare the local environment
 	pnpm install --frozen-lockfile
 	pnpm exec lefthook install
 	pnpm vars-build

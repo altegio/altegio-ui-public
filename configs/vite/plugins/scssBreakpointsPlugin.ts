@@ -56,9 +56,9 @@ const scssMixinsContent = (() => {
 })()
 
 /**
- * Опции для плагина scssBreakpointsPlugin
+ * Options for scssBreakpointsPlugin
  * @interface IScssBreakpointsPluginOptions
- * @property {string} [outPath='dist'] - Путь для сохранения CSS файла, относительно корня проекта, без слэша на конце
+ * @property {string} [outPath='dist'] - Output directory for the generated file, relative to the project root, without a trailing slash
  */
 export default function scssBreakpointsPlugin(
   {

@@ -3,27 +3,27 @@ import type { IGlobalContext, IQueueModule } from '../../context'
 import { QueueModule } from '../../context'
 
 /**
- * Конфигурация для инициализации плагина очереди
+ * Queue plugin configuration
  */
 export interface IQueuePluginConfig {
 
   /**
-   * ID плагина и модуля очереди
+   * ID of the plugin and its queue module
    */
   id: string
 
   /**
-   * Задержка по умолчанию для элементов очереди
+   * Default delay for queue items
    */
   defaultDelay?: number
 }
 
 /**
- * Плагин для управления модулем очереди в GlobalProvider
+ * GlobalProvider plugin that manages a queue module
  *
- * Этот плагин создает и управляет модулем очереди, который служит
- * точкой доступа к функциональности очередей в приложении.
- * ID плагина используется также как ID для создаваемого модуля.
+ * The plugin creates and owns a queue module, which is the
+ * entry point to the queue features in the application.
+ * The plugin ID is also used as the module ID.
  */
 export class QueuePlugin implements IGlobalProviderPlugin {
   id: string
@@ -32,7 +32,7 @@ export class QueuePlugin implements IGlobalProviderPlugin {
   private queueModule?: QueueModule
 
   /**
-   * @param config Конфигурация плагина
+   * @param config Plugin configuration
    */
   constructor(config: IQueuePluginConfig) {
     this.id = config.id
@@ -40,42 +40,42 @@ export class QueuePlugin implements IGlobalProviderPlugin {
   }
 
   /**
-   * Инициализирует плагин и добавляет модуль в контекст
-   * @param context Глобальный контекст
+   * Initializes the plugin and adds its module to the context
+   * @param context Global context
    */
   init(context: IGlobalContext): void {
     this.context = context
 
-    // Проверяем, существует ли уже модуль с нашим ID
+    // Reuse a module with the same ID if the context already has one
     const existingModule = context.getModule(this.id)
 
     if (!existingModule) {
-      // Создаем модуль очереди с тем же ID, что и у плагина
+      // Create a queue module with the plugin's ID
       this.queueModule = new QueueModule({
         id: this.id,
         defaultDelay: this.defaultDelay,
       })
 
-      // Добавляем его в контекст
+      // Add it to the context
       context.putModule(this.queueModule)
     } else {
-      // Если модуль уже существует, сохраняем ссылку на него
+      // The module already exists: keep a reference to it
       this.queueModule = existingModule as QueueModule
     }
   }
 
   /**
-   * Уничтожает плагин и очищает состояние
+   * Destroys the plugin and clears its state
    */
   destroy(): void {
-    // Очищаем ссылки на контекст и модуль
+    // Drop the module reference
     this.queueModule = undefined
     this.context = undefined
   }
 
   /**
-   * Получает модуль очереди
-   * @returns Модуль очереди или undefined, если контекст не инициализирован
+   * Returns the queue module
+   * @returns The queue module, or undefined before the plugin is initialized
    */
   getModule(): IQueueModule | undefined {
     if (!this.context) return undefined
@@ -83,20 +83,20 @@ export class QueuePlugin implements IGlobalProviderPlugin {
   }
 
   /**
-   * Устанавливает задержку по умолчанию для модуля
-   * @param delay Новая задержка по умолчанию
+   * Sets the module's default delay
+   * @param delay New default delay
    */
   setDefaultDelay(delay: number): void {
     this.defaultDelay = delay
 
-    // Обновляем задержку в модуле, если он существует
+    // Update the module's delay when the module exists
     if (this.queueModule) {
       this.queueModule.editDefaultDelay(delay)
     }
   }
 
   /**
-   * Получает текущую задержку по умолчанию
+   * Returns the current default delay
    */
   getDefaultDelay(): number {
     return this.defaultDelay

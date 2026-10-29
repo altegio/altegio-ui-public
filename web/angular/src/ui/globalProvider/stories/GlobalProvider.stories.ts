@@ -47,17 +47,17 @@ const meta: Meta<YGlobalProvider> = {
     ),
     ready: fn(),
     plugins: [
-      // Плагин для очереди уведомлений с задержкой 5 секунд
+      // Notification queue with a 5-second delay
       new QueuePlugin({
         id: 'notifications',
         defaultDelay: 5000,
       }),
-      // Плагин для очереди задач с задержкой 10 секунд
+      // Task queue with a 10-second delay
       new QueuePlugin({
         id: 'tasks',
         defaultDelay: 10000,
       }),
-      // Плагин интернационализации с английской локализацией
+      // Internationalization plugin with the English locale
       new I18nPlugin(en),
     ],
   },

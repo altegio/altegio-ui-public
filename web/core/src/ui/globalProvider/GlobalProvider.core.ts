@@ -59,7 +59,7 @@ export class YCoreGlobalProvider extends LitElement implements IYCoreGlobalProvi
   disconnectedCallback() {
     super.disconnectedCallback()
 
-    // Уничтожаем плагины при отключении компонента
+    // Destroy the plugins when the component is disconnected
     if (this.plugins?.length) {
       uninstallPlugins(this.plugins, this.globalContext)
     }
@@ -68,23 +68,23 @@ export class YCoreGlobalProvider extends LitElement implements IYCoreGlobalProvi
   updated(changedProperties: PropertyValues<this>): void {
     super.updated(changedProperties)
 
-    // Обрабатываем изменение плагинов
+    // React to changes in the plugin list
     if (changedProperties.has('plugins')) {
       const oldPlugins = changedProperties.get('plugins') || []
       const newPlugins = this.plugins || []
 
-      // Удаляем только те плагины, которых нет в новом списке
+      // Plugins that are missing from the new list
       const pluginsToRemove = oldPlugins.filter((oldPlugin) => !newPlugins.some((newPlugin) => newPlugin.id === oldPlugin.id))
 
-      // Добавляем только новые плагины, которых не было в старом списке
+      // Plugins that were not in the old list
       const pluginsToAdd = newPlugins.filter((newPlugin) => !oldPlugins.some((oldPlugin) => oldPlugin.id === newPlugin.id))
 
-      // Уничтожаем только удаленные плагины
+      // Destroy only the removed plugins
       if (pluginsToRemove.length) {
         uninstallPlugins(pluginsToRemove, this.globalContext)
       }
 
-      // Инициализируем только новые плагины
+      // Initialize only the added plugins
       if (pluginsToAdd.length) {
         installPlugins(pluginsToAdd, this.globalContext)
       }

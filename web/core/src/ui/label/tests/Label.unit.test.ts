@@ -309,7 +309,7 @@ describe(
 
         for (const testCase of propsDebounceTestCases) {
           const contentClassName = `.${tagName}__content`
-          // TODO: нужно починить подстановку пропсов и передачу значения в debounce
+          // TODO: Fix how the props are applied and how the value reaches the debounce
           it.skip(
             `Должен ${testCase.case} ${testCase.prop} ${testCase.value}мс при смене размера ${contentClassName}`,
             async() => {
@@ -327,7 +327,7 @@ describe(
               contentElement.style.width = `${testCase.value}px`
               document.body.removeChild(component)
 
-              // 2 - потому-что await component.updateComplete вызывает первый setTimeout
+              // 2 calls: awaiting component.updateComplete triggers the first setTimeout
               expect(setTimeout).toHaveBeenCalledTimes(2)
               expect(setTimeout).toHaveBeenLastCalledWith(
                 expect.any(Function),

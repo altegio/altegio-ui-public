@@ -1,10 +1,9 @@
-// Пример реального использования утилит маппинга
-// Заменяет исходный код из вопроса пользователя
+// Example: building a reports table with the mapping helpers
 
 import { computed, type Ref } from 'vue'
 import { createSimpleTable, type ISimpleTableHeader } from './mappers'
 
-// Типы для примера (обычно импортируются из проекта)
+// Example types (normally imported from the application)
 interface TAcListItem {
   id: string
   name: string
@@ -12,7 +11,7 @@ interface TAcListItem {
   lastReportUpdatedDate?: string
 }
 
-// СТАРЫЙ СПОСОБ (40+ строк кода):
+// Before: mapping every row by hand (40+ lines):
 /*
 const sortedListNew = computed((): IYVueTableItem[] => {
   return sortedList.value.map(item => {
@@ -54,9 +53,9 @@ const sortedListNew = computed((): IYVueTableItem[] => {
 })
 */
 
-// НОВЫЙ СПОСОБ (10 строк кода):
+// After: the mapping helpers (about 10 lines):
 
-// 1. Определяем колонки один раз
+// 1. Define the columns once
 const columns: ISimpleTableHeader[] = [
   {
     key: 'name',
@@ -81,7 +80,7 @@ const columns: ISimpleTableHeader[] = [
   },
 ]
 
-// 2. Преобразуем исходные данные в простой формат
+// 2. Convert the source data into plain rows
 export function createReportsTableData(sortedList: Ref<TAcListItem[]>) {
   const simpleData = computed(() => {
     return sortedList.value.map((item) => ({
@@ -89,13 +88,13 @@ export function createReportsTableData(sortedList: Ref<TAcListItem[]>) {
       name: item.name,
       author: item.author,
       lastReportUpdatedDate: item.lastReportUpdatedDate ?? '',
-      // Для кастомного слота сохраняем оригинальный объект
+      // Keep the original object for the custom slot
       actions: { label: '', report: item },
-      report: item, // Сохраняем для слота row-inner
+      report: item, // kept for the row-inner slot
     }))
   })
 
-  // 3. Автоматически генерируем headers и items
+  // 3. Generate the headers and items
   return computed(() => {
     return createSimpleTable(simpleData.value, columns, {
       rowIdField: 'id',
@@ -104,7 +103,7 @@ export function createReportsTableData(sortedList: Ref<TAcListItem[]>) {
   })
 }
 
-// Использование в компоненте:
+// Usage in a component:
 /*
 <template>
   <y-table
@@ -131,7 +130,7 @@ import type { TableHeadCellSortEvent } from '~core/ui/tableHeadCell/models/types
 const tableData = createReportsTableData(sortedList)
 
 const onSort = (payload: { headId: string; event: TableHeadCellSortEvent }) => {
-  // Обработка сортировки
+  // Handle sorting
 }
 </script>
 */

@@ -16,7 +16,7 @@ export interface IRenderLabelOptions extends Partial<IYCoreLabelProps> {
 }
 
 /**
- * Опции для рендеринга лейбла
+ * Options for rendering a label
  * @interface IRenderLabelOptions
  */
 export default ({ className, handleClick, handleMouseDown, ...props }: IRenderLabelOptions) => {

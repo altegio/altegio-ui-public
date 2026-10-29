@@ -101,10 +101,10 @@ const meta: Meta<IYCoreAvatarExternalProps> = {
 export default meta
 type Story = StoryObj<IYCoreAvatarExternalProps>
 
-// Базовый пример
+// Basic example
 export const Playground: Story = { args: { photo: '' } }
 
-// Все размеры
+// All sizes
 export const AllSizes: Story = {
   render: ({ disabled }) => html`
     <div style="display: flex; align-items: center; gap: 10px;">
@@ -119,7 +119,7 @@ export const AllSizes: Story = {
   `,
 }
 
-// С фотографией
+// With a photo
 export const WithPhotoAllSizes: Story = {
   render: ({ disabled }) => html`
     <div style="display: flex; align-items: center; gap: 10px;">
@@ -134,7 +134,7 @@ export const WithPhotoAllSizes: Story = {
   `,
 }
 
-// С ошибкой загрузки фото
+// With a photo that fails to load
 export const WithPhotoErrorAllSizes: Story = {
   render: ({ disabled }) => html`
     <div style="display: flex; align-items: center; gap: 10px;">
@@ -149,7 +149,7 @@ export const WithPhotoErrorAllSizes: Story = {
   `,
 }
 
-// С иконкой
+// With an icon
 export const WithIconAllSizes: Story = {
   render: ({ disabled }) => html`
     <div style="display: flex; align-items: center; gap: 10px;">

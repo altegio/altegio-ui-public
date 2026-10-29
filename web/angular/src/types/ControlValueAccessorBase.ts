@@ -2,10 +2,10 @@ import type { ControlValueAccessor } from '@angular/forms'
 
 export abstract class ControlValueAccessorBase<T> implements ControlValueAccessor {
   protected onChange: (value: T) => void = () => {
-    // Заглушка. Не добавлять логику - это нарушит работу компонента
+    // Intentionally empty until Angular forms calls registerOnChange(). Do not add logic here.
   }
   protected onTouched: () => void = () => {
-    // Заглушка. Не добавлять логику - это нарушит работу компонента
+    // Intentionally empty until Angular forms calls registerOnTouched(). Do not add logic here.
   }
 
   abstract writeValue(value: T): void

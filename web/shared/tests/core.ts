@@ -7,9 +7,9 @@ export type TCoreComponent = HTMLElementTagNameMap[TValueOf<typeof YCoreElements
 export type TCoreElement = TCoreComponent & LitElement
 
 /**
- * Рендеринг слотов в компонент
- * @param component - WebComponent
- * @param slots - Слоты
+ * Renders slots into the component
+ * @param component - Web component
+ * @param slots - Slots
  */
 const renderSlots = (
   component: TCoreElement,
@@ -34,17 +34,17 @@ const renderSlots = (
 }
 
 /**
- * Сброс слотов в компонент
- * @param component - Компонент
+ * Removes the slots from the component
+ * @param component - Component
  */
 const resetSlots = (component: TCoreElement) => {
   component.innerHTML = ''
 }
 
 /**
- * Рендеринг пропсов в компонент
- * @param component - Компонент
- * @param props - Пропсы
+ * Applies props to the component
+ * @param component - Component
+ * @param props - Props
  */
 const renderProps = (
   component: TCoreElement,
@@ -59,9 +59,9 @@ const renderProps = (
 }
 
 /**
- * Сброс пропсов в компонент по умолчанию
- * @param component - Компонент
- * @param defaultProps - Пропсы по умолчанию
+ * Resets the component props to their defaults
+ * @param component - Component
+ * @param defaultProps - Default props
  */
 const resetProps = (
   component: TCoreElement,
@@ -74,10 +74,10 @@ const resetProps = (
 }
 
 /**
- * Создание нового компонента
- * @param slots - Слоты
- * @param props - Пропсы
- * @returns {TCoreComponent} - Созданный компонент
+ * Creates a new component
+ * @param slots - Slots
+ * @param props - Props
+ * @returns {TCoreComponent} - The created component
  */
 export const createComponent = (
   tagName: TValueOf<typeof YCoreElements>,
@@ -101,16 +101,16 @@ export const createComponent = (
 }
 
 /**
- * Хелпер для тестирования WebComponent.
- * @param tagName - Имя WebComponent.
- * @param defaultProps - Пропсы по умолчанию.
+ * Test helper for web components.
+ * @param tagName - Web component tag name.
+ * @param defaultProps - Default props.
  * @returns {
  *  component: HTMLElementTagNameMap[T] & LitElement,
  *  updateComponent: (args: { slots?: Record<string, string>, props?: Partial<HTMLElementTagNameMap[T]> }) => Promise<void>,
  *  resetComponent: () => Promise<void>,
  *  injectComponentToBody: () => void,
  *  removeComponent: () => void,
- * } Объект с компонентом, функцией обновления, сброса, вставки в DOM и удаления.
+ * } The component plus helpers to update, reset, mount and remove it.
  */
 export const useCoreTests = <T extends keyof TCoreTagName>(
   tagName: T,
@@ -119,10 +119,10 @@ export const useCoreTests = <T extends keyof TCoreTagName>(
   const component = document.createElement(tagName)
 
   /**
-   * Обновление компонента
-   * @param component - Компонент
-   * @param slots - Слоты
-   * @param props - Пропсы
+   * Updates the component
+   * @param component - Component
+   * @param slots - Slots
+   * @param props - Props
    */
   const updateComponent = async({ slots, props }: {
     slots?: Record<string, string>
@@ -141,7 +141,7 @@ export const useCoreTests = <T extends keyof TCoreTagName>(
   }
 
   /**
-   * Сброс компонента
+   * Resets the component
    */
   const resetComponent = async() => {
     resetSlots(component)
@@ -154,14 +154,14 @@ export const useCoreTests = <T extends keyof TCoreTagName>(
   }
 
   /**
-   * Вставка компонента в DOM
+   * Mounts the component into the DOM
    */
   const injectComponentToBody = () => {
     document.body.appendChild(component)
   }
 
   /**
-   * Удаление компонента из DOM
+   * Removes the component from the DOM
    */
   const removeComponent = () => {
     component.remove()

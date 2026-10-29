@@ -1,7 +1,7 @@
 import type { TYVueTableHeaders, TYVueTableItems, IYVueTableItem, TYVueTableCellItem, IYVueTableHeadItem } from '../models/types'
 
 /**
- * Простой интерфейс для данных строки таблицы
+ * Plain table row data
  */
 export interface ISimpleTableRow {
   [key: string]: unknown
@@ -9,7 +9,7 @@ export interface ISimpleTableRow {
 }
 
 /**
- * Простой интерфейс для заголовков таблицы
+ * Plain table header definition
  */
 export interface ISimpleTableHeader {
   key: string
@@ -22,25 +22,25 @@ export interface ISimpleTableHeader {
 }
 
 /**
- * Опции для маппинга данных
+ * Data mapping options
  */
 export interface ITableMappingOptions {
 
-  /** Поле для использования в качестве rowId. По умолчанию 'id' */
+  /** Field used as the rowId. Defaults to 'id' */
   rowIdField?: string
 
-  /** Функция для генерации ID строки, если поле rowIdField отсутствует */
+  /** Generates the row ID when the rowIdField value is missing */
   generateRowId?: (row: ISimpleTableRow, index: number) => string
 
-  /** Функция для генерации ID ячейки */
+  /** Generates the cell ID */
   generateCellId?: (rowId: string, columnKey: string, value: unknown) => string
 
-  /** Автоматически добавить ellipsis для строковых значений */
+  /** Adds ellipsis to string values automatically */
   autoEllipsis?: boolean
 }
 
 /**
- * Преобразует простые заголовки в формат таблицы
+ * Converts plain headers into the table header format
  */
 export function mapHeaders(headers: ISimpleTableHeader[]): TYVueTableHeaders {
   const result: TYVueTableHeaders = {}
@@ -61,14 +61,14 @@ export function mapHeaders(headers: ISimpleTableHeader[]): TYVueTableHeaders {
 }
 
 /**
- * Проверяет является ли значение примитивом
+ * Checks whether a value is a primitive
  */
 function isPrimitive(value: unknown): value is string | number | boolean | null | undefined {
   return value === null || value === undefined || typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean'
 }
 
 /**
- * Создает ячейку для примитивного значения
+ * Creates a cell for a primitive value
  */
 function createPrimitiveCell(
   value: string | number | boolean | null | undefined,
@@ -90,7 +90,7 @@ function createPrimitiveCell(
 }
 
 /**
- * Создает ячейку для объекта
+ * Creates a cell for an object value
  */
 function createObjectCell(
   value: unknown,
@@ -105,7 +105,7 @@ function createObjectCell(
 }
 
 /**
- * Создает строку таблицы из простых данных
+ * Creates a table row from plain data
  */
 function createTableRow(
   row: ISimpleTableRow,
@@ -133,7 +133,7 @@ function createTableRow(
 }
 
 /**
- * Преобразует простые данные в формат таблицы
+ * Converts plain data into the table format
  */
 export function mapTableData(
   data: ISimpleTableRow[],
@@ -154,7 +154,7 @@ export function mapTableData(
 }
 
 /**
- * Упрощенная функция для создания таблицы из простых данных
+ * Shortcut that builds a table from plain data
  */
 export function createSimpleTable(
   data: ISimpleTableRow[],
@@ -168,7 +168,7 @@ export function createSimpleTable(
 }
 
 /**
- * Создает заголовок по ключу
+ * Creates a header from an object key
  */
 function createHeaderFromKey<T extends Record<string, unknown>>(
   key: string,
@@ -188,7 +188,7 @@ function createHeaderFromKey<T extends Record<string, unknown>>(
 }
 
 /**
- * Утилита для быстрого создания заголовков из объекта
+ * Builds headers from an object's keys
  */
 export function createHeadersFromObject<T extends Record<string, unknown>>(
   sample: T,

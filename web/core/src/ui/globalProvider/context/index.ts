@@ -25,16 +25,16 @@ const MUTATION_ERROR = '[GlobalContext] Прямая мутация модуле
   'Используйте методы putModule и removeModule для управления модулями.'
 
 /**
- * Глобальный контекст для управления модулями
+ * Global context that manages the modules
  * @interface IGlobalContext
- * @property {THandler<TGlobalContextModule>[]} updatedHandlers - Массив обработчиков обновлений модулей
- * @property {Record<TId, TGlobalContextModule>} modules - Хранилище модулей
- * @method onUpdated - Хук для обработчиков обновлений модулей
- * @method clearHandler - Удаляет хук для обработчиков обновлений модулей
- * @method putModule - Добавляет/редактирует модуль в контекст
- * @method getModule - Получает модуль по идентификатору
- * @method getModules - Получает все модули
- * @method removeModule - Удаляет модуль из контекста
+ * @property {THandler<TGlobalContextModule>[]} updatedHandlers - Module update handlers
+ * @property {Record<TId, TGlobalContextModule>} modules - Module storage
+ * @method onUpdated - Registers a module update handler
+ * @method clearHandler - Removes a module update handler
+ * @method putModule - Adds or replaces a module in the context
+ * @method getModule - Returns a module by ID
+ * @method getModules - Returns all modules
+ * @method removeModule - Removes a module from the context
  */
 export class GlobalContext implements IGlobalContext {
   updatedHandlers: THandler<TGlobalContextModule>[] = []

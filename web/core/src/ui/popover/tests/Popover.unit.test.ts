@@ -104,7 +104,7 @@ describe(
     describe(
       'Events',
       () => {
-        // TODO: Добавить тесты для событий
+        // TODO: Add event tests
         it(
           'Должен вызывать событие "submit" при нажатии на кнопку подтверждения',
           async() => {
