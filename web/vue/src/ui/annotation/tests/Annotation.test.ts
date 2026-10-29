@@ -19,13 +19,13 @@ const tagName = YCoreAnnotationTagName
 const propTextTestCases: TPropTestCase<IYVueAnnotationProps, 'text'>[] = [
   {
     prop: 'text',
-    case: 'тестовый текст',
+    case: 'test text',
     value: text,
     expected: text,
   },
   {
     prop: 'text',
-    case: 'значение по умолчанию',
+    case: 'default value',
     value: undefined,
     expected: defaultText,
   },
@@ -39,7 +39,7 @@ const propDisabledTestCases: TPropTestCase<IYVueAnnotationProps, 'disabled'>[] =
   },
   {
     prop: 'disabled',
-    case: 'значение по умолчанию',
+    case: 'default value',
     value: undefined,
     expected: defaultDisabled,
   },
@@ -65,7 +65,7 @@ describe(
           ...propDisabledTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента на "${testCase.case}"`,
+            `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
             () => {
               const wrapper = mount(
                 YAnnotation,

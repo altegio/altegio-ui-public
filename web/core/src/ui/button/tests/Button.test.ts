@@ -15,16 +15,16 @@ import '~core/ui/button'
 
 // Unit test cases:
 const propLabelTestCases: TPropTestCase<IYCoreButtonProps, 'label'>[] = [
-  { prop: 'label', case: 'с контентом', value: text },
-  { prop: 'label', case: 'без контента', value: empty },
+  { prop: 'label', case: 'with content', value: text },
+  { prop: 'label', case: 'without content', value: empty },
 ]
 const propIconLeftTestCases: TPropTestCase<IYCoreButtonProps, 'iconLeft'>[] = [
-  { prop: 'iconLeft', case: 'с иконкой', value: yRocket },
-  { prop: 'iconLeft', case: 'без иконки', value: undefined },
+  { prop: 'iconLeft', case: 'with an icon', value: yRocket },
+  { prop: 'iconLeft', case: 'without an icon', value: undefined },
 ]
 const propIconRightTestCases: TPropTestCase<IYCoreButtonProps, 'iconRight'>[] = [
-  { prop: 'iconRight', case: 'с иконкой', value: yRocket },
-  { prop: 'iconRight', case: 'без иконки', value: undefined },
+  { prop: 'iconRight', case: 'with an icon', value: yRocket },
+  { prop: 'iconRight', case: 'without an icon', value: undefined },
 ]
 const propSizeTestCases: TPropTestCase<IYCoreButtonProps, 'size'>[] = [
   { prop: 'size', case: 'small', value: EYSizes.SMALL, expected: '16px' },
@@ -75,7 +75,7 @@ describe(
           () => {
             for (const testCase of propLabelTestCases) {
               it(
-                `Prop label должен быть ${testCase.case}`,
+                `Prop label should work ${testCase.case}`,
                 async() => {
                   await updateComponent({ props: { label: testCase.value } })
 
@@ -92,7 +92,7 @@ describe(
 
             for (const testCase of propIconLeftTestCases) {
               it(
-                `Prop iconLeft должен быть ${testCase.case}`,
+                `Prop iconLeft should work ${testCase.case}`,
                 async() => {
                   await updateComponent({ props: { iconLeft: testCase.value } })
 
@@ -109,7 +109,7 @@ describe(
 
             for (const testCase of propIconRightTestCases) {
               it(
-                `Prop iconRight должен быть ${testCase.case}`,
+                `Prop iconRight should work ${testCase.case}`,
                 async() => {
                   await updateComponent({ props: { iconRight: testCase.value } })
 
@@ -126,7 +126,7 @@ describe(
 
             for (const testCase of propSizeTestCases) {
               it(
-                `Prop size должен корректно выставить размер иконки при выставление prop size значение ${testCase.case}`,
+                `Prop size should set the icon size when prop size is ${testCase.case}`,
                 async() => {
                   await updateComponent({ props: { iconLeft: yRocket, size: testCase.value } })
 

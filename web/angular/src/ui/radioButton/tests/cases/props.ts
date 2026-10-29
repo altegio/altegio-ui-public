@@ -23,25 +23,25 @@ export const propDisabledTestCases: TPropTestCase<IYNgRadioButtonProps, 'disable
 ]
 
 export const propLabelTextTestCases: TPropTestCase<IYNgRadioButtonProps, 'labelText'>[] = [
-  { prop: 'labelText', case: 'текст', value: text, expected: text },
-  { prop: 'labelText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'labelText', case: 'text', value: text, expected: text },
+  { prop: 'labelText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: empty },
 ]
 
 export const propLabelTooltipTextTestCases: TPropTestCase<IYNgRadioButtonProps, 'labelTooltipText'>[] = [
-  { prop: 'labelTooltipText', case: 'текст', value: text, expected: text },
-  { prop: 'labelTooltipText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'labelTooltipText', case: 'text', value: text, expected: text },
+  { prop: 'labelTooltipText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: empty },
 ]
 
 export const propAnnotationTextTestCases: TPropTestCase<IYNgRadioButtonProps, 'annotationText'>[] = [
-  { prop: 'annotationText', case: 'текст', value: text, expected: text },
-  { prop: 'annotationText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'annotationText', case: 'text', value: text, expected: text },
+  { prop: 'annotationText', case: 'empty string', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: empty },
 ]
 
 export const propLabelOverflowDebounceTestCases: TPropTestCase<IYNgRadioButtonProps, 'labelOverflowDebounce'>[] = [
-  { prop: 'labelOverflowDebounce', case: 'текст', value: number, expected: number },
+  { prop: 'labelOverflowDebounce', case: 'text', value: number, expected: number },
   { prop: 'labelOverflowDebounce', case: 'undefined', value: undefined, expected: 300 },
 ]
 
@@ -52,7 +52,7 @@ export const propAlignmentTestCases: TPropTestCase<IYNgRadioButtonProps, 'alignm
 ]
 
 export const propErrorsTestCases: TPropTestCase<IYNgRadioButtonProps, 'errors'>[] = [
-  { prop: 'errors', case: 'массив с ошибками', value: ['error'], expected: ['error'] },
-  { prop: 'errors', case: 'пустой массив', value: [], expected: [] },
+  { prop: 'errors', case: 'array with errors', value: ['error'], expected: ['error'] },
+  { prop: 'errors', case: 'empty array', value: [], expected: [] },
   { prop: 'errors', case: 'undefined', value: undefined, expected: undefined },
 ]

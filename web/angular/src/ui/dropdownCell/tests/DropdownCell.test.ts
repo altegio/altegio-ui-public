@@ -32,12 +32,12 @@ const createComponent = async({ slots }: ICreateComponentArgs) => {
 
 // Unit test cases:
 const slotDefaultTestCases: TSlotTestCase[] = [
-  { slot: 'content', case: 'с контентом', content: text },
-  { slot: 'content', case: 'без контента', content: empty },
-  { slot: 'prepend', case: 'с контентом', content: text },
-  { slot: 'prepend', case: 'без контента', content: empty },
-  { slot: 'append', case: 'с контентом', content: text },
-  { slot: 'append', case: 'без контента', content: empty },
+  { slot: 'content', case: 'with content', content: text },
+  { slot: 'content', case: 'without content', content: empty },
+  { slot: 'prepend', case: 'with content', content: text },
+  { slot: 'prepend', case: 'without content', content: empty },
+  { slot: 'append', case: 'with content', content: text },
+  { slot: 'append', case: 'without content', content: empty },
 ]
 
 describe(
@@ -51,7 +51,7 @@ describe(
           () => {
             for (const testCase of slotDefaultTestCases) {
               it.skip(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 async() => {
                   const component = await createComponent({
                     slots: { [testCase.slot]: testCase.content },

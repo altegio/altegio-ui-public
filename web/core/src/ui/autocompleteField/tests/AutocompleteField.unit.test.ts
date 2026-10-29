@@ -102,7 +102,7 @@ describe(
       'Slots',
       () => {
         it(
-          'Должен отрендерить слот "annotation" в annotation',
+          'Should render the "annotation" slot in annotation',
           async() => {
             await updateComponent({ slots: { ['annotation']: textWithTag } })
 
@@ -112,7 +112,7 @@ describe(
         )
 
         it(
-          'Должен отрендерить слот "list" в dropdownList',
+          'Should render the "list" slot in dropdownList',
           async() => {
             await updateComponent({ slots: { ['list']: textWithTag }, props: { searchFunction } })
 
@@ -136,7 +136,7 @@ describe(
           ...propRequiredCases,
         ]) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в fieldInput`,
+            `Prop "${prop}" should be "${propCase}" and passed to fieldInput`,
             async() => {
               await updateComponent({ props: { [prop]: value } })
 
@@ -155,7 +155,7 @@ describe(
           ...propSizeCases,
         ]) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в fieldWrapper`,
+            `Prop "${prop}" should be "${propCase}" and passed to fieldWrapper`,
             async() => {
               await updateComponent({ props: { [prop]: value } })
 
@@ -171,7 +171,7 @@ describe(
 
         for (const { prop, labelProp, case: propCase, value } of [...propLabelTextCases]) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в label`,
+            `Prop "${prop}" should be "${propCase}" and passed to label`,
             async() => {
               await updateComponent({ props: { [prop]: value } })
 
@@ -193,7 +193,7 @@ describe(
 
         for (const { prop, case: propCase, value, labelProp } of [...propLabelTooltipTextCases]) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в label`,
+            `Prop "${prop}" should be "${propCase}" and passed to label`,
             async() => {
               await updateComponent({
                 props: {
@@ -214,7 +214,7 @@ describe(
 
         for (const { prop, case: propCase, value } of propDisabledCases) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в fieldWrapper, annotation и label`,
+            `Prop "${prop}" should be "${propCase}" and passed to fieldWrapper, annotation and label`,
             async() => {
               await updateComponent({ props: { [prop]: value, annotationText: text, labelText: text } })
 
@@ -242,7 +242,7 @@ describe(
 
         for (const { prop, case: propCase, value } of propErrorsCases) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в error`,
+            `Prop "${prop}" should be "${propCase}" and passed to error`,
             async() => {
               await updateComponent({ props: { [prop]: value } })
 
@@ -264,7 +264,7 @@ describe(
 
         for (const { prop, case: propCase, value, annotationProp } of propAnnotationTextCases) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в annotation`,
+            `Prop "${prop}" should be "${propCase}" and passed to annotation`,
             async() => {
               await updateComponent({ props: { [prop]: value } })
 
@@ -280,7 +280,7 @@ describe(
 
         for (const { prop, case: propCase, value } of propDisabledAutocompleteCases) {
           it(
-            `Поиск ${value ? 'не' : ''} должен быть совершен по указанному значению если значение пропа "${prop}" равно "${propCase}"`,
+            `Search should ${value ? 'not' : ''} run on the given value when prop "${prop}" is "${propCase}"`,
             async() => {
               const handleSearch = vi.fn(searchFunction)
               await updateComponent({ props: { searchFunction: handleSearch, [prop]: value } })
@@ -300,7 +300,7 @@ describe(
 
         for (const { prop, case: propCase, value, searchValue } of propMinSearchLengthCases) {
           it(
-            `Поиск ${Number(value) > searchValue.length ? 'не' : ''} должен быть совершен по введенному значению если значение пропа "${prop}" ${propCase}`,
+            `Search should ${Number(value) > searchValue.length ? 'not' : ''} run on the typed value when prop "${prop}" ${propCase}`,
             async() => {
               const handleSearch = vi.fn(searchFunction)
               await updateComponent({ props: { searchFunction: handleSearch, [prop]: value } })
@@ -320,7 +320,7 @@ describe(
 
         for (const { prop, case: propCase, value } of propSearchFunctionCases) {
           it(
-            `Поиск ${value ? '' : 'не'} должен быть совершен по указанному значению если значение пропа "${prop}" равно "${propCase}"`,
+            `Search should ${value ? '' : 'not'} run on the given value when prop "${prop}" is "${propCase}"`,
             async() => {
               await updateComponent({ props: { [prop]: value } })
 
@@ -343,7 +343,7 @@ describe(
       () => {
         for (const { eventName, emitEventName, payload, event, case: eventCase } of fieldEvents) {
           it(
-            `Должен вызывать событие "${emitEventName}" ${eventCase}`,
+            `Should emit "${emitEventName}" ${eventCase}`,
             () => {
               const inputField = getSubWC(
                 component,
@@ -367,7 +367,7 @@ describe(
           )
 
           it(
-            `Не должен вызывать событие "${eventName}" ${eventCase} если компонент disabled`,
+            `Should not emit "${eventName}" ${eventCase} when the component is disabled`,
             async() => {
               await updateComponent({ props: { disabled: true } })
 
@@ -391,7 +391,7 @@ describe(
 
         for (const { eventName, payload, event, case: eventCase } of wrapperEvents) {
           it(
-            `Должен вызывать событие "${eventName}" ${eventCase}`,
+            `Should emit "${eventName}" ${eventCase}`,
             () => {
               const inputField = getSubWC(
                 component,
@@ -415,7 +415,7 @@ describe(
           )
 
           it(
-            `Не должен вызывать событие "${eventName}" ${eventCase} если компонент disabled`,
+            `Should not emit "${eventName}" ${eventCase} when the component is disabled`,
             async() => {
               await updateComponent({ props: { disabled: true } })
 
@@ -437,7 +437,7 @@ describe(
           )
         }
         it(
-          'Должен вызывать событие selectOption при выборе значений из опций автокомплита',
+          'Should emit selectOption when an autocomplete option is selected',
           async() => {
             await updateComponent({ props: { searchFunction } })
 

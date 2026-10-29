@@ -66,7 +66,7 @@ describe(
               ...propPhotoTestCases,
             ]) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и передан в avatar`,
+                `Prop "${prop}" should be "${propCase}" and passed to avatar`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 

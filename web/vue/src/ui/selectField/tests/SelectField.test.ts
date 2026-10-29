@@ -47,7 +47,7 @@ describe(
       () => {
         for (const testCase of [...propValueTestCases]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
                 YSelectField,
@@ -84,7 +84,7 @@ describe(
           ...propLabelDebounceTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
                 YSelectField,
@@ -111,7 +111,7 @@ describe(
           ...slotBeforeTestCases,
         ]) {
           it(
-            `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
                 YSelectField,
@@ -143,7 +143,7 @@ describe(
       () => {
         for (const { emitEventName, eventName, payload, case: eventCase } of vueInputEvents) {
           it(
-            `Должен вызывать событие "${emitEventName}" ${eventCase}`,
+            `Should emit "${emitEventName}" ${eventCase}`,
             () => {
               const wrapper = mount(
                 YSelectField,

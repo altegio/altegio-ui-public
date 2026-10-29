@@ -88,7 +88,7 @@ describe(
               ...propSizeCases,
             ]) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и передан в fieldWrapper`,
+                `Prop "${prop}" should be "${propCase}" and passed to fieldWrapper`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
@@ -105,7 +105,7 @@ describe(
               ...propRequiredCases,
             ]) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и передан в fieldInput`,
+                `Prop "${prop}" should be "${propCase}" and passed to fieldInput`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
@@ -121,7 +121,7 @@ describe(
               ...propRequiredCases,
             ]) {
               it.skip(
-                `Проп "${prop}" должен быть "${propCase}" и передан в label`,
+                `Prop "${prop}" should be "${propCase}" and passed to label`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
@@ -137,7 +137,7 @@ describe(
               ...propLabelTooltipTextCases,
             ]) {
               it.skip(
-                `Проп "${prop}" должен быть "${propCase}" и передан в label`,
+                `Prop "${prop}" should be "${propCase}" and passed to label`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
@@ -156,7 +156,7 @@ describe(
               ...propMinDateCases,
             ]) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и передан в Calendar`,
+                `Prop "${prop}" should be "${propCase}" and passed to Calendar`,
                 async() => {
                   component.fieldInput?.inputElement?.focus()
 
@@ -171,7 +171,7 @@ describe(
 
             for (const { prop, case: propCase, value, inputValue } of propErrorsCases) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и передан в error и inputField`,
+                `Prop "${prop}" should be "${propCase}" and passed to error and inputField`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
@@ -191,7 +191,7 @@ describe(
 
             for (const { prop, case: propCase, value } of propAnnotationTextCases) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и передан в annotation`,
+                `Prop "${prop}" should be "${propCase}" and passed to annotation`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
@@ -210,7 +210,7 @@ describe(
 
             for (const { prop, case: propCase, value } of propCalendarHeaderSelectorsCases) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и передан в Calendar`,
+                `Prop "${prop}" should be "${propCase}" and passed to Calendar`,
                 async() => {
                   component.fieldInput?.inputElement?.focus()
 
@@ -228,11 +228,11 @@ describe(
         describe(
           'Mask',
           () => {
-            it(`Должен автоматически форматировать вводимую дату по маске ${FORMAT_DATE_DMY}`, async() => {
+            it(`Should format the typed date with the mask ${FORMAT_DATE_DMY}`, async() => {
               const fieldInput = getLocalShadowElement(YCoreFieldInputTagName) as YCoreFieldInput | null
 
               if (!fieldInput?.inputElement) {
-                throw new Error('inputElement не найден')
+                throw new Error('inputElement not found')
               }
 
               fieldInput.inputElement.value = '08072025'
@@ -243,13 +243,13 @@ describe(
               expect(fieldInput.inputElement.value).toBe('08.07.2025')
             })
 
-            it(`Должен автоматически форматировать вводимую дату по маске ${FORMAT_DATE_DMY} - ${FORMAT_DATE_DMY} в режиме range`, async() => {
+            it(`Should format the typed date with the mask ${FORMAT_DATE_DMY} - ${FORMAT_DATE_DMY} in range mode`, async() => {
               await updateComponent({ props: { isRange: true } })
 
               const fieldInput = getLocalShadowElement(YCoreFieldInputTagName) as YCoreFieldInput | null
 
               if (!fieldInput?.inputElement) {
-                throw new Error('inputElement не найден')
+                throw new Error('inputElement not found')
               }
 
               fieldInput.inputElement.value = '0807202509072025'
@@ -260,11 +260,11 @@ describe(
               expect(fieldInput.inputElement.value).toBe('08.07.2025 - 09.07.2025')
             })
 
-            it('Не должен позволять вводить невалидные символы', async() => {
+            it('Should not allow invalid characters', async() => {
               const fieldInput = getLocalShadowElement(YCoreFieldInputTagName) as YCoreFieldInput | null
 
               if (!fieldInput?.inputElement) {
-                throw new Error('inputElement не найден')
+                throw new Error('inputElement not found')
               }
 
               fieldInput.inputElement.value = '08asd07asdf2025'
@@ -275,11 +275,11 @@ describe(
               expect(fieldInput.inputElement.value).toBe('08.07.2025')
             })
 
-            it('Должен корректно очищать диапазон дат по одному символу', async() => {
+            it('Should clear the date range one character at a time', async() => {
               const fieldInput = getLocalShadowElement(YCoreFieldInputTagName) as YCoreFieldInput | null
 
               if (!fieldInput?.inputElement) {
-                throw new Error('inputElement не найден')
+                throw new Error('inputElement not found')
               }
 
 
@@ -303,13 +303,13 @@ describe(
               }
             })
 
-            it('Должен корректно очищать диапазон дат по одному символу в режиме range', async() => {
+            it('Should clear the date range one character at a time in range mode', async() => {
               await updateComponent({ props: { isRange: true } })
 
               const fieldInput = getLocalShadowElement(YCoreFieldInputTagName) as YCoreFieldInput | null
 
               if (!fieldInput?.inputElement) {
-                throw new Error('inputElement не найден')
+                throw new Error('inputElement not found')
               }
 
 
@@ -333,14 +333,14 @@ describe(
               }
             })
 
-            it('Должен ограничивать вводимую дату по minDate и maxDate', async() => {
+            it('Should limit the typed date to minDate and maxDate', async() => {
               const minDate = '01.01.2025'
               const maxDate = '31.12.2025'
               await updateComponent({ props: { minDate, maxDate } })
 
               const fieldInput = getLocalShadowElement(YCoreFieldInputTagName) as YCoreFieldInput | null
               if (!fieldInput?.inputElement) {
-                throw new Error('inputElement не найден')
+                throw new Error('inputElement not found')
               }
 
               fieldInput.inputElement.value = '31.12.2019'
@@ -374,7 +374,7 @@ describe(
       'Events',
       () => {
         it(
-          'Должен вызывать обработчик pick при выборе даты из календаря',
+          'Should call the pick handler when a date is picked in the calendar',
           () => {
             const handleSelect = vi.fn()
 
@@ -397,7 +397,7 @@ describe(
         )
 
         it(
-          'Должен вызывать обработчик pick при выборе вводе валидной даты в InputField',
+          'Should call the pick handler when a valid date is typed in InputField',
           () => {
             const handleSelect = vi.fn()
 
@@ -420,7 +420,7 @@ describe(
         )
 
         it(
-          'Не должен вызывать обработчик pick при выборе вводе невалидной даты в InputField',
+          'Should not call the pick handler when an invalid date is typed in InputField',
           () => {
             const handleSelect = vi.fn()
 

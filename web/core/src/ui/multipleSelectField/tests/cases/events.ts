@@ -18,6 +18,6 @@ type TEventTestCase = {
 }
 
 export const wrapperEvents: TEventTestCase[] = [
-  { eventName: selectFieldFocusEventName, event: selectFieldFocusEvent, emitEventName: selectFieldFocusEventName, case: 'при фокусе' },
-  { eventName: selectFieldBlurEventName, event: selectFieldBlurEvent, emitEventName: selectFieldBlurEventName, case: 'при потере фокуса' },
+  { eventName: selectFieldFocusEventName, event: selectFieldFocusEvent, emitEventName: selectFieldFocusEventName, case: 'on focus' },
+  { eventName: selectFieldBlurEventName, event: selectFieldBlurEvent, emitEventName: selectFieldBlurEventName, case: 'on blur' },
 ]

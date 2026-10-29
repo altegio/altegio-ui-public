@@ -10,4 +10,4 @@ interface IEventTestCase {
   payload?: { value: number }
 }
 
-export const eventUpdateValue: IEventTestCase[] = [{ event: 'valueChange', coreEventName: 'change-active-tab', case: 'при смене активного Tab', methodName: EEventMethodName.HANDLE_CHANGE_VALUE, payload: { value: 0 } }]
+export const eventUpdateValue: IEventTestCase[] = [{ event: 'valueChange', coreEventName: 'change-active-tab', case: 'when the active Tab changes', methodName: EEventMethodName.HANDLE_CHANGE_VALUE, payload: { value: 0 } }]

@@ -19,14 +19,14 @@ export const propValueTestCases: TPropTestCase<IYCoreRadioButtonGroupExternalPro
 ]
 
 export const propLabelTextTestCases: TPropTestCase<IYCoreRadioButtonGroupExternalProps, 'labelText'>[] = [
-  { prop: 'labelText', case: 'с контентом', value: text, expected: text },
-  { prop: 'labelText', case: 'без контента', value: empty, expected: undefined },
+  { prop: 'labelText', case: 'with content', value: text, expected: text },
+  { prop: 'labelText', case: 'without content', value: empty, expected: undefined },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: undefined },
 ]
 
 export const propLabelTooltipTextTestCases: TPropTestCase<IYCoreRadioButtonGroupExternalProps, 'labelTooltipText'>[] = [
-  { prop: 'labelTooltipText', case: 'с контентом', value: text, expected: text },
-  { prop: 'labelTooltipText', case: 'без контента', value: empty, expected: empty },
+  { prop: 'labelTooltipText', case: 'with content', value: text, expected: text },
+  { prop: 'labelTooltipText', case: 'without content', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: undefined },
 ]
 

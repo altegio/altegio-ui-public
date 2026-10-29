@@ -50,7 +50,7 @@ describe(
       'Integration',
       () => {
         it(
-          'Должен иметь у text size = A2_REGULAR',
+          'Should set text size = A2_REGULAR',
           () => {
             const textComponent = getWCShadowRoot(component).querySelector(YCoreTextTagName)
 
@@ -66,7 +66,7 @@ describe(
           'Props',
           () => {
             it(
-              'Должен отрендерить text prop в слоте text',
+              'Should render the text prop in the text slot',
               async() => {
                 await updateComponent({ props: { text } })
 
@@ -79,7 +79,7 @@ describe(
 
             for (const testCase of propDisabledTestCases) {
               it(
-                `Должен иметь у text variant = ${String(testCase.expected)} при disabled prop = ${String(testCase.value)}`,
+                `Should set text variant = ${String(testCase.expected)} when the disabled prop = ${String(testCase.value)}`,
                 async() => {
                   await updateComponent({ props: { disabled: testCase.value } })
 

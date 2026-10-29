@@ -6,18 +6,18 @@ import { EYSizes } from '~shared/types/global'
 const { code } = createVuePhoneCodeProps()
 
 export const propCodeTestCases: TPropTestCase<TDefinedVueProps<IYVuePhoneCodeProps>, 'code'>[] = [
-  { prop: 'code', case: 'с кодом', value: '375', expected: '375' },
-  { prop: 'code', case: 'с дефолтным кодом', value: code, expected: code },
+  { prop: 'code', case: 'with a code', value: '375', expected: '375' },
+  { prop: 'code', case: 'with the default code', value: code, expected: code },
 ]
 
 export const propDisabledTestCases: TPropTestCase<TDefinedVueProps<IYVuePhoneCodeProps>, 'disabled'>[] = [
-  { prop: 'disabled', case: 'включен', value: false, expected: false },
-  { prop: 'disabled', case: 'выключен', value: true, expected: true },
+  { prop: 'disabled', case: 'enabled', value: false, expected: false },
+  { prop: 'disabled', case: 'disabled', value: true, expected: true },
 ]
 
 export const propReadonlyTestCases: TPropTestCase<TDefinedVueProps<IYVuePhoneCodeProps>, 'readonly'>[] = [
-  { prop: 'readonly', case: 'не только для чтения', value: false, expected: false },
-  { prop: 'readonly', case: 'только для чтения', value: true, expected: true },
+  { prop: 'readonly', case: 'not read-only', value: false, expected: false },
+  { prop: 'readonly', case: 'read-only', value: true, expected: true },
 ]
 
 export const propSizeTestCases: TPropTestCase<TDefinedVueProps<IYVuePhoneCodeProps>, 'size'>[] = [

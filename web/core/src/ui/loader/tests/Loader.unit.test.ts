@@ -68,7 +68,7 @@ describe(
           const expectedCssClass = localClassWithModifier(`size_${size}`)
 
           it(
-            `Входящий параметр size со значением "${size}" должен установить класс стилей "${expectedCssClass}"`,
+            `Input size with value "${size}" should set the style class "${expectedCssClass}"`,
             async() => {
               // Arrange
               await updateComponent({ props: { size: size as TYCoreLoaderSize } })
@@ -90,7 +90,7 @@ describe(
           const expectedCssClass = localClassWithModifier(`variant_${variant}`)
 
           it(
-            `Входящий параметр variant со значением "${variant}" должен установить класс стилей "${expectedCssClass}"`,
+            `Input variant with value "${variant}" should set the style class "${expectedCssClass}"`,
             async() => {
               // Arrange
               await updateComponent({ props: { variant } })
@@ -111,7 +111,7 @@ describe(
           const expectedCssClass = localClassWithModifier(`${testCase.prop}_${testCase.value}`)
 
           it(
-            `Входящий параметр "${testCase.prop}" со значением "${testCase.value}" не должен устанавливать класс стилей`,
+            `Input "${testCase.prop}" with value "${testCase.value}" should not set a style class`,
             async() => {
               // Arrange
               await updateComponent({ props: { [testCase.prop]: testCase.value } })

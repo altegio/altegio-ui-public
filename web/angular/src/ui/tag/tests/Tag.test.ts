@@ -40,7 +40,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
     disabled = props?.disabled
     iconLeft = props?.iconLeft
     locator = props?.locator
-    slotContent = 'Тестовый тег'
+    slotContent = 'Test tag'
   }
   return TestComponent
 }
@@ -64,7 +64,7 @@ describe(
       () => {
         for (const testCase of propsLocatorTestCases) {
           it(
-            `Prop: "${testCase.prop}" ${typeof testCase.value === 'object' ? JSON.stringify(testCase.value) : testCase.value} ${testCase.value === undefined ? 'не' : ''} должен изменить свойство ${testCase.prop} у core компонента`,
+            `Prop: "${testCase.prop}" ${typeof testCase.value === 'object' ? JSON.stringify(testCase.value) : testCase.value} should ${testCase.value === undefined ? 'not' : ''} set ${testCase.prop} on the core component`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)
@@ -80,7 +80,7 @@ describe(
         }
 
         it(
-          'Должен корректно передать size в Web Component',
+          'Should pass size to the web component',
           async() => {
             const size = EYSizes.SMALL
             const component = await createComponent({ props: { size } })
@@ -95,7 +95,7 @@ describe(
         )
 
         it(
-          'Должен корректно обработать undefined size в Web Component',
+          'Should handle undefined size in the web component',
           async() => {
             const component = await createComponent({ props: { size: undefined } })
             const fixture = TestBed.createComponent(component)
@@ -110,7 +110,7 @@ describe(
         )
 
         it(
-          'Должен корректно передать variant в Web Component',
+          'Should pass variant to the web component',
           async() => {
             const variant = EYCoreTagVariant.DANGER
             const component = await createComponent({ props: { variant } })
@@ -125,7 +125,7 @@ describe(
         )
 
         it(
-          'Должен корректно обработать undefined variant в Web Component',
+          'Should handle undefined variant in the web component',
           async() => {
             const component = await createComponent({ props: { variant: undefined } })
             const fixture = TestBed.createComponent(component)
@@ -140,7 +140,7 @@ describe(
         )
 
         it(
-          'Должен корректно передать disabled в Web Component',
+          'Should pass disabled to the web component',
           async() => {
             const disabled = true
             const component = await createComponent({ props: { disabled } })
@@ -155,7 +155,7 @@ describe(
         )
 
         it(
-          'Должен корректно обработать undefined disabled в Web Component',
+          'Should handle undefined disabled in the web component',
           async() => {
             const component = await createComponent({ props: { disabled: undefined } })
             const fixture = TestBed.createComponent(component)
@@ -170,7 +170,7 @@ describe(
         )
 
         it(
-          'Должен корректно передать iconLeft в Web Component',
+          'Should pass iconLeft to the web component',
           async() => {
             const iconLeft: IYIcon = { name: 'check', data: '' }
             const component = await createComponent({ props: { iconLeft } })
@@ -185,7 +185,7 @@ describe(
         )
 
         it(
-          'Должен корректно обработать undefined iconLeft в Web Component',
+          'Should handle undefined iconLeft in the web component',
           async() => {
             const component = await createComponent({ props: { iconLeft: undefined } })
             const fixture = TestBed.createComponent(component)

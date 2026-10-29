@@ -89,7 +89,7 @@ describe(
           const expectedCssClass = localClassWithModifier(`${testCase.prop}-${testCase.case}`)
 
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" ${testCase.value ? '' : 'не'} должен изменить класс у rootElement на "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should ${testCase.value ? '' : 'not'} change the rootElement class to "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -109,7 +109,7 @@ describe(
           const expectedCssClass = localClassWithModifier(testCase.prop)
 
           it(
-            `Должен ${testCase.case} класс ${expectedCssClass}, если prop ${testCase.prop} ${testCase.value}`,
+            `Should ${testCase.case} class ${expectedCssClass} when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -131,7 +131,7 @@ describe(
           ...propDisabledTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить Prop у SimpleRadioButton на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the SimpleRadioButton prop to "${String(testCase.expected)}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -148,7 +148,7 @@ describe(
           ...propRequiredTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить prop у Label на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the Label prop to "${String(testCase.expected)}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -161,7 +161,7 @@ describe(
 
         for (const testCase of propLabelTooltipTextTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить prop у Label на "${testCase.value}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the Label prop to "${testCase.value}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -174,7 +174,7 @@ describe(
 
         for (const testCase of propLabelTextTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить prop у Label на "${testCase.value}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the Label prop to "${testCase.value}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -187,7 +187,7 @@ describe(
 
         for (const testCase of propDisabledTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить prop "tooltip-active" у Label на "${!testCase.value}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the Label "tooltip-active" prop to "${!testCase.value}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -200,7 +200,7 @@ describe(
 
         for (const testCase of propDisabledTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить prop у Annotation на "${testCase.value}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the Annotation prop to "${testCase.value}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -215,7 +215,7 @@ describe(
           const expectedCssClass = localClassWithModifier(`${testCase.prop}-${testCase.case}`)
 
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" ${testCase.value ? '' : 'не'} должен изменить класс у rootElement на "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should ${testCase.value ? '' : 'not'} change the rootElement class to "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -235,7 +235,7 @@ describe(
           const expectedCssClass = 'y-core-radio-button__label_hidden'
 
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" ${testCase.value ? 'не ' : ''}должен изменить класс у Label на "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should ${testCase.value ? 'not ' : ''}change the Label class to "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -255,7 +255,7 @@ describe(
           const expectedCssClass = localClassWithModifier('tooltip')
 
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" ${testCase.value ? '' : 'не'} должен изменить класс у rootElement на "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should ${testCase.value ? '' : 'not'} change the rootElement class to "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -273,7 +273,7 @@ describe(
 
         for (const testCase of propAnnotationTextTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить текс у Annotation на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the Annotation text to "${String(testCase.expected)}"`,
             async() => {
               await updateComponent({ props: { annotationText: testCase.value } })
 
@@ -286,7 +286,7 @@ describe(
 
         for (const testCase of propLabelOverflowDebounceTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить prop у Label на "${testCase.value}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the Label prop to "${testCase.value}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -299,7 +299,7 @@ describe(
 
         for (const testCase of propErrorsTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить Prop у SimpleRadioButton на "${testCase.expected as boolean}"`,
+            `Prop "${testCase.prop}" with value "${testCase.case}" should set the SimpleRadioButton prop to "${testCase.expected as boolean}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -312,7 +312,7 @@ describe(
 
         for (const testCase of propErrorsTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить Prop у Error на "${testCase.case}"`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set the Error prop to "${testCase.case}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -330,14 +330,14 @@ describe(
       'Events',
       () => {
         it(
-          'Должен вызывать событие "checked" при клике',
+          'Should emit "checked" on click',
           async() => {
             const handleChecked = vi.fn()
 
             const rootElement = getLocalRootElement()
 
             if (!rootElement) {
-              throw new Error('Корневой элемент не найден')
+              throw new Error('Root element not found')
             }
 
             component.addEventListener(
@@ -351,7 +351,7 @@ describe(
         )
 
         it(
-          'Не должен вызывать событие "checked" при клике если компонент disabled',
+          'Should not emit "checked" on click when the component is disabled',
           async() => {
             await updateComponent({ props: { disabled: true } })
 
@@ -360,7 +360,7 @@ describe(
             const rootElement = getLocalRootElement()
 
             if (!rootElement) {
-              throw new Error('Корневой элемент не найден')
+              throw new Error('Root element not found')
             }
 
             component.addEventListener(

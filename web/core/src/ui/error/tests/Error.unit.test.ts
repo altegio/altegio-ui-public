@@ -39,7 +39,7 @@ describe(
       'Integration',
       () => {
         it(
-          'Должен иметь у text size = A2_REGULAR',
+          'Should set text size = A2_REGULAR',
           () => {
             const textElement = getWCShadowRoot(component).querySelector(YCoreTextTagName)
 
@@ -48,7 +48,7 @@ describe(
         )
 
         it(
-          'Должен иметь у text variant = negative',
+          'Should set text variant = negative',
           () => {
             const textElement = getWCShadowRoot(component).querySelector(YCoreTextTagName)
 
@@ -61,7 +61,7 @@ describe(
       'Unit',
       () => {
         it(
-          'Должен отрендерить ошибку в текст если в переданном массиве одна ошибка',
+          'Should render the error as text when the array has one error',
           async() => {
             component.errors = [text]
 
@@ -74,7 +74,7 @@ describe(
         )
 
         it(
-          'Должен отрендерить список ошибок если в переданном массиве больше одной ошибки',
+          'Should render a list of errors when the array has more than one error',
           async() => {
             const errors = [
               text,

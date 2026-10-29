@@ -56,7 +56,7 @@ describe(
           ...propHeaderIconCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" должен быть ${testCase.case}`,
+            `Prop "${testCase.prop}" should work ${testCase.case}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -67,7 +67,7 @@ describe(
 
         for (const testCase of propHeaderTextCases) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} ${testCase.value ? 'должен' : 'не должен'} рендерить заголовок`,
+            `Prop "${testCase.prop}" ${testCase.case} ${testCase.value ? 'should' : 'should not'} render the heading`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -82,7 +82,7 @@ describe(
 
         for (const testCase of propTagTextCases) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} ${testCase.value ? 'должен' : 'не должен'} рендерить тег`,
+            `Prop "${testCase.prop}" ${testCase.case} ${testCase.value ? 'should' : 'should not'} render the tag`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -100,7 +100,7 @@ describe(
 
         for (const testCase of propHeaderIconCases) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} ${testCase.value ? 'должен' : 'не должен'} рендерить иконку`,
+            `Prop "${testCase.prop}" ${testCase.case} ${testCase.value ? 'should' : 'should not'} render the icon`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 

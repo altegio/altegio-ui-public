@@ -8,16 +8,16 @@ import { YDropdownCell } from '~vue/ui/dropdownCell'
 
 // Unit test cases:
 const slotDefaultTestCases: TSlotTestCase[] = [
-  { slot: 'cell', case: 'с контентом', content: text },
-  { slot: 'cell', case: 'без контента', content: empty },
-  { slot: 'prepend', case: 'с контентом', content: text },
-  { slot: 'prepend', case: 'без контента', content: empty },
-  { slot: 'content', case: 'с контентом', content: text },
-  { slot: 'content', case: 'без контента', content: empty },
-  { slot: 'label', case: 'с контентом', content: text },
-  { slot: 'label', case: 'без контента', content: empty },
-  { slot: 'append', case: 'с контентом', content: text },
-  { slot: 'append', case: 'без контента', content: empty },
+  { slot: 'cell', case: 'with content', content: text },
+  { slot: 'cell', case: 'without content', content: empty },
+  { slot: 'prepend', case: 'with content', content: text },
+  { slot: 'prepend', case: 'without content', content: empty },
+  { slot: 'content', case: 'with content', content: text },
+  { slot: 'content', case: 'without content', content: empty },
+  { slot: 'label', case: 'with content', content: text },
+  { slot: 'label', case: 'without content', content: empty },
+  { slot: 'append', case: 'with content', content: text },
+  { slot: 'append', case: 'without content', content: empty },
 ]
 
 describe(
@@ -31,7 +31,7 @@ describe(
           () => {
             for (const testCase of slotDefaultTestCases) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 () => {
                   const wrapper = mount(
                     YDropdownCell,

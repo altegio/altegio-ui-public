@@ -65,7 +65,7 @@ describe(
               ...slotCellTestCases,
             ]) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 async() => {
                   await updateComponent({ slots: { [testCase.slot]: testCase.content } })
 
@@ -82,7 +82,7 @@ describe(
               const expectedCssClass = `${tagName}_${testCase.prop}`
 
               it(
-                `${testCase.case} добавить класс ${expectedCssClass}, если prop ${testCase.prop} ${testCase.value}`,
+                `${testCase.case} add class ${expectedCssClass} when prop ${testCase.prop} is ${testCase.value}`,
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -102,7 +102,7 @@ describe(
               const expectedCssClass = `${tagName}_align_${testCase.value}`
 
               it(
-                `${testCase.case} добавить класс ${expectedCssClass}, если prop ${testCase.prop} ${testCase.value}`,
+                `${testCase.case} add class ${expectedCssClass} when prop ${testCase.prop} is ${testCase.value}`,
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -120,7 +120,7 @@ describe(
 
             for (const testCase of [...propEllipsisTestCases, ...propLineclampTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у ${YCoreTextTagName} компонента. Case: ${testCase.case}`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the ${YCoreTextTagName} component. Case: ${testCase.case}`,
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -133,7 +133,7 @@ describe(
 
             for (const testCase of propItemTestCases) {
               it(
-                `Prop "${testCase.prop}" ${testCase.case} должен установить правильное значение и отобразить контент`,
+                `Prop "${testCase.prop}" ${testCase.case} should set the correct value and render the content`,
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -146,7 +146,7 @@ describe(
 
             for (const testCase of propItemLabelTestCases) {
               it(
-                `Prop "${testCase.prop}" ${testCase.case} должен установить правильное значение и отобразить контент`,
+                `Prop "${testCase.prop}" ${testCase.case} should set the correct value and render the content`,
                 async() => {
                   await updateComponent({
                     props: {

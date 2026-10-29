@@ -50,7 +50,7 @@ describe(
           () => {
             for (const testCase of slotTopTestCases) {
               it(
-                `Должен отрендерить top слот ${testCase.case}`,
+                `Should render the top slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
                     YDropdownList,
@@ -64,7 +64,7 @@ describe(
 
             for (const testCase of slotListTestCases) {
               it(
-                `Должен отрендерить list слот ${testCase.case}`,
+                `Should render the list slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
                     YDropdownList,
@@ -78,7 +78,7 @@ describe(
 
             for (const testCase of slotBottomTestCases) {
               it(
-                `Должен отрендерить bottom слот ${testCase.case}`,
+                `Should render the bottom slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
                     YDropdownList,
@@ -92,7 +92,7 @@ describe(
 
             for (const testCase of slotItemOuterTestCases) {
               it(
-                `Должен отрендерить item-outer слот ${testCase.case}`,
+                `Should render the item-outer slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
                     YDropdownList,
@@ -109,7 +109,7 @@ describe(
 
             for (const testCase of slotItemInnerTestCases) {
               it(
-                `Должен отрендерить item-inner слот ${testCase.case}`,
+                `Should render the item-inner slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
                     YDropdownList,
@@ -126,7 +126,7 @@ describe(
 
             for (const testCase of slotItem2OuterTestCases) {
               it(
-                `Должен отрендерить item-outer-2 слот ${testCase.case}`,
+                `Should render the item-outer-2 slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
                     YDropdownList,
@@ -143,7 +143,7 @@ describe(
 
             for (const testCase of slotItem2InnerTestCases) {
               it(
-                `Должен отрендерить item-inner-2 слот ${testCase.case}`,
+                `Should render the item-inner-2 slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
                     YDropdownList,
@@ -177,7 +177,7 @@ describe(
 
             for (const testCase of propItemsTestCases) {
               it(
-                `Изменения prop items должно изменять CoreDropdownList ${testCase.case}`,
+                `Changing prop items should update CoreDropdownList ${testCase.case}`,
                 () => {
                   const wrapper = mount(
                     YDropdownList,
@@ -196,7 +196,7 @@ describe(
 
             for (const testCase of propItemLabelTestCases) {
               it(
-                `Изменения prop itemLabel должно изменять CoreDropdownList ${testCase.case}`,
+                `Changing prop itemLabel should update CoreDropdownList ${testCase.case}`,
                 async() => {
                   const wrapper = mount(
                     YDropdownList,
@@ -222,7 +222,7 @@ describe(
 
             for (const testCase of propMinWidthTestCases) {
               it(
-                `Изменения prop minWidth должно изменять CoreDropdownList ${testCase.case}`,
+                `Changing prop minWidth should update CoreDropdownList ${testCase.case}`,
                 () => {
                   const wrapper = mount(
                     YDropdownList,

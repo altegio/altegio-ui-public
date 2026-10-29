@@ -102,7 +102,7 @@ describe(
               ...propAutoCloseTestCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента. Case: ${testCase.case}`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the core component. Case: ${testCase.case}`,
                 async() => {
                   const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
                   const fixture = TestBed.createComponent(component)
@@ -113,7 +113,7 @@ describe(
                   const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
 
                   if (!coreElement) {
-                    throw new Error('coreElement не найден')
+                    throw new Error('coreElement not found')
                   }
 
                   expect(coreElement[testCase.prop]).toEqual(testCase.expected)
@@ -124,7 +124,7 @@ describe(
         )
         describe('Events', () => {
           it(
-            'Должен испускать события "item-click"',
+            'Should emit "item-click" events',
             async() => {
               const handleAction = vi.fn()
               const component = await createComponent({ props: {} })
@@ -157,7 +157,7 @@ describe(
               ...slotContentTestCases,
             ]) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 async() => {
                   const component = await createComponent({
                     slots: { [testCase.slot]: testCase.content },

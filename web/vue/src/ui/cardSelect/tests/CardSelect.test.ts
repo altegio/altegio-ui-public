@@ -48,7 +48,7 @@ describe(
           ...slotAfterTestCases,
         ]) {
           it(
-            `Slot: "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot: "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
                 YCardSelect,
@@ -77,7 +77,7 @@ describe(
           ...propAnnotationCases,
         ]) {
           it(
-            `Prop: "${testCase.prop}" ${testCase.value} должен изменить свойство ${testCase.prop} у core компонента`,
+            `Prop: "${testCase.prop}" ${testCase.value} should set ${testCase.prop} on the core component`,
             () => {
               const wrapper = mount(
                 YCardSelect,
@@ -93,7 +93,7 @@ describe(
 
         for (const testCase of propHeaderIconCases) {
           it(
-            `Prop: "${testCase.prop}" должен быть ${testCase.case} для core компонента`,
+            `Prop: "${testCase.prop}" should work ${testCase.case} for the core component`,
             () => {
               const wrapper = mount(
                 YCardSelect,

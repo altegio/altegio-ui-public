@@ -13,14 +13,14 @@ interface IEventTestCase {
   methodName: EEventMethodName
 }
 
-export const eventOpenCases: IEventTestCase[] = [{ event: 'open', case: 'при открытии окна', methodName: EEventMethodName.HANDLE_OPEN }]
+export const eventOpenCases: IEventTestCase[] = [{ event: 'open', case: 'when the modal opens', methodName: EEventMethodName.HANDLE_OPEN }]
 
-export const eventCloseCases: IEventTestCase[] = [{ event: 'close', case: 'при закрытии окна', methodName: EEventMethodName.HANDLE_CLOSE }]
+export const eventCloseCases: IEventTestCase[] = [{ event: 'close', case: 'when the modal closes', methodName: EEventMethodName.HANDLE_CLOSE }]
 
-export const eventOverlayClickCases: IEventTestCase[] = [{ event: 'click-overlay', case: 'при клике по overlay', methodName: EEventMethodName.HANDLE_CLICK_OVERLAY }]
+export const eventOverlayClickCases: IEventTestCase[] = [{ event: 'click-overlay', case: 'on overlay click', methodName: EEventMethodName.HANDLE_CLICK_OVERLAY }]
 
-export const eventActivatorCLickCases: IEventTestCase[] = [{ event: 'click-activator', case: 'при клике по активатору', methodName: EEventMethodName.HANDLE_CLICK_ACTIVATOR }]
+export const eventActivatorCLickCases: IEventTestCase[] = [{ event: 'click-activator', case: 'on activator click', methodName: EEventMethodName.HANDLE_CLICK_ACTIVATOR }]
 
-export const eventCloseIconCLickCases: IEventTestCase[] = [{ event: 'click-close-icon', case: 'при клике по иконке закрытия', methodName: EEventMethodName.HANDLE_CLICK_CLOSE_ICON }]
+export const eventCloseIconCLickCases: IEventTestCase[] = [{ event: 'click-close-icon', case: 'on close icon click', methodName: EEventMethodName.HANDLE_CLICK_CLOSE_ICON }]
 
-export const eventPressEscapeCases: IEventTestCase[] = [{ event: 'press-escape', case: 'при нажатии на esc', methodName: EEventMethodName.HANDLE_PRESS_ESCAPE }]
+export const eventPressEscapeCases: IEventTestCase[] = [{ event: 'press-escape', case: 'on Esc press', methodName: EEventMethodName.HANDLE_PRESS_ESCAPE }]

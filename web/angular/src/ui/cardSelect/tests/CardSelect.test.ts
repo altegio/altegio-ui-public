@@ -108,7 +108,7 @@ describe(
           ...slotAfterTestCases,
         ]) {
           it(
-            `Slot: "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot: "${testCase.slot}" should render ${testCase.case}`,
             async() => {
               const component = await createComponent({
                 slots: { [testCase.slot]: testCase.content },
@@ -141,7 +141,7 @@ describe(
           ...propAnnotationCases,
         ]) {
           it(
-            `Prop: "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+            `Prop: "${testCase.prop}" should set ${testCase.prop} on the core component`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)
@@ -157,7 +157,7 @@ describe(
         }
         for (const testCase of propHeaderIconCases) {
           it(
-            `Prop: "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+            `Prop: "${testCase.prop}" should set ${testCase.prop} on the core component`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)
@@ -177,7 +177,7 @@ describe(
     describe(
       'Events',
       () => {
-        it('Event: должен генерировать событие click при клике', async() => {
+        it('Event: should emit click on click', async() => {
           const component = await createComponent({
             slots: {},
             props: {},
@@ -196,7 +196,7 @@ describe(
           expect(componentInstance.handleClick).toHaveBeenCalledWith(mockEvent)
         })
 
-        it('Event: должен генерировать событие focus при фокусе', async() => {
+        it('Event: should emit focus on focus', async() => {
           const component = await createComponent({
             slots: {},
             props: { focusable: true },
@@ -215,7 +215,7 @@ describe(
           expect(componentInstance.handleFocus).toHaveBeenCalledWith(mockEvent)
         })
 
-        it('Event: должен генерировать событие blur при потере фокуса', async() => {
+        it('Event: should emit blur on blur', async() => {
           const component = await createComponent({
             slots: {},
             props: { focusable: true },

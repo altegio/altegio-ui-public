@@ -64,32 +64,32 @@ const createComponent = async({ props, slots }: ICreateComponentArgs) => {
 
 // Unit test cases:
 const propDisabledTestCases: TPropTestCase<IYNgToggleProps, 'disabled'>[] = [
-  { prop: 'disabled', case: 'включен', value: true, expected: true },
-  { prop: 'disabled', case: 'выключен', value: false, expected: false },
+  { prop: 'disabled', case: 'enabled', value: true, expected: true },
+  { prop: 'disabled', case: 'disabled', value: false, expected: false },
 ]
 const propLabelTextTestCases: TPropTestCase<IYNgToggleProps, 'labelText'>[] = [
-  { prop: 'labelText', case: 'с контентом', value: text, expected: text },
-  { prop: 'labelText', case: 'без контента', value: empty, expected: empty },
+  { prop: 'labelText', case: 'with content', value: text, expected: text },
+  { prop: 'labelText', case: 'without content', value: empty, expected: empty },
 ]
 const propLabelTooltipTextTestCases: TPropTestCase<IYNgToggleProps, 'labelTooltipText'>[] = [
-  { prop: 'labelTooltipText', case: 'с контентом', value: text, expected: text },
-  { prop: 'labelTooltipText', case: 'без контента', value: empty, expected: empty },
+  { prop: 'labelTooltipText', case: 'with content', value: text, expected: text },
+  { prop: 'labelTooltipText', case: 'without content', value: empty, expected: empty },
 ]
 const propAnnotationTextTestCases: TPropTestCase<IYNgToggleProps, 'annotationText'>[] = [
-  { prop: 'annotationText', case: 'с контентом', value: text, expected: text },
-  { prop: 'annotationText', case: 'без контента', value: empty, expected: empty },
+  { prop: 'annotationText', case: 'with content', value: text, expected: text },
+  { prop: 'annotationText', case: 'without content', value: empty, expected: empty },
 ]
 const propLabelOverflowDebounceCases: TPropTestCase<IYNgToggleProps, 'labelOverflowDebounce'>[] = [
-  { prop: 'labelOverflowDebounce', case: 'с задержкой', value: 200, expected: 200 },
-  { prop: 'labelOverflowDebounce', case: 'с задержкой', value: undefined, expected: 300 },
+  { prop: 'labelOverflowDebounce', case: 'with a delay', value: 200, expected: 200 },
+  { prop: 'labelOverflowDebounce', case: 'with a delay', value: undefined, expected: 300 },
 ]
 const propAlignmentCases: TPropTestCase<IYNgToggleProps, 'alignment'>[] = [
-  { prop: 'alignment', case: 'выравнивание по центру', value: EYCoreLabelAlignment.CENTER, expected: EYCoreLabelAlignment.CENTER },
-  { prop: 'alignment', case: 'выравнивание по верху', value: EYCoreLabelAlignment.TOP, expected: EYCoreLabelAlignment.TOP },
+  { prop: 'alignment', case: 'center alignment', value: EYCoreLabelAlignment.CENTER, expected: EYCoreLabelAlignment.CENTER },
+  { prop: 'alignment', case: 'top alignment', value: EYCoreLabelAlignment.TOP, expected: EYCoreLabelAlignment.TOP },
 ]
 const propSizeCases: TPropTestCase<IYNgToggleProps, 'size'>[] = [
-  { prop: 'size', case: 'размер M', value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
-  { prop: 'size', case: 'размер S', value: EYSizes.SMALL, expected: EYSizes.SMALL },
+  { prop: 'size', case: 'size M', value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
+  { prop: 'size', case: 'size S', value: EYSizes.SMALL, expected: EYSizes.SMALL },
 ]
 
 describe(
@@ -111,7 +111,7 @@ describe(
               ...propSizeCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен быть "${testCase.case}" и иметь значение "${testCase.value}"`,
+                `Prop "${testCase.prop}" should be "${testCase.case}" and have value "${testCase.value}"`,
                 async() => {
                   const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
                   const fixture = TestBed.createComponent(component)
@@ -133,7 +133,7 @@ describe(
           () => {
             for (const testCase of [...slotAnnotationTestCases]) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 async() => {
                   const component = await createComponent({ slots: { [testCase.slot]: testCase.content } })
                   const fixture = TestBed.createComponent(component)

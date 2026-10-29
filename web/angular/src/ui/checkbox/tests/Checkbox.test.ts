@@ -39,25 +39,25 @@ const propDisabledTestCases: TPropTestCase<IYNgCheckboxProps, 'disabled'>[] = [
 ]
 
 const propLabelTextTestCases: TPropTestCase<IYNgCheckboxProps, 'labelText'>[] = [
-  { prop: 'labelText', case: 'текст', value: text, expected: text },
-  { prop: 'labelText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'labelText', case: 'text', value: text, expected: text },
+  { prop: 'labelText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: empty },
 ]
 
 const propLabelTooltipTextTestCases: TPropTestCase<IYNgCheckboxProps, 'labelTooltipText'>[] = [
-  { prop: 'labelTooltipText', case: 'текст', value: text, expected: text },
-  { prop: 'labelTooltipText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'labelTooltipText', case: 'text', value: text, expected: text },
+  { prop: 'labelTooltipText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: empty },
 ]
 
 const propAnnotationTextTestCases: TPropTestCase<IYNgCheckboxProps, 'annotationText'>[] = [
-  { prop: 'annotationText', case: 'текст', value: text, expected: text },
-  { prop: 'annotationText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'annotationText', case: 'text', value: text, expected: text },
+  { prop: 'annotationText', case: 'empty string', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: empty },
 ]
 
 const propLabelOverflowDebounceTestCases: TPropTestCase<IYNgCheckboxProps, 'labelOverflowDebounce'>[] = [
-  { prop: 'labelOverflowDebounce', case: 'текст', value: number, expected: number },
+  { prop: 'labelOverflowDebounce', case: 'text', value: number, expected: number },
   { prop: 'labelOverflowDebounce', case: 'undefined', value: undefined, expected: 300 },
 ]
 
@@ -68,8 +68,8 @@ const propAlignmentTestCases: TPropTestCase<IYNgCheckboxProps, 'alignment'>[] = 
 ]
 
 const propErrorsTestCases: TPropTestCase<IYNgCheckboxProps, 'errors'>[] = [
-  { prop: 'errors', case: 'массив с ошибками', value: ['error'], expected: ['error'] },
-  { prop: 'errors', case: 'пустой массив', value: [], expected: [] },
+  { prop: 'errors', case: 'array with errors', value: ['error'], expected: ['error'] },
+  { prop: 'errors', case: 'empty array', value: [], expected: [] },
   { prop: 'errors', case: 'undefined', value: undefined, expected: undefined },
 ]
 
@@ -129,7 +129,7 @@ describe(
           ...propErrorsTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)

@@ -27,8 +27,8 @@ const createComponent = ({ slots }: ICreateComponentArgs) => {
 
 // Unit test cases:
 const slotDefaultTestCases: TSlotTestCase[] = [
-  { slot: 'default', case: 'с контентом', content: text },
-  { slot: 'default', case: 'без контента', content: empty },
+  { slot: 'default', case: 'with content', content: text },
+  { slot: 'default', case: 'without content', content: empty },
 ]
 
 const TestConsumer = {
@@ -57,7 +57,7 @@ describe(
       () => {
         for (const testCase of slotDefaultTestCases) {
           it(
-            `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = createComponent({ slots: { default: testCase.content } })
 
@@ -72,7 +72,7 @@ describe(
       'Providers',
       () => {
         it(
-          'Должен создать глобальный контекст',
+          'Should create the global context',
           () => {
             const wrapper = createComponent({ slots: { default: h(TestConsumer) } })
 
@@ -94,7 +94,7 @@ describe(
       'Events',
       () => {
         it(
-          'Должен обрабатывать событие ready',
+          'Should handle the ready event',
           () => {
             const wrapper = createComponent({ slots: { default: '' } })
 

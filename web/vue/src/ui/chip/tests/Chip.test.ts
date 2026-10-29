@@ -25,7 +25,7 @@ describe(
       () => {
         for (const testCase of propLabelTestCases) {
           it(
-            `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента на "${testCase.case}"`,
+            `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
             () => {
               const wrapper = mount(
                 YChip,
@@ -41,7 +41,7 @@ describe(
 
         for (const testCase of propIconLeftTestCases) {
           it(
-            `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента на "${testCase.case}"`,
+            `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
             () => {
               const wrapper = mount(
                 YChip,
@@ -66,7 +66,7 @@ describe(
           ...propDisabledTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента на "${testCase.case}"`,
+            `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
             () => {
               const wrapper = mount(
                 YChip,
@@ -91,7 +91,7 @@ describe(
       'Events',
       () => {
         it(
-          'Должен вызывать событие "update:active" при клике на Chip',
+          'Should emit "update:active" on Chip click',
           async() => {
             const wrapper = mount(
               YChip,

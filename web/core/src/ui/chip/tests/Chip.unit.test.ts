@@ -53,10 +53,10 @@ describe(
     })
 
     describe(
-      'Рендеринг',
+      'Rendering',
       () => {
         it(
-          'Должен рендерить div с корректным базовым классом',
+          'Should render a div with the correct base class',
           async() => {
             await component.updateComplete
 
@@ -72,7 +72,7 @@ describe(
         )
 
         it(
-          'Должен рендерить text с корректным размером и вариантом',
+          'Should render text with the correct size and variant',
           async() => {
             await component.updateComplete
 
@@ -86,7 +86,7 @@ describe(
         )
 
         it(
-          'Не должен рендерить иконку',
+          'Should not render an icon',
           async() => {
             await component.updateComplete
 
@@ -103,7 +103,7 @@ describe(
       () => {
         for (const testCase of propLabelTestCases) {
           it(
-            `Prop "${testCase.prop}" должен корректно отображать значение "${testCase.case}" и CSS класс`,
+            `Prop "${testCase.prop}" should render the value "${testCase.case}" and the CSS class`,
             async() => {
               await updateComponent({ props: { labelText: testCase.value } })
 
@@ -120,7 +120,7 @@ describe(
 
         for (const testCase of propIconLeftTestCases) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен рендерить иконку с корректным размером`,
+            `Prop "${testCase.prop}" ${testCase.case} should render the icon with the correct size`,
             async() => {
               await updateComponent({ props: { iconLeft: testCase.value } })
 
@@ -136,7 +136,7 @@ describe(
 
         for (const testCase of propSizeTestCases) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен корректно применять CSS класс`,
+            `Prop "${testCase.prop}" ${testCase.case} should apply the CSS class`,
             async() => {
               await updateComponent({ props: { size: testCase.value } })
 
@@ -150,7 +150,7 @@ describe(
 
         for (const testCase of propSizeTestCases) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен корректно применять размер текста и иконки`,
+            `Prop "${testCase.prop}" ${testCase.case} should apply the text and icon size`,
             async() => {
               await updateComponent({ props: { size: testCase.value, iconLeft: chipIconLeftValue } })
 
@@ -170,7 +170,7 @@ describe(
 
         for (const testCase of propActiveTestCases) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен корректно применять CSS класс`,
+            `Prop "${testCase.prop}" ${testCase.case} should apply the CSS class`,
             async() => {
               await updateComponent({ props: { active: testCase.value } })
 
@@ -184,7 +184,7 @@ describe(
 
         for (const testCase of propDisabledTestCases) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен корректно применять CSS класс и цвет текста`,
+            `Prop "${testCase.prop}" ${testCase.case} should apply the CSS class and text color`,
             async() => {
               await updateComponent({ props: { disabled: testCase.value } })
 
@@ -206,7 +206,7 @@ describe(
       'Events',
       () => {
         it(
-          'Должен вызывать обработчик клика при нажатии на Chip',
+          'Should call the click handler on Chip click',
           () => {
             const clickHandler = vi.fn()
 
@@ -222,7 +222,7 @@ describe(
         )
 
         it(
-          'Не должен вызывать обработчик клика при нажатии на Chip, если disabled',
+          'Should not call the click handler on Chip click when disabled',
           async() => {
             const clickHandler = vi.fn()
 

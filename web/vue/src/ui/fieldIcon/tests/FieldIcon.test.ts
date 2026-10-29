@@ -30,7 +30,7 @@ describe(
           ...propSizeCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" должен быть ${testCase.case}`,
+            `Prop "${testCase.prop}" should work ${testCase.case}`,
             () => {
               const wrapper = mount(YFieldIcon, { props: { [testCase.prop]: testCase.value } })
               const coreElement = wrapper.find(tagName).element as YCoreFieldIcon
@@ -42,7 +42,7 @@ describe(
 
         for (const testCase of [...propIconCases]) {
           it(
-              `Prop "${testCase.prop}" должен быть ${testCase.case}`,
+              `Prop "${testCase.prop}" should work ${testCase.case}`,
               () => {
                 const wrapper = mount(YFieldIcon, { props: { [testCase.prop]: testCase.value } })
                 const coreElement = wrapper.find(tagName).element as YCoreFieldIcon

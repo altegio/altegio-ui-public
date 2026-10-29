@@ -95,7 +95,7 @@ describe(
               ...propAutocompleteCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента c ${String(testCase.value)} на ${String(testCase.expected)}`,
+                `Prop "${testCase.prop}" should change ${testCase.prop} on the core component from ${String(testCase.value)} to ${String(testCase.expected)}`,
                 async() => {
                   const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
                   const fixture = TestBed.createComponent(component)
@@ -106,7 +106,7 @@ describe(
                   const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
 
                   if (!coreElement) {
-                    throw new Error('coreElement не найден')
+                    throw new Error('coreElement not found')
                   }
 
                   expect(coreElement[testCase.prop]).toBe(testCase.expected)

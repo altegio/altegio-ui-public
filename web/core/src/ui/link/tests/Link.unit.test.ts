@@ -39,7 +39,7 @@ describe(
       'Integration',
       () => {
         it(
-          'Должен рендерить элемент <a> с корректным href',
+          'Should render an <a> element with the correct href',
           async() => {
             component.href = href
 
@@ -51,7 +51,7 @@ describe(
         )
 
         it(
-          'Должен рендерить элемент <a> с корректным target',
+          'Should render an <a> element with the correct target',
           async() => {
             const target = '_blank'
 
@@ -71,7 +71,7 @@ describe(
       'Unit',
       () => {
         it(
-          'Должен отображать содержимое <slot> внутри элемента <a>',
+          'Should render the <slot> content inside the <a> element',
           async() => {
             const slotContent = 'Click here'
             component.innerHTML = slotContent

@@ -21,7 +21,7 @@ const Configuration: UserConfig = {
           if (!headerPattern.test(commitHeader)) {
             return [
               false,
-              'Текст заголовка коммита должен быть: "type(scope): task number description". Пожалуйста изучите соглашение о коммитах - https://www.conventionalcommits.org/ru/v1.0.0/',
+              'Commit header must match "type(scope): task number description". See the commit convention: https://www.conventionalcommits.org/en/v1.0.0/',
             ]
           }
 

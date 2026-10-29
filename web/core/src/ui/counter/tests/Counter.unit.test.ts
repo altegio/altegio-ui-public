@@ -50,10 +50,10 @@ describe(
     })
 
     describe(
-      'Рендеринг',
+      'Rendering',
       () => {
         it(
-          `Должен рендерить компонент с корректным базовым классом ${tagName}`,
+          `Should render the component with the correct base class ${tagName}`,
           async() => {
             await component.updateComplete
 
@@ -71,7 +71,7 @@ describe(
       () => {
         for (const testCase of propLocatorTestCases) {
           it(
-            `Prop "${testCase.prop}" должен быть ${testCase.value}`,
+            `Prop "${testCase.prop}" should work ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -82,7 +82,7 @@ describe(
 
         for (const { prop: propName, case: propCase, value } of propSizeTestCases) {
           it(
-            `Prop "${propName}" ${propCase} должен корректно применять CSS класс`,
+            `Prop "${propName}" ${propCase} should apply the CSS class`,
             async() => {
               const expectedClass = `${tagName}_size_${value}`
 
@@ -99,7 +99,7 @@ describe(
 
         for (const { prop: propName, case: propCase, value } of propVariantTestCases) {
           it(
-            `Prop "${propName}" ${propCase} должен корректно применять CSS класс`,
+            `Prop "${propName}" ${propCase} should apply the CSS class`,
             async() => {
               const expectedClass = `${tagName}_variant_${value}`
 
@@ -116,7 +116,7 @@ describe(
 
         for (const { prop: propName, case: propCase, value } of propDisabledTestCases) {
           it(
-            `Prop "${propName}" ${propCase} должен корректно применять CSS класс`,
+            `Prop "${propName}" ${propCase} should apply the CSS class`,
             async() => {
               await updateComponent({ props: { disabled: value } })
 
@@ -130,7 +130,7 @@ describe(
 
         for (const { prop: propName, case: propCase, value, expected } of positiveValueTestCases) {
           it(
-            `Prop "${propName}" должен корректно обрабатывать положительное число ${propCase}`,
+            `Prop "${propName}" should handle a positive number ${propCase}`,
             async() => {
               await updateComponent({ props: { value } })
 
@@ -143,7 +143,7 @@ describe(
 
         for (const { prop: propName, case: propCase, value, expected } of negativeValueTestCases) {
           it(
-            `Prop "${propName}" должен корректно обрабатывать отрицательное число ${propCase}`,
+            `Prop "${propName}" should handle a negative number ${propCase}`,
             async() => {
               await updateComponent({ props: { value } })
 
@@ -156,7 +156,7 @@ describe(
 
         for (const { prop: propName, case: propCase, value, expected } of overflowedValueTestCases) {
           it(
-            `Prop "${propName}" должен корректно обрабатывать переполнение положительного числа ${propCase}`,
+            `Prop "${propName}" should handle positive number overflow ${propCase}`,
             async() => {
               await updateComponent({ props: { value } })
 

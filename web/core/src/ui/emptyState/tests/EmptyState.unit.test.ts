@@ -54,23 +54,23 @@ const propSizeTestCases: TPropTestCase<IYCoreEmptyStateExternalProps, 'size'>[] 
 ]
 
 const propTitleTestCases: TPropTestCase<IYCoreEmptyStateExternalProps, 'title'>[] = [
-  { prop: 'title', case: 'с контентом', value: text, expected: text },
-  { prop: 'title', case: 'без контента', value: empty, expected: empty },
+  { prop: 'title', case: 'with content', value: text, expected: text },
+  { prop: 'title', case: 'without content', value: empty, expected: empty },
 ]
 
 const propDescriptionTestCases: TPropTestCase<IYCoreEmptyStateExternalProps, 'description'>[] = [
-  { prop: 'description', case: 'с контентом', value: text, expected: text },
-  { prop: 'description', case: 'без контента', value: empty, expected: empty },
+  { prop: 'description', case: 'with content', value: text, expected: text },
+  { prop: 'description', case: 'without content', value: empty, expected: empty },
 ]
 
 const propIconTestCases: TPropTestCase<IYCoreEmptyStateExternalProps, 'icon'>[] = [
-  { prop: 'icon', case: 'с указанной иконкой', value: yRocket, expected: yRocket.name },
-  { prop: 'icon', case: 'со стандартной иконкой', value: undefined, expected: yMagic.name },
+  { prop: 'icon', case: 'with the given icon', value: yRocket, expected: yRocket.name },
+  { prop: 'icon', case: 'with the default icon', value: undefined, expected: yMagic.name },
 ]
 
 export const slotActionsTestCases: TSlotTestCase<string, IYCoreTooltipProps>[] = [
-  { slot: 'actions', case: 'слот "actions" предоставлен', content: 'Content' },
-  { slot: 'actions', case: 'слот "actions" не предоставлен', content: empty },
+  { slot: 'actions', case: 'the "actions" slot is provided', content: 'Content' },
+  { slot: 'actions', case: 'the "actions" slot is not provided', content: empty },
 ]
 
 describe(
@@ -95,7 +95,7 @@ describe(
           const expectedCssClass = localClassWithModifier(`${testCase.prop}-${testCase.case}`)
 
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" ${testCase.value ? '' : 'не'} должен изменить класс у rootElement на "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should ${testCase.value ? '' : 'not'} change the rootElement class to "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -117,7 +117,7 @@ describe(
           ...propDescriptionTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить текст у EmptyState на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the EmptyState text to "${String(testCase.expected)}"`,
             async() => {
               await updateComponent({ props: { title: testCase.value } })
 
@@ -129,7 +129,7 @@ describe(
 
         for (const testCase of propIconTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value?.name ?? 'undefined'}" должен отрендерить Icon "${testCase.case}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value?.name ?? 'undefined'}" should render Icon "${testCase.case}"`,
             async() => {
               await updateComponent({ props: { icon: testCase.value } })
 
@@ -148,7 +148,7 @@ describe(
       () => {
         for (const testCase of [...slotActionsTestCases]) {
           it(
-            `Slot "${testCase.slot}" ${testCase.content ? '' : 'не'} должен рендериться, если ${testCase.case}`,
+            `Slot "${testCase.slot}" should ${testCase.content ? '' : 'not'} render when ${testCase.case}`,
             async() => {
               await updateComponent({
                 slots: testCase.content

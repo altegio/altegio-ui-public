@@ -55,7 +55,7 @@ describe(
 
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)

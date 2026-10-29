@@ -9,12 +9,12 @@ const sizes = Object.values(EYSizes).filter((size) => size !== EYSizes.EXTRA_LAR
 export const propDisabledTestCases: TPropTestCase<IYCoreAvatarExternalProps, 'disabled'>[] = [
   {
     prop: 'disabled',
-    case: 'содержать',
+    case: 'have',
     value: true,
   },
   {
     prop: 'disabled',
-    case: 'отсутствовать',
+    case: 'not have',
     value: false,
   },
 ]
@@ -26,16 +26,16 @@ export const propSizeTestCases: TPropTestCase<IYCoreAvatarExternalProps, 'size'>
 }))
 
 export const propIconTestCases: TPropTestCase<IYCoreAvatarExternalProps, 'icon'>[] = [
-  { prop: 'icon', case: 'со значением', value: ySearch },
-  { prop: 'icon', case: 'без значения', value: undefined },
+  { prop: 'icon', case: 'with a value', value: ySearch },
+  { prop: 'icon', case: 'without a value', value: undefined },
 ]
 
 export const propInitialsTestCases: TPropTestCase<IYCoreAvatarExternalProps, 'initials'>[] = [
-  { prop: 'initials', case: 'со значением', value: text, expected: 'initials' },
-  { prop: 'initials', case: 'без значения', value: undefined, expected: 'initials' },
+  { prop: 'initials', case: 'with a value', value: text, expected: 'initials' },
+  { prop: 'initials', case: 'without a value', value: undefined, expected: 'initials' },
 ]
 
 export const propPhotoTestCases: TPropTestCase<IYCoreAvatarExternalProps, 'photo'>[] = [
-  { prop: 'photo', case: 'со значением', value: 'https://', expected: 'image' },
-  { prop: 'photo', case: 'без значения', value: undefined, expected: 'image' },
+  { prop: 'photo', case: 'with a value', value: 'https://', expected: 'image' },
+  { prop: 'photo', case: 'without a value', value: undefined, expected: 'image' },
 ]

@@ -27,7 +27,7 @@ const defaultProps = createVueModalProps() as IYVueModalProps
 const baseSlotsCheck = () => {
   for (const testCase of slotDefaultTestCases) {
     it(
-      `Slot: "${testCase.slot}" должен быть ${testCase.case}`,
+      `Slot: "${testCase.slot}" should render ${testCase.case}`,
       () => {
         const wrapper = mount(
           YModal,
@@ -57,7 +57,7 @@ const basePropsCheck = () => {
     ...propsFullScreenTestCases,
   ]) {
     it(
-      `Prop: "${testCase.prop}" ${testCase.value} ${testCase.value === undefined ? 'не' : ''} должен изменить свойство ${testCase.prop} у core компонента`,
+      `Prop: "${testCase.prop}" ${testCase.value} should ${testCase.value === undefined ? 'not' : ''} set ${testCase.prop} on the core component`,
       () => {
         const wrapper = mount(
           YModal,
@@ -127,7 +127,7 @@ describe(
 
         for (const testCase of propsOpenTestCases) {
           it(
-            `Prop: "${testCase.prop}" ${testCase.value} ${testCase.value === undefined ? 'не' : ''} должен изменить свойство open у core компонента`,
+            `Prop: "${testCase.prop}" ${testCase.value} should ${testCase.value === undefined ? 'not' : ''} set open on the core component`,
             () => {
               const wrapper = mount(
                 YModal,
@@ -154,7 +154,7 @@ describe(
         baseEventsCheck()
 
         it(
-          'Должен вызывать событие "update:modelValue" со значением "true" при открытии модального окна',
+          'Should emit "update:modelValue" with "true" when the modal opens',
           async() => {
             const wrapper = mount(
               YModal,
@@ -177,7 +177,7 @@ describe(
         )
 
         it(
-          'Должен вызывать событие "update:modelValue" со значением "false" при закрытии модального окна',
+          'Should emit "update:modelValue" with "false" when the modal closes',
           async() => {
             const wrapper = mount(
               YModal,

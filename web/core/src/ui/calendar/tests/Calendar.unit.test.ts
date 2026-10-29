@@ -51,25 +51,25 @@ const initialTestMaxDate = '20-01-2021'
 
 // Unit test cases:
 const propDisabledTestCases: TPropTestCase<IYCoreCalendarProps, 'disabled'>[] = [
-  { prop: 'disabled', case: 'содержать', value: true },
-  { prop: 'disabled', case: 'отсутствовать', value: false },
+  { prop: 'disabled', case: 'have', value: true },
+  { prop: 'disabled', case: 'not have', value: false },
 ]
 const propHeaderSelectorsTestCases: TPropTestCase<IYCoreCalendarProps, 'headerSelectors'>[] = [
-  { prop: 'headerSelectors', case: 'содержать', value: true },
-  { prop: 'headerSelectors', case: 'отсутствовать', value: false },
+  { prop: 'headerSelectors', case: 'have', value: true },
+  { prop: 'headerSelectors', case: 'not have', value: false },
 ]
 const propDateTestCases: TPropTestCase<IYCoreCalendarProps, 'date'>[] = [
-  { prop: 'date', case: 'Должен', value: initialTestDate },
-  { prop: 'date', case: 'Должен', value: initialTestDateRange },
-  { prop: 'date', case: 'Не должен', value: undefined },
+  { prop: 'date', case: 'Should', value: initialTestDate },
+  { prop: 'date', case: 'Should', value: initialTestDateRange },
+  { prop: 'date', case: 'Should not', value: undefined },
 ]
 const propMinDateTestCases: TPropTestCase<IYCoreCalendarProps, 'minDate'>[] = [
-  { prop: 'minDate', case: 'Должна быть доступна недоступна', value: initialTestMinDate },
-  { prop: 'minDate', case: 'Не должна быть доступна недоступна', value: undefined },
+  { prop: 'minDate', case: 'should be disabled', value: initialTestMinDate },
+  { prop: 'minDate', case: 'should not be disabled', value: undefined },
 ]
 const propMaxDateTestCases: TPropTestCase<IYCoreCalendarProps, 'maxDate'>[] = [
-  { prop: 'maxDate', case: 'Должна быть доступна недоступна', value: initialTestMaxDate },
-  { prop: 'maxDate', case: 'Не должна быть доступна недоступна', value: undefined },
+  { prop: 'maxDate', case: 'should be disabled', value: initialTestMaxDate },
+  { prop: 'maxDate', case: 'should not be disabled', value: undefined },
 ]
 
 describe(
@@ -92,7 +92,7 @@ describe(
       () => {
         for (const testCase of propDisabledTestCases) {
           it(
-            `Ячейка дня должна ${testCase.case} класс ${disabledDayCellCssClass}, если prop ${testCase.prop} ${testCase.value}`,
+            `Day cell should ${testCase.case} class ${disabledDayCellCssClass} when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -110,7 +110,7 @@ describe(
 
         for (const testCase of propHeaderSelectorsTestCases) {
           it(
-            `Должен ${testCase.case} компонент ${YCoreDropdownTagName}, если prop ${testCase.prop} ${testCase.value}`,
+            `Should ${testCase.case} component ${YCoreDropdownTagName} when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -127,7 +127,7 @@ describe(
 
         for (const testCase of propDateTestCases) {
           it(
-            `${testCase.case} выставляться месяц и год, если prop ${testCase.prop} ${String(testCase.value)}`,
+            `${testCase.case} set the month and year when prop ${testCase.prop} is ${String(testCase.value)}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -150,7 +150,7 @@ describe(
 
         for (const testCase of propMaxDateTestCases) {
           it(
-            `Ячейка дня ${testCase.case} позже указанной даты, если prop ${testCase.prop} ${testCase.value}`,
+            `Day cells ${testCase.case} after the given date when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value, date: testCase.value } })
 
@@ -173,7 +173,7 @@ describe(
 
         for (const testCase of propMinDateTestCases) {
           it(
-            `Ячейка дня ${testCase.case} раньше указанной даты, если prop ${testCase.prop} ${testCase.value}`,
+            `Day cells ${testCase.case} before the given date when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value, date: testCase.value } })
 
@@ -214,7 +214,7 @@ describe(
       'Events',
       () => {
         it(
-          'Должен вызывать обработчик select при нажатии на ячейку дня',
+          'Should call the select handler on day cell click',
           async() => {
             const handleSelect = vi.fn()
 
@@ -234,7 +234,7 @@ describe(
         )
 
         it(
-          'Не должен вызывать обработчик select при нажатии на ячейку дня, если установлено свойство disabled',
+          'Should not call the select handler on day cell click when disabled is set',
           async() => {
             const handleSelect = vi.fn()
 
@@ -256,7 +256,7 @@ describe(
         )
 
         it(
-          'Должен вызывать обработчик select при нажатии на ячейку дня c value [string, string], если установлено свойство isRange',
+          'Should call the select handler with a [string, string] value on day cell click when isRange is set',
           async() => {
             const handleSelect = vi.fn()
 
@@ -284,7 +284,7 @@ describe(
         )
 
         it(
-          'Должен вызывать обработчик select при нажатии на ячейку дня c value string, если не установлено свойство isRange',
+          'Should call the select handler with a string value on day cell click when isRange is not set',
           async() => {
             const handleSelect = vi.fn()
 

@@ -46,7 +46,7 @@ describe(
       () => {
         for (const testCase of slotsTestCases) {
           it(
-            `Должен отрендерить ${testCase.slot} слот ${testCase.case}`,
+            `Should render the ${testCase.slot} slot ${testCase.case}`,
             () => {
               const wrapper = mount(
                 YFunctionalModal,
@@ -76,7 +76,7 @@ describe(
       () => {
         for (const testCase of propsOpenTestCases) {
           it(
-            `Prop: "${testCase.prop}" ${testCase.value} должен изменить свойство open у core компонента`,
+            `Prop: "${testCase.prop}" ${testCase.value} should set open on the core component`,
             () => {
               const wrapper = mount(
                 YFunctionalModal,
@@ -102,7 +102,7 @@ describe(
           ...propsHideFooterTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const modelValue = ref(false)
 
@@ -136,7 +136,7 @@ describe(
           ...eventUpdateModalValueCases,
         ]) {
           it(
-            `Должен вызывать событие ${testCase.event} при ${testCase.case} core компонента`,
+            `Should emit ${testCase.event} ${testCase.case} of the core component`,
             async() => {
               const wrapper = mount(YFunctionalModal, { props: { modelValue: false } })
 
@@ -151,7 +151,7 @@ describe(
 
         for (const testCase of [...eventActivatorCLickCases]) {
           it(
-            `Должен вызывать событие ${testCase.event} при ${testCase.case} core компонента`,
+            `Should emit ${testCase.event} ${testCase.case} of the core component`,
             async() => {
               const wrapper = mount(YFunctionalModal, {
                 props: { modelValue: false },

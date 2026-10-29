@@ -91,20 +91,20 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
 }
 
 // Unit test cases:
-const slotBeforeTestCases: TSlotTestCase[] = [{ slot: 'before', case: 'с контентом', content: text }]
+const slotBeforeTestCases: TSlotTestCase[] = [{ slot: 'before', case: 'with content', content: text }]
 
-const slotAfterTestCases: TSlotTestCase[] = [{ slot: 'after', case: 'с контентом', content: text }]
+const slotAfterTestCases: TSlotTestCase[] = [{ slot: 'after', case: 'with content', content: text }]
 
-const propLabelTextTestCases: TPropTestCase<IYNgTextareaProps, 'labelText'>[] = [{ prop: 'labelText', case: 'с текстом метки', value: 'Тестовая метка', expected: 'Тестовая метка' }]
+const propLabelTextTestCases: TPropTestCase<IYNgTextareaProps, 'labelText'>[] = [{ prop: 'labelText', case: 'with label text', value: 'Test label', expected: 'Test label' }]
 
 const propDisabledTestCases: TPropTestCase<IYNgTextareaProps, 'disabled'>[] = [
-  { prop: 'disabled', case: 'включен', value: true, expected: true },
-  { prop: 'disabled', case: 'выключен', value: false, expected: false },
+  { prop: 'disabled', case: 'enabled', value: true, expected: true },
+  { prop: 'disabled', case: 'disabled', value: false, expected: false },
 ]
 
 const propErrorTestCases: TPropTestCase<IYNgTextareaProps, 'error'>[] = [
-  { prop: 'error', case: 'включен', value: true, expected: true },
-  { prop: 'error', case: 'выключен', value: false, expected: false },
+  { prop: 'error', case: 'enabled', value: true, expected: true },
+  { prop: 'error', case: 'disabled', value: false, expected: false },
 ]
 
 describe(
@@ -118,7 +118,7 @@ describe(
           () => {
             for (const testCase of [...slotBeforeTestCases, ...slotAfterTestCases]) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 async() => {
                   const component = await createComponent({
                     slots: { [testCase.slot]: testCase.content },
@@ -157,7 +157,7 @@ describe(
               ...propErrorTestCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 async() => {
                   const component = await createComponent({
                     slots: {},
@@ -179,7 +179,7 @@ describe(
         describe(
           'Events',
           () => {
-            it('должен обновлять значение при вводе', async() => {
+            it('should update the value on input', async() => {
               const component = await createComponent({
                 slots: {},
                 props: {},
@@ -191,7 +191,7 @@ describe(
               const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
               const textareaDebugElement = fixture.debugElement.children[0]
               const textareaComponent = textareaDebugElement.componentInstance as YTextarea
-              const newValue = 'текст'
+              const newValue = 'text'
 
               // Simulate an input event
               const mockEvent = new CustomEvent('input', { detail: { value: newValue } })
@@ -203,7 +203,7 @@ describe(
               expect(textareaComponent.textareaValue()).toBe(newValue)
             })
 
-            it('должен генерировать событие focus при фокусе', async() => {
+            it('should emit focus on focus', async() => {
               const component = await createComponent({
                 slots: {},
                 props: {},
@@ -223,7 +223,7 @@ describe(
               expect(componentInstance.handleFocus).toHaveBeenCalled()
             })
 
-            it('должен генерировать событие blur при потере фокуса', async() => {
+            it('should emit blur on blur', async() => {
               const component = await createComponent({
                 slots: {},
                 props: {},
@@ -243,7 +243,7 @@ describe(
               expect(componentInstance.handleBlur).toHaveBeenCalled()
             })
 
-            it('должен генерировать событие clear при очистке', async() => {
+            it('should emit clear on clear', async() => {
               const component = await createComponent({
                 slots: {},
                 props: { clearable: true },

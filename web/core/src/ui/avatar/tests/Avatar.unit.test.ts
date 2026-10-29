@@ -82,7 +82,7 @@ describe(
               const expectedCssClass = localClassWithModifier(`${testCase.prop}_${testCase.case}`)
 
               it(
-                `Prop "${testCase.prop}" должен изменить класс у rootElement на "${expectedCssClass}"`,
+                `Prop "${testCase.prop}" should change the rootElement class to "${expectedCssClass}"`,
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -98,7 +98,7 @@ describe(
               const expectedCssClass = localClassWithModifier('disabled')
 
               it(
-                `Должен ${testCase.case} класс disabled, если prop disabled ${testCase.value}`,
+                `Should ${testCase.case} the disabled class when prop disabled is ${testCase.value}`,
                 async() => {
                   await updateComponent({ props: { disabled: testCase.value } })
 
@@ -116,7 +116,7 @@ describe(
 
             for (const { prop, case: propCase, value } of propIconTestCases) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и передан в quark/icon`,
+                `Prop "${prop}" should be "${propCase}" and passed to quark/icon`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
@@ -143,7 +143,7 @@ describe(
               const classWithElement = localClassWithElement(String(expected))
 
               it(
-                `${value ? 'Должен' : 'Не должен'} добавить ноду ${classWithElement}, если проп ${prop} "${propCase}"`,
+                `${value ? 'Should' : 'Should not'} add node ${classWithElement} when prop ${prop} is "${propCase}"`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 

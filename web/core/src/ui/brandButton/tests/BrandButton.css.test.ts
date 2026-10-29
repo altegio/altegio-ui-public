@@ -28,7 +28,7 @@ describe('Core/YCoreBrandButton/CSS', () => {
   })
 
   for (const { host, root } of CSSVariablesHostToRootCases) {
-    it(`Host CSS переменная ${host} должна ссылаться на root CSS переменную ${root}`, () => {
+    it(`Host CSS variable ${host} should reference the root CSS variable ${root}`, () => {
       const brandButtonShadow = getWCShadowRoot(component)
 
       const hostCSSVariableValue = getHostCSSVariableValue(
@@ -42,7 +42,7 @@ describe('Core/YCoreBrandButton/CSS', () => {
   }
 
   for (const { host, value } of CSSVariablesHostToValueCases) {
-    it(`Вычисленная Host CSS переменная ${host} должна быть равна ${value}`, () => {
+    it(`Computed host CSS variable ${host} should equal ${value}`, () => {
       const brandButtonShadow = getWCShadowRoot(component)
       const simpleButton = brandButtonShadow.querySelector('y-core-simple-button')!
       const simpleButtonShadow = getWCShadowRoot(simpleButton)

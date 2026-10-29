@@ -6,10 +6,10 @@ import {
 import { text } from '~shared/tests/slotContents'
 
 export const propValueCases: TPropTestCase<IYCoreCollapseProps, 'value'>[] = [
-  { prop: 'value', case: 'строка', value: text },
-  { prop: 'value', case: 'массив', value: [text, 'test'] },
-  { prop: 'value', case: 'пустая строка', value: '' },
-  { prop: 'value', case: 'пустой массив', value: [] },
+  { prop: 'value', case: 'string', value: text },
+  { prop: 'value', case: 'array', value: [text, 'test'] },
+  { prop: 'value', case: 'empty string', value: '' },
+  { prop: 'value', case: 'empty array', value: [] },
 ]
 
 export const propTypeCases: TPropTestCase<IYCoreCollapseProps, 'type'>[] = [

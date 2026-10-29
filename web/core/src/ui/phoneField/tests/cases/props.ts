@@ -24,14 +24,14 @@ export const searchFunction: IYCorePhoneFieldProps['searchFunction'] = (detail) 
 }
 
 export const propValueCases: TPropTestCase<IYCorePhoneFieldProps, 'value'>[] = [
-  { prop: 'value', case: 'с номером', value: searchNumberValue },
-  { prop: 'value', case: 'без номера', value: '' },
+  { prop: 'value', case: 'with a number', value: searchNumberValue },
+  { prop: 'value', case: 'without a number', value: '' },
 ]
 export const propNameCases: TPropTestCase<IYCorePhoneFieldProps, 'name'>[] = [
-  { prop: 'name', case: 'с текстом', value: text },
-  { prop: 'name', case: 'без текста', value: '' },
+  { prop: 'name', case: 'with text', value: text },
+  { prop: 'name', case: 'without text', value: '' },
 ]
-export const propPlaceholderCases: TPropTestCase<IYCorePhoneFieldProps, 'placeholder'>[] = [{ prop: 'placeholder', case: 'с текстом', value: text }]
+export const propPlaceholderCases: TPropTestCase<IYCorePhoneFieldProps, 'placeholder'>[] = [{ prop: 'placeholder', case: 'with text', value: text }]
 export const propAutofocusCases: TPropTestCase<IYCorePhoneFieldProps, 'autofocus'>[] = [
   { prop: 'autofocus', case: 'true', value: true },
   { prop: 'autofocus', case: 'false', value: false },
@@ -49,9 +49,9 @@ export const propRequiredCases: TPropTestCase<IYCorePhoneFieldProps, 'required'>
   { prop: 'required', case: 'false', value: false },
 ]
 export const propErrorsCases: TPropTestCase<IYCorePhoneFieldProps, 'errors'>[] = [
-  { prop: 'errors', case: 'с ошибками', value: testErrors },
-  { prop: 'errors', case: 'с одной ошибкой', value: [testErrors[0]] },
-  { prop: 'errors', case: 'без ошибок', value: [] },
+  { prop: 'errors', case: 'with errors', value: testErrors },
+  { prop: 'errors', case: 'with one error', value: [testErrors[0]] },
+  { prop: 'errors', case: 'without errors', value: [] },
 ]
 export const propSizeCases: TPropTestCase<IYCorePhoneFieldProps, 'size'>[] = sizes.map((size) => ({
   prop: 'size',
@@ -62,9 +62,9 @@ export const propSizeCases: TPropTestCase<IYCorePhoneFieldProps, 'size'>[] = siz
 type TPropMinSearchlength = TPropTestCase<IYCorePhoneFieldProps, 'minSearchLength'> & { searchPhone: string }
 
 export const propMinSearchLengthCases: TPropMinSearchlength[] = [
-  { prop: 'minSearchLength', case: 'больше длины телефона', value: 3, searchPhone: '99' },
-  { prop: 'minSearchLength', case: 'равно длине телефона', value: 3, searchPhone: '999' },
-  { prop: 'minSearchLength', case: 'меньше длины телефона', value: 3, searchPhone: '9999' },
+  { prop: 'minSearchLength', case: 'is greater than the phone length', value: 3, searchPhone: '99' },
+  { prop: 'minSearchLength', case: 'equals the phone length', value: 3, searchPhone: '999' },
+  { prop: 'minSearchLength', case: 'is less than the phone length', value: 3, searchPhone: '9999' },
 ]
 
 export const propDisabledAutocompleteCases: TPropTestCase<IYCorePhoneFieldProps, 'disabledAutocomplete'>[] = [
@@ -83,22 +83,22 @@ export const propSearchFunctionCases: TPropTestCase<IYCorePhoneFieldProps, 'sear
 ]
 
 export const propDefaultCountryIdCases: TPropTestCase<IYCorePhoneFieldProps, 'defaultCountryId'>[] = [
-  { prop: 'defaultCountryId', case: 'наличии', value: 2 },
-  { prop: 'defaultCountryId', case: 'отстутствие', value: undefined },
+  { prop: 'defaultCountryId', case: 'set', value: 2 },
+  { prop: 'defaultCountryId', case: 'not set', value: undefined },
 ]
 
 type TPropAnnotation<K extends keyof IYCorePhoneFieldProps, T extends keyof IYCoreAnnotationExternalProps> = TPropTestCase<IYCorePhoneFieldProps, K> & { annotationProp: T }
 type TPropLabel<K extends keyof IYCorePhoneFieldProps, T extends keyof IYCoreLabelExternalProps> = TPropTestCase<IYCorePhoneFieldProps, K> & { labelProp: T }
 
 export const propLabelTextCases: TPropLabel<'labelText', 'text'>[] = [
-  { prop: 'labelText', labelProp: 'text', case: 'с текстом', value: text },
-  { prop: 'labelText', labelProp: 'text', case: 'без текста', value: '' },
+  { prop: 'labelText', labelProp: 'text', case: 'with text', value: text },
+  { prop: 'labelText', labelProp: 'text', case: 'without text', value: '' },
 ]
 export const propLabelTooltipTextCases: TPropLabel<'labelTooltipText', 'tooltipText'>[] = [
-  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'с текстом', value: text },
-  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'без текста', value: '' },
+  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'with text', value: text },
+  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'without text', value: '' },
 ]
 export const propAnnotationTextCases: TPropAnnotation<'annotationText', 'text'>[] = [
-  { prop: 'annotationText', annotationProp: 'text', case: 'с текстом', value: text },
-  { prop: 'annotationText', annotationProp: 'text', case: 'без текста', value: '' },
+  { prop: 'annotationText', annotationProp: 'text', case: 'with text', value: text },
+  { prop: 'annotationText', annotationProp: 'text', case: 'without text', value: '' },
 ]

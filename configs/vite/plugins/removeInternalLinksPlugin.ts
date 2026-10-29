@@ -6,7 +6,7 @@ const INTERNAL_DOMAINS = [
 ]
 
 const INTERNAL_TERMS = [ // Entries are regular expressions: escape special characters
-  'Ссылка на \\[Figma\\]'
+  'Link to \\[Figma\\]'
 ]
 
 const internalDomainsPattern = INTERNAL_DOMAINS.join('|').replace(/\./g, '\\.');

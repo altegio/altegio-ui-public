@@ -15,13 +15,13 @@ type TPropAnnotation<K extends keyof IYCoreTextFieldProps, T extends keyof IYCor
 type TPropLabel<K extends keyof IYCoreTextFieldProps, T extends keyof IYCoreLabelExternalProps> = TPropTestCase<IYCoreTextFieldProps, K> & { labelProp: T }
 
 export const propValueCases: TPropTestCase<IYCoreTextFieldProps, 'value'>[] = [
-  { prop: 'value', case: 'с текстом', value: text },
-  { prop: 'value', case: 'без текста', value: '' },
+  { prop: 'value', case: 'with text', value: text },
+  { prop: 'value', case: 'without text', value: '' },
 ]
 
 export const propNameCases: TPropTestCase<IYCoreTextFieldProps, 'name'>[] = [
-  { prop: 'name', case: 'с текстом', value: text },
-  { prop: 'name', case: 'без текста', value: '' },
+  { prop: 'name', case: 'with text', value: text },
+  { prop: 'name', case: 'without text', value: '' },
 ]
 
 export const propTypeTestCases: TPropTestCase<IYCoreTextFieldProps, 'type'>[] = [
@@ -30,8 +30,8 @@ export const propTypeTestCases: TPropTestCase<IYCoreTextFieldProps, 'type'>[] = 
 ]
 
 export const propPlaceholderCases: TPropTestCase<IYCoreTextFieldProps, 'placeholder'>[] = [
-  { prop: 'placeholder', case: 'с текстом', value: text },
-  { prop: 'placeholder', case: 'без текста', value: empty },
+  { prop: 'placeholder', case: 'with text', value: text },
+  { prop: 'placeholder', case: 'without text', value: empty },
 ]
 
 export const propRequiredCases: TPropTestCase<IYCoreTextFieldProps, 'required'>[] = [
@@ -42,7 +42,7 @@ export const propRequiredCases: TPropTestCase<IYCoreTextFieldProps, 'required'>[
 export const propMaxlengthCases: TPropTestCase<IYCoreTextFieldProps, 'maxlength'>[] = [
   { prop: 'maxlength', case: '10', value: 10 },
   { prop: 'maxlength', case: '100', value: 100 },
-  { prop: 'maxlength', case: 'без ограничения', value: undefined },
+  { prop: 'maxlength', case: 'without a limit', value: undefined },
 ]
 
 export const propAutofocusCases: TPropTestCase<IYCoreTextFieldProps, 'autofocus'>[] = [
@@ -66,8 +66,8 @@ export const propSizeCases: TPropTestCase<IYCoreTextFieldProps, 'size'>[] = size
 }))
 
 export const propErrorsCases: TPropTestCase<IYCoreTextFieldProps, 'errors'>[] = [
-  { prop: 'errors', case: 'с ошибками', value: [text], expected: true },
-  { prop: 'errors', case: 'без ошибок', value: [], expected: false },
+  { prop: 'errors', case: 'with errors', value: [text], expected: true },
+  { prop: 'errors', case: 'without errors', value: [], expected: false },
 ]
 
 export const propErrorCases: TPropTestCase<IYCoreTextFieldProps, 'error'>[] = [
@@ -77,19 +77,19 @@ export const propErrorCases: TPropTestCase<IYCoreTextFieldProps, 'error'>[] = [
 
 
 export const propLabelTextCases: TPropLabel<'labelText', 'text'>[] = [
-  { prop: 'labelText', labelProp: 'text', case: 'с текстом', value: text },
-  { prop: 'labelText', labelProp: 'text', case: 'без текста', value: '' },
+  { prop: 'labelText', labelProp: 'text', case: 'with text', value: text },
+  { prop: 'labelText', labelProp: 'text', case: 'without text', value: '' },
 ]
 
 export const propLabelTooltipTextCases: TPropLabel<'labelTooltipText', 'tooltipText'>[] = [
-  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'с текстом', value: text },
-  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'без текста', value: empty },
+  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'with text', value: text },
+  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'without text', value: empty },
 ]
 
 export const propAnnotationTextTestCases: TPropAnnotation<'annotationText', 'text'>[] = [
-  { prop: 'annotationText', annotationProp: 'text', case: 'с текстом', value: text },
-  { prop: 'annotationText', annotationProp: 'text', case: 'с пустым значением', value: empty },
-  { prop: 'annotationText', annotationProp: 'text', case: 'без текста', value: undefined },
+  { prop: 'annotationText', annotationProp: 'text', case: 'with text', value: text },
+  { prop: 'annotationText', annotationProp: 'text', case: 'with an empty value', value: empty },
+  { prop: 'annotationText', annotationProp: 'text', case: 'without text', value: undefined },
 ]
 
 export const propClearableCases: TPropTestCase<IYCoreTextFieldProps, 'clearable'>[] = [

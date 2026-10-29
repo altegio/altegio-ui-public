@@ -25,4 +25,4 @@ export const propVariantCases: TPropTestCase<IYVueCardIconProps, 'variant'>[] = 
   { prop: 'variant', case: 'grey', value: EYCoreColorIconVariant.GREY, expected: EYCoreColorIconVariant.GREY },
   { prop: 'variant', case: 'undefined', value: undefined, expected: defaultVariant },
 ]
-export const propHeaderIconCases: TPropTestCase<IYVueCardIconProps, 'icon'>[] = [{ prop: 'icon', case: 'с иконкой', value: yRocket }]
+export const propHeaderIconCases: TPropTestCase<IYVueCardIconProps, 'icon'>[] = [{ prop: 'icon', case: 'with an icon', value: yRocket }]

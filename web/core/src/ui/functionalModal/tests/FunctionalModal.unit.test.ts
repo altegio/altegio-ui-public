@@ -65,7 +65,7 @@ describe('Core/YCoreFunctionalModal/Unit', () => {
     () => {
       for (const testCase of slotsTestCases) {
         it(
-          `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+          `Slot "${testCase.slot}" should render ${testCase.case}`,
           async() => {
             await updateComponent({ slots: { [testCase.slot]: testCase.content } })
 
@@ -83,14 +83,14 @@ describe('Core/YCoreFunctionalModal/Unit', () => {
       ...propsPreventEscapeTestCases,
     ]) {
       it(
-        `Проп "${testCase.prop}" должен быть "${testCase.case}" и передан в Modal`,
+        `Prop "${testCase.prop}" should be "${testCase.case}" and passed to Modal`,
         async() => {
           await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
           const modalElement = getLocalShadowElement(YCoreModalTagName) as YCoreModal | null
 
           if (!modalElement) {
-            throw new Error('modalElement не найден')
+            throw new Error('modalElement not found')
           }
 
           expect(modalElement[testCase.prop]).toBe(testCase.expected)
@@ -104,7 +104,7 @@ describe('Core/YCoreFunctionalModal/Unit', () => {
       ...propsFullScreenTestCases,
     ]) {
       it(
-        `Проп "${testCase.prop}" должен быть "${testCase.case}" и передан в Modal`,
+        `Prop "${testCase.prop}" should be "${testCase.case}" and passed to Modal`,
         async() => {
           Object.defineProperty(component, 'breakpoints', { value: { smallerOrEqual: () => false } })
 
@@ -113,7 +113,7 @@ describe('Core/YCoreFunctionalModal/Unit', () => {
           const modalElement = getLocalShadowElement(YCoreModalTagName) as YCoreModal | null
 
           if (!modalElement) {
-            throw new Error('modalElement не найден')
+            throw new Error('modalElement not found')
           }
 
           expect(modalElement[testCase.prop]).toBe(testCase.expected)
@@ -123,7 +123,7 @@ describe('Core/YCoreFunctionalModal/Unit', () => {
 
     for (const testCase of propsHeadingTestCases) {
       it(
-        `Проп "${testCase.prop}" должен быть "${testCase.case}" и отображаться в header`,
+        `Prop "${testCase.prop}" should be "${testCase.case}" and shown in the header`,
         async() => {
           await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -139,7 +139,7 @@ describe('Core/YCoreFunctionalModal/Unit', () => {
 
     for (const testCase of propsSubHeadingTestCases) {
       it(
-        `Проп "${testCase.prop}" должен быть "${testCase.case}" и отображаться в header`,
+        `Prop "${testCase.prop}" should be "${testCase.case}" and shown in the header`,
         async() => {
           await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -155,7 +155,7 @@ describe('Core/YCoreFunctionalModal/Unit', () => {
 
     for (const testCase of propsHideFooterTestCases) {
       it(
-        `Проп "${testCase.prop}" должен ${testCase.case} если его значение ${testCase.value} `,
+        `Prop "${testCase.prop}" should ${testCase.case} when its value is ${testCase.value}`,
         async() => {
           await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -183,7 +183,7 @@ describe('Core/YCoreFunctionalModal/Unit', () => {
       ...eventSubmitCases,
     ]) {
       it(
-        `Должен генерировать событие ${testCase.event} ${testCase.case}`,
+        `Should emit ${testCase.event} ${testCase.case}`,
         () => {
           const eventHandler = vi.fn()
           component.addEventListener(

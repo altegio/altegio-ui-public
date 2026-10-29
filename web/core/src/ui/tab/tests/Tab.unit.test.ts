@@ -45,7 +45,7 @@ const getLocalShadowElement = (selector: string) => {
 const baseSlotsCheck = () => {
   for (const testCase of slotDefaultTestCases) {
     it(
-      `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+      `Slot "${testCase.slot}" should render ${testCase.case}`,
       async() => {
         await updateComponent({ slots: { [testCase.slot]: testCase.content } })
 
@@ -71,7 +71,7 @@ const basePropsCheck = () => {
     ...propsLocatorCounterTestCases,
   ]) {
     it(
-      `Prop "${testCase.prop}" должен быть ${testCase.value}`,
+      `Prop "${testCase.prop}" should work ${testCase.value}`,
       async() => {
         await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -110,7 +110,7 @@ describe(
 
         for (const testCase of propsLeftIconTestCases) {
           it(
-            `Prop leftIcon должен быть ${testCase.case}`,
+            `Prop leftIcon should be ${testCase.case}`,
             async() => {
               await updateComponent({ props: { leftIcon: testCase.value } })
 

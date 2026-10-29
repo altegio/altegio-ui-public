@@ -4,18 +4,18 @@ import { EYSizes } from '~shared/types/global'
 import { yMagic } from '~shared/icons'
 
 export const propDisabledCases: TPropTestCase<IYCoreFieldIconProps, 'disabled'>[] = [
-  { prop: 'disabled', case: 'включен', value: true },
-  { prop: 'disabled', case: 'выключен', value: false },
+  { prop: 'disabled', case: 'enabled', value: true },
+  { prop: 'disabled', case: 'disabled', value: false },
 ]
 
 export const propHoverableCases: TPropTestCase<IYCoreFieldIconProps, 'hoverable'>[] = [
-  { prop: 'hoverable', case: 'включен', value: true },
-  { prop: 'hoverable', case: 'выключен', value: false },
+  { prop: 'hoverable', case: 'enabled', value: true },
+  { prop: 'hoverable', case: 'disabled', value: false },
 ]
 
 export const propClickableCases: TPropTestCase<IYCoreFieldIconProps, 'clickable'>[] = [
-  { prop: 'clickable', case: 'включен', value: true },
-  { prop: 'clickable', case: 'выключен', value: false },
+  { prop: 'clickable', case: 'enabled', value: true },
+  { prop: 'clickable', case: 'disabled', value: false },
 ]
 
 export const propSizeCases: TPropTestCase<IYCoreFieldIconProps, 'size'>[] = [
@@ -24,4 +24,4 @@ export const propSizeCases: TPropTestCase<IYCoreFieldIconProps, 'size'>[] = [
   { prop: 'size', case: 'large', value: EYSizes.LARGE },
 ]
 
-export const propIconCases: TPropTestCase<IYCoreFieldIconProps, 'icon'>[] = [{ prop: 'icon', case: 'с иконкой', value: yMagic }]
+export const propIconCases: TPropTestCase<IYCoreFieldIconProps, 'icon'>[] = [{ prop: 'icon', case: 'with an icon', value: yMagic }]

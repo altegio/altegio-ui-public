@@ -35,25 +35,25 @@ const propDisabledTestCases: TPropTestCase<IYVueCheckboxProps, 'disabled'>[] = [
 ]
 
 const propLabelTextTestCases: TPropTestCase<IYVueCheckboxProps, 'labelText'>[] = [
-  { prop: 'labelText', case: 'текст', value: text, expected: text },
-  { prop: 'labelText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'labelText', case: 'text', value: text, expected: text },
+  { prop: 'labelText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: empty },
 ]
 
 const propLabelTooltipTextTestCases: TPropTestCase<IYVueCheckboxProps, 'labelTooltipText'>[] = [
-  { prop: 'labelTooltipText', case: 'текст', value: text, expected: text },
-  { prop: 'labelTooltipText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'labelTooltipText', case: 'text', value: text, expected: text },
+  { prop: 'labelTooltipText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: empty },
 ]
 
 const propAnnotationTextTestCases: TPropTestCase<IYVueCheckboxProps, 'annotationText'>[] = [
-  { prop: 'annotationText', case: 'текст', value: text, expected: text },
-  { prop: 'annotationText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'annotationText', case: 'text', value: text, expected: text },
+  { prop: 'annotationText', case: 'empty string', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: empty },
 ]
 
 const propLabelOverflowDebounceTestCases: TPropTestCase<IYVueCheckboxProps, 'labelOverflowDebounce'>[] = [
-  { prop: 'labelOverflowDebounce', case: 'текст', value: Number(number), expected: number },
+  { prop: 'labelOverflowDebounce', case: 'text', value: Number(number), expected: number },
   { prop: 'labelOverflowDebounce', case: 'undefined', value: undefined, expected: 300 },
 ]
 
@@ -64,19 +64,19 @@ const propAlignmentTestCases: TPropTestCase<IYVueCheckboxProps, 'alignment'>[] =
 ]
 
 const propErrorsTestCases: TPropTestCase<IYVueCheckboxProps, 'errors'>[] = [
-  { prop: 'errors', case: 'массив с ошибками', value: ['error'], expected: ['error'] },
-  { prop: 'errors', case: 'пустой массив', value: [], expected: [] },
+  { prop: 'errors', case: 'array with errors', value: ['error'], expected: ['error'] },
+  { prop: 'errors', case: 'empty array', value: [], expected: [] },
   { prop: 'errors', case: 'undefined', value: undefined, expected: undefined },
 ]
 
 const slotLabelTestCases: TSlotTestCase[] = [
-  { slot: 'label', case: 'с контентом', content: text },
-  { slot: 'label', case: 'без контента', content: empty },
+  { slot: 'label', case: 'with content', content: text },
+  { slot: 'label', case: 'without content', content: empty },
 ]
 
 const slotAnnotationTestCases: TSlotTestCase[] = [
-  { slot: 'annotation', case: 'с контентом', content: text },
-  { slot: 'annotation', case: 'без контента', content: empty },
+  { slot: 'annotation', case: 'with content', content: text },
+  { slot: 'annotation', case: 'without content', content: empty },
 ]
 
 describe(
@@ -107,7 +107,7 @@ describe(
           ...propErrorsTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const checked = ref(false)
               const wrapper = mount(
@@ -141,7 +141,7 @@ describe(
           ...slotAnnotationTestCases,
         ]) {
           it(
-            `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
                 YCheckbox,
@@ -161,7 +161,7 @@ describe(
       'Events',
       () => {
         it.skip(
-          'Должен вызывать событие "update:modelValue" при изменении состояния чекбокса',
+          'Should emit "update:modelValue" when the checkbox state changes',
           async() => {
             const wrapper = mount(
               YCheckbox,

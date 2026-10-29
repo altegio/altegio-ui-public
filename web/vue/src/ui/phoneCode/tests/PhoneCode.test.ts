@@ -38,7 +38,7 @@ describe('Vue/YPhoneCode', () => {
         ...propReadonlyTestCases,
         ...propSizeTestCases,
       ]) {
-        it(`Prop "${testCase.prop}" ${testCase.case} должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`, () => {
+        it(`Prop "${testCase.prop}" ${testCase.case} should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`, () => {
           const wrapper = createComponent({ props: { [testCase.prop]: testCase.value } })
 
           const coreElement = wrapper.find(tagName)

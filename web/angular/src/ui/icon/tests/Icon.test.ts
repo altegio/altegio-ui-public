@@ -40,20 +40,20 @@ const tagName = YCoreIconTagName
 const propIconTestCases: TPropTestCase<IYNgIconProps, 'icon'>[] = [
   {
     prop: 'icon',
-    case: 'со значением',
+    case: 'with a value',
     value: yRocket,
   },
 ]
 const propSizeTestCases: TPropTestCase<IYNgIconProps, 'size'>[] = [
   {
     prop: 'size',
-    case: 'со значением',
+    case: 'with a value',
     value: '100px',
     expected: '100px',
   },
   {
     prop: 'size',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultSize,
   },
@@ -67,7 +67,7 @@ describe(
       () => {
         for (const testCase of propIconTestCases) {
           it(
-            `Prop: ${testCase.prop} должен быть ${testCase.case} для core компонента`,
+            `Prop: ${testCase.prop} should work ${testCase.case} for the core component`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)
@@ -83,7 +83,7 @@ describe(
 
         for (const testCase of propSizeTestCases) {
           it(
-            `Prop: ${testCase.prop} должен быть ${testCase.case} для core компонента`,
+            `Prop: ${testCase.prop} should work ${testCase.case} for the core component`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value, icon: yRocket } })
               const fixture = TestBed.createComponent(component)

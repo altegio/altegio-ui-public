@@ -39,19 +39,19 @@ export const propSizeTestCases: TPropTestCase<IYNgFieldInputProps, 'size'>[] = [
 
 export const propValueTestCases: TPropTestCase<IYNgFieldInputProps, 'value'>[] = [
   { prop: 'value', case: text, value: text, expected: text },
-  { prop: 'value', case: 'не определено', value: empty, expected: value },
+  { prop: 'value', case: 'not set', value: empty, expected: value },
 ]
 
 export const propNameTestCases: TPropTestCase<IYNgFieldInputProps, 'name'>[] = [
-  { prop: 'name', case: 'с текстом', value: text, expected: text },
-  { prop: 'name', case: 'с пустой строкой', value: empty, expected: empty },
-  { prop: 'name', case: 'без текста', value: undefined, expected: name },
+  { prop: 'name', case: 'with text', value: text, expected: text },
+  { prop: 'name', case: 'with an empty string', value: empty, expected: empty },
+  { prop: 'name', case: 'without text', value: undefined, expected: name },
 ]
 
 export const propPlaceholderTestCases: TPropTestCase<IYNgFieldInputProps, 'placeholder'>[] = [
-  { prop: 'placeholder', case: 'с текстом', value: text, expected: text },
-  { prop: 'placeholder', case: 'с пустым значением', value: empty, expected: empty },
-  { prop: 'placeholder', case: 'без выбранного значения', value: undefined, expected: placeholder },
+  { prop: 'placeholder', case: 'with text', value: text, expected: text },
+  { prop: 'placeholder', case: 'with an empty value', value: empty, expected: empty },
+  { prop: 'placeholder', case: 'without a selected value', value: undefined, expected: placeholder },
 ]
 
 export const propAutofocusTestCases: TPropTestCase<IYNgFieldInputProps, 'autofocus'>[] = [
@@ -72,7 +72,7 @@ export const propTypeTestCases: TPropTestCase<IYNgFieldInputProps, 'type'>[] = [
 ]
 
 export const propMaxlengthTestCases: TPropTestCase<IYNgFieldInputProps, 'maxlength'>[] = [
-  { prop: 'maxlength', case: 'определено', value: number, expected: number },
+  { prop: 'maxlength', case: 'set', value: number, expected: number },
   { prop: 'maxlength', case: 'undefined', value: undefined, expected: maxlength },
 ]
 

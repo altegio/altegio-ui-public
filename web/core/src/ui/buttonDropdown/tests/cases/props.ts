@@ -20,13 +20,13 @@ interface IYCoreQuakButtonDropdownPropTestCase extends TPropTestCase<IYCoreButto
 export const propIconTestCases: IYCoreQuakButtonDropdownPropTestCase[] = [
   {
     prop: 'iconType',
-    case: 'иконка слева',
+    case: 'left icon',
     value: EYCoreButtonDropdownIconTypes.LEFT,
     additionalProps: { validIcons: [yPlus] },
   },
   {
     prop: 'iconType',
-    case: 'иконка справа',
+    case: 'right icon',
     value: EYCoreButtonDropdownIconTypes.RIGHT,
     additionalProps: { validIcons: [yChevronUp, yChevronDown] },
   },
@@ -34,7 +34,7 @@ export const propIconTestCases: IYCoreQuakButtonDropdownPropTestCase[] = [
 
 export const propItemsTestCases: TPropTestCase<IYCoreButtonDropdownProps, 'items'>[] = [
   ...corePropItemsTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
-  { prop: 'items', case: 'без элементов', value: undefined, expected: [] },
+  { prop: 'items', case: 'without items', value: undefined, expected: [] },
 ]
 
 export const propVariantTestCases: TPropTestCase<IYCoreButtonDropdownProps, 'variant'>[] = [

@@ -61,19 +61,19 @@ const tagName = YCoreSimpleButtonTagName
 
 // Unit test cases:
 const slotDefaultTestCases: TSlotTestCase[] = [
-  { slot: 'default', case: 'с контентом', content: text },
-  { slot: 'default', case: 'без контента', content: empty },
+  { slot: 'default', case: 'with content', content: text },
+  { slot: 'default', case: 'without content', content: empty },
 ]
 const propSizeTestCases: TPropTestCase<IYNgSimpleButtonProps, 'size'>[] = [
   {
     prop: 'size',
-    case: 'со значением',
+    case: 'with a value',
     value: EYSizes.MEDIUM,
     expected: EYSizes.MEDIUM,
   },
   {
     prop: 'size',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultSize,
   },
@@ -81,13 +81,13 @@ const propSizeTestCases: TPropTestCase<IYNgSimpleButtonProps, 'size'>[] = [
 const propVariantTestCases: TPropTestCase<IYNgSimpleButtonProps, 'variant'>[] = [
   {
     prop: 'variant',
-    case: 'со значением',
+    case: 'with a value',
     value: EYCoreSimpleButtonVariant.OUTLINE,
     expected: EYCoreSimpleButtonVariant.OUTLINE,
   },
   {
     prop: 'variant',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultVariant,
   },
@@ -95,13 +95,13 @@ const propVariantTestCases: TPropTestCase<IYNgSimpleButtonProps, 'variant'>[] = 
 const propDisabledTestCases: TPropTestCase<IYNgSimpleButtonProps, 'disabled'>[] = [
   {
     prop: 'disabled',
-    case: 'со значением',
+    case: 'with a value',
     value: true,
     expected: true,
   },
   {
     prop: 'disabled',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultDisabled,
   },
@@ -109,13 +109,13 @@ const propDisabledTestCases: TPropTestCase<IYNgSimpleButtonProps, 'disabled'>[] 
 const propLoadingTestCases: TPropTestCase<IYNgSimpleButtonProps, 'loading'>[] = [
   {
     prop: 'loading',
-    case: 'со значением',
+    case: 'with a value',
     value: true,
     expected: true,
   },
   {
     prop: 'loading',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultLoading,
   },
@@ -123,13 +123,13 @@ const propLoadingTestCases: TPropTestCase<IYNgSimpleButtonProps, 'loading'>[] = 
 const propHrefTestCases: TPropTestCase<IYNgSimpleButtonProps, 'href'>[] = [
   {
     prop: 'href',
-    case: 'со значением',
+    case: 'with a value',
     value: href,
     expected: href,
   },
   {
     prop: 'href',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultHref,
   },
@@ -137,13 +137,13 @@ const propHrefTestCases: TPropTestCase<IYNgSimpleButtonProps, 'href'>[] = [
 const propTargetTestCases: TPropTestCase<IYNgSimpleButtonProps, 'target'>[] = [
   {
     prop: 'target',
-    case: 'со значением',
+    case: 'with a value',
     value: EAnchorTarget.BLANK,
     expected: EAnchorTarget.BLANK,
   },
   {
     prop: 'target',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultTarget,
   },
@@ -164,7 +164,7 @@ describe(
           ...propTargetTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента на "${testCase.case}"`,
+            `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)
@@ -185,7 +185,7 @@ describe(
       () => {
         for (const testCase of slotDefaultTestCases) {
           it(
-            `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
             async() => {
               const component = await createComponent({
                 slots: { [testCase.slot]: testCase.content },
@@ -207,7 +207,7 @@ describe(
       'Events',
       () => {
         it(
-          'Должен эмитить click при нажатии на кнопку',
+          'Should emit click when the button is pressed',
           async() => {
             const handleClick = vi.fn()
 
@@ -231,7 +231,7 @@ describe(
         )
 
         it(
-          'Не должен эмитить click, если кнопка отключена',
+          'Should not emit click when the button is disabled',
           async() => {
             const handleClick = vi.fn()
 

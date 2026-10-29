@@ -8,8 +8,8 @@ type TVueEventTestCase = {
 }
 
 export const vueInputEvents: TVueEventTestCase[] = [
-  { eventName: 'change', payload: { value: text }, emitEventName: 'change', case: 'при вводе номера' },
-  { eventName: 'focus', emitEventName: 'focus', case: 'при фокусе' },
-  { eventName: 'blur', emitEventName: 'blur', case: 'при потере фокуса' },
-  { eventName: 'select-option', emitEventName: 'selectOption', case: 'при выборе из опций автокомплита' },
+  { eventName: 'change', payload: { value: text }, emitEventName: 'change', case: 'on phone number input' },
+  { eventName: 'focus', emitEventName: 'focus', case: 'on focus' },
+  { eventName: 'blur', emitEventName: 'blur', case: 'on blur' },
+  { eventName: 'select-option', emitEventName: 'selectOption', case: 'on autocomplete option select' },
 ]

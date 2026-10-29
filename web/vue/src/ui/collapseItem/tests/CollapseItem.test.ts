@@ -58,7 +58,7 @@ describe(
               ...slotContentTestCases,
             ]) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 () => {
                   const wrapper = mount(
                     YCollapseItem,
@@ -83,7 +83,7 @@ describe(
               ...propVariantCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 () => {
                   const wrapper = mount(
                     YCollapseItem,

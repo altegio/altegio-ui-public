@@ -21,7 +21,7 @@ export type TYSortExpected = {
 export const eventSortTestCases: TEventTestCase<TYSortPayload, TYSortExpected>[] = [
   {
     event: 'sort',
-    case: 'сортировка по возрастанию',
+    case: 'ascending sort',
     nodeEventName: 'sort',
     payload: {
       headId: testHeaders.id.id,
@@ -34,7 +34,7 @@ export const eventSortTestCases: TEventTestCase<TYSortPayload, TYSortExpected>[]
   },
   {
     event: 'sort',
-    case: 'сортировка по убыванию',
+    case: 'descending sort',
     nodeEventName: 'sort',
     payload: {
       headId: testHeaders.id.id,
@@ -52,14 +52,14 @@ export type TYUpdateSelectedExpected = IYVueTableItem['id'][]
 export const eventUpdateSelectedTestCases: TEventTestCase<TYUpdateSelectedPayload, TYUpdateSelectedExpected>[] = [
   {
     event: 'update:selected',
-    case: 'выбор строки',
+    case: 'row selection',
     nodeEventName: 'checked',
     payload: [testItems[0].rowId],
     expected: [testItems[0].rowId],
   },
   {
     event: 'update:selected',
-    case: 'отмена выбора строки',
+    case: 'row deselection',
     nodeEventName: 'checked',
     payload: [],
     expected: [],
@@ -70,7 +70,7 @@ export type TYUpdatePagePayload = IYCoreTablePaginationProps['page']
 export const eventUpdatePageTestCases: TEventTestCase<TYUpdatePagePayload, number>[] = [
   {
     event: 'update:page',
-    case: 'изменение страницы',
+    case: 'page change',
     nodeEventName: 'change-page',
     payload: 2,
     expected: 2,
@@ -81,7 +81,7 @@ export type TYUpdateItemsPerPagePayload = IYCoreTablePaginationProps['itemsPerPa
 export const eventUpdateItemsPerPageTestCases: TEventTestCase<TYUpdateItemsPerPagePayload, number>[] = [
   {
     event: 'update:itemsPerPage',
-    case: 'изменение количества элементов на странице',
+    case: 'items-per-page change',
     nodeEventName: 'change-items-per-page',
     payload: 50,
     expected: 50,

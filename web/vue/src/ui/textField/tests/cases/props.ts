@@ -6,33 +6,33 @@ import { createVueTextFieldProps, type IYVueTextFieldProps } from '~vue/ui/textF
 const { labelDebounce } = createVueTextFieldProps()
 
 export const propValueTestCases: TPropTestCase<IYVueTextFieldProps, 'modelValue'>[] = [
-  { prop: 'modelValue', case: 'с текстом', value: text, expected: text },
-  { prop: 'modelValue', case: 'без текста', value: empty, expected: empty },
+  { prop: 'modelValue', case: 'with text', value: text, expected: text },
+  { prop: 'modelValue', case: 'without text', value: empty, expected: empty },
 ]
 
 export const propNameTestCases: TPropTestCase<IYVueTextFieldProps, 'name'>[] = [
-  { prop: 'name', case: 'с текстом', value: text, expected: text },
-  { prop: 'name', case: 'без текста', value: empty, expected: empty },
+  { prop: 'name', case: 'with text', value: text, expected: text },
+  { prop: 'name', case: 'without text', value: empty, expected: empty },
 ]
 
 export const propPlaceholderTestCases: TPropTestCase<IYVueTextFieldProps, 'placeholder'>[] = [
-  { prop: 'placeholder', case: 'с текстом', value: text, expected: text },
-  { prop: 'placeholder', case: 'без текста', value: empty, expected: empty },
+  { prop: 'placeholder', case: 'with text', value: text, expected: text },
+  { prop: 'placeholder', case: 'without text', value: empty, expected: empty },
 ]
 
 export const propAnnotationTextTestCases: TPropTestCase<IYVueTextFieldProps, 'annotationText'>[] = [
-  { prop: 'annotationText', case: 'с текстом', value: text, expected: text },
-  { prop: 'annotationText', case: 'без текста', value: empty, expected: empty },
+  { prop: 'annotationText', case: 'with text', value: text, expected: text },
+  { prop: 'annotationText', case: 'without text', value: empty, expected: empty },
 ]
 
 export const propLabelTooltipTextTestCases: TPropTestCase<IYVueTextFieldProps, 'labelTooltipText'>[] = [
-  { prop: 'labelTooltipText', case: 'с текстом', value: text, expected: text },
-  { prop: 'labelTooltipText', case: 'без текста', value: empty, expected: empty },
+  { prop: 'labelTooltipText', case: 'with text', value: text, expected: text },
+  { prop: 'labelTooltipText', case: 'without text', value: empty, expected: empty },
 ]
 
 export const propLabelTextTestCases: TPropTestCase<IYVueTextFieldProps, 'labelText'>[] = [
-  { prop: 'labelText', case: 'с текстом', value: text, expected: text },
-  { prop: 'labelText', case: 'без текста', value: empty, expected: empty },
+  { prop: 'labelText', case: 'with text', value: text, expected: text },
+  { prop: 'labelText', case: 'without text', value: empty, expected: empty },
 ]
 
 export const propsDisabledTestCases: TPropTestCase<IYVueTextFieldProps, 'disabled'>[] = [
@@ -51,13 +51,13 @@ export const propsReadonlyTestCases: TPropTestCase<IYVueTextFieldProps, 'readonl
 ]
 
 export const propsMaxlengthTestCases: TPropTestCase<IYVueTextFieldProps, 'maxlength'>[] = [
-  { prop: 'maxlength', case: 'со значением', value: 10, expected: 10 },
-  { prop: 'maxlength', case: 'без значения', value: undefined, expected: undefined },
+  { prop: 'maxlength', case: 'with a value', value: 10, expected: 10 },
+  { prop: 'maxlength', case: 'without a value', value: undefined, expected: undefined },
 ]
 
 export const propsLabelDebounceTestCases: TPropTestCase<IYVueTextFieldProps, 'labelDebounce'>[] = [
-  { prop: 'labelDebounce', case: 'со значением', value: 10, expected: 10 },
-  { prop: 'labelDebounce', case: 'без значения', value: undefined, expected: labelDebounce },
+  { prop: 'labelDebounce', case: 'with a value', value: 10, expected: 10 },
+  { prop: 'labelDebounce', case: 'without a value', value: undefined, expected: labelDebounce },
 ]
 
 export const propsAutofocusTestCases: TPropTestCase<IYVueTextFieldProps, 'autofocus'>[] = [

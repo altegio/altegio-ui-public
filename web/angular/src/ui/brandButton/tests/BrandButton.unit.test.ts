@@ -60,7 +60,7 @@ describe('Angular/YBrandButton', () => {
         ...propTextTestCases,
       ]) {
         it(
-          `Prop "${testCase.prop}" должен быть "${testCase.case}"`,
+          `Prop "${testCase.prop}" should be "${testCase.case}"`,
           async() => {
             const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
             const fixture = TestBed.createComponent(component)
@@ -77,7 +77,7 @@ describe('Angular/YBrandButton', () => {
     })
 
     describe('Events', () => {
-      it('Должен эмитить событие click', async() => {
+      it('Should emit click', async() => {
         const onClickSpy = vi.fn()
         const component = await createComponent({ props: { text: 'DEFAULT' } })
         const fixture = TestBed.createComponent(component)

@@ -14,8 +14,8 @@ import '~core/ui/text'
 
 // Unit test cases:
 const slotDefaultTestCases: TSlotTestCase[] = [
-  { slot: 'default', case: 'с контентом', content: text },
-  { slot: 'default', case: 'без контента', content: empty },
+  { slot: 'default', case: 'with content', content: text },
+  { slot: 'default', case: 'without content', content: empty },
 ]
 const propSizeTestCases: TPropTestCase<IYCoreTextExternalProps, 'size'>[] = Object.values(EYCoreTextSize).map((size) => ({
   prop: 'size',
@@ -61,7 +61,7 @@ describe(
       () => {
         for (const testCase of slotDefaultTestCases) {
           it(
-            `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
             async() => {
               await updateComponent({ slots: { [testCase.slot]: testCase.content } })
 
@@ -77,7 +77,7 @@ describe(
         for (const testCase of propSizeTestCases) {
           const expectedCssClass = `${tagName}_size_${testCase.case}`
           it(
-            `Prop "${testCase.prop}" должен изменить класс у rootElement на "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" should change the rootElement class to "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -93,7 +93,7 @@ describe(
           const expectedCssClass = `${tagName}_variant_${testCase.case}`
 
           it(
-            `Prop "${testCase.prop}" должен изменить класс у rootElement на "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" should change the rootElement class to "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 

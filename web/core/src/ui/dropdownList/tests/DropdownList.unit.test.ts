@@ -54,7 +54,7 @@ describe(
           ...slotBottomTestCases,
         ]) {
           it(
-            `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
             async() => {
               await updateComponent({ slots: { [testCase.slot]: testCase.content } })
 
@@ -70,7 +70,7 @@ describe(
       () => {
         for (const testCase of propItemsTestCases) {
           it(
-            `Prop "items" должен корректно отображать список ${testCase.case}`,
+            `Prop "items" should render the list ${testCase.case}`,
             async() => {
               await updateComponent({ props: { items: testCase.value } })
 
@@ -89,7 +89,7 @@ describe(
 
         for (const testCase of propItemLabelTestCases) {
           it(
-            `Prop "itemLabel" должен корректно отображать метку ${testCase.case}`,
+            `Prop "itemLabel" should render the label ${testCase.case}`,
             async() => {
               await updateComponent({
                 props: {
@@ -108,7 +108,7 @@ describe(
 
         for (const testCase of propMinWidthTestCases) {
           it(
-            `Prop "minWidth" должен корректно отображать минимальную ширину ${testCase.case}`,
+            `Prop "minWidth" should apply the minimum width ${testCase.case}`,
             async() => {
               await updateComponent({
                 props: {
@@ -120,7 +120,7 @@ describe(
               const dropdownList = getWCShadowRoot(component).querySelector(`.${tagName}`)
 
               if (!dropdownList) {
-                throw new Error('DropdownList не найден')
+                throw new Error('DropdownList not found')
               }
 
               const minWidth = getComputedStyle(dropdownList).minWidth

@@ -29,7 +29,7 @@ describe(
       () => {
         for (const testCase of propLocatorTestCases) {
           it(
-            `Prop: "${testCase.prop}" ${typeof testCase.value === 'object' ? JSON.stringify(testCase.value) : testCase.value} ${testCase.value === undefined ? 'не' : ''} должен изменить свойство ${testCase.prop} у core компонента`,
+            `Prop: "${testCase.prop}" ${typeof testCase.value === 'object' ? JSON.stringify(testCase.value) : testCase.value} should ${testCase.value === undefined ? 'not' : ''} set ${testCase.prop} on the core component`,
             () => {
               const wrapper = mount(
                 YTag,
@@ -43,7 +43,7 @@ describe(
           )
         }
         it(
-          'Должен корректно передать size в Web Component',
+          'Should pass size to the web component',
           () => {
             const size = EYSizes.SMALL
             const wrapper = mount(
@@ -57,7 +57,7 @@ describe(
         )
 
         it(
-          'Должен корректно обработать undefined size в Web Component',
+          'Should handle undefined size in the web component',
           () => {
             const wrapper = mount(
               YTag,
@@ -71,7 +71,7 @@ describe(
         )
 
         it(
-          'Должен корректно передать variant в Web Component',
+          'Should pass variant to the web component',
           () => {
             const variant = EYCoreTagVariant.DANGER
             const wrapper = mount(
@@ -85,7 +85,7 @@ describe(
         )
 
         it(
-          'Должен корректно обработать undefined variant в Web Component',
+          'Should handle undefined variant in the web component',
           () => {
             const wrapper = mount(
               YTag,
@@ -99,7 +99,7 @@ describe(
         )
 
         it(
-          'Должен корректно передать disabled в Web Component',
+          'Should pass disabled to the web component',
           () => {
             const disabled = true
             const wrapper = mount(
@@ -113,7 +113,7 @@ describe(
         )
 
         it(
-          'Должен корректно обработать undefined disabled в Web Component',
+          'Should handle undefined disabled in the web component',
           () => {
             const wrapper = mount(
               YTag,
@@ -127,7 +127,7 @@ describe(
         )
 
         it(
-          'Должен корректно передать iconLeft в Web Component',
+          'Should pass iconLeft to the web component',
           () => {
             const iconLeft: IYIcon = { name: 'check', data: '' }
             const wrapper = mount(
@@ -141,7 +141,7 @@ describe(
         )
 
         it(
-          'Должен корректно обработать undefined iconLeft в Web Component',
+          'Should handle undefined iconLeft in the web component',
           () => {
             const wrapper = mount(
               YTag,
@@ -156,12 +156,12 @@ describe(
     )
 
     describe(
-      'Слоты',
+      'Slots',
       () => {
         it(
-          'Должен корректно передать содержимое слота по умолчанию',
+          'Should pass the default slot content',
           () => {
-            const slotContent = 'Тестовый тег'
+            const slotContent = 'Test tag'
             const wrapper = mount(
               YTag,
               { slots: { default: slotContent } },

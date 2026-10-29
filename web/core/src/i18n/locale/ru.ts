@@ -8,6 +8,7 @@ export const ru: ILocale = {
   messages: {
     cancel: 'Отменить',
     good: 'Хорошо',
+    of: 'из',
   },
   formatters: {
     date: {

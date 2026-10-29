@@ -104,7 +104,7 @@ describe(
               ...propErrorsCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 async() => {
                   const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
                   const fixture = TestBed.createComponent(component)
@@ -129,7 +129,7 @@ describe(
           'Events',
           () => {
             it(
-              'Должен вызывать событие pickEvent" при выборе даты',
+              'Should emit pickEvent on date pick',
               async() => {
                 const handleAction = vi.fn()
                 const component = await createComponent({ props: {} })

@@ -33,8 +33,8 @@ const getLocalRootElement = () => {
 }
 
 const slotDefaultTestCases: TSlotTestCase[] = [
-  { slot: 'default', case: 'с контентом', content: text },
-  { slot: 'default', case: 'без контента', content: empty },
+  { slot: 'default', case: 'with content', content: text },
+  { slot: 'default', case: 'without content', content: empty },
 ]
 
 describe(
@@ -57,7 +57,7 @@ describe(
       () => {
         for (const testCase of slotDefaultTestCases) {
           it(
-            `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
             async() => {
               await updateComponent({ slots: { [testCase.slot]: testCase.content } })
 
@@ -78,7 +78,7 @@ describe(
           ...propHideSpaceRightCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" должен быть ${testCase.case}`,
+            `Prop "${testCase.prop}" should work ${testCase.case}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -92,7 +92,7 @@ describe(
           ...propHideSpaceRightCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен корректно применять CSS класс "${testCase.expectedCssClass}"`,
+            `Prop "${testCase.prop}" ${testCase.case} should apply the CSS class "${testCase.expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 

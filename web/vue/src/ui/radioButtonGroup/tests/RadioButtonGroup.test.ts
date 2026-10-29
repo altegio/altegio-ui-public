@@ -33,7 +33,7 @@ describe(
           ...propDirectionTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const checked = ref(false)
               const wrapper = mount(
@@ -59,7 +59,7 @@ describe(
       'Events',
       () => {
         it(
-          'Должен вызывать событие "update:modelValue" при событии change core компонента',
+          'Should emit "update:modelValue" on the core component change event',
           async() => {
             const wrapper = mount(
               YRadioButtonGroup,

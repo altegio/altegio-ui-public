@@ -95,7 +95,7 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
 const baseSlotsCheck = () => {
   for (const testCase of slotDefaultTestCases) {
     it(
-      `Slot: "${testCase.slot}" должен быть ${testCase.case}`,
+      `Slot: "${testCase.slot}" should render ${testCase.case}`,
       async() => {
         const component = await createComponent({
           slots: { [testCase.slot]: testCase.content },
@@ -129,7 +129,7 @@ const basePropsCheck = () => {
     ...propsLocatorCounterTestCases,
   ]) {
     it(
-      `Prop: "${testCase.prop}" ${typeof testCase.value === 'object' ? JSON.stringify(testCase.value) : testCase.value} ${testCase.value === undefined ? 'не' : ''} должен изменить свойство ${testCase.prop} у core компонента`,
+      `Prop: "${testCase.prop}" ${typeof testCase.value === 'object' ? JSON.stringify(testCase.value) : testCase.value} should ${testCase.value === undefined ? 'not' : ''} set ${testCase.prop} on the core component`,
       async() => {
         const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
         const fixture = TestBed.createComponent(component)

@@ -14,8 +14,8 @@ import { YCoreFieldWrapper } from '~core/ui/fieldWrapper'
 const tagName = YCoreFieldWrapperTagName
 
 const slotDefaultTestCases = [
-  { case: 'с контентом', content: text },
-  { case: 'без контента', content: empty },
+  { case: 'with content', content: text },
+  { case: 'without content', content: empty },
 ]
 
 
@@ -53,7 +53,7 @@ describe(
           () => {
             for (const testCase of slotDefaultTestCases) {
               it(
-                `Slot должен быть ${testCase.case}`,
+                `Slot should render ${testCase.case}`,
                 () => {
                   const wrapper = mount(
                     YFieldWrapper,
@@ -73,7 +73,7 @@ describe(
           () => {
             for (const testCase of propTestCases) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 () => {
                   const wrapper = mount(
                     YFieldWrapper,

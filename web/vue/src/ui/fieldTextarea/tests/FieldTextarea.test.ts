@@ -45,7 +45,7 @@ describe(
           () => {
             for (const testCase of [...propModelValueCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 () => {
                   const wrapper = mount(
                     YFieldTextarea,
@@ -74,7 +74,7 @@ describe(
               ...propAutocompleteCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 () => {
                   const wrapper = mount(
                     YFieldTextarea,

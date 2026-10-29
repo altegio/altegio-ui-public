@@ -12,8 +12,8 @@ import '../IconButton.core'
 
 // Unit test cases:
 const propIconTestCases: TPropTestCase<IYCoreIconButtonExternalProps, 'icon'>[] = [
-  { prop: 'icon', case: 'с иконкой', value: yRocket },
-  { prop: 'icon', case: 'без иконки', value: undefined },
+  { prop: 'icon', case: 'with an icon', value: yRocket },
+  { prop: 'icon', case: 'without an icon', value: undefined },
 ]
 const propSizeTestCases: TPropTestCase<IYCoreIconButtonExternalProps, 'size'>[] = [
   { prop: 'size', case: 'small', value: EYSizes.SMALL, expected: '16px' },
@@ -61,7 +61,7 @@ describe(
       () => {
         for (const testCase of propIconTestCases) {
           it(
-            `Prop icon должен быть ${testCase.case}`,
+            `Prop icon should be ${testCase.case}`,
             async() => {
               await updateComponent({ props: { icon: testCase.value } })
 
@@ -78,7 +78,7 @@ describe(
 
         for (const testCase of propSizeTestCases) {
           it(
-            `Prop size должен корректно выставить размер иконки при выставление prop size значение ${testCase.case}`,
+            `Prop size should set the icon size when prop size is ${testCase.case}`,
             async() => {
               await updateComponent({ props: { icon: yRocket, size: testCase.value } })
 

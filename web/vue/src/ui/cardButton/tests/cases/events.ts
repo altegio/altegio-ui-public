@@ -5,7 +5,7 @@ type TVueEventTestCase = {
 }
 
 export const eventsTestCases: TVueEventTestCase[] = [
-  { eventName: 'click', emitEventName: 'click', case: 'при клике' },
-  { eventName: 'focus', emitEventName: 'focus', case: 'при фокусе' },
-  { eventName: 'blur', emitEventName: 'blur', case: 'при потере фокуса' },
+  { eventName: 'click', emitEventName: 'click', case: 'on click' },
+  { eventName: 'focus', emitEventName: 'focus', case: 'on focus' },
+  { eventName: 'blur', emitEventName: 'blur', case: 'on blur' },
 ]

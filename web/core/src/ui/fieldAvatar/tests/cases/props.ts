@@ -30,16 +30,16 @@ export const propSizeTestCases: TPropTestCase<IYCoreFieldAvatarExternalProps, 's
 }))
 
 export const propIconTestCases: TPropTestCase<IYCoreFieldAvatarExternalProps, 'icon'>[] = [
-  { prop: 'icon', case: 'со значением', value: ySearch, expected: ySearch },
-  { prop: 'icon', case: 'без значения', value: undefined, expected: undefined },
+  { prop: 'icon', case: 'with a value', value: ySearch, expected: ySearch },
+  { prop: 'icon', case: 'without a value', value: undefined, expected: undefined },
 ]
 
 export const propInitialsTestCases: TPropTestCase<IYCoreFieldAvatarExternalProps, 'initials'>[] = [
-  { prop: 'initials', case: 'со значением', value: text, expected: text },
-  { prop: 'initials', case: 'без значения', value: undefined, expected: undefined },
+  { prop: 'initials', case: 'with a value', value: text, expected: text },
+  { prop: 'initials', case: 'without a value', value: undefined, expected: undefined },
 ]
 
 export const propPhotoTestCases: TPropTestCase<IYCoreFieldAvatarExternalProps, 'photo'>[] = [
-  { prop: 'photo', case: 'со значением', value: 'https://', expected: 'https://' },
-  { prop: 'photo', case: 'без значения', value: undefined, expected: undefined },
+  { prop: 'photo', case: 'with a value', value: 'https://', expected: 'https://' },
+  { prop: 'photo', case: 'without a value', value: undefined, expected: undefined },
 ]

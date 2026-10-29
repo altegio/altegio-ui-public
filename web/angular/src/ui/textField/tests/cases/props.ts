@@ -6,28 +6,28 @@ import { createNgTextFieldProps, type IYNgTextFieldProps } from '~ng/ui/textFiel
 const { labelDebounce } = createNgTextFieldProps()
 
 export const propNameTestCases: TPropTestCase<IYNgTextFieldProps, 'name'>[] = [
-  { prop: 'name', case: 'с текстом', value: text, expected: text },
-  { prop: 'name', case: 'без текста', value: empty, expected: empty },
+  { prop: 'name', case: 'with text', value: text, expected: text },
+  { prop: 'name', case: 'without text', value: empty, expected: empty },
 ]
 
 export const propPlaceholderTestCases: TPropTestCase<IYNgTextFieldProps, 'placeholder'>[] = [
-  { prop: 'placeholder', case: 'с текстом', value: text, expected: text },
-  { prop: 'placeholder', case: 'без текста', value: empty, expected: empty },
+  { prop: 'placeholder', case: 'with text', value: text, expected: text },
+  { prop: 'placeholder', case: 'without text', value: empty, expected: empty },
 ]
 
 export const propAnnotationTextTestCases: TPropTestCase<IYNgTextFieldProps, 'annotationText'>[] = [
-  { prop: 'annotationText', case: 'с текстом', value: text, expected: text },
-  { prop: 'annotationText', case: 'без текста', value: empty, expected: empty },
+  { prop: 'annotationText', case: 'with text', value: text, expected: text },
+  { prop: 'annotationText', case: 'without text', value: empty, expected: empty },
 ]
 
 export const propLabelTooltipTextTestCases: TPropTestCase<IYNgTextFieldProps, 'labelTooltipText'>[] = [
-  { prop: 'labelTooltipText', case: 'с текстом', value: text, expected: text },
-  { prop: 'labelTooltipText', case: 'без текста', value: empty, expected: empty },
+  { prop: 'labelTooltipText', case: 'with text', value: text, expected: text },
+  { prop: 'labelTooltipText', case: 'without text', value: empty, expected: empty },
 ]
 
 export const propLabelTextTestCases: TPropTestCase<IYNgTextFieldProps, 'labelText'>[] = [
-  { prop: 'labelText', case: 'с текстом', value: text, expected: text },
-  { prop: 'labelText', case: 'без текста', value: empty, expected: empty },
+  { prop: 'labelText', case: 'with text', value: text, expected: text },
+  { prop: 'labelText', case: 'without text', value: empty, expected: empty },
 ]
 
 export const propsDisabledTestCases: TPropTestCase<IYNgTextFieldProps, 'disabled'>[] = [
@@ -41,13 +41,13 @@ export const propsRequiredTestCases: TPropTestCase<IYNgTextFieldProps, 'required
 ]
 
 export const propsMaxlengthTestCases: TPropTestCase<IYNgTextFieldProps, 'maxlength'>[] = [
-  { prop: 'maxlength', case: 'со значением', value: 10, expected: 10 },
-  { prop: 'maxlength', case: 'без значения', value: undefined, expected: undefined },
+  { prop: 'maxlength', case: 'with a value', value: 10, expected: 10 },
+  { prop: 'maxlength', case: 'without a value', value: undefined, expected: undefined },
 ]
 
 export const propsLabelDebounceTestCases: TPropTestCase<IYNgTextFieldProps, 'labelDebounce'>[] = [
-  { prop: 'labelDebounce', case: 'со значением', value: 10, expected: 10 },
-  { prop: 'labelDebounce', case: 'без значения', value: undefined, expected: labelDebounce },
+  { prop: 'labelDebounce', case: 'with a value', value: 10, expected: 10 },
+  { prop: 'labelDebounce', case: 'without a value', value: undefined, expected: labelDebounce },
 ]
 
 export const propsAutofocusTestCases: TPropTestCase<IYNgTextFieldProps, 'autofocus'>[] = [

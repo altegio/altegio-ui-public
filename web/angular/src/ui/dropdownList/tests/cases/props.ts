@@ -16,7 +16,7 @@ export const propItemsTestCases: TPropTestCase<IYNgDropdownListProps, 'items'>[]
   ...corePropItemsTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'items',
-    case: 'без элементов',
+    case: 'without items',
     value: undefined,
     expected: defaultItems,
   },
@@ -25,7 +25,7 @@ export const propItemLabelTestCases: TPropTestCase<IYNgDropdownListProps, 'itemL
   ...corePropItemLabelTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'itemLabel',
-    case: 'без itemLabel',
+    case: 'without itemLabel',
     value: undefined,
     expected: defaultItemLabel,
   },
@@ -34,7 +34,7 @@ export const propMinWidthTestCases: TPropTestCase<IYNgDropdownListProps, 'minWid
   ...corePropMinWidthTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'minWidth',
-    case: 'без minWidth',
+    case: 'without minWidth',
     value: undefined,
     expected: defaultMinWidth,
   },

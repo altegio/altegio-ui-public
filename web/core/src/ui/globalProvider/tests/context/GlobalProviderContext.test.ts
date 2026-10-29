@@ -22,20 +22,20 @@ describe(
       'modules mutation',
       () => {
         it(
-          'должен запрещать прямую мутацию modules через присваивание',
+          'should forbid direct mutation of modules through assignment',
           () => {
             expect(() => {
               context.modules[testModuleId] = testModule
-            }).toThrow('[GlobalContext] Прямая мутация модулей запрещена')
+            }).toThrow('[GlobalContext] Direct mutation of modules is not allowed')
           },
         )
 
         it(
-          'должен запрещать прямое удаление из modules',
+          'should forbid direct deletion from modules',
           () => {
             expect(() => {
               delete context.modules[testModuleId]
-            }).toThrow('[GlobalContext] Прямая мутация модулей запрещена')
+            }).toThrow('[GlobalContext] Direct mutation of modules is not allowed')
           },
         )
       },
@@ -45,7 +45,7 @@ describe(
       'putModule',
       () => {
         it(
-          'должен добавлять модуль в контекст',
+          'should add a module to the context',
           () => {
             context.putModule(testModule)
             expect(context.getModule(testModule.id)).toBe(testModule)
@@ -53,7 +53,7 @@ describe(
         )
 
         it(
-          'должен вызывать обработчики обновления при добавлении модуля',
+          'should call the update handlers when a module is added',
           () => {
             const handler = vi.fn()
             context.onUpdated(handler)
@@ -70,7 +70,7 @@ describe(
       'getModule',
       () => {
         it(
-          'должен возвращать модуль по id',
+          'should return a module by id',
           () => {
             context.putModule(testModule)
             expect(context.getModule(testModule.id)).toBe(testModule)
@@ -78,7 +78,7 @@ describe(
         )
 
         it(
-          'должен возвращать undefined если модуль не найден',
+          'should return undefined when the module is not found',
           () => {
             expect(context.getModule('non-existent')).toBeUndefined()
           },
@@ -90,7 +90,7 @@ describe(
       'getModules',
       () => {
         it(
-          'должен возвращать массив всех модулей',
+          'should return an array of all modules',
           () => {
             const module1 = new QueueModule({ id: 'module-1' })
             const module2 = new QueueModule({ id: 'module-2' })
@@ -106,7 +106,7 @@ describe(
         )
 
         it(
-          'должен возвращать пустой массив если нет модулей',
+          'should return an empty array when there are no modules',
           () => {
             expect(context.getModules()).toEqual([])
           },
@@ -118,7 +118,7 @@ describe(
       'removeModule',
       () => {
         it(
-          'должен удалять модуль из контекста',
+          'should remove a module from the context',
           () => {
             context.putModule(testModule)
             context.removeModule(testModule.id)
@@ -128,7 +128,7 @@ describe(
         )
 
         it(
-          'должен вызывать обработчики обновления при удалении модуля',
+          'should call the update handlers when a module is removed',
           () => {
             const handler = vi.fn()
             context.onUpdated(handler)
@@ -142,7 +142,7 @@ describe(
         )
 
         it(
-          'должен возвращать id удаленного модуля',
+          'should return the id of the removed module',
           () => {
             context.putModule(testModule)
             expect(context.removeModule(testModule.id)).toBe(testModule.id)
@@ -155,7 +155,7 @@ describe(
       'onUpdated',
       () => {
         it(
-          'должен добавлять обработчик в список обработчиков',
+          'should add a handler to the handler list',
           () => {
             const handler = vi.fn()
             context.onUpdated(handler)
@@ -167,7 +167,7 @@ describe(
         )
 
         it(
-          'должен позволять добавлять несколько обработчиков',
+          'should allow adding several handlers',
           () => {
             const handler1 = vi.fn()
             const handler2 = vi.fn()

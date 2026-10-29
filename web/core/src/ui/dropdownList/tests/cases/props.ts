@@ -6,7 +6,7 @@ import {
 export const propItemsTestCases: TPropTestCase<IYCoreDropdownListProps, 'items'>[] = [
   {
     prop: 'items',
-    case: 'с множеством элементов',
+    case: 'with many items',
     value: [
       { id: '1', label: 'multiple-1' },
       { id: '2', label: 'multiple-2' },
@@ -15,25 +15,25 @@ export const propItemsTestCases: TPropTestCase<IYCoreDropdownListProps, 'items'>
   },
   {
     prop: 'items',
-    case: 'с одним элементом',
+    case: 'with one item',
     value: [{ id: '1', label: 'one-1' }],
   },
   {
     prop: 'items',
-    case: 'без элементов',
+    case: 'without items',
     value: [],
   },
 ]
 export const propItemLabelTestCases: TPropTestCase<IYCoreDropdownListProps, 'itemLabel'>[] = [
   {
     prop: 'itemLabel',
-    case: 'с существующим свойством',
+    case: 'with an existing property',
     value: 'label',
     expected: true,
   },
   {
     prop: 'itemLabel',
-    case: 'с несуществующим свойством',
+    case: 'with a missing property',
     value: 'unknown',
     expected: false,
   },
@@ -42,12 +42,12 @@ export const propItemLabelTestCases: TPropTestCase<IYCoreDropdownListProps, 'ite
 export const propMinWidthTestCases: TPropTestCase<IYCoreDropdownListProps, 'minWidth'>[] = [
   {
     prop: 'minWidth',
-    case: 'с минимальной шириной',
+    case: 'with the minimum width',
     value: '88px',
   },
   {
     prop: 'minWidth',
-    case: 'с произвольной шириной',
+    case: 'with a custom width',
     value: '250px',
   },
 ]

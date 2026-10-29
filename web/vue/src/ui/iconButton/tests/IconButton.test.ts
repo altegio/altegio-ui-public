@@ -23,7 +23,7 @@ describe(
       'Props',
       () => {
         it(
-          'Изменения prop icon должно изменять CoreIconButton',
+          'Changing prop icon should update CoreIconButton',
           () => {
             const wrapper = mount(
               YIconButton,

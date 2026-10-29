@@ -23,10 +23,10 @@ const {
 
 // Unit test cases:
 const slotDefaultTestCases: TSlotTestCase[] = [
-  { slot: 'prepend', case: 'с контентом', content: text },
-  { slot: 'prepend', case: 'без контента', content: empty },
-  { slot: 'append', case: 'с контентом', content: text },
-  { slot: 'append', case: 'без контента', content: empty },
+  { slot: 'prepend', case: 'with content', content: text },
+  { slot: 'prepend', case: 'without content', content: empty },
+  { slot: 'append', case: 'with content', content: text },
+  { slot: 'append', case: 'without content', content: empty },
 ]
 
 describe(
@@ -52,7 +52,7 @@ describe(
           () => {
             for (const testCase of slotDefaultTestCases) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 async() => {
                   await updateComponent({ slots: { [testCase.slot]: testCase.content } })
 

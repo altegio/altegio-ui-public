@@ -44,7 +44,7 @@ export const testItems: TYVueTableItems = [
 export const propDisabledTestCases: TPropTestCase<IYVueTableProps, 'disabled'>[] = [
   {
     prop: 'disabled',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultDisabled,
   },
@@ -65,7 +65,7 @@ export const propDisabledTestCases: TPropTestCase<IYVueTableProps, 'disabled'>[]
 export const propLoadingTestCases: TPropTestCase<IYVueTableProps, 'loading'>[] = [
   {
     prop: 'loading',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultLoading,
   },
@@ -86,7 +86,7 @@ export const propLoadingTestCases: TPropTestCase<IYVueTableProps, 'loading'>[] =
 export const propHideHeaderTestCases: TPropTestCase<IYVueTableProps, 'hideHeader'>[] = [
   {
     prop: 'hideHeader',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultHideHeader,
   },
@@ -107,7 +107,7 @@ export const propHideHeaderTestCases: TPropTestCase<IYVueTableProps, 'hideHeader
 export const propStripeTestCases: TPropTestCase<IYVueTableProps, 'stripe'>[] = [
   {
     prop: 'stripe',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultStripe,
   },
@@ -128,7 +128,7 @@ export const propStripeTestCases: TPropTestCase<IYVueTableProps, 'stripe'>[] = [
 export const propSelectableTestCases: TPropTestCase<IYVueTableProps, 'selectable'>[] = [
   {
     prop: 'selectable',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultSelectable,
   },
@@ -149,7 +149,7 @@ export const propSelectableTestCases: TPropTestCase<IYVueTableProps, 'selectable
 export const propStickyTestCases: TPropTestCase<IYVueTableProps, 'sticky'>[] = [
   {
     prop: 'sticky',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultSticky,
   },
@@ -170,13 +170,13 @@ export const propStickyTestCases: TPropTestCase<IYVueTableProps, 'sticky'>[] = [
 export const propPageTestCases: TPropTestCase<IYVueTableProps, 'page'>[] = [
   {
     prop: 'page',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultPage,
   },
   {
     prop: 'page',
-    case: 'число',
+    case: 'number',
     value: 1,
     expected: 1,
   },
@@ -185,13 +185,13 @@ export const propPageTestCases: TPropTestCase<IYVueTableProps, 'page'>[] = [
 export const propItemsPerPageTestCases: TPropTestCase<IYVueTableProps, 'itemsPerPage'>[] = [
   {
     prop: 'itemsPerPage',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultItemsPerPage,
   },
   {
     prop: 'itemsPerPage',
-    case: 'число',
+    case: 'number',
     value: 10,
     expected: 10,
   },
@@ -200,13 +200,13 @@ export const propItemsPerPageTestCases: TPropTestCase<IYVueTableProps, 'itemsPer
 export const propTotalTestCases: TPropTestCase<IYVueTableProps, 'total'>[] = [
   {
     prop: 'total',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultTotal,
   },
   {
     prop: 'total',
-    case: 'число',
+    case: 'number',
     value: 100,
     expected: 100,
   },
@@ -215,13 +215,13 @@ export const propTotalTestCases: TPropTestCase<IYVueTableProps, 'total'>[] = [
 export const propItemValueTestCases: TPropTestCase<IYVueTableProps, 'itemValue'>[] = [
   {
     prop: 'itemValue',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultItemValue,
   },
   {
     prop: 'itemValue',
-    case: 'строка',
+    case: 'string',
     value: 'id',
     expected: 'id',
   },
@@ -230,13 +230,13 @@ export const propItemValueTestCases: TPropTestCase<IYVueTableProps, 'itemValue'>
 export const propItemLabelTestCases: TPropTestCase<IYVueTableProps, 'itemLabel'>[] = [
   {
     prop: 'itemLabel',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultItemLabel,
   },
   {
     prop: 'itemLabel',
-    case: 'строка',
+    case: 'string',
     value: 'name',
     expected: 'name',
   },
@@ -245,13 +245,13 @@ export const propItemLabelTestCases: TPropTestCase<IYVueTableProps, 'itemLabel'>
 export const propOptionsItemsPerPageTestCases: TPropTestCase<IYVueTableProps, 'optionsItemsPerPage'>[] = [
   {
     prop: 'optionsItemsPerPage',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: [],
   },
   {
     prop: 'optionsItemsPerPage',
-    case: 'массив',
+    case: 'array',
     value: [10, 20, 50],
     expected: [10, 20, 50],
   },
@@ -260,22 +260,22 @@ export const propOptionsItemsPerPageTestCases: TPropTestCase<IYVueTableProps, 'o
 export const propCounterTextTestCases: TPropTestCase<IYVueTableProps, 'counterText'>[] = [
   {
     prop: 'counterText',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultCounterText,
   },
   {
     prop: 'counterText',
-    case: 'строка',
-    value: 'Всего записей',
-    expected: 'Всего записей',
+    case: 'string',
+    value: 'Total records',
+    expected: 'Total records',
   },
 ]
 
 export const propShowPaginationTestCases: TPropTestCase<IYVueTableProps, 'showPagination'>[] = [
   {
     prop: 'showPagination',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultShowPagination,
   },
@@ -296,13 +296,13 @@ export const propShowPaginationTestCases: TPropTestCase<IYVueTableProps, 'showPa
 export const propHeadersTestCases: TPropTestCase<IYVueTableProps, 'headers'>[] = [
   {
     prop: 'headers',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: {},
   },
   {
     prop: 'headers',
-    case: 'с заголовками',
+    case: 'with headers',
     value: testHeaders,
     expected: testHeaders,
   },
@@ -320,7 +320,7 @@ interface IItemsTestCase extends TPropTestCase<IYVueTableProps, 'items', TYItems
 export const propItemsTestCases: IItemsTestCase[] = [
   {
     prop: 'items',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: {
       rows: 0,
@@ -329,7 +329,7 @@ export const propItemsTestCases: IItemsTestCase[] = [
   },
   {
     prop: 'items',
-    case: 'с данными, без заголовков',
+    case: 'with data, without headers',
     value: testItems,
     expected: {
       rows: testItems.length,
@@ -338,7 +338,7 @@ export const propItemsTestCases: IItemsTestCase[] = [
   },
   {
     prop: 'items',
-    case: 'с данными и заголовками',
+    case: 'with data and headers',
     value: testItems,
     additionalProps: { headers: testHeaders },
     expected: {
@@ -358,7 +358,7 @@ export type TYSelectedExpected = {
 export const propSelectedTestCases: TPropTestCase<IYVueTableProps, 'selected', TYSelectedExpected>[] = [
   {
     prop: 'selected',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: {
       head: {
@@ -370,7 +370,7 @@ export const propSelectedTestCases: TPropTestCase<IYVueTableProps, 'selected', T
   },
   {
     prop: 'selected',
-    case: 'выбрана только первая строка',
+    case: 'only the first row selected',
     value: [testItems[0].rowId],
     expected: {
       head: {
@@ -382,7 +382,7 @@ export const propSelectedTestCases: TPropTestCase<IYVueTableProps, 'selected', T
   },
   {
     prop: 'selected',
-    case: 'выбраны все строки',
+    case: 'all rows selected',
     value: testItems.map((item) => item.rowId),
     expected: {
       head: {
@@ -397,13 +397,13 @@ export const propSelectedTestCases: TPropTestCase<IYVueTableProps, 'selected', T
 export const propPluginsTestCases: TPropTestCase<IYVueTableProps, 'plugins'>[] = [
   {
     prop: 'plugins',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: {},
   },
   {
     prop: 'plugins',
-    case: 'с плагинами',
+    case: 'with plugins',
     value: {
       'y-core-table': [],
       'y-core-table-row': [],

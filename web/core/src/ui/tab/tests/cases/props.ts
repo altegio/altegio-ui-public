@@ -28,8 +28,8 @@ export const propsIsTagVisibleTestCases: TPropTestCase<IYCoreTabProps, 'isTagVis
 ]
 
 export const propsTagTextTestCases: TPropTestCase<IYCoreTabProps, 'tagText'>[] = [
-  { prop: 'tagText', case: 'текст', value: text, expected: text },
-  { prop: 'tagText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'tagText', case: 'text', value: text, expected: text },
+  { prop: 'tagText', case: 'empty string', value: empty, expected: empty },
   { prop: 'tagText', case: 'undefined', value: undefined, expected: defaultProps.tagText },
 ]
 
@@ -40,12 +40,12 @@ export const propsIsCounterVisibleTestCases: TPropTestCase<IYCoreTabProps, 'isCo
 ]
 
 export const propsTextTestCases: TPropTestCase<IYCoreTabProps, 'text'>[] = [
-  { prop: 'text', case: 'текст', value: text, expected: text },
-  { prop: 'text', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'text', case: 'text', value: text, expected: text },
+  { prop: 'text', case: 'empty string', value: empty, expected: empty },
   { prop: 'text', case: 'undefined', value: undefined, expected: defaultProps.text },
 ]
 
-export const propsCounterValueTestCases: TPropTestCase<IYCoreTabProps, 'counterValue'>[] = [{ prop: 'counterValue', case: 'число', value: number, expected: number }]
+export const propsCounterValueTestCases: TPropTestCase<IYCoreTabProps, 'counterValue'>[] = [{ prop: 'counterValue', case: 'number', value: number, expected: number }]
 
 export const propsTagVariantTestCases: TPropTestCase<IYCoreTabProps, 'tagVariant'>[] = [
   { prop: 'tagVariant', case: 'danger', value: EYCoreTagVariant.DANGER, expected: EYCoreTagVariant.DANGER },
@@ -53,29 +53,29 @@ export const propsTagVariantTestCases: TPropTestCase<IYCoreTabProps, 'tagVariant
 ]
 
 export const propsLeftIconTestCases: TPropTestCase<IYCoreTabProps, 'leftIcon'>[] = [
-  { prop: 'leftIcon', case: 'с иконкой', value: yRocket },
-  { prop: 'leftIcon', case: 'без иконки', value: defaultProps.leftIcon },
+  { prop: 'leftIcon', case: 'with an icon', value: yRocket },
+  { prop: 'leftIcon', case: 'without an icon', value: defaultProps.leftIcon },
 ]
 
 export const propsLeftIconSizeTestCases: TPropTestCase<IYCoreTabProps, 'leftIconSize'>[] = [
-  { prop: 'leftIconSize', case: 'с размером', value: '16px', expected: '16px' },
+  { prop: 'leftIconSize', case: 'with a size', value: '16px', expected: '16px' },
   { prop: 'leftIconSize', case: 'undefined', value: undefined, expected: defaultProps.leftIconSize },
 ]
 
 export const propsLocatorTestCases: TPropTestCase<IYCoreTabProps, 'locator'>[] = [
-  { prop: 'locator', case: 'текст', value: text, expected: text },
-  { prop: 'locator', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'locator', case: 'text', value: text, expected: text },
+  { prop: 'locator', case: 'empty string', value: empty, expected: empty },
   { prop: 'locator', case: 'undefined', value: undefined, expected: defaultProps.locator },
 ]
 
 export const propsLocatorTagTestCases: TPropTestCase<IYCoreTabProps, 'locatorTag'>[] = [
-  { prop: 'locatorTag', case: 'текст', value: text, expected: text },
-  { prop: 'locatorTag', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'locatorTag', case: 'text', value: text, expected: text },
+  { prop: 'locatorTag', case: 'empty string', value: empty, expected: empty },
   { prop: 'locatorTag', case: 'undefined', value: undefined, expected: defaultProps.locatorTag },
 ]
 
 export const propsLocatorCounterTestCases: TPropTestCase<IYCoreTabProps, 'locatorCounter'>[] = [
-  { prop: 'locatorCounter', case: 'текст', value: text, expected: text },
-  { prop: 'locatorCounter', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'locatorCounter', case: 'text', value: text, expected: text },
+  { prop: 'locatorCounter', case: 'empty string', value: empty, expected: empty },
   { prop: 'locatorCounter', case: 'undefined', value: undefined, expected: defaultProps.locatorCounter },
 ]

@@ -33,7 +33,7 @@ export const propIsOpenTestCases: TPropTestCase<IYVuePopoverProps, 'isOpen'>[] =
   ...corePropIsOpenTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'isOpen',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultIsOpen,
   },
@@ -42,7 +42,7 @@ export const propOffsetTestCases: TPropTestCase<IYVuePopoverProps, 'offset'>[] =
   ...corePropOffsetTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'offset',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultOffset,
   },
@@ -51,7 +51,7 @@ export const propPaddingTestCases: TPropTestCase<IYVuePopoverProps, 'padding'>[]
   ...corePropPaddingTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'padding',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultPadding,
   },
@@ -60,7 +60,7 @@ export const propPlacementTestCases: TPropTestCase<IYVuePopoverProps, 'placement
   ...corePropPlacementTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'placement',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultPlacement,
   },
@@ -69,7 +69,7 @@ export const propStrategyTestCases: TPropTestCase<IYVuePopoverProps, 'strategy'>
   ...corePropStrategyTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'strategy',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultStrategy,
   },
@@ -78,7 +78,7 @@ export const propTransitionTestCases: TPropTestCase<IYVuePopoverProps, 'transiti
   ...corePropTransitionTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'transition',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultTransition,
   },
@@ -87,7 +87,7 @@ export const propTriggerTestCases: TPropTestCase<IYVuePopoverProps, 'trigger'>[]
   ...corePropTriggerTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'trigger',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultTrigger,
   },
@@ -96,7 +96,7 @@ export const propTypeTestCases: TPropTestCase<IYVuePopoverProps, 'type'>[] = [
   ...corePropTypeTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'type',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultType,
   },
@@ -105,7 +105,7 @@ export const propTypeTestCases: TPropTestCase<IYVuePopoverProps, 'type'>[] = [
 export const propSubmitTextTestCases: TPropTestCase<IYVuePopoverProps, 'submitText'>[] = [
   {
     prop: 'submitText',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultSubmitText,
   },
@@ -114,7 +114,7 @@ export const propSubmitTextTestCases: TPropTestCase<IYVuePopoverProps, 'submitTe
 export const propCancelTextTestCases: TPropTestCase<IYVuePopoverProps, 'cancelText'>[] = [
   {
     prop: 'cancelText',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaltCancelText,
   },

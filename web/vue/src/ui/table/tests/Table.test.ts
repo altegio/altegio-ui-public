@@ -120,7 +120,7 @@ describe(
               ...slotRowInnerDynamicTestCases,
             ]) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 () => {
                   const wrapper = mount(
                     YTable,
@@ -147,7 +147,7 @@ describe(
           () => {
             for (const testCase of [...propDisabledTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить такое же свойство у core компонента ${YCoreTableTagName}`,
+                `Prop "${testCase.prop}" should set the same property on the core component ${YCoreTableTagName}`,
                 () => {
                   const wrapper = mount(
                     YTable,
@@ -163,7 +163,7 @@ describe(
 
             for (const testCase of [...propLoadingTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить такое же свойство у core компонента ${YCoreTableTagName}`,
+                `Prop "${testCase.prop}" should set the same property on the core component ${YCoreTableTagName}`,
                 () => {
                   const wrapper = mount(
                     YTable,
@@ -179,7 +179,7 @@ describe(
 
             for (const testCase of [...propPluginsTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить такое же свойство у core компонента ${YCoreTableTagName}`,
+                `Prop "${testCase.prop}" should set the same property on the core component ${YCoreTableTagName}`,
                 () => {
                   const wrapper = mount(
                     YTable,
@@ -195,7 +195,7 @@ describe(
 
             for (const testCase of [...propHideHeaderTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство "hideHead" и "hideBar" у core компонента ${YCoreTableTagName}`,
+                `Prop "${testCase.prop}" should set "hideHead" and "hideBar" on the core component ${YCoreTableTagName}`,
                 () => {
                   const wrapper = mount(
                     YTable,
@@ -212,7 +212,7 @@ describe(
 
             for (const testCase of [...propCounterTextTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство у core компонента ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${YCoreTablePaginationTagName}`,
                 () => {
                   const wrapper = mount(YTable, {
                     props: {
@@ -230,7 +230,7 @@ describe(
 
             for (const testCase of [...propHeadersTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойства у core компонентов ${YCoreSkeletonTableTagName} и ${YCoreTableHeadCellTagName}`,
+                `Prop "${testCase.prop}" should set the properties on the core components ${YCoreSkeletonTableTagName} and ${YCoreTableHeadCellTagName}`,
                 () => {
                   const wrapper = mount(
                     YTable,
@@ -254,7 +254,7 @@ describe(
 
             for (const testCase of [...propItemLabelTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство у core компонента ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${YCoreTablePaginationTagName}`,
                 () => {
                   const wrapper = mount(YTable, {
                     props: {
@@ -272,7 +272,7 @@ describe(
 
             for (const testCase of [...propItemValueTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство у core компонента ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${YCoreTablePaginationTagName}`,
                 () => {
                   const wrapper = mount(YTable, {
                     props: {
@@ -290,7 +290,7 @@ describe(
 
             for (const testCase of [...propItemsPerPageTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство у core компонентов ${YCoreSkeletonTableTagName} и ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should set the property on the core components ${YCoreSkeletonTableTagName} and ${YCoreTablePaginationTagName}`,
                 () => {
                   const wrapper = mount(YTable, {
                     props: {
@@ -310,7 +310,7 @@ describe(
 
             for (const testCase of [...propItemsTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить количество строк ${YCoreTableRowTagName} и ячеек ${YCoreTableCellTagName}. Кейс: "${testCase.case}"`,
+                `Prop "${testCase.prop}" should change the number of rows ${YCoreTableRowTagName} and cells ${YCoreTableCellTagName}. Case: "${testCase.case}"`,
                 () => {
                   const props = {
                     [testCase.prop]: testCase.value,
@@ -329,7 +329,7 @@ describe(
 
             for (const testCase of [...propOptionsItemsPerPageTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство у core компонента ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${YCoreTablePaginationTagName}`,
                 () => {
                   const wrapper = mount(YTable, {
                     props: {
@@ -347,7 +347,7 @@ describe(
 
             for (const testCase of [...propPageTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство у core компонента ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${YCoreTablePaginationTagName}`,
                 () => {
                   const wrapper = mount(YTable, {
                     props: {
@@ -365,7 +365,7 @@ describe(
 
             for (const testCase of [...propShowPaginationTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство у core компонента ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${YCoreTablePaginationTagName}`,
                 () => {
                   const wrapper = mount(YTable, { props: { [testCase.prop]: testCase.value } })
 
@@ -378,7 +378,7 @@ describe(
 
             for (const testCase of [...propTotalTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство у core компонента ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${YCoreTablePaginationTagName}`,
                 () => {
                   const wrapper = mount(YTable, {
                     props: {
@@ -396,7 +396,7 @@ describe(
 
             for (const testCase of [...propStickyTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство у core компонента ${YCoreTableHeadCellTagName}, ${YCoreTableRowTagName} и ${YCoreTableCellTagName}`,
+                `Prop "${testCase.prop}" should set the property on the core components ${YCoreTableHeadCellTagName}, ${YCoreTableRowTagName} and ${YCoreTableCellTagName}`,
                 () => {
                   const wrapper = mount(YTable, {
                     props: {
@@ -424,7 +424,7 @@ describe(
 
             for (const testCase of [...propStripeTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство у core компонента ${YCoreSkeletonTableTagName} и ${YCoreTableRowTagName}`,
+                `Prop "${testCase.prop}" should set the property on the core components ${YCoreSkeletonTableTagName} and ${YCoreTableRowTagName}`,
                 () => {
                   const wrapper = mount(YTable, {
                     props: {
@@ -447,7 +447,7 @@ describe(
 
             for (const testCase of [...propSelectableTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство у core компонента ${YCoreTableRowTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${YCoreTableRowTagName}`,
                 () => {
                   const wrapper = mount(YTable, {
                     props: {
@@ -468,7 +468,7 @@ describe(
 
             for (const testCase of [...propSelectedTestCases]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство у core компонента ${YCoreTableRowTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${YCoreTableRowTagName}`,
                 () => {
                   const wrapper = mount(YTable, {
                     props: {

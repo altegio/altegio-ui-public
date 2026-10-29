@@ -24,7 +24,7 @@ describe('Core/YCoreFunctionalModal/CSS', () => {
 
   for (const { host, root } of CSSVariablesHostToRootCases) {
     it(
-      `Host CSS переменная ${host} в стилях должна иметь значение :root CSS переменной ${root}`,
+      `Host CSS variable ${host} should have the value of the :root CSS variable ${root} in the styles`,
       () => {
         const shadowRoot = getWCShadowRoot(component)
         const hostCSSVariableValue = getHostCSSVariableValue(
@@ -38,7 +38,7 @@ describe('Core/YCoreFunctionalModal/CSS', () => {
 
   for (const { host, value } of CSSVariablesHostToValueCases) {
     it(
-      `Вычисленная Host CSS переменная ${host} в созданном компоненте должна иметь значение из токенов: ${value}`,
+      `Computed host CSS variable ${host} on the created component should have the token value: ${value}`,
       () => {
         const shadowRoot = getWCShadowRoot(component)
         const varValue = getComputedStyle(shadowRoot.host).getPropertyValue(host).trim()

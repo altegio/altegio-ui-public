@@ -34,7 +34,7 @@ describe(
       'props',
       () => {
         it(
-          'Изменения prop size должно изменять CoreButton',
+          'Changing prop size should update CoreButton',
           () => {
             const size = EYSizes.MEDIUM
 
@@ -50,7 +50,7 @@ describe(
         )
 
         it(
-          'Изменения prop variant должно изменять CoreButton',
+          'Changing prop variant should update CoreButton',
           () => {
             const variant = EYCoreSimpleButtonVariant.OUTLINE
 
@@ -66,7 +66,7 @@ describe(
         )
 
         it(
-          'Изменения prop disabled должно изменять CoreButton',
+          'Changing prop disabled should update CoreButton',
           () => {
             const wrapper = mount(
               YSimpleButton,
@@ -80,7 +80,7 @@ describe(
         )
 
         it(
-          'Изменения prop loading должно изменять CoreButton',
+          'Changing prop loading should update CoreButton',
           () => {
             const wrapper = mount(
               YSimpleButton,
@@ -94,7 +94,7 @@ describe(
         )
 
         it(
-          'Изменения prop href должно изменять CoreButton',
+          'Changing prop href should update CoreButton',
           () => {
             const wrapper = mount(
               YSimpleButton,
@@ -108,7 +108,7 @@ describe(
         )
 
         it(
-          'Изменения prop target должно изменять CoreButton',
+          'Changing prop target should update CoreButton',
           () => {
             const target = EAnchorTarget.BLANK
 
@@ -124,7 +124,7 @@ describe(
         )
 
         it(
-          'Должен выставить дефолтное значение size если оно undefined',
+          'Should set the default size when it is undefined',
           () => {
             const wrapper = mount(
               YSimpleButton,
@@ -138,7 +138,7 @@ describe(
         )
 
         it(
-          'Должен выставить дефолтное значение variant если оно undefined',
+          'Should set the default variant when it is undefined',
           () => {
             const wrapper = mount(
               YSimpleButton,
@@ -157,7 +157,7 @@ describe(
       'slots',
       () => {
         it(
-          'Должен отрендерить верстку из default слота',
+          'Should render the markup from the default slot',
           () => {
             const wrapper = mount(
               YSimpleButton,
@@ -174,7 +174,7 @@ describe(
       'events',
       () => {
         it(
-          'Должен вызывать обработчик клика при нажатии на кнопку',
+          'Should call the click handler on button click',
           async() => {
             const handleClick = vi.fn()
 
@@ -192,7 +192,7 @@ describe(
 
         // Skipped: the core button emits native clicks, so the disabled attribute does not block them. The core component has to emit custom events instead.
         it.skip(
-          'Не должен вызывать обработчик клика, если кнопка отключена',
+          'Should not call the click handler when the button is disabled',
           async() => {
             const wrapper = mount(
               YSimpleButton,

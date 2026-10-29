@@ -20,7 +20,7 @@ describe(
       'Props',
       () => {
         it(
-          'Должен выдать ошибку если нет иконки',
+          'Should throw an error when there is no icon',
           async() => {
             const testFunction = async() => {
               const component = createComponent(tagName)
@@ -37,7 +37,7 @@ describe(
         )
 
         it(
-          'Должен установить иконку, которая передана в свойство icon',
+          'Should set the icon passed in the icon property',
           async() => {
             const component = createComponent(
               tagName,
@@ -57,7 +57,7 @@ describe(
         )
 
         it(
-          'Должен установить размер, который передан в свойство size',
+          'Should set the size passed in the size property',
           async() => {
             const size = '100px'
             const component = createComponent(
@@ -80,7 +80,7 @@ describe(
         )
 
         it(
-          'Должен установить размер по умолчанию, если нет свойства size',
+          'Should set the default size when the size property is missing',
           async() => {
             const component = createComponent(
               tagName,

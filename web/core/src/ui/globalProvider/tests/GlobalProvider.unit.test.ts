@@ -9,8 +9,8 @@ import { GlobalContext } from '~core/ui/globalProvider/context'
 import '~core/ui/globalProvider'
 
 const slotDefaultTestCases: TSlotTestCase[] = [
-  { slot: 'default', case: 'с контентом', content: text },
-  { slot: 'default', case: 'без контента', content: empty },
+  { slot: 'default', case: 'with content', content: text },
+  { slot: 'default', case: 'without content', content: empty },
 ]
 
 const tagName = YCoreGlobalProviderTagName
@@ -43,7 +43,7 @@ describe(
       () => {
         for (const testCase of slotDefaultTestCases) {
           it(
-            `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
             async() => {
               await updateComponent({ slots: { [testCase.slot]: testCase.content } })
 
@@ -60,7 +60,7 @@ describe(
       'Events',
       () => {
         it(
-          'должен вызвать событие ready при подключении',
+          'should emit ready when connected',
           () => {
             const readyHandler = vi.fn()
 
@@ -83,7 +83,7 @@ describe(
       'Providers',
       () => {
         it(
-          'должен создать экземпляр GlobalContext',
+          'should create a GlobalContext instance',
           () => {
             expect(component.globalContext).toBeInstanceOf(GlobalContext)
           },

@@ -17,7 +17,7 @@ export const propItemsTestCases: TPropTestCase<IYVueDropdownListProps, 'items'>[
   ...corePropItemsTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'items',
-    case: 'без элементов',
+    case: 'without items',
     value: undefined,
     expected: defaultItems,
   },
@@ -26,7 +26,7 @@ export const propItemLabelTestCases: TPropTestCase<IYVueDropdownListProps, 'item
   ...corePropItemLabelTestCases,
   {
     prop: 'itemLabel',
-    case: 'без itemLabel',
+    case: 'without itemLabel',
     value: undefined,
     expected: true,
   },
@@ -35,7 +35,7 @@ export const propMinWidthTestCases: TPropTestCase<IYVueDropdownListProps, 'minWi
   ...corePropMinWidthTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'minWidth',
-    case: 'без minWidth',
+    case: 'without minWidth',
     value: undefined,
     expected: defaultMinWidth,
   },

@@ -14,12 +14,12 @@ export const propLabelTestCases: TPropTestCase<IYNgChipProps, 'labelText'>[] = [
 export const propIconLeftTestCases: TPropTestCase<IYNgChipProps, 'iconLeft'>[] = [
   {
     prop: 'iconLeft',
-    case: 'без иконки',
+    case: 'without an icon',
     value: undefined,
   },
   {
     prop: 'iconLeft',
-    case: 'с иконкой',
+    case: 'with an icon',
     value: chipIconLeftValue,
   },
 ]

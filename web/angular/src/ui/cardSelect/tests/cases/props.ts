@@ -43,11 +43,11 @@ export const propSizeCases: TPropTestCase<IYNgCardSelectProps, 'size'>[] = [
   { prop: 'size', case: 'undefined', value: undefined, expected: defaultSize },
 ]
 export const propHeaderTextCases: TPropTestCase<IYNgCardSelectProps, 'headerText'>[] = [
-  { prop: 'headerText', case: 'с текстом', value: text, expected: text },
+  { prop: 'headerText', case: 'with text', value: text, expected: text },
   { prop: 'headerText', case: 'undefined', value: undefined, expected: defaultHeaderText },
 ]
 export const propTagTextCases: TPropTestCase<IYNgCardSelectProps, 'tagText'>[] = [
-  { prop: 'tagText', case: 'с текстом', value: text, expected: text },
+  { prop: 'tagText', case: 'with text', value: text, expected: text },
   { prop: 'tagText', case: 'undefined', value: undefined, expected: defaultTagText },
 ]
 export const propTagVariantCases: TPropTestCase<IYNgCardSelectProps, 'tagVariant'>[] = [
@@ -55,10 +55,10 @@ export const propTagVariantCases: TPropTestCase<IYNgCardSelectProps, 'tagVariant
   { prop: 'tagVariant', case: 'undefined', value: undefined, expected: defaultTagVariant },
 ]
 export const propHeaderIconCases: TPropTestCase<IYNgCardSelectProps, 'headerIcon'>[] = [
-  { prop: 'headerIcon', case: 'с иконкой', value: yRocket, expected: yRocket },
+  { prop: 'headerIcon', case: 'with an icon', value: yRocket, expected: yRocket },
   { prop: 'headerIcon', case: 'undefined', value: undefined, expected: defaultHeaderIcon },
 ]
 export const propAnnotationCases: TPropTestCase<IYNgCardSelectProps, 'annotation'>[] = [
-  { prop: 'annotation', case: 'с текстом', value: text, expected: text },
+  { prop: 'annotation', case: 'with text', value: text, expected: text },
   { prop: 'annotation', case: 'undefined', value: undefined, expected: defaultAnnotation },
 ]

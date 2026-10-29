@@ -86,7 +86,7 @@ describe(
               ...propMaxlengthTestCases,
             ]) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и корректно наложить на rootElement аттрибут "${prop}"`,
+                `Prop "${prop}" should be "${propCase}" and set the "${prop}" attribute on rootElement`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
@@ -111,7 +111,7 @@ describe(
               const expectedCssClass = localClassWithModifier(classModifier ?? '')
 
               it(
-                `${value ? 'Должен' : 'Не должен'} сожержать класс ${expectedCssClass}, если проп ${prop} "${propCase}"`,
+                `${value ? 'Should' : 'Should not'} have class ${expectedCssClass} when prop ${prop} is "${propCase}"`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
@@ -138,7 +138,7 @@ describe(
               ...eventKeydownCases,
             ]) {
               it(
-                `Должен генерировать событие ${testCase.event} ${testCase.case}`,
+                `Should emit ${testCase.event} ${testCase.case}`,
                 () => {
                   const handler = vi.fn()
                   component.addEventListener(
@@ -157,7 +157,7 @@ describe(
               )
 
               it(
-                `Не должен генерировать событие ${testCase.event}, если поле отключено`,
+                `Should not emit ${testCase.event} when the field is disabled`,
                 async() => {
                   await updateComponent({ props: { disabled: true } })
 
@@ -180,7 +180,7 @@ describe(
 
             for (const testCase of eventRenderCases) {
               it(
-                `Должен генерировать событие ${testCase.event} ${testCase.case}`,
+                `Should emit ${testCase.event} ${testCase.case}`,
                 () => {
                   const eventHandler = vi.fn()
                   component.addEventListener(

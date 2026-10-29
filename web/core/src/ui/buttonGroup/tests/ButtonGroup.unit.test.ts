@@ -45,7 +45,7 @@ describe('Core/YCoreButtonGroup', () => {
   describe('Unit', () => {
     describe('Props', () => {
       for (const testCase of propsTestCases) {
-        it(`Проп ${testCase.prop} должен быть ${testCase.case}`, async() => {
+        it(`Prop ${testCase.prop} should work ${testCase.case}`, async() => {
           component.innerHTML = buttonsHtml
           await component.updateComplete
 
@@ -59,7 +59,7 @@ describe('Core/YCoreButtonGroup', () => {
         })
       }
       for (const testCase of propsChangeTestCases) {
-        it(`Проп ${testCase.prop} должен меняться ${testCase.case}`, async() => {
+        it(`Prop ${testCase.prop} should change ${testCase.case}`, async() => {
           component.innerHTML = buttonsHtml
           await component.updateComplete
 
@@ -84,7 +84,7 @@ describe('Core/YCoreButtonGroup', () => {
 
     describe('Slots', () => {
       for (const testCase of slotsTestCases) {
-        it(`Должен корректно отображать слот ${testCase.case}`, async() => {
+        it(`Should render slot ${testCase.case}`, async() => {
           component.innerHTML = testCase.content
           await component.updateComplete
 
@@ -99,7 +99,7 @@ describe('Core/YCoreButtonGroup', () => {
       }
 
       for (const testCase of buttonRadiusTestCases) {
-        it(`Должен корректно устанавливать ${testCase.case} при добавлении кнопок в слоты`, async() => {
+        it(`Should set ${testCase.case} when buttons are added to the slots`, async() => {
           component.innerHTML = buttonsHtmlThree
           await component.updateComplete
 

@@ -78,7 +78,7 @@ describe('Core/YCoreRadioButtonGroup/Unit', () => {
   describe('Props', () => {
     for (const testCase of propSizeTestCases) {
       it(
-        `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить Prop у RadioButton на "${String(testCase.expected)}"`,
+        `Prop "${testCase.prop}" with value "${testCase.value}" should set the RadioButton prop to "${String(testCase.expected)}"`,
         async() => {
           component.innerHTML = radioButtonsSlot
           await component.updateComplete
@@ -95,7 +95,7 @@ describe('Core/YCoreRadioButtonGroup/Unit', () => {
 
     for (const testCase of propValueTestCases) {
       it(
-        `Prop "${testCase.prop}" со значением "${testCase.value}" должен сделать checked=true только у RadioButton с value="${testCase.value}"`,
+        `Prop "${testCase.prop}" with value "${testCase.value}" should set checked=true only on the RadioButton with value="${testCase.value}"`,
         async() => {
           component.innerHTML = radioButtonsSlot
           await component.updateComplete
@@ -116,7 +116,7 @@ describe('Core/YCoreRadioButtonGroup/Unit', () => {
 
     for (const testCase of propLabelTooltipTextTestCases) {
       it(
-        `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить prop у Label на "${testCase.value}"`,
+        `Prop "${testCase.prop}" with value "${testCase.value}" should set the Label prop to "${testCase.value}"`,
         async() => {
           await updateComponent({ props: { labelText: text, [testCase.prop]: testCase.value } })
 
@@ -129,7 +129,7 @@ describe('Core/YCoreRadioButtonGroup/Unit', () => {
 
     for (const testCase of propLabelTextTestCases) {
       it(
-        `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить prop у Label на "${testCase.value}"`,
+        `Prop "${testCase.prop}" with value "${testCase.value}" should set the Label prop to "${testCase.value}"`,
         async() => {
           await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -143,7 +143,7 @@ describe('Core/YCoreRadioButtonGroup/Unit', () => {
       const expectedCssClass = `${tagName}__wrapper_direction_${testCase.value}`
 
       it(
-        `Должен ${testCase.case} добавить класс ${expectedCssClass}, если prop ${testCase.prop} ${testCase.value}`,
+        `Should ${testCase.case} add class ${expectedCssClass} when prop ${testCase.prop} is ${testCase.value}`,
         async() => {
           await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -158,7 +158,7 @@ describe('Core/YCoreRadioButtonGroup/Unit', () => {
   })
 
   describe('Events', () => {
-    it('Должен эмитить событие change при выборе radio', async() => {
+    it('Should emit change when a radio is selected', async() => {
       component.innerHTML = radioButtonsSlot
       await component.updateComplete
 
@@ -172,7 +172,7 @@ describe('Core/YCoreRadioButtonGroup/Unit', () => {
       const radioDiv = radioBtn.shadowRoot?.querySelector('div')
 
       if (!radioDiv) {
-        throw new Error('Div радио кнопки не найден')
+        throw new Error('Radio button div not found')
       }
 
       await userEvent.click(radioDiv)

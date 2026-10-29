@@ -25,7 +25,7 @@ describe(
       'Props',
       () => {
         it(
-          'Должен корректно передать href в Web Component',
+          'Should pass href to the web component',
           () => {
             const wrapper = mount(
               YLink,
@@ -38,7 +38,7 @@ describe(
         )
 
         it(
-          'Должен корректно обработать undefined href в Web Component',
+          'Should handle an undefined href in the web component',
           () => {
             const wrapper = mount(
               YLink,
@@ -51,7 +51,7 @@ describe(
         )
 
         it(
-          'Должен корректно передать target в Web Component',
+          'Should pass target to the web component',
           () => {
             const target = '_blank'
             const wrapper = mount(
@@ -65,7 +65,7 @@ describe(
         )
 
         it(
-          'Должен корректно обработать undefined target в Web Component',
+          'Should handle an undefined target in the web component',
           () => {
             const wrapper = mount(
               YLink,

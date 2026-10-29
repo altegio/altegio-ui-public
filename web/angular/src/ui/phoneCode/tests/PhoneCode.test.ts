@@ -43,7 +43,7 @@ describe('Angular/YPhoneCode', () => {
         ...propDisabledTestCases,
         ...propSizeTestCases,
       ]) {
-        it(`Prop "${testCase.prop}" должен быть ${testCase.case}`, async() => {
+        it(`Prop "${testCase.prop}" should work ${testCase.case}`, async() => {
           const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
           const fixture = TestBed.createComponent(component)
           fixture.detectChanges()

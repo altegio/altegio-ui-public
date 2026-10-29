@@ -29,8 +29,8 @@ const propSizeTestCases: TPropTestCase<IYCoreBrandButtonProps, 'size', string>[]
 ]
 
 const propTextTestCases: TPropTestCase<IYCoreBrandButtonProps, 'text'>[] = [
-  { prop: 'text', case: 'с текстом', value: 'Войти через WhatsApp' },
-  { prop: 'text', case: 'без текста', value: '' },
+  { prop: 'text', case: 'with text', value: 'Sign in with WhatsApp' },
+  { prop: 'text', case: 'without text', value: '' },
 ]
 
 const tagName = YCoreBrandButtonTagName
@@ -73,7 +73,7 @@ describe(
       () => {
         for (const testCase of propVariantTestCases) {
           it(
-            `Prop variant должен быть ${testCase.case} и прокинут в simple-button`,
+            `Prop variant should be ${testCase.case} and passed to simple-button`,
             async() => {
               await updateComponent({ props: { variant: testCase.value } })
 
@@ -87,7 +87,7 @@ describe(
 
         for (const testCase of propSizeTestCases) {
           it(
-            `Prop size должен корректно выставить размер иконки при значении ${testCase.case}`,
+            `Prop size should set the icon size for value ${testCase.case}`,
             async() => {
               await updateComponent({ props: { variant: EYCoreBrandButtonVariant.WhatsApp, size: testCase.value } })
 
@@ -99,7 +99,7 @@ describe(
 
         for (const testCase of propTextTestCases) {
           it(
-            `Prop text должен быть ${testCase.case}`,
+            `Prop text should be ${testCase.case}`,
             async() => {
               await updateComponent({ props: { text: testCase.value } })
 

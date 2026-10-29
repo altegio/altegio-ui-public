@@ -51,7 +51,7 @@ describe(
       () => {
         for (const testCase of [...propValueTestCases]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
                 YTextField,
@@ -82,7 +82,7 @@ describe(
           ...propsTypeTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
                 YTextField,
@@ -112,7 +112,7 @@ describe(
           ...slotAfterTestCases,
         ]) {
           it(
-            `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
                 YTextField,
@@ -147,7 +147,7 @@ describe(
             ...eventClearCases,
         ]) {
           it(
-            `Должен вызывать событие ${testCase.event} ${testCase.case} core компонента`,
+            `Should emit ${testCase.event} ${testCase.case} of the core component`,
             async() => {
               const wrapper = mount(YTextField)
 

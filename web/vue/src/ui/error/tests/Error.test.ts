@@ -25,7 +25,7 @@ describe(
       'Props',
       () => {
         it(
-          'Должен корректно изменить errors prop error',
+          'Should update the errors prop of error',
           () => {
             const errors = [text]
             const wrapper = mount(

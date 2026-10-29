@@ -6,13 +6,13 @@ import { EYSizes } from '~shared/types/global'
 const { code } = createNgPhoneCodeProps()
 
 export const propCodeTestCases: TPropTestCase<IYNgPhoneCodeProps, 'code'>[] = [
-  { prop: 'code', case: 'с кодом', value: '375' },
-  { prop: 'code', case: 'с дефолтным кодом', value: code },
+  { prop: 'code', case: 'with a code', value: '375' },
+  { prop: 'code', case: 'with the default code', value: code },
 ]
 
 export const propDisabledTestCases: TPropTestCase<IYNgPhoneCodeProps, 'disabled'>[] = [
-  { prop: 'disabled', case: 'включен', value: false },
-  { prop: 'disabled', case: 'выключен', value: true },
+  { prop: 'disabled', case: 'enabled', value: false },
+  { prop: 'disabled', case: 'disabled', value: true },
 ]
 
 export const propSizeTestCases: TPropTestCase<IYNgPhoneCodeProps, 'size'>[] = [

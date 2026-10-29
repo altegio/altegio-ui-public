@@ -61,7 +61,7 @@ describe(
           () => {
             for (const testCase of slotDefaultTestCases) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 async() => {
                   await updateComponent({ slots: { [testCase.slot]: testCase.content } })
 
@@ -81,7 +81,7 @@ describe(
               ...propVariantCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен быть ${testCase.case}`,
+                `Prop "${testCase.prop}" should work ${testCase.case}`,
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -96,7 +96,7 @@ describe(
           () => {
             for (const testCase of [...eventCollapseChangeCases]) {
               it(
-                `Должен генерировать событие ${testCase.event} ${testCase.case}`,
+                `Should emit ${testCase.event} ${testCase.case}`,
                 async() => {
                   const eventHandler = vi.fn()
                   component.addEventListener(
@@ -129,7 +129,7 @@ describe(
             }
             for (const testCase of [...eventCollapseMoveCases]) {
               it(
-                `Должен генерировать событие ${testCase.event} ${testCase.case}`,
+                `Should emit ${testCase.event} ${testCase.case}`,
                 async() => {
                   const {
                     component: componentWithCollapseItem,

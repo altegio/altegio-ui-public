@@ -12,7 +12,7 @@ export const propSizeTestCases: TPropTestCase<IYCoreTagProps, 'size'>[] = [
   EYSizes.SMALL as TYCoreTagSize,
   EYSizes.MEDIUM as TYCoreTagSize,
   EYSizes.LARGE as TYCoreTagSize,
-].map((value) => ({ prop: 'size', case: `со значением ${value}`, value }))
+].map((value) => ({ prop: 'size', case: `with value ${value}`, value }))
 
 export const propVariantTestCases: TPropTestCase<IYCoreTagProps, 'variant'>[] = Object
   .values(EYCoreTagVariant)
@@ -25,19 +25,19 @@ export const propVariantTestCases: TPropTestCase<IYCoreTagProps, 'variant'>[] = 
 export const propDisabledTestCases: TPropTestCase<IYCoreTagProps, 'disabled'>[] = [
   true,
   false,
-].map((value) => ({ prop: 'disabled', case: `со значением ${value}`, value }))
+].map((value) => ({ prop: 'disabled', case: `with value ${value}`, value }))
 
 export const propIconLeftTestCases: TPropTestCase<IYCoreTagProps, 'iconLeft'>[] = [
   {
     prop: 'iconLeft',
-    case: 'со значением',
+    case: 'with a value',
     value: { name: 'check' as TYIcons, data: '' } as IYIcon,
   },
 ]
 
 export const propLocatorTestCases: TPropTestCase<IYCoreTagProps, 'locator'>[] = [
-  { prop: 'locator', case: 'текст', value: text, expected: text },
-  { prop: 'locator', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'locator', case: 'text', value: text, expected: text },
+  { prop: 'locator', case: 'empty string', value: empty, expected: empty },
   { prop: 'locator', case: 'undefined', value: undefined, expected: undefined },
 ]
 

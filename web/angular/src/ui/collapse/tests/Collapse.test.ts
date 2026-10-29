@@ -81,7 +81,7 @@ describe(
           () => {
             for (const testCase of slotDefaultTestCases) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 async() => {
                   const component = await createComponent({
                     slots: { [testCase.slot]: testCase.content },
@@ -109,7 +109,7 @@ describe(
               ...propDraggableCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 async() => {
                   const component = await createComponent({
                     slots: {},
@@ -136,7 +136,7 @@ describe(
               ...eventCollapseMoveCases,
             ]) {
               it(
-                `Должен вызывать событие "${testCase.event}" в случае "${testCase.case}" при "${testCase.nodeEventName}"`,
+                `Should emit "${testCase.event}" ${testCase.case} (node event "${testCase.nodeEventName}")`,
                 async() => {
                   const handleAction = vi.fn()
                   const component = await createComponent({ props: {} })

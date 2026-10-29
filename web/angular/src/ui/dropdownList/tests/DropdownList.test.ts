@@ -90,7 +90,7 @@ describe(
               ...slotListTestCases,
             ]) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 async() => {
                   const component = await createComponent({
                     slots: { [testCase.slot]: testCase.content },
@@ -117,7 +117,7 @@ describe(
               ...propMinWidthTestCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен быть "${testCase.case}"`,
+                `Prop "${testCase.prop}" should be "${testCase.case}"`,
                 async() => {
                   const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
                   const fixture = TestBed.createComponent(component)

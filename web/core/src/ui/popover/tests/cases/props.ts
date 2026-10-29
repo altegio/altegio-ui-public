@@ -16,7 +16,7 @@ export const propTypeTestCases: TPropTestCase<IYCorePopoverProps, 'type'>[] = Ob
 export const propPaddingTestCases: TPropTestCase<IYCorePopoverProps, 'padding'>[] = [
   {
     prop: 'padding',
-    case: 'со значением',
+    case: 'with a value',
     value: 8,
   },
 ]
@@ -24,38 +24,38 @@ export const propPaddingTestCases: TPropTestCase<IYCorePopoverProps, 'padding'>[
 export const propOffsetTestCases: TPropTestCase<IYCorePopoverProps, 'offset'>[] = [
   {
     prop: 'offset',
-    case: 'со значением',
+    case: 'with a value',
     value: 8,
   },
 ]
 
-export const propTriggerTestCases: TPropTestCase<IYCorePopoverProps, 'trigger'>[] = Object.values(EYCoreDropdownTrigger).map((value) => ({ prop: 'trigger', case: `со значением ${value}`, value }))
+export const propTriggerTestCases: TPropTestCase<IYCorePopoverProps, 'trigger'>[] = Object.values(EYCoreDropdownTrigger).map((value) => ({ prop: 'trigger', case: `with value ${value}`, value }))
 
 export const propIsOpenTestCases: TPropTestCase<IYCorePopoverProps, 'isOpen'>[] = [
   true,
   false,
-].map((value) => ({ prop: 'isOpen', case: `со значением ${value}`, value }))
+].map((value) => ({ prop: 'isOpen', case: `with value ${value}`, value }))
 
-export const propPlacementTestCases: TPropTestCase<IYCorePopoverProps, 'placement'>[] = Object.values(EYCoreDropdownPlacement).map((value) => ({ prop: 'placement', case: `со значением ${value}`, value }))
+export const propPlacementTestCases: TPropTestCase<IYCorePopoverProps, 'placement'>[] = Object.values(EYCoreDropdownPlacement).map((value) => ({ prop: 'placement', case: `with value ${value}`, value }))
 
-export const propStrategyTestCases: TPropTestCase<IYCorePopoverProps, 'strategy'>[] = Object.values(EYCoreDropdownStrategy).map((value) => ({ prop: 'strategy', case: `со значением ${value}`, value }))
+export const propStrategyTestCases: TPropTestCase<IYCorePopoverProps, 'strategy'>[] = Object.values(EYCoreDropdownStrategy).map((value) => ({ prop: 'strategy', case: `with value ${value}`, value }))
 
 export const propTransitionTestCases: TPropTestCase<IYCorePopoverProps, 'transition'>[] = [
   {
     prop: 'transition',
-    case: 'со значением',
+    case: 'with a value',
     value: 'none',
   },
 ]
 
 export const propSubmitTextTestCases: TPropTestCase<IYCorePopoverProps, 'submitText'> = {
   prop: 'submitText',
-  case: 'со значением',
-  value: 'Далее',
+  case: 'with a value',
+  value: 'Next',
 }
 
 export const propCancelTextTestCases: TPropTestCase<IYCorePopoverProps, 'cancelText'> = {
   prop: 'cancelText',
-  case: 'со значением',
-  value: 'Далее',
+  case: 'with a value',
+  value: 'Next',
 }

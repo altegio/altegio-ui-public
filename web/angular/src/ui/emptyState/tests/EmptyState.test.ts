@@ -58,7 +58,7 @@ describe(
       () => {
         for (const testCase of [...propSizeTestCases]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)
@@ -78,7 +78,7 @@ describe(
           ...propDescriptionTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" ${testCase.case} should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)
@@ -95,7 +95,7 @@ describe(
 
         for (const testCase of [...propIconTestCases]) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" ${testCase.case} should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)
@@ -117,7 +117,7 @@ describe(
       () => {
         for (const testCase of [...slotActionsTestCases]) {
           it(
-            `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
             async() => {
               const component = await createComponent({
                 slots: testCase.content ? { [testCase.slot]: testCase.content } : {},

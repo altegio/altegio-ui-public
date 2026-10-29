@@ -1,4 +1,4 @@
-import { LitElement, html, css, unsafeCSS, type PropertyValues } from 'lit'
+import { html, css, unsafeCSS, type PropertyValues } from 'lit'
 import { ifDefined } from 'lit/directives/if-defined.js'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
@@ -14,6 +14,8 @@ import {
   YCoreTablePaginationTagName as tagName,
 } from '~shared/constants'
 
+import { LocalizedElement } from '~core/i18n/LocalizedElement'
+import { en } from '~core/i18n/locale/en'
 import { interceptEvents } from '~core/utils/event-interceptor'
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
 import { arrayConverter } from '~core/utils/converters'
@@ -36,14 +38,13 @@ import { withLocator } from '~core/utils/locator'
 
 const { page, itemsPerPage, total, disabled, counterText, optionsItemsPerPage, itemValue, itemLabel } = createCoreTablePaginationProps()
 
-const MIDDLE_TEXT_SEPARATOR = ' из '
 const CURRENT_ITEMS_SEPARATOR = '-'
 
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
 export class YCoreTablePagination
-  extends LitElement
+  extends LocalizedElement
   implements IYCoreTablePaginationProps {
   @property({ type: Number }) page: IYCoreTablePaginationProps['page'] = page
   @property({ type: Number, attribute: 'items-per-page' }) itemsPerPage: IYCoreTablePaginationProps['itemsPerPage'] = itemsPerPage
@@ -88,8 +89,10 @@ export class YCoreTablePagination
     const firstCurrentPage = itemsPerPageByPage - Number(this.itemsPerPage) + 1
     const lastCurrentPage = itemsPerPageByPage > Number(this.total) ? Number(this.total) : itemsPerPageByPage
     const currentPages = `${firstCurrentPage}${CURRENT_ITEMS_SEPARATOR}${lastCurrentPage}`
+    // Custom locales defined before the "of" message existed fall back to English
+    const of = (this.getLocale().messages.of as string | undefined) ?? en.messages.of
 
-    return `${currentPages}${MIDDLE_TEXT_SEPARATOR}${this.total}`
+    return `${currentPages} ${of} ${this.total}`
   }
 
   private get computedOptionsItemsPerPage() {
@@ -141,8 +144,12 @@ export class YCoreTablePagination
     )
   }
 
-  protected updated(_changedProperties: PropertyValues): void {
-    if (_changedProperties.has('plugins')) {
+  updated(changedProperties: PropertyValues<this>): void {
+    super.updated(changedProperties)
+
+    // plugins is private, so PropertyValues<this> does not include its key
+    const changed = changedProperties as PropertyValues
+    if (changed.has('plugins')) {
       const plugins = this.plugins?.[tagName] ?? []
 
       if (plugins.length > 0) {
@@ -152,7 +159,7 @@ export class YCoreTablePagination
           this,
         )
       } else {
-        const oldPlugins = _changedProperties.get('plugins') as typeof this.plugins
+        const oldPlugins = changed.get('plugins') as typeof this.plugins
 
         uninstallPlugins(
           oldPlugins,

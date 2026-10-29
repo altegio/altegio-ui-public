@@ -71,7 +71,7 @@ describe(
               ...propNameTestCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен быть ${testCase.case}`,
+                `Prop "${testCase.prop}" should work ${testCase.case}`,
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -85,7 +85,7 @@ describe(
           'Events',
           () => {
             it(
-              'Должен вызывать событие changed-value при изменении значения',
+              'Should emit changed-value when the value changes',
               () => {
                 const changedValueHandler = vi.fn()
                 component.addEventListener('changed-value', changedValueHandler)
@@ -99,7 +99,7 @@ describe(
             )
 
             it(
-              'Должен вызывать событие focus при фокусе',
+              'Should emit focus on focus',
               () => {
                 const focusHandler = vi.fn()
                 component.addEventListener('focus', focusHandler)
@@ -112,7 +112,7 @@ describe(
             )
 
             it(
-              'Должен вызывать событие blur при потере фокуса',
+              'Should emit blur on blur',
               () => {
                 const blurHandler = vi.fn()
                 component.addEventListener('blur', blurHandler)
@@ -125,7 +125,7 @@ describe(
             )
 
             it(
-              'Должен вызывать событие keydown при нажатии клавиши',
+              'Should emit keydown on key press',
               () => {
                 const keydownHandler = vi.fn()
                 component.addEventListener('keydown', keydownHandler)

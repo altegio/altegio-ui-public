@@ -49,7 +49,7 @@ describe(
           'Slots',
           () => {
             it(
-              'Должен отрендерить input из default слота',
+              'Should render the input from the default slot',
               async() => {
                 const slotElement = getWCShadowRoot(component).querySelector('slot')
                 await updateComponent({ slots: { default: fieldInputHtml } })
@@ -63,7 +63,7 @@ describe(
           'Props',
           () => {
             for (const testCase of propsTestCases) {
-              it(`Проп ${testCase.prop} должен быть ${testCase.case}`, async() => {
+              it(`Prop ${testCase.prop} should work ${testCase.case}`, async() => {
                 component.innerHTML = fieldInputHtml
                 await component.updateComplete
 
@@ -115,7 +115,7 @@ describe(
       () => {
         for (const { host, root } of CSSVariablesHostToRootCases) {
           it(
-            `Host CSS переменная ${host} в стилях должна иметь значение :root CSS переменной ${root}`,
+            `Host CSS variable ${host} should have the value of the :root CSS variable ${root} in the styles`,
             () => {
               const shadowRoot = getWCShadowRoot(component)
 
@@ -131,7 +131,7 @@ describe(
 
         for (const { host, value } of CSSVariablesHostToValueCases) {
           it(
-            `Вычисленная Host CSS переменная ${host} в созданном компоненте должна иметь значение из токенов: ${value}`,
+            `Computed host CSS variable ${host} on the created component should have the token value: ${value}`,
             () => {
               const shadowRoot = getWCShadowRoot(component)
 

@@ -39,11 +39,11 @@ export const propLineclampTestCases: TPropTestCase<IYVueCoreTableCellProps, 'lin
 ]
 
 export const propItemTestCases: TPropTestCase<IYVueCoreTableCellProps, 'item'>[] = [
-  { prop: 'item', case: 'с объектом', value: item, expected: item },
-  { prop: 'item', case: 'с undefined', value: undefined, expected: undefined },
+  { prop: 'item', case: 'with an object', value: item, expected: item },
+  { prop: 'item', case: 'with undefined', value: undefined, expected: undefined },
 ]
 
 export const propItemLabelTestCases: TPropTestCase<IYVueCoreTableCellProps, 'itemLabel'>[] = [
-  { prop: 'itemLabel', case: 'с текстом', value: text, expected: text },
-  { prop: 'itemLabel', case: 'с undefined', value: undefined, expected: itemLabel },
+  { prop: 'itemLabel', case: 'with text', value: text, expected: text },
+  { prop: 'itemLabel', case: 'with undefined', value: undefined, expected: itemLabel },
 ]

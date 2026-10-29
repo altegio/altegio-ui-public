@@ -8,6 +8,7 @@ export const en: ILocale = {
   messages: {
     cancel: 'Cancel',
     good: 'Good',
+    of: 'of',
   },
   formatters: {
     date: {

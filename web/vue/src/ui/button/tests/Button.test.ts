@@ -22,13 +22,13 @@ const tagName = YCoreButtonTagName
 const propLabelTestCases: TPropTestCase<IYVueButtonProps, 'label'>[] = [
   {
     prop: 'label',
-    case: 'со значением',
+    case: 'with a value',
     value: text,
     expected: text,
   },
   {
     prop: 'label',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultLabel,
   },
@@ -36,13 +36,13 @@ const propLabelTestCases: TPropTestCase<IYVueButtonProps, 'label'>[] = [
 const propIconLeftTestCases: TPropTestCase<IYVueButtonProps, 'iconLeft'>[] = [
   {
     prop: 'iconLeft',
-    case: 'со значением',
+    case: 'with a value',
     value: yRocket,
     expected: yRocket,
   },
   {
     prop: 'iconLeft',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: undefined,
   },
@@ -50,13 +50,13 @@ const propIconLeftTestCases: TPropTestCase<IYVueButtonProps, 'iconLeft'>[] = [
 const propIconRightTestCases: TPropTestCase<IYVueButtonProps, 'iconRight'>[] = [
   {
     prop: 'iconRight',
-    case: 'со значением',
+    case: 'with a value',
     value: yRocket,
     expected: yRocket,
   },
   {
     prop: 'iconRight',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: undefined,
   },
@@ -79,7 +79,7 @@ describe(
       () => {
         for (const testCase of propLabelTestCases) {
           it(
-            `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента на "${testCase.case}"`,
+            `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
             () => {
               const wrapper = mount(
                 YButton,
@@ -97,7 +97,7 @@ describe(
           ...propIconRightTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента на "${testCase.case}"`,
+            `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
             () => {
               const wrapper = mount(
                 YButton,

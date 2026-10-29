@@ -40,7 +40,7 @@ describe(
       () => {
         for (const testCase of [...propTextTestCases]) {
           it(
-            `Должен отрендерить prop "${testCase.prop}" в слоте "content", если не предоставлен slot "content"`,
+            `Should render prop "${testCase.prop}" in the "content" slot when the "content" slot is not provided`,
             async() => {
               await updateComponent({
                 props: { text: testCase.value },
@@ -60,7 +60,7 @@ describe(
           () => {
             for (const testCase of [...slotContentProvidedTestCases]) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 async() => {
                   await updateComponent({
                     slots: { content: testCase.content, activator: 'Activator' },
@@ -74,7 +74,7 @@ describe(
 
             for (const testCase of [...slotContentNoProvidedTestCases]) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 async() => {
                   await updateComponent({
                     slots: { [testCase.slot]: testCase.content, activator: 'Activator' },

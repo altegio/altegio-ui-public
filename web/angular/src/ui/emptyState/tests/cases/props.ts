@@ -10,14 +10,14 @@ export const propSizeTestCases: TPropTestCase<IYNgEmptyStateProps, 'size'>[] = [
   { prop: 'size', case: 'undefined', value: undefined, expected: EYSizes.SMALL },
 ]
 export const propTitleTestCases: TPropTestCase<IYNgEmptyStateProps, 'title'>[] = [
-  { prop: 'title', case: 'с контентом', value: text, expected: text },
-  { prop: 'title', case: 'без контента', value: empty, expected: empty },
+  { prop: 'title', case: 'with content', value: text, expected: text },
+  { prop: 'title', case: 'without content', value: empty, expected: empty },
 ]
 export const propDescriptionTestCases: TPropTestCase<IYNgEmptyStateProps, 'description'>[] = [
-  { prop: 'description', case: 'с контентом', value: text, expected: text },
-  { prop: 'description', case: 'без контента', value: empty, expected: empty },
+  { prop: 'description', case: 'with content', value: text, expected: text },
+  { prop: 'description', case: 'without content', value: empty, expected: empty },
 ]
 export const propIconTestCases: TPropTestCase<IYNgEmptyStateProps, 'icon'>[] = [
-  { prop: 'icon', case: 'с указанной иконкой', value: yRocket, expected: yRocket.name },
-  { prop: 'icon', case: 'со стандартной иконкой', value: undefined, expected: yMagic.name },
+  { prop: 'icon', case: 'with the given icon', value: yRocket, expected: yRocket.name },
+  { prop: 'icon', case: 'with the default icon', value: undefined, expected: yMagic.name },
 ]

@@ -15,16 +15,16 @@ export const testErrors = [
 export const sizes = Object.values(EYSizes).filter((size) => size !== EYSizes.EXTRA_LARGE && size !== EYSizes.EXTRA_SMALL)
 
 export const propValueCases: TPropTestCase<IYCoreInputFieldProps, 'value'>[] = [
-  { prop: 'value', case: 'с текстом', value: text },
-  { prop: 'value', case: 'без текста', value: '' },
+  { prop: 'value', case: 'with text', value: text },
+  { prop: 'value', case: 'without text', value: '' },
 ]
 export const propNameCases: TPropTestCase<IYCoreInputFieldProps, 'name'>[] = [
-  { prop: 'name', case: 'с текстом', value: text },
-  { prop: 'name', case: 'без текста', value: '' },
+  { prop: 'name', case: 'with text', value: text },
+  { prop: 'name', case: 'without text', value: '' },
 ]
 export const propPlaceholderCases: TPropTestCase<IYCoreInputFieldProps, 'placeholder'>[] = [
-  { prop: 'placeholder', case: 'с текстом', value: text },
-  { prop: 'placeholder', case: 'без текста', value: '' },
+  { prop: 'placeholder', case: 'with text', value: text },
+  { prop: 'placeholder', case: 'without text', value: '' },
 ]
 export const propAutofocusCases: TPropTestCase<IYCoreInputFieldProps, 'autofocus'>[] = [
   { prop: 'autofocus', case: 'true', value: true },
@@ -52,17 +52,17 @@ export const propMaxlengthCases: TPropTestCase<IYCoreInputFieldProps, 'maxlength
   { prop: 'maxlength', case: '0', value: 0 },
 ]
 export const propMaskOptionsCases: TPropTestCase<IYCoreInputFieldProps, 'maskOptions'>[] = [
-  { prop: 'maskOptions', case: 'с маской', value: testMaskOptions },
-  { prop: 'maskOptions', case: 'без маски', value: undefined },
+  { prop: 'maskOptions', case: 'with a mask', value: testMaskOptions },
+  { prop: 'maskOptions', case: 'without a mask', value: undefined },
 ]
 export const propErrorsCases: TPropTestCase<IYCoreInputFieldProps, 'errors'>[] = [
-  { prop: 'errors', case: 'с ошибками', value: testErrors },
-  { prop: 'errors', case: 'с одной ошибкой', value: [testErrors[0]] },
-  { prop: 'errors', case: 'без ошибок', value: [] },
+  { prop: 'errors', case: 'with errors', value: testErrors },
+  { prop: 'errors', case: 'with one error', value: [testErrors[0]] },
+  { prop: 'errors', case: 'without errors', value: [] },
 ]
 export const propClearableCases: TPropTestCase<IYCoreInputFieldProps, 'clearable'>[] = [
-  { prop: 'clearable', case: 'с очисткой', value: true },
-  { prop: 'clearable', case: 'без очистки', value: false },
+  { prop: 'clearable', case: 'clearable', value: true },
+  { prop: 'clearable', case: 'not clearable', value: false },
 ]
 export const propSizeCases: TPropTestCase<IYCoreInputFieldProps, 'size'>[] = sizes.map((size) => ({
   prop: 'size',
@@ -78,14 +78,14 @@ export const propLabelOverflowDebounceCases: (TPropLabel<'labelOverflowDebounce'
   { prop: 'labelOverflowDebounce', labelProp: 'debounce', case: '0', value: 0 },
 ]
 export const propLabelTextCases: TPropLabel<'labelText', 'text'>[] = [
-  { prop: 'labelText', labelProp: 'text', case: 'с текстом', value: text },
-  { prop: 'labelText', labelProp: 'text', case: 'без текста', value: '' },
+  { prop: 'labelText', labelProp: 'text', case: 'with text', value: text },
+  { prop: 'labelText', labelProp: 'text', case: 'without text', value: '' },
 ]
 export const propLabelTooltipTextCases: TPropLabel<'labelTooltipText', 'tooltipText'>[] = [
-  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'с текстом', value: text },
-  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'без текста', value: '' },
+  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'with text', value: text },
+  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'without text', value: '' },
 ]
 export const propAnnotationTextCases: TPropAnnotation<'annotationText', 'text'>[] = [
-  { prop: 'annotationText', annotationProp: 'text', case: 'с текстом', value: text },
-  { prop: 'annotationText', annotationProp: 'text', case: 'без текста', value: '' },
+  { prop: 'annotationText', annotationProp: 'text', case: 'with text', value: text },
+  { prop: 'annotationText', annotationProp: 'text', case: 'without text', value: '' },
 ]

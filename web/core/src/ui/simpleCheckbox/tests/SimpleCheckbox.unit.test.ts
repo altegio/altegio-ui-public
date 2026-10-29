@@ -106,7 +106,7 @@ describe(
           const expectedCssClass = `${tagName}_size_${testCase.case}`
 
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить класс у rootElement на "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should change the rootElement class to "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -126,7 +126,7 @@ describe(
           const expectedCssClass = `${tagName}_${testCase.case}`
 
           it(
-            `Должен ${testCase.case} класс ${expectedCssClass}, если prop ${testCase.prop} ${testCase.value}`,
+            `Should ${testCase.case} class ${expectedCssClass} when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -150,7 +150,7 @@ describe(
           const expectedCssClass = `${tagName}_status_${testCase.prop}`
 
           it(
-            `Должен ${testCase.case} класс ${expectedCssClass}, если prop ${testCase.prop} ${testCase.value}`,
+            `Should ${testCase.case} class ${expectedCssClass} when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -172,7 +172,7 @@ describe(
       'Events',
       () => {
         it(
-          'Должен вызывать обработчик клика при нажатии на чекбокс',
+          'Should call the click handler on checkbox click',
           async() => {
             await updateComponent({ props: {} })
 
@@ -180,7 +180,7 @@ describe(
 
             const rootElement = getRootElement()
             const testingNode = rootElement?.querySelector('div')
-            if (!testingNode) throw Error('Checkbox Element не найден')
+            if (!testingNode) throw Error('Checkbox element not found')
 
             component.addEventListener(
               'checked',
@@ -199,7 +199,7 @@ describe(
 
         // Skipped: disabled controls still emit click events because the mobile tooltip needs them
         it.skip(
-          'Не должен вызывать обработчик клика, если чекбокс отключен',
+          'Should not call the click handler when the checkbox is disabled',
           async() => {
             await updateComponent({ props: { disabled: true } })
 
@@ -207,7 +207,7 @@ describe(
 
             const rootElement = getRootElement()
             const testingNode = rootElement?.querySelector('div')
-            if (!testingNode) throw Error('Checkbox Element не найден')
+            if (!testingNode) throw Error('Checkbox element not found')
 
             component.addEventListener(
               'checked',

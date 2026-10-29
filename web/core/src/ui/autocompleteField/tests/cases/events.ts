@@ -26,8 +26,8 @@ type TEventTestCase = {
 }
 
 export const wrapperEvents: TEventTestCase[] = [
-  { eventName: focusEventName, event: focusEvent, emitEventName: focusEventName, case: 'при фокусе' },
-  { eventName: blurEventName, event: blurEvent, emitEventName: blurEventName, case: 'при потере фокуса' },
+  { eventName: focusEventName, event: focusEvent, emitEventName: focusEventName, case: 'on focus' },
+  { eventName: blurEventName, event: blurEvent, emitEventName: blurEventName, case: 'on blur' },
 ]
 
-export const fieldEvents: TEventTestCase[] = [{ eventName: inputEventName, payload: { value: text }, event: inputEvent, emitEventName: 'change', case: 'при вводе' }]
+export const fieldEvents: TEventTestCase[] = [{ eventName: inputEventName, payload: { value: text }, event: inputEvent, emitEventName: 'change', case: 'on input' }]

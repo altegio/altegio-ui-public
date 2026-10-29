@@ -3,28 +3,28 @@ import type { TEventTestCase } from '~shared/types/tests'
 export const eventInputCases: TEventTestCase[] = [
   {
     event: 'input',
-    case: 'при вводе текста',
+    case: 'on text input',
     nodeEventName: 'input',
   },
 ]
 export const eventFocusCases: TEventTestCase[] = [
   {
     event: 'focus',
-    case: 'при фокусе',
+    case: 'on focus',
     nodeEventName: 'focus',
   },
 ]
 export const eventBlurCases: TEventTestCase[] = [
   {
     event: 'blur',
-    case: 'при потере фокуса',
+    case: 'on blur',
     nodeEventName: 'blur',
   },
 ]
 export const eventKeydownCases: TEventTestCase[] = [
   {
     event: 'keydown',
-    case: 'при нажатии клавиши',
+    case: 'on key press',
     nodeEventName: 'keydown',
   },
 ]
@@ -32,7 +32,7 @@ export const eventKeydownCases: TEventTestCase[] = [
 export const eventRenderCases: TEventTestCase[] = [
   {
     event: 'render',
-    case: 'при рендере',
+    case: 'on render',
     nodeEventName: 'render',
   },
 ]

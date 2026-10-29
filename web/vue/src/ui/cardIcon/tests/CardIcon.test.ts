@@ -33,7 +33,7 @@ describe(
           ...propVariantCases,
         ]) {
           it(
-            `Prop: "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+            `Prop: "${testCase.prop}" should set ${testCase.prop} on the core component`,
             () => {
               const wrapper = mount(
                 YCardIcon,
@@ -49,7 +49,7 @@ describe(
 
         for (const testCase of propHeaderIconCases) {
           it(
-            `Prop: ${testCase.prop} должен быть ${testCase.case} для core компонента`,
+            `Prop: ${testCase.prop} should work ${testCase.case} for the core component`,
             () => {
               const wrapper = mount(
                 YCardIcon,

@@ -35,7 +35,7 @@ describe(
 
     for (const { host, root } of CSSVariablesDisabledCases) {
       it(
-        `Host CSS переменная ${host} в стилях должна иметь значение :root CSS переменной ${root}`,
+        `Host CSS variable ${host} should have the value of the :root CSS variable ${root} in the styles`,
         () => {
           const shadowRoot = getWCShadowRoot(component)
 
@@ -51,7 +51,7 @@ describe(
 
     for (const { host, value } of CSSVariablesDisabledValueCases) {
       it(
-        `Вычисленная Host CSS переменная ${host} в созданном компоненте должна иметь значение из токенов: ${value}`,
+        `Computed host CSS variable ${host} on the created component should have the token value: ${value}`,
         () => {
           const shadowRoot = getWCShadowRoot(component)
 
@@ -77,7 +77,7 @@ describe(
 
     for (const { host, root } of CSSVariablesPrimaryVariantCases) {
       it(
-        `Host CSS переменная ${host} для variant="primary" должна иметь значение :root CSS переменной ${root}`,
+        `Host CSS variable ${host} for variant="primary" should have the value of the :root CSS variable ${root}`,
         () => {
           const shadowRoot = getWCShadowRoot(primaryComponent)
 
@@ -94,7 +94,7 @@ describe(
 
     for (const { host, value } of CSSVariablesPrimaryVariantValueCases) {
       it(
-        `Вычисленная Host CSS переменная ${host} для variant="primary" должна иметь значение из токенов: ${value}`,
+        `Computed host CSS variable ${host} for variant="primary" should have the token value: ${value}`,
         () => {
           const shadowRoot = getWCShadowRoot(primaryComponent)
 
@@ -120,7 +120,7 @@ describe(
 
     for (const { host, root } of CSSVariablesOutlineVariantCases) {
       it(
-        `Host CSS переменная ${host} для variant="outline" должна иметь значение :root CSS переменной ${root}`,
+        `Host CSS variable ${host} for variant="outline" should have the value of the :root CSS variable ${root}`,
         () => {
           const shadowRoot = getWCShadowRoot(outlineComponent)
 
@@ -137,7 +137,7 @@ describe(
 
     for (const { host, value } of CSSVariablesOutlineVariantValueCases) {
       it(
-        `Вычисленная Host CSS переменная ${host} для variant="outline" должна иметь значение из токенов: ${value}`,
+        `Computed host CSS variable ${host} for variant="outline" should have the token value: ${value}`,
         () => {
           const shadowRoot = getWCShadowRoot(outlineComponent)
 
@@ -163,7 +163,7 @@ describe(
 
     for (const { host, root } of CSSVariablesOutlineVariantCases) {
       it(
-        `Host CSS переменная ${host} для variant="outline-filled" должна иметь значение :root CSS переменной ${root}`,
+        `Host CSS variable ${host} for variant="outline-filled" should have the value of the :root CSS variable ${root}`,
         () => {
           const shadowRoot = getWCShadowRoot(outlineFilledComponent)
 
@@ -180,7 +180,7 @@ describe(
 
     for (const { host, value } of CSSVariablesOutlineVariantValueCases) {
       it(
-        `Вычисленная Host CSS переменная ${host} для variant="outline-filled" должна иметь значение из токенов: ${value}`,
+        `Computed host CSS variable ${host} for variant="outline-filled" should have the token value: ${value}`,
         () => {
           const shadowRoot = getWCShadowRoot(outlineFilledComponent)
 

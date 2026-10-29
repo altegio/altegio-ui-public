@@ -39,7 +39,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 const basePropsCheck = () => {
   for (const testCase of [...propsTabsTestCases]) {
     it(
-      `Prop: "${testCase.prop}" ${typeof testCase.value === 'object' ? JSON.stringify(testCase.value) : testCase.value} ${testCase.value === undefined ? 'не' : ''} должен изменить свойство ${testCase.prop} у core компонента`,
+      `Prop: "${testCase.prop}" ${typeof testCase.value === 'object' ? JSON.stringify(testCase.value) : testCase.value} should ${testCase.value === undefined ? 'not' : ''} set ${testCase.prop} on the core component`,
       async() => {
         const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
         const fixture = TestBed.createComponent(component)
@@ -58,7 +58,7 @@ const basePropsCheck = () => {
 const baseEventsCheck = () => {
   for (const testCase of [...eventUpdateValue]) {
     it(
-      `Event: должен генерировать событие ${testCase.event} ${testCase.case}`,
+      `Event: should emit ${testCase.event} ${testCase.case}`,
       async() => {
         const component = await createComponent({ props: {} })
         const fixture = TestBed.createComponent(component)

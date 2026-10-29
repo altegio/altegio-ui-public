@@ -44,7 +44,7 @@ describe(
           ...propErrorsTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const checked = ref(false)
               const wrapper = mount(
@@ -78,7 +78,7 @@ describe(
           ...slotAnnotationTestCases,
         ]) {
           it(
-            `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
                 YRadioButton,
@@ -98,7 +98,7 @@ describe(
       'Events',
       () => {
         it(
-          'Должен вызывать событие "update:modelValue" при изменении состояния чекбокса',
+          'Should emit "update:modelValue" when the checkbox state changes',
           async() => {
             const wrapper = mount(
               YRadioButton,

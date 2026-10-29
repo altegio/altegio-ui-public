@@ -2,13 +2,13 @@ import type { TPropTestCase } from '~shared/types/tests'
 import type { IYNgCountFieldProps } from '~ng/ui/countField/models/types'
 
 export const propMinTestCases: TPropTestCase<IYNgCountFieldProps, 'min'>[] = [
-  { prop: 'min', case: 'с минимальным значением', value: 0 },
-  { prop: 'min', case: 'без минимального значения', value: undefined },
+  { prop: 'min', case: 'with a minimum value', value: 0 },
+  { prop: 'min', case: 'without a minimum value', value: undefined },
 ]
 
 export const propMaxTestCases: TPropTestCase<IYNgCountFieldProps, 'max'>[] = [
-  { prop: 'max', case: 'с максимальным значением', value: Infinity },
-  { prop: 'max', case: 'без максимального значения', value: undefined },
+  { prop: 'max', case: 'with a maximum value', value: Infinity },
+  { prop: 'max', case: 'without a maximum value', value: undefined },
 ]
 
 export const propSizeTestCases: TPropTestCase<IYNgCountFieldProps, 'size'>[] = [
@@ -18,56 +18,56 @@ export const propSizeTestCases: TPropTestCase<IYNgCountFieldProps, 'size'>[] = [
 ]
 
 export const propDisabledTestCases: TPropTestCase<IYNgCountFieldProps, 'disabled'>[] = [
-  { prop: 'disabled', case: 'содержать', value: true },
-  { prop: 'disabled', case: 'отсутствовать', value: false },
+  { prop: 'disabled', case: 'have', value: true },
+  { prop: 'disabled', case: 'not have', value: false },
 ]
 
 export const propRequiredTestCases: TPropTestCase<IYNgCountFieldProps, 'required'>[] = [
-  { prop: 'required', case: 'содержать', value: true },
-  { prop: 'required', case: 'отсутствовать', value: false },
+  { prop: 'required', case: 'have', value: true },
+  { prop: 'required', case: 'not have', value: false },
 ]
 
 export const propErrorTestCases: TPropTestCase<IYNgCountFieldProps, 'error'>[] = [
-  { prop: 'error', case: 'содержать', value: true },
-  { prop: 'error', case: 'отсутствовать', value: false },
+  { prop: 'error', case: 'have', value: true },
+  { prop: 'error', case: 'not have', value: false },
 ]
 
 export const propPlaceholderTestCases: TPropTestCase<IYNgCountFieldProps, 'placeholder'>[] = [
-  { prop: 'placeholder', case: 'с текстом', value: 'Введите значение' },
-  { prop: 'placeholder', case: 'без текста', value: '' },
+  { prop: 'placeholder', case: 'with text', value: 'Enter a value' },
+  { prop: 'placeholder', case: 'without text', value: '' },
 ]
 
 export const propAutofocusTestCases: TPropTestCase<IYNgCountFieldProps, 'autofocus'>[] = [
-  { prop: 'autofocus', case: 'содержать', value: true },
-  { prop: 'autofocus', case: 'отсутствовать', value: false },
+  { prop: 'autofocus', case: 'have', value: true },
+  { prop: 'autofocus', case: 'not have', value: false },
 ]
 
 export const propLabelTextTestCases: TPropTestCase<IYNgCountFieldProps, 'labelText'>[] = [
-  { prop: 'labelText', case: 'с текстом', value: 'Метка' },
-  { prop: 'labelText', case: 'без текста', value: '' },
+  { prop: 'labelText', case: 'with text', value: 'Label' },
+  { prop: 'labelText', case: 'without text', value: '' },
 ]
 
 export const propLabelTooltipTextTestCases: TPropTestCase<IYNgCountFieldProps, 'labelTooltipText'>[] = [
-  { prop: 'labelTooltipText', case: 'с текстом', value: 'Подсказка' },
-  { prop: 'labelTooltipText', case: 'без текста', value: '' },
+  { prop: 'labelTooltipText', case: 'with text', value: 'Tooltip' },
+  { prop: 'labelTooltipText', case: 'without text', value: '' },
 ]
 
 export const propLabelDebounceTestCases: TPropTestCase<IYNgCountFieldProps, 'labelDebounce'>[] = [
-  { prop: 'labelDebounce', case: 'с задержкой', value: 300 },
-  { prop: 'labelDebounce', case: 'без задержки', value: 0 },
+  { prop: 'labelDebounce', case: 'with a delay', value: 300 },
+  { prop: 'labelDebounce', case: 'without a delay', value: 0 },
 ]
 
 export const propAnnotationTextTestCases: TPropTestCase<IYNgCountFieldProps, 'annotationText'>[] = [
-  { prop: 'annotationText', case: 'с текстом', value: 'Аннотация' },
-  { prop: 'annotationText', case: 'без текста', value: '' },
+  { prop: 'annotationText', case: 'with text', value: 'Annotation' },
+  { prop: 'annotationText', case: 'without text', value: '' },
 ]
 
 export const propErrorsTestCases: TPropTestCase<IYNgCountFieldProps, 'errors'>[] = [
-  { prop: 'errors', case: 'с ошибками', value: ['Ошибка 1', 'Ошибка 2'] },
-  { prop: 'errors', case: 'без ошибок', value: [] },
+  { prop: 'errors', case: 'with errors', value: ['Error 1', 'Error 2'] },
+  { prop: 'errors', case: 'without errors', value: [] },
 ]
 
 export const propNameTestCases: TPropTestCase<IYNgCountFieldProps, 'name'>[] = [
-  { prop: 'name', case: 'с именем', value: 'count-field' },
-  { prop: 'name', case: 'без имени', value: '' },
+  { prop: 'name', case: 'with a name', value: 'count-field' },
+  { prop: 'name', case: 'without a name', value: '' },
 ]

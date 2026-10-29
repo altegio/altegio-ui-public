@@ -80,7 +80,7 @@ describe(
               ...propResizeCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен быть ${testCase.case}`,
+                `Prop "${testCase.prop}" should work ${testCase.case}`,
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -100,7 +100,7 @@ describe(
               ...eventKeydownCases,
             ]) {
               it(
-                `Должен генерировать событие ${testCase.event} ${testCase.case}`,
+                `Should emit ${testCase.event} ${testCase.case}`,
                 () => {
                   const eventHandler = vi.fn()
                   component.addEventListener(
@@ -119,7 +119,7 @@ describe(
               )
 
               it(
-                `Не должен генерировать событие ${testCase.event} при вводе текста, если поле отключено`,
+                `Should not emit ${testCase.event} on text input when the field is disabled`,
                 async() => {
                   await updateComponent({ props: { disabled: true } })
 
@@ -142,7 +142,7 @@ describe(
 
             for (const testCase of eventRenderCases) {
               it(
-                `Должен генерировать событие ${testCase.event} ${testCase.case}`,
+                `Should emit ${testCase.event} ${testCase.case}`,
                 () => {
                   const eventHandler = vi.fn()
                   component.addEventListener(

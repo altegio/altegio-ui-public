@@ -3,11 +3,11 @@ import type { IYCoreTooltipProps } from '~core/ui/tooltip/models/types'
 import { empty, text } from '~shared/tests/slotContents'
 
 export const slotContentTestCases: TSlotTestCase<string, IYCoreTooltipProps>[] = [
-  { slot: 'content', case: 'с контентом', content: text },
-  { slot: 'content', case: 'без контента', content: empty },
+  { slot: 'content', case: 'with content', content: text },
+  { slot: 'content', case: 'without content', content: empty },
 ]
 
 export const slotActivatorTestCases: TSlotTestCase<string, IYCoreTooltipProps>[] = [
-  { slot: 'activator', case: 'с контентом', content: text },
-  { slot: 'activator', case: 'без контента', content: empty },
+  { slot: 'activator', case: 'with content', content: text },
+  { slot: 'activator', case: 'without content', content: empty },
 ]

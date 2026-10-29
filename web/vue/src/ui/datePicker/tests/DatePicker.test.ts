@@ -63,7 +63,7 @@ describe(
                 ...propErrorsCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 () => {
                   const wrapper = mount(
                     YDatePicker,
@@ -83,7 +83,7 @@ describe(
 
             for (const testCase of propModelValueCases) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство date у core компонента`,
+                `Prop "${testCase.prop}" should set date on the core component`,
                 () => {
                   const wrapper = mount(
                     YDatePicker,
@@ -103,7 +103,7 @@ describe(
           'Events',
           () => {
             it(
-              'Должен вызывать событие "update:modelValue" при выборе даты',
+              'Should emit "update:modelValue" on date pick',
               async() => {
                 const wrapper = mount(
                   YDatePicker,

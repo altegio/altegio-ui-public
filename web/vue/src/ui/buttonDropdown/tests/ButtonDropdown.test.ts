@@ -50,7 +50,7 @@ describe(
           ...propAutoCloseTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента. Case: ${testCase.case}`,
+            `Prop "${testCase.prop}" should set ${testCase.prop} on the core component. Case: ${testCase.case}`,
             () => {
               const wrapper = mount(
                 YButtonDropdown,
@@ -69,7 +69,7 @@ describe(
       'Events',
       () => {
         it(
-          'Должен испускать события "item-click"',
+          'Should emit "item-click" events',
           () => {
             const wrapper = mount(YButtonDropdown)
 
@@ -87,7 +87,7 @@ describe(
           ...slotContentTestCases,
         ]) {
           it(
-            `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
                 YButtonDropdown,

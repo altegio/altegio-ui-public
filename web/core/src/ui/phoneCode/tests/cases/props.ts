@@ -6,18 +6,18 @@ import { EYSizes } from '~shared/types/global'
 const { code } = createCorePhoneCodeProps()
 
 export const propCodeTestCases: TPropTestCase<IYCorePhoneCodeProps, 'code'>[] = [
-  { prop: 'code', case: 'с кодом', value: '375' },
-  { prop: 'code', case: 'с дефолтным кодом', value: code },
+  { prop: 'code', case: 'with a code', value: '375' },
+  { prop: 'code', case: 'with the default code', value: code },
 ]
 
 export const propDisabledTestCases: TPropTestCase<IYCorePhoneCodeProps, 'disabled'>[] = [
-  { prop: 'disabled', case: 'включен', value: false },
-  { prop: 'disabled', case: 'выключен', value: true },
+  { prop: 'disabled', case: 'enabled', value: false },
+  { prop: 'disabled', case: 'disabled', value: true },
 ]
 
 export const propReadonlyTestCases: TPropTestCase<IYCorePhoneCodeProps, 'readonly'>[] = [
-  { prop: 'readonly', case: 'не только для чтения', value: false },
-  { prop: 'readonly', case: 'только для чтения', value: true },
+  { prop: 'readonly', case: 'not read-only', value: false },
+  { prop: 'readonly', case: 'read-only', value: true },
 ]
 
 export const propSizeTestCases: TPropTestCase<IYCorePhoneCodeProps, 'size'>[] = [

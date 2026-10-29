@@ -23,19 +23,19 @@ describe(
       'Unit',
       () => {
         describe('Component', () => {
-          it('должен корректно отрисоваться', () => {
+          it('should render', () => {
             const wrapper = mount(YTextarea)
             expect(wrapper.find(tagName).exists()).toBe(true)
           })
 
-          it('должен передавать v-model в value', () => {
+          it('should pass v-model to value', () => {
             const wrapper = mount(YTextarea, { props: { modelValue: 'Test text' } })
 
             const coreElement = wrapper.find(tagName).element as YCoreTextarea
             expect(coreElement.value).toBe('Test text')
           })
 
-          it('должен обновлять modelValue при вводе', () => {
+          it('should update modelValue on input', () => {
             const wrapper = mount(YTextarea, { props: { modelValue: '' } })
 
             wrapper.vm.$emit('update:modelValue', 'New value')
@@ -45,7 +45,7 @@ describe(
         })
 
         describe('Events', () => {
-          it('должен испускать события фокуса', () => {
+          it('should emit focus events', () => {
             const wrapper = mount(YTextarea)
 
             wrapper.vm.$emit('focus', { detail: { event: new Event('focus') } })
@@ -55,7 +55,7 @@ describe(
             expect(wrapper.emitted('blur')).toBeTruthy()
           })
 
-          it('должен испускать события keydown', () => {
+          it('should emit keydown events', () => {
             const wrapper = mount(YTextarea)
 
             wrapper.vm.$emit('keydown', { detail: { event: new KeyboardEvent('keydown'), code: 'KeyA' } })
@@ -64,7 +64,7 @@ describe(
         })
 
         describe('Props', () => {
-          it('должен корректно применять пропсы', () => {
+          it('should apply the props', () => {
             const wrapper = mount(YTextarea, {
               props: {
                 placeholder: 'Test placeholder',
@@ -83,7 +83,7 @@ describe(
         })
 
         describe('Slots', () => {
-          it('должен корректно отображать слоты', () => {
+          it('should render the slots', () => {
             const wrapper = mount(YTextarea, {
               slots: {
                 before: 'Before content',

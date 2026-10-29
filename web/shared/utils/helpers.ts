@@ -73,7 +73,7 @@ export const preventAndStopEvent = (event: Event) => {
  * @returns RegExp
  */
 export function createNaturalNumberRegex(min: number, max: number): RegExp {
-  if (max < min) throw new Error('max должен быть >= min')
+  if (max < min) throw new Error('max must be >= min')
 
   // Small ranges: list every allowed number
   if (max - min < 100) {

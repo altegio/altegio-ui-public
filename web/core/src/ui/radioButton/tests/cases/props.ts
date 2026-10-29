@@ -18,8 +18,8 @@ export const propCheckedTestCases: TPropTestCase<IYCoreRadioButtonExternalProps,
 ]
 
 export const propDisabledTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'disabled'>[] = [
-  { prop: 'disabled', case: 'содержать', value: true, expected: true },
-  { prop: 'disabled', case: 'отсутствовать', value: false, expected: false },
+  { prop: 'disabled', case: 'have', value: true, expected: true },
+  { prop: 'disabled', case: 'not have', value: false, expected: false },
 ]
 
 export const propAlignmentTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'alignment'>[] = [
@@ -29,14 +29,14 @@ export const propAlignmentTestCases: TPropTestCase<IYCoreRadioButtonExternalProp
 ]
 
 export const propLabelTextTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'labelText'>[] = [
-  { prop: 'labelText', case: 'с контентом', value: text, expected: text },
-  { prop: 'labelText', case: 'без контента', value: empty, expected: empty },
+  { prop: 'labelText', case: 'with content', value: text, expected: text },
+  { prop: 'labelText', case: 'without content', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: undefined },
 ]
 
 export const propLabelTooltipTextTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'labelTooltipText'>[] = [
-  { prop: 'labelTooltipText', case: 'с контентом', value: text, expected: text },
-  { prop: 'labelTooltipText', case: 'без контента', value: empty, expected: empty },
+  { prop: 'labelTooltipText', case: 'with content', value: text, expected: text },
+  { prop: 'labelTooltipText', case: 'without content', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: undefined },
 ]
 
@@ -46,18 +46,18 @@ export const propRequiredTestCases: TPropTestCase<IYCoreRadioButtonExternalProps
 ]
 
 export const propAnnotationTextTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'annotationText'>[] = [
-  { prop: 'annotationText', case: 'с контентом', value: text, expected: text },
-  { prop: 'annotationText', case: 'без контента', value: empty, expected: empty },
+  { prop: 'annotationText', case: 'with content', value: text, expected: text },
+  { prop: 'annotationText', case: 'without content', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: empty },
 ]
 
 export const propLabelOverflowDebounceTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'labelOverflowDebounce'>[] = [
-  { prop: 'labelOverflowDebounce', case: 'с контентом', value: number, expected: number },
+  { prop: 'labelOverflowDebounce', case: 'with content', value: number, expected: number },
   { prop: 'labelOverflowDebounce', case: 'undefined', value: undefined, expected: undefined },
 ]
 
 export const propErrorsTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'errors'>[] = [
-  { prop: 'errors', case: 'с массивом ошибок', value: ['ошибка'], expected: true },
-  { prop: 'errors', case: 'с пустым массивом', value: [], expected: false },
+  { prop: 'errors', case: 'with an array of errors', value: ['error'], expected: true },
+  { prop: 'errors', case: 'with an empty array', value: [], expected: false },
   { prop: 'errors', case: 'undefined', value: undefined, expected: false },
 ]

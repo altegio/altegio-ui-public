@@ -31,6 +31,6 @@ export const propDisabledTestCases: TPropTestCase<IYVueBrandButtonProps, 'disabl
 ]
 
 export const propTextTestCases: TPropTestCase<IYVueBrandButtonProps, 'text'>[] = [
-  { prop: 'text', case: 'с текстом', value: text, expected: text },
-  { prop: 'text', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'text', case: 'with text', value: text, expected: text },
+  { prop: 'text', case: 'empty string', value: empty, expected: empty },
 ]

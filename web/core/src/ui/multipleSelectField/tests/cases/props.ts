@@ -51,19 +51,19 @@ export const propSizeTestCases: TPropTestCase<IYCoreMultipleSelectFieldExternalP
 export const propValueTestCases: TPropTestCase<IYCoreMultipleSelectFieldExternalProps, 'value'>[] = [
   { prop: 'value', case: JSON.stringify([items[0]]), value: [items[0]], expected: [String(items[0].label)] },
   { prop: 'value', case: JSON.stringify([items[1]]), value: [items[1]], expected: [String(items[1].label)] },
-  { prop: 'value', case: 'без выбранного значения', value: undefined, expected: [] },
+  { prop: 'value', case: 'without a selected value', value: undefined, expected: [] },
 ]
 
 export const propNameTestCases: TPropTestCase<IYCoreMultipleSelectFieldExternalProps, 'name'>[] = [
-  { prop: 'name', case: 'с текстом', value: text },
-  { prop: 'name', case: 'с пустой строкой', value: empty },
-  { prop: 'name', case: 'без текста', value: undefined },
+  { prop: 'name', case: 'with text', value: text },
+  { prop: 'name', case: 'with an empty string', value: empty },
+  { prop: 'name', case: 'without text', value: undefined },
 ]
 
 export const propPlaceholderTestCases: TPropTestCase<IYCoreMultipleSelectFieldExternalProps, 'placeholder'>[] = [
-  { prop: 'placeholder', case: 'с текстом', value: text },
-  { prop: 'placeholder', case: 'с пустым значением', value: empty },
-  { prop: 'placeholder', case: 'без выбранного значения', value: undefined },
+  { prop: 'placeholder', case: 'with text', value: text },
+  { prop: 'placeholder', case: 'with an empty value', value: empty },
+  { prop: 'placeholder', case: 'without a selected value', value: undefined },
 ]
 
 export const propAutofocusTestCases: TPropTestCase<IYCoreMultipleSelectFieldExternalProps, 'autofocus'>[] = [
@@ -76,16 +76,16 @@ export const propRequiredTestCases: TPropTestCase<IYCoreMultipleSelectFieldExter
   { prop: 'required', case: 'false', value: false },
 ]
 export const propErrorsTestCases: TPropTestCase<IYCoreMultipleSelectFieldExternalProps, 'errors'>[] = [
-  { prop: 'errors', case: 'с ошибками', value: testErrors },
-  { prop: 'errors', case: 'с одной ошибкой', value: [testErrors[0]] },
-  { prop: 'errors', case: '0 ошибок', value: [] },
-  { prop: 'errors', case: 'без ошибок', value: undefined },
+  { prop: 'errors', case: 'with errors', value: testErrors },
+  { prop: 'errors', case: 'with one error', value: [testErrors[0]] },
+  { prop: 'errors', case: '0 errors', value: [] },
+  { prop: 'errors', case: 'without errors', value: undefined },
 ]
 
 export const propErrorTestCases: TPropTestCase<IYCoreMultipleSelectFieldExternalProps, 'error'>[] = [
-  { prop: 'error', case: 'c ошибкой', value: true },
-  { prop: 'error', case: 'без ошибок', value: false },
-  { prop: 'error', case: 'не передано ошибок', value: undefined },
+  { prop: 'error', case: 'with an error', value: true },
+  { prop: 'error', case: 'without errors', value: false },
+  { prop: 'error', case: 'no errors passed', value: undefined },
 ]
 
 export const propIsMapOptionsTestCases: TPropTestCase<IYCoreMultipleSelectFieldExternalProps, 'isMapOptions'>[] = [
@@ -97,15 +97,15 @@ type TPropAnnotation<K extends keyof IYCoreMultipleSelectFieldExternalProps, T e
 type TPropLabel<K extends keyof IYCoreMultipleSelectFieldExternalProps, T extends keyof IYCoreLabelProps> = TPropTestCase<IYCoreMultipleSelectFieldExternalProps, K> & { labelProp: T }
 
 export const propLabelTextTestCases: TPropLabel<'labelText', 'text'>[] = [
-  { prop: 'labelText', labelProp: 'text', case: 'с текстом', value: text },
-  { prop: 'labelText', labelProp: 'text', case: 'с пустым значением', value: empty },
-  { prop: 'labelText', labelProp: 'text', case: 'без текста', value: undefined },
+  { prop: 'labelText', labelProp: 'text', case: 'with text', value: text },
+  { prop: 'labelText', labelProp: 'text', case: 'with an empty value', value: empty },
+  { prop: 'labelText', labelProp: 'text', case: 'without text', value: undefined },
 ]
 
 export const propLabelTooltipTextTestCases: TPropLabel<'labelTooltipText', 'tooltipText'>[] = [
-  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'с текстом', value: text },
-  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'с пустым значением', value: empty },
-  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'без текста', value: undefined },
+  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'with text', value: text },
+  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'with an empty value', value: empty },
+  { prop: 'labelTooltipText', labelProp: 'tooltipText', case: 'without text', value: undefined },
 ]
 
 export const propLabelDebounceTestCases: TPropLabel<'labelDebounce', 'debounce'>[] = [
@@ -114,18 +114,18 @@ export const propLabelDebounceTestCases: TPropLabel<'labelDebounce', 'debounce'>
 ]
 
 export const propAnnotationTextTestCases: TPropAnnotation<'annotationText', 'text'>[] = [
-  { prop: 'annotationText', annotationProp: 'text', case: 'с текстом', value: text },
-  { prop: 'annotationText', annotationProp: 'text', case: 'с пустым значением', value: empty },
-  { prop: 'annotationText', annotationProp: 'text', case: 'без текста', value: undefined },
+  { prop: 'annotationText', annotationProp: 'text', case: 'with text', value: text },
+  { prop: 'annotationText', annotationProp: 'text', case: 'with an empty value', value: empty },
+  { prop: 'annotationText', annotationProp: 'text', case: 'without text', value: undefined },
 ]
 
 export const propItemLabelTestCases: TPropTestCase<IYCoreMultipleSelectFieldExternalProps, 'itemLabel'>[] = [
-  { prop: 'itemLabel', case: 'по умолчанию "label"', value: 'label', expected: [String(items[0].label)], additionalProps: { selectedValue: [items[0]] } },
+  { prop: 'itemLabel', case: '"label" by default', value: 'label', expected: [String(items[0].label)], additionalProps: { selectedValue: [items[0]] } },
   { prop: 'itemLabel', case: 'name', value: 'name', expected: [String(items[0].name)], additionalProps: { selectedValue: [items[0]] } },
 ]
 
 export const propItemValueTestCases: TPropTestCase<IYCoreMultipleSelectFieldExternalProps, 'itemValue'>[] = [
-  { prop: 'itemValue', case: 'по умолчанию "id"', value: 'id', expected: [String(items[0].label)], additionalProps: { selectedValue: [items[0]] } },
+  { prop: 'itemValue', case: '"id" by default', value: 'id', expected: [String(items[0].label)], additionalProps: { selectedValue: [items[0]] } },
   { prop: 'itemValue', case: 'value', value: 'value', expected: [String(items[0].label)], additionalProps: { selectedValue: [items[0]] } },
 ]
 

@@ -68,7 +68,7 @@ describe(
           ...propTriggerTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением ${JSON.stringify(testCase.value)} должен корректно поменять prop в класс в ${YCoreTipTagName}`,
+            `Prop "${testCase.prop}" with value ${JSON.stringify(testCase.value)} should map the prop to a class in ${YCoreTipTagName}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -80,7 +80,7 @@ describe(
         }
 
         it(
-          `Prop ${propSubmitTextTestCases.case} со значением ${propSubmitTextTestCases.value} должно поменять prop в класс в YCoreSimpleButtonTagName`,
+          `Prop ${propSubmitTextTestCases.case} with value ${propSubmitTextTestCases.value} should map the prop to a class in YCoreSimpleButtonTagName`,
           async() => {
             await updateComponent({ props: { [propSubmitTextTestCases.prop]: propSubmitTextTestCases.value } })
             const buttonElement = getWCShadowRoot(component).querySelectorAll(`${YCoreSimpleButtonTagName}[variant="primary"]`)
@@ -90,7 +90,7 @@ describe(
         )
 
         it(
-          `Prop ${propCancelTextTestCases.case} со значением ${propCancelTextTestCases.value} должно поменять prop в класс в YCoreSimpleButtonTagName`,
+          `Prop ${propCancelTextTestCases.case} with value ${propCancelTextTestCases.value} should map the prop to a class in YCoreSimpleButtonTagName`,
           async() => {
             await updateComponent({ props: { [propCancelTextTestCases.prop]: propCancelTextTestCases.value } })
             const buttonElement = getWCShadowRoot(component).querySelectorAll(`${YCoreSimpleButtonTagName}[variant="text"]`)
@@ -106,7 +106,7 @@ describe(
       () => {
         // TODO: Add event tests
         it(
-          'Должен вызывать событие "submit" при нажатии на кнопку подтверждения',
+          'Should emit "submit" when the confirm button is pressed',
           async() => {
             await updateComponent({ props: { submitText: 'submit' } })
 
@@ -118,7 +118,7 @@ describe(
 
             const buttonElement = getWCShadowRoot(component).querySelector(`${YCoreSimpleButtonTagName}[variant="primary"]`)
             if (!buttonElement) {
-              throw Error('Button submit не найден')
+              throw Error('Submit button not found')
             }
 
             await userEvent.click(buttonElement)
@@ -128,7 +128,7 @@ describe(
         )
 
         it(
-          'Должен вызывать событие "close" при нажатии на кнопку отмены',
+          'Should emit "close" when the cancel button is pressed',
           async() => {
             await updateComponent({ props: { cancelText: 'cancel' } })
 
@@ -140,7 +140,7 @@ describe(
 
             const buttonElement = getWCShadowRoot(component).querySelector(`${YCoreSimpleButtonTagName}[variant="text"]`)
             if (!buttonElement) {
-              throw Error('Button close не найден')
+              throw Error('Close button not found')
             }
 
             await userEvent.click(buttonElement)
@@ -159,7 +159,7 @@ describe(
           ...slotContentTestCases,
         ]) {
           it(
-            `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
             async() => {
               await updateComponent({ slots: { [testCase.slot]: testCase.content } })
 

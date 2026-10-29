@@ -21,8 +21,8 @@ export interface IGlobalContext {
   removeModule: (id: string) => string
 }
 
-const MUTATION_ERROR = '[GlobalContext] Прямая мутация модулей запрещена. ' +
-  'Используйте методы putModule и removeModule для управления модулями.'
+const MUTATION_ERROR = '[GlobalContext] Direct mutation of modules is not allowed. ' +
+  'Use putModule and removeModule to manage modules.'
 
 /**
  * Global context that manages the modules

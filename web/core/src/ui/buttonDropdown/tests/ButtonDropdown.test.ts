@@ -96,7 +96,7 @@ describe(
               ...propAutoCloseTestCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента. Case: ${testCase.case}`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the core component. Case: ${testCase.case}`,
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -106,35 +106,35 @@ describe(
             }
 
             for (const testCase of propIconTestCases) {
-              const validIconsText = testCase.additionalProps.validIcons.map((icon) => icon.name).join(' или ')
+              const validIconsText = testCase.additionalProps.validIcons.map((icon) => icon.name).join(' or ')
 
               it(
-                `Если ${testCase.case}, то она должна быть ${validIconsText}`,
+                `For ${testCase.case}, the icon should be ${validIconsText}`,
 
                 async() => {
                   await updateComponent({ props: { iconType: testCase.value } })
 
                   const buttonElement = getLocalShadowElement(YCoreButtonTagName) as YCoreButtonDropdown | null
                   if (!buttonElement) {
-                    throw new Error('Button не найден')
+                    throw new Error('Button not found')
                   }
 
                   const simpleButtonElement = getShadowElement(buttonElement, YCoreSimpleButtonTagName)
                   if (!simpleButtonElement) {
-                    throw new Error('Simple button не найден')
+                    throw new Error('Simple button not found')
                   }
 
 
                   const iconElements = simpleButtonElement.querySelectorAll(YCoreIconTagName)
                   if (iconElements.length !== 1) {
-                    throw new Error('Количество иконок не равно 1')
+                    throw new Error('Icon count is not 1')
                   }
 
                   const iconElement = iconElements[0]
 
                   const iconSvg = getShadowElement(iconElement, 'div > svg')
                   if (!iconSvg) {
-                    throw new Error('Icon SVG не найден')
+                    throw new Error('Icon SVG not found')
                   }
 
                   const isSvgValid = testCase.additionalProps.validIcons.some((icon) => compareIcons(iconSvg.innerHTML, icon))
@@ -149,18 +149,18 @@ describe(
           'Events',
           () => {
             it(
-              `Должен генерировать событие "item-click" при эмите "click" из ${YCoreDropdownCellTagName}`,
+              `Should emit "item-click" when ${YCoreDropdownCellTagName} emits "click"`,
               async() => {
                 await updateComponent({ props: { items: [{ id: '0', label: 'Item 1' }] } })
 
                 const dropdownListElement = getLocalShadowElement(YCoreDropdownListTagName)
                 if (!dropdownListElement) {
-                  throw new Error('DropdownList не найден')
+                  throw new Error('DropdownList not found')
                 }
 
                 const dropdownCellElement = dropdownListElement.querySelector(`div > slot > ${YCoreDropdownCellTagName}`)
                 if (!dropdownCellElement) {
-                  throw new Error('Dropdown cell не найден')
+                  throw new Error('Dropdown cell not found')
                 }
 
                 const handleItemClick = vi.fn()
@@ -177,11 +177,11 @@ describe(
             )
 
             it(
-              `Должен генерировать событие "change-visible" при эмите "change-visible" из ${YCoreDropdownTagName}`,
+              `Should emit "change-visible" when ${YCoreDropdownTagName} emits "change-visible"`,
               () => {
                 const dropdownElement = getLocalShadowElement(YCoreDropdownTagName)
                 if (!dropdownElement) {
-                  throw new Error('Dropdown не найден')
+                  throw new Error('Dropdown not found')
                 }
 
                 const handleItemClick = vi.fn()
@@ -206,7 +206,7 @@ describe(
               ...slotContentTestCases,
             ]) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 async() => {
                   await updateComponent({ slots: { [testCase.slot]: testCase.content } })
 

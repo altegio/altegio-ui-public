@@ -102,7 +102,7 @@ describe(
               ...propNameTestCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 async() => {
                   const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
                   const fixture = TestBed.createComponent(component)
@@ -128,7 +128,7 @@ describe(
           'Events',
           () => {
             it(
-              'Должен вызывать событие focus при фокусе',
+              'Should emit focus on focus',
               async() => {
                 const component = await createComponent({})
                 const fixture = TestBed.createComponent(component)
@@ -148,7 +148,7 @@ describe(
             )
 
             it(
-              'Должен вызывать событие blur при потере фокуса',
+              'Should emit blur on blur',
               async() => {
                 const component = await createComponent({})
                 const fixture = TestBed.createComponent(component)
@@ -168,7 +168,7 @@ describe(
             )
 
             it(
-              'Должен вызывать событие keydown при нажатии клавиши',
+              'Should emit keydown on key press',
               async() => {
                 const component = await createComponent({})
                 const fixture = TestBed.createComponent(component)

@@ -13,41 +13,41 @@ import '~core/ui/toggle'
 
 // Unit test cases:
 const propCheckedTestCases: TPropTestCase<IYCoreToggleExternalProps, 'checked'>[] = [
-  { prop: 'checked', case: 'включен', value: true, expected: true },
-  { prop: 'checked', case: 'выключен', value: false, expected: false },
+  { prop: 'checked', case: 'enabled', value: true, expected: true },
+  { prop: 'checked', case: 'disabled', value: false, expected: false },
 ]
 const propDisabledTestCases: TPropTestCase<IYCoreToggleExternalProps, 'disabled'>[] = [
-  { prop: 'disabled', case: 'включен', value: true, expected: true },
-  { prop: 'disabled', case: 'выключен', value: false, expected: false },
+  { prop: 'disabled', case: 'enabled', value: true, expected: true },
+  { prop: 'disabled', case: 'disabled', value: false, expected: false },
 ]
 const propLabelTextTestCases: TPropTestCase<IYCoreToggleExternalProps, 'labelText'>[] = [
-  { prop: 'labelText', case: 'с контентом', value: text, expected: text },
-  { prop: 'labelText', case: 'без контента', value: empty, expected: undefined },
+  { prop: 'labelText', case: 'with content', value: text, expected: text },
+  { prop: 'labelText', case: 'without content', value: empty, expected: undefined },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: undefined },
 ]
 const propLabelTooltipTextTestCases: TPropTestCase<IYCoreToggleExternalProps, 'labelTooltipText'>[] = [
-  { prop: 'labelTooltipText', case: 'с контентом', value: text },
-  { prop: 'labelTooltipText', case: 'без контента', value: empty },
+  { prop: 'labelTooltipText', case: 'with content', value: text },
+  { prop: 'labelTooltipText', case: 'without content', value: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined },
 ]
 const propAnnotationTextTestCases: TPropTestCase<IYCoreToggleExternalProps, 'annotationText'>[] = [
-  { prop: 'annotationText', case: 'с контентом', value: text, expected: text },
-  { prop: 'annotationText', case: 'без контента', value: empty, expected: undefined },
+  { prop: 'annotationText', case: 'with content', value: text, expected: text },
+  { prop: 'annotationText', case: 'without content', value: empty, expected: undefined },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: undefined },
 ]
 const propLabelOverflowDebounceCases: TPropTestCase<IYCoreToggleExternalProps, 'labelOverflowDebounce'>[] = [
-  { prop: 'labelOverflowDebounce', case: 'с задержкой', value: 200, expected: 200 },
-  { prop: 'labelOverflowDebounce', case: 'без задержки', value: undefined, expected: undefined },
+  { prop: 'labelOverflowDebounce', case: 'with a delay', value: 200, expected: 200 },
+  { prop: 'labelOverflowDebounce', case: 'without a delay', value: undefined, expected: undefined },
 ]
 const propAlignmentCases: TPropTestCase<IYCoreToggleExternalProps, 'alignment'>[] = [
-  { prop: 'alignment', case: 'выравнивание по центру', value: EYCoreLabelAlignment.CENTER },
-  { prop: 'alignment', case: 'выравнивание по верху', value: EYCoreLabelAlignment.TOP },
-  { prop: 'alignment', case: 'без выравнивания', value: undefined },
+  { prop: 'alignment', case: 'center alignment', value: EYCoreLabelAlignment.CENTER },
+  { prop: 'alignment', case: 'top alignment', value: EYCoreLabelAlignment.TOP },
+  { prop: 'alignment', case: 'without alignment', value: undefined },
 ]
 const propSizeCases: TPropTestCase<IYCoreToggleExternalProps, 'size'>[] = [
-  { prop: 'size', case: 'размер M', value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
-  { prop: 'size', case: 'размер S', value: EYSizes.SMALL, expected: EYSizes.SMALL },
-  { prop: 'size', case: 'размер не указан', value: undefined, expected: undefined },
+  { prop: 'size', case: 'size M', value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
+  { prop: 'size', case: 'size S', value: EYSizes.SMALL, expected: EYSizes.SMALL },
+  { prop: 'size', case: 'size not set', value: undefined, expected: undefined },
 ]
 
 const tagName = YCoreToggleTagName
@@ -97,7 +97,7 @@ describe(
           ...propSizeCases,
         ]) {
           it(
-            `Prop ${testCase.prop} должен быть ${testCase.case}`,
+            `Prop ${testCase.prop} should be ${testCase.case}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -110,7 +110,7 @@ describe(
 
         for (const testCase of propLabelTextTestCases) {
           it(
-            `Prop labelText должен быть ${testCase.case}`,
+            `Prop labelText should be ${testCase.case}`,
             async() => {
               await updateComponent({ props: { labelText: testCase.value } })
 
@@ -127,7 +127,7 @@ describe(
 
         for (const testCase of propAnnotationTextTestCases) {
           it(
-            `Prop annotationText должен быть ${testCase.case}`,
+            `Prop annotationText should be ${testCase.case}`,
             async() => {
               await updateComponent({ props: { annotationText: testCase.value } })
 
@@ -139,11 +139,11 @@ describe(
         }
 
         describe(
-          'Если hasInfoContent === true',
+          'When hasInfoContent === true',
           () => {
             for (const testCase of propLabelTooltipTextTestCases) {
               it(
-                `Prop labelTooltipText должен быть ${testCase.case}`,
+                `Prop labelTooltipText should be ${testCase.case}`,
                 async() => {
                   await updateComponent({ props: { labelTooltipText: testCase.value, labelText: text } })
 
@@ -160,7 +160,7 @@ describe(
 
             for (const testCase of propLabelOverflowDebounceCases) {
               it(
-                `Prop labelOverflowDebounce должен быть ${testCase.case}`,
+                `Prop labelOverflowDebounce should be ${testCase.case}`,
                 async() => {
                   await updateComponent({ props: { labelOverflowDebounce: testCase.value, labelText: text } })
 
@@ -173,7 +173,7 @@ describe(
 
             for (const testCase of propAlignmentCases) {
               it(
-                `Prop alignment должен быть ${testCase.case}`,
+                `Prop alignment should be ${testCase.case}`,
                 async() => {
                   await updateComponent({ props: { alignment: testCase.value, labelText: text } })
 
@@ -192,7 +192,7 @@ describe(
       'Events',
       () => {
         it(
-          'Должен вызывать обработчик клика при нажатии на компонент',
+          'Should call the click handler on component click',
           async() => {
             const handleClick = vi.fn()
 
@@ -205,7 +205,7 @@ describe(
         )
 
         it(
-          'Должен вызывать обработчик checked при нажатии на SimpleToggle',
+          'Should call the checked handler on SimpleToggle click',
           async() => {
             const handleChecked = vi.fn()
 
@@ -225,7 +225,7 @@ describe(
         )
 
         it(
-          'Не должен вызывать обработчик checked при нажатии на SimpleToggle, если установлено свойство disabled',
+          'Should not call the checked handler on SimpleToggle click when disabled is set',
           async() => {
             const handleChecked = vi.fn()
 

@@ -47,7 +47,7 @@ describe(
               ...propDisabledCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента на "${testCase.case}"`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
                 async() => {
                   await updateComponent({ props: { ...requiredTestProps, [testCase.prop]: testCase.value } })
                   const coreElement = wrapper.find(YCoreColorIconTagName)

@@ -29,7 +29,7 @@ describe(
       () => {
         for (const testCase of [...propSizeTestCases]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
                 YEmptyState,
@@ -48,7 +48,7 @@ describe(
             ...propDescriptionTestCases,
         ]) {
           it(
-              `Prop "${testCase.prop}" ${testCase.case} должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+              `Prop "${testCase.prop}" ${testCase.case} should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
               () => {
                 const wrapper = mount(
                     YEmptyState,
@@ -64,7 +64,7 @@ describe(
 
         for (const testCase of [...propIconTestCases]) {
           it(
-              `Prop "${testCase.prop}" ${testCase.case} должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+              `Prop "${testCase.prop}" ${testCase.case} should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
               () => {
                 const wrapper = mount(
                     YEmptyState,
@@ -85,7 +85,7 @@ describe(
       () => {
         for (const testCase of [...slotActionsTestCases]) {
           it(
-              `Slot "${testCase.slot}" ${testCase.content ? '' : 'не'} должен рендериться, если ${testCase.case} и корректно отображает контент`,
+              `Slot "${testCase.slot}" should ${testCase.content ? '' : 'not'} render when ${testCase.case} and show the content`,
             () => {
               const wrapper = mount(
                 YEmptyState,

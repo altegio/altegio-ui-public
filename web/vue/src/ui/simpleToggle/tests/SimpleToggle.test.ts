@@ -53,7 +53,7 @@ describe(
           ...propHoveredTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const modelValue = ref(false)
               const wrapper = mount(
@@ -83,7 +83,7 @@ describe(
       'Events',
       () => {
         it(
-          'Должен вызывать событие "update:modelValue" при изменении состояния переключателя',
+          'Should emit "update:modelValue" when the toggle state changes',
           async() => {
             const wrapper = mount(
               YSimpleToggle,

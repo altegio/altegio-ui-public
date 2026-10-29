@@ -3,7 +3,7 @@ import { type TEventTestCase } from '~shared/types/tests'
 export const eventCollapseItemClickCases: TEventTestCase[] = [
   {
     event: 'collapse-item-click',
-    case: 'при клике по активатору',
+    case: 'on activator click',
     nodeEventName: 'click',
   },
 ]

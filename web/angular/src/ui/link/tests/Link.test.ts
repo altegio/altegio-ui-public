@@ -40,7 +40,7 @@ describe(
       'Props',
       () => {
         it(
-          'Должен корректно передать href prop в Web Component',
+          'Should pass the href prop to the web component',
           async() => {
             const component = await createComponent({ props: { href } })
             const fixture = TestBed.createComponent(component)
@@ -54,7 +54,7 @@ describe(
         )
 
         it(
-          'Должен корректно обработать undefined href prop в Web Component',
+          'Should handle an undefined href prop in the web component',
           async() => {
             const component = await createComponent({ props: { href: undefined } })
             const fixture = TestBed.createComponent(component)
@@ -68,7 +68,7 @@ describe(
         )
 
         it(
-          'Должен корректно передать target prop в Web Component',
+          'Should pass the target prop to the web component',
           async() => {
             const target = '_blank'
             const component = await createComponent({ props: { target } })
@@ -83,7 +83,7 @@ describe(
         )
 
         it(
-          'Должен корректно обработать undefined target prop в Web Component',
+          'Should handle an undefined target prop in the web component',
           async() => {
             const component = await createComponent({ props: { target: undefined } })
             const fixture = TestBed.createComponent(component)

@@ -57,7 +57,7 @@ describe(
           ...propSizeCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" должен быть ${testCase.case}`,
+            `Prop "${testCase.prop}" should work ${testCase.case}`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)
@@ -74,7 +74,7 @@ describe(
 
         for (const testCase of [...propIconCases]) {
           it(
-            `Prop "${testCase.prop}" должен быть ${testCase.case}`,
+            `Prop "${testCase.prop}" should work ${testCase.case}`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)

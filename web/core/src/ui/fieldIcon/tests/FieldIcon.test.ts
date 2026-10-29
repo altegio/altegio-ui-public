@@ -66,7 +66,7 @@ describe(
           ...propIconCases,
         ] as const) {
           it(
-            `Prop "${testCase.prop}" должен быть ${testCase.case}`,
+            `Prop "${testCase.prop}" should work ${testCase.case}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -79,7 +79,7 @@ describe(
           const expectedCssClass = `${tagName}_${testCase.prop}`
 
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен корректно применять CSS класс "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" ${testCase.case} should apply the CSS class "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -99,7 +99,7 @@ describe(
           const expectedCssClass = `${tagName}_size_${testCase.case}`
 
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен корректно применять CSS класс "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" ${testCase.case} should apply the CSS class "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
               component.icon = yMagic
@@ -116,7 +116,7 @@ describe(
           const expectedCssClass = `${tagName}_${testCase.prop}`
 
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен корректно применять CSS класс "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" ${testCase.case} should apply the CSS class "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -136,7 +136,7 @@ describe(
           const expectedCssClass = `${tagName}_${testCase.prop}`
 
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен корректно применять CSS класс "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" ${testCase.case} should apply the CSS class "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 

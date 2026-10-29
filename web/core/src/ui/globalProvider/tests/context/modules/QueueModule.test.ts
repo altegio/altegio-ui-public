@@ -28,7 +28,7 @@ describe(
       'putItem',
       () => {
         it(
-          'должен добавлять элемент в очередь',
+          'should add an item to the queue',
           () => {
             const item: IQueueModuleItem = { id: 'item-1' }
             queueModule.putItem(item)
@@ -38,7 +38,7 @@ describe(
         )
 
         it(
-          'должен устанавливать таймаут для элемента',
+          'should set a timeout for the item',
           () => {
             const item: IQueueModuleItem = { id: 'item-1' }
             queueModule.putItem(
@@ -60,7 +60,7 @@ describe(
       'removeItem',
       () => {
         it(
-          'должен удалять элемент из очереди',
+          'should remove an item from the queue',
           () => {
             const item: IQueueModuleItem = { id: 'item-1' }
             queueModule.putItem(item)
@@ -76,7 +76,7 @@ describe(
       'getItems',
       () => {
         it(
-          'должен возвращать все элементы очереди',
+          'should return all queue items',
           () => {
             const items: IQueueModuleItem[] = [
               { id: 'item-1' },
@@ -96,7 +96,7 @@ describe(
       'clearAll',
       () => {
         it(
-          'должен очищать всю очередь',
+          'should clear the whole queue',
           () => {
             const items: IQueueModuleItem[] = [
               { id: 'item-1' },
@@ -111,7 +111,7 @@ describe(
         )
 
         it(
-          'должен вызывать callback после очистки',
+          'should call the callback after clearing',
           () => {
             const callback = vi.fn()
             queueModule.clearAll(callback)
@@ -126,7 +126,7 @@ describe(
       'onUpdated',
       () => {
         it(
-          'должен вызывать обработчик при обновлении очереди',
+          'should call the handler when the queue updates',
           () => {
             const handler = vi.fn()
             const item: IQueueModuleItem = { id: 'item-1' }
@@ -144,7 +144,7 @@ describe(
       'onCompleted',
       () => {
         it(
-          'должен вызывать обработчик когда очередь пуста',
+          'should call the handler when the queue is empty',
           () => {
             const handler = vi.fn()
             const item: IQueueModuleItem = { id: 'item-1' }
@@ -165,7 +165,7 @@ describe(
       'editDefaultDelay',
       () => {
         it(
-          'должен изменять значение defaultDelay',
+          'should change defaultDelay',
           () => {
             queueModule.editDefaultDelay(2000)
             expect(queueModule.defaultDelay).toBe(2000)
@@ -175,10 +175,10 @@ describe(
     )
 
     describe(
-      'прямая мутация',
+      'direct mutation',
       () => {
         it(
-          'должен запрещать прямую мутацию очереди',
+          'should forbid direct mutation of the queue',
           () => {
             expect(() => {
               queueModule.queue.test = { id: 'test' }

@@ -10,9 +10,9 @@ type TVueEventTestCase = {
 }
 
 export const ngInputEvents: TVueEventTestCase[] = [
-  { eventName: inputEventName, case: 'при вводе' },
-  { eventName: focusEventName, case: 'при фокусе' },
-  { eventName: blurEventName, case: 'при потере фокуса' },
-  { eventName: keydownEventName, case: 'при нажатии клавиши' },
-  { eventName: renderEventName, case: 'при рендере' },
+  { eventName: inputEventName, case: 'on input' },
+  { eventName: focusEventName, case: 'on focus' },
+  { eventName: blurEventName, case: 'on blur' },
+  { eventName: keydownEventName, case: 'on key press' },
+  { eventName: renderEventName, case: 'on render' },
 ]

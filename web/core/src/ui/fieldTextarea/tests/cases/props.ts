@@ -18,16 +18,16 @@ export const propReadonlyCases: TPropTestCase<IYCoreFieldTextareaProps, 'readonl
   { prop: 'readonly', case: 'false', value: false },
 ]
 export const propValueCases: TPropTestCase<IYCoreFieldTextareaProps, 'value'>[] = [
-  { prop: 'value', case: 'с текстом', value: text },
-  { prop: 'value', case: 'без текста', value: '' },
+  { prop: 'value', case: 'with text', value: text },
+  { prop: 'value', case: 'without text', value: '' },
 ]
 export const propNameCases: TPropTestCase<IYCoreFieldTextareaProps, 'name'>[] = [
-  { prop: 'name', case: 'с текстом', value: text },
-  { prop: 'name', case: 'без текста', value: '' },
+  { prop: 'name', case: 'with text', value: text },
+  { prop: 'name', case: 'without text', value: '' },
 ]
 export const propPlaceholderCases: TPropTestCase<IYCoreFieldTextareaProps, 'placeholder'>[] = [
-  { prop: 'placeholder', case: 'с текстом', value: text },
-  { prop: 'placeholder', case: 'без текста', value: '' },
+  { prop: 'placeholder', case: 'with text', value: text },
+  { prop: 'placeholder', case: 'without text', value: '' },
 ]
 export const propAutocompleteCases: TPropTestCase<IYCoreFieldTextareaProps, 'autocomplete'>[] = [
   { prop: 'autocomplete', case: 'on', value: 'on' },

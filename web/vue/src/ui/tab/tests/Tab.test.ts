@@ -24,7 +24,7 @@ import {
 const baseSlotsCheck = () => {
   for (const testCase of slotDefaultTestCases) {
     it(
-      `Slot: "${testCase.slot}" должен быть ${testCase.case}`,
+      `Slot: "${testCase.slot}" should render ${testCase.case}`,
       () => {
         const wrapper = mount(
           YTab,
@@ -61,7 +61,7 @@ const basePropsCheck = () => {
     ...propsLocatorCounterTestCases,
   ]) {
     it(
-      `Prop: "${testCase.prop}" ${typeof testCase.value === 'object' ? JSON.stringify(testCase.value) : testCase.value} ${testCase.value === undefined ? 'не' : ''} должен изменить свойство ${testCase.prop} у core компонента`,
+      `Prop: "${testCase.prop}" ${typeof testCase.value === 'object' ? JSON.stringify(testCase.value) : testCase.value} should ${testCase.value === undefined ? 'not' : ''} set ${testCase.prop} on the core component`,
       () => {
         const wrapper = mount(
           YTab,

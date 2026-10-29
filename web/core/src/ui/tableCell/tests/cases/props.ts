@@ -6,20 +6,20 @@ import {
 import { text } from '~shared/tests/slotContents'
 
 export const propStickyTestCases: TPropTestCase<IYCoreTableCellProps, 'sticky'>[] = [
-  { prop: 'sticky', case: 'Должен добавить', value: true },
-  { prop: 'sticky', case: 'Не Должен добавить', value: false },
+  { prop: 'sticky', case: 'Should', value: true },
+  { prop: 'sticky', case: 'Should not', value: false },
 ]
 
 export const propDisabledTestCases: TPropTestCase<IYCoreTableCellProps, 'disabled'>[] = [
-  { prop: 'disabled', case: 'Должен добавить', value: true },
-  { prop: 'disabled', case: 'Не Должен добавить', value: false },
+  { prop: 'disabled', case: 'Should', value: true },
+  { prop: 'disabled', case: 'Should not', value: false },
 ]
 
 export const propAlignTestCases: TPropTestCase<IYCoreTableCellProps, 'align'>[] = [
-  { prop: 'align', case: 'Должен добавить', value: ETableCellAlign.CENTER },
-  { prop: 'align', case: 'Должен добавить', value: ETableCellAlign.LEFT },
-  { prop: 'align', case: 'Должен добавить', value: ETableCellAlign.RIGHT },
-  { prop: 'align', case: 'Не Должен добавить', value: undefined },
+  { prop: 'align', case: 'Should', value: ETableCellAlign.CENTER },
+  { prop: 'align', case: 'Should', value: ETableCellAlign.LEFT },
+  { prop: 'align', case: 'Should', value: ETableCellAlign.RIGHT },
+  { prop: 'align', case: 'Should not', value: undefined },
 ]
 
 export const propEllipsisTestCases: TPropTestCase<IYCoreTableCellProps, 'ellipsis'>[] = [
@@ -33,12 +33,12 @@ export const propLineclampTestCases: TPropTestCase<IYCoreTableCellProps, 'linecl
 ]
 
 export const propItemTestCases: TPropTestCase<IYCoreTableCellProps, 'item'>[] = [
-  { prop: 'item', case: 'с объектом', value: { id: '', label: text, name: '' }, expected: text },
-  { prop: 'item', case: 'с undefined', value: undefined, expected: '' },
-  { prop: 'item', case: 'с пустым объектом', value: { id: '2' }, expected: '' },
+  { prop: 'item', case: 'with an object', value: { id: '', label: text, name: '' }, expected: text },
+  { prop: 'item', case: 'with undefined', value: undefined, expected: '' },
+  { prop: 'item', case: 'with an empty object', value: { id: '2' }, expected: '' },
 ]
 
 export const propItemLabelTestCases: TPropTestCase<IYCoreTableCellProps, 'itemLabel'>[] = [
-  { prop: 'itemLabel', case: 'с текстом', value: text, expected: text },
-  { prop: 'itemLabel', case: 'с undefined', value: undefined, expected: '' },
+  { prop: 'itemLabel', case: 'with text', value: text, expected: text },
+  { prop: 'itemLabel', case: 'with undefined', value: undefined, expected: '' },
 ]

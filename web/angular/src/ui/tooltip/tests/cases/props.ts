@@ -10,19 +10,19 @@ const { placement } = createCoreTooltipProps()
 export const propTextTestCases: TPropTestCase<IYVueTooltipProps, 'text'>[] = [
   {
     prop: 'text',
-    case: 'со значением',
+    case: 'with a value',
     value: text,
     expected: text,
   },
   {
     prop: 'text',
-    case: 'с пустым значением',
+    case: 'with an empty value',
     value: empty,
     expected: empty,
   },
   {
     prop: 'text',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: '',
   },
@@ -31,21 +31,21 @@ export const propTextTestCases: TPropTestCase<IYVueTooltipProps, 'text'>[] = [
 export const propDisabledTestCases: TPropTestCase<IYVueTooltipProps, 'disabled'>[] = [
   {
     prop: 'disabled',
-    case: 'со истинным значением',
+    case: 'with a true value',
     value: true,
     expected: true,
     additionalProps: { text: 'text' },
   },
   {
     prop: 'disabled',
-    case: 'с ложным значением',
+    case: 'with a false value',
     value: false,
     expected: false,
     additionalProps: { text: 'text' },
   },
   {
     prop: 'disabled',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: false,
     additionalProps: { text: 'text' },
@@ -56,7 +56,7 @@ export const propPlacementTestCases: TPropTestCase<IYVueTipProps, 'placement'>[]
   ...corePropPlacementTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'placement',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: placement,
   },

@@ -9,17 +9,17 @@ import { testMaskOptions } from '~core/ui/inputField/tests/cases/props'
 const { required, size, disabled, maxlength, autofocus, type, clearable, labelText, labelTooltipText, annotationText, labelOverflowDebounce, maskOptions, errors, name, placeholder, readonly } = createCoreInputFieldProps()
 
 export const propValueCases: TPropTestCase<IYNgInputFieldProps, 'value'>[] = [
-  { prop: 'value', case: 'с текстом', value: text, expected: text },
-  { prop: 'value', case: 'без текста', value: '', expected: '' },
+  { prop: 'value', case: 'with text', value: text, expected: text },
+  { prop: 'value', case: 'without text', value: '', expected: '' },
 ]
 export const propNameTestCases: TPropTestCase<IYNgInputFieldProps, 'name'>[] = [
-  { prop: 'name', case: 'с текстом', value: text, expected: text },
-  { prop: 'name', case: 'без текста', value: '', expected: '' },
+  { prop: 'name', case: 'with text', value: text, expected: text },
+  { prop: 'name', case: 'without text', value: '', expected: '' },
   { prop: 'name', case: 'undefined', value: undefined, expected: name },
 ]
 export const propPlaceholderTestCases: TPropTestCase<IYNgInputFieldProps, 'placeholder'>[] = [
-  { prop: 'placeholder', case: 'с текстом', value: text, expected: text },
-  { prop: 'placeholder', case: 'без текста', value: '', expected: '' },
+  { prop: 'placeholder', case: 'with text', value: text, expected: text },
+  { prop: 'placeholder', case: 'without text', value: '', expected: '' },
   { prop: 'placeholder', case: 'undefined', value: undefined, expected: placeholder },
 ]
 export const propAutofocusTestCases: TPropTestCase<IYNgInputFieldProps, 'autofocus'>[] = [
@@ -53,12 +53,12 @@ export const propMaxlengthTestCases: TPropTestCase<IYNgInputFieldProps, 'maxleng
   { prop: 'maxlength', case: 'undefined', value: undefined, expected: maxlength },
 ]
 export const propMaskOptionsTestCases: TPropTestCase<IYNgInputFieldProps, 'maskOptions'>[] = [
-  { prop: 'maskOptions', case: 'с маской', value: testMaskOptions, expected: testMaskOptions },
+  { prop: 'maskOptions', case: 'with a mask', value: testMaskOptions, expected: testMaskOptions },
   { prop: 'maskOptions', case: 'undefined', value: undefined, expected: maskOptions },
 ]
 export const propErrorsTestCases: TPropTestCase<IYNgInputFieldProps, 'errors'>[] = [
-  { prop: 'errors', case: 'массив с ошибками', value: ['error'], expected: ['error'] },
-  { prop: 'errors', case: 'пустой массив', value: [], expected: [] },
+  { prop: 'errors', case: 'array with errors', value: ['error'], expected: ['error'] },
+  { prop: 'errors', case: 'empty array', value: [], expected: [] },
   { prop: 'errors', case: 'undefined', value: undefined, expected: errors },
 ]
 export const propClearableTestCases: TPropTestCase<IYNgInputFieldProps, 'clearable'>[] = [
@@ -72,21 +72,21 @@ export const propSizeTestCases: TPropTestCase<IYNgInputFieldProps, 'size'>[] = [
   { prop: 'size', case: 'undefined', value: undefined, expected: size },
 ]
 export const propLabelOverflowDebounceTestCases: TPropTestCase<IYNgInputFieldProps, 'labelOverflowDebounce'>[] = [
-  { prop: 'labelOverflowDebounce', case: 'число', value: Number(number), expected: number },
+  { prop: 'labelOverflowDebounce', case: 'number', value: Number(number), expected: number },
   { prop: 'labelOverflowDebounce', case: 'undefined', value: undefined, expected: labelOverflowDebounce },
 ]
 export const propLabelTextTestCases: TPropTestCase<IYNgInputFieldProps, 'labelText'>[] = [
-  { prop: 'labelText', case: 'текст', value: text, expected: text },
-  { prop: 'labelText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'labelText', case: 'text', value: text, expected: text },
+  { prop: 'labelText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: labelText },
 ]
 export const propLabelTooltipTextTestCases: TPropTestCase<IYNgInputFieldProps, 'labelTooltipText'>[] = [
-  { prop: 'labelTooltipText', case: 'текст', value: text, expected: text },
-  { prop: 'labelTooltipText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'labelTooltipText', case: 'text', value: text, expected: text },
+  { prop: 'labelTooltipText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: labelTooltipText },
 ]
 export const propAnnotationTextTestCases: TPropTestCase<IYNgInputFieldProps, 'annotationText'>[] = [
-  { prop: 'annotationText', case: 'текст', value: text, expected: text },
-  { prop: 'annotationText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'annotationText', case: 'text', value: text, expected: text },
+  { prop: 'annotationText', case: 'empty string', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: annotationText },
 ]

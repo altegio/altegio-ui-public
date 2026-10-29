@@ -30,7 +30,7 @@ describe(
 
     for (const { host, value } of CSSVariablesHostToValueCases) {
       it(
-        `Вычисленная Host CSS переменная ${host} в созданном компоненте должна иметь значение из токенов: ${value}`,
+        `Computed host CSS variable ${host} on the created component should have the token value: ${value}`,
         () => {
           const shadowRoot = getWCShadowRoot(component)
 

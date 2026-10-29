@@ -32,19 +32,19 @@ export const propSizeTestCases: TPropFieldInputTestCase<'size'>[] = sizes.map((s
 
 export const propValueTestCases: TPropFieldInputTestCase<'value'>[] = [
   { prop: 'value', case: text, value: text, attribute: 'value' },
-  { prop: 'value', case: 'не определено', value: empty, attribute: 'value' },
+  { prop: 'value', case: 'not set', value: empty, attribute: 'value' },
 ]
 
 export const propNameTestCases: TPropFieldInputTestCase<'name'>[] = [
-  { prop: 'name', case: 'с текстом', value: text, attribute: 'name' },
-  { prop: 'name', case: 'с пустой строкой', value: empty, attribute: 'name' },
-  { prop: 'name', case: 'без текста', value: undefined, attribute: 'name' },
+  { prop: 'name', case: 'with text', value: text, attribute: 'name' },
+  { prop: 'name', case: 'with an empty string', value: empty, attribute: 'name' },
+  { prop: 'name', case: 'without text', value: undefined, attribute: 'name' },
 ]
 
 export const propPlaceholderTestCases: TPropFieldInputTestCase<'placeholder'>[] = [
-  { prop: 'placeholder', case: 'с текстом', value: text, attribute: 'placeholder' },
-  { prop: 'placeholder', case: 'с пустым значением', value: empty, attribute: 'placeholder' },
-  { prop: 'placeholder', case: 'без выбранного значения', value: undefined, attribute: 'placeholder' },
+  { prop: 'placeholder', case: 'with text', value: text, attribute: 'placeholder' },
+  { prop: 'placeholder', case: 'with an empty value', value: empty, attribute: 'placeholder' },
+  { prop: 'placeholder', case: 'without a selected value', value: undefined, attribute: 'placeholder' },
 ]
 
 export const propAutofocusTestCases: TPropFieldInputTestCase<'autofocus'>[] = [
@@ -65,7 +65,7 @@ export const propTypeTestCases: TPropFieldInputTestCase<'type'>[] = [
 ]
 
 export const propMaxlengthTestCases: TPropFieldInputTestCase<'maxlength'>[] = [
-  { prop: 'maxlength', case: 'определено', value: number, attribute: 'maxLength' },
+  { prop: 'maxlength', case: 'set', value: number, attribute: 'maxLength' },
   { prop: 'maxlength', case: 'undefined', value: undefined, attribute: 'maxLength' },
 ]
 

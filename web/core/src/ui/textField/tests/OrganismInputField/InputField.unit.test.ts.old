@@ -65,7 +65,7 @@ describe(
       () => {
         for (const { slotName, wc } of slotCases) {
           it(
-            `Должен отрендерить слот "${slotName}" в ${wc}`,
+            `Should render the "${slotName}" slot in ${wc}`,
             async() => {
               await updateComponent({ slots: { [slotName]: textWithTag } })
 
@@ -102,7 +102,7 @@ describe(
           ...propSizeCases,
         ]) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в input`,
+            `Prop "${prop}" should be "${propCase}" and passed to input`,
             async() => {
               await updateComponent({ props: { [prop]: value } })
 
@@ -118,7 +118,7 @@ describe(
 
         for (const { prop, case: propCase, value } of propDisabledCases) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в input, label и annotation`,
+            `Prop "${prop}" should be "${propCase}" and passed to input, label and annotation`,
             async() => {
               await updateComponent({ props: { [prop]: value, labelText: text } })
 
@@ -144,7 +144,7 @@ describe(
 
         for (const { prop, case: propCase, value } of propRequiredCases) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в input и label`,
+            `Prop "${prop}" should be "${propCase}" and passed to input and label`,
             async() => {
               await updateComponent({ props: { [prop]: value } })
 
@@ -165,7 +165,7 @@ describe(
 
         for (const { prop, case: propCase, value } of propErrorsCases) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в input и error`,
+            `Prop "${prop}" should be "${propCase}" and passed to input and error`,
             async() => {
               await updateComponent({ props: { [prop]: value } })
 
@@ -194,7 +194,7 @@ describe(
 
         for (const { prop, case: propCase, value, labelProp } of propLabelTextCases) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в label`,
+            `Prop "${prop}" should be "${propCase}" and passed to label`,
             async() => {
               await updateComponent({ props: { [prop]: value } })
 
@@ -219,7 +219,7 @@ describe(
           ...propLabelTooltipTextCases,
         ]) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в label`,
+            `Prop "${prop}" should be "${propCase}" and passed to label`,
             async() => {
               await updateComponent({
                 props: {
@@ -240,7 +240,7 @@ describe(
 
         for (const { prop, case: propCase, value, annotationProp } of propAnnotationTextCases) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в annotation`,
+            `Prop "${prop}" should be "${propCase}" and passed to annotation`,
             async() => {
               await updateComponent({ props: { [prop]: value } })
 
@@ -261,7 +261,7 @@ describe(
       () => {
         for (const { eventName, payload, event, case: eventCase } of eventsCases) {
           it(
-            `Должен вызывать событие "${eventName}" ${eventCase}`,
+            `Should emit "${eventName}" ${eventCase}`,
             () => {
               const inputElement = getSubWC(
                 component,
@@ -282,7 +282,7 @@ describe(
           )
 
           it(
-            `Не должен вызывать событие "${eventName}" ${eventCase} если компонент disabled`,
+            `Should not emit "${eventName}" ${eventCase} when the component is disabled`,
             async() => {
               await updateComponent({ props: { disabled: true } })
 

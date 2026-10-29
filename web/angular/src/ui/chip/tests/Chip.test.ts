@@ -45,7 +45,7 @@ describe(
       () => {
         for (const testCase of propLabelTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у сore компонента`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)
@@ -62,7 +62,7 @@ describe(
 
         for (const testCase of propIconLeftTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop}  у сore компонента`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)
@@ -83,7 +83,7 @@ describe(
           ...propDisabledTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у сore компонента`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)
@@ -102,7 +102,7 @@ describe(
 
     describe('Events', () => {
       it(
-        'Должен вызывать событие click у компонента core Chip',
+        'Should emit click on the core Chip component',
         async() => {
           const handleAction = vi.fn()
           const component = await createComponent({ props: {} })

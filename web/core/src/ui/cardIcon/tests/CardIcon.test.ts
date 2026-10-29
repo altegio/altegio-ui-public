@@ -67,7 +67,7 @@ describe(
           ...propHeaderIconCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" должен быть ${testCase.case}`,
+            `Prop "${testCase.prop}" should work ${testCase.case}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -80,7 +80,7 @@ describe(
           const expectedCssClass = `${tagName}_size_${testCase.case}`
 
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен корректно применять CSS класс "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" ${testCase.case} should apply the CSS class "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -98,7 +98,7 @@ describe(
           ...propSizeColorIconConverterTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" должен быть "${testCase.case}" и передан в ColorIcon`,
+            `Prop "${testCase.prop}" should be "${testCase.case}" and passed to ColorIcon`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -111,7 +111,7 @@ describe(
 
         for (const testCase of propHeaderIconCases) {
           it(
-            `Prop "${testCase.prop}" должен быть "${testCase.case}" и передан в ColorIcon`,
+            `Prop "${testCase.prop}" should be "${testCase.case}" and passed to ColorIcon`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 

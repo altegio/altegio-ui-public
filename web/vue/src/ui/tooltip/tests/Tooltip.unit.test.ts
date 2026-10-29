@@ -51,7 +51,7 @@ describe(
                 ...propPlacementTestCases,
             ]) {
               it(
-                `Изменения prop ${testCase.prop} должно быть ${testCase.case} в core-компоненте ${tagName}`,
+                `Changing prop ${testCase.prop} should update the core component ${tagName} (${testCase.case})`,
                 () => {
                   const wrapper = mount(
                       YTooltip,
@@ -78,7 +78,7 @@ describe(
                 ...slotActivatorTestCases,
             ]) {
               it(
-                `Должен отрендерить слот "${testCase.slot}"`,
+                `Should render the "${testCase.slot}" slot`,
                 () => {
                   const wrapper = mount(
                       YTooltip,
@@ -90,7 +90,7 @@ describe(
               )
 
               it(
-                `Слот "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 () => {
                   const wrapper = mount(
                       YTooltip,

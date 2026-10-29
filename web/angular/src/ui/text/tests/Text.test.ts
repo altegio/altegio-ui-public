@@ -38,19 +38,19 @@ const tagName = YCoreTextTagName
 
 // Unit test cases:
 const slotDefaultTestCases: TSlotTestCase[] = [
-  { slot: 'default', case: 'с контентом', content: text },
-  { slot: 'default', case: 'без контента', content: empty },
+  { slot: 'default', case: 'with content', content: text },
+  { slot: 'default', case: 'without content', content: empty },
 ]
 const propSizeTestCases: TPropTestCase<IYNgTextProps, 'size'>[] = [
   {
     prop: 'size',
-    case: 'со значением',
+    case: 'with a value',
     value: EYCoreTextSize.A1_MEDIUM,
     expected: EYCoreTextSize.A1_MEDIUM,
   },
   {
     prop: 'size',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultSize,
   },
@@ -58,13 +58,13 @@ const propSizeTestCases: TPropTestCase<IYNgTextProps, 'size'>[] = [
 const propVariantTestCases: TPropTestCase<IYNgTextProps, 'variant'>[] = [
   {
     prop: 'variant',
-    case: 'со значением',
+    case: 'with a value',
     value: EYCoreTextVariant.NEGATIVE,
     expected: EYCoreTextVariant.NEGATIVE,
   },
   {
     prop: 'variant',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultVariant,
   },
@@ -78,7 +78,7 @@ describe(
       () => {
         for (const testCase of slotDefaultTestCases) {
           it(
-            `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
             async() => {
               const component = await createComponent({
                 slots: { [testCase.slot]: testCase.content },
@@ -104,7 +104,7 @@ describe(
           ...propVariantTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+            `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
             async() => {
               const component = await createComponent({
                 slots: {},

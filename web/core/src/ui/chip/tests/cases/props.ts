@@ -29,7 +29,7 @@ export const propLabelTestCases: TPropTestCase<IYCoreChipProps, 'labelText'>[] =
 export const propIconLeftTestCases: TPropTestCase<IYCoreChipProps, 'iconLeft'>[] = [
   {
     prop: 'iconLeft',
-    case: 'со значением',
+    case: 'with a value',
     value: chipIconLeftValue,
   },
 ]
@@ -37,8 +37,8 @@ export const propIconLeftTestCases: TPropTestCase<IYCoreChipProps, 'iconLeft'>[]
 export const propSizeTestCases: TPropTestCase<IYCoreChipProps, 'size'>[] = [
   EYSizes.SMALL as TYCoreChipSize,
   EYSizes.LARGE as TYCoreChipSize,
-].map((value) => ({ prop: 'size', case: `со значением ${value}`, value }))
+].map((value) => ({ prop: 'size', case: `with value ${value}`, value }))
 
-export const propActiveTestCases: TPropTestCase<IYCoreChipProps, 'active'>[] = [{ prop: 'active', case: 'со значением true', value: true }]
+export const propActiveTestCases: TPropTestCase<IYCoreChipProps, 'active'>[] = [{ prop: 'active', case: 'with value true', value: true }]
 
-export const propDisabledTestCases: TPropTestCase<IYCoreChipProps, 'disabled'>[] = [{ prop: 'disabled', case: 'со значением true', value: true }]
+export const propDisabledTestCases: TPropTestCase<IYCoreChipProps, 'disabled'>[] = [{ prop: 'disabled', case: 'with value true', value: true }]

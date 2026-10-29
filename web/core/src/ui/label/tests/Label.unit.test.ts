@@ -150,7 +150,7 @@ describe(
           const expectedCssClass = `${tagName}_${testCase.prop}`
 
           it(
-            `Должен ${testCase.case}  ${testCase.value ? '' : 'не'} добавить класс ${expectedCssClass}, если prop ${testCase.prop} ${testCase.value}`,
+            `Should ${testCase.case} ${testCase.value ? '' : 'not'} add class ${expectedCssClass} when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -170,7 +170,7 @@ describe(
           const expectedCssClass = `${tagName}__asterisk`
 
           it(
-            `Должен ${testCase.case}  ${testCase.value ? '' : 'не'} добавить ноду ${expectedCssClass}, если prop ${testCase.prop} ${testCase.value}`,
+            `Should ${testCase.case} ${testCase.value ? '' : 'not'} add node ${expectedCssClass} when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -190,7 +190,7 @@ describe(
           const expectedCssClass = `${tagName}_${testCase.value}`
 
           it(
-            `Должен ${testCase.case} добавить класс ${expectedCssClass}, если prop ${testCase.prop} ${testCase.value}`,
+            `Should ${testCase.case} add class ${expectedCssClass} when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -210,7 +210,7 @@ describe(
           const expectedCssClass = `${tagName}_${testCase.prop}_${testCase.value}`
 
           it(
-            `Должен ${testCase.case} добавить класс ${expectedCssClass}, если prop ${testCase.prop} ${testCase.value}`,
+            `Should ${testCase.case} add class ${expectedCssClass} when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -222,7 +222,7 @@ describe(
           )
 
           it(
-            `Должен ${testCase.case} добавить передать проп ${testCase.prop} ${testCase.value} в text`,
+            `Should ${testCase.case} pass prop ${testCase.prop} ${testCase.value} to text`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -238,7 +238,7 @@ describe(
 
         for (const testCase of propsVariantTestCases) {
           it(
-            `При disabled:true не должен ${testCase.case} передать проп ${testCase.prop} ${testCase.value}, вместо него ${testCase.prop} ${EYCoreTextVariant.TERTIARY} в text`,
+            `With disabled: true, should not ${testCase.case} pass prop ${testCase.prop} ${testCase.value}; ${testCase.prop} ${EYCoreTextVariant.TERTIARY} is passed to text instead`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value, disabled: true } })
 
@@ -255,7 +255,7 @@ describe(
         for (const testCase of propsTextTestCases) {
           const expectedTextClass = `.${tagName}__content`
           it(
-            `Должен ${testCase.case}  отрендерить prop ${testCase.prop} в text prop в слоте text`,
+            `Should ${testCase.case} render prop ${testCase.prop} as the text prop in the text slot`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -276,7 +276,7 @@ describe(
 
         for (const testCase of propsTooltipTextTestCases) {
           it(
-            `Должен ${testCase.case} добавить проп в ${YCoreTooltipTagName}, если prop ${testCase.prop} ${testCase.value}`,
+            `Should ${testCase.case} add a prop to ${YCoreTooltipTagName} when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value, tooltipActive: true } })
 
@@ -292,7 +292,7 @@ describe(
 
         for (const testCase of propsTooltipActiveTestCases) {
           it(
-            `Должен ${testCase.case} добавить проп в ${YCoreTooltipTagName}, если prop ${testCase.prop} ${testCase.value}`,
+            `Should ${testCase.case} add a prop to ${YCoreTooltipTagName} when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { tooltipText: text, [testCase.prop]: testCase.value } })
 
@@ -311,7 +311,7 @@ describe(
           const contentClassName = `.${tagName}__content`
           // TODO: Fix how the props are applied and how the value reaches the debounce
           it.skip(
-            `Должен ${testCase.case} ${testCase.prop} ${testCase.value}мс при смене размера ${contentClassName}`,
+            `Should ${testCase.case} ${testCase.prop} ${testCase.value} ms when ${contentClassName} is resized`,
             async() => {
               const component = createComponent(tagName)
               document.body.appendChild(component)
@@ -343,7 +343,7 @@ describe(
       'CSS',
       () => {
         describe(
-          'Тестирование значений css properties',
+          'CSS property values',
           () => {
             beforeAll(async() => {
               await updateComponent({ props: { } })
@@ -351,7 +351,7 @@ describe(
             const varMarginLeftName = '--y-core-label-margin-left-tooltip'
 
             it(
-              'CSS классы в значениях должны содержать переменные',
+              'CSS classes should use variables in their values',
               () => {
                 const shadowRoot = getWCShadowRoot(component)
 
@@ -366,7 +366,7 @@ describe(
             )
 
             it(
-              'CSS переменные должны соответсвовать значениям из токенов',
+              'CSS variables should match the token values',
               () => {
                 const shadowRoot = getWCShadowRoot(component)
 

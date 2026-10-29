@@ -28,4 +28,4 @@ pre-push:
     require-up-to-date-main:
       run: |
         git fetch origin main
-        git merge-base --is-ancestor origin/main HEAD || (echo 'Ваша ветка не содержит последние изменения из main. Подливаем main...' && git merge --no-edit origin/main || (echo 'Конфликты при мерже с main! Решите их вручную.' && exit 1))
+        git merge-base --is-ancestor origin/main HEAD || (echo 'Your branch is missing the latest changes from main. Merging main...' && git merge --no-edit origin/main || (echo 'Конфликты при мерже с main! Решите их вручную.' && exit 1))

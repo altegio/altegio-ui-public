@@ -53,7 +53,7 @@ describe(
       'Integration',
       () => {
         it(
-          'Должен содержать стрелку для контента подсказки',
+          'Should have an arrow for the tooltip content',
           () => {
             const arrowElement = getWCShadowRoot(component).querySelector(`.${tagName}__arrow`)
 
@@ -68,7 +68,7 @@ describe(
       () => {
         for (const testCase of propTypeTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением ${testCase.value} должен корректно поменять CSS класс в shadowRoot`,
+            `Prop "${testCase.prop}" with value ${testCase.value} should change the CSS class in shadowRoot`,
             async() => {
               await updateComponent({ props: { type: testCase.value } })
 
@@ -92,7 +92,7 @@ describe(
           ...propTriggerTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением ${JSON.stringify(testCase.value)} должен корректно поменять prop в класс в ${YCoreDropdownTagName}`,
+            `Prop "${testCase.prop}" with value ${JSON.stringify(testCase.value)} should map the prop to a class in ${YCoreDropdownTagName}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -113,7 +113,7 @@ describe(
           ...slotContentTestCases,
         ]) {
           it(
-            `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
             async() => {
               await updateComponent({ slots: { [testCase.slot]: testCase.content } })
 

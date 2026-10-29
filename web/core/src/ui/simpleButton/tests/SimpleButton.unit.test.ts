@@ -22,12 +22,12 @@ const defaultProps: IYCoreSimpleButtonProps = createCoreSimpleButtonProps()
 const propDisabledTestCases: TPropTestCase<IYCoreSimpleButtonExternalProps, 'disabled'>[] = [
   {
     prop: 'disabled',
-    case: 'содержать',
+    case: 'have',
     value: true,
   },
   {
     prop: 'disabled',
-    case: 'отсутствовать',
+    case: 'not have',
     value: false,
   },
 ]
@@ -101,7 +101,7 @@ describe(
               const expectedCssClass = localClassWithModifier(`${testCase.prop}_${testCase.case}`)
 
               it(
-                `Prop "${testCase.prop}" должен изменить класс у rootElement на "${expectedCssClass}"`,
+                `Prop "${testCase.prop}" should change the rootElement class to "${expectedCssClass}"`,
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -117,7 +117,7 @@ describe(
               const expectedCssClass = localClassWithModifier('disabled')
 
               it(
-                `Должен ${testCase.case} класс disabled, если prop disabled ${testCase.value}`,
+                `Should ${testCase.case} the disabled class when prop disabled is ${testCase.value}`,
                 async() => {
                   await updateComponent({ props: { disabled: testCase.value } })
 
@@ -134,7 +134,7 @@ describe(
             }
 
             it(
-              'Должен отображать состояние загрузки',
+              'Should show the loading state',
               async() => {
                 // Arrange
                 await updateComponent({ props: { loading: true } })
@@ -153,7 +153,7 @@ describe(
             )
 
             it(
-              'Не должен отображать состояние загрузки',
+              'Should not show the loading state',
               async() => {
                 // Arrange
                 await updateComponent({ props: { loading: false } })
@@ -172,7 +172,7 @@ describe(
             )
 
             it(
-              'Должен корректно изменяться при изменении prop href и target',
+              'Should update when the href and target props change',
               async() => {
                 const target = EAnchorTarget.BLANK
 
@@ -188,7 +188,7 @@ describe(
             )
 
             propFullWidthTestCases.forEach((testCase) => {
-              const name = `${testCase.expected ? 'Должен' : 'Не должен'} растягиваться на всю ширину родителя при fullWidth: ${testCase.value}`
+              const name = `${testCase.expected ? 'Should' : 'Should not'} stretch to the full parent width when fullWidth: ${testCase.value}`
 
               it(
                 name,
@@ -197,7 +197,7 @@ describe(
 
                   const rootElement = getRootElement()
 
-                  if (!rootElement) throw Error('Отсутствует rootElement')
+                  if (!rootElement) throw Error('rootElement is missing')
 
                   if (testCase.expected) expect(rootElement.clientWidth).toBe(document.body.clientWidth)
                   else expect(rootElement.clientWidth).not.toBe(document.body.clientWidth)
@@ -211,7 +211,7 @@ describe(
           'Slots',
           () => {
             it(
-              'Должен отрендерить текст из default слота',
+              'Should render the text from the default slot',
               async() => {
                 const slotElement = getRootElement()?.querySelector('slot')
                 await updateComponent({ slots: { default: text } })
@@ -227,7 +227,7 @@ describe(
           'Events',
           () => {
             it(
-              'Должен генерировать событие click при клике',
+              'Should emit click on click',
               () => {
                 const clickHandler = vi.fn()
                 component.addEventListener(
@@ -242,7 +242,7 @@ describe(
             )
 
             it(
-              'Не должен генерировать событие click при клике, если кнопка отключена',
+              'Should not emit click on click when the button is disabled',
               async() => {
                 await updateComponent({ props: { disabled: true } })
 

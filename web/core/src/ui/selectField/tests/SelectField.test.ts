@@ -95,7 +95,7 @@ describe(
           'Slots',
           () => {
             it(
-              'Должен отрендерить слот "annotation" в annotation',
+              'Should render the "annotation" slot in annotation',
               async() => {
                 await updateComponent({ slots: { ['annotation']: textWithTag } })
 
@@ -106,7 +106,7 @@ describe(
 
             for (const { slotName, content } of dropdownListSlotsTestCases) {
               it(
-                `Должен отрендерить слот "${slotName}" в dropdownList`,
+                `Should render the "${slotName}" slot in dropdownList`,
                 async() => {
                   await updateComponent({ slots: { [slotName]: content } })
 
@@ -130,7 +130,7 @@ describe(
               ...propRequiredTestCases,
             ]) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и передан в quark/fieldInput`,
+                `Prop "${prop}" should be "${propCase}" and passed to quark/fieldInput`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
@@ -146,7 +146,7 @@ describe(
 
             for (const { prop, case: propCase, value, expected } of propValueTestCases) {
               it(
-                `Проп "${prop}" cо значением "${propCase}" должен быть "${String(expected)}" и передан в quark/fieldInput`,
+                `Prop "${prop}" with value "${propCase}" should be "${String(expected)}" and passed to quark/fieldInput`,
                 async() => {
                   await updateComponent({ props: { [prop]: value, items: items } })
 
@@ -166,7 +166,7 @@ describe(
               ...propErrorTestCases,
             ]) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и передан в quark/fieldWrapper`,
+                `Prop "${prop}" should be "${propCase}" and passed to quark/fieldWrapper`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
@@ -182,7 +182,7 @@ describe(
 
             for (const { prop, labelProp, case: propCase, value } of [...propLabelTextTestCases]) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и передан в molecule/label`,
+                `Prop "${prop}" should be "${propCase}" and passed to molecule/label`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
@@ -207,7 +207,7 @@ describe(
               ...propLabelDebounceTestCases,
             ]) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и передан в molecule/label`,
+                `Prop "${prop}" should be "${propCase}" and passed to molecule/label`,
                 async() => {
                   await updateComponent({
                     props: {
@@ -228,7 +228,7 @@ describe(
 
             for (const { prop, case: propCase, value } of propDisabledTestCases) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и передан в quark/fieldWrapper, atom/annotation и molecule/label`,
+                `Prop "${prop}" should be "${propCase}" and passed to quark/fieldWrapper, atom/annotation and molecule/label`,
                 async() => {
                   await updateComponent({ props: { [prop]: value, annotationText: text, labelText: text } })
 
@@ -256,7 +256,7 @@ describe(
 
             for (const { prop, case: propCase, value } of propErrorsTestCases) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и передан в atom/error`,
+                `Prop "${prop}" should be "${propCase}" and passed to atom/error`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
@@ -278,7 +278,7 @@ describe(
 
             for (const { prop, case: propCase, value, annotationProp } of propAnnotationTextTestCases) {
               it(
-                `Проп "${prop}" должен быть "${propCase}" и передан в atom/annotation`,
+                `Prop "${prop}" should be "${propCase}" and passed to atom/annotation`,
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
@@ -298,7 +298,7 @@ describe(
               ...propIsMapOptionsTestCases,
             ]) {
               it(
-                `Проп "${prop}" со значением "${propCase}" должен правильно определять значение элемента и отображать "${String(expected)}" в инпуте`,
+                `Prop "${prop}" with value "${propCase}" should resolve the item value and show "${String(expected)}" in the input`,
                 async() => {
                   await updateComponent({
                     props: {
@@ -320,7 +320,7 @@ describe(
 
             for (const { prop, case: propCase, value, additionalProps } of propIsFilterableTestCases) {
               it(
-                `Проп "${prop}" со значением "${propCase}" ${value ? 'должен' : 'не должен'} запустить фильтрацию`,
+                `Prop "${prop}" with value "${propCase}" ${value ? 'should' : 'should not'} run filtering`,
                 async() => {
                   const handleFilter = vi.fn(filterCallback)
 
@@ -345,7 +345,7 @@ describe(
 
             for (const { prop, case: propCase, value, additionalProps } of propFilterCallbackCases) {
               it(
-                `Проп "${prop}" со значением "${propCase}" ${value ? 'должен' : 'не должен'} должен запустить callback`,
+                `Prop "${prop}" with value "${propCase}" ${value ? 'should' : 'should not'} run the callback`,
                 async() => {
                   const handleFilter = vi.fn(value)
                   await updateComponent({
@@ -368,7 +368,7 @@ describe(
 
             for (const { prop, case: propCase, value } of propIsCustomFilterTestCases) {
               it(
-                `Проп "${prop}" со значением "${propCase}" ${value ? 'должен' : 'не должен'} вызвать событие input`,
+                `Prop "${prop}" with value "${propCase}" ${value ? 'should' : 'should not'} emit input`,
                 async() => {
                   await updateComponent({
                     props: {
@@ -402,7 +402,7 @@ describe(
           () => {
             for (const { eventName, event, case: eventCase } of wrapperEvents) {
               it(
-                `Должен вызывать событие "${eventName}" ${eventCase}`,
+                `Should emit "${eventName}" ${eventCase}`,
                 () => {
                   const inputField = getSubWC(
                     component,
@@ -422,7 +422,7 @@ describe(
               )
 
               it(
-                `Не должен вызывать событие "${eventName}" ${eventCase} если компонент disabled`,
+                `Should not emit "${eventName}" ${eventCase} when the component is disabled`,
                 async() => {
                   await updateComponent({ props: { disabled: true } })
 
@@ -445,7 +445,7 @@ describe(
             }
 
             it(
-              'Должен вызывать событие "input" при вводе',
+              'Should emit "input" on input',
               async() => {
                 await updateComponent({ props: { isCustomFilter: true } })
 
@@ -462,7 +462,7 @@ describe(
             )
 
             it(
-              'Не должен вызывать событие "input" при вводе если компонент disabled',
+              'Should not emit "input" on input when the component is disabled',
               async() => {
                 await updateComponent({ props: { isCustomFilter: true, disabled: true } })
 
@@ -479,7 +479,7 @@ describe(
             )
 
             it.skip(
-              'Должен вызывать событие select при выборе значений из опций',
+              'Should emit select when values are selected from the options',
               async() => {
                 await updateComponent({ props: { items } })
 

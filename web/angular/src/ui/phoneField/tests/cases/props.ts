@@ -26,18 +26,18 @@ const {
 } = createCorePhoneFieldProps()
 
 export const propValueTestCases: TPropTestCase<IYVuePhoneFieldProps, 'value'>[] = [
-  { prop: 'value', case: 'с номером', value: searchNumberValue, expected: searchNumberValue },
-  { prop: 'value', case: 'без номера', value: '', expected: '' },
+  { prop: 'value', case: 'with a number', value: searchNumberValue, expected: searchNumberValue },
+  { prop: 'value', case: 'without a number', value: '', expected: '' },
 ]
 
 export const propNameTestCases: TPropTestCase<IYVuePhoneFieldProps, 'name'>[] = [
-  { prop: 'name', case: 'с текстом', value: text, expected: text },
-  { prop: 'name', case: 'без текста', value: '', expected: '' },
+  { prop: 'name', case: 'with text', value: text, expected: text },
+  { prop: 'name', case: 'without text', value: '', expected: '' },
   { prop: 'name', case: 'undefined', value: undefined, expected: name },
 ]
 export const propPlaceholderTestCases: TPropTestCase<IYVuePhoneFieldProps, 'placeholder'>[] = [
-  { prop: 'placeholder', case: 'с текстом', value: text, expected: text },
-  { prop: 'placeholder', case: 'без текста', value: '', expected: '' },
+  { prop: 'placeholder', case: 'with text', value: text, expected: text },
+  { prop: 'placeholder', case: 'without text', value: '', expected: '' },
   { prop: 'placeholder', case: 'undefined', value: undefined, expected: placeholder },
 ]
 export const propAutofocusTestCases: TPropTestCase<IYVuePhoneFieldProps, 'autofocus'>[] = [
@@ -61,8 +61,8 @@ export const propRequiredTestCases: TPropTestCase<IYVuePhoneFieldProps, 'require
   { prop: 'required', case: 'undefined', value: undefined, expected: required },
 ]
 export const propErrorsTestCases: TPropTestCase<IYVuePhoneFieldProps, 'errors'>[] = [
-  { prop: 'errors', case: 'массив с ошибками', value: ['error'], expected: ['error'] },
-  { prop: 'errors', case: 'пустой массив', value: [], expected: [] },
+  { prop: 'errors', case: 'array with errors', value: ['error'], expected: ['error'] },
+  { prop: 'errors', case: 'empty array', value: [], expected: [] },
   { prop: 'errors', case: 'undefined', value: undefined, expected: errors },
 ]
 export const propSizeTestCases: TPropTestCase<IYVuePhoneFieldProps, 'size'>[] = [
@@ -71,23 +71,23 @@ export const propSizeTestCases: TPropTestCase<IYVuePhoneFieldProps, 'size'>[] = 
   { prop: 'size', case: 'undefined', value: undefined, expected: size },
 ]
 export const propLabelTextTestCases: TPropTestCase<IYVuePhoneFieldProps, 'labelText'>[] = [
-  { prop: 'labelText', case: 'текст', value: text, expected: text },
-  { prop: 'labelText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'labelText', case: 'text', value: text, expected: text },
+  { prop: 'labelText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: labelText },
 ]
 export const propLabelTooltipTextTestCases: TPropTestCase<IYVuePhoneFieldProps, 'labelTooltipText'>[] = [
-  { prop: 'labelTooltipText', case: 'текст', value: text, expected: text },
-  { prop: 'labelTooltipText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'labelTooltipText', case: 'text', value: text, expected: text },
+  { prop: 'labelTooltipText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: labelTooltipText },
 ]
 export const propAnnotationTextTestCases: TPropTestCase<IYVuePhoneFieldProps, 'annotationText'>[] = [
-  { prop: 'annotationText', case: 'текст', value: text, expected: text },
-  { prop: 'annotationText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'annotationText', case: 'text', value: text, expected: text },
+  { prop: 'annotationText', case: 'empty string', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: annotationText },
 ]
 
 export const propMinSearchLengthTestCases: TPropTestCase<IYVuePhoneFieldProps, 'minSearchLength'>[] = [
-  { prop: 'minSearchLength', case: 'длина', value: 3, expected: 3 },
+  { prop: 'minSearchLength', case: 'length', value: 3, expected: 3 },
   { prop: 'minSearchLength', case: 'undefined', value: undefined, expected: minSearchLength },
 ]
 

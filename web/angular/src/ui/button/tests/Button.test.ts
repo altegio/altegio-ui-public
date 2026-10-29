@@ -64,13 +64,13 @@ const tagName = YCoreButtonTagName
 const propLabelTestCases: TPropTestCase<IYNgButtonProps, 'label'>[] = [
   {
     prop: 'label',
-    case: 'со значением',
+    case: 'with a value',
     value: text,
     expected: text,
   },
   {
     prop: 'label',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultLabel,
   },
@@ -78,13 +78,13 @@ const propLabelTestCases: TPropTestCase<IYNgButtonProps, 'label'>[] = [
 const propIconLeftTestCases: TPropTestCase<IYNgButtonProps, 'iconLeft'>[] = [
   {
     prop: 'iconLeft',
-    case: 'со значением',
+    case: 'with a value',
     value: yRocket,
     expected: yRocket,
   },
   {
     prop: 'iconLeft',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultIconLeft,
   },
@@ -92,13 +92,13 @@ const propIconLeftTestCases: TPropTestCase<IYNgButtonProps, 'iconLeft'>[] = [
 const propIconRightTestCases: TPropTestCase<IYNgButtonProps, 'iconRight'>[] = [
   {
     prop: 'iconRight',
-    case: 'со значением',
+    case: 'with a value',
     value: yRocket,
     expected: yRocket,
   },
   {
     prop: 'iconRight',
-    case: 'без значения',
+    case: 'without a value',
     value: undefined,
     expected: defaultIconRight,
   },
@@ -119,7 +119,7 @@ const fullWidthTestCases: TPropTestCase<IYNgButtonProps, 'fullWidth'>[] = [
   },
   {
     prop: 'fullWidth',
-    case: 'без значения (по умолчанию)',
+    case: 'without a value (default)',
     value: undefined,
     expected: defaultFullWidth ? '' : null, // depends on the default value
   },
@@ -133,7 +133,7 @@ describe(
       () => {
         for (const testCase of propLabelTestCases) {
           it(
-            `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента на "${testCase.case}"`,
+            `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)
@@ -152,7 +152,7 @@ describe(
           ...propIconRightTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента на "${testCase.case}"`,
+            `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)
@@ -169,7 +169,7 @@ describe(
 
         for (const testCase of fullWidthTestCases) {
           it(
-            `Prop "fullWidth" должен изменить атрибут full-width у core компонента на "${testCase.case}"`,
+            `Prop "fullWidth" should set the full-width attribute on the core component to "${testCase.case}"`,
             async() => {
               const component = await createComponent({ props: { fullWidth: testCase.value } })
               const fixture = TestBed.createComponent(component)

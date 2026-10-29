@@ -37,7 +37,7 @@ describe(
       'Props',
       () => {
         it(
-          'Должен корректно изменить errors prop у core error',
+          'Should update the errors prop of the core error',
           async() => {
             const errors = [text]
             const component = await createComponent({ props: { errors } })

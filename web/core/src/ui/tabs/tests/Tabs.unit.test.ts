@@ -39,7 +39,7 @@ const getLocalShadowElement = (selector: string) => {
 const baseSlotsCheck = () => {
   for (const testCase of slotDefaultTestCases) {
     it(
-      `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+      `Slot "${testCase.slot}" should render ${testCase.case}`,
       async() => {
         await updateComponent({ slots: { [testCase.slot]: testCase.content } })
 
@@ -55,7 +55,7 @@ const basePropsCheck = () => {
     ...propsValueTestCases,
   ]) {
     it(
-      `Prop "${testCase.prop}" должен быть ${typeof testCase.value === 'object' ? JSON.stringify(testCase.value) : testCase.value}`,
+      `Prop "${testCase.prop}" should work ${typeof testCase.value === 'object' ? JSON.stringify(testCase.value) : testCase.value}`,
       async() => {
         await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -97,7 +97,7 @@ describe(
     describe('Events', () => {
       for (const testCase of [...eventChangeActiveTab]) {
         it(
-          `Должен генерировать событие ${testCase.event} ${testCase.case}`,
+          `Should emit ${testCase.event} ${testCase.case}`,
           () => {
             const eventHandler = vi.fn()
             component.addEventListener(
@@ -112,13 +112,13 @@ describe(
         )
       }
 
-      it('Проверка клика на Tab', async() => {
+      it('Tab click', async() => {
         await updateComponent({ props: { tabs } })
 
         const tabRootElement = getLocalShadowElement(YCoreTabTagName)
 
         if (!tabRootElement) {
-          throw new Error('TabRootElement не найден')
+          throw new Error('TabRootElement not found')
         }
 
         const handleTabClick = vi.fn()
@@ -135,13 +135,13 @@ describe(
         const tabElement = tabRootElement.shadowRoot
 
         if (!tabElement) {
-          throw new Error('TabShadow не найден')
+          throw new Error('TabShadow not found')
         }
 
         const activatorElement = tabElement.firstElementChild?.querySelector('.y-core-tab__activator')
 
         if (!activatorElement) {
-          throw new Error('ActivatorElement не найден')
+          throw new Error('ActivatorElement not found')
         }
 
         const activatorClasses = getElementClasses(activatorElement)

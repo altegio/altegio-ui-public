@@ -22,8 +22,8 @@ export interface IQueueModule extends IModule {
   editDefaultDelay: (defaultDelay: number) => void
 }
 
-const MUTATION_ERROR = '[QueueModule] Прямая мутация очереди запрещена. ' +
-  'Используйте методы putItem(), removeItem() или clearAll() для изменения состояния.'
+const MUTATION_ERROR = '[QueueModule] Direct mutation of the queue is not allowed. ' +
+  'Use putItem(), removeItem() or clearAll() to change the state.'
 
 /**
  * Queue module

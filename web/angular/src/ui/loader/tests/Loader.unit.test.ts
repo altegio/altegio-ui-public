@@ -56,7 +56,7 @@ describe(
           { size: EYSizes.LARGE, expectedResult: EYSizes.LARGE },
         ]) {
           it(
-            `Должен передать size со значением "${size}" в Web Component`,
+            `Should pass size "${size}" to the web component`,
             async() => {
               // Arrange
               const component = await createComponent({ props: { size: size as TYCoreLoaderSize } })
@@ -79,7 +79,7 @@ describe(
           { variant: EYCoreLoaderVariant.YELLOW, expectedResult: EYCoreLoaderVariant.YELLOW },
         ]) {
           it(
-            `Должен передать variant со значением "${variant}" в Web Component`,
+            `Should pass variant "${variant}" to the web component`,
             async() => {
               // Arrange
               const component = await createComponent({ props: { variant } })

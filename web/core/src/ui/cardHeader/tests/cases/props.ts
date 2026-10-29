@@ -15,12 +15,12 @@ export const propSizeCases: TPropTestCase<IYCoreCardHeaderProps, 'size'>[] = [
   { prop: 'size', case: 'large', value: EYSizes.LARGE },
 ]
 export const propHeaderTextCases: TPropTestCase<IYCoreCardHeaderProps, 'headerText'>[] = [
-  { prop: 'headerText', case: 'с текстом', value: text },
-  { prop: 'headerText', case: 'без текста', value: empty },
+  { prop: 'headerText', case: 'with text', value: text },
+  { prop: 'headerText', case: 'without text', value: empty },
 ]
 export const propTagTextCases: TPropTestCase<IYCoreCardHeaderProps, 'tagText'>[] = [
-  { prop: 'tagText', case: 'с текстом', value: text },
-  { prop: 'tagText', case: 'без текста', value: '' },
+  { prop: 'tagText', case: 'with text', value: text },
+  { prop: 'tagText', case: 'without text', value: '' },
 ]
 export const propTagVariantCases: TPropTestCase<IYCoreCardHeaderProps, 'tagVariant'>[] = [
   { prop: 'tagVariant', case: 'accent', value: EYCoreTagVariant.ACCENT },
@@ -32,6 +32,6 @@ export const propTagVariantCases: TPropTestCase<IYCoreCardHeaderProps, 'tagVaria
   { prop: 'tagVariant', case: 'discovery', value: EYCoreTagVariant.DISCOVERY },
 ]
 export const propHeaderIconCases: TPropTestCase<IYCoreCardHeaderProps, 'headerIcon'>[] = [
-  { prop: 'headerIcon', case: 'с иконкой', value: yRocket },
-  { prop: 'headerIcon', case: 'без иконки', value: undefined },
+  { prop: 'headerIcon', case: 'with an icon', value: yRocket },
+  { prop: 'headerIcon', case: 'without an icon', value: undefined },
 ]

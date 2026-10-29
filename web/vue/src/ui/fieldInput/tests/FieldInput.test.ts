@@ -41,7 +41,7 @@ describe(
           () => {
             for (const testCase of [...propValueTestCases]) {
               it(
-                `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство value у core компонента на "${String(testCase.expected)}"`,
+                `Prop "${testCase.prop}" (${testCase.case}) should set value on the core component to "${String(testCase.expected)}"`,
                 () => {
                   const wrapper = mount(
                     YFieldInput,
@@ -70,7 +70,7 @@ describe(
               ...propAutocompleteTestCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`,
+                `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
                 () => {
                   const wrapper = mount(
                     YFieldInput,
@@ -91,7 +91,7 @@ describe(
           () => {
             for (const { emitEventName, eventName, payload, case: eventCase } of vueInputEvents) {
               it(
-                `Должен вызывать событие "${emitEventName}" ${eventCase}`,
+                `Should emit "${emitEventName}" ${eventCase}`,
                 () => {
                   const wrapper = mount(
                     YFieldInput,

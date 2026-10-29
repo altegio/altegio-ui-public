@@ -24,7 +24,7 @@ describe('Vue/YBrandButton', () => {
       ...propDisabledTestCases,
       ...propTextTestCases,
     ]) {
-      it(`Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить свойство ${testCase.prop} у core компонента на "${String(testCase.expected)}"`, () => {
+      it(`Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`, () => {
         const wrapper = mount(YBrandButton, { props: { [testCase.prop]: testCase.value } })
 
         const coreElement = wrapper.find(tagName)
@@ -34,10 +34,10 @@ describe('Vue/YBrandButton', () => {
   })
 
   describe('Events', () => {
-    const eventTestCases = [{ eventName: 'click', emitEventName: 'click', case: 'при клике' }]
+    const eventTestCases = [{ eventName: 'click', emitEventName: 'click', case: 'on click' }]
 
     for (const { eventName, emitEventName, case: eventCase } of eventTestCases) {
-      it(`Должен вызывать событие "${emitEventName}" ${eventCase}`, async() => {
+      it(`Should emit "${emitEventName}" ${eventCase}`, async() => {
         const wrapper = mount(YBrandButton, { props: { text: 'DEFAULT' } })
 
         const coreElement = wrapper.find(tagName)

@@ -8,9 +8,9 @@ type TVueEventTestCase = {
 }
 
 export const vueInputEvents: TVueEventTestCase[] = [
-  { eventName: 'input', payload: { value: text }, emitEventName: 'update:modelValue', case: 'при вводе' },
-  { eventName: 'focus', emitEventName: 'focus', case: 'при фокусе' },
-  { eventName: 'blur', emitEventName: 'blur', case: 'при потере фокуса' },
-  { eventName: 'render', emitEventName: 'render', case: 'при рендере' },
-  { eventName: 'keydown', emitEventName: 'keydown', case: 'при нажатии клавиши' },
+  { eventName: 'input', payload: { value: text }, emitEventName: 'update:modelValue', case: 'on input' },
+  { eventName: 'focus', emitEventName: 'focus', case: 'on focus' },
+  { eventName: 'blur', emitEventName: 'blur', case: 'on blur' },
+  { eventName: 'render', emitEventName: 'render', case: 'on render' },
+  { eventName: 'keydown', emitEventName: 'keydown', case: 'on key press' },
 ]

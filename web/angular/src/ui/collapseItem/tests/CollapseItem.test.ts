@@ -117,7 +117,7 @@ describe(
               ...slotAfterTestCases,
             ]) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 async() => {
                   const component = await createComponent({ slots: { [testCase.slot]: testCase.content } })
                   const fixture = TestBed.createComponent(component)
@@ -145,7 +145,7 @@ describe(
               ...propVariantCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен быть "${JSON.stringify(testCase.expected)}" получая в случае "${testCase.case}" - "${JSON.stringify(testCase.value)}" в core "${testCase.prop}"`,
+                `Prop "${testCase.prop}" should be "${JSON.stringify(testCase.expected)}" for case "${testCase.case}" - "${JSON.stringify(testCase.value)}" in core "${testCase.prop}"`,
                 async() => {
                   const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
                   const fixture = TestBed.createComponent(component)
@@ -167,7 +167,7 @@ describe(
           () => {
             for (const testCase of eventCollapseItemClickCases) {
               it(
-                `Должен вызывать событие "${testCase.event}" в случае "${testCase.case}" при "${testCase.nodeEventName}"`,
+                `Should emit "${testCase.event}" ${testCase.case} (node event "${testCase.nodeEventName}")`,
                 async() => {
                   const handleAction = vi.fn()
                   const component = await createComponent({ props: {} })

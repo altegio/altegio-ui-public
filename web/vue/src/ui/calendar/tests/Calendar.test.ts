@@ -69,7 +69,7 @@ describe(
               ...isRange,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 () => {
                   const wrapper = mount(
                     YCalendar,
@@ -85,7 +85,7 @@ describe(
 
             for (const testCase of propModelValueTestCases) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство date у core компонента`,
+                `Prop "${testCase.prop}" should set date on the core component`,
                 () => {
                   const wrapper = mount(
                     YCalendar,
@@ -105,7 +105,7 @@ describe(
           'Events',
           () => {
             it(
-              'Должен вызывать событие "update:modelValue" при клике на ячейку дня',
+              'Should emit "update:modelValue" on day cell click',
               async() => {
                 const wrapper = mount(
                   YCalendar,

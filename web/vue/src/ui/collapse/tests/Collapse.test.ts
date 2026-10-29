@@ -57,7 +57,7 @@ describe(
           () => {
             for (const testCase of slotDefaultTestCases) {
               it(
-                `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
                 async() => {
                   await updateComponent({ slots: { default: testCase.content } })
 
@@ -79,7 +79,7 @@ describe(
             ]) {
               const coreTestProp = testCase.prop === 'modelValue' ? 'value' : testCase.prop
               it(
-                `Prop "${testCase.prop}" должен быть "${JSON.stringify(testCase.expected)}" получая в случае "${testCase.case}" - "${JSON.stringify(testCase.value)}" в core "${coreTestProp}"`,
+                `Prop "${testCase.prop}" should be "${JSON.stringify(testCase.expected)}" for case "${testCase.case}" - "${JSON.stringify(testCase.value)}" in core "${coreTestProp}"`,
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 

@@ -42,10 +42,10 @@ describe(
     })
 
     describe(
-      'Рендеринг',
+      'Rendering',
       () => {
         it(
-          'Должен рендерить div с корректным базовым классом',
+          'Should render a div with the correct base class',
           async() => {
             await component.updateComplete
 
@@ -57,9 +57,9 @@ describe(
         )
 
         it(
-          'Должен отображать содержимое <slot>',
+          'Should render the <slot> content',
           async() => {
-            const slotContent = 'Тестовый тег'
+            const slotContent = 'Test tag'
             component.innerHTML = slotContent
 
             await component.updateComplete
@@ -83,7 +83,7 @@ describe(
       () => {
         for (const testCase of propLocatorTestCases) {
           it(
-            `Prop "${testCase.prop}" должен быть ${testCase.value}`,
+            `Prop "${testCase.prop}" should work ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -94,7 +94,7 @@ describe(
 
         for (const testCase of propSizeTestCases) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен корректно применять CSS класс`,
+            `Prop "${testCase.prop}" ${testCase.case} should apply the CSS class`,
             async() => {
               await updateComponent({ props: { size: testCase.value } })
 
@@ -108,7 +108,7 @@ describe(
 
         for (const testCase of propVariantTestCases) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен корректно применять CSS класс`,
+            `Prop "${testCase.prop}" ${testCase.case} should apply the CSS class`,
             async() => {
               await updateComponent({ props: { variant: testCase.value } })
 
@@ -122,7 +122,7 @@ describe(
 
         for (const testCase of propDisabledTestCases) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен корректно применять CSS класс`,
+            `Prop "${testCase.prop}" ${testCase.case} should apply the CSS class`,
             async() => {
               await updateComponent({ props: { disabled: testCase.value } })
 
@@ -140,7 +140,7 @@ describe(
 
         for (const testCase of propIconLeftTestCases) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен корректно применять CSS класс with-icon`,
+            `Prop "${testCase.prop}" ${testCase.case} should apply the with-icon CSS class`,
             async() => {
               await updateComponent({ props: { iconLeft: testCase.value } })
 
@@ -154,7 +154,7 @@ describe(
 
         for (const testCase of propIconLeftTestCases) {
           it(
-            `Prop "${testCase.prop}" ${testCase.case} должен рендерить иконку`,
+            `Prop "${testCase.prop}" ${testCase.case} should render the icon`,
             async() => {
               await updateComponent({ props: { iconLeft: testCase.value } })
 

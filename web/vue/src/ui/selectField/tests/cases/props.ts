@@ -28,18 +28,18 @@ const {
 } = createVueSelectFieldProps()
 
 export const propValueTestCases: TPropTestCase<IYVueSelectFieldProps, 'modelValue'>[] = [
-  { prop: 'modelValue', case: 'со значением', value: text, expected: text, additionalProps: { isMapOptions: true } },
-  { prop: 'modelValue', case: 'без значения', value: undefined, expected: modelValue, additionalProps: { isMapOptions: true } },
+  { prop: 'modelValue', case: 'with a value', value: text, expected: text, additionalProps: { isMapOptions: true } },
+  { prop: 'modelValue', case: 'without a value', value: undefined, expected: modelValue, additionalProps: { isMapOptions: true } },
 ]
 
 export const propNameTestCases: TPropTestCase<IYVueSelectFieldProps, 'name'>[] = [
-  { prop: 'name', case: 'с текстом', value: text, expected: text },
-  { prop: 'name', case: 'без текста', value: '', expected: '' },
+  { prop: 'name', case: 'with text', value: text, expected: text },
+  { prop: 'name', case: 'without text', value: '', expected: '' },
   { prop: 'name', case: 'undefined', value: undefined, expected: name },
 ]
 export const propPlaceholderTestCases: TPropTestCase<IYVueSelectFieldProps, 'placeholder'>[] = [
-  { prop: 'placeholder', case: 'с текстом', value: text, expected: text },
-  { prop: 'placeholder', case: 'без текста', value: '', expected: '' },
+  { prop: 'placeholder', case: 'with text', value: text, expected: text },
+  { prop: 'placeholder', case: 'without text', value: '', expected: '' },
   { prop: 'placeholder', case: 'undefined', value: undefined, expected: placeholder },
 ]
 export const propAutofocusTestCases: TPropTestCase<IYVueSelectFieldProps, 'autofocus'>[] = [
@@ -63,8 +63,8 @@ export const propRequiredTestCases: TPropTestCase<IYVueSelectFieldProps, 'requir
   { prop: 'required', case: 'undefined', value: undefined, expected: required },
 ]
 export const propErrorsTestCases: TPropTestCase<IYVueSelectFieldProps, 'errors'>[] = [
-  { prop: 'errors', case: 'массив с ошибками', value: ['error'], expected: ['error'] },
-  { prop: 'errors', case: 'пустой массив', value: [], expected: [] },
+  { prop: 'errors', case: 'array with errors', value: ['error'], expected: ['error'] },
+  { prop: 'errors', case: 'empty array', value: [], expected: [] },
   { prop: 'errors', case: 'undefined', value: undefined, expected: errors },
 ]
 export const propSizeTestCases: TPropTestCase<IYVueSelectFieldProps, 'size'>[] = [
@@ -73,34 +73,34 @@ export const propSizeTestCases: TPropTestCase<IYVueSelectFieldProps, 'size'>[] =
   { prop: 'size', case: 'undefined', value: undefined, expected: size },
 ]
 export const propLabelTextTestCases: TPropTestCase<IYVueSelectFieldProps, 'labelText'>[] = [
-  { prop: 'labelText', case: 'текст', value: text, expected: text },
-  { prop: 'labelText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'labelText', case: 'text', value: text, expected: text },
+  { prop: 'labelText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: labelText },
 ]
 export const propLabelTooltipTextTestCases: TPropTestCase<IYVueSelectFieldProps, 'labelTooltipText'>[] = [
-  { prop: 'labelTooltipText', case: 'текст', value: text, expected: text },
-  { prop: 'labelTooltipText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'labelTooltipText', case: 'text', value: text, expected: text },
+  { prop: 'labelTooltipText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: labelTooltipText },
 ]
 export const propAnnotationTextTestCases: TPropTestCase<IYVueSelectFieldProps, 'annotationText'>[] = [
-  { prop: 'annotationText', case: 'текст', value: text, expected: text },
-  { prop: 'annotationText', case: 'пустая строка', value: empty, expected: empty },
+  { prop: 'annotationText', case: 'text', value: text, expected: text },
+  { prop: 'annotationText', case: 'empty string', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: annotationText },
 ]
 
 export const propItemLabelTestCases: TPropTestCase<IYVueSelectFieldProps, 'itemLabel'>[] = [
-  { prop: 'itemLabel', case: 'текст', value: 'label', expected: 'label' },
+  { prop: 'itemLabel', case: 'text', value: 'label', expected: 'label' },
   { prop: 'itemLabel', case: 'undefined', value: undefined, expected: itemLabel },
 ]
 
 export const propItemValueTestCases: TPropTestCase<IYVueSelectFieldProps, 'itemValue'>[] = [
-  { prop: 'itemValue', case: 'текст', value: 'value', expected: 'value' },
+  { prop: 'itemValue', case: 'text', value: 'value', expected: 'value' },
   { prop: 'itemValue', case: 'undefined', value: undefined, expected: itemValue },
 ]
 
 export const propItemsTestCases: TPropTestCase<IYVueSelectFieldProps, 'items'>[] = [
-  { prop: 'items', case: 'массив опций', value: [{ id: 1 }], expected: [{ id: 1 }] },
-  { prop: 'items', case: 'пустой массив', value: [], expected: [] },
+  { prop: 'items', case: 'options array', value: [{ id: 1 }], expected: [{ id: 1 }] },
+  { prop: 'items', case: 'empty array', value: [], expected: [] },
   { prop: 'items', case: 'undefined', value: undefined, expected: [] },
 ]
 
@@ -136,6 +136,6 @@ export const propErrorTestCases: TPropTestCase<IYVueSelectFieldProps, 'error'>[]
 ]
 
 export const propLabelDebounceTestCases: TPropTestCase<IYVueSelectFieldProps, 'labelDebounce'>[] = [
-  { prop: 'labelDebounce', case: 'со значением', value: 1000, expected: 1000 },
-  { prop: 'labelDebounce', case: 'без значения', value: undefined, expected: labelDebounce },
+  { prop: 'labelDebounce', case: 'with a value', value: 1000, expected: 1000 },
+  { prop: 'labelDebounce', case: 'without a value', value: undefined, expected: labelDebounce },
 ]

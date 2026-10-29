@@ -36,17 +36,17 @@ export const propsFullScreenTestCases: TPropTestCase<IYCoreFunctionalModalProps,
 ]
 
 export const propsHeadingTestCases: TPropTestCase<IYCoreFunctionalModalProps, 'heading'>[] = [
-  { prop: 'heading', case: 'с заголовком', value: text, expected: text },
-  { prop: 'heading', case: 'без заголовка', value: empty, expected: empty },
+  { prop: 'heading', case: 'with a heading', value: text, expected: text },
+  { prop: 'heading', case: 'without a heading', value: empty, expected: empty },
 ]
 
 export const propsSubHeadingTestCases: TPropTestCase<IYCoreFunctionalModalProps, 'subHeading'>[] = [
-  { prop: 'subHeading', case: 'с подзаголовком', value: text, expected: text },
-  { prop: 'subHeading', case: 'без подзаголовка', value: empty, expected: empty },
+  { prop: 'subHeading', case: 'with a subheading', value: text, expected: text },
+  { prop: 'subHeading', case: 'without a subheading', value: empty, expected: empty },
 ]
 
 export const propsHideFooterTestCases: TPropTestCase<IYCoreFunctionalModalProps, 'hideFooter'>[] = [
-  { prop: 'hideFooter', case: 'скрывать', value: true, expected: true },
-  { prop: 'hideFooter', case: 'не скрывать', value: false, expected: false },
+  { prop: 'hideFooter', case: 'hide', value: true, expected: true },
+  { prop: 'hideFooter', case: 'not hide', value: false, expected: false },
 ]
 

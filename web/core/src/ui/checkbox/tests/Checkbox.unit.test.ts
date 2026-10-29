@@ -76,8 +76,8 @@ const propIndeterminateTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'in
 ]
 
 const propDisabledTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'disabled'>[] = [
-  { prop: 'disabled', case: 'содержать', value: true, expected: true },
-  { prop: 'disabled', case: 'отсутствовать', value: false, expected: false },
+  { prop: 'disabled', case: 'have', value: true, expected: true },
+  { prop: 'disabled', case: 'not have', value: false, expected: false },
 ]
 
 const propAlignmentTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'alignment'>[] = [
@@ -87,14 +87,14 @@ const propAlignmentTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'alignm
 ]
 
 const propLabelTextTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'labelText'>[] = [
-  { prop: 'labelText', case: 'с контентом', value: text, expected: text },
-  { prop: 'labelText', case: 'без контента', value: empty, expected: empty },
+  { prop: 'labelText', case: 'with content', value: text, expected: text },
+  { prop: 'labelText', case: 'without content', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: undefined },
 ]
 
 const propLabelTooltipTextTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'labelTooltipText'>[] = [
-  { prop: 'labelTooltipText', case: 'с контентом', value: text, expected: text },
-  { prop: 'labelTooltipText', case: 'без контента', value: empty, expected: empty },
+  { prop: 'labelTooltipText', case: 'with content', value: text, expected: text },
+  { prop: 'labelTooltipText', case: 'without content', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: undefined },
 ]
 
@@ -104,19 +104,19 @@ const propRequiredTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'require
 ]
 
 const propAnnotationTextTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'annotationText'>[] = [
-  { prop: 'annotationText', case: 'с контентом', value: text, expected: text },
-  { prop: 'annotationText', case: 'без контента', value: empty, expected: empty },
+  { prop: 'annotationText', case: 'with content', value: text, expected: text },
+  { prop: 'annotationText', case: 'without content', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: empty },
 ]
 
 const propLabelOverflowDebounceTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'labelOverflowDebounce'>[] = [
-  { prop: 'labelOverflowDebounce', case: 'с контентом', value: number, expected: number },
+  { prop: 'labelOverflowDebounce', case: 'with content', value: number, expected: number },
   { prop: 'labelOverflowDebounce', case: 'undefined', value: undefined, expected: undefined },
 ]
 
 const propErrorsTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'errors'>[] = [
-  { prop: 'errors', case: 'с массивом ошибок', value: ['ошибка'], expected: true },
-  { prop: 'errors', case: 'с пустым массивом', value: [], expected: false },
+  { prop: 'errors', case: 'with an array of errors', value: ['error'], expected: true },
+  { prop: 'errors', case: 'with an empty array', value: [], expected: false },
   { prop: 'errors', case: 'undefined', value: undefined, expected: false },
 ]
 
@@ -142,7 +142,7 @@ describe(
           const expectedCssClass = localClassWithModifier(`${testCase.prop}-${testCase.case}`)
 
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" ${testCase.value ? '' : 'не'} должен изменить класс у rootElement на "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should ${testCase.value ? '' : 'not'} change the rootElement class to "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -162,7 +162,7 @@ describe(
           const expectedCssClass = localClassWithModifier(testCase.prop)
 
           it(
-            `Должен ${testCase.case} класс ${expectedCssClass}, если prop ${testCase.prop} ${testCase.value}`,
+            `Should ${testCase.case} class ${expectedCssClass} when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -185,7 +185,7 @@ describe(
           ...propDisabledTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить Prop у SimpleCheckbox на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the SimpleCheckbox prop to "${String(testCase.expected)}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -202,7 +202,7 @@ describe(
           ...propRequiredTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить prop у Label на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the Label prop to "${String(testCase.expected)}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -215,7 +215,7 @@ describe(
 
         for (const testCase of propLabelTooltipTextTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить prop у Label на "${testCase.value}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the Label prop to "${testCase.value}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -228,7 +228,7 @@ describe(
 
         for (const testCase of propLabelTextTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить prop у Label на "${testCase.value}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the Label prop to "${testCase.value}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -241,7 +241,7 @@ describe(
 
         for (const testCase of propDisabledTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить prop "tooltip-active" у Label на "${!testCase.value}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the Label "tooltip-active" prop to "${!testCase.value}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -254,7 +254,7 @@ describe(
 
         for (const testCase of propDisabledTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить prop у Annotation на "${testCase.value}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the Annotation prop to "${testCase.value}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -269,7 +269,7 @@ describe(
           const expectedCssClass = localClassWithModifier(`${testCase.prop}-${testCase.case}`)
 
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" ${testCase.value ? '' : 'не'} должен изменить класс у rootElement на "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should ${testCase.value ? '' : 'not'} change the rootElement class to "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -289,7 +289,7 @@ describe(
           const expectedCssClass = 'y-core-checkbox__label_hidden'
 
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" ${testCase.value ? 'не ' : ''}должен изменить класс у Label на "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should ${testCase.value ? 'not ' : ''}change the Label class to "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -309,7 +309,7 @@ describe(
           const expectedCssClass = localClassWithModifier('tooltip')
 
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" ${testCase.value ? '' : 'не'} должен изменить класс у rootElement на "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should ${testCase.value ? '' : 'not'} change the rootElement class to "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -327,7 +327,7 @@ describe(
 
         for (const testCase of propAnnotationTextTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить текс у Annotation на "${String(testCase.expected)}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the Annotation text to "${String(testCase.expected)}"`,
             async() => {
               await updateComponent({ props: { annotationText: testCase.value } })
 
@@ -340,7 +340,7 @@ describe(
 
         for (const testCase of propLabelOverflowDebounceTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить prop у Label на "${testCase.value}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should set the Label prop to "${testCase.value}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -353,7 +353,7 @@ describe(
 
         for (const testCase of propErrorsTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить Prop у SimpleCheckbox на "${testCase.expected as boolean}"`,
+            `Prop "${testCase.prop}" with value "${testCase.case}" should set the SimpleCheckbox prop to "${testCase.expected as boolean}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -366,7 +366,7 @@ describe(
 
         for (const testCase of propErrorsTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.case}" должен изменить Prop у Error на "${testCase.case}"`,
+            `Prop "${testCase.prop}" (${testCase.case}) should set the Error prop to "${testCase.case}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -384,14 +384,14 @@ describe(
       'Events',
       () => {
         it(
-          'Должен вызывать событие "checked" при клике',
+          'Should emit "checked" on click',
           async() => {
             const handleChecked = vi.fn()
 
             const rootElement = getLocalRootElement()
 
             if (!rootElement) {
-              throw new Error('Корневой элемент не найден')
+              throw new Error('Root element not found')
             }
 
             component.addEventListener(
@@ -405,7 +405,7 @@ describe(
         )
 
         it(
-          'Не должен вызывать событие "checked" при клике если компонент disabled',
+          'Should not emit "checked" on click when the component is disabled',
           async() => {
             await updateComponent({ props: { disabled: true } })
 
@@ -414,7 +414,7 @@ describe(
             const rootElement = getLocalRootElement()
 
             if (!rootElement) {
-              throw new Error('Корневой элемент не найден')
+              throw new Error('Root element not found')
             }
 
             component.addEventListener(

@@ -39,13 +39,13 @@ const tagName = YCoreAnnotationTagName
 const propTextTestCases: TPropTestCase<IYNgAnnotationProps, 'text'>[] = [
   {
     prop: 'text',
-    case: 'тестовый текст',
+    case: 'test text',
     value: text,
     expected: text,
   },
   {
     prop: 'text',
-    case: 'значение по умолчанию',
+    case: 'default value',
     value: undefined,
     expected: defaultText,
   },
@@ -59,7 +59,7 @@ const propDisabledTestCases: TPropTestCase<IYNgAnnotationProps, 'disabled'>[] = 
   },
   {
     prop: 'disabled',
-    case: 'значение по умолчанию',
+    case: 'default value',
     value: undefined,
     expected: defaultDisabled,
   },
@@ -76,7 +76,7 @@ describe(
           ...propDisabledTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента на "${testCase.case}"`,
+            `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
             async() => {
               const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
               const fixture = TestBed.createComponent(component)

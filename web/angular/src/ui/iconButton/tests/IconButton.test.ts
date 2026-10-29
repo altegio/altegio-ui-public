@@ -49,7 +49,7 @@ describe(
       'Props',
       () => {
         it(
-          'Изменения prop icon должно изменять CoreIconButton',
+          'Changing prop icon should update CoreIconButton',
           async() => {
             const component = await createComponent({ props: { icon: yRocket } })
             const fixture = TestBed.createComponent(component)

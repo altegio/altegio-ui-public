@@ -89,7 +89,7 @@ describe(
       () => {
         for (const testCase of textFieldSlotsTestCases) {
           it(
-            `Должен отрендерить слот "${testCase.slot}"`,
+            `Should render the "${testCase.slot}" slot`,
             async() => {
               await updateComponent({ slots: { [testCase.slot]: testCase.content } })
               const slotContent = component.querySelector(`div[slot="${testCase.slot}"]`)
@@ -113,7 +113,7 @@ describe(
           ...propAutofocusCases,
         ]) {
           it(
-            `Проп "${testCase.prop}" должен быть "${testCase.case}" и передан в fieldInput`,
+            `Prop "${testCase.prop}" should be "${testCase.case}" and passed to fieldInput`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -133,7 +133,7 @@ describe(
           ...propSizeCases,
         ]) {
           it(
-            `Проп "${testCase.prop}" должен быть "${testCase.case}" и передан в fieldWrapper`,
+            `Prop "${testCase.prop}" should be "${testCase.case}" and passed to fieldWrapper`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -152,7 +152,7 @@ describe(
           ...propErrorCases,
         ]) {
           it(
-            `Проп "${testCase.prop}" должен быть "${testCase.case}" и передан в fieldWrapper`,
+            `Prop "${testCase.prop}" should be "${testCase.case}" and passed to fieldWrapper`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -168,7 +168,7 @@ describe(
 
         for (const { prop, labelProp, case: propCase, value } of propLabelTextCases) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в label`,
+            `Prop "${prop}" should be "${propCase}" and passed to label`,
             async() => {
               await updateComponent({ props: { [prop]: value } })
 
@@ -190,7 +190,7 @@ describe(
 
         for (const { prop, case: propCase, value, labelProp } of propLabelTooltipTextCases) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в label`,
+            `Prop "${prop}" should be "${propCase}" and passed to label`,
             async() => {
               await updateComponent({
                 props: {
@@ -211,7 +211,7 @@ describe(
 
         for (const { prop, case: propCase, value, annotationProp } of propAnnotationTextTestCases) {
           it(
-            `Проп "${prop}" должен быть "${propCase}" и передан в annotation`,
+            `Prop "${prop}" should be "${propCase}" and passed to annotation`,
             async() => {
               await updateComponent({ props: { [prop]: value } })
 
@@ -227,7 +227,7 @@ describe(
 
         for (const testCase of propClearableCases) {
           it(
-            `Проп "${testCase.prop}" со значением "${testCase.case}" ${testCase.value ? 'должен' : 'не должен'} показать кнопку очистки при наличии значения`,
+            `Prop "${testCase.prop}" with value "${testCase.case}" ${testCase.value ? 'should' : 'should not'} show the clear button when there is a value`,
             async() => {
               await updateComponent({
                 props: {
@@ -261,7 +261,7 @@ describe(
         ...eventCloseCases,
       ]) {
         it(
-          `Должен генерировать событие ${testCase.event} ${testCase.case}`,
+          `Should emit ${testCase.event} ${testCase.case}`,
           () => {
             const eventHandler = vi.fn()
             component.addEventListener(

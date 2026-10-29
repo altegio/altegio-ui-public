@@ -58,7 +58,7 @@ describe(
               ...propNameTestCases,
             ]) {
               it(
-                `Prop "${testCase.prop}" должен изменить свойство ${testCase.prop} у core компонента`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 () => {
                   const wrapper = mount(
                     YCountField,
@@ -83,7 +83,7 @@ describe(
           'Events',
           () => {
             it(
-              'Должен вызывать событие changed-value при изменении значения',
+              'Should emit changed-value when the value changes',
               () => {
                 const wrapper = mount(YCountField)
                 const coreElement = wrapper.find(tagName).element as YCoreCountField
@@ -99,7 +99,7 @@ describe(
             )
 
             it(
-              'Должен вызывать событие focus при фокусе',
+              'Should emit focus on focus',
               () => {
                 const wrapper = mount(YCountField)
                 const coreElement = wrapper.find(tagName).element as YCoreCountField
@@ -114,7 +114,7 @@ describe(
             )
 
             it(
-              'Должен вызывать событие blur при потере фокуса',
+              'Should emit blur on blur',
               () => {
                 const wrapper = mount(YCountField)
                 const coreElement = wrapper.find(tagName).element as YCoreCountField
@@ -129,7 +129,7 @@ describe(
             )
 
             it(
-              'Должен вызывать событие keydown при нажатии клавиши',
+              'Should emit keydown on key press',
               () => {
                 const wrapper = mount(YCountField)
                 const coreElement = wrapper.find(tagName).element as YCoreCountField

@@ -43,7 +43,7 @@ export default function cssInjectPlugin({
       const gzippedSize = gzipSync(Buffer.from(cssContent)).length
       const gzippedSizeInKb = bytesToKb(gzippedSize)
       
-      console.log(`> CSS файл ${fileName} был записан в ${outPath} | Размер файла: ${fileSizeInKb} KB (gzip: ${gzippedSizeInKb} KB)`)
+      console.log(`> CSS file ${fileName} written to ${outPath} | Size: ${fileSizeInKb} KB (gzip: ${gzippedSizeInKb} KB)`)
     }
   }
 }

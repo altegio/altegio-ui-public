@@ -32,7 +32,7 @@ describe(
 
     for (const { host, root } of CSSVariablesHostToRootCases) {
       it(
-        `Host CSS переменная ${host} в стилях должна иметь значение :root CSS переменной ${root}`,
+        `Host CSS variable ${host} should have the value of the :root CSS variable ${root} in the styles`,
         () => {
           const shadowRoot = getWCShadowRoot(component)
 
@@ -48,7 +48,7 @@ describe(
 
     for (const { host, value } of CSSVariablesHostToValueCases) {
       it(
-        `Вычисленная Host CSS переменная ${host} в созданном компоненте должна иметь значение из токенов: ${value}`,
+        `Computed host CSS variable ${host} on the created component should have the token value: ${value}`,
         () => {
           const shadowRoot = getWCShadowRoot(component)
 
@@ -61,7 +61,7 @@ describe(
 
     for (const { textWrap, variable, value } of CSSVariablesTextWrapCases) {
       it(
-        `Вычисленная CSS переменная ${variable} при textWrap=${textWrap} должна иметь значение: ${value}`,
+        `Computed CSS variable ${variable} with textWrap=${textWrap} should have the value: ${value}`,
         async() => {
           component.textWrap = textWrap
           await component.updateComplete

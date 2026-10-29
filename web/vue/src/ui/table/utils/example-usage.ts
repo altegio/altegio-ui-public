@@ -59,18 +59,18 @@ const sortedListNew = computed((): IYVueTableItem[] => {
 const columns: ISimpleTableHeader[] = [
   {
     key: 'name',
-    label: 'Название',
+    label: 'Name',
     sortable: true,
     gridTemplate: 'minmax(200px, 1fr)',
   },
   {
     key: 'author',
-    label: 'Автор',
+    label: 'Author',
     gridTemplate: '150px',
   },
   {
     key: 'lastReportUpdatedDate',
-    label: 'Дата обновления',
+    label: 'Updated',
     gridTemplate: '180px',
   },
   {

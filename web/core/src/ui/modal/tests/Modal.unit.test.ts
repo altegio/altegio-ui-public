@@ -50,7 +50,7 @@ const localClassWithModifier = (modifier: string) => classWithModifier(
 const baseSlotsCheck = () => {
   for (const testCase of slotDefaultTestCases) {
     it(
-      `Slot "${testCase.slot}" должен быть ${testCase.case}`,
+      `Slot "${testCase.slot}" should render ${testCase.case}`,
       async() => {
         await updateComponent({ slots: { [testCase.slot]: testCase.content } })
 
@@ -70,7 +70,7 @@ const basePropsCheck = () => {
     ...propsFullScreenTestCases,
   ]) {
     it(
-      `Prop "${testCase.prop}" должен быть ${testCase.case}`,
+      `Prop "${testCase.prop}" should work ${testCase.case}`,
       async() => {
         await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -90,7 +90,7 @@ const baseEventsCheck = () => {
     ...eventPressEscapeCases,
   ]) {
     it(
-      `Должен генерировать событие ${testCase.event} ${testCase.case}`,
+      `Should emit ${testCase.event} ${testCase.case}`,
       () => {
         const eventHandler = vi.fn()
         component.addEventListener(
@@ -137,7 +137,7 @@ describe(
           const expectedCssClass = localClassWithModifier(`${testCase.prop}_${testCase.expected as string}`)
 
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен изменить класс у rootElement на "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should change the rootElement class to "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { open: true, [testCase.prop]: testCase.value } })
 
@@ -153,7 +153,7 @@ describe(
           const expectedCssClass = localClassWithModifier('full-screen')
 
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" ${testCase.value ? '' : 'не'} должен добавить класс rootElement'у "${expectedCssClass}"`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should ${testCase.value ? '' : 'not'} add class "${expectedCssClass}" to rootElement`,
             async() => {
               await updateComponent({ props: { open: true, [testCase.prop]: testCase.value } })
 
@@ -168,7 +168,7 @@ describe(
 
         for (const testCase of propsOpenTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" ${testCase.value ? '' : 'не'} должен отобразить rootElement`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should ${testCase.value ? '' : 'not'} show rootElement`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
@@ -181,13 +181,13 @@ describe(
 
         for (const testCase of propsWidthTestCases) {
           it(
-            `Prop "${testCase.prop}" со значением "${testCase.value}" должен отобразить rootElement со стилем min-width: ${testCase.value}`,
+            `Prop "${testCase.prop}" with value "${testCase.value}" should show rootElement with min-width: ${testCase.value}`,
             async() => {
               await updateComponent({ props: { open: true, [testCase.prop]: testCase.value } })
 
               const rootElement = getLocalRootElement()
 
-              if (!rootElement) throw Error('Modal Element не найден')
+              if (!rootElement) throw Error('Modal element not found')
 
               expect(rootElement).toHaveStyle(`max-width: ${testCase.value}`)
             },
@@ -201,13 +201,13 @@ describe(
       () => {
         for (const testCase of attributeAriaCases) {
           it(
-            `Attribute "${testCase.attr}" должен быть доступен со значением "${testCase.expected}"`,
+            `Attribute "${testCase.attr}" should be available with value "${testCase.expected}"`,
             async() => {
               await updateComponent({ props: { open: true } })
 
               const rootElement = getLocalRootElement()
 
-              if (!rootElement) throw Error('Modal Element не найден')
+              if (!rootElement) throw Error('Modal element not found')
 
               expect(rootElement).toHaveAttribute(testCase.attr, testCase.expected)
             },

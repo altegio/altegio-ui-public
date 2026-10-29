@@ -30,7 +30,7 @@ describe(
           { size: EYSizes.LARGE, expectedResult: EYSizes.LARGE },
         ]) {
           it(
-            `Должен передать size со значением "${size}" в Web Component`,
+            `Should pass size "${size}" to the web component`,
             () => {
               // Arrange
               const wrapper = mount(
@@ -53,7 +53,7 @@ describe(
           { variant: EYCoreLoaderVariant.YELLOW, expectedResult: EYCoreLoaderVariant.YELLOW },
         ]) {
           it(
-            `Должен передать variant со значением "${variant}" в Web Component`,
+            `Should pass variant "${variant}" to the web component`,
             () => {
               // Arrange
               const wrapper = mount(
