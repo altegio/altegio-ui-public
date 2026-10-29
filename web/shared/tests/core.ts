@@ -52,7 +52,9 @@ const renderProps = (
 ) => {
   if (!props) return
 
-  Object.assign(
+  // Explicit type arguments: the inferred result, TCoreElement & Partial<TCoreComponent>, is a
+  // 75 × 75 = 5,625-member union that costs type-aware lint rules gigabytes of memory.
+  Object.assign<TCoreElement, object>(
     component,
     props,
   )
@@ -67,7 +69,7 @@ const resetProps = (
   component: TCoreElement,
   defaultProps?: Partial<TCoreComponent>,
 ) => {
-  Object.assign(
+  Object.assign<TCoreElement, object>(
     component,
     defaultProps ?? {},
   )
