@@ -1,2 +1,2 @@
-export { default as YCountField } from './CountField.vue'
+export { default as AltCountField } from './CountField.vue'
 export type * from './models/types'

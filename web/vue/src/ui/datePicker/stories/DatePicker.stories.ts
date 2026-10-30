@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { computed } from 'vue'
 
-import { YDatePicker } from '~vue/ui/datePicker'
-import { type IYVueDatePickerProps } from '~vue/ui/datePicker/models/types'
-import yCoreDatePickerStoryMeta, { type IYCoreDatePickerStoryProps } from '~core/ui/datePicker/stories/DatePicker.stories'
+import { AltDatePicker } from '~vue/ui/datePicker'
+import { type IAltVueDatePickerProps } from '~vue/ui/datePicker/models/types'
+import altCoreDatePickerStoryMeta, { type IAltCoreDatePickerStoryProps } from '~core/ui/datePicker/stories/DatePicker.stories'
 
-type TVueDatePickerStoryMeta = IYVueDatePickerProps & IYCoreDatePickerStoryProps
+type TVueDatePickerStoryMeta = IAltVueDatePickerProps & IAltCoreDatePickerStoryProps
 
 /**
  * Vue wrapper for DatePicker
@@ -19,7 +19,7 @@ const meta: Meta<TVueDatePickerStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YDatePicker },
+    components: { AltDatePicker },
     setup() {
       const computedErrors = computed(() => args.errors ?? args.showErrors)
       return { args, computedErrors }
@@ -27,17 +27,17 @@ const meta: Meta<TVueDatePickerStoryMeta> = {
     template: `
       <div style="padding: 50px 50px 350px; margin: 20px; border: 1px dashed black; border-radius: 8px;">
         <div style="max-width: 300px; padding: 10px; overflow: hidden">
-          <YDatePicker
+          <AltDatePicker
             v-bind="args"
             :locale="args.localeData"
             :errors="computedErrors"
           >
-          </YDatePicker>
+          </AltDatePicker>
         </div>
       </div>`,
   }),
-  argTypes: { ...yCoreDatePickerStoryMeta.argTypes },
-  args: { ...yCoreDatePickerStoryMeta.args },
+  argTypes: { ...altCoreDatePickerStoryMeta.argTypes },
+  args: { ...altCoreDatePickerStoryMeta.args },
 }
 
 export default meta

@@ -3,18 +3,18 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core'
 import '~core/ui/searchTextHighlighted'
 import {
   createNgSearchTextHighlightedProps,
-  type IYNgSearchTextHighlightedProps,
+  type IAltNgSearchTextHighlightedProps,
 } from '~ng/ui/searchTextHighlighted/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 
 const { text, variant, search, ignoredSymbols, stopHighlight, size, highlightTextSize, highlightTextVariant, caseSensitive } = createNgSearchTextHighlightedProps()
 
 @Component({
-  selector: 'YSearchTextHighlighted',
+  selector: 'AltSearchTextHighlighted',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-search-text-highlighted
+    <alt-core-search-text-highlighted
       [text]="text"
       [variant]="variant"
       [search]="search"
@@ -25,18 +25,18 @@ const { text, variant, search, ignoredSymbols, stopHighlight, size, highlightTex
       [highlightTextVariant]="highlightTextVariant"
       [highlightTextSize]="highlightTextSize"
     >
-    </y-core-search-text-highlighted>
+    </alt-core-search-text-highlighted>
   `,
 })
 
-export class YSearchTextHighlighted implements IYNgSearchTextHighlightedProps {
-  @Input() @DefaultValue(text) text: IYNgSearchTextHighlightedProps['text'] = text
-  @Input() @DefaultValue(variant) variant: IYNgSearchTextHighlightedProps['variant'] = variant
-  @Input() @DefaultValue(search) search: IYNgSearchTextHighlightedProps['search'] = search
-  @Input() @DefaultValue(ignoredSymbols) ignoredSymbols: IYNgSearchTextHighlightedProps['ignoredSymbols'] = ignoredSymbols
-  @Input() @DefaultValue(stopHighlight) stopHighlight: IYNgSearchTextHighlightedProps['stopHighlight'] = stopHighlight
-  @Input() @DefaultValue(caseSensitive) caseSensitive: IYNgSearchTextHighlightedProps['caseSensitive'] = caseSensitive
-  @Input() @DefaultValue(size) size: IYNgSearchTextHighlightedProps['size'] = size
-  @Input() @DefaultValue(highlightTextSize) highlightTextSize: IYNgSearchTextHighlightedProps['highlightTextSize'] = highlightTextSize
-  @Input() @DefaultValue(highlightTextVariant) highlightTextVariant: IYNgSearchTextHighlightedProps['highlightTextVariant'] = highlightTextVariant
+export class AltSearchTextHighlighted implements IAltNgSearchTextHighlightedProps {
+  @Input() @DefaultValue(text) text: IAltNgSearchTextHighlightedProps['text'] = text
+  @Input() @DefaultValue(variant) variant: IAltNgSearchTextHighlightedProps['variant'] = variant
+  @Input() @DefaultValue(search) search: IAltNgSearchTextHighlightedProps['search'] = search
+  @Input() @DefaultValue(ignoredSymbols) ignoredSymbols: IAltNgSearchTextHighlightedProps['ignoredSymbols'] = ignoredSymbols
+  @Input() @DefaultValue(stopHighlight) stopHighlight: IAltNgSearchTextHighlightedProps['stopHighlight'] = stopHighlight
+  @Input() @DefaultValue(caseSensitive) caseSensitive: IAltNgSearchTextHighlightedProps['caseSensitive'] = caseSensitive
+  @Input() @DefaultValue(size) size: IAltNgSearchTextHighlightedProps['size'] = size
+  @Input() @DefaultValue(highlightTextSize) highlightTextSize: IAltNgSearchTextHighlightedProps['highlightTextSize'] = highlightTextSize
+  @Input() @DefaultValue(highlightTextVariant) highlightTextVariant: IAltNgSearchTextHighlightedProps['highlightTextVariant'] = highlightTextVariant
 }

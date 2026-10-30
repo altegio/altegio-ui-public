@@ -1,1 +1,1 @@
-export { YCoreTag } from './Tag.core'
+export { AltCoreTag } from './Tag.core'

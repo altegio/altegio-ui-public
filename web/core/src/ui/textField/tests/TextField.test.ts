@@ -1,15 +1,15 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
 import { text } from '~shared/tests/slotContents'
 import type {
-  YCoreErrorTagName,
+  AltCoreErrorTagName,
 } from '~shared/constants'
 import {
-  YCoreTextFieldTagName as tagName,
-  YCoreFieldIconTagName,
-  YCoreFieldInputTagName,
-  YCoreFieldWrapperTagName,
-  YCoreAnnotationTagName,
-  YCoreLabelTagName,
+  AltCoreTextFieldTagName as tagName,
+  AltCoreFieldIconTagName,
+  AltCoreFieldInputTagName,
+  AltCoreFieldWrapperTagName,
+  AltCoreAnnotationTagName,
+  AltCoreLabelTagName,
 } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { textWithTag } from '~shared/tests/slotContents'
@@ -61,7 +61,7 @@ const {
   createCoreTextFieldProps(),
 )
 
-type TSubComponent = typeof YCoreFieldInputTagName | typeof YCoreAnnotationTagName | typeof YCoreErrorTagName | typeof YCoreFieldWrapperTagName | typeof YCoreLabelTagName | typeof YCoreFieldIconTagName
+type TSubComponent = typeof AltCoreFieldInputTagName | typeof AltCoreAnnotationTagName | typeof AltCoreErrorTagName | typeof AltCoreFieldWrapperTagName | typeof AltCoreLabelTagName | typeof AltCoreFieldIconTagName
 
 const getSubWC = <T extends TSubComponent>(primaryWC: HTMLElement, secondaryWC: T) => {
   const subWC = getWCShadowRoot(primaryWC).querySelector(secondaryWC)
@@ -70,7 +70,7 @@ const getSubWC = <T extends TSubComponent>(primaryWC: HTMLElement, secondaryWC: 
 }
 
 describe(
-  'Core/YCoreTextField/Unit',
+  'Core/AltCoreTextField/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -119,7 +119,7 @@ describe(
 
               const inputField = getSubWC(
                 component,
-                YCoreFieldInputTagName,
+                AltCoreFieldInputTagName,
               )
 
               expect(inputField[testCase.prop]).toBe(testCase.value)
@@ -139,7 +139,7 @@ describe(
 
               const fieldWrapper = getSubWC(
                 component,
-                YCoreFieldWrapperTagName,
+                AltCoreFieldWrapperTagName,
               )
 
               expect(fieldWrapper[testCase.prop]).toBe(testCase.value)
@@ -158,7 +158,7 @@ describe(
 
               const fieldWrapper = getSubWC(
                 component,
-                YCoreFieldWrapperTagName,
+                AltCoreFieldWrapperTagName,
               )
 
               expect(fieldWrapper.error).toBe(testCase.expected)
@@ -175,14 +175,14 @@ describe(
               if (value) {
                 const labelElement = getSubWC(
                   component,
-                  YCoreLabelTagName,
+                  AltCoreLabelTagName,
                 )
                 expect(labelElement[labelProp]).toBe(value)
               } else {
                 expect(() => getSubWC(
                   component,
-                  YCoreLabelTagName,
-                )).toThrow(`${YCoreLabelTagName} not found`)
+                  AltCoreLabelTagName,
+                )).toThrow(`${AltCoreLabelTagName} not found`)
               }
             },
           )
@@ -201,7 +201,7 @@ describe(
 
               const labelElement = getSubWC(
                 component,
-                YCoreLabelTagName,
+                AltCoreLabelTagName,
               )
 
               expect(labelElement[labelProp]).toBe(value)
@@ -217,7 +217,7 @@ describe(
 
               const atomAnnotation = getSubWC(
                 component,
-                YCoreAnnotationTagName,
+                AltCoreAnnotationTagName,
               )
 
               expect(atomAnnotation[annotationProp]).toBe(value)
@@ -236,7 +236,7 @@ describe(
                 },
               })
 
-              const clearIcon = getWCShadowRoot(component).querySelector(YCoreFieldIconTagName)
+              const clearIcon = getWCShadowRoot(component).querySelector(AltCoreFieldIconTagName)
 
               if (testCase.value) {
                 expect(clearIcon).not.toBeNull()

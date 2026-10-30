@@ -1,4 +1,4 @@
-$component: $YCoreRadioButtonGroupTagName;
+$component: $AltCoreRadioButtonGroupTagName;
 
 :host {
   display: block;
@@ -7,7 +7,7 @@ $component: $YCoreRadioButtonGroupTagName;
 .$(component) {
   display: flex;
   flex-direction: column;
-  gap: var(--y-core-radio-button-group-label-gap);
+  gap: var(--alt-core-radio-button-group-label-gap);
 
   &__wrapper {
     display: flex;
@@ -15,11 +15,11 @@ $component: $YCoreRadioButtonGroupTagName;
     &_direction {
       &_vertical {
         flex-direction: column;
-        gap: var(--y-core-radio-button-group-vertical-gap);
+        gap: var(--alt-core-radio-button-group-vertical-gap);
       }
 
       &_horizontal {
-        gap: var(--y-core-radio-button-group-horizontal-gap);
+        gap: var(--alt-core-radio-button-group-horizontal-gap);
       }
     }
   }

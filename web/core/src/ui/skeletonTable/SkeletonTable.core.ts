@@ -6,15 +6,15 @@ import { random } from 'radash'
 
 import {
   createCoreSkeletonTableProps,
-  type IYCoreSkeletonTableProps,
+  type IAltCoreSkeletonTableProps,
 } from '~core/ui/skeletonTable/models/types'
 import {
-  YCoreSkeletonTableTagName as tagName,
+  AltCoreSkeletonTableTagName as tagName,
 } from '~shared/constants'
 
-import YCoreSkeletonTableVarsCss from '~core/ui/skeletonTable/css/SkeletonTable.vars.css?inline'
-import YCoreSkeletonTableScopedCss from '~core/ui/skeletonTable/css/SkeletonTable.scoped.css?inline'
-import YCoreTableRowOutsideCss from '~core/ui/tableRow/css/TableRow.outside.css?inline'
+import AltCoreSkeletonTableVarsCss from '~core/ui/skeletonTable/css/SkeletonTable.vars.css?inline'
+import AltCoreSkeletonTableScopedCss from '~core/ui/skeletonTable/css/SkeletonTable.scoped.css?inline'
+import AltCoreTableRowOutsideCss from '~core/ui/tableRow/css/TableRow.outside.css?inline'
 
 import { booleanConverter } from '~core/utils/converters'
 
@@ -32,15 +32,15 @@ const MAX_RANDOM_RATIO = 0.7
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreSkeletonTable
+export class AltCoreSkeletonTable
   extends LitElement
-  implements IYCoreSkeletonTableProps {
-  @property({ type: Array }) columns: IYCoreSkeletonTableProps['columns'] = columns
-  @property({ type: Number }) rows: IYCoreSkeletonTableProps['rows'] = rows
-  @property({ type: Boolean, attribute: 'has-pagination', converter: booleanConverter }) hasPagination: IYCoreSkeletonTableProps['hasPagination'] = hasPagination
-  @property({ type: Boolean, attribute: 'stripe', converter: booleanConverter }) stripe: IYCoreSkeletonTableProps['stripe'] = stripe
-  @property({ type: Boolean, attribute: 'hide-head', converter: booleanConverter }) hideHead: IYCoreSkeletonTableProps['hideHead'] = hideHead
-  @property({ type: Boolean, attribute: 'hide-bar', converter: booleanConverter }) hideBar: IYCoreSkeletonTableProps['hideBar'] = hideBar
+  implements IAltCoreSkeletonTableProps {
+  @property({ type: Array }) columns: IAltCoreSkeletonTableProps['columns'] = columns
+  @property({ type: Number }) rows: IAltCoreSkeletonTableProps['rows'] = rows
+  @property({ type: Boolean, attribute: 'has-pagination', converter: booleanConverter }) hasPagination: IAltCoreSkeletonTableProps['hasPagination'] = hasPagination
+  @property({ type: Boolean, attribute: 'stripe', converter: booleanConverter }) stripe: IAltCoreSkeletonTableProps['stripe'] = stripe
+  @property({ type: Boolean, attribute: 'hide-head', converter: booleanConverter }) hideHead: IAltCoreSkeletonTableProps['hideHead'] = hideHead
+  @property({ type: Boolean, attribute: 'hide-bar', converter: booleanConverter }) hideBar: IAltCoreSkeletonTableProps['hideBar'] = hideBar
 
   private readonly baseClass = tagName
   private readonly baseClassPagination = `${tagName}__pagination`
@@ -49,9 +49,9 @@ export class YCoreSkeletonTable
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreSkeletonTableVarsCss)}
-      ${unsafeCSS(YCoreSkeletonTableScopedCss)}
-      ${unsafeCSS(YCoreTableRowOutsideCss)}
+      ${unsafeCSS(AltCoreSkeletonTableVarsCss)}
+      ${unsafeCSS(AltCoreSkeletonTableScopedCss)}
+      ${unsafeCSS(AltCoreTableRowOutsideCss)}
     `,
   ]
 
@@ -80,7 +80,7 @@ export class YCoreSkeletonTable
 
         return isHead
           ? html`
-            <y-core-table-head-cell
+            <alt-core-table-head-cell
               .align=${align}
               class=${this.baseClassPlaceholderCell}
             >
@@ -89,10 +89,10 @@ export class YCoreSkeletonTable
                 slot="cell"
                 style=${cssWidth}
               ></div>
-            </y-core-table-head-cell>
+            </alt-core-table-head-cell>
           `
           : html`
-            <y-core-table-cell
+            <alt-core-table-cell
               .align=${align}
               class=${this.baseClassPlaceholderCell}
             >
@@ -101,7 +101,7 @@ export class YCoreSkeletonTable
                 slot="cell"
                 style=${cssWidth}
               ></div>
-            </y-core-table-cell>
+            </alt-core-table-cell>
           `
       },
     )
@@ -112,9 +112,9 @@ export class YCoreSkeletonTable
       (_, rowIndex) => `row-${rowIndex}`,
       () => {
         return html`
-          <y-core-table-row .stripe=${this.stripe} slot="body">
+          <alt-core-table-row .stripe=${this.stripe} slot="body">
             ${this.renderColumns(false)}
-          </y-core-table-row>
+          </alt-core-table-row>
         `
       },
     )
@@ -135,20 +135,20 @@ export class YCoreSkeletonTable
 
   protected render() {
     return html`
-      <y-core-table
+      <alt-core-table
         .hideHead=${this.hideHead}
         .hideBar=${this.hideBar}
         style=${this.computedGridTemplateColumns}
         class=${classMap(this.computedClasses)}
       >
-        <y-core-table-row slot="head">
+        <alt-core-table-row slot="head">
           ${this.renderColumns(true)}
-        </y-core-table-row>
+        </alt-core-table-row>
 
-        <y-core-table-bar slot="bar"></y-core-table-bar>
+        <alt-core-table-bar slot="bar"></alt-core-table-bar>
         ${this.renderRows()}
         ${this.renderPagination()}
-      </y-core-table>
+      </alt-core-table>
     `
   }
 }

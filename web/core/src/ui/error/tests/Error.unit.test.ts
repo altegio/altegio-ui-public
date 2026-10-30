@@ -3,12 +3,12 @@ import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
 import { text } from '~shared/tests/slotContents'
 import { getWCShadowRoot } from '~shared/tests/utils'
 import { useCoreTests } from '~shared/tests/core'
-import { EYCoreTextVariant, EYCoreTextSize } from '~core/ui/text/models/types'
-import { YCoreErrorTagName, YCoreTextTagName } from '~shared/constants'
+import { EAltCoreTextVariant, EAltCoreTextSize } from '~core/ui/text/models/types'
+import { AltCoreErrorTagName, AltCoreTextTagName } from '~shared/constants'
 import '~core/ui/error'
 import { createCoreErrorProps } from '~core/ui/error/models/types'
 
-const tagName = YCoreErrorTagName
+const tagName = AltCoreErrorTagName
 
 const {
   component,
@@ -21,7 +21,7 @@ const {
 )
 
 describe(
-  'Core/YCoreAnnotation/Unit',
+  'Core/AltCoreAnnotation/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -41,18 +41,18 @@ describe(
         it(
           'Should set text size = A2_REGULAR',
           () => {
-            const textElement = getWCShadowRoot(component).querySelector(YCoreTextTagName)
+            const textElement = getWCShadowRoot(component).querySelector(AltCoreTextTagName)
 
-            expect(textElement?.size).toContain(EYCoreTextSize.A2_REGULAR)
+            expect(textElement?.size).toContain(EAltCoreTextSize.A2_REGULAR)
           },
         )
 
         it(
           'Should set text variant = negative',
           () => {
-            const textElement = getWCShadowRoot(component).querySelector(YCoreTextTagName)
+            const textElement = getWCShadowRoot(component).querySelector(AltCoreTextTagName)
 
-            expect(textElement?.variant).toContain(EYCoreTextVariant.NEGATIVE)
+            expect(textElement?.variant).toContain(EAltCoreTextVariant.NEGATIVE)
           },
         )
       },
@@ -67,7 +67,7 @@ describe(
 
             await component.updateComplete
 
-            const textElement = getWCShadowRoot(component).querySelector(YCoreTextTagName)
+            const textElement = getWCShadowRoot(component).querySelector(AltCoreTextTagName)
 
             expect(textElement?.textContent).toContain(text)
           },
@@ -84,7 +84,7 @@ describe(
 
             await component.updateComplete
 
-            const textElement = getWCShadowRoot(component).querySelector(YCoreTextTagName)
+            const textElement = getWCShadowRoot(component).querySelector(AltCoreTextTagName)
             const errorList = textElement?.querySelector('ul')
             const errorItemsCount = errorList?.querySelectorAll('li').length
 

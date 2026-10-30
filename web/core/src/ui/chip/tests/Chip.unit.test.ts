@@ -1,7 +1,7 @@
 import { beforeAll, afterEach, describe, expect, it, afterAll, vi } from 'vitest'
 import { getShadowRootElement, getWCShadowRoot, getElementClasses } from '~shared/tests/utils'
 import { useCoreTests } from '~shared/tests/core'
-import { YCoreChipTagName, YCoreIconTagName, YCoreTextTagName } from '~shared/constants'
+import { AltCoreChipTagName, AltCoreIconTagName, AltCoreTextTagName } from '~shared/constants'
 import '~core/ui/chip'
 
 import { createCoreChipProps } from '~core/ui/chip/models/types'
@@ -15,9 +15,9 @@ import {
   chipLabelTextSizes,
   chipIconLeftValue,
 } from './cases/props'
-import { EYCoreTextSize, EYCoreTextVariant } from '~core/ui/text/models/types'
+import { EAltCoreTextSize, EAltCoreTextVariant } from '~core/ui/text/models/types'
 
-const tagName = YCoreChipTagName
+const tagName = AltCoreChipTagName
 
 const {
   component,
@@ -38,7 +38,7 @@ const getRootElement = () => {
 }
 
 describe(
-  'Core/YCoreChip/Unit',
+  'Core/AltCoreChip/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -77,11 +77,11 @@ describe(
             await component.updateComplete
 
             const shadowRoot = getWCShadowRoot(component)
-            const textElement = shadowRoot.querySelector(YCoreTextTagName)
+            const textElement = shadowRoot.querySelector(AltCoreTextTagName)
 
             expect(textElement).not.toBeNull()
-            expect(textElement?.size).toBe(EYCoreTextSize.A2_REGULAR)
-            expect(textElement?.variant).toBe(EYCoreTextVariant.PRIMARY)
+            expect(textElement?.size).toBe(EAltCoreTextSize.A2_REGULAR)
+            expect(textElement?.variant).toBe(EAltCoreTextVariant.PRIMARY)
           },
         )
 
@@ -92,7 +92,7 @@ describe(
 
             const shadowRoot = getWCShadowRoot(component)
 
-            expect(shadowRoot.querySelector(YCoreIconTagName)).toBeNull()
+            expect(shadowRoot.querySelector(AltCoreIconTagName)).toBeNull()
           },
         )
       },
@@ -108,7 +108,7 @@ describe(
               await updateComponent({ props: { labelText: testCase.value } })
 
               const shadowRoot = getWCShadowRoot(component)
-              const textElement = shadowRoot.querySelector(YCoreTextTagName)
+              const textElement = shadowRoot.querySelector(AltCoreTextTagName)
               const textClasses = getElementClasses(textElement)
 
               expect(textElement).not.toBeNull()
@@ -125,7 +125,7 @@ describe(
               await updateComponent({ props: { iconLeft: testCase.value } })
 
               const shadowRoot = getWCShadowRoot(component)
-              const iconElement = shadowRoot.querySelector(YCoreIconTagName)
+              const iconElement = shadowRoot.querySelector(AltCoreIconTagName)
 
               expect(iconElement).not.toBeNull()
               expect(iconElement?.icon).toBe(testCase.value)
@@ -155,8 +155,8 @@ describe(
               await updateComponent({ props: { size: testCase.value, iconLeft: chipIconLeftValue } })
 
               const shadowRoot = getWCShadowRoot(component)
-              const iconElement = shadowRoot.querySelector(YCoreIconTagName)
-              const textElement = shadowRoot.querySelector(YCoreTextTagName)
+              const iconElement = shadowRoot.querySelector(AltCoreIconTagName)
+              const textElement = shadowRoot.querySelector(AltCoreTextTagName)
 
               expect(iconElement).not.toBeNull()
 
@@ -192,10 +192,10 @@ describe(
               const classes = getElementClasses(rootElement)
 
               const shadowRoot = getWCShadowRoot(component)
-              const textElement = shadowRoot.querySelector(YCoreTextTagName)
+              const textElement = shadowRoot.querySelector(AltCoreTextTagName)
 
               expect(classes).toContain(`${tagName}_disabled`)
-              expect(textElement?.variant).toContain(EYCoreTextVariant.TERTIARY)
+              expect(textElement?.variant).toContain(EAltCoreTextVariant.TERTIARY)
             },
           )
         }

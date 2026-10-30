@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YSegmentControl } from '~vue/ui/segmentControl'
-import { type IYVueSegmentControlProps } from '~vue/ui/segmentControl/models/types'
-import ySegmentControlStoryMeta from '~core/ui/segmentControl/stories/SegmentControl.stories'
+import { AltSegmentControl } from '~vue/ui/segmentControl'
+import { type IAltVueSegmentControlProps } from '~vue/ui/segmentControl/models/types'
+import altSegmentControlStoryMeta from '~core/ui/segmentControl/stories/SegmentControl.stories'
 import { useArgs } from 'storybook/preview-api'
 
-type TVueSegmentControlStoryMeta = IYVueSegmentControlProps
+type TVueSegmentControlStoryMeta = IAltVueSegmentControlProps
 
 /**
  * Vue wrapper for Core SegmentControl
@@ -22,7 +22,7 @@ const meta: Meta<TVueSegmentControlStoryMeta> = {
     const [, updateArgs] = useArgs()
 
     return {
-      components: { YSegmentControl },
+      components: { AltSegmentControl },
       setup() {
         const updateValue = (newValue: string | undefined) => {
           updateArgs({ value: newValue })
@@ -31,17 +31,17 @@ const meta: Meta<TVueSegmentControlStoryMeta> = {
         return { args, updateValue }
       },
       template: `
-        <YSegmentControl
+        <AltSegmentControl
          v-bind="args"
          :modelValue="args.value"
          @update:modelValue="updateValue"
        >
-        </YSegmentControl>
+        </AltSegmentControl>
       `,
     }
   },
-  argTypes: { ...ySegmentControlStoryMeta.argTypes },
-  args: { ...ySegmentControlStoryMeta.args },
+  argTypes: { ...altSegmentControlStoryMeta.argTypes },
+  args: { ...altSegmentControlStoryMeta.args },
 }
 
 export default meta

@@ -4,13 +4,13 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 import {
   createCoreLabelExternalProps,
   createCoreLabelInternalProps,
-  EYCoreLabelAlignment,
-  type IYCoreLabelInternalProps,
-  type IYCoreLabelExternalProps,
+  EAltCoreLabelAlignment,
+  type IAltCoreLabelInternalProps,
+  type IAltCoreLabelExternalProps,
 } from '~core/ui/label/models/types'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import { YCoreLabelTagName as tagName } from '~shared/constants'
-import { EYCoreTextSize, EYCoreTextVariant } from '~core/ui/text/models/types/external'
+import { AltCoreLabelTagName as tagName } from '~shared/constants'
+import { EAltCoreTextSize, EAltCoreTextVariant } from '~core/ui/text/models/types/external'
 import type { ITextStoryProps } from '~shared/.storybook/argTypes'
 import {
   disabled as disabledArgType,
@@ -22,20 +22,20 @@ import {
   getComponentStateTable,
   getComponentSlotsTable,
 } from '~shared/.storybook/tables'
-import yCoreDropdownStoryMeta from '~core/ui/dropdown/stories/Dropdown.stories'
+import altCoreDropdownStoryMeta from '~core/ui/dropdown/stories/Dropdown.stories'
 
 import '~core/ui/label'
 
-export interface IYCoreLabelStoryProps extends ITextStoryProps {}
+export interface IAltCoreLabelStoryProps extends ITextStoryProps {}
 
-export interface IYCoreLabelStorySlots {
+export interface IAltCoreLabelStorySlots {
   tooltipContentSlot: string
 }
 
-type IYCoreLabelStoryMeta = IYCoreLabelExternalProps &
-  IYCoreLabelInternalProps &
-  IYCoreLabelStoryProps &
-  IYCoreLabelStorySlots
+type IAltCoreLabelStoryMeta = IAltCoreLabelExternalProps &
+  IAltCoreLabelInternalProps &
+  IAltCoreLabelStoryProps &
+  IAltCoreLabelStorySlots
 
 const { debounce, alignment, wrap, required, text, tooltipText, tooltipActive, size, variant, tooltipPlacement } = {
   ...createCoreLabelExternalProps(),
@@ -46,7 +46,7 @@ const { debounce, alignment, wrap, required, text, tooltipText, tooltipActive, s
  * ## Label
  * Label for input fields
  */
-const meta: Meta<IYCoreLabelStoryMeta> = {
+const meta: Meta<IAltCoreLabelStoryMeta> = {
   title: '⚙️️ Label',
   id: 'label',
   parameters: { controls: { sort: 'alpha' } },
@@ -69,7 +69,7 @@ const meta: Meta<IYCoreLabelStoryMeta> = {
     tooltipPlacement,
     tooltipContentSlot,
   }) => html`
-    <y-core-label
+    <alt-core-label
       .text=${isLongText ? LOREM_IPSUM : text}
       .tooltipText=${isLongText ? LOREM_IPSUM : tooltipText}
       .alignment=${alignment}
@@ -82,7 +82,7 @@ const meta: Meta<IYCoreLabelStoryMeta> = {
       .tooltipPlacement=${tooltipPlacement}
     >
       <span slot="tooltip-content">${tooltipContentSlot}</span> 
-    </y-core-label>
+    </alt-core-label>
   `,
   argTypes: {
     disabled: disabledArgType,
@@ -110,7 +110,7 @@ const meta: Meta<IYCoreLabelStoryMeta> = {
     alignment: {
       control: 'select',
       description: 'Content alignment',
-      options: Object.values(EYCoreLabelAlignment),
+      options: Object.values(EAltCoreLabelAlignment),
       ...getComponentContentTable(alignment),
     },
     tooltipActive: {
@@ -122,8 +122,8 @@ const meta: Meta<IYCoreLabelStoryMeta> = {
       control: 'select',
       description: 'Label size',
       options: Object.values([
-        EYCoreTextSize.A2_REGULAR,
-        EYCoreTextSize.P2_REGULAR,
+        EAltCoreTextSize.A2_REGULAR,
+        EAltCoreTextSize.P2_REGULAR,
       ]),
       ...getComponentContentTable(size),
     },
@@ -131,8 +131,8 @@ const meta: Meta<IYCoreLabelStoryMeta> = {
       control: 'select',
       description: 'Label variant',
       options: Object.values([
-        EYCoreTextVariant.PRIMARY,
-        EYCoreTextVariant.SECONDARY,
+        EAltCoreTextVariant.PRIMARY,
+        EAltCoreTextVariant.SECONDARY,
       ]),
       ...getComponentContentTable(variant),
     },
@@ -145,7 +145,7 @@ const meta: Meta<IYCoreLabelStoryMeta> = {
 
     // Story Controls
     isLongText: isLongTextArgType,
-    tooltipPlacement: yCoreDropdownStoryMeta.argTypes?.placement,
+    tooltipPlacement: altCoreDropdownStoryMeta.argTypes?.placement,
   },
   args: {
     ...createCoreLabelExternalProps(),
@@ -162,9 +162,9 @@ const meta: Meta<IYCoreLabelStoryMeta> = {
     tooltipPlacement,
     tooltipContentSlot: 'Content in the tooltip-content slot',
   },
-} satisfies Meta<IYCoreLabelStoryMeta>
+} satisfies Meta<IAltCoreLabelStoryMeta>
 
 export default meta
-type Story = StoryObj<IYCoreLabelStoryMeta>
+type Story = StoryObj<IAltCoreLabelStoryMeta>
 
 export const Playground: Story = { args: { tooltipActive: true } }

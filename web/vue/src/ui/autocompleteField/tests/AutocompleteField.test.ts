@@ -1,8 +1,8 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { YCoreAutocompleteFieldTagName as tagName } from '~shared/constants'
-import { YAutocompleteField } from '~vue/ui/autocompleteField'
-import { YCoreAutocompleteField } from '~core/ui/autocompleteField'
+import { AltCoreAutocompleteFieldTagName as tagName } from '~shared/constants'
+import { AltAutocompleteField } from '~vue/ui/autocompleteField'
+import { AltCoreAutocompleteField } from '~core/ui/autocompleteField'
 
 import { vueInputEvents } from './cases/events'
 import {
@@ -25,13 +25,13 @@ import {
 import { slotAnnotationTestCases, slotListTestCases } from './cases/slots'
 
 describe(
-  'Vue/YAutocompleteField',
+  'Vue/AltAutocompleteField',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreAutocompleteField,
+          AltCoreAutocompleteField,
         )
       }
     })
@@ -44,7 +44,7 @@ describe(
             `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
-                YAutocompleteField,
+                AltAutocompleteField,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
@@ -75,7 +75,7 @@ describe(
             `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
-                YAutocompleteField,
+                AltAutocompleteField,
                 { props: { value: '', [testCase.prop]: testCase.value } },
               )
 
@@ -103,7 +103,7 @@ describe(
             `Slot "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
-                YAutocompleteField,
+                AltAutocompleteField,
                 {
                   props: { value: '' },
                   slots: {
@@ -132,7 +132,7 @@ describe(
             `Should emit "${emitEventName}" ${eventCase}`,
             () => {
               const wrapper = mount(
-                YAutocompleteField,
+                AltAutocompleteField,
                 { props: { value: '' } },
               )
 

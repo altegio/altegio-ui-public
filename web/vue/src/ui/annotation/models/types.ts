@@ -1,17 +1,17 @@
 import {
   createCoreAnnotationExternalProps,
-  type IYCoreAnnotationExternalProps,
+  type IAltCoreAnnotationExternalProps,
 } from '~core/ui/annotation/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreAnnotationProps extends IYCoreAnnotationExternalProps {}
+export interface IAltVueCoreAnnotationProps extends IAltCoreAnnotationExternalProps {}
 
-export interface IYVueAnnotationProps {
-  text?: IYVueCoreAnnotationProps['text']
-  disabled?: IYVueCoreAnnotationProps['disabled']
+export interface IAltVueAnnotationProps {
+  text?: IAltVueCoreAnnotationProps['text']
+  disabled?: IAltVueCoreAnnotationProps['disabled']
 }
 
-export const createVueAnnotationProps = (): TDefinedVueProps<IYVueAnnotationProps> => {
+export const createVueAnnotationProps = (): TDefinedVueProps<IAltVueAnnotationProps> => {
   const { text, disabled } = createCoreAnnotationExternalProps()
   return {
     text,

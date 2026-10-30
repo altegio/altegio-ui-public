@@ -1,21 +1,21 @@
 import type { TDefinedVueProps } from '~web/vue/src/utils/utility-types'
 import {
   createCoreCounterProps,
-  type IYCoreCounterProps,
+  type IAltCoreCounterProps,
 } from '~core/ui/counter/models/types'
 
-export interface IYVueCoreCounterProps extends IYCoreCounterProps {}
+export interface IAltVueCoreCounterProps extends IAltCoreCounterProps {}
 
-export interface IYVueCounterProps {
-  value: IYVueCoreCounterProps['value']
-  variant: IYVueCoreCounterProps['variant']
-  size?: IYVueCoreCounterProps['size']
-  disabled?: IYVueCoreCounterProps['disabled']
-  withPlusSign?: IYVueCoreCounterProps['withPlusSign']
-  locator?: IYVueCoreCounterProps['locator']
+export interface IAltVueCounterProps {
+  value: IAltVueCoreCounterProps['value']
+  variant: IAltVueCoreCounterProps['variant']
+  size?: IAltVueCoreCounterProps['size']
+  disabled?: IAltVueCoreCounterProps['disabled']
+  withPlusSign?: IAltVueCoreCounterProps['withPlusSign']
+  locator?: IAltVueCoreCounterProps['locator']
 }
 
-export const createVueCounterProps = (): TDefinedVueProps<IYVueCounterProps> => {
+export const createVueCounterProps = (): TDefinedVueProps<IAltVueCounterProps> => {
   const { size, disabled, withPlusSign, locator } = createCoreCounterProps()
 
   return {

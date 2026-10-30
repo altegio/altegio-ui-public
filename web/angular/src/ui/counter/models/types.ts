@@ -1,7 +1,7 @@
-import { createCoreCounterProps, type IYCoreCounterProps } from '~core/ui/counter/models/types'
+import { createCoreCounterProps, type IAltCoreCounterProps } from '~core/ui/counter/models/types'
 
-export type TYNgCounterProps = IYCoreCounterProps
+export type TAltNgCounterProps = IAltCoreCounterProps
 
-export const createNgCounterProps = (): TYNgCounterProps => {
+export const createNgCounterProps = (): TAltNgCounterProps => {
   return createCoreCounterProps()
 }

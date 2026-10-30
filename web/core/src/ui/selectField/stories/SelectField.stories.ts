@@ -6,23 +6,23 @@ import '~core/ui/selectField'
 import '~core/ui/fieldIcon'
 import { addPrefixToObjectKeys } from '~shared/utils'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import yCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
-import yCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
-import yCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
-import yCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
-import yCoreErrorStoryMeta, { type IYCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
+import altCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
+import altCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
+import altCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
+import altCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
+import altCoreErrorStoryMeta, { type IAltCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
 
-import YCoreDropdownList from '~core/ui/dropdownList/stories/DropdownList.stories'
+import AltCoreDropdownList from '~core/ui/dropdownList/stories/DropdownList.stories'
 
 import {
-  type TYCoreSelectFieldEvents,
-  type IYCoreSelectFieldExternalProps,
+  type TAltCoreSelectFieldEvents,
+  type IAltCoreSelectFieldExternalProps,
 } from '~core/ui/selectField/models/types'
 
-import { YCoreSelectFieldTagName as tagName } from '~shared/constants'
+import { AltCoreSelectFieldTagName as tagName } from '~shared/constants'
 import { getComponentEmitsTable, getComponentStateTable, storyControlsTable } from '~shared/.storybook/tables'
 import { fn } from 'storybook/test'
-import { ySearch } from '~shared/icons'
+import { altSearch } from '~shared/icons'
 
 type TSelectFieldWithSlots = {
   showDropdownListTop: boolean
@@ -31,10 +31,10 @@ type TSelectFieldWithSlots = {
 }
 
 export interface ICoreSelectFieldStoryProps extends
-  IYCoreErrorStoryProps {
+  IAltCoreErrorStoryProps {
 }
 
-export type TYCoreSelectFieldStoryMeta = IYCoreSelectFieldExternalProps & ICoreSelectFieldStoryProps & TYCoreSelectFieldEvents & TSelectFieldWithSlots
+export type TAltCoreSelectFieldStoryMeta = IAltCoreSelectFieldExternalProps & ICoreSelectFieldStoryProps & TAltCoreSelectFieldEvents & TSelectFieldWithSlots
 
 /**
  * ## Core SelectField
@@ -42,7 +42,7 @@ export type TYCoreSelectFieldStoryMeta = IYCoreSelectFieldExternalProps & ICoreS
  *
  */
 
-const meta: Meta<TYCoreSelectFieldStoryMeta> = {
+const meta: Meta<TAltCoreSelectFieldStoryMeta> = {
   title: 'Inputs/✅ SelectField',
   id: 'selectField',
   parameters: { controls: { sort: 'alpha' } },
@@ -84,7 +84,7 @@ const meta: Meta<TYCoreSelectFieldStoryMeta> = {
     onInput,
   }) => html`
     <div style="padding: 50px 50px 300px; margin: 20px; border: 1px dashed black; border-radius: 8px">
-      <y-core-select-field
+      <alt-core-select-field
         .value=${value}
         .labelText=${isLongText ? LOREM_IPSUM : labelText}
         .labelTooltipText=${labelTooltipText}
@@ -142,24 +142,24 @@ const meta: Meta<TYCoreSelectFieldStoryMeta> = {
 
         ${showBefore
           ? html`
-              <y-core-field-icon slot="before" .icon=${ySearch}></y-core-field-icon>
+              <alt-core-field-icon slot="before" .icon=${altSearch}></alt-core-field-icon>
             `
           : nothing
         }
-      </y-core-select-field>
+      </alt-core-select-field>
     </div>
   `,
   argTypes: {
     // Extended Props
-    ...omit(yCoreFieldWrapperStoryMeta.argTypes ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon']),
-    ...omit(yCoreFieldInputStoryMeta.argTypes ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'value', 'maxlength', 'type', 'onRender']),
-    ...addPrefixToObjectKeys(omit(yCoreLabelStoryMeta.argTypes ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
-    ...addPrefixToObjectKeys(omit(yCoreAnnotationStoryMeta.argTypes ?? {}, ['disabled', 'isLongText']), 'annotation'),
-    ...omit(yCoreErrorStoryMeta.argTypes ?? {}, ['isLongText']),
-    isLongText: yCoreLabelStoryMeta.argTypes?.isLongText,
+    ...omit(altCoreFieldWrapperStoryMeta.argTypes ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon']),
+    ...omit(altCoreFieldInputStoryMeta.argTypes ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'value', 'maxlength', 'type', 'onRender']),
+    ...addPrefixToObjectKeys(omit(altCoreLabelStoryMeta.argTypes ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
+    ...addPrefixToObjectKeys(omit(altCoreAnnotationStoryMeta.argTypes ?? {}, ['disabled', 'isLongText']), 'annotation'),
+    ...omit(altCoreErrorStoryMeta.argTypes ?? {}, ['isLongText']),
+    isLongText: altCoreLabelStoryMeta.argTypes?.isLongText,
 
     ...omit(
-      YCoreDropdownList.argTypes ?? {},
+      AltCoreDropdownList.argTypes ?? {},
       ['showTopSlot', 'showListSlot', 'showBottomSlot'],
     ),
     filterValue: {
@@ -229,15 +229,15 @@ const meta: Meta<TYCoreSelectFieldStoryMeta> = {
   },
   args: {
     // Extended Props
-    ...omit(yCoreFieldWrapperStoryMeta.args ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon']),
-    ...omit(yCoreFieldInputStoryMeta.args ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'value', 'maxlength', 'type', 'onRender']),
-    ...addPrefixToObjectKeys(omit(yCoreLabelStoryMeta.args ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
-    ...addPrefixToObjectKeys(omit(yCoreAnnotationStoryMeta.args ?? {}, ['disabled', 'isLongText']), 'annotation'),
-    ...omit(yCoreErrorStoryMeta.args ?? {}, ['isLongText']),
-    isLongText: yCoreLabelStoryMeta.args?.isLongText,
+    ...omit(altCoreFieldWrapperStoryMeta.args ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon']),
+    ...omit(altCoreFieldInputStoryMeta.args ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'value', 'maxlength', 'type', 'onRender']),
+    ...addPrefixToObjectKeys(omit(altCoreLabelStoryMeta.args ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
+    ...addPrefixToObjectKeys(omit(altCoreAnnotationStoryMeta.args ?? {}, ['disabled', 'isLongText']), 'annotation'),
+    ...omit(altCoreErrorStoryMeta.args ?? {}, ['isLongText']),
+    isLongText: altCoreLabelStoryMeta.args?.isLongText,
 
     ...omit(
-      YCoreDropdownList.args ?? {},
+      AltCoreDropdownList.args ?? {},
       ['showTopSlot', 'showListSlot', 'showBottomSlot'],
     ),
 
@@ -249,12 +249,12 @@ const meta: Meta<TYCoreSelectFieldStoryMeta> = {
     filterCallback: undefined,
     itemValue: 'id',
     onSelect: fn(),
-    value: YCoreDropdownList.args?.items?.[1],
+    value: AltCoreDropdownList.args?.items?.[1],
   },
-} satisfies Meta<TYCoreSelectFieldStoryMeta>
+} satisfies Meta<TAltCoreSelectFieldStoryMeta>
 
 export default meta
-type Story = StoryObj<TYCoreSelectFieldStoryMeta>
+type Story = StoryObj<TAltCoreSelectFieldStoryMeta>
 
 export const Default: Story = {
   args: {},

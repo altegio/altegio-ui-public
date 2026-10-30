@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreCollapseItemTagName } from '~shared/constants'
+import { AltCoreCollapseItemTagName } from '~shared/constants'
 import {
   createCoreCollapseItemProps,
 } from '~core/ui/collapseItem/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/collapseItem/tests/cases/css'
 
-const tagName = YCoreCollapseItemTagName
+const tagName = AltCoreCollapseItemTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreCollapseItem/CSS',
+  'Core/AltCoreCollapseItem/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

@@ -6,27 +6,27 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 import '~core/ui/toggle'
 
 import {
-  type IYCoreToggleExternalProps,
-  type TYCoreToggleEvents,
+  type IAltCoreToggleExternalProps,
+  type TAltCoreToggleEvents,
 } from '../models/types'
-import yCoreSimpleToggleStoryMeta from '~core/ui/simpleToggle/stories/SimpleToggle.stories'
-import { YCoreToggleTagName as tagName } from '~shared/constants'
+import altCoreSimpleToggleStoryMeta from '~core/ui/simpleToggle/stories/SimpleToggle.stories'
+import { AltCoreToggleTagName as tagName } from '~shared/constants'
 
 import { omit } from 'radash'
-import yCoreLabelStoryMeta, { type IYCoreLabelStorySlots } from '~core/ui/label/stories/Label.stories'
-import yCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
+import altCoreLabelStoryMeta, { type IAltCoreLabelStorySlots } from '~core/ui/label/stories/Label.stories'
+import altCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
 import type { ITextStoryProps } from '~shared/.storybook/argTypes'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { internalPropsKeys as simpleToggleInternalPropsKeys } from '~core/ui/simpleToggle/models/types'
 import { internalPropsKeys as labelInternalPropsKeys } from '~core/ui/label/models/types'
 
-export interface IYCoreToggleStoryProps extends IYCoreToggleExternalProps, ITextStoryProps {}
-export interface IYCoreToggleStoryEvents extends TYCoreToggleEvents {}
-export interface IYCoreToggleStorySlots extends IYCoreLabelStorySlots {}
+export interface IAltCoreToggleStoryProps extends IAltCoreToggleExternalProps, ITextStoryProps {}
+export interface IAltCoreToggleStoryEvents extends TAltCoreToggleEvents {}
+export interface IAltCoreToggleStorySlots extends IAltCoreLabelStorySlots {}
 
-type TYCoreToggleStoryMeta = IYCoreToggleStoryProps & IYCoreToggleStoryEvents & IYCoreToggleStorySlots
+type TAltCoreToggleStoryMeta = IAltCoreToggleStoryProps & IAltCoreToggleStoryEvents & IAltCoreToggleStorySlots
 
-const yCoreLabelStoryMetaOmitKeys = [
+const altCoreLabelStoryMetaOmitKeys = [
   'text',
   'tooltipText',
   'debounce',
@@ -34,7 +34,7 @@ const yCoreLabelStoryMetaOmitKeys = [
   ...labelInternalPropsKeys,
 ] as const
 
-const meta: Meta<TYCoreToggleStoryMeta> = {
+const meta: Meta<TAltCoreToggleStoryMeta> = {
   title: '✅ Toggle',
   id: 'toggle',
   parameters: { controls: { expanded: true, sort: 'alpha' } },
@@ -57,7 +57,7 @@ const meta: Meta<TYCoreToggleStoryMeta> = {
     const [
       args,
       updateArgs,
-    ] = useArgs<TYCoreToggleStoryMeta>()
+    ] = useArgs<TAltCoreToggleStoryMeta>()
 
     const { checked } = args
     const onChange = () => {
@@ -65,7 +65,7 @@ const meta: Meta<TYCoreToggleStoryMeta> = {
     }
 
     return html`
-      <y-core-toggle
+      <alt-core-toggle
         .checked=${checked}
         .labelText=${isLongText ? LOREM_IPSUM : labelText}
         .labelTooltipText=${labelTooltipText}
@@ -82,45 +82,45 @@ const meta: Meta<TYCoreToggleStoryMeta> = {
         }
 
         <span slot="tooltip-content">${tooltipContentSlot}</span> 
-      </y-core-toggle>
+      </alt-core-toggle>
     `
   },
   argTypes: {
     ...omit(
-      yCoreLabelStoryMeta.argTypes ?? {},
-      [...yCoreLabelStoryMetaOmitKeys],
+      altCoreLabelStoryMeta.argTypes ?? {},
+      [...altCoreLabelStoryMetaOmitKeys],
     ),
-    labelText: yCoreLabelStoryMeta.argTypes?.text ?? {},
-    labelTooltipText: yCoreLabelStoryMeta.argTypes?.tooltipText ?? {},
-    labelOverflowDebounce: yCoreLabelStoryMeta.argTypes?.debounce ?? {},
+    labelText: altCoreLabelStoryMeta.argTypes?.text ?? {},
+    labelTooltipText: altCoreLabelStoryMeta.argTypes?.tooltipText ?? {},
+    labelOverflowDebounce: altCoreLabelStoryMeta.argTypes?.debounce ?? {},
 
     ...omit(
-      yCoreAnnotationStoryMeta.argTypes ?? {},
+      altCoreAnnotationStoryMeta.argTypes ?? {},
       ['text'],
     ),
 
-    annotationText: yCoreAnnotationStoryMeta.argTypes?.text ?? {},
+    annotationText: altCoreAnnotationStoryMeta.argTypes?.text ?? {},
     ...omit(
-      yCoreSimpleToggleStoryMeta.argTypes ?? {},
+      altCoreSimpleToggleStoryMeta.argTypes ?? {},
       [...simpleToggleInternalPropsKeys],
     ),
   },
   args: {
     ...omit(
-      yCoreSimpleToggleStoryMeta.args ?? {},
+      altCoreSimpleToggleStoryMeta.args ?? {},
       [...simpleToggleInternalPropsKeys],
     ),
 
     ...omit(
-      yCoreLabelStoryMeta.args ?? {},
-      [...yCoreLabelStoryMetaOmitKeys],
+      altCoreLabelStoryMeta.args ?? {},
+      [...altCoreLabelStoryMetaOmitKeys],
     ),
 
     labelText: 'Label text',
     labelTooltipText: 'Tooltip text',
-    labelOverflowDebounce: yCoreLabelStoryMeta.args?.debounce,
+    labelOverflowDebounce: altCoreLabelStoryMeta.args?.debounce,
     ...omit(
-      yCoreAnnotationStoryMeta.args ?? {},
+      altCoreAnnotationStoryMeta.args ?? {},
       ['text'],
     ),
     annotationText: 'Annotation text',
@@ -128,9 +128,9 @@ const meta: Meta<TYCoreToggleStoryMeta> = {
     onChecked: fn(),
     isLongText: false,
   },
-} satisfies Meta<TYCoreToggleStoryMeta>
+} satisfies Meta<TAltCoreToggleStoryMeta>
 
 export default meta
-type Story = StoryObj<TYCoreToggleStoryMeta>
+type Story = StoryObj<TAltCoreToggleStoryMeta>
 
 export const Playground: Story = {}

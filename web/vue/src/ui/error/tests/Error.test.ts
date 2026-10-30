@@ -2,21 +2,21 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import { text } from '~shared/tests/slotContents'
-import { YCoreErrorTagName } from '~shared/constants'
-import { YCoreError } from '~core/ui/error'
+import { AltCoreErrorTagName } from '~shared/constants'
+import { AltCoreError } from '~core/ui/error'
 
-import { YError } from '~vue/ui/error'
+import { AltError } from '~vue/ui/error'
 
-const tagName = YCoreErrorTagName
+const tagName = AltCoreErrorTagName
 
 describe(
-  'Vue/YError',
+  'Vue/AltError',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreError,
+          AltCoreError,
         )
       }
     })
@@ -29,7 +29,7 @@ describe(
           () => {
             const errors = [text]
             const wrapper = mount(
-              YError,
+              AltError,
               { props: { errors } },
             )
 

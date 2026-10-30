@@ -1,9 +1,9 @@
-import { createCoreChipProps, type IYCoreChipProps } from '~core/ui/chip/models/types'
+import { createCoreChipProps, type IAltCoreChipProps } from '~core/ui/chip/models/types'
 
-export interface IYNgChipProps extends IYCoreChipProps {}
+export interface IAltNgChipProps extends IAltCoreChipProps {}
 
-export interface IYNgChipEmits {
+export interface IAltNgChipEmits {
   click: (value: PointerEvent) => void
 }
 
-export const createNgChipProps = (): IYNgChipProps => createCoreChipProps()
+export const createNgChipProps = (): IAltNgChipProps => createCoreChipProps()

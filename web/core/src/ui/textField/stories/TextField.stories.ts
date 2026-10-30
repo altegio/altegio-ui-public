@@ -8,20 +8,20 @@ import '~core/ui/fieldIcon'
 
 import {
   createCoreTextFieldProps,
-  type IYCoreTextFieldProps,
-  type TYCoreFieldWrapperEvents,
-  type TYCoreFieldInputEvents,
-  type TYCoreTextFieldEvents,
+  type IAltCoreTextFieldProps,
+  type TAltCoreFieldWrapperEvents,
+  type TAltCoreFieldInputEvents,
+  type TAltCoreTextFieldEvents,
 } from '../models/types'
 import {
-  YCoreTextFieldTagName as tagName,
+  AltCoreTextFieldTagName as tagName,
 } from '~shared/constants'
 
-import yCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
-import yCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
-import yCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
-import yCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
-import yCoreErrorStoryMeta from '~core/ui/error/stories/Error.stories'
+import altCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
+import altCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
+import altCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
+import altCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
+import altCoreErrorStoryMeta from '~core/ui/error/stories/Error.stories'
 
 import type { IShowErrorsStoryProps } from '~shared/.storybook/argTypes'
 import {
@@ -34,9 +34,9 @@ import {
 } from '~shared/.storybook/argTypes'
 import { addPrefixToObjectKeys } from '~shared/utils/helpers'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import { yChevronDown, ySearch } from '~shared/icons'
+import { altChevronDown, altSearch } from '~shared/icons'
 
-export interface IYCoreTextFieldStorySlots {
+export interface IAltCoreTextFieldStorySlots {
   showBeforeSlot: boolean
   showAfterSlot: boolean
   isLongText: boolean
@@ -44,8 +44,8 @@ export interface IYCoreTextFieldStorySlots {
 
 const { clearable, maskOptions } = createCoreTextFieldProps()
 
-export type TYCoreTextFieldMeta = IYCoreTextFieldProps & Pick<TYCoreFieldWrapperEvents, 'onBlur' | 'onFocus' | 'onMouseEnter' | 'onMouseLeave' | 'onClickOutside'> & Pick<TYCoreFieldInputEvents, 'onInput' | 'onKeydown' | 'onRender'> & IYCoreTextFieldStorySlots & IShowErrorsStoryProps & TYCoreTextFieldEvents & {
-  onRenderInput: TYCoreFieldInputEvents['onRender']
+export type TAltCoreTextFieldMeta = IAltCoreTextFieldProps & Pick<TAltCoreFieldWrapperEvents, 'onBlur' | 'onFocus' | 'onMouseEnter' | 'onMouseLeave' | 'onClickOutside'> & Pick<TAltCoreFieldInputEvents, 'onInput' | 'onKeydown' | 'onRender'> & IAltCoreTextFieldStorySlots & IShowErrorsStoryProps & TAltCoreTextFieldEvents & {
+  onRenderInput: TAltCoreFieldInputEvents['onRender']
   onClick: (event: Event) => void
   autocomplete?: string
 }
@@ -53,7 +53,7 @@ export type TYCoreTextFieldMeta = IYCoreTextFieldProps & Pick<TYCoreFieldWrapper
 /**
  * ## Core TextField
  */
-const meta: Meta<TYCoreTextFieldMeta> = {
+const meta: Meta<TAltCoreTextFieldMeta> = {
   title: 'Inputs/✅ TextField',
   id: 'textField',
   parameters: { controls: { sort: 'alpha' } },
@@ -76,7 +76,7 @@ const meta: Meta<TYCoreTextFieldMeta> = {
       : computedErrors
 
     return html`
-      <y-core-text-field
+      <alt-core-text-field
         .disabled=${disabled}
         .readonly=${readonly}
         .error=${error}
@@ -108,26 +108,26 @@ const meta: Meta<TYCoreTextFieldMeta> = {
       >
         ${showBeforeSlot
           ? html`
-              <y-core-field-icon slot="before" .icon=${ySearch}></y-core-field-icon>
+              <alt-core-field-icon slot="before" .icon=${altSearch}></alt-core-field-icon>
             `
           : nothing
         }
         ${showAfterSlot
           ? html`
-              <y-core-field-icon slot="after" .icon=${yChevronDown}></y-core-field-icon>
+              <alt-core-field-icon slot="after" .icon=${altChevronDown}></alt-core-field-icon>
             `
           : nothing
         }
-      </y-core-text-field>
+      </alt-core-text-field>
     `
   },
   argTypes: {
     // Extended Props
-    ...omit(yCoreFieldWrapperStoryMeta.argTypes ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon']),
-    ...omit(yCoreFieldInputStoryMeta.argTypes ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'onRender']),
-    ...addPrefixToObjectKeys(omit(yCoreLabelStoryMeta.argTypes ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
-    ...addPrefixToObjectKeys(omit(yCoreAnnotationStoryMeta.argTypes ?? {}, ['disabled', 'isLongText']), 'annotation'),
-    ...omit(yCoreErrorStoryMeta.argTypes ?? {}, ['isLongText']),
+    ...omit(altCoreFieldWrapperStoryMeta.argTypes ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon']),
+    ...omit(altCoreFieldInputStoryMeta.argTypes ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'onRender']),
+    ...addPrefixToObjectKeys(omit(altCoreLabelStoryMeta.argTypes ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
+    ...addPrefixToObjectKeys(omit(altCoreAnnotationStoryMeta.argTypes ?? {}, ['disabled', 'isLongText']), 'annotation'),
+    ...omit(altCoreErrorStoryMeta.argTypes ?? {}, ['isLongText']),
 
     // Component Props
     clearable: {
@@ -152,7 +152,7 @@ const meta: Meta<TYCoreTextFieldMeta> = {
       ...storyControlsTable,
     },
     isLongText: isLongTextArgType,
-    onRenderInput: yCoreFieldInputStoryMeta.args?.onRender,
+    onRenderInput: altCoreFieldInputStoryMeta.args?.onRender,
 
     // Component Events
     onClear: {
@@ -162,24 +162,24 @@ const meta: Meta<TYCoreTextFieldMeta> = {
     },
   },
   args: {
-    ...omit(yCoreFieldWrapperStoryMeta.args ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon']),
-    ...omit(yCoreFieldInputStoryMeta.args ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'onRender']),
-    ...addPrefixToObjectKeys(omit(yCoreLabelStoryMeta.args ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
-    ...addPrefixToObjectKeys(omit(yCoreAnnotationStoryMeta.args ?? {}, ['disabled', 'isLongText']), 'annotation'),
-    ...omit(yCoreErrorStoryMeta.args ?? {}, ['isLongText']),
+    ...omit(altCoreFieldWrapperStoryMeta.args ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon']),
+    ...omit(altCoreFieldInputStoryMeta.args ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'onRender']),
+    ...addPrefixToObjectKeys(omit(altCoreLabelStoryMeta.args ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
+    ...addPrefixToObjectKeys(omit(altCoreAnnotationStoryMeta.args ?? {}, ['disabled', 'isLongText']), 'annotation'),
+    ...omit(altCoreErrorStoryMeta.args ?? {}, ['isLongText']),
 
     clearable: false,
     maskOptions: undefined,
     showBeforeSlot: true,
     showAfterSlot: true,
     isLongText: false,
-    onRenderInput: yCoreFieldInputStoryMeta.args?.onRender,
+    onRenderInput: altCoreFieldInputStoryMeta.args?.onRender,
     onClear: fn(),
   },
-} satisfies Meta<TYCoreTextFieldMeta>
+} satisfies Meta<TAltCoreTextFieldMeta>
 
 export default meta
 
-type Story = StoryObj<IYCoreTextFieldProps>
+type Story = StoryObj<IAltCoreTextFieldProps>
 
 export const Playground: Story = { args: {} }

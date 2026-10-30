@@ -1,3 +1,3 @@
-export interface IYCoreTipInternalProps {}
+export interface IAltCoreTipInternalProps {}
 
-export const createCoreTipInternalProps = (): IYCoreTipInternalProps => ({})
+export const createCoreTipInternalProps = (): IAltCoreTipInternalProps => ({})

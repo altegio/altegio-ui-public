@@ -1,5 +1,5 @@
 <template>
-  <y-core-toggle
+  <alt-core-toggle
     v-bind="props"
     :checked="modelValue"
     @checked="$emit('update:modelValue', $event.detail.checked)"
@@ -24,19 +24,19 @@
     >
       <slot name="tooltip-content" />
     </div>
-  </y-core-toggle>
+  </alt-core-toggle>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/toggle'
   import {
     createVueToggleProps,
-    type IYVueToggleProps,
-    type IYVueCoreToggleProps,
-    type IYVueToggleEmits,
+    type IAltVueToggleProps,
+    type IAltVueCoreToggleProps,
+    type IAltVueToggleEmits,
   } from '~vue/ui/toggle/models/types'
 
-  defineOptions({ name: 'YToggle' })
+  defineOptions({ name: 'AltToggle' })
 
   defineSlots<{
     label?: () => unknown
@@ -45,9 +45,9 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueToggleProps>(),
+    defineProps<IAltVueToggleProps>(),
     createVueToggleProps(),
-  ) satisfies IYVueCoreToggleProps
+  ) satisfies IAltVueCoreToggleProps
 
-  defineEmits<IYVueToggleEmits>()
+  defineEmits<IAltVueToggleEmits>()
 </script>

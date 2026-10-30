@@ -1,23 +1,23 @@
 import {
   createCoreCollapseItemProps,
-  type IYCoreCollapseItemProps,
+  type IAltCoreCollapseItemProps,
   type CollapseItemClickEvent,
 } from '~core/ui/collapseItem/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreCollapseItemProps extends IYCoreCollapseItemProps {}
+export interface IAltVueCoreCollapseItemProps extends IAltCoreCollapseItemProps {}
 
-export interface IYVueCollapseItemProps {
-  label?: IYVueCoreCollapseItemProps['label']
-  annotation?: IYVueCoreCollapseItemProps['annotation']
-  opened?: IYVueCoreCollapseItemProps['opened']
-  loading?: IYVueCoreCollapseItemProps['loading']
-  shallow?: IYVueCoreCollapseItemProps['shallow']
-  value?: IYVueCoreCollapseItemProps['value']
-  variant?: IYVueCoreCollapseItemProps['variant']
+export interface IAltVueCollapseItemProps {
+  label?: IAltVueCoreCollapseItemProps['label']
+  annotation?: IAltVueCoreCollapseItemProps['annotation']
+  opened?: IAltVueCoreCollapseItemProps['opened']
+  loading?: IAltVueCoreCollapseItemProps['loading']
+  shallow?: IAltVueCoreCollapseItemProps['shallow']
+  value?: IAltVueCoreCollapseItemProps['value']
+  variant?: IAltVueCoreCollapseItemProps['variant']
 }
 
-export const createVueCollapseItemProps = (): TDefinedVueProps<IYVueCollapseItemProps> => {
+export const createVueCollapseItemProps = (): TDefinedVueProps<IAltVueCollapseItemProps> => {
   const { label, annotation, opened, value, variant, loading, shallow } = createCoreCollapseItemProps()
   return {
     label,
@@ -30,6 +30,6 @@ export const createVueCollapseItemProps = (): TDefinedVueProps<IYVueCollapseItem
   }
 }
 
-export interface IYVueCollapseItemEmits {
+export interface IAltVueCollapseItemEmits {
   (event: 'collapse-item-click', payload: CollapseItemClickEvent): void
 }

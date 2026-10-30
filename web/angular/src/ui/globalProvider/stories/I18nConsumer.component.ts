@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common'
 import { ru, en } from '~core/i18n'
 import { LOCALE_MODULE_ID } from '~core/ui/globalProvider/plugins/i18n'
 import type { ILocaleModule } from '~core/ui/globalProvider/context/modules'
-import { YCalendar } from '~ng/ui/calendar'
+import { AltCalendar } from '~ng/ui/calendar'
 import { GlobalContextService } from '../classes/GlobalContext.service'
 
 @Component({
@@ -11,7 +11,7 @@ import { GlobalContextService } from '../classes/GlobalContext.service'
   standalone: true,
   imports: [
     CommonModule,
-    YCalendar,
+    AltCalendar,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
@@ -28,10 +28,10 @@ import { GlobalContextService } from '../classes/GlobalContext.service'
         <h4>Calendar using the current locale:</h4>
 
         <div class="calendar-wrapper">
-          <YCalendar
+          <AltCalendar
             [date]="selectedDate"
             (selectEvent)="onDateSelect($event)"
-          ></YCalendar>
+          ></AltCalendar>
         </div>
       </div>
 

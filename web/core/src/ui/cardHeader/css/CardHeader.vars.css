@@ -1,4 +1,4 @@
 :host {
   /* General */
-  --y-core-card-header-gap: var(--y-core-size-spacing-x);
+  --alt-core-card-header-gap: var(--alt-core-size-spacing-x);
 }

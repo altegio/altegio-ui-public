@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreSimpleToggleTagName as tagName } from '~shared/constants'
+import { AltCoreSimpleToggleTagName as tagName } from '~shared/constants'
 import type { TPropTestCase } from '~shared/types/tests'
-import { createNgSimpleToggleProps, type IYNgSimpleToggleProps } from '~ng/ui/simpleToggle/models/types'
-import { YSimpleToggle } from '~ng/ui/simpleToggle'
-import { EYSizes } from '~shared/types/global'
+import { createNgSimpleToggleProps, type IAltNgSimpleToggleProps } from '~ng/ui/simpleToggle/models/types'
+import { AltSimpleToggle } from '~ng/ui/simpleToggle'
+import { EAltSizes } from '~shared/types/global'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgSimpleToggleProps>
+  props?: Partial<IAltNgSimpleToggleProps>
 }
 
 const {
@@ -18,25 +18,25 @@ const {
   checked: defaultChecked,
 } = createNgSimpleToggleProps()
 
-const propSizeTestCases: TPropTestCase<IYNgSimpleToggleProps, 'size'>[] = [
-  { prop: 'size', case: EYSizes.SMALL, value: EYSizes.SMALL, expected: EYSizes.SMALL },
-  { prop: 'size', case: EYSizes.MEDIUM, value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
+const propSizeTestCases: TPropTestCase<IAltNgSimpleToggleProps, 'size'>[] = [
+  { prop: 'size', case: EAltSizes.SMALL, value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
+  { prop: 'size', case: EAltSizes.MEDIUM, value: EAltSizes.MEDIUM, expected: EAltSizes.MEDIUM },
   { prop: 'size', case: 'undefined', value: undefined, expected: defaultSize },
 ]
 
-const propDisabledTestCases: TPropTestCase<IYNgSimpleToggleProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltNgSimpleToggleProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true, expected: true },
   { prop: 'disabled', case: 'false', value: false, expected: false },
   { prop: 'disabled', case: 'undefined', value: undefined, expected: defaultDisabled },
 ]
 
-const propHoveredTestCases: TPropTestCase<IYNgSimpleToggleProps, 'hovered'>[] = [
+const propHoveredTestCases: TPropTestCase<IAltNgSimpleToggleProps, 'hovered'>[] = [
   { prop: 'hovered', case: 'true', value: true, expected: true },
   { prop: 'hovered', case: 'false', value: false, expected: false },
   { prop: 'hovered', case: 'undefined', value: undefined, expected: defaultHovered },
 ]
 
-const propCheckedTestCases: TPropTestCase<IYNgSimpleToggleProps, 'checked'>[] = [
+const propCheckedTestCases: TPropTestCase<IAltNgSimpleToggleProps, 'checked'>[] = [
   { prop: 'checked', case: 'true', value: true, expected: true },
   { prop: 'checked', case: 'false', value: false, expected: false },
   { prop: 'checked', case: 'undefined', value: undefined, expected: defaultChecked },
@@ -44,17 +44,17 @@ const propCheckedTestCases: TPropTestCase<IYNgSimpleToggleProps, 'checked'>[] = 
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YSimpleToggle] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltSimpleToggle] }).compileComponents()
 
   @Component({
     template: `
-      <YSimpleToggle
+      <AltSimpleToggle
         [size]="size"
         [disabled]="disabled"
         [hovered]="hovered"
         [checked]="checked"
       />`,
-    imports: [YSimpleToggle],
+    imports: [AltSimpleToggle],
     standalone: true,
   })
   class TestComponent {
@@ -67,7 +67,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YSimpleToggle',
+  'Angular/AltSimpleToggle',
   () => {
     describe(
       'Props',

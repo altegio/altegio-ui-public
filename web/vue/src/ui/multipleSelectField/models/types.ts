@@ -4,46 +4,46 @@ import {
   type InputEvent,
   type SelectEvent,
   type BlurEvent,
-  type IYCoreMultipleSelectFieldProps,
+  type IAltCoreMultipleSelectFieldProps,
 } from '~core/ui/multipleSelectField/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export type TYVueCoreMultipleSelectFieldEvents = {
+export type TAltVueCoreMultipleSelectFieldEvents = {
   FocusEvent: FocusEvent
   InputEvent: InputEvent
   SelectEvent: SelectEvent
   BlurEvent: BlurEvent
 }
 
-export interface IYVueCoreMultipleSelectFieldProps extends Omit<IYCoreMultipleSelectFieldProps, 'value'> {
-  modelValue: IYCoreMultipleSelectFieldProps['value'] | undefined
+export interface IAltVueCoreMultipleSelectFieldProps extends Omit<IAltCoreMultipleSelectFieldProps, 'value'> {
+  modelValue: IAltCoreMultipleSelectFieldProps['value'] | undefined
 }
 
-export interface IYVueMultipleSelectFieldProps {
-  modelValue?: IYVueCoreMultipleSelectFieldProps['modelValue']
-  filterCallback?: IYVueCoreMultipleSelectFieldProps['filterCallback']
-  itemValue?: IYVueCoreMultipleSelectFieldProps['itemValue']
-  items?: IYVueCoreMultipleSelectFieldProps['items']
-  isCustomFilter?: IYVueCoreMultipleSelectFieldProps['isCustomFilter']
-  isFilterable?: IYVueCoreMultipleSelectFieldProps['isFilterable']
-  isMapOptions?: IYVueCoreMultipleSelectFieldProps['isMapOptions']
-  name?: IYVueCoreMultipleSelectFieldProps['name']
-  placeholder?: IYVueCoreMultipleSelectFieldProps['placeholder']
-  disabled?: IYVueCoreMultipleSelectFieldProps['disabled']
-  required?: IYVueCoreMultipleSelectFieldProps['required']
-  readonly?: IYVueCoreMultipleSelectFieldProps['readonly']
-  autofocus?: IYVueCoreMultipleSelectFieldProps['autofocus']
-  errors?: IYVueCoreMultipleSelectFieldProps['errors']
-  size?: IYVueCoreMultipleSelectFieldProps['size']
-  labelText?: IYVueCoreMultipleSelectFieldProps['labelText']
-  labelTooltipText?: IYVueCoreMultipleSelectFieldProps['labelTooltipText']
-  labelDebounce?: IYVueCoreMultipleSelectFieldProps['labelDebounce']
-  annotationText?: IYVueCoreMultipleSelectFieldProps['annotationText']
-  itemLabel?: IYVueCoreMultipleSelectFieldProps['itemLabel']
-  error?: IYVueCoreMultipleSelectFieldProps['error']
+export interface IAltVueMultipleSelectFieldProps {
+  modelValue?: IAltVueCoreMultipleSelectFieldProps['modelValue']
+  filterCallback?: IAltVueCoreMultipleSelectFieldProps['filterCallback']
+  itemValue?: IAltVueCoreMultipleSelectFieldProps['itemValue']
+  items?: IAltVueCoreMultipleSelectFieldProps['items']
+  isCustomFilter?: IAltVueCoreMultipleSelectFieldProps['isCustomFilter']
+  isFilterable?: IAltVueCoreMultipleSelectFieldProps['isFilterable']
+  isMapOptions?: IAltVueCoreMultipleSelectFieldProps['isMapOptions']
+  name?: IAltVueCoreMultipleSelectFieldProps['name']
+  placeholder?: IAltVueCoreMultipleSelectFieldProps['placeholder']
+  disabled?: IAltVueCoreMultipleSelectFieldProps['disabled']
+  required?: IAltVueCoreMultipleSelectFieldProps['required']
+  readonly?: IAltVueCoreMultipleSelectFieldProps['readonly']
+  autofocus?: IAltVueCoreMultipleSelectFieldProps['autofocus']
+  errors?: IAltVueCoreMultipleSelectFieldProps['errors']
+  size?: IAltVueCoreMultipleSelectFieldProps['size']
+  labelText?: IAltVueCoreMultipleSelectFieldProps['labelText']
+  labelTooltipText?: IAltVueCoreMultipleSelectFieldProps['labelTooltipText']
+  labelDebounce?: IAltVueCoreMultipleSelectFieldProps['labelDebounce']
+  annotationText?: IAltVueCoreMultipleSelectFieldProps['annotationText']
+  itemLabel?: IAltVueCoreMultipleSelectFieldProps['itemLabel']
+  error?: IAltVueCoreMultipleSelectFieldProps['error']
 }
 
-export interface IYVueMultipleSelectFieldEmits {
+export interface IAltVueMultipleSelectFieldEmits {
   (event: 'update:modelValue', payload: SelectEvent['detail']['value']): void
   (event: 'input', payload: InputEvent): void
   (event: 'focus', payload: FocusEvent): void
@@ -51,7 +51,7 @@ export interface IYVueMultipleSelectFieldEmits {
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
-export const createVueMultipleSelectFieldProps = (): TDefinedVueProps<IYVueMultipleSelectFieldProps> => {
+export const createVueMultipleSelectFieldProps = (): TDefinedVueProps<IAltVueMultipleSelectFieldProps> => {
   const {
     filterCallback,
     itemValue,

@@ -8,17 +8,17 @@ export type TSortHandler = <T extends ITableCellItem>(
   key: keyof T,
   direction?: TSort,
 ) => Record<string, T>[]
-export interface IYCoreTableHeadCellSortEvent {
+export interface IAltCoreTableHeadCellSortEvent {
   direction: TSort
   handler: TSortHandler
 }
 
-export interface IYCoreTableHeadCellCheckedEvent {
+export interface IAltCoreTableHeadCellCheckedEvent {
   checked: boolean
 }
 
-export class TableHeadCellSortEvent extends CustomEvent<IYCoreTableHeadCellSortEvent> {}
+export class TableHeadCellSortEvent extends CustomEvent<IAltCoreTableHeadCellSortEvent> {}
 
-export type TYCoreTableHeadCellEvents = TEventsStoryArgs<{ SortEvent: typeof TableHeadCellSortEvent }>
+export type TAltCoreTableHeadCellEvents = TEventsStoryArgs<{ SortEvent: typeof TableHeadCellSortEvent }>
 
-export class TableHeadCellCheckedEvent extends CustomEvent<IYCoreTableHeadCellCheckedEvent> {}
+export class TableHeadCellCheckedEvent extends CustomEvent<IAltCoreTableHeadCellCheckedEvent> {}

@@ -6,26 +6,26 @@ import { useArgs } from 'storybook/preview-api'
 
 import { items as itemsArgType, type ITextStoryProps, size as sizeArgType } from '~shared/.storybook/argTypes'
 import { getComponentEmitsTable, getComponentStateTable } from '~shared/.storybook/tables'
-import { YCoreSegmentControlTagName as tagName } from '~shared/constants'
-import { yInfo as yInfoIcon } from '~shared/icons/build/y-info.icon'
-import { EYSizes } from '~shared/types/global'
+import { AltCoreSegmentControlTagName as tagName } from '~shared/constants'
+import { altInfo as altInfoIcon } from '~shared/icons/build/alt-info.icon'
+import { EAltSizes } from '~shared/types/global'
 
 import {
   createCoreSegmentControlProps,
-  type IYCoreSegmentControlProps,
-  type TYCoreSegmentControlEvents,
+  type IAltCoreSegmentControlProps,
+  type TAltCoreSegmentControlEvents,
 } from '../models/types'
 
 import '~core/ui/segmentControl'
 
-type TYCoreSegmentControlMeta = IYCoreSegmentControlProps & ITextStoryProps & TYCoreSegmentControlEvents
+type TAltCoreSegmentControlMeta = IAltCoreSegmentControlProps & ITextStoryProps & TAltCoreSegmentControlEvents
 
 const { options, size, value, manual } = createCoreSegmentControlProps()
 
 /**
  * ## Core SegmentControl
  */
-const meta: Meta<TYCoreSegmentControlMeta> = {
+const meta: Meta<TAltCoreSegmentControlMeta> = {
   title: '✅ SegmentControl',
   id: 'segmentControl',
   parameters: { controls: { sort: 'alpha' } },
@@ -47,13 +47,13 @@ const meta: Meta<TYCoreSegmentControlMeta> = {
     }
 
     return html`
-      <y-core-segment-control
+      <alt-core-segment-control
         .options=${options}
         .value=${value}
         .manual=${args.manual}
         size=${ifDefined(args.size)}
         @click=${handleClick}
-      ></y-core-segment-control>
+      ></alt-core-segment-control>
     `
   },
   argTypes: {
@@ -73,9 +73,9 @@ const meta: Meta<TYCoreSegmentControlMeta> = {
     },
     size: {
       ...sizeArgType([
-        EYSizes.SMALL,
-        EYSizes.MEDIUM,
-        EYSizes.LARGE,
+        EAltSizes.SMALL,
+        EAltSizes.MEDIUM,
+        EAltSizes.LARGE,
       ]),
       ...getComponentStateTable(size),
     },
@@ -91,30 +91,30 @@ const meta: Meta<TYCoreSegmentControlMeta> = {
         active: true,
         disabled: false,
         text: 'Segment 1',
-        icon: yInfoIcon,
+        icon: altInfoIcon,
         value: '1',
       },
       {
         active: false,
         disabled: false,
         text: 'Segment 2',
-        icon: yInfoIcon,
+        icon: altInfoIcon,
         value: '2',
       },
       {
         active: false,
         disabled: false,
         text: 'Segment 3',
-        icon: yInfoIcon,
+        icon: altInfoIcon,
         value: '3',
       },
     ],
-    size: EYSizes.SMALL,
+    size: EAltSizes.SMALL,
     onClick: fn(),
   },
-} satisfies Meta<TYCoreSegmentControlMeta>
+} satisfies Meta<TAltCoreSegmentControlMeta>
 
 export default meta
-type Story = StoryObj<TYCoreSegmentControlMeta>
+type Story = StoryObj<TAltCoreSegmentControlMeta>
 
 export const Playground: Story = { args: {} }

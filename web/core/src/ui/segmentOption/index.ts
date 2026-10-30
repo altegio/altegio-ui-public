@@ -1,1 +1,1 @@
-export { YCoreSegmentOption } from './SegmentOption.core'
+export { AltCoreSegmentOption } from './SegmentOption.core'

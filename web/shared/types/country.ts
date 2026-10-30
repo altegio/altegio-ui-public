@@ -1,4 +1,4 @@
-export type TYCountry = {
+export type TAltCountry = {
   id: number
   title: string
   fullTitle: string
@@ -7,9 +7,9 @@ export type TYCountry = {
   mask: string
 }
 
-export type TYCountryData = Omit<TYCountry, 'title' | 'fullTitle'>
-export type TYCountryName = Pick<TYCountry, 'title' | 'fullTitle'>
+export type TAltCountryData = Omit<TAltCountry, 'title' | 'fullTitle'>
+export type TAltCountryName = Pick<TAltCountry, 'title' | 'fullTitle'>
 
-export type TYCountryMappedById = Record<TYCountry['id'], TYCountry>
-export type TYCountryDataMappedById = Record<TYCountry['id'], TYCountryData>
-export type TYCountryNameMappedById = Record<TYCountry['id'], TYCountryName>
+export type TAltCountryMappedById = Record<TAltCountry['id'], TAltCountry>
+export type TAltCountryDataMappedById = Record<TAltCountry['id'], TAltCountryData>
+export type TAltCountryNameMappedById = Record<TAltCountry['id'], TAltCountryName>

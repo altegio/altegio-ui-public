@@ -1,10 +1,10 @@
 import {
   createCoreSimpleCheckboxExternalProps,
-  type IYCoreSimpleCheckboxExternalProps,
+  type IAltCoreSimpleCheckboxExternalProps,
 } from './external'
 import {
   createCoreSimpleCheckboxInternalProps,
-  type IYCoreSimpleCheckboxInternalProps,
+  type IAltCoreSimpleCheckboxInternalProps,
 } from './internal'
 
 export * from './external'
@@ -12,9 +12,9 @@ export * from './internal'
 export * from './events'
 
 
-export interface IYCoreSimpleCheckboxProps extends IYCoreSimpleCheckboxExternalProps, IYCoreSimpleCheckboxInternalProps {}
+export interface IAltCoreSimpleCheckboxProps extends IAltCoreSimpleCheckboxExternalProps, IAltCoreSimpleCheckboxInternalProps {}
 
-export const createCoreSimpleCheckboxProps = (): IYCoreSimpleCheckboxProps => {
+export const createCoreSimpleCheckboxProps = (): IAltCoreSimpleCheckboxProps => {
   return {
     ...createCoreSimpleCheckboxExternalProps(),
     ...createCoreSimpleCheckboxInternalProps(),

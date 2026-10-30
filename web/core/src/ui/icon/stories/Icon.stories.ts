@@ -4,11 +4,11 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 
 import {
   createCoreIconExternalProps,
-  type IYCoreIconExternalProps,
+  type IAltCoreIconExternalProps,
 } from '~core/ui/icon/models/types'
-import { YCoreIconTagName as tagName } from '~shared/constants'
-import type { IYIcon } from '~shared/icons'
-import { yIconsSet, yRocket } from '~shared/icons'
+import { AltCoreIconTagName as tagName } from '~shared/constants'
+import type { IAltIcon } from '~shared/icons'
+import { altIconsSet, altRocket } from '~shared/icons'
 import { getComponentContentTable } from '~shared/.storybook/tables'
 
 import '~core/ui/icon'
@@ -21,7 +21,7 @@ interface IInputStoryEvents {
   blur: () => void
 }
 
-export const iconOptions = yIconsSet.reduce<Record<string, IYIcon>>(
+export const iconOptions = altIconsSet.reduce<Record<string, IAltIcon>>(
   (acc, icon) => {
     acc[icon.name] = icon
     return acc
@@ -33,7 +33,7 @@ export const iconOptions = yIconsSet.reduce<Record<string, IYIcon>>(
  * ## Core Icon
  * Icon component
  */
-const meta: Meta<IYCoreIconExternalProps & IInputStoryEvents> = {
+const meta: Meta<IAltCoreIconExternalProps & IInputStoryEvents> = {
   title: 'Icons/✅ Icon',
   id: 'icon',
   parameters: { controls: { sort: 'alpha' } },
@@ -43,10 +43,10 @@ const meta: Meta<IYCoreIconExternalProps & IInputStoryEvents> = {
     'autodocs',
   ],
   render: ({ icon, size }) => html`
-    <y-core-icon
+    <alt-core-icon
       .icon=${icon}
       size=${ifDefined(size)}
-    ></y-core-icon>
+    ></alt-core-icon>
   `,
   argTypes: {
     icon: {
@@ -63,13 +63,13 @@ const meta: Meta<IYCoreIconExternalProps & IInputStoryEvents> = {
     },
   },
   args: {
-    icon: yRocket,
+    icon: altRocket,
     size: '1em',
   },
-} satisfies Meta<Required<IYCoreIconExternalProps> & IInputStoryEvents>
+} satisfies Meta<Required<IAltCoreIconExternalProps> & IInputStoryEvents>
 
 export default meta
-type Story = StoryObj<IYCoreIconExternalProps & IInputStoryEvents>
+type Story = StoryObj<IAltCoreIconExternalProps & IInputStoryEvents>
 
 export const Playground: Story = {
   args: {},

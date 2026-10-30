@@ -1,10 +1,10 @@
 import type {
-  IYCoreEmptyStateExternalProps,
+  IAltCoreEmptyStateExternalProps,
 } from '~core/ui/emptyState/models/types/external'
 import {
   createCoreEmptyStateExternalProps,
 } from '~core/ui/emptyState/models/types/external'
 
-export interface IYNgEmptyStateProps extends IYCoreEmptyStateExternalProps {}
+export interface IAltNgEmptyStateProps extends IAltCoreEmptyStateExternalProps {}
 
-export const createNgEmptyStateProps = (): IYNgEmptyStateProps => createCoreEmptyStateExternalProps()
+export const createNgEmptyStateProps = (): IAltNgEmptyStateProps => createCoreEmptyStateExternalProps()

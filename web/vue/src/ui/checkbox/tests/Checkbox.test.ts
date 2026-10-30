@@ -2,68 +2,68 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { ref } from 'vue'
 import { mount } from '@vue/test-utils'
 import { text, empty, number } from '~shared/tests/slotContents'
-import { YCoreCheckboxTagName as tagName } from '~shared/constants'
+import { AltCoreCheckboxTagName as tagName } from '~shared/constants'
 import type { TPropTestCase, TSlotTestCase } from '~shared/types/tests'
-import { EYSizes } from '~shared/types/global'
-import { YCoreCheckbox } from '~core/ui/checkbox'
-import { YCheckbox } from '~vue/ui/checkbox'
-import type { IYVueCheckboxProps } from '~vue/ui/checkbox/models/types'
-import { EYCoreLabelAlignment } from '~core/ui/label/models/types'
+import { EAltSizes } from '~shared/types/global'
+import { AltCoreCheckbox } from '~core/ui/checkbox'
+import { AltCheckbox } from '~vue/ui/checkbox'
+import type { IAltVueCheckboxProps } from '~vue/ui/checkbox/models/types'
+import { EAltCoreLabelAlignment } from '~core/ui/label/models/types'
 
-const propIndeterminateTestCases: TPropTestCase<IYVueCheckboxProps, 'indeterminate'>[] = [
+const propIndeterminateTestCases: TPropTestCase<IAltVueCheckboxProps, 'indeterminate'>[] = [
   { prop: 'indeterminate', case: 'true', value: true, expected: true },
   { prop: 'indeterminate', case: 'false', value: false, expected: false },
   { prop: 'indeterminate', case: 'undefined', value: undefined, expected: false },
 ]
 
-const propRequiredTestCases: TPropTestCase<IYVueCheckboxProps, 'required'>[] = [
+const propRequiredTestCases: TPropTestCase<IAltVueCheckboxProps, 'required'>[] = [
   { prop: 'required', case: 'true', value: true, expected: true },
   { prop: 'required', case: 'false', value: false, expected: false },
   { prop: 'required', case: 'undefined', value: undefined, expected: false },
 ]
 
-const propSizeTestCases: TPropTestCase<IYVueCheckboxProps, 'size'>[] = [
-  { prop: 'size', case: EYSizes.SMALL, value: EYSizes.SMALL, expected: EYSizes.SMALL },
-  { prop: 'size', case: EYSizes.MEDIUM, value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
-  { prop: 'size', case: 'undefined', value: undefined, expected: EYSizes.SMALL },
+const propSizeTestCases: TPropTestCase<IAltVueCheckboxProps, 'size'>[] = [
+  { prop: 'size', case: EAltSizes.SMALL, value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
+  { prop: 'size', case: EAltSizes.MEDIUM, value: EAltSizes.MEDIUM, expected: EAltSizes.MEDIUM },
+  { prop: 'size', case: 'undefined', value: undefined, expected: EAltSizes.SMALL },
 ]
 
-const propDisabledTestCases: TPropTestCase<IYVueCheckboxProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltVueCheckboxProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true, expected: true },
   { prop: 'disabled', case: 'false', value: false, expected: false },
   { prop: 'disabled', case: 'undefined', value: undefined, expected: false },
 ]
 
-const propLabelTextTestCases: TPropTestCase<IYVueCheckboxProps, 'labelText'>[] = [
+const propLabelTextTestCases: TPropTestCase<IAltVueCheckboxProps, 'labelText'>[] = [
   { prop: 'labelText', case: 'text', value: text, expected: text },
   { prop: 'labelText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: empty },
 ]
 
-const propLabelTooltipTextTestCases: TPropTestCase<IYVueCheckboxProps, 'labelTooltipText'>[] = [
+const propLabelTooltipTextTestCases: TPropTestCase<IAltVueCheckboxProps, 'labelTooltipText'>[] = [
   { prop: 'labelTooltipText', case: 'text', value: text, expected: text },
   { prop: 'labelTooltipText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: empty },
 ]
 
-const propAnnotationTextTestCases: TPropTestCase<IYVueCheckboxProps, 'annotationText'>[] = [
+const propAnnotationTextTestCases: TPropTestCase<IAltVueCheckboxProps, 'annotationText'>[] = [
   { prop: 'annotationText', case: 'text', value: text, expected: text },
   { prop: 'annotationText', case: 'empty string', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: empty },
 ]
 
-const propLabelOverflowDebounceTestCases: TPropTestCase<IYVueCheckboxProps, 'labelOverflowDebounce'>[] = [
+const propLabelOverflowDebounceTestCases: TPropTestCase<IAltVueCheckboxProps, 'labelOverflowDebounce'>[] = [
   { prop: 'labelOverflowDebounce', case: 'text', value: Number(number), expected: number },
   { prop: 'labelOverflowDebounce', case: 'undefined', value: undefined, expected: 300 },
 ]
 
-const propAlignmentTestCases: TPropTestCase<IYVueCheckboxProps, 'alignment'>[] = [
-  { prop: 'alignment', case: EYCoreLabelAlignment.TOP, value: EYCoreLabelAlignment.TOP, expected: EYCoreLabelAlignment.TOP },
-  { prop: 'alignment', case: EYCoreLabelAlignment.CENTER, value: EYCoreLabelAlignment.CENTER, expected: EYCoreLabelAlignment.CENTER },
-  { prop: 'alignment', case: 'undefined', value: undefined, expected: EYCoreLabelAlignment.CENTER },
+const propAlignmentTestCases: TPropTestCase<IAltVueCheckboxProps, 'alignment'>[] = [
+  { prop: 'alignment', case: EAltCoreLabelAlignment.TOP, value: EAltCoreLabelAlignment.TOP, expected: EAltCoreLabelAlignment.TOP },
+  { prop: 'alignment', case: EAltCoreLabelAlignment.CENTER, value: EAltCoreLabelAlignment.CENTER, expected: EAltCoreLabelAlignment.CENTER },
+  { prop: 'alignment', case: 'undefined', value: undefined, expected: EAltCoreLabelAlignment.CENTER },
 ]
 
-const propErrorsTestCases: TPropTestCase<IYVueCheckboxProps, 'errors'>[] = [
+const propErrorsTestCases: TPropTestCase<IAltVueCheckboxProps, 'errors'>[] = [
   { prop: 'errors', case: 'array with errors', value: ['error'], expected: ['error'] },
   { prop: 'errors', case: 'empty array', value: [], expected: [] },
   { prop: 'errors', case: 'undefined', value: undefined, expected: undefined },
@@ -80,13 +80,13 @@ const slotAnnotationTestCases: TSlotTestCase[] = [
 ]
 
 describe(
-  'Vue/YCheckbox',
+  'Vue/AltCheckbox',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreCheckbox,
+          AltCoreCheckbox,
         )
       }
     })
@@ -111,7 +111,7 @@ describe(
             () => {
               const checked = ref(false)
               const wrapper = mount(
-                YCheckbox,
+                AltCheckbox,
                 {
                   props: {
                     [testCase.prop]: testCase.value,
@@ -144,7 +144,7 @@ describe(
             `Slot "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
-                YCheckbox,
+                AltCheckbox,
                 { props: { modelValue: false }, slots: { [testCase.slot]: testCase.content } },
               )
 
@@ -164,7 +164,7 @@ describe(
           'Should emit "update:modelValue" when the checkbox state changes',
           async() => {
             const wrapper = mount(
-              YCheckbox,
+              AltCheckbox,
               { props: { modelValue: false } },
             )
 

@@ -1,4 +1,4 @@
-export interface IYCoreTableHeadCellInternalProps {
+export interface IAltCoreTableHeadCellInternalProps {
 
   /**
    * @internal Whether hint content is present. Set by the framework wrappers.
@@ -6,4 +6,4 @@ export interface IYCoreTableHeadCellInternalProps {
   hasHint?: boolean
 }
 
-export const createCoreTableHeadCellInternalProps = (): IYCoreTableHeadCellInternalProps => ({ hasHint: false })
+export const createCoreTableHeadCellInternalProps = (): IAltCoreTableHeadCellInternalProps => ({ hasHint: false })

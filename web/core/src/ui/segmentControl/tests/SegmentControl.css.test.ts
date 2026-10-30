@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 
-import { YCoreSegmentControlTagName } from '~shared/constants'
+import { AltCoreSegmentControlTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
@@ -11,7 +11,7 @@ import {
   CSSVariablesHostToValueCases,
 } from './cases/css'
 
-const tagName = YCoreSegmentControlTagName
+const tagName = AltCoreSegmentControlTagName
 
 const {
   component,
@@ -22,7 +22,7 @@ const {
 )
 
 describe(
-  'Core/YSegmentControl/CSS',
+  'Core/AltSegmentControl/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

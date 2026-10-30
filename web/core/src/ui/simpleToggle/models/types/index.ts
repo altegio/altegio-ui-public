@@ -1,10 +1,10 @@
 import {
   createCoreSimpleToggleInternalProps,
-  type IYCoreSimpleToggleInternalProps,
+  type IAltCoreSimpleToggleInternalProps,
 } from './internal'
 import {
   createCoreSimpleToggleExternalProps,
-  type IYCoreSimpleToggleExternalProps,
+  type IAltCoreSimpleToggleExternalProps,
 } from './external'
 
 export * from './events'
@@ -12,9 +12,9 @@ export * from './external'
 export * from './internal'
 export * from './constants'
 
-export interface IYCoreSimpleToggleProps extends IYCoreSimpleToggleInternalProps, IYCoreSimpleToggleExternalProps {}
+export interface IAltCoreSimpleToggleProps extends IAltCoreSimpleToggleInternalProps, IAltCoreSimpleToggleExternalProps {}
 
-export const createCoreSimpleToggleProps = (): IYCoreSimpleToggleProps => {
+export const createCoreSimpleToggleProps = (): IAltCoreSimpleToggleProps => {
   return {
     ...createCoreSimpleToggleInternalProps(),
     ...createCoreSimpleToggleExternalProps(),

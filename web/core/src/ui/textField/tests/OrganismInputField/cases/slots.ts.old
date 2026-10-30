@@ -1,6 +1,6 @@
-import { YCoreAnnotationTagName, YCoreInputTagName } from '~shared/constants'
+import { AltCoreAnnotationTagName, AltCoreInputTagName } from '~shared/constants'
 
-export const slotCases: { slotName: string; wc: typeof YCoreInputTagName | typeof YCoreAnnotationTagName }[] = [
-  { slotName: 'before', wc: YCoreInputTagName },
-  { slotName: 'annotation', wc: YCoreAnnotationTagName },
+export const slotCases: { slotName: string; wc: typeof AltCoreInputTagName | typeof AltCoreAnnotationTagName }[] = [
+  { slotName: 'before', wc: AltCoreInputTagName },
+  { slotName: 'annotation', wc: AltCoreAnnotationTagName },
 ]

@@ -5,12 +5,12 @@ import { classMap } from 'lit/directives/class-map.js'
 
 import {
   createCoreCardCheckboxProps,
-  type IYCoreCardCheckboxProps,
+  type IAltCoreCardCheckboxProps,
   CoreCardCheckboxCheckedEvent,
 } from '~core/ui/cardCheckbox/models/types'
-import { YCoreCardCheckboxTagName as tagName } from '~shared/constants'
+import { AltCoreCardCheckboxTagName as tagName } from '~shared/constants'
 import { preventAndStopEvent } from '~shared/utils/helpers'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
 
 import {
@@ -20,33 +20,33 @@ import {
   hoveredContextCreated,
 } from '~core/ui/cardWrapper/providers'
 
-import type { IYCoreSimpleCheckboxProps } from '~core/ui/simpleCheckbox/models/types'
+import type { IAltCoreSimpleCheckboxProps } from '~core/ui/simpleCheckbox/models/types'
 
-import YCardCheckboxVarsCss from '~core/ui/cardCheckbox/css/CardCheckbox.vars.css?inline'
-import YCardCheckboxScopedCss from '~core/ui/cardCheckbox/css/CardCheckbox.scoped.css?inline'
+import AltCardCheckboxVarsCss from '~core/ui/cardCheckbox/css/CardCheckbox.vars.css?inline'
+import AltCardCheckboxScopedCss from '~core/ui/cardCheckbox/css/CardCheckbox.scoped.css?inline'
 
 import '~core/ui/simpleCheckbox'
 import { withLocator } from '~core/utils/locator'
 
 const { disabled, size, checked } = createCoreCardCheckboxProps()
 
-const mapSizeToCheckboxSize: Record<NonNullable<IYCoreCardCheckboxProps['size']>, NonNullable<IYCoreSimpleCheckboxProps['size']>> = {
-  [EYSizes.SMALL]: EYSizes.SMALL,
-  [EYSizes.MEDIUM]: EYSizes.MEDIUM,
-  [EYSizes.LARGE]: EYSizes.MEDIUM,
+const mapSizeToCheckboxSize: Record<NonNullable<IAltCoreCardCheckboxProps['size']>, NonNullable<IAltCoreSimpleCheckboxProps['size']>> = {
+  [EAltSizes.SMALL]: EAltSizes.SMALL,
+  [EAltSizes.MEDIUM]: EAltSizes.MEDIUM,
+  [EAltSizes.LARGE]: EAltSizes.MEDIUM,
 }
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreCardCheckbox
+export class AltCoreCardCheckbox
   extends LitElement
-  implements IYCoreCardCheckboxProps {
+  implements IAltCoreCardCheckboxProps {
   @consume({ context: disabledContextCreated, subscribe: true })
-  @property({ type: Boolean }) disabled: IYCoreCardCheckboxProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreCardCheckboxProps['disabled'] = disabled
   @consume({ context: sizeContextCreated, subscribe: true })
-  @property({ type: String, reflect: true }) size: IYCoreCardCheckboxProps['size'] = size
+  @property({ type: String, reflect: true }) size: IAltCoreCardCheckboxProps['size'] = size
   @consume({ context: checkedContextCreated, subscribe: true })
-  @property({ type: Boolean }) checked: IYCoreCardCheckboxProps['checked'] = checked
+  @property({ type: Boolean }) checked: IAltCoreCardCheckboxProps['checked'] = checked
 
   @consume({ context: hoveredContextCreated, subscribe: true })
   @state() private hovered = false
@@ -62,8 +62,8 @@ export class YCoreCardCheckbox
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCardCheckboxVarsCss)}
-      ${unsafeCSS(YCardCheckboxScopedCss)}
+      ${unsafeCSS(AltCardCheckboxVarsCss)}
+      ${unsafeCSS(AltCardCheckboxScopedCss)}
     `,
   ]
 
@@ -75,7 +75,7 @@ export class YCoreCardCheckbox
   }
 
   private get computedSize() {
-    return this.size ?? EYSizes.MEDIUM
+    return this.size ?? EAltSizes.MEDIUM
   }
 
   private get computedCheckboxSize() {
@@ -94,13 +94,13 @@ export class YCoreCardCheckbox
   protected render() {
     return html`
       <div class=${classMap(this.computedClasses)}>
-        <y-core-simple-checkbox
+        <alt-core-simple-checkbox
           .size=${this.computedCheckboxSize}
           .checked=${this.checked}
           .disabled=${this.disabled}
           .hovered=${this.hovered}
           @checked=${this.handleChecked}
-        ></y-core-simple-checkbox>
+        ></alt-core-simple-checkbox>
       </div>
     `
   }

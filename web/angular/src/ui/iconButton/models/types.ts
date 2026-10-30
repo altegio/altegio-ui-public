@@ -1,5 +1,5 @@
-import { createCoreIconButtonExternalProps, type IYCoreIconButtonExternalProps } from '~core/ui/iconButton/models/types'
+import { createCoreIconButtonExternalProps, type IAltCoreIconButtonExternalProps } from '~core/ui/iconButton/models/types'
 
-export interface IYNgIconButtonProps extends IYCoreIconButtonExternalProps {}
+export interface IAltNgIconButtonProps extends IAltCoreIconButtonExternalProps {}
 
-export const createNgIconButtonProps = (): IYNgIconButtonProps => createCoreIconButtonExternalProps()
+export const createNgIconButtonProps = (): IAltNgIconButtonProps => createCoreIconButtonExternalProps()

@@ -1,9 +1,9 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
 
-export interface IYSimpleCheckboxCheckedEvent {
+export interface IAltSimpleCheckboxCheckedEvent {
   checked: boolean
 }
 
-export class SimpleCheckboxCheckedEvent extends CustomEvent<IYSimpleCheckboxCheckedEvent> {}
+export class SimpleCheckboxCheckedEvent extends CustomEvent<IAltSimpleCheckboxCheckedEvent> {}
 
-export type TYCoreSimpleCheckboxEvents = TEventsStoryArgs<{ CheckedEvent: typeof SimpleCheckboxCheckedEvent }>
+export type TAltCoreSimpleCheckboxEvents = TEventsStoryArgs<{ CheckedEvent: typeof SimpleCheckboxCheckedEvent }>

@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreEmptyStateTagName as tagName } from '~shared/constants'
-import type { IYNgEmptyStateProps } from '~ng/ui/emptyState/models/types'
-import { YEmptyState } from '~ng/ui/emptyState'
+import { AltCoreEmptyStateTagName as tagName } from '~shared/constants'
+import type { IAltNgEmptyStateProps } from '~ng/ui/emptyState/models/types'
+import { AltEmptyState } from '~ng/ui/emptyState'
 import {
   propDescriptionTestCases,
   propIconTestCases,
@@ -16,16 +16,16 @@ interface ICreateComponentArgs {
   slots?: {
     actions?: string
   }
-  props?: Partial<IYNgEmptyStateProps>
+  props?: Partial<IAltNgEmptyStateProps>
 }
 
 const createComponent = async({ props, slots }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YEmptyState] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltEmptyState] }).compileComponents()
 
   @Component({
     template: `
-      <YEmptyState
+      <AltEmptyState
         [title]="title"
         [description]="description"
         [icon]="icon"
@@ -36,8 +36,8 @@ const createComponent = async({ props, slots }: ICreateComponentArgs) => {
             {{ actionsSlot }}
           </div>
         }
-      </YEmptyState>`,
-    imports: [YEmptyState],
+      </AltEmptyState>`,
+    imports: [AltEmptyState],
     standalone: true,
   })
   class TestComponent {
@@ -51,7 +51,7 @@ const createComponent = async({ props, slots }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YEmptyState',
+  'Angular/AltEmptyState',
   () => {
     describe(
       'Props',

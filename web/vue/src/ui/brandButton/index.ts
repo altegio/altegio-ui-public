@@ -1,2 +1,2 @@
-export { default as YBrandButton } from './BrandButton.vue'
+export { default as AltBrandButton } from './BrandButton.vue'
 export type * from './models/types'

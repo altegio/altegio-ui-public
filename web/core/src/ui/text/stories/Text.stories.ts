@@ -5,13 +5,13 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 import '~core/ui/text'
 
 import {
-  type IYCoreTextProps,
+  type IAltCoreTextProps,
   createCoreTextProps,
-  EYCoreTextSize,
-  EYCoreTextVariant,
+  EAltCoreTextSize,
+  EAltCoreTextVariant,
 } from '~core/ui/text/models/types'
 
-import { YCoreTextTagName as tagName } from '~shared/constants'
+import { AltCoreTextTagName as tagName } from '~shared/constants'
 
 import {
   isLongText as isLongTextArgType,
@@ -22,17 +22,17 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
 const { size, variant, ellipsis, lineclamp, locator } = createCoreTextProps()
 
-export interface IYCoreTextStoryProps extends ITextStoryProps {
+export interface IAltCoreTextStoryProps extends ITextStoryProps {
   text: string
 }
 
-type TYCoreTextMeta = IYCoreTextProps & IYCoreTextStoryProps
+type TAltCoreTextMeta = IAltCoreTextProps & IAltCoreTextStoryProps
 
 /**
  * ## Core Text
  * Text component for input fields
  */
-const meta: Meta<TYCoreTextMeta> = {
+const meta: Meta<TAltCoreTextMeta> = {
   title: '✅ Text',
   id: 'text',
   parameters: { controls: { sort: 'alpha' } },
@@ -51,7 +51,7 @@ const meta: Meta<TYCoreTextMeta> = {
   }) => {
     return html`
       <div style="width: 250px;">
-        <y-core-text
+        <alt-core-text
           data-testid=${tagName}
           size=${ifDefined(size)}
           variant=${ifDefined(variant)}
@@ -59,7 +59,7 @@ const meta: Meta<TYCoreTextMeta> = {
           .lineclamp=${lineclamp}
         >
           ${isLongText ? LOREM_IPSUM : text}
-        </y-core-text>
+        </alt-core-text>
       </div>
     `
   },
@@ -67,13 +67,13 @@ const meta: Meta<TYCoreTextMeta> = {
     size: {
       control: { type: 'select' },
       description: 'Text size',
-      options: Object.values(EYCoreTextSize),
+      options: Object.values(EAltCoreTextSize),
       ...getComponentStateTable(size),
     },
     variant: {
       control: { type: 'select' },
       description: 'Text style',
-      options: Object.values(EYCoreTextVariant),
+      options: Object.values(EAltCoreTextVariant),
       ...getComponentStateTable(variant),
     },
     ellipsis: {
@@ -105,9 +105,9 @@ const meta: Meta<TYCoreTextMeta> = {
     text: 'Text',
     isLongText: false,
   },
-} satisfies Meta<TYCoreTextMeta>
+} satisfies Meta<TAltCoreTextMeta>
 
 export default meta
-type Story = StoryObj<TYCoreTextMeta>
+type Story = StoryObj<TAltCoreTextMeta>
 
 export const Playground: Story = {}

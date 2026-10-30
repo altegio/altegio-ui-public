@@ -5,12 +5,12 @@ import { omit } from 'radash'
 
 import '~core/ui/button'
 
-import { YCoreButtonTagName as tagName } from '~shared/constants'
+import { AltCoreButtonTagName as tagName } from '~shared/constants'
 import {
   createCoreButtonProps,
-  type IYCoreButtonProps,
+  type IAltCoreButtonProps,
 } from '~core/ui/button/models/types'
-import { ySearch, yRocket } from '~shared/icons'
+import { altSearch, altRocket } from '~shared/icons'
 import {
   getComponentContentTable,
 } from '~shared/.storybook/tables'
@@ -18,16 +18,16 @@ import {
   type ITextStoryProps,
 } from '~shared/.storybook/argTypes'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import yCoreSimpleButtonStoryMeta, { type ISimpleButtonStoryEmits } from '~core/ui/simpleButton/stories/SimpleButton.stories'
+import altCoreSimpleButtonStoryMeta, { type ISimpleButtonStoryEmits } from '~core/ui/simpleButton/stories/SimpleButton.stories'
 
 const iconOptions = {
-  search: ySearch,
-  rocket: yRocket,
+  search: altSearch,
+  rocket: altRocket,
 }
 
 const { label, iconLeft, iconRight } = { ...createCoreButtonProps() }
 
-type TButtonStoryMeta = Meta<IYCoreButtonProps & ITextStoryProps & ISimpleButtonStoryEmits>
+type TButtonStoryMeta = Meta<IAltCoreButtonProps & ITextStoryProps & ISimpleButtonStoryEmits>
 
 /**
  * ## Core Button
@@ -57,7 +57,7 @@ const meta: TButtonStoryMeta = {
     isLongText,
     onClick,
   }) => html`
-    <y-core-button
+    <alt-core-button
       href=${ifDefined(href)}
       label=${ifDefined(isLongText ? LOREM_IPSUM : label)}
       target=${ifDefined(target)}
@@ -70,11 +70,11 @@ const meta: TButtonStoryMeta = {
       .iconLeft=${iconLeft}
       .iconRight=${iconRight}
       @click=${onClick}
-    ></y-core-button>
+    ></alt-core-button>
   `,
   argTypes: {
     ...omit(
-      yCoreSimpleButtonStoryMeta.argTypes,
+      altCoreSimpleButtonStoryMeta.argTypes,
       ['text', 'showDefaultSlot', 'hostStyles'],
     ),
     label: {
@@ -99,7 +99,7 @@ const meta: TButtonStoryMeta = {
   },
   args: {
     ...omit(
-      yCoreSimpleButtonStoryMeta.args,
+      altCoreSimpleButtonStoryMeta.args,
       ['text', 'showDefaultSlot', 'hostStyles'],
     ),
     ...createCoreButtonProps(),

@@ -1,1 +1,1 @@
-export { YCoreFieldAvatar } from './FieldAvatar.core'
+export { AltCoreFieldAvatar } from './FieldAvatar.core'

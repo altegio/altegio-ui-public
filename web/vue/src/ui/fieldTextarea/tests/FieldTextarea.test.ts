@@ -1,12 +1,12 @@
 import { describe, expect, it, beforeAll } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { YCoreFieldTextareaTagName } from '~shared/constants'
+import { AltCoreFieldTextareaTagName } from '~shared/constants'
 
-import { YFieldTextarea } from '~vue/ui/fieldTextarea'
-import { YCoreFieldTextarea } from '~core/ui/fieldTextarea'
+import { AltFieldTextarea } from '~vue/ui/fieldTextarea'
+import { AltCoreFieldTextarea } from '~core/ui/fieldTextarea'
 
-const tagName = YCoreFieldTextareaTagName
+const tagName = AltCoreFieldTextareaTagName
 
 import {
   propDisabledCases,
@@ -26,13 +26,13 @@ import {
 } from './cases/props'
 
 describe(
-  'Vue/YFieldTextarea',
+  'Vue/AltFieldTextarea',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreFieldTextarea,
+          AltCoreFieldTextarea,
         )
       }
     })
@@ -48,7 +48,7 @@ describe(
                 `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 () => {
                   const wrapper = mount(
-                    YFieldTextarea,
+                    AltFieldTextarea,
                     { props: { [testCase.prop]: testCase.value } },
                   )
 
@@ -77,7 +77,7 @@ describe(
                 `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 () => {
                   const wrapper = mount(
-                    YFieldTextarea,
+                    AltFieldTextarea,
                     { props: { [testCase.prop]: testCase.value } },
                   )
 

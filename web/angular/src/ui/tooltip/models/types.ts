@@ -1,5 +1,5 @@
-import { createCoreTooltipProps, type IYCoreTooltipProps } from '~core/ui/tooltip/models/types'
+import { createCoreTooltipProps, type IAltCoreTooltipProps } from '~core/ui/tooltip/models/types'
 
-export interface IYNgTooltipProps extends IYCoreTooltipProps {}
+export interface IAltNgTooltipProps extends IAltCoreTooltipProps {}
 
-export const createNgTooltipProps = (): IYNgTooltipProps => createCoreTooltipProps()
+export const createNgTooltipProps = (): IAltNgTooltipProps => createCoreTooltipProps()

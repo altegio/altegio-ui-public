@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YAvatar } from '~ng/ui/avatar'
-import yCoreAvatarStoryMeta from '~core/ui/avatar/stories/Avatar.stories'
+import { AltAvatar } from '~ng/ui/avatar'
+import altCoreAvatarStoryMeta from '~core/ui/avatar/stories/Avatar.stories'
 
 /**
- * ## Angular wrapper for YAvatar
+ * ## Angular wrapper for AltAvatar
  *
  * Displays a user avatar.
  *
@@ -20,11 +20,11 @@ import yCoreAvatarStoryMeta from '~core/ui/avatar/stories/Avatar.stories'
  * - https://i.pravatar.cc/300
  * - https://i.pravatar.cc/500
  */
-const meta: Meta<YAvatar> = {
+const meta: Meta<AltAvatar> = {
   title: '⚠️ Avatar',
   id: 'avatar',
   parameters: { controls: { sort: 'alpha' } },
-  component: YAvatar,
+  component: AltAvatar,
   tags: [
     'angular',
     'autodocs',
@@ -32,7 +32,7 @@ const meta: Meta<YAvatar> = {
   render: (args) => ({
     props: { ...args },
     template: `
-      <YAvatar
+      <AltAvatar
         [photo]="photo"
         [initials]="initials"
         [disabled]="disabled"
@@ -41,11 +41,11 @@ const meta: Meta<YAvatar> = {
       />
     `,
   }),
-  argTypes: { ...yCoreAvatarStoryMeta.argTypes },
-  args: { ...yCoreAvatarStoryMeta.args },
-} satisfies Meta<YAvatar>
+  argTypes: { ...altCoreAvatarStoryMeta.argTypes },
+  args: { ...altCoreAvatarStoryMeta.args },
+} satisfies Meta<AltAvatar>
 
 export default meta
-type Story = StoryObj<YAvatar>
+type Story = StoryObj<AltAvatar>
 
 export const Playground: Story = { args: {} }

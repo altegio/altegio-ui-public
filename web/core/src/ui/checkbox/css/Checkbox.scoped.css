@@ -1,4 +1,4 @@
-$component: $YCoreCheckboxTagName;
+$component: $AltCoreCheckboxTagName;
 
 :host {
   display: flex;
@@ -7,7 +7,7 @@ $component: $YCoreCheckboxTagName;
 .$(component) {
   display: inline-flex;
   flex-direction: column;
-  max-width: var(--y-core-checkbox-max-width);
+  max-width: var(--alt-core-checkbox-max-width);
   cursor: pointer;
 
   &_disabled {
@@ -35,20 +35,20 @@ $component: $YCoreCheckboxTagName;
   &_size {
     &-small {
       .$(component)__error {
-        margin-left: var(--y-core-checkbox-small-error-margin-left);
+        margin-left: var(--alt-core-checkbox-small-error-margin-left);
       }
     }
 
     &-medium {
       .$(component)__error {
-        margin-left: var(--y-core-checkbox-medium-error-margin-left);
+        margin-left: var(--alt-core-checkbox-medium-error-margin-left);
       }
     }
   }
 
   &__content {
     display: flex;
-    gap: var(--y-core-checkbox-x-gap);
+    gap: var(--alt-core-checkbox-x-gap);
   }
 
   &__checkbox {
@@ -59,7 +59,7 @@ $component: $YCoreCheckboxTagName;
   &__info {
     display: flex;
     flex-direction: column;
-    gap: var(--y-core-checkbox-info-gap);
+    gap: var(--alt-core-checkbox-info-gap);
     align-items: flex-start;
 
     &_hidden {
@@ -80,7 +80,7 @@ $component: $YCoreCheckboxTagName;
   }
 
   &__error {
-    margin-top: var(--y-core-checkbox-error-margin-top);
+    margin-top: var(--alt-core-checkbox-error-margin-top);
 
     &_hidden {
       display: none;

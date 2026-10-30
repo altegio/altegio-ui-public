@@ -1,27 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import type { TYNgCheckboxModel } from '~ng/ui/checkbox'
-import { YCheckbox } from '~ng/ui/checkbox'
-import yCoreCheckboxStoryMeta, { type TYCoreCheckboxStoryMeta } from '~core/ui/checkbox/stories/Checkbox.stories'
+import type { TAltNgCheckboxModel } from '~ng/ui/checkbox'
+import { AltCheckbox } from '~ng/ui/checkbox'
+import altCoreCheckboxStoryMeta, { type TAltCoreCheckboxStoryMeta } from '~core/ui/checkbox/stories/Checkbox.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { action } from 'storybook/actions'
 import { useArgs } from 'storybook/preview-api'
 import { FormsModule } from '@angular/forms'
-import type { TYNgControlValueTypes } from '~web/angular/src/types/ControlValueAccessorTypes'
+import type { TAltNgControlValueTypes } from '~web/angular/src/types/ControlValueAccessorTypes'
 import { omit } from 'radash'
 import { getComponentStateTable, getComponentEmitsTable } from '~shared/.storybook/tables'
 
-type TYNgCheckboxControlValueTypes = TYNgControlValueTypes<TYNgCheckboxModel>
-type TYNgCheckboxMeta = YCheckbox & Omit<TYCoreCheckboxStoryMeta, 'checked'> & TYNgCheckboxControlValueTypes
+type TAltNgCheckboxControlValueTypes = TAltNgControlValueTypes<TAltNgCheckboxModel>
+type TAltNgCheckboxMeta = AltCheckbox & Omit<TAltCoreCheckboxStoryMeta, 'checked'> & TAltNgCheckboxControlValueTypes
 
 /**
  * Angular wrapper for Core Checkbox
  * Checkbox with a label and supporting text
  */
-const meta: Meta<TYNgCheckboxMeta> = {
+const meta: Meta<TAltNgCheckboxMeta> = {
   title: 'Checkbox/✅ Checkbox',
   id: 'checkbox',
   parameters: { controls: { sort: 'alpha' } },
-  component: YCheckbox,
+  component: AltCheckbox,
   tags: [
     'angular',
     'autodocs',
@@ -30,7 +30,7 @@ const meta: Meta<TYNgCheckboxMeta> = {
     const [, updateArgs] = useArgs()
 
     const handlers = {
-      handleModelChange: (value: TYNgCheckboxModel) => {
+      handleModelChange: (value: TAltNgCheckboxModel) => {
         action('ngModelChange')(value)
         updateArgs({ ngModel: value })
       },
@@ -46,7 +46,7 @@ const meta: Meta<TYNgCheckboxMeta> = {
       },
       moduleMetadata: { imports: [FormsModule] },
       template: `
-        <YCheckbox
+        <AltCheckbox
           (ngModelChange)="handleModelChange($event)"
           [ngModel]="ngModel"
           [labelText]="computedLabelText"
@@ -72,12 +72,12 @@ const meta: Meta<TYNgCheckboxMeta> = {
           <ng-template #tooltipContent>
             {{ tooltipContentSlot }}
           </ng-template>
-        </YCheckbox>
+        </AltCheckbox>
       `,
     }
   },
   argTypes: {
-    ...omit(yCoreCheckboxStoryMeta.argTypes ?? {}, ['checked', 'onChecked']),
+    ...omit(altCoreCheckboxStoryMeta.argTypes ?? {}, ['checked', 'onChecked']),
     ngModel: {
       type: 'boolean',
       description: 'Checkbox checked state',
@@ -90,12 +90,12 @@ const meta: Meta<TYNgCheckboxMeta> = {
     },
   },
   args: {
-    ...omit(yCoreCheckboxStoryMeta.args ?? {}, ['checked', 'onChecked']),
+    ...omit(altCoreCheckboxStoryMeta.args ?? {}, ['checked', 'onChecked']),
     ngModel: false,
   },
-} satisfies Meta<TYNgCheckboxMeta>
+} satisfies Meta<TAltNgCheckboxMeta>
 
 export default meta
-type Story = StoryObj<YCheckbox>
+type Story = StoryObj<AltCheckbox>
 
 export const Playground: Story = { args: {} }

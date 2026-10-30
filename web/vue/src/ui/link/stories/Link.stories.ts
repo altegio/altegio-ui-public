@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { computed } from 'vue'
 
-import { YLink } from '~vue/ui/link'
-import { type IYVueLinkProps } from '~vue/ui/link/models/types'
-import yCoreLinkStoryMeta, { type IYCoreLinkStoryProps } from '~core/ui/link/stories/Link.stories'
+import { AltLink } from '~vue/ui/link'
+import { type IAltVueLinkProps } from '~vue/ui/link/models/types'
+import altCoreLinkStoryMeta, { type IAltCoreLinkStoryProps } from '~core/ui/link/stories/Link.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { storyControlsTable } from '~shared/.storybook/tables'
-import { ySearch } from '~shared/icons/build/y-search.icon'
-import { YIcon } from '~vue/ui/icon'
+import { altSearch } from '~shared/icons/build/alt-search.icon'
+import { AltIcon } from '~vue/ui/icon'
 
-type TVueLinkStoryMeta = IYVueLinkProps & IYCoreLinkStoryProps
+type TVueLinkStoryMeta = IAltVueLinkProps & IAltCoreLinkStoryProps
 
 /**
  * Vue wrapper for CoreLink
@@ -23,29 +23,29 @@ const meta: Meta<TVueLinkStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YLink, YIcon },
+    components: { AltLink, AltIcon },
     setup() {
       const computedText = computed(() => args.isLongText ? LOREM_IPSUM : String(args.text))
 
       const showIcon = computed(() => Boolean(args.showIcon))
 
-      return { args, computedText, showIcon, ySearch }
+      return { args, computedText, showIcon, altSearch }
     },
     template: `
-      <YLink v-bind="args">
+      <AltLink v-bind="args">
         <template #default>
-          <y-core-icon
+          <alt-core-icon
             v-if="showIcon"
-            :icon="ySearch"
+            :icon="altSearch"
             size="16px"
           />
           {{ computedText }}
         </template>
-      </YLink>
+      </AltLink>
     `,
   }),
   argTypes: {
-    ...yCoreLinkStoryMeta.argTypes,
+    ...altCoreLinkStoryMeta.argTypes,
     showIcon: {
       type: 'boolean',
       description: 'Show an icon in the link',
@@ -53,7 +53,7 @@ const meta: Meta<TVueLinkStoryMeta> = {
     },
   },
   args: {
-    ...yCoreLinkStoryMeta.args,
+    ...altCoreLinkStoryMeta.args,
     showIcon: false,
   },
 }

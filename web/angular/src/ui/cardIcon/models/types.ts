@@ -1,8 +1,8 @@
 import {
   createCoreCardIconProps,
-  type IYCoreCardIconProps,
+  type IAltCoreCardIconProps,
 } from '~core/ui/cardIcon/models/types'
 
-export interface IYNgCardIconProps extends IYCoreCardIconProps {}
+export interface IAltNgCardIconProps extends IAltCoreCardIconProps {}
 
-export const createNgCardIconProps = (): IYNgCardIconProps => createCoreCardIconProps()
+export const createNgCardIconProps = (): IAltNgCardIconProps => createCoreCardIconProps()

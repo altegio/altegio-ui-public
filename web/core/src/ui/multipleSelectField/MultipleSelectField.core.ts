@@ -8,14 +8,14 @@ import { provide } from '@lit/context'
 import { autoPlacement as autoPlacementMiddleware } from '@floating-ui/dom'
 
 import {
-  YCoreMultipleSelectFieldTagName as tagName,
-  YCoreFieldWrapperTagName,
-  YCoreFieldInputTagName,
-  YCoreDropdownCellTagName,
+  AltCoreMultipleSelectFieldTagName as tagName,
+  AltCoreFieldWrapperTagName,
+  AltCoreFieldInputTagName,
+  AltCoreDropdownCellTagName,
 } from '~shared/constants'
 
 import {
-  type IYCoreMultipleSelectFieldProps,
+  type IAltCoreMultipleSelectFieldProps,
   createCoreMultipleSelectFieldProps,
   isMultipleValueEqualListItems,
   isValueEqualListItem,
@@ -25,13 +25,13 @@ import {
   InputEvent,
   type VisibleEvent,
 } from './models/types'
-import YCoreMultipleSelectFieldVarsCSS from '~core/ui/multipleSelectField/css/MultipleSelectField.vars.css?inline'
-import YCoreMultipleSelectFieldScopedCSS from '~core/ui/multipleSelectField/css/MultipleSelectField.scoped.css?inline'
+import AltCoreMultipleSelectFieldVarsCSS from '~core/ui/multipleSelectField/css/MultipleSelectField.vars.css?inline'
+import AltCoreMultipleSelectFieldScopedCSS from '~core/ui/multipleSelectField/css/MultipleSelectField.scoped.css?inline'
 
 import { disabledContextCreated, readonlyContextCreated, errorContextCreated, sizeContextCreated } from '~core/ui/fieldWrapper/providers'
 
-import type { YCoreFieldWrapper } from '~core/ui/fieldWrapper'
-import type { YCoreFieldInput } from '~core/ui/fieldInput'
+import type { AltCoreFieldWrapper } from '~core/ui/fieldWrapper'
+import type { AltCoreFieldInput } from '~core/ui/fieldInput'
 
 import '~core/ui/fieldWrapper'
 import '~core/ui/fieldInput'
@@ -43,19 +43,19 @@ import '~core/ui/dropdownList'
 import '~core/ui/dropdownCell'
 import '~core/ui/simpleChip'
 
-import { yChevronDown, yCheck } from '~shared/icons'
+import { altChevronDown, altCheck } from '~shared/icons'
 import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
 import { renderIcon, renderLabel, renderError, renderAnnotation } from '~core/renderers'
 import { booleanConverter } from '~core/utils/converters'
 import classMapToString from '~core/utils/classMapToString'
 
 import type { KeydownEvent } from '~core/ui/fieldInput/models/types/events'
-import type { IYCoreSelectListItem, TItemValue, TYCoreSelectFieldItemValue } from '~core/ui/selectField/models/types/external'
+import type { IAltCoreSelectListItem, TItemValue, TAltCoreSelectFieldItemValue } from '~core/ui/selectField/models/types/external'
 import type { ClickIconEmitEvent } from '~core/ui/simpleChip/models/types'
-import { EYCoreDropdownPlacement, EYCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
-import { EYCoreSimpleChipVariant } from '~core/ui/simpleChip/models/types'
+import { EAltCoreDropdownPlacement, EAltCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
+import { EAltCoreSimpleChipVariant } from '~core/ui/simpleChip/models/types'
 import { hasSlotContent } from '~core/utils/lit-slots'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import { withLocator } from '~core/utils/locator'
 
 const { value, name, placeholder, autofocus, disabled, readonly, error, errors, size, required, labelText, labelTooltipText, annotationText, labelDebounce, isMapOptions, items, itemLabel, itemValue, isCustomFilter, isFilterable, filterValue, filterCallback } = createCoreMultipleSelectFieldProps()
@@ -67,34 +67,34 @@ const CLICK_OUTSIDE_DELAY = 150
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreMultipleSelectField extends LitElement implements IYCoreMultipleSelectFieldProps {
+export class AltCoreMultipleSelectField extends LitElement implements IAltCoreMultipleSelectFieldProps {
   @provide({ context: disabledContextCreated })
-  @property({ type: Boolean }) disabled: IYCoreMultipleSelectFieldProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreMultipleSelectFieldProps['disabled'] = disabled
   @provide({ context: readonlyContextCreated })
-  @property({ type: Boolean }) readonly: IYCoreMultipleSelectFieldProps['readonly'] = readonly
+  @property({ type: Boolean }) readonly: IAltCoreMultipleSelectFieldProps['readonly'] = readonly
   @provide({ context: errorContextCreated })
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IYCoreMultipleSelectFieldProps['error'] = error
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IAltCoreMultipleSelectFieldProps['error'] = error
   @provide({ context: sizeContextCreated })
-  @property({ type: String, reflect: true }) size: IYCoreMultipleSelectFieldProps['size'] = size
+  @property({ type: String, reflect: true }) size: IAltCoreMultipleSelectFieldProps['size'] = size
 
-  @property({ type: Array }) value: IYCoreMultipleSelectFieldProps['value'] = value
-  @property({ type: String, attribute: 'filter-value' }) filterValue: IYCoreMultipleSelectFieldProps['filterValue'] = filterValue
-  @property({ type: String }) name: IYCoreMultipleSelectFieldProps['name'] = name
-  @property({ type: String }) placeholder: IYCoreMultipleSelectFieldProps['placeholder'] = placeholder
-  @property({ type: Boolean, reflect: true }) autofocus: NonNullable<IYCoreMultipleSelectFieldProps['autofocus']> = Boolean(autofocus)
-  @property({ type: Boolean, reflect: true }) required: IYCoreMultipleSelectFieldProps['required'] = required
-  @property({ type: Array }) errors: IYCoreMultipleSelectFieldProps['errors'] = errors
-  @property({ type: Number, attribute: 'label-debounce' }) labelDebounce: IYCoreMultipleSelectFieldProps['labelDebounce'] = labelDebounce
-  @property({ type: Boolean, attribute: 'is-map-options' }) isMapOptions: IYCoreMultipleSelectFieldProps['isMapOptions'] = isMapOptions
-  @property({ type: String, attribute: 'label-text' }) labelText: IYCoreMultipleSelectFieldProps['labelText'] = labelText
-  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IYCoreMultipleSelectFieldProps['labelTooltipText'] = labelTooltipText
-  @property({ type: String, attribute: 'annotation-text' }) annotationText: IYCoreMultipleSelectFieldProps['annotationText'] = annotationText
-  @property({ type: Array }) items: NonNullable<IYCoreMultipleSelectFieldProps['items']> = items ?? []
-  @property({ type: String, attribute: 'item-label' }) itemLabel: NonNullable<IYCoreMultipleSelectFieldProps['itemLabel']> = String(itemLabel)
-  @property({ type: String, attribute: 'item-value' }) itemValue: NonNullable<IYCoreMultipleSelectFieldProps['itemValue']> = String(itemValue)
-  @property({ type: Boolean, attribute: 'is-custom-filter' }) isCustomFilter: IYCoreMultipleSelectFieldProps['isCustomFilter'] = isCustomFilter
-  @property({ type: Boolean, attribute: 'is-filterable' }) isFilterable: IYCoreMultipleSelectFieldProps['isFilterable'] = isFilterable
-  @property({ attribute: 'filter-callback' }) filterCallback: IYCoreMultipleSelectFieldProps['filterCallback'] = filterCallback
+  @property({ type: Array }) value: IAltCoreMultipleSelectFieldProps['value'] = value
+  @property({ type: String, attribute: 'filter-value' }) filterValue: IAltCoreMultipleSelectFieldProps['filterValue'] = filterValue
+  @property({ type: String }) name: IAltCoreMultipleSelectFieldProps['name'] = name
+  @property({ type: String }) placeholder: IAltCoreMultipleSelectFieldProps['placeholder'] = placeholder
+  @property({ type: Boolean, reflect: true }) autofocus: NonNullable<IAltCoreMultipleSelectFieldProps['autofocus']> = Boolean(autofocus)
+  @property({ type: Boolean, reflect: true }) required: IAltCoreMultipleSelectFieldProps['required'] = required
+  @property({ type: Array }) errors: IAltCoreMultipleSelectFieldProps['errors'] = errors
+  @property({ type: Number, attribute: 'label-debounce' }) labelDebounce: IAltCoreMultipleSelectFieldProps['labelDebounce'] = labelDebounce
+  @property({ type: Boolean, attribute: 'is-map-options' }) isMapOptions: IAltCoreMultipleSelectFieldProps['isMapOptions'] = isMapOptions
+  @property({ type: String, attribute: 'label-text' }) labelText: IAltCoreMultipleSelectFieldProps['labelText'] = labelText
+  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IAltCoreMultipleSelectFieldProps['labelTooltipText'] = labelTooltipText
+  @property({ type: String, attribute: 'annotation-text' }) annotationText: IAltCoreMultipleSelectFieldProps['annotationText'] = annotationText
+  @property({ type: Array }) items: NonNullable<IAltCoreMultipleSelectFieldProps['items']> = items ?? []
+  @property({ type: String, attribute: 'item-label' }) itemLabel: NonNullable<IAltCoreMultipleSelectFieldProps['itemLabel']> = String(itemLabel)
+  @property({ type: String, attribute: 'item-value' }) itemValue: NonNullable<IAltCoreMultipleSelectFieldProps['itemValue']> = String(itemValue)
+  @property({ type: Boolean, attribute: 'is-custom-filter' }) isCustomFilter: IAltCoreMultipleSelectFieldProps['isCustomFilter'] = isCustomFilter
+  @property({ type: Boolean, attribute: 'is-filterable' }) isFilterable: IAltCoreMultipleSelectFieldProps['isFilterable'] = isFilterable
+  @property({ attribute: 'filter-callback' }) filterCallback: IAltCoreMultipleSelectFieldProps['filterCallback'] = filterCallback
 
   @bubblingEvent(
     FocusEvent,
@@ -124,8 +124,8 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
   @state() private hasAnnotationSlot = false
   @state() private lastFocusTime = 0
 
-  @query(YCoreFieldWrapperTagName) public readonly fieldWrapper?: YCoreFieldWrapper
-  @query(YCoreFieldInputTagName) public readonly fieldInput?: YCoreFieldInput
+  @query(AltCoreFieldWrapperTagName) public readonly fieldWrapper?: AltCoreFieldWrapper
+  @query(AltCoreFieldInputTagName) public readonly fieldInput?: AltCoreFieldInput
 
   private readonly baseClass = tagName
   private readonly baseDropdownActivatorClass = `${this.baseClass}__activator`
@@ -210,7 +210,7 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
     return this.selectedItemsByValue.length > 0
   }
 
-  private get selectedItemsByValue(): NonNullable<IYCoreSelectListItem[]> {
+  private get selectedItemsByValue(): NonNullable<IAltCoreSelectListItem[]> {
     if (!Array.isArray(this.value)) {
       return []
     }
@@ -227,7 +227,7 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
   }
 
   private get dropdownMiddlewares() {
-    const allowedPlacements = [EYCoreDropdownPlacement.BOTTOM, EYCoreDropdownPlacement.TOP]
+    const allowedPlacements = [EAltCoreDropdownPlacement.BOTTOM, EAltCoreDropdownPlacement.TOP]
 
     return [autoPlacementMiddleware({ allowedPlacements })]
   }
@@ -251,7 +251,7 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
     return `max-width: ${width}px`
   }
 
-  private hasAvatarState = (item: IYCoreSelectListItem | undefined) => {
+  private hasAvatarState = (item: IAltCoreSelectListItem | undefined) => {
     if (!item) return false
 
     return Boolean(item.img || item.icon || item.initials)
@@ -265,18 +265,18 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
     this.hasAnnotationSlot = hasSlotContent(target)
   }
 
-  private findItemByValue(value: IYCoreSelectListItem[TItemValue]): IYCoreSelectListItem | undefined {
+  private findItemByValue(value: IAltCoreSelectListItem[TItemValue]): IAltCoreSelectListItem | undefined {
     return this.items.find((item) => item[this.itemValue] === value)
   }
 
-  private isValueEqualListItem(value: TYCoreSelectFieldItemValue): value is IYCoreSelectListItem {
+  private isValueEqualListItem(value: TAltCoreSelectFieldItemValue): value is IAltCoreSelectListItem {
     return isValueEqualListItem(
       value,
       this.isMapOptions,
     )
   }
 
-  private setOrDeleteItemFromValue(item: IYCoreSelectListItem) {
+  private setOrDeleteItemFromValue(item: IAltCoreSelectListItem) {
     const currentValue = this.value ?? []
 
     const filteredValues = currentValue.filter((el) => {
@@ -299,7 +299,7 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
     this.fieldWrapper?.blur()
   }
 
-  private deleteItemFromValue = (item: IYCoreSelectListItem) => (event: ClickIconEmitEvent) => {
+  private deleteItemFromValue = (item: IAltCoreSelectListItem) => (event: ClickIconEmitEvent) => {
     if (this.readonly || !this.value) return
 
     event.detail.stopPropagation()
@@ -321,7 +321,7 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
     }
   }
 
-  private handleSelect = (item: IYCoreSelectListItem) => (event: PointerEvent) => {
+  private handleSelect = (item: IAltCoreSelectListItem) => (event: PointerEvent) => {
     event.stopPropagation()
 
     if (this.computedDisabledOrReadonly || !event.currentTarget) return
@@ -413,12 +413,12 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreMultipleSelectFieldVarsCSS)}
-      ${unsafeCSS(YCoreMultipleSelectFieldScopedCSS)}
+      ${unsafeCSS(AltCoreMultipleSelectFieldVarsCSS)}
+      ${unsafeCSS(AltCoreMultipleSelectFieldScopedCSS)}
     `,
   ]
 
-  private defaultItemsFilter = (items: IYCoreSelectListItem[], value: string) => {
+  private defaultItemsFilter = (items: IAltCoreSelectListItem[], value: string) => {
     return items.filter((item) => String(item[this.itemLabel]).toLowerCase()
       .includes(value.toLowerCase()))
   }
@@ -435,16 +435,16 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
     event.stopPropagation()
   }
 
-  protected renderItemAvatar(item: IYCoreSelectListItem | undefined) {
+  protected renderItemAvatar(item: IAltCoreSelectListItem | undefined) {
     if (!this.hasAvatarState(item)) return nothing
 
     return html`
-      <y-core-avatar
+      <alt-core-avatar
         .photo=${item?.img}
         .icon=${item?.icon}
         .initials=${item?.initials}
         .size=${this.size}
-      ></y-core-avatar>
+      ></alt-core-avatar>
     `
   }
 
@@ -455,8 +455,8 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
       dropdownItems,
       (item) => item.id,
       (item) => html`
-        <y-core-dropdown-cell
-          locator=${`${YCoreDropdownCellTagName}_${item.id}`}
+        <alt-core-dropdown-cell
+          locator=${`${AltCoreDropdownCellTagName}_${item.id}`}
           @click=${this.handleSelect(item)}
           class=${this.baseDropdownListItemClass}
         >
@@ -472,11 +472,11 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
 
           <div slot="append" class=${`${this.baseDropdownListItemClass}__append`}>
             ${this.selectedItemsByValue.some((el) => String(el[this.itemValue]) === String(item[this.itemValue]))
-              ? renderIcon({ icon: yCheck, size: '16px' })
+              ? renderIcon({ icon: altCheck, size: '16px' })
               : nothing
             }
           </div>
-        </y-core-dropdown-cell>
+        </alt-core-dropdown-cell>
       `,
     )
   }
@@ -488,22 +488,22 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
       this.selectedItemsByValue,
       (item) => item.id,
       (item) => html`
-        <y-core-simple-chip
-          variant=${EYCoreSimpleChipVariant.MUTED} 
+        <alt-core-simple-chip
+          variant=${EAltCoreSimpleChipVariant.MUTED} 
           class=${classMap(this.computedChipClasses)}
-          .size=${this.size === 'large' ? EYSizes.MEDIUM : EYSizes.SMALL}
+          .size=${this.size === 'large' ? EAltSizes.MEDIUM : EAltSizes.SMALL}
           .disabled=${this.disabled}
           .readonly=${this.readonly}
           @click-icon=${this.deleteItemFromValue(item)}
           @click=${this.handleChipClick}
-        >${item[this.itemLabel]}</y-core-simple-chip>
+        >${item[this.itemLabel]}</alt-core-simple-chip>
       `,
     )
   }
 
   protected renderDropdownActivator() {
     return html`
-      <y-core-field-wrapper
+      <alt-core-field-wrapper
         .disabled=${this.disabled}
         .readonly=${this.readonly}
         .error=${Boolean(this.errors?.length) || this.error}
@@ -514,7 +514,7 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
       >
         <div class=${classMap(this.computedChipWrapperClasses)}>
           ${this.renderMultipleValues()}
-          <y-core-field-input
+          <alt-core-field-input
             .value=${this.filterValue}
             .name=${this.name}
             .placeholder=${this.hasSelectedValues ? undefined : this.placeholder}
@@ -529,7 +529,7 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
             @keydown=${this.handleKeydown}
             @focus=${this.handleFocus}
             @blur=${this.handleBlur}
-          ></y-core-field-input>
+          ></alt-core-field-input>
           <div
             class=${this.baseInputOverlayClass}
             @click=${this.handleInputOverlayClick}
@@ -537,21 +537,21 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
         </div>
         ${!this.readonly
           ? html`
-            <y-core-field-icon
-              .icon=${yChevronDown}
+            <alt-core-field-icon
+              .icon=${altChevronDown}
               hoverable
               class=${classMap(this.computedArrowIconClasses)}
-            ></y-core-field-icon>
+            ></alt-core-field-icon>
           `
           : nothing
         }
-      </y-core-field-wrapper>
+      </alt-core-field-wrapper>
     `
   }
 
   protected renderDropdownContent() {
     return html`
-      <y-core-dropdown-list>
+      <alt-core-dropdown-list>
         ${html`
           <slot name="dropdown-list-top" slot="top">
           </slot>
@@ -567,7 +567,7 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
           <slot name="dropdown-list-bottom" slot="bottom">
           </slot>
         `}
-      </y-core-dropdown-list>`
+      </alt-core-dropdown-list>`
   }
 
 
@@ -584,10 +584,10 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
           handleClick: this.handleLabelClick,
           className: classMapToString(this.computedLabelClasses),
         })}
-        <y-core-dropdown
+        <alt-core-dropdown
           .isOpen=${this.isOpened}
-          .trigger=${EYCoreDropdownTrigger.MANUAL}
-          .placement=${EYCoreDropdownPlacement.BOTTOM_START}
+          .trigger=${EAltCoreDropdownTrigger.MANUAL}
+          .placement=${EAltCoreDropdownPlacement.BOTTOM_START}
           .middlewares=${this.dropdownMiddlewares}
           strict-width
           @click-outside=${this.handleClickOutside}
@@ -599,7 +599,7 @@ export class YCoreMultipleSelectField extends LitElement implements IYCoreMultip
           <div slot="content" class=${this.baseDropdownContentClass}>
             ${this.renderDropdownContent()}
           </div>
-        </y-core-dropdown>
+        </alt-core-dropdown>
         ${renderAnnotation({
           text: this.annotationText,
           disabled: this.computedDisabledOrReadonly,

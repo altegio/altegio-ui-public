@@ -1,84 +1,84 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 import {
   createCoreTableProps,
-  type IYCoreTableProps,
+  type IAltCoreTableProps,
 } from '~core/ui/table/models/types'
 import {
   createCoreTableRowProps,
-  type IYCoreTableRowProps,
+  type IAltCoreTableRowProps,
 } from '~core/ui/tableRow/models/types'
 import {
   createCoreTableCellProps,
-  type IYCoreTableCellProps,
+  type IAltCoreTableCellProps,
   type ITableCellItem,
 } from '~core/ui/tableCell/models/types'
 import {
-  type IYCoreTableHeadCellProps,
+  type IAltCoreTableHeadCellProps,
   type TableHeadCellSortEvent,
   type ITableHeadCellItem,
 } from '~core/ui/tableHeadCell/models/types'
 import {
   createCoreTablePaginationProps,
-  type IYCoreTablePaginationProps,
+  type IAltCoreTablePaginationProps,
 } from '~core/ui/tablePagination/models/types'
 import type { TPrimitive } from '~shared/types/global'
 
 export type { ISkeletonTableColumn } from '~core/ui/skeletonTable/models/types'
 
-export interface IYVueTableHeadItem extends ITableHeadCellItem, Partial<IYCoreTableHeadCellProps> {
+export interface IAltVueTableHeadItem extends ITableHeadCellItem, Partial<IAltCoreTableHeadCellProps> {
   hint?: string
 }
-export interface IYVueTableCellItem extends ITableCellItem, Partial<IYCoreTableCellProps> {}
+export interface IAltVueTableCellItem extends ITableCellItem, Partial<IAltCoreTableCellProps> {}
 
-export type TYVueTableCellItem = IYVueTableCellItem | TPrimitive
-export type TYVueTableHeaders = Record<IYVueTableHeadItem['id'], IYVueTableHeadItem>
-export interface IYVueTableItem extends Record<IYVueTableHeadItem['id'], TYVueTableCellItem> {
+export type TAltVueTableCellItem = IAltVueTableCellItem | TPrimitive
+export type TAltVueTableHeaders = Record<IAltVueTableHeadItem['id'], IAltVueTableHeadItem>
+export interface IAltVueTableItem extends Record<IAltVueTableHeadItem['id'], TAltVueTableCellItem> {
   rowId: string
   rowKey?: string
   group?: string
 }
-export type TYVueTableItems = IYVueTableItem[]
+export type TAltVueTableItems = IAltVueTableItem[]
 
-export interface IYVueCoreTableProps extends
-  Omit<IYCoreTableProps, 'hideHead' | 'hideBar'>,
-  Pick<IYCoreTableRowProps, 'stripe' | 'selectable'>,
-  Pick<IYCoreTableCellProps, 'sticky'>,
-  Omit<IYCoreTablePaginationProps, 'disabled'> {
-  headers: TYVueTableHeaders | undefined
-  items: TYVueTableItems | undefined
-  selected: IYVueTableItem['rowId'][] | undefined
-  hideHeader?: IYCoreTableProps['hideHead']
+export interface IAltVueCoreTableProps extends
+  Omit<IAltCoreTableProps, 'hideHead' | 'hideBar'>,
+  Pick<IAltCoreTableRowProps, 'stripe' | 'selectable'>,
+  Pick<IAltCoreTableCellProps, 'sticky'>,
+  Omit<IAltCoreTablePaginationProps, 'disabled'> {
+  headers: TAltVueTableHeaders | undefined
+  items: TAltVueTableItems | undefined
+  selected: IAltVueTableItem['rowId'][] | undefined
+  hideHeader?: IAltCoreTableProps['hideHead']
 }
-export interface IYVueTableProps {
-  disabled?: IYVueCoreTableProps['disabled']
-  loading?: IYVueCoreTableProps['loading']
-  plugins?: IYVueCoreTableProps['plugins']
-  stripe?: IYVueCoreTableProps['stripe']
-  selectable?: IYVueCoreTableProps['selectable']
-  sticky?: IYVueCoreTableProps['sticky']
-  page?: IYVueCoreTableProps['page']
-  itemsPerPage?: IYVueCoreTableProps['itemsPerPage']
-  total?: IYVueCoreTableProps['total']
-  itemValue?: IYVueCoreTableProps['itemValue']
-  itemLabel?: IYVueCoreTableProps['itemLabel']
-  optionsItemsPerPage?: IYVueCoreTableProps['optionsItemsPerPage']
-  counterText?: IYVueCoreTableProps['counterText']
-  headers?: IYVueCoreTableProps['headers']
-  items?: IYVueCoreTableProps['items']
-  selected?: IYVueCoreTableProps['selected']
+export interface IAltVueTableProps {
+  disabled?: IAltVueCoreTableProps['disabled']
+  loading?: IAltVueCoreTableProps['loading']
+  plugins?: IAltVueCoreTableProps['plugins']
+  stripe?: IAltVueCoreTableProps['stripe']
+  selectable?: IAltVueCoreTableProps['selectable']
+  sticky?: IAltVueCoreTableProps['sticky']
+  page?: IAltVueCoreTableProps['page']
+  itemsPerPage?: IAltVueCoreTableProps['itemsPerPage']
+  total?: IAltVueCoreTableProps['total']
+  itemValue?: IAltVueCoreTableProps['itemValue']
+  itemLabel?: IAltVueCoreTableProps['itemLabel']
+  optionsItemsPerPage?: IAltVueCoreTableProps['optionsItemsPerPage']
+  counterText?: IAltVueCoreTableProps['counterText']
+  headers?: IAltVueCoreTableProps['headers']
+  items?: IAltVueCoreTableProps['items']
+  selected?: IAltVueCoreTableProps['selected']
   showPagination?: boolean
-  hideHeader?: IYVueCoreTableProps['hideHeader']
+  hideHeader?: IAltVueCoreTableProps['hideHeader']
 }
 
-export const createVueTableProps = (): TDefinedVueProps<IYVueTableProps> => {
+export const createVueTableProps = (): TDefinedVueProps<IAltVueTableProps> => {
   const { disabled, loading } = createCoreTableProps()
   const { stripe, selectable } = createCoreTableRowProps()
   const { sticky } = createCoreTableCellProps()
   const { page, itemsPerPage, total, itemValue, itemLabel, optionsItemsPerPage, counterText } = createCoreTablePaginationProps()
 
-  const headers: () => TYVueTableHeaders = () => ({})
-  const items: () => TYVueTableItems = () => []
-  const selected: () => IYVueTableItem['rowId'][] = () => []
+  const headers: () => TAltVueTableHeaders = () => ({})
+  const items: () => TAltVueTableItems = () => []
+  const selected: () => IAltVueTableItem['rowId'][] = () => []
 
   return {
     disabled,
@@ -102,28 +102,28 @@ export const createVueTableProps = (): TDefinedVueProps<IYVueTableProps> => {
   }
 }
 
-export interface IYVueTableEmitSortPayload {
+export interface IAltVueTableEmitSortPayload {
   headId: string
   event: TableHeadCellSortEvent
 }
 
-export interface IYVueTableEmits {
-  (event: 'sort', payload: IYVueTableEmitSortPayload): void
-  (event: 'update:selected', payload: IYVueTableItem['rowId'][]): void
-  (event: 'update:page', payload: IYCoreTablePaginationProps['page']): void
-  (event: 'update:itemsPerPage', payload: IYCoreTablePaginationProps['itemsPerPage']): void
+export interface IAltVueTableEmits {
+  (event: 'sort', payload: IAltVueTableEmitSortPayload): void
+  (event: 'update:selected', payload: IAltVueTableItem['rowId'][]): void
+  (event: 'update:page', payload: IAltCoreTablePaginationProps['page']): void
+  (event: 'update:itemsPerPage', payload: IAltCoreTablePaginationProps['itemsPerPage']): void
 }
 
-export interface IYVueTableSlots {
+export interface IAltVueTableSlots {
   [key: `head-hint-${string}`]: (props: { hint?: string }) => unknown
-  [key: `head-cell-${string}`]: (props: { item: IYVueTableHeadItem }) => unknown
-  'head-cell': (props: { item: IYVueTableHeadItem }) => unknown
-  [key: `row-outer-${string}`]: (props: { row: IYVueTableItem }) => unknown
-  [key: `row-inner-${string}`]: (props: { row: IYVueTableItem }) => unknown
-  'row-inner': (props: { row: IYVueTableItem; index: number }) => unknown
-  'row-outer': (props: { row: IYVueTableItem; index: number }) => unknown
-  [key: `cell-outer-col-${string}`]: (props: { cell: TYVueTableCellItem; row: IYVueTableItem }) => unknown
-  'cell-outer': (props: { cell: TYVueTableCellItem; row: IYVueTableItem }) => unknown
-  [key: `cell-col-${string}`]: (props: { cell: TYVueTableCellItem; row: IYVueTableItem }) => unknown
-  cell: (props: { cell: TYVueTableCellItem; row: IYVueTableItem }) => unknown
+  [key: `head-cell-${string}`]: (props: { item: IAltVueTableHeadItem }) => unknown
+  'head-cell': (props: { item: IAltVueTableHeadItem }) => unknown
+  [key: `row-outer-${string}`]: (props: { row: IAltVueTableItem }) => unknown
+  [key: `row-inner-${string}`]: (props: { row: IAltVueTableItem }) => unknown
+  'row-inner': (props: { row: IAltVueTableItem; index: number }) => unknown
+  'row-outer': (props: { row: IAltVueTableItem; index: number }) => unknown
+  [key: `cell-outer-col-${string}`]: (props: { cell: TAltVueTableCellItem; row: IAltVueTableItem }) => unknown
+  'cell-outer': (props: { cell: TAltVueTableCellItem; row: IAltVueTableItem }) => unknown
+  [key: `cell-col-${string}`]: (props: { cell: TAltVueTableCellItem; row: IAltVueTableItem }) => unknown
+  cell: (props: { cell: TAltVueTableCellItem; row: IAltVueTableItem }) => unknown
 }

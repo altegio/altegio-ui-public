@@ -1,6 +1,6 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
 import {
-  YCoreModalTagName as tagName,
+  AltCoreModalTagName as tagName,
 } from '~web/shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { createCoreModalProps } from '~core/ui/modal/models/types'
@@ -107,7 +107,7 @@ const baseEventsCheck = () => {
 }
 
 describe(
-  'Core/YCoreModal/Unit',
+  'Core/AltCoreModal/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()

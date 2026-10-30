@@ -1,8 +1,8 @@
 import {
   createCoreCardRadioProps,
-  type IYCoreCardRadioProps,
+  type IAltCoreCardRadioProps,
 } from '~core/ui/cardRadio/models/types'
 
-export interface IYNgCardRadioProps extends IYCoreCardRadioProps {}
+export interface IAltNgCardRadioProps extends IAltCoreCardRadioProps {}
 
-export const createNgCardRadioProps = (): IYNgCardRadioProps => createCoreCardRadioProps()
+export const createNgCardRadioProps = (): IAltNgCardRadioProps => createCoreCardRadioProps()

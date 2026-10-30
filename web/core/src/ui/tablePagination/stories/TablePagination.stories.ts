@@ -7,16 +7,16 @@ import '~core/ui/tablePagination'
 
 import {
   createCoreTablePaginationProps,
-  type IYCoreTablePaginationProps,
-  type TYCorePaginationEvents,
-  type TYCoreTablePaginationEvents,
+  type IAltCoreTablePaginationProps,
+  type TAltCorePaginationEvents,
+  type TAltCoreTablePaginationEvents,
   type ChangePageEvent,
   type ChangeItemsPerPageEvent,
 } from '../models/types'
 import {
-  YCoreTablePaginationTagName as tagName,
+  AltCoreTablePaginationTagName as tagName,
 } from '~shared/constants'
-import yCorePaginationStoryMeta from '~core/ui/pagination/stories/Pagination.stories'
+import altCorePaginationStoryMeta from '~core/ui/pagination/stories/Pagination.stories'
 import { getComponentStateTable, getComponentEmitsTable } from '~shared/.storybook/tables'
 
 const { counterText, optionsItemsPerPage } = createCoreTablePaginationProps()
@@ -24,12 +24,12 @@ const { counterText, optionsItemsPerPage } = createCoreTablePaginationProps()
 const storyCounterText = 'promo codes per page'
 const storyOptionsItemsPerPage: number[] = [10, 25, 50]
 
-export type TYCoreTablePaginationMeta = Meta<IYCoreTablePaginationProps & TYCorePaginationEvents & TYCoreTablePaginationEvents>
+export type TAltCoreTablePaginationMeta = Meta<IAltCoreTablePaginationProps & TAltCorePaginationEvents & TAltCoreTablePaginationEvents>
 
 /**
  * ## Core TablePagination
  */
-const meta: TYCoreTablePaginationMeta = {
+const meta: TAltCoreTablePaginationMeta = {
   title: 'TablePagination',
   id: 'tablePagination',
   parameters: { controls: { sort: 'alpha' } },
@@ -51,7 +51,7 @@ const meta: TYCoreTablePaginationMeta = {
     const [
       args,
       updateArgs,
-    ] = useArgs<IYCoreTablePaginationProps>()
+    ] = useArgs<IAltCoreTablePaginationProps>()
 
     const onStoryPageChange = (event: ChangePageEvent) => {
       updateArgs({ ...args, page: event.detail.page })
@@ -64,7 +64,7 @@ const meta: TYCoreTablePaginationMeta = {
     }
 
     return html`
-      <y-core-table-pagination
+      <alt-core-table-pagination
         .disabled=${disabled}
         .itemsPerPage=${itemsPerPage}
         .page=${page}
@@ -73,11 +73,11 @@ const meta: TYCoreTablePaginationMeta = {
         .optionsItemsPerPage=${optionsItemsPerPage}
         @change-page=${onStoryPageChange}
         @change-items-per-page=${onStoryItemsPerPageChange}
-      ></y-core-table-pagination>
+      ></alt-core-table-pagination>
     `
   },
   argTypes: {
-    ...yCorePaginationStoryMeta.argTypes,
+    ...altCorePaginationStoryMeta.argTypes,
 
     counterText: {
       type: 'string',
@@ -96,15 +96,15 @@ const meta: TYCoreTablePaginationMeta = {
     },
   },
   args: {
-    ...yCorePaginationStoryMeta.args,
+    ...altCorePaginationStoryMeta.args,
 
     counterText: storyCounterText,
     optionsItemsPerPage: storyOptionsItemsPerPage,
     onChangeItemsPerPage: fn(),
   },
-} satisfies TYCoreTablePaginationMeta
+} satisfies TAltCoreTablePaginationMeta
 
 export default meta
-type Story = StoryObj<IYCoreTablePaginationProps>
+type Story = StoryObj<IAltCoreTablePaginationProps>
 
 export const Playground: Story = { args: {} }

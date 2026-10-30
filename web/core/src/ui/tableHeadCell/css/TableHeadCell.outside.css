@@ -1,4 +1,4 @@
-$headCell: $YCoreTableHeadCellTagName;
+$headCell: $AltCoreTableHeadCellTagName;
 
 $(headCell) {
   &[sticky] {

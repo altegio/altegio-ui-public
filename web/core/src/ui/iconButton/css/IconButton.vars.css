@@ -1,9 +1,9 @@
-$component: $YCoreSimpleButtonTagName;
+$component: $AltCoreSimpleButtonTagName;
 
 :host .$(component) {
   /* General */
-  --y-core-simple-button-size-small-padding-x: var(--y-core-simple-button-size-small-padding-y);
-  --y-core-simple-button-size-medium-padding-x: var(--y-core-size-spacing-3-x);
-  --y-core-simple-button-size-medium-padding-y: var(--y-core-size-spacing-3-x);
-  --y-core-simple-button-size-large-padding-x: var(--y-core-simple-button-size-large-padding-y);
+  --alt-core-simple-button-size-small-padding-x: var(--alt-core-simple-button-size-small-padding-y);
+  --alt-core-simple-button-size-medium-padding-x: var(--alt-core-size-spacing-3-x);
+  --alt-core-simple-button-size-medium-padding-y: var(--alt-core-size-spacing-3-x);
+  --alt-core-simple-button-size-large-padding-x: var(--alt-core-simple-button-size-large-padding-y);
 }

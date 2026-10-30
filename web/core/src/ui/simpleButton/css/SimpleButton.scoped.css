@@ -4,7 +4,7 @@
   display: flex;
 }
 
-$component: $YCoreSimpleButtonTagName;
+$component: $AltCoreSimpleButtonTagName;
 
 ::slotted(*) {
   overflow: hidden;
@@ -16,25 +16,25 @@ $component: $YCoreSimpleButtonTagName;
   position: relative;
   box-sizing: border-box;
   display: inline-flex;
-  width: var(--y-core-simple-button-width);
+  width: var(--alt-core-simple-button-width);
   max-width: 100%;
-  min-height: var(--y-core-simple-button-size-small-min-height);
-  aspect-ratio: var(--y-core-simple-button-aspect-ratio);
-  padding: var(--y-core-simple-button-size-small-padding-y) var(--y-core-simple-button-size-small-padding-x);
-  font-family: var(--y-core-font-family);
-  font-size: var(--y-core-simple-button-size-small-font-size);
-  font-weight: var(--y-core-simple-button-size-small-font-weight);
-  line-height: var(--y-core-simple-button-size-small-line-height);
-  color: var(--y-core-simple-button-variant-primary-color);
+  min-height: var(--alt-core-simple-button-size-small-min-height);
+  aspect-ratio: var(--alt-core-simple-button-aspect-ratio);
+  padding: var(--alt-core-simple-button-size-small-padding-y) var(--alt-core-simple-button-size-small-padding-x);
+  font-family: var(--alt-core-font-family);
+  font-size: var(--alt-core-simple-button-size-small-font-size);
+  font-weight: var(--alt-core-simple-button-size-small-font-weight);
+  line-height: var(--alt-core-simple-button-size-small-line-height);
+  color: var(--alt-core-simple-button-variant-primary-color);
   text-align: center;
   word-break: break-all;
   text-decoration: unset;
   cursor: pointer;
   outline: none;
-  background-color: var(--y-core-simple-button-variant-primary-background-color);
+  background-color: var(--alt-core-simple-button-variant-primary-background-color);
   border: none;
-  border-radius: var(--y-core-simple-button-size-small-border-radius);
-  box-shadow: var(--y-core-simple-button-box-shadow);
+  border-radius: var(--alt-core-simple-button-size-small-border-radius);
+  box-shadow: var(--alt-core-simple-button-box-shadow);
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 
@@ -45,90 +45,90 @@ $component: $YCoreSimpleButtonTagName;
   &_size {
     &_small {
       @mixin button-size
-        --y-core-simple-button-size-small-padding-y,
-        --y-core-simple-button-size-small-padding-x,
-        --y-core-simple-button-size-small-font-size,
-        --y-core-simple-button-size-small-line-height,
-        --y-core-simple-button-size-small-font-weight,
-        --y-core-simple-button-size-small-border-radius,
-        --y-core-simple-button-size-small-gap;
+        --alt-core-simple-button-size-small-padding-y,
+        --alt-core-simple-button-size-small-padding-x,
+        --alt-core-simple-button-size-small-font-size,
+        --alt-core-simple-button-size-small-line-height,
+        --alt-core-simple-button-size-small-font-weight,
+        --alt-core-simple-button-size-small-border-radius,
+        --alt-core-simple-button-size-small-gap;
     }
 
     &_medium {
       @mixin button-size
-        --y-core-simple-button-size-medium-padding-y,
-        --y-core-simple-button-size-medium-padding-x,
-        --y-core-simple-button-size-medium-font-size,
-        --y-core-simple-button-size-medium-line-height,
-        --y-core-simple-button-size-medium-font-weight,
-        --y-core-simple-button-size-medium-border-radius,
-        --y-core-simple-button-size-medium-gap;
+        --alt-core-simple-button-size-medium-padding-y,
+        --alt-core-simple-button-size-medium-padding-x,
+        --alt-core-simple-button-size-medium-font-size,
+        --alt-core-simple-button-size-medium-line-height,
+        --alt-core-simple-button-size-medium-font-weight,
+        --alt-core-simple-button-size-medium-border-radius,
+        --alt-core-simple-button-size-medium-gap;
     }
 
     &_large {
       @mixin button-size
-        --y-core-simple-button-size-large-padding-y,
-        --y-core-simple-button-size-large-padding-x,
-        --y-core-simple-button-size-large-font-size,
-        --y-core-simple-button-size-large-line-height,
-        --y-core-simple-button-size-large-font-weight,
-        --y-core-simple-button-size-large-border-radius,
-        --y-core-simple-button-size-large-gap;
+        --alt-core-simple-button-size-large-padding-y,
+        --alt-core-simple-button-size-large-padding-x,
+        --alt-core-simple-button-size-large-font-size,
+        --alt-core-simple-button-size-large-line-height,
+        --alt-core-simple-button-size-large-font-weight,
+        --alt-core-simple-button-size-large-border-radius,
+        --alt-core-simple-button-size-large-gap;
     }
   }
 
   &_variant {
     &_primary {
       @mixin button-variant
-        --y-core-simple-button-variant-primary-color,
-        --y-core-simple-button-variant-primary-border,
-        --y-core-simple-button-variant-primary-background-color,
-        --y-core-simple-button-variant-primary-disabled-color,
-        --y-core-simple-button-variant-primary-disabled-border,
-        --y-core-simple-button-variant-primary-disabled-background-color,
-        --y-core-simple-button-variant-primary-loading-color,
-        --y-core-simple-button-variant-primary-hover-background-color;
+        --alt-core-simple-button-variant-primary-color,
+        --alt-core-simple-button-variant-primary-border,
+        --alt-core-simple-button-variant-primary-background-color,
+        --alt-core-simple-button-variant-primary-disabled-color,
+        --alt-core-simple-button-variant-primary-disabled-border,
+        --alt-core-simple-button-variant-primary-disabled-background-color,
+        --alt-core-simple-button-variant-primary-loading-color,
+        --alt-core-simple-button-variant-primary-hover-background-color;
     }
 
     &_text {
       @mixin button-variant
-        --y-core-simple-button-variant-text-color,
-        --y-core-simple-button-variant-text-border,
-        --y-core-simple-button-variant-text-background-color,
-        --y-core-simple-button-variant-text-disabled-color,
-        --y-core-simple-button-variant-text-disabled-border,
-        --y-core-simple-button-variant-text-disabled-background-color,
-        --y-core-simple-button-variant-text-loading-color,
-        --y-core-simple-button-variant-text-hover-background-color;
+        --alt-core-simple-button-variant-text-color,
+        --alt-core-simple-button-variant-text-border,
+        --alt-core-simple-button-variant-text-background-color,
+        --alt-core-simple-button-variant-text-disabled-color,
+        --alt-core-simple-button-variant-text-disabled-border,
+        --alt-core-simple-button-variant-text-disabled-background-color,
+        --alt-core-simple-button-variant-text-loading-color,
+        --alt-core-simple-button-variant-text-hover-background-color;
     }
 
     &_outline {
       @mixin button-variant
-        --y-core-simple-button-variant-outline-color,
-        --y-core-simple-button-variant-outline-border,
-        --y-core-simple-button-variant-outline-background-color,
-        --y-core-simple-button-variant-outline-disabled-color,
-        --y-core-simple-button-variant-outline-disabled-border,
-        --y-core-simple-button-variant-outline-disabled-background-color,
-        --y-core-simple-button-variant-outline-loading-color,
-        --y-core-simple-button-variant-outline-hover-background-color;
+        --alt-core-simple-button-variant-outline-color,
+        --alt-core-simple-button-variant-outline-border,
+        --alt-core-simple-button-variant-outline-background-color,
+        --alt-core-simple-button-variant-outline-disabled-color,
+        --alt-core-simple-button-variant-outline-disabled-border,
+        --alt-core-simple-button-variant-outline-disabled-background-color,
+        --alt-core-simple-button-variant-outline-loading-color,
+        --alt-core-simple-button-variant-outline-hover-background-color;
     }
 
     &_outline-filled {
       @mixin button-variant
-      --y-core-simple-button-variant-outline-filled-color,
-      --y-core-simple-button-variant-outline-filled-border,
-      --y-core-simple-button-variant-outline-filled-background-color,
-      --y-core-simple-button-variant-outline-filled-disabled-color,
-      --y-core-simple-button-variant-outline-filled-disabled-border,
-      --y-core-simple-button-variant-outline-filled-disabled-background-color,
-      --y-core-simple-button-variant-outline-filled-loading-color,
-      --y-core-simple-button-variant-outline-filled-hover-background-color;
+      --alt-core-simple-button-variant-outline-filled-color,
+      --alt-core-simple-button-variant-outline-filled-border,
+      --alt-core-simple-button-variant-outline-filled-background-color,
+      --alt-core-simple-button-variant-outline-filled-disabled-color,
+      --alt-core-simple-button-variant-outline-filled-disabled-border,
+      --alt-core-simple-button-variant-outline-filled-disabled-background-color,
+      --alt-core-simple-button-variant-outline-filled-loading-color,
+      --alt-core-simple-button-variant-outline-filled-hover-background-color;
     }
   }
 
   &_full-width {
-    --y-core-simple-button-width: 100%;
+    --alt-core-simple-button-width: 100%;
   }
 
   &__content {

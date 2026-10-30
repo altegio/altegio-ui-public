@@ -4,29 +4,29 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 
 import {
   createCoreColorIconProps,
-  EYCoreColorIconVariant,
-  EYCoreColorIconSize,
-  type IYCoreColorIconProps,
+  EAltCoreColorIconVariant,
+  EAltCoreColorIconSize,
+  type IAltCoreColorIconProps,
 } from '~core/ui/colorIcon/models/types'
-import { YCoreColorIconTagName as tagName } from '~shared/constants'
+import { AltCoreColorIconTagName as tagName } from '~shared/constants'
 import { getComponentStateTable } from '~shared/.storybook/tables'
 import {
   disabled as disabledArgType,
   numericSize as numericSizeArgType,
 } from '~shared/.storybook/argTypes'
-import yCoreIconStoryMeta from '~core/ui/icon/stories/Icon.stories'
-import { yMagic } from '~shared/icons'
+import altCoreIconStoryMeta from '~core/ui/icon/stories/Icon.stories'
+import { altMagic } from '~shared/icons'
 
 import '~core/ui/colorIcon'
 
 const { size, variant, disabled } = createCoreColorIconProps()
 
-type TYCoreColorIconMeta = Meta<IYCoreColorIconProps>
+type TAltCoreColorIconMeta = Meta<IAltCoreColorIconProps>
 
 /**
  * ## Core ColorIcon
  */
-const meta: TYCoreColorIconMeta = {
+const meta: TAltCoreColorIconMeta = {
   title: 'Icons/⚠️ ColorIcon',
   id: 'colorIcon',
   parameters: { controls: { sort: 'alpha' } },
@@ -42,24 +42,24 @@ const meta: TYCoreColorIconMeta = {
     disabled,
   }) => {
     return html`
-      <y-core-color-icon
+      <alt-core-color-icon
         .icon=${icon}
         .size=${size}
         .variant=${variant}
         .disabled=${disabled}
       >
-      </y-core-color-icon>
+      </alt-core-color-icon>
     `
   },
   argTypes: {
-    ...pick(yCoreIconStoryMeta.argTypes ?? {}, ['icon']),
+    ...pick(altCoreIconStoryMeta.argTypes ?? {}, ['icon']),
     size: {
-      ...numericSizeArgType(Object.values(EYCoreColorIconSize)),
+      ...numericSizeArgType(Object.values(EAltCoreColorIconSize)),
       ...getComponentStateTable(size),
     },
     variant: {
       control: 'select',
-      options: Object.values(EYCoreColorIconVariant),
+      options: Object.values(EAltCoreColorIconVariant),
       description: 'Icon variant',
       ...getComponentStateTable(variant),
     },
@@ -69,14 +69,14 @@ const meta: TYCoreColorIconMeta = {
     },
   },
   args: {
-    icon: yMagic,
-    size: EYCoreColorIconSize.X_24,
-    variant: EYCoreColorIconVariant.GREY,
+    icon: altMagic,
+    size: EAltCoreColorIconSize.X_24,
+    variant: EAltCoreColorIconVariant.GREY,
     disabled: false,
   },
-} satisfies TYCoreColorIconMeta
+} satisfies TAltCoreColorIconMeta
 
 export default meta
-type Story = StoryObj<IYCoreColorIconProps>
+type Story = StoryObj<IAltCoreColorIconProps>
 
 export const Playground: Story = { args: {} }

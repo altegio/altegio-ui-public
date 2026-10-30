@@ -9,17 +9,17 @@ import { ItemClickEvent } from '~core/ui/dropdownList/models/types/events'
 
 import {
   createCoreDropdownListProps,
-  type IYCoreDropdownListProps,
+  type IAltCoreDropdownListProps,
 } from '~core/ui/dropdownList/models/types'
 import {
-  YCoreDropdownListTagName as tagName,
-  YCoreDropdownCellTagName,
+  AltCoreDropdownListTagName as tagName,
+  AltCoreDropdownCellTagName,
 } from '~shared/constants'
 
 import type { IDropdownListItem } from '~shared/types/global'
 
-import YCoreDropdownListVarsCSS from '~core/ui/dropdownList/css/DropdownList.vars.css?inline'
-import YCoreDropdownListScopedCSS from '~core/ui/dropdownList/css/DropdownList.scoped.css?inline'
+import AltCoreDropdownListVarsCSS from '~core/ui/dropdownList/css/DropdownList.vars.css?inline'
+import AltCoreDropdownListScopedCSS from '~core/ui/dropdownList/css/DropdownList.scoped.css?inline'
 
 import '~core/ui/dropdownCell'
 import { withLocator } from '~core/utils/locator'
@@ -28,13 +28,13 @@ const { items, itemLabel, minWidth, noMaxHeight } = createCoreDropdownListProps(
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreDropdownList
+export class AltCoreDropdownList
   extends LitElement
-  implements IYCoreDropdownListProps {
-  @property({ type: Array }) items: IYCoreDropdownListProps['items'] = items
-  @property({ type: String, attribute: 'item-label' }) itemLabel: IYCoreDropdownListProps['itemLabel'] = itemLabel
-  @property({ type: String, attribute: 'min-width' }) minWidth: IYCoreDropdownListProps['minWidth'] = minWidth
-  @property({ type: Boolean, attribute: 'no-max-height' }) noMaxHeight: IYCoreDropdownListProps['noMaxHeight'] = noMaxHeight
+  implements IAltCoreDropdownListProps {
+  @property({ type: Array }) items: IAltCoreDropdownListProps['items'] = items
+  @property({ type: String, attribute: 'item-label' }) itemLabel: IAltCoreDropdownListProps['itemLabel'] = itemLabel
+  @property({ type: String, attribute: 'min-width' }) minWidth: IAltCoreDropdownListProps['minWidth'] = minWidth
+  @property({ type: Boolean, attribute: 'no-max-height' }) noMaxHeight: IAltCoreDropdownListProps['noMaxHeight'] = noMaxHeight
 
   @bubblingEvent(
     ItemClickEvent,
@@ -46,8 +46,8 @@ export class YCoreDropdownList
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreDropdownListVarsCSS)}
-      ${unsafeCSS(YCoreDropdownListScopedCSS)}
+      ${unsafeCSS(AltCoreDropdownListVarsCSS)}
+      ${unsafeCSS(AltCoreDropdownListScopedCSS)}
     `,
   ]
 
@@ -55,7 +55,7 @@ export class YCoreDropdownList
     return {
       [this.baseClass]: true,
       [`${this.baseClass}_no-max-height`]: Boolean(this.noMaxHeight),
-      'y-scrollbar': true,
+      'alt-scrollbar': true,
     }
   }
 
@@ -76,8 +76,8 @@ export class YCoreDropdownList
       this.items,
       (item) => item.id,
       (item) => html`
-        <y-core-dropdown-cell
-          locator=${`${YCoreDropdownCellTagName}_${item.id}`}
+        <alt-core-dropdown-cell
+          locator=${`${AltCoreDropdownCellTagName}_${item.id}`}
           @click=${(event: Event) => {
             this.handleListItemClick(event, item)
           }}
@@ -85,7 +85,7 @@ export class YCoreDropdownList
           <div slot="label">
             ${item[this.itemLabel || itemLabel]}
           </div>
-        </y-core-dropdown-cell>
+        </alt-core-dropdown-cell>
       `,
     )
   }

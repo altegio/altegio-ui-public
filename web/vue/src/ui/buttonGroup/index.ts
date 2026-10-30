@@ -1,2 +1,2 @@
-export { default as YButtonGroup } from './ButtonGroup.vue'
+export { default as AltButtonGroup } from './ButtonGroup.vue'
 export type * from './models/types'

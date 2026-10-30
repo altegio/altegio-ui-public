@@ -1,19 +1,19 @@
 import {
   createCoreTextExternalProps,
-  type IYCoreTextExternalProps,
+  type IAltCoreTextExternalProps,
 } from '~core/ui/text/models/types'
 
-export interface IYCoreSearchTextHighlightedExternalProps extends Omit<IYCoreTextExternalProps, 'ellipsis' | 'lineclamp' | 'locator'> {
+export interface IAltCoreSearchTextHighlightedExternalProps extends Omit<IAltCoreTextExternalProps, 'ellipsis' | 'lineclamp' | 'locator'> {
   text: string
   search: string
   stopHighlight: boolean | undefined
   caseSensitive: boolean | undefined
   ignoredSymbols: string[] | undefined
-  highlightTextSize: IYCoreTextExternalProps['size']
-  highlightTextVariant: IYCoreTextExternalProps['variant']
+  highlightTextSize: IAltCoreTextExternalProps['size']
+  highlightTextVariant: IAltCoreTextExternalProps['variant']
 }
 
-export const createCoreSearchTextHighlightedExternalProps = (): IYCoreSearchTextHighlightedExternalProps => {
+export const createCoreSearchTextHighlightedExternalProps = (): IAltCoreSearchTextHighlightedExternalProps => {
   const coreTextProps = createCoreTextExternalProps()
 
   return {

@@ -1,8 +1,8 @@
 import { describe, expect, it, beforeAll, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { YCoreCountFieldTagName } from '~shared/constants'
-import { YCountField } from '~vue/ui/countField'
-import { YCoreCountField } from '~core/ui/countField'
+import { AltCoreCountFieldTagName } from '~shared/constants'
+import { AltCountField } from '~vue/ui/countField'
+import { AltCoreCountField } from '~core/ui/countField'
 import { ChangedValueEvent } from '~core/ui/countField/models/types'
 import { propMinTestCases,
   propMaxTestCases,
@@ -20,16 +20,16 @@ import { propMinTestCases,
   propErrorsTestCases,
   propNameTestCases } from '~vue/ui/countField/tests/cases/props'
 
-const tagName = YCoreCountFieldTagName
+const tagName = AltCoreCountFieldTagName
 
 describe(
-  'Vue/YCountField',
+  'Vue/AltCountField',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreCountField,
+          AltCoreCountField,
         )
       }
     })
@@ -61,12 +61,12 @@ describe(
                 `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 () => {
                   const wrapper = mount(
-                    YCountField,
+                    AltCountField,
                     { props: { [testCase.prop]: testCase.value } },
                   )
 
-                  const coreElement = wrapper.find(tagName).element as YCoreCountField
-                  const value = coreElement[testCase.prop as keyof YCoreCountField]
+                  const coreElement = wrapper.find(tagName).element as AltCoreCountField
+                  const value = coreElement[testCase.prop as keyof AltCoreCountField]
 
                   if (Array.isArray(value) || typeof value === 'object' && value !== null) {
                     expect(value).toStrictEqual(testCase.value)
@@ -85,8 +85,8 @@ describe(
             it(
               'Should emit changed-value when the value changes',
               () => {
-                const wrapper = mount(YCountField)
-                const coreElement = wrapper.find(tagName).element as YCoreCountField
+                const wrapper = mount(AltCountField)
+                const coreElement = wrapper.find(tagName).element as AltCoreCountField
                 const changedValueHandler = vi.fn()
 
                 coreElement.addEventListener('changed-value', changedValueHandler)
@@ -101,8 +101,8 @@ describe(
             it(
               'Should emit focus on focus',
               () => {
-                const wrapper = mount(YCountField)
-                const coreElement = wrapper.find(tagName).element as YCoreCountField
+                const wrapper = mount(AltCountField)
+                const coreElement = wrapper.find(tagName).element as AltCoreCountField
                 const focusHandler = vi.fn()
 
                 coreElement.addEventListener('focus', focusHandler)
@@ -116,8 +116,8 @@ describe(
             it(
               'Should emit blur on blur',
               () => {
-                const wrapper = mount(YCountField)
-                const coreElement = wrapper.find(tagName).element as YCoreCountField
+                const wrapper = mount(AltCountField)
+                const coreElement = wrapper.find(tagName).element as AltCoreCountField
                 const blurHandler = vi.fn()
 
                 coreElement.addEventListener('blur', blurHandler)
@@ -131,8 +131,8 @@ describe(
             it(
               'Should emit keydown on key press',
               () => {
-                const wrapper = mount(YCountField)
-                const coreElement = wrapper.find(tagName).element as YCoreCountField
+                const wrapper = mount(AltCountField)
+                const coreElement = wrapper.find(tagName).element as AltCoreCountField
                 const keydownHandler = vi.fn()
 
                 coreElement.addEventListener('keydown', keydownHandler)

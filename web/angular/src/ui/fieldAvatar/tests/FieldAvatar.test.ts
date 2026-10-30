@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { YCoreFieldAvatarTagName as tagName } from '~web/shared/constants'
+import { AltCoreFieldAvatarTagName as tagName } from '~web/shared/constants'
 import { TestBed } from '~ng/tests/setup'
-import { YFieldAvatar } from '~ng/ui/fieldAvatar'
+import { AltFieldAvatar } from '~ng/ui/fieldAvatar'
 import { Component } from '@angular/core'
-import type { IYNgFieldAvatarProps } from '~ng/ui/fieldAvatar/models/types'
+import type { IAltNgFieldAvatarProps } from '~ng/ui/fieldAvatar/models/types'
 import {
   propDisabledTestCases, propIconTestCases,
   propInitialsTestCases,
@@ -12,23 +12,23 @@ import {
 } from './cases/props'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgFieldAvatarProps>
+  props?: Partial<IAltNgFieldAvatarProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YFieldAvatar] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltFieldAvatar] }).compileComponents()
 
   @Component({
     template: `
-      <YFieldAvatar
+      <AltFieldAvatar
         [photo]="photo"
         [initials]="initials"
         [disabled]="disabled"
         [size]="size"
         [icon]="icon"
       />`,
-    imports: [YFieldAvatar],
+    imports: [AltFieldAvatar],
     standalone: true,
   })
   class TestComponent {
@@ -43,7 +43,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 
 
 describe(
-  'Angular/YFieldAvatar',
+  'Angular/AltFieldAvatar',
   () => {
     describe(
       'Props',

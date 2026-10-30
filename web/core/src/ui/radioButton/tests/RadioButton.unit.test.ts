@@ -1,10 +1,10 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
 import {
-  YCoreRadioButtonTagName as tagName,
-  YCoreSimpleRadioButtonTagName,
-  YCoreLabelTagName,
-  YCoreAnnotationTagName,
-  YCoreErrorTagName,
+  AltCoreRadioButtonTagName as tagName,
+  AltCoreSimpleRadioButtonTagName,
+  AltCoreLabelTagName,
+  AltCoreAnnotationTagName,
+  AltCoreErrorTagName,
 } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import {
@@ -27,7 +27,7 @@ import {
   propLabelOverflowDebounceTestCases,
   propErrorsTestCases,
 } from './cases/props'
-import type { YCoreSimpleRadioButton, YCoreLabel, YCoreAnnotation, YCoreError } from '~core/index'
+import type { AltCoreSimpleRadioButton, AltCoreLabel, AltCoreAnnotation, AltCoreError } from '~core/index'
 
 import '~core/ui/radioButton'
 import { userEvent } from 'vitest/browser'
@@ -57,10 +57,10 @@ const getLocalShadowElement = (selector: string) => {
   )
 }
 
-const getSimpleRadioButtonElement = () => getLocalShadowElement(YCoreSimpleRadioButtonTagName) as YCoreSimpleRadioButton | undefined
-const getLabelElement = () => getLocalShadowElement(YCoreLabelTagName) as YCoreLabel | undefined
-const getAnnotationElement = () => getLocalShadowElement(YCoreAnnotationTagName) as YCoreAnnotation | undefined
-const getErrorElement = () => getLocalShadowElement(YCoreErrorTagName) as YCoreError | undefined
+const getSimpleRadioButtonElement = () => getLocalShadowElement(AltCoreSimpleRadioButtonTagName) as AltCoreSimpleRadioButton | undefined
+const getLabelElement = () => getLocalShadowElement(AltCoreLabelTagName) as AltCoreLabel | undefined
+const getAnnotationElement = () => getLocalShadowElement(AltCoreAnnotationTagName) as AltCoreAnnotation | undefined
+const getErrorElement = () => getLocalShadowElement(AltCoreErrorTagName) as AltCoreError | undefined
 
 const localClassWithModifier = (modifier: string) => classWithModifier(
   tagName,
@@ -68,7 +68,7 @@ const localClassWithModifier = (modifier: string) => classWithModifier(
 )
 
 describe(
-  'Core/YCoreRadioButton/Unit',
+  'Core/AltCoreRadioButton/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -232,7 +232,7 @@ describe(
         }
 
         for (const testCase of propLabelTextTestCases) {
-          const expectedCssClass = 'y-core-radio-button__label_hidden'
+          const expectedCssClass = 'alt-core-radio-button__label_hidden'
 
           it(
             `Prop "${testCase.prop}" with value "${testCase.value}" should ${testCase.value ? 'not ' : ''}change the Label class to "${expectedCssClass}"`,

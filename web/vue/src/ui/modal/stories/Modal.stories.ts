@@ -4,14 +4,14 @@ import { useArgs } from 'storybook/preview-api'
 import { omit } from 'radash'
 import { computed } from 'vue'
 
-import { YModal } from '~vue/ui/modal'
-import { YGlobalProvider } from '~vue/ui/globalProvider'
-import { type IYVueModalProps } from '~vue/ui/modal/models/types'
+import { AltModal } from '~vue/ui/modal'
+import { AltGlobalProvider } from '~vue/ui/globalProvider'
+import { type IAltVueModalProps } from '~vue/ui/modal/models/types'
 import { getComponentContentTable, getComponentStateTable } from '~shared/.storybook/tables'
-import { YButton } from '~vue/ui/button'
-import yCoreModalStoryMeta from '~core/ui/modal/stories/Modal.stories'
+import { AltButton } from '~vue/ui/button'
+import altCoreModalStoryMeta from '~core/ui/modal/stories/Modal.stories'
 
-type TVueModalStoryMeta = IYVueModalProps
+type TVueModalStoryMeta = IAltVueModalProps
 
 /**
  * Vue wrapper for Modal
@@ -62,7 +62,7 @@ const meta: Meta<TVueModalStoryMeta> = {
     }
 
     return {
-      components: { YModal, YButton, YGlobalProvider },
+      components: { AltModal, AltButton, AltGlobalProvider },
       setup() {
         const vModelValue = computed({
           get: () => !!args.modelValue,
@@ -81,10 +81,10 @@ const meta: Meta<TVueModalStoryMeta> = {
         }
       },
       template: `
-      <YGlobalProvider></YGlobalProvider>
+      <AltGlobalProvider></AltGlobalProvider>
       
       <div style="min-height: 450px;">
-        <YModal
+        <AltModal
           v-bind="args"
           v-model="vModelValue"
           :size="args.size"
@@ -110,7 +110,7 @@ const meta: Meta<TVueModalStoryMeta> = {
           </template>
 
           <template v-if="args.showActivatorSlot" #activator>
-            <YButton
+            <AltButton
               label="Open modal"
             />
           </template>
@@ -118,13 +118,13 @@ const meta: Meta<TVueModalStoryMeta> = {
           <template v-if="args.showCloseSlot" #close>
             <div>Close slot</div>
           </template>
-        </YModal>
+        </AltModal>
       </div>
     `,
     }
   },
   argTypes: {
-    ...omit(yCoreModalStoryMeta.argTypes ?? {}, ['open']),
+    ...omit(altCoreModalStoryMeta.argTypes ?? {}, ['open']),
     modelValue: {
       type: 'boolean',
       description: 'v-model for the modal open property',
@@ -132,12 +132,12 @@ const meta: Meta<TVueModalStoryMeta> = {
     },
     enableTeleport: {
       type: 'boolean',
-      description: 'Moves the modal element into YGlobalProvider',
+      description: 'Moves the modal element into AltGlobalProvider',
       ...getComponentStateTable(),
     },
   },
   args: {
-    ...omit(yCoreModalStoryMeta.args ?? {}, ['open']),
+    ...omit(altCoreModalStoryMeta.args ?? {}, ['open']),
     modelValue: false,
     enableTeleport: false,
   },

@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YError } from '~ng/ui/error'
-import yCoreErrorStoryMeta, { type IYCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
+import { AltError } from '~ng/ui/error'
+import altCoreErrorStoryMeta, { type IAltCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-type IYCoreErrorStoryMeta = YError & IYCoreErrorStoryProps
+type IAltCoreErrorStoryMeta = AltError & IAltCoreErrorStoryProps
 
 /**
  * Angular wrapper for Core Error
  */
-const meta: Meta<IYCoreErrorStoryMeta> = {
+const meta: Meta<IAltCoreErrorStoryMeta> = {
   title: '⚙️ Error',
   id: 'error',
   parameters: { controls: { sort: 'alpha' } },
-  component: YError,
+  component: AltError,
   tags: [
     'angular',
     'autodocs',
@@ -31,15 +31,15 @@ const meta: Meta<IYCoreErrorStoryMeta> = {
     return {
       props: { ...args, displayErrors },
       template: `
-        <YError [errors]="displayErrors" />
+        <AltError [errors]="displayErrors" />
       `,
     }
   },
-  argTypes: { ...yCoreErrorStoryMeta.argTypes },
-  args: { ...yCoreErrorStoryMeta.args },
-} satisfies Meta<IYCoreErrorStoryMeta>
+  argTypes: { ...altCoreErrorStoryMeta.argTypes },
+  args: { ...altCoreErrorStoryMeta.args },
+} satisfies Meta<IAltCoreErrorStoryMeta>
 
 export default meta
-type Story = StoryObj<IYCoreErrorStoryMeta>
+type Story = StoryObj<IAltCoreErrorStoryMeta>
 
 export const Playground: Story = { args: {} }

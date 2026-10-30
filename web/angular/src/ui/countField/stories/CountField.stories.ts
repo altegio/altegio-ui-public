@@ -5,26 +5,26 @@ import { useArgs } from 'storybook/preview-api'
 import type { Meta, StoryObj } from '@storybook/angular'
 import { getComponentStateTable, getComponentEmitsTable } from '~shared/.storybook/tables'
 
-import { YCountField } from '~ng/ui/countField'
-import yCoreCountFieldStoryMeta, { type TYCoreCountFieldMeta } from '~core/ui/countField/stories/CountField.stories'
+import { AltCountField } from '~ng/ui/countField'
+import altCoreCountFieldStoryMeta, { type TAltCoreCountFieldMeta } from '~core/ui/countField/stories/CountField.stories'
 import { DEFAULT_NUMBER_VALUE } from '~core/ui/countField/models/types'
 import type { BlurEvent } from '~core/ui/cardWrapper/models/types'
 import type { KeydownEvent } from '~core/ui/fieldInput/models/types'
-import type { TYNgCountFieldModel } from '~ng/ui/countField/models/types'
-import type { TYNgControlValueTypes } from '~ng/types/ControlValueAccessorTypes'
+import type { TAltNgCountFieldModel } from '~ng/ui/countField/models/types'
+import type { TAltNgControlValueTypes } from '~ng/types/ControlValueAccessorTypes'
 
-type TYNgCountFieldControlValueTypes = TYNgControlValueTypes<TYNgCountFieldModel>
+type TAltNgCountFieldControlValueTypes = TAltNgControlValueTypes<TAltNgCountFieldModel>
 
-type TYNgCountFieldMeta = YCountField & Omit<TYCoreCountFieldMeta, 'value'> & TYNgCountFieldControlValueTypes
+type TAltNgCountFieldMeta = AltCountField & Omit<TAltCoreCountFieldMeta, 'value'> & TAltNgCountFieldControlValueTypes
 
 /**
  * Angular wrapper for Core CountField
  */
-const meta: Meta<TYNgCountFieldMeta> = {
+const meta: Meta<TAltNgCountFieldMeta> = {
   title: '🔍 CountField',
   id: 'countField',
   parameters: { controls: { sort: 'alpha' } },
-  component: YCountField,
+  component: AltCountField,
   tags: [
     'angular',
     'autodocs',
@@ -44,7 +44,7 @@ const meta: Meta<TYNgCountFieldMeta> = {
       action('keydown')(event)
     }
 
-    const handleModelChange = (newValue: TYNgCountFieldModel) => {
+    const handleModelChange = (newValue: TAltNgCountFieldModel) => {
       action('ngModelChange')(newValue)
       updateArgs({ ngModel: newValue })
     }
@@ -61,7 +61,7 @@ const meta: Meta<TYNgCountFieldMeta> = {
       moduleMetadata: { imports: [FormsModule] },
       template: `
         <div style="width: 250px">
-          <YCountField
+          <AltCountField
             (ngModelChange)="handleModelChange($event)"
             [ngModel]="ngModel"
             [min]="min"
@@ -82,13 +82,13 @@ const meta: Meta<TYNgCountFieldMeta> = {
             (focus)="handleFocus($event)"
             (blur)="handleBlur($event)"
             (keydown)="handleKeydown($event)"
-          ></YCountField>
+          ></AltCountField>
         </div>
         `,
     }
   },
   argTypes: {
-    ...omit(yCoreCountFieldStoryMeta.argTypes ?? {}, ['readonly', 'value', 'onChangedValue']),
+    ...omit(altCoreCountFieldStoryMeta.argTypes ?? {}, ['readonly', 'value', 'onChangedValue']),
     ngModel: {
       type: 'number',
       description: 'Counter value',
@@ -101,12 +101,12 @@ const meta: Meta<TYNgCountFieldMeta> = {
     },
   },
   args: {
-    ...omit(yCoreCountFieldStoryMeta.args ?? {}, ['readonly', 'value', 'onChangedValue']),
+    ...omit(altCoreCountFieldStoryMeta.args ?? {}, ['readonly', 'value', 'onChangedValue']),
     ngModel: DEFAULT_NUMBER_VALUE,
   },
-} satisfies Meta<TYNgCountFieldMeta>
+} satisfies Meta<TAltNgCountFieldMeta>
 
 export default meta
-type Story = StoryObj<YCountField>
+type Story = StoryObj<AltCountField>
 
 export const Playground: Story = { args: {} }

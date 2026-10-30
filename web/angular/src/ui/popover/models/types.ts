@@ -1,11 +1,11 @@
-import type { TYCorePopoverActionEvents } from '~core/ui/popover/models/types'
+import type { TAltCorePopoverActionEvents } from '~core/ui/popover/models/types'
 import {
   createCorePopoverProps,
-  type IYCorePopoverProps,
+  type IAltCorePopoverProps,
 } from '~core/ui/popover/models/types'
 
-export interface IYNgPopoverProps extends IYCorePopoverProps {}
+export interface IAltNgPopoverProps extends IAltCorePopoverProps {}
 
-export type TYPopoverEmits = TYCorePopoverActionEvents
+export type TAltPopoverEmits = TAltCorePopoverActionEvents
 
-export const createNgPopoverProps = (): IYNgPopoverProps => createCorePopoverProps()
+export const createNgPopoverProps = (): IAltNgPopoverProps => createCorePopoverProps()

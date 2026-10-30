@@ -6,9 +6,9 @@ Mapping plain application data to the table’s cell structure manually can requ
 
 ```typescript
 // Build table rows and cells manually
-const sortedListNew = computed((): IYVueTableItem[] => {
+const sortedListNew = computed((): IAltVueTableItem[] => {
   return sortedList.value.map(item => {
-    const result: IYVueTableItem = {
+    const result: IAltVueTableItem = {
       rowId: item.id,
     }
 
@@ -52,7 +52,7 @@ The `~vue` alias in these examples is configured inside this repository. For oth
 
 ```vue
 <template>
-  <y-table
+  <alt-table
     :headers="tableHeaders"
     :items="tableItems"
     @sort="onSort"
@@ -66,7 +66,7 @@ The `~vue` alias in these examples is configured inside this repository. For oth
         @duplicate:report="tryDuplicateReport"
       />
     </template>
-  </y-table>
+  </alt-table>
 </template>
 
 <script setup lang="ts">
@@ -226,4 +226,4 @@ Creates a column for each key in a sample object, with optional property overrid
 - Row selection uses `rowId`.
 - Use the table’s existing slots and events to render and interact with mapped cells.
 - The utilities can be used alongside manual table data mapping.
-- No changes to the `YTable` component are required.
+- No changes to the `AltTable` component are required.

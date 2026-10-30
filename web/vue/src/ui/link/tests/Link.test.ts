@@ -2,21 +2,21 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import { href } from '~shared/tests/mockData'
-import { YCoreLinkTagName } from '~shared/constants'
-import { YCoreLink } from '~core/ui/link'
+import { AltCoreLinkTagName } from '~shared/constants'
+import { AltCoreLink } from '~core/ui/link'
 
-import { YLink } from '~vue/ui/link'
+import { AltLink } from '~vue/ui/link'
 
-const tagName = YCoreLinkTagName
+const tagName = AltCoreLinkTagName
 
 describe(
-  'Vue/YLink',
+  'Vue/AltLink',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
         tagName,
-        YCoreLink,
+        AltCoreLink,
         )
       }
     })
@@ -28,7 +28,7 @@ describe(
           'Should pass href to the web component',
           () => {
             const wrapper = mount(
-              YLink,
+              AltLink,
               { props: { href } },
             )
             const coreElement = wrapper.find(tagName)
@@ -41,7 +41,7 @@ describe(
           'Should handle an undefined href in the web component',
           () => {
             const wrapper = mount(
-              YLink,
+              AltLink,
               { props: { href: undefined } },
             )
             const coreElement = wrapper.find(tagName)
@@ -55,7 +55,7 @@ describe(
           () => {
             const target = '_blank'
             const wrapper = mount(
-              YLink,
+              AltLink,
               { props: { target } },
             )
             const coreElement = wrapper.find(tagName)
@@ -68,7 +68,7 @@ describe(
           'Should handle an undefined target in the web component',
           () => {
             const wrapper = mount(
-              YLink,
+              AltLink,
               { props: { target: undefined } },
             )
             const coreElement = wrapper.find(tagName)

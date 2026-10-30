@@ -2,40 +2,40 @@ import type { DeepReadonly } from 'vue'
 import type { FocusEvent, InputEvent, SelectEvent, BlurEvent } from '~core/ui/selectField/models/types'
 import {
   createCoreSelectFieldProps,
-  type IYCoreSelectFieldProps,
+  type IAltCoreSelectFieldProps,
 } from '~core/ui/selectField/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreSelectFieldProps extends Omit<IYCoreSelectFieldProps, 'value'> {
-  modelValue: IYCoreSelectFieldProps['value'] | undefined
+export interface IAltVueCoreSelectFieldProps extends Omit<IAltCoreSelectFieldProps, 'value'> {
+  modelValue: IAltCoreSelectFieldProps['value'] | undefined
 }
 
-export interface IYVueSelectFieldProps {
-  modelValue?: IYVueCoreSelectFieldProps['modelValue']
-  filterCallback?: IYVueCoreSelectFieldProps['filterCallback']
-  itemValue?: IYVueCoreSelectFieldProps['itemValue']
-  items?: IYVueCoreSelectFieldProps['items'] | DeepReadonly<IYVueCoreSelectFieldProps['items']> | Readonly<IYVueCoreSelectFieldProps['items']>
-  isCustomFilter?: IYVueCoreSelectFieldProps['isCustomFilter']
-  isFilterable?: IYVueCoreSelectFieldProps['isFilterable']
-  isMapOptions?: IYVueCoreSelectFieldProps['isMapOptions']
-  name?: IYVueCoreSelectFieldProps['name']
-  placeholder?: IYVueCoreSelectFieldProps['placeholder']
-  disabled?: IYVueCoreSelectFieldProps['disabled']
-  required?: IYVueCoreSelectFieldProps['required']
-  readonly?: IYVueCoreSelectFieldProps['readonly']
-  autofocus?: IYVueCoreSelectFieldProps['autofocus']
-  error?: IYVueCoreSelectFieldProps['error']
-  errors?: IYVueCoreSelectFieldProps['errors']
-  size?: IYVueCoreSelectFieldProps['size']
-  labelText?: IYVueCoreSelectFieldProps['labelText']
-  labelTooltipText?: IYVueCoreSelectFieldProps['labelTooltipText']
-  labelDebounce?: IYVueCoreSelectFieldProps['labelDebounce']
-  annotationText?: IYVueCoreSelectFieldProps['annotationText']
-  itemLabel?: IYVueCoreSelectFieldProps['itemLabel']
+export interface IAltVueSelectFieldProps {
+  modelValue?: IAltVueCoreSelectFieldProps['modelValue']
+  filterCallback?: IAltVueCoreSelectFieldProps['filterCallback']
+  itemValue?: IAltVueCoreSelectFieldProps['itemValue']
+  items?: IAltVueCoreSelectFieldProps['items'] | DeepReadonly<IAltVueCoreSelectFieldProps['items']> | Readonly<IAltVueCoreSelectFieldProps['items']>
+  isCustomFilter?: IAltVueCoreSelectFieldProps['isCustomFilter']
+  isFilterable?: IAltVueCoreSelectFieldProps['isFilterable']
+  isMapOptions?: IAltVueCoreSelectFieldProps['isMapOptions']
+  name?: IAltVueCoreSelectFieldProps['name']
+  placeholder?: IAltVueCoreSelectFieldProps['placeholder']
+  disabled?: IAltVueCoreSelectFieldProps['disabled']
+  required?: IAltVueCoreSelectFieldProps['required']
+  readonly?: IAltVueCoreSelectFieldProps['readonly']
+  autofocus?: IAltVueCoreSelectFieldProps['autofocus']
+  error?: IAltVueCoreSelectFieldProps['error']
+  errors?: IAltVueCoreSelectFieldProps['errors']
+  size?: IAltVueCoreSelectFieldProps['size']
+  labelText?: IAltVueCoreSelectFieldProps['labelText']
+  labelTooltipText?: IAltVueCoreSelectFieldProps['labelTooltipText']
+  labelDebounce?: IAltVueCoreSelectFieldProps['labelDebounce']
+  annotationText?: IAltVueCoreSelectFieldProps['annotationText']
+  itemLabel?: IAltVueCoreSelectFieldProps['itemLabel']
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
-export const createVueSelectFieldProps = (): TDefinedVueProps<IYVueSelectFieldProps> => {
+export const createVueSelectFieldProps = (): TDefinedVueProps<IAltVueSelectFieldProps> => {
   const {
     filterCallback,
     itemValue,
@@ -85,7 +85,7 @@ export const createVueSelectFieldProps = (): TDefinedVueProps<IYVueSelectFieldPr
   }
 }
 
-export interface IYVueSelectFieldEmits {
+export interface IAltVueSelectFieldEmits {
   (event: 'update:modelValue', payload: SelectEvent['detail']['value']): void
   (event: 'input', payload: InputEvent['detail']['value']): void
   (event: 'focus', payload: FocusEvent): void

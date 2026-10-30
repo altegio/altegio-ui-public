@@ -1,2 +1,2 @@
-export { default as YEmptyState } from './EmptyState.vue'
+export { default as AltEmptyState } from './EmptyState.vue'
 export type * from './models/types'

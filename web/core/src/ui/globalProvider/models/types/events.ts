@@ -1,12 +1,12 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
 import type { IGlobalContext } from '../../context'
 
-export interface IYCoreGlobalProviderReadyEvent {
+export interface IAltCoreGlobalProviderReadyEvent {
   value: IGlobalContext
 }
 
-export class GlobalProviderReadyEvent extends CustomEvent<IYCoreGlobalProviderReadyEvent> {}
+export class GlobalProviderReadyEvent extends CustomEvent<IAltCoreGlobalProviderReadyEvent> {}
 
-export type TYCoreGlobalProviderEvents = TEventsStoryArgs<{
+export type TAltCoreGlobalProviderEvents = TEventsStoryArgs<{
   ReadyEvent: typeof GlobalProviderReadyEvent
 }>

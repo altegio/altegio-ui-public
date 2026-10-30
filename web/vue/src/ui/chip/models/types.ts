@@ -1,24 +1,24 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 import {
   createCoreChipProps,
-  type IYCoreChipProps,
+  type IAltCoreChipProps,
 } from '~core/ui/chip/models/types'
 
-export interface IYVueCoreChipProps extends IYCoreChipProps {}
+export interface IAltVueCoreChipProps extends IAltCoreChipProps {}
 
-export interface IYVueChipProps {
-  labelText: IYVueCoreChipProps['labelText']
-  active?: IYVueCoreChipProps['active']
-  iconLeft?: IYVueCoreChipProps['iconLeft']
-  size?: IYVueCoreChipProps['size']
-  disabled?: IYVueCoreChipProps['disabled']
+export interface IAltVueChipProps {
+  labelText: IAltVueCoreChipProps['labelText']
+  active?: IAltVueCoreChipProps['active']
+  iconLeft?: IAltVueCoreChipProps['iconLeft']
+  size?: IAltVueCoreChipProps['size']
+  disabled?: IAltVueCoreChipProps['disabled']
 }
 
-export interface IYVueChipEmits {
-  (e: 'update:active', value: IYVueCoreChipProps['active']): void
+export interface IAltVueChipEmits {
+  (e: 'update:active', value: IAltVueCoreChipProps['active']): void
 }
 
-export const createVueChipProps = (): TDefinedVueProps<IYVueChipProps> => {
+export const createVueChipProps = (): TDefinedVueProps<IAltVueChipProps> => {
   const { iconLeft, active, size, disabled } = createCoreChipProps()
 
   return {

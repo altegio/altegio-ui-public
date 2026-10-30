@@ -5,21 +5,21 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 import '~core/ui/avatar'
 
 import {
-  type IYCoreAvatarExternalProps,
+  type IAltCoreAvatarExternalProps,
   createCoreAvatarProps,
 } from '../models/types'
 import {
-  YCoreAvatarTagName as tagName,
+  AltCoreAvatarTagName as tagName,
 } from '~shared/constants'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import { getComponentContentTable } from '~shared/.storybook/tables'
-import { ySearch, yRocket } from '~shared/icons'
+import { altSearch, altRocket } from '~shared/icons'
 
 const { size, initials, photo, icon, disabled } = createCoreAvatarProps()
 
 const iconOptions = {
-  search: ySearch,
-  rocket: yRocket,
+  search: altSearch,
+  rocket: altRocket,
 }
 
 /**
@@ -39,7 +39,7 @@ const iconOptions = {
  * - https://i.pravatar.cc/300
  * - https://i.pravatar.cc/500
  */
-const meta: Meta<IYCoreAvatarExternalProps> = {
+const meta: Meta<IAltCoreAvatarExternalProps> = {
   title: 'Avatar',
   id: 'avatar',
   component: tagName,
@@ -52,19 +52,19 @@ const meta: Meta<IYCoreAvatarExternalProps> = {
     disabled,
   }) => {
     return html`
-      <y-core-avatar
+      <alt-core-avatar
         size=${ifDefined(size)} 
         initials=${ifDefined(initials)}
         photo=${ifDefined(photo)}
         .icon=${icon}
         .disabled=${disabled}
-      ></y-core-avatar>
+      ></alt-core-avatar>
     `
   },
   argTypes: {
     size: {
       control: 'select',
-      options: [EYSizes.LARGE, EYSizes.MEDIUM, EYSizes.SMALL, EYSizes.EXTRA_SMALL],
+      options: [EAltSizes.LARGE, EAltSizes.MEDIUM, EAltSizes.SMALL, EAltSizes.EXTRA_SMALL],
       description: 'Avatar size',
       ...getComponentContentTable(size),
     },
@@ -92,14 +92,14 @@ const meta: Meta<IYCoreAvatarExternalProps> = {
     },
   },
   args: {
-    size: EYSizes.MEDIUM,
+    size: EAltSizes.MEDIUM,
     initials: 'Altegio Clients',
     disabled: false,
   },
-} satisfies Meta<IYCoreAvatarExternalProps>
+} satisfies Meta<IAltCoreAvatarExternalProps>
 
 export default meta
-type Story = StoryObj<IYCoreAvatarExternalProps>
+type Story = StoryObj<IAltCoreAvatarExternalProps>
 
 // Basic example
 export const Playground: Story = { args: { photo: '' } }
@@ -108,13 +108,13 @@ export const Playground: Story = { args: { photo: '' } }
 export const AllSizes: Story = {
   render: ({ disabled }) => html`
     <div style="display: flex; align-items: center; gap: 10px;">
-      <y-core-avatar size="extra-small" initials="Altegio Clients" .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="extra-small" initials="Altegio Clients" .disabled=${disabled}></alt-core-avatar>
       
-      <y-core-avatar size="small" initials="Altegio Clients" .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="small" initials="Altegio Clients" .disabled=${disabled}></alt-core-avatar>
       
-      <y-core-avatar size="medium" initials="Altegio Clients" .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="medium" initials="Altegio Clients" .disabled=${disabled}></alt-core-avatar>
       
-      <y-core-avatar size="large" initials="Altegio Clients" .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="large" initials="Altegio Clients" .disabled=${disabled}></alt-core-avatar>
     </div>
   `,
 }
@@ -123,13 +123,13 @@ export const AllSizes: Story = {
 export const WithPhotoAllSizes: Story = {
   render: ({ disabled }) => html`
     <div style="display: flex; align-items: center; gap: 10px;">
-      <y-core-avatar size="extra-small" photo="https://i.pravatar.cc/300" .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="extra-small" photo="https://i.pravatar.cc/300" .disabled=${disabled}></alt-core-avatar>
       
-      <y-core-avatar size="small" photo="https://i.pravatar.cc/300" .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="small" photo="https://i.pravatar.cc/300" .disabled=${disabled}></alt-core-avatar>
       
-      <y-core-avatar size="medium" photo="https://i.pravatar.cc/300" .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="medium" photo="https://i.pravatar.cc/300" .disabled=${disabled}></alt-core-avatar>
       
-      <y-core-avatar size="large" photo="https://i.pravatar.cc/300" .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="large" photo="https://i.pravatar.cc/300" .disabled=${disabled}></alt-core-avatar>
     </div>
   `,
 }
@@ -138,13 +138,13 @@ export const WithPhotoAllSizes: Story = {
 export const WithPhotoErrorAllSizes: Story = {
   render: ({ disabled }) => html`
     <div style="display: flex; align-items: center; gap: 10px;">
-      <y-core-avatar size="extra-small" photo="invalid-url" initials="Altegio Clients" .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="extra-small" photo="invalid-url" initials="Altegio Clients" .disabled=${disabled}></alt-core-avatar>
       
-      <y-core-avatar size="small" photo="invalid-url" initials="Altegio Clients" .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="small" photo="invalid-url" initials="Altegio Clients" .disabled=${disabled}></alt-core-avatar>
       
-      <y-core-avatar size="medium" photo="invalid-url" initials="Altegio Clients" .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="medium" photo="invalid-url" initials="Altegio Clients" .disabled=${disabled}></alt-core-avatar>
       
-      <y-core-avatar size="large" photo="invalid-url" initials="Altegio Clients" .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="large" photo="invalid-url" initials="Altegio Clients" .disabled=${disabled}></alt-core-avatar>
     </div>
   `,
 }
@@ -153,13 +153,13 @@ export const WithPhotoErrorAllSizes: Story = {
 export const WithIconAllSizes: Story = {
   render: ({ disabled }) => html`
     <div style="display: flex; align-items: center; gap: 10px;">
-      <y-core-avatar size="extra-small" .icon=${ySearch} .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="extra-small" .icon=${altSearch} .disabled=${disabled}></alt-core-avatar>
 
-      <y-core-avatar size="small" .icon=${ySearch} .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="small" .icon=${altSearch} .disabled=${disabled}></alt-core-avatar>
 
-      <y-core-avatar size="medium" .icon=${ySearch} .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="medium" .icon=${altSearch} .disabled=${disabled}></alt-core-avatar>
 
-      <y-core-avatar size="large" .icon=${ySearch} .disabled=${disabled}></y-core-avatar>
+      <alt-core-avatar size="large" .icon=${altSearch} .disabled=${disabled}></alt-core-avatar>
     </div>
   `,
 }

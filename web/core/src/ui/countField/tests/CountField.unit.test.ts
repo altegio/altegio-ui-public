@@ -1,5 +1,5 @@
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
-import { YCoreCountFieldTagName } from '~shared/constants'
+import { AltCoreCountFieldTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import {
   ChangedValueEvent,
@@ -28,12 +28,12 @@ const {
   injectComponentToBody,
   removeComponent,
 } = useCoreTests(
-  YCoreCountFieldTagName,
+  AltCoreCountFieldTagName,
   createCoreCountFieldProps(),
 )
 
 describe(
-  'Core/YCountField',
+  'Core/AltCountField',
   () => {
     beforeAll(() => {
       injectComponentToBody()

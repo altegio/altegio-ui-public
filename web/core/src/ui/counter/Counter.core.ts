@@ -1,10 +1,10 @@
 import { LitElement, css, html, unsafeCSS } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
-import { YCoreCounterTagName as tagName } from '~shared/constants'
-import { type IYCoreCounterProps, createCoreCounterProps } from '~core/ui/counter/models/types'
-import YCoreCounterVarsCSS from '~core/ui/counter/css/Counter.vars.css?inline'
-import YCoreCounterScopedCSS from '~core/ui/counter/css/Counter.scoped.css?inline'
+import { AltCoreCounterTagName as tagName } from '~shared/constants'
+import { type IAltCoreCounterProps, createCoreCounterProps } from '~core/ui/counter/models/types'
+import AltCoreCounterVarsCSS from '~core/ui/counter/css/Counter.vars.css?inline'
+import AltCoreCounterScopedCSS from '~core/ui/counter/css/Counter.scoped.css?inline'
 import { interceptEvents } from '~core/utils/event-interceptor'
 import { withLocator } from '~core/utils/locator'
 
@@ -13,13 +13,13 @@ const { size, disabled, variant, value, withPlusSign, locator } = createCoreCoun
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreCounter extends LitElement implements IYCoreCounterProps {
-  @property({ type: String, attribute: 'locator' }) locator: IYCoreCounterProps['locator'] = locator
-  @property({ type: String }) size: IYCoreCounterProps['size'] = size
-  @property({ type: String }) variant: IYCoreCounterProps['variant'] = variant
-  @property({ type: Boolean }) disabled: IYCoreCounterProps['disabled'] = disabled
-  @property({ type: Boolean, attribute: 'with-plus-sign' }) withPlusSign: IYCoreCounterProps['withPlusSign'] = withPlusSign
-  @property({ type: Number }) value: IYCoreCounterProps['value'] = value
+export class AltCoreCounter extends LitElement implements IAltCoreCounterProps {
+  @property({ type: String, attribute: 'locator' }) locator: IAltCoreCounterProps['locator'] = locator
+  @property({ type: String }) size: IAltCoreCounterProps['size'] = size
+  @property({ type: String }) variant: IAltCoreCounterProps['variant'] = variant
+  @property({ type: Boolean }) disabled: IAltCoreCounterProps['disabled'] = disabled
+  @property({ type: Boolean, attribute: 'with-plus-sign' }) withPlusSign: IAltCoreCounterProps['withPlusSign'] = withPlusSign
+  @property({ type: Number }) value: IAltCoreCounterProps['value'] = value
 
   private readonly baseClass = tagName
   private readonly minValue = 0
@@ -56,8 +56,8 @@ export class YCoreCounter extends LitElement implements IYCoreCounterProps {
   }
 
   static readonly styles = [
-    css`${unsafeCSS(YCoreCounterVarsCSS)}`,
-    css`${unsafeCSS(YCoreCounterScopedCSS)}`,
+    css`${unsafeCSS(AltCoreCounterVarsCSS)}`,
+    css`${unsafeCSS(AltCoreCounterScopedCSS)}`,
   ]
 
   protected render() {

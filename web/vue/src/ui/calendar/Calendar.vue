@@ -1,5 +1,5 @@
 <template>
-  <y-core-calendar
+  <alt-core-calendar
     v-bind="props"
     :date="modelValue"
     @select="$emit('update:modelValue', $event.detail.value)"
@@ -10,17 +10,17 @@
   import '~core/ui/calendar'
   import {
     createVueCalendarProps,
-    type IYVueCalendarProps,
-    type IYVueCalendarEmits,
-    type IYVueCoreCalendarProps,
+    type IAltVueCalendarProps,
+    type IAltVueCalendarEmits,
+    type IAltVueCoreCalendarProps,
   } from '~vue/ui/calendar/models/types'
 
-  defineOptions({ name: 'YCalendar' })
+  defineOptions({ name: 'AltCalendar' })
 
   const props = withDefaults(
-    defineProps<IYVueCalendarProps>(),
+    defineProps<IAltVueCalendarProps>(),
     createVueCalendarProps(),
-  ) satisfies IYVueCoreCalendarProps
+  ) satisfies IAltVueCoreCalendarProps
 
-  defineEmits<IYVueCalendarEmits>()
+  defineEmits<IAltVueCalendarEmits>()
 </script>

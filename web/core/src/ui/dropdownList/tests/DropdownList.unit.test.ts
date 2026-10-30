@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
-import { YCoreDropdownListTagName, YCoreDropdownCellTagName } from '~shared/constants'
+import { AltCoreDropdownListTagName, AltCoreDropdownCellTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import {
   createCoreDropdownListProps,
@@ -17,7 +17,7 @@ import {
   propMinWidthTestCases,
 } from './cases/props'
 
-const tagName = YCoreDropdownListTagName
+const tagName = AltCoreDropdownListTagName
 
 const {
   component,
@@ -31,7 +31,7 @@ const {
 )
 
 describe(
-  'Core/YDropdownList/Unit',
+  'Core/AltDropdownList/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -74,7 +74,7 @@ describe(
             async() => {
               await updateComponent({ props: { items: testCase.value } })
 
-              const listItems = getWCShadowRoot(component).querySelectorAll(YCoreDropdownCellTagName)
+              const listItems = getWCShadowRoot(component).querySelectorAll(AltCoreDropdownCellTagName)
 
               if (testCase.value && testCase.value.length > 0) {
                 testCase.value.forEach((item, index) => {
@@ -98,7 +98,7 @@ describe(
                 },
               })
 
-              const listItems = getWCShadowRoot(component).querySelectorAll(YCoreDropdownCellTagName)
+              const listItems = getWCShadowRoot(component).querySelectorAll(AltCoreDropdownCellTagName)
               const textContent = trimTextContent(listItems[0].textContent)
 
               expect(Boolean(textContent)).toBe(testCase.expected)

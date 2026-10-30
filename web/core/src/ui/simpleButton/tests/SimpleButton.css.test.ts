@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreSimpleButtonTagName } from '~shared/constants'
+import { AltCoreSimpleButtonTagName } from '~shared/constants'
 import {
   createCoreSimpleButtonProps,
 } from '~core/ui/simpleButton/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/simpleButton/tests/cases/css'
 
-const tagName = YCoreSimpleButtonTagName
+const tagName = AltCoreSimpleButtonTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreSimpleButton/CSS',
+  'Core/AltCoreSimpleButton/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

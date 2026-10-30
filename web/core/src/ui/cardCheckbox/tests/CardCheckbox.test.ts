@@ -1,12 +1,12 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
 import {
-  YCoreCardCheckboxTagName as tagName,
-  YCoreSimpleCheckboxTagName,
+  AltCoreCardCheckboxTagName as tagName,
+  AltCoreSimpleCheckboxTagName,
 } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { getElementClasses, getShadowRootElement, getShadowElement } from '~shared/tests/utils'
 import { createCoreCardCheckboxProps } from '~core/ui/cardCheckbox/models/types'
-import type { YCoreSimpleCheckbox } from '~core/ui/simpleCheckbox'
+import type { AltCoreSimpleCheckbox } from '~core/ui/simpleCheckbox'
 import '~core/ui/cardCheckbox'
 
 import {
@@ -41,7 +41,7 @@ const getLocalShadowElement = (selector: string) => {
 }
 
 describe(
-  'Core/YCardCheckbox/Unit',
+  'Core/AltCardCheckbox/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -98,7 +98,7 @@ describe(
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
-              const colorIconElement = getLocalShadowElement(YCoreSimpleCheckboxTagName) as YCoreSimpleCheckbox | null
+              const colorIconElement = getLocalShadowElement(AltCoreSimpleCheckboxTagName) as AltCoreSimpleCheckbox | null
 
               expect(colorIconElement?.[testCase.prop]).toBe(testCase.value)
             },
@@ -111,7 +111,7 @@ describe(
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
-              const colorIconElement = getLocalShadowElement(YCoreSimpleCheckboxTagName) as YCoreSimpleCheckbox | null
+              const colorIconElement = getLocalShadowElement(AltCoreSimpleCheckboxTagName) as AltCoreSimpleCheckbox | null
 
               expect(colorIconElement?.[testCase.prop]).toBe(testCase.expectedCheckboxSize)
             },

@@ -1,6 +1,6 @@
 :host {
-  --y-core-text-field-display: block;
+  --alt-core-text-field-display: block;
 
   /* Sizes */
-  --y-core-text-field-gap: var(--y-core-size-spacing-x);
+  --alt-core-text-field-gap: var(--alt-core-size-spacing-x);
 }

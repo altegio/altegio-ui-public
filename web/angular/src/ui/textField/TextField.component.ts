@@ -6,9 +6,9 @@ import { FormsModule } from '@angular/forms'
 import { NgTemplateOutlet } from '@angular/common'
 
 import '~core/ui/textField'
-import type { TYNgTextFieldModel } from './models/types'
+import type { TAltNgTextFieldModel } from './models/types'
 import {
-  type IYNgTextFieldProps,
+  type IAltNgTextFieldProps,
   type InputEvent,
   type FocusEvent,
   type ClearEvent,
@@ -19,21 +19,21 @@ import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { preventAndStopEvent } from '~shared/utils'
 import { ControlValueAccessorBase } from '~ng/types/ControlValueAccessorBase'
 import { defineCustomElement } from '~web/shared/utils/components'
-import { YCoreTextFieldTagName } from '~web/shared/constants'
-import { YCoreTextField } from '~core/ui/textField'
+import { AltCoreTextFieldTagName } from '~web/shared/constants'
+import { AltCoreTextField } from '~core/ui/textField'
 
 const { name, placeholder, autofocus, type, disabled, readonly, maxlength, errors, error, clearable, maskOptions, size, required, labelText, labelTooltipText, annotationText, labelDebounce, locator, locatorLabel, locatorError } = createNgTextFieldProps()
 
-defineCustomElement(YCoreTextFieldTagName, YCoreTextField)
+defineCustomElement(AltCoreTextFieldTagName, AltCoreTextField)
 
 @Component({
-  selector: 'YTextField',
+  selector: 'AltTextField',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormsModule, NgTemplateOutlet],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-text-field
+    <alt-core-text-field
       (input)="handleInputEvent($event)"
       (focus)="handleFocusEvent($event)"
       (blur)="handleBlurEvent($event)"
@@ -77,7 +77,7 @@ defineCustomElement(YCoreTextFieldTagName, YCoreTextField)
           <ng-container *ngTemplateOutlet="textFieldAfterRef" />
         </div>
       }
-    </y-core-text-field>
+    </alt-core-text-field>
   `,
 })
 
@@ -100,33 +100,33 @@ defineCustomElement(YCoreTextFieldTagName, YCoreTextField)
  *
  * @example
  * // With formControl
- * <YTextField [formControl]="nameControl" />
+ * <AltTextField [formControl]="nameControl" />
  *
  * @example
  * // With ngModel
- * <YTextField [(ngModel)]="name" [required]="true" [errors]="['This field is required']" />
+ * <AltTextField [(ngModel)]="name" [required]="true" [errors]="['This field is required']" />
  */
-export class YTextField extends ControlValueAccessorBase<TYNgTextFieldModel> implements IYNgTextFieldProps, OnInit, OnChanges {
-  @Input() @DefaultValue(name) name: IYNgTextFieldProps['name'] = name
-  @Input() @DefaultValue(placeholder) placeholder: IYNgTextFieldProps['placeholder'] = placeholder
-  @Input() @DefaultValue(autofocus) autofocus: IYNgTextFieldProps['autofocus'] = autofocus
-  @Input() @DefaultValue(type) type: IYNgTextFieldProps['type'] = type
-  @Input() @DefaultValue(disabled) disabled: IYNgTextFieldProps['disabled'] = disabled
-  @Input() @DefaultValue(readonly) readonly: IYNgTextFieldProps['readonly'] = readonly
-  @Input() @DefaultValue(required) required: IYNgTextFieldProps['required'] = required
-  @Input() @DefaultValue(maxlength) maxlength: IYNgTextFieldProps['maxlength'] = maxlength
-  @Input() @DefaultValue(errors) errors: IYNgTextFieldProps['errors'] = errors
-  @Input() @DefaultValue(error) error: IYNgTextFieldProps['error'] = error
-  @Input() @DefaultValue(clearable) clearable: IYNgTextFieldProps['clearable'] = clearable
-  @Input() @DefaultValue(maskOptions) maskOptions: IYNgTextFieldProps['maskOptions'] = maskOptions
-  @Input() @DefaultValue(size) size: IYNgTextFieldProps['size'] = size
-  @Input() @DefaultValue(labelText) labelText: IYNgTextFieldProps['labelText'] = labelText
-  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IYNgTextFieldProps['labelTooltipText'] = labelTooltipText
-  @Input() @DefaultValue(labelDebounce) labelDebounce: IYNgTextFieldProps['labelDebounce'] = labelDebounce
-  @Input() @DefaultValue(annotationText) annotationText: IYNgTextFieldProps['annotationText'] = annotationText
-  @Input() @DefaultValue(locator) locator: IYNgTextFieldProps['locator'] = locator
-  @Input() @DefaultValue(locatorLabel) locatorLabel: IYNgTextFieldProps['locatorLabel'] = locatorLabel
-  @Input() @DefaultValue(locatorError) locatorError: IYNgTextFieldProps['locatorError'] = locatorError
+export class AltTextField extends ControlValueAccessorBase<TAltNgTextFieldModel> implements IAltNgTextFieldProps, OnInit, OnChanges {
+  @Input() @DefaultValue(name) name: IAltNgTextFieldProps['name'] = name
+  @Input() @DefaultValue(placeholder) placeholder: IAltNgTextFieldProps['placeholder'] = placeholder
+  @Input() @DefaultValue(autofocus) autofocus: IAltNgTextFieldProps['autofocus'] = autofocus
+  @Input() @DefaultValue(type) type: IAltNgTextFieldProps['type'] = type
+  @Input() @DefaultValue(disabled) disabled: IAltNgTextFieldProps['disabled'] = disabled
+  @Input() @DefaultValue(readonly) readonly: IAltNgTextFieldProps['readonly'] = readonly
+  @Input() @DefaultValue(required) required: IAltNgTextFieldProps['required'] = required
+  @Input() @DefaultValue(maxlength) maxlength: IAltNgTextFieldProps['maxlength'] = maxlength
+  @Input() @DefaultValue(errors) errors: IAltNgTextFieldProps['errors'] = errors
+  @Input() @DefaultValue(error) error: IAltNgTextFieldProps['error'] = error
+  @Input() @DefaultValue(clearable) clearable: IAltNgTextFieldProps['clearable'] = clearable
+  @Input() @DefaultValue(maskOptions) maskOptions: IAltNgTextFieldProps['maskOptions'] = maskOptions
+  @Input() @DefaultValue(size) size: IAltNgTextFieldProps['size'] = size
+  @Input() @DefaultValue(labelText) labelText: IAltNgTextFieldProps['labelText'] = labelText
+  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IAltNgTextFieldProps['labelTooltipText'] = labelTooltipText
+  @Input() @DefaultValue(labelDebounce) labelDebounce: IAltNgTextFieldProps['labelDebounce'] = labelDebounce
+  @Input() @DefaultValue(annotationText) annotationText: IAltNgTextFieldProps['annotationText'] = annotationText
+  @Input() @DefaultValue(locator) locator: IAltNgTextFieldProps['locator'] = locator
+  @Input() @DefaultValue(locatorLabel) locatorLabel: IAltNgTextFieldProps['locatorLabel'] = locatorLabel
+  @Input() @DefaultValue(locatorError) locatorError: IAltNgTextFieldProps['locatorError'] = locatorError
 
   @Output() focus = new EventEmitter<FocusEvent>()
   @Output() blur = new EventEmitter<BlurEvent>()
@@ -136,12 +136,12 @@ export class YTextField extends ControlValueAccessorBase<TYNgTextFieldModel> imp
   @ContentChild('textFieldAnnotation') textFieldAnnotationRef: TemplateRef<unknown> | undefined
   @ContentChild('textFieldAfter') textFieldAfterRef: TemplateRef<unknown> | undefined
 
-  textFieldValue = signal<TYNgTextFieldModel>('')
+  textFieldValue = signal<TAltNgTextFieldModel>('')
 
   private formControl = signal<UntypedFormControl>(new UntypedFormControl(''))
   private isTouched = signal(false)
   private isInvalid = signal(false)
-  private errorsSignal = signal<IYNgTextFieldProps['errors']>(undefined)
+  private errorsSignal = signal<IAltNgTextFieldProps['errors']>(undefined)
   private requiredExplicitlySet = signal(false)
   private controlStatusChanged = signal(0)
 
@@ -319,7 +319,7 @@ export class YTextField extends ControlValueAccessorBase<TYNgTextFieldModel> imp
     this.clear.emit(event as ClearEvent)
   }
 
-  writeValue(value: TYNgTextFieldModel) {
+  writeValue(value: TAltNgTextFieldModel) {
     this.textFieldValue.set(value)
     this.formControl().setValue(value, { emitEvent: false })
   }

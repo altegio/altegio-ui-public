@@ -6,11 +6,11 @@ import {
 } from '~core/ui/collapse/tests/cases/events'
 
 import type {
-  IYCoreCollapseChangePayload,
-  IYCoreCollapseMovePayload,
+  IAltCoreCollapseChangePayload,
+  IAltCoreCollapseMovePayload,
 } from '~core/ui/collapse/models/types'
 
-export const eventCollapseChangeCases: TEventTestCase<IYCoreCollapseChangePayload, IYCoreCollapseChangePayload>[] = coreEventCollapseChangeCases.map((testCase) => ({
+export const eventCollapseChangeCases: TEventTestCase<IAltCoreCollapseChangePayload, IAltCoreCollapseChangePayload>[] = coreEventCollapseChangeCases.map((testCase) => ({
     ...testCase,
     payload: {
       event: new Event(testCase.nodeEventName),
@@ -24,7 +24,7 @@ export const eventCollapseChangeCases: TEventTestCase<IYCoreCollapseChangePayloa
     },
   }))
 
-export const eventCollapseMoveCases: TEventTestCase<IYCoreCollapseMovePayload, IYCoreCollapseMovePayload>[] = coreEventCollapseMoveCases.map((testCase) => ({
+export const eventCollapseMoveCases: TEventTestCase<IAltCoreCollapseMovePayload, IAltCoreCollapseMovePayload>[] = coreEventCollapseMoveCases.map((testCase) => ({
     ...testCase,
     payload: {
       event: new DragEvent(testCase.nodeEventName),

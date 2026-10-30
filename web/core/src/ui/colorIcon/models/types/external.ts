@@ -1,6 +1,6 @@
-import type { IYIcon } from '~shared/icons'
+import type { IAltIcon } from '~shared/icons'
 
-export enum EYCoreColorIconVariant {
+export enum EAltCoreColorIconVariant {
   GREY = 'grey',
   RED = 'red',
   GREEN = 'green',
@@ -9,9 +9,9 @@ export enum EYCoreColorIconVariant {
   VIOLET = 'violet',
 }
 
-export type TYCoreColorIconVariant = `${EYCoreColorIconVariant}`
+export type TAltCoreColorIconVariant = `${EAltCoreColorIconVariant}`
 
-export const EYCoreColorIconSize = {
+export const EAltCoreColorIconSize = {
   X_24: '24',
   X_32: '32',
   X_40: '40',
@@ -19,21 +19,21 @@ export const EYCoreColorIconSize = {
   X_64: '64',
 } as const
 
-type TYCoreColorIconSize = typeof EYCoreColorIconSize[keyof typeof EYCoreColorIconSize]
+type TAltCoreColorIconSize = typeof EAltCoreColorIconSize[keyof typeof EAltCoreColorIconSize]
 
-export interface IYCoreColorIconExternalProps {
-  icon: IYIcon
-  size: TYCoreColorIconSize | undefined
-  variant: TYCoreColorIconVariant | undefined
+export interface IAltCoreColorIconExternalProps {
+  icon: IAltIcon
+  size: TAltCoreColorIconSize | undefined
+  variant: TAltCoreColorIconVariant | undefined
   disabled: boolean | undefined
 }
 
-export const createCoreColorIconExternalProps = (): IYCoreColorIconExternalProps => ({
+export const createCoreColorIconExternalProps = (): IAltCoreColorIconExternalProps => ({
   icon: {
-    name: 'none' as IYIcon['name'],
+    name: 'none' as IAltIcon['name'],
     data: 'none',
   },
-  size: EYCoreColorIconSize.X_48,
-  variant: EYCoreColorIconVariant.GREY,
+  size: EAltCoreColorIconSize.X_48,
+  variant: EAltCoreColorIconVariant.GREY,
   disabled: false,
 })

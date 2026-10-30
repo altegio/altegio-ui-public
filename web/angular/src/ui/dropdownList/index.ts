@@ -1,2 +1,2 @@
-export { YDropdownList } from './DropdownList.component'
+export { AltDropdownList } from './DropdownList.component'
 export type * from './models/types'

@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreCountFieldTagName } from '~shared/constants'
-import { YCountField } from '~ng/ui/countField'
-import type { IYNgCountFieldProps } from '~ng/ui/countField/models/types'
-import type { YCoreCountField } from '~core/ui/countField'
+import { AltCoreCountFieldTagName } from '~shared/constants'
+import { AltCountField } from '~ng/ui/countField'
+import type { IAltNgCountFieldProps } from '~ng/ui/countField/models/types'
+import type { AltCoreCountField } from '~core/ui/countField'
 import { FocusEvent, BlurEvent } from '~core/ui/fieldWrapper/models/types'
 import { KeydownEvent } from '~core/ui/fieldInput/models/types'
 import {
@@ -24,17 +24,17 @@ import {
   propDisabledTestCases,
 } from '~ng/ui/countField/tests/cases/props'
 
-const tagName = YCoreCountFieldTagName
+const tagName = AltCoreCountFieldTagName
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgCountFieldProps>
+  props?: Partial<IAltNgCountFieldProps>
 }
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YCountField] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltCountField] }).compileComponents()
 
   @Component({
-    template: `<YCountField
+    template: `<AltCountField
       [min]="min"
       [max]="max"
       [size]="size"
@@ -50,8 +50,8 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
       [annotationText]="annotationText"
       [errors]="errors"
       [name]="name"
-    ></YCountField>`,
-    imports: [YCountField],
+    ></AltCountField>`,
+    imports: [AltCountField],
     standalone: true,
   })
 
@@ -77,7 +77,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YCountField',
+  'Angular/AltCountField',
   () => {
     describe(
       'Unit',
@@ -111,7 +111,7 @@ describe(
                   await fixture.whenStable()
 
                   const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)!
-                  const value = coreElement[testCase.prop as keyof YCoreCountField]
+                  const value = coreElement[testCase.prop as keyof AltCoreCountField]
 
                   if (Array.isArray(value) || typeof value === 'object' && value !== null) {
                     expect(value).toStrictEqual(testCase.value)

@@ -1,22 +1,22 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreIconButtonTagName } from '~shared/constants'
-import { yRocket } from '~shared/icons'
-import { type IYNgIconButtonProps } from '~ng/ui/iconButton/models/types'
-import { YIconButton } from '~ng/ui/iconButton'
+import { AltCoreIconButtonTagName } from '~shared/constants'
+import { altRocket } from '~shared/icons'
+import { type IAltNgIconButtonProps } from '~ng/ui/iconButton/models/types'
+import { AltIconButton } from '~ng/ui/iconButton'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgIconButtonProps>
+  props?: Partial<IAltNgIconButtonProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YIconButton] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltIconButton] }).compileComponents()
 
   @Component({
     template: `
-      <YIconButton
+      <AltIconButton
         [size]="size"
         [variant]="variant"
         [disabled]="disabled"
@@ -25,7 +25,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
         [target]="target"
         [icon]="icon"
       />`,
-    imports: [YIconButton],
+    imports: [AltIconButton],
     standalone: true,
   })
   class TestComponent {
@@ -40,10 +40,10 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
   return TestComponent
 }
 
-const tagName = YCoreIconButtonTagName
+const tagName = AltCoreIconButtonTagName
 
 describe(
-  'Angular/YIconButton',
+  'Angular/AltIconButton',
   () => {
     describe(
       'Props',
@@ -51,14 +51,14 @@ describe(
         it(
           'Changing prop icon should update CoreIconButton',
           async() => {
-            const component = await createComponent({ props: { icon: yRocket } })
+            const component = await createComponent({ props: { icon: altRocket } })
             const fixture = TestBed.createComponent(component)
             fixture.detectChanges()
 
             await fixture.whenStable()
 
             const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
-            expect(coreElement?.icon?.data).toBe(yRocket.data)
+            expect(coreElement?.icon?.data).toBe(altRocket.data)
           },
         )
       },

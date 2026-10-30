@@ -1,33 +1,33 @@
-$component: $YCoreSegmentControlTagName;
+$component: $AltCoreSegmentControlTagName;
 
 .$(component) {
   box-sizing: border-box;
-  display: var(--y-core-segment-control-display);
-  gap: var(--y-core-segment-control-size-gap);
-  padding: var(--y-core-segment-control-size-padding);
+  display: var(--alt-core-segment-control-display);
+  gap: var(--alt-core-segment-control-size-gap);
+  padding: var(--alt-core-segment-control-size-padding);
   overflow: hidden;
-  font-family: var(--y-core-font-family);
-  background-color: var(--y-core-segment-control-background-color);
-  border-radius: var(--y-core-segment-control-size-border-radius);
-  box-shadow: inset 0 0 0 var(--y-core-segment-control-border-size) var(--y-core-segment-control-border-color);
+  font-family: var(--alt-core-font-family);
+  background-color: var(--alt-core-segment-control-background-color);
+  border-radius: var(--alt-core-segment-control-size-border-radius);
+  box-shadow: inset 0 0 0 var(--alt-core-segment-control-border-size) var(--alt-core-segment-control-border-color);
 
   &_size {
     &_small {
-      --y-core-segment-control-size-padding: var(--y-core-size-spacing-0-5-x);
-      --y-core-segment-control-size-border-radius: var(--y-core-size-radius-2-x);
-      --y-core-segment-control-size-gap: var(--y-core-size-spacing-0-5-x);
+      --alt-core-segment-control-size-padding: var(--alt-core-size-spacing-0-5-x);
+      --alt-core-segment-control-size-border-radius: var(--alt-core-size-radius-2-x);
+      --alt-core-segment-control-size-gap: var(--alt-core-size-spacing-0-5-x);
     }
 
     &_medium {
-      --y-core-segment-control-size-padding: var(--y-core-size-spacing-0-5-x);
-      --y-core-segment-control-size-border-radius: var(--y-core-size-radius-2-5-x);
-      --y-core-segment-control-size-gap: var(--y-core-size-spacing-0-5-x);
+      --alt-core-segment-control-size-padding: var(--alt-core-size-spacing-0-5-x);
+      --alt-core-segment-control-size-border-radius: var(--alt-core-size-radius-2-5-x);
+      --alt-core-segment-control-size-gap: var(--alt-core-size-spacing-0-5-x);
     }
 
     &_large {
-      --y-core-segment-control-size-padding: var(--y-core-size-spacing-0-5-x);
-      --y-core-segment-control-size-border-radius: var(--y-core-size-radius-3-x);
-      --y-core-segment-control-size-gap: var(--y-core-size-spacing-0-5-x);
+      --alt-core-segment-control-size-padding: var(--alt-core-size-spacing-0-5-x);
+      --alt-core-segment-control-size-border-radius: var(--alt-core-size-radius-3-x);
+      --alt-core-segment-control-size-gap: var(--alt-core-size-spacing-0-5-x);
     }
   }
 }

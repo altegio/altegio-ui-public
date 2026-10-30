@@ -1,1 +1,1 @@
-export { YCoreButtonDropdown } from './ButtonDropdown.core'
+export { AltCoreButtonDropdown } from './ButtonDropdown.core'

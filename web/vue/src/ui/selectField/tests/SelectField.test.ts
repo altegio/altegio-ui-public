@@ -1,8 +1,8 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { YCoreSelectFieldTagName as tagName } from '~shared/constants'
-import { YSelectField } from '~vue/ui/selectField'
-import { YCoreSelectField } from '~core/ui/selectField'
+import { AltCoreSelectFieldTagName as tagName } from '~shared/constants'
+import { AltSelectField } from '~vue/ui/selectField'
+import { AltCoreSelectField } from '~core/ui/selectField'
 
 import { vueInputEvents } from './cases/events'
 import {
@@ -31,13 +31,13 @@ import {
 } from './cases/slots'
 
 describe(
-  'Vue/YSelectField',
+  'Vue/AltSelectField',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreSelectField,
+          AltCoreSelectField,
         )
       }
     })
@@ -50,7 +50,7 @@ describe(
             `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
-                YSelectField,
+                AltSelectField,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
@@ -87,7 +87,7 @@ describe(
             `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
-                YSelectField,
+                AltSelectField,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
@@ -114,7 +114,7 @@ describe(
             `Slot "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
-                YSelectField,
+                AltSelectField,
                 {
                   props: { value: '' },
                   slots: {
@@ -146,7 +146,7 @@ describe(
             `Should emit "${emitEventName}" ${eventCase}`,
             () => {
               const wrapper = mount(
-                YSelectField,
+                AltSelectField,
                 { props: { value: '' } },
               )
 

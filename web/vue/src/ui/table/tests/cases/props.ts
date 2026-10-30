@@ -2,9 +2,9 @@ import type { TPropTestCase } from '~shared/types/tests'
 
 import {
   createVueTableProps,
-  type IYVueTableProps,
-  type TYVueTableItems,
-  type TYVueTableHeaders,
+  type IAltVueTableProps,
+  type TAltVueTableItems,
+  type TAltVueTableHeaders,
 } from '~vue/ui/table/models/types'
 
 const {
@@ -23,12 +23,12 @@ const {
   showPagination: defaultShowPagination,
 } = createVueTableProps()
 
-export const testHeaders: TYVueTableHeaders = {
+export const testHeaders: TAltVueTableHeaders = {
   id: { id: 'id', label: 'ID', align: 'left', sortable: true },
   name: { id: 'name', label: 'Name', align: 'right', sortable: false },
 }
 
-export const testItems: TYVueTableItems = [
+export const testItems: TAltVueTableItems = [
   {
     rowId: 'row-1',
     id: { id: 'id', value: '1', label: 'ID', head: testHeaders.id },
@@ -41,7 +41,7 @@ export const testItems: TYVueTableItems = [
   },
 ]
 
-export const propDisabledTestCases: TPropTestCase<IYVueTableProps, 'disabled'>[] = [
+export const propDisabledTestCases: TPropTestCase<IAltVueTableProps, 'disabled'>[] = [
   {
     prop: 'disabled',
     case: 'without a value',
@@ -62,7 +62,7 @@ export const propDisabledTestCases: TPropTestCase<IYVueTableProps, 'disabled'>[]
   },
 ]
 
-export const propLoadingTestCases: TPropTestCase<IYVueTableProps, 'loading'>[] = [
+export const propLoadingTestCases: TPropTestCase<IAltVueTableProps, 'loading'>[] = [
   {
     prop: 'loading',
     case: 'without a value',
@@ -83,7 +83,7 @@ export const propLoadingTestCases: TPropTestCase<IYVueTableProps, 'loading'>[] =
   },
 ]
 
-export const propHideHeaderTestCases: TPropTestCase<IYVueTableProps, 'hideHeader'>[] = [
+export const propHideHeaderTestCases: TPropTestCase<IAltVueTableProps, 'hideHeader'>[] = [
   {
     prop: 'hideHeader',
     case: 'without a value',
@@ -104,7 +104,7 @@ export const propHideHeaderTestCases: TPropTestCase<IYVueTableProps, 'hideHeader
   },
 ]
 
-export const propStripeTestCases: TPropTestCase<IYVueTableProps, 'stripe'>[] = [
+export const propStripeTestCases: TPropTestCase<IAltVueTableProps, 'stripe'>[] = [
   {
     prop: 'stripe',
     case: 'without a value',
@@ -125,7 +125,7 @@ export const propStripeTestCases: TPropTestCase<IYVueTableProps, 'stripe'>[] = [
   },
 ]
 
-export const propSelectableTestCases: TPropTestCase<IYVueTableProps, 'selectable'>[] = [
+export const propSelectableTestCases: TPropTestCase<IAltVueTableProps, 'selectable'>[] = [
   {
     prop: 'selectable',
     case: 'without a value',
@@ -146,7 +146,7 @@ export const propSelectableTestCases: TPropTestCase<IYVueTableProps, 'selectable
   },
 ]
 
-export const propStickyTestCases: TPropTestCase<IYVueTableProps, 'sticky'>[] = [
+export const propStickyTestCases: TPropTestCase<IAltVueTableProps, 'sticky'>[] = [
   {
     prop: 'sticky',
     case: 'without a value',
@@ -167,7 +167,7 @@ export const propStickyTestCases: TPropTestCase<IYVueTableProps, 'sticky'>[] = [
   },
 ]
 
-export const propPageTestCases: TPropTestCase<IYVueTableProps, 'page'>[] = [
+export const propPageTestCases: TPropTestCase<IAltVueTableProps, 'page'>[] = [
   {
     prop: 'page',
     case: 'without a value',
@@ -182,7 +182,7 @@ export const propPageTestCases: TPropTestCase<IYVueTableProps, 'page'>[] = [
   },
 ]
 
-export const propItemsPerPageTestCases: TPropTestCase<IYVueTableProps, 'itemsPerPage'>[] = [
+export const propItemsPerPageTestCases: TPropTestCase<IAltVueTableProps, 'itemsPerPage'>[] = [
   {
     prop: 'itemsPerPage',
     case: 'without a value',
@@ -197,7 +197,7 @@ export const propItemsPerPageTestCases: TPropTestCase<IYVueTableProps, 'itemsPer
   },
 ]
 
-export const propTotalTestCases: TPropTestCase<IYVueTableProps, 'total'>[] = [
+export const propTotalTestCases: TPropTestCase<IAltVueTableProps, 'total'>[] = [
   {
     prop: 'total',
     case: 'without a value',
@@ -212,7 +212,7 @@ export const propTotalTestCases: TPropTestCase<IYVueTableProps, 'total'>[] = [
   },
 ]
 
-export const propItemValueTestCases: TPropTestCase<IYVueTableProps, 'itemValue'>[] = [
+export const propItemValueTestCases: TPropTestCase<IAltVueTableProps, 'itemValue'>[] = [
   {
     prop: 'itemValue',
     case: 'without a value',
@@ -227,7 +227,7 @@ export const propItemValueTestCases: TPropTestCase<IYVueTableProps, 'itemValue'>
   },
 ]
 
-export const propItemLabelTestCases: TPropTestCase<IYVueTableProps, 'itemLabel'>[] = [
+export const propItemLabelTestCases: TPropTestCase<IAltVueTableProps, 'itemLabel'>[] = [
   {
     prop: 'itemLabel',
     case: 'without a value',
@@ -242,7 +242,7 @@ export const propItemLabelTestCases: TPropTestCase<IYVueTableProps, 'itemLabel'>
   },
 ]
 
-export const propOptionsItemsPerPageTestCases: TPropTestCase<IYVueTableProps, 'optionsItemsPerPage'>[] = [
+export const propOptionsItemsPerPageTestCases: TPropTestCase<IAltVueTableProps, 'optionsItemsPerPage'>[] = [
   {
     prop: 'optionsItemsPerPage',
     case: 'without a value',
@@ -257,7 +257,7 @@ export const propOptionsItemsPerPageTestCases: TPropTestCase<IYVueTableProps, 'o
   },
 ]
 
-export const propCounterTextTestCases: TPropTestCase<IYVueTableProps, 'counterText'>[] = [
+export const propCounterTextTestCases: TPropTestCase<IAltVueTableProps, 'counterText'>[] = [
   {
     prop: 'counterText',
     case: 'without a value',
@@ -272,7 +272,7 @@ export const propCounterTextTestCases: TPropTestCase<IYVueTableProps, 'counterTe
   },
 ]
 
-export const propShowPaginationTestCases: TPropTestCase<IYVueTableProps, 'showPagination'>[] = [
+export const propShowPaginationTestCases: TPropTestCase<IAltVueTableProps, 'showPagination'>[] = [
   {
     prop: 'showPagination',
     case: 'without a value',
@@ -293,7 +293,7 @@ export const propShowPaginationTestCases: TPropTestCase<IYVueTableProps, 'showPa
   },
 ]
 
-export const propHeadersTestCases: TPropTestCase<IYVueTableProps, 'headers'>[] = [
+export const propHeadersTestCases: TPropTestCase<IAltVueTableProps, 'headers'>[] = [
   {
     prop: 'headers',
     case: 'without a value',
@@ -308,13 +308,13 @@ export const propHeadersTestCases: TPropTestCase<IYVueTableProps, 'headers'>[] =
   },
 ]
 
-export type TYItemsExpected = {
+export type TAltItemsExpected = {
   rows: number
   cells: number
 }
 
-interface IItemsTestCase extends TPropTestCase<IYVueTableProps, 'items', TYItemsExpected> {
-  additionalProps?: Partial<IYVueTableProps>
+interface IItemsTestCase extends TPropTestCase<IAltVueTableProps, 'items', TAltItemsExpected> {
+  additionalProps?: Partial<IAltVueTableProps>
 }
 
 export const propItemsTestCases: IItemsTestCase[] = [
@@ -348,14 +348,14 @@ export const propItemsTestCases: IItemsTestCase[] = [
   },
 ]
 
-export type TYSelectedExpected = {
+export type TAltSelectedExpected = {
   head: {
     checked: boolean
     indeterminate: boolean
   }
   rows: boolean[]
 }
-export const propSelectedTestCases: TPropTestCase<IYVueTableProps, 'selected', TYSelectedExpected>[] = [
+export const propSelectedTestCases: TPropTestCase<IAltVueTableProps, 'selected', TAltSelectedExpected>[] = [
   {
     prop: 'selected',
     case: 'without a value',
@@ -394,7 +394,7 @@ export const propSelectedTestCases: TPropTestCase<IYVueTableProps, 'selected', T
   },
 ]
 
-export const propPluginsTestCases: TPropTestCase<IYVueTableProps, 'plugins'>[] = [
+export const propPluginsTestCases: TPropTestCase<IAltVueTableProps, 'plugins'>[] = [
   {
     prop: 'plugins',
     case: 'without a value',
@@ -405,12 +405,12 @@ export const propPluginsTestCases: TPropTestCase<IYVueTableProps, 'plugins'>[] =
     prop: 'plugins',
     case: 'with plugins',
     value: {
-      'y-core-table': [],
-      'y-core-table-row': [],
+      'alt-core-table': [],
+      'alt-core-table-row': [],
     },
     expected: {
-      'y-core-table': [],
-      'y-core-table-row': [],
+      'alt-core-table': [],
+      'alt-core-table-row': [],
     },
   },
 ]

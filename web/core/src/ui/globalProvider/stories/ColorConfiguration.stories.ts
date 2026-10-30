@@ -24,12 +24,12 @@ const meta: Meta<IPaletteProps & { transformers: TColorTokenTransformersRaw }> =
       updateArgs({ transformers: value })
     }
     return html`
-            <y-color-table
+            <alt-color-table
                 .accentColor=${accentColor}
                 .useDarkTheme=${useDarkTheme}
                 .transformers=${transformers}
                 @transformersChanged=${(e: InputTransformersEvent) => { onChanged(e.detail) }}
-            ></y-color-table>
+            ></alt-color-table>
         `
   },
   argTypes: { ...paletteArgTypes },

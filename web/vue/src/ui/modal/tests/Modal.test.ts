@@ -16,12 +16,12 @@ import {
   eventOverlayClickCases, eventPressEscapeCases,
 } from '~vue/ui/modal/tests/cases/events'
 import { mount } from '@vue/test-utils'
-import { YCoreModal } from '~core/index'
-import { YModal } from '~vue/ui/modal'
-import { YCoreModalTagName as tagName } from '~shared/constants'
-import { createVueModalProps, type IYVueModalProps } from '~vue/ui/modal/models/types'
+import { AltCoreModal } from '~core/index'
+import { AltModal } from '~vue/ui/modal'
+import { AltCoreModalTagName as tagName } from '~shared/constants'
+import { createVueModalProps, type IAltVueModalProps } from '~vue/ui/modal/models/types'
 
-const defaultProps = createVueModalProps() as IYVueModalProps
+const defaultProps = createVueModalProps() as IAltVueModalProps
 
 
 const baseSlotsCheck = () => {
@@ -30,7 +30,7 @@ const baseSlotsCheck = () => {
       `Slot: "${testCase.slot}" should render ${testCase.case}`,
       () => {
         const wrapper = mount(
-          YModal,
+          AltModal,
           {
             slots: {
               activator: () => undefined,
@@ -60,7 +60,7 @@ const basePropsCheck = () => {
       `Prop: "${testCase.prop}" ${testCase.value} should ${testCase.value === undefined ? 'not' : ''} set ${testCase.prop} on the core component`,
       () => {
         const wrapper = mount(
-          YModal,
+          AltModal,
           {
             props: {
               ...defaultProps,
@@ -69,7 +69,7 @@ const basePropsCheck = () => {
           },
         )
 
-        const coreElement = wrapper.find(tagName).element as YCoreModal
+        const coreElement = wrapper.find(tagName).element as AltCoreModal
 
         expect(coreElement[testCase.prop]).toBe(testCase.expected)
       },
@@ -89,7 +89,7 @@ const baseEventsCheck = () => {
     it(
       `Event: "${testCase.event}" ${testCase.case}`,
       () => {
-        const wrapper = mount(YModal)
+        const wrapper = mount(AltModal)
 
         const coreElement = wrapper.find(tagName)
 
@@ -102,13 +102,13 @@ const baseEventsCheck = () => {
 }
 
 describe(
-  'Vue/YCoreOrganismModal/Unit',
+  'Vue/AltCoreOrganismModal/Unit',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreModal,
+          AltCoreModal,
         )
       }
     })
@@ -130,7 +130,7 @@ describe(
             `Prop: "${testCase.prop}" ${testCase.value} should ${testCase.value === undefined ? 'not' : ''} set open on the core component`,
             () => {
               const wrapper = mount(
-                YModal,
+                AltModal,
                 {
                   props: {
                     ...defaultProps,
@@ -139,7 +139,7 @@ describe(
                 },
               )
 
-              const coreElement = wrapper.find(tagName).element as YCoreModal
+              const coreElement = wrapper.find(tagName).element as AltCoreModal
 
               expect(coreElement.open).toBe(testCase.expected)
             },
@@ -157,7 +157,7 @@ describe(
           'Should emit "update:modelValue" with "true" when the modal opens',
           async() => {
             const wrapper = mount(
-              YModal,
+              AltModal,
               {
                 props: {
                   ...defaultProps,
@@ -180,7 +180,7 @@ describe(
           'Should emit "update:modelValue" with "false" when the modal closes',
           async() => {
             const wrapper = mount(
-              YModal,
+              AltModal,
               {
                 props: {
                   ...defaultProps,

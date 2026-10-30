@@ -1,10 +1,10 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
 
-export interface IYSimpleRadioButtonCheckedEvent {
+export interface IAltSimpleRadioButtonCheckedEvent {
   checked?: boolean
   value?: string | number | boolean | null
 }
 
-export class SimpleRadioButtonCheckedEvent extends CustomEvent<IYSimpleRadioButtonCheckedEvent> {}
+export class SimpleRadioButtonCheckedEvent extends CustomEvent<IAltSimpleRadioButtonCheckedEvent> {}
 
-export type TYCoreSimpleRadioButtonEvents = TEventsStoryArgs<{ CheckedEvent: typeof SimpleRadioButtonCheckedEvent }>
+export type TAltCoreSimpleRadioButtonEvents = TEventsStoryArgs<{ CheckedEvent: typeof SimpleRadioButtonCheckedEvent }>

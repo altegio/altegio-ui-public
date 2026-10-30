@@ -1,7 +1,7 @@
-$component: $YCoreCardSelectTagName;
+$component: $AltCoreCardSelectTagName;
 
 :host {
-  display: var(--y-card-select-display);
+  display: var(--alt-card-select-display);
 }
 
 .$(component) {

@@ -2,10 +2,10 @@ import { html } from 'lit'
 import type { Meta, StoryObj } from '@storybook/web-components'
 
 import {
-  type IYCoreDropdownCellProps,
+  type IAltCoreDropdownCellProps,
 } from '~core/ui/dropdownCell/models/types'
 import {
-  YCoreDropdownCellTagName as tagName,
+  AltCoreDropdownCellTagName as tagName,
 } from '~shared/constants'
 
 import '~core/ui/dropdownCell'
@@ -13,7 +13,7 @@ import '~core/ui/dropdownCell'
 /**
  * ## Core DropdownCell
  */
-const meta: Meta<IYCoreDropdownCellProps> = {
+const meta: Meta<IAltCoreDropdownCellProps> = {
   title: '✅ DropdownCell',
   id: 'dropdownCell',
   parameters: { controls: { sort: 'alpha' } },
@@ -24,7 +24,7 @@ const meta: Meta<IYCoreDropdownCellProps> = {
   ],
   render: () => {
     return html`
-      <y-core-dropdown-cell>
+      <alt-core-dropdown-cell>
         <div slot="label">
           DefualtSlot
         </div>
@@ -36,14 +36,14 @@ const meta: Meta<IYCoreDropdownCellProps> = {
         <div slot="append">
           AppendSlot
         </div>
-      </y-core-dropdown-cell>
+      </alt-core-dropdown-cell>
     `
   },
   argTypes: {},
   args: {},
-} satisfies Meta<IYCoreDropdownCellProps>
+} satisfies Meta<IAltCoreDropdownCellProps>
 
 export default meta
-type Story = StoryObj<IYCoreDropdownCellProps>
+type Story = StoryObj<IAltCoreDropdownCellProps>
 
 export const Playground: Story = { args: {} }

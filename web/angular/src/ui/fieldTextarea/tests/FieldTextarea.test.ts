@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreFieldTextareaTagName } from '~shared/constants'
-import { YFieldTextarea } from '~ng/ui/fieldTextarea'
+import { AltCoreFieldTextareaTagName } from '~shared/constants'
+import { AltFieldTextarea } from '~ng/ui/fieldTextarea'
 import {
-  type IYNgFieldTextareaProps,
+  type IAltNgFieldTextareaProps,
 } from '~ng/ui/fieldTextarea/models/types'
 
 import {
@@ -23,18 +23,18 @@ import {
   propAutocompleteCases,
 } from './cases/props'
 
-const tagName = YCoreFieldTextareaTagName
+const tagName = AltCoreFieldTextareaTagName
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgFieldTextareaProps>
+  props?: Partial<IAltNgFieldTextareaProps>
 }
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YFieldTextarea] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltFieldTextarea] }).compileComponents()
 
   @Component({
     template: `
-      <YFieldTextarea
+      <AltFieldTextarea
         [disabled]="disabled"
         [size]="size"
         [value]="value"
@@ -48,8 +48,8 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
         [rows]="rows"
         [resize]="resize"
         [autocomplete]="autocomplete"
-      ></YFieldTextarea>`,
-    imports: [YFieldTextarea],
+      ></AltFieldTextarea>`,
+    imports: [AltFieldTextarea],
     standalone: true,
   })
   class TestComponent {
@@ -71,7 +71,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YFieldTextarea',
+  'Angular/AltFieldTextarea',
   () => {
     describe(
       'Unit',

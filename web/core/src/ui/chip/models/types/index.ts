@@ -1,10 +1,10 @@
 import {
   createCoreChipExternalProps,
-  type IYCoreChipExternalProps,
+  type IAltCoreChipExternalProps,
 } from './external'
 
 export * from './external'
 
-export interface IYCoreChipProps extends IYCoreChipExternalProps {}
+export interface IAltCoreChipProps extends IAltCoreChipExternalProps {}
 
-export const createCoreChipProps = (): IYCoreChipProps => ({ ...createCoreChipExternalProps() })
+export const createCoreChipProps = (): IAltCoreChipProps => ({ ...createCoreChipExternalProps() })

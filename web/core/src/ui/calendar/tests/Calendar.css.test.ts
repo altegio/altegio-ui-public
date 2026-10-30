@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreCalendarTagName } from '~shared/constants'
+import { AltCoreCalendarTagName } from '~shared/constants'
 import {
   createCoreCalendarProps,
 } from '~core/ui/calendar/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/calendar/tests/cases/css'
 
-const tagName = YCoreCalendarTagName
+const tagName = AltCoreCalendarTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreCalendar/CSS',
+  'Core/AltCoreCalendar/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

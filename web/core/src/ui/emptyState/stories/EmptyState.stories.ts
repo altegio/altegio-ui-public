@@ -1,31 +1,31 @@
 import { html, nothing } from 'lit'
 import type { Meta, StoryObj } from '@storybook/web-components'
-import { YCoreEmptyStateTagName as tagName } from '~shared/constants'
+import { AltCoreEmptyStateTagName as tagName } from '~shared/constants'
 
 import '~core/ui/emptyState'
 import '~core/ui/button'
 
 import {
   createCoreEmptyStateExternalProps,
-  type IYCoreEmptyStateExternalProps,
+  type IAltCoreEmptyStateExternalProps,
 } from '~core/ui/emptyState/models/types/external'
 import { getComponentContentTable, getComponentStateTable, storyControlsTable } from '~shared/.storybook/tables'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import { size as sizeArgType } from '~shared/.storybook/argTypes'
-import { yMagic, yRocket, ySearch } from '~shared/icons'
+import { altMagic, altRocket, altSearch } from '~shared/icons'
 
-export interface IYCoreEmptyStateStoryProps extends IYCoreEmptyStateExternalProps {
+export interface IAltCoreEmptyStateStoryProps extends IAltCoreEmptyStateExternalProps {
   isActionsSlotExists: boolean
 }
 
-type TYCoreEmptyStateStoryMeta = IYCoreEmptyStateStoryProps
+type TAltCoreEmptyStateStoryMeta = IAltCoreEmptyStateStoryProps
 
 const { title, description, icon, size } = createCoreEmptyStateExternalProps()
 
 const iconOptions = {
-  search: ySearch,
-  rocket: yRocket,
-  magic: yMagic,
+  search: altSearch,
+  rocket: altRocket,
+  magic: altMagic,
 }
 
 /**
@@ -33,7 +33,7 @@ const iconOptions = {
  * Explains why content is missing or unavailable and suggests what to do next.
  *
  */
-const meta: Meta<TYCoreEmptyStateStoryMeta> = {
+const meta: Meta<TAltCoreEmptyStateStoryMeta> = {
   title: '✅ Empty State',
   id: 'state',
   parameters: { controls: { sort: 'alpha' } },
@@ -52,22 +52,22 @@ const meta: Meta<TYCoreEmptyStateStoryMeta> = {
     const renderActionsSlot = () => {
       return html`
         <div slot="actions">
-          <y-core-button
+          <alt-core-button
             label="Primary button"
             variant="primary"
-          ></y-core-button>
+          ></alt-core-button>
 
-          <y-core-button
+          <alt-core-button
             label="Secondary button"
             variant="outline"
-          ></y-core-button>
+          ></alt-core-button>
         </div>
       `
     }
 
     return html`
       <div style="display: flex; justify-content: center;">
-        <y-core-empty-state
+        <alt-core-empty-state
           .title=${title}
           .description=${description}
           .icon=${icon}
@@ -75,7 +75,7 @@ const meta: Meta<TYCoreEmptyStateStoryMeta> = {
           style="max-width: 400px;"
         >
           ${isActionsSlotExists ? renderActionsSlot() : nothing}
-        </y-core-empty-state>
+        </alt-core-empty-state>
       </div>
     `
   },
@@ -90,8 +90,8 @@ const meta: Meta<TYCoreEmptyStateStoryMeta> = {
     },
     size: {
       ...sizeArgType([
-        EYSizes.SMALL,
-        EYSizes.MEDIUM,
+        EAltSizes.SMALL,
+        EAltSizes.MEDIUM,
       ]),
       ...getComponentStateTable(size),
     },
@@ -115,9 +115,9 @@ const meta: Meta<TYCoreEmptyStateStoryMeta> = {
     icon,
     size,
   },
-} satisfies Meta<TYCoreEmptyStateStoryMeta>
+} satisfies Meta<TAltCoreEmptyStateStoryMeta>
 
 export default meta
-type Story = StoryObj<TYCoreEmptyStateStoryMeta>
+type Story = StoryObj<TAltCoreEmptyStateStoryMeta>
 
 export const Playground: Story = {}

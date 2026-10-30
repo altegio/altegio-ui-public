@@ -1,2 +1,2 @@
-export { default as YAutocompleteField } from './AutocompleteField.vue'
+export { default as AltAutocompleteField } from './AutocompleteField.vue'
 export * from './models/types'

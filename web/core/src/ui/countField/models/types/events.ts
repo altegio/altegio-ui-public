@@ -4,7 +4,7 @@ import type { BlurEvent, FocusEvent } from '~core/ui/fieldWrapper/models/types'
 
 export class ChangedValueEvent extends CustomEvent<{ value: string }> {}
 
-export type TYCoreCountFieldEvents = TEventsStoryArgs<{
+export type TAltCoreCountFieldEvents = TEventsStoryArgs<{
   ChangedValueEvent: typeof ChangedValueEvent
   InputEvent: typeof InputEvent
   FocusEvent: typeof FocusEvent

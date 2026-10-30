@@ -1,9 +1,9 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
 import { userEvent } from 'storybook/test'
 import {
-  YCorePopoverTagName,
-  YCoreTipTagName,
-  YCoreSimpleButtonTagName,
+  AltCorePopoverTagName,
+  AltCoreTipTagName,
+  AltCoreSimpleButtonTagName,
 } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import {
@@ -27,7 +27,7 @@ import {
   propCancelTextTestCases,
 } from './cases/props'
 
-const tagName = YCorePopoverTagName
+const tagName = AltCorePopoverTagName
 
 const {
   component,
@@ -41,7 +41,7 @@ const {
 )
 
 describe(
-  'Core/YPopover/Unit',
+  'Core/AltPopover/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -68,11 +68,11 @@ describe(
           ...propTriggerTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" with value ${JSON.stringify(testCase.value)} should map the prop to a class in ${YCoreTipTagName}`,
+            `Prop "${testCase.prop}" with value ${JSON.stringify(testCase.value)} should map the prop to a class in ${AltCoreTipTagName}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
-              const dropdownElement = getWCShadowRoot(component).querySelector(YCoreTipTagName)
+              const dropdownElement = getWCShadowRoot(component).querySelector(AltCoreTipTagName)
 
               expect(dropdownElement?.[testCase.prop]).toBe(testCase.value)
             },
@@ -80,20 +80,20 @@ describe(
         }
 
         it(
-          `Prop ${propSubmitTextTestCases.case} with value ${propSubmitTextTestCases.value} should map the prop to a class in YCoreSimpleButtonTagName`,
+          `Prop ${propSubmitTextTestCases.case} with value ${propSubmitTextTestCases.value} should map the prop to a class in AltCoreSimpleButtonTagName`,
           async() => {
             await updateComponent({ props: { [propSubmitTextTestCases.prop]: propSubmitTextTestCases.value } })
-            const buttonElement = getWCShadowRoot(component).querySelectorAll(`${YCoreSimpleButtonTagName}[variant="primary"]`)
+            const buttonElement = getWCShadowRoot(component).querySelectorAll(`${AltCoreSimpleButtonTagName}[variant="primary"]`)
 
             expect(trimTextContent(buttonElement[0].textContent)).toBe(propSubmitTextTestCases.value)
           },
         )
 
         it(
-          `Prop ${propCancelTextTestCases.case} with value ${propCancelTextTestCases.value} should map the prop to a class in YCoreSimpleButtonTagName`,
+          `Prop ${propCancelTextTestCases.case} with value ${propCancelTextTestCases.value} should map the prop to a class in AltCoreSimpleButtonTagName`,
           async() => {
             await updateComponent({ props: { [propCancelTextTestCases.prop]: propCancelTextTestCases.value } })
-            const buttonElement = getWCShadowRoot(component).querySelectorAll(`${YCoreSimpleButtonTagName}[variant="text"]`)
+            const buttonElement = getWCShadowRoot(component).querySelectorAll(`${AltCoreSimpleButtonTagName}[variant="text"]`)
 
             expect(trimTextContent(buttonElement[0].textContent)).toBe(propCancelTextTestCases.value)
           },
@@ -116,7 +116,7 @@ describe(
               submitHandler,
             )
 
-            const buttonElement = getWCShadowRoot(component).querySelector(`${YCoreSimpleButtonTagName}[variant="primary"]`)
+            const buttonElement = getWCShadowRoot(component).querySelector(`${AltCoreSimpleButtonTagName}[variant="primary"]`)
             if (!buttonElement) {
               throw Error('Submit button not found')
             }
@@ -138,7 +138,7 @@ describe(
               closeHandler,
             )
 
-            const buttonElement = getWCShadowRoot(component).querySelector(`${YCoreSimpleButtonTagName}[variant="text"]`)
+            const buttonElement = getWCShadowRoot(component).querySelector(`${AltCoreSimpleButtonTagName}[variant="text"]`)
             if (!buttonElement) {
               throw Error('Close button not found')
             }

@@ -1,3 +1,3 @@
-export interface IYCoreBrandButtonInternalProps {}
+export interface IAltCoreBrandButtonInternalProps {}
 
-export const createCoreBrandButtonInternalProps = (): IYCoreBrandButtonInternalProps => ({})
+export const createCoreBrandButtonInternalProps = (): IAltCoreBrandButtonInternalProps => ({})

@@ -1,5 +1,5 @@
 <template>
-  <y-core-dropdown-cell v-bind="props">
+  <alt-core-dropdown-cell v-bind="props">
     <div
       v-if="$slots.cell && $slots.cell()"
       slot="cell"
@@ -44,18 +44,18 @@
         name="append"
       />
     </div>
-  </y-core-dropdown-cell>
+  </alt-core-dropdown-cell>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/dropdownCell'
   import {
     createVueDropdownCellProps,
-    type IYVueDropdownCellProps,
-    type IYVueCoreDropdownCellProps,
+    type IAltVueDropdownCellProps,
+    type IAltVueCoreDropdownCellProps,
   } from '~vue/ui/dropdownCell/models/types'
 
-  defineOptions({ name: 'YDropdownCell' })
+  defineOptions({ name: 'AltDropdownCell' })
 
   defineSlots<{
     cell?: () => unknown
@@ -66,7 +66,7 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueDropdownCellProps>(),
+    defineProps<IAltVueDropdownCellProps>(),
     createVueDropdownCellProps(),
-  ) satisfies IYVueCoreDropdownCellProps
+  ) satisfies IAltVueCoreDropdownCellProps
 </script>

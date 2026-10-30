@@ -1,2 +1,2 @@
-export { default as YLoader } from './Loader.vue'
+export { default as AltLoader } from './Loader.vue'
 export type * from './models/types'

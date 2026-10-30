@@ -1,17 +1,17 @@
 import { omit } from 'radash'
 import {
   createCoreTextFieldProps,
-  type IYCoreTextFieldExternalProps,
+  type IAltCoreTextFieldExternalProps,
 } from '~core/ui/textField/models/types'
 
 export type { InputEvent, FocusEvent, BlurEvent, ClearEvent } from '~core/ui/textField/models/types'
 export { LABEL_LOCATOR, ERROR_LOCATOR } from '~core/ui/textField/models/types'
 
-export type TYNgTextFieldModel = IYCoreTextFieldExternalProps['value']
+export type TAltNgTextFieldModel = IAltCoreTextFieldExternalProps['value']
 
-export interface IYNgTextFieldProps extends Omit<IYCoreTextFieldExternalProps, 'value'> {}
+export interface IAltNgTextFieldProps extends Omit<IAltCoreTextFieldExternalProps, 'value'> {}
 
-export const createNgTextFieldProps = (): IYNgTextFieldProps => {
+export const createNgTextFieldProps = (): IAltNgTextFieldProps => {
   return { ...omit(createCoreTextFieldProps(), ['value']) }
 }
 

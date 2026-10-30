@@ -1,1 +1,1 @@
-export { YCoreChip } from './Chip.core'
+export { AltCoreChip } from './Chip.core'

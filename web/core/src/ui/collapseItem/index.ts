@@ -1,1 +1,1 @@
-export { YCoreCollapseItem } from './CollapseItem.core'
+export { AltCoreCollapseItem } from './CollapseItem.core'

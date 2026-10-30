@@ -1,6 +1,6 @@
-import type { TYCountryDataMappedById } from '~shared/types/country'
+import type { TAltCountryDataMappedById } from '~shared/types/country'
 
-export const defaultCountriesData: TYCountryDataMappedById = Object.freeze({
+export const defaultCountriesData: TAltCountryDataMappedById = Object.freeze({
   2: { id: 2, iso2: 'LV', code: '371', mask: '+371 xxx xx xx?x' },
   4: { id: 4, iso2: 'UA', code: '380', mask: '+380 xx xxx-xx-xx' },
   5: { id: 5, iso2: 'EE', code: '372', mask: '+372 xxxx xxx?xxxxx' },

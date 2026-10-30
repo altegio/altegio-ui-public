@@ -1,22 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import { YSelectField } from '~ng/ui/selectField'
-import ySelectFieldStoryMeta, { type TYCoreSelectFieldStoryMeta } from '~core/ui/selectField/stories/SelectField.stories'
+import { AltSelectField } from '~ng/ui/selectField'
+import altSelectFieldStoryMeta, { type TAltCoreSelectFieldStoryMeta } from '~core/ui/selectField/stories/SelectField.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import { ySearch } from '~shared/icons'
-import { YFieldIcon } from '~ng/ui/fieldIcon'
+import { altSearch } from '~shared/icons'
+import { AltFieldIcon } from '~ng/ui/fieldIcon'
 import { omit } from 'radash'
 import { action } from 'storybook/actions'
 import { useArgs } from 'storybook/preview-api'
-import { type YNgSelectFieldInputEvent } from '~ng/ui/selectField/models/types'
+import { type AltNgSelectFieldInputEvent } from '~ng/ui/selectField/models/types'
 
 /**
  * Angular wrapper for Core SelectField
  */
-const meta: Meta<YSelectField & TYCoreSelectFieldStoryMeta> = {
+const meta: Meta<AltSelectField & TAltCoreSelectFieldStoryMeta> = {
   title: 'Inputs/🔍 SelectField',
   id: 'selectField',
   parameters: { controls: { sort: 'alpha' } },
-  component: YSelectField,
+  component: AltSelectField,
   tags: [
     'angular',
     'autodocs',
@@ -26,7 +26,7 @@ const meta: Meta<YSelectField & TYCoreSelectFieldStoryMeta> = {
 
     const handlers = {
       onInput: action('input'),
-      onSelect: (event: YNgSelectFieldInputEvent) => {
+      onSelect: (event: AltNgSelectFieldInputEvent) => {
         action('select')(event)
         updateArgs({ value: event.detail.value })
       },
@@ -35,11 +35,11 @@ const meta: Meta<YSelectField & TYCoreSelectFieldStoryMeta> = {
     }
 
     return {
-      moduleMetadata: { imports: [YFieldIcon] },
+      moduleMetadata: { imports: [AltFieldIcon] },
       props: {
         ...args,
         ...handlers,
-        ySearch,
+        altSearch,
         computedLabelTooltipText: args.isLongText ? LOREM_IPSUM : args.labelTooltipText,
         computedLabelText: args.isLongText ? LOREM_IPSUM : args.labelText,
         computedAnnotationText: args.isLongText ? LOREM_IPSUM : args.annotationText,
@@ -47,7 +47,7 @@ const meta: Meta<YSelectField & TYCoreSelectFieldStoryMeta> = {
       },
       template: `
     <div style="padding: 50px 50px 300px; margin: 20px; border: 1px dashed black; border-radius: 8px">
-      <YSelectField
+      <AltSelectField
         [value]="value"
         [name]="name"
         [placeholder]="placeholder"
@@ -93,21 +93,21 @@ const meta: Meta<YSelectField & TYCoreSelectFieldStoryMeta> = {
 
         @if (showBefore) {
           <div slot="before">
-            <YFieldIcon
-              [icon]="ySearch"
-            ></YFieldIcon>
+            <AltFieldIcon
+              [icon]="altSearch"
+            ></AltFieldIcon>
           </div>
         }
-      </YSelectField>
+      </AltSelectField>
     </div>
     `,
     }
   },
-  argTypes: { ...omit(ySelectFieldStoryMeta.argTypes ?? {}, ['readonly']) },
-  args: { ...omit(ySelectFieldStoryMeta.args ?? {}, ['readonly']) },
-} satisfies Meta<YSelectField & TYCoreSelectFieldStoryMeta>
+  argTypes: { ...omit(altSelectFieldStoryMeta.argTypes ?? {}, ['readonly']) },
+  args: { ...omit(altSelectFieldStoryMeta.args ?? {}, ['readonly']) },
+} satisfies Meta<AltSelectField & TAltCoreSelectFieldStoryMeta>
 
 export default meta
-type Story = StoryObj<YSelectField & TYCoreSelectFieldStoryMeta>
+type Story = StoryObj<AltSelectField & TAltCoreSelectFieldStoryMeta>
 
 export const Playground: Story = { args: {} }

@@ -1,9 +1,9 @@
 import type { LitElement } from 'lit'
-import type * as YCoreElements from '~shared/constants'
+import type * as AltCoreElements from '~shared/constants'
 import type { TValueOf } from '~shared/types/utils'
 import type { TCoreTagName } from '../utils/components'
 
-export type TCoreComponent = HTMLElementTagNameMap[TValueOf<typeof YCoreElements>]
+export type TCoreComponent = HTMLElementTagNameMap[TValueOf<typeof AltCoreElements>]
 export type TCoreElement = TCoreComponent & LitElement
 
 /**
@@ -82,7 +82,7 @@ const resetProps = (
  * @returns {TCoreComponent} - The created component
  */
 export const createComponent = (
-  tagName: TValueOf<typeof YCoreElements>,
+  tagName: TValueOf<typeof AltCoreElements>,
   { slots, props }: {
     slots?: Record<string, string>
     props?: Partial<TCoreComponent>

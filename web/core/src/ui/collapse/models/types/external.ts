@@ -1,30 +1,30 @@
 import {
-  type IYCoreCollapseItemProps,
-  EYCoreCollapseItemVariant,
+  type IAltCoreCollapseItemProps,
+  EAltCoreCollapseItemVariant,
 } from '~core/ui/collapseItem/models/types'
 
-export type TCollapseItemValueSingle = IYCoreCollapseItemProps['value']
+export type TCollapseItemValueSingle = IAltCoreCollapseItemProps['value']
 export type TCollapseItemValueMultiple = TCollapseItemValueSingle[]
 
-export enum EYCoreCollapseType {
+export enum EAltCoreCollapseType {
   SINGLE = 'single',
   MULTIPLE = 'multiple',
 }
 
-export type TYCoreCollapseType = `${EYCoreCollapseType}`
+export type TAltCoreCollapseType = `${EAltCoreCollapseType}`
 
-export interface IYCoreCollapseExternalProps {
+export interface IAltCoreCollapseExternalProps {
   value: TCollapseItemValueSingle | TCollapseItemValueMultiple | undefined
-  type: TYCoreCollapseType | undefined
-  variant: IYCoreCollapseItemProps['variant']
+  type: TAltCoreCollapseType | undefined
+  variant: IAltCoreCollapseItemProps['variant']
   draggable: boolean
   allowCrossLevelMove: boolean
 }
 
-export const createCoreCollapseExternalProps = (): IYCoreCollapseExternalProps => ({
-  type: EYCoreCollapseType.SINGLE,
+export const createCoreCollapseExternalProps = (): IAltCoreCollapseExternalProps => ({
+  type: EAltCoreCollapseType.SINGLE,
   value: '',
-  variant: EYCoreCollapseItemVariant.PRIMARY,
+  variant: EAltCoreCollapseItemVariant.PRIMARY,
   draggable: false,
   allowCrossLevelMove: false,
 })

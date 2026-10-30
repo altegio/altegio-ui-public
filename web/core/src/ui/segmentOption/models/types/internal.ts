@@ -1,7 +1,7 @@
-export interface IYCoreSegmentOptionInternalProps {
+export interface IAltCoreSegmentOptionInternalProps {
   hovered: boolean | undefined
 }
 
-export const createCoreSegmentOptionInternalProps = (): IYCoreSegmentOptionInternalProps => {
+export const createCoreSegmentOptionInternalProps = (): IAltCoreSegmentOptionInternalProps => {
   return { hovered: false }
 }

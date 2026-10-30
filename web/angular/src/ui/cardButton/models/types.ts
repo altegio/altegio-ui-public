@@ -1,10 +1,10 @@
 import {
   createCoreCardButtonProps,
-  type IYCoreCardButtonProps,
+  type IAltCoreCardButtonProps,
 } from '~core/ui/cardButton/models/types'
 
-export { FocusEvent as YNgCardButtonFocusEvent, BlurEvent as YNgCardButtonBlurEvent } from '~core/ui/cardButton/models/types/events'
+export { FocusEvent as AltNgCardButtonFocusEvent, BlurEvent as AltNgCardButtonBlurEvent } from '~core/ui/cardButton/models/types/events'
 
-export interface IYNgCardButtonProps extends IYCoreCardButtonProps {}
+export interface IAltNgCardButtonProps extends IAltCoreCardButtonProps {}
 
-export const createNgCardButtonProps = (): IYNgCardButtonProps => createCoreCardButtonProps()
+export const createNgCardButtonProps = (): IAltNgCardButtonProps => createCoreCardButtonProps()

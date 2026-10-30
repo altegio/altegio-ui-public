@@ -1,9 +1,9 @@
-$component: $YCoreFunctionalModalTagName;
+$component: $AltCoreFunctionalModalTagName;
 
 .$(component) {
   display: flex;
 
-  --y-core-modal-custom-padding: 0;
+  --alt-core-modal-custom-padding: 0;
 
   &__wrapper {
     position: relative;
@@ -13,8 +13,8 @@ $component: $YCoreFunctionalModalTagName;
   }
 
   &__header {
-    padding: var(--y-core-size-spacing-5-x) var(--y-core-size-spacing-5-x) 0;
-    margin-right: var(--y-core-size-spacing-6-x);
+    padding: var(--alt-core-size-spacing-5-x) var(--alt-core-size-spacing-5-x) 0;
+    margin-right: var(--alt-core-size-spacing-6-x);
   }
 
   &__header-hidden {
@@ -31,28 +31,28 @@ $component: $YCoreFunctionalModalTagName;
   &__header-wrapper {
     display: flex;
     flex-direction: column;
-    gap: var(--y-core-size-spacing-2-x)
+    gap: var(--alt-core-size-spacing-2-x)
   }
 
   &__header-media-wrapper {
-    max-height: var(--y-core-functional-modal-header-media-height);
+    max-height: var(--alt-core-functional-modal-header-media-height);
     overflow: hidden;
   }
 
   &__content {
     box-sizing: border-box;
     flex: 1;
-    max-height: calc(100vh - var(--y-core-functional-modal-max-height-offset));
+    max-height: calc(100vh - var(--alt-core-functional-modal-max-height-offset));
     overflow-y: auto;
     border-bottom: 1px solid transparent;
   }
 
   &__content-wrapper {
-    padding: 0 var(--y-core-size-spacing-5-x);
+    padding: 0 var(--alt-core-size-spacing-5-x);
   }
 
   &__content-border {
-    border-bottom: 1px solid var(--y-core-color-stroke-primary);
+    border-bottom: 1px solid var(--alt-core-color-stroke-primary);
   }
 
   &__content-hidden {
@@ -64,7 +64,7 @@ $component: $YCoreFunctionalModalTagName;
   }
 
   &__content-margin-top {
-    margin-top: var(--y-core-size-spacing-4-x);
+    margin-top: var(--alt-core-size-spacing-4-x);
   }
 
   &__footer {
@@ -72,13 +72,13 @@ $component: $YCoreFunctionalModalTagName;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
-    padding: var(--y-core-size-spacing-5-x);
+    padding: var(--alt-core-size-spacing-5-x);
   }
 
   &__actions {
     display: flex;
     flex-flow: row nowrap;
-    gap: var(--y-core-size-spacing-2-x);
+    gap: var(--alt-core-size-spacing-2-x);
     align-items: center;
     justify-content: flex-end;
   }

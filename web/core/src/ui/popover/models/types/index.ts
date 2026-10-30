@@ -1,11 +1,11 @@
 import {
   createCorePopoverExternalProps,
-  type IYCorePopoverExternalProps,
+  type IAltCorePopoverExternalProps,
 } from './external'
 
 export * from './external'
 export * from './events'
 
-export interface IYCorePopoverProps extends IYCorePopoverExternalProps {}
+export interface IAltCorePopoverProps extends IAltCorePopoverExternalProps {}
 
-export const createCorePopoverProps = (): IYCorePopoverProps => ({ ...createCorePopoverExternalProps() })
+export const createCorePopoverProps = (): IAltCorePopoverProps => ({ ...createCorePopoverExternalProps() })

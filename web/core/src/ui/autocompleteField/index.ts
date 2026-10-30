@@ -1,1 +1,1 @@
-export { YCoreAutocompleteField } from './AutocompleteField.core'
+export { AltCoreAutocompleteField } from './AutocompleteField.core'

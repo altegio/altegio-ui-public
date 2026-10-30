@@ -3,44 +3,44 @@ import { customElement, property } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { consume } from '@lit/context'
 
-import { createCoreCardIconProps, type IYCoreCardIconProps } from '~core/ui/cardIcon/models/types'
-import { YCoreCardIconTagName as tagName } from '~shared/constants'
-import { EYSizes } from '~shared/types/global'
+import { createCoreCardIconProps, type IAltCoreCardIconProps } from '~core/ui/cardIcon/models/types'
+import { AltCoreCardIconTagName as tagName } from '~shared/constants'
+import { EAltSizes } from '~shared/types/global'
 import { sizeContextCreated, disabledContextCreated } from '~core/ui/cardWrapper/providers'
-import { EYCoreColorIconSize, type IYCoreColorIconExternalProps } from '~core/ui/colorIcon/models/types'
+import { EAltCoreColorIconSize, type IAltCoreColorIconExternalProps } from '~core/ui/colorIcon/models/types'
 
-import YCardIconVarsCss from '~core/ui/cardIcon/css/CardIcon.vars.css?inline'
-import YCardIconScopedCss from '~core/ui/cardIcon/css/CardIcon.scoped.css?inline'
+import AltCardIconVarsCss from '~core/ui/cardIcon/css/CardIcon.vars.css?inline'
+import AltCardIconScopedCss from '~core/ui/cardIcon/css/CardIcon.scoped.css?inline'
 
 import '~core/ui/colorIcon'
 import { withLocator } from '~core/utils/locator'
 
 const { size, variant, disabled } = createCoreCardIconProps()
 
-const mapSizeToIconSize: Record<NonNullable<IYCoreCardIconProps['size']>, NonNullable<IYCoreColorIconExternalProps['size']>> = {
-  [EYSizes.SMALL]: EYCoreColorIconSize.X_32,
-  [EYSizes.MEDIUM]: EYCoreColorIconSize.X_48,
-  [EYSizes.LARGE]: EYCoreColorIconSize.X_64,
+const mapSizeToIconSize: Record<NonNullable<IAltCoreCardIconProps['size']>, NonNullable<IAltCoreColorIconExternalProps['size']>> = {
+  [EAltSizes.SMALL]: EAltCoreColorIconSize.X_32,
+  [EAltSizes.MEDIUM]: EAltCoreColorIconSize.X_48,
+  [EAltSizes.LARGE]: EAltCoreColorIconSize.X_64,
 }
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreCardIcon
+export class AltCoreCardIcon
   extends LitElement
-  implements IYCoreCardIconProps {
-  @property({ type: Object }) icon!: IYCoreCardIconProps['icon']
+  implements IAltCoreCardIconProps {
+  @property({ type: Object }) icon!: IAltCoreCardIconProps['icon']
   @consume({ context: sizeContextCreated, subscribe: true })
-  @property({ type: String, reflect: true }) size: IYCoreCardIconProps['size'] = size
-  @property({ type: String, reflect: true }) variant: IYCoreCardIconProps['variant'] = variant
+  @property({ type: String, reflect: true }) size: IAltCoreCardIconProps['size'] = size
+  @property({ type: String, reflect: true }) variant: IAltCoreCardIconProps['variant'] = variant
   @consume({ context: disabledContextCreated, subscribe: true })
-  @property({ type: Boolean }) disabled: IYCoreCardIconProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreCardIconProps['disabled'] = disabled
 
   private readonly baseClass = tagName
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCardIconVarsCss)}
-      ${unsafeCSS(YCardIconScopedCss)}
+      ${unsafeCSS(AltCardIconVarsCss)}
+      ${unsafeCSS(AltCardIconScopedCss)}
     `,
   ]
 
@@ -52,7 +52,7 @@ export class YCoreCardIcon
   }
 
   private get computedSize() {
-    return this.size ?? EYSizes.MEDIUM
+    return this.size ?? EAltSizes.MEDIUM
   }
 
   private get computedIconSize() {
@@ -63,13 +63,13 @@ export class YCoreCardIcon
   protected render() {
     return html`
       <div class=${classMap(this.computedClasses)}>
-        <y-core-color-icon
+        <alt-core-color-icon
           .icon=${this.icon}
           .size=${this.computedIconSize}
           .variant=${this.variant}
           .disabled=${this.disabled}
         >
-        </y-core-color-icon>
+        </alt-core-color-icon>
       </div>
     `
   }

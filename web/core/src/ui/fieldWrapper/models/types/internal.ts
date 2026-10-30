@@ -1,3 +1,3 @@
-export interface IYCoreFieldWrapperInternalProps {}
+export interface IAltCoreFieldWrapperInternalProps {}
 
-export const createCoreFieldWrapperInternalProps = (): IYCoreFieldWrapperInternalProps => ({})
+export const createCoreFieldWrapperInternalProps = (): IAltCoreFieldWrapperInternalProps => ({})

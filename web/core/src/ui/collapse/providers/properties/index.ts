@@ -1,11 +1,11 @@
 import { createContext } from '@lit/context'
-import type { IYCoreCollapseProps } from '../../models/types'
+import type { IAltCoreCollapseProps } from '../../models/types'
 
 export const valueContextKey = Symbol('ValueContext')
-export const valueContextCreated = createContext<IYCoreCollapseProps['value']>(valueContextKey)
+export const valueContextCreated = createContext<IAltCoreCollapseProps['value']>(valueContextKey)
 
 export const typeContextKey = Symbol('TypeContext')
-export const typeContextCreated = createContext<IYCoreCollapseProps['type']>(typeContextKey)
+export const typeContextCreated = createContext<IAltCoreCollapseProps['type']>(typeContextKey)
 
 export const variantContextKey = Symbol('VariantContext')
-export const variantContextCreated = createContext<IYCoreCollapseProps['variant']>(variantContextKey)
+export const variantContextCreated = createContext<IAltCoreCollapseProps['variant']>(variantContextKey)

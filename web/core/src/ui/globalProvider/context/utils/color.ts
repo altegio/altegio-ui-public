@@ -39,7 +39,7 @@ function parseColorExpressions(accentColor: HslaColor, colorTypeExpressions: str
 export function generateTransformersFromJson(colorTokenTransformersJson: TColorTokenTransformersRaw): TColorTokenTransformers {
   const transformer: Partial<TColorTokenTransformers> = {}
   Object.entries(colorTokenTransformersJson).forEach(([colorToken, colorTokenExpressions]) => {
-    transformer[`--y-core-color-${colorToken}`] = {
+    transformer[`--alt-core-color-${colorToken}`] = {
       [EColorTheme.light]: {
         [EColorType.light]: (accentColor: HslaColor): HslaColor => {
           return parseColorExpressions(accentColor, colorTokenExpressions.lightMode.light)

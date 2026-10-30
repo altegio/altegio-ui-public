@@ -1,5 +1,5 @@
-export interface IYCoreDropdownCellExternalProps {
+export interface IAltCoreDropdownCellExternalProps {
   locator?: string
 }
 
-export const createCoreDropdownCellExternalProps = (): IYCoreDropdownCellExternalProps => ({ locator: undefined })
+export const createCoreDropdownCellExternalProps = (): IAltCoreDropdownCellExternalProps => ({ locator: undefined })

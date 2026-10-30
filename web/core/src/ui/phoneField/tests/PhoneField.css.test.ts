@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCorePhoneFieldTagName } from '~shared/constants'
+import { AltCorePhoneFieldTagName } from '~shared/constants'
 import '~core/ui/phoneField'
 import {
   CSSVariablesHostToRootCases,
@@ -10,7 +10,7 @@ import {
 } from './cases/css'
 import { createCorePhoneFieldProps } from '~core/ui/phoneField/models/types'
 
-const tagName = YCorePhoneFieldTagName
+const tagName = AltCorePhoneFieldTagName
 
 const {
   component,
@@ -21,7 +21,7 @@ const {
 )
 
 describe(
-  'Core/YCorePhoneField/CSS',
+  'Core/AltCorePhoneField/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

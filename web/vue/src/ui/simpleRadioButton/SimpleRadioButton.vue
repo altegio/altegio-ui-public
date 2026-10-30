@@ -1,5 +1,5 @@
 <template>
-  <y-core-simple-radio-button
+  <alt-core-simple-radio-button
     v-bind="props"
     :checked="modelValue"
     @checked="$emit('update:modelValue', $event.detail.checked)"
@@ -10,16 +10,16 @@
   import '~core/ui/simpleRadioButton'
   import {
     createVueSimpleRadioButtonProps,
-    type IYVueSimpleRadioButtonProps,
-    type IYVueSimpleRadioButtonEmits,
+    type IAltVueSimpleRadioButtonProps,
+    type IAltVueSimpleRadioButtonEmits,
   } from '~vue/ui/simpleRadioButton/models/types'
 
-  defineOptions({ name: 'YSimpleRadioButton' })
+  defineOptions({ name: 'AltSimpleRadioButton' })
 
   const props = withDefaults(
-    defineProps<IYVueSimpleRadioButtonProps>(),
+    defineProps<IAltVueSimpleRadioButtonProps>(),
     createVueSimpleRadioButtonProps(),
-  ) satisfies IYVueSimpleRadioButtonProps
+  ) satisfies IAltVueSimpleRadioButtonProps
 
-  defineEmits<IYVueSimpleRadioButtonEmits>()
+  defineEmits<IAltVueSimpleRadioButtonEmits>()
 </script>

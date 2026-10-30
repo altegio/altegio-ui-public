@@ -1,5 +1,5 @@
 <template>
-  <y-core-color-icon v-bind="props" />
+  <alt-core-color-icon v-bind="props" />
 </template>
 
 <script setup lang="ts">
@@ -7,14 +7,14 @@
 
   import {
     createVueColorIconProps,
-    type IYVueColorIconProps,
-    type IYVueCoreColorIconProps,
+    type IAltVueColorIconProps,
+    type IAltVueCoreColorIconProps,
   } from '~vue/ui/colorIcon/models/types'
 
-  defineOptions({ name: 'YColorIcon' })
+  defineOptions({ name: 'AltColorIcon' })
 
   const props = withDefaults(
-    defineProps<IYVueColorIconProps>(),
+    defineProps<IAltVueColorIconProps>(),
     createVueColorIconProps(),
-  ) satisfies IYVueCoreColorIconProps
+  ) satisfies IAltVueCoreColorIconProps
 </script>

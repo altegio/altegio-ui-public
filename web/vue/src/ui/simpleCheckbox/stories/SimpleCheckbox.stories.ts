@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
 import { omit } from 'radash'
-import yCoreSimpleCheckboxStoryMeta from '~core/ui/simpleCheckbox/stories/SimpleCheckbox.stories'
-import { YSimpleCheckbox } from '~vue/ui/simpleCheckbox'
-import { type IYVueSimpleCheckboxProps } from '~vue/ui/simpleCheckbox/models/types'
+import altCoreSimpleCheckboxStoryMeta from '~core/ui/simpleCheckbox/stories/SimpleCheckbox.stories'
+import { AltSimpleCheckbox } from '~vue/ui/simpleCheckbox'
+import { type IAltVueSimpleCheckboxProps } from '~vue/ui/simpleCheckbox/models/types'
 import { getComponentContentTable } from '~shared/.storybook/tables'
 
-type TVueSimpleCheckboxStoryMeta = IYVueSimpleCheckboxProps
+type TVueSimpleCheckboxStoryMeta = IAltVueSimpleCheckboxProps
 
 /**
  * Vue wrapper for Core SimpleCheckbox
@@ -20,12 +20,12 @@ const meta: Meta<TVueSimpleCheckboxStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YSimpleCheckbox },
+    components: { AltSimpleCheckbox },
     setup() {
       return { args }
     },
     template: `
-      <YSimpleCheckbox
+      <AltSimpleCheckbox
         v-bind="args"
         v-model="args.modelValue"
       />
@@ -33,7 +33,7 @@ const meta: Meta<TVueSimpleCheckboxStoryMeta> = {
   }),
   argTypes: {
     ...omit(
-      yCoreSimpleCheckboxStoryMeta.argTypes ?? {},
+      altCoreSimpleCheckboxStoryMeta.argTypes ?? {},
       ['checked'],
     ),
     modelValue: {
@@ -45,7 +45,7 @@ const meta: Meta<TVueSimpleCheckboxStoryMeta> = {
   },
   args: {
     ...omit(
-      yCoreSimpleCheckboxStoryMeta.args ?? {},
+      altCoreSimpleCheckboxStoryMeta.args ?? {},
       ['checked'],
     ),
     modelValue: false,

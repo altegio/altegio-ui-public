@@ -1,8 +1,8 @@
 import {
   createCoreSearchTextHighlightedProps,
-  type IYCoreSearchTextHighlightedProps,
+  type IAltCoreSearchTextHighlightedProps,
 } from '~core/ui/searchTextHighlighted/models/types'
 
-export interface IYNgSearchTextHighlightedProps extends IYCoreSearchTextHighlightedProps {}
+export interface IAltNgSearchTextHighlightedProps extends IAltCoreSearchTextHighlightedProps {}
 
-export const createNgSearchTextHighlightedProps = (): IYNgSearchTextHighlightedProps => createCoreSearchTextHighlightedProps()
+export const createNgSearchTextHighlightedProps = (): IAltNgSearchTextHighlightedProps => createCoreSearchTextHighlightedProps()

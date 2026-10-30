@@ -6,9 +6,9 @@ import { I18nPlugin } from '~core/ui/globalProvider/plugins/i18n'
 import { ru, en } from '~core/i18n'
 
 import type {
-  IYCoreCalendarProps,
+  IAltCoreCalendarProps,
 } from '~core/ui/calendar/models/types'
-import type { TYCoreCalendarEvents } from '~core/ui/calendar/models/types/events'
+import type { TAltCoreCalendarEvents } from '~core/ui/calendar/models/types/events'
 import type { ILocale } from '~core/i18n'
 
 // Register the components
@@ -16,8 +16,8 @@ import '~core/ui/calendar'
 import '~core/ui/globalProvider'
 
 // Story meta type
-type TYCoreCalendarMeta = IYCoreCalendarProps & TYCoreCalendarEvents & { localeData: ILocale }
-type Story = StoryObj<TYCoreCalendarMeta>
+type TAltCoreCalendarMeta = IAltCoreCalendarProps & TAltCoreCalendarEvents & { localeData: ILocale }
+type Story = StoryObj<TAltCoreCalendarMeta>
 
 /**
  * Builds a calendar template wrapped in a localization plugin
@@ -30,21 +30,21 @@ const createCalendarTemplate = ({
   maxDate,
   onSelect,
   localeData,
-}: TYCoreCalendarMeta) => {
+}: TAltCoreCalendarMeta) => {
   // Localization plugin with the selected locale
   const i18nPlugin = new I18nPlugin(localeData)
 
   return html`
-    <y-core-global-provider .plugins=${[i18nPlugin]}>
-      <y-core-calendar
+    <alt-core-global-provider .plugins=${[i18nPlugin]}>
+      <alt-core-calendar
         .isRange=${isRange}
         .disabled=${disabled}
         .headerSelectors=${headerSelectors}
         min-date=${ifDefined(minDate)}
         max-date=${ifDefined(maxDate)}
         @select=${onSelect}
-      ></y-core-calendar>
-    </y-core-global-provider>
+      ></alt-core-calendar>
+    </alt-core-global-provider>
   `
 }
 

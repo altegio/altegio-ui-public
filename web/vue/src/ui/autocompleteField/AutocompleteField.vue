@@ -1,5 +1,5 @@
 <template>
-  <y-core-autocomplete-field
+  <alt-core-autocomplete-field
     v-bind="props"
     @focus="$emit('focus', $event)"
     @blur="$emit('blur', $event)"
@@ -32,7 +32,7 @@
         name="empty-state-actions"
       />
     </div>
-  </y-core-autocomplete-field>
+  </alt-core-autocomplete-field>
 </template>
 
 <script setup lang="ts">
@@ -40,12 +40,12 @@
 
   import {
     createVueAutocompleteFieldProps,
-    type IYVueAutocompleteFieldProps,
-    type IYVueAutocompleteFieldEmits,
+    type IAltVueAutocompleteFieldProps,
+    type IAltVueAutocompleteFieldEmits,
   } from '~vue/ui/autocompleteField/models/types'
   import type { ChangeEvent } from '~core/ui/autocompleteField/models/types/events'
 
-  defineOptions({ name: 'YAutocompleteField' })
+  defineOptions({ name: 'AltAutocompleteField' })
 
   defineSlots<{
     annotation: () => unknown
@@ -54,12 +54,12 @@
     [key: `custom-option-${string | number}`]: () => unknown
   }>()
 
-  const emit = defineEmits<IYVueAutocompleteFieldEmits>()
+  const emit = defineEmits<IAltVueAutocompleteFieldEmits>()
 
   const props = withDefaults(
-    defineProps<IYVueAutocompleteFieldProps>(),
+    defineProps<IAltVueAutocompleteFieldProps>(),
     createVueAutocompleteFieldProps(),
-  ) satisfies IYVueAutocompleteFieldProps
+  ) satisfies IAltVueAutocompleteFieldProps
 
   const handleChange = (event: ChangeEvent) => {
     emit('change', event)

@@ -1,2 +1,2 @@
-export { YTag } from './Tag.component'
+export { AltTag } from './Tag.component'
 export type * from './models/types'

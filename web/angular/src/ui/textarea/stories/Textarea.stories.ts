@@ -3,18 +3,18 @@ import { FormsModule, ReactiveFormsModule, FormControl, Validators, type Validat
 import { action } from 'storybook/actions'
 import { useArgs } from 'storybook/preview-api'
 
-import { YTextarea } from '~ng/ui/textarea'
-import yCoreTextareaStoryMeta, { type TYCoreTextareaMeta, WithMaxlength as CoreWithMaxlength } from '~core/ui/textarea/stories/Textarea.stories'
+import { AltTextarea } from '~ng/ui/textarea'
+import altCoreTextareaStoryMeta, { type TAltCoreTextareaMeta, WithMaxlength as CoreWithMaxlength } from '~core/ui/textarea/stories/Textarea.stories'
 import { omit } from 'radash'
-import type { TYNgTextareaModel } from '~ng/ui/textarea/models/types'
+import type { TAltNgTextareaModel } from '~ng/ui/textarea/models/types'
 import { getComponentEmitsTable, getComponentStateTable } from '~web/shared/.storybook/tables'
-import type { TYNgControlValueTypes } from '~web/angular/src/types/ControlValueAccessorTypes'
-import { YIcon } from '~ng/ui/icon'
-import { yInfo } from '~shared/icons'
+import type { TAltNgControlValueTypes } from '~web/angular/src/types/ControlValueAccessorTypes'
+import { AltIcon } from '~ng/ui/icon'
+import { altInfo } from '~shared/icons'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
 // Component type extended with the story-only props
-type NgTextareaMeta = YTextarea & TYCoreTextareaMeta & TYNgControlValueTypes<TYNgTextareaModel>
+type NgTextareaMeta = AltTextarea & TAltCoreTextareaMeta & TAltNgControlValueTypes<TAltNgTextareaModel>
 
 /**
  * Angular wrapper for Core Textarea
@@ -23,7 +23,7 @@ const meta: Meta<NgTextareaMeta> = {
   title: 'Inputs/🔍 TextArea',
   id: 'textarea',
   parameters: { controls: { sort: 'alpha' } },
-  component: YTextarea,
+  component: AltTextarea,
   tags: [
     'angular',
     'autodocs',
@@ -32,7 +32,7 @@ const meta: Meta<NgTextareaMeta> = {
     const [, updateArgs] = useArgs()
 
     const handlers = {
-      onModelChange: (ngModel: TYNgTextareaModel) => {
+      onModelChange: (ngModel: TAltNgTextareaModel) => {
         action('onModelChange')(ngModel)
         updateArgs({ ngModel })
       },
@@ -51,15 +51,15 @@ const meta: Meta<NgTextareaMeta> = {
       props: {
         ...args,
         ...handlers,
-        yInfo,
+        altInfo,
         calculatedErrors: args.errors ?? args.showErrors,
         computedLabelText: args.isLongText ? LOREM_IPSUM : args.labelText,
         computedLabelTooltipText: args.isLongText ? LOREM_IPSUM : args.labelTooltipText,
       },
-      moduleMetadata: { imports: [FormsModule, YIcon] },
+      moduleMetadata: { imports: [FormsModule, AltIcon] },
       template: `
         <div style="padding: 20px; max-width: 500px;">
-          <YTextarea
+          <AltTextarea
             (ngModelChange)="onModelChange($event)"
             (focus)="onFocus($event)"
             (blur)="onBlur($event)"
@@ -92,23 +92,23 @@ const meta: Meta<NgTextareaMeta> = {
           >
             @if (showBeforeSlot) {
               <ng-template #textareaBefore>
-                <YIcon [icon]="yInfo" size="16px" />
+                <AltIcon [icon]="altInfo" size="16px" />
               </ng-template>
             }
 
             @if (showAfterSlot) {
               <ng-template #textareaAfter>
-                <YIcon [icon]="yInfo" size="16px" />
+                <AltIcon [icon]="altInfo" size="16px" />
               </ng-template>
             }
-          </YTextarea>
+          </AltTextarea>
         </div>
       `,
     }
   },
   argTypes: {
     ...omit(
-      yCoreTextareaStoryMeta.argTypes ?? {},
+      altCoreTextareaStoryMeta.argTypes ?? {},
       ['readonly', 'value', 'onInput'],
     ),
     ngModel: {
@@ -123,7 +123,7 @@ const meta: Meta<NgTextareaMeta> = {
     },
   },
   args: {
-    ...omit(yCoreTextareaStoryMeta.args ?? {}, ['onInput', 'readonly', 'value']),
+    ...omit(altCoreTextareaStoryMeta.args ?? {}, ['onInput', 'readonly', 'value']),
     ngModel: '',
   },
 }
@@ -159,7 +159,7 @@ export const WithFormControlAutoRequired: Story = {
     moduleMetadata: { imports: [ReactiveFormsModule] },
     template: `
       <div style="padding: 20px; max-width: 500px;">
-        <YTextarea
+        <AltTextarea
           [formControl]="descriptionControl"
           [labelText]="'Description'"
           [placeholder]="'Enter a description'"
@@ -196,7 +196,7 @@ export const WithAutoErrorMessages: Story = {
       template: `
         <div style="padding: 20px; max-width: 500px;">
           <div style="display: flex; flex-direction: column; gap: 16px;">
-            <YTextarea
+            <AltTextarea
               [formControl]="descriptionControl"
               [labelText]="'Description'"
               [placeholder]="'Enter a description'"

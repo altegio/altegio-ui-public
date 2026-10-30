@@ -1,9 +1,9 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { ref } from 'vue'
 import { mount } from '@vue/test-utils'
-import { YCoreRadioButtonGroupTagName as tagName } from '~shared/constants'
-import { YCoreRadioButtonGroup } from '~core/ui/radioButtonGroup'
-import { YRadioButtonGroup } from '~vue/ui/radioButtonGroup'
+import { AltCoreRadioButtonGroupTagName as tagName } from '~shared/constants'
+import { AltCoreRadioButtonGroup } from '~core/ui/radioButtonGroup'
+import { AltRadioButtonGroup } from '~vue/ui/radioButtonGroup'
 import {
   propSizeTestCases,
   propLabelTextTestCases,
@@ -12,13 +12,13 @@ import {
 } from './cases/props'
 
 describe(
-  'Vue/YRadioButtonGroup',
+  'Vue/AltRadioButtonGroup',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreRadioButtonGroup,
+          AltCoreRadioButtonGroup,
         )
       }
     })
@@ -37,7 +37,7 @@ describe(
             () => {
               const checked = ref(false)
               const wrapper = mount(
-                YRadioButtonGroup,
+                AltRadioButtonGroup,
                 {
                   props: {
                     [testCase.prop]: testCase.value,
@@ -62,7 +62,7 @@ describe(
           'Should emit "update:modelValue" on the core component change event',
           async() => {
             const wrapper = mount(
-              YRadioButtonGroup,
+              AltRadioButtonGroup,
               { props: { modelValue: false } },
             )
 

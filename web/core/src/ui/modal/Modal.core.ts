@@ -6,13 +6,13 @@ import { classMap } from 'lit/directives/class-map.js'
 import '~core/ui/loader'
 import '~core/ui/iconButton'
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
-import YCoreTransitionCss from '~core/assets/css/transitions.css?inline'
+import AltCoreTransitionCss from '~core/assets/css/transitions.css?inline'
 
-import { YCoreModalTagName as tagName } from '~shared/constants'
-import { yBigClose } from '~shared/icons'
+import { AltCoreModalTagName as tagName } from '~shared/constants'
+import { altBigClose } from '~shared/icons'
 import { createTransition, type IElementTransition } from '~shared/utils/transition'
 
-import { createCoreModalProps, type IYCoreModalProps } from './models/types'
+import { createCoreModalProps, type IAltCoreModalProps } from './models/types'
 import { OVERLAY_TRANSITION_CLASSES } from './models/constants/transitions'
 import {
   OpenEvent,
@@ -31,15 +31,15 @@ const { open, size, variant, width, preventEscape, hideOverlay, fullScreen, dial
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreModal extends LitElement implements IYCoreModalProps {
-  @property({ type: Boolean }) open: IYCoreModalProps['open'] = open
-  @property({ type: String }) size: IYCoreModalProps['size'] = size
-  @property({ type: String }) variant: IYCoreModalProps['variant'] = variant
-  @property({ type: String }) width: IYCoreModalProps['width'] = width
-  @property({ type: Boolean, attribute: 'prevent-escape' }) preventEscape: IYCoreModalProps['preventEscape'] = preventEscape
-  @property({ type: Boolean, attribute: 'hide-overlay' }) hideOverlay: IYCoreModalProps['hideOverlay'] = hideOverlay
-  @property({ type: Boolean, attribute: 'full-screen' }) fullScreen: IYCoreModalProps['fullScreen'] = fullScreen
-  @property({ type: String, attribute: 'dialog-label' }) dialogLabel: IYCoreModalProps['dialogLabel'] = dialogLabel
+export class AltCoreModal extends LitElement implements IAltCoreModalProps {
+  @property({ type: Boolean }) open: IAltCoreModalProps['open'] = open
+  @property({ type: String }) size: IAltCoreModalProps['size'] = size
+  @property({ type: String }) variant: IAltCoreModalProps['variant'] = variant
+  @property({ type: String }) width: IAltCoreModalProps['width'] = width
+  @property({ type: Boolean, attribute: 'prevent-escape' }) preventEscape: IAltCoreModalProps['preventEscape'] = preventEscape
+  @property({ type: Boolean, attribute: 'hide-overlay' }) hideOverlay: IAltCoreModalProps['hideOverlay'] = hideOverlay
+  @property({ type: Boolean, attribute: 'full-screen' }) fullScreen: IAltCoreModalProps['fullScreen'] = fullScreen
+  @property({ type: String, attribute: 'dialog-label' }) dialogLabel: IAltCoreModalProps['dialogLabel'] = dialogLabel
 
   @bubblingEvent(OpenEvent, { name: 'open' })
   protected _open!: TDispatcher<OpenEvent>
@@ -245,12 +245,12 @@ export class YCoreModal extends LitElement implements IYCoreModalProps {
 
         <div class="${this.baseClass}__close">
           <slot name="close">
-            <y-core-icon-button
-              .icon=${yBigClose}
+            <alt-core-icon-button
+              .icon=${altBigClose}
               variant="text"
               @click=${this.handleCloseIconClick}
             >
-            </y-core-icon-button>
+            </alt-core-icon-button>
           </slot>
         </div>
       </div>
@@ -273,7 +273,7 @@ export class YCoreModal extends LitElement implements IYCoreModalProps {
     css`
       ${unsafeCSS(ModalVarsCSS)}
       ${unsafeCSS(ModalScopedCSS)}
-      ${unsafeCSS(YCoreTransitionCss)}
+      ${unsafeCSS(AltCoreTransitionCss)}
     `,
   ]
 }

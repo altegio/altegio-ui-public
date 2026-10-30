@@ -1,5 +1,5 @@
-$component: $YCoreGlobalProviderTagName;
+$component: $AltCoreGlobalProviderTagName;
 
 .$(component) {
-  font-family: var(--y-core-font-family);
+  font-family: var(--alt-core-font-family);
 }

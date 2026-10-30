@@ -3,20 +3,20 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output } from '
 import '~core/ui/radioButtonGroup'
 import {
   createNgRadioButtonGroupProps,
-  type IYNgRadioButtonGroupProps,
+  type IAltNgRadioButtonGroupProps,
   type RadioButtonGroupChangeEvent,
-  type TYNgRadioButtonGroupEvents,
+  type TAltNgRadioButtonGroupEvents,
 } from '~ng/ui/radioButtonGroup/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 
 const { value, size, direction, alignment, labelText, labelTooltipText, labelDebounce, labelTooltipActive } = createNgRadioButtonGroupProps()
 
 @Component({
-  selector: 'YRadioButtonGroup',
+  selector: 'AltRadioButtonGroup',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-radio-button-group
+    <alt-core-radio-button-group
       [value]="value"
       [size]="size"
       [direction]="direction"
@@ -28,20 +28,20 @@ const { value, size, direction, alignment, labelText, labelTooltipText, labelDeb
       (change)="handleChangeEvent($event)"
     >
       <ng-content/>
-    </y-core-radio-button-group>
+    </alt-core-radio-button-group>
   `,
 })
-export class YRadioButtonGroup implements IYNgRadioButtonGroupProps {
-  @Input() @DefaultValue(value) value: IYNgRadioButtonGroupProps['value'] = value
-  @Input() @DefaultValue(size) size: IYNgRadioButtonGroupProps['size'] = size
-  @Input() @DefaultValue(direction) direction: IYNgRadioButtonGroupProps['direction'] = direction
-  @Input() @DefaultValue(alignment) alignment: IYNgRadioButtonGroupProps['alignment'] = alignment
-  @Input() @DefaultValue(labelText) labelText: IYNgRadioButtonGroupProps['labelText'] = labelText
-  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IYNgRadioButtonGroupProps['labelTooltipText'] = labelTooltipText
-  @Input() @DefaultValue(labelDebounce) labelDebounce: IYNgRadioButtonGroupProps['labelDebounce'] = labelDebounce
-  @Input() @DefaultValue(labelTooltipActive) labelTooltipActive: IYNgRadioButtonGroupProps['labelTooltipActive'] = labelTooltipActive
+export class AltRadioButtonGroup implements IAltNgRadioButtonGroupProps {
+  @Input() @DefaultValue(value) value: IAltNgRadioButtonGroupProps['value'] = value
+  @Input() @DefaultValue(size) size: IAltNgRadioButtonGroupProps['size'] = size
+  @Input() @DefaultValue(direction) direction: IAltNgRadioButtonGroupProps['direction'] = direction
+  @Input() @DefaultValue(alignment) alignment: IAltNgRadioButtonGroupProps['alignment'] = alignment
+  @Input() @DefaultValue(labelText) labelText: IAltNgRadioButtonGroupProps['labelText'] = labelText
+  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IAltNgRadioButtonGroupProps['labelTooltipText'] = labelTooltipText
+  @Input() @DefaultValue(labelDebounce) labelDebounce: IAltNgRadioButtonGroupProps['labelDebounce'] = labelDebounce
+  @Input() @DefaultValue(labelTooltipActive) labelTooltipActive: IAltNgRadioButtonGroupProps['labelTooltipActive'] = labelTooltipActive
 
-  @Output() changeEvent = new EventEmitter<TYNgRadioButtonGroupEvents['value']>()
+  @Output() changeEvent = new EventEmitter<TAltNgRadioButtonGroupEvents['value']>()
   handleChangeEvent(event: Event) {
     const changeEvent = event as RadioButtonGroupChangeEvent
     this.changeEvent.emit(changeEvent.detail.value)

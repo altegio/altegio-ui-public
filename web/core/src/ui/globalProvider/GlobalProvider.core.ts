@@ -5,24 +5,24 @@ import { provide } from '@lit/context'
 
 import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
 import {
-  type IYCoreGlobalProviderProps,
+  type IAltCoreGlobalProviderProps,
   GlobalProviderReadyEvent,
 } from '~core/ui/globalProvider/models/types'
 import {
-  YCoreGlobalProviderTagName as tagName,
+  AltCoreGlobalProviderTagName as tagName,
 } from '~shared/constants'
 
 import { GlobalContext, globalContextCreated } from './context'
 import { installPlugins, uninstallPlugins } from './plugins'
 
-import YCoreGlobalProviderVarsCSS from '~core/ui/globalProvider/css/GlobalProvider.vars.css?inline'
-import YCoreGlobalProviderScopedCSS from '~core/ui/globalProvider/css/GlobalProvider.scoped.css?inline'
+import AltCoreGlobalProviderVarsCSS from '~core/ui/globalProvider/css/GlobalProvider.vars.css?inline'
+import AltCoreGlobalProviderScopedCSS from '~core/ui/globalProvider/css/GlobalProvider.scoped.css?inline'
 import { withLocator } from '~core/utils/locator'
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreGlobalProvider extends LitElement implements IYCoreGlobalProviderProps {
-  @property({ type: Array }) plugins: IYCoreGlobalProviderProps['plugins']
+export class AltCoreGlobalProvider extends LitElement implements IAltCoreGlobalProviderProps {
+  @property({ type: Array }) plugins: IAltCoreGlobalProviderProps['plugins']
   @provide({ context: globalContextCreated })
   @state()
   public readonly globalContext = new GlobalContext()
@@ -31,8 +31,8 @@ export class YCoreGlobalProvider extends LitElement implements IYCoreGlobalProvi
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreGlobalProviderVarsCSS)}
-      ${unsafeCSS(YCoreGlobalProviderScopedCSS)}
+      ${unsafeCSS(AltCoreGlobalProviderVarsCSS)}
+      ${unsafeCSS(AltCoreGlobalProviderScopedCSS)}
     `,
   ]
 

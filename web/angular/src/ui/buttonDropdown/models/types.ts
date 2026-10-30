@@ -3,16 +3,16 @@ import {
   ItemClickEvent as CoreButtonDropdownItemClickEvent,
   VisibleEvent as CoreButtonDropdownVisibleEvent,
 } from '~core/ui/buttonDropdown/models/types'
-import type { IYCoreButtonDropdownProps } from '~core/ui/buttonDropdown/models/types'
+import type { IAltCoreButtonDropdownProps } from '~core/ui/buttonDropdown/models/types'
 
-export interface IYNgButtonDropdownProps extends IYCoreButtonDropdownProps {}
+export interface IAltNgButtonDropdownProps extends IAltCoreButtonDropdownProps {}
 
 export class ItemClickEvent extends CoreButtonDropdownItemClickEvent {}
 export class VisibleEvent extends CoreButtonDropdownVisibleEvent {}
 
-export interface IYNgButtonDropdownPropsEmits {
+export interface IAltNgButtonDropdownPropsEmits {
   'item-click': ItemClickEvent
   'change-visible': VisibleEvent
 }
 
-export const createNgButtonDropdownProps = (): IYNgButtonDropdownProps => createCoreButtonDropdownProps()
+export const createNgButtonDropdownProps = (): IAltNgButtonDropdownProps => createCoreButtonDropdownProps()

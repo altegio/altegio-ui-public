@@ -4,14 +4,14 @@ import { consume } from '@lit/context'
 import { classMap } from 'lit/directives/class-map.js'
 
 import {
-  type IYCoreTableBarProps,
+  type IAltCoreTableBarProps,
 } from '~core/ui/tableBar/models/types'
 import {
-  YCoreTableBarTagName as tagName,
+  AltCoreTableBarTagName as tagName,
 } from '~shared/constants'
 
-import YCoreTableBarVarsCss from '~core/ui/tableBar/css/TableBar.vars.css?inline'
-import YCoreTableBarScopedCss from '~core/ui/tableBar/css/TableBar.scoped.css?inline'
+import AltCoreTableBarVarsCss from '~core/ui/tableBar/css/TableBar.vars.css?inline'
+import AltCoreTableBarScopedCss from '~core/ui/tableBar/css/TableBar.scoped.css?inline'
 
 import {
   pluginsContextCreated,
@@ -23,9 +23,9 @@ import { withLocator } from '~core/utils/locator'
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreTableBar
+export class AltCoreTableBar
   extends LitElement
-  implements IYCoreTableBarProps {
+  implements IAltCoreTableBarProps {
   @consume({ context: pluginsContextCreated, subscribe: true })
   @state()
   private plugins!: TTablePluginsContext
@@ -34,8 +34,8 @@ export class YCoreTableBar
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreTableBarVarsCss)}
-      ${unsafeCSS(YCoreTableBarScopedCss)}
+      ${unsafeCSS(AltCoreTableBarVarsCss)}
+      ${unsafeCSS(AltCoreTableBarScopedCss)}
     `,
   ]
 

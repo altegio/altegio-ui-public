@@ -1,2 +1,2 @@
-export { default as YButtonDropdown } from './ButtonDropdown.vue'
+export { default as AltButtonDropdown } from './ButtonDropdown.vue'
 export type * from './models/types'

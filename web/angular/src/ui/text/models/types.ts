@@ -1,6 +1,6 @@
-import { createCoreTextExternalProps, type IYCoreTextExternalProps } from '~core/ui/text/models/types'
+import { createCoreTextExternalProps, type IAltCoreTextExternalProps } from '~core/ui/text/models/types'
 
-export interface IYNgTextProps extends IYCoreTextExternalProps {}
+export interface IAltNgTextProps extends IAltCoreTextExternalProps {}
 
-export const createNgTextProps = (): IYNgTextProps => createCoreTextExternalProps()
+export const createNgTextProps = (): IAltNgTextProps => createCoreTextExternalProps()
 

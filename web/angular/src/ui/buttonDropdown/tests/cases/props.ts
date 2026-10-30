@@ -11,14 +11,14 @@ import {
   propAutoCloseTestCases as corePropAutoCloseTestCases,
 } from '~core/ui/buttonDropdown/tests/cases/props'
 
-import type { IYNgButtonDropdownProps } from '~ng/ui/buttonDropdown/models/types'
+import type { IAltNgButtonDropdownProps } from '~ng/ui/buttonDropdown/models/types'
 
-export const propItemsTestCases: TPropTestCase<IYNgButtonDropdownProps, 'items'>[] = [...corePropItemsTestCases]
-export const propVariantTestCases: TPropTestCase<IYNgButtonDropdownProps, 'variant'>[] = [...corePropVariantTestCases]
-export const propDisabledTestCases: TPropTestCase<IYNgButtonDropdownProps, 'disabled'>[] = [...corePropDisabledTestCases]
-export const propSizeCases: TPropTestCase<IYNgButtonDropdownProps, 'size'>[] = [...corePropSizeCases]
-export const propLoadingTestCases: TPropTestCase<IYNgButtonDropdownProps, 'loading'>[] = [...corePropLoadingTestCases]
-export const propLabelTestCases: TPropTestCase<IYNgButtonDropdownProps, 'label'>[] = [...corePropLabelTestCases]
-export const propFullWidthTestCases: TPropTestCase<IYNgButtonDropdownProps, 'fullWidth'>[] = [...corePropFullWidthTestCases]
-export const propAutoCloseTestCases: TPropTestCase<IYNgButtonDropdownProps, 'autoClose'>[] = [...corePropAutoCloseTestCases]
+export const propItemsTestCases: TPropTestCase<IAltNgButtonDropdownProps, 'items'>[] = [...corePropItemsTestCases]
+export const propVariantTestCases: TPropTestCase<IAltNgButtonDropdownProps, 'variant'>[] = [...corePropVariantTestCases]
+export const propDisabledTestCases: TPropTestCase<IAltNgButtonDropdownProps, 'disabled'>[] = [...corePropDisabledTestCases]
+export const propSizeCases: TPropTestCase<IAltNgButtonDropdownProps, 'size'>[] = [...corePropSizeCases]
+export const propLoadingTestCases: TPropTestCase<IAltNgButtonDropdownProps, 'loading'>[] = [...corePropLoadingTestCases]
+export const propLabelTestCases: TPropTestCase<IAltNgButtonDropdownProps, 'label'>[] = [...corePropLabelTestCases]
+export const propFullWidthTestCases: TPropTestCase<IAltNgButtonDropdownProps, 'fullWidth'>[] = [...corePropFullWidthTestCases]
+export const propAutoCloseTestCases: TPropTestCase<IAltNgButtonDropdownProps, 'autoClose'>[] = [...corePropAutoCloseTestCases]
 

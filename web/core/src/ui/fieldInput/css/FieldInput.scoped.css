@@ -1,6 +1,6 @@
 @import url('./FieldInput.mixins.css');
 
-$component: $YCoreFieldInputTagName;
+$component: $AltCoreFieldInputTagName;
 
 :host {
   display: inline-flex;
@@ -14,7 +14,7 @@ $component: $YCoreFieldInputTagName;
   input:-webkit-autofill,
   input:-webkit-autofill:hover, 
   input:-webkit-autofill:focus {
-    box-shadow: inset 0 0 0 1.5rem var(--y-core-color-surface-primary);
+    box-shadow: inset 0 0 0 1.5rem var(--alt-core-color-surface-primary);
   }
 
   input[type="number"] {
@@ -30,45 +30,45 @@ $component: $YCoreFieldInputTagName;
 .$(component) {
   display: inline-flex;
   width: 100%;
-  font-family: var(--y-core-font-family);
-  color: var(--y-core-field-input-default-color);
-  cursor: var(--y-core-field-input-cursor);
+  font-family: var(--alt-core-font-family);
+  color: var(--alt-core-field-input-default-color);
+  cursor: var(--alt-core-field-input-cursor);
   outline: none;
   background: transparent;
   border: none;
 
   &::placeholder {
-    color: var(--y-core-field-input-placeholder-color);
+    color: var(--alt-core-field-input-placeholder-color);
   }
 
   &:disabled,
   &_disabled {
-    color: var(--y-core-field-input-disabled-color);
+    color: var(--alt-core-field-input-disabled-color);
   }
 
   &_size {
     &_small {
       @mixin field-input-size
-        --y-core-field-input-size-small-padding-y,
-        --y-core-field-input-size-small-padding-x,
-        --y-core-field-input-size-small-font-size,
-        --y-core-field-input-size-small-line-height;
+        --alt-core-field-input-size-small-padding-y,
+        --alt-core-field-input-size-small-padding-x,
+        --alt-core-field-input-size-small-font-size,
+        --alt-core-field-input-size-small-line-height;
     }
 
     &_medium {
       @mixin field-input-size
-        --y-core-field-input-size-medium-padding-y,
-        --y-core-field-input-size-medium-padding-x,
-        --y-core-field-input-size-medium-font-size,
-        --y-core-field-input-size-medium-line-height;
+        --alt-core-field-input-size-medium-padding-y,
+        --alt-core-field-input-size-medium-padding-x,
+        --alt-core-field-input-size-medium-font-size,
+        --alt-core-field-input-size-medium-line-height;
     }
 
     &_large {
       @mixin field-input-size
-        --y-core-field-input-size-large-padding-y,
-        --y-core-field-input-size-large-padding-x,
-        --y-core-field-input-size-large-font-size,
-        --y-core-field-input-size-large-line-height;
+        --alt-core-field-input-size-large-padding-y,
+        --alt-core-field-input-size-large-padding-x,
+        --alt-core-field-input-size-large-font-size,
+        --alt-core-field-input-size-large-line-height;
     }
   }
 

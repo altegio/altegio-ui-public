@@ -13,9 +13,9 @@ interface TAcListItem {
 
 // Before: mapping every row by hand (40+ lines):
 /*
-const sortedListNew = computed((): IYVueTableItem[] => {
+const sortedListNew = computed((): IAltVueTableItem[] => {
   return sortedList.value.map(item => {
-    const result: IYVueTableItem = {
+    const result: IAltVueTableItem = {
       rowId: item.id,
     }
 
@@ -106,7 +106,7 @@ export function createReportsTableData(sortedList: Ref<TAcListItem[]>) {
 // Usage in a component:
 /*
 <template>
-  <y-table
+  <alt-table
     :headers="tableData.headers"
     :items="tableData.items"
     class="reports-list__table-new"
@@ -121,7 +121,7 @@ export function createReportsTableData(sortedList: Ref<TAcListItem[]>) {
         @duplicate:report="tryDuplicateReport"
       />
     </template>
-  </y-table>
+  </alt-table>
 </template>
 
 <script setup>

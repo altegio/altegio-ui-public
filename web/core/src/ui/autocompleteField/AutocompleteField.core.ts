@@ -8,7 +8,7 @@ import { provide } from '@lit/context'
 import { debounce } from 'radash'
 import { autoPlacement as autoPlacementMiddleware } from '@floating-ui/dom'
 
-import { YCoreDropdownCellTagName, YCoreFieldInputTagName, YCoreAutocompleteFieldTagName as tagName } from '~shared/constants'
+import { AltCoreDropdownCellTagName, AltCoreFieldInputTagName, AltCoreAutocompleteFieldTagName as tagName } from '~shared/constants'
 
 import {
   disabledContextCreated,
@@ -18,9 +18,9 @@ import {
 } from '~core/ui/fieldWrapper/providers'
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
 import type {
-  IYCoreAutocompleteFieldExternalProps,
-  TYCoreAutocompleteFieldAutocompleteOption,
-  TYCoreAutocompleteFieldInfo,
+  IAltCoreAutocompleteFieldExternalProps,
+  TAltCoreAutocompleteFieldAutocompleteOption,
+  TAltCoreAutocompleteFieldInfo,
 } from './models/types'
 import {
   BlurEvent,
@@ -32,7 +32,7 @@ import {
 import CoreAutocompleteFieldVarsCSS from './css/AutocompleteField.vars.css?inline'
 import CoreAutocompleteFieldScopedCSS from './css/AutocompleteField.scoped.css?inline'
 
-import { type YCoreFieldInput } from '~core/ui/fieldInput'
+import { type AltCoreFieldInput } from '~core/ui/fieldInput'
 
 import '~core/ui/fieldWrapper'
 import '~core/ui/fieldInput'
@@ -45,18 +45,18 @@ import '~core/ui/loader'
 import '~core/ui/searchTextHighlighted'
 
 import { preventAndStopEvent } from '~shared/utils/helpers'
-import { EYCoreDropdownPlacement, EYCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
+import { EAltCoreDropdownPlacement, EAltCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
 import type { VisibleEvent } from '~core/ui/dropdown/models/types/events'
 import type { InputEvent } from '~core/ui/fieldInput/models/types'
 import { hasSlotContent } from '~core/utils/lit-slots'
 import { booleanConverter } from '~core/utils/converters'
 import classMapToString from '~core/utils/classMapToString'
 import { renderAnnotation, renderError, renderLabel } from '~core/renderers'
-import { EYSizes } from '~shared/types/global'
-import { EYCoreLoaderVariant } from '~core/ui/loader/models/types'
+import { EAltSizes } from '~shared/types/global'
+import { EAltCoreLoaderVariant } from '~core/ui/loader/models/types'
 
-import { yClose } from '~shared/icons'
-import { EYCoreTextSize, EYCoreTextVariant } from '../text/models/types'
+import { altClose } from '~shared/icons'
+import { EAltCoreTextSize, EAltCoreTextVariant } from '../text/models/types'
 import { withLocator } from '~core/utils/locator'
 
 const {
@@ -87,33 +87,33 @@ const DROPDOWN_DELAY = 300
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreAutocompleteField extends LitElement implements IYCoreAutocompleteFieldExternalProps {
+export class AltCoreAutocompleteField extends LitElement implements IAltCoreAutocompleteFieldExternalProps {
   @provide({ context: disabledContextCreated })
-  @property({ type: Boolean }) disabled: IYCoreAutocompleteFieldExternalProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreAutocompleteFieldExternalProps['disabled'] = disabled
   @provide({ context: readonlyContextCreated })
-  @property({ type: Boolean }) readonly: IYCoreAutocompleteFieldExternalProps['readonly'] = readonly
+  @property({ type: Boolean }) readonly: IAltCoreAutocompleteFieldExternalProps['readonly'] = readonly
   @provide({ context: errorContextCreated })
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IYCoreAutocompleteFieldExternalProps['error'] = error
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IAltCoreAutocompleteFieldExternalProps['error'] = error
   @provide({ context: sizeContextCreated })
-  @property({ type: String, reflect: true }) size: IYCoreAutocompleteFieldExternalProps['size'] = size
-  @property({ type: String }) value: IYCoreAutocompleteFieldExternalProps['value'] = value
-  @property({ type: String }) name: IYCoreAutocompleteFieldExternalProps['name'] = name
-  @property({ type: String }) placeholder: IYCoreAutocompleteFieldExternalProps['placeholder'] = placeholder
+  @property({ type: String, reflect: true }) size: IAltCoreAutocompleteFieldExternalProps['size'] = size
+  @property({ type: String }) value: IAltCoreAutocompleteFieldExternalProps['value'] = value
+  @property({ type: String }) name: IAltCoreAutocompleteFieldExternalProps['name'] = name
+  @property({ type: String }) placeholder: IAltCoreAutocompleteFieldExternalProps['placeholder'] = placeholder
   @property({
     type: Boolean,
     reflect: true,
-  }) autofocus: NonNullable<IYCoreAutocompleteFieldExternalProps['autofocus']> = Boolean(autofocus)
-  @property({ type: Boolean, reflect: true }) required: IYCoreAutocompleteFieldExternalProps['required'] = required
-  @property({ type: Array }) errors: IYCoreAutocompleteFieldExternalProps['errors'] = errors
-  @property({ type: String, attribute: 'label-text' }) labelText: IYCoreAutocompleteFieldExternalProps['labelText'] = labelText
-  @property({ type: Number, attribute: 'label-debounce' }) labelDebounce: IYCoreAutocompleteFieldExternalProps['labelDebounce'] = labelDebounce
-  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IYCoreAutocompleteFieldExternalProps['labelTooltipText'] = labelTooltipText
-  @property({ type: String, attribute: 'annotation-text' }) annotationText: IYCoreAutocompleteFieldExternalProps['annotationText'] = annotationText
-  @property({ type: Number, attribute: 'min-search-length' }) minSearchLength: IYCoreAutocompleteFieldExternalProps['minSearchLength'] = minSearchLength
-  @property({ type: Boolean, attribute: 'disabled-autocomplete' }) disabledAutocomplete: IYCoreAutocompleteFieldExternalProps['disabledAutocomplete'] = disabledAutocomplete
-  @property({ type: String, attribute: 'empty-state-title' }) emptyStateTitle: IYCoreAutocompleteFieldExternalProps['emptyStateTitle'] = emptyStateTitle
-  @property({ type: String, attribute: 'empty-state-description' }) emptyStateDescription: IYCoreAutocompleteFieldExternalProps['emptyStateDescription'] = emptyStateDescription
-  @property({ type: Object, attribute: 'empty-state-icon' }) emptyStateIcon: IYCoreAutocompleteFieldExternalProps['emptyStateIcon'] = emptyStateIcon
+  }) autofocus: NonNullable<IAltCoreAutocompleteFieldExternalProps['autofocus']> = Boolean(autofocus)
+  @property({ type: Boolean, reflect: true }) required: IAltCoreAutocompleteFieldExternalProps['required'] = required
+  @property({ type: Array }) errors: IAltCoreAutocompleteFieldExternalProps['errors'] = errors
+  @property({ type: String, attribute: 'label-text' }) labelText: IAltCoreAutocompleteFieldExternalProps['labelText'] = labelText
+  @property({ type: Number, attribute: 'label-debounce' }) labelDebounce: IAltCoreAutocompleteFieldExternalProps['labelDebounce'] = labelDebounce
+  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IAltCoreAutocompleteFieldExternalProps['labelTooltipText'] = labelTooltipText
+  @property({ type: String, attribute: 'annotation-text' }) annotationText: IAltCoreAutocompleteFieldExternalProps['annotationText'] = annotationText
+  @property({ type: Number, attribute: 'min-search-length' }) minSearchLength: IAltCoreAutocompleteFieldExternalProps['minSearchLength'] = minSearchLength
+  @property({ type: Boolean, attribute: 'disabled-autocomplete' }) disabledAutocomplete: IAltCoreAutocompleteFieldExternalProps['disabledAutocomplete'] = disabledAutocomplete
+  @property({ type: String, attribute: 'empty-state-title' }) emptyStateTitle: IAltCoreAutocompleteFieldExternalProps['emptyStateTitle'] = emptyStateTitle
+  @property({ type: String, attribute: 'empty-state-description' }) emptyStateDescription: IAltCoreAutocompleteFieldExternalProps['emptyStateDescription'] = emptyStateDescription
+  @property({ type: Object, attribute: 'empty-state-icon' }) emptyStateIcon: IAltCoreAutocompleteFieldExternalProps['emptyStateIcon'] = emptyStateIcon
   @property({
     type: Function,
     attribute: 'search-function',
@@ -121,7 +121,7 @@ export class YCoreAutocompleteField extends LitElement implements IYCoreAutocomp
       fromAttribute: () => ({}),
       toAttribute: () => null,
     },
-  }) searchFunction: IYCoreAutocompleteFieldExternalProps['searchFunction'] = searchFunction
+  }) searchFunction: IAltCoreAutocompleteFieldExternalProps['searchFunction'] = searchFunction
 
   @bubblingEvent(
     FocusEvent,
@@ -147,10 +147,10 @@ export class YCoreAutocompleteField extends LitElement implements IYCoreAutocomp
   )
   _change!: TDispatcher<ChangeEvent>
 
-  @query(YCoreFieldInputTagName) public readonly fieldInput?: YCoreFieldInput
+  @query(AltCoreFieldInputTagName) public readonly fieldInput?: AltCoreFieldInput
 
   @state() private isOpened = false
-  @state() private autocompleteOptions: TYCoreAutocompleteFieldAutocompleteOption[] = []
+  @state() private autocompleteOptions: TAltCoreAutocompleteFieldAutocompleteOption[] = []
   @state() private loadingAutocompleteOptions = false
   @state() private currentSearchRequestId = 0
   @state() private hasAnnotationSlot = false
@@ -182,7 +182,7 @@ export class YCoreAutocompleteField extends LitElement implements IYCoreAutocomp
 
 
   private get dropdownMiddlewares() {
-    const allowedPlacements = [EYCoreDropdownPlacement.BOTTOM, EYCoreDropdownPlacement.TOP]
+    const allowedPlacements = [EAltCoreDropdownPlacement.BOTTOM, EAltCoreDropdownPlacement.TOP]
 
     return [autoPlacementMiddleware({ allowedPlacements })]
   }
@@ -253,7 +253,7 @@ export class YCoreAutocompleteField extends LitElement implements IYCoreAutocomp
     }
   }
 
-  private loadAutocompleteOptions = debounce({ delay: DROPDOWN_DELAY }, async(query: TYCoreAutocompleteFieldInfo, minSearchLength: number) => {
+  private loadAutocompleteOptions = debounce({ delay: DROPDOWN_DELAY }, async(query: TAltCoreAutocompleteFieldInfo, minSearchLength: number) => {
     if (!this.searchFunction || query.value.length < minSearchLength) {
       this.autocompleteOptions = []
 
@@ -277,7 +277,7 @@ export class YCoreAutocompleteField extends LitElement implements IYCoreAutocomp
     }
   })
 
-  private makeSearch = (query: TYCoreAutocompleteFieldInfo) => {
+  private makeSearch = (query: TAltCoreAutocompleteFieldInfo) => {
     const minSearchLength = this.minSearchLength ?? 0
 
     if (query.value.length < minSearchLength) {
@@ -313,7 +313,7 @@ export class YCoreAutocompleteField extends LitElement implements IYCoreAutocomp
     this.isOpened = value
   }
 
-  private handleSelectAutocompleteOption = (item: TYCoreAutocompleteFieldAutocompleteOption) => (event: Event) => {
+  private handleSelectAutocompleteOption = (item: TAltCoreAutocompleteFieldAutocompleteOption) => (event: Event) => {
     if (this.computedDisabledOrReadonly || !event.currentTarget) return
     event.stopPropagation()
 
@@ -355,7 +355,7 @@ export class YCoreAutocompleteField extends LitElement implements IYCoreAutocomp
 
   protected renderDropdownActivator() {
     return html`
-      <y-core-field-wrapper
+      <alt-core-field-wrapper
         .disabled=${this.disabled}
         .readonly=${this.readonly}
         .error=${Boolean(this.errors?.length) || this.error}
@@ -366,7 +366,7 @@ export class YCoreAutocompleteField extends LitElement implements IYCoreAutocomp
       >
         <slot name="icon" 
         @slotchange=${this.handleSlotIconChange}></slot>
-        <y-core-field-input
+        <alt-core-field-input
           .value=${this.value}
           .name=${this.name}
           .placeholder=${this.placeholder}
@@ -376,34 +376,34 @@ export class YCoreAutocompleteField extends LitElement implements IYCoreAutocomp
           .hideSpaceLeft=${this.hasIconSlot}
           type="text"
           @input=${this.handleInput}
-        ></y-core-field-input>
+        ></alt-core-field-input>
         ${this.isClearButtonVisible
           ? html`
-            <y-core-field-icon
-              .icon=${yClose}
+            <alt-core-field-icon
+              .icon=${altClose}
               hoverable
               @click=${this.handleClear}
-            ></y-core-field-icon>
+            ></alt-core-field-icon>
           `
           : nothing
         }
-      </y-core-field-wrapper>
+      </alt-core-field-wrapper>
     `
   }
 
-  protected renderDropdownListExtraSubtitles(option: TYCoreAutocompleteFieldAutocompleteOption) {
+  protected renderDropdownListExtraSubtitles(option: TAltCoreAutocompleteFieldAutocompleteOption) {
     const extraSubtitles = option.additionalInfo ?? []
 
     return extraSubtitles.map((subtitle) => subtitle
       ? html`
-        <y-core-search-text-highlighted
+        <alt-core-search-text-highlighted
           text=${ifDefined(subtitle)}
           .search=${this.value}
-          .size=${EYCoreTextSize.A2_REGULAR}
-          .variant=${EYCoreTextVariant.SECONDARY}
-          .highlightTextSize=${EYCoreTextSize.A2_REGULAR}
-          .highlightTextVariant=${EYCoreTextVariant.PRIMARY}
-        ></y-core-search-text-highlighted>`
+          .size=${EAltCoreTextSize.A2_REGULAR}
+          .variant=${EAltCoreTextVariant.SECONDARY}
+          .highlightTextSize=${EAltCoreTextSize.A2_REGULAR}
+          .highlightTextVariant=${EAltCoreTextVariant.PRIMARY}
+        ></alt-core-search-text-highlighted>`
       : nothing)
   }
 
@@ -413,18 +413,18 @@ export class YCoreAutocompleteField extends LitElement implements IYCoreAutocomp
       this.autocompleteOptions,
       (option) => option.id,
       (option) => html`
-          <y-core-dropdown-cell
-            locator=${`${YCoreDropdownCellTagName}_${option.id}`}
+          <alt-core-dropdown-cell
+            locator=${`${AltCoreDropdownCellTagName}_${option.id}`}
             @click=${this.handleSelectAutocompleteOption(option)}
           >
             <div class=${this.baseDropdownListItemClass} slot="content">
-            <y-core-dropdown-cell-text label=${ifDefined(option.value)}>
+            <alt-core-dropdown-cell-text label=${ifDefined(option.value)}>
                 <div slot="subtitle">
                   ${this.renderDropdownListExtraSubtitles(option)}
                 </div>
-              </y-core-dropdown-cell-text>
+              </alt-core-dropdown-cell-text>
             </div>
-          </y-core-dropdown-cell>
+          </alt-core-dropdown-cell>
         `,
     )
   }
@@ -435,13 +435,13 @@ export class YCoreAutocompleteField extends LitElement implements IYCoreAutocomp
     }
 
     return html`
-      <y-core-empty-state 
+      <alt-core-empty-state 
         .title=${this.emptyStateTitle ?? ''}
         .description=${this.emptyStateDescription ?? ''}
         .icon=${this.emptyStateIcon}
       >
         <slot name="empty-state-actions" slot="actions"></slot>
-      </y-core-empty-state>
+      </alt-core-empty-state>
     `
   }
 
@@ -452,17 +452,17 @@ export class YCoreAutocompleteField extends LitElement implements IYCoreAutocomp
 
     return html`
       <div class=${this.baseDropdownListItemLoader}>
-        <y-core-loader
-          .size=${EYSizes.MEDIUM}
-          .variant=${EYCoreLoaderVariant.YELLOW}
-        ></y-core-loader>
+        <alt-core-loader
+          .size=${EAltSizes.MEDIUM}
+          .variant=${EAltCoreLoaderVariant.YELLOW}
+        ></alt-core-loader>
       </div>
     `
   }
 
   protected renderDropdownContent() {
     return html`
-      <y-core-dropdown-list>
+      <alt-core-dropdown-list>
         <div 
           class=${this.baseDropdownListItemsClass}
           slot="list"
@@ -478,7 +478,7 @@ export class YCoreAutocompleteField extends LitElement implements IYCoreAutocomp
               `
           }
         </div>
-      </y-core-dropdown-list>`
+      </alt-core-dropdown-list>`
   }
 
   protected render() {
@@ -494,10 +494,10 @@ export class YCoreAutocompleteField extends LitElement implements IYCoreAutocomp
           handleClick: this.handleLabelClick,
           className: classMapToString(this.computedLabelClasses),
         })}
-        <y-core-dropdown
+        <alt-core-dropdown
           .isOpen=${this.isDropdownOpened}
-          .placement=${EYCoreDropdownPlacement.BOTTOM}
-          .trigger=${EYCoreDropdownTrigger.MANUAL}
+          .placement=${EAltCoreDropdownPlacement.BOTTOM}
+          .trigger=${EAltCoreDropdownTrigger.MANUAL}
           .middlewares=${this.dropdownMiddlewares}
           strict-width
           @click-outside=${this.handleClickOutside}
@@ -513,7 +513,7 @@ export class YCoreAutocompleteField extends LitElement implements IYCoreAutocomp
                 : nothing
             }
           </div>
-        </y-core-dropdown>
+        </alt-core-dropdown>
         ${renderAnnotation({
           text: this.annotationText,
           disabled: this.computedDisabledOrReadonly,

@@ -1,18 +1,18 @@
 import {
   createCoreFieldIconExternalProps,
-  type IYCoreFieldIconExternalProps,
+  type IAltCoreFieldIconExternalProps,
 } from './external'
 import {
   createCoreFieldIconInternalProps,
-  type IYCoreFieldIconInternalProps,
+  type IAltCoreFieldIconInternalProps,
 } from './internal'
 
 export * from './external'
 export * from './internal'
 
-export interface IYCoreFieldIconProps extends IYCoreFieldIconExternalProps, IYCoreFieldIconInternalProps {}
+export interface IAltCoreFieldIconProps extends IAltCoreFieldIconExternalProps, IAltCoreFieldIconInternalProps {}
 
-export const createCoreFieldIconProps = (): IYCoreFieldIconProps => ({
+export const createCoreFieldIconProps = (): IAltCoreFieldIconProps => ({
   ...createCoreFieldIconExternalProps(),
   ...createCoreFieldIconInternalProps(),
 })

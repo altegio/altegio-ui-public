@@ -1,2 +1,2 @@
-export { YCountField } from './CountField.component'
+export { AltCountField } from './CountField.component'
 export type * from './models/types'

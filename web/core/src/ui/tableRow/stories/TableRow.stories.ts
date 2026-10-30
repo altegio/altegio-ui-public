@@ -5,28 +5,28 @@ import '~core/ui/tableRow'
 
 import {
   createCoreTableRowProps,
-  type IYCoreTableRowProps,
+  type IAltCoreTableRowProps,
 } from '../models/types'
 import {
-  YCoreTableRowTagName as tagName,
+  AltCoreTableRowTagName as tagName,
 } from '~shared/constants'
 
 import { storyControlsTable, getComponentStateTable } from '~shared/.storybook/tables'
 
-import type { TYCoreSimpleCheckboxEvents } from '~core/ui/simpleCheckbox/models/types/events'
+import type { TAltCoreSimpleCheckboxEvents } from '~core/ui/simpleCheckbox/models/types/events'
 
-export interface IYCoreTableRowStorySlots {
+export interface IAltCoreTableRowStorySlots {
   showDefaultSlot?: boolean
 }
 
-export type TYCoreTableRowMeta = IYCoreTableRowProps & IYCoreTableRowStorySlots & TYCoreSimpleCheckboxEvents
+export type TAltCoreTableRowMeta = IAltCoreTableRowProps & IAltCoreTableRowStorySlots & TAltCoreSimpleCheckboxEvents
 
 const { stripe, selectable, disabled } = createCoreTableRowProps()
 
 /**
  * ## Core TableRow
  */
-const meta: Meta<TYCoreTableRowMeta> = {
+const meta: Meta<TAltCoreTableRowMeta> = {
   title: 'TableRow',
   id: 'tableRow',
   parameters: { controls: { sort: 'alpha' } },
@@ -41,14 +41,14 @@ const meta: Meta<TYCoreTableRowMeta> = {
     showDefaultSlot,
   }) => {
     return html`
-      <y-core-table-row
+      <alt-core-table-row
         .stripe=${stripe}
         .selectable=${selectable}
       >
         ${showDefaultSlot && html`
           <div>row</div>
         `}
-      </y-core-table-row>
+      </alt-core-table-row>
     `
   },
   argTypes: {
@@ -81,9 +81,9 @@ const meta: Meta<TYCoreTableRowMeta> = {
     disabled,
     showDefaultSlot: true,
   },
-} satisfies Meta<TYCoreTableRowMeta>
+} satisfies Meta<TAltCoreTableRowMeta>
 
 export default meta
-type Story = StoryObj<TYCoreTableRowMeta>
+type Story = StoryObj<TAltCoreTableRowMeta>
 
 export const Playground: Story = { args: {} }

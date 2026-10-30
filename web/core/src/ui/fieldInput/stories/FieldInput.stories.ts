@@ -4,16 +4,16 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 import { useArgs } from 'storybook/preview-api'
 import { pick } from 'radash'
 
-import { EYInputAutocomplete, EYInputType } from '~shared/types/global'
+import { EAltInputAutocomplete, EAltInputType } from '~shared/types/global'
 
 import {
   createCoreFieldInputProps,
-  type IYCoreFieldInputProps,
-  type TYCoreFieldInputEvents,
+  type IAltCoreFieldInputProps,
+  type TAltCoreFieldInputEvents,
   type InputEvent,
 } from '~core/ui/fieldInput/models/types'
 import {
-  YCoreFieldInputTagName as tagName,
+  AltCoreFieldInputTagName as tagName,
 } from '~shared/constants'
 import {
   getComponentStateTable,
@@ -30,18 +30,18 @@ import {
   autocomplete as autocompleteArgType,
 } from '~shared/.storybook/argTypes'
 
-import yCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
+import altCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
 
 import '~core/ui/fieldInput'
 
 const { value, name, type, placeholder, required, maxlength, autofocus, hideSpaceLeft, hideSpaceRight, autocomplete } = createCoreFieldInputProps()
 
-export type TYCoreFieldInputMeta = IYCoreFieldInputProps & TYCoreFieldInputEvents
+export type TAltCoreFieldInputMeta = IAltCoreFieldInputProps & TAltCoreFieldInputEvents
 
 /**
  * ## Core FieldInput
  */
-const meta: Meta<TYCoreFieldInputMeta> = {
+const meta: Meta<TAltCoreFieldInputMeta> = {
   title: 'Inputs/Partials/⚠️ FieldInput',
   id: 'fieldInput',
   parameters: { controls: { sort: 'alpha' } },
@@ -73,7 +73,7 @@ const meta: Meta<TYCoreFieldInputMeta> = {
     const [
       args,
       updateArgs,
-    ] = useArgs<IYCoreFieldInputProps>()
+    ] = useArgs<IAltCoreFieldInputProps>()
 
     const onStoryInput = (event: InputEvent) => {
       updateArgs({ ...args, value: String(event.detail.value) })
@@ -81,7 +81,7 @@ const meta: Meta<TYCoreFieldInputMeta> = {
     }
 
     return html`
-      <y-core-field-input
+      <alt-core-field-input
         .disabled=${disabled}
         .size=${size}
         .readonly=${readonly}
@@ -101,11 +101,11 @@ const meta: Meta<TYCoreFieldInputMeta> = {
         @keydown=${onKeydown}
         @render=${onRender}
         style="border: 1px dashed;"
-      ></y-core-field-input>
+      ></alt-core-field-input>
     `
   },
   argTypes: {
-    ...pick(yCoreFieldWrapperStoryMeta.argTypes ?? {}, ['disabled', 'size', 'readonly']),
+    ...pick(altCoreFieldWrapperStoryMeta.argTypes ?? {}, ['disabled', 'size', 'readonly']),
     value: {
       ...valueArgType,
       ...getComponentStateTable(value),
@@ -177,11 +177,11 @@ const meta: Meta<TYCoreFieldInputMeta> = {
     },
   },
   args: {
-    ...pick(yCoreFieldWrapperStoryMeta.args ?? {}, ['disabled', 'size', 'readonly']),
+    ...pick(altCoreFieldWrapperStoryMeta.args ?? {}, ['disabled', 'size', 'readonly']),
     value: 'value',
     name: 'name',
-    type: EYInputType.TEXT,
-    autocomplete: EYInputAutocomplete.ON,
+    type: EAltInputType.TEXT,
+    autocomplete: EAltInputAutocomplete.ON,
     placeholder: 'placeholder',
     required: false,
     maxlength: undefined,
@@ -194,9 +194,9 @@ const meta: Meta<TYCoreFieldInputMeta> = {
     onKeydown: fn(),
     onRender: fn(),
   },
-} satisfies Meta<TYCoreFieldInputMeta>
+} satisfies Meta<TAltCoreFieldInputMeta>
 
 export default meta
-type Story = StoryObj<TYCoreFieldInputMeta>
+type Story = StoryObj<TAltCoreFieldInputMeta>
 
 export const Playground: Story = { args: {} }

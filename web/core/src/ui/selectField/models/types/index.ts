@@ -1,12 +1,12 @@
 import {
   createCoreSelectFieldExternalProps,
-  type IYCoreSelectFieldExternalProps,
+  type IAltCoreSelectFieldExternalProps,
 } from './external'
 
 
 export * from './external'
 export * from './events'
 
-export interface IYCoreSelectFieldProps extends IYCoreSelectFieldExternalProps {}
+export interface IAltCoreSelectFieldProps extends IAltCoreSelectFieldExternalProps {}
 
-export const createCoreSelectFieldProps = (): IYCoreSelectFieldProps => ({ ...createCoreSelectFieldExternalProps() })
+export const createCoreSelectFieldProps = (): IAltCoreSelectFieldProps => ({ ...createCoreSelectFieldExternalProps() })

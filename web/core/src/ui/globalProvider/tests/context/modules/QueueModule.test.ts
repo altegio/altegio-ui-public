@@ -6,7 +6,7 @@ import {
 } from '~core/ui/globalProvider/context'
 
 describe(
-  'Core/YCoreGlobalProvider/QueueModule',
+  'Core/AltCoreGlobalProvider/QueueModule',
   () => {
     let queueModule: QueueModule
 

@@ -3,17 +3,17 @@ import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms'
 
 import '~core/ui/textField'
 import '~core/ui/fieldIcon'
-import { YCoreTextField } from '~core/ui/textField'
-import type { YCoreFieldIcon } from '~core/ui/fieldIcon'
+import { AltCoreTextField } from '~core/ui/textField'
+import type { AltCoreFieldIcon } from '~core/ui/fieldIcon'
 
-import type { IYIcon } from './models/types'
+import type { IAltIcon } from './models/types'
 import {
-  type IYNgSearchFieldProps,
+  type IAltNgSearchFieldProps,
   type FocusEvent,
   type ClearEvent,
   type BlurEvent,
   type InputEvent,
-  type TYNgSearchFieldModel,
+  type TAltNgSearchFieldModel,
   createNgSearchFieldProps,
   SEARCH_FIELD_ICON,
 } from './models/types'
@@ -21,14 +21,14 @@ import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { ControlValueAccessorBase } from '~ng/types/ControlValueAccessorBase'
 import { preventAndStopEvent } from '~web/shared/utils'
 import { defineCustomElement } from '~web/shared/utils/components'
-import { YCoreTextFieldTagName } from '~web/shared/constants'
+import { AltCoreTextFieldTagName } from '~web/shared/constants'
 
 const { placeholder, autofocus, disabled, errors, error, size, labelText, labelTooltipText, labelDebounce, annotationText, locatorClearIcon } = createNgSearchFieldProps()
 
-defineCustomElement(YCoreTextFieldTagName, YCoreTextField)
+defineCustomElement(AltCoreTextFieldTagName, AltCoreTextField)
 
 @Component({
-  selector: 'YSearchField',
+  selector: 'AltSearchField',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -36,12 +36,12 @@ defineCustomElement(YCoreTextFieldTagName, YCoreTextField)
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => YSearchField),
+      useExisting: forwardRef(() => AltSearchField),
       multi: true,
     },
   ],
   template: `
-    <y-core-text-field
+    <alt-core-text-field
       (input)="handleInputEvent($event)"
       (focus)="handleFocusEvent($event)"
       (blur)="handleBlurEvent($event)"
@@ -60,38 +60,38 @@ defineCustomElement(YCoreTextFieldTagName, YCoreTextField)
       [annotationText]="annotationText"
       [locatorClearIcon]="locatorClearIcon"
     >
-      <y-core-field-icon
+      <alt-core-field-icon
         (click)="handleSearchIconClickEvent($event)"
         [icon]="searchIcon"
         slot="before"
         clickable
       />
-    </y-core-text-field>
+    </alt-core-text-field>
   `,
 })
-export class YSearchField extends ControlValueAccessorBase<TYNgSearchFieldModel> implements IYNgSearchFieldProps {
-  @Input() @DefaultValue(placeholder) placeholder: IYNgSearchFieldProps['placeholder'] = placeholder
-  @Input() @DefaultValue(autofocus) autofocus: IYNgSearchFieldProps['autofocus'] = autofocus
-  @Input() @DefaultValue(disabled) disabled: IYNgSearchFieldProps['disabled'] = disabled
-  @Input() @DefaultValue(error) error: IYNgSearchFieldProps['error'] = error
-  @Input() @DefaultValue(errors) errors: IYNgSearchFieldProps['errors'] = errors
-  @Input() @DefaultValue(size) size: IYNgSearchFieldProps['size'] = size
-  @Input() @DefaultValue(labelDebounce) labelDebounce: IYNgSearchFieldProps['labelDebounce'] = labelDebounce
-  @Input() @DefaultValue(labelText) labelText: IYNgSearchFieldProps['labelText'] = labelText
-  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IYNgSearchFieldProps['labelTooltipText'] = labelTooltipText
-  @Input() @DefaultValue(annotationText) annotationText: IYNgSearchFieldProps['annotationText'] = annotationText
-  @Input() @DefaultValue(locatorClearIcon) locatorClearIcon: IYNgSearchFieldProps['locatorClearIcon'] = locatorClearIcon
+export class AltSearchField extends ControlValueAccessorBase<TAltNgSearchFieldModel> implements IAltNgSearchFieldProps {
+  @Input() @DefaultValue(placeholder) placeholder: IAltNgSearchFieldProps['placeholder'] = placeholder
+  @Input() @DefaultValue(autofocus) autofocus: IAltNgSearchFieldProps['autofocus'] = autofocus
+  @Input() @DefaultValue(disabled) disabled: IAltNgSearchFieldProps['disabled'] = disabled
+  @Input() @DefaultValue(error) error: IAltNgSearchFieldProps['error'] = error
+  @Input() @DefaultValue(errors) errors: IAltNgSearchFieldProps['errors'] = errors
+  @Input() @DefaultValue(size) size: IAltNgSearchFieldProps['size'] = size
+  @Input() @DefaultValue(labelDebounce) labelDebounce: IAltNgSearchFieldProps['labelDebounce'] = labelDebounce
+  @Input() @DefaultValue(labelText) labelText: IAltNgSearchFieldProps['labelText'] = labelText
+  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IAltNgSearchFieldProps['labelTooltipText'] = labelTooltipText
+  @Input() @DefaultValue(annotationText) annotationText: IAltNgSearchFieldProps['annotationText'] = annotationText
+  @Input() @DefaultValue(locatorClearIcon) locatorClearIcon: IAltNgSearchFieldProps['locatorClearIcon'] = locatorClearIcon
 
   @Output() focus = new EventEmitter<FocusEvent>()
   @Output() blur = new EventEmitter<BlurEvent>()
   @Output() clear = new EventEmitter<ClearEvent>()
   @Output() searchIconClick = new EventEmitter<Event>()
 
-  readonly searchIcon: IYIcon = SEARCH_FIELD_ICON
+  readonly searchIcon: IAltIcon = SEARCH_FIELD_ICON
 
-  searchFieldValue = signal<TYNgSearchFieldModel>('')
+  searchFieldValue = signal<TAltNgSearchFieldModel>('')
 
-  writeValue(value: TYNgSearchFieldModel) {
+  writeValue(value: TAltNgSearchFieldModel) {
     this.searchFieldValue.set(value)
   }
 
@@ -122,8 +122,8 @@ export class YSearchField extends ControlValueAccessorBase<TYNgSearchFieldModel>
   }
 
   handleSearchIconClickEvent(event: Event) {
-    const fieldIcon = event.target as YCoreFieldIcon
-    const textField = fieldIcon.parentElement as YCoreTextField
+    const fieldIcon = event.target as AltCoreFieldIcon
+    const textField = fieldIcon.parentElement as AltCoreTextField
 
     textField.fieldInput?.inputElement?.focus()
     this.searchIconClick.emit(event)

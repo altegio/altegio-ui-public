@@ -5,9 +5,9 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 
 import '~core/ui/simpleToggle'
 
-import { createCoreSimpleToggleProps, createCoreSimpleToggleExternalProps, type IYCoreSimpleToggleProps } from '../models/types'
-import { type TYCoreSimpleToggleEvents } from '../models/types/events'
-import { YCoreSimpleToggleTagName as tagName } from '~shared/constants'
+import { createCoreSimpleToggleProps, createCoreSimpleToggleExternalProps, type IAltCoreSimpleToggleProps } from '../models/types'
+import { type TAltCoreSimpleToggleEvents } from '../models/types/events'
+import { AltCoreSimpleToggleTagName as tagName } from '~shared/constants'
 
 import {
   size as sizeArgType,
@@ -17,17 +17,17 @@ import {
 } from '~shared/.storybook/argTypes'
 
 import { getComponentStateTable } from '~shared/.storybook/tables'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 
 const { checked, disabled, size, hovered } = createCoreSimpleToggleProps()
 
-type TYCoreToggleStoryMeta = IYCoreSimpleToggleProps & TYCoreSimpleToggleEvents
+type TAltCoreToggleStoryMeta = IAltCoreSimpleToggleProps & TAltCoreSimpleToggleEvents
 
 /**
  * ## Core SimpleToggle
  *
  */
-const meta: Meta<TYCoreToggleStoryMeta> = {
+const meta: Meta<TAltCoreToggleStoryMeta> = {
   title: '⚙️ Toggle',
   id: 'simpleToggle',
   parameters: { controls: { sort: 'alpha' } },
@@ -44,7 +44,7 @@ const meta: Meta<TYCoreToggleStoryMeta> = {
     const [
       args,
       updateArgs,
-    ] = useArgs<TYCoreToggleStoryMeta>()
+    ] = useArgs<TAltCoreToggleStoryMeta>()
 
     const { checked } = args
     const onChange = () => {
@@ -53,7 +53,7 @@ const meta: Meta<TYCoreToggleStoryMeta> = {
     }
 
     return html`
-      <y-core-simple-toggle
+      <alt-core-simple-toggle
         .size=${size}
         .checked=${checked}
         .hovered=${hovered}
@@ -61,7 +61,7 @@ const meta: Meta<TYCoreToggleStoryMeta> = {
         @checked=${onChange}
       >
 
-      </y-core-simple-toggle>
+      </alt-core-simple-toggle>
     `
   },
   argTypes: {
@@ -80,8 +80,8 @@ const meta: Meta<TYCoreToggleStoryMeta> = {
     },
     size: {
       ...sizeArgType([
-        EYSizes.SMALL,
-        EYSizes.MEDIUM,
+        EAltSizes.SMALL,
+        EAltSizes.MEDIUM,
       ]),
       ...getComponentStateTable(size),
     },
@@ -91,9 +91,9 @@ const meta: Meta<TYCoreToggleStoryMeta> = {
     ...createCoreSimpleToggleExternalProps(),
     onChecked: fn(),
   },
-} satisfies Meta<TYCoreToggleStoryMeta>
+} satisfies Meta<TAltCoreToggleStoryMeta>
 
 export default meta
-type Story = StoryObj<TYCoreToggleStoryMeta>
+type Story = StoryObj<TAltCoreToggleStoryMeta>
 
 export const Playground: Story = { }

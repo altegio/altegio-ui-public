@@ -1,22 +1,22 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
 
-import { YCoreSimpleToggleTagName } from '~shared/constants'
+import { AltCoreSimpleToggleTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { dispatchEvent, getElementClasses, getShadowRootElement } from '~shared/tests/utils'
 import type { TPropTestCase } from '~shared/types/tests'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import {
   createCoreSimpleToggleProps,
-  type IYCoreSimpleToggleProps,
+  type IAltCoreSimpleToggleProps,
 } from '~core/ui/simpleToggle/models/types'
 import '~core/ui/simpleToggle'
 
-const sizes: Extract<EYSizes, 'small' | 'medium'>[] = [
-  EYSizes.SMALL,
-  EYSizes.MEDIUM,
+const sizes: Extract<EAltSizes, 'small' | 'medium'>[] = [
+  EAltSizes.SMALL,
+  EAltSizes.MEDIUM,
 ]
 // Unit test cases:
-const propSizeTestCases: TPropTestCase<IYCoreSimpleToggleProps, 'size'>[] = sizes.map((size) => ({
+const propSizeTestCases: TPropTestCase<IAltCoreSimpleToggleProps, 'size'>[] = sizes.map((size) => ({
   prop: 'size',
   value: size,
   case: size,
@@ -27,26 +27,26 @@ const booleans = [
   false,
 ]
 
-const propCheckedTestCases: TPropTestCase<IYCoreSimpleToggleProps, 'checked'>[] = booleans.map((checked) => ({
+const propCheckedTestCases: TPropTestCase<IAltCoreSimpleToggleProps, 'checked'>[] = booleans.map((checked) => ({
   prop: 'checked',
   value: checked,
   case: 'checked',
 }))
 
 
-const propDisabledTestCases: TPropTestCase<IYCoreSimpleToggleProps, 'disabled'>[] = booleans.map((disabled) => ({
+const propDisabledTestCases: TPropTestCase<IAltCoreSimpleToggleProps, 'disabled'>[] = booleans.map((disabled) => ({
   prop: 'disabled',
   value: disabled,
   case: 'disabled',
 }))
 
-const propHoveredTestCases: TPropTestCase<IYCoreSimpleToggleProps, 'hovered'>[] = booleans.map((hovered) => ({
+const propHoveredTestCases: TPropTestCase<IAltCoreSimpleToggleProps, 'hovered'>[] = booleans.map((hovered) => ({
   prop: 'hovered',
   value: hovered,
   case: 'hovered',
 }))
 
-const tagName = YCoreSimpleToggleTagName
+const tagName = AltCoreSimpleToggleTagName
 
 const {
   component,
@@ -67,7 +67,7 @@ const getRootElement = () => {
 }
 
 describe(
-  'Core/YCoreSimpleToggle/Unit',
+  'Core/AltCoreSimpleToggle/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()

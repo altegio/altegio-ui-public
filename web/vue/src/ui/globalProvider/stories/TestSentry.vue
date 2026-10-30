@@ -1,17 +1,17 @@
 <template>
   <div class="test-sentry">
-    <YButton
+    <AltButton
       label="Synchronous error"
       @click="throwError"
     />
 
-    <y-button @click="throwAsyncError">
+    <alt-button @click="throwAsyncError">
       Asynchronous error
-    </y-button>
+    </alt-button>
 
-    <y-button @click="throwRenderError">
+    <alt-button @click="throwRenderError">
       Rendering error
-    </y-button>
+    </alt-button>
 
     <!-- <div v-if="shouldRenderError">
       {{ nonExistentVariable.someProperty }}
@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { YButton } from '~vue/ui/button'
+  import { AltButton } from '~vue/ui/button'
 
   defineOptions({ name: 'TestSentry' })
 

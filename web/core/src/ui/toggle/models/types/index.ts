@@ -1,11 +1,11 @@
 import {
   createCoreToggleExternalProps,
-  type IYCoreToggleExternalProps,
+  type IAltCoreToggleExternalProps,
 } from './external'
 
 export * from './events'
 export * from './external'
 
-export interface IYCoreToggleProps extends IYCoreToggleExternalProps {}
+export interface IAltCoreToggleProps extends IAltCoreToggleExternalProps {}
 
-export const createCoreToggleProps = (): IYCoreToggleProps => ({ ...createCoreToggleExternalProps() })
+export const createCoreToggleProps = (): IAltCoreToggleProps => ({ ...createCoreToggleExternalProps() })

@@ -1,27 +1,27 @@
 
-import { EYSizes, type TYSizes } from '~shared/types/global'
-import type { IYIcon } from '~shared/icons'
+import { EAltSizes, type TAltSizes } from '~shared/types/global'
+import type { IAltIcon } from '~shared/icons'
 
-export type TYCoreSegmentOptionSize = Extract<
-  TYSizes, 'small' | 'medium' | 'large'
+export type TAltCoreSegmentOptionSize = Extract<
+  TAltSizes, 'small' | 'medium' | 'large'
 >
 
-export interface IYCoreSegmentOptionExternalProps {
+export interface IAltCoreSegmentOptionExternalProps {
   active: boolean | undefined
   disabled: boolean | undefined
-  icon: IYIcon | undefined
+  icon: IAltIcon | undefined
   locator: string | undefined
-  size: TYCoreSegmentOptionSize | undefined
+  size: TAltCoreSegmentOptionSize | undefined
   value: string
 }
 
-export const createCoreSegmentOptionExternalProps = (): IYCoreSegmentOptionExternalProps => {
+export const createCoreSegmentOptionExternalProps = (): IAltCoreSegmentOptionExternalProps => {
   return {
     active: false,
     disabled: false,
     icon: undefined,
     locator: undefined,
-    size: EYSizes.SMALL,
+    size: EAltSizes.SMALL,
     value: '',
   }
 }

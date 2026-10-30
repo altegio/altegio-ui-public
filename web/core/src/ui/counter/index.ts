@@ -1,1 +1,1 @@
-export { YCoreCounter } from './Counter.core'
+export { AltCoreCounter } from './Counter.core'

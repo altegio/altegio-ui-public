@@ -14,7 +14,7 @@ export enum ETableCellAlign {
 }
 export type TTableCellAlign = `${ETableCellAlign}`
 
-export interface IYCoreTableCellExternalProps {
+export interface IAltCoreTableCellExternalProps {
   sticky: boolean | undefined
   align: TTableCellAlign | undefined
   item: ITableCellItem | undefined
@@ -25,7 +25,7 @@ export interface IYCoreTableCellExternalProps {
   bordered: boolean | undefined
 }
 
-export const createCoreTableCellExternalProps = (): IYCoreTableCellExternalProps => ({
+export const createCoreTableCellExternalProps = (): IAltCoreTableCellExternalProps => ({
   sticky: false,
   align: undefined,
   item: undefined,

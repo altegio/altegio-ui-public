@@ -1,53 +1,53 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import { YEmptyState } from '~ng/ui/emptyState'
-import yCoreEmptyStateStoryMeta, { type IYCoreEmptyStateStoryProps } from '~core/ui/emptyState/stories/EmptyState.stories'
-import { YButton } from '~ng/ui/button'
+import { AltEmptyState } from '~ng/ui/emptyState'
+import altCoreEmptyStateStoryMeta, { type IAltCoreEmptyStateStoryProps } from '~core/ui/emptyState/stories/EmptyState.stories'
+import { AltButton } from '~ng/ui/button'
 
 /**
  * Angular wrapper for Core EmptyState
  */
-const meta: Meta<YEmptyState & IYCoreEmptyStateStoryProps> = {
+const meta: Meta<AltEmptyState & IAltCoreEmptyStateStoryProps> = {
   title: '✅ EmptyState',
   id: 'emptyState',
   parameters: { controls: { sort: 'alpha' } },
-  component: YEmptyState,
+  component: AltEmptyState,
   tags: [
     'angular',
     'autodocs',
   ],
   render: (args) => {
     return {
-      moduleMetadata: { imports: [YButton] },
+      moduleMetadata: { imports: [AltButton] },
       props: { ...args },
       template: `
         <div style="max-width: 400px; margin-left: auto; margin-right: auto;">
-          <YEmptyState
+          <AltEmptyState
             [title]="title"
             [description]="description"
             [icon]="icon"
             [size]="size"
           >
             @if (isActionsSlotExists) {
-              <YButton
+              <AltButton
                 variant="primary"
                 label="Primary button"
-              ></YButton>
+              ></AltButton>
     
-              <YButton
+              <AltButton
                 variant="outline"
                 label="Secondary button"
-              ></YButton>
+              ></AltButton>
             }
-          </YEmptyState>
+          </AltEmptyState>
         </div>
       `,
     }
   },
-  argTypes: yCoreEmptyStateStoryMeta.argTypes,
-  args: yCoreEmptyStateStoryMeta.args,
+  argTypes: altCoreEmptyStateStoryMeta.argTypes,
+  args: altCoreEmptyStateStoryMeta.args,
 }
 
 export default meta
-type Story = StoryObj<YEmptyState>
+type Story = StoryObj<AltEmptyState>
 
 export const Playground: Story = { args: {} }

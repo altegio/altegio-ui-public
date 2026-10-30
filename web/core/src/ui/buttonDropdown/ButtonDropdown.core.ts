@@ -10,30 +10,30 @@ import { bubblingEvent } from '~core/utils/event-decorator'
 import { booleanConverter } from '~core/utils/converters'
 import type { TDispatcher } from '~core/utils/event-decorator'
 
-import { yChevronUp, yChevronDown, yPlus } from '~shared/icons'
-import { YCoreButtonDropdownTagName as tagName, YCoreDropdownCellTagName } from '~shared/constants'
+import { altChevronUp, altChevronDown, altPlus } from '~shared/icons'
+import { AltCoreButtonDropdownTagName as tagName, AltCoreDropdownCellTagName } from '~shared/constants'
 
 import '~core/ui/dropdown'
 import '~core/ui/dropdownCell'
 import '~core/ui/dropdownList'
 import '~core/ui/button'
 
-import { EYCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
+import { EAltCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
 import type { IDropdownListItem } from '~shared/types/global'
 
 import {
   createCoreButtonDropdownProps,
-  type IYCoreButtonDropdownProps,
+  type IAltCoreButtonDropdownProps,
   ItemClickEvent,
   VisibleEvent,
 } from '~core/ui/buttonDropdown/models/types'
 
 import {
-  EYCoreButtonDropdownIconTypes,
-  type IYCoreButtonDropdownIconsSet,
+  EAltCoreButtonDropdownIconTypes,
+  type IAltCoreButtonDropdownIconsSet,
 } from '~core/ui/buttonDropdown/models/types/internal'
 
-import YButtonDropdownScopedCss from '~core/ui/buttonDropdown/css/ButtonDropdown.scoped.css?inline'
+import AltButtonDropdownScopedCss from '~core/ui/buttonDropdown/css/ButtonDropdown.scoped.css?inline'
 import { withLocator } from '~core/utils/locator'
 
 const {
@@ -53,18 +53,18 @@ const {
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreButtonDropdown extends LitElement implements IYCoreButtonDropdownProps {
-  @property({ type: Boolean }) disabled: IYCoreButtonDropdownProps['disabled'] = disabled
-  @property({ type: Boolean }) loading: IYCoreButtonDropdownProps['loading'] = loading
-  @property({ type: Boolean, attribute: 'full-width' }) fullWidth: IYCoreButtonDropdownProps['fullWidth'] = fullWidth
-  @property({ type: Boolean, reflect: true, converter: booleanConverter, attribute: 'is-open' }) isOpen: IYCoreButtonDropdownProps['isOpen'] = isOpen
-  @property({ type: Boolean, reflect: true, converter: booleanConverter, attribute: 'auto-close' }) autoClose: IYCoreButtonDropdownProps['autoClose'] = autoClose
-  @property({ type: String }) variant: IYCoreButtonDropdownProps['variant'] = variant
-  @property({ type: String }) size: IYCoreButtonDropdownProps['size'] = size
-  @property({ type: String }) label: IYCoreButtonDropdownProps['label'] = label
-  @property({ type: String }) alignment: IYCoreButtonDropdownProps['alignment'] = alignment
-  @property({ type: String, attribute: 'icon-type' }) iconType: IYCoreButtonDropdownProps['iconType'] = iconType
-  @property({ type: Array }) items: IYCoreButtonDropdownProps['items'] = items
+export class AltCoreButtonDropdown extends LitElement implements IAltCoreButtonDropdownProps {
+  @property({ type: Boolean }) disabled: IAltCoreButtonDropdownProps['disabled'] = disabled
+  @property({ type: Boolean }) loading: IAltCoreButtonDropdownProps['loading'] = loading
+  @property({ type: Boolean, attribute: 'full-width' }) fullWidth: IAltCoreButtonDropdownProps['fullWidth'] = fullWidth
+  @property({ type: Boolean, reflect: true, converter: booleanConverter, attribute: 'is-open' }) isOpen: IAltCoreButtonDropdownProps['isOpen'] = isOpen
+  @property({ type: Boolean, reflect: true, converter: booleanConverter, attribute: 'auto-close' }) autoClose: IAltCoreButtonDropdownProps['autoClose'] = autoClose
+  @property({ type: String }) variant: IAltCoreButtonDropdownProps['variant'] = variant
+  @property({ type: String }) size: IAltCoreButtonDropdownProps['size'] = size
+  @property({ type: String }) label: IAltCoreButtonDropdownProps['label'] = label
+  @property({ type: String }) alignment: IAltCoreButtonDropdownProps['alignment'] = alignment
+  @property({ type: String, attribute: 'icon-type' }) iconType: IAltCoreButtonDropdownProps['iconType'] = iconType
+  @property({ type: Array }) items: IAltCoreButtonDropdownProps['items'] = items
 
   @state() private isDropdownOpened = false
 
@@ -86,18 +86,18 @@ export class YCoreButtonDropdown extends LitElement implements IYCoreButtonDropd
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YButtonDropdownScopedCss)}
+      ${unsafeCSS(AltButtonDropdownScopedCss)}
     `,
   ]
 
-  private get computedIconsSet(): IYCoreButtonDropdownIconsSet {
+  private get computedIconsSet(): IAltCoreButtonDropdownIconsSet {
     let leftIcon = undefined
     let rightIcon = undefined
 
-    if (this.iconType === EYCoreButtonDropdownIconTypes.LEFT) {
-      leftIcon = yPlus
+    if (this.iconType === EAltCoreButtonDropdownIconTypes.LEFT) {
+      leftIcon = altPlus
     } else {
-      rightIcon = this.isDropdownOpened ? yChevronUp : yChevronDown
+      rightIcon = this.isDropdownOpened ? altChevronUp : altChevronDown
     }
 
     return { leftIcon, rightIcon }
@@ -155,8 +155,8 @@ export class YCoreButtonDropdown extends LitElement implements IYCoreButtonDropd
       this.items,
       (item) => item.id,
       (item) => html`
-        <y-core-dropdown-cell
-          locator=${`${YCoreDropdownCellTagName}_${item.id}`}
+        <alt-core-dropdown-cell
+          locator=${`${AltCoreDropdownCellTagName}_${item.id}`}
           class=${this.baseDropdownClass}
           @click=${(event: ItemClickEvent) => {
             this.handleItemClick(event, item)
@@ -167,14 +167,14 @@ export class YCoreButtonDropdown extends LitElement implements IYCoreButtonDropd
               ${item.label}
             </div>
           </div>
-        </y-core-dropdown-cell>
+        </alt-core-dropdown-cell>
       `,
     )
   }
 
   protected renderDropdownContent() {
     return html`
-      <y-core-dropdown-list>
+      <alt-core-dropdown-list>
         <div slot="list">
           <slot
             name="content"
@@ -183,16 +183,16 @@ export class YCoreButtonDropdown extends LitElement implements IYCoreButtonDropd
             ${this.renderDropdownList()}
           </slot>
         </div>
-      </y-core-dropdown-list>`
+      </alt-core-dropdown-list>`
   }
 
 
   protected render() {
     return html`
-      <y-core-dropdown
+      <alt-core-dropdown
         class=${classMap(this.computedClasses)}
         .offset=${this.offsetOptions}
-        .trigger=${EYCoreDropdownTrigger.CLICK}
+        .trigger=${EAltCoreDropdownTrigger.CLICK}
         .isOpen=${this.isDropdownOpened}
         inline
         @click-outside=${this.handleClickOutside}
@@ -202,7 +202,7 @@ export class YCoreButtonDropdown extends LitElement implements IYCoreButtonDropd
           slot="activator"
           name="activator"
         >
-          <y-core-button
+          <alt-core-button
             class="${this.baseClass}__button"
             label=${ifDefined(this.label)}
             variant=${ifDefined(this.variant)}
@@ -214,13 +214,13 @@ export class YCoreButtonDropdown extends LitElement implements IYCoreButtonDropd
             .iconLeft=${this.computedIconsSet.leftIcon}
             .iconRight=${this.computedIconsSet.rightIcon}
           >
-          </y-core-button>
+          </alt-core-button>
         </slot>
 
         <div slot="content">
           ${this.renderDropdownContent()}
         </div>
-      </y-core-dropdown>
+      </alt-core-dropdown>
     `
   }
 }

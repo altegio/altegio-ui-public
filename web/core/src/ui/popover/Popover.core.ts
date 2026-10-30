@@ -7,10 +7,10 @@ import '~core/ui/simpleButton'
 
 import {
   createCorePopoverProps,
-  type IYCorePopoverProps,
+  type IAltCorePopoverProps,
 } from './models/types'
 import {
-  YCorePopoverTagName as tagName,
+  AltCorePopoverTagName as tagName,
 } from '~shared/constants'
 
 import { bubblingEvent } from '~core/utils/event-decorator'
@@ -18,8 +18,8 @@ import type { TDispatcher } from '~core/utils/event-decorator'
 import type { CancelEvent } from './models/types/events'
 import { SubmitEvent } from './models/types/events'
 
-import YCorePopoverVarsCss from '~core/ui/popover/css/Popover.vars.css?inline'
-import YCorePopoverScopedCss from '~core/ui/popover/css/Popover.scoped.css?inline'
+import AltCorePopoverVarsCss from '~core/ui/popover/css/Popover.vars.css?inline'
+import AltCorePopoverScopedCss from '~core/ui/popover/css/Popover.scoped.css?inline'
 import type { VisibleEvent } from '~core/ui/tip/models/types/events'
 import { interceptEvents } from '~core/utils/event-interceptor'
 import { hasSlotContent } from '~core/utils/lit-slots'
@@ -43,19 +43,19 @@ const {
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCorePopover extends LitElement implements IYCorePopoverProps {
-  @property({ type: String }) trigger: IYCorePopoverProps['trigger'] = trigger
-  @property({ type: Object }) offset: IYCorePopoverProps['offset'] = offset
-  @property({ type: Object }) padding: IYCorePopoverProps['padding'] = padding
-  @property({ type: String }) placement: IYCorePopoverProps['placement'] = placement
-  @property({ type: String }) strategy: IYCorePopoverProps['strategy'] = strategy
-  @property({ type: String }) type: IYCorePopoverProps['type'] = type
-  @property({ type: String }) transition: IYCorePopoverProps['transition'] = transition
-  @property({ type: String, attribute: 'submit-text' }) submitText: IYCorePopoverProps['submitText'] = submitText
-  @property({ type: String, attribute: 'cancel-text' }) cancelText: IYCorePopoverProps['cancelText'] = cancelText
-  @property({ type: Boolean, attribute: 'is-open', reflect: true }) isOpen: IYCorePopoverProps['isOpen'] = isOpen
-  @property({ type: Boolean }) disabled: IYCorePopoverProps['disabled'] = disabled
-  @property({ type: Boolean }) inline: IYCorePopoverProps['inline'] = inline
+export class AltCorePopover extends LitElement implements IAltCorePopoverProps {
+  @property({ type: String }) trigger: IAltCorePopoverProps['trigger'] = trigger
+  @property({ type: Object }) offset: IAltCorePopoverProps['offset'] = offset
+  @property({ type: Object }) padding: IAltCorePopoverProps['padding'] = padding
+  @property({ type: String }) placement: IAltCorePopoverProps['placement'] = placement
+  @property({ type: String }) strategy: IAltCorePopoverProps['strategy'] = strategy
+  @property({ type: String }) type: IAltCorePopoverProps['type'] = type
+  @property({ type: String }) transition: IAltCorePopoverProps['transition'] = transition
+  @property({ type: String, attribute: 'submit-text' }) submitText: IAltCorePopoverProps['submitText'] = submitText
+  @property({ type: String, attribute: 'cancel-text' }) cancelText: IAltCorePopoverProps['cancelText'] = cancelText
+  @property({ type: Boolean, attribute: 'is-open', reflect: true }) isOpen: IAltCorePopoverProps['isOpen'] = isOpen
+  @property({ type: Boolean }) disabled: IAltCorePopoverProps['disabled'] = disabled
+  @property({ type: Boolean }) inline: IAltCorePopoverProps['inline'] = inline
 
   @state() isContentVisible = this.isOpen
   @state() hasActionsSlotContent = false
@@ -76,8 +76,8 @@ export class YCorePopover extends LitElement implements IYCorePopoverProps {
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCorePopoverVarsCss)}
-      ${unsafeCSS(YCorePopoverScopedCss)}
+      ${unsafeCSS(AltCorePopoverVarsCss)}
+      ${unsafeCSS(AltCorePopoverScopedCss)}
     `,
   ]
 
@@ -128,26 +128,26 @@ export class YCorePopover extends LitElement implements IYCorePopoverProps {
     return html`
       ${this.cancelText
       ? html`
-        <y-core-simple-button
+        <alt-core-simple-button
           size="small"
           variant="text"
           class="${this.baseClass}__cancel"
           @click=${this.handleCancel}
       >
           ${this.cancelText}
-        </y-core-simple-button>
+        </alt-core-simple-button>
       `
       : nothing}
   
       ${this.submitText
       ? html`
-        <y-core-simple-button
+        <alt-core-simple-button
           size="small"
           variant="primary"
           @click=${this.handleConfirm}
       >
         ${this.submitText}
-      </y-core-simple-button>
+      </alt-core-simple-button>
       `
       : nothing}
     `
@@ -160,7 +160,7 @@ export class YCorePopover extends LitElement implements IYCorePopoverProps {
 
   protected render() {
     return html`
-      <y-core-tip
+      <alt-core-tip
         .trigger=${this.trigger}
         .isOpen=${this.isContentVisible}
         .offset=${this.offset}
@@ -189,7 +189,7 @@ export class YCorePopover extends LitElement implements IYCorePopoverProps {
               `
             : nothing}
         </div>
-      </y-core-tip>
+      </alt-core-tip>
     `
   }
 }

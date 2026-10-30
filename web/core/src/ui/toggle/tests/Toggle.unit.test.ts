@@ -1,56 +1,56 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
 import { userEvent } from 'vitest/browser'
 import { useCoreTests } from '~shared/tests/core'
-import { YCoreAnnotationTagName, YCoreSimpleToggleTagName, YCoreLabelTagName, YCoreToggleTagName } from '~shared/constants'
-import type { YCoreSimpleToggle, YCoreLabel } from '~core/index'
-import { createCoreToggleExternalProps, type IYCoreToggleExternalProps } from '~core/ui/toggle/models/types'
+import { AltCoreAnnotationTagName, AltCoreSimpleToggleTagName, AltCoreLabelTagName, AltCoreToggleTagName } from '~shared/constants'
+import type { AltCoreSimpleToggle, AltCoreLabel } from '~core/index'
+import { createCoreToggleExternalProps, type IAltCoreToggleExternalProps } from '~core/ui/toggle/models/types'
 import type { TPropTestCase } from '~shared/types/tests'
 import { empty, text } from '~shared/tests/slotContents'
 import { getShadowElement, trimTextContent } from '~shared/tests/utils'
-import { EYSizes } from '~shared/types/global'
-import { EYCoreLabelAlignment } from '~core/ui/label/models/types'
+import { EAltSizes } from '~shared/types/global'
+import { EAltCoreLabelAlignment } from '~core/ui/label/models/types'
 import '~core/ui/toggle'
 
 // Unit test cases:
-const propCheckedTestCases: TPropTestCase<IYCoreToggleExternalProps, 'checked'>[] = [
+const propCheckedTestCases: TPropTestCase<IAltCoreToggleExternalProps, 'checked'>[] = [
   { prop: 'checked', case: 'enabled', value: true, expected: true },
   { prop: 'checked', case: 'disabled', value: false, expected: false },
 ]
-const propDisabledTestCases: TPropTestCase<IYCoreToggleExternalProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltCoreToggleExternalProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'enabled', value: true, expected: true },
   { prop: 'disabled', case: 'disabled', value: false, expected: false },
 ]
-const propLabelTextTestCases: TPropTestCase<IYCoreToggleExternalProps, 'labelText'>[] = [
+const propLabelTextTestCases: TPropTestCase<IAltCoreToggleExternalProps, 'labelText'>[] = [
   { prop: 'labelText', case: 'with content', value: text, expected: text },
   { prop: 'labelText', case: 'without content', value: empty, expected: undefined },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: undefined },
 ]
-const propLabelTooltipTextTestCases: TPropTestCase<IYCoreToggleExternalProps, 'labelTooltipText'>[] = [
+const propLabelTooltipTextTestCases: TPropTestCase<IAltCoreToggleExternalProps, 'labelTooltipText'>[] = [
   { prop: 'labelTooltipText', case: 'with content', value: text },
   { prop: 'labelTooltipText', case: 'without content', value: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined },
 ]
-const propAnnotationTextTestCases: TPropTestCase<IYCoreToggleExternalProps, 'annotationText'>[] = [
+const propAnnotationTextTestCases: TPropTestCase<IAltCoreToggleExternalProps, 'annotationText'>[] = [
   { prop: 'annotationText', case: 'with content', value: text, expected: text },
   { prop: 'annotationText', case: 'without content', value: empty, expected: undefined },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: undefined },
 ]
-const propLabelOverflowDebounceCases: TPropTestCase<IYCoreToggleExternalProps, 'labelOverflowDebounce'>[] = [
+const propLabelOverflowDebounceCases: TPropTestCase<IAltCoreToggleExternalProps, 'labelOverflowDebounce'>[] = [
   { prop: 'labelOverflowDebounce', case: 'with a delay', value: 200, expected: 200 },
   { prop: 'labelOverflowDebounce', case: 'without a delay', value: undefined, expected: undefined },
 ]
-const propAlignmentCases: TPropTestCase<IYCoreToggleExternalProps, 'alignment'>[] = [
-  { prop: 'alignment', case: 'center alignment', value: EYCoreLabelAlignment.CENTER },
-  { prop: 'alignment', case: 'top alignment', value: EYCoreLabelAlignment.TOP },
+const propAlignmentCases: TPropTestCase<IAltCoreToggleExternalProps, 'alignment'>[] = [
+  { prop: 'alignment', case: 'center alignment', value: EAltCoreLabelAlignment.CENTER },
+  { prop: 'alignment', case: 'top alignment', value: EAltCoreLabelAlignment.TOP },
   { prop: 'alignment', case: 'without alignment', value: undefined },
 ]
-const propSizeCases: TPropTestCase<IYCoreToggleExternalProps, 'size'>[] = [
-  { prop: 'size', case: 'size M', value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
-  { prop: 'size', case: 'size S', value: EYSizes.SMALL, expected: EYSizes.SMALL },
+const propSizeCases: TPropTestCase<IAltCoreToggleExternalProps, 'size'>[] = [
+  { prop: 'size', case: 'size M', value: EAltSizes.MEDIUM, expected: EAltSizes.MEDIUM },
+  { prop: 'size', case: 'size S', value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
   { prop: 'size', case: 'size not set', value: undefined, expected: undefined },
 ]
 
-const tagName = YCoreToggleTagName
+const tagName = AltCoreToggleTagName
 
 const {
   component,
@@ -70,11 +70,11 @@ const getLocalShadowElement = (selector: string) => {
   )
 }
 
-const getSimpleToggleElement = () => getLocalShadowElement(YCoreSimpleToggleTagName) as YCoreSimpleToggle | undefined
-const getLabelTextElement = () => getLocalShadowElement(YCoreLabelTagName) as YCoreLabel | undefined
+const getSimpleToggleElement = () => getLocalShadowElement(AltCoreSimpleToggleTagName) as AltCoreSimpleToggle | undefined
+const getLabelTextElement = () => getLocalShadowElement(AltCoreLabelTagName) as AltCoreLabel | undefined
 
 describe(
-  'Core/YCoreToggle/Unit',
+  'Core/AltCoreToggle/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -131,7 +131,7 @@ describe(
             async() => {
               await updateComponent({ props: { annotationText: testCase.value } })
 
-              const annotationTextElement = getLocalShadowElement(YCoreAnnotationTagName)
+              const annotationTextElement = getLocalShadowElement(AltCoreAnnotationTagName)
 
               expect(trimTextContent(annotationTextElement?.textContent)).toBe(testCase.expected)
             },

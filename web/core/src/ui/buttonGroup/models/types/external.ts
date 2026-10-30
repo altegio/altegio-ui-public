@@ -1,22 +1,22 @@
-import { EYSizes, type TYSizes } from '~shared/types/global'
-import { EYCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types/external'
+import { EAltSizes, type TAltSizes } from '~shared/types/global'
+import { EAltCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types/external'
 
-export enum EYCoreButtonGroupVariant {
+export enum EAltCoreButtonGroupVariant {
   PRIMARY = 'primary',
   OUTLINE = 'outline',
   OUTLINE_FILLED = 'outline-filled',
 }
 
-export type TYCoreButtonGroupVariant = `${EYCoreButtonGroupVariant}`
+export type TAltCoreButtonGroupVariant = `${EAltCoreButtonGroupVariant}`
 
-export interface IYCoreButtonGroupExternalProps {
-  size: Extract<TYSizes, 'small' | 'medium' | 'large'>
-  variant: TYCoreButtonGroupVariant
+export interface IAltCoreButtonGroupExternalProps {
+  size: Extract<TAltSizes, 'small' | 'medium' | 'large'>
+  variant: TAltCoreButtonGroupVariant
 }
 
-export const createCoreButtonGroupExternalProps = (): IYCoreButtonGroupExternalProps => {
+export const createCoreButtonGroupExternalProps = (): IAltCoreButtonGroupExternalProps => {
   return {
-    size: EYSizes.SMALL,
-    variant: EYCoreSimpleButtonVariant.PRIMARY,
+    size: EAltSizes.SMALL,
+    variant: EAltCoreSimpleButtonVariant.PRIMARY,
   }
 }

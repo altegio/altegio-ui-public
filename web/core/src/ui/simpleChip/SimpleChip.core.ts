@@ -5,29 +5,29 @@ import { classMap } from 'lit/directives/class-map.js'
 import {
   ClickIconEmitEvent,
   createCoreSimpleChipProps,
-  type IYCoreSimpleChipProps,
+  type IAltCoreSimpleChipProps,
 } from '~core/ui/simpleChip/models/types'
 import {
-  YCoreSimpleChipTagName as tagName,
+  AltCoreSimpleChipTagName as tagName,
 } from '~shared/constants'
 
-import YCoreSimpleChipVarsCss from '~core/ui/simpleChip/css/SimpleChip.vars.css?inline'
-import YCoreSimpleChipScopedCss from '~core/ui/simpleChip/css/SimpleChip.scoped.css?inline'
+import AltCoreSimpleChipVarsCss from '~core/ui/simpleChip/css/SimpleChip.vars.css?inline'
+import AltCoreSimpleChipScopedCss from '~core/ui/simpleChip/css/SimpleChip.scoped.css?inline'
 
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
 import { renderIcon } from '~core/renderers'
-import { yClose } from '~shared/icons'
+import { altClose } from '~shared/icons'
 import { withLocator } from '~core/utils/locator'
 
 const { size, variant, disabled, readonly } = createCoreSimpleChipProps()
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreSimpleChip extends LitElement implements IYCoreSimpleChipProps {
-  @property({ type: String }) size: IYCoreSimpleChipProps['size'] = size
-  @property({ type: String }) variant: IYCoreSimpleChipProps['variant'] = variant
-  @property({ type: Boolean }) disabled: IYCoreSimpleChipProps['disabled'] = disabled
-  @property({ type: Boolean }) readonly: IYCoreSimpleChipProps['readonly'] = readonly
+export class AltCoreSimpleChip extends LitElement implements IAltCoreSimpleChipProps {
+  @property({ type: String }) size: IAltCoreSimpleChipProps['size'] = size
+  @property({ type: String }) variant: IAltCoreSimpleChipProps['variant'] = variant
+  @property({ type: Boolean }) disabled: IAltCoreSimpleChipProps['disabled'] = disabled
+  @property({ type: Boolean }) readonly: IAltCoreSimpleChipProps['readonly'] = readonly
 
   @bubblingEvent(
     ClickIconEmitEvent,
@@ -40,8 +40,8 @@ export class YCoreSimpleChip extends LitElement implements IYCoreSimpleChipProps
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreSimpleChipVarsCss)}
-      ${unsafeCSS(YCoreSimpleChipScopedCss)}
+      ${unsafeCSS(AltCoreSimpleChipVarsCss)}
+      ${unsafeCSS(AltCoreSimpleChipScopedCss)}
     `,
   ]
 
@@ -68,7 +68,7 @@ export class YCoreSimpleChip extends LitElement implements IYCoreSimpleChipProps
         <slot></slot>
 
         <div @click=${this.handleIconClick} class=${this.baseIconClass}>
-          ${renderIcon({ icon: yClose, size: '16px' })}
+          ${renderIcon({ icon: altClose, size: '16px' })}
         </div>
       </div>
     `

@@ -3,7 +3,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output } from '
 import '~core/ui/pagination'
 import {
   createNgPaginationProps,
-  type IYNgPaginationProps,
+  type IAltNgPaginationProps,
 } from '~ng/ui/pagination/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import type { ChangePageEvent } from './models/events'
@@ -11,26 +11,26 @@ import type { ChangePageEvent } from './models/events'
 const { page, itemsPerPage, total, disabled } = createNgPaginationProps()
 
 @Component({
-  selector: 'YPagination',
+  selector: 'AltPagination',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-pagination
+    <alt-core-pagination
       [page]="page"
       [itemsPerPage]="itemsPerPage"
       [total]="total"
       [disabled]="disabled"
       (changePage)="handleChangePage($event)"
     >
-    </y-core-pagination>
+    </alt-core-pagination>
   `,
 })
 
-export class YPagination implements IYNgPaginationProps {
-  @Input() @DefaultValue(page) page: IYNgPaginationProps['page'] = page
-  @Input() @DefaultValue(itemsPerPage) itemsPerPage: IYNgPaginationProps['itemsPerPage'] = itemsPerPage
-  @Input() @DefaultValue(total) total: IYNgPaginationProps['total'] = total
-  @Input() @DefaultValue(disabled) disabled: IYNgPaginationProps['disabled'] = disabled
+export class AltPagination implements IAltNgPaginationProps {
+  @Input() @DefaultValue(page) page: IAltNgPaginationProps['page'] = page
+  @Input() @DefaultValue(itemsPerPage) itemsPerPage: IAltNgPaginationProps['itemsPerPage'] = itemsPerPage
+  @Input() @DefaultValue(total) total: IAltNgPaginationProps['total'] = total
+  @Input() @DefaultValue(disabled) disabled: IAltNgPaginationProps['disabled'] = disabled
 
   @Output() changePage = new EventEmitter<ChangePageEvent>()
   handleFocusEvent(event: Event) {

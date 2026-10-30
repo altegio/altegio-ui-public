@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
-import { YCoreFieldTextareaTagName } from '~shared/constants'
+import { AltCoreFieldTextareaTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import {
   createCoreFieldTextareaProps,
@@ -30,7 +30,7 @@ import {
   eventRenderCases,
 } from './cases/events'
 
-const tagName = YCoreFieldTextareaTagName
+const tagName = AltCoreFieldTextareaTagName
 
 const {
   component,
@@ -44,7 +44,7 @@ const {
 )
 
 describe(
-  'Core/YFieldTextarea',
+  'Core/AltFieldTextarea',
   () => {
     beforeAll(() => {
       injectComponentToBody()

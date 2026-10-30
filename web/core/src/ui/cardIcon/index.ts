@@ -1,1 +1,1 @@
-export { YCoreCardIcon } from './CardIcon.core'
+export { AltCoreCardIcon } from './CardIcon.core'

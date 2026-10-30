@@ -1,5 +1,5 @@
 <template>
-  <y-core-count-field
+  <alt-core-count-field
     v-bind="props"
     :value="value"
     @blur="$emit('blur', $event)"
@@ -14,23 +14,23 @@
   import '~core/ui/countField'
   import {
     createVueCountFieldProps,
-    type IYVueCountFieldProps,
-    type IYVueCountFieldEmits,
-    type IYVueCoreCountFieldProps,
+    type IAltVueCountFieldProps,
+    type IAltVueCountFieldEmits,
+    type IAltVueCoreCountFieldProps,
   } from '~vue/ui/countField/models/types'
   import { DEFAULT_NUMBER_VALUE } from '~core/ui/countField/models/types'
   import type { ChangedValueEvent } from '~core/ui/countField/models/types'
 
-  defineOptions({ name: 'YCountField' })
+  defineOptions({ name: 'AltCountField' })
 
   defineSlots<{ default: () => unknown }>()
 
-  const emit = defineEmits<IYVueCountFieldEmits>()
+  const emit = defineEmits<IAltVueCountFieldEmits>()
 
   const props = withDefaults(
-    defineProps<IYVueCountFieldProps>(),
+    defineProps<IAltVueCountFieldProps>(),
     createVueCountFieldProps(),
-  ) satisfies IYVueCoreCountFieldProps
+  ) satisfies IAltVueCoreCountFieldProps
 
   const value = computed(() => String(props.modelValue))
 

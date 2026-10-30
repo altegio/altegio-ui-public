@@ -1,16 +1,16 @@
-import { EYSizes, type TYSizes } from '~shared/types/global'
-import type { IYIcon } from '~shared/icons'
+import { EAltSizes, type TAltSizes } from '~shared/types/global'
+import type { IAltIcon } from '~shared/icons'
 
-export interface IYCoreAvatarExternalProps {
-  size: Extract<TYSizes, 'extra-small' | 'small' | 'medium' | 'large'> | undefined
+export interface IAltCoreAvatarExternalProps {
+  size: Extract<TAltSizes, 'extra-small' | 'small' | 'medium' | 'large'> | undefined
   initials: string | undefined
   photo: string | undefined
-  icon: IYIcon | undefined
+  icon: IAltIcon | undefined
   disabled: boolean | undefined
 }
 
-export const createCoreAvatarExternalProps = (): IYCoreAvatarExternalProps => ({
-  size: EYSizes.MEDIUM,
+export const createCoreAvatarExternalProps = (): IAltCoreAvatarExternalProps => ({
+  size: EAltSizes.MEDIUM,
   initials: '',
   photo: '',
   icon: undefined,

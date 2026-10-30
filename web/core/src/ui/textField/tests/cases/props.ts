@@ -1,76 +1,76 @@
 import { empty, text } from '~shared/tests/slotContents'
-import { EYInputType, EYSizes } from '~shared/types/global'
+import { EAltInputType, EAltSizes } from '~shared/types/global'
 import type { TPropTestCase } from '~shared/types/tests'
-import type { IYCoreAnnotationExternalProps } from '~core/ui/annotation/models/types'
-import type { IYCoreTextFieldProps } from '~core/ui/textField/models/types'
-import type { IYCoreLabelExternalProps } from '~core/ui/label/models/types'
+import type { IAltCoreAnnotationExternalProps } from '~core/ui/annotation/models/types'
+import type { IAltCoreTextFieldProps } from '~core/ui/textField/models/types'
+import type { IAltCoreLabelExternalProps } from '~core/ui/label/models/types'
 
 export const testErrors = [
   text,
   text,
 ]
-const sizes = Object.values(EYSizes).filter((size) => size !== EYSizes.EXTRA_LARGE && size !== EYSizes.EXTRA_SMALL)
+const sizes = Object.values(EAltSizes).filter((size) => size !== EAltSizes.EXTRA_LARGE && size !== EAltSizes.EXTRA_SMALL)
 
-type TPropAnnotation<K extends keyof IYCoreTextFieldProps, T extends keyof IYCoreAnnotationExternalProps> = TPropTestCase<IYCoreTextFieldProps, K> & { annotationProp: T }
-type TPropLabel<K extends keyof IYCoreTextFieldProps, T extends keyof IYCoreLabelExternalProps> = TPropTestCase<IYCoreTextFieldProps, K> & { labelProp: T }
+type TPropAnnotation<K extends keyof IAltCoreTextFieldProps, T extends keyof IAltCoreAnnotationExternalProps> = TPropTestCase<IAltCoreTextFieldProps, K> & { annotationProp: T }
+type TPropLabel<K extends keyof IAltCoreTextFieldProps, T extends keyof IAltCoreLabelExternalProps> = TPropTestCase<IAltCoreTextFieldProps, K> & { labelProp: T }
 
-export const propValueCases: TPropTestCase<IYCoreTextFieldProps, 'value'>[] = [
+export const propValueCases: TPropTestCase<IAltCoreTextFieldProps, 'value'>[] = [
   { prop: 'value', case: 'with text', value: text },
   { prop: 'value', case: 'without text', value: '' },
 ]
 
-export const propNameCases: TPropTestCase<IYCoreTextFieldProps, 'name'>[] = [
+export const propNameCases: TPropTestCase<IAltCoreTextFieldProps, 'name'>[] = [
   { prop: 'name', case: 'with text', value: text },
   { prop: 'name', case: 'without text', value: '' },
 ]
 
-export const propTypeTestCases: TPropTestCase<IYCoreTextFieldProps, 'type'>[] = [
-  { prop: 'type', case: EYInputType.TEXT, value: EYInputType.TEXT, expected: EYInputType.TEXT },
-  { prop: 'type', case: EYInputType.NUMBER, value: EYInputType.NUMBER, expected: EYInputType.NUMBER },
+export const propTypeTestCases: TPropTestCase<IAltCoreTextFieldProps, 'type'>[] = [
+  { prop: 'type', case: EAltInputType.TEXT, value: EAltInputType.TEXT, expected: EAltInputType.TEXT },
+  { prop: 'type', case: EAltInputType.NUMBER, value: EAltInputType.NUMBER, expected: EAltInputType.NUMBER },
 ]
 
-export const propPlaceholderCases: TPropTestCase<IYCoreTextFieldProps, 'placeholder'>[] = [
+export const propPlaceholderCases: TPropTestCase<IAltCoreTextFieldProps, 'placeholder'>[] = [
   { prop: 'placeholder', case: 'with text', value: text },
   { prop: 'placeholder', case: 'without text', value: empty },
 ]
 
-export const propRequiredCases: TPropTestCase<IYCoreTextFieldProps, 'required'>[] = [
+export const propRequiredCases: TPropTestCase<IAltCoreTextFieldProps, 'required'>[] = [
   { prop: 'required', case: 'true', value: true },
   { prop: 'required', case: 'false', value: false },
 ]
 
-export const propMaxlengthCases: TPropTestCase<IYCoreTextFieldProps, 'maxlength'>[] = [
+export const propMaxlengthCases: TPropTestCase<IAltCoreTextFieldProps, 'maxlength'>[] = [
   { prop: 'maxlength', case: '10', value: 10 },
   { prop: 'maxlength', case: '100', value: 100 },
   { prop: 'maxlength', case: 'without a limit', value: undefined },
 ]
 
-export const propAutofocusCases: TPropTestCase<IYCoreTextFieldProps, 'autofocus'>[] = [
+export const propAutofocusCases: TPropTestCase<IAltCoreTextFieldProps, 'autofocus'>[] = [
   { prop: 'autofocus', case: 'true', value: true },
   { prop: 'autofocus', case: 'false', value: false },
 ]
 
-export const propDisabledCases: TPropTestCase<IYCoreTextFieldProps, 'disabled'>[] = [
+export const propDisabledCases: TPropTestCase<IAltCoreTextFieldProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true },
   { prop: 'disabled', case: 'false', value: false },
 ]
 
-export const propReadonlyCases: TPropTestCase<IYCoreTextFieldProps, 'readonly'>[] = [
+export const propReadonlyCases: TPropTestCase<IAltCoreTextFieldProps, 'readonly'>[] = [
   { prop: 'readonly', case: 'true', value: true },
   { prop: 'readonly', case: 'false', value: false },
 ]
-export const propSizeCases: TPropTestCase<IYCoreTextFieldProps, 'size'>[] = sizes.map((size) => ({
+export const propSizeCases: TPropTestCase<IAltCoreTextFieldProps, 'size'>[] = sizes.map((size) => ({
   prop: 'size',
   case: size,
   value: size,
 }))
 
-export const propErrorsCases: TPropTestCase<IYCoreTextFieldProps, 'errors'>[] = [
+export const propErrorsCases: TPropTestCase<IAltCoreTextFieldProps, 'errors'>[] = [
   { prop: 'errors', case: 'with errors', value: [text], expected: true },
   { prop: 'errors', case: 'without errors', value: [], expected: false },
 ]
 
-export const propErrorCases: TPropTestCase<IYCoreTextFieldProps, 'error'>[] = [
+export const propErrorCases: TPropTestCase<IAltCoreTextFieldProps, 'error'>[] = [
   { prop: 'error', case: 'true', value: true, expected: true },
   { prop: 'error', case: 'false', value: false, expected: false },
 ]
@@ -92,7 +92,7 @@ export const propAnnotationTextTestCases: TPropAnnotation<'annotationText', 'tex
   { prop: 'annotationText', annotationProp: 'text', case: 'without text', value: undefined },
 ]
 
-export const propClearableCases: TPropTestCase<IYCoreTextFieldProps, 'clearable'>[] = [
+export const propClearableCases: TPropTestCase<IAltCoreTextFieldProps, 'clearable'>[] = [
   { prop: 'clearable', case: 'true', value: true },
   { prop: 'clearable', case: 'false', value: false },
 ]

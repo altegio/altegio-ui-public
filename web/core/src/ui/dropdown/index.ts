@@ -1,1 +1,1 @@
-export { YCoreDropdown } from './Dropdown.core'
+export { AltCoreDropdown } from './Dropdown.core'

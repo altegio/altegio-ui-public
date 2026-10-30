@@ -6,7 +6,7 @@ export enum EAnchorTarget {
 }
 export type TAnchorTarget = `${EAnchorTarget}`
 
-export enum EYSizes {
+export enum EAltSizes {
   EXTRA_SMALL = 'extra-small',
   SMALL = 'small',
   MEDIUM = 'medium',
@@ -14,7 +14,7 @@ export enum EYSizes {
   EXTRA_LARGE = 'extra-large',
 }
 
-export type TYSizes = `${EYSizes}`
+export type TAltSizes = `${EAltSizes}`
 
 // Timer handle type as returned by setTimeout in the browser
 export type TTimeout = ReturnType<typeof setTimeout>
@@ -26,7 +26,7 @@ export enum ESort {
 }
 export type TSort = `${ESort}`
 
-export enum EYInputType {
+export enum EAltInputType {
   HIDDEN = 'hidden',
   TEXT = 'text',
   SEARCH = 'search',
@@ -51,33 +51,33 @@ export enum EYInputType {
   RESET = 'reset',
   BUTTON = 'button',
 }
-export type TYInputType = `${EYInputType}`
+export type TAltInputType = `${EAltInputType}`
 
-export enum EYInputAutocomplete {
+export enum EAltInputAutocomplete {
   ON = 'on',
   OFF = 'off',
   TEL = 'tel',
   TEL_NATIONAL = 'tel-national',
 }
-export type TYInputAutocomplete = `${EYInputAutocomplete}`
+export type TAltInputAutocomplete = `${EAltInputAutocomplete}`
 
-export interface IYBaseCustomEvent {
+export interface IAltBaseCustomEvent {
   event: Event
 }
 
-export enum EYTextareaWrap {
+export enum EAltTextareaWrap {
   HARD = 'hard',
   SOFT = 'soft',
 }
-export type TYTextareaWrap = `${EYTextareaWrap}`
+export type TAltTextareaWrap = `${EAltTextareaWrap}`
 
-export enum EYTextareaResize {
+export enum EAltTextareaResize {
   BOTH = 'both',
   HORIZONTAL = 'horizontal',
   VERTICAL = 'vertical',
   NONE = 'none',
 }
-export type TYTextareaResize = `${EYTextareaResize}`
+export type TAltTextareaResize = `${EAltTextareaResize}`
 
 export type TPrimitive = string | number | boolean | null | undefined
 

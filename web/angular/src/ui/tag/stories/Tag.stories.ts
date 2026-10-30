@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YTag } from '~ng/ui/tag'
-import yCoreTagStoryMeta, { type TYCoreTagMeta } from '~core/ui/tag/stories/Tag.stories'
+import { AltTag } from '~ng/ui/tag'
+import altCoreTagStoryMeta, { type TAltCoreTagMeta } from '~core/ui/tag/stories/Tag.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
 /**
  * Angular wrapper for Core Tag
  */
-const meta: Meta<TYCoreTagMeta> = {
+const meta: Meta<TAltCoreTagMeta> = {
   title: '🔍 Tag',
   id: 'tag',
   parameters: { controls: { sort: 'alpha' } },
-  component: YTag,
+  component: AltTag,
   tags: [
     'angular',
     'autodocs',
@@ -22,7 +22,7 @@ const meta: Meta<TYCoreTagMeta> = {
     return {
       props: { ...args, computedText },
       template: `
-      <YTag
+      <AltTag
         [size]="size"
         [variant]="variant"
         [iconLeft]="iconLeft"
@@ -32,15 +32,15 @@ const meta: Meta<TYCoreTagMeta> = {
         [locatorIcon]="locatorIcon"
       >
         {{ computedText }}
-      </YTag>
+      </AltTag>
     `,
     }
   },
-  argTypes: { ...yCoreTagStoryMeta.argTypes },
-  args: { ...yCoreTagStoryMeta.args },
+  argTypes: { ...altCoreTagStoryMeta.argTypes },
+  args: { ...altCoreTagStoryMeta.args },
 }
 
 export default meta
-type Story = StoryObj<TYCoreTagMeta>
+type Story = StoryObj<TAltCoreTagMeta>
 
 export const Playground: Story = {}

@@ -5,11 +5,11 @@ import { fn } from 'storybook/test'
 import { onSelectEmit } from '~shared/.storybook/argTypes'
 import {
   createCoreCalendarExternalProps,
-  type IYCoreCalendarProps,
-  type TYCoreCalendarEvents,
+  type IAltCoreCalendarProps,
+  type TAltCoreCalendarEvents,
 } from '~core/ui/calendar/models/types'
 import {
-  YCoreCalendarTagName as tagName,
+  AltCoreCalendarTagName as tagName,
 } from '~shared/constants'
 
 import '~core/ui/calendar'
@@ -27,7 +27,7 @@ import { formatDate } from '~shared/utils/dateTime'
 const { headerSelectors, disabled, isRange, minDate, maxDate } = createCoreCalendarExternalProps()
 
 export type TStoryProps = { localeData: ILocale }
-type TYCoreCalendarMeta = IYCoreCalendarProps & TYCoreCalendarEvents & TStoryProps
+type TAltCoreCalendarMeta = IAltCoreCalendarProps & TAltCoreCalendarEvents & TStoryProps
 
 /**
  * ## Core Calendar
@@ -35,7 +35,7 @@ type TYCoreCalendarMeta = IYCoreCalendarProps & TYCoreCalendarEvents & TStoryPro
  * A calendar with locale support and date range selection.
  * To localize the calendar, wrap it in GlobalProvider with I18nPlugin.
  */
-const meta: Meta<TYCoreCalendarMeta> = {
+const meta: Meta<TAltCoreCalendarMeta> = {
   title: '✅ Calendar',
   id: 'calendar',
   parameters: { controls: { sort: 'alpha' } },
@@ -54,7 +54,7 @@ const meta: Meta<TYCoreCalendarMeta> = {
     localeData,
   }) => {
     return html`
-        <y-core-calendar
+        <alt-core-calendar
           .isRange=${isRange}
           .disabled=${disabled}
           .headerSelectors=${headerSelectors}
@@ -62,7 +62,7 @@ const meta: Meta<TYCoreCalendarMeta> = {
           max-date=${ifDefined(maxDate && formatDate(dayjs(maxDate)))}
           @select=${onSelect}
           .locale=${localeData}
-        ></y-core-calendar>
+        ></alt-core-calendar>
     `
   },
   argTypes: {
@@ -104,7 +104,7 @@ const meta: Meta<TYCoreCalendarMeta> = {
 }
 
 export default meta
-type Story = StoryObj<TYCoreCalendarMeta>
+type Story = StoryObj<TAltCoreCalendarMeta>
 
 /**
  * Basic calendar with configurable properties

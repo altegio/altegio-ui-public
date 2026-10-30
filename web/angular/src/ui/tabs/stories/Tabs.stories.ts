@@ -1,21 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import yCoreTabsStoryMeta, { type TYCoreTabsStoryMeta } from '~core/ui/tabs/stories/Tabs.stories.ts'
+import altCoreTabsStoryMeta, { type TAltCoreTabsStoryMeta } from '~core/ui/tabs/stories/Tabs.stories.ts'
 
-import type { IYNgTabsProps } from '~ng/ui/tabs'
-import { YTabs } from '~ng/ui/tabs'
-import { YTab } from '~ng/ui/tab'
+import type { IAltNgTabsProps } from '~ng/ui/tabs'
+import { AltTabs } from '~ng/ui/tabs'
+import { AltTab } from '~ng/ui/tab'
 
-type TYNgTabsMeta = YTabs & IYNgTabsProps & TYCoreTabsStoryMeta
+type TAltNgTabsMeta = AltTabs & IAltNgTabsProps & TAltCoreTabsStoryMeta
 
 /**
  * Angular wrapper for Tabs
  */
-const meta: Meta<TYNgTabsMeta> = {
+const meta: Meta<TAltNgTabsMeta> = {
   title: '⚙️ Tabs',
   id: 'tabs',
   parameters: { controls: { sort: 'alpha' } },
-  component: YTabs,
+  component: AltTabs,
   tags: [
     'angular',
     'autodocs',
@@ -30,20 +30,20 @@ const meta: Meta<TYNgTabsMeta> = {
     }
 
     return {
-      moduleMetadata: { imports: [YTab] },
+      moduleMetadata: { imports: [AltTab] },
       props: {
         ...args,
         valueRef,
         clickTabHandler,
       },
       template: `
-        <YTabs
+        <AltTabs
           [tabs]="tabs"
           [(value)]="valueRef.current"
         >
           @if (showDefaultSlot) {
             <ng-template #tabsDefault>
-              <YTab
+              <AltTab
                 *ngFor="let tab of tabs.slice(0, 3); let i = index"
                 [tagVariant]="tab.agVariant"
                 [counterValue]="tab.counterValue"
@@ -56,18 +56,18 @@ const meta: Meta<TYNgTabsMeta> = {
                 [tagText]="tab.tagText"
                 [isCounterVisible]="tab.isCounterVisible"
                 (click)="clickTabHandler(i)"
-              ></YTab>
+              ></AltTab>
             </ng-template>
           }
-        </YTabs>`,
+        </AltTabs>`,
     }
   },
-  argTypes: { ...yCoreTabsStoryMeta.argTypes },
-  args: { ...yCoreTabsStoryMeta.args, value: 0 },
-} satisfies Meta<TYNgTabsMeta>
+  argTypes: { ...altCoreTabsStoryMeta.argTypes },
+  args: { ...altCoreTabsStoryMeta.args, value: 0 },
+} satisfies Meta<TAltNgTabsMeta>
 
 export default meta
-type Story = StoryObj<TYNgTabsMeta>
+type Story = StoryObj<TAltNgTabsMeta>
 
 export const Playground: Story = { args: {} }
 

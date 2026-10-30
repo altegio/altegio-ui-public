@@ -1,14 +1,14 @@
 import { type TPrimitive } from '~shared/types/global'
 
-export enum EYCoreCollapseItemVariant {
+export enum EAltCoreCollapseItemVariant {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
   GHOST = 'ghost',
 }
 
-export type TCollapseItemVariant = `${EYCoreCollapseItemVariant}`
+export type TCollapseItemVariant = `${EAltCoreCollapseItemVariant}`
 
-export interface IYCoreCollapseItemExternalProps {
+export interface IAltCoreCollapseItemExternalProps {
   label: string | undefined
   annotation: string | undefined
   opened: boolean | undefined
@@ -18,12 +18,12 @@ export interface IYCoreCollapseItemExternalProps {
   variant: TCollapseItemVariant | undefined
 }
 
-export const createCoreCollapseItemExternalProps = (): IYCoreCollapseItemExternalProps => ({
+export const createCoreCollapseItemExternalProps = (): IAltCoreCollapseItemExternalProps => ({
   label: undefined,
   annotation: undefined,
   opened: false,
   loading: undefined,
   shallow: false,
   value: undefined,
-  variant: EYCoreCollapseItemVariant.PRIMARY,
+  variant: EAltCoreCollapseItemVariant.PRIMARY,
 })

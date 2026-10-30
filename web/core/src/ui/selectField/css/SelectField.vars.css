@@ -1,13 +1,13 @@
-$component: $YCoreSelectFieldTagName;
+$component: $AltCoreSelectFieldTagName;
 
 :host {
   /* Sizes */
-  --y-core-select-field-min-width: 88px;
-  --y-core-select-field-max-width: 404px;
-  --y-core-dropdown-content-max-width: 404px;
-  --y-core-dropdown-activator-width: 100%;
-  --y-core-dropdown-max-width: 100%;
+  --alt-core-select-field-min-width: 88px;
+  --alt-core-select-field-max-width: 404px;
+  --alt-core-dropdown-content-max-width: 404px;
+  --alt-core-dropdown-activator-width: 100%;
+  --alt-core-dropdown-max-width: 100%;
 
   /* General */
-  --y-core-select-field-color: var(--y-core-color-text-primary);
+  --alt-core-select-field-color: var(--alt-core-color-text-primary);
 }

@@ -1,12 +1,12 @@
 import {
   createCoreCounterExternalProps,
-  type IYCoreCounterExternalProps,
+  type IAltCoreCounterExternalProps,
 } from './external'
 
 export * from './external'
 
-export interface IYCoreCounterProps extends IYCoreCounterExternalProps {}
+export interface IAltCoreCounterProps extends IAltCoreCounterExternalProps {}
 
-export const createCoreCounterProps = (): IYCoreCounterProps => {
+export const createCoreCounterProps = (): IAltCoreCounterProps => {
   return { ...createCoreCounterExternalProps() }
 }

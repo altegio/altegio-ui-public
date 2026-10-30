@@ -1,21 +1,21 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { YCoreChipTagName as tagName } from '~shared/constants'
+import { AltCoreChipTagName as tagName } from '~shared/constants'
 import { text } from '~shared/tests/slotContents'
-import { YCoreChip } from '~core/ui/chip'
-import { YChip } from '~vue/ui/chip'
+import { AltCoreChip } from '~core/ui/chip'
+import { AltChip } from '~vue/ui/chip'
 import { propActiveTestCases, propDisabledTestCases, propIconLeftTestCases, propLabelTestCases, propSizeTestCases } from './cases/props'
 
 const labelText = text
 
 describe(
-  'Vue/YChip',
+  'Vue/AltChip',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreChip,
+          AltCoreChip,
         )
       }
     })
@@ -28,7 +28,7 @@ describe(
             `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
             () => {
               const wrapper = mount(
-                YChip,
+                AltChip,
                 { props: { labelText: testCase.value } },
               )
 
@@ -44,7 +44,7 @@ describe(
             `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
             () => {
               const wrapper = mount(
-                YChip,
+                AltChip,
                 {
                   props: {
                     labelText,
@@ -69,7 +69,7 @@ describe(
             `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
             () => {
               const wrapper = mount(
-                YChip,
+                AltChip,
                 {
                   props: {
                     labelText,
@@ -94,7 +94,7 @@ describe(
           'Should emit "update:active" on Chip click',
           async() => {
             const wrapper = mount(
-              YChip,
+              AltChip,
               { props: { labelText } },
             )
 

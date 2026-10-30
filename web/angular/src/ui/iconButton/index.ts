@@ -1,2 +1,2 @@
-export { YIconButton } from './IconButton.component'
+export { AltIconButton } from './IconButton.component'
 export type * from './models/types'

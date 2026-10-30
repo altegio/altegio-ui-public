@@ -1,11 +1,11 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { YCoreButtonDropdownTagName } from '~shared/constants'
+import { AltCoreButtonDropdownTagName } from '~shared/constants'
 
-import { YCoreButtonDropdown } from '~core/ui/buttonDropdown'
+import { AltCoreButtonDropdown } from '~core/ui/buttonDropdown'
 
-import { YButtonDropdown } from '~vue/ui/buttonDropdown'
+import { AltButtonDropdown } from '~vue/ui/buttonDropdown'
 
 import {
   propItemsTestCases,
@@ -22,7 +22,7 @@ import {
   slotContentTestCases,
 } from './cases/slots'
 
-const tagName = YCoreButtonDropdownTagName
+const tagName = AltCoreButtonDropdownTagName
 
 describe(
   'Vue/ButtonDropdown',
@@ -31,7 +31,7 @@ describe(
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreButtonDropdown,
+          AltCoreButtonDropdown,
         )
       }
     })
@@ -53,7 +53,7 @@ describe(
             `Prop "${testCase.prop}" should set ${testCase.prop} on the core component. Case: ${testCase.case}`,
             () => {
               const wrapper = mount(
-                YButtonDropdown,
+                AltButtonDropdown,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
@@ -71,7 +71,7 @@ describe(
         it(
           'Should emit "item-click" events',
           () => {
-            const wrapper = mount(YButtonDropdown)
+            const wrapper = mount(AltButtonDropdown)
 
             wrapper.vm.$emit('item-click', { detail: { event: new Event('item-click') } })
             expect(wrapper.emitted('item-click')).toBeTruthy()
@@ -90,7 +90,7 @@ describe(
             `Slot "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
-                YButtonDropdown,
+                AltButtonDropdown,
                 { slots: { [testCase.slot]: testCase.content } },
               )
 

@@ -1,25 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { omit } from 'radash'
 import { useArgs } from 'storybook/preview-api'
-import { YSimpleRadioButton } from '~ng/ui/simpleRadioButton'
-import yCoreSimpleRadioButtonStoryMeta from '~core/ui/simpleRadioButton/stories/SimpleRadioButton.stories'
-import type { IYNgSimpleRadioButtonProps, TYNgSimpleRadioButtonModel } from '~ng/ui/simpleRadioButton/models/types'
+import { AltSimpleRadioButton } from '~ng/ui/simpleRadioButton'
+import altCoreSimpleRadioButtonStoryMeta from '~core/ui/simpleRadioButton/stories/SimpleRadioButton.stories'
+import type { IAltNgSimpleRadioButtonProps, TAltNgSimpleRadioButtonModel } from '~ng/ui/simpleRadioButton/models/types'
 import { action } from 'storybook/actions'
 import { getComponentStateTable, getComponentEmitsTable } from '~web/shared/.storybook/tables'
 import { DEFAULT_CHECKED_VALUE } from '../models/constants'
-import type { TYNgControlValueTypes } from '~web/angular/src/types/ControlValueAccessorTypes'
+import type { TAltNgControlValueTypes } from '~web/angular/src/types/ControlValueAccessorTypes'
 import { FormsModule } from '@angular/forms'
 
-type YSimpleRadioButtonStory = IYNgSimpleRadioButtonProps & TYNgControlValueTypes<TYNgSimpleRadioButtonModel>
+type AltSimpleRadioButtonStory = IAltNgSimpleRadioButtonProps & TAltNgControlValueTypes<TAltNgSimpleRadioButtonModel>
 
 /**
  * Angular wrapper for Core SimpleRadioButton
  */
-const meta: Meta<YSimpleRadioButtonStory> = {
+const meta: Meta<AltSimpleRadioButtonStory> = {
   title: 'RadioButton/🔍 SimpleRadioButton',
   id: 'simpleRadioButton',
   parameters: { controls: { sort: 'alpha' } },
-  component: YSimpleRadioButton,
+  component: AltSimpleRadioButton,
   tags: [
     'angular',
     'autodocs',
@@ -28,7 +28,7 @@ const meta: Meta<YSimpleRadioButtonStory> = {
     const [, updateArgs] = useArgs()
 
     const handlers = {
-      ngModelChange: (ngModel: TYNgSimpleRadioButtonModel) => {
+      ngModelChange: (ngModel: TAltNgSimpleRadioButtonModel) => {
         action('ngModelChange')(ngModel)
         updateArgs({ ngModel })
       },
@@ -41,7 +41,7 @@ const meta: Meta<YSimpleRadioButtonStory> = {
       },
       moduleMetadata: { imports: [FormsModule] },
       template: `
-        <YSimpleRadioButton
+        <AltSimpleRadioButton
           (ngModelChange)="ngModelChange($event)"
           [ngModel]="ngModel"
           [size]="size"
@@ -49,12 +49,12 @@ const meta: Meta<YSimpleRadioButtonStory> = {
           [disabled]="disabled"
           [hovered]="hovered"
         >
-        </YSimpleRadioButton>
+        </AltSimpleRadioButton>
       `,
     }
   },
   argTypes: {
-    ...omit({ ...yCoreSimpleRadioButtonStoryMeta.argTypes }, ['checked', 'onChecked']),
+    ...omit({ ...altCoreSimpleRadioButtonStoryMeta.argTypes }, ['checked', 'onChecked']),
     ngModel: {
       type: 'boolean',
       description: 'SimpleRadioButton checked state',
@@ -67,12 +67,12 @@ const meta: Meta<YSimpleRadioButtonStory> = {
     },
   },
   args: {
-    ...omit({ ...yCoreSimpleRadioButtonStoryMeta.args }, ['checked', 'onChecked']),
+    ...omit({ ...altCoreSimpleRadioButtonStoryMeta.args }, ['checked', 'onChecked']),
     ngModel: DEFAULT_CHECKED_VALUE,
   },
 }
 
 export default meta
-type Story = StoryObj<YSimpleRadioButtonStory>
+type Story = StoryObj<AltSimpleRadioButtonStory>
 
 export const Playground: Story = { args: {} }

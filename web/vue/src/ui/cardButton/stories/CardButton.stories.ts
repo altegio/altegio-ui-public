@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { EYCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
-import { yMagic } from '~shared/icons'
+import { EAltCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
+import { altMagic } from '~shared/icons'
 
-import { YCardButton } from '~vue/ui/cardButton'
-import { type IYVueCardButtonProps } from '~vue/ui/cardButton/models/types'
-import { YCardIcon } from '~vue/ui/cardIcon'
-import yCoreCardButtonStoryMeta from '~core/ui/cardButton/stories/CardButton.stories'
+import { AltCardButton } from '~vue/ui/cardButton'
+import { type IAltVueCardButtonProps } from '~vue/ui/cardButton/models/types'
+import { AltCardIcon } from '~vue/ui/cardIcon'
+import altCoreCardButtonStoryMeta from '~core/ui/cardButton/stories/CardButton.stories'
 
-type TVueCardButtonStoryMeta = IYVueCardButtonProps
+type TVueCardButtonStoryMeta = IAltVueCardButtonProps
 
 /**
  * Vue wrapper for Core CardButton
@@ -21,32 +21,32 @@ const meta: Meta<TVueCardButtonStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YCardButton, YCardIcon },
+    components: { AltCardButton, AltCardIcon },
     setup() {
       return {
         args,
-        yMagic,
-        EYCoreColorIconVariant,
+        altMagic,
+        EAltCoreColorIconVariant,
       }
     },
     template: `
-      <YCardButton
+      <AltCardButton
         v-bind="args"
         @click="args.onClick"
         @blur="args.onBlur"
         @focus="args.onFocus"
       >
         <template v-if="args.showCardIcon" #before>
-          <YCardIcon
-            :icon="yMagic"
-            :variant="EYCoreColorIconVariant.GREY"
+          <AltCardIcon
+            :icon="altMagic"
+            :variant="EAltCoreColorIconVariant.GREY"
           />
         </template>
-      </YCardButton>
+      </AltCardButton>
     `,
   }),
-  argTypes: { ...yCoreCardButtonStoryMeta.argTypes },
-  args: { ...yCoreCardButtonStoryMeta.args },
+  argTypes: { ...altCoreCardButtonStoryMeta.argTypes },
+  args: { ...altCoreCardButtonStoryMeta.args },
 }
 
 export default meta

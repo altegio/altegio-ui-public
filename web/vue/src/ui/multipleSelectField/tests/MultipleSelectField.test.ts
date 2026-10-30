@@ -1,9 +1,9 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { YCoreMultipleSelectFieldTagName } from '~shared/constants'
+import { AltCoreMultipleSelectFieldTagName } from '~shared/constants'
 
-import { YCoreMultipleSelectField } from '~core/ui/multipleSelectField'
+import { AltCoreMultipleSelectField } from '~core/ui/multipleSelectField'
 import {
   propAnnotationTextTestCases,
   propAutofocusTestCases,
@@ -24,23 +24,23 @@ import {
   propSizeTestCases,
   propValueTestCases,
 } from '~vue/ui/multipleSelectField/tests/cases/props'
-import { YMultipleSelectField } from '~web/vue/src'
+import { AltMultipleSelectField } from '~web/vue/src'
 import {
   slotAnnotationTestCases, slotDropdownListBottomTestCases,
   slotDropdownListTopTestCases,
 } from '~vue/ui/multipleSelectField/tests/cases/slots'
 import { vueInputEvents } from '~vue/ui/multipleSelectField/tests/cases/events'
 
-const tagName = YCoreMultipleSelectFieldTagName
+const tagName = AltCoreMultipleSelectFieldTagName
 
 describe(
-  'Vue/YMultipleSelectField',
+  'Vue/AltMultipleSelectField',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreMultipleSelectField,
+          AltCoreMultipleSelectField,
         )
       }
     })
@@ -53,7 +53,7 @@ describe(
             `Prop "${testCase.prop}" "${testCase.case}" should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
-                YMultipleSelectField,
+                AltMultipleSelectField,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
@@ -90,7 +90,7 @@ describe(
             `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
-                YMultipleSelectField,
+                AltMultipleSelectField,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
@@ -115,7 +115,7 @@ describe(
             `Slot "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
-                YMultipleSelectField,
+                AltMultipleSelectField,
                 {
                   props: { value: '' },
                   slots: {
@@ -147,7 +147,7 @@ describe(
             `Should emit "${emitEventName}" ${eventCase}`,
             () => {
               const wrapper = mount(
-                YMultipleSelectField,
+                AltMultipleSelectField,
                 { props: { value: '' } },
               )
 

@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreCardIconTagName as tagName } from '~shared/constants'
-import { YCardIcon } from '~ng/ui/cardIcon'
-import type { IYNgCardIconProps } from '~ng/ui/cardIcon/models/types'
+import { AltCoreCardIconTagName as tagName } from '~shared/constants'
+import { AltCardIcon } from '~ng/ui/cardIcon'
+import type { IAltNgCardIconProps } from '~ng/ui/cardIcon/models/types'
 
 import {
   propDisabledCases,
@@ -13,21 +13,21 @@ import {
 } from './cases/props'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgCardIconProps>
+  props?: Partial<IAltNgCardIconProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YCardIcon] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltCardIcon] }).compileComponents()
 
   @Component({
-    template: `<YCardIcon
+    template: `<AltCardIcon
       [disabled]="disabled"
       [size]="size"
       [icon]="icon"
       [variant]="variant"
-    ></YCardIcon>`,
-    imports: [YCardIcon],
+    ></AltCardIcon>`,
+    imports: [AltCardIcon],
     standalone: true,
   })
   class TestComponent {
@@ -40,7 +40,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YCardIcon/Unit',
+  'Angular/AltCardIcon/Unit',
   () => {
     describe(
       'Props',

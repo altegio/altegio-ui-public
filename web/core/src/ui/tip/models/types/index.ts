@@ -1,18 +1,18 @@
 import {
   createCoreTipExternalProps,
-  type IYCoreTipExternalProps,
+  type IAltCoreTipExternalProps,
 } from './external'
 import {
   createCoreTipInternalProps,
-  type IYCoreTipInternalProps,
+  type IAltCoreTipInternalProps,
 } from './internal'
 
 export * from './external'
 export * from './internal'
 
-export interface IYCoreTipProps extends IYCoreTipExternalProps, IYCoreTipInternalProps {}
+export interface IAltCoreTipProps extends IAltCoreTipExternalProps, IAltCoreTipInternalProps {}
 
-export const createCoreTipProps = (): IYCoreTipProps => ({
+export const createCoreTipProps = (): IAltCoreTipProps => ({
   ...createCoreTipExternalProps(),
   ...createCoreTipInternalProps(),
 })

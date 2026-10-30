@@ -1,5 +1,5 @@
 <template>
-  <y-core-field-wrapper
+  <alt-core-field-wrapper
     v-bind="props"
     @click="$emit('click', $event)"
     @click-outside="$emit('click-outside', $event)"
@@ -9,28 +9,28 @@
     @mouse-leave="$emit('mouse-leave', $event)"
   >
     <slot />
-  </y-core-field-wrapper>
+  </alt-core-field-wrapper>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/fieldWrapper'
   import {
     createVueFieldWrapperProps,
-    type IYVueFieldWrapperProps,
-    type IYVueFieldWrapperEmits,
-    type IYVueCoreFieldWrapperProps,
+    type IAltVueFieldWrapperProps,
+    type IAltVueFieldWrapperEmits,
+    type IAltVueCoreFieldWrapperProps,
   } from '~vue/ui/fieldWrapper/models/types'
 
-  defineOptions({ name: 'YFieldWrapper' })
+  defineOptions({ name: 'AltFieldWrapper' })
 
   defineSlots<{
     default: () => unknown
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueFieldWrapperProps>(),
+    defineProps<IAltVueFieldWrapperProps>(),
     createVueFieldWrapperProps(),
-  ) satisfies IYVueCoreFieldWrapperProps
+  ) satisfies IAltVueCoreFieldWrapperProps
 
-  defineEmits<IYVueFieldWrapperEmits>()
+  defineEmits<IAltVueFieldWrapperEmits>()
 </script>

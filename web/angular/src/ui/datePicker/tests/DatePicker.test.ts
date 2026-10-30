@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreDatePickerTagName } from '~shared/constants'
-import { YDatePicker } from '~ng/ui/datePicker'
-import { type IYNgDatePickerProps } from '~ng/ui/datePicker/models/types'
+import { AltCoreDatePickerTagName } from '~shared/constants'
+import { AltDatePicker } from '~ng/ui/datePicker'
+import { type IAltNgDatePickerProps } from '~ng/ui/datePicker/models/types'
 import {
   propDateCases,
   propNameCases,
@@ -22,17 +22,17 @@ import {
   propErrorsCases,
 } from './cases/props'
 
-const tagName = YCoreDatePickerTagName
+const tagName = AltCoreDatePickerTagName
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgDatePickerProps>
+  props?: Partial<IAltNgDatePickerProps>
 }
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YDatePicker] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltDatePicker] }).compileComponents()
 
   @Component({
-    template: `<YDatePicker
+    template: `<AltDatePicker
       [date]="date"
       [isRange]="isRange"
       [minDate]="minDate"
@@ -49,8 +49,8 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
       [labelDebounce]="labelDebounce"
       [error]="error"
       [errors]="errors"
-      (pick)="pickEvent($event)"></YDatePicker>`,
-    imports: [YDatePicker],
+      (pick)="pickEvent($event)"></AltDatePicker>`,
+    imports: [AltDatePicker],
     standalone: true,
   })
   class TestComponent {
@@ -78,7 +78,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YDatePicker',
+  'Angular/AltDatePicker',
   () => {
     describe(
       'Unit',

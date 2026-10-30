@@ -3,7 +3,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core'
 import '~core/ui/tip'
 import {
   createNgTipProps,
-  type IYNgTipProps,
+  type IAltNgTipProps,
 } from '~ng/ui/tip/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { cleanupInnerHTML } from '~shared/utils/helpers'
@@ -11,11 +11,11 @@ import { cleanupInnerHTML } from '~shared/utils/helpers'
 const { trigger, isOpen, offset, padding, placement, strategy, type, transition, disabled, inline } = createNgTipProps()
 
 @Component({
-  selector: 'YTip',
+  selector: 'AltTip',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-tip
+    <alt-core-tip
       [trigger]="trigger"
       [isOpen]="isOpen"
       [offset]="offset"
@@ -48,21 +48,21 @@ const { trigger, isOpen, offset, padding, placement, strategy, type, transition,
           [innerHTML]="cleanupHTML(content)"
         ></div>
       }
-    </y-core-tip>
+    </alt-core-tip>
   `,
 })
 
-export class YTip implements IYNgTipProps {
-  @Input() @DefaultValue(trigger) trigger: IYNgTipProps['trigger'] = trigger
-  @Input() @DefaultValue(isOpen) isOpen: IYNgTipProps['isOpen'] = isOpen
-  @Input() @DefaultValue(offset) offset: IYNgTipProps['offset'] = offset
-  @Input() @DefaultValue(padding) padding: IYNgTipProps['padding'] = padding
-  @Input() @DefaultValue(placement) placement: IYNgTipProps['placement'] = placement
-  @Input() @DefaultValue(strategy) strategy: IYNgTipProps['strategy'] = strategy
-  @Input() @DefaultValue(type) type: IYNgTipProps['type'] = type
-  @Input() @DefaultValue(transition) transition: IYNgTipProps['transition'] = transition
-  @Input() @DefaultValue(disabled) disabled: IYNgTipProps['disabled'] = disabled
-  @Input() @DefaultValue(inline) inline: IYNgTipProps['inline'] = inline
+export class AltTip implements IAltNgTipProps {
+  @Input() @DefaultValue(trigger) trigger: IAltNgTipProps['trigger'] = trigger
+  @Input() @DefaultValue(isOpen) isOpen: IAltNgTipProps['isOpen'] = isOpen
+  @Input() @DefaultValue(offset) offset: IAltNgTipProps['offset'] = offset
+  @Input() @DefaultValue(padding) padding: IAltNgTipProps['padding'] = padding
+  @Input() @DefaultValue(placement) placement: IAltNgTipProps['placement'] = placement
+  @Input() @DefaultValue(strategy) strategy: IAltNgTipProps['strategy'] = strategy
+  @Input() @DefaultValue(type) type: IAltNgTipProps['type'] = type
+  @Input() @DefaultValue(transition) transition: IAltNgTipProps['transition'] = transition
+  @Input() @DefaultValue(disabled) disabled: IAltNgTipProps['disabled'] = disabled
+  @Input() @DefaultValue(inline) inline: IAltNgTipProps['inline'] = inline
 
   cleanupHTML = cleanupInnerHTML
 }

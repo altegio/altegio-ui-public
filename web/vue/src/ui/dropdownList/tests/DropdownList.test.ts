@@ -1,10 +1,10 @@
 import { describe, expect, it, beforeAll, beforeEach, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { YCoreDropdownListTagName, YCoreDropdownCellTagName } from '~shared/constants'
+import { AltCoreDropdownListTagName, AltCoreDropdownCellTagName } from '~shared/constants'
 
-import { YDropdownList } from '~vue/ui/dropdownList'
-import { YCoreDropdownList, YCoreDropdownCell } from '~core/index'
+import { AltDropdownList } from '~vue/ui/dropdownList'
+import { AltCoreDropdownList, AltCoreDropdownCell } from '~core/index'
 import {
   slotTopTestCases,
   slotListTestCases,
@@ -21,23 +21,23 @@ import {
 } from './cases/props'
 import { getWCShadowRoot, trimTextContent } from '~shared/tests/utils'
 
-const tagName = YCoreDropdownListTagName
+const tagName = AltCoreDropdownListTagName
 
 describe(
-  'Vue/YDropdownList',
+  'Vue/AltDropdownList',
   () => {
     beforeAll(() => {
       // register the core component before the tests run
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreDropdownList,
+          AltCoreDropdownList,
         )
       }
-      if (!customElements.get(YCoreDropdownCellTagName)) {
+      if (!customElements.get(AltCoreDropdownCellTagName)) {
         customElements.define(
-          YCoreDropdownCellTagName,
-          YCoreDropdownCell,
+          AltCoreDropdownCellTagName,
+          AltCoreDropdownCell,
         )
       }
     })
@@ -53,7 +53,7 @@ describe(
                 `Should render the top slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YDropdownList,
+                    AltDropdownList,
                     { slots: { top: testCase.content } },
                   )
 
@@ -67,7 +67,7 @@ describe(
                 `Should render the list slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YDropdownList,
+                    AltDropdownList,
                     { slots: { list: testCase.content } },
                   )
 
@@ -81,7 +81,7 @@ describe(
                 `Should render the bottom slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YDropdownList,
+                    AltDropdownList,
                     { slots: { bottom: testCase.content } },
                   )
 
@@ -95,7 +95,7 @@ describe(
                 `Should render the item-outer slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YDropdownList,
+                    AltDropdownList,
                     {
                       props: { items: propItemsTestCases[0].value },
                       slots: { 'item-outer': testCase.content },
@@ -112,7 +112,7 @@ describe(
                 `Should render the item-inner slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YDropdownList,
+                    AltDropdownList,
                     {
                       props: { items: propItemsTestCases[0].value },
                       slots: { 'item-inner': testCase.content },
@@ -129,7 +129,7 @@ describe(
                 `Should render the item-outer-2 slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YDropdownList,
+                    AltDropdownList,
                     {
                       props: { items: propItemsTestCases[0].value },
                       slots: { 'item-outer-2': testCase.content },
@@ -146,7 +146,7 @@ describe(
                 `Should render the item-inner-2 slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YDropdownList,
+                    AltDropdownList,
                     {
                       props: { items: propItemsTestCases[0].value },
                       slots: { 'item-inner-2': testCase.content },
@@ -180,7 +180,7 @@ describe(
                 `Changing prop items should update CoreDropdownList ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YDropdownList,
+                    AltDropdownList,
                     {
                       props: { items: testCase.value },
                       attachTo: container,
@@ -199,7 +199,7 @@ describe(
                 `Changing prop itemLabel should update CoreDropdownList ${testCase.case}`,
                 async() => {
                   const wrapper = mount(
-                    YDropdownList,
+                    AltDropdownList,
                     {
                       props: {
                         items: propItemsTestCases[0].value,
@@ -225,7 +225,7 @@ describe(
                 `Changing prop minWidth should update CoreDropdownList ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YDropdownList,
+                    AltDropdownList,
                     {
                       props: { minWidth: testCase.value },
                       attachTo: container,

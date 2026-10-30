@@ -1,21 +1,21 @@
 <template>
-  <y-core-link v-bind="props">
+  <alt-core-link v-bind="props">
     <slot />
-  </y-core-link>
+  </alt-core-link>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/link'
   import {
     createVueLinkProps,
-    type IYVueLinkProps,
-    type IYVueCoreLinkProps,
+    type IAltVueLinkProps,
+    type IAltVueCoreLinkProps,
   } from '~vue/ui/link/models/types'
 
-  defineOptions({ name: 'YLink' })
+  defineOptions({ name: 'AltLink' })
 
   const props = withDefaults(
-    defineProps<IYVueLinkProps>(),
+    defineProps<IAltVueLinkProps>(),
     createVueLinkProps(),
-  ) satisfies IYVueCoreLinkProps
+  ) satisfies IAltVueCoreLinkProps
 </script>

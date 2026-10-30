@@ -1,17 +1,17 @@
-$component: $YCoreDatePickerTagName;
+$component: $AltCoreDatePickerTagName;
 
 .$(component) {
   display: flex;
   flex-direction: column;
-  gap: var(--y-core-size-spacing-x);
-  font-family: var(--y-core-font-family);
+  gap: var(--alt-core-size-spacing-x);
+  font-family: var(--alt-core-font-family);
 
   &__calendar {
-    padding: var(--y-core-date-picker-calendar-padding-y) var(--y-core-date-picker-calendar-padding-x);
+    padding: var(--alt-core-date-picker-calendar-padding-y) var(--alt-core-date-picker-calendar-padding-x);
   }
   
   &__dropdown-content {
-    max-width: var(--y-core-date-picker-calendar-max-width);
+    max-width: var(--alt-core-date-picker-calendar-max-width);
   }
 
   &__label {

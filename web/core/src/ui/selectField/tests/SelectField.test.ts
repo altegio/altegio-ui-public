@@ -1,16 +1,16 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
-import type { YCoreDropdownListTagName, YCorePhoneCodeTagName } from '~shared/constants'
+import type { AltCoreDropdownListTagName, AltCorePhoneCodeTagName } from '~shared/constants'
 import {
-  YCoreFieldInputTagName,
-  YCoreSelectFieldTagName,
-  YCoreFieldWrapperTagName,
-  YCoreLabelTagName,
-  YCoreAnnotationTagName,
-  YCoreErrorTagName,
-  YCoreDropdownCellTagName,
+  AltCoreFieldInputTagName,
+  AltCoreSelectFieldTagName,
+  AltCoreFieldWrapperTagName,
+  AltCoreLabelTagName,
+  AltCoreAnnotationTagName,
+  AltCoreErrorTagName,
+  AltCoreDropdownCellTagName,
 } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
-import type { SelectEvent, TYCoreSelectFieldItemValue } from '~core/ui/selectField/models/types'
+import type { SelectEvent, TAltCoreSelectFieldItemValue } from '~core/ui/selectField/models/types'
 import {
   createCoreSelectFieldProps,
 } from '~core/ui/selectField/models/types'
@@ -43,7 +43,7 @@ import { wrapperEvents } from '~core/ui/selectField/tests/cases/events'
 import { userEvent } from 'vitest/browser'
 import { dropdownListSlotsTestCases } from '~core/ui/selectField/tests/cases/slots'
 
-const tagName = YCoreSelectFieldTagName
+const tagName = AltCoreSelectFieldTagName
 
 const {
   component,
@@ -56,7 +56,7 @@ const {
   createCoreSelectFieldProps(),
 )
 
-type TSubComponent = typeof YCoreFieldInputTagName | typeof YCoreAnnotationTagName | typeof YCoreErrorTagName | typeof YCoreDropdownListTagName | typeof YCoreDropdownCellTagName | typeof YCorePhoneCodeTagName | typeof YCoreFieldWrapperTagName | typeof YCoreLabelTagName
+type TSubComponent = typeof AltCoreFieldInputTagName | typeof AltCoreAnnotationTagName | typeof AltCoreErrorTagName | typeof AltCoreDropdownListTagName | typeof AltCoreDropdownCellTagName | typeof AltCorePhoneCodeTagName | typeof AltCoreFieldWrapperTagName | typeof AltCoreLabelTagName
 
 const getSubWC = <T extends TSubComponent>(primaryWC: HTMLElement, secondaryWC: T) => {
   const subWC = getWCShadowRoot(primaryWC).querySelector(secondaryWC)
@@ -67,14 +67,14 @@ const getSubWC = <T extends TSubComponent>(primaryWC: HTMLElement, secondaryWC: 
 const callHandleInputEvent = async() => {
   vi.useFakeTimers()
 
-  const inputField = getSubWC(component, YCoreFieldInputTagName)
+  const inputField = getSubWC(component, AltCoreFieldInputTagName)
   inputField.dispatchEvent(new CustomEvent('input', { detail: { value: text } }))
 
   await vi.advanceTimersByTimeAsync(300)
 }
 
 describe(
-  'Core/YSelectField',
+  'Core/AltSelectField',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -136,7 +136,7 @@ describe(
 
                   const inputField = getSubWC(
                     component,
-                    YCoreFieldInputTagName,
+                    AltCoreFieldInputTagName,
                   )
 
                   expect(inputField[prop]).toBe(value)
@@ -152,7 +152,7 @@ describe(
 
                   const inputField = getSubWC(
                     component,
-                    YCoreFieldInputTagName,
+                    AltCoreFieldInputTagName,
                   )
 
                   expect(inputField[prop]).toBe(expected)
@@ -172,7 +172,7 @@ describe(
 
                   const inputField = getSubWC(
                     component,
-                    YCoreFieldWrapperTagName,
+                    AltCoreFieldWrapperTagName,
                   )
 
                   expect(inputField[prop]).toBe(value)
@@ -189,14 +189,14 @@ describe(
                   if (value) {
                     const moleculeLabel = getSubWC(
                       component,
-                      YCoreLabelTagName,
+                      AltCoreLabelTagName,
                     )
                     expect(moleculeLabel[labelProp]).toBe(value)
                   } else {
                     expect(() => getSubWC(
                       component,
-                      YCoreLabelTagName,
-                    )).toThrow(`${YCoreLabelTagName} not found`)
+                      AltCoreLabelTagName,
+                    )).toThrow(`${AltCoreLabelTagName} not found`)
                   }
                 },
               )
@@ -218,7 +218,7 @@ describe(
 
                   const moleculeLabel = getSubWC(
                     component,
-                    YCoreLabelTagName,
+                    AltCoreLabelTagName,
                   )
 
                   expect(moleculeLabel[labelProp]).toBe(value)
@@ -234,17 +234,17 @@ describe(
 
                   const inputField = getSubWC(
                     component,
-                    YCoreFieldInputTagName,
+                    AltCoreFieldInputTagName,
                   )
 
                   const atomAnnotation = getSubWC(
                     component,
-                    YCoreAnnotationTagName,
+                    AltCoreAnnotationTagName,
                   )
 
                   const moleculeLabel = getSubWC(
                     component,
-                    YCoreLabelTagName,
+                    AltCoreLabelTagName,
                   )
 
                   expect(moleculeLabel.disabled).toBe(value)
@@ -263,14 +263,14 @@ describe(
                   if (value?.length) {
                     const atomError = getSubWC(
                       component,
-                      YCoreErrorTagName,
+                      AltCoreErrorTagName,
                     )
                     expect(atomError.errors).toBe(value)
                   } else {
                     expect(() => getSubWC(
                       component,
-                      YCoreErrorTagName,
-                    )).toThrow(`${YCoreErrorTagName} not found`)
+                      AltCoreErrorTagName,
+                    )).toThrow(`${AltCoreErrorTagName} not found`)
                   }
                 },
               )
@@ -284,7 +284,7 @@ describe(
 
                   const atomAnnotation = getSubWC(
                     component,
-                    YCoreAnnotationTagName,
+                    AltCoreAnnotationTagName,
                   )
 
                   expect(atomAnnotation[annotationProp]).toBe(value)
@@ -303,14 +303,14 @@ describe(
                   await updateComponent({
                     props: {
                       [prop]: value,
-                      value: (additionalProps?.selectedValue as TYCoreSelectFieldItemValue),
+                      value: (additionalProps?.selectedValue as TAltCoreSelectFieldItemValue),
                       items: items,
                     },
                   })
 
                   const inputField = getSubWC(
                     component,
-                    YCoreFieldInputTagName,
+                    AltCoreFieldInputTagName,
                   )
 
                   expect(inputField.value).toBe(expected)
@@ -406,7 +406,7 @@ describe(
                 () => {
                   const inputField = getSubWC(
                     component,
-                    YCoreFieldInputTagName,
+                    AltCoreFieldInputTagName,
                   )
 
                   const handler = vi.fn()
@@ -428,7 +428,7 @@ describe(
 
                   const atomInput = getSubWC(
                     component,
-                    YCoreFieldInputTagName,
+                    AltCoreFieldInputTagName,
                   )
 
                   const handler = vi.fn()
@@ -493,7 +493,7 @@ describe(
 
                 setTimeout(() => {
                   requestAnimationFrame(() => {
-                    const dropdownListItem = getSubWC(component, YCoreDropdownCellTagName)
+                    const dropdownListItem = getSubWC(component, AltCoreDropdownCellTagName)
 
                     userEvent.click(dropdownListItem)
                     expect(handler).toHaveBeenCalled()

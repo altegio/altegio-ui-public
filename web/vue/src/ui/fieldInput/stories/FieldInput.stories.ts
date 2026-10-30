@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YFieldInput } from '~vue/ui/fieldInput'
-import { type IYVueFieldInputProps } from '~vue/ui/fieldInput/models/types'
-import yCoreFieldInputStoryMeta, { type TYCoreFieldInputMeta } from '~core/ui/fieldInput/stories/FieldInput.stories'
+import { AltFieldInput } from '~vue/ui/fieldInput'
+import { type IAltVueFieldInputProps } from '~vue/ui/fieldInput/models/types'
+import altCoreFieldInputStoryMeta, { type TAltCoreFieldInputMeta } from '~core/ui/fieldInput/stories/FieldInput.stories'
 import { omit } from 'radash'
 
-type TVueFieldInputStoryMeta = IYVueFieldInputProps & {
-  onUpdateModelValue: TYCoreFieldInputMeta['onInput']
+type TVueFieldInputStoryMeta = IAltVueFieldInputProps & {
+  onUpdateModelValue: TAltCoreFieldInputMeta['onInput']
 }
 
 /**
@@ -21,12 +21,12 @@ const meta: Meta<TVueFieldInputStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YFieldInput },
+    components: { AltFieldInput },
     setup() {
       return { args }
     },
     template: `
-      <YFieldInput
+      <AltFieldInput
         v-bind="args"
         @update:model-value="args.onUpdateModelValue"
         @focus="args.onFocus"
@@ -34,18 +34,18 @@ const meta: Meta<TVueFieldInputStoryMeta> = {
         @keydown="args.onKeydown"
         @render="args.onRender"
         style="border: 1px dashed;"
-      ></YFieldInput>
+      ></AltFieldInput>
     `,
   }),
   argTypes: {
-    ...omit(yCoreFieldInputStoryMeta.argTypes ?? {}, ['value', 'onInput']),
-    modelValue: yCoreFieldInputStoryMeta.argTypes?.value,
-    onUpdateModelValue: yCoreFieldInputStoryMeta.argTypes?.onInput,
+    ...omit(altCoreFieldInputStoryMeta.argTypes ?? {}, ['value', 'onInput']),
+    modelValue: altCoreFieldInputStoryMeta.argTypes?.value,
+    onUpdateModelValue: altCoreFieldInputStoryMeta.argTypes?.onInput,
   },
   args: {
-    ...omit(yCoreFieldInputStoryMeta.args ?? {}, ['value', 'onInput']),
-    modelValue: yCoreFieldInputStoryMeta.args?.value,
-    onUpdateModelValue: yCoreFieldInputStoryMeta.args?.onInput,
+    ...omit(altCoreFieldInputStoryMeta.args ?? {}, ['value', 'onInput']),
+    modelValue: altCoreFieldInputStoryMeta.args?.value,
+    onUpdateModelValue: altCoreFieldInputStoryMeta.args?.onInput,
   },
 }
 

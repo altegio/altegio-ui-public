@@ -1,16 +1,16 @@
-import type { TYSizes } from '~shared/types/global'
-import { EYSizes } from '~shared/types/global'
+import type { TAltSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import { DEFAULT_CHECKED_VALUE, DEFAULT_DISABLED_VALUE } from './constants'
 
-export interface IYCoreSimpleToggleExternalProps {
+export interface IAltCoreSimpleToggleExternalProps {
   checked: boolean | undefined
   disabled: boolean | undefined
-  size: Extract<TYSizes, 'small' | 'medium'> | undefined
+  size: Extract<TAltSizes, 'small' | 'medium'> | undefined
 }
 
-export const createCoreSimpleToggleExternalProps = (): IYCoreSimpleToggleExternalProps => {
+export const createCoreSimpleToggleExternalProps = (): IAltCoreSimpleToggleExternalProps => {
   return {
-    size: EYSizes.SMALL,
+    size: EAltSizes.SMALL,
     checked: DEFAULT_CHECKED_VALUE,
     disabled: DEFAULT_DISABLED_VALUE,
   }

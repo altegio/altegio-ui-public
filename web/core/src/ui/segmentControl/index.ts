@@ -1,1 +1,1 @@
-export { YCoreSegmentControl } from './SegmentControl.core'
+export { AltCoreSegmentControl } from './SegmentControl.core'

@@ -1,1 +1,1 @@
-export { YCoreTooltip } from './Tooltip.core'
+export { AltCoreTooltip } from './Tooltip.core'

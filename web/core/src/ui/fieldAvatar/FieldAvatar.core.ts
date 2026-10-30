@@ -5,17 +5,17 @@ import { consume } from '@lit/context'
 
 import {
   createCoreFieldAvatarProps,
-  type IYCoreFieldAvatarProps, mapSizeToAvatarSize,
+  type IAltCoreFieldAvatarProps, mapSizeToAvatarSize,
 } from '~core/ui/fieldAvatar/models/types'
 import {
-  YCoreFieldAvatarTagName as tagName,
+  AltCoreFieldAvatarTagName as tagName,
 } from '~shared/constants'
 
-import YCoreFieldAvatarVarsCSS from '~core/ui/fieldAvatar/css/FieldAvatar.vars.css?inline'
-import YCoreFieldAvatarScopedCSS from '~core/ui/fieldAvatar/css/FieldAvatar.scoped.css?inline'
+import AltCoreFieldAvatarVarsCSS from '~core/ui/fieldAvatar/css/FieldAvatar.vars.css?inline'
+import AltCoreFieldAvatarScopedCSS from '~core/ui/fieldAvatar/css/FieldAvatar.scoped.css?inline'
 
 import { interceptEvents } from '~core/utils/event-interceptor'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import { disabledContextCreated, sizeContextCreated } from '~core/ui/fieldWrapper/providers'
 
 import '~core/ui/avatar'
@@ -26,28 +26,28 @@ const { disabled, size, photo, initials } = createCoreFieldAvatarProps()
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreFieldAvatar
+export class AltCoreFieldAvatar
   extends LitElement
-  implements IYCoreFieldAvatarProps {
+  implements IAltCoreFieldAvatarProps {
   @consume({ context: disabledContextCreated, subscribe: true })
-  @property({ type: Boolean }) disabled: IYCoreFieldAvatarProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreFieldAvatarProps['disabled'] = disabled
   @consume({ context: sizeContextCreated, subscribe: true })
-  @property({ type: String, reflect: true }) size: IYCoreFieldAvatarProps['size'] = size
-  @property({ type: String }) photo: IYCoreFieldAvatarProps['photo'] = photo
-  @property({ type: String }) initials: IYCoreFieldAvatarProps['initials'] = initials
-  @property({ type: Object }) icon!: IYCoreFieldAvatarProps['icon']
+  @property({ type: String, reflect: true }) size: IAltCoreFieldAvatarProps['size'] = size
+  @property({ type: String }) photo: IAltCoreFieldAvatarProps['photo'] = photo
+  @property({ type: String }) initials: IAltCoreFieldAvatarProps['initials'] = initials
+  @property({ type: Object }) icon!: IAltCoreFieldAvatarProps['icon']
 
   private readonly baseClass = tagName
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreFieldAvatarVarsCSS)}
-      ${unsafeCSS(YCoreFieldAvatarScopedCSS)}
+      ${unsafeCSS(AltCoreFieldAvatarVarsCSS)}
+      ${unsafeCSS(AltCoreFieldAvatarScopedCSS)}
     `,
   ]
 
   private get computedSize() {
-    return this.size ?? EYSizes.MEDIUM
+    return this.size ?? EAltSizes.MEDIUM
   }
 
   private get computedAvatarSize() {
@@ -65,13 +65,13 @@ export class YCoreFieldAvatar
   protected render() {
     return html`
       <div class=${classMap(this.computedClasses)}>
-        <y-core-avatar
+        <alt-core-avatar
           .size=${this.computedAvatarSize}
           .photo=${this.photo}
           .initials=${this.initials}
           .icon=${this.icon}
           .disabled=${this.disabled}
-        ></y-core-avatar>
+        ></alt-core-avatar>
       </div>
     `
   }

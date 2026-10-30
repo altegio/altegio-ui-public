@@ -1,4 +1,4 @@
-$component: $YCoreButtonGroupTagName;
+$component: $AltCoreButtonGroupTagName;
 
 .$(component) {
   --button-group-border-color: #2B313426;
@@ -6,37 +6,37 @@ $component: $YCoreButtonGroupTagName;
 
   box-sizing: border-box;
   display: flex;
-  width: var(--y-core-button-group-width);
+  width: var(--alt-core-button-group-width);
 
 
 
   ::slotted(*:first-child:not(:last-child)) {
-    --y-core-simple-button-border-top-right-radius: 0;
-    --y-core-simple-button-border-bottom-right-radius: 0;
+    --alt-core-simple-button-border-top-right-radius: 0;
+    --alt-core-simple-button-border-bottom-right-radius: 0;
   }
 
   ::slotted(*:not(:first-child, :last-child)) {
-    --y-core-simple-button-border-top-left-radius: 0;
-    --y-core-simple-button-border-top-right-radius: 0;
-    --y-core-simple-button-border-bottom-left-radius: 0;
-    --y-core-simple-button-border-bottom-right-radius: 0;
-    --y-core-simple-button-box-shadow-override: inset 1px 0px 0px var(--button-group-border-color);
+    --alt-core-simple-button-border-top-left-radius: 0;
+    --alt-core-simple-button-border-top-right-radius: 0;
+    --alt-core-simple-button-border-bottom-left-radius: 0;
+    --alt-core-simple-button-border-bottom-right-radius: 0;
+    --alt-core-simple-button-box-shadow-override: inset 1px 0px 0px var(--button-group-border-color);
   }
 
   ::slotted(*:last-child:not(:first-child)) {
-    --y-core-simple-button-border-top-left-radius: 0;
-    --y-core-simple-button-border-bottom-left-radius: 0;
-    --y-core-simple-button-box-shadow-override: inset 1px 0px 0px var(--button-group-border-color);
+    --alt-core-simple-button-border-top-left-radius: 0;
+    --alt-core-simple-button-border-bottom-left-radius: 0;
+    --alt-core-simple-button-box-shadow-override: inset 1px 0px 0px var(--button-group-border-color);
   }
 
   ::slotted([variant="outline"]:first-child:not(:last-child)),
   ::slotted([variant="outline-filled"]:first-child:not(:last-child)) {
-    --y-core-simple-button-box-shadow-override: unset !important;
+    --alt-core-simple-button-box-shadow-override: unset !important;
   }
 
   ::slotted([variant="outline"]:not(:first-child, :last-child)),
   ::slotted([variant="outline-filled"]:not(:first-child, :last-child)) {
-    --y-core-simple-button-box-shadow-override:
+    --alt-core-simple-button-box-shadow-override:
   inset -1px 0px 0px var(--button-group-outline-border-color),
   inset 0px 1px 0px var(--button-group-outline-border-color),
   inset 0px -1px 0px var(--button-group-outline-border-color);
@@ -44,7 +44,7 @@ $component: $YCoreButtonGroupTagName;
 
   ::slotted([variant="outline"]:last-child:not(:first-child)),
   ::slotted([variant="outline-filled"]:last-child:not(:first-child)) {
-    --y-core-simple-button-box-shadow-override:
+    --alt-core-simple-button-box-shadow-override:
   inset -1px 0px 0px var(--button-group-outline-border-color),
   inset 0px 1px 0px var(--button-group-outline-border-color),
   inset 0px -1px 0px var(--button-group-outline-border-color);

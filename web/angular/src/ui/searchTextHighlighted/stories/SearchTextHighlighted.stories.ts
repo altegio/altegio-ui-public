@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YSearchTextHighlighted } from '~ng/ui/searchTextHighlighted'
-import yCoreSearchTextHighlightedStoryMeta from '~core/ui/searchTextHighlighted/stories/SearchTextHighlighted.stories'
+import { AltSearchTextHighlighted } from '~ng/ui/searchTextHighlighted'
+import altCoreSearchTextHighlightedStoryMeta from '~core/ui/searchTextHighlighted/stories/SearchTextHighlighted.stories'
 
 /**
  * Angular wrapper for Core SearchTextHighlighted
  */
-const meta: Meta<YSearchTextHighlighted> = {
+const meta: Meta<AltSearchTextHighlighted> = {
   title: '🔍 SearchTextHighlighted',
   id: 'searchTextHighlighted',
   parameters: { controls: { sort: 'alpha' } },
-  component: YSearchTextHighlighted,
+  component: AltSearchTextHighlighted,
   tags: [
     'angular',
     'autodocs',
@@ -18,7 +18,7 @@ const meta: Meta<YSearchTextHighlighted> = {
   render: (args) => ({
     props: { ...args },
     template: `
-      <YSearchTextHighlighted
+      <AltSearchTextHighlighted
         [text]="text"
         [variant]="variant"
         [search]="search"
@@ -29,13 +29,13 @@ const meta: Meta<YSearchTextHighlighted> = {
         [highlightTextVariant]="highlightTextVariant"
         [highlightTextSize]="highlightTextSize"
       >
-      </YSearchTextHighlighted>`,
+      </AltSearchTextHighlighted>`,
   }),
-  argTypes: { ...yCoreSearchTextHighlightedStoryMeta.argTypes },
-  args: { ...yCoreSearchTextHighlightedStoryMeta.args },
-} satisfies Meta<YSearchTextHighlighted>
+  argTypes: { ...altCoreSearchTextHighlightedStoryMeta.argTypes },
+  args: { ...altCoreSearchTextHighlightedStoryMeta.args },
+} satisfies Meta<AltSearchTextHighlighted>
 
 export default meta
-type Story = StoryObj<YSearchTextHighlighted>
+type Story = StoryObj<AltSearchTextHighlighted>
 
 export const Playground: Story = { args: {} }

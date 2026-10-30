@@ -1,5 +1,5 @@
 <template>
-  <y-core-collapse-item
+  <alt-core-collapse-item
     v-bind="props"
     @collapse-item-click="$emit('collapse-item-click', $event)"
   >
@@ -51,19 +51,19 @@
     >
       <slot name="after" />
     </div>
-  </y-core-collapse-item>
+  </alt-core-collapse-item>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/collapseItem'
   import {
     createVueCollapseItemProps,
-    type IYVueCollapseItemProps,
-    type IYVueCollapseItemEmits,
-    type IYVueCoreCollapseItemProps,
+    type IAltVueCollapseItemProps,
+    type IAltVueCollapseItemEmits,
+    type IAltVueCoreCollapseItemProps,
   } from '~vue/ui/collapseItem/models/types'
 
-  defineOptions({ name: 'YCollapseItem' })
+  defineOptions({ name: 'AltCollapseItem' })
 
   defineSlots<{
     before?: () => unknown
@@ -76,9 +76,9 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueCollapseItemProps>(),
+    defineProps<IAltVueCollapseItemProps>(),
     createVueCollapseItemProps(),
-  ) satisfies IYVueCoreCollapseItemProps
+  ) satisfies IAltVueCoreCollapseItemProps
 
-  defineEmits<IYVueCollapseItemEmits>()
+  defineEmits<IAltVueCollapseItemEmits>()
 </script>

@@ -1,23 +1,23 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
 import {
-  YCoreDatePickerTagName,
-  YCoreFieldWrapperTagName,
-  YCoreFieldInputTagName,
-  YCoreCalendarTagName,
-  YCoreErrorTagName,
-  YCoreAnnotationTagName,
-  YCoreLabelTagName,
+  AltCoreDatePickerTagName,
+  AltCoreFieldWrapperTagName,
+  AltCoreFieldInputTagName,
+  AltCoreCalendarTagName,
+  AltCoreErrorTagName,
+  AltCoreAnnotationTagName,
+  AltCoreLabelTagName,
 } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { getShadowElement, getElementClasses } from '~shared/tests/utils'
 import { createCoreDatePickerProps } from '~core/ui/datePicker/models/types'
 import '~core/ui/datePicker'
-import type { YCoreFieldWrapper } from '~core/ui/fieldWrapper'
-import type { YCoreFieldInput } from '~core/ui/fieldInput'
-import type { YCoreLabel } from '~core/ui/label'
-import type { YCoreCalendar } from '~core/ui/calendar'
-import type { YCoreError } from '~core/ui/error'
-import type { YCoreAnnotation } from '~core/ui/annotation'
+import type { AltCoreFieldWrapper } from '~core/ui/fieldWrapper'
+import type { AltCoreFieldInput } from '~core/ui/fieldInput'
+import type { AltCoreLabel } from '~core/ui/label'
+import type { AltCoreCalendar } from '~core/ui/calendar'
+import type { AltCoreError } from '~core/ui/error'
+import type { AltCoreAnnotation } from '~core/ui/annotation'
 import { camel } from 'radash'
 import { FORMAT_DATE_DMY } from '~shared/utils/dateTime'
 import { sleep } from '~shared/tests/utils'
@@ -41,7 +41,7 @@ import {
   propAnnotationTextCases,
 } from './cases/props'
 
-const tagName = YCoreDatePickerTagName
+const tagName = AltCoreDatePickerTagName
 
 const {
   component,
@@ -62,7 +62,7 @@ const getLocalShadowElement = (selector: string) => {
 }
 
 describe(
-  'Core/YDatePicker',
+  'Core/AltDatePicker',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -92,7 +92,7 @@ describe(
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
-                  const fieldWrapperElement = getLocalShadowElement(YCoreFieldWrapperTagName) as YCoreFieldWrapper | null
+                  const fieldWrapperElement = getLocalShadowElement(AltCoreFieldWrapperTagName) as AltCoreFieldWrapper | null
 
                   expect(fieldWrapperElement?.[prop]).toBe(value)
                 },
@@ -109,7 +109,7 @@ describe(
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
-                  const fieldInputElement = getLocalShadowElement(YCoreFieldInputTagName) as YCoreFieldInput | null
+                  const fieldInputElement = getLocalShadowElement(AltCoreFieldInputTagName) as AltCoreFieldInput | null
 
                   expect(fieldInputElement?.[prop]).toBe(value)
                 },
@@ -125,7 +125,7 @@ describe(
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
-                  const labelElement = getLocalShadowElement(YCoreLabelTagName) as YCoreLabel | null
+                  const labelElement = getLocalShadowElement(AltCoreLabelTagName) as AltCoreLabel | null
 
                   expect(labelElement?.[prop]).toBe(value)
                 },
@@ -141,8 +141,8 @@ describe(
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
-                  const labelElement = getLocalShadowElement(YCoreLabelTagName) as YCoreLabel | null
-                  const labelProp = camel(prop.replace('label', '')) as keyof YCoreLabel
+                  const labelElement = getLocalShadowElement(AltCoreLabelTagName) as AltCoreLabel | null
+                  const labelProp = camel(prop.replace('label', '')) as keyof AltCoreLabel
 
                   expect(labelElement?.[labelProp]).toBe(value)
                 },
@@ -162,7 +162,7 @@ describe(
 
                   await updateComponent({ props: { [prop]: value } })
 
-                  const calendarElement = getLocalShadowElement(YCoreCalendarTagName) as YCoreCalendar | null
+                  const calendarElement = getLocalShadowElement(AltCoreCalendarTagName) as AltCoreCalendar | null
 
                   expect(calendarElement?.[prop]).toBe(expected)
                 },
@@ -175,8 +175,8 @@ describe(
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
-                  const errorElement = getLocalShadowElement(YCoreErrorTagName) as YCoreError | null
-                  const fieldWrapperElement = getLocalShadowElement(YCoreFieldWrapperTagName) as YCoreFieldWrapper | null
+                  const errorElement = getLocalShadowElement(AltCoreErrorTagName) as AltCoreError | null
+                  const fieldWrapperElement = getLocalShadowElement(AltCoreFieldWrapperTagName) as AltCoreFieldWrapper | null
 
                   if (value?.length) {
                     expect(errorElement?.[prop]).toBe(value)
@@ -195,14 +195,14 @@ describe(
                 async() => {
                   await updateComponent({ props: { [prop]: value } })
 
-                  const annotationElement = getLocalShadowElement(YCoreAnnotationTagName) as YCoreAnnotation | null
+                  const annotationElement = getLocalShadowElement(AltCoreAnnotationTagName) as AltCoreAnnotation | null
 
                   if (value) {
                     expect(annotationElement?.text).toBe(value)
                   } else {
                     const annotationElementClasses = getElementClasses(annotationElement)
 
-                    expect(annotationElementClasses).toContain('y-core-date-picker__annotation_hide')
+                    expect(annotationElementClasses).toContain('alt-core-date-picker__annotation_hide')
                   }
                 },
               )
@@ -216,7 +216,7 @@ describe(
 
                   await updateComponent({ props: { [prop]: value } })
 
-                  const calendarElement = getLocalShadowElement(YCoreCalendarTagName) as YCoreCalendar | null
+                  const calendarElement = getLocalShadowElement(AltCoreCalendarTagName) as AltCoreCalendar | null
 
                   expect(calendarElement?.headerSelectors).toBe(value)
                 },
@@ -229,7 +229,7 @@ describe(
           'Mask',
           () => {
             it(`Should format the typed date with the mask ${FORMAT_DATE_DMY}`, async() => {
-              const fieldInput = getLocalShadowElement(YCoreFieldInputTagName) as YCoreFieldInput | null
+              const fieldInput = getLocalShadowElement(AltCoreFieldInputTagName) as AltCoreFieldInput | null
 
               if (!fieldInput?.inputElement) {
                 throw new Error('inputElement not found')
@@ -246,7 +246,7 @@ describe(
             it(`Should format the typed date with the mask ${FORMAT_DATE_DMY} - ${FORMAT_DATE_DMY} in range mode`, async() => {
               await updateComponent({ props: { isRange: true } })
 
-              const fieldInput = getLocalShadowElement(YCoreFieldInputTagName) as YCoreFieldInput | null
+              const fieldInput = getLocalShadowElement(AltCoreFieldInputTagName) as AltCoreFieldInput | null
 
               if (!fieldInput?.inputElement) {
                 throw new Error('inputElement not found')
@@ -261,7 +261,7 @@ describe(
             })
 
             it('Should not allow invalid characters', async() => {
-              const fieldInput = getLocalShadowElement(YCoreFieldInputTagName) as YCoreFieldInput | null
+              const fieldInput = getLocalShadowElement(AltCoreFieldInputTagName) as AltCoreFieldInput | null
 
               if (!fieldInput?.inputElement) {
                 throw new Error('inputElement not found')
@@ -276,7 +276,7 @@ describe(
             })
 
             it('Should clear the date range one character at a time', async() => {
-              const fieldInput = getLocalShadowElement(YCoreFieldInputTagName) as YCoreFieldInput | null
+              const fieldInput = getLocalShadowElement(AltCoreFieldInputTagName) as AltCoreFieldInput | null
 
               if (!fieldInput?.inputElement) {
                 throw new Error('inputElement not found')
@@ -306,7 +306,7 @@ describe(
             it('Should clear the date range one character at a time in range mode', async() => {
               await updateComponent({ props: { isRange: true } })
 
-              const fieldInput = getLocalShadowElement(YCoreFieldInputTagName) as YCoreFieldInput | null
+              const fieldInput = getLocalShadowElement(AltCoreFieldInputTagName) as AltCoreFieldInput | null
 
               if (!fieldInput?.inputElement) {
                 throw new Error('inputElement not found')
@@ -338,7 +338,7 @@ describe(
               const maxDate = '31.12.2025'
               await updateComponent({ props: { minDate, maxDate } })
 
-              const fieldInput = getLocalShadowElement(YCoreFieldInputTagName) as YCoreFieldInput | null
+              const fieldInput = getLocalShadowElement(AltCoreFieldInputTagName) as AltCoreFieldInput | null
               if (!fieldInput?.inputElement) {
                 throw new Error('inputElement not found')
               }
@@ -378,7 +378,7 @@ describe(
           () => {
             const handleSelect = vi.fn()
 
-            const calendarElement = getLocalShadowElement(YCoreCalendarTagName) as YCoreCalendar | null
+            const calendarElement = getLocalShadowElement(AltCoreCalendarTagName) as AltCoreCalendar | null
 
             if (!calendarElement) return
 
@@ -401,7 +401,7 @@ describe(
           () => {
             const handleSelect = vi.fn()
 
-            const fieldInputElement = getLocalShadowElement(YCoreFieldInputTagName) as YCoreFieldInput | null
+            const fieldInputElement = getLocalShadowElement(AltCoreFieldInputTagName) as AltCoreFieldInput | null
 
             if (!fieldInputElement) return
 
@@ -424,7 +424,7 @@ describe(
           () => {
             const handleSelect = vi.fn()
 
-            const fieldInputElement = getLocalShadowElement(YCoreFieldInputTagName) as YCoreFieldInput | null
+            const fieldInputElement = getLocalShadowElement(AltCoreFieldInputTagName) as AltCoreFieldInput | null
 
             if (!fieldInputElement) return
 

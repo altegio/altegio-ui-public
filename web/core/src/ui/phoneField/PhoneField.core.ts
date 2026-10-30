@@ -11,7 +11,7 @@ import { debounce } from 'radash'
 import { autoPlacement as autoPlacementMiddleware } from '@floating-ui/dom'
 
 import { LocalizedElement } from '~core/i18n/LocalizedElement'
-import { YCoreDropdownCellTagName, YCoreFieldInputTagName, YCorePhoneFieldTagName as tagName } from '~shared/constants'
+import { AltCoreDropdownCellTagName, AltCoreFieldInputTagName, AltCorePhoneFieldTagName as tagName } from '~shared/constants'
 
 import {
   disabledContextCreated,
@@ -26,14 +26,14 @@ import {
   createCorePhoneFieldExternalProps,
   FocusEvent,
   SelectOptionEvent,
-  type IYCorePhoneFieldExternalProps,
-  type TYCorePhoneFieldAutocompleteOption,
-  type TYCorePhoneFieldInfoWithMeta,
+  type IAltCorePhoneFieldExternalProps,
+  type TAltCorePhoneFieldAutocompleteOption,
+  type TAltCorePhoneFieldInfoWithMeta,
 } from '~core/ui/phoneField/models/types'
-import YCorePhoneFieldVarsCSS from '~core/ui/phoneField/css/PhoneField.vars.css?inline'
-import YCorePhoneFieldScopedCSS from '~core/ui/phoneField/css/PhoneField.scoped.css?inline'
+import AltCorePhoneFieldVarsCSS from '~core/ui/phoneField/css/PhoneField.vars.css?inline'
+import AltCorePhoneFieldScopedCSS from '~core/ui/phoneField/css/PhoneField.scoped.css?inline'
 
-import { type YCoreFieldInput } from '~core/ui/fieldInput'
+import { type AltCoreFieldInput } from '~core/ui/fieldInput'
 
 import '~core/ui/fieldWrapper'
 import '~core/ui/fieldInput'
@@ -49,22 +49,22 @@ import '~core/ui/searchTextHighlighted'
 
 import { defaultCountriesData } from '~shared/utils/countries'
 import { preventAndStopEvent } from '~shared/utils/helpers'
-import { EYCoreDropdownPlacement, EYCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
+import { EAltCoreDropdownPlacement, EAltCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
 import type { VisibleEvent } from '~core/ui/dropdown/models/types/events'
 import type { InputEvent } from '~core/ui/fieldInput/models/types'
 import { hasSlotContent } from '~core/utils/lit-slots'
 import { booleanConverter } from '~core/utils/converters'
 import classMapToString from '~core/utils/classMapToString'
 import { renderAnnotation, renderError, renderLabel, renderIcon } from '~core/renderers'
-import type { TYInputAutocomplete } from '~shared/types/global'
-import { EYInputAutocomplete, EYSizes } from '~shared/types/global'
-import { EYCoreLoaderVariant } from '~core/ui/loader/models/types'
-import type { TYCountry, TYCountryNameMappedById } from '~shared/types/country'
+import type { TAltInputAutocomplete } from '~shared/types/global'
+import { EAltInputAutocomplete, EAltSizes } from '~shared/types/global'
+import { EAltCoreLoaderVariant } from '~core/ui/loader/models/types'
+import type { TAltCountry, TAltCountryNameMappedById } from '~shared/types/country'
 import { styleMap } from 'lit/directives/style-map.js'
 import { getMaskitoMaskByCountry, matchCountry } from '~shared/utils/countryHeplers'
-import { EYCoreTextSize, EYCoreTextVariant } from '~core/ui/text/models/types'
+import { EAltCoreTextSize, EAltCoreTextVariant } from '~core/ui/text/models/types'
 
-import { yClose, yCheck } from '~shared/icons'
+import { altClose, altCheck } from '~shared/icons'
 import { withLocator } from '~core/utils/locator'
 
 const {
@@ -97,37 +97,37 @@ const {
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFieldExternalProps {
+export class AltCorePhoneField extends LocalizedElement implements IAltCorePhoneFieldExternalProps {
   @provide({ context: disabledContextCreated })
-  @property({ type: Boolean }) disabled: IYCorePhoneFieldExternalProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCorePhoneFieldExternalProps['disabled'] = disabled
   @provide({ context: readonlyContextCreated })
-  @property({ type: Boolean }) readonly: IYCorePhoneFieldExternalProps['readonly'] = readonly
+  @property({ type: Boolean }) readonly: IAltCorePhoneFieldExternalProps['readonly'] = readonly
   @provide({ context: errorContextCreated })
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IYCorePhoneFieldExternalProps['error'] = error
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IAltCorePhoneFieldExternalProps['error'] = error
   @provide({ context: sizeContextCreated })
-  @property({ type: String, reflect: true }) size: IYCorePhoneFieldExternalProps['size'] = size
-  @property({ type: String }) value: IYCorePhoneFieldExternalProps['value'] = value
-  @property({ type: String }) name: IYCorePhoneFieldExternalProps['name'] = name
-  @property({ type: String }) placeholder: IYCorePhoneFieldExternalProps['placeholder'] = placeholder
+  @property({ type: String, reflect: true }) size: IAltCorePhoneFieldExternalProps['size'] = size
+  @property({ type: String }) value: IAltCorePhoneFieldExternalProps['value'] = value
+  @property({ type: String }) name: IAltCorePhoneFieldExternalProps['name'] = name
+  @property({ type: String }) placeholder: IAltCorePhoneFieldExternalProps['placeholder'] = placeholder
   @property({
     type: Boolean,
     reflect: true,
-  }) autofocus: NonNullable<IYCorePhoneFieldExternalProps['autofocus']> = Boolean(autofocus)
-  @property({ type: Boolean, reflect: true }) required: IYCorePhoneFieldExternalProps['required'] = required
-  @property({ type: Array }) errors: IYCorePhoneFieldExternalProps['errors'] = errors
-  @property({ type: String, attribute: 'label-text' }) labelText: IYCorePhoneFieldExternalProps['labelText'] = labelText
-  @property({ type: Number, attribute: 'label-debounce' }) labelDebounce: IYCorePhoneFieldExternalProps['labelDebounce'] = labelDebounce
-  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IYCorePhoneFieldExternalProps['labelTooltipText'] = labelTooltipText
-  @property({ type: String, attribute: 'annotation-text' }) annotationText: IYCorePhoneFieldExternalProps['annotationText'] = annotationText
-  @property({ type: Number, attribute: 'min-search-length' }) minSearchLength: IYCorePhoneFieldExternalProps['minSearchLength'] = minSearchLength
-  @property({ type: Boolean, attribute: 'without-code-selection' }) withoutCodeSelection: IYCorePhoneFieldExternalProps['withoutCodeSelection'] = withoutCodeSelection
-  @property({ type: Boolean, attribute: 'disabled-autocomplete' }) disabledAutocomplete: IYCorePhoneFieldExternalProps['disabledAutocomplete'] = disabledAutocomplete
-  @property({ type: Boolean, attribute: 'option-phone-privacy-enabled' }) optionPhonePrivacyEnabled: IYCorePhoneFieldExternalProps['optionPhonePrivacyEnabled'] = optionPhonePrivacyEnabled
-  @property({ type: Array }) countries: IYCorePhoneFieldExternalProps['countries'] = countries
-  @property({ type: Number, attribute: 'default-country-id' }) defaultCountryId: IYCorePhoneFieldExternalProps['defaultCountryId'] = defaultCountryId
-  @property({ type: String, attribute: 'empty-state-title' }) emptyStateTitle: IYCorePhoneFieldExternalProps['emptyStateTitle'] = emptyStateTitle
-  @property({ type: String, attribute: 'empty-state-description' }) emptyStateDescription: IYCorePhoneFieldExternalProps['emptyStateDescription'] = emptyStateDescription
-  @property({ type: Object, attribute: 'empty-state-icon' }) emptyStateIcon: IYCorePhoneFieldExternalProps['emptyStateIcon'] = emptyStateIcon
+  }) autofocus: NonNullable<IAltCorePhoneFieldExternalProps['autofocus']> = Boolean(autofocus)
+  @property({ type: Boolean, reflect: true }) required: IAltCorePhoneFieldExternalProps['required'] = required
+  @property({ type: Array }) errors: IAltCorePhoneFieldExternalProps['errors'] = errors
+  @property({ type: String, attribute: 'label-text' }) labelText: IAltCorePhoneFieldExternalProps['labelText'] = labelText
+  @property({ type: Number, attribute: 'label-debounce' }) labelDebounce: IAltCorePhoneFieldExternalProps['labelDebounce'] = labelDebounce
+  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IAltCorePhoneFieldExternalProps['labelTooltipText'] = labelTooltipText
+  @property({ type: String, attribute: 'annotation-text' }) annotationText: IAltCorePhoneFieldExternalProps['annotationText'] = annotationText
+  @property({ type: Number, attribute: 'min-search-length' }) minSearchLength: IAltCorePhoneFieldExternalProps['minSearchLength'] = minSearchLength
+  @property({ type: Boolean, attribute: 'without-code-selection' }) withoutCodeSelection: IAltCorePhoneFieldExternalProps['withoutCodeSelection'] = withoutCodeSelection
+  @property({ type: Boolean, attribute: 'disabled-autocomplete' }) disabledAutocomplete: IAltCorePhoneFieldExternalProps['disabledAutocomplete'] = disabledAutocomplete
+  @property({ type: Boolean, attribute: 'option-phone-privacy-enabled' }) optionPhonePrivacyEnabled: IAltCorePhoneFieldExternalProps['optionPhonePrivacyEnabled'] = optionPhonePrivacyEnabled
+  @property({ type: Array }) countries: IAltCorePhoneFieldExternalProps['countries'] = countries
+  @property({ type: Number, attribute: 'default-country-id' }) defaultCountryId: IAltCorePhoneFieldExternalProps['defaultCountryId'] = defaultCountryId
+  @property({ type: String, attribute: 'empty-state-title' }) emptyStateTitle: IAltCorePhoneFieldExternalProps['emptyStateTitle'] = emptyStateTitle
+  @property({ type: String, attribute: 'empty-state-description' }) emptyStateDescription: IAltCorePhoneFieldExternalProps['emptyStateDescription'] = emptyStateDescription
+  @property({ type: Object, attribute: 'empty-state-icon' }) emptyStateIcon: IAltCorePhoneFieldExternalProps['emptyStateIcon'] = emptyStateIcon
   @property({
     type: Function,
     attribute: 'search-function',
@@ -135,7 +135,7 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
       fromAttribute: () => ({}),
       toAttribute: () => null,
     },
-  }) searchFunction: IYCorePhoneFieldExternalProps['searchFunction'] = searchFunction
+  }) searchFunction: IAltCorePhoneFieldExternalProps['searchFunction'] = searchFunction
 
   @bubblingEvent(
     FocusEvent,
@@ -161,17 +161,17 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
   )
   _change!: TDispatcher<PhoneFieldChangeEvent>
 
-  @query(YCoreFieldInputTagName) public readonly fieldInput?: YCoreFieldInput
+  @query(AltCoreFieldInputTagName) public readonly fieldInput?: AltCoreFieldInput
 
   @state() private isOpened = false
   @state() private isCountriesOpened = false
-  @state() private autocompleteOptions: TYCorePhoneFieldAutocompleteOption[] = []
+  @state() private autocompleteOptions: TAltCorePhoneFieldAutocompleteOption[] = []
   @state() private loadingAutocompleteOptions = false
   @state() private countryId = this.defaultCountryId || this.firstCountryIdInList
   @state() private ignoreAutoCountryDetection = false
   @state() private currentSearchRequestId = 0
   @state() private hasAnnotationSlot = false
-  @state() private countryNames: TYCountryNameMappedById | undefined
+  @state() private countryNames: TAltCountryNameMappedById | undefined
 
   private maskInstance?: Maskito
 
@@ -184,8 +184,8 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
   private readonly baseDropdownListItemAppendClass = `${tagName}__list-item-append`
   static readonly styles = [
     css`
-      ${unsafeCSS(YCorePhoneFieldVarsCSS)}
-      ${unsafeCSS(YCorePhoneFieldScopedCSS)}
+      ${unsafeCSS(AltCorePhoneFieldVarsCSS)}
+      ${unsafeCSS(AltCorePhoneFieldScopedCSS)}
     `,
   ]
 
@@ -212,7 +212,7 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
     return this.getCountry(this.countryId)
   }
 
-  private get countryList(): TYCountry[] {
+  private get countryList(): TAltCountry[] {
     if (this.countries) {
       return Object.values(this.countries)
     }
@@ -241,7 +241,7 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
   }
 
   private get dropdownMiddlewares() {
-    const allowedPlacements = [EYCoreDropdownPlacement.BOTTOM, EYCoreDropdownPlacement.TOP]
+    const allowedPlacements = [EAltCoreDropdownPlacement.BOTTOM, EAltCoreDropdownPlacement.TOP]
 
     return [autoPlacementMiddleware({ allowedPlacements })]
   }
@@ -272,7 +272,7 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
     this.maskInstance.destroy()
   }
 
-  private getDefaultCountry(countryId: TYCountry['id']): TYCountry {
+  private getDefaultCountry(countryId: TAltCountry['id']): TAltCountry {
     const countryName = this.countryNames?.[countryId]
     return {
       ...defaultCountriesData[countryId],
@@ -281,7 +281,7 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
     }
   }
 
-  private getCountry(countryId: TYCountry['id']): TYCountry {
+  private getCountry(countryId: TAltCountry['id']): TAltCountry {
     if (this.countries) {
       return this.countries[countryId]
     }
@@ -293,7 +293,7 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
     return phone.replace(/\D+/g, '')
   }
 
-  private getPhoneData = (phoneBody: string, country: TYCountry): TYCorePhoneFieldInfoWithMeta => {
+  private getPhoneData = (phoneBody: string, country: TAltCountry): TAltCorePhoneFieldInfoWithMeta => {
     let fullPhone = ''
 
     if (phoneBody) {
@@ -339,8 +339,8 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
     return phoneTemplateWithoutPlusAndCode.replace(/x/g, '0').trim()
   }
 
-  private get inputAutocomplete(): TYInputAutocomplete {
-    return this.withoutCodeSelection ? EYInputAutocomplete.TEL : EYInputAutocomplete.TEL_NATIONAL
+  private get inputAutocomplete(): TAltInputAutocomplete {
+    return this.withoutCodeSelection ? EAltInputAutocomplete.TEL : EAltInputAutocomplete.TEL_NATIONAL
   }
 
   private get isClearButtonVisible() {
@@ -376,7 +376,7 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
     }
   }
 
-  private loadAutocompleteOptions = debounce({ delay: 500 }, async(detail: TYCorePhoneFieldInfoWithMeta, minSearchLength: number) => {
+  private loadAutocompleteOptions = debounce({ delay: 500 }, async(detail: TAltCorePhoneFieldInfoWithMeta, minSearchLength: number) => {
     if (!this.searchFunction || detail.meta.phoneBody.length < minSearchLength) {
       this.autocompleteOptions = []
       this.changeDropdownVisible(false)
@@ -399,7 +399,7 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
     }
   })
 
-  private makeSearch = (unmaskedPhone: string, detail: TYCorePhoneFieldInfoWithMeta) => {
+  private makeSearch = (unmaskedPhone: string, detail: TAltCorePhoneFieldInfoWithMeta) => {
     const minSearchLength = this.minSearchLength ?? 0
     if (unmaskedPhone.length >= minSearchLength) {
       this.loadAutocompleteOptions(detail, minSearchLength)
@@ -435,7 +435,7 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
     this.isOpened = value
   }
 
-  private handleSelectAutocompleteOption = (item: TYCorePhoneFieldAutocompleteOption) => (event: Event) => {
+  private handleSelectAutocompleteOption = (item: TAltCorePhoneFieldAutocompleteOption) => (event: Event) => {
     if (this.computedDisabledOrReadonly || !event.currentTarget) return
     event.stopPropagation()
 
@@ -454,7 +454,7 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
     this.isCountriesOpened = !this.isCountriesOpened
   }
 
-  private handleCountryPick = (country: TYCountry) => (event: Event) => {
+  private handleCountryPick = (country: TAltCountry) => (event: Event) => {
     if (this.computedDisabledOrReadonly) return
 
     event.stopPropagation()
@@ -468,7 +468,7 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
     this.applyMask()
   }
 
-  private maskPhone = (phoneDigits: string, mask: TYCountry['mask']) => {
+  private maskPhone = (phoneDigits: string, mask: TAltCountry['mask']) => {
     let result = ''
     let digitIndex = 0
 
@@ -558,7 +558,7 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
 
   protected renderDropdownActivator() {
     return html`
-      <y-core-field-wrapper
+      <alt-core-field-wrapper
         .disabled=${this.disabled}
         .readonly=${this.readonly}
         .error=${Boolean(this.errors?.length) || this.error}
@@ -569,14 +569,14 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
       >
         ${!this.withoutCodeSelection
             ? html`
-              <y-core-phone-code
+              <alt-core-phone-code
                 .code=${this.country.code}
                 @click=${this.handleCodeClick}
-              ></y-core-phone-code>
+              ></alt-core-phone-code>
             `
             : nothing
         }
-        <y-core-field-input
+        <alt-core-field-input
           .value=${this.maskedValue}
           .name=${this.name}
           .placeholder=${this.phonePlaceHolder}
@@ -588,29 +588,29 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
           type="tel"
           @input=${this.handleInput}
           @render=${() => { this.applyMask() }}
-        ></y-core-field-input>
+        ></alt-core-field-input>
         ${this.isClearButtonVisible
           ? html`
-            <y-core-field-icon
-              .icon=${yClose}
+            <alt-core-field-icon
+              .icon=${altClose}
               hoverable
               @mousedown=${() => { this.autocompleteOptions = [] }}
               @click=${this.handleClear}
-            ></y-core-field-icon>
+            ></alt-core-field-icon>
           `
           : nothing
         }
-      </y-core-field-wrapper>
+      </alt-core-field-wrapper>
     `
   }
 
-  protected renderDropdownListExtraSubtitles(option: TYCorePhoneFieldAutocompleteOption) {
+  protected renderDropdownListExtraSubtitles(option: TAltCorePhoneFieldAutocompleteOption) {
     const extraSubtitles = [option.additionalPhone, option.email]
 
     return extraSubtitles.map((subtitle) => subtitle ? html`<div>${subtitle}</div>` : nothing)
   }
 
-  get formattedAutocompleteOptions(): TYCorePhoneFieldAutocompleteOption[] {
+  get formattedAutocompleteOptions(): TAltCorePhoneFieldAutocompleteOption[] {
     return this.autocompleteOptions.map((option) => {
       if (!option.phone && !option.additionalPhone) return option
 
@@ -633,39 +633,39 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
       this.formattedAutocompleteOptions,
       (option) => option.id,
       (option) => html`
-          <y-core-dropdown-cell
-            locator=${`${YCoreDropdownCellTagName}_${option.id}`}
+          <alt-core-dropdown-cell
+            locator=${`${AltCoreDropdownCellTagName}_${option.id}`}
             @click=${this.handleSelectAutocompleteOption(option)}
           >
             <div class=${this.baseDropdownListItemClass} slot="content">
-              <y-core-dropdown-cell-text label=${ifDefined(option.title)}>
+              <alt-core-dropdown-cell-text label=${ifDefined(option.title)}>
                 <div slot="subtitle">
-                  <y-core-search-text-highlighted
+                  <alt-core-search-text-highlighted
                     text=${ifDefined(option.phone)}
                     .search=${this.phoneQuery}
                     .ignoredSymbols=${['(', ')', ' ', '-']}
-                    .size=${EYCoreTextSize.A2_REGULAR}
-                    .variant=${EYCoreTextVariant.SECONDARY}
-                    .highlightTextSize=${EYCoreTextSize.A2_REGULAR}
-                    .highlightTextVariant=${EYCoreTextVariant.PRIMARY}
-                  ></y-core-search-text-highlighted>
+                    .size=${EAltCoreTextSize.A2_REGULAR}
+                    .variant=${EAltCoreTextVariant.SECONDARY}
+                    .highlightTextSize=${EAltCoreTextSize.A2_REGULAR}
+                    .highlightTextVariant=${EAltCoreTextVariant.PRIMARY}
+                  ></alt-core-search-text-highlighted>
                   
                   ${this.renderDropdownListExtraSubtitles(option)}
                 </div>
-              </y-core-dropdown-cell-text>
+              </alt-core-dropdown-cell-text>
             </div>
-          </y-core-dropdown-cell>
+          </alt-core-dropdown-cell>
         `,
     )
   }
 
   protected renderDropdownCountriesContent() {
-    const getCountryCellTitle = (country: TYCountry) => {
+    const getCountryCellTitle = (country: TAltCountry) => {
       return `+${country.code} (${country.title.trim()})`
     }
 
     return html`
-      <y-core-dropdown-list>
+      <alt-core-dropdown-list>
         <div 
           class=${this.baseDropdownListItemsClass} 
           slot="list"
@@ -675,27 +675,27 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
               this.countryList,
               (country) => country.id,
               (country) => html`
-                <y-core-dropdown-cell
-                  locator=${`${YCoreDropdownCellTagName}_${country.id}`}
+                <alt-core-dropdown-cell
+                  locator=${`${AltCoreDropdownCellTagName}_${country.id}`}
                   @click=${this.handleCountryPick(country)}
                 >
                   <div class=${this.baseDropdownListItemClass} slot="content">
-                    <y-core-dropdown-cell-text .label=${getCountryCellTitle(country)}></y-core-dropdown-cell-text>
+                    <alt-core-dropdown-cell-text .label=${getCountryCellTitle(country)}></alt-core-dropdown-cell-text>
                   </div>
                   ${this.countryId === country.id
                     ? html`
                       <div class=${this.baseDropdownListItemAppendClass} slot="append">
-                        ${renderIcon({ icon: yCheck, size: '16px' })}
+                        ${renderIcon({ icon: altCheck, size: '16px' })}
                       </div>
                     `
                     : nothing
                   }
-                </y-core-dropdown-cell>
+                </alt-core-dropdown-cell>
               `,
             )
           }
         </div>
-      </y-core-dropdown-list>`
+      </alt-core-dropdown-list>`
   }
 
   private get isEmptyStateAvailable() {
@@ -708,13 +708,13 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
     }
 
     return html`
-      <y-core-empty-state 
+      <alt-core-empty-state 
         .title=${this.emptyStateTitle ?? ''}
         .description=${this.emptyStateDescription ?? ''}
         .icon=${this.emptyStateIcon}
       >
         <slot name="empty-state-actions" slot="actions"></slot>
-      </y-core-empty-state>
+      </alt-core-empty-state>
     `
   }
 
@@ -725,17 +725,17 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
 
     return html`
       <div class=${this.baseDropdownListItemLoader}>
-        <y-core-loader
-          .size=${EYSizes.MEDIUM}
-          .variant=${EYCoreLoaderVariant.YELLOW}
-        ></y-core-loader>
+        <alt-core-loader
+          .size=${EAltSizes.MEDIUM}
+          .variant=${EAltCoreLoaderVariant.YELLOW}
+        ></alt-core-loader>
       </div>
     `
   }
 
   protected renderDropdownContent() {
     return html`
-      <y-core-dropdown-list>
+      <alt-core-dropdown-list>
         <div 
           class=${this.baseDropdownListItemsClass} 
           style=${styleMap(this.computedDropdownListStyles)} 
@@ -752,7 +752,7 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
 
           ${this.renderLoader()}
         </div>
-      </y-core-dropdown-list>`
+      </alt-core-dropdown-list>`
   }
 
   connectedCallback() {
@@ -783,10 +783,10 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
           handleClick: this.handleLabelClick,
           className: classMapToString(this.computedLabelClasses),
         })}
-        <y-core-dropdown
+        <alt-core-dropdown
           .isOpen=${this.isDropdownOpened || this.isCountriesDropdownOpened}
-          .placement=${EYCoreDropdownPlacement.BOTTOM}
-          .trigger=${EYCoreDropdownTrigger.MANUAL}
+          .placement=${EAltCoreDropdownPlacement.BOTTOM}
+          .trigger=${EAltCoreDropdownTrigger.MANUAL}
           .middlewares=${this.dropdownMiddlewares}
           strict-width
           @click-outside=${this.handleClickOutside}
@@ -808,7 +808,7 @@ export class YCorePhoneField extends LocalizedElement implements IYCorePhoneFiel
                 : nothing
             }
           </div>
-        </y-core-dropdown>
+        </alt-core-dropdown>
         ${renderAnnotation({
           text: this.annotationText,
           disabled: this.computedDisabledOrReadonly,

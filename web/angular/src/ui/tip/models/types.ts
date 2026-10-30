@@ -1,8 +1,8 @@
 import {
   createCoreTipProps,
-  type IYCoreTipProps,
+  type IAltCoreTipProps,
 } from '~core/ui/tip/models/types'
 
-export interface IYNgTipProps extends IYCoreTipProps {}
+export interface IAltNgTipProps extends IAltCoreTipProps {}
 
-export const createNgTipProps = (): IYNgTipProps => createCoreTipProps()
+export const createNgTipProps = (): IAltNgTipProps => createCoreTipProps()

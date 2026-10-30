@@ -1,18 +1,18 @@
 import {
   createCoreLinkExternalProps,
-  type IYCoreLinkExternalProps,
+  type IAltCoreLinkExternalProps,
 } from '~core/ui/link/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreLinkProps extends IYCoreLinkExternalProps {}
+export interface IAltVueCoreLinkProps extends IAltCoreLinkExternalProps {}
 
-export interface IYVueLinkProps {
-  target?: IYVueCoreLinkProps['target']
-  href?: IYVueCoreLinkProps['href']
-  textWrap?: IYVueCoreLinkProps['textWrap']
+export interface IAltVueLinkProps {
+  target?: IAltVueCoreLinkProps['target']
+  href?: IAltVueCoreLinkProps['href']
+  textWrap?: IAltVueCoreLinkProps['textWrap']
 }
 
-export const createVueLinkProps = (): TDefinedVueProps<IYVueLinkProps> => {
+export const createVueLinkProps = (): TDefinedVueProps<IAltVueLinkProps> => {
   const { href, target, textWrap } = createCoreLinkExternalProps()
 
   return {

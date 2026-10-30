@@ -1,14 +1,14 @@
-import { EYSizes, type TYSizes } from '~shared/types/global'
+import { EAltSizes, type TAltSizes } from '~shared/types/global'
 
-export enum EYCoreModalVariant {
+export enum EAltCoreModalVariant {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
 }
 
-export interface IYCoreModalExternalProps {
+export interface IAltCoreModalExternalProps {
   open: boolean | undefined
-  size: Extract<TYSizes, 'small' | 'large'> | undefined
-  variant: `${EYCoreModalVariant}` | undefined
+  size: Extract<TAltSizes, 'small' | 'large'> | undefined
+  variant: `${EAltCoreModalVariant}` | undefined
   width: string | undefined
   hideOverlay: boolean | undefined
   preventEscape: boolean | undefined
@@ -16,11 +16,11 @@ export interface IYCoreModalExternalProps {
   dialogLabel: string | undefined
 }
 
-export const createCoreModalExternalProps = (): IYCoreModalExternalProps => {
+export const createCoreModalExternalProps = (): IAltCoreModalExternalProps => {
   return {
     open: false,
-    size: EYSizes.SMALL,
-    variant: EYCoreModalVariant.PRIMARY,
+    size: EAltSizes.SMALL,
+    variant: EAltCoreModalVariant.PRIMARY,
     width: undefined,
     hideOverlay: false,
     preventEscape: false,

@@ -3,11 +3,11 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 
 import '~core/ui/error'
 
-import { YCoreAnnotationTagName as tagName } from '~shared/constants'
+import { AltCoreAnnotationTagName as tagName } from '~shared/constants'
 
 import {
   createCoreErrorExternalProps,
-  type IYCoreErrorExternalProps,
+  type IAltCoreErrorExternalProps,
 } from '~core/ui/error/models/types'
 
 import type { IShowErrorsStoryProps } from '~shared/.storybook/argTypes'
@@ -22,15 +22,15 @@ import { SINGLE_ERROR, LOREM_IPSUM } from '~shared/.storybook/constants'
 
 const { errors } = { ...createCoreErrorExternalProps() }
 
-export interface IYCoreErrorStoryProps extends IShowErrorsStoryProps, ITextStoryProps {}
+export interface IAltCoreErrorStoryProps extends IShowErrorsStoryProps, ITextStoryProps {}
 
-type IYCoreErrorMeta = IYCoreErrorExternalProps & IYCoreErrorStoryProps
+type IAltCoreErrorMeta = IAltCoreErrorExternalProps & IAltCoreErrorStoryProps
 
 /**
  * ## Error
  * Error message for input fields
  */
-const meta: Meta<IYCoreErrorMeta> = {
+const meta: Meta<IAltCoreErrorMeta> = {
   title: '⚙️ Error',
   id: 'error',
   parameters: { controls: { sort: 'alpha' } },
@@ -47,7 +47,7 @@ const meta: Meta<IYCoreErrorMeta> = {
     const computedErrors = errors ?? showErrors
 
     return html`
-      <y-core-error
+      <alt-core-error
         .errors=${
           isLongText
             ? showErrors.length > 1
@@ -59,7 +59,7 @@ const meta: Meta<IYCoreErrorMeta> = {
             : computedErrors
         }
       >
-      </y-core-error>
+      </alt-core-error>
     `
   },
   argTypes: {
@@ -78,9 +78,9 @@ const meta: Meta<IYCoreErrorMeta> = {
     errors: undefined,
     isLongText: false,
   },
-} satisfies Meta<IYCoreErrorMeta>
+} satisfies Meta<IAltCoreErrorMeta>
 
 export default meta
-type Story = StoryObj<IYCoreErrorMeta>
+type Story = StoryObj<IAltCoreErrorMeta>
 
 export const Playground: Story = { args: {} }

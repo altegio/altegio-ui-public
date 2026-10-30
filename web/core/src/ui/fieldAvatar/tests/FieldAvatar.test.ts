@@ -1,7 +1,7 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
 import {
-  YCoreAvatarTagName,
-  YCoreFieldAvatarTagName,
+  AltCoreAvatarTagName,
+  AltCoreFieldAvatarTagName,
 } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import {
@@ -16,7 +16,7 @@ import {
   propSizeTestCases,
 } from '~core/ui/fieldAvatar/tests/cases/props'
 
-const tagName = YCoreFieldAvatarTagName
+const tagName = AltCoreFieldAvatarTagName
 
 const {
   component,
@@ -29,7 +29,7 @@ const {
   createCoreFieldAvatarProps(),
 )
 
-type TSubComponent = typeof YCoreAvatarTagName
+type TSubComponent = typeof AltCoreAvatarTagName
 
 const getSubWC = <T extends TSubComponent>(primaryWC: HTMLElement, secondaryWC: T) => {
   const subWC = getWCShadowRoot(primaryWC).querySelector(secondaryWC)
@@ -38,7 +38,7 @@ const getSubWC = <T extends TSubComponent>(primaryWC: HTMLElement, secondaryWC: 
 }
 
 describe(
-  'Core/YFieldAvatar',
+  'Core/AltFieldAvatar',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -72,7 +72,7 @@ describe(
 
                   const inputField = getSubWC(
                     component,
-                    YCoreAvatarTagName,
+                    AltCoreAvatarTagName,
                   )
 
                   expect(inputField[prop]).toBe(expected)

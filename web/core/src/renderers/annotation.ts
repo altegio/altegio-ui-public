@@ -2,12 +2,12 @@ import { html, nothing } from 'lit'
 import { ifDefined } from 'lit/directives/if-defined.js'
 
 import {
-  type IYCoreAnnotationProps,
+  type IAltCoreAnnotationProps,
 } from '~core/ui/annotation/models/types'
 
 import '~core/ui/annotation'
 
-export interface IRenderAnnotationOptions extends Partial<IYCoreAnnotationProps> {
+export interface IRenderAnnotationOptions extends Partial<IAltCoreAnnotationProps> {
   className?: string
   hideClassName?: string
   handleSlotAnnotationChange?: (event: Event) => void
@@ -19,7 +19,7 @@ export interface IRenderAnnotationOptions extends Partial<IYCoreAnnotationProps>
  */
 export default ({ className, handleSlotAnnotationChange, ...props }: IRenderAnnotationOptions) => {
   return html`
-    <y-core-annotation
+    <alt-core-annotation
       .text=${props.text}
       .disabled=${props.disabled}
       class=${ifDefined(className)}
@@ -34,6 +34,6 @@ export default ({ className, handleSlotAnnotationChange, ...props }: IRenderAnno
           ></slot>
         `
       }
-    </y-core-annotation>
+    </alt-core-annotation>
   `
 }

@@ -1,16 +1,16 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
 import {
-  YCoreFieldInputTagName,
-  YCoreMultipleSelectFieldTagName,
-  YCoreFieldWrapperTagName,
-  YCoreLabelTagName,
-  YCoreAnnotationTagName,
-  YCoreErrorTagName,
-  YCoreSimpleChipTagName,
-  YCoreDropdownCellTagName,
+  AltCoreFieldInputTagName,
+  AltCoreMultipleSelectFieldTagName,
+  AltCoreFieldWrapperTagName,
+  AltCoreLabelTagName,
+  AltCoreAnnotationTagName,
+  AltCoreErrorTagName,
+  AltCoreSimpleChipTagName,
+  AltCoreDropdownCellTagName,
 } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
-import type { SelectEvent, IYCoreMultipleSelectFieldExternalProps } from '~core/ui/multipleSelectField/models/types'
+import type { SelectEvent, IAltCoreMultipleSelectFieldExternalProps } from '~core/ui/multipleSelectField/models/types'
 import {
   createCoreMultipleSelectFieldExternalProps,
 } from '~core/ui/multipleSelectField/models/types'
@@ -42,7 +42,7 @@ import { wrapperEvents } from '~core/ui/multipleSelectField/tests/cases/events'
 import { userEvent } from 'vitest/browser'
 import { dropdownListSlotsTestCases } from '~core/ui/multipleSelectField/tests/cases/slots'
 
-const tagName = YCoreMultipleSelectFieldTagName
+const tagName = AltCoreMultipleSelectFieldTagName
 
 const {
   component,
@@ -55,7 +55,7 @@ const {
   createCoreMultipleSelectFieldExternalProps(),
 )
 
-type TSubComponent = typeof YCoreFieldInputTagName | typeof YCoreAnnotationTagName | typeof YCoreErrorTagName | typeof YCoreDropdownCellTagName | typeof YCoreFieldWrapperTagName | typeof YCoreLabelTagName | typeof YCoreSimpleChipTagName
+type TSubComponent = typeof AltCoreFieldInputTagName | typeof AltCoreAnnotationTagName | typeof AltCoreErrorTagName | typeof AltCoreDropdownCellTagName | typeof AltCoreFieldWrapperTagName | typeof AltCoreLabelTagName | typeof AltCoreSimpleChipTagName
 
 const getSubWC = <T extends TSubComponent>(primaryWC: HTMLElement, secondaryWC: T) => {
   const subWC = getWCShadowRoot(primaryWC).querySelector(secondaryWC)
@@ -66,14 +66,14 @@ const getSubWC = <T extends TSubComponent>(primaryWC: HTMLElement, secondaryWC: 
 const callHandleInputEvent = async() => {
   vi.useFakeTimers()
 
-  const inputField = getSubWC(component, YCoreFieldInputTagName)
+  const inputField = getSubWC(component, AltCoreFieldInputTagName)
   inputField.dispatchEvent(new CustomEvent('input', { detail: { value: text } }))
 
   await vi.advanceTimersByTimeAsync(300)
 }
 
 describe(
-  'Core/YMultipleSelectField',
+  'Core/AltMultipleSelectField',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -135,7 +135,7 @@ describe(
 
                   const inputField = getSubWC(
                     component,
-                    YCoreFieldInputTagName,
+                    AltCoreFieldInputTagName,
                   )
 
                   expect(inputField[prop]).toBe(value)
@@ -149,7 +149,7 @@ describe(
                 async() => {
                   await updateComponent({ props: { [prop]: value, items: items } })
 
-                  const chips = getWCShadowRoot(component).querySelectorAll(YCoreSimpleChipTagName)
+                  const chips = getWCShadowRoot(component).querySelectorAll(AltCoreSimpleChipTagName)
                   const chipsSlotContent = [...chips].map((chip) => chip.textContent)
 
                   expect(chipsSlotContent).toStrictEqual(expected)
@@ -169,7 +169,7 @@ describe(
 
                   const inputField = getSubWC(
                     component,
-                    YCoreFieldWrapperTagName,
+                    AltCoreFieldWrapperTagName,
                   )
 
                   expect(inputField[prop]).toBe(value)
@@ -186,14 +186,14 @@ describe(
                   if (value) {
                     const moleculeLabel = getSubWC(
                       component,
-                      YCoreLabelTagName,
+                      AltCoreLabelTagName,
                     )
                     expect(moleculeLabel[labelProp]).toBe(value)
                   } else {
                     expect(() => getSubWC(
                       component,
-                      YCoreLabelTagName,
-                    )).toThrow(`${YCoreLabelTagName} not found`)
+                      AltCoreLabelTagName,
+                    )).toThrow(`${AltCoreLabelTagName} not found`)
                   }
                 },
               )
@@ -215,7 +215,7 @@ describe(
 
                   const moleculeLabel = getSubWC(
                     component,
-                    YCoreLabelTagName,
+                    AltCoreLabelTagName,
                   )
 
                   expect(moleculeLabel[labelProp]).toBe(value)
@@ -231,17 +231,17 @@ describe(
 
                   const inputField = getSubWC(
                     component,
-                    YCoreFieldInputTagName,
+                    AltCoreFieldInputTagName,
                   )
 
                   const atomAnnotation = getSubWC(
                     component,
-                    YCoreAnnotationTagName,
+                    AltCoreAnnotationTagName,
                   )
 
                   const moleculeLabel = getSubWC(
                     component,
-                    YCoreLabelTagName,
+                    AltCoreLabelTagName,
                   )
 
                   expect(moleculeLabel.disabled).toBe(value)
@@ -260,14 +260,14 @@ describe(
                   if (value?.length) {
                     const atomError = getSubWC(
                       component,
-                      YCoreErrorTagName,
+                      AltCoreErrorTagName,
                     )
                     expect(atomError.errors).toBe(value)
                   } else {
                     expect(() => getSubWC(
                       component,
-                      YCoreErrorTagName,
-                    )).toThrow(`${YCoreErrorTagName} not found`)
+                      AltCoreErrorTagName,
+                    )).toThrow(`${AltCoreErrorTagName} not found`)
                   }
                 },
               )
@@ -281,7 +281,7 @@ describe(
 
                   const atomAnnotation = getSubWC(
                     component,
-                    YCoreAnnotationTagName,
+                    AltCoreAnnotationTagName,
                   )
 
                   expect(atomAnnotation[annotationProp]).toBe(value)
@@ -300,12 +300,12 @@ describe(
                   await updateComponent({
                     props: {
                       [prop]: value,
-                      value: (additionalProps?.selectedValue as IYCoreMultipleSelectFieldExternalProps['value']),
+                      value: (additionalProps?.selectedValue as IAltCoreMultipleSelectFieldExternalProps['value']),
                       items: items,
                     },
                   })
 
-                  const chips = getWCShadowRoot(component).querySelectorAll(YCoreSimpleChipTagName)
+                  const chips = getWCShadowRoot(component).querySelectorAll(AltCoreSimpleChipTagName)
                   const chipsSlotContent = [...chips].map((chip) => chip.textContent)
 
                   expect(chipsSlotContent).toStrictEqual(expected)
@@ -326,7 +326,7 @@ describe(
 
                   const inputField = getSubWC(
                     component,
-                    YCoreFieldInputTagName,
+                    AltCoreFieldInputTagName,
                   )
 
                   expect(inputField.readonly).toBe(!value)
@@ -393,7 +393,7 @@ describe(
                 () => {
                   const inputField = getSubWC(
                     component,
-                    YCoreFieldInputTagName,
+                    AltCoreFieldInputTagName,
                   )
 
                   const handler = vi.fn()
@@ -415,7 +415,7 @@ describe(
 
                   const atomInput = getSubWC(
                     component,
-                    YCoreFieldInputTagName,
+                    AltCoreFieldInputTagName,
                   )
 
                   const handler = vi.fn()
@@ -480,7 +480,7 @@ describe(
 
                 setTimeout(() => {
                   requestAnimationFrame(() => {
-                    const dropdownListItem = getSubWC(component, YCoreDropdownCellTagName)
+                    const dropdownListItem = getSubWC(component, AltCoreDropdownCellTagName)
 
                     userEvent.click(dropdownListItem)
                     expect(handler).toHaveBeenCalled()

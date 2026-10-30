@@ -5,8 +5,8 @@ import { useArgs } from 'storybook/preview-api'
 
 import '~core/ui/simpleRadioButton'
 
-import { YCoreSimpleRadioButtonTagName as tagName } from '~shared/constants'
-import { EYSizes } from '~shared/types/global'
+import { AltCoreSimpleRadioButtonTagName as tagName } from '~shared/constants'
+import { EAltSizes } from '~shared/types/global'
 import {
   size as sizeArgType,
   hovered as hoveredArgType,
@@ -17,20 +17,20 @@ import {
 import { getComponentEmitsTable, getComponentStateTable } from '~shared/.storybook/tables'
 import {
   createCoreSimpleRadioButtonProps,
-  type IYCoreSimpleRadioButtonProps,
-  type TYCoreSimpleRadioButtonEvents,
+  type IAltCoreSimpleRadioButtonProps,
+  type TAltCoreSimpleRadioButtonEvents,
 } from '~core/ui/simpleRadioButton/models/types'
 
 const { checked, size, disabled, error, hovered, name } = { ...createCoreSimpleRadioButtonProps() }
 
-type TYCoreSimpleRadioButtonStoryMeta = IYCoreSimpleRadioButtonProps &
-  TYCoreSimpleRadioButtonEvents
+type TAltCoreSimpleRadioButtonStoryMeta = IAltCoreSimpleRadioButtonProps &
+  TAltCoreSimpleRadioButtonEvents
 
 /**
  * ## Core SimpleRadioButton
  *
  */
-const meta: Meta<TYCoreSimpleRadioButtonStoryMeta> = {
+const meta: Meta<TAltCoreSimpleRadioButtonStoryMeta> = {
   title: '⚙️ RadioButton',
   id: 'simpleRadioButton',
   parameters: { controls: { sort: 'alpha' } },
@@ -43,7 +43,7 @@ const meta: Meta<TYCoreSimpleRadioButtonStoryMeta> = {
     const [
       args,
       updateArgs,
-    ] = useArgs<TYCoreSimpleRadioButtonStoryMeta>()
+    ] = useArgs<TAltCoreSimpleRadioButtonStoryMeta>()
 
     const { checked } = args
     const onChecked = () => {
@@ -51,7 +51,7 @@ const meta: Meta<TYCoreSimpleRadioButtonStoryMeta> = {
     }
 
     return html`
-      <y-core-simple-radio-button
+      <alt-core-simple-radio-button
         .size=${size}
         .checked=${checked}
         .disabled=${disabled}
@@ -59,7 +59,7 @@ const meta: Meta<TYCoreSimpleRadioButtonStoryMeta> = {
         .error=${error}
         .hovered=${hovered}
         @checked=${onChecked}
-      ></y-core-simple-radio-button>
+      ></alt-core-simple-radio-button>
     `
   },
   argTypes: {
@@ -69,8 +69,8 @@ const meta: Meta<TYCoreSimpleRadioButtonStoryMeta> = {
     },
     size: {
       ...sizeArgType([
-        EYSizes.SMALL,
-        EYSizes.MEDIUM,
+        EAltSizes.SMALL,
+        EAltSizes.MEDIUM,
       ]),
       ...getComponentStateTable(size),
     },
@@ -96,9 +96,9 @@ const meta: Meta<TYCoreSimpleRadioButtonStoryMeta> = {
     ...createCoreSimpleRadioButtonProps(),
     onChecked: fn(),
   },
-} satisfies Meta<TYCoreSimpleRadioButtonStoryMeta>
+} satisfies Meta<TAltCoreSimpleRadioButtonStoryMeta>
 
 export default meta
-type Story = StoryObj<TYCoreSimpleRadioButtonStoryMeta>
+type Story = StoryObj<TAltCoreSimpleRadioButtonStoryMeta>
 
 export const Playground: Story = {}

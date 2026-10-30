@@ -1,24 +1,24 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 import {
   createCoreTagProps,
-  type IYCoreTagProps,
+  type IAltCoreTagProps,
 } from '~core/ui/tag/models/types'
 
 export { ClickIconEmitEvent } from '~core/ui/tag/models/types'
 
-export interface IYVueCoreTagProps extends IYCoreTagProps {}
+export interface IAltVueCoreTagProps extends IAltCoreTagProps {}
 
-export interface IYVueTagProps {
-  size?: IYVueCoreTagProps['size']
-  variant?: IYVueCoreTagProps['variant']
-  disabled?: IYVueCoreTagProps['disabled']
-  iconLeft?: IYVueCoreTagProps['iconLeft']
-  locator?: IYVueCoreTagProps['locator']
-  locatorLabel?: IYVueCoreTagProps['locatorLabel']
-  locatorIcon?: IYVueCoreTagProps['locatorIcon']
+export interface IAltVueTagProps {
+  size?: IAltVueCoreTagProps['size']
+  variant?: IAltVueCoreTagProps['variant']
+  disabled?: IAltVueCoreTagProps['disabled']
+  iconLeft?: IAltVueCoreTagProps['iconLeft']
+  locator?: IAltVueCoreTagProps['locator']
+  locatorLabel?: IAltVueCoreTagProps['locatorLabel']
+  locatorIcon?: IAltVueCoreTagProps['locatorIcon']
 }
 
-export const createVueTagProps = (): TDefinedVueProps<IYVueTagProps> => {
+export const createVueTagProps = (): TDefinedVueProps<IAltVueTagProps> => {
   const { size, variant, disabled, iconLeft, locator, locatorLabel, locatorIcon } = createCoreTagProps()
   return {
     size,

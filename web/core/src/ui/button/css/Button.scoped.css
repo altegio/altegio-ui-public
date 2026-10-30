@@ -1,4 +1,4 @@
-$component: $YCoreButtonTagName;
+$component: $AltCoreButtonTagName;
 
 :host {
   display: inline-block !important;
@@ -13,22 +13,22 @@ $component: $YCoreButtonTagName;
 .$(component) {
   &_disabled {
     .$(component)__icon-left {
-      color: var(--y-core-button-icon-left-color-disabled);
+      color: var(--alt-core-button-icon-left-color-disabled);
     }
 
     .$(component)__icon-right {
-      color: var(--y-core-button-icon-right-color-disabled);
+      color: var(--alt-core-button-icon-right-color-disabled);
     }
   }
 
   &__icon-left {
     flex-shrink: 0;
-    color: var(--y-core-button-icon-left-color);
+    color: var(--alt-core-button-icon-left-color);
   }
 
   &__icon-right {
     flex-shrink: 0;
-    color: var(--y-core-button-icon-right-color);
+    color: var(--alt-core-button-icon-right-color);
   }
   
   &__text {

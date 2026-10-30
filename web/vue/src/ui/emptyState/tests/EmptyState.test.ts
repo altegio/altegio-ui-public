@@ -1,8 +1,8 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { YCoreEmptyStateTagName as tagName } from '~shared/constants'
-import { YCoreEmptyState } from '~core/ui/emptyState'
-import { YEmptyState } from '~vue/ui/emptyState'
+import { AltCoreEmptyStateTagName as tagName } from '~shared/constants'
+import { AltCoreEmptyState } from '~core/ui/emptyState'
+import { AltEmptyState } from '~vue/ui/emptyState'
 import {
   defaultTestProps,
   propDescriptionTestCases,
@@ -13,13 +13,13 @@ import {
 import { slotActionsTestCases } from './cases/slots'
 
 describe(
-  'Vue/YEmptyState',
+  'Vue/AltEmptyState',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreEmptyState,
+          AltCoreEmptyState,
         )
       }
     })
@@ -32,7 +32,7 @@ describe(
             `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
-                YEmptyState,
+                AltEmptyState,
                 { props: { ...defaultTestProps, [testCase.prop]: testCase.value } },
               )
 
@@ -51,7 +51,7 @@ describe(
               `Prop "${testCase.prop}" ${testCase.case} should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
               () => {
                 const wrapper = mount(
-                    YEmptyState,
+                    AltEmptyState,
                     { props: { ...defaultTestProps, [testCase.prop]: testCase.value } },
                 )
 
@@ -67,7 +67,7 @@ describe(
               `Prop "${testCase.prop}" ${testCase.case} should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
               () => {
                 const wrapper = mount(
-                    YEmptyState,
+                    AltEmptyState,
                     { props: { ...defaultTestProps, [testCase.prop]: testCase.value } },
                 )
 
@@ -88,7 +88,7 @@ describe(
               `Slot "${testCase.slot}" should ${testCase.content ? '' : 'not'} render when ${testCase.case} and show the content`,
             () => {
               const wrapper = mount(
-                YEmptyState,
+                AltEmptyState,
                   { slots: testCase.content ? { [testCase.slot]: testCase.content } : {} },
               )
 

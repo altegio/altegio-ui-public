@@ -5,11 +5,11 @@ import { repeat } from 'lit/directives/repeat.js'
 
 import {
   createCorePaginationProps,
-  type IYCorePaginationProps,
+  type IAltCorePaginationProps,
   ChangePageEvent,
 } from '~core/ui/pagination/models/types'
 import {
-  YCorePaginationTagName as tagName,
+  AltCorePaginationTagName as tagName,
 } from '~shared/constants'
 import { interceptEvents } from '~core/utils/event-interceptor'
 import { bubblingEvent } from '~core/utils/event-decorator'
@@ -19,10 +19,10 @@ import '~core/ui/text'
 import '~core/ui/simpleButton'
 import '~core/ui/iconButton'
 
-import YCorePaginationVarsCss from '~core/ui/pagination/css/Pagination.vars.css?inline'
-import YCorePaginationScopedCss from '~core/ui/pagination/css/Pagination.scoped.css?inline'
+import AltCorePaginationVarsCss from '~core/ui/pagination/css/Pagination.vars.css?inline'
+import AltCorePaginationScopedCss from '~core/ui/pagination/css/Pagination.scoped.css?inline'
 
-import { yChevronLeft, yChevronRight } from '~shared/icons'
+import { altChevronLeft, altChevronRight } from '~shared/icons'
 import { withLocator } from '~core/utils/locator'
 
 const { page, itemsPerPage, total, disabled } = createCorePaginationProps()
@@ -30,13 +30,13 @@ const { page, itemsPerPage, total, disabled } = createCorePaginationProps()
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCorePagination
+export class AltCorePagination
   extends LitElement
-  implements IYCorePaginationProps {
-  @property({ type: Number }) page: IYCorePaginationProps['page'] = page
-  @property({ type: Number, attribute: 'items-per-page' }) itemsPerPage: IYCorePaginationProps['itemsPerPage'] = itemsPerPage
-  @property({ type: Number }) total: IYCorePaginationProps['total'] = total
-  @property({ type: Boolean }) disabled: IYCorePaginationProps['disabled'] = disabled
+  implements IAltCorePaginationProps {
+  @property({ type: Number }) page: IAltCorePaginationProps['page'] = page
+  @property({ type: Number, attribute: 'items-per-page' }) itemsPerPage: IAltCorePaginationProps['itemsPerPage'] = itemsPerPage
+  @property({ type: Number }) total: IAltCorePaginationProps['total'] = total
+  @property({ type: Boolean }) disabled: IAltCorePaginationProps['disabled'] = disabled
 
   @bubblingEvent(
     ChangePageEvent,
@@ -48,8 +48,8 @@ export class YCorePagination
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCorePaginationVarsCss)}
-      ${unsafeCSS(YCorePaginationScopedCss)}
+      ${unsafeCSS(AltCorePaginationVarsCss)}
+      ${unsafeCSS(AltCorePaginationScopedCss)}
     `,
   ]
 
@@ -87,16 +87,16 @@ export class YCorePagination
       pages,
       (page) => `page-${page}`,
       (page) => html`
-        <y-core-simple-button
+        <alt-core-simple-button
           .disabled=${this.disabled || page === Number(this.page)}
           variant=${this.page === page ? 'primary' : 'text'}
           @click=${this.handleChangePage(page)}
         >
-          <y-core-text
+          <alt-core-text
             variant=${this.page === page ? 'primary' : 'secondary'}
             size="a2-medium"
-          >${page}</y-core-text>
-        </y-core-simple-button>
+          >${page}</alt-core-text>
+        </alt-core-simple-button>
       `,
     )
   }
@@ -105,19 +105,19 @@ export class YCorePagination
   protected render() {
     return html`
       <div class=${classMap(this.computedClasses)}>
-        <y-core-icon-button
+        <alt-core-icon-button
           .disabled=${this.disabled || Number(this.page) === 1}
           variant="text"
-          .icon=${yChevronLeft}
+          .icon=${altChevronLeft}
           @click=${this.handlePreviousPage}
-        ></y-core-icon-button> 
+        ></alt-core-icon-button> 
         ${this.renderPages()}
-        <y-core-icon-button
+        <alt-core-icon-button
           .disabled=${this.disabled || Number(this.page) === this.computedPages}
           variant="text"
-          .icon=${yChevronRight}
+          .icon=${altChevronRight}
           @click=${this.handleNextPage}
-        ></y-core-icon-button>
+        ></alt-core-icon-button>
       </div>
     `
   }

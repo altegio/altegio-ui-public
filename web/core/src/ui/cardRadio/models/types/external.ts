@@ -1,8 +1,8 @@
 import { pick } from 'radash'
-import { createCoreCardWrapperProps, type IYCoreCardWrapperProps } from '~core/ui/cardWrapper/models/types'
+import { createCoreCardWrapperProps, type IAltCoreCardWrapperProps } from '~core/ui/cardWrapper/models/types'
 
-export interface IYCoreCardRadioExternalProps
-  extends Pick<IYCoreCardWrapperProps, 'disabled' | 'size' | 'checked'> {
+export interface IAltCoreCardRadioExternalProps
+  extends Pick<IAltCoreCardWrapperProps, 'disabled' | 'size' | 'checked'> {
 }
 
-export const createCoreCardRadioExternalProps = (): IYCoreCardRadioExternalProps => ({ ...pick(createCoreCardWrapperProps(), ['disabled', 'size', 'checked']) })
+export const createCoreCardRadioExternalProps = (): IAltCoreCardRadioExternalProps => ({ ...pick(createCoreCardWrapperProps(), ['disabled', 'size', 'checked']) })

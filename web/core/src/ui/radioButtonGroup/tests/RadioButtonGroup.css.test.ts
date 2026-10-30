@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreRadioButtonGroupTagName } from '~shared/constants'
+import { AltCoreRadioButtonGroupTagName } from '~shared/constants'
 import {
   createCoreRadioButtonGroupProps,
 } from '~core/ui/radioButtonGroup/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/radioButtonGroup/tests/cases/css'
 
-const tagName = YCoreRadioButtonGroupTagName
+const tagName = AltCoreRadioButtonGroupTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreRadioButtonGroup/CSS',
+  'Core/AltCoreRadioButtonGroup/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

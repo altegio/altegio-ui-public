@@ -1,20 +1,20 @@
 import {
   createCoreFieldInputExternalProps,
-  type IYCoreFieldInputExternalProps,
+  type IAltCoreFieldInputExternalProps,
 } from '~core/ui/fieldInput/models/types'
 import {
-  EYTextareaResize,
-  type TYTextareaResize,
+  EAltTextareaResize,
+  type TAltTextareaResize,
 } from '~shared/types/global'
 
-export interface IYCoreFieldTextareaExternalProps extends
-  Omit<IYCoreFieldInputExternalProps, 'type'> {
+export interface IAltCoreFieldTextareaExternalProps extends
+  Omit<IAltCoreFieldInputExternalProps, 'type'> {
   rows: number | undefined
-  resize: TYTextareaResize | undefined
+  resize: TAltTextareaResize | undefined
 }
 
-export const createCoreFieldTextareaExternalProps = (): IYCoreFieldTextareaExternalProps => ({
+export const createCoreFieldTextareaExternalProps = (): IAltCoreFieldTextareaExternalProps => ({
   ...createCoreFieldInputExternalProps(),
   rows: 3,
-  resize: EYTextareaResize.NONE,
+  resize: EAltTextareaResize.NONE,
 })

@@ -1,7 +1,7 @@
-$component: $YCorePaginationTagName;
+$component: $AltCorePaginationTagName;
 
 .$(component) {
   display: inline-flex;
-  gap: var(--y-core-pagination-gap);
+  gap: var(--alt-core-pagination-gap);
   align-items: center;
 }

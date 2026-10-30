@@ -1,2 +1,2 @@
-export { default as YPopover } from './Popover.vue'
+export { default as AltPopover } from './Popover.vue'
 export type * from './models/types'

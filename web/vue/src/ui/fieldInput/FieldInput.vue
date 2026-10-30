@@ -1,5 +1,5 @@
 <template>
-  <y-core-field-input
+  <alt-core-field-input
     v-bind="props"
     :value="modelValue"
     @input="$emit('update:modelValue', $event.detail.value)"
@@ -14,17 +14,17 @@
   import '~core/ui/fieldInput'
   import {
     createVueFieldInputProps,
-    type IYVueFieldInputProps,
-    type IYVueFieldInputEmits,
-    type IYVueCoreFieldInputProps,
+    type IAltVueFieldInputProps,
+    type IAltVueFieldInputEmits,
+    type IAltVueCoreFieldInputProps,
   } from '~vue/ui/fieldInput/models/types'
 
-  defineOptions({ name: 'YFieldInput' })
+  defineOptions({ name: 'AltFieldInput' })
 
   const props = withDefaults(
-    defineProps<IYVueFieldInputProps>(),
+    defineProps<IAltVueFieldInputProps>(),
     createVueFieldInputProps(),
-  ) satisfies IYVueCoreFieldInputProps
+  ) satisfies IAltVueCoreFieldInputProps
 
-  defineEmits<IYVueFieldInputEmits>()
+  defineEmits<IAltVueFieldInputEmits>()
 </script>

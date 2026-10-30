@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YText } from '~ng/ui/text'
-import yCoreTextStoryMeta, { type IYCoreTextStoryProps } from '~core/ui/text/stories/Text.stories'
+import { AltText } from '~ng/ui/text'
+import altCoreTextStoryMeta, { type IAltCoreTextStoryProps } from '~core/ui/text/stories/Text.stories'
 
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-type TYCoreTextMeta = YText & IYCoreTextStoryProps
+type TAltCoreTextMeta = AltText & IAltCoreTextStoryProps
 
 /**
  * Angular wrapper for Text
  */
-const meta: Meta<TYCoreTextMeta> = {
+const meta: Meta<TAltCoreTextMeta> = {
   title: '🔍 Text',
   id: 'text',
   parameters: { controls: { sort: 'alpha' } },
-  component: YText,
+  component: AltText,
   tags: [
     'angular',
     'autodocs',
@@ -22,21 +22,21 @@ const meta: Meta<TYCoreTextMeta> = {
   render: (args) => ({
     props: { ...args, LOREM_IPSUM },
     template: `
-      <YText
+      <AltText
         [size]="size"
         [variant]="variant"
         [ellipsis]="ellipsis"
         [lineclamp]="lineclamp"
       >
        {{ isLongText ? LOREM_IPSUM : text }}
-      </YText>`,
+      </AltText>`,
   }),
-  argTypes: { ...yCoreTextStoryMeta.argTypes },
-  args: { ...yCoreTextStoryMeta.args },
-} satisfies Meta<TYCoreTextMeta>
+  argTypes: { ...altCoreTextStoryMeta.argTypes },
+  args: { ...altCoreTextStoryMeta.args },
+} satisfies Meta<TAltCoreTextMeta>
 
 export default meta
-type Story = StoryObj<TYCoreTextMeta>
+type Story = StoryObj<TAltCoreTextMeta>
 
 export const Playground: Story = { args: {} }
 

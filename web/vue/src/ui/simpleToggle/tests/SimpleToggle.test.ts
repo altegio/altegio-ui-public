@@ -1,12 +1,12 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { ref } from 'vue'
 import { mount } from '@vue/test-utils'
-import { YCoreSimpleToggleTagName as tagName } from '~shared/constants'
+import { AltCoreSimpleToggleTagName as tagName } from '~shared/constants'
 import type { TPropTestCase } from '~shared/types/tests'
-import { EYSizes } from '~shared/types/global'
-import { YCoreSimpleToggle } from '~core/index'
-import { createVueSimpleToggleProps, type IYVueSimpleToggleProps } from '~vue/ui/simpleToggle/models/types'
-import { YSimpleToggle } from '~vue/ui/simpleToggle'
+import { EAltSizes } from '~shared/types/global'
+import { AltCoreSimpleToggle } from '~core/index'
+import { createVueSimpleToggleProps, type IAltVueSimpleToggleProps } from '~vue/ui/simpleToggle/models/types'
+import { AltSimpleToggle } from '~vue/ui/simpleToggle'
 
 const {
   size: defaultSize,
@@ -14,32 +14,32 @@ const {
   hovered: defaultHovered,
 } = createVueSimpleToggleProps()
 
-const propSizeTestCases: TPropTestCase<IYVueSimpleToggleProps, 'size'>[] = [
-  { prop: 'size', case: EYSizes.SMALL, value: EYSizes.SMALL, expected: EYSizes.SMALL },
-  { prop: 'size', case: EYSizes.MEDIUM, value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
+const propSizeTestCases: TPropTestCase<IAltVueSimpleToggleProps, 'size'>[] = [
+  { prop: 'size', case: EAltSizes.SMALL, value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
+  { prop: 'size', case: EAltSizes.MEDIUM, value: EAltSizes.MEDIUM, expected: EAltSizes.MEDIUM },
   { prop: 'size', case: 'undefined', value: undefined, expected: defaultSize },
 ]
 
-const propDisabledTestCases: TPropTestCase<IYVueSimpleToggleProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltVueSimpleToggleProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true, expected: true },
   { prop: 'disabled', case: 'false', value: false, expected: false },
   { prop: 'disabled', case: 'undefined', value: undefined, expected: defaultDisabled },
 ]
 
-const propHoveredTestCases: TPropTestCase<IYVueSimpleToggleProps, 'hovered'>[] = [
+const propHoveredTestCases: TPropTestCase<IAltVueSimpleToggleProps, 'hovered'>[] = [
   { prop: 'hovered', case: 'true', value: true, expected: true },
   { prop: 'hovered', case: 'false', value: false, expected: false },
   { prop: 'hovered', case: 'undefined', value: undefined, expected: defaultHovered },
 ]
 
 describe(
-  'Vue/YSimpleToggle',
+  'Vue/AltSimpleToggle',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreSimpleToggle,
+          AltCoreSimpleToggle,
         )
       }
     })
@@ -57,7 +57,7 @@ describe(
             () => {
               const modelValue = ref(false)
               const wrapper = mount(
-                YSimpleToggle,
+                AltSimpleToggle,
                 {
                   props: {
                     [testCase.prop]: testCase.value,
@@ -86,7 +86,7 @@ describe(
           'Should emit "update:modelValue" when the toggle state changes',
           async() => {
             const wrapper = mount(
-              YSimpleToggle,
+              AltSimpleToggle,
               { props: { modelValue: false } },
             )
 

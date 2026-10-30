@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { YCounter } from '~vue/ui/counter'
-import { type IYVueCounterProps } from '~vue/ui/counter/models/types'
+import { AltCounter } from '~vue/ui/counter'
+import { type IAltVueCounterProps } from '~vue/ui/counter/models/types'
 
-import YCoreCounterStoryMeta from '~core/ui/counter/stories/Counter.stories'
+import AltCoreCounterStoryMeta from '~core/ui/counter/stories/Counter.stories'
 
-type TVueCounterStoryMeta = IYVueCounterProps
+type TVueCounterStoryMeta = IAltVueCounterProps
 
 /**
  * Vue wrapper for Core Counter
@@ -14,20 +14,20 @@ const meta: Meta<TVueCounterStoryMeta> = {
   id: 'counter',
   parameters: { controls: { sort: 'alpha' } },
   render: (args) => ({
-    components: { YCounter },
+    components: { AltCounter },
     setup() {
       return { args }
     },
     template: `
-      <YCounter v-bind="args" />
+      <AltCounter v-bind="args" />
     `,
   }),
   tags: [
     'vue',
     'autodocs',
   ],
-  argTypes: { ...YCoreCounterStoryMeta.argTypes },
-  args: { ...YCoreCounterStoryMeta.args },
+  argTypes: { ...AltCoreCounterStoryMeta.argTypes },
+  args: { ...AltCoreCounterStoryMeta.args },
 }
 
 export default meta

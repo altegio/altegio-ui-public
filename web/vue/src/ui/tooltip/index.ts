@@ -1,2 +1,2 @@
-export { default as YTooltip } from './Tooltip.vue'
+export { default as AltTooltip } from './Tooltip.vue'
 export type * from './models/types'

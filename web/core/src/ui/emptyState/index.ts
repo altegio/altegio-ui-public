@@ -1,1 +1,1 @@
-export { YCoreEmptyState } from './EmptyState.core'
+export { AltCoreEmptyState } from './EmptyState.core'

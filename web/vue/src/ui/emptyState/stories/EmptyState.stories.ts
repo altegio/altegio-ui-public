@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { YButton } from '~vue/ui/button'
-import { YEmptyState } from '~vue/ui/emptyState'
-import { type IYVueEmptyStateProps } from '~vue/ui/emptyState/models/types'
-import yCoreEmptyStateStoryMeta, {
-  type IYCoreEmptyStateStoryProps,
+import { AltButton } from '~vue/ui/button'
+import { AltEmptyState } from '~vue/ui/emptyState'
+import { type IAltVueEmptyStateProps } from '~vue/ui/emptyState/models/types'
+import altCoreEmptyStateStoryMeta, {
+  type IAltCoreEmptyStateStoryProps,
 } from '~core/ui/emptyState/stories/EmptyState.stories'
 
-type TVueEmptyStateStoryMeta = IYVueEmptyStateProps & IYCoreEmptyStateStoryProps
+type TVueEmptyStateStoryMeta = IAltVueEmptyStateProps & IAltCoreEmptyStateStoryProps
 
 /**
  * Vue wrapper for Core Empty State
@@ -17,33 +17,33 @@ const meta: Meta<TVueEmptyStateStoryMeta> = {
   parameters: { controls: { sort: 'alpha' } },
   tags: ['vue', 'autodocs'],
   render: (args) => ({
-    components: { YEmptyState, YButton },
+    components: { AltEmptyState, AltButton },
     setup() {
       return { args }
     },
     template: `
       <div style="max-width: 400px; margin-left: auto; margin-right: auto;">
-        <YEmptyState v-bind="args">
+        <AltEmptyState v-bind="args">
           <template
             #actions
             v-if="args.isActionsSlotExists"
           >
-            <YButton
+            <AltButton
               label="Primary action"
               variant="primary"
-            ></YButton>
+            ></AltButton>
   
-            <YButton
+            <AltButton
               label="Secondary action"
               variant="outline"
-            ></YButton>
+            ></AltButton>
           </template>
-        </YEmptyState>
+        </AltEmptyState>
       </div>
     `,
   }),
-  argTypes: yCoreEmptyStateStoryMeta.argTypes,
-  args: yCoreEmptyStateStoryMeta.args,
+  argTypes: altCoreEmptyStateStoryMeta.argTypes,
+  args: altCoreEmptyStateStoryMeta.args,
 }
 
 export default meta

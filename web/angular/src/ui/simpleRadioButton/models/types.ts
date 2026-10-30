@@ -1,17 +1,17 @@
 import {
   createCoreSimpleRadioButtonExternalProps,
   createCoreSimpleRadioButtonInternalProps,
-  type IYCoreSimpleRadioButtonExternalProps,
-  type IYCoreSimpleRadioButtonInternalProps,
+  type IAltCoreSimpleRadioButtonExternalProps,
+  type IAltCoreSimpleRadioButtonInternalProps,
 } from '~core/ui/simpleRadioButton/models/types'
 
-export type TYNgSimpleRadioButtonModel = IYCoreSimpleRadioButtonExternalProps['checked']
+export type TAltNgSimpleRadioButtonModel = IAltCoreSimpleRadioButtonExternalProps['checked']
 
-export interface IYNgSimpleRadioButtonProps extends Omit<IYCoreSimpleRadioButtonExternalProps, 'checked'>, IYCoreSimpleRadioButtonInternalProps {}
+export interface IAltNgSimpleRadioButtonProps extends Omit<IAltCoreSimpleRadioButtonExternalProps, 'checked'>, IAltCoreSimpleRadioButtonInternalProps {}
 
 export { SimpleRadioButtonCheckedEvent } from '~core/ui/simpleRadioButton/models/types/events'
 
-export const createNgSimpleRadioButtonProps = (): IYNgSimpleRadioButtonProps => {
+export const createNgSimpleRadioButtonProps = (): IAltNgSimpleRadioButtonProps => {
   return {
     ...createCoreSimpleRadioButtonExternalProps(),
     ...createCoreSimpleRadioButtonInternalProps(),

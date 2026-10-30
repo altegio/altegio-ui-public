@@ -1,28 +1,28 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreTooltipTagName } from '~shared/constants'
-import { YTooltip } from '~ng/ui/tooltip'
-import type { IYNgTooltipProps } from '~ng/ui/tooltip/models/types'
+import { AltCoreTooltipTagName } from '~shared/constants'
+import { AltTooltip } from '~ng/ui/tooltip'
+import type { IAltNgTooltipProps } from '~ng/ui/tooltip/models/types'
 import { slotContentTestCases, slotActivatorTestCases } from './cases/slots'
 import { propDisabledTestCases, propPlacementTestCases, propTextTestCases } from './cases/props'
 
-const tagName = YCoreTooltipTagName
+const tagName = AltCoreTooltipTagName
 
 interface ICreateComponentArgs {
   slots?: {
     activator?: string
     content?: string
   }
-  props?: Partial<IYNgTooltipProps>
+  props?: Partial<IAltNgTooltipProps>
 }
 const createComponent = async({ slots, props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YTooltip] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltTooltip] }).compileComponents()
 
   @Component({
     template: `
-      <YTooltip
+      <AltTooltip
         [text]="text"
         [disabled]="disabled"
         [placement]="placement"
@@ -38,9 +38,9 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
             {{ contentSlot }}
           </div>
         }
-      </YTooltip>
+      </AltTooltip>
     `,
-    imports: [YTooltip],
+    imports: [AltTooltip],
     standalone: true,
   })
   class TestComponent {
@@ -54,7 +54,7 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YTooltip',
+  'Angular/AltTooltip',
   () => {
     describe(
       'Unit',

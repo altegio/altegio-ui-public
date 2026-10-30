@@ -1,2 +1,2 @@
-export { YBrandButton } from './BrandButton.component'
+export { AltBrandButton } from './BrandButton.component'
 export type * from './models/types'

@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { action } from 'storybook/actions'
-import yCoreChipStoryMeta from '~core/ui/chip/stories/Chip.stories'
-import type { IYNgChipProps } from '~ng/ui/chip/models/types'
-import { YChip } from '~ng/ui/chip'
+import altCoreChipStoryMeta from '~core/ui/chip/stories/Chip.stories'
+import type { IAltNgChipProps } from '~ng/ui/chip/models/types'
+import { AltChip } from '~ng/ui/chip'
 import { useArgs } from 'storybook/preview-api'
 
-const meta: Meta<IYNgChipProps> = {
+const meta: Meta<IAltNgChipProps> = {
   title: '✅ Chip',
   id: 'chip',
   parameters: { controls: { sort: 'alpha' } },
-  component: YChip,
+  component: AltChip,
   tags: [
     'angular',
     'autodocs',
@@ -30,7 +30,7 @@ const meta: Meta<IYNgChipProps> = {
         ...handlers,
       },
       template: `
-        <YChip
+        <AltChip
           [labelText]="labelText"
           [iconLeft]="iconLeft"
           [size]="size"
@@ -41,11 +41,11 @@ const meta: Meta<IYNgChipProps> = {
       `,
     }
   },
-  argTypes: { ...yCoreChipStoryMeta.argTypes },
-  args: { ...yCoreChipStoryMeta.args },
-} satisfies Meta<IYNgChipProps>
+  argTypes: { ...altCoreChipStoryMeta.argTypes },
+  args: { ...altCoreChipStoryMeta.args },
+} satisfies Meta<IAltNgChipProps>
 
 export default meta
-type Story = StoryObj<YChip>
+type Story = StoryObj<AltChip>
 
 export const Default: Story = { args: {} }

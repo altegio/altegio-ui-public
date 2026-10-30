@@ -12,16 +12,16 @@ import { debounce } from 'radash'
 
 import {
   createCoreDropdownProps,
-  EYCoreDropdownTrigger,
-  EYCoreDropdownPlacement,
-  EYCoreDropdownStrategy,
-  type IYCoreDropdownProps,
+  EAltCoreDropdownTrigger,
+  EAltCoreDropdownPlacement,
+  EAltCoreDropdownStrategy,
+  type IAltCoreDropdownProps,
 } from '~core/ui/dropdown/models/types'
-import { YCoreDropdownTagName as tagName } from '~shared/constants'
+import { AltCoreDropdownTagName as tagName } from '~shared/constants'
 
-import YCoreDropdownVarsCSS from '~core/ui/dropdown/css/Dropdown.vars.css?inline'
-import YCoreDropdownScopedCSS from '~core/ui/dropdown/css/Dropdown.scoped.css?inline'
-import YCoreTransitionCss from '~core/assets/css/transitions.css?inline'
+import AltCoreDropdownVarsCSS from '~core/ui/dropdown/css/Dropdown.vars.css?inline'
+import AltCoreDropdownScopedCSS from '~core/ui/dropdown/css/Dropdown.scoped.css?inline'
+import AltCoreTransitionCss from '~core/assets/css/transitions.css?inline'
 
 import { isClickOutside } from '~core/utils/dom-events'
 import {
@@ -41,19 +41,19 @@ const { trigger, isOpen, placement, strategy, padding, offset, middlewares, hand
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreDropdown extends LitElement implements IYCoreDropdownProps {
-  @property({ type: String }) trigger: IYCoreDropdownProps['trigger'] = trigger
-  @property({ type: Boolean, attribute: 'is-open', reflect: true }) isOpen: IYCoreDropdownProps['isOpen'] = isOpen
-  @property({ type: Object }) offset: IYCoreDropdownProps['offset'] = offset
-  @property({ type: Object }) padding: IYCoreDropdownProps['padding'] = padding
-  @property({ type: String }) placement: IYCoreDropdownProps['placement'] = placement
-  @property({ type: String }) strategy: IYCoreDropdownProps['strategy'] = strategy
-  @property({ type: Array }) middlewares: IYCoreDropdownProps['middlewares'] = middlewares
-  @property({ type: Array }) handlers: IYCoreDropdownProps['handlers'] = handlers
-  @property({ type: String }) transition: IYCoreDropdownProps['transition'] = transition
-  @property({ type: Boolean }) disabled: IYCoreDropdownProps['disabled'] = disabled
-  @property({ type: Boolean }) inline: IYCoreDropdownProps['inline'] = inline
-  @property({ type: Boolean, attribute: 'strict-width' }) strictWidth: IYCoreDropdownProps['strictWidth'] = strictWidth
+export class AltCoreDropdown extends LitElement implements IAltCoreDropdownProps {
+  @property({ type: String }) trigger: IAltCoreDropdownProps['trigger'] = trigger
+  @property({ type: Boolean, attribute: 'is-open', reflect: true }) isOpen: IAltCoreDropdownProps['isOpen'] = isOpen
+  @property({ type: Object }) offset: IAltCoreDropdownProps['offset'] = offset
+  @property({ type: Object }) padding: IAltCoreDropdownProps['padding'] = padding
+  @property({ type: String }) placement: IAltCoreDropdownProps['placement'] = placement
+  @property({ type: String }) strategy: IAltCoreDropdownProps['strategy'] = strategy
+  @property({ type: Array }) middlewares: IAltCoreDropdownProps['middlewares'] = middlewares
+  @property({ type: Array }) handlers: IAltCoreDropdownProps['handlers'] = handlers
+  @property({ type: String }) transition: IAltCoreDropdownProps['transition'] = transition
+  @property({ type: Boolean }) disabled: IAltCoreDropdownProps['disabled'] = disabled
+  @property({ type: Boolean }) inline: IAltCoreDropdownProps['inline'] = inline
+  @property({ type: Boolean, attribute: 'strict-width' }) strictWidth: IAltCoreDropdownProps['strictWidth'] = strictWidth
 
   @state() private isContentVisible = false
   @state() private animation?: IElementTransition
@@ -83,9 +83,9 @@ export class YCoreDropdown extends LitElement implements IYCoreDropdownProps {
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreDropdownVarsCSS)}
-      ${unsafeCSS(YCoreDropdownScopedCSS)}
-      ${unsafeCSS(YCoreTransitionCss)}
+      ${unsafeCSS(AltCoreDropdownVarsCSS)}
+      ${unsafeCSS(AltCoreDropdownScopedCSS)}
+      ${unsafeCSS(AltCoreTransitionCss)}
     `,
   ]
 
@@ -124,12 +124,12 @@ export class YCoreDropdown extends LitElement implements IYCoreDropdownProps {
     this.handleVisibilityChange(visible)
   }
 
-  private isTriggerType(type: EYCoreDropdownTrigger): boolean {
+  private isTriggerType(type: EAltCoreDropdownTrigger): boolean {
     return this.trigger === type
   }
 
   private handleClickOutside = (event: Event) => {
-    if (!this.isTriggerType(EYCoreDropdownTrigger.CLICK) && !this.isTriggerType(EYCoreDropdownTrigger.MANUAL)) return
+    if (!this.isTriggerType(EAltCoreDropdownTrigger.CLICK) && !this.isTriggerType(EAltCoreDropdownTrigger.MANUAL)) return
 
     event.stopPropagation()
 
@@ -137,7 +137,7 @@ export class YCoreDropdown extends LitElement implements IYCoreDropdownProps {
       event as MouseEvent,
       this,
     )) {
-      if (this.isTriggerType(EYCoreDropdownTrigger.CLICK)) {
+      if (this.isTriggerType(EAltCoreDropdownTrigger.CLICK)) {
         this.changeContentVisible(false)
       }
 
@@ -146,14 +146,14 @@ export class YCoreDropdown extends LitElement implements IYCoreDropdownProps {
   }
 
   private handleActivatorClick = () => {
-    if (this.disabled || !this.isTriggerType(EYCoreDropdownTrigger.CLICK)) return
+    if (this.disabled || !this.isTriggerType(EAltCoreDropdownTrigger.CLICK)) return
     this.changeContentVisible(!this.isContentVisible)
   }
 
   private handleMouseEnter = (event: Event) => {
     event.stopPropagation()
 
-    if (this.disabled || !this.isTriggerType(EYCoreDropdownTrigger.HOVER)) return
+    if (this.disabled || !this.isTriggerType(EAltCoreDropdownTrigger.HOVER)) return
 
     this.changeContentVisible(true)
 
@@ -165,7 +165,7 @@ export class YCoreDropdown extends LitElement implements IYCoreDropdownProps {
   private handleMouseLeave = (event: Event) => {
     event.stopPropagation()
 
-    if (this.disabled || !this.isTriggerType(EYCoreDropdownTrigger.HOVER)) return
+    if (this.disabled || !this.isTriggerType(EAltCoreDropdownTrigger.HOVER)) return
 
     if (this.isContentVisible && this.isAnimationInProgress) {
       this.animation?.abortEnter()
@@ -224,8 +224,8 @@ export class YCoreDropdown extends LitElement implements IYCoreDropdownProps {
           activator,
           content,
           {
-            placement: this.placement || EYCoreDropdownPlacement.BOTTOM_START,
-            strategy: this.strategy || EYCoreDropdownStrategy.FIXED,
+            placement: this.placement || EAltCoreDropdownPlacement.BOTTOM_START,
+            strategy: this.strategy || EAltCoreDropdownStrategy.FIXED,
             middleware,
           },
         ).then((data) => {
@@ -278,7 +278,7 @@ export class YCoreDropdown extends LitElement implements IYCoreDropdownProps {
   }
 
   private handleTriggerChange(): void {
-    if (this.trigger === EYCoreDropdownTrigger.MANUAL && this.isOpen) {
+    if (this.trigger === EAltCoreDropdownTrigger.MANUAL && this.isOpen) {
       this.changeContentVisible(true)
       return
     }
@@ -333,7 +333,7 @@ export class YCoreDropdown extends LitElement implements IYCoreDropdownProps {
   }
 
   protected firstUpdated(): void {
-    defineCustomElement(tagName, YCoreDropdown)
+    defineCustomElement(tagName, AltCoreDropdown)
   }
 
   disconnectedCallback() {

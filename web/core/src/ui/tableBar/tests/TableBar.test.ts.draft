@@ -1,15 +1,15 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
-import { YCoreTableBarTagName } from '~shared/constants'
+import { AltCoreTableBarTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import type { TSlotTestCase, TPropTestCase } from '~shared/types/tests'
 import { text, empty } from '~shared/tests/slotContents'
 import {
   createCoreTableBarProps,
-  type IYCoreTableBarProps,
+  type IAltCoreTableBarProps,
 } from '~core/ui/tableBar/models/types'
 import '~core/ui/tableBar'
 
-const tagName = YCoreTableBarTagName
+const tagName = AltCoreTableBarTagName
 
 const {
   component,
@@ -27,17 +27,17 @@ const slotDefaultTestCases: TSlotTestCase[] = [
   { slot: 'default', case: 'with content', content: text },
   { slot: 'default', case: 'without content', content: empty },
 ]
-const propExternalPropTestCases: TPropTestCase<IYCoreTableBarProps, 'externalProp'>[] = [
+const propExternalPropTestCases: TPropTestCase<IAltCoreTableBarProps, 'externalProp'>[] = [
   { prop: 'externalProp', case: 'with content', value: text },
   { prop: 'externalProp', case: 'without content', value: empty },
 ]
-const propInternalPropTestCases: TPropTestCase<IYCoreTableBarProps, 'internalProp'>[] = [
+const propInternalPropTestCases: TPropTestCase<IAltCoreTableBarProps, 'internalProp'>[] = [
   { prop: 'internalProp', case: 'with content', value: text },
   { prop: 'internalProp', case: 'without content', value: empty },
 ]
 
 describe(
-  'Core/YTableBar',
+  'Core/AltTableBar',
   () => {
     beforeAll(() => {
       injectComponentToBody()

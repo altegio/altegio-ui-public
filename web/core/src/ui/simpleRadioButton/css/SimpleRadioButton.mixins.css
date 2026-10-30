@@ -1,4 +1,4 @@
-$component: $YCoreSimpleRadioButtonTagName;
+$component: $AltCoreSimpleRadioButtonTagName;
 
 @define-mixin radio-button-size
   $width,

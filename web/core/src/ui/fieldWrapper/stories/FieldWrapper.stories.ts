@@ -4,11 +4,11 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 
 import {
   createCoreFieldWrapperProps,
-  type IYCoreFieldWrapperProps,
-  type TYCoreFieldWrapperEvents,
+  type IAltCoreFieldWrapperProps,
+  type TAltCoreFieldWrapperEvents,
 } from '~core/ui/fieldWrapper/models/types'
 import {
-  YCoreFieldWrapperTagName as tagName,
+  AltCoreFieldWrapperTagName as tagName,
 } from '~shared/constants'
 import {
   storyControlsTable,
@@ -21,8 +21,8 @@ import {
   error as errorArgType,
   size as sizeArgType,
 } from '~shared/.storybook/argTypes'
-import { EYSizes } from '~shared/types/global'
-import { yChevronDown } from '~shared/icons'
+import { EAltSizes } from '~shared/types/global'
+import { altChevronDown } from '~shared/icons'
 
 import '~core/ui/fieldWrapper'
 import '~core/ui/fieldAvatar'
@@ -31,20 +31,20 @@ import '~core/ui/fieldInput'
 
 const { disabled, readonly, error, size } = createCoreFieldWrapperProps()
 
-export interface IYCoreFieldWrapperStorySlots {
+export interface IAltCoreFieldWrapperStorySlots {
   showFieldAvatar: boolean
   showFieldInput: boolean
   showFieldIcon: boolean
 }
 
-type YCoreFieldWrapperMeta = Meta<IYCoreFieldWrapperProps & IYCoreFieldWrapperStorySlots & Pick<TYCoreFieldWrapperEvents, 'onBlur' | 'onFocus' | 'onMouseEnter' | 'onMouseLeave' | 'onClickOutside'> & {
+type AltCoreFieldWrapperMeta = Meta<IAltCoreFieldWrapperProps & IAltCoreFieldWrapperStorySlots & Pick<TAltCoreFieldWrapperEvents, 'onBlur' | 'onFocus' | 'onMouseEnter' | 'onMouseLeave' | 'onClickOutside'> & {
   onClick: (event: Event) => void
 }>
 
 /**
  * ## Core FieldWrapper
  */
-const meta: YCoreFieldWrapperMeta = {
+const meta: AltCoreFieldWrapperMeta = {
   title: 'Inputs/Partials/⚠️ FieldWrapper',
   id: 'fieldWrapper',
   parameters: { controls: { sort: 'alpha' } },
@@ -69,7 +69,7 @@ const meta: YCoreFieldWrapperMeta = {
     onMouseLeave,
   }) => {
     return html`
-      <y-core-field-wrapper
+      <alt-core-field-wrapper
         .disabled=${disabled}
         .readonly=${readonly}
         .error=${error}
@@ -83,23 +83,23 @@ const meta: YCoreFieldWrapperMeta = {
       >
         ${showFieldAvatar
           ? html`
-              <y-core-field-avatar photo="https://i.pravatar.cc/100" initials="Altegio Clients"></y-core-field-avatar>
+              <alt-core-field-avatar photo="https://i.pravatar.cc/100" initials="Altegio Clients"></alt-core-field-avatar>
             `
           : nothing
         }
         ${showFieldInput
           ? html`
-              <y-core-field-input value="Default value" .hideSpaceLeft=${showFieldAvatar} .hideSpaceRight=${showFieldIcon}></y-core-field-input>
+              <alt-core-field-input value="Default value" .hideSpaceLeft=${showFieldAvatar} .hideSpaceRight=${showFieldIcon}></alt-core-field-input>
             `
           : nothing
         }
         ${showFieldIcon
           ? html`
-              <y-core-field-icon .icon=${yChevronDown}></y-core-field-icon>
+              <alt-core-field-icon .icon=${altChevronDown}></alt-core-field-icon>
             `
           : nothing
         }
-      </y-core-field-wrapper>
+      </alt-core-field-wrapper>
     `
   },
   argTypes: {
@@ -117,9 +117,9 @@ const meta: YCoreFieldWrapperMeta = {
     },
     size: {
       ...sizeArgType([
-        EYSizes.SMALL,
-        EYSizes.MEDIUM,
-        EYSizes.LARGE,
+        EAltSizes.SMALL,
+        EAltSizes.MEDIUM,
+        EAltSizes.LARGE,
       ]),
       ...getComponentStateTable(size),
     },
@@ -188,9 +188,9 @@ const meta: YCoreFieldWrapperMeta = {
     onMouseEnter: fn(),
     onMouseLeave: fn(),
   },
-} satisfies YCoreFieldWrapperMeta
+} satisfies AltCoreFieldWrapperMeta
 
 export default meta
-type Story = StoryObj<IYCoreFieldWrapperProps>
+type Story = StoryObj<IAltCoreFieldWrapperProps>
 
 export const Playground: Story = { args: {} }

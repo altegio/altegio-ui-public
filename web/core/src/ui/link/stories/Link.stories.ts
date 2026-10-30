@@ -4,9 +4,9 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 
 import '~core/ui/link'
 
-import { YCoreLinkTagName as tagName } from '~shared/constants'
+import { AltCoreLinkTagName as tagName } from '~shared/constants'
 
-import { createCoreLinkProps, type IYCoreLinkProps } from '~core/ui/link/models/types'
+import { createCoreLinkProps, type IAltCoreLinkProps } from '~core/ui/link/models/types'
 
 import {
   target as targetArgType,
@@ -17,7 +17,7 @@ import { getComponentStateTable, storyControlsTable } from '~shared/.storybook/t
 import type { ITextStoryProps } from '~shared/.storybook/argTypes'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-import { ySearch } from '~shared/icons/build/y-search.icon'
+import { altSearch } from '~shared/icons/build/alt-search.icon'
 
 const {
   href,
@@ -25,18 +25,18 @@ const {
   textWrap,
 } = createCoreLinkProps()
 
-export interface IYCoreLinkStoryProps extends ITextStoryProps {
+export interface IAltCoreLinkStoryProps extends ITextStoryProps {
   text: string
   showIcon: boolean
 }
 
-type IYCoreLinkMeta = IYCoreLinkProps & IYCoreLinkStoryProps
+type IAltCoreLinkMeta = IAltCoreLinkProps & IAltCoreLinkStoryProps
 
 /**
  * ## Link
  * Text link component
  */
-const meta: Meta<IYCoreLinkMeta> = {
+const meta: Meta<IAltCoreLinkMeta> = {
   title: '⚙️ Link',
   id: 'link',
   parameters: { controls: { sort: 'alpha' } },
@@ -53,22 +53,22 @@ const meta: Meta<IYCoreLinkMeta> = {
     isLongText,
     showIcon,
   }) => html`
-    <y-core-link
+    <alt-core-link
       href=${ifDefined(href)}
       target=${ifDefined(target)}
       .textWrap=${textWrap}
     >
       ${showIcon
         ? html`
-            <y-core-icon
-              .icon=${ySearch}
+            <alt-core-icon
+              .icon=${altSearch}
               size="16px"
-            ></y-core-icon>
+            ></alt-core-icon>
           `
         : nothing
       }
       ${isLongText ? LOREM_IPSUM : text}
-    </y-core-link>
+    </alt-core-link>
   `,
   argTypes: {
     target: {
@@ -104,6 +104,6 @@ const meta: Meta<IYCoreLinkMeta> = {
 }
 
 export default meta
-type Story = StoryObj<IYCoreLinkMeta>
+type Story = StoryObj<IAltCoreLinkMeta>
 
 export const Playground: Story = { args: {} }

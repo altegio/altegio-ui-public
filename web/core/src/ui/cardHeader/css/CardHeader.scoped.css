@@ -1,4 +1,4 @@
-$component: $YCoreCardHeaderTagName;
+$component: $AltCoreCardHeaderTagName;
 
 :host {
   display: flex;
@@ -6,6 +6,6 @@ $component: $YCoreCardHeaderTagName;
 
 .$(component) {
   display: flex;
-  gap: var(--y-core-card-header-gap);
+  gap: var(--alt-core-card-header-gap);
   align-items: center;
 }

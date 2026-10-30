@@ -1,18 +1,18 @@
 import {
   createCoreFieldAvatarExternalProps,
-  type IYCoreFieldAvatarExternalProps,
+  type IAltCoreFieldAvatarExternalProps,
 } from './external'
 import {
   createCoreFieldAvatarInternalProps,
-  type IYCoreFieldAvatarInternalProps,
+  type IAltCoreFieldAvatarInternalProps,
 } from './internal'
 
 export * from './external'
 export * from './internal'
 
-export interface IYCoreFieldAvatarProps extends IYCoreFieldAvatarExternalProps, IYCoreFieldAvatarInternalProps {}
+export interface IAltCoreFieldAvatarProps extends IAltCoreFieldAvatarExternalProps, IAltCoreFieldAvatarInternalProps {}
 
-export const createCoreFieldAvatarProps = (): IYCoreFieldAvatarProps => ({
+export const createCoreFieldAvatarProps = (): IAltCoreFieldAvatarProps => ({
   ...createCoreFieldAvatarExternalProps(),
   ...createCoreFieldAvatarInternalProps(),
 })

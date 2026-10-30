@@ -1,20 +1,20 @@
 import { text } from '~shared/tests/slotContents'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import type { TPropTestCase } from '~shared/types/tests'
-import { type IYCoreAnnotationExternalProps } from '~core/ui/annotation/models/types'
-import type { IYCoreAutocompleteFieldProps } from '~core/ui/autocompleteField/models/types'
-import type { IYCoreLabelExternalProps } from '~core/ui/label/models/types'
+import { type IAltCoreAnnotationExternalProps } from '~core/ui/annotation/models/types'
+import type { IAltCoreAutocompleteFieldProps } from '~core/ui/autocompleteField/models/types'
+import type { IAltCoreLabelExternalProps } from '~core/ui/label/models/types'
 
 export const testErrors = [
   text,
   text,
 ]
 
-export const sizes = Object.values(EYSizes).filter((size) => size !== EYSizes.EXTRA_LARGE && size !== EYSizes.EXTRA_SMALL)
+export const sizes = Object.values(EAltSizes).filter((size) => size !== EAltSizes.EXTRA_LARGE && size !== EAltSizes.EXTRA_SMALL)
 
 export const autocompleteOptions = [{ id: 1, value: text }]
 
-export const searchFunction: IYCoreAutocompleteFieldProps['searchFunction'] = (options) => {
+export const searchFunction: IAltCoreAutocompleteFieldProps['searchFunction'] = (options) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(autocompleteOptions.filter((item) => item.value.toLowerCase().includes(options.value.toLowerCase())))
@@ -22,43 +22,43 @@ export const searchFunction: IYCoreAutocompleteFieldProps['searchFunction'] = (o
   })
 }
 
-export const propValueCases: TPropTestCase<IYCoreAutocompleteFieldProps, 'value'>[] = [
+export const propValueCases: TPropTestCase<IAltCoreAutocompleteFieldProps, 'value'>[] = [
   { prop: 'value', case: 'with a value', value: text },
   { prop: 'value', case: 'without a value', value: '' },
 ]
-export const propNameCases: TPropTestCase<IYCoreAutocompleteFieldProps, 'name'>[] = [
+export const propNameCases: TPropTestCase<IAltCoreAutocompleteFieldProps, 'name'>[] = [
   { prop: 'name', case: 'with text', value: text },
   { prop: 'name', case: 'without text', value: '' },
 ]
-export const propPlaceholderCases: TPropTestCase<IYCoreAutocompleteFieldProps, 'placeholder'>[] = [{ prop: 'placeholder', case: 'with text', value: text }]
-export const propAutofocusCases: TPropTestCase<IYCoreAutocompleteFieldProps, 'autofocus'>[] = [
+export const propPlaceholderCases: TPropTestCase<IAltCoreAutocompleteFieldProps, 'placeholder'>[] = [{ prop: 'placeholder', case: 'with text', value: text }]
+export const propAutofocusCases: TPropTestCase<IAltCoreAutocompleteFieldProps, 'autofocus'>[] = [
   { prop: 'autofocus', case: 'true', value: true },
   { prop: 'autofocus', case: 'false', value: false },
 ]
-export const propDisabledCases: TPropTestCase<IYCoreAutocompleteFieldProps, 'disabled'>[] = [
+export const propDisabledCases: TPropTestCase<IAltCoreAutocompleteFieldProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true },
   { prop: 'disabled', case: 'false', value: false },
 ]
-export const propReadonlyCases: TPropTestCase<IYCoreAutocompleteFieldProps, 'readonly'>[] = [
+export const propReadonlyCases: TPropTestCase<IAltCoreAutocompleteFieldProps, 'readonly'>[] = [
   { prop: 'readonly', case: 'true', value: true },
   { prop: 'readonly', case: 'false', value: false },
 ]
-export const propRequiredCases: TPropTestCase<IYCoreAutocompleteFieldProps, 'required'>[] = [
+export const propRequiredCases: TPropTestCase<IAltCoreAutocompleteFieldProps, 'required'>[] = [
   { prop: 'required', case: 'true', value: true },
   { prop: 'required', case: 'false', value: false },
 ]
-export const propErrorsCases: TPropTestCase<IYCoreAutocompleteFieldProps, 'errors'>[] = [
+export const propErrorsCases: TPropTestCase<IAltCoreAutocompleteFieldProps, 'errors'>[] = [
   { prop: 'errors', case: 'with errors', value: testErrors },
   { prop: 'errors', case: 'with one error', value: [testErrors[0]] },
   { prop: 'errors', case: 'without errors', value: [] },
 ]
-export const propSizeCases: TPropTestCase<IYCoreAutocompleteFieldProps, 'size'>[] = sizes.map((size) => ({
+export const propSizeCases: TPropTestCase<IAltCoreAutocompleteFieldProps, 'size'>[] = sizes.map((size) => ({
   prop: 'size',
   case: size,
   value: size,
 }))
 
-type TPropMinSearchlength = TPropTestCase<IYCoreAutocompleteFieldProps, 'minSearchLength'> & { searchValue: string }
+type TPropMinSearchlength = TPropTestCase<IAltCoreAutocompleteFieldProps, 'minSearchLength'> & { searchValue: string }
 
 export const propMinSearchLengthCases: TPropMinSearchlength[] = [
   { prop: 'minSearchLength', case: 'is less than the minimum search length', value: 3, searchValue: 'ma' },
@@ -66,18 +66,18 @@ export const propMinSearchLengthCases: TPropMinSearchlength[] = [
   { prop: 'minSearchLength', case: 'is greater than the minimum search length', value: 3, searchValue: 'make' },
 ]
 
-export const propDisabledAutocompleteCases: TPropTestCase<IYCoreAutocompleteFieldProps, 'disabledAutocomplete'>[] = [
+export const propDisabledAutocompleteCases: TPropTestCase<IAltCoreAutocompleteFieldProps, 'disabledAutocomplete'>[] = [
   { prop: 'disabledAutocomplete', case: 'true', value: true },
   { prop: 'disabledAutocomplete', case: 'false', value: false },
 ]
 
-export const propSearchFunctionCases: TPropTestCase<IYCoreAutocompleteFieldProps, 'searchFunction'>[] = [
+export const propSearchFunctionCases: TPropTestCase<IAltCoreAutocompleteFieldProps, 'searchFunction'>[] = [
   { prop: 'searchFunction', case: 'function', value: searchFunction },
   { prop: 'searchFunction', case: 'undefined', value: undefined },
 ]
 
-type TPropAnnotation<K extends keyof IYCoreAutocompleteFieldProps, T extends keyof IYCoreAnnotationExternalProps> = TPropTestCase<IYCoreAutocompleteFieldProps, K> & { annotationProp: T }
-type TPropLabel<K extends keyof IYCoreAutocompleteFieldProps, T extends keyof IYCoreLabelExternalProps> = TPropTestCase<IYCoreAutocompleteFieldProps, K> & { labelProp: T }
+type TPropAnnotation<K extends keyof IAltCoreAutocompleteFieldProps, T extends keyof IAltCoreAnnotationExternalProps> = TPropTestCase<IAltCoreAutocompleteFieldProps, K> & { annotationProp: T }
+type TPropLabel<K extends keyof IAltCoreAutocompleteFieldProps, T extends keyof IAltCoreLabelExternalProps> = TPropTestCase<IAltCoreAutocompleteFieldProps, K> & { labelProp: T }
 
 export const propLabelTextCases: TPropLabel<'labelText', 'text'>[] = [
   { prop: 'labelText', labelProp: 'text', case: 'with text', value: text },

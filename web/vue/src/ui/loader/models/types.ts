@@ -1,18 +1,18 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
 import {
-  type IYCoreLoaderProps,
+  type IAltCoreLoaderProps,
   createCoreLoaderProps,
 } from '~core/ui/loader/models/types'
 
-export interface IYVueCoreLoaderProps extends IYCoreLoaderProps {}
+export interface IAltVueCoreLoaderProps extends IAltCoreLoaderProps {}
 
-export interface IYVueLoaderProps {
-  size?: IYVueCoreLoaderProps['size']
-  variant?: IYVueCoreLoaderProps['variant']
+export interface IAltVueLoaderProps {
+  size?: IAltVueCoreLoaderProps['size']
+  variant?: IAltVueCoreLoaderProps['variant']
 }
 
-export const createVueLoaderProps = (): TDefinedVueProps<IYVueLoaderProps> => {
+export const createVueLoaderProps = (): TDefinedVueProps<IAltVueLoaderProps> => {
   const { size, variant } = createCoreLoaderProps()
 
   return {

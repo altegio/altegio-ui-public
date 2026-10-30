@@ -1,11 +1,11 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
 
-export interface IYCoreTabsChangeActiveTabEvent {
+export interface IAltCoreTabsChangeActiveTabEvent {
   value: number
 }
 
-export class ChangeActiveTabEvent extends CustomEvent<IYCoreTabsChangeActiveTabEvent> {}
+export class ChangeActiveTabEvent extends CustomEvent<IAltCoreTabsChangeActiveTabEvent> {}
 
-export type TYCoreTabsEvents = TEventsStoryArgs<{
+export type TAltCoreTabsEvents = TEventsStoryArgs<{
   ChangeActiveTabEvent: typeof ChangeActiveTabEvent
 }>

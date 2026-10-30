@@ -4,16 +4,16 @@ import { useArgs } from 'storybook/preview-api'
 import { computed } from 'vue'
 import { omit } from 'radash'
 
-import { YFunctionalModal } from '~vue/ui/functionalModal'
-import { YGlobalProvider } from '~vue/ui/globalProvider'
-import { type IYVueFunctionalModalProps } from '~vue/ui/functionalModal/models/types'
+import { AltFunctionalModal } from '~vue/ui/functionalModal'
+import { AltGlobalProvider } from '~vue/ui/globalProvider'
+import { type IAltVueFunctionalModalProps } from '~vue/ui/functionalModal/models/types'
 import { getComponentContentTable, getComponentStateTable } from '~shared/.storybook/tables'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import { YButton } from '~vue/ui/button'
-import { YText } from '~vue/ui/text'
-import yFunctionalModalStoryMeta from '~core/ui/functionalModal/stories/FunctionalModal.stories'
+import { AltButton } from '~vue/ui/button'
+import { AltText } from '~vue/ui/text'
+import altFunctionalModalStoryMeta from '~core/ui/functionalModal/stories/FunctionalModal.stories'
 
-type TVueFunctionalModalStoryMeta = IYVueFunctionalModalProps
+type TVueFunctionalModalStoryMeta = IAltVueFunctionalModalProps
 
 /**
  * Vue wrapper for FunctionalModal
@@ -72,7 +72,7 @@ const meta: Meta<TVueFunctionalModalStoryMeta> = {
     }
 
     return {
-      components: { YFunctionalModal, YButton, YText, YGlobalProvider },
+      components: { AltFunctionalModal, AltButton, AltText, AltGlobalProvider },
       setup() {
         const vModelValue = computed({
           get: () => !!args.modelValue,
@@ -94,10 +94,10 @@ const meta: Meta<TVueFunctionalModalStoryMeta> = {
         }
       },
       template: `
-      <YGlobalProvider></YGlobalProvider>
+      <AltGlobalProvider></AltGlobalProvider>
 
       <div style="min-height: 450px;">
-        <YFunctionalModal
+        <AltFunctionalModal
           v-bind="args"
           v-model="vModelValue"
           :size="args.size"
@@ -124,13 +124,13 @@ const meta: Meta<TVueFunctionalModalStoryMeta> = {
           </template>
 
           <template v-if="args.showContentSlot" #content>
-            <YText size="p2-regular">
+            <AltText size="p2-regular">
               {{ args.contentText }}
-            </YText>
+            </AltText>
           </template>
 
           <template v-if="args.showActivatorSlot" #activator>
-            <YButton
+            <AltButton
               label="Open modal"
             />
           </template>
@@ -146,13 +146,13 @@ const meta: Meta<TVueFunctionalModalStoryMeta> = {
           <template v-if="args.showFooterSlot" #footer>
             Footer slot content
           </template>
-        </YFunctionalModal>
+        </AltFunctionalModal>
       </div>
     `,
     }
   },
   argTypes: {
-    ...omit(yFunctionalModalStoryMeta.argTypes ?? {}, ['open']),
+    ...omit(altFunctionalModalStoryMeta.argTypes ?? {}, ['open']),
     modelValue: {
       type: 'boolean',
       description: 'v-model for the modal open property',
@@ -160,12 +160,12 @@ const meta: Meta<TVueFunctionalModalStoryMeta> = {
     },
     enableTeleport: {
       type: 'boolean',
-      description: 'Moves the modal element into YGlobalProvider',
+      description: 'Moves the modal element into AltGlobalProvider',
       ...getComponentStateTable(),
     },
   },
   args: {
-    ...omit(yFunctionalModalStoryMeta.args ?? {}, ['open']),
+    ...omit(altFunctionalModalStoryMeta.args ?? {}, ['open']),
     modelValue: false,
     enableTeleport: false,
   },

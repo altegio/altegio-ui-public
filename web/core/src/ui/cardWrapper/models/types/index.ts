@@ -1,11 +1,11 @@
 import {
   createCoreCardWrapperExternalProps,
-  type IYCoreCardWrapperExternalProps,
+  type IAltCoreCardWrapperExternalProps,
 } from './external'
 
 export * from './external'
 export * from './events'
 
-export interface IYCoreCardWrapperProps extends IYCoreCardWrapperExternalProps {}
+export interface IAltCoreCardWrapperProps extends IAltCoreCardWrapperExternalProps {}
 
-export const createCoreCardWrapperProps = (): IYCoreCardWrapperProps => ({ ...createCoreCardWrapperExternalProps() })
+export const createCoreCardWrapperProps = (): IAltCoreCardWrapperProps => ({ ...createCoreCardWrapperExternalProps() })

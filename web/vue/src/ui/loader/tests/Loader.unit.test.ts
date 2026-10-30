@@ -1,16 +1,16 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 
-import type { TYCoreLoaderSize } from '~core/ui/loader/models/types'
-import { EYCoreLoaderVariant } from '~core/ui/loader/models/types'
+import type { TAltCoreLoaderSize } from '~core/ui/loader/models/types'
+import { EAltCoreLoaderVariant } from '~core/ui/loader/models/types'
 
-import { YCoreLoaderTagName } from '~shared/constants'
-import { EYSizes } from '~shared/types/global'
+import { AltCoreLoaderTagName } from '~shared/constants'
+import { EAltSizes } from '~shared/types/global'
 
 import { createVueLoaderProps } from '~web/vue/src/ui/loader/models/types'
-import { YLoader } from '~vue/ui/loader'
+import { AltLoader } from '~vue/ui/loader'
 
-const tagName = YCoreLoaderTagName
+const tagName = AltCoreLoaderTagName
 
 const {
   size: defaultSize,
@@ -18,24 +18,24 @@ const {
 } = createVueLoaderProps()
 
 describe(
-  'Vue/YLoader',
+  'Vue/AltLoader',
   () => {
     describe(
       'Props',
       () => {
         for (const { size, expectedResult } of [
           { size: undefined, expectedResult: defaultSize },
-          { size: EYSizes.SMALL, expectedResult: EYSizes.SMALL },
-          { size: EYSizes.MEDIUM, expectedResult: EYSizes.MEDIUM },
-          { size: EYSizes.LARGE, expectedResult: EYSizes.LARGE },
+          { size: EAltSizes.SMALL, expectedResult: EAltSizes.SMALL },
+          { size: EAltSizes.MEDIUM, expectedResult: EAltSizes.MEDIUM },
+          { size: EAltSizes.LARGE, expectedResult: EAltSizes.LARGE },
         ]) {
           it(
             `Should pass size "${size}" to the web component`,
             () => {
               // Arrange
               const wrapper = mount(
-                YLoader,
-                { props: { size: size as TYCoreLoaderSize } },
+                AltLoader,
+                { props: { size: size as TAltCoreLoaderSize } },
               )
 
               const component = wrapper.find(tagName)
@@ -48,16 +48,16 @@ describe(
 
         for (const { variant, expectedResult } of [
           { variant: undefined, expectedResult: defaultVariant },
-          { variant: EYCoreLoaderVariant.BLACK, expectedResult: EYCoreLoaderVariant.BLACK },
-          { variant: EYCoreLoaderVariant.WHITE, expectedResult: EYCoreLoaderVariant.WHITE },
-          { variant: EYCoreLoaderVariant.YELLOW, expectedResult: EYCoreLoaderVariant.YELLOW },
+          { variant: EAltCoreLoaderVariant.BLACK, expectedResult: EAltCoreLoaderVariant.BLACK },
+          { variant: EAltCoreLoaderVariant.WHITE, expectedResult: EAltCoreLoaderVariant.WHITE },
+          { variant: EAltCoreLoaderVariant.YELLOW, expectedResult: EAltCoreLoaderVariant.YELLOW },
         ]) {
           it(
             `Should pass variant "${variant}" to the web component`,
             () => {
               // Arrange
               const wrapper = mount(
-                YLoader,
+                AltLoader,
                 { props: { variant } },
               )
 

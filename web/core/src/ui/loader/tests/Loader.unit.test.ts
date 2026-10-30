@@ -1,23 +1,23 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
 
-import { YCoreLoaderTagName } from '~shared/constants'
+import { AltCoreLoaderTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import {
   classWithModifier,
   getElementClasses,
   getShadowRootElement,
 } from '~shared/tests/utils'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 
 import '~core/ui/loader'
 
-import type { TYCoreLoaderSize } from '~core/ui/loader/models/types'
+import type { TAltCoreLoaderSize } from '~core/ui/loader/models/types'
 import {
-  EYCoreLoaderVariant,
+  EAltCoreLoaderVariant,
   createCoreLoaderProps,
 } from '~core/ui/loader/models/types'
 
-const tagName = YCoreLoaderTagName
+const tagName = AltCoreLoaderTagName
 
 const {
   component,
@@ -43,7 +43,7 @@ const localClassWithModifier = (modifier: string) => classWithModifier(
 )
 
 describe(
-  'Core/YCoreLoader/Unit',
+  'Core/AltCoreLoader/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -61,9 +61,9 @@ describe(
       'Props',
       () => {
         for (const size of [
-          EYSizes.SMALL,
-          EYSizes.MEDIUM,
-          EYSizes.LARGE,
+          EAltSizes.SMALL,
+          EAltSizes.MEDIUM,
+          EAltSizes.LARGE,
         ]) {
           const expectedCssClass = localClassWithModifier(`size_${size}`)
 
@@ -71,7 +71,7 @@ describe(
             `Input size with value "${size}" should set the style class "${expectedCssClass}"`,
             async() => {
               // Arrange
-              await updateComponent({ props: { size: size as TYCoreLoaderSize } })
+              await updateComponent({ props: { size: size as TAltCoreLoaderSize } })
 
               const rootElement = getLocalRootElement()
               const rootElementClasses = getElementClasses(rootElement)
@@ -83,9 +83,9 @@ describe(
         }
 
         for (const variant of [
-          EYCoreLoaderVariant.BLACK,
-          EYCoreLoaderVariant.WHITE,
-          EYCoreLoaderVariant.YELLOW,
+          EAltCoreLoaderVariant.BLACK,
+          EAltCoreLoaderVariant.WHITE,
+          EAltCoreLoaderVariant.YELLOW,
         ]) {
           const expectedCssClass = localClassWithModifier(`variant_${variant}`)
 

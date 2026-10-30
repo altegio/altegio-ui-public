@@ -1,27 +1,27 @@
-import { EYSizes, type TYSizes } from '~shared/types/global'
+import { EAltSizes, type TAltSizes } from '~shared/types/global'
 
-export enum EYCoreCounterVariant {
+export enum EAltCoreCounterVariant {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
   NEGATIVE = 'negative',
   OTHER_INVERT = 'other-invert',
 }
 
-export type TYCoreCounterVariant = `${EYCoreCounterVariant}`
+export type TAltCoreCounterVariant = `${EAltCoreCounterVariant}`
 
-export interface IYCoreCounterExternalProps {
-  variant: TYCoreCounterVariant
-  size: Extract<TYSizes, 'small' | 'medium'> | undefined
+export interface IAltCoreCounterExternalProps {
+  variant: TAltCoreCounterVariant
+  size: Extract<TAltSizes, 'small' | 'medium'> | undefined
   disabled: boolean | undefined
   value: number
   withPlusSign: boolean | undefined
   locator: string | undefined
 }
 
-export const createCoreCounterExternalProps = (): IYCoreCounterExternalProps => {
+export const createCoreCounterExternalProps = (): IAltCoreCounterExternalProps => {
   return {
-    variant: EYCoreCounterVariant.PRIMARY,
-    size: EYSizes.SMALL,
+    variant: EAltCoreCounterVariant.PRIMARY,
+    size: EAltSizes.SMALL,
     disabled: false,
     value: 0,
     withPlusSign: undefined,

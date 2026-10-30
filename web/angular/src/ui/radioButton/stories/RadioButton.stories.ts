@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import type { IYNgRadioButtonProps, TYNgRadioButtonModel } from '~ng/ui/radioButton'
-import { YRadioButton } from '~ng/ui/radioButton'
-import yCoreRadioButtonStoryMeta from '~core/ui/radioButton/stories/RadioButton.stories'
+import type { IAltNgRadioButtonProps, TAltNgRadioButtonModel } from '~ng/ui/radioButton'
+import { AltRadioButton } from '~ng/ui/radioButton'
+import altCoreRadioButtonStoryMeta from '~core/ui/radioButton/stories/RadioButton.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { action } from 'storybook/actions'
 import { useArgs } from 'storybook/preview-api'
@@ -9,20 +9,20 @@ import { DEFAULT_CHECKED_VALUE } from '../models/constants'
 import { omit } from 'radash'
 import { getComponentStateTable, getComponentEmitsTable } from '~web/shared/.storybook/tables'
 import { FormsModule } from '@angular/forms'
-import type { IYCoreRadioButtonStoryProps } from '~core/ui/radioButton/stories/RadioButton.stories'
-import type { TYNgControlValueTypes } from '~web/angular/src/types/ControlValueAccessorTypes'
+import type { IAltCoreRadioButtonStoryProps } from '~core/ui/radioButton/stories/RadioButton.stories'
+import type { TAltNgControlValueTypes } from '~web/angular/src/types/ControlValueAccessorTypes'
 
 /**
  * Angular wrapper for Core RadioButton
  */
 
-type TYRadioButtonStoriesMeta = IYCoreRadioButtonStoryProps & IYNgRadioButtonProps & TYNgControlValueTypes<TYNgRadioButtonModel>
+type TAltRadioButtonStoriesMeta = IAltCoreRadioButtonStoryProps & IAltNgRadioButtonProps & TAltNgControlValueTypes<TAltNgRadioButtonModel>
 
-const meta: Meta<TYRadioButtonStoriesMeta> = {
+const meta: Meta<TAltRadioButtonStoriesMeta> = {
   title: 'RadioButton/🔍 RadioButton',
   id: 'radioButton',
   parameters: { controls: { sort: 'alpha' } },
-  component: YRadioButton,
+  component: AltRadioButton,
   tags: [
     'angular',
     'autodocs',
@@ -31,7 +31,7 @@ const meta: Meta<TYRadioButtonStoriesMeta> = {
     const [, updateArgs] = useArgs()
 
     const handlers = {
-      ngModelChange: (ngModel: TYNgRadioButtonModel) => {
+      ngModelChange: (ngModel: TAltNgRadioButtonModel) => {
         action('ngModelChange')(ngModel)
         updateArgs({ ngModel })
       },
@@ -47,7 +47,7 @@ const meta: Meta<TYRadioButtonStoriesMeta> = {
       },
       moduleMetadata: { imports: [FormsModule] },
       template: `
-        <YRadioButton
+        <AltRadioButton
           (ngModelChange)="ngModelChange($event)"
           [ngModel]="ngModel"
           [labelText]="computedLabelText"
@@ -67,12 +67,12 @@ const meta: Meta<TYRadioButtonStoriesMeta> = {
           <ng-template #radioButtonTooltipContent>
             {{ tooltipContentSlot }}
           </ng-template>
-        </YRadioButton>
+        </AltRadioButton>
       `,
     }
   },
   argTypes: {
-    ...omit({ ...yCoreRadioButtonStoryMeta.argTypes }, ['checked', 'onChecked']),
+    ...omit({ ...altCoreRadioButtonStoryMeta.argTypes }, ['checked', 'onChecked']),
     ngModel: {
       type: 'boolean',
       description: 'RadioButton checked state',
@@ -85,12 +85,12 @@ const meta: Meta<TYRadioButtonStoriesMeta> = {
     },
   },
   args: {
-    ...omit({ ...yCoreRadioButtonStoryMeta.args }, ['checked', 'onChecked']),
+    ...omit({ ...altCoreRadioButtonStoryMeta.args }, ['checked', 'onChecked']),
     ngModel: DEFAULT_CHECKED_VALUE,
   },
 }
 
 export default meta
-type Story = StoryObj<TYRadioButtonStoriesMeta>
+type Story = StoryObj<TAltRadioButtonStoriesMeta>
 
 export const Playground: Story = { args: {} }

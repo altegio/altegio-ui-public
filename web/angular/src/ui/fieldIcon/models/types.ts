@@ -1,8 +1,8 @@
 import {
   createCoreFieldIconProps,
-  type IYCoreFieldIconProps,
+  type IAltCoreFieldIconProps,
 } from '~core/ui/fieldIcon/models/types'
 
-export interface IYNgFieldIconProps extends IYCoreFieldIconProps {}
+export interface IAltNgFieldIconProps extends IAltCoreFieldIconProps {}
 
-export const createNgFieldIconProps = (): IYNgFieldIconProps => createCoreFieldIconProps()
+export const createNgFieldIconProps = (): IAltNgFieldIconProps => createCoreFieldIconProps()

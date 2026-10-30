@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YText } from '~vue/ui/text'
-import { type IYVueTextProps } from '~vue/ui/text/models/types'
-import yCoreTextStoryMeta, {
-  type IYCoreTextStoryProps,
+import { AltText } from '~vue/ui/text'
+import { type IAltVueTextProps } from '~vue/ui/text/models/types'
+import altCoreTextStoryMeta, {
+  type IAltCoreTextStoryProps,
 } from '~core/ui/text/stories/Text.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-type TVueTextStoryMeta = IYVueTextProps & IYCoreTextStoryProps
+type TVueTextStoryMeta = IAltVueTextProps & IAltCoreTextStoryProps
 
 /**
  * Vue wrapper for Core Text
@@ -21,18 +21,18 @@ const meta: Meta<TVueTextStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YText },
+    components: { AltText },
     setup() {
       return { args, LOREM_IPSUM }
     },
     template: `
-      <YText v-bind="args">
+      <AltText v-bind="args">
         {{ args.isLongText ? LOREM_IPSUM : args.text }}
-      </YText>
+      </AltText>
     `,
   }),
-  argTypes: { ...yCoreTextStoryMeta.argTypes },
-  args: { ...yCoreTextStoryMeta.args },
+  argTypes: { ...altCoreTextStoryMeta.argTypes },
+  args: { ...altCoreTextStoryMeta.args },
 }
 
 export default meta

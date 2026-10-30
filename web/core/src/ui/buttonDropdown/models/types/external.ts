@@ -1,26 +1,26 @@
 import {
   createCoreDropdownProps,
-  type IYCoreDropdownProps,
+  type IAltCoreDropdownProps,
 } from '~core/ui/dropdown/models/types'
 import {
   createCoreButtonProps,
-  type IYCoreButtonProps,
+  type IAltCoreButtonProps,
 } from '~core/ui/button/models/types'
 import {
   createCoreDropdownListProps,
-  type IYCoreDropdownListProps,
+  type IAltCoreDropdownListProps,
 } from '~core/ui/dropdownList/models/types'
-import { EYCoreButtonDropdownIconTypes } from './internal'
+import { EAltCoreButtonDropdownIconTypes } from './internal'
 
-export interface IYCoreButtonDropdownProps extends
-  Pick<IYCoreButtonProps, 'disabled' | 'loading' | 'fullWidth' | 'size' | 'variant' | 'label' | 'alignment'>,
-  Pick<IYCoreDropdownProps, 'isOpen'>,
-  Pick<IYCoreDropdownListProps, 'items'> {
-  iconType: EYCoreButtonDropdownIconTypes | undefined
+export interface IAltCoreButtonDropdownProps extends
+  Pick<IAltCoreButtonProps, 'disabled' | 'loading' | 'fullWidth' | 'size' | 'variant' | 'label' | 'alignment'>,
+  Pick<IAltCoreDropdownProps, 'isOpen'>,
+  Pick<IAltCoreDropdownListProps, 'items'> {
+  iconType: EAltCoreButtonDropdownIconTypes | undefined
   autoClose: boolean | undefined
 }
 
-export const createCoreButtonDropdownProps = (): IYCoreButtonDropdownProps => {
+export const createCoreButtonDropdownProps = (): IAltCoreButtonDropdownProps => {
   const { disabled, loading, fullWidth, size, variant, label, alignment } = createCoreButtonProps()
   const { isOpen } = createCoreDropdownProps()
   const { items } = createCoreDropdownListProps()
@@ -35,7 +35,7 @@ export const createCoreButtonDropdownProps = (): IYCoreButtonDropdownProps => {
     size,
     label,
     alignment,
-    iconType: EYCoreButtonDropdownIconTypes.RIGHT,
+    iconType: EAltCoreButtonDropdownIconTypes.RIGHT,
     items,
   }
 }

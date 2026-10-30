@@ -1,20 +1,20 @@
 import {
   createCoreAvatarProps,
-  type IYCoreAvatarProps,
+  type IAltCoreAvatarProps,
 } from '~core/ui/avatar/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreAvatarProps extends IYCoreAvatarProps {}
+export interface IAltVueCoreAvatarProps extends IAltCoreAvatarProps {}
 
-export interface IYVueAvatarProps {
-  photo?: IYVueCoreAvatarProps['photo']
-  initials?: IYVueCoreAvatarProps['initials']
-  size?: IYVueCoreAvatarProps['size']
-  icon?: IYVueCoreAvatarProps['icon']
-  disabled?: IYVueCoreAvatarProps['disabled']
+export interface IAltVueAvatarProps {
+  photo?: IAltVueCoreAvatarProps['photo']
+  initials?: IAltVueCoreAvatarProps['initials']
+  size?: IAltVueCoreAvatarProps['size']
+  icon?: IAltVueCoreAvatarProps['icon']
+  disabled?: IAltVueCoreAvatarProps['disabled']
 }
 
-export const createVueAvatarProps = (): TDefinedVueProps<IYVueAvatarProps> => {
+export const createVueAvatarProps = (): TDefinedVueProps<IAltVueAvatarProps> => {
   const { photo, initials, size, icon, disabled } = createCoreAvatarProps()
   return {
     photo,

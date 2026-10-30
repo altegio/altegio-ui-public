@@ -1,20 +1,20 @@
-import { type IYIcon, yMagic } from '~shared/icons'
-import type { TYSizes } from '~shared/types/global'
-import { EYSizes } from '~shared/types/global'
+import { type IAltIcon, altMagic } from '~shared/icons'
+import type { TAltSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 
-export interface IYCoreEmptyStateExternalProps {
+export interface IAltCoreEmptyStateExternalProps {
   title: string
   description: string
-  icon: IYIcon | undefined
-  size: Extract<TYSizes, 'small' | 'medium'> | undefined
+  icon: IAltIcon | undefined
+  size: Extract<TAltSizes, 'small' | 'medium'> | undefined
 }
 
-export const createCoreEmptyStateExternalProps = (): IYCoreEmptyStateExternalProps => {
+export const createCoreEmptyStateExternalProps = (): IAltCoreEmptyStateExternalProps => {
   return {
     title: '',
     description: '',
-    icon: yMagic,
-    size: EYSizes.SMALL,
+    icon: altMagic,
+    size: EAltSizes.SMALL,
   }
 }
 

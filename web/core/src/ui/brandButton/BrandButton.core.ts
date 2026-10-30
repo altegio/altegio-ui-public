@@ -2,16 +2,16 @@ import { html, LitElement, css, unsafeCSS } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { renderIcon } from '~core/renderers'
 import {
-  type IYCoreBrandButtonProps,
-  EYCoreBrandButtonVariant,
+  type IAltCoreBrandButtonProps,
+  EAltCoreBrandButtonVariant,
   createCoreBrandButtonProps,
 } from './models/types'
-import { EYSizes } from '~shared/types/global'
-import { yWhatsApp } from '~shared/icons'
-import { EYCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
-import { YCoreBrandButtonTagName as tagName } from '~shared/constants'
+import { EAltSizes } from '~shared/types/global'
+import { altWhatsApp } from '~shared/icons'
+import { EAltCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
+import { AltCoreBrandButtonTagName as tagName } from '~shared/constants'
 import {
-  EYCoreLoaderVariant,
+  EAltCoreLoaderVariant,
 } from '~core/ui/loader/models/types'
 
 import '~core/ui/simpleButton'
@@ -20,36 +20,36 @@ import BrandButtonVarsCSS from '~core/ui/brandButton/css/BrandButton.vars.css?in
 import { withLocator } from '~core/utils/locator'
 
 const BRAND_CONFIG = {
-  [EYCoreBrandButtonVariant.WhatsApp]: {
-    icon: yWhatsApp,
-    variant: EYCoreSimpleButtonVariant.PRIMARY,
-    loaderVariant: EYCoreLoaderVariant.WHITE,
+  [EAltCoreBrandButtonVariant.WhatsApp]: {
+    icon: altWhatsApp,
+    variant: EAltCoreSimpleButtonVariant.PRIMARY,
+    loaderVariant: EAltCoreLoaderVariant.WHITE,
   },
 }
 
 const ICON_SIZES = {
-  [EYSizes.SMALL]: '18px',
-  [EYSizes.MEDIUM]: '20px',
-  [EYSizes.LARGE]: '22px',
+  [EAltSizes.SMALL]: '18px',
+  [EAltSizes.MEDIUM]: '20px',
+  [EAltSizes.LARGE]: '22px',
 }
 
-const { variant, size, loading, disabled, text }: IYCoreBrandButtonProps = createCoreBrandButtonProps()
+const { variant, size, loading, disabled, text }: IAltCoreBrandButtonProps = createCoreBrandButtonProps()
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreBrandButton extends LitElement implements IYCoreBrandButtonProps {
-  @property({ type: String }) variant: IYCoreBrandButtonProps['variant'] = variant
-  @property({ type: String }) size: IYCoreBrandButtonProps['size'] = size
-  @property({ type: Boolean }) disabled: IYCoreBrandButtonProps['disabled'] = disabled
-  @property({ type: Boolean }) loading: IYCoreBrandButtonProps['loading'] = loading
-  @property({ type: String }) text: IYCoreBrandButtonProps['text'] = text
+export class AltCoreBrandButton extends LitElement implements IAltCoreBrandButtonProps {
+  @property({ type: String }) variant: IAltCoreBrandButtonProps['variant'] = variant
+  @property({ type: String }) size: IAltCoreBrandButtonProps['size'] = size
+  @property({ type: Boolean }) disabled: IAltCoreBrandButtonProps['disabled'] = disabled
+  @property({ type: Boolean }) loading: IAltCoreBrandButtonProps['loading'] = loading
+  @property({ type: String }) text: IAltCoreBrandButtonProps['text'] = text
 
   render() {
     const config = BRAND_CONFIG[this.variant]
-    const iconSize = ICON_SIZES[this.size ?? EYSizes.SMALL]
+    const iconSize = ICON_SIZES[this.size ?? EAltSizes.SMALL]
 
     return html`
-      <y-core-simple-button
+      <alt-core-simple-button
         .size=${this.size}
         .disabled=${this.disabled}
         .loading=${this.loading}
@@ -60,7 +60,7 @@ export class YCoreBrandButton extends LitElement implements IYCoreBrandButtonPro
       >
         ${renderIcon({ icon: config.icon, size: iconSize })}
         ${this.text}
-      </y-core-simple-button>
+      </alt-core-simple-button>
     `
   }
 

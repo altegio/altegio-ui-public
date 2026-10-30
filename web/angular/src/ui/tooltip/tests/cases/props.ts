@@ -1,13 +1,13 @@
 import type { TPropTestCase } from '~shared/types/tests'
-import type { IYVueTooltipProps } from '~vue/ui/tooltip/models/types'
+import type { IAltVueTooltipProps } from '~vue/ui/tooltip/models/types'
 import { empty, text } from '~shared/tests/slotContents'
-import type { IYVueTipProps } from '~vue/ui/tip/models/types'
+import type { IAltVueTipProps } from '~vue/ui/tip/models/types'
 import { propPlacementTestCases as corePropPlacementTestCases } from '~core/ui/tip/tests/cases/props'
 import { createCoreTooltipProps } from '~core/ui/tooltip/models/types'
 
 const { placement } = createCoreTooltipProps()
 
-export const propTextTestCases: TPropTestCase<IYVueTooltipProps, 'text'>[] = [
+export const propTextTestCases: TPropTestCase<IAltVueTooltipProps, 'text'>[] = [
   {
     prop: 'text',
     case: 'with a value',
@@ -28,7 +28,7 @@ export const propTextTestCases: TPropTestCase<IYVueTooltipProps, 'text'>[] = [
   },
 ]
 
-export const propDisabledTestCases: TPropTestCase<IYVueTooltipProps, 'disabled'>[] = [
+export const propDisabledTestCases: TPropTestCase<IAltVueTooltipProps, 'disabled'>[] = [
   {
     prop: 'disabled',
     case: 'with a true value',
@@ -52,7 +52,7 @@ export const propDisabledTestCases: TPropTestCase<IYVueTooltipProps, 'disabled'>
   },
 ]
 
-export const propPlacementTestCases: TPropTestCase<IYVueTipProps, 'placement'>[] = [
+export const propPlacementTestCases: TPropTestCase<IAltVueTipProps, 'placement'>[] = [
   ...corePropPlacementTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'placement',

@@ -1,10 +1,10 @@
 import {
   createCoreColorIconExternalProps,
-  type IYCoreColorIconExternalProps,
+  type IAltCoreColorIconExternalProps,
 } from './external'
 
 export * from './external'
 
-export interface IYCoreColorIconProps extends IYCoreColorIconExternalProps {}
+export interface IAltCoreColorIconProps extends IAltCoreColorIconExternalProps {}
 
-export const createCoreColorIconProps = (): IYCoreColorIconProps => ({ ...createCoreColorIconExternalProps() })
+export const createCoreColorIconProps = (): IAltCoreColorIconProps => ({ ...createCoreColorIconExternalProps() })

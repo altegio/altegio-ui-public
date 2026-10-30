@@ -2,16 +2,16 @@ import { omit } from 'radash'
 
 import {
   createCoreToggleExternalProps,
-  type IYCoreToggleExternalProps,
-  type IYCoreToggleCheckedEvent,
+  type IAltCoreToggleExternalProps,
+  type IAltCoreToggleCheckedEvent,
 } from '~core/ui/toggle/models/types'
 
 export { ToggleCheckedEvent } from '~core/ui/toggle/models/types'
 
-export type TYNgToggleModel = IYCoreToggleCheckedEvent['checked']
+export type TAltNgToggleModel = IAltCoreToggleCheckedEvent['checked']
 
-export interface IYNgToggleProps extends Omit<IYCoreToggleExternalProps, 'checked'> {}
+export interface IAltNgToggleProps extends Omit<IAltCoreToggleExternalProps, 'checked'> {}
 
-export const createNgToggleProps = (): IYNgToggleProps => {
+export const createNgToggleProps = (): IAltNgToggleProps => {
   return { ...omit(createCoreToggleExternalProps(), ['checked']) }
 }

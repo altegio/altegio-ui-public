@@ -1,19 +1,19 @@
 import {
   createCoreBrandButtonExternalProps,
-  type IYCoreBrandButtonExternalProps,
+  type IAltCoreBrandButtonExternalProps,
 } from './external'
 import {
   createCoreBrandButtonInternalProps,
-  type IYCoreBrandButtonInternalProps,
+  type IAltCoreBrandButtonInternalProps,
 } from './internal'
 
 export * from './external'
 export * from './internal'
 export * from './events'
 
-export interface IYCoreBrandButtonProps extends IYCoreBrandButtonExternalProps, IYCoreBrandButtonInternalProps {}
+export interface IAltCoreBrandButtonProps extends IAltCoreBrandButtonExternalProps, IAltCoreBrandButtonInternalProps {}
 
-export const createCoreBrandButtonProps = (): IYCoreBrandButtonProps => ({
+export const createCoreBrandButtonProps = (): IAltCoreBrandButtonProps => ({
   ...createCoreBrandButtonExternalProps(),
   ...createCoreBrandButtonInternalProps(),
 })

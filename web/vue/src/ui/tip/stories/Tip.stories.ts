@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YButton } from '~vue/index'
-import { YTip } from '~vue/ui/tip'
-import { type IYVueTipProps } from '~vue/ui/tip/models/types'
-import yCoreTipStoryMeta from '~core/ui/tip/stories/Tip.stories'
+import { AltButton } from '~vue/index'
+import { AltTip } from '~vue/ui/tip'
+import { type IAltVueTipProps } from '~vue/ui/tip/models/types'
+import altCoreTipStoryMeta from '~core/ui/tip/stories/Tip.stories'
 
-type TVueTipStoryMeta = IYVueTipProps
+type TVueTipStoryMeta = IAltVueTipProps
 
 /**
  * Vue wrapper for Tip
@@ -19,24 +19,24 @@ const meta: Meta<TVueTipStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YTip, YButton },
+    components: { AltTip, AltButton },
     setup() {
       return { args }
     },
     template: `
       <div style="width: 300px; height: 300px; border: 1px dashed; display: flex; justify-content: center; align-items: center;border-radius: 10px;">
-        <YTip v-bind="args">
+        <AltTip v-bind="args">
           <template #activator>
-            <YButton label="Click me" />
+            <AltButton label="Click me" />
           </template>
           
           <template #content>{{ args.tipContent }}</template>
-        </YTip>
+        </AltTip>
       </div>
     `,
   }),
-  argTypes: { ...yCoreTipStoryMeta.argTypes },
-  args: { ...yCoreTipStoryMeta.args },
+  argTypes: { ...altCoreTipStoryMeta.argTypes },
+  args: { ...altCoreTipStoryMeta.args },
 }
 
 export default meta

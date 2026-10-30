@@ -1,14 +1,14 @@
 import type { Middleware, ComputePositionReturn } from '@floating-ui/dom'
 
-export type TYCoreDropdownPositionCallback = (data: ComputePositionReturn) => Promise<ComputePositionReturn>
+export type TAltCoreDropdownPositionCallback = (data: ComputePositionReturn) => Promise<ComputePositionReturn>
 
-export interface IYCoreDropdownInternalProps {
+export interface IAltCoreDropdownInternalProps {
   middlewares: Middleware[] | undefined
-  handlers: TYCoreDropdownPositionCallback[] | undefined
+  handlers: TAltCoreDropdownPositionCallback[] | undefined
   strictWidth: boolean | undefined
 }
 
-export const createCoreDropdownInternalProps = (): IYCoreDropdownInternalProps => ({
+export const createCoreDropdownInternalProps = (): IAltCoreDropdownInternalProps => ({
   middlewares: undefined,
   handlers: undefined,
   strictWidth: false,

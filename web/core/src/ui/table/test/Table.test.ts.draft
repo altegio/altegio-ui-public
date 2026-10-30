@@ -1,15 +1,15 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
-import { YCoreTableTagName } from '~shared/constants'
+import { AltCoreTableTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import type { TSlotTestCase, TPropTestCase } from '~shared/types/tests'
 import { text, empty } from '~shared/tests/slotContents'
 import {
   createCoreTableProps,
-  type IYCoreTableProps,
+  type IAltCoreTableProps,
 } from '~core/ui/table/models/types'
 import '~core/ui/table'
 
-const tagName = YCoreTableTagName
+const tagName = AltCoreTableTagName
 
 const {
   component,
@@ -27,17 +27,17 @@ const slotDefaultTestCases: TSlotTestCase[] = [
   { slot: 'default', case: 'with content', content: text },
   { slot: 'default', case: 'without content', content: empty },
 ]
-const propLoadingPropTestCases: TPropTestCase<IYCoreTableProps, 'loading'>[] = [
+const propLoadingPropTestCases: TPropTestCase<IAltCoreTableProps, 'loading'>[] = [
   { prop: 'loading', case: 'true', value: true },
   { prop: 'loading', case: 'false', value: false },
 ]
-const propDisabledPropTestCases: TPropTestCase<IYCoreTableProps, 'disabled'>[] = [
+const propDisabledPropTestCases: TPropTestCase<IAltCoreTableProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true },
   { prop: 'disabled', case: 'false', value: false },
 ]
 
 describe(
-  'Core/YTable',
+  'Core/AltTable',
   () => {
     beforeAll(() => {
       injectComponentToBody()

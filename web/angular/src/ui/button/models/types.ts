@@ -1,7 +1,7 @@
-import { createCoreButtonProps, type IYCoreButtonProps } from '~core/ui/button/models/types'
+import { createCoreButtonProps, type IAltCoreButtonProps } from '~core/ui/button/models/types'
 
-export interface IYNgButtonProps extends IYCoreButtonProps {}
+export interface IAltNgButtonProps extends IAltCoreButtonProps {}
 
-export const createNgButtonProps = (): IYNgButtonProps => createCoreButtonProps()
+export const createNgButtonProps = (): IAltNgButtonProps => createCoreButtonProps()
 
 export * from '~core/ui/button/models/types'

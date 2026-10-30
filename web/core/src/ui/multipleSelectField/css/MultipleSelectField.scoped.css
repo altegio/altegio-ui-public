@@ -1,16 +1,16 @@
-$component: $YCoreMultipleSelectFieldTagName;
+$component: $AltCoreMultipleSelectFieldTagName;
 
 .$(component) {
-  display: var(--y-core-multiple-select-field-display);
+  display: var(--alt-core-multiple-select-field-display);
   flex-direction: column;
-  gap: var(--y-core-size-spacing-x);
-  min-width: var(--y-core-multiple-select-field-min-width);
-  max-width: var(--y-core-multiple-select-field-max-width);
-  font-family: var(--y-core-font-family);
+  gap: var(--alt-core-size-spacing-x);
+  min-width: var(--alt-core-multiple-select-field-min-width);
+  max-width: var(--alt-core-multiple-select-field-max-width);
+  font-family: var(--alt-core-font-family);
 
   &__activator {
-    --y-core-input-flex-wrap: wrap;
-    --y-core-input-min-width: 0;
+    --alt-core-input-flex-wrap: wrap;
+    --alt-core-input-min-width: 0;
 
     &_readonly {
       cursor: default;
@@ -18,18 +18,18 @@ $component: $YCoreMultipleSelectFieldTagName;
   }
 
   &__content {
-    --y-core-dropdown-list-min-width: var(--y-core-multiple-select-field-min-width);
-    --y-core-dropdown-list-max-width: var(--y-core-multiple-select-field-max-width);
+    --alt-core-dropdown-list-min-width: var(--alt-core-multiple-select-field-min-width);
+    --alt-core-dropdown-list-max-width: var(--alt-core-multiple-select-field-max-width);
 
     width: 100%;
-    max-width: var(--y-core-multiple-select-field-max-width);
-    margin-top: var(--y-core-size-spacing-x);
+    max-width: var(--alt-core-multiple-select-field-max-width);
+    margin-top: var(--alt-core-size-spacing-x);
   }
 
   &__multiple {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--y-core-size-spacing-x);
+    gap: var(--alt-core-size-spacing-x);
     width: 100%;
   }
 
@@ -61,21 +61,21 @@ $component: $YCoreMultipleSelectFieldTagName;
       position: relative;
       display: flex;
       flex-wrap: wrap;
-      gap: var(--y-core-size-spacing-x);
+      gap: var(--alt-core-size-spacing-x);
       align-items: center;
       width: 100%;
 
       &_size {
         &_small {
-          padding: var(--y-core-size-spacing-x);
+          padding: var(--alt-core-size-spacing-x);
         }
 
         &_medium {
-          padding: var(--y-core-size-spacing-2-x);
+          padding: var(--alt-core-size-spacing-2-x);
         }
 
         &_large {
-          padding: var(--y-core-size-spacing-2-x);
+          padding: var(--alt-core-size-spacing-2-x);
         }
       }
 
@@ -85,7 +85,7 @@ $component: $YCoreMultipleSelectFieldTagName;
     }
 
     &_readonly:hover {
-      --y-core-chip-icon-color-muted-hover: var(--y-core-chip-icon-color-muted)
+      --alt-core-chip-icon-color-muted-hover: var(--alt-core-chip-icon-color-muted)
     }
   }
 
@@ -93,12 +93,12 @@ $component: $YCoreMultipleSelectFieldTagName;
     position: relative;
     z-index: 2;
 
-    --y-core-field-input-cursor: pointer;
+    --alt-core-field-input-cursor: pointer;
 
     &_has-selected-values {
-      --y-core-field-input-outer-size-small-padding-y: var(--y-core-size-spacing-0-5-x);
-      --y-core-field-input-outer-size-medium-padding-y: 0;
-      --y-core-field-input-outer-size-large-padding-y: var(--y-core-size-spacing-x);
+      --alt-core-field-input-outer-size-small-padding-y: var(--alt-core-size-spacing-0-5-x);
+      --alt-core-field-input-outer-size-medium-padding-y: 0;
+      --alt-core-field-input-outer-size-large-padding-y: var(--alt-core-size-spacing-x);
 
       max-width: 0;
     }

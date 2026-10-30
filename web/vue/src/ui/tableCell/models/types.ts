@@ -1,23 +1,23 @@
 import {
   createCoreTableCellProps,
-  type IYCoreTableCellProps,
+  type IAltCoreTableCellProps,
 } from '~core/ui/tableCell/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreTableCellProps extends IYCoreTableCellProps {}
+export interface IAltVueCoreTableCellProps extends IAltCoreTableCellProps {}
 
-export interface IYVueTableCellProps {
-  align?: IYVueCoreTableCellProps['align']
-  item?: IYVueCoreTableCellProps['item']
-  itemLabel?: IYVueCoreTableCellProps['itemLabel']
-  disabled?: IYVueCoreTableCellProps['disabled']
-  sticky?: IYVueCoreTableCellProps['sticky']
-  ellipsis?: IYVueCoreTableCellProps['ellipsis']
-  lineclamp?: IYVueCoreTableCellProps['lineclamp']
-  bordered?: IYVueCoreTableCellProps['bordered']
+export interface IAltVueTableCellProps {
+  align?: IAltVueCoreTableCellProps['align']
+  item?: IAltVueCoreTableCellProps['item']
+  itemLabel?: IAltVueCoreTableCellProps['itemLabel']
+  disabled?: IAltVueCoreTableCellProps['disabled']
+  sticky?: IAltVueCoreTableCellProps['sticky']
+  ellipsis?: IAltVueCoreTableCellProps['ellipsis']
+  lineclamp?: IAltVueCoreTableCellProps['lineclamp']
+  bordered?: IAltVueCoreTableCellProps['bordered']
 }
 
-export const createVueTableCellProps = (): TDefinedVueProps<IYVueTableCellProps> => {
+export const createVueTableCellProps = (): TDefinedVueProps<IAltVueTableCellProps> => {
   const { align, item, itemLabel, disabled, sticky, ellipsis, lineclamp, bordered } = createCoreTableCellProps()
   return {
     align,

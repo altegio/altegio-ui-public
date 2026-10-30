@@ -1,10 +1,10 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
 import type { IDropdownListItem } from '~shared/types/global'
 
-export interface IYCoreDropdownListItemClickEvent {
+export interface IAltCoreDropdownListItemClickEvent {
   item: IDropdownListItem
 }
 
-export class ItemClickEvent extends CustomEvent<IYCoreDropdownListItemClickEvent> {}
+export class ItemClickEvent extends CustomEvent<IAltCoreDropdownListItemClickEvent> {}
 
-export type TYCoreDropdownListEvents = TEventsStoryArgs<{ ItemClickEvent: typeof ItemClickEvent }>
+export type TAltCoreDropdownListEvents = TEventsStoryArgs<{ ItemClickEvent: typeof ItemClickEvent }>

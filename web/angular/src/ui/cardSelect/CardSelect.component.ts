@@ -4,9 +4,9 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output, signal,
 import '~core/ui/cardSelect'
 import {
   createNgCardSelectProps,
-  type IYNgCardSelectProps,
-  type YNgCardSelectFocusEvent,
-  type YNgCardSelectBlurEvent,
+  type IAltNgCardSelectProps,
+  type AltNgCardSelectFocusEvent,
+  type AltNgCardSelectBlurEvent,
 } from '~ng/ui/cardSelect/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { cleanupInnerHTML } from '~shared/utils'
@@ -16,12 +16,12 @@ import { checkMultipleSlots, hasContent } from '~ng/utils/content-helpers'
 const { annotation, checked, disabled, hoverable, focusable, size, headerText, tagText, tagVariant, headerIcon } = createNgCardSelectProps()
 
 @Component({
-  selector: 'YCardSelect',
+  selector: 'AltCardSelect',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [NgTemplateOutlet],
   template: `
-    <y-core-card-select
+    <alt-core-card-select
       [annotation]="annotation"
       [checked]="checked"
       [disabled]="disabled"
@@ -66,21 +66,21 @@ const { annotation, checked, disabled, hoverable, focusable, size, headerText, t
           <ng-container *ngTemplateOutlet="cardSelectAfter" />
         </div>
       }
-    </y-core-card-select>
+    </alt-core-card-select>
   `,
 })
 
-export class YCardSelect implements IYNgCardSelectProps, AfterViewInit {
-  @Input() @DefaultValue(annotation) annotation: IYNgCardSelectProps['annotation'] = annotation
-  @Input() @DefaultValue(checked) checked: IYNgCardSelectProps['checked'] = checked
-  @Input() @DefaultValue(disabled) disabled: IYNgCardSelectProps['disabled'] = disabled
-  @Input() @DefaultValue(hoverable) hoverable: IYNgCardSelectProps['hoverable'] = hoverable
-  @Input() @DefaultValue(focusable) focusable: IYNgCardSelectProps['focusable'] = focusable
-  @Input() @DefaultValue(size) size: IYNgCardSelectProps['size'] = size
-  @Input() @DefaultValue(headerText) headerText: IYNgCardSelectProps['headerText'] = headerText
-  @Input() @DefaultValue(tagText) tagText: IYNgCardSelectProps['tagText'] = tagText
-  @Input() @DefaultValue(tagVariant) tagVariant: IYNgCardSelectProps['tagVariant'] = tagVariant
-  @Input() @DefaultValue(headerIcon) headerIcon: IYNgCardSelectProps['headerIcon'] = headerIcon
+export class AltCardSelect implements IAltNgCardSelectProps, AfterViewInit {
+  @Input() @DefaultValue(annotation) annotation: IAltNgCardSelectProps['annotation'] = annotation
+  @Input() @DefaultValue(checked) checked: IAltNgCardSelectProps['checked'] = checked
+  @Input() @DefaultValue(disabled) disabled: IAltNgCardSelectProps['disabled'] = disabled
+  @Input() @DefaultValue(hoverable) hoverable: IAltNgCardSelectProps['hoverable'] = hoverable
+  @Input() @DefaultValue(focusable) focusable: IAltNgCardSelectProps['focusable'] = focusable
+  @Input() @DefaultValue(size) size: IAltNgCardSelectProps['size'] = size
+  @Input() @DefaultValue(headerText) headerText: IAltNgCardSelectProps['headerText'] = headerText
+  @Input() @DefaultValue(tagText) tagText: IAltNgCardSelectProps['tagText'] = tagText
+  @Input() @DefaultValue(tagVariant) tagVariant: IAltNgCardSelectProps['tagVariant'] = tagVariant
+  @Input() @DefaultValue(headerIcon) headerIcon: IAltNgCardSelectProps['headerIcon'] = headerIcon
 
   @Output() click = new EventEmitter<Event>()
   handleClickEvent(event: Event) {
@@ -90,14 +90,14 @@ export class YCardSelect implements IYNgCardSelectProps, AfterViewInit {
   @Output() focus = new EventEmitter<Event>()
 
   handleFocusEvent(event: Event) {
-    const focusEvent = event as YNgCardSelectFocusEvent
+    const focusEvent = event as AltNgCardSelectFocusEvent
     this.focus.emit(focusEvent)
   }
 
   @Output() blur = new EventEmitter<Event>()
 
   handleBlurEvent(event: Event) {
-    const blurEvent = event as YNgCardSelectBlurEvent
+    const blurEvent = event as AltNgCardSelectBlurEvent
     this.blur.emit(blurEvent)
   }
 

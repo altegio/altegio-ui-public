@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreModalTagName as tagName } from '~shared/constants'
+import { AltCoreModalTagName as tagName } from '~shared/constants'
 import '~core/ui/modal'
 import {
   CSSVariablesHostToRootCases,
@@ -19,7 +19,7 @@ const {
 )
 
 describe(
-  'Core/YCoreModal/CSS',
+  'Core/AltCoreModal/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

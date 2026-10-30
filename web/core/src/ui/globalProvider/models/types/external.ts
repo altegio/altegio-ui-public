@@ -1,6 +1,6 @@
 import type { IGlobalProviderPlugin } from '../../plugins'
 
-export interface IYCoreGlobalProviderExternalProps {
+export interface IAltCoreGlobalProviderExternalProps {
 
   /**
    * Global provider plugins
@@ -8,4 +8,4 @@ export interface IYCoreGlobalProviderExternalProps {
   plugins?: IGlobalProviderPlugin[]
 }
 
-export const createCoreGlobalProviderExternalProps = (): IYCoreGlobalProviderExternalProps => ({ plugins: undefined })
+export const createCoreGlobalProviderExternalProps = (): IAltCoreGlobalProviderExternalProps => ({ plugins: undefined })

@@ -10,7 +10,7 @@ import {
 import '~core/ui/collapse'
 import {
   createNgCollapseProps,
-  type IYNgCollapseProps,
+  type IAltNgCollapseProps,
   type CollapseChangeEvent,
   type CollapseMoveEvent,
 } from '~ng/ui/collapse/models/types'
@@ -19,11 +19,11 @@ import { DefaultValue } from '~ng/utils/default-value.decorator'
 const { value, type, variant, draggable, allowCrossLevelMove } = createNgCollapseProps()
 
 @Component({
-  selector: 'YCollapse',
+  selector: 'AltCollapse',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-collapse
+    <alt-core-collapse
       [value]="value"
       [type]="type"
       [variant]="variant"
@@ -33,17 +33,17 @@ const { value, type, variant, draggable, allowCrossLevelMove } = createNgCollaps
       (collapse-move)="handleCollapseMoveEvent($event)"
     >
       <ng-content />
-    </y-core-collapse>
+    </alt-core-collapse>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class YCollapse implements IYNgCollapseProps {
-  @Input() @DefaultValue(value) value: IYNgCollapseProps['value'] = value
-  @Input() @DefaultValue(type) type: IYNgCollapseProps['type'] = type
-  @Input() @DefaultValue(variant) variant: IYNgCollapseProps['variant'] = variant
-  @Input() @DefaultValue(draggable) draggable: IYNgCollapseProps['draggable'] = draggable
-  @Input() @DefaultValue(draggable) allowCrossLevelMove: IYNgCollapseProps['allowCrossLevelMove'] = allowCrossLevelMove
+export class AltCollapse implements IAltNgCollapseProps {
+  @Input() @DefaultValue(value) value: IAltNgCollapseProps['value'] = value
+  @Input() @DefaultValue(type) type: IAltNgCollapseProps['type'] = type
+  @Input() @DefaultValue(variant) variant: IAltNgCollapseProps['variant'] = variant
+  @Input() @DefaultValue(draggable) draggable: IAltNgCollapseProps['draggable'] = draggable
+  @Input() @DefaultValue(draggable) allowCrossLevelMove: IAltNgCollapseProps['allowCrossLevelMove'] = allowCrossLevelMove
 
   @Output('collapse-change') collapseChange = new EventEmitter<CollapseChangeEvent>()
 

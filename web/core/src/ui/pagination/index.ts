@@ -1,1 +1,1 @@
-export { YCorePagination } from './Pagination.core'
+export { AltCorePagination } from './Pagination.core'

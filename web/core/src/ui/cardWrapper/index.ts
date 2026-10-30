@@ -1,1 +1,1 @@
-export { YCoreCardWrapper } from './CardWrapper.core'
+export { AltCoreCardWrapper } from './CardWrapper.core'

@@ -1,36 +1,36 @@
 import type {
-  YCoreTableTagName,
-  YCoreTableBarTagName,
-  YCoreTableRowTagName,
-  YCoreTableCellTagName,
-  YCoreTableHeadCellTagName,
-  YCoreTablePaginationTagName,
+  AltCoreTableTagName,
+  AltCoreTableBarTagName,
+  AltCoreTableRowTagName,
+  AltCoreTableCellTagName,
+  AltCoreTableHeadCellTagName,
+  AltCoreTablePaginationTagName,
 } from '~shared/constants'
-import { type YCoreTable } from '~core/ui/table'
-import { type YCoreTableBar } from '~core/ui/tableBar'
-import { type YCoreTableRow } from '~core/ui/tableRow'
-import { type YCoreTableCell } from '~core/ui/tableCell'
-import { type YCoreTableHeadCell } from '~core/ui/tableHeadCell'
-import { type YCoreTablePagination } from '~core/ui/tablePagination'
+import { type AltCoreTable } from '~core/ui/table'
+import { type AltCoreTableBar } from '~core/ui/tableBar'
+import { type AltCoreTableRow } from '~core/ui/tableRow'
+import { type AltCoreTableCell } from '~core/ui/tableCell'
+import { type AltCoreTableHeadCell } from '~core/ui/tableHeadCell'
+import { type AltCoreTablePagination } from '~core/ui/tablePagination'
 
 export type TTablePluginComponents =
-  typeof YCoreTableTagName |
-  typeof YCoreTableBarTagName |
-  typeof YCoreTableRowTagName |
-  typeof YCoreTableCellTagName |
-  typeof YCoreTableHeadCellTagName |
-  typeof YCoreTablePaginationTagName
+  typeof AltCoreTableTagName |
+  typeof AltCoreTableBarTagName |
+  typeof AltCoreTableRowTagName |
+  typeof AltCoreTableCellTagName |
+  typeof AltCoreTableHeadCellTagName |
+  typeof AltCoreTablePaginationTagName
 
 export interface ITableComponentsMap {
-  [YCoreTableTagName]: YCoreTable
-  [YCoreTableBarTagName]: YCoreTableBar
-  [YCoreTableRowTagName]: YCoreTableRow
-  [YCoreTableCellTagName]: YCoreTableCell
-  [YCoreTableHeadCellTagName]: YCoreTableHeadCell
-  [YCoreTablePaginationTagName]: YCoreTablePagination
+  [AltCoreTableTagName]: AltCoreTable
+  [AltCoreTableBarTagName]: AltCoreTableBar
+  [AltCoreTableRowTagName]: AltCoreTableRow
+  [AltCoreTableCellTagName]: AltCoreTableCell
+  [AltCoreTableHeadCellTagName]: AltCoreTableHeadCell
+  [AltCoreTablePaginationTagName]: AltCoreTablePagination
 }
 
-export type TTablePluginComponent = YCoreTable | YCoreTableBar | YCoreTableRow | YCoreTableCell | YCoreTableHeadCell | YCoreTablePagination
+export type TTablePluginComponent = AltCoreTable | AltCoreTableBar | AltCoreTableRow | AltCoreTableCell | AltCoreTableHeadCell | AltCoreTablePagination
 export type TTablePluginHook<T extends TTablePluginComponents> = (component: ITableComponentsMap[T]) => void
 export interface ITablePlugin<T extends TTablePluginComponents> {
   id: string

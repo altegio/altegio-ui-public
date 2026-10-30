@@ -1,14 +1,14 @@
-$component: $YCorePopoverTagName;
+$component: $AltCorePopoverTagName;
 
 .$(component) {
-  display: var(--y-core-popover-display);
-  font-family: var(--y-core-font-family);
+  display: var(--alt-core-popover-display);
+  font-family: var(--alt-core-font-family);
 
   &__actions {
     display: flex;
-    gap: var(--y-core-popover-action-gap);
+    gap: var(--alt-core-popover-action-gap);
     justify-content: flex-end;
-    margin-top: var(--y-core-popover-margin-top);
+    margin-top: var(--alt-core-popover-margin-top);
   }
 
   &_type {
@@ -16,7 +16,7 @@ $component: $YCorePopoverTagName;
       .$(component)__cancel {
         /* TODO: Use HostStyle instead; see SimpleButton for an example */
 
-        --y-core-simple-button-variant-text-color: var(--y-core-color-other-contrast)
+        --alt-core-simple-button-variant-text-color: var(--alt-core-color-other-contrast)
       }
     }
   }

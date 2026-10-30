@@ -1,12 +1,12 @@
-import type { IYCoreDropdownCellTextExternalProps } from './external'
-import type { IYCoreDropdownCellTextInternalProps } from './internal'
+import type { IAltCoreDropdownCellTextExternalProps } from './external'
+import type { IAltCoreDropdownCellTextInternalProps } from './internal'
 
 import { createCoreDropdownCellTextExternalProps } from './external'
 import { createCoreDropdownCellTextInternalProps } from './internal'
 
-export interface IYCoreDropdownCellTextProps extends IYCoreDropdownCellTextExternalProps, IYCoreDropdownCellTextInternalProps {}
+export interface IAltCoreDropdownCellTextProps extends IAltCoreDropdownCellTextExternalProps, IAltCoreDropdownCellTextInternalProps {}
 
-export const createCoreDropdownCellTextProps = (): IYCoreDropdownCellTextProps => ({
+export const createCoreDropdownCellTextProps = (): IAltCoreDropdownCellTextProps => ({
   ...createCoreDropdownCellTextExternalProps(),
   ...createCoreDropdownCellTextInternalProps(),
 })

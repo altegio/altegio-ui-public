@@ -1,26 +1,26 @@
 import { createCoreButtonDropdownProps } from '~core/ui/buttonDropdown/models/types'
-import type { ItemClickEvent, VisibleEvent, IYCoreButtonDropdownProps } from '~core/ui/buttonDropdown/models/types'
+import type { ItemClickEvent, VisibleEvent, IAltCoreButtonDropdownProps } from '~core/ui/buttonDropdown/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreButtonDropdownProps extends Omit<IYCoreButtonDropdownProps, 'isOpen'> {
-  modelValue?: IYCoreButtonDropdownProps['isOpen']
+export interface IAltVueCoreButtonDropdownProps extends Omit<IAltCoreButtonDropdownProps, 'isOpen'> {
+  modelValue?: IAltCoreButtonDropdownProps['isOpen']
 }
 
-export interface IYVueButtonDropdownProps {
-  modelValue?: IYVueCoreButtonDropdownProps['modelValue']
-  disabled?: IYVueCoreButtonDropdownProps['disabled']
-  loading?: IYVueCoreButtonDropdownProps['loading']
-  size?: IYVueCoreButtonDropdownProps['size']
-  variant?: IYVueCoreButtonDropdownProps['variant']
-  fullWidth?: IYVueCoreButtonDropdownProps['fullWidth']
-  autoClose?: IYVueCoreButtonDropdownProps['autoClose']
-  label?: IYVueCoreButtonDropdownProps['label']
-  alignment?: IYVueCoreButtonDropdownProps['alignment']
-  items?: IYVueCoreButtonDropdownProps['items']
-  iconType?: IYVueCoreButtonDropdownProps['iconType']
+export interface IAltVueButtonDropdownProps {
+  modelValue?: IAltVueCoreButtonDropdownProps['modelValue']
+  disabled?: IAltVueCoreButtonDropdownProps['disabled']
+  loading?: IAltVueCoreButtonDropdownProps['loading']
+  size?: IAltVueCoreButtonDropdownProps['size']
+  variant?: IAltVueCoreButtonDropdownProps['variant']
+  fullWidth?: IAltVueCoreButtonDropdownProps['fullWidth']
+  autoClose?: IAltVueCoreButtonDropdownProps['autoClose']
+  label?: IAltVueCoreButtonDropdownProps['label']
+  alignment?: IAltVueCoreButtonDropdownProps['alignment']
+  items?: IAltVueCoreButtonDropdownProps['items']
+  iconType?: IAltVueCoreButtonDropdownProps['iconType']
 }
 
-export const createVueButtonDropdownProps = (): TDefinedVueProps<IYVueButtonDropdownProps> => {
+export const createVueButtonDropdownProps = (): TDefinedVueProps<IAltVueButtonDropdownProps> => {
   const {
     disabled,
     loading,
@@ -49,7 +49,7 @@ export const createVueButtonDropdownProps = (): TDefinedVueProps<IYVueButtonDrop
   }
 }
 
-export interface IYVueButtonDropdownEmits {
+export interface IAltVueButtonDropdownEmits {
   (e: 'item-click', event: ItemClickEvent['detail']['item']): void
   (e: 'update:modelValue', payload: VisibleEvent['detail']['value']): void
 }

@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreFieldAvatarTagName } from '~shared/constants'
+import { AltCoreFieldAvatarTagName } from '~shared/constants'
 import {
   createCoreFieldAvatarProps,
 } from '~core/ui/fieldAvatar/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/fieldAvatar/tests/cases/css'
 
-const tagName = YCoreFieldAvatarTagName
+const tagName = AltCoreFieldAvatarTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreFieldAvatar/CSS',
+  'Core/AltCoreFieldAvatar/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

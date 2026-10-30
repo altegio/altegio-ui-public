@@ -2,34 +2,34 @@ import { COLORS } from '~root/tokens'
 
 export const CSSVariablesHostToRootCases = [
   {
-    host: '--y-core-select-field-color',
-    root: '--y-core-color-text-primary',
+    host: '--alt-core-select-field-color',
+    root: '--alt-core-color-text-primary',
   },
 ]
 
 export const CSSVariablesHostToValueCases = [
   {
-    host: '--y-core-select-field-color',
+    host: '--alt-core-select-field-color',
     value: COLORS.text_primary.cssValue,
   },
   {
-    host: '--y-core-select-field-min-width',
+    host: '--alt-core-select-field-min-width',
     value: '88px',
   },
   {
-    host: '--y-core-select-field-max-width',
+    host: '--alt-core-select-field-max-width',
     value: '404px',
   },
   {
-    host: '--y-core-dropdown-content-max-width',
+    host: '--alt-core-dropdown-content-max-width',
     value: '404px',
   },
   {
-    host: '--y-core-dropdown-activator-width',
+    host: '--alt-core-dropdown-activator-width',
     value: '100%',
   },
   {
-    host: '--y-core-dropdown-max-width',
+    host: '--alt-core-dropdown-max-width',
     value: '100%',
   },
 ]

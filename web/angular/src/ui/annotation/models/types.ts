@@ -1,5 +1,5 @@
-import { createCoreAnnotationExternalProps, type IYCoreAnnotationExternalProps } from '~core/ui/annotation/models/types'
+import { createCoreAnnotationExternalProps, type IAltCoreAnnotationExternalProps } from '~core/ui/annotation/models/types'
 
-export interface IYNgAnnotationProps extends IYCoreAnnotationExternalProps {}
+export interface IAltNgAnnotationProps extends IAltCoreAnnotationExternalProps {}
 
-export const createNgAnnotationProps = (): IYNgAnnotationProps => createCoreAnnotationExternalProps()
+export const createNgAnnotationProps = (): IAltNgAnnotationProps => createCoreAnnotationExternalProps()

@@ -1,44 +1,44 @@
 import {
   DEFAULT_NUMBER_VALUE,
   createCoreCountFieldProps,
-  type IYCoreCountFieldProps,
+  type IAltCoreCountFieldProps,
 } from '~core/ui/countField/models/types'
 
 import type { KeydownEvent } from '~core/ui/fieldInput/models/types'
-import type { IYTextFieldEmits } from '~vue/ui/textField/models/types'
+import type { IAltTextFieldEmits } from '~vue/ui/textField/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
-import type { IYVueCountFieldInputEvent } from '~vue/ui/countField/models/types/events'
+import type { IAltVueCountFieldInputEvent } from '~vue/ui/countField/models/types/events'
 
-export interface IYVueCoreCountFieldProps extends Omit<IYCoreCountFieldProps, 'value'> {
+export interface IAltVueCoreCountFieldProps extends Omit<IAltCoreCountFieldProps, 'value'> {
   modelValue?: number
 }
 
-export interface IYVueCountFieldProps {
-  modelValue?: IYVueCoreCountFieldProps['modelValue']
-  max?: IYVueCoreCountFieldProps['max']
-  min?: IYVueCoreCountFieldProps['min']
-  disabled?: IYVueCoreCountFieldProps['disabled']
-  readonly?: IYVueCoreCountFieldProps['readonly']
-  error?: IYVueCoreCountFieldProps['error']
-  size?: IYVueCoreCountFieldProps['size']
-  name?: IYVueCoreCountFieldProps['name']
-  placeholder?: IYVueCoreCountFieldProps['placeholder']
-  required?: IYVueCoreCountFieldProps['required']
-  autofocus?: IYVueCoreCountFieldProps['autofocus']
-  labelText?: IYVueCoreCountFieldProps['labelText']
-  labelTooltipText?: IYVueCoreCountFieldProps['labelTooltipText']
-  labelDebounce?: IYVueCoreCountFieldProps['labelDebounce']
-  annotationText?: IYVueCoreCountFieldProps['annotationText']
-  errors?: IYVueCoreCountFieldProps['errors']
+export interface IAltVueCountFieldProps {
+  modelValue?: IAltVueCoreCountFieldProps['modelValue']
+  max?: IAltVueCoreCountFieldProps['max']
+  min?: IAltVueCoreCountFieldProps['min']
+  disabled?: IAltVueCoreCountFieldProps['disabled']
+  readonly?: IAltVueCoreCountFieldProps['readonly']
+  error?: IAltVueCoreCountFieldProps['error']
+  size?: IAltVueCoreCountFieldProps['size']
+  name?: IAltVueCoreCountFieldProps['name']
+  placeholder?: IAltVueCoreCountFieldProps['placeholder']
+  required?: IAltVueCoreCountFieldProps['required']
+  autofocus?: IAltVueCoreCountFieldProps['autofocus']
+  labelText?: IAltVueCoreCountFieldProps['labelText']
+  labelTooltipText?: IAltVueCoreCountFieldProps['labelTooltipText']
+  labelDebounce?: IAltVueCoreCountFieldProps['labelDebounce']
+  annotationText?: IAltVueCoreCountFieldProps['annotationText']
+  errors?: IAltVueCoreCountFieldProps['errors']
 }
 
-export interface IYVueCountFieldEmits extends IYTextFieldEmits {
+export interface IAltVueCountFieldEmits extends IAltTextFieldEmits {
   (event: 'keydown', payload: KeydownEvent): void
-  (event: 'input', payload: IYVueCountFieldInputEvent): void
+  (event: 'input', payload: IAltVueCountFieldInputEvent): void
   (event: 'update:modelValue', payload: number): void
 }
 
-export const createVueCountFieldProps = (): TDefinedVueProps<IYVueCountFieldProps> => {
+export const createVueCountFieldProps = (): TDefinedVueProps<IAltVueCountFieldProps> => {
   const {
     max,
     min,

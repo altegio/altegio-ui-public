@@ -1,26 +1,26 @@
 import {
   createCoreCardButtonProps,
-  type IYCoreCardButtonProps,
+  type IAltCoreCardButtonProps,
   type FocusEvent,
   type BlurEvent,
 } from '~core/ui/cardButton/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreCardButtonProps extends IYCoreCardButtonProps {}
+export interface IAltVueCoreCardButtonProps extends IAltCoreCardButtonProps {}
 
-export interface IYVueCardButtonProps {
-  disabled?: IYVueCoreCardButtonProps['disabled']
-  hoverable?: IYVueCoreCardButtonProps['hoverable']
-  focusable?: IYVueCoreCardButtonProps['focusable']
-  size?: IYVueCoreCardButtonProps['size']
-  headerText?: IYVueCoreCardButtonProps['headerText']
-  annotation?: IYVueCoreCardButtonProps['annotation']
-  tagText?: IYVueCoreCardButtonProps['tagText']
-  tagVariant?: IYVueCoreCardButtonProps['tagVariant']
-  headerIcon?: IYVueCoreCardButtonProps['headerIcon']
+export interface IAltVueCardButtonProps {
+  disabled?: IAltVueCoreCardButtonProps['disabled']
+  hoverable?: IAltVueCoreCardButtonProps['hoverable']
+  focusable?: IAltVueCoreCardButtonProps['focusable']
+  size?: IAltVueCoreCardButtonProps['size']
+  headerText?: IAltVueCoreCardButtonProps['headerText']
+  annotation?: IAltVueCoreCardButtonProps['annotation']
+  tagText?: IAltVueCoreCardButtonProps['tagText']
+  tagVariant?: IAltVueCoreCardButtonProps['tagVariant']
+  headerIcon?: IAltVueCoreCardButtonProps['headerIcon']
 }
 
-export const createVueCardButtonProps = (): TDefinedVueProps<IYVueCardButtonProps> => {
+export const createVueCardButtonProps = (): TDefinedVueProps<IAltVueCardButtonProps> => {
   const { disabled, hoverable, focusable, size, headerText, annotation, tagText, tagVariant } = createCoreCardButtonProps()
 
   return {
@@ -36,7 +36,7 @@ export const createVueCardButtonProps = (): TDefinedVueProps<IYVueCardButtonProp
   }
 }
 
-export interface IYVueCardButtonEmits {
+export interface IAltVueCardButtonEmits {
   (event: 'click', payload: Event): void
   (event: 'focus', payload: FocusEvent): void
   (event: 'blur', payload: BlurEvent): void

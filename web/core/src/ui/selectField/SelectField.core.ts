@@ -9,26 +9,26 @@ import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
 import { interceptEvents } from '~core/utils/event-interceptor'
 
 import {
-  YCoreSelectFieldTagName as tagName,
-  YCoreDropdownCellTagName,
-  YCoreFieldInputTagName,
+  AltCoreSelectFieldTagName as tagName,
+  AltCoreDropdownCellTagName,
+  AltCoreFieldInputTagName,
 } from '~shared/constants'
 import {
-  type IYCoreSelectListItem,
+  type IAltCoreSelectListItem,
   type TItemValue,
-  type TYCoreSelectFieldItemValue,
-  type IYCoreSelectFieldExternalProps,
+  type TAltCoreSelectFieldItemValue,
+  type IAltCoreSelectFieldExternalProps,
   createCoreSelectFieldExternalProps,
   isValueEqualListItem,
   SelectEvent, FocusEvent, BlurEvent, InputEvent,
   type VisibleEvent,
 } from '~core/ui/selectField/models/types'
-import YCoreSelectFieldVarsCSS from '~core/ui/selectField/css/SelectField.vars.css?inline'
-import YCoreSelectFieldScopedCSS from '~core/ui/selectField/css/SelectField.scoped.css?inline'
+import AltCoreSelectFieldVarsCSS from '~core/ui/selectField/css/SelectField.vars.css?inline'
+import AltCoreSelectFieldScopedCSS from '~core/ui/selectField/css/SelectField.scoped.css?inline'
 
 import { disabledContextCreated, readonlyContextCreated, errorContextCreated, sizeContextCreated } from '~core/ui/fieldWrapper/providers'
 
-import type { YCoreFieldInput } from '~core/ui/fieldInput'
+import type { AltCoreFieldInput } from '~core/ui/fieldInput'
 
 import '~core/ui/fieldWrapper'
 import '~core/ui/fieldInput'
@@ -40,13 +40,13 @@ import '~core/ui/dropdown'
 import '~core/ui/dropdownList'
 import '~core/ui/dropdownCell'
 
-import { yChevronDown, yCheck } from '~shared/icons'
+import { altChevronDown, altCheck } from '~shared/icons'
 import { renderIcon, renderLabel, renderError, renderAnnotation } from '~core/renderers'
 import classMapToString from '~core/utils/classMapToString'
 import { hasSlotContent } from '~core/utils/lit-slots'
 import { booleanConverter } from '~core/utils/converters'
 
-import { EYCoreDropdownPlacement, EYCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
+import { EAltCoreDropdownPlacement, EAltCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
 import { withLocator } from '~core/utils/locator'
 
 const { value, name, placeholder, autofocus, disabled, readonly, error, errors, size, required, labelText, labelTooltipText, annotationText, labelDebounce, isMapOptions, items, itemLabel, itemValue, isCustomFilter, isFilterable, filterValue, filterCallback } = createCoreSelectFieldExternalProps()
@@ -54,34 +54,34 @@ const { value, name, placeholder, autofocus, disabled, readonly, error, errors, 
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreSelectField extends LitElement {
+export class AltCoreSelectField extends LitElement {
   @provide({ context: disabledContextCreated })
-  @property({ type: Boolean }) disabled: IYCoreSelectFieldExternalProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreSelectFieldExternalProps['disabled'] = disabled
   @provide({ context: readonlyContextCreated })
-  @property({ type: Boolean }) readonly: IYCoreSelectFieldExternalProps['readonly'] = readonly
+  @property({ type: Boolean }) readonly: IAltCoreSelectFieldExternalProps['readonly'] = readonly
   @provide({ context: errorContextCreated })
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IYCoreSelectFieldExternalProps['error'] = error
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IAltCoreSelectFieldExternalProps['error'] = error
   @provide({ context: sizeContextCreated })
-  @property({ type: String, reflect: true }) size: IYCoreSelectFieldExternalProps['size'] = size
+  @property({ type: String, reflect: true }) size: IAltCoreSelectFieldExternalProps['size'] = size
 
-  @property({ type: Object }) value: IYCoreSelectFieldExternalProps['value'] = value
-  @property({ type: String, attribute: 'filter-value' }) filterValue: IYCoreSelectFieldExternalProps['filterValue'] = filterValue
-  @property({ type: String }) name: IYCoreSelectFieldExternalProps['name'] = name
-  @property({ type: String }) placeholder: IYCoreSelectFieldExternalProps['placeholder'] = placeholder
-  @property({ type: Boolean, reflect: true }) autofocus: NonNullable<IYCoreSelectFieldExternalProps['autofocus']> = Boolean(autofocus)
-  @property({ type: Boolean, reflect: true }) required: IYCoreSelectFieldExternalProps['required'] = required
-  @property({ type: Array }) errors: IYCoreSelectFieldExternalProps['errors'] = errors
-  @property({ type: Number, attribute: 'label-debounce' }) labelDebounce: IYCoreSelectFieldExternalProps['labelDebounce'] = labelDebounce
-  @property({ type: Boolean, attribute: 'is-map-options' }) isMapOptions: IYCoreSelectFieldExternalProps['isMapOptions'] = isMapOptions
-  @property({ type: String, attribute: 'label-text' }) labelText: IYCoreSelectFieldExternalProps['labelText'] = labelText
-  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IYCoreSelectFieldExternalProps['labelTooltipText'] = labelTooltipText
-  @property({ type: String, attribute: 'annotation-text' }) annotationText: IYCoreSelectFieldExternalProps['annotationText'] = annotationText
-  @property({ type: Array }) items: NonNullable<IYCoreSelectFieldExternalProps['items']> = items ?? []
-  @property({ type: String, attribute: 'item-label' }) itemLabel: NonNullable<IYCoreSelectFieldExternalProps['itemLabel']> = String(itemLabel)
-  @property({ type: String, attribute: 'item-value' }) itemValue: NonNullable<IYCoreSelectFieldExternalProps['itemValue']> = String(itemValue)
-  @property({ type: Boolean, attribute: 'is-custom-filter' }) isCustomFilter: IYCoreSelectFieldExternalProps['isCustomFilter'] = isCustomFilter
-  @property({ type: Boolean, attribute: 'is-filterable' }) isFilterable: IYCoreSelectFieldExternalProps['isFilterable'] = isFilterable
-  @property({ attribute: 'filter-callback' }) filterCallback: IYCoreSelectFieldExternalProps['filterCallback'] = filterCallback
+  @property({ type: Object }) value: IAltCoreSelectFieldExternalProps['value'] = value
+  @property({ type: String, attribute: 'filter-value' }) filterValue: IAltCoreSelectFieldExternalProps['filterValue'] = filterValue
+  @property({ type: String }) name: IAltCoreSelectFieldExternalProps['name'] = name
+  @property({ type: String }) placeholder: IAltCoreSelectFieldExternalProps['placeholder'] = placeholder
+  @property({ type: Boolean, reflect: true }) autofocus: NonNullable<IAltCoreSelectFieldExternalProps['autofocus']> = Boolean(autofocus)
+  @property({ type: Boolean, reflect: true }) required: IAltCoreSelectFieldExternalProps['required'] = required
+  @property({ type: Array }) errors: IAltCoreSelectFieldExternalProps['errors'] = errors
+  @property({ type: Number, attribute: 'label-debounce' }) labelDebounce: IAltCoreSelectFieldExternalProps['labelDebounce'] = labelDebounce
+  @property({ type: Boolean, attribute: 'is-map-options' }) isMapOptions: IAltCoreSelectFieldExternalProps['isMapOptions'] = isMapOptions
+  @property({ type: String, attribute: 'label-text' }) labelText: IAltCoreSelectFieldExternalProps['labelText'] = labelText
+  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IAltCoreSelectFieldExternalProps['labelTooltipText'] = labelTooltipText
+  @property({ type: String, attribute: 'annotation-text' }) annotationText: IAltCoreSelectFieldExternalProps['annotationText'] = annotationText
+  @property({ type: Array }) items: NonNullable<IAltCoreSelectFieldExternalProps['items']> = items ?? []
+  @property({ type: String, attribute: 'item-label' }) itemLabel: NonNullable<IAltCoreSelectFieldExternalProps['itemLabel']> = String(itemLabel)
+  @property({ type: String, attribute: 'item-value' }) itemValue: NonNullable<IAltCoreSelectFieldExternalProps['itemValue']> = String(itemValue)
+  @property({ type: Boolean, attribute: 'is-custom-filter' }) isCustomFilter: IAltCoreSelectFieldExternalProps['isCustomFilter'] = isCustomFilter
+  @property({ type: Boolean, attribute: 'is-filterable' }) isFilterable: IAltCoreSelectFieldExternalProps['isFilterable'] = isFilterable
+  @property({ attribute: 'filter-callback' }) filterCallback: IAltCoreSelectFieldExternalProps['filterCallback'] = filterCallback
 
   @bubblingEvent(
     FocusEvent,
@@ -107,7 +107,7 @@ export class YCoreSelectField extends LitElement {
   )
   _blur!: TDispatcher<BlurEvent>
 
-  @query(YCoreFieldInputTagName) public readonly fieldInput?: YCoreFieldInput
+  @query(AltCoreFieldInputTagName) public readonly fieldInput?: AltCoreFieldInput
 
   @state() private isOpened = false
   @state() private hasAnnotationSlot = false
@@ -125,12 +125,12 @@ export class YCoreSelectField extends LitElement {
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreSelectFieldVarsCSS)}
-      ${unsafeCSS(YCoreSelectFieldScopedCSS)}
+      ${unsafeCSS(AltCoreSelectFieldVarsCSS)}
+      ${unsafeCSS(AltCoreSelectFieldScopedCSS)}
     `,
   ]
 
-  private get selectedItemByValue(): IYCoreSelectListItem | undefined {
+  private get selectedItemByValue(): IAltCoreSelectListItem | undefined {
     if (this.value === undefined) {
       return undefined
     }
@@ -202,7 +202,7 @@ export class YCoreSelectField extends LitElement {
   }
 
   private get dropdownMiddlewares() {
-    const allowedPlacements = [EYCoreDropdownPlacement.BOTTOM, EYCoreDropdownPlacement.TOP]
+    const allowedPlacements = [EAltCoreDropdownPlacement.BOTTOM, EAltCoreDropdownPlacement.TOP]
 
     return [autoPlacementMiddleware({ allowedPlacements })]
   }
@@ -220,7 +220,7 @@ export class YCoreSelectField extends LitElement {
     )
   }
 
-  private hasAvatarState = (item: IYCoreSelectListItem | undefined) => {
+  private hasAvatarState = (item: IAltCoreSelectListItem | undefined) => {
     if (!item) return false
 
     return Boolean(item.img || item.icon || item.initials)
@@ -242,34 +242,34 @@ export class YCoreSelectField extends LitElement {
     this.filterValue = label
   }
 
-  private isValueEqualListItem(value: TYCoreSelectFieldItemValue): value is IYCoreSelectListItem {
+  private isValueEqualListItem(value: TAltCoreSelectFieldItemValue): value is IAltCoreSelectListItem {
     return isValueEqualListItem(
       value,
       this.isMapOptions,
     )
   }
 
-  private findItemByValue(value: IYCoreSelectListItem[TItemValue]): IYCoreSelectListItem | undefined {
+  private findItemByValue(value: IAltCoreSelectListItem[TItemValue]): IAltCoreSelectListItem | undefined {
     return this.items.find((item) => item[this.itemValue] === value)
   }
 
-  private isItemSelected(item: IYCoreSelectListItem): boolean {
+  private isItemSelected(item: IAltCoreSelectListItem): boolean {
     if (!this.selectedItemByValue) return false
 
 
     return this.selectedItemByValue[this.itemValue] === item[this.itemValue]
   }
 
-  private getValueFromItem = (item: IYCoreSelectListItem): IYCoreSelectFieldExternalProps['value'] => {
+  private getValueFromItem = (item: IAltCoreSelectListItem): IAltCoreSelectFieldExternalProps['value'] => {
     this.changeDropdownVisible(false)
     this.setFilterValue(String(item[this.itemLabel]))
 
     const value = this.isMapOptions ? item[this.itemValue] : item
 
-    return value as IYCoreSelectFieldExternalProps['value']
+    return value as IAltCoreSelectFieldExternalProps['value']
   }
 
-  private handleSelect = (item: IYCoreSelectListItem) => (event: Event) => {
+  private handleSelect = (item: IAltCoreSelectListItem) => (event: Event) => {
     if (this.computedDisabledOrReadonly || !event.currentTarget) return
 
     event.stopPropagation()
@@ -288,7 +288,7 @@ export class YCoreSelectField extends LitElement {
       // Look in the shadowRoot because the items are rendered there
       // The locator changes with the selected item, so a static @query cannot represent it.
       // eslint-disable-next-line lit/prefer-query-decorators
-      const selectedItemElement = this.shadowRoot?.querySelector<HTMLElement>(`[locator="${YCoreDropdownCellTagName}_${this.selectedItemByValue?.id}"]`)
+      const selectedItemElement = this.shadowRoot?.querySelector<HTMLElement>(`[locator="${AltCoreDropdownCellTagName}_${this.selectedItemByValue?.id}"]`)
 
       if (selectedItemElement) {
         selectedItemElement.scrollIntoView({
@@ -373,7 +373,7 @@ export class YCoreSelectField extends LitElement {
   }
 
 
-  private defaultItemsFilter = (items: IYCoreSelectListItem[], value: string) => {
+  private defaultItemsFilter = (items: IAltCoreSelectListItem[], value: string) => {
     return items.filter((item) => String(item[this.itemLabel])
       .toLowerCase()
       .includes(value.toLowerCase()))
@@ -389,28 +389,28 @@ export class YCoreSelectField extends LitElement {
     this.filterValue = String(this.selectedItemByValue[this.itemLabel])
   }
 
-  protected renderFieldAvatar(item: IYCoreSelectListItem | undefined) {
+  protected renderFieldAvatar(item: IAltCoreSelectListItem | undefined) {
     if (!this.hasAvatarState(item)) return nothing
 
     return html`
-      <y-core-field-avatar
+      <alt-core-field-avatar
         .photo=${item?.img}
         .icon=${item?.icon}
         .initials=${item?.initials}
-      ></y-core-field-avatar>
+      ></alt-core-field-avatar>
     `
   }
 
-  protected renderItemAvatar(item: IYCoreSelectListItem | undefined) {
+  protected renderItemAvatar(item: IAltCoreSelectListItem | undefined) {
     if (!this.hasAvatarState(item)) return nothing
 
     return html`
-      <y-core-avatar
+      <alt-core-avatar
         .photo=${item?.img}
         .icon=${item?.icon}
         .initials=${item?.initials}
         .size=${this.size}
-      ></y-core-avatar>
+      ></alt-core-avatar>
     `
   }
 
@@ -421,8 +421,8 @@ export class YCoreSelectField extends LitElement {
       dropdownItems,
       (item) => item.id,
       (item) => html`
-        <y-core-dropdown-cell
-          locator=${`${YCoreDropdownCellTagName}_${item.id}`}
+        <alt-core-dropdown-cell
+          locator=${`${AltCoreDropdownCellTagName}_${item.id}`}
           @click=${this.handleSelect(item)}
           class=${this.baseDropdownListItemClass}
         >
@@ -438,17 +438,17 @@ export class YCoreSelectField extends LitElement {
           
           <div slot="append" class=${`${this.baseDropdownListItemClass}__append`}>
             ${this.isItemSelected(item)
-              ? renderIcon({ icon: yCheck, size: '16px' })
+              ? renderIcon({ icon: altCheck, size: '16px' })
               : nothing}
           </div>
-        </y-core-dropdown-cell>
+        </alt-core-dropdown-cell>
       `,
     )
   }
 
   protected renderDropdownActivator() {
     return html`
-      <y-core-field-wrapper
+      <alt-core-field-wrapper
         .disabled=${this.disabled}
         .readonly=${this.readonly}
         .error=${Boolean(this.errors?.length) || this.error}
@@ -461,7 +461,7 @@ export class YCoreSelectField extends LitElement {
           @slotchange=${this.handleSlotBeforeChange}
         ></slot>
         ${this.renderFieldAvatar(this.selectedItemByValue)}
-        <y-core-field-input
+        <alt-core-field-input
           .value=${this.inputValue}
           .name=${this.name}
           .placeholder=${this.placeholder}
@@ -474,24 +474,24 @@ export class YCoreSelectField extends LitElement {
           @input=${this.handleInput}
           @focus=${this.handleFocus}
           @blur=${this.handleBlur}
-        ></y-core-field-input>
+        ></alt-core-field-input>
         ${!this.readonly
           ? html`
-            <y-core-field-icon
-              .icon=${yChevronDown}
+            <alt-core-field-icon
+              .icon=${altChevronDown}
               hoverable
               class=${classMap(this.computedArrowIconClasses)}
-            ></y-core-field-icon>
+            ></alt-core-field-icon>
           `
           : nothing
         }
-      </y-core-field-wrapper>
+      </alt-core-field-wrapper>
     `
   }
 
   protected renderDropdownContent() {
     return html`
-      <y-core-dropdown-list>
+      <alt-core-dropdown-list>
         ${html`
           <slot name="dropdown-list-top" slot="top">
           </slot>
@@ -507,7 +507,7 @@ export class YCoreSelectField extends LitElement {
           <slot name="dropdown-list-bottom" slot="bottom">
           </slot>
         `}
-      </y-core-dropdown-list>`
+      </alt-core-dropdown-list>`
   }
 
   protected render() {
@@ -523,10 +523,10 @@ export class YCoreSelectField extends LitElement {
           handleClick: this.handleLabelClick,
           className: classMapToString(this.computedLabelClasses),
         })}
-        <y-core-dropdown
+        <alt-core-dropdown
           .isOpen=${this.isDropdownOpened}
-          .placement=${EYCoreDropdownPlacement.BOTTOM}
-          .trigger=${EYCoreDropdownTrigger.MANUAL}
+          .placement=${EAltCoreDropdownPlacement.BOTTOM}
+          .trigger=${EAltCoreDropdownTrigger.MANUAL}
           .middlewares=${this.dropdownMiddlewares}
           strict-width
           @click-outside=${this.handleClickOutside}
@@ -538,7 +538,7 @@ export class YCoreSelectField extends LitElement {
           <div slot="content" class=${this.baseDropdownContentClass}>
             ${this.renderDropdownContent()}
           </div>
-        </y-core-dropdown>
+        </alt-core-dropdown>
         ${renderAnnotation({
           text: this.annotationText,
           disabled: this.computedDisabledOrReadonly,

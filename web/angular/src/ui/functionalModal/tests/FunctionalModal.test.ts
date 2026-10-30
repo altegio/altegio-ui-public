@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { YCoreFunctionalModalTagName as tagName } from '~shared/constants'
+import { AltCoreFunctionalModalTagName as tagName } from '~shared/constants'
 import { TestBed } from '~ng/tests/setup'
-import { YFunctionalModal } from '~ng/ui/functionalModal/FunctionalModal.component'
+import { AltFunctionalModal } from '~ng/ui/functionalModal/FunctionalModal.component'
 import { Component } from '@angular/core'
-import type { IYNgFunctionalModalProps } from '~ng/ui/functionalModal/models/types'
+import type { IAltNgFunctionalModalProps } from '~ng/ui/functionalModal/models/types'
 
 import {
   propsOpenTestCases,
@@ -18,16 +18,16 @@ import {
 } from './cases/props'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgFunctionalModalProps>
+  props?: Partial<IAltNgFunctionalModalProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YFunctionalModal] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltFunctionalModal] }).compileComponents()
 
   @Component({
     template: `
-      <YFunctionalModal
+      <AltFunctionalModal
         [open]="open"
         [size]="size"
         [width]="width"
@@ -39,9 +39,9 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
         [subHeading]="subHeading"
         [locale]="locale"
       >
-      </YFunctionalModal>
+      </AltFunctionalModal>
     `,
-    imports: [YFunctionalModal],
+    imports: [AltFunctionalModal],
     standalone: true,
   })
   class TestComponent {
@@ -59,7 +59,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
   return TestComponent
 }
 
-describe('Angular/YFunctionalModal/Unit', () => {
+describe('Angular/AltFunctionalModal/Unit', () => {
   describe(
     'Props',
     () => {

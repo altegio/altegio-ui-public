@@ -1,2 +1,2 @@
-export { default as YSimpleButton } from './SimpleButton.vue'
+export { default as AltSimpleButton } from './SimpleButton.vue'
 export type * from './models/types'

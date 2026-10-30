@@ -1,19 +1,19 @@
 import {
   createCoreFieldWrapperExternalProps,
-  type IYCoreFieldWrapperExternalProps,
+  type IAltCoreFieldWrapperExternalProps,
 } from './external'
 import {
   createCoreFieldWrapperInternalProps,
-  type IYCoreFieldWrapperInternalProps,
+  type IAltCoreFieldWrapperInternalProps,
 } from './internal'
 
 export * from './external'
 export * from './internal'
 export * from './events'
 
-export interface IYCoreFieldWrapperProps extends IYCoreFieldWrapperExternalProps, IYCoreFieldWrapperInternalProps {}
+export interface IAltCoreFieldWrapperProps extends IAltCoreFieldWrapperExternalProps, IAltCoreFieldWrapperInternalProps {}
 
-export const createCoreFieldWrapperProps = (): IYCoreFieldWrapperProps => ({
+export const createCoreFieldWrapperProps = (): IAltCoreFieldWrapperProps => ({
   ...createCoreFieldWrapperExternalProps(),
   ...createCoreFieldWrapperInternalProps(),
 })

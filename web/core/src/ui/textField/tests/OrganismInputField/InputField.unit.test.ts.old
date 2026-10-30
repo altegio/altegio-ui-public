@@ -1,12 +1,12 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
 
-import { YCoreInputFieldTagName, YCoreInputTagName, YCoreLabelTagName, YCoreAnnotationTagName, YCoreErrorTagName } from '~shared/constants'
+import { AltCoreInputFieldTagName, AltCoreInputTagName, AltCoreLabelTagName, AltCoreAnnotationTagName, AltCoreErrorTagName } from '~shared/constants'
 import { text, textWithTag } from '~shared/tests/slotContents'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot } from '~shared/tests/utils'
 import {
   createCoreInputProps,
-  type IYCoreInputInputEvent,
+  type IAltCoreInputInputEvent,
 } from '~core/ui/inputField/models/types'
 import '~core/ui/inputField'
 
@@ -14,7 +14,7 @@ import { slotCases } from './cases/slots'
 import { propSizeCases, propValueCases, propNameCases, propPlaceholderCases, propAutofocusCases, propTypeCases, propDisabledCases, propRequiredCases, propMaxlengthCases, propMaskOptionsCases, propErrorsCases, propClearableCases, propLabelOverflowDebounceCases, propLabelTextCases, propLabelTooltipTextCases, propAnnotationTextCases, propReadonlyCases } from './cases/props'
 import { eventsCases } from './cases/events'
 
-const tagName = YCoreInputFieldTagName
+const tagName = AltCoreInputFieldTagName
 
 const {
   component,
@@ -27,7 +27,7 @@ const {
   createCoreInputProps(),
 )
 
-type TSubComponent = typeof YCoreInputTagName | typeof YCoreLabelTagName | typeof YCoreAnnotationTagName | typeof YCoreErrorTagName
+type TSubComponent = typeof AltCoreInputTagName | typeof AltCoreLabelTagName | typeof AltCoreAnnotationTagName | typeof AltCoreErrorTagName
 const getSubWC = <T extends TSubComponent>(primaryWC: HTMLElement, secondaryWC: T) => {
   const subWC = getWCShadowRoot(primaryWC).querySelector(secondaryWC)
   if (!subWC) throw new Error(`${secondaryWC} not found`)
@@ -46,7 +46,7 @@ const getSlotContentSubWC = (WC: HTMLElement, slotName: string) => {
 }
 
 describe(
-  'Core/YCoreInputField/Unit',
+  'Core/AltCoreInputField/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -108,7 +108,7 @@ describe(
 
               const inputElement = getSubWC(
                 component,
-                YCoreInputTagName,
+                AltCoreInputTagName,
               )
 
               expect(inputElement[prop]).toBe(value)
@@ -124,15 +124,15 @@ describe(
 
               const inputElement = getSubWC(
                 component,
-                YCoreInputTagName,
+                AltCoreInputTagName,
               )
               const labelElement = getSubWC(
                 component,
-                YCoreLabelTagName,
+                AltCoreLabelTagName,
               )
               const annotationElement = getSubWC(
                 component,
-                YCoreAnnotationTagName,
+                AltCoreAnnotationTagName,
               )
 
               expect(inputElement.disabled).toBe(value)
@@ -150,11 +150,11 @@ describe(
 
               const inputElement = getSubWC(
                 component,
-                YCoreInputTagName,
+                AltCoreInputTagName,
               )
               const labelElement = getSubWC(
                 component,
-                YCoreLabelTagName,
+                AltCoreLabelTagName,
               )
 
               expect(inputElement.required).toBe(value)
@@ -171,7 +171,7 @@ describe(
 
               const inputElement = getSubWC(
                 component,
-                YCoreInputTagName,
+                AltCoreInputTagName,
               )
 
               expect(inputElement.error).toBe(Boolean(value?.length))
@@ -179,14 +179,14 @@ describe(
               if (value?.length) {
                 const errorElement = getSubWC(
                   component,
-                  YCoreErrorTagName,
+                  AltCoreErrorTagName,
                 )
                 expect(errorElement.errors).toBe(value)
               } else {
                 expect(() => getSubWC(
                   component,
-                  YCoreErrorTagName,
-                )).toThrow(`${YCoreErrorTagName} not found`)
+                  AltCoreErrorTagName,
+                )).toThrow(`${AltCoreErrorTagName} not found`)
               }
             },
           )
@@ -201,14 +201,14 @@ describe(
               if (value) {
                 const labelElement = getSubWC(
                   component,
-                  YCoreLabelTagName,
+                  AltCoreLabelTagName,
                 )
                 expect(labelElement[labelProp]).toBe(value)
               } else {
                 expect(() => getSubWC(
                   component,
-                  YCoreLabelTagName,
-                )).toThrow(`${YCoreLabelTagName} not found`)
+                  AltCoreLabelTagName,
+                )).toThrow(`${AltCoreLabelTagName} not found`)
               }
             },
           )
@@ -230,7 +230,7 @@ describe(
 
               const labelElement = getSubWC(
                 component,
-                YCoreLabelTagName,
+                AltCoreLabelTagName,
               )
 
               expect(labelElement[labelProp]).toBe(value)
@@ -246,7 +246,7 @@ describe(
 
               const annotationElement = getSubWC(
                 component,
-                YCoreAnnotationTagName,
+                AltCoreAnnotationTagName,
               )
 
               expect(annotationElement[annotationProp]).toBe(value)
@@ -265,7 +265,7 @@ describe(
             () => {
               const inputElement = getSubWC(
                 component,
-                YCoreInputTagName,
+                AltCoreInputTagName,
               )
 
               const handler = vi.fn()
@@ -277,7 +277,7 @@ describe(
               inputElement.dispatchEvent(event)
 
               expect(handler).toHaveBeenCalledTimes(1)
-              expect(JSON.stringify((handler.mock.calls[0][0] as CustomEvent<IYCoreInputInputEvent>).detail)).toBe(JSON.stringify(payload))
+              expect(JSON.stringify((handler.mock.calls[0][0] as CustomEvent<IAltCoreInputInputEvent>).detail)).toBe(JSON.stringify(payload))
             },
           )
 
@@ -288,7 +288,7 @@ describe(
 
               const inputElement = getSubWC(
                 component,
-                YCoreInputTagName,
+                AltCoreInputTagName,
               )
 
               const handler = vi.fn()

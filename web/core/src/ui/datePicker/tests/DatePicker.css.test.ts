@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreDatePickerTagName } from '~shared/constants'
+import { AltCoreDatePickerTagName } from '~shared/constants'
 import {
   createCoreDatePickerProps,
 } from '~core/ui/datePicker/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/datePicker/tests/cases/css'
 
-const tagName = YCoreDatePickerTagName
+const tagName = AltCoreDatePickerTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreDatePicker/CSS',
+  'Core/AltCoreDatePicker/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

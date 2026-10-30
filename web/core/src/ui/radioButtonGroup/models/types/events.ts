@@ -1,12 +1,12 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
-import type { IYCoreRadioButtonGroupExternalProps } from './external'
+import type { IAltCoreRadioButtonGroupExternalProps } from './external'
 
-export interface IYCoreRadioButtonGroupChangeEvent {
-  value: IYCoreRadioButtonGroupExternalProps['value']
+export interface IAltCoreRadioButtonGroupChangeEvent {
+  value: IAltCoreRadioButtonGroupExternalProps['value']
 }
 
-export class RadioButtonGroupChangeEvent extends CustomEvent<IYCoreRadioButtonGroupChangeEvent> {}
+export class RadioButtonGroupChangeEvent extends CustomEvent<IAltCoreRadioButtonGroupChangeEvent> {}
 
-export type TYCoreRadioButtonGroupEvents = TEventsStoryArgs<{
+export type TAltCoreRadioButtonGroupEvents = TEventsStoryArgs<{
   ChangeEvent: typeof RadioButtonGroupChangeEvent
 }>

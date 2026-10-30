@@ -1,35 +1,35 @@
 import type { TPropTestCase } from '~shared/types/tests'
-import { EYSizes } from '~shared/types/global'
-import { YCoreButtonTagName } from '~shared/constants'
-import { EYCoreButtonGroupVariant, type IYCoreButtonGroupProps } from '~core/ui/buttonGroup/models/types'
+import { EAltSizes } from '~shared/types/global'
+import { AltCoreButtonTagName } from '~shared/constants'
+import { EAltCoreButtonGroupVariant, type IAltCoreButtonGroupProps } from '~core/ui/buttonGroup/models/types'
 
 export const buttonsHtml = `
-  <${YCoreButtonTagName} label="Button 1"></${YCoreButtonTagName}>
-  <${YCoreButtonTagName} label="Button 2"></${YCoreButtonTagName}>
+  <${AltCoreButtonTagName} label="Button 1"></${AltCoreButtonTagName}>
+  <${AltCoreButtonTagName} label="Button 2"></${AltCoreButtonTagName}>
 `
 
 export const buttonsHtmlThree = `
-  <${YCoreButtonTagName} label="Button 1"></${YCoreButtonTagName}>
-  <${YCoreButtonTagName} label="Button 2"></${YCoreButtonTagName}>
-  <${YCoreButtonTagName} label="Button 3"></${YCoreButtonTagName}>
+  <${AltCoreButtonTagName} label="Button 1"></${AltCoreButtonTagName}>
+  <${AltCoreButtonTagName} label="Button 2"></${AltCoreButtonTagName}>
+  <${AltCoreButtonTagName} label="Button 3"></${AltCoreButtonTagName}>
 `
 
 export const emptyButtonsHtml = ''
 
-export const propsTestCases: TPropTestCase<IYCoreButtonGroupProps, 'size' | 'variant'>[] = [
-  { prop: 'size', case: 'small', value: EYSizes.SMALL },
-  { prop: 'size', case: 'medium', value: EYSizes.MEDIUM },
-  { prop: 'size', case: 'large', value: EYSizes.LARGE },
-  { prop: 'variant', case: 'primary', value: EYCoreButtonGroupVariant.PRIMARY },
-  { prop: 'variant', case: 'outline', value: EYCoreButtonGroupVariant.OUTLINE },
-  { prop: 'variant', case: 'outline-filled', value: EYCoreButtonGroupVariant.OUTLINE_FILLED },
+export const propsTestCases: TPropTestCase<IAltCoreButtonGroupProps, 'size' | 'variant'>[] = [
+  { prop: 'size', case: 'small', value: EAltSizes.SMALL },
+  { prop: 'size', case: 'medium', value: EAltSizes.MEDIUM },
+  { prop: 'size', case: 'large', value: EAltSizes.LARGE },
+  { prop: 'variant', case: 'primary', value: EAltCoreButtonGroupVariant.PRIMARY },
+  { prop: 'variant', case: 'outline', value: EAltCoreButtonGroupVariant.OUTLINE },
+  { prop: 'variant', case: 'outline-filled', value: EAltCoreButtonGroupVariant.OUTLINE_FILLED },
 ]
 
 export const propsChangeTestCases = [
-  { prop: 'size', case: 'from small to medium', value: EYSizes.SMALL, changedValue: EYSizes.MEDIUM },
-  { prop: 'size', case: 'from medium to large', value: EYSizes.MEDIUM, changedValue: EYSizes.LARGE },
-  { prop: 'variant', case: 'from primary to outline', value: EYCoreButtonGroupVariant.PRIMARY, changedValue: EYCoreButtonGroupVariant.OUTLINE },
-  { prop: 'variant', case: 'from outline to outline-filled', value: EYCoreButtonGroupVariant.OUTLINE, changedValue: EYCoreButtonGroupVariant.OUTLINE_FILLED },
+  { prop: 'size', case: 'from small to medium', value: EAltSizes.SMALL, changedValue: EAltSizes.MEDIUM },
+  { prop: 'size', case: 'from medium to large', value: EAltSizes.MEDIUM, changedValue: EAltSizes.LARGE },
+  { prop: 'variant', case: 'from primary to outline', value: EAltCoreButtonGroupVariant.PRIMARY, changedValue: EAltCoreButtonGroupVariant.OUTLINE },
+  { prop: 'variant', case: 'from outline to outline-filled', value: EAltCoreButtonGroupVariant.OUTLINE, changedValue: EAltCoreButtonGroupVariant.OUTLINE_FILLED },
 ]
 
 export const slotsTestCases = [

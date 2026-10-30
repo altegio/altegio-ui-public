@@ -1,12 +1,12 @@
 import {
   createCoreRadioButtonExternalProps,
-  type IYCoreRadioButtonExternalProps,
+  type IAltCoreRadioButtonExternalProps,
 } from '~core/ui/radioButton/models/types'
 
-export type TYNgRadioButtonModel = IYCoreRadioButtonExternalProps['checked']
+export type TAltNgRadioButtonModel = IAltCoreRadioButtonExternalProps['checked']
 
-export interface IYNgRadioButtonProps extends Omit<IYCoreRadioButtonExternalProps, 'checked'> {}
+export interface IAltNgRadioButtonProps extends Omit<IAltCoreRadioButtonExternalProps, 'checked'> {}
 
 export { RadioButtonCheckedEvent } from '~core/ui/radioButton/models/types'
 
-export const createNgRadioButtonProps = (): IYNgRadioButtonProps => createCoreRadioButtonExternalProps()
+export const createNgRadioButtonProps = (): IAltNgRadioButtonProps => createCoreRadioButtonExternalProps()

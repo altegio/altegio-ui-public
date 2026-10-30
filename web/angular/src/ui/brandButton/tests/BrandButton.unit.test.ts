@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YBrandButton } from '~ng/ui/brandButton'
-import { type IYNgBrandButtonProps, type TYNgBrandButtonClickEvent } from '~ng/ui/brandButton/models/types'
+import { AltBrandButton } from '~ng/ui/brandButton'
+import { type IAltNgBrandButtonProps, type TAltNgBrandButtonClickEvent } from '~ng/ui/brandButton/models/types'
 import {
   propSizeTestCases,
   propVariantTestCases,
@@ -12,29 +12,29 @@ import {
 } from './cases/props'
 import { dispatchEvent } from '~shared/tests/utils'
 
-const tagName = 'y-core-brand-button'
+const tagName = 'alt-core-brand-button'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgBrandButtonProps>
-  onClick?: (e: TYNgBrandButtonClickEvent) => void
+  props?: Partial<IAltNgBrandButtonProps>
+  onClick?: (e: TAltNgBrandButtonClickEvent) => void
 }
 
 const createComponent = async({ props, onClick }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YBrandButton] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltBrandButton] }).compileComponents()
 
   @Component({
     template: `
-      <YBrandButton
+      <AltBrandButton
         [variant]="variant"
         [text]="text"
         [disabled]="disabled"
         [loading]="loading"
         [size]="size"
         (click)="onClick($event)"
-      ></YBrandButton>
+      ></AltBrandButton>
     `,
-    imports: [YBrandButton],
+    imports: [AltBrandButton],
     standalone: true,
   })
   class TestComponent {
@@ -49,7 +49,7 @@ const createComponent = async({ props, onClick }: ICreateComponentArgs) => {
   return TestComponent
 }
 
-describe('Angular/YBrandButton', () => {
+describe('Angular/AltBrandButton', () => {
   describe('Unit', () => {
     describe('Props', () => {
       for (const testCase of [

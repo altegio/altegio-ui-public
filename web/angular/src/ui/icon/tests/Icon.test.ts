@@ -2,28 +2,28 @@ import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
 
-import { yRocket } from '~shared/icons'
-import { YCoreIconTagName } from '~shared/constants'
+import { altRocket } from '~shared/icons'
+import { AltCoreIconTagName } from '~shared/constants'
 import type { TPropTestCase } from '~shared/types/tests'
 
-import { YIcon } from '~ng/ui/icon'
+import { AltIcon } from '~ng/ui/icon'
 
 import {
   createNgIconProps,
-  type IYNgIconProps,
+  type IAltNgIconProps,
 } from '~ng/ui/icon/models/types'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgIconProps>
+  props?: Partial<IAltNgIconProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YIcon] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltIcon] }).compileComponents()
 
   @Component({
-    template: '<YIcon [size]="size" [icon]="icon">',
-    imports: [YIcon],
+    template: '<AltIcon [size]="size" [icon]="icon">',
+    imports: [AltIcon],
     standalone: true,
   })
   class TestComponent {
@@ -34,17 +34,17 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 const { size: defaultSize } = createNgIconProps()
-const tagName = YCoreIconTagName
+const tagName = AltCoreIconTagName
 
 // Unit test cases:
-const propIconTestCases: TPropTestCase<IYNgIconProps, 'icon'>[] = [
+const propIconTestCases: TPropTestCase<IAltNgIconProps, 'icon'>[] = [
   {
     prop: 'icon',
     case: 'with a value',
-    value: yRocket,
+    value: altRocket,
   },
 ]
-const propSizeTestCases: TPropTestCase<IYNgIconProps, 'size'>[] = [
+const propSizeTestCases: TPropTestCase<IAltNgIconProps, 'size'>[] = [
   {
     prop: 'size',
     case: 'with a value',
@@ -60,7 +60,7 @@ const propSizeTestCases: TPropTestCase<IYNgIconProps, 'size'>[] = [
 ]
 
 describe(
-  'Angular/YIcon',
+  'Angular/AltIcon',
   () => {
     describe(
       'Props',
@@ -85,7 +85,7 @@ describe(
           it(
             `Prop: ${testCase.prop} should work ${testCase.case} for the core component`,
             async() => {
-              const component = await createComponent({ props: { [testCase.prop]: testCase.value, icon: yRocket } })
+              const component = await createComponent({ props: { [testCase.prop]: testCase.value, icon: altRocket } })
               const fixture = TestBed.createComponent(component)
               fixture.detectChanges()
 

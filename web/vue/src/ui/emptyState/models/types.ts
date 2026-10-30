@@ -1,20 +1,20 @@
 import {
   createCoreEmptyStateExternalProps,
-  type IYCoreEmptyStateExternalProps,
+  type IAltCoreEmptyStateExternalProps,
 } from '~core/ui/emptyState/models/types/external'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreEmptyStateProps extends IYCoreEmptyStateExternalProps {
+export interface IAltVueCoreEmptyStateProps extends IAltCoreEmptyStateExternalProps {
 }
 
-export interface IYVueEmptyStateProps {
-  title?: IYVueCoreEmptyStateProps['title']
-  description?: IYVueCoreEmptyStateProps['description']
-  icon?: IYVueCoreEmptyStateProps['icon']
-  size?: IYVueCoreEmptyStateProps['size']
+export interface IAltVueEmptyStateProps {
+  title?: IAltVueCoreEmptyStateProps['title']
+  description?: IAltVueCoreEmptyStateProps['description']
+  icon?: IAltVueCoreEmptyStateProps['icon']
+  size?: IAltVueCoreEmptyStateProps['size']
 }
 
-export const createVueEmptyStateProps = (): TDefinedVueProps<IYVueEmptyStateProps> => {
+export const createVueEmptyStateProps = (): TDefinedVueProps<IAltVueEmptyStateProps> => {
   const {
     title,
     description,

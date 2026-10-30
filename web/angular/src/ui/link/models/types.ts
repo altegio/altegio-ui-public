@@ -1,5 +1,5 @@
-import { createCoreLinkExternalProps, type IYCoreLinkExternalProps } from '~core/ui/link/models/types'
+import { createCoreLinkExternalProps, type IAltCoreLinkExternalProps } from '~core/ui/link/models/types'
 
-export interface IYNgLinkProps extends IYCoreLinkExternalProps {}
+export interface IAltNgLinkProps extends IAltCoreLinkExternalProps {}
 
-export const createNgLinkProps = (): IYNgLinkProps => createCoreLinkExternalProps()
+export const createNgLinkProps = (): IAltNgLinkProps => createCoreLinkExternalProps()

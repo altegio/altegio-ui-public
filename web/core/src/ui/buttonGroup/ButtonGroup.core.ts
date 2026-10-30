@@ -7,10 +7,10 @@ import '~core/ui/loader'
 
 import {
   createCoreButtonGroupProps,
-  type IYCoreButtonGroupProps,
+  type IAltCoreButtonGroupProps,
 } from '~core/ui/buttonGroup/models/types'
 
-import { YCoreButtonGroupTagName as tagName } from '~shared/constants'
+import { AltCoreButtonGroupTagName as tagName } from '~shared/constants'
 
 import ButtonGroupVarsCSS from '~core/ui/buttonGroup/css/ButtonGroup.vars.css?inline'
 import ButtonGroupScopedCSS from '~core/ui/buttonGroup/css/ButtonGroup.scoped.css?inline'
@@ -20,10 +20,10 @@ const { size, variant } = { ...createCoreButtonGroupProps() }
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreButtonGroup extends LitElement implements IYCoreButtonGroupProps {
+export class AltCoreButtonGroup extends LitElement implements IAltCoreButtonGroupProps {
   @state() private slotNodes: Element[] = []
-  @property({ type: String }) size: IYCoreButtonGroupProps['size'] = size
-  @property({ type: String }) variant: IYCoreButtonGroupProps['variant'] = variant
+  @property({ type: String }) size: IAltCoreButtonGroupProps['size'] = size
+  @property({ type: String }) variant: IAltCoreButtonGroupProps['variant'] = variant
 
   private _buttons: HTMLSlotElement | null = null
 

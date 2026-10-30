@@ -1,26 +1,26 @@
 <template>
-  <y-core-text v-bind="props">
+  <alt-core-text v-bind="props">
     <slot />
-  </y-core-text>
+  </alt-core-text>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/text'
   import {
     createVueTextProps,
-    type IYVueTextProps,
-    type IYVueCoreTextProps,
+    type IAltVueTextProps,
+    type IAltVueCoreTextProps,
   } from '~vue/ui/text/models/types'
 
-  defineOptions({ name: 'YText' })
+  defineOptions({ name: 'AltText' })
 
   defineSlots<{
     default: () => unknown
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueTextProps>(),
+    defineProps<IAltVueTextProps>(),
     createVueTextProps(),
-  ) satisfies IYVueCoreTextProps
+  ) satisfies IAltVueCoreTextProps
 </script>
 

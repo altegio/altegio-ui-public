@@ -6,10 +6,10 @@ import { classMap } from 'lit/directives/class-map.js'
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
 import {
   createCoreCardButtonProps,
-  type IYCoreCardButtonProps,
+  type IAltCoreCardButtonProps,
   BlurEvent, FocusEvent,
 } from '~core/ui/cardButton/models/types'
-import { YCoreCardButtonTagName as tagName } from '~shared/constants'
+import { AltCoreCardButtonTagName as tagName } from '~shared/constants'
 import { preventAndStopEvent } from '~shared/utils/helpers'
 import { hasSlotContent } from '~core/utils/lit-slots'
 import { renderIcon } from '~core/renderers'
@@ -21,14 +21,14 @@ import {
   focusableContextCreated,
   sizeContextCreated,
 } from '~core/ui/cardWrapper/providers'
-import { EYSizes } from '~shared/types/global'
-import type { TYCoreTextSize, TYCoreTextVariant } from '~core/ui/text/models/types'
-import { EYCoreTextSize, EYCoreTextVariant } from '~core/ui/text/models/types'
+import { EAltSizes } from '~shared/types/global'
+import type { TAltCoreTextSize, TAltCoreTextVariant } from '~core/ui/text/models/types'
+import { EAltCoreTextSize, EAltCoreTextVariant } from '~core/ui/text/models/types'
 import { SIZES } from '~tokens/index'
-import { yBigChevronRight } from '~shared/icons'
+import { altBigChevronRight } from '~shared/icons'
 
-import YCardButtonVarsCss from '~core/ui/cardButton/css/CardButton.vars.css?inline'
-import YCardButtonScopedCss from '~core/ui/cardButton/css/CardButton.scoped.css?inline'
+import AltCardButtonVarsCss from '~core/ui/cardButton/css/CardButton.vars.css?inline'
+import AltCardButtonScopedCss from '~core/ui/cardButton/css/CardButton.scoped.css?inline'
 
 import '~core/ui/cardWrapper'
 import '~core/ui/cardMain'
@@ -38,37 +38,37 @@ import { withLocator } from '~core/utils/locator'
 
 const { disabled, hoverable, focusable, size, annotation, headerText, tagText, tagVariant, headerIcon } = createCoreCardButtonProps()
 
-const mapSizeToAnnotationSize: Record<NonNullable<IYCoreCardButtonProps['size']>, TYCoreTextSize> = {
-  [EYSizes.SMALL]: EYCoreTextSize.A1_REGULAR,
-  [EYSizes.MEDIUM]: EYCoreTextSize.P2_REGULAR,
-  [EYSizes.LARGE]: EYCoreTextSize.P1_REGULAR,
+const mapSizeToAnnotationSize: Record<NonNullable<IAltCoreCardButtonProps['size']>, TAltCoreTextSize> = {
+  [EAltSizes.SMALL]: EAltCoreTextSize.A1_REGULAR,
+  [EAltSizes.MEDIUM]: EAltCoreTextSize.P2_REGULAR,
+  [EAltSizes.LARGE]: EAltCoreTextSize.P1_REGULAR,
 }
 
-const mapSizeToAfterIconSize: Record<NonNullable<IYCoreCardButtonProps['size']>, string> = {
-  [EYSizes.SMALL]: String(SIZES.spacing_4_x.cssValue),
-  [EYSizes.MEDIUM]: String(SIZES.spacing_6_x.cssValue),
-  [EYSizes.LARGE]: String(SIZES.spacing_6_x.cssValue),
+const mapSizeToAfterIconSize: Record<NonNullable<IAltCoreCardButtonProps['size']>, string> = {
+  [EAltSizes.SMALL]: String(SIZES.spacing_4_x.cssValue),
+  [EAltSizes.MEDIUM]: String(SIZES.spacing_6_x.cssValue),
+  [EAltSizes.LARGE]: String(SIZES.spacing_6_x.cssValue),
 }
 
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreCardButton
+export class AltCoreCardButton
   extends LitElement
-  implements IYCoreCardButtonProps {
+  implements IAltCoreCardButtonProps {
   @provide({ context: disabledContextCreated })
-  @property({ type: Boolean }) disabled: IYCoreCardButtonProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreCardButtonProps['disabled'] = disabled
   @provide({ context: hoverableContextCreated })
-  @property({ type: Boolean }) hoverable: IYCoreCardButtonProps['hoverable'] = hoverable
+  @property({ type: Boolean }) hoverable: IAltCoreCardButtonProps['hoverable'] = hoverable
   @provide({ context: focusableContextCreated })
-  @property({ type: Boolean }) focusable: IYCoreCardButtonProps['focusable'] = focusable
+  @property({ type: Boolean }) focusable: IAltCoreCardButtonProps['focusable'] = focusable
   @provide({ context: sizeContextCreated })
-  @property({ type: String, reflect: true }) size: IYCoreCardButtonProps['size'] = size
-  @property({ type: String, attribute: 'header-text' }) headerText: IYCoreCardButtonProps['headerText'] = headerText
-  @property({ type: String, attribute: 'tag-text' }) tagText: IYCoreCardButtonProps['tagText'] = tagText
-  @property({ type: String, attribute: 'tag-variant' }) tagVariant: IYCoreCardButtonProps['tagVariant'] = tagVariant
-  @property({ type: Object, attribute: 'header-icon' }) headerIcon: IYCoreCardButtonProps['headerIcon'] = headerIcon
-  @property({ type: String }) annotation: IYCoreCardButtonProps['annotation'] = annotation
+  @property({ type: String, reflect: true }) size: IAltCoreCardButtonProps['size'] = size
+  @property({ type: String, attribute: 'header-text' }) headerText: IAltCoreCardButtonProps['headerText'] = headerText
+  @property({ type: String, attribute: 'tag-text' }) tagText: IAltCoreCardButtonProps['tagText'] = tagText
+  @property({ type: String, attribute: 'tag-variant' }) tagVariant: IAltCoreCardButtonProps['tagVariant'] = tagVariant
+  @property({ type: Object, attribute: 'header-icon' }) headerIcon: IAltCoreCardButtonProps['headerIcon'] = headerIcon
+  @property({ type: String }) annotation: IAltCoreCardButtonProps['annotation'] = annotation
 
   private readonly baseClass = tagName
 
@@ -88,8 +88,8 @@ export class YCoreCardButton
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCardButtonVarsCss)}
-      ${unsafeCSS(YCardButtonScopedCss)}
+      ${unsafeCSS(AltCardButtonVarsCss)}
+      ${unsafeCSS(AltCardButtonScopedCss)}
     `,
   ]
 
@@ -102,17 +102,17 @@ export class YCoreCardButton
   }
 
   private get computedSize() {
-    return this.size ?? EYSizes.MEDIUM
+    return this.size ?? EAltSizes.MEDIUM
   }
 
   private get computedAnnotationSize() {
     return mapSizeToAnnotationSize[this.computedSize]
   }
 
-  private get computedAnnotationVariant(): TYCoreTextVariant {
-    if (this.disabled) return EYCoreTextVariant.TERTIARY
+  private get computedAnnotationVariant(): TAltCoreTextVariant {
+    if (this.disabled) return EAltCoreTextVariant.TERTIARY
 
-    return EYCoreTextVariant.PRIMARY
+    return EAltCoreTextVariant.PRIMARY
   }
 
   private get computedAfterIconSize() {
@@ -158,7 +158,7 @@ export class YCoreCardButton
 
   protected render() {
     return html`
-      <y-core-card-wrapper
+      <alt-core-card-wrapper
         .checked=${false}
         .disabled=${this.disabled}
         .hoverable=${this.hoverable}
@@ -175,19 +175,19 @@ export class YCoreCardButton
 
         <slot name="main">
           <div class=${`${this.baseClass}__main`}>
-            <y-core-card-main
+            <alt-core-card-main
               .hideSpaceLeft=${this.hasBeforeSlot}
               .hideSpaceRight=${true}
               .hasAnnotation=${this.hasAnnotationContent}
             >
-              <y-core-card-header
+              <alt-core-card-header
                 .headerText=${this.headerText}
                 .tagText=${this.tagText}
                 .tagVariant=${this.tagVariant}
                 .headerIcon=${this.headerIcon}
-              ></y-core-card-header>
+              ></alt-core-card-header>
 
-              <y-core-text
+              <alt-core-text
                 .size=${this.computedAnnotationSize}
                 .variant=${this.computedAnnotationVariant}
               >
@@ -197,8 +197,8 @@ export class YCoreCardButton
                 >
                   ${this.annotation}
                 </slot>
-              </y-core-text>
-            </y-core-card-main>
+              </alt-core-text>
+            </alt-core-card-main>
           </div>
         </slot>
 
@@ -206,12 +206,12 @@ export class YCoreCardButton
           <slot name="after"></slot>
 
           ${renderIcon({
-            icon: yBigChevronRight,
+            icon: altBigChevronRight,
             size: this.computedAfterIconSize,
             className: `${this.baseClass}__after-icon`,
           })}
         </div>
-      </y-core-card-wrapper>
+      </alt-core-card-wrapper>
     `
   }
 }

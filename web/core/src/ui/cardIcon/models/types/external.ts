@@ -1,13 +1,13 @@
 import { pick } from 'radash'
-import { createCoreCardWrapperProps, type IYCoreCardWrapperProps } from '~core/ui/cardWrapper/models/types'
-import { createCoreColorIconExternalProps, type IYCoreColorIconExternalProps } from '~core/ui/colorIcon/models/types'
+import { createCoreCardWrapperProps, type IAltCoreCardWrapperProps } from '~core/ui/cardWrapper/models/types'
+import { createCoreColorIconExternalProps, type IAltCoreColorIconExternalProps } from '~core/ui/colorIcon/models/types'
 
-export interface IYCoreCardIconExternalProps
-  extends Pick<IYCoreCardWrapperProps, 'size' | 'disabled'>,
-  Pick<IYCoreColorIconExternalProps, 'icon' | 'variant'> {
+export interface IAltCoreCardIconExternalProps
+  extends Pick<IAltCoreCardWrapperProps, 'size' | 'disabled'>,
+  Pick<IAltCoreColorIconExternalProps, 'icon' | 'variant'> {
 }
 
-export const createCoreCardIconExternalProps = (): IYCoreCardIconExternalProps => ({
+export const createCoreCardIconExternalProps = (): IAltCoreCardIconExternalProps => ({
   ...pick(createCoreCardWrapperProps(), ['size', 'disabled']),
   ...pick(createCoreColorIconExternalProps(), ['icon', 'variant']),
 })

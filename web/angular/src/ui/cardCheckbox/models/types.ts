@@ -1,8 +1,8 @@
 import {
   createCoreCardCheckboxProps,
-  type IYCoreCardCheckboxProps,
+  type IAltCoreCardCheckboxProps,
 } from '~core/ui/cardCheckbox/models/types'
 
-export interface IYNgCardCheckboxProps extends IYCoreCardCheckboxProps {}
+export interface IAltNgCardCheckboxProps extends IAltCoreCardCheckboxProps {}
 
-export const createNgCardCheckboxProps = (): IYNgCardCheckboxProps => createCoreCardCheckboxProps()
+export const createNgCardCheckboxProps = (): IAltNgCardCheckboxProps => createCoreCardCheckboxProps()

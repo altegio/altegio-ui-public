@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreButtonTagName } from '~shared/constants'
+import { AltCoreButtonTagName } from '~shared/constants'
 import {
   createCoreButtonProps,
 } from '~core/ui/button/models/types'
@@ -16,7 +16,7 @@ import {
   CSSVariablesOutlineVariantValueCases,
 } from '~core/ui/button/tests/cases/css'
 
-const tagName = YCoreButtonTagName
+const tagName = AltCoreButtonTagName
 
 const {
   component,
@@ -27,7 +27,7 @@ const {
 )
 
 describe(
-  'Core/YCoreButton/CSS/Disabled',
+  'Core/AltCoreButton/CSS/Disabled',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -65,7 +65,7 @@ describe(
 )
 
 describe(
-  'Core/YCoreButton/CSS/Primary Variant',
+  'Core/AltCoreButton/CSS/Primary Variant',
   () => {
     let primaryComponent: HTMLElement
 
@@ -108,7 +108,7 @@ describe(
 )
 
 describe(
-  'Core/YCoreButton/CSS/Outline Variants',
+  'Core/AltCoreButton/CSS/Outline Variants',
   () => {
     let outlineComponent: HTMLElement
 
@@ -151,7 +151,7 @@ describe(
 )
 
 describe(
-  'Core/YCoreButton/CSS/Outline-Filled Variant',
+  'Core/AltCoreButton/CSS/Outline-Filled Variant',
   () => {
     let outlineFilledComponent: HTMLElement
 

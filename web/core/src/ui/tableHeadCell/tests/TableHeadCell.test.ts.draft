@@ -1,15 +1,15 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
-import { YCoreTableHeadCellTagName } from '~shared/constants'
+import { AltCoreTableHeadCellTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import type { TSlotTestCase, TPropTestCase } from '~shared/types/tests'
 import { text, empty } from '~shared/tests/slotContents'
 import {
   createCoreTableHeadCellProps,
-  type IYCoreTableHeadCellProps,
+  type IAltCoreTableHeadCellProps,
 } from '~core/ui/tableHeadCell/models/types'
 import '~core/ui/tableHeadCell'
 
-const tagName = YCoreTableHeadCellTagName
+const tagName = AltCoreTableHeadCellTagName
 
 const {
   component,
@@ -27,17 +27,17 @@ const slotDefaultTestCases: TSlotTestCase[] = [
   { slot: 'default', case: 'with content', content: text },
   { slot: 'default', case: 'without content', content: empty },
 ]
-const propExternalPropTestCases: TPropTestCase<IYCoreTableHeadCellProps, 'externalProp'>[] = [
+const propExternalPropTestCases: TPropTestCase<IAltCoreTableHeadCellProps, 'externalProp'>[] = [
   { prop: 'externalProp', case: 'with content', value: text },
   { prop: 'externalProp', case: 'without content', value: empty },
 ]
-const propInternalPropTestCases: TPropTestCase<IYCoreTableHeadCellProps, 'internalProp'>[] = [
+const propInternalPropTestCases: TPropTestCase<IAltCoreTableHeadCellProps, 'internalProp'>[] = [
   { prop: 'internalProp', case: 'with content', value: text },
   { prop: 'internalProp', case: 'without content', value: empty },
 ]
 
 describe(
-  'Core/YTableHeadCell',
+  'Core/AltTableHeadCell',
   () => {
     beforeAll(() => {
       injectComponentToBody()

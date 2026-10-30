@@ -1,2 +1,2 @@
-export { default as YSimpleCheckbox } from './SimpleCheckbox.vue'
+export { default as AltSimpleCheckbox } from './SimpleCheckbox.vue'
 export type * from './models/types'

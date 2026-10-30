@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { action } from 'storybook/actions'
-import yCoreBrandButtonStoryMeta from '~core/ui/brandButton/stories/BrandButton.stories'
+import altCoreBrandButtonStoryMeta from '~core/ui/brandButton/stories/BrandButton.stories'
 
-import { YBrandButton } from '~ng/ui/brandButton'
-import { EYCoreBrandButtonVariant } from '~core/ui/brandButton/models/types/external'
+import { AltBrandButton } from '~ng/ui/brandButton'
+import { EAltCoreBrandButtonVariant } from '~core/ui/brandButton/models/types/external'
 
 import {
   createAngularBrandButtonParameters,
@@ -14,11 +14,11 @@ import {
 
 const parameters = createAngularBrandButtonParameters()
 
-const meta: Meta<YBrandButton> = {
+const meta: Meta<AltBrandButton> = {
   title: '⚙️️ BrandButton',
   id: 'brandButton',
   parameters,
-  component: YBrandButton,
+  component: AltBrandButton,
   tags: ['angular', 'autodocs'],
   render: (args) => ({
     props: {
@@ -26,7 +26,7 @@ const meta: Meta<YBrandButton> = {
       onClick: action('click'),
     },
     template: `
-      <YBrandButton
+      <AltBrandButton
         [variant]="variant"
         [text]="text"
         [disabled]="disabled"
@@ -36,13 +36,13 @@ const meta: Meta<YBrandButton> = {
       />
     `,
   }),
-  argTypes: { ...yCoreBrandButtonStoryMeta.argTypes },
-  args: { ...yCoreBrandButtonStoryMeta.args },
+  argTypes: { ...altCoreBrandButtonStoryMeta.argTypes },
+  args: { ...altCoreBrandButtonStoryMeta.args },
 }
 
 export default meta
 
-type Story = StoryObj<YBrandButton>
+type Story = StoryObj<AltBrandButton>
 
 export const Playground: Story = { parameters: BRAND_BUTTON_STORIES_CONFIG.Playground.parameters }
 
@@ -52,10 +52,10 @@ export const Sizes: Story = {
     props: { brandButtonSizes },
     template: `
       <div style="display: flex; gap: 16px; align-items: flex-end;">
-        <YBrandButton
+        <AltBrandButton
           *ngFor="let size of brandButtonSizes"
           [size]="size"
-          variant="${EYCoreBrandButtonVariant.WhatsApp}"
+          variant="${EAltCoreBrandButtonVariant.WhatsApp}"
           [text]="size"
         />
       </div>
@@ -68,9 +68,9 @@ export const States: Story = {
   render: () => ({
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YBrandButton variant="${EYCoreBrandButtonVariant.WhatsApp}" text="Default"></YBrandButton>
-        <YBrandButton variant="${EYCoreBrandButtonVariant.WhatsApp}" [disabled]="true" text="Disabled"></YBrandButton>
-        <YBrandButton variant="${EYCoreBrandButtonVariant.WhatsApp}" [loading]="true" text="Loading"></YBrandButton>
+        <AltBrandButton variant="${EAltCoreBrandButtonVariant.WhatsApp}" text="Default"></AltBrandButton>
+        <AltBrandButton variant="${EAltCoreBrandButtonVariant.WhatsApp}" [disabled]="true" text="Disabled"></AltBrandButton>
+        <AltBrandButton variant="${EAltCoreBrandButtonVariant.WhatsApp}" [loading]="true" text="Loading"></AltBrandButton>
       </div>
     `,
   }),
@@ -82,7 +82,7 @@ export const Variants: Story = {
     props: { brandButtonVariants },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YBrandButton
+        <AltBrandButton
           *ngFor="let variant of brandButtonVariants"
           [variant]="variant"
           [text]="'Sign in with ' + variant"

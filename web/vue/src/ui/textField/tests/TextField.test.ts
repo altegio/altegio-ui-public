@@ -1,8 +1,8 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { YCoreTextFieldTagName as tagName } from '~shared/constants'
-import { YTextField } from '~vue/ui/textField'
-import { YCoreTextField } from '~core/ui/textField'
+import { AltCoreTextFieldTagName as tagName } from '~shared/constants'
+import { AltTextField } from '~vue/ui/textField'
+import { AltCoreTextField } from '~core/ui/textField'
 
 import {
   eventInputCases,
@@ -35,13 +35,13 @@ import {
 } from './cases/props'
 
 describe(
-  'Vue/YTextField',
+  'Vue/AltTextField',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreTextField,
+          AltCoreTextField,
         )
       }
     })
@@ -54,7 +54,7 @@ describe(
             `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
-                YTextField,
+                AltTextField,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
@@ -85,7 +85,7 @@ describe(
             `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
-                YTextField,
+                AltTextField,
                 { props: { value: '', [testCase.prop]: testCase.value } },
               )
 
@@ -115,7 +115,7 @@ describe(
             `Slot "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
-                YTextField,
+                AltTextField,
                 {
                   props: { value: '' },
                   slots: {
@@ -149,7 +149,7 @@ describe(
           it(
             `Should emit ${testCase.event} ${testCase.case} of the core component`,
             async() => {
-              const wrapper = mount(YTextField)
+              const wrapper = mount(AltTextField)
 
               const coreElement = wrapper.find(tagName)
 

@@ -5,27 +5,27 @@ import { addPrefixToObjectKeys } from '~shared/utils/helpers'
 
 import '~core/ui/datePicker'
 
-import yCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
-import yCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
-import yCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
-import yCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
-import yCoreErrorStoryMeta, { type IYCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
-import yCoreCalendarStoryMeta, { type TStoryProps } from '~core/ui/calendar/stories/Calendar.stories'
+import altCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
+import altCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
+import altCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
+import altCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
+import altCoreErrorStoryMeta, { type IAltCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
+import altCoreCalendarStoryMeta, { type TStoryProps } from '~core/ui/calendar/stories/Calendar.stories'
 
-import type { IYCoreDatePickerProps } from '~core/ui/datePicker/models/types'
+import type { IAltCoreDatePickerProps } from '~core/ui/datePicker/models/types'
 import {
-  YCoreDatePickerTagName as tagName,
+  AltCoreDatePickerTagName as tagName,
 } from '~shared/constants'
 import { formatDate } from '~shared/utils/dateTime'
 import dayjs from 'dayjs'
 
-export interface IYCoreDatePickerStoryProps extends
-  IYCoreDatePickerProps, TStoryProps, IYCoreErrorStoryProps {}
+export interface IAltCoreDatePickerStoryProps extends
+  IAltCoreDatePickerProps, TStoryProps, IAltCoreErrorStoryProps {}
 
 /**
  * ## Core DatePicker
  */
-const meta: Meta<IYCoreDatePickerStoryProps> = {
+const meta: Meta<IAltCoreDatePickerStoryProps> = {
   title: 'Inputs/✅ DatePicker',
   id: 'datePicker',
   parameters: { controls: { sort: 'alpha' } },
@@ -55,7 +55,7 @@ const meta: Meta<IYCoreDatePickerStoryProps> = {
     return html`
       <div style="padding: 50px 50px 350px; margin: 20px; border: 1px dashed black; border-radius: 8px;">
         <div style="max-width: 300px; padding: 10px; overflow: hidden">
-          <y-core-date-picker
+          <alt-core-date-picker
             .isRange=${isRange}
             .calendarHeaderSelectors=${calendarHeaderSelectors}
             .disabled=${disabled}
@@ -72,50 +72,50 @@ const meta: Meta<IYCoreDatePickerStoryProps> = {
             .minDate=${minDate && formatDate(dayjs(minDate))}
             .maxDate=${maxDate && formatDate(dayjs(maxDate))}
           >
-          </y-core-date-picker>
+          </alt-core-date-picker>
         </div>
       </div>
     `
   },
   argTypes: {
     // Extended Props
-    ...omit(yCoreFieldWrapperStoryMeta.argTypes ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon', 'onBlur', 'onFocus', 'onMouseEnter', 'onMouseLeave', 'onClickOutside', 'onClick']),
-    ...omit(yCoreFieldInputStoryMeta.argTypes ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'value', 'maxlength', 'type', 'onRender', 'onInput', 'onKeydown', 'onBlur', 'onFocus']),
-    ...addPrefixToObjectKeys(omit(yCoreLabelStoryMeta.argTypes ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText']), 'label'),
-    ...addPrefixToObjectKeys(omit(yCoreAnnotationStoryMeta.argTypes ?? {}, ['disabled', 'isLongText']), 'annotation'),
-    ...omit(yCoreErrorStoryMeta.argTypes ?? {}, ['isLongText']),
+    ...omit(altCoreFieldWrapperStoryMeta.argTypes ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon', 'onBlur', 'onFocus', 'onMouseEnter', 'onMouseLeave', 'onClickOutside', 'onClick']),
+    ...omit(altCoreFieldInputStoryMeta.argTypes ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'value', 'maxlength', 'type', 'onRender', 'onInput', 'onKeydown', 'onBlur', 'onFocus']),
+    ...addPrefixToObjectKeys(omit(altCoreLabelStoryMeta.argTypes ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText']), 'label'),
+    ...addPrefixToObjectKeys(omit(altCoreAnnotationStoryMeta.argTypes ?? {}, ['disabled', 'isLongText']), 'annotation'),
+    ...omit(altCoreErrorStoryMeta.argTypes ?? {}, ['isLongText']),
     ...omit(
-      yCoreCalendarStoryMeta.argTypes ?? {},
+      altCoreCalendarStoryMeta.argTypes ?? {},
       [
         'onSelect',
         'headerSelectors',
       ],
     ),
 
-    calendarHeaderSelectors: yCoreCalendarStoryMeta.argTypes?.headerSelectors ?? {},
+    calendarHeaderSelectors: altCoreCalendarStoryMeta.argTypes?.headerSelectors ?? {},
   },
   args: {
     // Extended Props
-    ...omit(yCoreFieldWrapperStoryMeta.args ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon', 'onBlur', 'onFocus', 'onMouseEnter', 'onMouseLeave', 'onClickOutside', 'onClick']),
-    ...omit(yCoreFieldInputStoryMeta.args ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'value', 'maxlength', 'type', 'onRender', 'onInput', 'onKeydown', 'onBlur', 'onFocus']),
-    ...addPrefixToObjectKeys(omit(yCoreLabelStoryMeta.args ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText']), 'label'),
-    ...addPrefixToObjectKeys(omit(yCoreAnnotationStoryMeta.args ?? {}, ['disabled', 'isLongText']), 'annotation'),
-    ...omit(yCoreErrorStoryMeta.args ?? {}, ['isLongText']),
+    ...omit(altCoreFieldWrapperStoryMeta.args ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon', 'onBlur', 'onFocus', 'onMouseEnter', 'onMouseLeave', 'onClickOutside', 'onClick']),
+    ...omit(altCoreFieldInputStoryMeta.args ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'value', 'maxlength', 'type', 'onRender', 'onInput', 'onKeydown', 'onBlur', 'onFocus']),
+    ...addPrefixToObjectKeys(omit(altCoreLabelStoryMeta.args ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText']), 'label'),
+    ...addPrefixToObjectKeys(omit(altCoreAnnotationStoryMeta.args ?? {}, ['disabled', 'isLongText']), 'annotation'),
+    ...omit(altCoreErrorStoryMeta.args ?? {}, ['isLongText']),
     ...omit(
-      yCoreCalendarStoryMeta.args ?? {},
+      altCoreCalendarStoryMeta.args ?? {},
       [
         'onSelect',
         'headerSelectors',
       ],
     ),
 
-    calendarHeaderSelectors: yCoreCalendarStoryMeta.args?.headerSelectors,
+    calendarHeaderSelectors: altCoreCalendarStoryMeta.args?.headerSelectors,
 
     isRange: true,
   },
-} satisfies Meta<IYCoreDatePickerStoryProps>
+} satisfies Meta<IAltCoreDatePickerStoryProps>
 
 export default meta
-type Story = StoryObj<IYCoreDatePickerStoryProps>
+type Story = StoryObj<IAltCoreDatePickerStoryProps>
 
 export const Playground: Story = { args: {} }

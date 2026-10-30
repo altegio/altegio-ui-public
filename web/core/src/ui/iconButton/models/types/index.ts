@@ -1,10 +1,10 @@
 import {
   createCoreIconButtonExternalProps,
-  type IYCoreIconButtonExternalProps,
+  type IAltCoreIconButtonExternalProps,
 } from './external'
 
 export * from './external'
 
-export interface IYCoreIconButtonProps extends Omit<IYCoreIconButtonExternalProps, 'alignment'> {}
+export interface IAltCoreIconButtonProps extends Omit<IAltCoreIconButtonExternalProps, 'alignment'> {}
 
-export const createCoreIconButtonProps = (): IYCoreIconButtonProps => ({ ...createCoreIconButtonExternalProps() })
+export const createCoreIconButtonProps = (): IAltCoreIconButtonProps => ({ ...createCoreIconButtonExternalProps() })

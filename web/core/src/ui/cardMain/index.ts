@@ -1,1 +1,1 @@
-export { YCoreCardMain } from './CardMain.core'
+export { AltCoreCardMain } from './CardMain.core'

@@ -3,7 +3,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, Output, EventEmitter } from '
 import '~core/ui/fieldTextarea'
 import {
   createNgFieldTextareaProps,
-  type IYNgFieldTextareaProps,
+  type IAltNgFieldTextareaProps,
   type InputEvent,
   type FocusEvent,
   type BlurEvent,
@@ -19,11 +19,11 @@ const {
 } = createNgFieldTextareaProps()
 
 @Component({
-  selector: 'YFieldTextarea',
+  selector: 'AltFieldTextarea',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-field-textarea
+    <alt-core-field-textarea
       [disabled]="disabled"
       [size]="size"
       [readonly]="readonly"
@@ -43,25 +43,25 @@ const {
       (blur)="handleBlurEvent($event)"
       (keydown)="handleKeydownEvent($event)"
       (render)="handleRenderEvent($event)"
-    ></y-core-field-textarea>
+    ></alt-core-field-textarea>
   `,
 })
 
-export class YFieldTextarea implements IYNgFieldTextareaProps {
-  @Input() @DefaultValue(disabled) disabled: IYNgFieldTextareaProps['disabled'] = disabled
-  @Input() @DefaultValue(size) size: IYNgFieldTextareaProps['size'] = size
-  @Input() @DefaultValue(readonly) readonly: IYNgFieldTextareaProps['readonly'] = readonly
-  @Input() @DefaultValue(value) value: IYNgFieldTextareaProps['value'] = value
-  @Input() @DefaultValue(name) name: IYNgFieldTextareaProps['name'] = name
-  @Input() @DefaultValue(placeholder) placeholder: IYNgFieldTextareaProps['placeholder'] = placeholder
-  @Input() @DefaultValue(maxlength) maxlength: IYNgFieldTextareaProps['maxlength'] = maxlength
-  @Input() @DefaultValue(autofocus) autofocus: IYNgFieldTextareaProps['autofocus'] = autofocus
-  @Input() @DefaultValue(hideSpaceLeft) hideSpaceLeft: IYNgFieldTextareaProps['hideSpaceLeft'] = hideSpaceLeft
-  @Input() @DefaultValue(hideSpaceRight) hideSpaceRight: IYNgFieldTextareaProps['hideSpaceRight'] = hideSpaceRight
-  @Input() @DefaultValue(required) required: IYNgFieldTextareaProps['required'] = required
-  @Input() @DefaultValue(rows) rows: IYNgFieldTextareaProps['rows'] = rows
-  @Input() @DefaultValue(resize) resize: IYNgFieldTextareaProps['resize'] = resize
-  @Input() @DefaultValue(autocomplete) autocomplete: IYNgFieldTextareaProps['autocomplete'] = autocomplete
+export class AltFieldTextarea implements IAltNgFieldTextareaProps {
+  @Input() @DefaultValue(disabled) disabled: IAltNgFieldTextareaProps['disabled'] = disabled
+  @Input() @DefaultValue(size) size: IAltNgFieldTextareaProps['size'] = size
+  @Input() @DefaultValue(readonly) readonly: IAltNgFieldTextareaProps['readonly'] = readonly
+  @Input() @DefaultValue(value) value: IAltNgFieldTextareaProps['value'] = value
+  @Input() @DefaultValue(name) name: IAltNgFieldTextareaProps['name'] = name
+  @Input() @DefaultValue(placeholder) placeholder: IAltNgFieldTextareaProps['placeholder'] = placeholder
+  @Input() @DefaultValue(maxlength) maxlength: IAltNgFieldTextareaProps['maxlength'] = maxlength
+  @Input() @DefaultValue(autofocus) autofocus: IAltNgFieldTextareaProps['autofocus'] = autofocus
+  @Input() @DefaultValue(hideSpaceLeft) hideSpaceLeft: IAltNgFieldTextareaProps['hideSpaceLeft'] = hideSpaceLeft
+  @Input() @DefaultValue(hideSpaceRight) hideSpaceRight: IAltNgFieldTextareaProps['hideSpaceRight'] = hideSpaceRight
+  @Input() @DefaultValue(required) required: IAltNgFieldTextareaProps['required'] = required
+  @Input() @DefaultValue(rows) rows: IAltNgFieldTextareaProps['rows'] = rows
+  @Input() @DefaultValue(resize) resize: IAltNgFieldTextareaProps['resize'] = resize
+  @Input() @DefaultValue(autocomplete) autocomplete: IAltNgFieldTextareaProps['autocomplete'] = autocomplete
 
   @Output() input = new EventEmitter<InputEvent>()
   handleInputEvent(event: Event) {

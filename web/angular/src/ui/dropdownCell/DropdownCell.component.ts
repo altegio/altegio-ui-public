@@ -3,7 +3,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core'
 import '~core/ui/dropdownCell'
 import {
   createNgDropdownCellProps,
-  type IYNgDropdownCellProps,
+  type IAltNgDropdownCellProps,
 } from '~ng/ui/dropdownCell/models/types'
 import { cleanupInnerHTML } from '~shared/utils/helpers'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
@@ -11,11 +11,11 @@ import { DefaultValue } from '~ng/utils/default-value.decorator'
 const { locator } = createNgDropdownCellProps()
 
 @Component({
-  selector: 'YDropdownCell',
+  selector: 'AltDropdownCell',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-dropdown-cell>
+    <alt-core-dropdown-cell>
       <div #cell>
         <ng-content select="[cell]" />
       </div>
@@ -55,12 +55,12 @@ const { locator } = createNgDropdownCellProps()
       @if (cleanupHTML(prepend)) {
         <div slot="prepend" [innerHTML]="cleanupHTML(prepend)"></div>
       }
-    </y-core-dropdown-cell>
+    </alt-core-dropdown-cell>
   `,
 })
 
-export class YDropdownCell implements IYNgDropdownCellProps {
-  @Input() @DefaultValue(locator) locator: IYNgDropdownCellProps['locator'] = locator
+export class AltDropdownCell implements IAltNgDropdownCellProps {
+  @Input() @DefaultValue(locator) locator: IAltNgDropdownCellProps['locator'] = locator
 
   protected cleanupHTML = cleanupInnerHTML
 }

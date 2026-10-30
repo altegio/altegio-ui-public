@@ -1,22 +1,22 @@
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import type { TPropTestCase } from '~shared/types/tests'
-import type { IYCoreSimpleRadioButtonProps } from '~core/ui/simpleRadioButton/models/types'
-import type { IYCoreCardRadioProps } from '~core/ui/cardRadio/models/types'
+import type { IAltCoreSimpleRadioButtonProps } from '~core/ui/simpleRadioButton/models/types'
+import type { IAltCoreCardRadioProps } from '~core/ui/cardRadio/models/types'
 
-interface IYCoreCardRadioSizePropTestCase extends TPropTestCase<IYCoreCardRadioProps, 'size'> {
-  expectedRadioSize: IYCoreSimpleRadioButtonProps['size']
+interface IAltCoreCardRadioSizePropTestCase extends TPropTestCase<IAltCoreCardRadioProps, 'size'> {
+  expectedRadioSize: IAltCoreSimpleRadioButtonProps['size']
 }
 
-export const propDisabledCases: TPropTestCase<IYCoreCardRadioProps, 'disabled'>[] = [
+export const propDisabledCases: TPropTestCase<IAltCoreCardRadioProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true },
   { prop: 'disabled', case: 'false', value: false },
 ]
-export const propSizeCases: IYCoreCardRadioSizePropTestCase[] = [
-  { prop: 'size', case: 'small', value: EYSizes.SMALL, expectedRadioSize: EYSizes.SMALL },
-  { prop: 'size', case: 'medium', value: EYSizes.MEDIUM, expectedRadioSize: EYSizes.MEDIUM },
-  { prop: 'size', case: 'large', value: EYSizes.LARGE, expectedRadioSize: EYSizes.MEDIUM },
+export const propSizeCases: IAltCoreCardRadioSizePropTestCase[] = [
+  { prop: 'size', case: 'small', value: EAltSizes.SMALL, expectedRadioSize: EAltSizes.SMALL },
+  { prop: 'size', case: 'medium', value: EAltSizes.MEDIUM, expectedRadioSize: EAltSizes.MEDIUM },
+  { prop: 'size', case: 'large', value: EAltSizes.LARGE, expectedRadioSize: EAltSizes.MEDIUM },
 ]
-export const propCheckedCases: TPropTestCase<IYCoreCardRadioProps, 'checked'>[] = [
+export const propCheckedCases: TPropTestCase<IAltCoreCardRadioProps, 'checked'>[] = [
   { prop: 'checked', case: 'true', value: true },
   { prop: 'checked', case: 'false', value: false },
 ]

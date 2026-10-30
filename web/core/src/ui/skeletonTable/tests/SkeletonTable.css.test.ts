@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreSkeletonTableTagName } from '~shared/constants'
+import { AltCoreSkeletonTableTagName } from '~shared/constants'
 import {
   createCoreSkeletonTableProps,
 } from '~core/ui/skeletonTable/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/skeletonTable/tests/cases/css'
 
-const tagName = YCoreSkeletonTableTagName
+const tagName = AltCoreSkeletonTableTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreSkeletonTable/CSS',
+  'Core/AltCoreSkeletonTable/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

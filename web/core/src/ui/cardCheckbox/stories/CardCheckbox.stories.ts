@@ -2,20 +2,20 @@ import { html } from 'lit'
 import { pick } from 'radash'
 import type { Meta, StoryObj } from '@storybook/web-components'
 
-import type { IYCoreCardCheckboxProps } from '../models/types'
-import { YCoreCardCheckboxTagName as tagName } from '~shared/constants'
-import { EYSizes } from '~shared/types/global'
-import yCoreCardWrapperStoryMeta from '~core/ui/cardWrapper/stories/CardWrapper.stories'
+import type { IAltCoreCardCheckboxProps } from '../models/types'
+import { AltCoreCardCheckboxTagName as tagName } from '~shared/constants'
+import { EAltSizes } from '~shared/types/global'
+import altCoreCardWrapperStoryMeta from '~core/ui/cardWrapper/stories/CardWrapper.stories'
 
 import '~core/ui/cardCheckbox'
 
-type TYCoreCardCheckboxMeta = Meta<IYCoreCardCheckboxProps>
+type TAltCoreCardCheckboxMeta = Meta<IAltCoreCardCheckboxProps>
 
 /**
  * ## Core CardCheckbox
  * Helper component used by CardButton and CardSelect
  */
-const meta: TYCoreCardCheckboxMeta = {
+const meta: TAltCoreCardCheckboxMeta = {
   title: 'Cards/Partials/✅ CardCheckbox',
   id: 'cardCheckbox',
   parameters: { controls: { sort: 'alpha' } },
@@ -30,24 +30,24 @@ const meta: TYCoreCardCheckboxMeta = {
     checked,
   }) => {
     return html`
-      <y-core-card-checkbox
+      <alt-core-card-checkbox
         .disabled=${disabled}
         .size=${size}
         .checked=${checked}
         style="border: 1px dotted;"
       >
-      </y-core-card-checkbox>
+      </alt-core-card-checkbox>
     `
   },
-  argTypes: { ...pick(yCoreCardWrapperStoryMeta.argTypes ?? {}, ['size', 'checked', 'disabled']) },
+  argTypes: { ...pick(altCoreCardWrapperStoryMeta.argTypes ?? {}, ['size', 'checked', 'disabled']) },
   args: {
     disabled: false,
-    size: EYSizes.MEDIUM,
+    size: EAltSizes.MEDIUM,
     checked: false,
   },
-} satisfies TYCoreCardCheckboxMeta
+} satisfies TAltCoreCardCheckboxMeta
 
 export default meta
-type Story = StoryObj<IYCoreCardCheckboxProps>
+type Story = StoryObj<IAltCoreCardCheckboxProps>
 
 export const Playground: Story = { args: {} }

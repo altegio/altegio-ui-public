@@ -6,8 +6,8 @@ import { omit } from 'radash'
 
 import {
   createCoreFieldTextareaProps,
-  type IYCoreFieldTextareaProps,
-  type TYCoreFieldInputEvents,
+  type IAltCoreFieldTextareaProps,
+  type TAltCoreFieldInputEvents,
   type InputEvent,
   type BlurEvent,
   type FocusEvent,
@@ -15,25 +15,25 @@ import {
   type RenderEvent,
 } from '../models/types'
 import {
-  YCoreFieldTextareaTagName as tagName,
+  AltCoreFieldTextareaTagName as tagName,
 } from '~shared/constants'
 import {
   getComponentStateTable,
 } from '~shared/.storybook/tables'
-import { EYTextareaResize } from '~shared/types/global'
+import { EAltTextareaResize } from '~shared/types/global'
 
-import yCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
+import altCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
 
 import '~core/ui/fieldTextarea/FieldTextarea.core'
 
 const { rows, resize } = createCoreFieldTextareaProps()
 
-export type TYCoreFieldTextareaMeta = IYCoreFieldTextareaProps & TYCoreFieldInputEvents
+export type TAltCoreFieldTextareaMeta = IAltCoreFieldTextareaProps & TAltCoreFieldInputEvents
 
 /**
  * ## Core FieldTextarea
  */
-const meta: Meta<TYCoreFieldTextareaMeta> = {
+const meta: Meta<TAltCoreFieldTextareaMeta> = {
   title: 'Inputs/Partials/⚠️ FieldTextarea',
   id: 'fieldTextarea',
   parameters: { controls: { sort: 'alpha' } },
@@ -60,7 +60,7 @@ const meta: Meta<TYCoreFieldTextareaMeta> = {
     const [
       args,
       updateArgs,
-    ] = useArgs<IYCoreFieldTextareaProps>()
+    ] = useArgs<IAltCoreFieldTextareaProps>()
 
     const handleInput = (event: InputEvent) => {
       updateArgs({ ...args, value: String(event.detail.value) })
@@ -84,7 +84,7 @@ const meta: Meta<TYCoreFieldTextareaMeta> = {
     }
 
     return html`
-      <y-core-field-textarea
+      <alt-core-field-textarea
         .disabled=${disabled}
         .size=${size}
         .readonly=${readonly}
@@ -104,11 +104,11 @@ const meta: Meta<TYCoreFieldTextareaMeta> = {
         @keydown=${handleKeydown}
         @render=${handleRender}
         style="border: 1px dashed;"
-      ></y-core-field-textarea>
+      ></alt-core-field-textarea>
     `
   },
   argTypes: {
-    ...omit(yCoreFieldInputStoryMeta.argTypes ?? {}, ['type']),
+    ...omit(altCoreFieldInputStoryMeta.argTypes ?? {}, ['type']),
 
     rows: {
       type: 'number',
@@ -118,18 +118,18 @@ const meta: Meta<TYCoreFieldTextareaMeta> = {
     resize: {
       control: { type: 'select' },
       description: 'Controls whether the textarea can be resized',
-      options: Object.values(EYTextareaResize),
+      options: Object.values(EAltTextareaResize),
       ...getComponentStateTable(resize),
     },
   },
   args: {
-    ...omit(yCoreFieldInputStoryMeta.args ?? {}, ['type']),
+    ...omit(altCoreFieldInputStoryMeta.args ?? {}, ['type']),
     rows,
     resize,
   },
-} satisfies Meta<TYCoreFieldTextareaMeta>
+} satisfies Meta<TAltCoreFieldTextareaMeta>
 
 export default meta
-type Story = StoryObj<TYCoreFieldTextareaMeta>
+type Story = StoryObj<TAltCoreFieldTextareaMeta>
 
 export const Playground: Story = { args: {} }

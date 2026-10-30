@@ -7,8 +7,8 @@
 
 import type { EFrameworkName } from '~web/shared/.storybook/enums/frameworkName'
 import type { IStoryConfig } from '~web/shared/.storybook/types'
-import { yCopy, yInfo, yMagic, yRocket, ySearch } from '~web/shared/icons'
-import { EYSizes } from '~web/shared/types/global'
+import { altCopy, altInfo, altMagic, altRocket, altSearch } from '~web/shared/icons'
+import { EAltSizes } from '~web/shared/types/global'
 
 // =============================================================================
 // STORY CONFIGURATION
@@ -64,12 +64,12 @@ export const createIconButtonParameters = (frameworkName: EFrameworkName, framew
   docs: { description: { component: createIconButtonDescription(frameworkName, frameworkSpecifics) } },
 })
 
-export const iconButtonSizes = [EYSizes.SMALL, EYSizes.MEDIUM, EYSizes.LARGE] as const
+export const iconButtonSizes = [EAltSizes.SMALL, EAltSizes.MEDIUM, EAltSizes.LARGE] as const
 
 export const iconButtonIcons = {
-  search: ySearch,
-  rocket: yRocket,
-  magic: yMagic,
-  info: yInfo,
-  copy: yCopy,
+  search: altSearch,
+  rocket: altRocket,
+  magic: altMagic,
+  info: altInfo,
+  copy: altCopy,
 }

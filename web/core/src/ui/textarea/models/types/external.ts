@@ -1,20 +1,20 @@
 import { omit, pick } from 'radash'
 import {
   createCoreTextFieldExternalProps,
-  type IYCoreTextFieldExternalProps,
+  type IAltCoreTextFieldExternalProps,
 } from '~core/ui/textField/models/types'
 import {
   createCoreFieldTextareaExternalProps,
-  type IYCoreFieldTextareaExternalProps,
+  type IAltCoreFieldTextareaExternalProps,
 } from '~core/ui/fieldTextarea/models/types'
 
-export interface IYCoreTextareaExternalProps extends
-  Omit<IYCoreTextFieldExternalProps, 'type' | 'maskOptions' | 'annotationText'>,
-  Omit<IYCoreTextFieldExternalProps, 'type' | 'maskOptions' | 'annotationText'>,
-  Pick<IYCoreFieldTextareaExternalProps, 'rows' | 'resize'> {
+export interface IAltCoreTextareaExternalProps extends
+  Omit<IAltCoreTextFieldExternalProps, 'type' | 'maskOptions' | 'annotationText'>,
+  Omit<IAltCoreTextFieldExternalProps, 'type' | 'maskOptions' | 'annotationText'>,
+  Pick<IAltCoreFieldTextareaExternalProps, 'rows' | 'resize'> {
 }
 
-export const createCoreTextareaExternalProps = (): IYCoreTextareaExternalProps => ({
+export const createCoreTextareaExternalProps = (): IAltCoreTextareaExternalProps => ({
   ...omit(createCoreTextFieldExternalProps(), ['type', 'maskOptions', 'annotationText']),
   ...pick(createCoreFieldTextareaExternalProps(), ['rows', 'resize']),
 })

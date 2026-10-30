@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { YCoreAvatarTagName as tagName } from '~web/shared/constants'
+import { AltCoreAvatarTagName as tagName } from '~web/shared/constants'
 import { TestBed } from '~ng/tests/setup'
-import { YAvatar } from '~ng/ui/avatar'
+import { AltAvatar } from '~ng/ui/avatar'
 import { Component } from '@angular/core'
-import type { IYNgAvatarProps } from '~ng/ui/avatar/models/types'
+import type { IAltNgAvatarProps } from '~ng/ui/avatar/models/types'
 import {
   propDisabledTestCases, propIconTestCases,
   propInitialsTestCases,
@@ -12,23 +12,23 @@ import {
 } from '~ng/ui/avatar/tests/cases/props'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgAvatarProps>
+  props?: Partial<IAltNgAvatarProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YAvatar] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltAvatar] }).compileComponents()
 
   @Component({
     template: `
-      <YAvatar
+      <AltAvatar
         [photo]="photo"
         [initials]="initials"
         [disabled]="disabled"
         [size]="size"
         [icon]="icon"
       />`,
-    imports: [YAvatar],
+    imports: [AltAvatar],
     standalone: true,
   })
   class TestComponent {
@@ -43,7 +43,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 
 
 describe(
-  'Angular/YAvatar',
+  'Angular/AltAvatar',
   () => {
     describe(
       'Props',

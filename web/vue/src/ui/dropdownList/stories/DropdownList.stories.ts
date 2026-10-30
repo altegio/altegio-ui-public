@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YDropdownList } from '~vue/ui/dropdownList'
-import { type IYVueDropdownListProps } from '~vue/ui/dropdownList/models/types'
-import yCoreDropdownListStoryMeta from '~core/ui/dropdownList/stories/DropdownList.stories'
+import { AltDropdownList } from '~vue/ui/dropdownList'
+import { type IAltVueDropdownListProps } from '~vue/ui/dropdownList/models/types'
+import altCoreDropdownListStoryMeta from '~core/ui/dropdownList/stories/DropdownList.stories'
 import {
   storyControlsTable,
 } from '~shared/.storybook/tables'
 
-type TDropdownListStoryMeta = IYVueDropdownListProps & {
+type TDropdownListStoryMeta = IAltVueDropdownListProps & {
   showItemOuterSlot: boolean
   showItemInnerSlot: boolean
   showItem2OuterSlot: boolean
@@ -26,12 +26,12 @@ const meta: Meta<TDropdownListStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YDropdownList },
+    components: { AltDropdownList },
     setup() {
       return { args }
     },
     template: `
-      <YDropdownList
+      <AltDropdownList
         v-bind="args"
         @item-click="args.onItemEmit"
       >
@@ -86,11 +86,11 @@ const meta: Meta<TDropdownListStoryMeta> = {
             Bottom Slot
           </span>
         </template>
-      </YDropdownList>
+      </AltDropdownList>
     `,
   }),
   argTypes: {
-    ...yCoreDropdownListStoryMeta.argTypes,
+    ...altCoreDropdownListStoryMeta.argTypes,
 
     // Story Controls
     showItemOuterSlot: {
@@ -115,7 +115,7 @@ const meta: Meta<TDropdownListStoryMeta> = {
     },
   },
   args: {
-    ...yCoreDropdownListStoryMeta.args,
+    ...altCoreDropdownListStoryMeta.args,
     showItemOuterSlot: false,
     showItemInnerSlot: false,
     showItem2OuterSlot: false,

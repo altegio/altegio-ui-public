@@ -2,7 +2,7 @@ import type { TemplateRef } from '@angular/core'
 import { Component, ContentChild, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core'
 
 import '~core/ui/tab'
-import { createNgTabProps, type IYNgTabProps } from '~ng/ui/tab/models/types'
+import { createNgTabProps, type IAltNgTabProps } from '~ng/ui/tab/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { cleanupInnerHTML } from '~shared/utils'
 import { NgTemplateOutlet } from '@angular/common'
@@ -24,12 +24,12 @@ const {
 } = createNgTabProps()
 
 @Component({
-  selector: 'YTab',
+  selector: 'AltTab',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [NgTemplateOutlet],
   template: `
-    <y-core-tab
+    <alt-core-tab
       [tagVariant]="tagVariant"
       [counterValue]="counterValue"
       [leftIcon]="leftIcon"
@@ -55,23 +55,23 @@ const {
           <ng-container *ngTemplateOutlet="tabAfterRef"/>
         </div>
       }
-    </y-core-tab>
+    </alt-core-tab>
   `,
 })
-export class YTab implements IYNgTabProps {
-  @Input() @DefaultValue(tagVariant) tagVariant: IYNgTabProps['tagVariant'] = tagVariant
-  @Input() @DefaultValue(counterValue) counterValue: IYNgTabProps['counterValue'] = counterValue
-  @Input() @DefaultValue(leftIcon) leftIcon: IYNgTabProps['leftIcon'] = leftIcon
-  @Input() @DefaultValue(leftIconSize) leftIconSize: IYNgTabProps['leftIconSize'] = leftIconSize
-  @Input() @DefaultValue(text) text: IYNgTabProps['text'] = text
-  @Input() @DefaultValue(active) active: IYNgTabProps['active'] = active
-  @Input() @DefaultValue(disabled) disabled: IYNgTabProps['disabled'] = disabled
-  @Input() @DefaultValue(isTagVisible) isTagVisible: IYNgTabProps['isTagVisible'] = isTagVisible
-  @Input() @DefaultValue(tagText) tagText: IYNgTabProps['tagText'] = tagText
-  @Input() @DefaultValue(locator) locator: IYNgTabProps['locator'] = locator
-  @Input() @DefaultValue(locatorTag) locatorTag: IYNgTabProps['locatorTag'] = locatorTag
-  @Input() @DefaultValue(locatorCounter) locatorCounter: IYNgTabProps['locatorCounter'] = locatorCounter
-  @Input() @DefaultValue(isCounterVisible) isCounterVisible: IYNgTabProps['isCounterVisible'] = isCounterVisible
+export class AltTab implements IAltNgTabProps {
+  @Input() @DefaultValue(tagVariant) tagVariant: IAltNgTabProps['tagVariant'] = tagVariant
+  @Input() @DefaultValue(counterValue) counterValue: IAltNgTabProps['counterValue'] = counterValue
+  @Input() @DefaultValue(leftIcon) leftIcon: IAltNgTabProps['leftIcon'] = leftIcon
+  @Input() @DefaultValue(leftIconSize) leftIconSize: IAltNgTabProps['leftIconSize'] = leftIconSize
+  @Input() @DefaultValue(text) text: IAltNgTabProps['text'] = text
+  @Input() @DefaultValue(active) active: IAltNgTabProps['active'] = active
+  @Input() @DefaultValue(disabled) disabled: IAltNgTabProps['disabled'] = disabled
+  @Input() @DefaultValue(isTagVisible) isTagVisible: IAltNgTabProps['isTagVisible'] = isTagVisible
+  @Input() @DefaultValue(tagText) tagText: IAltNgTabProps['tagText'] = tagText
+  @Input() @DefaultValue(locator) locator: IAltNgTabProps['locator'] = locator
+  @Input() @DefaultValue(locatorTag) locatorTag: IAltNgTabProps['locatorTag'] = locatorTag
+  @Input() @DefaultValue(locatorCounter) locatorCounter: IAltNgTabProps['locatorCounter'] = locatorCounter
+  @Input() @DefaultValue(isCounterVisible) isCounterVisible: IAltNgTabProps['isCounterVisible'] = isCounterVisible
 
   @ContentChild('tabBefore') tabBeforeRef: TemplateRef<unknown> | undefined
   @ContentChild('tabAfter') tabAfterRef: TemplateRef<unknown> | undefined

@@ -1,1 +1,1 @@
-export { YCoreCalendar } from './Calendar.core'
+export { AltCoreCalendar } from './Calendar.core'

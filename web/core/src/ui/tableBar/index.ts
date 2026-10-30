@@ -1,1 +1,1 @@
-export { YCoreTableBar } from './TableBar.core'
+export { AltCoreTableBar } from './TableBar.core'

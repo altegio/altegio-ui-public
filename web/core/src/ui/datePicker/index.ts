@@ -1,1 +1,1 @@
-export { YCoreDatePicker } from './DatePicker.core'
+export { AltCoreDatePicker } from './DatePicker.core'

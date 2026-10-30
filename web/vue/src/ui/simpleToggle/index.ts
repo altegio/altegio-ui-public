@@ -1,2 +1,2 @@
-export { default as YSimpleToggle } from './SimpleToggle.vue'
+export { default as AltSimpleToggle } from './SimpleToggle.vue'
 export type * from './models/types'

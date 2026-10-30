@@ -4,13 +4,13 @@ import { omit } from 'radash'
 
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { getComponentContentTable } from '~shared/.storybook/tables'
-import yCoreRadioButtonStoryMeta, {
-  type IYCoreRadioButtonStoryProps,
+import altCoreRadioButtonStoryMeta, {
+  type IAltCoreRadioButtonStoryProps,
 } from '~core/ui/radioButton/stories/RadioButton.stories'
-import { YRadioButton } from '~vue/ui/radioButton'
-import { type IYVueRadioButtonProps } from '~vue/ui/radioButton/models/types'
+import { AltRadioButton } from '~vue/ui/radioButton'
+import { type IAltVueRadioButtonProps } from '~vue/ui/radioButton/models/types'
 
-type TVueRadioButtonStoryMeta = IYVueRadioButtonProps & IYCoreRadioButtonStoryProps
+type TVueRadioButtonStoryMeta = IAltVueRadioButtonProps & IAltCoreRadioButtonStoryProps
 
 /**
  * Vue wrapper for Core RadioButton
@@ -24,7 +24,7 @@ const meta: Meta<TVueRadioButtonStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YRadioButton },
+    components: { AltRadioButton },
     setup() {
       const computedLabelText = computed(() => args.isLongText ? LOREM_IPSUM : String(args.labelText))
       const computedlabelTooltipText = computed(() => args.isLongText ? LOREM_IPSUM : String(args.labelTooltipText))
@@ -40,7 +40,7 @@ const meta: Meta<TVueRadioButtonStoryMeta> = {
       }
     },
     template: `
-      <YRadioButton
+      <AltRadioButton
         v-bind="args"
         v-model="args.modelValue"
         :label-text="computedLabelText"
@@ -58,12 +58,12 @@ const meta: Meta<TVueRadioButtonStoryMeta> = {
         <template #tooltip-content>
           <span>{{args.tooltipContentSlot}}</span>
         </template>
-      </YRadioButton>
+      </AltRadioButton>
     `,
   }),
   argTypes: {
     ...omit(
-      yCoreRadioButtonStoryMeta.argTypes ?? {},
+      altCoreRadioButtonStoryMeta.argTypes ?? {},
       ['checked'],
     ),
     modelValue: {
@@ -75,7 +75,7 @@ const meta: Meta<TVueRadioButtonStoryMeta> = {
   },
   args: {
     ...omit(
-      yCoreRadioButtonStoryMeta.args ?? {},
+      altCoreRadioButtonStoryMeta.args ?? {},
       ['checked'],
     ),
     modelValue: false,

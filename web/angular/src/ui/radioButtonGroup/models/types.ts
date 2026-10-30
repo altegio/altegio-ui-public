@@ -1,12 +1,12 @@
-import type { IYCoreRadioButtonGroupChangeEvent } from '~core/ui/radioButtonGroup/models/types'
+import type { IAltCoreRadioButtonGroupChangeEvent } from '~core/ui/radioButtonGroup/models/types'
 import {
   createCoreRadioButtonGroupProps,
-  type IYCoreRadioButtonGroupProps,
+  type IAltCoreRadioButtonGroupProps,
 } from '~core/ui/radioButtonGroup/models/types'
 
-export interface IYNgRadioButtonGroupProps extends IYCoreRadioButtonGroupProps {}
+export interface IAltNgRadioButtonGroupProps extends IAltCoreRadioButtonGroupProps {}
 
 export { RadioButtonGroupChangeEvent } from '~core/ui/radioButtonGroup/models/types'
-export type TYNgRadioButtonGroupEvents = IYCoreRadioButtonGroupChangeEvent
+export type TAltNgRadioButtonGroupEvents = IAltCoreRadioButtonGroupChangeEvent
 
-export const createNgRadioButtonGroupProps = (): IYNgRadioButtonGroupProps => createCoreRadioButtonGroupProps()
+export const createNgRadioButtonGroupProps = (): IAltNgRadioButtonGroupProps => createCoreRadioButtonGroupProps()

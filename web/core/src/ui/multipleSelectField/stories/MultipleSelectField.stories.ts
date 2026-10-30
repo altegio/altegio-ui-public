@@ -4,13 +4,13 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 import '~core/ui/multipleSelectField'
 
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import yCoreSelectFieldStoryMeta, { type TYCoreSelectFieldStoryMeta } from '~core/ui/selectField/stories/SelectField.stories'
+import altCoreSelectFieldStoryMeta, { type TAltCoreSelectFieldStoryMeta } from '~core/ui/selectField/stories/SelectField.stories'
 
 import {
-  type IYCoreMultipleSelectFieldProps,
+  type IAltCoreMultipleSelectFieldProps,
 } from '~core/ui/multipleSelectField/models/types'
 
-import { YCoreMultipleSelectFieldTagName as tagName } from '~shared/constants'
+import { AltCoreMultipleSelectFieldTagName as tagName } from '~shared/constants'
 
 import { getComponentStateTable } from '~shared/.storybook/tables'
 
@@ -21,16 +21,16 @@ type TMultipleSelectFieldWithSlots = {
 }
 
 export interface ICoreMultipleSelectFieldStoryProps extends
-  IYCoreMultipleSelectFieldProps {}
+  IAltCoreMultipleSelectFieldProps {}
 
-export type TYCoreMultipleSelectFieldStoryMeta = IYCoreMultipleSelectFieldProps & ICoreMultipleSelectFieldStoryProps & TYCoreSelectFieldStoryMeta & TMultipleSelectFieldWithSlots
+export type TAltCoreMultipleSelectFieldStoryMeta = IAltCoreMultipleSelectFieldProps & ICoreMultipleSelectFieldStoryProps & TAltCoreSelectFieldStoryMeta & TMultipleSelectFieldWithSlots
 
 /**
  * ## Core MultipleSelectField
  * A field for selecting one or more values from a dropdown. Click to open the available options.
  *
  */
-const meta: Meta<TYCoreMultipleSelectFieldStoryMeta> = {
+const meta: Meta<TAltCoreMultipleSelectFieldStoryMeta> = {
   title: 'Inputs/✅ MultipleSelectField',
   id: 'multipleSelectField',
   parameters: { controls: { sort: 'alpha' } },
@@ -71,7 +71,7 @@ const meta: Meta<TYCoreMultipleSelectFieldStoryMeta> = {
     onBlur,
   }) => html`
     <div style="padding: 50px 50px 300px; margin: 20px; border: 1px dashed black; border-radius: 8px">
-      <y-core-multiple-select-field
+      <alt-core-multiple-select-field
         .value=${value}
         .filterValue=${filterValue}
         .labelText=${isLongText ? LOREM_IPSUM : labelText}
@@ -119,12 +119,12 @@ const meta: Meta<TYCoreMultipleSelectFieldStoryMeta> = {
             `
           : nothing
         }
-      </y-core-multiple-select-field>
+      </alt-core-multiple-select-field>
       
     </div>
   `,
   argTypes: {
-    ...yCoreSelectFieldStoryMeta.argTypes ?? {},
+    ...altCoreSelectFieldStoryMeta.argTypes ?? {},
     value: {
       control: { type: 'object' },
       description: 'Selected values from the items list',
@@ -132,16 +132,16 @@ const meta: Meta<TYCoreMultipleSelectFieldStoryMeta> = {
     },
   },
   args: {
-    ...yCoreSelectFieldStoryMeta.args ?? {},
+    ...altCoreSelectFieldStoryMeta.args ?? {},
     value: [
-      yCoreSelectFieldStoryMeta.args?.items?.[1],
-      yCoreSelectFieldStoryMeta.args?.items?.[2],
+      altCoreSelectFieldStoryMeta.args?.items?.[1],
+      altCoreSelectFieldStoryMeta.args?.items?.[2],
     ],
   },
-} satisfies Meta<TYCoreMultipleSelectFieldStoryMeta>
+} satisfies Meta<TAltCoreMultipleSelectFieldStoryMeta>
 
 export default meta
-type Story = StoryObj<TYCoreMultipleSelectFieldStoryMeta>
+type Story = StoryObj<TAltCoreMultipleSelectFieldStoryMeta>
 
 export const Default: Story = {
   args: {},

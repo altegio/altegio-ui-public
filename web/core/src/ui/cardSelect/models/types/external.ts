@@ -1,13 +1,13 @@
-import { type IYCoreCardWrapperProps, createCoreCardWrapperProps } from '~core/ui/cardWrapper/models/types'
-import { type IYCoreCardHeaderProps, createCoreCardHeaderProps } from '~core/ui/cardHeader/models/types'
+import { type IAltCoreCardWrapperProps, createCoreCardWrapperProps } from '~core/ui/cardWrapper/models/types'
+import { type IAltCoreCardHeaderProps, createCoreCardHeaderProps } from '~core/ui/cardHeader/models/types'
 
-export interface IYCoreCardSelectExternalProps
-  extends IYCoreCardWrapperProps,
-  IYCoreCardHeaderProps {
+export interface IAltCoreCardSelectExternalProps
+  extends IAltCoreCardWrapperProps,
+  IAltCoreCardHeaderProps {
   annotation: string | undefined
 }
 
-export const createCoreCardSelectExternalProps = (): IYCoreCardSelectExternalProps => ({
+export const createCoreCardSelectExternalProps = (): IAltCoreCardSelectExternalProps => ({
   ...createCoreCardWrapperProps(),
   ...createCoreCardHeaderProps(),
   annotation: undefined,

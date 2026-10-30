@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import type { IYVueTabProps } from '~vue/ui/tab'
-import { YTab } from '~vue/ui/tab'
-import { YIcon } from '~vue/ui/icon'
-import { YTag } from '~vue/ui/tag'
-import yCoreTabStoryMeta from '~core/ui/tab/stories/Tab.stories.ts'
-import { EYCoreTagVariant } from '~core/ui/tag/models/types'
-import { EYSizes } from '~shared/types/global.ts'
-import { yAi } from '~shared/icons'
+import type { IAltVueTabProps } from '~vue/ui/tab'
+import { AltTab } from '~vue/ui/tab'
+import { AltIcon } from '~vue/ui/icon'
+import { AltTag } from '~vue/ui/tag'
+import altCoreTabStoryMeta from '~core/ui/tab/stories/Tab.stories.ts'
+import { EAltCoreTagVariant } from '~core/ui/tag/models/types'
+import { EAltSizes } from '~shared/types/global.ts'
+import { altAi } from '~shared/icons'
 
 /**
  * Vue wrapper for Core Tab
  */
-const meta: Meta<IYVueTabProps> = {
+const meta: Meta<IAltVueTabProps> = {
   title: '✅ Tab',
   id: 'tab',
   parameters: { controls: { sort: 'alpha' } },
@@ -21,24 +21,24 @@ const meta: Meta<IYVueTabProps> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YTab, YIcon, YTag },
+    components: { AltTab, AltIcon, AltTag },
     setup() {
-      return { args, yAi, EYCoreTagVariant, EYSizes }
+      return { args, altAi, EAltCoreTagVariant, EAltSizes }
     },
     template: `
-      <YTab v-bind="args">
+      <AltTab v-bind="args">
         <template v-if="args.showBeforeSlot" #before>
-          <y-icon :icon="yAi" size="16px"></y-icon>
+          <alt-icon :icon="altAi" size="16px"></alt-icon>
         </template>
 
         <template v-if="args.showAfterSlot" #after>
-          <y-tag :variant="EYCoreTagVariant.ACCENT" :size="EYSizes.SMALL">Slot Tag</y-tag>
+          <alt-tag :variant="EAltCoreTagVariant.ACCENT" :size="EAltSizes.SMALL">Slot Tag</alt-tag>
         </template>
-      </YTab>
+      </AltTab>
     `,
   }),
-  argTypes: { ...yCoreTabStoryMeta.argTypes },
-  args: { ...yCoreTabStoryMeta.args },
+  argTypes: { ...altCoreTabStoryMeta.argTypes },
+  args: { ...altCoreTabStoryMeta.args },
 }
 
 export default meta

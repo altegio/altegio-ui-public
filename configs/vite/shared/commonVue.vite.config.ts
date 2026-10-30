@@ -19,7 +19,7 @@ export default defineConfig(
         template: {
           compilerOptions: {
             isCustomElement: (tag) => {
-              return tag.startsWith(`${prefix}-`)
+              return tag.startsWith(`${prefix}-core-`)
             }
           }
         }

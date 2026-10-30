@@ -6,18 +6,18 @@ import { ifDefined } from 'lit/directives/if-defined.js'
 
 import {
   createCoreLabelProps,
-  type IYCoreLabelProps,
+  type IAltCoreLabelProps,
 } from '~core/ui/label/models/types'
-import { YCoreLabelTagName as tagName, YCoreTextTagName, YCoreTooltipTagName } from '~shared/constants'
+import { AltCoreLabelTagName as tagName, AltCoreTextTagName, AltCoreTooltipTagName } from '~shared/constants'
 
-import { EYCoreTextVariant } from '~core/ui/text/models/types/external'
-import YCoreLabelScopedCss from '~core/ui/label/css/Label.scoped.css?inline'
-import YCoreLabelVarsCss from '~core/ui/label/css/Label.vars.css?inline'
+import { EAltCoreTextVariant } from '~core/ui/text/models/types/external'
+import AltCoreLabelScopedCss from '~core/ui/label/css/Label.scoped.css?inline'
+import AltCoreLabelVarsCss from '~core/ui/label/css/Label.vars.css?inline'
 
 import { renderIcon } from '~core/renderers'
 import '~core/ui/tooltip'
 import '~core/ui/text'
-import { yInfo } from '~shared/icons'
+import { altInfo } from '~shared/icons'
 import { EventListenersList } from '~shared/utils'
 import type { TDispatcher } from '~core/utils/event-decorator'
 import { bubblingEvent } from '~core/utils/event-decorator'
@@ -26,27 +26,27 @@ import { hasSlotContent } from '~core/utils/lit-slots'
 
 import { debounce as debounceUtil } from 'radash'
 import { defineCustomElement } from '~web/shared/utils/components'
-import { YCoreText } from '~core/ui/text'
-import { YCoreTooltip } from '~core/ui/tooltip'
+import { AltCoreText } from '~core/ui/text'
+import { AltCoreTooltip } from '~core/ui/tooltip'
 import { withLocator } from '~core/utils/locator'
 
 const { text, tooltipText, disabled, required, debounce, alignment, tooltipActive, wrap, size, variant, tooltipPlacement, locator } = createCoreLabelProps()
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreLabel extends LitElement implements IYCoreLabelProps {
-  @property({ type: String }) text: IYCoreLabelProps['text'] = text
-  @property({ type: String, attribute: 'tooltip-text' }) tooltipText: IYCoreLabelProps['tooltipText'] = tooltipText
-  @property({ type: Boolean, reflect: true, attribute: 'tooltip-active' }) tooltipActive: IYCoreLabelProps['tooltipActive'] = tooltipActive
-  @property({ type: Boolean }) disabled: IYCoreLabelProps['disabled'] = disabled
-  @property({ type: Boolean, reflect: true }) required: IYCoreLabelProps['required'] = required
-  @property({ type: Number }) debounce: IYCoreLabelProps['debounce'] = debounce
-  @property({ type: Boolean, reflect: true }) wrap: IYCoreLabelProps['wrap'] = wrap
-  @property({ type: String, reflect: true }) alignment: IYCoreLabelProps['alignment'] = alignment
-  @property({ type: String, reflect: true }) size: IYCoreLabelProps['size'] = size
-  @property({ type: String, reflect: true }) variant: IYCoreLabelProps['variant'] = variant
-  @property({ type: String, reflect: true, attribute: 'tooltip-placement' }) tooltipPlacement: IYCoreLabelProps['tooltipPlacement'] = tooltipPlacement
-  @property({ type: String }) locator: IYCoreLabelProps['locator'] = locator
+export class AltCoreLabel extends LitElement implements IAltCoreLabelProps {
+  @property({ type: String }) text: IAltCoreLabelProps['text'] = text
+  @property({ type: String, attribute: 'tooltip-text' }) tooltipText: IAltCoreLabelProps['tooltipText'] = tooltipText
+  @property({ type: Boolean, reflect: true, attribute: 'tooltip-active' }) tooltipActive: IAltCoreLabelProps['tooltipActive'] = tooltipActive
+  @property({ type: Boolean }) disabled: IAltCoreLabelProps['disabled'] = disabled
+  @property({ type: Boolean, reflect: true }) required: IAltCoreLabelProps['required'] = required
+  @property({ type: Number }) debounce: IAltCoreLabelProps['debounce'] = debounce
+  @property({ type: Boolean, reflect: true }) wrap: IAltCoreLabelProps['wrap'] = wrap
+  @property({ type: String, reflect: true }) alignment: IAltCoreLabelProps['alignment'] = alignment
+  @property({ type: String, reflect: true }) size: IAltCoreLabelProps['size'] = size
+  @property({ type: String, reflect: true }) variant: IAltCoreLabelProps['variant'] = variant
+  @property({ type: String, reflect: true, attribute: 'tooltip-placement' }) tooltipPlacement: IAltCoreLabelProps['tooltipPlacement'] = tooltipPlacement
+  @property({ type: String }) locator: IAltCoreLabelProps['locator'] = locator
 
   @bubblingEvent(
     ContentMouseEnterEvent,
@@ -70,8 +70,8 @@ export class YCoreLabel extends LitElement implements IYCoreLabelProps {
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreLabelVarsCss)}
-      ${unsafeCSS(YCoreLabelScopedCss)}
+      ${unsafeCSS(AltCoreLabelVarsCss)}
+      ${unsafeCSS(AltCoreLabelScopedCss)}
     `,
   ]
 
@@ -164,9 +164,9 @@ export class YCoreLabel extends LitElement implements IYCoreLabelProps {
 
 
   protected firstUpdated(): void {
-    defineCustomElement(tagName, YCoreLabel)
-    defineCustomElement(YCoreTextTagName, YCoreText)
-    defineCustomElement(YCoreTooltipTagName, YCoreTooltip)
+    defineCustomElement(tagName, AltCoreLabel)
+    defineCustomElement(AltCoreTextTagName, AltCoreText)
+    defineCustomElement(AltCoreTooltipTagName, AltCoreTooltip)
   }
 
   disconnectedCallback() {
@@ -195,7 +195,7 @@ export class YCoreLabel extends LitElement implements IYCoreLabelProps {
 
   protected renderTooltip() {
     return html`
-      <y-core-tooltip
+      <alt-core-tooltip
         class=${classMap(this.computedTooltipClasses)}
         .text=${this.tooltipText}
         .disabled=${!this.tooltipActive}
@@ -203,20 +203,20 @@ export class YCoreLabel extends LitElement implements IYCoreLabelProps {
         @click=${this.handleTooltipClick}
       >
         <div slot="activator" class="${this.baseClass}__tooltip-activator">
-          ${renderIcon({ icon: yInfo, size: '16px', className: `${this.baseClass}__tooltip-icon` })}
+          ${renderIcon({ icon: altInfo, size: '16px', className: `${this.baseClass}__tooltip-icon` })}
         </div>
 
         ${this.renderTooltipContent()}
-      </y-core-tooltip>
+      </alt-core-tooltip>
     `
   }
 
   protected render() {
     return html`
-      <y-core-text
+      <alt-core-text
         class=${`${this.baseClass}__container`} 
         size=${ifDefined(this.size)}
-        variant=${ifDefined(this.disabled ? EYCoreTextVariant.TERTIARY : this.variant)}
+        variant=${ifDefined(this.disabled ? EAltCoreTextVariant.TERTIARY : this.variant)}
       >
         <div class=${classMap(this.computedClasses)}>
           <slot name="label">
@@ -236,7 +236,7 @@ export class YCoreLabel extends LitElement implements IYCoreLabelProps {
           
           ${this.renderTooltip()}
         </div>
-      </y-core-text>
+      </alt-core-text>
     `
   }
 }

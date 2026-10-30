@@ -1,9 +1,9 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
 import { text } from '~shared/tests/slotContents'
 import {
-  YCoreRadioButtonGroupTagName as tagName,
-  YCoreRadioButtonTagName,
-  YCoreLabelTagName,
+  AltCoreRadioButtonGroupTagName as tagName,
+  AltCoreRadioButtonTagName,
+  AltCoreLabelTagName,
 } from '~web/shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import {
@@ -21,7 +21,7 @@ import {
   propLabelTooltipTextTestCases,
   propDirectionTestCases,
 } from './cases/props'
-import type { /* YCoreRadioButton, */ YCoreLabel } from '~core/index'
+import type { /* AltCoreRadioButton, */ AltCoreLabel } from '~core/index'
 import { userEvent } from 'vitest/browser'
 
 const {
@@ -36,7 +36,7 @@ const {
 )
 
 const getRadioInLightDOM = () => {
-  return component.querySelectorAll(YCoreRadioButtonTagName)
+  return component.querySelectorAll(AltCoreRadioButtonTagName)
 }
 
 const getRootElement = () => {
@@ -54,15 +54,15 @@ const getLocalShadowElement = (selector: string) => {
   )
 }
 
-const getLabelElement = () => getLocalShadowElement(YCoreLabelTagName) as YCoreLabel | undefined
+const getLabelElement = () => getLocalShadowElement(AltCoreLabelTagName) as AltCoreLabel | undefined
 
 const radioButtonsSlot = [
-  `<${YCoreRadioButtonTagName} value="1" label-text="Radio 1"></${YCoreRadioButtonTagName}>`,
-  `<${YCoreRadioButtonTagName} value="2" label-text="Radio 2"></${YCoreRadioButtonTagName}>`,
-  `<${YCoreRadioButtonTagName} value="3" label-text="Radio 3"></${YCoreRadioButtonTagName}>`,
+  `<${AltCoreRadioButtonTagName} value="1" label-text="Radio 1"></${AltCoreRadioButtonTagName}>`,
+  `<${AltCoreRadioButtonTagName} value="2" label-text="Radio 2"></${AltCoreRadioButtonTagName}>`,
+  `<${AltCoreRadioButtonTagName} value="3" label-text="Radio 3"></${AltCoreRadioButtonTagName}>`,
 ].join('\n')
 
-describe('Core/YCoreRadioButtonGroup/Unit', () => {
+describe('Core/AltCoreRadioButtonGroup/Unit', () => {
   beforeAll(() => {
     injectComponentToBody()
   })

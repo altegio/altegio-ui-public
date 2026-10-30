@@ -2,11 +2,11 @@ import { ComponentTemplates } from './componentTemplates'
 
 export class CoreComponentTemplates extends ComponentTemplates {
   createTagNameTemplate() {
-    return `export const YCore${this.pascalComponentName}TagName = 'y-core-${this.dash(this.pascalComponentName)}'\n`
+    return `export const AltCore${this.pascalComponentName}TagName = 'alt-core-${this.dash(this.pascalComponentName)}'\n`
   }
 
   createIndexTemplate() {
-    return `export { YCore${this.pascalComponentName} } from './${this.pascal(this.options.name)}.core'\n`
+    return `export { AltCore${this.pascalComponentName} } from './${this.pascal(this.options.name)}.core'\n`
   }
 
   createComponentTemplate() {
@@ -16,31 +16,31 @@ import { classMap } from 'lit/directives/class-map.js'
 
 import {
   createCore${this.pascalComponentName}Props,
-  type IYCore${this.pascalComponentName}Props,
+  type IAltCore${this.pascalComponentName}Props,
 } from './models/types'
 import {
-  YCore${this.pascalComponentName}TagName as tagName,
+  AltCore${this.pascalComponentName}TagName as tagName,
 } from '~shared/constants'
 
 
-import Y${this.pascalComponentName}VarsCss from './css/${this.pascal(this.options.name)}.vars.css?inline'
-import Y${this.pascalComponentName}ScopedCss from './css/${this.pascal(this.options.name)}.scoped.css?inline'
+import Alt${this.pascalComponentName}VarsCss from './css/${this.pascal(this.options.name)}.vars.css?inline'
+import Alt${this.pascalComponentName}ScopedCss from './css/${this.pascal(this.options.name)}.scoped.css?inline'
 
 const { externalProp, internalProp } = createCore${this.pascalComponentName}Props()
 
 @customElement(tagName)
-export class YCore${this.pascalComponentName}
+export class AltCore${this.pascalComponentName}
   extends LitElement
-  implements IYCore${this.pascalComponentName}Props {
-  @property({ type: String, attribute: 'external-prop' }) externalProp: IYCore${this.pascalComponentName}Props['externalProp'] = externalProp
-  @property({ type: String, attribute: 'internal-prop' }) internalProp: IYCore${this.pascalComponentName}Props['internalProp'] = internalProp
+  implements IAltCore${this.pascalComponentName}Props {
+  @property({ type: String, attribute: 'external-prop' }) externalProp: IAltCore${this.pascalComponentName}Props['externalProp'] = externalProp
+  @property({ type: String, attribute: 'internal-prop' }) internalProp: IAltCore${this.pascalComponentName}Props['internalProp'] = internalProp
 
   private readonly baseClass = tagName
 
   static readonly styles = [
     css\`
-      \${unsafeCSS(Y${this.pascalComponentName}VarsCss)}
-      \${unsafeCSS(Y${this.pascalComponentName}ScopedCss)}
+      \${unsafeCSS(Alt${this.pascalComponentName}VarsCss)}
+      \${unsafeCSS(Alt${this.pascalComponentName}ScopedCss)}
     \`,
   ]
 
@@ -67,10 +67,10 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 
 import {
   createCore${this.pascalComponentName}Props,
-  type IYCore${this.pascalComponentName}Props,
+  type IAltCore${this.pascalComponentName}Props,
 } from '../models/types'
 import {
-  YCore${this.pascalComponentName}TagName as tagName,
+  AltCore${this.pascalComponentName}TagName as tagName,
 } from '~shared/constants'
 import '~${this.options.platform}/ui/${this.camelComponentName}'
 
@@ -79,7 +79,7 @@ const { externalProp, internalProp } = createCore${this.pascalComponentName}Prop
 /**
  * ## ${this.pascal(this.options.platform)}${this.pascalComponentName}
  */
-const meta: Meta<IYCore${this.pascalComponentName}Props> = {
+const meta: Meta<IAltCore${this.pascalComponentName}Props> = {
   title: '${this.pascalComponentName}',
   id: '${this.options.name}',
   parameters: { controls: { sort: 'alpha' } },
@@ -93,7 +93,7 @@ const meta: Meta<IYCore${this.pascalComponentName}Props> = {
     internalProp,
   }) => {
     return html\`
-      <y-core-${this.dash(this.pascalComponentName)}
+      <alt-core-${this.dash(this.pascalComponentName)}
         external-prop=\${ifDefined(externalProp)}
         internal-prop=\${ifDefined(internalProp)}
       >
@@ -104,7 +104,7 @@ const meta: Meta<IYCore${this.pascalComponentName}Props> = {
         <p>
           internalProp: \${internalProp}
         </p>
-      </y-core-${this.dash(this.pascalComponentName)}>
+      </alt-core-${this.dash(this.pascalComponentName)}>
     \`
   },
   argTypes: {
@@ -121,10 +121,10 @@ const meta: Meta<IYCore${this.pascalComponentName}Props> = {
     externalProp: externalProp,
     internalProp: internalProp,
   },
-} satisfies Meta<IYCore${this.pascalComponentName}Props>
+} satisfies Meta<IAltCore${this.pascalComponentName}Props>
 
 export default meta
-type Story = StoryObj<IYCore${this.pascalComponentName}Props>
+type Story = StoryObj<IAltCore${this.pascalComponentName}Props>
 
 export const Playground: Story = { args: {} }
 `
@@ -133,19 +133,19 @@ export const Playground: Story = { args: {} }
   createTypesTemplate() {
     return `import {
   createCore${this.pascalComponentName}ExternalProps,
-  type IYCore${this.pascalComponentName}ExternalProps,
+  type IAltCore${this.pascalComponentName}ExternalProps,
 } from './external'
 import {
   createCore${this.pascalComponentName}InternalProps,
-  type IYCore${this.pascalComponentName}InternalProps,
+  type IAltCore${this.pascalComponentName}InternalProps,
 } from './internal'
 
 export * from './external'
 export * from './internal'
 
-export interface IYCore${this.pascalComponentName}Props extends IYCore${this.pascalComponentName}ExternalProps, IYCore${this.pascalComponentName}InternalProps {}
+export interface IAltCore${this.pascalComponentName}Props extends IAltCore${this.pascalComponentName}ExternalProps, IAltCore${this.pascalComponentName}InternalProps {}
 
-export const createCore${this.pascalComponentName}Props = (): IYCore${this.pascalComponentName}Props => ({
+export const createCore${this.pascalComponentName}Props = (): IAltCore${this.pascalComponentName}Props => ({
   ...createCore${this.pascalComponentName}ExternalProps(),
   ...createCore${this.pascalComponentName}InternalProps(),
 })
@@ -160,53 +160,53 @@ export const createCore${this.pascalComponentName}Props = (): IYCore${this.pasca
     return `:host {
   /* General */
 
-  --y-core-${this.dash(this.pascalComponentName)}-display: block;
-  --y-core-${this.dash(this.pascalComponentName)}-color: var(--y-core-color-text-primary);
+  --alt-core-${this.dash(this.pascalComponentName)}-display: block;
+  --alt-core-${this.dash(this.pascalComponentName)}-color: var(--alt-core-color-text-primary);
 }
 `
   }
 
   createStyles() {
-    return `$component: $YCore${this.pascalComponentName}TagName;
+    return `$component: $AltCore${this.pascalComponentName}TagName;
 
 .$(component) {
-  display: var(--y-core-${this.dash(this.pascalComponentName)}-display);
-  font-family: var(--y-core-font-family);
+  display: var(--alt-core-${this.dash(this.pascalComponentName)}-display);
+  font-family: var(--alt-core-font-family);
 }
 `
   }
 
   createExternals() {
-    return `export interface IYCore${this.pascalComponentName}ExternalProps {
+    return `export interface IAltCore${this.pascalComponentName}ExternalProps {
   externalProp: string
 }
 
-export const createCore${this.pascalComponentName}ExternalProps = (): IYCore${this.pascalComponentName}ExternalProps => ({ externalProp: '' })
+export const createCore${this.pascalComponentName}ExternalProps = (): IAltCore${this.pascalComponentName}ExternalProps => ({ externalProp: '' })
 `
   }
 
   createInternals() {
-    return `export interface IYCore${this.pascalComponentName}InternalProps {
+    return `export interface IAltCore${this.pascalComponentName}InternalProps {
   internalProp: string
 }
 
-export const createCore${this.pascalComponentName}InternalProps = (): IYCore${this.pascalComponentName}InternalProps => ({ internalProp: '' })
+export const createCore${this.pascalComponentName}InternalProps = (): IAltCore${this.pascalComponentName}InternalProps => ({ internalProp: '' })
 `
   }
 
   createTestTemplate() {
     return `import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
-import { YCore${this.pascalComponentName}TagName } from '~shared/constants'
+import { AltCore${this.pascalComponentName}TagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import type { TSlotTestCase, TPropTestCase } from '~shared/types/tests'
 import { text, empty } from '~shared/tests/slotContents'
 import {
   createCore${this.pascalComponentName}Props,
-  type IYCore${this.pascalComponentName}Props,
+  type IAltCore${this.pascalComponentName}Props,
 } from '~core/ui/${this.camelComponentName}/models/types'
 import '~core/ui/${this.camelComponentName}'
 
-const tagName = YCore${this.pascalComponentName}TagName
+const tagName = AltCore${this.pascalComponentName}TagName
 
 const {
   component,
@@ -224,17 +224,17 @@ const slotDefaultTestCases: TSlotTestCase[] = [
   { slot: 'default', case: 'with content', content: text },
   { slot: 'default', case: 'without content', content: empty },
 ]
-const propExternalPropTestCases: TPropTestCase<IYCore${this.pascalComponentName}Props, 'externalProp'>[] = [
+const propExternalPropTestCases: TPropTestCase<IAltCore${this.pascalComponentName}Props, 'externalProp'>[] = [
   { prop: 'externalProp', case: 'with content', value: text },
   { prop: 'externalProp', case: 'without content', value: empty },
 ]
-const propInternalPropTestCases: TPropTestCase<IYCore${this.pascalComponentName}Props, 'internalProp'>[] = [
+const propInternalPropTestCases: TPropTestCase<IAltCore${this.pascalComponentName}Props, 'internalProp'>[] = [
   { prop: 'internalProp', case: 'with content', value: text },
   { prop: 'internalProp', case: 'without content', value: empty },
 ]
 
 describe(
-  'Core/Y${this.pascalComponentName}',
+  'Core/Alt${this.pascalComponentName}',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -319,14 +319,14 @@ describe(
 
 export const CSSVariablesHostToRootCases = [
   {
-    host: '--y-core-${this.dash(this.pascalComponentName)}-color',
-    root: '--y-core-color-text-primary',
+    host: '--alt-core-${this.dash(this.pascalComponentName)}-color',
+    root: '--alt-core-color-text-primary',
   },
 ]
 
 export const CSSVariablesHostToValueCases = [
   {
-    host: '--y-core-${this.dash(this.pascalComponentName)}-color',
+    host: '--alt-core-${this.dash(this.pascalComponentName)}-color',
     value: COLORS.text_primary.cssValue,
   },
 ]
@@ -338,7 +338,7 @@ export const CSSVariablesHostToValueCases = [
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCore${this.pascalComponentName}TagName } from '~shared/constants'
+import { AltCore${this.pascalComponentName}TagName } from '~shared/constants'
 import {
   createCore${this.pascalComponentName}Props,
 } from '~core/ui/${this.camelComponentName}/models/types'
@@ -348,7 +348,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/${this.camelComponentName}/tests/cases/css'
 
-const tagName = YCore${this.pascalComponentName}TagName
+const tagName = AltCore${this.pascalComponentName}TagName
 
 const {
   component,
@@ -359,7 +359,7 @@ const {
 )
 
 describe(
-  'Core/YCore${this.pascalComponentName}/CSS',
+  'Core/AltCore${this.pascalComponentName}/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

@@ -12,15 +12,15 @@ import {
   createButtonDropdownParameters,
   BUTTON_DROPDOWN_STORIES_CONFIG,
 } from '~core/ui/buttonDropdown/stories/ButtonDropdown.stories.utils'
-import yCoreButtonDropdownStoryMeta from '~core/ui/buttonDropdown/stories/ButtonDropdown.stories'
+import altCoreButtonDropdownStoryMeta from '~core/ui/buttonDropdown/stories/ButtonDropdown.stories'
 import type { VisibleEvent } from '~core/ui/buttonDropdown/models/types'
-import { EYCoreButtonDropdownIconTypes } from '~core/ui/buttonDropdown/models/types/internal'
-import { EYCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
+import { EAltCoreButtonDropdownIconTypes } from '~core/ui/buttonDropdown/models/types/internal'
+import { EAltCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
 
-import { YButtonDropdown } from '~vue/ui/buttonDropdown'
-import type { IYVueButtonDropdownProps } from '~vue/ui/buttonDropdown/models/types'
+import { AltButtonDropdown } from '~vue/ui/buttonDropdown'
+import type { IAltVueButtonDropdownProps } from '~vue/ui/buttonDropdown/models/types'
 
-type TVueButtonDropdownStoryMeta = IYVueButtonDropdownProps
+type TVueButtonDropdownStoryMeta = IAltVueButtonDropdownProps
 
 /**
  * Vue wrapper for Core ButtonDropdown
@@ -31,7 +31,7 @@ const meta: Meta<TVueButtonDropdownStoryMeta> = {
   parameters: createButtonDropdownParameters(EFrameworkName.VUE),
   tags: ['vue', 'autodocs'],
   render: (args) => {
-    const [, updateArgs] = useArgs<IYVueButtonDropdownProps>()
+    const [, updateArgs] = useArgs<IAltVueButtonDropdownProps>()
 
     const handleSetModelValue = (modelValue: VisibleEvent['detail']['value']) => {
       updateArgs({ modelValue })
@@ -39,7 +39,7 @@ const meta: Meta<TVueButtonDropdownStoryMeta> = {
     }
 
     return {
-      components: { YButtonDropdown },
+      components: { AltButtonDropdown },
       setup() {
         const vModelValue = computed({
           get: () => Boolean(args.modelValue),
@@ -50,7 +50,7 @@ const meta: Meta<TVueButtonDropdownStoryMeta> = {
       },
       template: `
         <div style="padding: 50px 50px 350px; margin: 20px; border: 1px dashed black; border-radius: 8px; overflow: auto">        
-        <YButtonDropdown
+        <AltButtonDropdown
             v-bind="args"
             v-model="vModelValue"
             :label="args.isLongText ? LOREM_IPSUM : args.label"
@@ -63,13 +63,13 @@ const meta: Meta<TVueButtonDropdownStoryMeta> = {
             <template v-if="args.showContentSlot" #content>
                 <p>ContentSlot</p>
             </template>
-          </YButtonDropdown>
+          </AltButtonDropdown>
         </div>
       `,
     }
   },
   argTypes: {
-    ...omit(yCoreButtonDropdownStoryMeta.argTypes ?? {}, ['isOpen']),
+    ...omit(altCoreButtonDropdownStoryMeta.argTypes ?? {}, ['isOpen']),
     modelValue: {
       type: 'boolean',
       description: 'Default v-model for the is-open value',
@@ -77,7 +77,7 @@ const meta: Meta<TVueButtonDropdownStoryMeta> = {
     },
   },
   args: {
-    ...omit(yCoreButtonDropdownStoryMeta.args ?? {}, ['isOpen']),
+    ...omit(altCoreButtonDropdownStoryMeta.args ?? {}, ['isOpen']),
     modelValue: false,
   },
 }
@@ -95,21 +95,21 @@ export const Variants: Story = {
   parameters: BUTTON_DROPDOWN_STORIES_CONFIG.Variants.parameters,
   args: BUTTON_DROPDOWN_STORIES_CONFIG.Variants.args,
   render: (args) => ({
-    components: { YButtonDropdown },
+    components: { AltButtonDropdown },
     setup() {
-      const variants = Object.values(EYCoreSimpleButtonVariant)
+      const variants = Object.values(EAltCoreSimpleButtonVariant)
       return { variants, items: args.items }
     },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YButtonDropdown
+        <AltButtonDropdown
           v-for="variant in variants" 
           :key="variant"
           :items="items"
           :variant="variant"
           :label="variant"
         >
-        </YButtonDropdown>
+        </AltButtonDropdown>
       </div>
     `,
   }),
@@ -119,7 +119,7 @@ export const Sizes: Story = {
   parameters: BUTTON_DROPDOWN_STORIES_CONFIG.Sizes.parameters,
   args: BUTTON_DROPDOWN_STORIES_CONFIG.Variants.args,
   render: (args) => ({
-    components: { YButtonDropdown },
+    components: { AltButtonDropdown },
     setup() {
       const sizes = ['small', 'medium', 'large'] as const
       return {
@@ -129,14 +129,14 @@ export const Sizes: Story = {
     },
     template: `
       <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-        <YButtonDropdown
+        <AltButtonDropdown
           v-for="size in sizes" 
           :key="size"
           :size="size"
           :items="items"
           :label="size"
         >
-        </YButtonDropdown>
+        </AltButtonDropdown>
       </div>
     `,
   }),
@@ -146,19 +146,19 @@ export const States: Story = {
   parameters: BUTTON_DROPDOWN_STORIES_CONFIG.States.parameters,
   args: BUTTON_DROPDOWN_STORIES_CONFIG.Variants.args,
   render: (args) => ({
-    components: { YButtonDropdown },
+    components: { AltButtonDropdown },
     setup() {
       return { items: args.items }
     },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YButtonDropdown :items="items" label="Default"></YButtonDropdown>
+        <AltButtonDropdown :items="items" label="Default"></AltButtonDropdown>
         
-        <YButtonDropdown :items="items" label="Disabled" :disabled="true"></YButtonDropdown>
+        <AltButtonDropdown :items="items" label="Disabled" :disabled="true"></AltButtonDropdown>
         
-        <YButtonDropdown :items="items" label="Loading" :loading="true"></YButtonDropdown>
+        <AltButtonDropdown :items="items" label="Loading" :loading="true"></AltButtonDropdown>
 
-        <YButtonDropdown :items="items" label="Open" :is-open="true"></YButtonDropdown>
+        <AltButtonDropdown :items="items" label="Open" :is-open="true"></AltButtonDropdown>
       </div>
     `,
   }),
@@ -168,23 +168,23 @@ export const IconType: Story = {
   parameters: BUTTON_DROPDOWN_STORIES_CONFIG.IconType.parameters,
   args: BUTTON_DROPDOWN_STORIES_CONFIG.IconType.args,
   render: (args) => ({
-    components: { YButtonDropdown },
+    components: { AltButtonDropdown },
     setup() {
-      return { items: args.items, label: args.label, EYCoreButtonDropdownIconTypes }
+      return { items: args.items, label: args.label, EAltCoreButtonDropdownIconTypes }
     },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YButtonDropdown
+        <AltButtonDropdown
           :items="items"
           :label="label"
-          :iconType="EYCoreButtonDropdownIconTypes.LEFT"
-        ></YButtonDropdown>
+          :iconType="EAltCoreButtonDropdownIconTypes.LEFT"
+        ></AltButtonDropdown>
 
-        <YButtonDropdown
+        <AltButtonDropdown
           :items="items"
           :label="label"
-          :iconType="EYCoreButtonDropdownIconTypes.RIGHT"
-        ></YButtonDropdown>
+          :iconType="EAltCoreButtonDropdownIconTypes.RIGHT"
+        ></AltButtonDropdown>
       </div>
     `,
   }),
@@ -194,17 +194,17 @@ export const FullWidth: Story = {
   parameters: BUTTON_DROPDOWN_STORIES_CONFIG.FullWidth.parameters,
   args: BUTTON_DROPDOWN_STORIES_CONFIG.FullWidth.args,
   render: (args) => ({
-    components: { YButtonDropdown },
+    components: { AltButtonDropdown },
     setup() {
       return { items: args.items }
     },
     template: `
       <div style="min-height: 100px;">
-        <YButtonDropdown
+        <AltButtonDropdown
           label="Full-width button"
           :fullWidth="true"
           :items="items"
-        ></YButtonDropdown>
+        ></AltButtonDropdown>
       </div>
     `,
   }),

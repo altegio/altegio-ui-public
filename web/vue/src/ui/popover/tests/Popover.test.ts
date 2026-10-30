@@ -1,10 +1,10 @@
 import { describe, expect, it, beforeAll, beforeEach, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { YCorePopoverTagName } from '~shared/constants'
+import { AltCorePopoverTagName } from '~shared/constants'
 
-import { YPopover } from '~vue/ui/popover'
-import { YCorePopover } from '~core/index'
+import { AltPopover } from '~vue/ui/popover'
+import { AltCorePopover } from '~core/index'
 import {
   slotActivatorTestCases,
   slotContentTestCases,
@@ -22,16 +22,16 @@ import {
   propCancelTextTestCases,
 } from './cases/props'
 
-const tagName = YCorePopoverTagName
+const tagName = AltCorePopoverTagName
 
 describe(
-  'Vue/YPopover',
+  'Vue/AltPopover',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCorePopover,
+          AltCorePopover,
         )
       }
     })
@@ -50,7 +50,7 @@ describe(
                 `Should render the ${testCase.slot} slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YPopover,
+                    AltPopover,
                     { slots: { [testCase.slot]: testCase.content } },
                   )
 
@@ -91,7 +91,7 @@ describe(
                 `Changing prop ${testCase.prop} should update the core component ${tagName} (${testCase.case})`,
                 () => {
                   const wrapper = mount(
-                    YPopover,
+                    AltPopover,
                     {
                       props: { [testCase.prop]: testCase.value },
                       attachTo: container,

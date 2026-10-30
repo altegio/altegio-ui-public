@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YCardRadio } from '~ng/ui/cardRadio'
-import yCardRadioStoryMeta from '~core/ui/cardRadio/stories/CardRadio.stories'
+import { AltCardRadio } from '~ng/ui/cardRadio'
+import altCardRadioStoryMeta from '~core/ui/cardRadio/stories/CardRadio.stories'
 
 /**
  * Angular wrapper for CardRadio
  */
-const meta: Meta<YCardRadio> = {
+const meta: Meta<AltCardRadio> = {
   title: 'Cards/Partials/✅ CardRadio',
   id: 'cardRadio',
   parameters: { controls: { sort: 'alpha' } },
-  component: YCardRadio,
+  component: AltCardRadio,
   tags: [
     'angular',
     'autodocs',
@@ -18,18 +18,18 @@ const meta: Meta<YCardRadio> = {
   render: (args) => ({
     props: { ...args },
     template: `
-      <YCardRadio
+      <AltCardRadio
         [disabled]="disabled"
         [size]="size"
         [checked]="checked"
         style="border: 1px dashed;width: min-content;display: inline-flex;"
-      ></YCardRadio>`,
+      ></AltCardRadio>`,
   }),
-  argTypes: { ...yCardRadioStoryMeta.argTypes },
-  args: { ...yCardRadioStoryMeta.args },
-} satisfies Meta<YCardRadio>
+  argTypes: { ...altCardRadioStoryMeta.argTypes },
+  args: { ...altCardRadioStoryMeta.args },
+} satisfies Meta<AltCardRadio>
 
 export default meta
-type Story = StoryObj<YCardRadio>
+type Story = StoryObj<AltCardRadio>
 
 export const Playground: Story = { args: {} }

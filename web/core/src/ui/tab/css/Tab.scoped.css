@@ -1,23 +1,23 @@
 
-$component: $YCoreTabTagName;
+$component: $AltCoreTabTagName;
 
 :host {
-  display: var(--y-tab-display);
+  display: var(--alt-tab-display);
 }
 
 .$(component) {
   position: relative;
-  display: var(--y-tab-display);
-  gap: var(--y-core-size-spacing-x);
+  display: var(--alt-tab-display);
+  gap: var(--alt-core-size-spacing-x);
   align-items: center;
   max-width: 100%;
-  padding: var(--y-core-size-spacing-3-x);
+  padding: var(--alt-core-size-spacing-3-x);
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
-    background-color: var(--y-core-color-surface-secondary-high);
+    background-color: var(--alt-core-color-surface-secondary-high);
   }
 
   &__text {
@@ -26,14 +26,14 @@ $component: $YCoreTabTagName;
   }
 
   &__left-icon {
-    color: var(--y-left-icon-color);
+    color: var(--alt-left-icon-color);
 
     &_active {
-      --y-left-icon-color: var(--y-core-color-icon-primary);
+      --alt-left-icon-color: var(--alt-core-color-icon-primary);
     }
 
     &_disabled  {
-      --y-left-icon-color: var(--y-core-color-icon-tertiary);
+      --alt-left-icon-color: var(--alt-core-color-icon-tertiary);
     }
   }
 
@@ -45,11 +45,11 @@ $component: $YCoreTabTagName;
     height: 4px;
 
     &_active {
-      background-color: var(--y-core-color-stroke-accent);
+      background-color: var(--alt-core-color-stroke-accent);
     }
 
     :has(&_active) &_disabled {
-      background-color: var(--y-core-color-calm-stroke-yellow-low);
+      background-color: var(--alt-core-color-calm-stroke-yellow-low);
     }
   }
 }

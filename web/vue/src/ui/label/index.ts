@@ -1,2 +1,2 @@
-export { default as YLabel } from './Label.vue'
+export { default as AltLabel } from './Label.vue'
 export type * from './models/types'

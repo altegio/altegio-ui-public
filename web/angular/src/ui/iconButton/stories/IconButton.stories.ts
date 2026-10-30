@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { action } from 'storybook/actions'
-import yCoreIconButtonStoryMeta from '~core/ui/iconButton/stories/IconButton.stories'
+import altCoreIconButtonStoryMeta from '~core/ui/iconButton/stories/IconButton.stories'
 
-import { YIconButton } from '~ng/ui/iconButton'
-import { EYCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
+import { AltIconButton } from '~ng/ui/iconButton'
+import { EAltCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
 
 
 import { createAngularIconButtonParameters, ICON_BUTTON_STORIES_CONFIG, iconButtonSizes, iconButtonIcons } from './IconButton.stories.utils'
@@ -11,11 +11,11 @@ import { createAngularIconButtonParameters, ICON_BUTTON_STORIES_CONFIG, iconButt
 
 const parameters = createAngularIconButtonParameters()
 
-const meta: Meta<YIconButton> = {
+const meta: Meta<AltIconButton> = {
   title: 'Buttons/🔍 IconButton',
   id: 'iconButton',
   parameters,
-  component: YIconButton,
+  component: AltIconButton,
   tags: [
     'angular',
     'autodocs',
@@ -27,7 +27,7 @@ const meta: Meta<YIconButton> = {
         onClick: action('click'),
       },
       template: `
-        <YIconButton
+        <AltIconButton
           [icon]="icon"
           [disabled]="disabled"
           [loading]="loading"
@@ -41,12 +41,12 @@ const meta: Meta<YIconButton> = {
       `,
     }
   },
-  argTypes: { ...yCoreIconButtonStoryMeta.argTypes },
-  args: { ...yCoreIconButtonStoryMeta.args },
+  argTypes: { ...altCoreIconButtonStoryMeta.argTypes },
+  args: { ...altCoreIconButtonStoryMeta.args },
 }
 
 export default meta
-type Story = StoryObj<YIconButton>
+type Story = StoryObj<AltIconButton>
 
 export const Playground: Story = { parameters: ICON_BUTTON_STORIES_CONFIG.Playground.parameters }
 
@@ -56,13 +56,13 @@ export const Variants: Story = {
     props: { iconButtonIcons },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YIconButton variant="primary" [icon]="iconButtonIcons.search"></YIconButton>
+        <AltIconButton variant="primary" [icon]="iconButtonIcons.search"></AltIconButton>
 
-        <YIconButton variant="outline" [icon]="iconButtonIcons.search"></YIconButton>
+        <AltIconButton variant="outline" [icon]="iconButtonIcons.search"></AltIconButton>
 
-        <YIconButton variant="outline-filled" [icon]="iconButtonIcons.search"></YIconButton>
+        <AltIconButton variant="outline-filled" [icon]="iconButtonIcons.search"></AltIconButton>
 
-        <YIconButton variant="text" [icon]="iconButtonIcons.search"></YIconButton>
+        <AltIconButton variant="text" [icon]="iconButtonIcons.search"></AltIconButton>
       </div>
     `,
   }),
@@ -77,7 +77,7 @@ export const Sizes: Story = {
         <div *ngFor="let size of iconButtonSizes" style="display: flex; gap: 8px; align-items: center;">
           <div style="width: 80px; font-weight: 500;">{{ size }}:</div>
 
-          <YIconButton [size]="size" [icon]="iconButtonIcons.search"></YIconButton>
+          <AltIconButton [size]="size" [icon]="iconButtonIcons.search"></AltIconButton>
         </div>
       </div>
     `,
@@ -90,11 +90,11 @@ export const States: Story = {
     props: { iconButtonIcons },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YIconButton [icon]="iconButtonIcons.search"></YIconButton>
+        <AltIconButton [icon]="iconButtonIcons.search"></AltIconButton>
 
-        <YIconButton [disabled]="true" [icon]="iconButtonIcons.search"></YIconButton>
+        <AltIconButton [disabled]="true" [icon]="iconButtonIcons.search"></AltIconButton>
 
-        <YIconButton [loading]="true" [icon]="iconButtonIcons.search"></YIconButton>
+        <AltIconButton [loading]="true" [icon]="iconButtonIcons.search"></AltIconButton>
       </div>
     `,
   }),
@@ -106,17 +106,17 @@ export const PseudoStates: Story = {
     props: { iconButtonIcons },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YIconButton [icon]="iconButtonIcons.search"></YIconButton>
+        <AltIconButton [icon]="iconButtonIcons.search"></AltIconButton>
 
-        <YIconButton
+        <AltIconButton
           [icon]="iconButtonIcons.search"
-          style="--y-core-simple-button-variant-primary-background-color: var(--y-core-simple-button-variant-primary-hover-background-color);"
-        ></YIconButton>
+          style="--alt-core-simple-button-variant-primary-background-color: var(--alt-core-simple-button-variant-primary-hover-background-color);"
+        ></AltIconButton>
 
-        <YIconButton
+        <AltIconButton
           [icon]="iconButtonIcons.search"
-          style="--y-core-simple-button-variant-primary-background-color: var(--y-core-simple-button-variant-primary-hover-background-color);"
-        ></YIconButton>
+          style="--alt-core-simple-button-variant-primary-background-color: var(--alt-core-simple-button-variant-primary-hover-background-color);"
+        ></AltIconButton>
       </div>
     `,
   }),
@@ -133,16 +133,16 @@ export const LinkMode: Story = {
     props: { iconButtonIcons },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YIconButton
+        <AltIconButton
           href="https://example.com"
           target="_blank"
           [icon]="iconButtonIcons.search"
-        ></YIconButton>
+        ></AltIconButton>
 
-        <YIconButton
+        <AltIconButton
           href="/internal-page"
           [icon]="iconButtonIcons.rocket"
-        ></YIconButton>
+        ></AltIconButton>
       </div>
     `,
   }),
@@ -151,7 +151,7 @@ export const LinkMode: Story = {
 export const ComplexDemo: Story = {
   parameters: ICON_BUTTON_STORIES_CONFIG.ComplexDemo.parameters,
   render: () => {
-    const variants = Object.values(EYCoreSimpleButtonVariant)
+    const variants = Object.values(EAltCoreSimpleButtonVariant)
     return {
       props: { variants, iconButtonIcons },
       template: `
@@ -159,15 +159,15 @@ export const ComplexDemo: Story = {
           <div *ngFor="let variant of variants" style="display: flex; gap: 8px; align-items: center;">
             <div style="width: 80px; font-weight: 500;">{{ variant }}:</div>
 
-            <YIconButton [variant]="variant" size="small" [icon]="iconButtonIcons.search"></YIconButton>
+            <AltIconButton [variant]="variant" size="small" [icon]="iconButtonIcons.search"></AltIconButton>
 
-            <YIconButton [variant]="variant" size="medium" [icon]="iconButtonIcons.rocket"></YIconButton>
+            <AltIconButton [variant]="variant" size="medium" [icon]="iconButtonIcons.rocket"></AltIconButton>
 
-            <YIconButton [variant]="variant" size="large" [icon]="iconButtonIcons.magic"></YIconButton>
+            <AltIconButton [variant]="variant" size="large" [icon]="iconButtonIcons.magic"></AltIconButton>
 
-            <YIconButton [variant]="variant" size="medium" [disabled]="true" [icon]="iconButtonIcons.info"></YIconButton>
+            <AltIconButton [variant]="variant" size="medium" [disabled]="true" [icon]="iconButtonIcons.info"></AltIconButton>
 
-            <YIconButton [variant]="variant" size="medium" [loading]="true" [icon]="iconButtonIcons.copy"></YIconButton>
+            <AltIconButton [variant]="variant" size="medium" [loading]="true" [icon]="iconButtonIcons.copy"></AltIconButton>
           </div>
         </div>
       `,

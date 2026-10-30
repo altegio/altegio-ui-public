@@ -4,7 +4,7 @@
   display: inline-flex;
 }
 
-$component: $YCoreCounterTagName;
+$component: $AltCoreCounterTagName;
 
 .$(component) {
   box-sizing: border-box;
@@ -15,62 +15,62 @@ $component: $YCoreCounterTagName;
   &_size {
     &_small {
       @mixin counter-size
-        --y-core-counter-size-small-height,
-        --y-core-counter-size-small-min-width,
-        --y-core-counter-size-small-min-height,
-        --y-core-counter-size-small-font-size,
-        --y-core-counter-size-small-line-height,
-        --y-core-counter-size-small-font-weight,
-        --y-core-counter-size-small-border-radius,
-        --y-core-counter-size-small-padding-y,
-        --y-core-counter-size-small-padding-x,
+        --alt-core-counter-size-small-height,
+        --alt-core-counter-size-small-min-width,
+        --alt-core-counter-size-small-min-height,
+        --alt-core-counter-size-small-font-size,
+        --alt-core-counter-size-small-line-height,
+        --alt-core-counter-size-small-font-weight,
+        --alt-core-counter-size-small-border-radius,
+        --alt-core-counter-size-small-padding-y,
+        --alt-core-counter-size-small-padding-x,
     }
 
     &_medium {
       @mixin counter-size
-        --y-core-counter-size-medium-height,
-        --y-core-counter-size-medium-min-width,
-        --y-core-counter-size-medium-min-height,
-        --y-core-counter-size-medium-font-size,
-        --y-core-counter-size-medium-line-height,
-        --y-core-counter-size-medium-font-weight,
-        --y-core-counter-size-medium-border-radius,
-        --y-core-counter-size-medium-padding-y,
-        --y-core-counter-size-medium-padding-x,
+        --alt-core-counter-size-medium-height,
+        --alt-core-counter-size-medium-min-width,
+        --alt-core-counter-size-medium-min-height,
+        --alt-core-counter-size-medium-font-size,
+        --alt-core-counter-size-medium-line-height,
+        --alt-core-counter-size-medium-font-weight,
+        --alt-core-counter-size-medium-border-radius,
+        --alt-core-counter-size-medium-padding-y,
+        --alt-core-counter-size-medium-padding-x,
     }
   }
 
   &_variant {
     &_primary {
       @mixin counter-variant
-        --y-core-counter-variant-primary-color,
-        --y-core-counter-variant-primary-background-color,
-        --y-core-counter-variant-primary-disabled-color,
-        --y-core-counter-variant-primary-disabled-background-color,
+        --alt-core-counter-variant-primary-color,
+        --alt-core-counter-variant-primary-background-color,
+        --alt-core-counter-variant-primary-disabled-color,
+        --alt-core-counter-variant-primary-disabled-background-color,
     }
 
    &_secondary {
       @mixin counter-variant
-        --y-core-counter-variant-secondary-color,
-        --y-core-counter-variant-secondary-background-color,
-        --y-core-counter-variant-secondary-disabled-color,
-        --y-core-counter-variant-secondary-disabled-background-color,
+        --alt-core-counter-variant-secondary-color,
+        --alt-core-counter-variant-secondary-background-color,
+        --alt-core-counter-variant-secondary-disabled-color,
+        --alt-core-counter-variant-secondary-disabled-background-color,
    }
    
    &_negative {
     @mixin counter-variant
-      --y-core-counter-variant-negative-color,
-      --y-core-counter-variant-negative-background-color,
-      --y-core-counter-variant-negative-disabled-color,
-      --y-core-counter-variant-negative-disabled-background-color,
+      --alt-core-counter-variant-negative-color,
+      --alt-core-counter-variant-negative-background-color,
+      --alt-core-counter-variant-negative-disabled-color,
+      --alt-core-counter-variant-negative-disabled-background-color,
    }
 
    &_other-invert {
      @mixin counter-variant
-       --y-core-counter-variant-other-invert-color,
-       --y-core-counter-variant-other-invert-background-color,
-       --y-core-counter-variant-other-invert-disabled-color,
-       --y-core-counter-variant-other-invert-disabled-background-color,
+       --alt-core-counter-variant-other-invert-color,
+       --alt-core-counter-variant-other-invert-background-color,
+       --alt-core-counter-variant-other-invert-disabled-color,
+       --alt-core-counter-variant-other-invert-disabled-background-color,
    }
   }
 }

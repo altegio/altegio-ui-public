@@ -1,18 +1,18 @@
 <template>
-  <y-core-button-group v-bind="props">
+  <alt-core-button-group v-bind="props">
     <slot />
-  </y-core-button-group>
+  </alt-core-button-group>
 </template>
 
 <script setup lang="ts">
-  import { createVueButtonGroupProps, type IYVueButtonGroupProps } from '~vue/ui/buttonGroup/models/types'
-  import type { IYCoreButtonGroupExternalProps } from '~core/ui/buttonGroup/models/types'
+  import { createVueButtonGroupProps, type IAltVueButtonGroupProps } from '~vue/ui/buttonGroup/models/types'
+  import type { IAltCoreButtonGroupExternalProps } from '~core/ui/buttonGroup/models/types'
 
-  defineOptions({ name: 'YButtonGroup' })
+  defineOptions({ name: 'AltButtonGroup' })
 
   const props = withDefaults(
-    defineProps<IYVueButtonGroupProps>(),
+    defineProps<IAltVueButtonGroupProps>(),
     createVueButtonGroupProps(),
-  ) satisfies IYCoreButtonGroupExternalProps
+  ) satisfies IAltCoreButtonGroupExternalProps
 
 </script>

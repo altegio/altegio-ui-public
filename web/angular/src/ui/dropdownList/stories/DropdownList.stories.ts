@@ -1,26 +1,26 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import { YDropdownList } from '~ng/ui/dropdownList'
-import yCoreDropdownListStoryMeta from '~core/ui/dropdownList/stories/DropdownList.stories'
+import { AltDropdownList } from '~ng/ui/dropdownList'
+import altCoreDropdownListStoryMeta from '~core/ui/dropdownList/stories/DropdownList.stories'
 import { action } from 'storybook/actions'
 import {
-  type YNgDropdownListItemClickEvent,
+  type AltNgDropdownListItemClickEvent,
 } from '~ng/ui/dropdownList/models/types'
 
 /**
  * Angular wrapper for Core DropdownList
  */
-const meta: Meta<YDropdownList> = {
+const meta: Meta<AltDropdownList> = {
   title: '✅ DropdownList',
   id: 'dropdownList',
   parameters: { controls: { sort: 'alpha' } },
-  component: YDropdownList,
+  component: AltDropdownList,
   tags: [
     'angular',
     'autodocs',
   ],
   render: (args) => {
     const handlers = {
-      onItemClick: (e: YNgDropdownListItemClickEvent) => {
+      onItemClick: (e: AltNgDropdownListItemClickEvent) => {
         action('itemClick')(e)
       },
     }
@@ -31,7 +31,7 @@ const meta: Meta<YDropdownList> = {
         ...handlers,
       },
       template: `
-        <YDropdownList
+        <AltDropdownList
           [items]="items"
           [itemLabel]="itemLabel"
           [minWidth]="minWidth"
@@ -55,14 +55,14 @@ const meta: Meta<YDropdownList> = {
               Bottom Slot
             </div>
           }
-        </YDropdownList>`,
+        </AltDropdownList>`,
     }
   },
-  argTypes: { ...yCoreDropdownListStoryMeta.argTypes },
-  args: { ...yCoreDropdownListStoryMeta.args },
-} satisfies Meta<YDropdownList>
+  argTypes: { ...altCoreDropdownListStoryMeta.argTypes },
+  args: { ...altCoreDropdownListStoryMeta.args },
+} satisfies Meta<AltDropdownList>
 
 export default meta
-type Story = StoryObj<YDropdownList>
+type Story = StoryObj<AltDropdownList>
 
 export const Playground: Story = { args: {} }

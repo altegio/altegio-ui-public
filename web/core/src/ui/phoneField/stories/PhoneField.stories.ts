@@ -11,22 +11,22 @@ import '~core/ui/button'
 
 import { addPrefixToObjectKeys } from '~shared/utils'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import yCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
-import yCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
-import yCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
-import yCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
-import yCoreErrorStoryMeta, { type IYCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
-import yCoreEmptyStateStoryMeta from '~core/ui/emptyState/stories/EmptyState.stories'
+import altCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
+import altCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
+import altCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
+import altCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
+import altCoreErrorStoryMeta, { type IAltCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
+import altCoreEmptyStateStoryMeta from '~core/ui/emptyState/stories/EmptyState.stories'
 
 import {
   type SelectOptionEvent,
-  type TYCorePhoneFieldAutocompleteOption,
-  type TYCorePhoneFieldEvents,
-  type IYCorePhoneFieldExternalProps,
+  type TAltCorePhoneFieldAutocompleteOption,
+  type TAltCorePhoneFieldEvents,
+  type IAltCorePhoneFieldExternalProps,
   type PhoneFieldChangeEvent, createCorePhoneFieldExternalProps,
 } from '~core/ui/phoneField/models/types'
 
-import { YCorePhoneFieldTagName as tagName } from '~shared/constants'
+import { AltCorePhoneFieldTagName as tagName } from '~shared/constants'
 import {
   getComponentContentTable,
   getComponentEmitsTable,
@@ -47,14 +47,14 @@ const autocompleteOptions = [
 ]
 
 export interface ICorePhoneFieldStoryProps extends
-  IYCoreErrorStoryProps {
+  IAltCoreErrorStoryProps {
   labelIsLongText: boolean
   annotationIsLongText: boolean
-  dropdownItems: TYCorePhoneFieldAutocompleteOption[]
+  dropdownItems: TAltCorePhoneFieldAutocompleteOption[]
   emptyStateIsActionsSlotExists: boolean
 }
 
-export type TYCorePhoneFieldStoryMeta = IYCorePhoneFieldExternalProps & ICorePhoneFieldStoryProps & TYCorePhoneFieldEvents
+export type TAltCorePhoneFieldStoryMeta = IAltCorePhoneFieldExternalProps & ICorePhoneFieldStoryProps & TAltCorePhoneFieldEvents
 
 const {
   minSearchLength,
@@ -71,7 +71,7 @@ const {
  * A masked phone number field that helps users enter numbers in the correct format.
  */
 
-const meta: Meta<TYCorePhoneFieldStoryMeta> = {
+const meta: Meta<TAltCorePhoneFieldStoryMeta> = {
   title: 'Inputs/🔍 PhoneField',
   id: 'phoneField',
   parameters: { controls: { sort: 'alpha' } },
@@ -115,7 +115,7 @@ const meta: Meta<TYCorePhoneFieldStoryMeta> = {
     const [
       args,
       updateArgs,
-    ] = useArgs<TYCorePhoneFieldStoryMeta>()
+    ] = useArgs<TAltCorePhoneFieldStoryMeta>()
 
     const onStoryChange = (event: PhoneFieldChangeEvent) => {
       updateArgs({ ...args, value: String(event.detail.phone) })
@@ -125,22 +125,22 @@ const meta: Meta<TYCorePhoneFieldStoryMeta> = {
     const renderEmptyStateActionsSlot = () => {
       return html`
         <div slot="actions">
-          <y-core-button
+          <alt-core-button
             label="Primary button"
             variant="primary"
-          ></y-core-button>
+          ></alt-core-button>
 
-          <y-core-button
+          <alt-core-button
             label="Secondary button"
             variant="outline"
-          ></y-core-button>
+          ></alt-core-button>
         </div>
       `
     }
 
     return html`
       <div style="padding: 50px 50px 300px; margin: 20px; border: 1px dashed black; border-radius: 8px;">
-        <y-core-phone-field
+        <alt-core-phone-field
           .value=${value}
           .labelText=${labelIsLongText ? LOREM_IPSUM : labelText}
           .labelTooltipText=${labelTooltipText}
@@ -186,19 +186,19 @@ const meta: Meta<TYCorePhoneFieldStoryMeta> = {
               </div>`
             : nothing
           }
-        </y-core-phone-field>
+        </alt-core-phone-field>
       </div>
     `
   },
   argTypes: {
     // Extended Props
-    ...omit(yCoreFieldWrapperStoryMeta.argTypes ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon', 'onClick', 'onClickOutside', 'onMouseEnter', 'onMouseLeave']),
-    ...omit(yCoreFieldInputStoryMeta.argTypes ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'maxlength', 'type', 'onRender', 'onInput', 'onKeydown']),
-    ...addPrefixToObjectKeys(omit(yCoreLabelStoryMeta.argTypes ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
-    ...addPrefixToObjectKeys(omit(yCoreAnnotationStoryMeta.argTypes ?? {}, ['disabled', 'isLongText']), 'annotation'),
-    ...addPrefixToObjectKeys(omit(yCoreEmptyStateStoryMeta.argTypes ?? {}, ['size']), 'emptyState'),
-    ...omit(yCoreErrorStoryMeta.argTypes ?? {}, ['isLongText']),
-    isLongText: yCoreLabelStoryMeta.argTypes?.isLongText,
+    ...omit(altCoreFieldWrapperStoryMeta.argTypes ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon', 'onClick', 'onClickOutside', 'onMouseEnter', 'onMouseLeave']),
+    ...omit(altCoreFieldInputStoryMeta.argTypes ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'maxlength', 'type', 'onRender', 'onInput', 'onKeydown']),
+    ...addPrefixToObjectKeys(omit(altCoreLabelStoryMeta.argTypes ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
+    ...addPrefixToObjectKeys(omit(altCoreAnnotationStoryMeta.argTypes ?? {}, ['disabled', 'isLongText']), 'annotation'),
+    ...addPrefixToObjectKeys(omit(altCoreEmptyStateStoryMeta.argTypes ?? {}, ['size']), 'emptyState'),
+    ...omit(altCoreErrorStoryMeta.argTypes ?? {}, ['isLongText']),
+    isLongText: altCoreLabelStoryMeta.argTypes?.isLongText,
 
     onSelectOption: {
       type: 'function',
@@ -262,13 +262,13 @@ const meta: Meta<TYCorePhoneFieldStoryMeta> = {
   },
   args: {
     // Extended Props
-    ...omit(yCoreFieldWrapperStoryMeta.args ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon', 'onClick', 'onClickOutside', 'onMouseEnter', 'onMouseLeave']),
-    ...omit(yCoreFieldInputStoryMeta.args ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'maxlength', 'type', 'onRender', 'onInput', 'onKeydown']),
-    ...addPrefixToObjectKeys(omit(yCoreLabelStoryMeta.args ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
-    ...addPrefixToObjectKeys(omit(yCoreAnnotationStoryMeta.args ?? {}, ['disabled', 'isLongText']), 'annotation'),
-    ...addPrefixToObjectKeys(omit(yCoreEmptyStateStoryMeta.args ?? {}, ['size']), 'emptyState'),
-    ...omit(yCoreErrorStoryMeta.args ?? {}, ['isLongText']),
-    isLongText: yCoreLabelStoryMeta.args?.isLongText,
+    ...omit(altCoreFieldWrapperStoryMeta.args ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon', 'onClick', 'onClickOutside', 'onMouseEnter', 'onMouseLeave']),
+    ...omit(altCoreFieldInputStoryMeta.args ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'maxlength', 'type', 'onRender', 'onInput', 'onKeydown']),
+    ...addPrefixToObjectKeys(omit(altCoreLabelStoryMeta.args ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
+    ...addPrefixToObjectKeys(omit(altCoreAnnotationStoryMeta.args ?? {}, ['disabled', 'isLongText']), 'annotation'),
+    ...addPrefixToObjectKeys(omit(altCoreEmptyStateStoryMeta.args ?? {}, ['size']), 'emptyState'),
+    ...omit(altCoreErrorStoryMeta.args ?? {}, ['isLongText']),
+    isLongText: altCoreLabelStoryMeta.args?.isLongText,
 
     dropdownItems: autocompleteOptions,
 
@@ -297,10 +297,10 @@ const meta: Meta<TYCorePhoneFieldStoryMeta> = {
     value: '',
     optionPhonePrivacyEnabled: false,
   },
-} satisfies Meta<TYCorePhoneFieldStoryMeta>
+} satisfies Meta<TAltCorePhoneFieldStoryMeta>
 
 export default meta
-type Story = StoryObj<TYCorePhoneFieldStoryMeta>
+type Story = StoryObj<TAltCorePhoneFieldStoryMeta>
 
 export const Default: Story = {
   args: {},

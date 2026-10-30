@@ -1,5 +1,5 @@
 <template>
-  <y-core-date-picker
+  <alt-core-date-picker
     v-bind="props"
     :date="modelValue"
     @pick="$emit('update:modelValue', $event.detail.value)"
@@ -10,17 +10,17 @@
   import '~core/ui/datePicker'
   import {
     createVueDatePickerProps,
-    type IYVueDatePickerProps,
-    type IYVueDatePickerEmits,
-    type IYVueCoreDatePickerProps,
+    type IAltVueDatePickerProps,
+    type IAltVueDatePickerEmits,
+    type IAltVueCoreDatePickerProps,
   } from '~vue/ui/datePicker/models/types'
 
-  defineOptions({ name: 'YDatePicker' })
+  defineOptions({ name: 'AltDatePicker' })
 
   const props = withDefaults(
-    defineProps<IYVueDatePickerProps>(),
+    defineProps<IAltVueDatePickerProps>(),
     createVueDatePickerProps(),
-  ) satisfies IYVueCoreDatePickerProps
+  ) satisfies IAltVueCoreDatePickerProps
 
-  defineEmits<IYVueDatePickerEmits>()
+  defineEmits<IAltVueDatePickerEmits>()
 </script>

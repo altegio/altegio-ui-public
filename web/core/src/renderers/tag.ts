@@ -1,10 +1,10 @@
 import { html, nothing } from 'lit'
 import { ifDefined } from 'lit/directives/if-defined.js'
-import type { IYCoreTagProps } from '~core/ui/tag/models/types'
+import type { IAltCoreTagProps } from '~core/ui/tag/models/types'
 
 import '~core/ui/tag'
 
-export interface IRenderTagOptions extends Partial<IYCoreTagProps> {
+export interface IRenderTagOptions extends Partial<IAltCoreTagProps> {
   text?: string
   className?: string
 }
@@ -16,7 +16,7 @@ export interface IRenderTagOptions extends Partial<IYCoreTagProps> {
 export default ({ text, className, ...props }: IRenderTagOptions) => {
   if (text || props.iconLeft) {
     return html`
-      <y-core-tag
+      <alt-core-tag
         .size=${props.size}
         .variant=${props.variant}
         .iconLeft=${props.iconLeft}
@@ -24,7 +24,7 @@ export default ({ text, className, ...props }: IRenderTagOptions) => {
         class=${ifDefined(className)}
       >
         ${text}
-      </y-core-tag>`
+      </alt-core-tag>`
   }
 
   return nothing

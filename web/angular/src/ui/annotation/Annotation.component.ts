@@ -1,18 +1,18 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core'
 
 import '~core/ui/annotation'
-import { createNgAnnotationProps, type IYNgAnnotationProps } from './models/types'
+import { createNgAnnotationProps, type IAltNgAnnotationProps } from './models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { cleanupInnerHTML } from '~shared/utils'
 
 const { text, disabled } = createNgAnnotationProps()
 
 @Component({
-  selector: 'YAnnotation',
+  selector: 'AltAnnotation',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-annotation
+    <alt-core-annotation
       [text]="text"
       [disabled]="disabled"
     >
@@ -28,12 +28,12 @@ const { text, disabled } = createNgAnnotationProps()
           [innerHTML]="cleanupHTML(annotation)"
         ></div>
       }
-    </y-core-annotation>
+    </alt-core-annotation>
   `,
 })
-export class YAnnotation implements IYNgAnnotationProps {
-  @Input() @DefaultValue(text) text: IYNgAnnotationProps['text'] = text
-  @Input() @DefaultValue(disabled) disabled: IYNgAnnotationProps['disabled'] = disabled
+export class AltAnnotation implements IAltNgAnnotationProps {
+  @Input() @DefaultValue(text) text: IAltNgAnnotationProps['text'] = text
+  @Input() @DefaultValue(disabled) disabled: IAltNgAnnotationProps['disabled'] = disabled
 
   protected cleanupHTML = cleanupInnerHTML
 }

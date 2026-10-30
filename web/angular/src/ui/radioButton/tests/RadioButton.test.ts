@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreRadioButtonTagName as tagName } from '~shared/constants'
-import { type IYNgRadioButtonProps } from '~ng/ui/radioButton/models/types'
-import { YRadioButton } from '~ng/ui/radioButton'
+import { AltCoreRadioButtonTagName as tagName } from '~shared/constants'
+import { type IAltNgRadioButtonProps } from '~ng/ui/radioButton/models/types'
+import { AltRadioButton } from '~ng/ui/radioButton'
 
 import {
   propRequiredTestCases,
@@ -18,16 +18,16 @@ import {
 } from './cases/props'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgRadioButtonProps>
+  props?: Partial<IAltNgRadioButtonProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YRadioButton] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltRadioButton] }).compileComponents()
 
   @Component({
     template: `
-      <YRadioButton
+      <AltRadioButton
         [labelText]="labelText"
         [labelTooltipText]="labelTooltipText"
         [annotationText]="annotationText"
@@ -39,7 +39,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
         [labelOverflowDebounce]="labelOverflowDebounce"
         [errors]="errors"
       />`,
-    imports: [YRadioButton],
+    imports: [AltRadioButton],
     standalone: true,
   })
   class TestComponent {
@@ -57,7 +57,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YRadioButton',
+  'Angular/AltRadioButton',
   () => {
     describe(
       'Props',

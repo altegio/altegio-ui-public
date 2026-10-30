@@ -1,3 +1,3 @@
-export interface IYCoreCollapseInternalProps {}
+export interface IAltCoreCollapseInternalProps {}
 
-export const createCoreCollapseInternalProps = (): IYCoreCollapseInternalProps => ({})
+export const createCoreCollapseInternalProps = (): IAltCoreCollapseInternalProps => ({})

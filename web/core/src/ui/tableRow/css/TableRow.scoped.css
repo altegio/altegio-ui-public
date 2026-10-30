@@ -1,4 +1,4 @@
-$component: $YCoreTableRowTagName;
+$component: $AltCoreTableRowTagName;
 
 :host {
   display: grid;

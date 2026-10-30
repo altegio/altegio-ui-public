@@ -1,4 +1,4 @@
-$component: $YCoreLabelTagName;
+$component: $AltCoreLabelTagName;
 
 :host {
   display: flex;
@@ -26,7 +26,7 @@ $component: $YCoreLabelTagName;
     cursor: not-allowed;
 
     .$(component)__tooltip {
-      color: var(--y-core-label-color-tooltip-disabled);
+      color: var(--alt-core-label-color-tooltip-disabled);
     }
   }
 
@@ -46,8 +46,8 @@ $component: $YCoreLabelTagName;
   }
 
   &__tooltip {
-    margin-left: var(--y-core-label-margin-left-tooltip);
-    color: var(--y-core-label-color-tooltip);
+    margin-left: var(--alt-core-label-margin-left-tooltip);
+    color: var(--alt-core-label-color-tooltip);
 
     &_hidden {
       display: none;

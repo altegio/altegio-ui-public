@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { action } from 'storybook/actions'
 
-import { YAutocompleteField } from '~ng/ui/autocompleteField'
-import yCoreAutocompleteFieldStoryMeta, { type TYCoreAutocompleteFieldStoryMeta } from '~core/ui/autocompleteField/stories/AutocompleteField.stories'
+import { AltAutocompleteField } from '~ng/ui/autocompleteField'
+import altCoreAutocompleteFieldStoryMeta, { type TAltCoreAutocompleteFieldStoryMeta } from '~core/ui/autocompleteField/stories/AutocompleteField.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import type { SelectOptionEvent, FocusEvent, BlurEvent, ChangeEvent } from '~core/ui/autocompleteField/models/types'
 import { useArgs } from 'storybook/preview-api'
@@ -10,11 +10,11 @@ import { useArgs } from 'storybook/preview-api'
 /**
  * Angular wrapper for Core AutocompleteField
  */
-const meta: Meta<TYCoreAutocompleteFieldStoryMeta> = {
+const meta: Meta<TAltCoreAutocompleteFieldStoryMeta> = {
   title: 'Inputs/⚙️ AutocompleteField',
   id: 'AutocompleteField',
   parameters: { controls: { sort: 'alpha' } },
-  component: YAutocompleteField,
+  component: AltAutocompleteField,
   tags: [
     'angular',
     'autodocs',
@@ -52,7 +52,7 @@ const meta: Meta<TYCoreAutocompleteFieldStoryMeta> = {
       },
       template: `
       <div style="padding: 50px 50px 300px; margin: 20px; border: 1px dashed black; border-radius: 8px;">
-        <YAutocompleteField
+        <AltAutocompleteField
           [value]="value"
           [name]="name"
           [placeholder]="placeholder"
@@ -80,19 +80,19 @@ const meta: Meta<TYCoreAutocompleteFieldStoryMeta> = {
           <div autocomplete-field-annotation>
             {{computedAnnotationText}}
           </div>
-        </YAutocompleteField>
+        </AltAutocompleteField>
       </div>
     `,
     }
   },
   argTypes: {
-    ...yCoreAutocompleteFieldStoryMeta.argTypes,
+    ...altCoreAutocompleteFieldStoryMeta.argTypes,
     searchFunction: { action: 'searchFunction' },
   },
-  args: { ...yCoreAutocompleteFieldStoryMeta.args },
-} satisfies Meta<TYCoreAutocompleteFieldStoryMeta>
+  args: { ...altCoreAutocompleteFieldStoryMeta.args },
+} satisfies Meta<TAltCoreAutocompleteFieldStoryMeta>
 
 export default meta
-type Story = StoryObj<TYCoreAutocompleteFieldStoryMeta>
+type Story = StoryObj<TAltCoreAutocompleteFieldStoryMeta>
 
 export const Playground: Story = { args: {} }

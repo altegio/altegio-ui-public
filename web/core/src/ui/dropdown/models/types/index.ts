@@ -1,18 +1,18 @@
 import {
   createCoreDropdownExternalProps,
-  type IYCoreDropdownExternalProps,
+  type IAltCoreDropdownExternalProps,
 } from './external'
 import {
   createCoreDropdownInternalProps,
-  type IYCoreDropdownInternalProps,
+  type IAltCoreDropdownInternalProps,
 } from './internal'
 
 export * from './external'
 export * from './internal'
 
-export interface IYCoreDropdownProps extends IYCoreDropdownExternalProps, IYCoreDropdownInternalProps {}
+export interface IAltCoreDropdownProps extends IAltCoreDropdownExternalProps, IAltCoreDropdownInternalProps {}
 
-export const createCoreDropdownProps = (): IYCoreDropdownProps => ({
+export const createCoreDropdownProps = (): IAltCoreDropdownProps => ({
   ...createCoreDropdownExternalProps(),
   ...createCoreDropdownInternalProps(),
 })

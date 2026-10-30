@@ -1,4 +1,4 @@
-$component: $YCoreCollapseTagName;
+$component: $AltCoreCollapseTagName;
 
 :host {
   display: block;
@@ -6,5 +6,5 @@ $component: $YCoreCollapseTagName;
 .$(component) {
   display: flex;
   flex-direction: column;
-  gap: var(--y-core-collapse-gap);
+  gap: var(--alt-core-collapse-gap);
 }

@@ -1,5 +1,5 @@
 <template>
-  <y-core-button
+  <alt-core-button
     v-bind="props"
     @click="$emit('click', $event)"
   />
@@ -9,17 +9,17 @@
   import '~core/ui/button'
   import {
     createVueButtonProps,
-    type IYVueButtonProps,
-    type IYVueButtonEmits,
-    type IYVueCoreButtonProps,
+    type IAltVueButtonProps,
+    type IAltVueButtonEmits,
+    type IAltVueCoreButtonProps,
   } from '~vue/ui/button/models/types'
 
-  defineOptions({ name: 'YButton' })
+  defineOptions({ name: 'AltButton' })
 
   const props = withDefaults(
-    defineProps<IYVueButtonProps>(),
+    defineProps<IAltVueButtonProps>(),
     createVueButtonProps(),
-  ) satisfies IYVueCoreButtonProps
+  ) satisfies IAltVueCoreButtonProps
 
-  defineEmits<IYVueButtonEmits>()
+  defineEmits<IAltVueButtonEmits>()
 </script>

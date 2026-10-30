@@ -3,10 +3,10 @@ import { Component } from '@angular/core'
 
 import { TestBed } from '~ng/tests/setup'
 
-import { YCoreButtonDropdownTagName } from '~shared/constants'
+import { AltCoreButtonDropdownTagName } from '~shared/constants'
 
-import { YButtonDropdown } from '~ng/ui/buttonDropdown'
-import type { IYNgButtonDropdownProps } from '~ng/ui/buttonDropdown/models/types'
+import { AltButtonDropdown } from '~ng/ui/buttonDropdown'
+import type { IAltNgButtonDropdownProps } from '~ng/ui/buttonDropdown/models/types'
 
 import {
   propItemsTestCases,
@@ -23,10 +23,10 @@ import {
   slotContentTestCases,
 } from './cases/slots'
 
-const tagName = YCoreButtonDropdownTagName
+const tagName = AltCoreButtonDropdownTagName
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgButtonDropdownProps>
+  props?: Partial<IAltNgButtonDropdownProps>
   slots?: {
     activator?: string
     content?: string
@@ -35,11 +35,11 @@ interface ICreateComponentArgs {
 
 const createComponent = async({ props, slots }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YButtonDropdown] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltButtonDropdown] }).compileComponents()
 
   @Component({
     template: `
-      <YButtonDropdown
+      <AltButtonDropdown
         [label]="label"
         [variant]="variant"
         [size]="size"
@@ -62,8 +62,8 @@ const createComponent = async({ props, slots }: ICreateComponentArgs) => {
             {{ contentSlot }}
           </div>
         }
-      </YButtonDropdown>`,
-    imports: [YButtonDropdown],
+      </AltButtonDropdown>`,
+    imports: [AltButtonDropdown],
     standalone: true,
   })
   class TestComponent {

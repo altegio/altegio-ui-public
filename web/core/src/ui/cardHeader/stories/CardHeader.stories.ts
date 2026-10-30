@@ -2,24 +2,24 @@ import { html } from 'lit'
 import { pick } from 'radash'
 import type { Meta, StoryObj } from '@storybook/web-components'
 
-import { createCoreCardHeaderProps, type IYCoreCardHeaderProps } from '~core/ui/cardHeader/models/types'
-import { YCoreCardHeaderTagName as tagName } from '~shared/constants'
+import { createCoreCardHeaderProps, type IAltCoreCardHeaderProps } from '~core/ui/cardHeader/models/types'
+import { AltCoreCardHeaderTagName as tagName } from '~shared/constants'
 import { getComponentContentTable } from '~shared/.storybook/tables'
 
-import yCoreCardWrapperStoryMeta from '~core/ui/cardWrapper/stories/CardWrapper.stories'
-import yCoreIconStoryMeta from '~core/ui/icon/stories/Icon.stories'
-import yCoreTagStoryMeta from '~core/ui/tag/stories/Tag.stories'
+import altCoreCardWrapperStoryMeta from '~core/ui/cardWrapper/stories/CardWrapper.stories'
+import altCoreIconStoryMeta from '~core/ui/icon/stories/Icon.stories'
+import altCoreTagStoryMeta from '~core/ui/tag/stories/Tag.stories'
 
 import '~core/ui/cardHeader'
 
 const { headerText, tagText } = createCoreCardHeaderProps()
 
-type IYCoreCardHeaderMeta = Meta<IYCoreCardHeaderProps>
+type IAltCoreCardHeaderMeta = Meta<IAltCoreCardHeaderProps>
 
 /**
  * ## Core CardHeader
  */
-const meta: IYCoreCardHeaderMeta = {
+const meta: IAltCoreCardHeaderMeta = {
   title: 'Cards/Partials/⚠️ CardHeader',
   id: 'cardHeader',
   parameters: { controls: { sort: 'alpha' } },
@@ -37,7 +37,7 @@ const meta: IYCoreCardHeaderMeta = {
     headerIcon,
   }) => {
     return html`
-      <y-core-card-header
+      <alt-core-card-header
         .disabled=${disabled}
         .size=${size}
         .headerText=${headerText}
@@ -46,11 +46,11 @@ const meta: IYCoreCardHeaderMeta = {
         .headerIcon=${headerIcon}
         style="border: 1px dashed; padding: 8px;"
       >
-      </y-core-card-header>
+      </alt-core-card-header>
     `
   },
   argTypes: {
-    ...pick(yCoreCardWrapperStoryMeta.argTypes ?? {}, ['disabled', 'size']),
+    ...pick(altCoreCardWrapperStoryMeta.argTypes ?? {}, ['disabled', 'size']),
     headerText: {
       type: 'string',
       description: 'Heading text',
@@ -61,8 +61,8 @@ const meta: IYCoreCardHeaderMeta = {
       description: 'Tag text',
       ...getComponentContentTable(tagText),
     },
-    tagVariant: yCoreTagStoryMeta.argTypes?.variant,
-    headerIcon: yCoreIconStoryMeta.argTypes?.icon,
+    tagVariant: altCoreTagStoryMeta.argTypes?.variant,
+    headerIcon: altCoreIconStoryMeta.argTypes?.icon,
   },
   args: {
     disabled: false,
@@ -72,9 +72,9 @@ const meta: IYCoreCardHeaderMeta = {
     tagVariant: 'accent',
     headerIcon: undefined,
   },
-} satisfies IYCoreCardHeaderMeta
+} satisfies IAltCoreCardHeaderMeta
 
 export default meta
-type Story = StoryObj<IYCoreCardHeaderProps>
+type Story = StoryObj<IAltCoreCardHeaderProps>
 
 export const Playground: Story = { args: {} }

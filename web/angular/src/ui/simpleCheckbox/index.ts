@@ -1,2 +1,2 @@
-export { YSimpleCheckbox } from './SimpleCheckbox.component'
+export { AltSimpleCheckbox } from './SimpleCheckbox.component'
 export type * from './models/types'

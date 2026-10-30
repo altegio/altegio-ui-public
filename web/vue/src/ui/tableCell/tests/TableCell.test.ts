@@ -1,9 +1,9 @@
 import { describe, expect, it, beforeAll, afterEach, afterAll } from 'vitest'
 
 import { useVueTests } from '~shared/tests/vue'
-import { YCoreTableCellTagName } from '~shared/constants'
-import { YTableCell } from '~vue/ui/tableCell'
-import { YCoreTableCell } from '~core/ui/tableCell'
+import { AltCoreTableCellTagName } from '~shared/constants'
+import { AltTableCell } from '~vue/ui/tableCell'
+import { AltCoreTableCell } from '~core/ui/tableCell'
 
 import {
   propStickyTestCases,
@@ -21,14 +21,14 @@ const {
   resetComponent,
   removeComponent,
   initCoreComponent,
-} = useVueTests(YTableCell)
+} = useVueTests(AltTableCell)
 
 
 describe(
-  'Vue/YTableCell',
+  'Vue/AltTableCell',
   () => {
     beforeAll(() => {
-      initCoreComponent(YCoreTableCellTagName, YCoreTableCell)
+      initCoreComponent(AltCoreTableCellTagName, AltCoreTableCell)
     })
 
     afterEach(async() => {
@@ -58,7 +58,7 @@ describe(
                 `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
-                  const coreElement = wrapper.find(YCoreTableCellTagName)
+                  const coreElement = wrapper.find(AltCoreTableCellTagName)
 
                   if (testCase.prop === 'item') {
                     expect(coreElement.element[testCase.prop]).toEqual(testCase.expected)

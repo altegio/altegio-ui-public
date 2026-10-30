@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 import { useArgs } from 'storybook/preview-api'
 import { action } from 'storybook/actions'
 
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import { getComponentContentTable, getComponentStateTable } from '~shared/.storybook/tables'
 import {
   active as activeArgType,
@@ -11,26 +11,26 @@ import {
 } from '~shared/.storybook/argTypes'
 
 import '~core/ui/chip'
-import { yInfo, yMagic } from '~shared/icons'
+import { altInfo, altMagic } from '~shared/icons'
 
 import {
-  YCoreChipTagName as tagName,
+  AltCoreChipTagName as tagName,
 } from '~shared/constants'
 
 import {
   createCoreChipProps,
-  type IYCoreChipProps,
+  type IAltCoreChipProps,
 } from '~core/ui/chip/models/types'
 
 const iconOptions = {
   'No icon': undefined,
-  info: yInfo,
-  magic: yMagic,
+  info: altInfo,
+  magic: altMagic,
 }
 
 const { labelText, size, active, disabled } = createCoreChipProps()
 
-type TChipStoryMeta = IYCoreChipProps & {
+type TChipStoryMeta = IAltCoreChipProps & {
   onClick: (event: Event) => void
 }
 
@@ -61,14 +61,14 @@ const meta: Meta<TChipStoryMeta> = {
     }
 
     return html`
-      <y-core-chip
+      <alt-core-chip
         .labelText=${labelText}
         .iconLeft=${iconLeft}
         .size=${size}
         .active=${active}
         .disabled=${disabled}
         @click=${handleClick}
-      ></y-core-chip>
+      ></alt-core-chip>
     `
   },
   argTypes: {
@@ -87,8 +87,8 @@ const meta: Meta<TChipStoryMeta> = {
     size: {
       control: 'select',
       options: [
-        EYSizes.SMALL,
-        EYSizes.LARGE,
+        EAltSizes.SMALL,
+        EAltSizes.LARGE,
       ],
       description: 'Chip size',
       ...getComponentStateTable(size),
@@ -108,11 +108,11 @@ const meta: Meta<TChipStoryMeta> = {
     labelText: 'Label',
     active: false,
     disabled: false,
-    iconLeft: yInfo,
+    iconLeft: altInfo,
   },
 } satisfies Meta<TChipStoryMeta>
 
 export default meta
-type Story = StoryObj<IYCoreChipProps>
+type Story = StoryObj<IAltCoreChipProps>
 
 export const Playground: Story = { args: {} }

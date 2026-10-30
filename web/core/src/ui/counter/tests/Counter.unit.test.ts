@@ -2,7 +2,7 @@ import { beforeAll, afterEach, describe, expect, it, afterAll } from 'vitest'
 import { getShadowRootElement, getElementClasses, getWCShadowRoot, trimTextContent } from '~shared/tests/utils'
 import { useCoreTests } from '~shared/tests/core'
 import { createCoreCounterProps } from '~core/ui/counter/models/types'
-import { YCoreCounterTagName } from '~shared/constants'
+import { AltCoreCounterTagName } from '~shared/constants'
 import '~core/ui/counter'
 
 import {
@@ -14,7 +14,7 @@ import {
   overflowedValueTestCases, propLocatorTestCases,
 } from './cases/props'
 
-const tagName = YCoreCounterTagName
+const tagName = AltCoreCounterTagName
 
 const {
   component,
@@ -35,7 +35,7 @@ const getRootElement = () => {
 }
 
 describe(
-  'Core/YCoreCounter/Unit',
+  'Core/AltCoreCounter/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()

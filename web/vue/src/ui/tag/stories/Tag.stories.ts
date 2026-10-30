@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YTag } from '~vue/ui/tag'
-import { type IYVueTagProps } from '~vue/ui/tag/models/types'
-import yCoreTagStoryMeta, {
-  type TYCoreTagMeta,
+import { AltTag } from '~vue/ui/tag'
+import { type IAltVueTagProps } from '~vue/ui/tag/models/types'
+import altCoreTagStoryMeta, {
+  type TAltCoreTagMeta,
 } from '~core/ui/tag/stories/Tag.stories'
 import { computed } from 'vue'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-type TVueTagStoryMeta = IYVueTagProps & TYCoreTagMeta
+type TVueTagStoryMeta = IAltVueTagProps & TAltCoreTagMeta
 
 /**
  * Vue wrapper for Core Tag
@@ -22,20 +22,20 @@ const meta: Meta<TVueTagStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YTag },
+    components: { AltTag },
     setup() {
       const computedText = computed(() => args.isLongText ? LOREM_IPSUM : args.text)
 
       return { args, computedText }
     },
     template: `
-      <YTag v-bind="args">
+      <AltTag v-bind="args">
         {{ computedText }}
-      </YTag>
+      </AltTag>
     `,
   }),
-  argTypes: { ...yCoreTagStoryMeta.argTypes },
-  args: { ...yCoreTagStoryMeta.args },
+  argTypes: { ...altCoreTagStoryMeta.argTypes },
+  args: { ...altCoreTagStoryMeta.args },
 }
 
 export default meta

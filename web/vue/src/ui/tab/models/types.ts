@@ -1,26 +1,26 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
-import type { IYCoreTabExternalProps } from '~core/ui/tab/models/types'
+import type { IAltCoreTabExternalProps } from '~core/ui/tab/models/types'
 import { createCoreTabExternalProps } from '~core/ui/tab/models/types'
 
-export interface IYVueCoreTabProps extends IYCoreTabExternalProps {}
+export interface IAltVueCoreTabProps extends IAltCoreTabExternalProps {}
 
-export interface IYVueTabProps {
-  tagVariant?: IYVueCoreTabProps['tagVariant']
-  counterValue?: IYVueCoreTabProps['counterValue']
-  leftIcon?: IYVueCoreTabProps['leftIcon']
-  leftIconSize?: IYVueCoreTabProps['leftIconSize']
-  text?: IYVueCoreTabProps['text']
-  active?: IYVueCoreTabProps['active']
-  disabled?: IYVueCoreTabProps['disabled']
-  isTagVisible?: IYVueCoreTabProps['isTagVisible']
-  tagText?: IYVueCoreTabProps['tagText']
-  isCounterVisible?: IYVueCoreTabProps['isCounterVisible']
-  locator?: IYVueCoreTabProps['locator']
-  locatorTag?: IYVueCoreTabProps['locatorTag']
-  locatorCounter?: IYVueCoreTabProps['locatorCounter']
+export interface IAltVueTabProps {
+  tagVariant?: IAltVueCoreTabProps['tagVariant']
+  counterValue?: IAltVueCoreTabProps['counterValue']
+  leftIcon?: IAltVueCoreTabProps['leftIcon']
+  leftIconSize?: IAltVueCoreTabProps['leftIconSize']
+  text?: IAltVueCoreTabProps['text']
+  active?: IAltVueCoreTabProps['active']
+  disabled?: IAltVueCoreTabProps['disabled']
+  isTagVisible?: IAltVueCoreTabProps['isTagVisible']
+  tagText?: IAltVueCoreTabProps['tagText']
+  isCounterVisible?: IAltVueCoreTabProps['isCounterVisible']
+  locator?: IAltVueCoreTabProps['locator']
+  locatorTag?: IAltVueCoreTabProps['locatorTag']
+  locatorCounter?: IAltVueCoreTabProps['locatorCounter']
 }
 
-export const createVueTabProps = (): TDefinedVueProps<IYVueTabProps> => {
+export const createVueTabProps = (): TDefinedVueProps<IAltVueTabProps> => {
   const {
     tagVariant,
     counterValue,

@@ -17,7 +17,7 @@ import { colorTokens, EColorTheme, EColorType, InputTransformersEvent, rawColorT
 import { generateTransformersFromJson } from '../context/utils/color'
 import { getColorType } from '../context/utils/wcag'
 
-const tagName = 'y-color-table'
+const tagName = 'alt-color-table'
 
 type TransformersExtension = {
   colorExpression: string
@@ -27,7 +27,7 @@ type TransformersExtension = {
 type TColorTokenTransformersRawExtended = TColorTokenTransformersRaw<TransformersExtension>
 
 @customElement(tagName)
-export class YColorTable extends LitElement {
+export class AltColorTable extends LitElement {
   @property({ type: String, attribute: 'accent-color' }) accentColor: string | null = null
   @property({ type: Boolean, attribute: 'use-dark-theme' }) useDarkTheme = false
   @property({ type: Object }) transformers: TColorTokenTransformersRaw | null = null
@@ -40,7 +40,7 @@ export class YColorTable extends LitElement {
 
   static readonly styles = [
     css`
-        y-core-table-row:nth-child(even) {
+        alt-core-table-row:nth-child(even) {
           background-color: #f4f4f4;
         }
         .row {
@@ -209,7 +209,7 @@ export class YColorTable extends LitElement {
 
   private getTransformedColor(colorToken: string): string {
     if (this.colorTokenTransformers !== null && this.colorTheme !== null && this.colorType !== null && this.hslaAccentColor !== null) {
-      const color = this.colorTokenTransformers[`--y-core-color-${colorToken}`][this.colorTheme][this.colorType](this.hslaAccentColor)
+      const color = this.colorTokenTransformers[`--alt-core-color-${colorToken}`][this.colorTheme][this.colorType](this.hslaAccentColor)
       return colord(color).toRgbString()
     }
     return ''
@@ -218,11 +218,11 @@ export class YColorTable extends LitElement {
   get tableHeaders() {
     return rawColorTypes.map((rawColorType) => {
       return html`
-            <y-core-table-head-cell>
+            <alt-core-table-head-cell>
                 <div slot="cell">
                     ${this.getRawColorTypeLabel(rawColorType)}
                 </div>
-            </y-core-table-head-cell>
+            </alt-core-table-head-cell>
         `
     })
   }
@@ -230,19 +230,19 @@ export class YColorTable extends LitElement {
   getTableColorColumns(colorToken: TColorToken, colorTheme: TColorThemeRaw) {
     return rawColorTypes.map((rawColorType) => {
       return html`
-            <y-core-table-cell>
+            <alt-core-table-cell>
                 <div slot="cell" class="color-cell">
                     ${this.extendedTransformers
                         ? html`
-                            <y-core-text-field
+                            <alt-core-text-field
                                 .value=${this.extendedTransformers[colorToken][colorTheme][rawColorType].colorExpression}
                                 .errors=${this.extendedTransformers[colorToken][colorTheme][rawColorType].error ? [this.extendedTransformers[colorToken][colorTheme][rawColorType].error] : []}
                                 @input=${(e: InputEvent) => { this.onInput(colorToken, colorTheme, rawColorType, e.detail.value) }}
-                            ></y-core-text-field>
+                            ></alt-core-text-field>
                         `
                     : ''}
                 </div>
-            </y-core-table-cell>
+            </alt-core-table-cell>
         `
     })
   }
@@ -250,42 +250,42 @@ export class YColorTable extends LitElement {
   get tableRows() {
     return colorTokens.map((colorToken) => {
       return html`
-            <y-core-table-row>
+            <alt-core-table-row>
                 <div class="row">
-                    <y-core-table-cell>
+                    <alt-core-table-cell>
                         <div slot="cell" class="color-cell background" style="background-color: ${this.getTransformedColor(colorToken)};">
                         </div>
-                    </y-core-table-cell>
+                    </alt-core-table-cell>
 
-                    <y-core-table-cell>
+                    <alt-core-table-cell>
                         <div slot="cell">
                             ${colorToken}
                         </div>
-                    </y-core-table-cell>
+                    </alt-core-table-cell>
 
-                    <y-core-table-cell>
+                    <alt-core-table-cell>
                         <div slot="cell">
                             Light
                         </div>
-                    </y-core-table-cell>
+                    </alt-core-table-cell>
                     ${this.getTableColorColumns(colorToken, 'lightMode')}
                 </div>
-            </y-core-table-row>
+            </alt-core-table-row>
 
-            <y-core-table-row>
+            <alt-core-table-row>
                 <div class="row">
-                    <y-core-table-cell></y-core-table-cell>
+                    <alt-core-table-cell></alt-core-table-cell>
                     
-                    <y-core-table-cell></y-core-table-cell>
+                    <alt-core-table-cell></alt-core-table-cell>
 
-                    <y-core-table-cell>
+                    <alt-core-table-cell>
                         <div slot="cell">
                             Dark
                         </div>
-                    </y-core-table-cell>
+                    </alt-core-table-cell>
                     ${this.getTableColorColumns(colorToken, 'darkMode')}
                 </div>
-            </y-core-table-row>
+            </alt-core-table-row>
         `
     })
   }
@@ -300,41 +300,41 @@ export class YColorTable extends LitElement {
                 <button @click=${() => { this.exportJson() }}>Export</button>
             </div>
             
-            <y-core-table>
+            <alt-core-table>
                 <div slot="head">
-                    <y-core-table-row>
+                    <alt-core-table-row>
                         <div class="row">
-                            <y-core-table-head-cell>
+                            <alt-core-table-head-cell>
                                 <div slot="cell">
                                     Current
                                 </div>
-                            </y-core-table-head-cell>
+                            </alt-core-table-head-cell>
                             
-                            <y-core-table-head-cell>
+                            <alt-core-table-head-cell>
                                 <div slot="cell">
                                     Token
                                 </div>
-                            </y-core-table-head-cell>
+                            </alt-core-table-head-cell>
 
-                            <y-core-table-head-cell>
+                            <alt-core-table-head-cell>
                                 <div slot="cell">
                                     Theme
                                 </div>
-                            </y-core-table-head-cell>
+                            </alt-core-table-head-cell>
                             
                             ${this.tableHeaders}
                         </div>
-                    </y-core-table-row>
+                    </alt-core-table-row>
                 </div>
                 
                 <div slot="bar">
-                    <y-core-table-bar></y-core-table-bar>
+                    <alt-core-table-bar></alt-core-table-bar>
                 </div>
                 
                 <div slot="body">
                     ${this.tableRows}
                 </div>
-            </y-core-table>
+            </alt-core-table>
         `
   }
 }

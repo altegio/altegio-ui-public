@@ -1,15 +1,15 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
-import { createCoreCardCheckboxProps, type IYCoreCardCheckboxProps } from '~core/ui/cardCheckbox/models/types'
+import { createCoreCardCheckboxProps, type IAltCoreCardCheckboxProps } from '~core/ui/cardCheckbox/models/types'
 
-export interface IYVueCoreCardCheckboxProps extends IYCoreCardCheckboxProps {}
+export interface IAltVueCoreCardCheckboxProps extends IAltCoreCardCheckboxProps {}
 
-export interface IYVueCardCheckboxProps {
-  disabled?: IYVueCoreCardCheckboxProps['disabled']
-  size?: IYVueCoreCardCheckboxProps['size']
-  checked?: IYVueCoreCardCheckboxProps['checked']
+export interface IAltVueCardCheckboxProps {
+  disabled?: IAltVueCoreCardCheckboxProps['disabled']
+  size?: IAltVueCoreCardCheckboxProps['size']
+  checked?: IAltVueCoreCardCheckboxProps['checked']
 }
 
-export const createVueCardCheckboxProps = (): TDefinedVueProps<IYVueCardCheckboxProps> => {
+export const createVueCardCheckboxProps = (): TDefinedVueProps<IAltVueCardCheckboxProps> => {
   const { disabled, size, checked } = createCoreCardCheckboxProps()
 
   return {

@@ -3,14 +3,14 @@ import { customElement, property } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { provide } from '@lit/context'
 
-import { YCoreRadioButtonGroupTagName as tagName } from '~shared/constants'
+import { AltCoreRadioButtonGroupTagName as tagName } from '~shared/constants'
 import {
   createCoreRadioButtonGroupProps,
-  type IYCoreRadioButtonGroupProps,
+  type IAltCoreRadioButtonGroupProps,
 } from '~core/ui/radioButtonGroup/models/types'
 
-import YCoreRadioButtonGroupScopedCss from '~core/ui/radioButtonGroup/css/RadioButtonGroup.scoped.css?inline'
-import YCoreRadioButtonGroupVarsCss from '~core/ui/radioButtonGroup/css/RadioButtonGroup.vars.css?inline'
+import AltCoreRadioButtonGroupScopedCss from '~core/ui/radioButtonGroup/css/RadioButtonGroup.scoped.css?inline'
+import AltCoreRadioButtonGroupVarsCss from '~core/ui/radioButtonGroup/css/RadioButtonGroup.vars.css?inline'
 import { alignmentContextCreated, groupValueContextCreated, sizeContextCreated } from './providers'
 import { preventAndStopEvent } from '~shared/utils'
 import type { TDispatcher } from '~core/utils/event-decorator'
@@ -26,24 +26,24 @@ const { value, size, alignment, direction, labelText, labelTooltipText, labelDeb
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreRadioButtonGroup
+export class AltCoreRadioButtonGroup
   extends LitElement
-  implements IYCoreRadioButtonGroupProps {
+  implements IAltCoreRadioButtonGroupProps {
   @provide({ context: groupValueContextCreated })
   @property({ type: String })
-  value: IYCoreRadioButtonGroupProps['value'] = value
+  value: IAltCoreRadioButtonGroupProps['value'] = value
   @provide({ context: alignmentContextCreated })
   @property({ type: String })
-  alignment: IYCoreRadioButtonGroupProps['alignment'] = alignment
+  alignment: IAltCoreRadioButtonGroupProps['alignment'] = alignment
   @provide({ context: sizeContextCreated })
   @property({ type: String })
-  size: IYCoreRadioButtonGroupProps['size'] = size
+  size: IAltCoreRadioButtonGroupProps['size'] = size
   @property({ type: String })
-  direction: IYCoreRadioButtonGroupProps['direction'] = direction
-  @property({ type: String, reflect: true, attribute: 'label-text' }) labelText: IYCoreRadioButtonGroupProps['labelText'] = labelText
-  @property({ type: String, reflect: true, attribute: 'label-tooltip-text' }) labelTooltipText: IYCoreRadioButtonGroupProps['labelTooltipText'] = labelTooltipText
-  @property({ type: Number, reflect: true, attribute: 'label-debounce' }) labelDebounce: IYCoreRadioButtonGroupProps['labelDebounce'] = labelDebounce
-  @property({ type: Boolean, reflect: true, attribute: 'label-tooltip-active' }) labelTooltipActive: IYCoreRadioButtonGroupProps['labelTooltipActive'] = labelTooltipActive
+  direction: IAltCoreRadioButtonGroupProps['direction'] = direction
+  @property({ type: String, reflect: true, attribute: 'label-text' }) labelText: IAltCoreRadioButtonGroupProps['labelText'] = labelText
+  @property({ type: String, reflect: true, attribute: 'label-tooltip-text' }) labelTooltipText: IAltCoreRadioButtonGroupProps['labelTooltipText'] = labelTooltipText
+  @property({ type: Number, reflect: true, attribute: 'label-debounce' }) labelDebounce: IAltCoreRadioButtonGroupProps['labelDebounce'] = labelDebounce
+  @property({ type: Boolean, reflect: true, attribute: 'label-tooltip-active' }) labelTooltipActive: IAltCoreRadioButtonGroupProps['labelTooltipActive'] = labelTooltipActive
 
   @bubblingEvent(RadioButtonGroupChangeEvent, { name: 'change' })
   private _checked!: TDispatcher<RadioButtonGroupChangeEvent>
@@ -78,8 +78,8 @@ export class YCoreRadioButtonGroup
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreRadioButtonGroupVarsCss)}
-      ${unsafeCSS(YCoreRadioButtonGroupScopedCss)}
+      ${unsafeCSS(AltCoreRadioButtonGroupVarsCss)}
+      ${unsafeCSS(AltCoreRadioButtonGroupScopedCss)}
     `,
   ]
 

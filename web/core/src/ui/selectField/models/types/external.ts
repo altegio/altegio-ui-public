@@ -1,68 +1,68 @@
 import { omit } from 'radash'
 import {
   createCoreFieldWrapperProps,
-  type IYCoreFieldWrapperProps,
+  type IAltCoreFieldWrapperProps,
 } from '~core/ui/fieldWrapper/models/types'
 import {
   createCoreFieldInputProps,
-  type IYCoreFieldInputProps,
+  type IAltCoreFieldInputProps,
 } from '~core/ui/fieldInput/models/types'
 import {
   createCoreLabelExternalProps,
-  type IYCoreLabelExternalProps,
+  type IAltCoreLabelExternalProps,
 } from '~core/ui/label/models/types'
 import {
-  type IYCoreAnnotationExternalProps,
+  type IAltCoreAnnotationExternalProps,
   createCoreAnnotationExternalProps,
 } from '~core/ui/annotation/models/types'
 import {
-  type IYCoreErrorExternalProps,
+  type IAltCoreErrorExternalProps,
   createCoreErrorExternalProps,
 } from '~core/ui/error/models/types'
 import { addPrefixToObjectKeys, type TAddPrefixToObject } from '~shared/utils'
 import { createCoreDropdownListExternalProps } from '~core/ui/dropdownList/models/types/external'
 import type { IDropdownListItem } from '~shared/types/global'
-import type { IYCoreDropdownListProps } from '~core/ui/dropdownList/models/types'
-import type { IYIcon } from '~shared/icons'
+import type { IAltCoreDropdownListProps } from '~core/ui/dropdownList/models/types'
+import type { IAltIcon } from '~shared/icons'
 
-export interface IYCoreSelectListItem extends IDropdownListItem {
+export interface IAltCoreSelectListItem extends IDropdownListItem {
   img?: string
-  icon?: IYIcon
+  icon?: IAltIcon
   initials?: string
 }
 
-export type TItemValue = keyof IYCoreSelectListItem
+export type TItemValue = keyof IAltCoreSelectListItem
 
-export type TYCoreSelectFieldItemValue = NonNullable<IYCoreSelectListItem[TItemValue]> | IYCoreSelectListItem | undefined
+export type TAltCoreSelectFieldItemValue = NonNullable<IAltCoreSelectListItem[TItemValue]> | IAltCoreSelectListItem | undefined
 
-export interface IYCoreSelectFieldProps extends
-  Omit<IYCoreFieldWrapperProps, 'clickable'>,
-  Omit<IYCoreFieldInputProps, 'hideSpaceLeft' | 'hideSpaceRight' | 'disabled' | 'size' | 'readonly' | 'maxlength' | 'type' | 'value' | 'autocomplete'>,
-  TAddPrefixToObject<Omit<IYCoreLabelExternalProps, 'alignment' | 'disabled' | 'required'>, 'label'>,
-  TAddPrefixToObject<Omit<IYCoreAnnotationExternalProps, 'disabled'>, 'annotation'>,
-  IYCoreErrorExternalProps,
-  Omit<IYCoreDropdownListProps, 'selectedItems' | 'minWidth' | 'noMaxHeight'> {
+export interface IAltCoreSelectFieldProps extends
+  Omit<IAltCoreFieldWrapperProps, 'clickable'>,
+  Omit<IAltCoreFieldInputProps, 'hideSpaceLeft' | 'hideSpaceRight' | 'disabled' | 'size' | 'readonly' | 'maxlength' | 'type' | 'value' | 'autocomplete'>,
+  TAddPrefixToObject<Omit<IAltCoreLabelExternalProps, 'alignment' | 'disabled' | 'required'>, 'label'>,
+  TAddPrefixToObject<Omit<IAltCoreAnnotationExternalProps, 'disabled'>, 'annotation'>,
+  IAltCoreErrorExternalProps,
+  Omit<IAltCoreDropdownListProps, 'selectedItems' | 'minWidth' | 'noMaxHeight'> {
   itemValue: TItemValue | undefined
   isCustomFilter: boolean | undefined
   isFilterable: boolean | undefined
   isMapOptions: boolean
   filterValue: string
-  filterCallback?: (items: IYCoreSelectListItem[], filterValue: string) => IYCoreSelectListItem[]
+  filterCallback?: (items: IAltCoreSelectListItem[], filterValue: string) => IAltCoreSelectListItem[]
 }
 
-export interface IYCoreSelectFieldExternalProps extends IYCoreSelectFieldProps {
-  value?: TYCoreSelectFieldItemValue
+export interface IAltCoreSelectFieldExternalProps extends IAltCoreSelectFieldProps {
+  value?: TAltCoreSelectFieldItemValue
 }
 
-export const isValueEqualListItem = (value: TYCoreSelectFieldItemValue, isMapOptions: IYCoreSelectFieldProps['isMapOptions']): value is IYCoreSelectListItem => {
+export const isValueEqualListItem = (value: TAltCoreSelectFieldItemValue, isMapOptions: IAltCoreSelectFieldProps['isMapOptions']): value is IAltCoreSelectListItem => {
   return Boolean(value && !isMapOptions)
 }
 
-export const isValueEqualListItemField = (value: TYCoreSelectFieldItemValue, isMapOptions: IYCoreSelectFieldProps['isMapOptions']): value is NonNullable<IYCoreSelectListItem[TItemValue]> => {
+export const isValueEqualListItemField = (value: TAltCoreSelectFieldItemValue, isMapOptions: IAltCoreSelectFieldProps['isMapOptions']): value is NonNullable<IAltCoreSelectListItem[TItemValue]> => {
   return Boolean(value && isMapOptions)
 }
 
-export const createCoreSelectFieldExternalProps = (): IYCoreSelectFieldExternalProps => {
+export const createCoreSelectFieldExternalProps = (): IAltCoreSelectFieldExternalProps => {
   return {
     ...omit(createCoreFieldWrapperProps(), ['clickable']),
     ...omit(createCoreFieldInputProps(), ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'maxlength', 'type', 'value']),

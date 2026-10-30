@@ -1,17 +1,17 @@
 import type { Placement } from '@floating-ui/dom'
-import { EYCoreDropdownPlacement } from '~core/ui/dropdown/models/types'
+import { EAltCoreDropdownPlacement } from '~core/ui/dropdown/models/types'
 
-export enum EYCoreLabelAlignment {
+export enum EAltCoreLabelAlignment {
   TOP = 'top',
   CENTER = 'center',
 }
 
-export type TYCoreLabelAlignment = `${EYCoreLabelAlignment}`
+export type TAltCoreLabelAlignment = `${EAltCoreLabelAlignment}`
 
-export interface IYCoreLabelExternalProps {
+export interface IAltCoreLabelExternalProps {
   text: string | undefined
   tooltipText: string | undefined
-  alignment: TYCoreLabelAlignment | undefined
+  alignment: TAltCoreLabelAlignment | undefined
   disabled: boolean | undefined
   required: boolean | undefined
   debounce: number | undefined
@@ -19,6 +19,6 @@ export interface IYCoreLabelExternalProps {
   locator?: string
 }
 
-export const createCoreLabelExternalProps = (): IYCoreLabelExternalProps => {
-  return { text: '', tooltipText: '', alignment: EYCoreLabelAlignment.CENTER, disabled: false, required: false, debounce: 300, tooltipPlacement: EYCoreDropdownPlacement.RIGHT }
+export const createCoreLabelExternalProps = (): IAltCoreLabelExternalProps => {
+  return { text: '', tooltipText: '', alignment: EAltCoreLabelAlignment.CENTER, disabled: false, required: false, debounce: 300, tooltipPlacement: EAltCoreDropdownPlacement.RIGHT }
 }

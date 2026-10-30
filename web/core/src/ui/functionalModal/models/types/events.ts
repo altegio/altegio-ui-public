@@ -1,5 +1,5 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
-import type { TYCoreModalEvents } from '~core/ui/modal/models/types/events'
+import type { TAltCoreModalEvents } from '~core/ui/modal/models/types/events'
 
 export {
   OpenEvent,
@@ -13,7 +13,7 @@ export {
 export class CancelEvent extends CustomEvent<Event> {}
 export class SubmitEvent extends CustomEvent<Event> {}
 
-export type TYCoreFunctionalModalEvents = TYCoreModalEvents & TEventsStoryArgs<{
+export type TAltCoreFunctionalModalEvents = TAltCoreModalEvents & TEventsStoryArgs<{
   CancelEvent: typeof CancelEvent
   SubmitEvent: typeof SubmitEvent
 }>

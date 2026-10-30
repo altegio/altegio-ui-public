@@ -1,25 +1,25 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core'
 
 import '~core/ui/tag'
-import { YCoreTag } from '~core/ui/tag'
+import { AltCoreTag } from '~core/ui/tag'
 import {
   createNgTagProps,
-  type IYNgTagProps,
+  type IAltNgTagProps,
 } from '~ng/ui/tag/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
-import { YCoreTagTagName } from '~web/shared/constants'
+import { AltCoreTagTagName } from '~web/shared/constants'
 import { defineCustomElement } from '~web/shared/utils/components'
 
 const { size, variant, iconLeft, disabled, locator, locatorLabel, locatorIcon } = createNgTagProps()
 
-defineCustomElement(YCoreTagTagName, YCoreTag)
+defineCustomElement(AltCoreTagTagName, AltCoreTag)
 
 @Component({
-  selector: 'YTag',
+  selector: 'AltTag',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-tag
+    <alt-core-tag
       [size]="size"
       [variant]="variant"
       [iconLeft]="iconLeft"
@@ -29,16 +29,16 @@ defineCustomElement(YCoreTagTagName, YCoreTag)
       [locatorIcon]="locatorIcon"
     >
       <ng-content />
-    </y-core-tag>
+    </alt-core-tag>
   `,
 })
 
-export class YTag implements IYNgTagProps {
-  @Input() @DefaultValue(locator) locator: IYNgTagProps['locator'] = locator
-  @Input() @DefaultValue(size) size: IYNgTagProps['size'] = size
-  @Input() @DefaultValue(variant) variant: IYNgTagProps['variant'] = variant
-  @Input() @DefaultValue(iconLeft) iconLeft: IYNgTagProps['iconLeft'] = iconLeft
-  @Input() @DefaultValue(disabled) disabled: IYNgTagProps['disabled'] = disabled
-  @Input() @DefaultValue(locatorLabel) locatorLabel: IYNgTagProps['locatorLabel'] = locatorLabel
-  @Input() @DefaultValue(locatorIcon) locatorIcon: IYNgTagProps['locatorIcon'] = locatorIcon
+export class AltTag implements IAltNgTagProps {
+  @Input() @DefaultValue(locator) locator: IAltNgTagProps['locator'] = locator
+  @Input() @DefaultValue(size) size: IAltNgTagProps['size'] = size
+  @Input() @DefaultValue(variant) variant: IAltNgTagProps['variant'] = variant
+  @Input() @DefaultValue(iconLeft) iconLeft: IAltNgTagProps['iconLeft'] = iconLeft
+  @Input() @DefaultValue(disabled) disabled: IAltNgTagProps['disabled'] = disabled
+  @Input() @DefaultValue(locatorLabel) locatorLabel: IAltNgTagProps['locatorLabel'] = locatorLabel
+  @Input() @DefaultValue(locatorIcon) locatorIcon: IAltNgTagProps['locatorIcon'] = locatorIcon
 }

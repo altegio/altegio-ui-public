@@ -1,1 +1,1 @@
-export { YCoreTabs } from './Tabs.core'
+export { AltCoreTabs } from './Tabs.core'

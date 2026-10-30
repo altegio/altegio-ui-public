@@ -1,12 +1,12 @@
 import {
   createCoreSegmentControlProps,
-  type IYCoreSegmentControlClickEvent,
-  type IYCoreSegmentControlProps,
+  type IAltCoreSegmentControlClickEvent,
+  type IAltCoreSegmentControlProps,
 } from '~core/ui/segmentControl/models/types'
 
-export interface IYNgSegmentControlProps extends IYCoreSegmentControlProps {}
+export interface IAltNgSegmentControlProps extends IAltCoreSegmentControlProps {}
 
 export { ClickEvent } from '~core/ui/segmentControl/models/types'
-export type TYNgSegmentControlEmits = IYCoreSegmentControlClickEvent
+export type TAltNgSegmentControlEmits = IAltCoreSegmentControlClickEvent
 
-export const createNgSegmentControlProps = (): IYNgSegmentControlProps => createCoreSegmentControlProps()
+export const createNgSegmentControlProps = (): IAltNgSegmentControlProps => createCoreSegmentControlProps()

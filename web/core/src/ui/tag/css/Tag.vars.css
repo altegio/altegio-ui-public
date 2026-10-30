@@ -1,52 +1,52 @@
 :host {
   /* General */
-  --y-core-tag-font-family: var(--y-core-font-family);
-  --y-core-tag-border-radius: var(--y-core-size-radius-x);
+  --alt-core-tag-font-family: var(--alt-core-font-family);
+  --alt-core-tag-border-radius: var(--alt-core-size-radius-x);
 
   /* Sizes */
-  --y-core-tag-padding-small-x: var(--y-core-size-spacing-x);
-  --y-core-tag-padding-small-y: var(--y-core-size-spacing-0-5-x);
-  --y-core-tag-padding-medium-x: var(--y-core-size-spacing-2-x);
-  --y-core-tag-padding-medium-y: var(--y-core-size-spacing-x);
-  --y-core-tag-font-size-small: var(--y-core-typography-annotation-a-3-medium-font-size);
-  --y-core-tag-font-size-small-line-height: var(--y-core-typography-annotation-a-3-medium-line-height);
-  --y-core-tag-font-size-small-font-weight: var(--y-core-typography-annotation-a-3-medium-font-weight);
-  --y-core-tag-font-size-medium: var(--y-core-typography-annotation-a-2-medium-font-size);
-  --y-core-tag-font-size-medium-line-height: var(--y-core-typography-annotation-a-2-medium-line-height);
-  --y-core-tag-font-size-medium-font-weight: var(--y-core-typography-annotation-a-2-medium-font-weight);
-  --y-core-tag-padding-large-x: var(--y-core-size-spacing-2-x);
-  --y-core-tag-padding-large-y: var(--y-core-size-spacing-1-5-x);
-  --y-core-tag-font-size-large: var(--y-core-typography-paragraph-p-2-medium-font-size);
-  --y-core-tag-font-size-large-line-height: var(--y-core-typography-paragraph-p-2-medium-line-height);
-  --y-core-tag-font-size-large-font-weight: var(--y-core-typography-paragraph-p-2-medium-font-weight);
-  --y-core-tag-border-radius-large: var(--y-core-size-radius-2-x);
+  --alt-core-tag-padding-small-x: var(--alt-core-size-spacing-x);
+  --alt-core-tag-padding-small-y: var(--alt-core-size-spacing-0-5-x);
+  --alt-core-tag-padding-medium-x: var(--alt-core-size-spacing-2-x);
+  --alt-core-tag-padding-medium-y: var(--alt-core-size-spacing-x);
+  --alt-core-tag-font-size-small: var(--alt-core-typography-annotation-a-3-medium-font-size);
+  --alt-core-tag-font-size-small-line-height: var(--alt-core-typography-annotation-a-3-medium-line-height);
+  --alt-core-tag-font-size-small-font-weight: var(--alt-core-typography-annotation-a-3-medium-font-weight);
+  --alt-core-tag-font-size-medium: var(--alt-core-typography-annotation-a-2-medium-font-size);
+  --alt-core-tag-font-size-medium-line-height: var(--alt-core-typography-annotation-a-2-medium-line-height);
+  --alt-core-tag-font-size-medium-font-weight: var(--alt-core-typography-annotation-a-2-medium-font-weight);
+  --alt-core-tag-padding-large-x: var(--alt-core-size-spacing-2-x);
+  --alt-core-tag-padding-large-y: var(--alt-core-size-spacing-1-5-x);
+  --alt-core-tag-font-size-large: var(--alt-core-typography-paragraph-p-2-medium-font-size);
+  --alt-core-tag-font-size-large-line-height: var(--alt-core-typography-paragraph-p-2-medium-line-height);
+  --alt-core-tag-font-size-large-font-weight: var(--alt-core-typography-paragraph-p-2-medium-font-weight);
+  --alt-core-tag-border-radius-large: var(--alt-core-size-radius-2-x);
 
 
   /* Text colors */
-  --y-core-tag-color-accent: var(--y-core-color-text-primary);
-  --y-core-tag-color-accent-disabled: var(--y-core-color-text-tertiary);
-  --y-core-tag-color-muted: var(--y-core-color-text-primary);
-  --y-core-tag-color-muted-disabled: var(--y-core-color-text-tertiary);
-  --y-core-tag-color-danger: var(--y-core-color-calm-text-red);
-  --y-core-tag-color-danger-disabled: var(--y-core-color-calm-text-red-low);
-  --y-core-tag-color-success: var(--y-core-color-calm-text-green);
-  --y-core-tag-color-success-disabled: var(--y-core-color-calm-text-green-low);
-  --y-core-tag-color-warning: var(--y-core-color-calm-text-orange);
-  --y-core-tag-color-warning-disabled: var(--y-core-color-calm-text-orange-low);
-  --y-core-tag-color-information: var(--y-core-color-calm-text-blue);
-  --y-core-tag-color-information-disabled: var(--y-core-color-calm-text-blue-low);
-  --y-core-tag-color-discovery: var(--y-core-color-calm-text-purple);
-  --y-core-tag-color-discovery-disabled: var(--y-core-color-calm-text-purple-low);
+  --alt-core-tag-color-accent: var(--alt-core-color-text-primary);
+  --alt-core-tag-color-accent-disabled: var(--alt-core-color-text-tertiary);
+  --alt-core-tag-color-muted: var(--alt-core-color-text-primary);
+  --alt-core-tag-color-muted-disabled: var(--alt-core-color-text-tertiary);
+  --alt-core-tag-color-danger: var(--alt-core-color-calm-text-red);
+  --alt-core-tag-color-danger-disabled: var(--alt-core-color-calm-text-red-low);
+  --alt-core-tag-color-success: var(--alt-core-color-calm-text-green);
+  --alt-core-tag-color-success-disabled: var(--alt-core-color-calm-text-green-low);
+  --alt-core-tag-color-warning: var(--alt-core-color-calm-text-orange);
+  --alt-core-tag-color-warning-disabled: var(--alt-core-color-calm-text-orange-low);
+  --alt-core-tag-color-information: var(--alt-core-color-calm-text-blue);
+  --alt-core-tag-color-information-disabled: var(--alt-core-color-calm-text-blue-low);
+  --alt-core-tag-color-discovery: var(--alt-core-color-calm-text-purple);
+  --alt-core-tag-color-discovery-disabled: var(--alt-core-color-calm-text-purple-low);
 
   /* Background colors */
-  --y-core-tag-bg-accent: var(--y-core-color-calm-surface-yellow-low);
-  --y-core-tag-bg-muted: var(--y-core-color-surface-tertiary);
-  --y-core-tag-bg-danger: var(--y-core-color-calm-surface-red-low);
-  --y-core-tag-bg-success: var(--y-core-color-calm-surface-green-low);
-  --y-core-tag-bg-warning: var(--y-core-color-calm-surface-orange-low);
-  --y-core-tag-bg-information: var(--y-core-color-calm-surface-blue-low);
-  --y-core-tag-bg-discovery: var(--y-core-color-calm-surface-purple-low);
+  --alt-core-tag-bg-accent: var(--alt-core-color-calm-surface-yellow-low);
+  --alt-core-tag-bg-muted: var(--alt-core-color-surface-tertiary);
+  --alt-core-tag-bg-danger: var(--alt-core-color-calm-surface-red-low);
+  --alt-core-tag-bg-success: var(--alt-core-color-calm-surface-green-low);
+  --alt-core-tag-bg-warning: var(--alt-core-color-calm-surface-orange-low);
+  --alt-core-tag-bg-information: var(--alt-core-color-calm-surface-blue-low);
+  --alt-core-tag-bg-discovery: var(--alt-core-color-calm-surface-purple-low);
 
   /* Spacing */
-  --y-core-tag-gap: var(--y-core-size-spacing-x);
+  --alt-core-tag-gap: var(--alt-core-size-spacing-x);
 }

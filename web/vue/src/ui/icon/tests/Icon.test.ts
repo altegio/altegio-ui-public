@@ -1,29 +1,29 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { yRocket } from '~shared/icons'
-import { YCoreIconTagName } from '~shared/constants'
+import { altRocket } from '~shared/icons'
+import { AltCoreIconTagName } from '~shared/constants'
 import type { TPropTestCase } from '~shared/types/tests'
-import { YCoreIcon } from '~core/ui/icon'
+import { AltCoreIcon } from '~core/ui/icon'
 
 import {
   createVueIconProps,
-  type IYVueIconProps,
+  type IAltVueIconProps,
 } from '~vue/ui/icon/models/types'
-import { YIcon } from '~vue/ui/icon'
+import { AltIcon } from '~vue/ui/icon'
 
 const { size: defaultSize } = createVueIconProps()
-const tagName = YCoreIconTagName
+const tagName = AltCoreIconTagName
 
 // Unit test cases:
-const propIconTestCases: TPropTestCase<IYVueIconProps, 'icon'>[] = [
+const propIconTestCases: TPropTestCase<IAltVueIconProps, 'icon'>[] = [
   {
     prop: 'icon',
     case: 'with a value',
-    value: yRocket,
+    value: altRocket,
   },
 ]
-const propSizeTestCases: TPropTestCase<IYVueIconProps, 'size'>[] = [
+const propSizeTestCases: TPropTestCase<IAltVueIconProps, 'size'>[] = [
   {
     prop: 'size',
     case: 'with a value',
@@ -39,13 +39,13 @@ const propSizeTestCases: TPropTestCase<IYVueIconProps, 'size'>[] = [
 ]
 
 describe(
-  'Vue/YIcon',
+  'Vue/AltIcon',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreIcon,
+          AltCoreIcon,
         )
       }
     })
@@ -58,7 +58,7 @@ describe(
             `Prop: ${testCase.prop} should work ${testCase.case} for the core component`,
             () => {
               const wrapper = mount(
-                YIcon,
+                AltIcon,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
@@ -73,8 +73,8 @@ describe(
             `Prop: ${testCase.prop} should work ${testCase.case} for the core component`,
             () => {
               const wrapper = mount(
-                YIcon,
-                { props: { [testCase.prop]: testCase.value, icon: yRocket } },
+                AltIcon,
+                { props: { [testCase.prop]: testCase.value, icon: altRocket } },
               )
 
               const coreElement = wrapper.find(tagName)

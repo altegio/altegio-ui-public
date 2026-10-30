@@ -1,5 +1,5 @@
 <template>
-  <y-core-tooltip
+  <alt-core-tooltip
     v-bind="props"
     :disabled="props.disabled || !$slots.content && !props.text"
   >
@@ -14,18 +14,18 @@
     >
       <slot name="content" />
     </div>
-  </y-core-tooltip>
+  </alt-core-tooltip>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/tooltip'
   import {
     createVueTooltipProps,
-    type IYVueTooltipProps,
-    type IYVueCoreTooltipProps,
+    type IAltVueTooltipProps,
+    type IAltVueCoreTooltipProps,
   } from '~vue/ui/tooltip/models/types'
 
-  defineOptions({ name: 'YTooltip' })
+  defineOptions({ name: 'AltTooltip' })
 
   defineSlots<{
     activator: () => unknown
@@ -33,7 +33,7 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueTooltipProps>(),
+    defineProps<IAltVueTooltipProps>(),
     createVueTooltipProps(),
-  ) satisfies IYVueCoreTooltipProps
+  ) satisfies IAltVueCoreTooltipProps
 </script>

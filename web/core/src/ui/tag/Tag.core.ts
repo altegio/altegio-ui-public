@@ -3,22 +3,22 @@ import { customElement, property } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { renderIcon } from '~core/renderers'
 
-import type { IYCoreTagProps } from './models/types'
+import type { IAltCoreTagProps } from './models/types'
 import {
   createCoreTagProps,
 } from './models/types'
 
-import { YCoreTagTagName as tagName, YCoreIconTagName } from '~shared/constants'
+import { AltCoreTagTagName as tagName, AltCoreIconTagName } from '~shared/constants'
 
-import YCoreTagVarsCss from '~core/ui/tag/css/Tag.vars.css?inline'
-import YCoreTagScopedCss from '~core/ui/tag/css/Tag.scoped.css?inline'
+import AltCoreTagVarsCss from '~core/ui/tag/css/Tag.vars.css?inline'
+import AltCoreTagScopedCss from '~core/ui/tag/css/Tag.scoped.css?inline'
 import { interceptEvents } from '~core/utils/event-interceptor'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import type { TDispatcher } from '~core/utils/event-decorator'
 import { bubblingEvent } from '~core/utils/event-decorator'
 import { ClickIconEmitEvent } from './models/types/events'
 import { defineCustomElement } from '~web/shared/utils/components'
-import { YCoreIcon } from '../icon/Icon.core'
+import { AltCoreIcon } from '../icon/Icon.core'
 import { withLocator } from '~core/utils/locator'
 
 const { disabled, size, variant, iconLeft, locator, locatorLabel, locatorIcon } = createCoreTagProps()
@@ -26,14 +26,14 @@ const { disabled, size, variant, iconLeft, locator, locatorLabel, locatorIcon } 
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreTag extends LitElement implements IYCoreTagProps {
-  @property({ type: String }) locator: IYCoreTagProps['locator'] = locator
-  @property({ type: String }) size: IYCoreTagProps['size'] = size
-  @property({ type: String }) variant: IYCoreTagProps['variant'] = variant
-  @property({ type: Object, attribute: 'icon-left' }) iconLeft: IYCoreTagProps['iconLeft'] = iconLeft
-  @property({ type: Boolean }) disabled: IYCoreTagProps['disabled'] = disabled
-  @property({ type: String, attribute: 'locator-label' }) locatorLabel: IYCoreTagProps['locatorLabel'] = locatorLabel
-  @property({ type: String, attribute: 'locator-icon' }) locatorIcon: IYCoreTagProps['locatorIcon'] = locatorIcon
+export class AltCoreTag extends LitElement implements IAltCoreTagProps {
+  @property({ type: String }) locator: IAltCoreTagProps['locator'] = locator
+  @property({ type: String }) size: IAltCoreTagProps['size'] = size
+  @property({ type: String }) variant: IAltCoreTagProps['variant'] = variant
+  @property({ type: Object, attribute: 'icon-left' }) iconLeft: IAltCoreTagProps['iconLeft'] = iconLeft
+  @property({ type: Boolean }) disabled: IAltCoreTagProps['disabled'] = disabled
+  @property({ type: String, attribute: 'locator-label' }) locatorLabel: IAltCoreTagProps['locatorLabel'] = locatorLabel
+  @property({ type: String, attribute: 'locator-icon' }) locatorIcon: IAltCoreTagProps['locatorIcon'] = locatorIcon
 
   @bubblingEvent(
     ClickIconEmitEvent,
@@ -46,8 +46,8 @@ export class YCoreTag extends LitElement implements IYCoreTagProps {
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreTagVarsCss)}
-      ${unsafeCSS(YCoreTagScopedCss)}
+      ${unsafeCSS(AltCoreTagVarsCss)}
+      ${unsafeCSS(AltCoreTagScopedCss)}
     `,
   ]
 
@@ -69,7 +69,7 @@ export class YCoreTag extends LitElement implements IYCoreTagProps {
   }
 
   protected firstUpdated(): void {
-    defineCustomElement(YCoreIconTagName, YCoreIcon)
+    defineCustomElement(AltCoreIconTagName, AltCoreIcon)
   }
 
   protected render() {
@@ -83,7 +83,7 @@ export class YCoreTag extends LitElement implements IYCoreTagProps {
             class=${this.baseIconClass}
             data-locator=${this.locatorIcon || `${tagName}__icon`}
           >
-            ${renderIcon({ icon: this.iconLeft, size: this.size === EYSizes.SMALL ? '12px' : this.size === EYSizes.MEDIUM ? '14px' : '20px' })}
+            ${renderIcon({ icon: this.iconLeft, size: this.size === EAltSizes.SMALL ? '12px' : this.size === EAltSizes.MEDIUM ? '14px' : '20px' })}
           </div>`
         : nothing
       }

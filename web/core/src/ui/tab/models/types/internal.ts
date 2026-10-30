@@ -1,3 +1,3 @@
-export interface IYCoreTabInternalProps {}
+export interface IAltCoreTabInternalProps {}
 
-export const createCoreTabInternalProps = (): IYCoreTabInternalProps => ({})
+export const createCoreTabInternalProps = (): IAltCoreTabInternalProps => ({})

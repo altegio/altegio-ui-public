@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreFieldWrapperTagName as tagName } from '~shared/constants'
+import { AltCoreFieldWrapperTagName as tagName } from '~shared/constants'
 import type { TPropTestCase } from '~shared/types/tests'
-import { createNgFieldWrapperProps, type IYNgFieldWrapperProps } from '~ng/ui/fieldWrapper/models/types'
-import { YFieldWrapper } from '~ng/ui/fieldWrapper'
-import { EYSizes } from '~shared/types/global'
+import { createNgFieldWrapperProps, type IAltNgFieldWrapperProps } from '~ng/ui/fieldWrapper/models/types'
+import { AltFieldWrapper } from '~ng/ui/fieldWrapper'
+import { EAltSizes } from '~shared/types/global'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgFieldWrapperProps>
+  props?: Partial<IAltNgFieldWrapperProps>
 }
 
 const {
@@ -18,25 +18,25 @@ const {
   clickable: defaultClickable,
 } = createNgFieldWrapperProps()
 
-const propDisabledTestCases: TPropTestCase<IYNgFieldWrapperProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltNgFieldWrapperProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true, expected: true },
   { prop: 'disabled', case: 'false', value: false, expected: false },
   { prop: 'disabled', case: 'undefined', value: undefined, expected: defaultDisabled },
 ]
 
-const propErrorTestCases: TPropTestCase<IYNgFieldWrapperProps, 'error'>[] = [
+const propErrorTestCases: TPropTestCase<IAltNgFieldWrapperProps, 'error'>[] = [
   { prop: 'error', case: 'true', value: true, expected: true },
   { prop: 'error', case: 'false', value: false, expected: false },
   { prop: 'error', case: 'undefined', value: undefined, expected: defaultError },
 ]
 
-const propSizeTestCases: TPropTestCase<IYNgFieldWrapperProps, 'size'>[] = [
-  { prop: 'size', case: EYSizes.SMALL, value: EYSizes.SMALL, expected: EYSizes.SMALL },
-  { prop: 'size', case: EYSizes.MEDIUM, value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
+const propSizeTestCases: TPropTestCase<IAltNgFieldWrapperProps, 'size'>[] = [
+  { prop: 'size', case: EAltSizes.SMALL, value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
+  { prop: 'size', case: EAltSizes.MEDIUM, value: EAltSizes.MEDIUM, expected: EAltSizes.MEDIUM },
   { prop: 'size', case: 'undefined', value: undefined, expected: defaultSize },
 ]
 
-const propClickableTestCases: TPropTestCase<IYNgFieldWrapperProps, 'clickable'>[] = [
+const propClickableTestCases: TPropTestCase<IAltNgFieldWrapperProps, 'clickable'>[] = [
   { prop: 'clickable', case: 'true', value: true, expected: true },
   { prop: 'clickable', case: 'false', value: false, expected: false },
   { prop: 'clickable', case: 'undefined', value: undefined, expected: defaultClickable },
@@ -44,17 +44,17 @@ const propClickableTestCases: TPropTestCase<IYNgFieldWrapperProps, 'clickable'>[
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YFieldWrapper] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltFieldWrapper] }).compileComponents()
 
   @Component({
     template: `
-      <YFieldWrapper
+      <AltFieldWrapper
         [disabled]="disabled"
         [error]="error"
         [size]="size"
         [clickable]="clickable"
       />`,
-    imports: [YFieldWrapper],
+    imports: [AltFieldWrapper],
     standalone: true,
   })
   class TestComponent {
@@ -67,7 +67,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YFieldWrapper',
+  'Angular/AltFieldWrapper',
   () => {
     describe(
       'Props',

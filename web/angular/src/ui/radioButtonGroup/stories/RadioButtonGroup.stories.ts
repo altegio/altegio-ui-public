@@ -1,26 +1,26 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YRadioButtonGroup } from '~ng/ui/radioButtonGroup'
-import yCoreRadioButtonGroupStoryMeta from '~core/ui/radioButtonGroup/stories/RadioButtonGroup.stories'
-import { YRadioButton } from '~ng/ui/radioButton'
+import { AltRadioButtonGroup } from '~ng/ui/radioButtonGroup'
+import altCoreRadioButtonGroupStoryMeta from '~core/ui/radioButtonGroup/stories/RadioButtonGroup.stories'
+import { AltRadioButton } from '~ng/ui/radioButton'
 
 /**
  * Angular wrapper for Core RadioButtonGroup
  */
-const meta: Meta<YRadioButtonGroup> = {
+const meta: Meta<AltRadioButtonGroup> = {
   title: 'RadioButton/⚠️ RadioButtonGroup',
   id: 'radioButtonGroup',
   parameters: { controls: { sort: 'alpha' } },
-  component: YRadioButtonGroup,
+  component: AltRadioButtonGroup,
   tags: [
     'angular',
     'autodocs',
   ],
   render: (args) => ({
-    moduleMetadata: { imports: [YRadioButton] },
+    moduleMetadata: { imports: [AltRadioButton] },
     props: { ...args },
     template: `
-      <YRadioButtonGroup
+      <AltRadioButtonGroup
         [value]="value"
         [size]="size"
         [direction]="direction"
@@ -31,19 +31,19 @@ const meta: Meta<YRadioButtonGroup> = {
         [labelTooltipActive]="labelTooltipActive"
       >
         @for (i of [1, 2, 3]; track i) {
-          <YRadioButton [value]="i" labelText="Radio button with value {{ i }}">
+          <AltRadioButton [value]="i" labelText="Radio button with value {{ i }}">
             <div radio-button-annotation>
               Annotation text {{ i }}
             </div>
-          </YRadioButton>
+          </AltRadioButton>
           }
-      </YRadioButtonGroup>`,
+      </AltRadioButtonGroup>`,
   }),
-  argTypes: { ...yCoreRadioButtonGroupStoryMeta.argTypes },
-  args: { ...yCoreRadioButtonGroupStoryMeta.args },
-} satisfies Meta<YRadioButtonGroup>
+  argTypes: { ...altCoreRadioButtonGroupStoryMeta.argTypes },
+  args: { ...altCoreRadioButtonGroupStoryMeta.args },
+} satisfies Meta<AltRadioButtonGroup>
 
 export default meta
-type Story = StoryObj<YRadioButtonGroup>
+type Story = StoryObj<AltRadioButtonGroup>
 
 export const Playground: Story = { args: {} }

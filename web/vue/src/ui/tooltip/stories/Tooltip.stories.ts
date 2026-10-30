@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { computed } from 'vue'
 
-import { YLink } from '~vue/ui/link'
-import { YSimpleButton } from '~vue/ui/simpleButton'
-import { YTooltip } from '~vue/ui/tooltip'
-import { type IYVueTooltipProps } from '~vue/ui/tooltip/models/types'
-import YCoreTooltipStoryMeta, { type IYCoreLabelStoryProps } from '~core/ui/tooltip/stories/Tooltip.stories'
+import { AltLink } from '~vue/ui/link'
+import { AltSimpleButton } from '~vue/ui/simpleButton'
+import { AltTooltip } from '~vue/ui/tooltip'
+import { type IAltVueTooltipProps } from '~vue/ui/tooltip/models/types'
+import AltCoreTooltipStoryMeta, { type IAltCoreLabelStoryProps } from '~core/ui/tooltip/stories/Tooltip.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { action } from 'storybook/actions'
 
-type TVueTooltipStoryMeta = IYVueTooltipProps & IYCoreLabelStoryProps
+type TVueTooltipStoryMeta = IAltVueTooltipProps & IAltCoreLabelStoryProps
 
 /**
  * Vue wrapper for Core Tooltip
@@ -19,7 +19,7 @@ const meta: Meta<TVueTooltipStoryMeta> = {
   id: 'tooltip',
   parameters: { controls: { sort: 'alpha' } },
   render: (args) => ({
-    components: { YTooltip, YLink, YSimpleButton },
+    components: { AltTooltip, AltLink, AltSimpleButton },
     setup() {
       const computedText = computed(() => args.isLongText ? LOREM_IPSUM : String(args.text))
       const onButtonClick = (e: MouseEvent) => {
@@ -31,17 +31,17 @@ const meta: Meta<TVueTooltipStoryMeta> = {
     template: `
     <div style="padding:50px calc(50% - 60px); width: fit-content;">
     
-      <YTooltip v-bind="args" :text="computedText">
+      <AltTooltip v-bind="args" :text="computedText">
         <template #activator>
-          <YSimpleButton @click="onButtonClick">Hover over me</YSimpleButton>
+          <AltSimpleButton @click="onButtonClick">Hover over me</AltSimpleButton>
         </template>
         
         <template v-if="args.isSlotExists" #content>
-          Content with a <YLink href="https://www.google.com" target="_blank">link</YLink>
+          Content with a <AltLink href="https://www.google.com" target="_blank">link</AltLink>
           
           <div v-if="args.isLongText">{{ computedText }}</div>
         </template>
-      </YTooltip>
+      </AltTooltip>
     </div>
     `,
   }),
@@ -49,8 +49,8 @@ const meta: Meta<TVueTooltipStoryMeta> = {
     'vue',
     'autodocs',
   ],
-  argTypes: { ...YCoreTooltipStoryMeta.argTypes },
-  args: { ...YCoreTooltipStoryMeta.args },
+  argTypes: { ...AltCoreTooltipStoryMeta.argTypes },
+  args: { ...AltCoreTooltipStoryMeta.args },
 }
 
 export default meta

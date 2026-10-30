@@ -1,5 +1,5 @@
 <template>
-  <y-core-test-consumer />
+  <alt-core-test-consumer />
 </template>
 
 <script setup lang="ts">

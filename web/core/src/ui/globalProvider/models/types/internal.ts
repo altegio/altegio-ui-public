@@ -1,3 +1,3 @@
-export interface IYCoreGlobalProviderInternalProps {}
+export interface IAltCoreGlobalProviderInternalProps {}
 
-export const createCoreGlobalProviderInternalProps = (): IYCoreGlobalProviderInternalProps => ({})
+export const createCoreGlobalProviderInternalProps = (): IAltCoreGlobalProviderInternalProps => ({})

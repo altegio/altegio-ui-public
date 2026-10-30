@@ -1,2 +1,2 @@
-export { default as YPhoneField } from './PhoneField.vue'
+export { default as AltPhoneField } from './PhoneField.vue'
 export * from './models/types'

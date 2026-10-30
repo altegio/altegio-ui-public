@@ -1,10 +1,10 @@
 import {
   createCoreSearchTextHighlightedExternalProps,
-  type IYCoreSearchTextHighlightedExternalProps,
+  type IAltCoreSearchTextHighlightedExternalProps,
 } from './external'
 
 export * from './external'
 
-export interface IYCoreSearchTextHighlightedProps extends IYCoreSearchTextHighlightedExternalProps {}
+export interface IAltCoreSearchTextHighlightedProps extends IAltCoreSearchTextHighlightedExternalProps {}
 
-export const createCoreSearchTextHighlightedProps = (): IYCoreSearchTextHighlightedProps => ({ ...createCoreSearchTextHighlightedExternalProps() })
+export const createCoreSearchTextHighlightedProps = (): IAltCoreSearchTextHighlightedProps => ({ ...createCoreSearchTextHighlightedExternalProps() })

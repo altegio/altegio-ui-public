@@ -5,14 +5,14 @@ import { classMap } from 'lit/directives/class-map.js'
 
 import {
   createCoreTableRowProps,
-  type IYCoreTableRowProps,
+  type IAltCoreTableRowProps,
 } from './models/types'
 import {
-  YCoreTableRowTagName as tagName,
+  AltCoreTableRowTagName as tagName,
 } from '~shared/constants'
 
-import YCoreTableRowVarsCss from '~core/ui/tableRow/css/TableRow.vars.css?inline'
-import YCoreTableRowScopedCss from '~core/ui/tableRow/css/TableRow.scoped.css?inline'
+import AltCoreTableRowVarsCss from '~core/ui/tableRow/css/TableRow.vars.css?inline'
+import AltCoreTableRowScopedCss from '~core/ui/tableRow/css/TableRow.scoped.css?inline'
 import './css/TableRow.outside.css'
 
 import { booleanConverter } from '~core/utils/converters'
@@ -29,13 +29,13 @@ const { stripe, selectable, sticky, disabled } = createCoreTableRowProps()
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreTableRow
+export class AltCoreTableRow
   extends LitElement
-  implements IYCoreTableRowProps {
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) sticky: IYCoreTableRowProps['sticky'] = sticky
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) stripe: IYCoreTableRowProps['stripe'] = stripe
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) selectable: IYCoreTableRowProps['selectable'] = selectable
-  @property({ type: Boolean }) disabled: IYCoreTableRowProps['disabled'] = disabled
+  implements IAltCoreTableRowProps {
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) sticky: IAltCoreTableRowProps['sticky'] = sticky
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) stripe: IAltCoreTableRowProps['stripe'] = stripe
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) selectable: IAltCoreTableRowProps['selectable'] = selectable
+  @property({ type: Boolean }) disabled: IAltCoreTableRowProps['disabled'] = disabled
 
   @consume({ context: pluginsContextCreated, subscribe: true })
   @state()
@@ -45,8 +45,8 @@ export class YCoreTableRow
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreTableRowVarsCss)}
-      ${unsafeCSS(YCoreTableRowScopedCss)}
+      ${unsafeCSS(AltCoreTableRowVarsCss)}
+      ${unsafeCSS(AltCoreTableRowScopedCss)}
     `,
   ]
 

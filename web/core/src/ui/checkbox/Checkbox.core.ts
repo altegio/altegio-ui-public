@@ -4,44 +4,44 @@ import { classMap } from 'lit/directives/class-map.js'
 
 import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
 import { hasSlotContent } from '~core/utils/lit-slots'
-import { YCoreCheckboxTagName as tagName, YCoreAnnotationTagName, YCoreErrorTagName, YCoreLabelTagName, YCoreSimpleCheckboxTagName } from '~shared/constants'
+import { AltCoreCheckboxTagName as tagName, AltCoreAnnotationTagName, AltCoreErrorTagName, AltCoreLabelTagName, AltCoreSimpleCheckboxTagName } from '~shared/constants'
 import {
   createCoreCheckboxProps,
   CheckboxCheckedEvent,
-  type IYCoreCheckboxProps,
+  type IAltCoreCheckboxProps,
 } from './models/types'
 
-import YCoreCheckboxScopedCSS from '~core/ui/checkbox/css/Checkbox.scoped.css?inline'
-import YCoreCheckboxVarsCSS from '~core/ui/checkbox/css/Checkbox.vars.css?inline'
+import AltCoreCheckboxScopedCSS from '~core/ui/checkbox/css/Checkbox.scoped.css?inline'
+import AltCoreCheckboxVarsCSS from '~core/ui/checkbox/css/Checkbox.vars.css?inline'
 
 import '~core/ui/annotation'
 import '~core/ui/error'
 import '~core/ui/simpleCheckbox'
 import '~core/ui/label'
 import { defineCustomElement } from '~web/shared/utils/components'
-import { YCoreSimpleCheckbox } from '~core/ui/simpleCheckbox'
-import { YCoreLabel } from '~core/ui/label'
-import { YCoreAnnotation } from '~core/ui/annotation'
-import { YCoreError } from '~core/ui/error'
+import { AltCoreSimpleCheckbox } from '~core/ui/simpleCheckbox'
+import { AltCoreLabel } from '~core/ui/label'
+import { AltCoreAnnotation } from '~core/ui/annotation'
+import { AltCoreError } from '~core/ui/error'
 import { withLocator } from '~core/utils/locator'
 
 const { size, checked, indeterminate, disabled, labelText, labelTooltipText, annotationText, errors, labelOverflowDebounce, alignment, required, labelTooltipPlacement } = createCoreCheckboxProps()
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreCheckbox extends LitElement implements IYCoreCheckboxProps {
-  @property({ type: String, reflect: true }) size: IYCoreCheckboxProps['size'] = size
-  @property({ type: Boolean, reflect: true }) checked: IYCoreCheckboxProps['checked'] = checked
-  @property({ type: Boolean, reflect: true }) indeterminate: IYCoreCheckboxProps['indeterminate'] = indeterminate
-  @property({ type: Boolean }) disabled: IYCoreCheckboxProps['disabled'] = disabled
-  @property({ type: String, reflect: true }) alignment: IYCoreCheckboxProps['alignment'] = alignment
-  @property({ type: String, attribute: 'label-text' }) labelText: IYCoreCheckboxProps['labelText'] = labelText
-  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IYCoreCheckboxProps['labelTooltipText'] = labelTooltipText
-  @property({ type: Boolean, attribute: 'required' }) required: IYCoreCheckboxProps['required'] = required
-  @property({ type: String, attribute: 'annotation-text' }) annotationText: IYCoreCheckboxProps['annotationText'] = annotationText
-  @property({ type: Number, attribute: 'label-overflow-debounce' }) labelOverflowDebounce: IYCoreCheckboxProps['labelOverflowDebounce'] = labelOverflowDebounce
-  @property({ type: Array }) errors: IYCoreCheckboxProps['errors'] = errors
-  @property({ type: String, attribute: 'label-tooltip-placement' }) labelTooltipPlacement: IYCoreCheckboxProps['labelTooltipPlacement'] = labelTooltipPlacement
+export class AltCoreCheckbox extends LitElement implements IAltCoreCheckboxProps {
+  @property({ type: String, reflect: true }) size: IAltCoreCheckboxProps['size'] = size
+  @property({ type: Boolean, reflect: true }) checked: IAltCoreCheckboxProps['checked'] = checked
+  @property({ type: Boolean, reflect: true }) indeterminate: IAltCoreCheckboxProps['indeterminate'] = indeterminate
+  @property({ type: Boolean }) disabled: IAltCoreCheckboxProps['disabled'] = disabled
+  @property({ type: String, reflect: true }) alignment: IAltCoreCheckboxProps['alignment'] = alignment
+  @property({ type: String, attribute: 'label-text' }) labelText: IAltCoreCheckboxProps['labelText'] = labelText
+  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IAltCoreCheckboxProps['labelTooltipText'] = labelTooltipText
+  @property({ type: Boolean, attribute: 'required' }) required: IAltCoreCheckboxProps['required'] = required
+  @property({ type: String, attribute: 'annotation-text' }) annotationText: IAltCoreCheckboxProps['annotationText'] = annotationText
+  @property({ type: Number, attribute: 'label-overflow-debounce' }) labelOverflowDebounce: IAltCoreCheckboxProps['labelOverflowDebounce'] = labelOverflowDebounce
+  @property({ type: Array }) errors: IAltCoreCheckboxProps['errors'] = errors
+  @property({ type: String, attribute: 'label-tooltip-placement' }) labelTooltipPlacement: IAltCoreCheckboxProps['labelTooltipPlacement'] = labelTooltipPlacement
 
   @bubblingEvent(
     CheckboxCheckedEvent,
@@ -99,8 +99,8 @@ export class YCoreCheckbox extends LitElement implements IYCoreCheckboxProps {
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreCheckboxVarsCSS)}
-      ${unsafeCSS(YCoreCheckboxScopedCSS)}
+      ${unsafeCSS(AltCoreCheckboxVarsCSS)}
+      ${unsafeCSS(AltCoreCheckboxScopedCSS)}
       `,
   ]
 
@@ -144,11 +144,11 @@ export class YCoreCheckbox extends LitElement implements IYCoreCheckboxProps {
 
 
   protected firstUpdated(): void {
-    defineCustomElement(tagName, YCoreCheckbox)
-    defineCustomElement(YCoreSimpleCheckboxTagName, YCoreSimpleCheckbox)
-    defineCustomElement(YCoreLabelTagName, YCoreLabel)
-    defineCustomElement(YCoreAnnotationTagName, YCoreAnnotation)
-    defineCustomElement(YCoreErrorTagName, YCoreError)
+    defineCustomElement(tagName, AltCoreCheckbox)
+    defineCustomElement(AltCoreSimpleCheckboxTagName, AltCoreSimpleCheckbox)
+    defineCustomElement(AltCoreLabelTagName, AltCoreLabel)
+    defineCustomElement(AltCoreAnnotationTagName, AltCoreAnnotation)
+    defineCustomElement(AltCoreErrorTagName, AltCoreError)
   }
 
   protected render() {
@@ -158,7 +158,7 @@ export class YCoreCheckbox extends LitElement implements IYCoreCheckboxProps {
         @click=${this.handleClick}
       >
         <div class=${`${this.baseClass}__content`}>
-          <y-core-simple-checkbox
+          <alt-core-simple-checkbox
             .size=${this.size}
             .checked=${this.checked}
             .indeterminate=${this.indeterminate}
@@ -170,10 +170,10 @@ export class YCoreCheckbox extends LitElement implements IYCoreCheckboxProps {
             @mouseenter=${this.handleMouseEnter}
             @mouseleave=${this.handleMouseLeave}
           >
-          </y-core-simple-checkbox>
+          </alt-core-simple-checkbox>
 
           <div class=${classMap(this.computedInfoClasses)}>
-            <y-core-label
+            <alt-core-label
               .text=${this.labelText}
               .tooltipText=${this.labelTooltipText}
               .alignment=${this.alignment}
@@ -190,9 +190,9 @@ export class YCoreCheckbox extends LitElement implements IYCoreCheckboxProps {
               <slot name="label" slot="label" @slotchange=${this.handleSlotLabelChange}>${this.labelText}</slot>
               
               <slot slot="tooltip-content" name="tooltip-content"></slot>
-            </y-core-label>
+            </alt-core-label>
 
-            <y-core-annotation
+            <alt-core-annotation
               .disabled=${this.disabled}
               class=${classMap(this.computedAnnotationClasses)}
               @mouseenter=${this.handleMouseEnter}
@@ -205,15 +205,15 @@ export class YCoreCheckbox extends LitElement implements IYCoreCheckboxProps {
               >
                 ${this.annotationText}
               </slot>
-            </y-core-annotation>
+            </alt-core-annotation>
           </div>
         </div>
         ${!this.disabled
           ? html`
-              <y-core-error
+              <alt-core-error
                 class=${classMap(this.computedErrorClasses)}
                 .errors=${this.errors}
-              ></y-core-error>
+              ></alt-core-error>
             `
           : nothing
         }

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YCardRadio } from '~vue/ui/cardRadio'
-import { type IYVueCardRadioProps } from '~vue/ui/cardRadio/models/types'
-import yCoreCardRadioStoryMeta from '~core/ui/cardRadio/stories/CardRadio.stories'
+import { AltCardRadio } from '~vue/ui/cardRadio'
+import { type IAltVueCardRadioProps } from '~vue/ui/cardRadio/models/types'
+import altCoreCardRadioStoryMeta from '~core/ui/cardRadio/stories/CardRadio.stories'
 
-type TVueCardRadioStoryMeta = IYVueCardRadioProps
+type TVueCardRadioStoryMeta = IAltVueCardRadioProps
 
 /**
  * Vue wrapper for Core CardRadio
@@ -19,19 +19,19 @@ const meta: Meta<TVueCardRadioStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YCardRadio },
+    components: { AltCardRadio },
     setup() {
       return { args }
     },
     template: `
-      <YCardRadio
+      <AltCardRadio
         v-bind="args"
         style="border: 1px dashed;"
       />
     `,
   }),
-  argTypes: { ...yCoreCardRadioStoryMeta.argTypes },
-  args: { ...yCoreCardRadioStoryMeta.args },
+  argTypes: { ...altCoreCardRadioStoryMeta.argTypes },
+  args: { ...altCoreCardRadioStoryMeta.args },
 }
 
 export default meta

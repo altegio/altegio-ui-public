@@ -1,11 +1,11 @@
 :host {
   /* Sizes */
-  --y-core-textarea-gap: var(--y-core-size-spacing-x);
+  --alt-core-textarea-gap: var(--alt-core-size-spacing-x);
 
   /* Counter */
-  --y-core-textarea-counter-font-size: var(--y-core-typography-annotation-a-2-regular-font-size);
-  --y-core-textarea-counter-font-weight: var(--y-core-typography-annotation-a-2-regular-font-weight);
-  --y-core-textarea-counter-line-height: var(--y-core-typography-annotation-a-2-regular-line-height);
-  --y-core-textarea-counter-color: var(--y-core-color-text-secondary);
-  --y-core-textarea-counter-disabled-color: var(--y-core-color-text-tertiary);
+  --alt-core-textarea-counter-font-size: var(--alt-core-typography-annotation-a-2-regular-font-size);
+  --alt-core-textarea-counter-font-weight: var(--alt-core-typography-annotation-a-2-regular-font-weight);
+  --alt-core-textarea-counter-line-height: var(--alt-core-typography-annotation-a-2-regular-line-height);
+  --alt-core-textarea-counter-color: var(--alt-core-color-text-secondary);
+  --alt-core-textarea-counter-disabled-color: var(--alt-core-color-text-tertiary);
 }

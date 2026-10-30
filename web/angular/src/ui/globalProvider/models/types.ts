@@ -1,8 +1,8 @@
 import {
   createCoreGlobalProviderProps,
-  type IYCoreGlobalProviderProps,
+  type IAltCoreGlobalProviderProps,
 } from '~core/ui/globalProvider/models/types'
 
-export interface IYNgGlobalProviderProps extends IYCoreGlobalProviderProps {}
+export interface IAltNgGlobalProviderProps extends IAltCoreGlobalProviderProps {}
 
-export const createNgGlobalProviderProps = (): IYNgGlobalProviderProps => createCoreGlobalProviderProps()
+export const createNgGlobalProviderProps = (): IAltNgGlobalProviderProps => createCoreGlobalProviderProps()

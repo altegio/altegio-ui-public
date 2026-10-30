@@ -1,30 +1,30 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 import {
   createCoreRadioButtonGroupExternalProps,
-  type IYCoreRadioButtonGroupExternalProps,
+  type IAltCoreRadioButtonGroupExternalProps,
   type RadioButtonGroupChangeEvent,
 } from '~core/ui/radioButtonGroup/models/types'
 
-export interface IYVueCoreRadioButtonGroupProps extends Omit<
-  IYCoreRadioButtonGroupExternalProps,
+export interface IAltVueCoreRadioButtonGroupProps extends Omit<
+  IAltCoreRadioButtonGroupExternalProps,
   'value'
 > {
-  modelValue: IYCoreRadioButtonGroupExternalProps['value']
+  modelValue: IAltCoreRadioButtonGroupExternalProps['value']
 }
 
-export interface IYVueRadioButtonGroupProps {
-  modelValue: IYVueCoreRadioButtonGroupProps['modelValue']
-  size?: IYVueCoreRadioButtonGroupProps['size']
-  alignment?: IYVueCoreRadioButtonGroupProps['alignment']
-  direction?: IYVueCoreRadioButtonGroupProps['direction']
-  labelText?: IYVueCoreRadioButtonGroupProps['labelText']
-  labelTooltipText?: IYVueCoreRadioButtonGroupProps['labelTooltipText']
-  labelDebounce?: IYVueCoreRadioButtonGroupProps['labelDebounce']
-  labelTooltipActive?: IYVueCoreRadioButtonGroupProps['labelTooltipActive']
+export interface IAltVueRadioButtonGroupProps {
+  modelValue: IAltVueCoreRadioButtonGroupProps['modelValue']
+  size?: IAltVueCoreRadioButtonGroupProps['size']
+  alignment?: IAltVueCoreRadioButtonGroupProps['alignment']
+  direction?: IAltVueCoreRadioButtonGroupProps['direction']
+  labelText?: IAltVueCoreRadioButtonGroupProps['labelText']
+  labelTooltipText?: IAltVueCoreRadioButtonGroupProps['labelTooltipText']
+  labelDebounce?: IAltVueCoreRadioButtonGroupProps['labelDebounce']
+  labelTooltipActive?: IAltVueCoreRadioButtonGroupProps['labelTooltipActive']
 }
 
 export const createVueRadioButtonGroupProps =
-  (): TDefinedVueProps<IYVueRadioButtonGroupProps> => {
+  (): TDefinedVueProps<IAltVueRadioButtonGroupProps> => {
     const { size, direction, alignment, labelText, labelTooltipText, labelDebounce, labelTooltipActive } =
       createCoreRadioButtonGroupExternalProps()
     return {
@@ -38,6 +38,6 @@ export const createVueRadioButtonGroupProps =
     }
   }
 
-export interface IYVueRadioButtonGroupEmits {
+export interface IAltVueRadioButtonGroupEmits {
   (event: 'update:modelValue', payload: RadioButtonGroupChangeEvent['detail']['value']): void
 }

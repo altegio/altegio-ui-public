@@ -9,25 +9,25 @@
 /* breakpoints */
 
 @define-mixin breakpoint-xs {
-  @media (--y-core-breakpoint-xs) {
+  @media (--alt-core-breakpoint-xs) {
     @mixin-content;
   }
 }
 
 @define-mixin breakpoint-sm {
-  @media (--y-core-breakpoint-sm) {
+  @media (--alt-core-breakpoint-sm) {
     @mixin-content;
   }
 }
 
 @define-mixin breakpoint-md {
-  @media (--y-core-breakpoint-md) {
+  @media (--alt-core-breakpoint-md) {
     @mixin-content;
   }
 }
 
 @define-mixin breakpoint-lg {
-  @media (--y-core-breakpoint-lg) {
+  @media (--alt-core-breakpoint-lg) {
     @mixin-content;
   }
 }

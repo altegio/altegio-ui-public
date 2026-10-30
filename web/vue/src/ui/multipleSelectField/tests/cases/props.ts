@@ -1,6 +1,6 @@
 import { empty, text } from '~shared/tests/slotContents'
-import { EYSizes } from '~shared/types/global'
-import type { IYVueMultipleSelectFieldProps } from '~vue/ui/multipleSelectField/models/types'
+import { EAltSizes } from '~shared/types/global'
+import type { IAltVueMultipleSelectFieldProps } from '~vue/ui/multipleSelectField/models/types'
 import { createVueMultipleSelectFieldProps } from '~vue/ui/multipleSelectField/models/types'
 import type { TPropTestCase } from '~shared/types/tests'
 
@@ -27,114 +27,114 @@ const {
   error,
 } = createVueMultipleSelectFieldProps()
 
-export const propValueTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'modelValue'>[] = [
+export const propValueTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'modelValue'>[] = [
   { prop: 'modelValue', case: 'with a value', value: [text], expected: [text], additionalProps: { isMapOptions: true } },
   { prop: 'modelValue', case: 'without a value', value: undefined, expected: modelValue, additionalProps: { isMapOptions: true } },
 ]
 
-export const propNameTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'name'>[] = [
+export const propNameTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'name'>[] = [
   { prop: 'name', case: 'with text', value: text, expected: text },
   { prop: 'name', case: 'without text', value: '', expected: '' },
   { prop: 'name', case: 'undefined', value: undefined, expected: name },
 ]
-export const propPlaceholderTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'placeholder'>[] = [
+export const propPlaceholderTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'placeholder'>[] = [
   { prop: 'placeholder', case: 'with text', value: text, expected: text },
   { prop: 'placeholder', case: 'without text', value: '', expected: '' },
   { prop: 'placeholder', case: 'undefined', value: undefined, expected: placeholder },
 ]
-export const propAutofocusTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'autofocus'>[] = [
+export const propAutofocusTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'autofocus'>[] = [
   { prop: 'autofocus', case: 'true', value: true, expected: true },
   { prop: 'autofocus', case: 'false', value: false, expected: false },
   { prop: 'autofocus', case: 'undefined', value: undefined, expected: autofocus },
 ]
-export const propDisabledTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'disabled'>[] = [
+export const propDisabledTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true, expected: true },
   { prop: 'disabled', case: 'false', value: false, expected: false },
   { prop: 'disabled', case: 'undefined', value: undefined, expected: disabled },
 ]
-export const propReadonlyTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'readonly'>[] = [
+export const propReadonlyTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'readonly'>[] = [
   { prop: 'readonly', case: 'true', value: true, expected: true },
   { prop: 'readonly', case: 'false', value: false, expected: false },
   { prop: 'readonly', case: 'undefined', value: undefined, expected: readonly },
 ]
-export const propRequiredTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'required'>[] = [
+export const propRequiredTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'required'>[] = [
   { prop: 'required', case: 'true', value: true, expected: true },
   { prop: 'required', case: 'false', value: false, expected: false },
   { prop: 'required', case: 'undefined', value: undefined, expected: required },
 ]
-export const propErrorsTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'errors'>[] = [
+export const propErrorsTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'errors'>[] = [
   { prop: 'errors', case: 'array with errors', value: ['error'], expected: ['error'] },
   { prop: 'errors', case: 'empty array', value: [], expected: [] },
   { prop: 'errors', case: 'undefined', value: undefined, expected: errors },
 ]
-export const propSizeTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'size'>[] = [
-  { prop: 'size', case: EYSizes.SMALL, value: EYSizes.SMALL, expected: EYSizes.SMALL },
-  { prop: 'size', case: EYSizes.MEDIUM, value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
+export const propSizeTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'size'>[] = [
+  { prop: 'size', case: EAltSizes.SMALL, value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
+  { prop: 'size', case: EAltSizes.MEDIUM, value: EAltSizes.MEDIUM, expected: EAltSizes.MEDIUM },
   { prop: 'size', case: 'undefined', value: undefined, expected: size },
 ]
-export const propLabelTextTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'labelText'>[] = [
+export const propLabelTextTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'labelText'>[] = [
   { prop: 'labelText', case: 'text', value: text, expected: text },
   { prop: 'labelText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: labelText },
 ]
-export const propLabelTooltipTextTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'labelTooltipText'>[] = [
+export const propLabelTooltipTextTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'labelTooltipText'>[] = [
   { prop: 'labelTooltipText', case: 'text', value: text, expected: text },
   { prop: 'labelTooltipText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: labelTooltipText },
 ]
-export const propAnnotationTextTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'annotationText'>[] = [
+export const propAnnotationTextTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'annotationText'>[] = [
   { prop: 'annotationText', case: 'text', value: text, expected: text },
   { prop: 'annotationText', case: 'empty string', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: annotationText },
 ]
 
-export const propItemLabelTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'itemLabel'>[] = [
+export const propItemLabelTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'itemLabel'>[] = [
   { prop: 'itemLabel', case: 'text', value: 'label', expected: 'label' },
   { prop: 'itemLabel', case: 'undefined', value: undefined, expected: itemLabel },
 ]
 
-export const propItemValueTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'itemValue'>[] = [
+export const propItemValueTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'itemValue'>[] = [
   { prop: 'itemValue', case: 'text', value: 'value', expected: 'value' },
   { prop: 'itemValue', case: 'undefined', value: undefined, expected: itemValue },
 ]
 
-export const propItemsTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'items'>[] = [
+export const propItemsTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'items'>[] = [
   { prop: 'items', case: 'options array', value: [{ id: 1 }], expected: [{ id: 1 }] },
   { prop: 'items', case: 'empty array', value: [], expected: [] },
   { prop: 'items', case: 'undefined', value: undefined, expected: [] },
 ]
 
-export const filterCallbackMock: IYVueMultipleSelectFieldProps['filterCallback'] = () => []
+export const filterCallbackMock: IAltVueMultipleSelectFieldProps['filterCallback'] = () => []
 
-export const propFilterCallbackTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'filterCallback'>[] = [
+export const propFilterCallbackTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'filterCallback'>[] = [
   { prop: 'filterCallback', case: 'function', value: filterCallbackMock, expected: filterCallbackMock },
   { prop: 'filterCallback', case: 'undefined', value: undefined, expected: filterCallback },
 ]
 
-export const propIsCustomFilterTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'isCustomFilter'>[] = [
+export const propIsCustomFilterTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'isCustomFilter'>[] = [
   { prop: 'isCustomFilter', case: 'true', value: true, expected: true },
   { prop: 'isCustomFilter', case: 'false', value: false, expected: false },
   { prop: 'isCustomFilter', case: 'undefined', value: undefined, expected: isCustomFilter },
 ]
 
-export const propIsFilterableTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'isFilterable'>[] = [
+export const propIsFilterableTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'isFilterable'>[] = [
   { prop: 'isFilterable', case: 'true', value: true, expected: true },
   { prop: 'isFilterable', case: 'false', value: false, expected: false },
   { prop: 'isFilterable', case: 'undefined', value: undefined, expected: isFilterable },
 ]
 
-export const propIsMapOptionsTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'isMapOptions'>[] = [
+export const propIsMapOptionsTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'isMapOptions'>[] = [
   { prop: 'isMapOptions', case: 'true', value: true, expected: true },
   { prop: 'isMapOptions', case: 'false', value: false, expected: false },
   { prop: 'isMapOptions', case: 'undefined', value: undefined, expected: isMapOptions },
 ]
 
-export const propLabelDebounceTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'labelDebounce'>[] = [
+export const propLabelDebounceTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'labelDebounce'>[] = [
   { prop: 'labelDebounce', case: 'with a value', value: 1000, expected: 1000 },
   { prop: 'labelDebounce', case: 'without a value', value: undefined, expected: labelDebounce },
 ]
 
-export const propErrorTestCases: TPropTestCase<IYVueMultipleSelectFieldProps, 'error'>[] = [
+export const propErrorTestCases: TPropTestCase<IAltVueMultipleSelectFieldProps, 'error'>[] = [
   { prop: 'error', case: 'true', value: true, expected: true },
   { prop: 'error', case: 'false', value: false, expected: false },
   { prop: 'error', case: 'undefined', value: undefined, expected: error },

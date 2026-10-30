@@ -4,29 +4,29 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 
 import {
   createCoreCardButtonProps,
-  type IYCoreCardButtonProps,
-  type TYCoreCardButtonEvents,
+  type IAltCoreCardButtonProps,
+  type TAltCoreCardButtonEvents,
 } from '~core/ui/cardButton/models/types'
-import { YCoreCardButtonTagName as tagName } from '~shared/constants'
+import { AltCoreCardButtonTagName as tagName } from '~shared/constants'
 
 import { getComponentContentTable, storyControlsTable } from '~shared/.storybook/tables'
 
-import { EYCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
-import { yMagic } from '~shared/icons'
+import { EAltCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
+import { altMagic } from '~shared/icons'
 
-import yCoreCardWrapperStoryMeta from '~core/ui/cardWrapper/stories/CardWrapper.stories'
-import yCoreCardHeaderStoryMeta from '~core/ui/cardHeader/stories/CardHeader.stories'
+import altCoreCardWrapperStoryMeta from '~core/ui/cardWrapper/stories/CardWrapper.stories'
+import altCoreCardHeaderStoryMeta from '~core/ui/cardHeader/stories/CardHeader.stories'
 
 import '~core/ui/cardButton'
 import '~core/ui/cardIcon'
 
 const { annotation } = createCoreCardButtonProps()
 
-export interface IYCoreCardButtonStorySlots {
+export interface IAltCoreCardButtonStorySlots {
   showCardIcon: boolean
 }
 
-type TYCoreCardButtonMeta = Meta<IYCoreCardButtonProps & IYCoreCardButtonStorySlots & Pick<TYCoreCardButtonEvents, 'onBlur' | 'onFocus'> & {
+type TAltCoreCardButtonMeta = Meta<IAltCoreCardButtonProps & IAltCoreCardButtonStorySlots & Pick<TAltCoreCardButtonEvents, 'onBlur' | 'onFocus'> & {
   onClick: (event: Event) => void
   hasAnnotationSlot: boolean
 }>
@@ -34,7 +34,7 @@ type TYCoreCardButtonMeta = Meta<IYCoreCardButtonProps & IYCoreCardButtonStorySl
 /**
  * ## Core CardButton
  */
-const meta: TYCoreCardButtonMeta = {
+const meta: TAltCoreCardButtonMeta = {
   title: 'Cards/✅ CardButton',
   id: 'cardButton',
   parameters: { controls: { sort: 'alpha' } },
@@ -60,7 +60,7 @@ const meta: TYCoreCardButtonMeta = {
     onFocus,
   }) => {
     return html`
-      <y-core-card-button
+      <alt-core-card-button
         .disabled=${disabled}
         .hoverable=${hoverable}
         .focusable=${focusable}
@@ -76,12 +76,12 @@ const meta: TYCoreCardButtonMeta = {
       >
         ${showCardIcon
           ? html`
-              <y-core-card-icon
-                .icon=${yMagic}
-                .variant=${EYCoreColorIconVariant.GREY}
+              <alt-core-card-icon
+                .icon=${altMagic}
+                .variant=${EAltCoreColorIconVariant.GREY}
                 slot="before"
               >
-              </y-core-card-icon>
+              </alt-core-card-icon>
             `
           : nothing
         }
@@ -90,12 +90,12 @@ const meta: TYCoreCardButtonMeta = {
           ? html`<span slot="annotation">Slot for annotation text</span>`
           : nothing
         }
-      </y-core-card-button>
+      </alt-core-card-button>
     `
   },
   argTypes: {
-    ...pick(yCoreCardWrapperStoryMeta.argTypes ?? {}, ['disabled', 'hoverable', 'focusable', 'size']),
-    ...pick(yCoreCardHeaderStoryMeta.argTypes ?? {}, ['headerText', 'tagText', 'tagVariant', 'headerIcon']),
+    ...pick(altCoreCardWrapperStoryMeta.argTypes ?? {}, ['disabled', 'hoverable', 'focusable', 'size']),
+    ...pick(altCoreCardHeaderStoryMeta.argTypes ?? {}, ['headerText', 'tagText', 'tagVariant', 'headerIcon']),
 
     // Story Controls
     annotation: {
@@ -109,20 +109,20 @@ const meta: TYCoreCardButtonMeta = {
       description: 'Show the annotation slot',
       ...storyControlsTable,
     },
-    ...pick(yCoreCardWrapperStoryMeta.argTypes ?? {}, ['showCardIcon']),
+    ...pick(altCoreCardWrapperStoryMeta.argTypes ?? {}, ['showCardIcon']),
 
     // Component Events
-    ...pick(yCoreCardWrapperStoryMeta.argTypes ?? {}, ['onClick', 'onBlur', 'onFocus']),
+    ...pick(altCoreCardWrapperStoryMeta.argTypes ?? {}, ['onClick', 'onBlur', 'onFocus']),
   },
   args: {
-    ...pick(yCoreCardWrapperStoryMeta.args ?? {}, ['disabled', 'hoverable', 'focusable', 'size', 'showCardIcon', 'onClick', 'onBlur', 'onFocus']),
-    ...pick(yCoreCardHeaderStoryMeta.args ?? {}, ['headerText', 'tagText', 'tagVariant', 'headerIcon']),
+    ...pick(altCoreCardWrapperStoryMeta.args ?? {}, ['disabled', 'hoverable', 'focusable', 'size', 'showCardIcon', 'onClick', 'onBlur', 'onFocus']),
+    ...pick(altCoreCardHeaderStoryMeta.args ?? {}, ['headerText', 'tagText', 'tagVariant', 'headerIcon']),
     annotation: 'Annotation',
     hasAnnotationSlot: false,
   },
-} satisfies TYCoreCardButtonMeta
+} satisfies TAltCoreCardButtonMeta
 
 export default meta
-type Story = StoryObj<IYCoreCardButtonProps>
+type Story = StoryObj<IAltCoreCardButtonProps>
 
 export const Playground: Story = { args: {} }

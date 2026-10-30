@@ -1,11 +1,11 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
 import {
-  YCoreCardIconTagName as tagName,
-  YCoreColorIconTagName,
+  AltCoreCardIconTagName as tagName,
+  AltCoreColorIconTagName,
 } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { createCoreCardIconProps } from '~core/ui/cardIcon/models/types'
-import type { YCoreColorIcon } from '~core/ui/colorIcon'
+import type { AltCoreColorIcon } from '~core/ui/colorIcon'
 import '~core/ui/cardIcon'
 
 import {
@@ -43,7 +43,7 @@ const getLocalShadowElement = (selector: string) => {
 }
 
 describe(
-  'Core/YCardIcon/Unit',
+  'Core/AltCardIcon/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -102,7 +102,7 @@ describe(
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
-              const colorIconElement = getLocalShadowElement(YCoreColorIconTagName) as YCoreColorIcon | null
+              const colorIconElement = getLocalShadowElement(AltCoreColorIconTagName) as AltCoreColorIcon | null
 
               expect(colorIconElement?.[testCase.prop]).toBe(testCase.expected ?? testCase.value)
             },
@@ -115,7 +115,7 @@ describe(
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
-              const colorIconElement = getLocalShadowElement(YCoreColorIconTagName) as YCoreColorIcon | null
+              const colorIconElement = getLocalShadowElement(AltCoreColorIconTagName) as AltCoreColorIcon | null
 
               expect(colorIconElement?.icon).toBe(testCase.expected ?? testCase.value)
             },

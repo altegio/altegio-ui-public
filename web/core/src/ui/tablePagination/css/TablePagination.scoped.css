@@ -1,4 +1,4 @@
-$component: $YCoreTablePaginationTagName;
+$component: $AltCoreTablePaginationTagName;
 
 :host {
   grid-column: 1 / max;
@@ -6,14 +6,14 @@ $component: $YCoreTablePaginationTagName;
 .$(component) {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--y-core-table-pagination-gap);
+  gap: var(--alt-core-table-pagination-gap);
   align-items: center;
   justify-content: space-between;
-  padding: var(--y-core-table-pagination-padding);
+  padding: var(--alt-core-table-pagination-padding);
 
   &__counter {
     display: flex;
-    gap: var(--y-core-table-pagination-counter-gap);
+    gap: var(--alt-core-table-pagination-counter-gap);
     align-items: center;
 
     &-select {

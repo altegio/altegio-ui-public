@@ -1,22 +1,22 @@
 import {
   createCoreGlobalProviderProps,
-  type IYCoreGlobalProviderProps,
+  type IAltCoreGlobalProviderProps,
 } from '~core/ui/globalProvider/models/types'
 
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 import { type GlobalProviderReadyEvent } from '~core/ui/globalProvider/models/types'
 
-export interface IYVueCoreGlobalProviderProps extends IYCoreGlobalProviderProps {}
+export interface IAltVueCoreGlobalProviderProps extends IAltCoreGlobalProviderProps {}
 
-export interface IYVueGlobalProviderProps {
-  plugins?: IYVueCoreGlobalProviderProps['plugins']
+export interface IAltVueGlobalProviderProps {
+  plugins?: IAltVueCoreGlobalProviderProps['plugins']
 }
 
-export const createVueGlobalProviderProps = (): TDefinedVueProps<IYVueGlobalProviderProps> => {
+export const createVueGlobalProviderProps = (): TDefinedVueProps<IAltVueGlobalProviderProps> => {
   const { plugins } = createCoreGlobalProviderProps()
   return { plugins: plugins ? () => plugins : undefined }
 }
 
-export interface IYVueGlobalProviderEmits {
+export interface IAltVueGlobalProviderEmits {
   (event: 'ready', payload: GlobalProviderReadyEvent): void
 }

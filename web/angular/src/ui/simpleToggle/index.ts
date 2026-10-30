@@ -1,2 +1,2 @@
-export { YSimpleToggle } from './SimpleToggle.component'
+export { AltSimpleToggle } from './SimpleToggle.component'
 export type * from './models/types'

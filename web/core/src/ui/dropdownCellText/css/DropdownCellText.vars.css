@@ -1,5 +1,5 @@
 :host {
   /* General */
-  --y-core-cell-text-gap: var(--y-core-size-spacing-0-5-x);
-  --y-core-cell-text-subtitle-gap: var(--y-core-size-spacing-0-5-x);
+  --alt-core-cell-text-gap: var(--alt-core-size-spacing-0-5-x);
+  --alt-core-cell-text-subtitle-gap: var(--alt-core-size-spacing-0-5-x);
 }

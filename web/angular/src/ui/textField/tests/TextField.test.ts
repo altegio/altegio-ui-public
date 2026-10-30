@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { YCoreTextFieldTagName as tagName } from '~shared/constants'
+import { AltCoreTextFieldTagName as tagName } from '~shared/constants'
 import { TestBed } from '~ng/tests/setup'
-import { YTextField } from '~ng/ui/textField/TextField.component'
+import { AltTextField } from '~ng/ui/textField/TextField.component'
 import { Component } from '@angular/core'
-import type { IYNgTextFieldProps } from '~ng/ui/textField/models/types'
+import type { IAltNgTextFieldProps } from '~ng/ui/textField/models/types'
 
 import {
   propNameTestCases,
@@ -23,16 +23,16 @@ import {
 import { FormsModule } from '@angular/forms'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgTextFieldProps>
+  props?: Partial<IAltNgTextFieldProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YTextField, FormsModule] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltTextField, FormsModule] }).compileComponents()
 
   @Component({
     template: `
-      <YTextField
+      <AltTextField
         [ngModel]="value"
         [name]="name"
         [placeholder]="placeholder"
@@ -50,9 +50,9 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
         [labelDebounce]="labelDebounce"
         [annotationText]="annotationText"
       >
-      </YTextField>
+      </AltTextField>
     `,
-    imports: [YTextField, FormsModule],
+    imports: [AltTextField, FormsModule],
     standalone: true,
   })
   class TestComponent {
@@ -76,7 +76,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
   return TestComponent
 }
 
-describe('Angular/YTextField/Unit', () => {
+describe('Angular/AltTextField/Unit', () => {
   describe(
     'Props',
     () => {

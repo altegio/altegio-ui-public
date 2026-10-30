@@ -4,13 +4,13 @@ import { action } from 'storybook/actions'
 import { useArgs } from 'storybook/preview-api'
 import {
   createCoreCollapseItemProps,
-  EYCoreCollapseItemVariant,
-  type IYCoreCollapseItemProps,
-  type TYCoreCollapseItemEvents,
+  EAltCoreCollapseItemVariant,
+  type IAltCoreCollapseItemProps,
+  type TAltCoreCollapseItemEvents,
   type CollapseItemClickEvent,
 } from '~core/ui/collapseItem/models/types'
 import {
-  YCoreCollapseItemTagName as tagName,
+  AltCoreCollapseItemTagName as tagName,
 } from '~shared/constants'
 import {
   storyControlsTable,
@@ -24,11 +24,11 @@ import '~core/ui/tag'
 import '~core/ui/avatar'
 
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import { yCopy, yDragAndDrop, yInfo } from '~shared/icons'
+import { altCopy, altDragAndDrop, altInfo } from '~shared/icons'
 
 const { label, annotation, opened, value, variant, loading, shallow } = createCoreCollapseItemProps()
 
-export interface IYCoreCollapseItemStorySlots {
+export interface IAltCoreCollapseItemStorySlots {
   showAfterSlot: boolean
   showBeforeSlot: boolean
   showAvatarSlot: boolean
@@ -38,12 +38,12 @@ export interface IYCoreCollapseItemStorySlots {
   showContentSlot: boolean
 }
 
-export type TYCoreCollapseItemMeta = IYCoreCollapseItemProps & IYCoreCollapseItemStorySlots & TYCoreCollapseItemEvents
+export type TAltCoreCollapseItemMeta = IAltCoreCollapseItemProps & IAltCoreCollapseItemStorySlots & TAltCoreCollapseItemEvents
 
 /**
  * ## CoreCollapseItem
  */
-const meta: Meta<TYCoreCollapseItemMeta> = {
+const meta: Meta<TAltCoreCollapseItemMeta> = {
   title: '✅ CollapseItem',
   id: 'collapseItem',
   parameters: { controls: { sort: 'alpha' } },
@@ -76,7 +76,7 @@ const meta: Meta<TYCoreCollapseItemMeta> = {
     }
 
     return html`
-      <y-core-collapse-item
+      <alt-core-collapse-item
         .label=${label}
         .annotation=${annotation}
         .opened=${opened}
@@ -86,17 +86,17 @@ const meta: Meta<TYCoreCollapseItemMeta> = {
         .variant=${variant}
         @collapse-item-click=${handleCollapseItemClick}
       >
-        ${showAfterSlot ? html`<y-core-icon slot="after" .icon=${yCopy} size="16px"></y-core-icon>` : nothing}
-        ${showBeforeSlot ? html`<y-core-icon slot="before" .icon=${yDragAndDrop} size="16px"></y-core-icon>` : nothing}
-        ${showAvatarSlot ? html`<y-core-avatar slot="avatar" photo="https://i.pravatar.cc/300" size="small"></y-core-avatar>` : nothing}
+        ${showAfterSlot ? html`<alt-core-icon slot="after" .icon=${altCopy} size="16px"></alt-core-icon>` : nothing}
+        ${showBeforeSlot ? html`<alt-core-icon slot="before" .icon=${altDragAndDrop} size="16px"></alt-core-icon>` : nothing}
+        ${showAvatarSlot ? html`<alt-core-avatar slot="avatar" photo="https://i.pravatar.cc/300" size="small"></alt-core-avatar>` : nothing}
         ${showMainSlot ? html`<div slot="main">MainSlot</div>` : nothing}
         ${showLabelSlot
           ? html`
             <div slot="label" style="display: flex; align-items: center;gap: 8px;">
               <span>LabelSlot</span>
               
-              <y-core-tag size="small" variant="accent">TagLabel</y-core-tag>
-              <y-core-icon .icon=${yInfo} size="16px"></y-core-icon>
+              <alt-core-tag size="small" variant="accent">TagLabel</alt-core-tag>
+              <alt-core-icon .icon=${altInfo} size="16px"></alt-core-icon>
             </div>
           `
           : nothing
@@ -106,7 +106,7 @@ const meta: Meta<TYCoreCollapseItemMeta> = {
           ? html`<div slot="content"> ${loading ? 'LOADING SLOT ♾️' : LOREM_IPSUM}</div>`
           : nothing
         }
-      </y-core-collapse-item>
+      </alt-core-collapse-item>
     `
   },
   argTypes: {
@@ -143,7 +143,7 @@ const meta: Meta<TYCoreCollapseItemMeta> = {
     variant: {
       control: { type: 'select' },
       description: 'Component variant',
-      options: Object.values(EYCoreCollapseItemVariant),
+      options: Object.values(EAltCoreCollapseItemVariant),
       ...getComponentStateTable(variant),
     },
 
@@ -204,9 +204,9 @@ const meta: Meta<TYCoreCollapseItemMeta> = {
     showAnnotationSlot: false,
     showContentSlot: true,
   },
-} satisfies Meta<TYCoreCollapseItemMeta>
+} satisfies Meta<TAltCoreCollapseItemMeta>
 
 export default meta
-type Story = StoryObj<TYCoreCollapseItemMeta>
+type Story = StoryObj<TAltCoreCollapseItemMeta>
 
 export const Playground: Story = { args: {} }

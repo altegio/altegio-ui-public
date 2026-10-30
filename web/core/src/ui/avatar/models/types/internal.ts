@@ -1,4 +1,4 @@
-export interface IYCoreAvatarInternalProps {
+export interface IAltCoreAvatarInternalProps {
 }
 
-export const createCoreAvatarInternalProps = (): IYCoreAvatarInternalProps => ({ })
+export const createCoreAvatarInternalProps = (): IAltCoreAvatarInternalProps => ({ })

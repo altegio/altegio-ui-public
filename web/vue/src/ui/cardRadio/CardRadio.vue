@@ -1,19 +1,19 @@
 <template>
-  <y-core-card-radio v-bind="props" />
+  <alt-core-card-radio v-bind="props" />
 </template>
 
 <script setup lang="ts">
   import '~core/ui/cardRadio'
   import {
     createVueCardRadioProps,
-    type IYVueCardRadioProps,
-    type IYVueCoreCardRadioProps,
+    type IAltVueCardRadioProps,
+    type IAltVueCoreCardRadioProps,
   } from '~vue/ui/cardRadio/models/types'
 
-  defineOptions({ name: 'YCardRadio' })
+  defineOptions({ name: 'AltCardRadio' })
 
   const props = withDefaults(
-    defineProps<IYVueCardRadioProps>(),
+    defineProps<IAltVueCardRadioProps>(),
     createVueCardRadioProps(),
-  ) satisfies IYVueCoreCardRadioProps
+  ) satisfies IAltVueCoreCardRadioProps
 </script>

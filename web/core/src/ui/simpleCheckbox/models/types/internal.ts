@@ -1,9 +1,9 @@
-export interface IYCoreSimpleCheckboxInternalProps {
+export interface IAltCoreSimpleCheckboxInternalProps {
   hovered: boolean | undefined
 }
 
-export const createCoreSimpleCheckboxInternalProps = (): IYCoreSimpleCheckboxInternalProps => {
+export const createCoreSimpleCheckboxInternalProps = (): IAltCoreSimpleCheckboxInternalProps => {
   return { hovered: false }
 }
 
-export const internalPropsKeys = Object.keys(createCoreSimpleCheckboxInternalProps()) as (keyof IYCoreSimpleCheckboxInternalProps)[]
+export const internalPropsKeys = Object.keys(createCoreSimpleCheckboxInternalProps()) as (keyof IAltCoreSimpleCheckboxInternalProps)[]

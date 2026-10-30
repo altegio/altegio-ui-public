@@ -1,1 +1,1 @@
-export { YCoreError } from './Error.core'
+export { AltCoreError } from './Error.core'

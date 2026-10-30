@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreSearchTextHighlightedTagName } from '~shared/constants'
+import { AltCoreSearchTextHighlightedTagName } from '~shared/constants'
 import {
   createCoreSearchTextHighlightedProps,
 } from '~core/ui/_/searchHighlightedText/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/_/searchHighlightedText/tests/cases/css'
 
-const tagName = YCoreSearchTextHighlightedTagName
+const tagName = AltCoreSearchTextHighlightedTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreSearchTextHighlighted/CSS',
+  'Core/AltCoreSearchTextHighlighted/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

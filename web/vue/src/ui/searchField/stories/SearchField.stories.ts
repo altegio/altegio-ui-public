@@ -3,21 +3,21 @@ import { fn } from 'storybook/test'
 import { omit } from 'radash'
 import { computed } from 'vue'
 
-import { YSearchField } from '~vue/ui/searchField'
-import { type IYVueSearchFieldProps } from '~vue/ui/searchField/models/types'
-import yCoreTextFieldStoryMeta, {
-  type TYCoreTextFieldMeta,
+import { AltSearchField } from '~vue/ui/searchField'
+import { type IAltVueSearchFieldProps } from '~vue/ui/searchField/models/types'
+import altCoreTextFieldStoryMeta, {
+  type TAltCoreTextFieldMeta,
 } from '~core/ui/textField/stories/TextField.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { getComponentContentTable, getComponentEmitsTable } from '~shared/.storybook/tables'
 import type { TAnyVoidFunction } from '~shared/types/utils'
 
-type TSearchFieldStoryMeta = IYVueSearchFieldProps & TYCoreTextFieldMeta & {
+type TSearchFieldStoryMeta = IAltVueSearchFieldProps & TAltCoreTextFieldMeta & {
   onClickSearchIcon: TAnyVoidFunction
   onUpdateModelValue?: TAnyVoidFunction
 }
 
-const YCoreTextFieldStoryOmitKeys: (keyof TYCoreTextFieldMeta)[] = [
+const AltCoreTextFieldStoryOmitKeys: (keyof TAltCoreTextFieldMeta)[] = [
   'clearable',
   'readonly',
   'maskOptions',
@@ -44,7 +44,7 @@ const meta: Meta<TSearchFieldStoryMeta> = {
   id: 'searchField',
   parameters: { controls: { sort: 'alpha' } },
   render: (args) => ({
-    components: { YSearchField },
+    components: { AltSearchField },
     setup() {
       const computedLabelText = computed(() => args.isLongText ? LOREM_IPSUM : args.labelText)
       const computedAnnotationText = computed(() => args.isLongText ? LOREM_IPSUM : args.annotationText)
@@ -63,7 +63,7 @@ const meta: Meta<TSearchFieldStoryMeta> = {
       }
     },
     template: `
-      <YSearchField
+      <AltSearchField
         v-bind="args"
         :labelText="computedLabelText"
         :annotationText="computedAnnotationText"
@@ -75,7 +75,7 @@ const meta: Meta<TSearchFieldStoryMeta> = {
         @clear="args.onClear"
         @click-search-icon="args.onClickSearchIcon"
       >
-      </YSearchField>
+      </AltSearchField>
     `,
   }),
   tags: [
@@ -84,8 +84,8 @@ const meta: Meta<TSearchFieldStoryMeta> = {
   ],
   argTypes: {
     ...omit(
-      yCoreTextFieldStoryMeta.argTypes ?? {},
-      [...YCoreTextFieldStoryOmitKeys],
+      altCoreTextFieldStoryMeta.argTypes ?? {},
+      [...AltCoreTextFieldStoryOmitKeys],
     ),
     modelValue: {
       type: 'string',
@@ -102,16 +102,16 @@ const meta: Meta<TSearchFieldStoryMeta> = {
       description: 'Search icon click event',
       ...getComponentEmitsTable(),
     },
-    onUpdateModelValue: yCoreTextFieldStoryMeta.argTypes?.onInput,
+    onUpdateModelValue: altCoreTextFieldStoryMeta.argTypes?.onInput,
   },
   args: {
     ...omit(
-      yCoreTextFieldStoryMeta.args ?? {},
-      [...YCoreTextFieldStoryOmitKeys],
+      altCoreTextFieldStoryMeta.args ?? {},
+      [...AltCoreTextFieldStoryOmitKeys],
     ),
     modelValue: '',
     onClickSearchIcon: fn(),
-    onUpdateModelValue: yCoreTextFieldStoryMeta.args?.onInput,
+    onUpdateModelValue: altCoreTextFieldStoryMeta.args?.onInput,
   },
 }
 

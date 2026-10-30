@@ -1,1 +1,1 @@
-export { YCoreSimpleButton } from './SimpleButton.core'
+export { AltCoreSimpleButton } from './SimpleButton.core'

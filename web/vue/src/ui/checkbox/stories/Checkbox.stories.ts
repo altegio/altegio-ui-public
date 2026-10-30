@@ -4,13 +4,13 @@ import { omit } from 'radash'
 
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { getComponentContentTable } from '~shared/.storybook/tables'
-import yCoreCheckboxStoryMeta, {
-  type IYCoreCheckboxStoryProps,
+import altCoreCheckboxStoryMeta, {
+  type IAltCoreCheckboxStoryProps,
 } from '~core/ui/checkbox/stories/Checkbox.stories'
-import { YCheckbox } from '~vue/ui/checkbox'
-import { type IYVueCheckboxProps } from '~vue/ui/checkbox/models/types'
+import { AltCheckbox } from '~vue/ui/checkbox'
+import { type IAltVueCheckboxProps } from '~vue/ui/checkbox/models/types'
 
-type TVueCheckboxStoryMeta = IYVueCheckboxProps & IYCoreCheckboxStoryProps
+type TVueCheckboxStoryMeta = IAltVueCheckboxProps & IAltCoreCheckboxStoryProps
 
 /**
  * Vue wrapper for Core Checkbox
@@ -24,7 +24,7 @@ const meta: Meta<TVueCheckboxStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YCheckbox },
+    components: { AltCheckbox },
     setup() {
       const computedLabelText = computed(() => args.isLongText ? LOREM_IPSUM : String(args.labelText))
       const computedlabelTooltipText = computed(() => args.isLongText ? LOREM_IPSUM : String(args.labelTooltipText))
@@ -40,7 +40,7 @@ const meta: Meta<TVueCheckboxStoryMeta> = {
       }
     },
     template: `
-      <YCheckbox
+      <AltCheckbox
         v-bind="args"
         v-model="args.modelValue"
         :label-text="computedLabelText"
@@ -58,12 +58,12 @@ const meta: Meta<TVueCheckboxStoryMeta> = {
         <template #tooltip-content>
           <span>{{ args.tooltipContentSlot }}</span>
         </template>
-      </YCheckbox>
+      </AltCheckbox>
     `,
   }),
   argTypes: {
     ...omit(
-      yCoreCheckboxStoryMeta.argTypes ?? {},
+      altCoreCheckboxStoryMeta.argTypes ?? {},
       ['checked'],
     ),
     modelValue: {
@@ -75,7 +75,7 @@ const meta: Meta<TVueCheckboxStoryMeta> = {
   },
   args: {
     ...omit(
-      yCoreCheckboxStoryMeta.args ?? {},
+      altCoreCheckboxStoryMeta.args ?? {},
       ['checked'],
     ),
     modelValue: false,

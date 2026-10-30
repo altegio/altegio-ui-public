@@ -1,3 +1,3 @@
-export interface IYCoreFieldAvatarInternalProps {}
+export interface IAltCoreFieldAvatarInternalProps {}
 
-export const createCoreFieldAvatarInternalProps = (): IYCoreFieldAvatarInternalProps => ({})
+export const createCoreFieldAvatarInternalProps = (): IAltCoreFieldAvatarInternalProps => ({})

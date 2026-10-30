@@ -8,9 +8,9 @@
 
   <teleport
     :disabled="!enableTeleport"
-    :to="YCoreGlobalProviderTagName"
+    :to="AltCoreGlobalProviderTagName"
   >
-    <y-core-functional-modal
+    <alt-core-functional-modal
       v-bind="props"
       ref="functionalModalRef"
       :class="$attrs.class"
@@ -64,28 +64,28 @@
       >
         <slot name="footer" />
       </div>
-    </y-core-functional-modal>
+    </alt-core-functional-modal>
   </teleport>
 </template>
 
 <script setup lang="ts">
   import { ref } from 'vue'
   import '~core/ui/functionalModal'
-  import { type YCoreFunctionalModal } from '~core/ui/functionalModal'
+  import { type AltCoreFunctionalModal } from '~core/ui/functionalModal'
   import {
     createVueFunctionalModalProps,
-    type IYVueFunctionalModalProps,
-    type IYVueFunctionalModalEmits,
-    type IYVueCoreFunctionalModalProps,
+    type IAltVueFunctionalModalProps,
+    type IAltVueFunctionalModalEmits,
+    type IAltVueCoreFunctionalModalProps,
   } from '~vue/ui/functionalModal/models/types'
 
   import {
-    YCoreGlobalProviderTagName,
+    AltCoreGlobalProviderTagName,
   } from '~shared/constants'
 
-  defineOptions({ name: 'YFunctionalModal' })
+  defineOptions({ name: 'AltFunctionalModal' })
 
-  const emit = defineEmits<IYVueFunctionalModalEmits>()
+  const emit = defineEmits<IAltVueFunctionalModalEmits>()
 
   defineSlots<{
     header: () => unknown
@@ -98,11 +98,11 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueFunctionalModalProps>(),
+    defineProps<IAltVueFunctionalModalProps>(),
     createVueFunctionalModalProps(),
-  ) satisfies IYVueCoreFunctionalModalProps
+  ) satisfies IAltVueCoreFunctionalModalProps
 
-  const functionalModalRef = ref<YCoreFunctionalModal>()
+  const functionalModalRef = ref<AltCoreFunctionalModal>()
 
   const handleOpen = () => {
     emit('update:modelValue', true)

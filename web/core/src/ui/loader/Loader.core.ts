@@ -3,15 +3,15 @@ import { customElement, property } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js'
 
-import { YCoreLoaderTagName as tagName } from '~shared/constants'
-import { yLoader } from '~shared/icons/build/y-loader.icon'
+import { AltCoreLoaderTagName as tagName } from '~shared/constants'
+import { altLoader } from '~shared/icons/build/alt-loader.icon'
 
-import YCoreLoaderVarsCss from '~core/ui/loader/css/Loader.vars.css?inline'
-import YCoreLoaderScopedCss from '~core/ui/loader/css/Loader.scoped.css?inline'
+import AltCoreLoaderVarsCss from '~core/ui/loader/css/Loader.vars.css?inline'
+import AltCoreLoaderScopedCss from '~core/ui/loader/css/Loader.scoped.css?inline'
 
 import {
   createCoreLoaderProps,
-  type IYCoreLoaderProps,
+  type IAltCoreLoaderProps,
 } from '~core/ui/loader/models/types'
 import { defineCustomElement } from '~web/shared/utils/components'
 import { withLocator } from '~core/utils/locator'
@@ -20,15 +20,15 @@ const { size, variant } = createCoreLoaderProps()
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreLoader extends LitElement implements IYCoreLoaderProps {
-  @property({ type: String, reflect: true }) size: IYCoreLoaderProps['size'] = size
-  @property({ type: String, reflect: true }) variant: IYCoreLoaderProps['variant'] = variant
+export class AltCoreLoader extends LitElement implements IAltCoreLoaderProps {
+  @property({ type: String, reflect: true }) size: IAltCoreLoaderProps['size'] = size
+  @property({ type: String, reflect: true }) variant: IAltCoreLoaderProps['variant'] = variant
 
   private readonly baseClass = tagName
 
   static readonly styles = [
-    css`${unsafeCSS(YCoreLoaderVarsCss)}`,
-    css`${unsafeCSS(YCoreLoaderScopedCss)}`,
+    css`${unsafeCSS(AltCoreLoaderVarsCss)}`,
+    css`${unsafeCSS(AltCoreLoaderScopedCss)}`,
   ]
 
   private get computedClasses() {
@@ -41,13 +41,13 @@ export class YCoreLoader extends LitElement implements IYCoreLoaderProps {
 
 
   protected firstUpdated(): void {
-    defineCustomElement(tagName, YCoreLoader)
+    defineCustomElement(tagName, AltCoreLoader)
   }
 
   protected render() {
     return html`
       <div class=${classMap(this.computedClasses)}>
-        ${unsafeSVG(yLoader.data)}
+        ${unsafeSVG(altLoader.data)}
       </div>
     `
   }

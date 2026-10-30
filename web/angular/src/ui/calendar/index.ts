@@ -1,2 +1,2 @@
-export { YCalendar } from './Calendar.component'
+export { AltCalendar } from './Calendar.component'
 export type * from './models/types'

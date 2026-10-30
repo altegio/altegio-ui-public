@@ -1,15 +1,15 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
-import { YCoreSkeletonTableTagName } from '~shared/constants'
+import { AltCoreSkeletonTableTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import type { TSlotTestCase, TPropTestCase } from '~shared/types/tests'
 import { text, empty } from '~shared/tests/slotContents'
 import {
   createCoreSkeletonTableProps,
-  type IYCoreSkeletonTableProps,
+  type IAltCoreSkeletonTableProps,
 } from '~core/ui/skeletonTable/models/types'
 import '~core/ui/skeletonTable'
 
-const tagName = YCoreSkeletonTableTagName
+const tagName = AltCoreSkeletonTableTagName
 
 const {
   component,
@@ -27,17 +27,17 @@ const slotDefaultTestCases: TSlotTestCase[] = [
   { slot: 'default', case: 'with content', content: text },
   { slot: 'default', case: 'without content', content: empty },
 ]
-const propExternalPropTestCases: TPropTestCase<IYCoreSkeletonTableProps, 'externalProp'>[] = [
+const propExternalPropTestCases: TPropTestCase<IAltCoreSkeletonTableProps, 'externalProp'>[] = [
   { prop: 'externalProp', case: 'with content', value: text },
   { prop: 'externalProp', case: 'without content', value: empty },
 ]
-const propInternalPropTestCases: TPropTestCase<IYCoreSkeletonTableProps, 'internalProp'>[] = [
+const propInternalPropTestCases: TPropTestCase<IAltCoreSkeletonTableProps, 'internalProp'>[] = [
   { prop: 'internalProp', case: 'with content', value: text },
   { prop: 'internalProp', case: 'without content', value: empty },
 ]
 
 describe(
-  'Core/YSkeletonTable',
+  'Core/AltSkeletonTable',
   () => {
     beforeAll(() => {
       injectComponentToBody()

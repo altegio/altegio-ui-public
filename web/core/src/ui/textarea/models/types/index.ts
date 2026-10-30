@@ -1,19 +1,19 @@
 import {
   createCoreTextareaExternalProps,
-  type IYCoreTextareaExternalProps,
+  type IAltCoreTextareaExternalProps,
 } from './external'
 import {
   createCoreTextareaInternalProps,
-  type IYCoreTextareaInternalProps,
+  type IAltCoreTextareaInternalProps,
 } from './internal'
 
 export * from './external'
 export * from './internal'
 export * from './events'
 
-export interface IYCoreTextareaProps extends IYCoreTextareaExternalProps, IYCoreTextareaInternalProps {}
+export interface IAltCoreTextareaProps extends IAltCoreTextareaExternalProps, IAltCoreTextareaInternalProps {}
 
-export const createCoreTextareaProps = (): IYCoreTextareaProps => ({
+export const createCoreTextareaProps = (): IAltCoreTextareaProps => ({
   ...createCoreTextareaExternalProps(),
   ...createCoreTextareaInternalProps(),
 })

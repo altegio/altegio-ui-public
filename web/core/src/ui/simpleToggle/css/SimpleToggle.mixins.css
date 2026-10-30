@@ -1,4 +1,4 @@
-$component: $YCoreSimpleToggleTagName;
+$component: $AltCoreSimpleToggleTagName;
 
 @define-mixin toggle-size
   $width,

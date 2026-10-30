@@ -1,27 +1,27 @@
 import {
   createCorePopoverProps,
-  type IYCorePopoverProps,
+  type IAltCorePopoverProps,
 } from '~core/ui/popover/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCorePopoverProps extends IYCorePopoverProps {}
+export interface IAltVueCorePopoverProps extends IAltCorePopoverProps {}
 
-export interface IYVuePopoverProps {
-  padding?: IYVueCorePopoverProps['padding']
-  offset?: IYVueCorePopoverProps['offset']
-  trigger?: IYVueCorePopoverProps['trigger']
-  isOpen?: IYVueCorePopoverProps['isOpen']
-  placement?: IYVueCorePopoverProps['placement']
-  strategy?: IYVueCorePopoverProps['strategy']
-  transition?: IYVueCorePopoverProps['transition']
-  type?: IYVueCorePopoverProps['type']
-  submitText?: IYVueCorePopoverProps['submitText']
-  cancelText?: IYVueCorePopoverProps['cancelText']
-  disabled?: IYVueCorePopoverProps['disabled']
-  inline?: IYVueCorePopoverProps['inline']
+export interface IAltVuePopoverProps {
+  padding?: IAltVueCorePopoverProps['padding']
+  offset?: IAltVueCorePopoverProps['offset']
+  trigger?: IAltVueCorePopoverProps['trigger']
+  isOpen?: IAltVueCorePopoverProps['isOpen']
+  placement?: IAltVueCorePopoverProps['placement']
+  strategy?: IAltVueCorePopoverProps['strategy']
+  transition?: IAltVueCorePopoverProps['transition']
+  type?: IAltVueCorePopoverProps['type']
+  submitText?: IAltVueCorePopoverProps['submitText']
+  cancelText?: IAltVueCorePopoverProps['cancelText']
+  disabled?: IAltVueCorePopoverProps['disabled']
+  inline?: IAltVueCorePopoverProps['inline']
 }
 
-export const createVuePopoverProps = (): TDefinedVueProps<IYVuePopoverProps> => {
+export const createVuePopoverProps = (): TDefinedVueProps<IAltVuePopoverProps> => {
   const {
     padding,
     offset,
@@ -53,6 +53,6 @@ export const createVuePopoverProps = (): TDefinedVueProps<IYVuePopoverProps> => 
   }
 }
 
-export interface IYVuePopoverEmits {
+export interface IAltVuePopoverEmits {
   (event: 'submit' | 'cancel'): void
 }

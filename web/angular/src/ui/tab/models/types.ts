@@ -1,6 +1,6 @@
-import { createCoreTabExternalProps, type IYCoreTabExternalProps } from '~core/ui/tab/models/types'
+import { createCoreTabExternalProps, type IAltCoreTabExternalProps } from '~core/ui/tab/models/types'
 
-export interface IYNgTabProps extends IYCoreTabExternalProps {}
+export interface IAltNgTabProps extends IAltCoreTabExternalProps {}
 
-export const createNgTabProps = (): IYNgTabProps => createCoreTabExternalProps()
+export const createNgTabProps = (): IAltNgTabProps => createCoreTabExternalProps()
 

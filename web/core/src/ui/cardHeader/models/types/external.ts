@@ -1,17 +1,17 @@
 import { pick } from 'radash'
-import type { IYIcon } from '~shared/icons'
-import { createCoreCardWrapperProps, type IYCoreCardWrapperProps } from '~core/ui/cardWrapper/models/types'
-import type { TYCoreTagVariant } from '~core/ui/tag/models/types'
+import type { IAltIcon } from '~shared/icons'
+import { createCoreCardWrapperProps, type IAltCoreCardWrapperProps } from '~core/ui/cardWrapper/models/types'
+import type { TAltCoreTagVariant } from '~core/ui/tag/models/types'
 
-export interface IYCoreCardHeaderExternalProps
-  extends Pick<IYCoreCardWrapperProps, 'disabled' | 'size'> {
+export interface IAltCoreCardHeaderExternalProps
+  extends Pick<IAltCoreCardWrapperProps, 'disabled' | 'size'> {
   headerText: string | undefined
   tagText: string | undefined
-  tagVariant: TYCoreTagVariant | undefined
-  headerIcon: IYIcon | undefined
+  tagVariant: TAltCoreTagVariant | undefined
+  headerIcon: IAltIcon | undefined
 }
 
-export const createCoreCardHeaderExternalProps = (): IYCoreCardHeaderExternalProps => ({
+export const createCoreCardHeaderExternalProps = (): IAltCoreCardHeaderExternalProps => ({
   ...pick(createCoreCardWrapperProps(), ['disabled', 'size']),
   headerText: undefined,
   tagText: undefined,

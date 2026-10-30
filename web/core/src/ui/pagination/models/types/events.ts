@@ -1,10 +1,10 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
 
-export interface IYCorePaginationChangePageEvent {
+export interface IAltCorePaginationChangePageEvent {
   event: Event
   page: number
 }
 
-export class ChangePageEvent extends CustomEvent<IYCorePaginationChangePageEvent> {}
+export class ChangePageEvent extends CustomEvent<IAltCorePaginationChangePageEvent> {}
 
-export type TYCorePaginationEvents = TEventsStoryArgs<{ ChangePageEvent: typeof ChangePageEvent }>
+export type TAltCorePaginationEvents = TEventsStoryArgs<{ ChangePageEvent: typeof ChangePageEvent }>

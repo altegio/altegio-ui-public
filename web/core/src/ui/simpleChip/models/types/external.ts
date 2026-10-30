@@ -1,25 +1,25 @@
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 
-export enum EYCoreSimpleChipVariant {
+export enum EAltCoreSimpleChipVariant {
   MUTED = 'muted',
   DANGER = 'danger',
   WARNING = 'warning',
 }
 
-export type TYCoreSimpleChipSize = Extract<EYSizes, 'small' | 'medium'>
-export type TYCoreSimpleChipVariant = EYCoreSimpleChipVariant
+export type TAltCoreSimpleChipSize = Extract<EAltSizes, 'small' | 'medium'>
+export type TAltCoreSimpleChipVariant = EAltCoreSimpleChipVariant
 
 
-export interface IYCoreSimpleChipExternalProps {
-  size: TYCoreSimpleChipSize | undefined
-  variant: TYCoreSimpleChipVariant | undefined
+export interface IAltCoreSimpleChipExternalProps {
+  size: TAltCoreSimpleChipSize | undefined
+  variant: TAltCoreSimpleChipVariant | undefined
   disabled: boolean | undefined
   readonly: boolean | undefined
 }
 
-export const createCoreSimpleChipExternalProps = (): IYCoreSimpleChipExternalProps => ({
-  size: EYSizes.SMALL,
-  variant: EYCoreSimpleChipVariant.MUTED,
+export const createCoreSimpleChipExternalProps = (): IAltCoreSimpleChipExternalProps => ({
+  size: EAltSizes.SMALL,
+  variant: EAltCoreSimpleChipVariant.MUTED,
   disabled: undefined,
   readonly: undefined,
 })

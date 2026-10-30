@@ -4,7 +4,7 @@ import '~core/ui/emptyState'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import {
   createNgEmptyStateProps,
-  type IYNgEmptyStateProps,
+  type IAltNgEmptyStateProps,
 } from '~ng/ui/emptyState/models/types'
 
 const {
@@ -15,11 +15,11 @@ const {
 } = createNgEmptyStateProps()
 
 @Component({
-  selector: 'YEmptyState',
+  selector: 'AltEmptyState',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-empty-state
+    <alt-core-empty-state
       [title]="title"
       [description]="description"
       [icon]="icon"
@@ -28,12 +28,12 @@ const {
       <div slot="actions">
         <ng-content></ng-content>
       </div>
-    </y-core-empty-state>
+    </alt-core-empty-state>
   `,
 })
-export class YEmptyState implements IYNgEmptyStateProps {
-  @Input() @DefaultValue(title) title: IYNgEmptyStateProps['title'] = title
-  @Input() @DefaultValue(description) description: IYNgEmptyStateProps['description'] = description
-  @Input() @DefaultValue(size) size: IYNgEmptyStateProps['size'] = size
-  @Input() @DefaultValue(icon) icon: IYNgEmptyStateProps['icon'] = icon
+export class AltEmptyState implements IAltNgEmptyStateProps {
+  @Input() @DefaultValue(title) title: IAltNgEmptyStateProps['title'] = title
+  @Input() @DefaultValue(description) description: IAltNgEmptyStateProps['description'] = description
+  @Input() @DefaultValue(size) size: IAltNgEmptyStateProps['size'] = size
+  @Input() @DefaultValue(icon) icon: IAltNgEmptyStateProps['icon'] = icon
 }

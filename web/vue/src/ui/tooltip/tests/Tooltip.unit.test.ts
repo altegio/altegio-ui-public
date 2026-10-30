@@ -1,10 +1,10 @@
 import { describe, expect, it, beforeAll, beforeEach, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { YCoreTooltipTagName } from '~shared/constants'
+import { AltCoreTooltipTagName } from '~shared/constants'
 
-import { YTooltip } from '~vue/ui/tooltip'
-import { YCoreTooltip } from '~core/index'
+import { AltTooltip } from '~vue/ui/tooltip'
+import { AltCoreTooltip } from '~core/index'
 import {
   slotActivatorTestCases,
   slotContentTestCases,
@@ -12,17 +12,17 @@ import {
 } from './cases/slots'
 import { propDisabledTestCases, propTextTestCases, propPlacementTestCases } from './cases/props'
 
-const tagName = YCoreTooltipTagName
+const tagName = AltCoreTooltipTagName
 
 describe(
-  'Vue/YTooltip',
+  'Vue/AltTooltip',
   () => {
     beforeAll(() => {
       // register the core component before the tests run
       if (!customElements.get(tagName)) {
         customElements.define(
             tagName,
-            YCoreTooltip,
+            AltCoreTooltip,
         )
       }
     })
@@ -54,7 +54,7 @@ describe(
                 `Changing prop ${testCase.prop} should update the core component ${tagName} (${testCase.case})`,
                 () => {
                   const wrapper = mount(
-                      YTooltip,
+                      AltTooltip,
                       {
                         props: { [testCase.prop]: testCase.value, ...testCase.additionalProps },
                         attachTo: container,
@@ -81,7 +81,7 @@ describe(
                 `Should render the "${testCase.slot}" slot`,
                 () => {
                   const wrapper = mount(
-                      YTooltip,
+                      AltTooltip,
                       { slots: { activator: defaultTestProps.activator, [testCase.slot]: testCase.content } },
                   )
 
@@ -93,7 +93,7 @@ describe(
                 `Slot "${testCase.slot}" should render ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                      YTooltip,
+                      AltTooltip,
                       { slots: { activator: defaultTestProps.activator, [testCase.slot]: testCase.content } },
                   )
 

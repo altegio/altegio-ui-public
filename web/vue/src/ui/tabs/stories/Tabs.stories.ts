@@ -1,13 +1,13 @@
 import { ref, watch } from 'vue'
 import type { Meta, StoryObj } from '@storybook/vue3'
-import type { TYCoreTabsStoryMeta } from '~core/ui/tabs/stories/Tabs.stories.ts'
-import yCoreTabsStoryMeta from '~core/ui/tabs/stories/Tabs.stories.ts'
-import type { IYVueCoreTabsProps, IYVueTabsProps } from '~web/vue/src'
-import { YTabs } from '~web/vue/src'
+import type { TAltCoreTabsStoryMeta } from '~core/ui/tabs/stories/Tabs.stories.ts'
+import altCoreTabsStoryMeta from '~core/ui/tabs/stories/Tabs.stories.ts'
+import type { IAltVueCoreTabsProps, IAltVueTabsProps } from '~web/vue/src'
+import { AltTabs } from '~web/vue/src'
 import { getComponentStateTable } from '~shared/.storybook/tables'
-import { YTab } from '~vue/ui/tab'
+import { AltTab } from '~vue/ui/tab'
 
-type TVueTabsStoryMeta = IYVueTabsProps & IYVueCoreTabsProps & TYCoreTabsStoryMeta
+type TVueTabsStoryMeta = IAltVueTabsProps & IAltVueCoreTabsProps & TAltCoreTabsStoryMeta
 
 /**
  * Vue wrapper for Core Tabs
@@ -21,7 +21,7 @@ const meta: Meta<TVueTabsStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YTabs, YTab },
+    components: { AltTabs, AltTab },
     setup() {
       const valueRef = ref<number | undefined>(args.modelValue)
 
@@ -31,26 +31,26 @@ const meta: Meta<TVueTabsStoryMeta> = {
       return { args, valueRef }
     },
     template: `
-      <YTabs
+      <AltTabs
         :tabs="args.tabs"
         :modelValue="valueRef"
         @update:modelValue="valueRef = $event"
       >
         <template v-if="args.showDefaultSlot" #default>
-          <YTab
+          <AltTab
             v-for="(tab, idx) in args.tabs.slice(0, 3)"
             :key="idx"
             v-bind="tab"
             :active="idx === valueRef"
             @click="valueRef = idx"
-          ></YTab>
+          ></AltTab>
         </template>
-      </YTabs>
+      </AltTabs>
     `,
   }),
   argTypes: {
-    tabs: yCoreTabsStoryMeta.argTypes?.tabs,
-    showDefaultSlot: yCoreTabsStoryMeta.argTypes?.showDefaultSlot,
+    tabs: altCoreTabsStoryMeta.argTypes?.tabs,
+    showDefaultSlot: altCoreTabsStoryMeta.argTypes?.showDefaultSlot,
     modelValue: {
       type: 'number',
       description: 'Index of the active tab',
@@ -58,8 +58,8 @@ const meta: Meta<TVueTabsStoryMeta> = {
     },
   },
   args: {
-    tabs: yCoreTabsStoryMeta.args?.tabs,
-    showDefaultSlot: yCoreTabsStoryMeta.args?.showDefaultSlot,
+    tabs: altCoreTabsStoryMeta.args?.tabs,
+    showDefaultSlot: altCoreTabsStoryMeta.args?.showDefaultSlot,
     modelValue: 0,
   },
 }

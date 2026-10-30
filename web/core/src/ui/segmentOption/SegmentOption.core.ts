@@ -4,15 +4,15 @@ import { classMap } from 'lit/directives/class-map.js'
 import { renderIcon } from '~core/renderers'
 
 import {
-  YCoreSegmentOptionTagName as tagName,
+  AltCoreSegmentOptionTagName as tagName,
 } from '~shared/constants'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 
-import YCoreSegmentOptionVarsCss from '~core/ui/segmentOption/css/SegmentOption.vars.css?inline'
-import YCoreSegmentOptionScopedCss from '~core/ui/segmentOption/css/SegmentOption.scoped.css?inline'
+import AltCoreSegmentOptionVarsCss from '~core/ui/segmentOption/css/SegmentOption.vars.css?inline'
+import AltCoreSegmentOptionScopedCss from '~core/ui/segmentOption/css/SegmentOption.scoped.css?inline'
 
 import {
-  type IYCoreSegmentOptionProps,
+  type IAltCoreSegmentOptionProps,
   createCoreSegmentOptionProps,
   ClickEvent,
 } from '~core/ui/segmentOption/models/types'
@@ -26,14 +26,14 @@ const { active, disabled, hovered, icon, locator, size, value } = createCoreSegm
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreSegmentOption extends LitElement implements IYCoreSegmentOptionProps {
-  @property({ type: Boolean, reflect: true }) active: IYCoreSegmentOptionProps['active'] = active
-  @property({ type: Boolean }) disabled: IYCoreSegmentOptionProps['disabled'] = disabled
-  @property({ type: Boolean, reflect: true }) hovered: IYCoreSegmentOptionProps['hovered'] = hovered
-  @property({ type: Object, reflect: true }) icon: IYCoreSegmentOptionProps['icon'] = icon
-  @property({ type: String }) locator: IYCoreSegmentOptionProps['locator'] = locator
-  @property({ type: String, reflect: true }) size: IYCoreSegmentOptionProps['size'] = size
-  @property({ type: String }) value: IYCoreSegmentOptionProps['value'] = value
+export class AltCoreSegmentOption extends LitElement implements IAltCoreSegmentOptionProps {
+  @property({ type: Boolean, reflect: true }) active: IAltCoreSegmentOptionProps['active'] = active
+  @property({ type: Boolean }) disabled: IAltCoreSegmentOptionProps['disabled'] = disabled
+  @property({ type: Boolean, reflect: true }) hovered: IAltCoreSegmentOptionProps['hovered'] = hovered
+  @property({ type: Object, reflect: true }) icon: IAltCoreSegmentOptionProps['icon'] = icon
+  @property({ type: String }) locator: IAltCoreSegmentOptionProps['locator'] = locator
+  @property({ type: String, reflect: true }) size: IAltCoreSegmentOptionProps['size'] = size
+  @property({ type: String }) value: IAltCoreSegmentOptionProps['value'] = value
 
   @bubblingEvent(
     ClickEvent,
@@ -44,15 +44,15 @@ export class YCoreSegmentOption extends LitElement implements IYCoreSegmentOptio
   private readonly baseClass = tagName
 
   private get computedIconSize() {
-    return this.size === EYSizes.LARGE
+    return this.size === EAltSizes.LARGE
       ? '24px'
       : '16px'
   }
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreSegmentOptionVarsCss)}
-      ${unsafeCSS(YCoreSegmentOptionScopedCss)}
+      ${unsafeCSS(AltCoreSegmentOptionVarsCss)}
+      ${unsafeCSS(AltCoreSegmentOptionScopedCss)}
     `,
   ]
 

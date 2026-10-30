@@ -1,5 +1,5 @@
 <template>
-  <y-core-textarea
+  <alt-core-textarea
     v-bind="props"
     :value="modelValue"
     @input="$emit('update:modelValue', $event?.detail?.value)"
@@ -30,19 +30,19 @@
         name="after"
       />
     </div>
-  </y-core-textarea>
+  </alt-core-textarea>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/textarea'
   import {
     createVueTextareaProps,
-    type IYVueTextareaProps,
-    type IYVueTextareaEmits,
-    type IYVueCoreTextareaProps,
+    type IAltVueTextareaProps,
+    type IAltVueTextareaEmits,
+    type IAltVueCoreTextareaProps,
   } from './models/types'
 
-  defineOptions({ name: 'YTextarea' })
+  defineOptions({ name: 'AltTextarea' })
 
   defineSlots<{
     before: () => unknown
@@ -50,9 +50,9 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueTextareaProps>(),
+    defineProps<IAltVueTextareaProps>(),
     createVueTextareaProps(),
-  ) satisfies IYVueCoreTextareaProps
+  ) satisfies IAltVueCoreTextareaProps
 
-  defineEmits<IYVueTextareaEmits>()
+  defineEmits<IAltVueTextareaEmits>()
 </script>

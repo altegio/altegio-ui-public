@@ -5,10 +5,10 @@ import {
 } from '~core/ui/collapseItem/tests/cases/events'
 
 import type {
-  IYCoreCollapseItemCollapseItemClickPayload,
+  IAltCoreCollapseItemCollapseItemClickPayload,
 } from '~core/ui/collapseItem/models/types'
 
-export const eventCollapseItemClickCases: TEventTestCase<IYCoreCollapseItemCollapseItemClickPayload, IYCoreCollapseItemCollapseItemClickPayload>[] = coreEventCollapseItemClickCases.map((testCase) => ({
+export const eventCollapseItemClickCases: TEventTestCase<IAltCoreCollapseItemCollapseItemClickPayload, IAltCoreCollapseItemCollapseItemClickPayload>[] = coreEventCollapseItemClickCases.map((testCase) => ({
     ...testCase,
     payload: {
       event: new Event(testCase.nodeEventName),

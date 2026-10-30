@@ -1,11 +1,11 @@
-$component: $YCoreLinkTagName;
+$component: $AltCoreLinkTagName;
 
 /* Link text does not wrap by default */
 .$(component) {
-  display: var(--y-core-link-display);
+  display: var(--alt-core-link-display);
   align-items: center;
   font-size: inherit;
-  color: var(--y-core-link-color);
+  color: var(--alt-core-link-color);
   text-decoration: none;
 
   &:hover {
@@ -13,12 +13,12 @@ $component: $YCoreLinkTagName;
   }
 
   &__text {
-    white-space: var(--y-core-link-text-white-space);
+    white-space: var(--alt-core-link-text-white-space);
   }
 }
 
 /* Link text wraps at word boundaries */
 .$(component)_text-wrap {
-  --y-core-link-display: inline;
-  --y-core-link-text-white-space: normal;
+  --alt-core-link-display: inline;
+  --alt-core-link-text-white-space: normal;
 }

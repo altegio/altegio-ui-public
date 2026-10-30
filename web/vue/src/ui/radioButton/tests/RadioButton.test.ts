@@ -1,9 +1,9 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { ref } from 'vue'
 import { mount } from '@vue/test-utils'
-import { YCoreRadioButtonTagName as tagName } from '~shared/constants'
-import { YCoreRadioButton } from '~core/ui/radioButton'
-import { YRadioButton } from '~vue/ui/radioButton'
+import { AltCoreRadioButtonTagName as tagName } from '~shared/constants'
+import { AltCoreRadioButton } from '~core/ui/radioButton'
+import { AltRadioButton } from '~vue/ui/radioButton'
 import {
   propRequiredTestCases,
   propSizeTestCases,
@@ -18,13 +18,13 @@ import {
 import { slotLabelTestCases, slotAnnotationTestCases } from './cases/slots'
 
 describe(
-  'Vue/YRadioButton',
+  'Vue/AltRadioButton',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreRadioButton,
+          AltCoreRadioButton,
         )
       }
     })
@@ -48,7 +48,7 @@ describe(
             () => {
               const checked = ref(false)
               const wrapper = mount(
-                YRadioButton,
+                AltRadioButton,
                 {
                   props: {
                     [testCase.prop]: testCase.value,
@@ -81,7 +81,7 @@ describe(
             `Slot "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
-                YRadioButton,
+                AltRadioButton,
                 { props: { modelValue: false }, slots: { [testCase.slot]: testCase.content } },
               )
 
@@ -101,7 +101,7 @@ describe(
           'Should emit "update:modelValue" when the checkbox state changes',
           async() => {
             const wrapper = mount(
-              YRadioButton,
+              AltRadioButton,
               { props: { modelValue: false } },
             )
 

@@ -1,8 +1,8 @@
 import {
   createCorePaginationProps,
-  type IYCorePaginationProps,
+  type IAltCorePaginationProps,
 } from '~core/ui/pagination/models/types'
 
-export interface IYNgPaginationProps extends IYCorePaginationProps {}
+export interface IAltNgPaginationProps extends IAltCorePaginationProps {}
 
-export const createNgPaginationProps = (): IYNgPaginationProps => createCorePaginationProps()
+export const createNgPaginationProps = (): IAltNgPaginationProps => createCorePaginationProps()

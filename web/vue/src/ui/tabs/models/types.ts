@@ -1,19 +1,19 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types.ts'
-import type { IYCoreTabsExternalProps } from '~core/ui/tabs/models/types'
+import type { IAltCoreTabsExternalProps } from '~core/ui/tabs/models/types'
 import { createCoreTabsExternalProps } from '~core/ui/tabs/models/types'
-import type { IYVueTabProps } from '~vue/ui/tab'
+import type { IAltVueTabProps } from '~vue/ui/tab'
 
-export interface IYVueCoreTabsProps extends Omit<IYCoreTabsExternalProps, 'value' | 'tabs'> {
-  modelValue: IYCoreTabsExternalProps['value'] | undefined
-  tabs: IYVueTabProps[] | undefined
+export interface IAltVueCoreTabsProps extends Omit<IAltCoreTabsExternalProps, 'value' | 'tabs'> {
+  modelValue: IAltCoreTabsExternalProps['value'] | undefined
+  tabs: IAltVueTabProps[] | undefined
 }
 
-export interface IYVueTabsProps {
-  tabs?: IYVueCoreTabsProps['tabs']
-  modelValue?: IYVueCoreTabsProps['modelValue']
+export interface IAltVueTabsProps {
+  tabs?: IAltVueCoreTabsProps['tabs']
+  modelValue?: IAltVueCoreTabsProps['modelValue']
 }
 
-export const createVueTabsProps = (): TDefinedVueProps<IYVueTabsProps> => {
+export const createVueTabsProps = (): TDefinedVueProps<IAltVueTabsProps> => {
   const { tabs } = createCoreTabsExternalProps()
   return {
     tabs: tabs ? () => tabs : undefined,
@@ -21,6 +21,6 @@ export const createVueTabsProps = (): TDefinedVueProps<IYVueTabsProps> => {
   }
 }
 
-export interface IYTabsEmits {
-  (event: 'update:modelValue', payload: IYVueCoreTabsProps['modelValue']): void
+export interface IAltTabsEmits {
+  (event: 'update:modelValue', payload: IAltVueCoreTabsProps['modelValue']): void
 }

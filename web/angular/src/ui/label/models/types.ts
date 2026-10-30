@@ -1,12 +1,12 @@
 import {
   createCoreLabelInternalProps,
   createCoreLabelExternalProps,
-  type IYCoreLabelExternalProps,
-  type IYCoreLabelInternalProps,
+  type IAltCoreLabelExternalProps,
+  type IAltCoreLabelInternalProps,
 } from '~core/ui/label/models/types'
 
-export interface IYNgLabelProps extends IYCoreLabelExternalProps, IYCoreLabelInternalProps {}
+export interface IAltNgLabelProps extends IAltCoreLabelExternalProps, IAltCoreLabelInternalProps {}
 
-export const createNgLabelProps = (): IYNgLabelProps => {
+export const createNgLabelProps = (): IAltNgLabelProps => {
   return { ...createCoreLabelExternalProps(), ...createCoreLabelInternalProps() }
 }

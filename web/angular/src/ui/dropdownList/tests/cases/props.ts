@@ -1,7 +1,7 @@
 import type { TPropTestCase } from '~shared/types/tests'
 import {
   createNgDropdownListProps,
-  type IYNgDropdownListProps,
+  type IAltNgDropdownListProps,
 } from '~ng/ui/dropdownList/models/types'
 import {
   propItemsTestCases as corePropItemsTestCases,
@@ -12,7 +12,7 @@ import {
 
 const { items: defaultItems, itemLabel: defaultItemLabel, minWidth: defaultMinWidth } = createNgDropdownListProps()
 
-export const propItemsTestCases: TPropTestCase<IYNgDropdownListProps, 'items'>[] = [
+export const propItemsTestCases: TPropTestCase<IAltNgDropdownListProps, 'items'>[] = [
   ...corePropItemsTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'items',
@@ -21,7 +21,7 @@ export const propItemsTestCases: TPropTestCase<IYNgDropdownListProps, 'items'>[]
     expected: defaultItems,
   },
 ]
-export const propItemLabelTestCases: TPropTestCase<IYNgDropdownListProps, 'itemLabel'>[] = [
+export const propItemLabelTestCases: TPropTestCase<IAltNgDropdownListProps, 'itemLabel'>[] = [
   ...corePropItemLabelTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'itemLabel',
@@ -30,7 +30,7 @@ export const propItemLabelTestCases: TPropTestCase<IYNgDropdownListProps, 'itemL
     expected: defaultItemLabel,
   },
 ]
-export const propMinWidthTestCases: TPropTestCase<IYNgDropdownListProps, 'minWidth'>[] = [
+export const propMinWidthTestCases: TPropTestCase<IAltNgDropdownListProps, 'minWidth'>[] = [
   ...corePropMinWidthTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'minWidth',

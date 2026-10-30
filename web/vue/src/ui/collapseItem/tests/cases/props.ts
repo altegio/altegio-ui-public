@@ -1,7 +1,7 @@
 import type { TPropTestCase } from '~shared/types/tests'
 import {
   createVueCollapseItemProps,
-  type IYVueCollapseItemProps,
+  type IAltVueCollapseItemProps,
 } from '~vue/ui/collapseItem/models/types'
 import {
   propLabelCases as corePropLabelCases,
@@ -19,27 +19,27 @@ const {
   variant: defaultVariant,
 } = createVueCollapseItemProps()
 
-export const propLabelCases: TPropTestCase<IYVueCollapseItemProps, 'label'>[] = [
+export const propLabelCases: TPropTestCase<IAltVueCollapseItemProps, 'label'>[] = [
   ...corePropLabelCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   { prop: 'label', case: 'undefined', value: undefined, expected: defaultLabel },
 ]
 
-export const propAnnotationCases: TPropTestCase<IYVueCollapseItemProps, 'annotation'>[] = [
+export const propAnnotationCases: TPropTestCase<IAltVueCollapseItemProps, 'annotation'>[] = [
   ...corePropAnnotationCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   { prop: 'annotation', case: 'undefined', value: undefined, expected: defaultAnnotation },
 ]
 
-export const propOpenedCases: TPropTestCase<IYVueCollapseItemProps, 'opened'>[] = [
+export const propOpenedCases: TPropTestCase<IAltVueCollapseItemProps, 'opened'>[] = [
   ...corePropOpenedCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   { prop: 'opened', case: 'undefined', value: undefined, expected: defaultOpened },
 ]
 
-export const propValueCases: TPropTestCase<IYVueCollapseItemProps, 'value'>[] = [
+export const propValueCases: TPropTestCase<IAltVueCollapseItemProps, 'value'>[] = [
   ...corePropValueCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   { prop: 'value', case: 'undefined', value: undefined, expected: defaultValue },
 ]
 
-export const propVariantCases: TPropTestCase<IYVueCollapseItemProps, 'variant'>[] = [
+export const propVariantCases: TPropTestCase<IAltVueCollapseItemProps, 'variant'>[] = [
   ...corePropVariantCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   { prop: 'variant', case: 'undefined', value: undefined, expected: defaultVariant },
 ]

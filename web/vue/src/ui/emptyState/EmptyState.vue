@@ -1,30 +1,30 @@
 <template>
-  <y-core-empty-state v-bind="props">
+  <alt-core-empty-state v-bind="props">
     <div
       v-if="$slots.actions"
       slot="actions"
     >
       <slot name="actions" />
     </div>
-  </y-core-empty-state>
+  </alt-core-empty-state>
 </template>
 
 <script lang="ts" setup>
   import '~core/ui/emptyState'
   import {
     createVueEmptyStateProps,
-    type IYVueEmptyStateProps,
-    type IYVueCoreEmptyStateProps,
+    type IAltVueEmptyStateProps,
+    type IAltVueCoreEmptyStateProps,
   } from '~vue/ui/emptyState/models/types'
 
-  defineOptions({ name: 'YEmptyState' })
+  defineOptions({ name: 'AltEmptyState' })
 
   defineSlots<{
     actions?: () => unknown
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueEmptyStateProps>(),
+    defineProps<IAltVueEmptyStateProps>(),
     createVueEmptyStateProps(),
-  ) satisfies IYVueCoreEmptyStateProps
+  ) satisfies IAltVueCoreEmptyStateProps
 </script>

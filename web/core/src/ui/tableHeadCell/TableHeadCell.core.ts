@@ -6,10 +6,10 @@ import { alphabetical } from 'radash'
 
 import {
   createCoreTableHeadCellProps,
-  type IYCoreTableHeadCellProps,
+  type IAltCoreTableHeadCellProps,
 } from '~core/ui/tableHeadCell/models/types'
 import {
-  YCoreTableHeadCellTagName as tagName,
+  AltCoreTableHeadCellTagName as tagName,
 } from '~shared/constants'
 
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
@@ -19,14 +19,14 @@ import { renderIcon } from '~core/renderers'
 import { booleanConverter } from '~core/utils/converters'
 import { ESort, type TSort } from '~shared/types/global'
 
-import { yChevronDown, yChevronUp, ySortDefault, yInfo, type IYIcon } from '~shared/icons'
+import { altChevronDown, altChevronUp, altSortDefault, altInfo, type IAltIcon } from '~shared/icons'
 
 import '~core/ui/tableCell'
 import '~core/ui/text'
 import '~core/ui/tooltip'
 
-import YCoreTableHeadCellVarsCss from '~core/ui/tableHeadCell/css/TableHeadCell.vars.css?inline'
-import YCoreTableHeadCellScopedCss from '~core/ui/tableHeadCell/css/TableHeadCell.scoped.css?inline'
+import AltCoreTableHeadCellVarsCss from '~core/ui/tableHeadCell/css/TableHeadCell.vars.css?inline'
+import AltCoreTableHeadCellScopedCss from '~core/ui/tableHeadCell/css/TableHeadCell.scoped.css?inline'
 import '~core/ui/tableHeadCell/css/TableHeadCell.outside.css'
 
 import {
@@ -58,10 +58,10 @@ const mapSwitchSortDirection: Record<TSort, TSort> = {
   [ESort.DESC]: ESort.DEFAULT,
   [ESort.DEFAULT]: ESort.ASC,
 }
-const mapSortIcon: Record<TSort, IYIcon> = {
-  [ESort.ASC]: yChevronDown,
-  [ESort.DESC]: yChevronUp,
-  [ESort.DEFAULT]: ySortDefault,
+const mapSortIcon: Record<TSort, IAltIcon> = {
+  [ESort.ASC]: altChevronDown,
+  [ESort.DESC]: altChevronUp,
+  [ESort.DEFAULT]: altSortDefault,
 }
 
 const getAlphabeticalSort = (direction: TSort) => {
@@ -71,19 +71,19 @@ const getAlphabeticalSort = (direction: TSort) => {
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreTableHeadCell
+export class AltCoreTableHeadCell
   extends LitElement
-  implements IYCoreTableHeadCellProps {
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) sticky: IYCoreTableHeadCellProps['sticky'] = sticky
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) bordered: IYCoreTableHeadCellProps['bordered'] = bordered
-  @property({ type: String }) align: IYCoreTableHeadCellProps['align'] = align
-  @property({ type: Boolean }) disabled: IYCoreTableHeadCellProps['disabled'] = disabled
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) sortable: IYCoreTableHeadCellProps['sortable'] = sortable
-  @property({ type: String, attribute: 'sort-direction' }) sortDirection: IYCoreTableHeadCellProps['sortDirection'] = sortDirection
-  @property({ type: Object }) header: IYCoreTableHeadCellProps['header'] = header
-  @property({ type: String, attribute: 'header-label' }) headerLabel: IYCoreTableHeadCellProps['headerLabel'] = headerLabel
-  @property({ type: Boolean }) ellipsis: IYCoreTableHeadCellProps['ellipsis'] = ellipsis
-  @property({ type: Number }) lineclamp: IYCoreTableHeadCellProps['lineclamp'] = lineclamp
+  implements IAltCoreTableHeadCellProps {
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) sticky: IAltCoreTableHeadCellProps['sticky'] = sticky
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) bordered: IAltCoreTableHeadCellProps['bordered'] = bordered
+  @property({ type: String }) align: IAltCoreTableHeadCellProps['align'] = align
+  @property({ type: Boolean }) disabled: IAltCoreTableHeadCellProps['disabled'] = disabled
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) sortable: IAltCoreTableHeadCellProps['sortable'] = sortable
+  @property({ type: String, attribute: 'sort-direction' }) sortDirection: IAltCoreTableHeadCellProps['sortDirection'] = sortDirection
+  @property({ type: Object }) header: IAltCoreTableHeadCellProps['header'] = header
+  @property({ type: String, attribute: 'header-label' }) headerLabel: IAltCoreTableHeadCellProps['headerLabel'] = headerLabel
+  @property({ type: Boolean }) ellipsis: IAltCoreTableHeadCellProps['ellipsis'] = ellipsis
+  @property({ type: Number }) lineclamp: IAltCoreTableHeadCellProps['lineclamp'] = lineclamp
   @property({ type: Boolean, attribute: 'has-hint' }) hasHint = hasHint
 
   @state() private hasHintSlot = false
@@ -106,8 +106,8 @@ export class YCoreTableHeadCell
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreTableHeadCellVarsCss)}
-      ${unsafeCSS(YCoreTableHeadCellScopedCss)}
+      ${unsafeCSS(AltCoreTableHeadCellVarsCss)}
+      ${unsafeCSS(AltCoreTableHeadCellScopedCss)}
     `,
   ]
 
@@ -200,7 +200,7 @@ export class YCoreTableHeadCell
   protected renderContent() {
     return html`
       <slot name="plugin"></slot>
-      <y-core-text
+      <alt-core-text
         size="p2-medium"
         class=${this.baseContentClass}
         .ellipsis=${this.ellipsis}
@@ -212,7 +212,7 @@ export class YCoreTableHeadCell
           ${this.renderSort()}
           ${this.renderHint()}
         </div>
-      </y-core-text>
+      </alt-core-text>
     `
   }
 
@@ -230,13 +230,13 @@ export class YCoreTableHeadCell
     return this.hasHint
       ? html`
         <div class=${this.baseHintClass}>
-          <y-core-tooltip placement="right">
+          <alt-core-tooltip placement="right">
             <div slot="activator" class=${`${this.baseHintClass}-activator`}>
-              ${renderIcon({ icon: yInfo, size: '16px' })}
+              ${renderIcon({ icon: altInfo, size: '16px' })}
             </div>
 
             <slot name="hint" slot="content" class=${`${this.baseHintClass}-content`} @slotchange=${this.handleSlotHintChange}></slot>
-          </y-core-tooltip>
+          </alt-core-tooltip>
         </div>
       `
       : nothing
@@ -244,7 +244,7 @@ export class YCoreTableHeadCell
 
   protected render() {
     return html`
-      <y-core-table-cell
+      <alt-core-table-cell
         .align=${this.align}
         .disabled=${this.disabled}
         class=${classMap(this.computedClasses)}
@@ -252,7 +252,7 @@ export class YCoreTableHeadCell
         <div slot="cell" class=${this.baseWrapClass}>
           ${this.renderContent()}
         </div>
-      </y-core-table-cell>
+      </alt-core-table-cell>
     `
   }
 }

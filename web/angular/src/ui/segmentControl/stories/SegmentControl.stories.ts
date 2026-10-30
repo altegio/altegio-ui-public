@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import yCoreSegmentControlStoryMeta from '~core/ui/segmentControl/stories/SegmentControl.stories'
+import altCoreSegmentControlStoryMeta from '~core/ui/segmentControl/stories/SegmentControl.stories'
 
-import { YSegmentControl } from '~ng/ui/segmentControl'
+import { AltSegmentControl } from '~ng/ui/segmentControl'
 import { action } from 'storybook/actions'
 
 /**
  * Angular wrapper for Core SegmentControl
  */
-const meta: Meta<YSegmentControl> = {
+const meta: Meta<AltSegmentControl> = {
   title: 'SegmentControl/✅ SegmentControl',
   id: 'segmentControl',
   parameters: { controls: { sort: 'alpha' } },
-  component: YSegmentControl,
+  component: AltSegmentControl,
   tags: [
     'angular',
     'autodocs',
@@ -24,21 +24,21 @@ const meta: Meta<YSegmentControl> = {
         onClick: action('click'),
       },
       template: `
-        <YSegmentControl
+        <AltSegmentControl
           [options]="options"
           [size]="size"
           [manual]="manual"
           (click)="onClick($event)"
           [(value)]="value"
         >
-        </YSegmentControl>`,
+        </AltSegmentControl>`,
     }
   },
-  argTypes: { ...yCoreSegmentControlStoryMeta.argTypes },
-  args: { ...yCoreSegmentControlStoryMeta.args },
-} satisfies Meta<YSegmentControl>
+  argTypes: { ...altCoreSegmentControlStoryMeta.argTypes },
+  args: { ...altCoreSegmentControlStoryMeta.args },
+} satisfies Meta<AltSegmentControl>
 
 export default meta
-type Story = StoryObj<YSegmentControl>
+type Story = StoryObj<AltSegmentControl>
 
 export const Playground: Story = { args: {} }

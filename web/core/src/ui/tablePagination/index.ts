@@ -1,1 +1,1 @@
-export { YCoreTablePagination } from './TablePagination.core'
+export { AltCoreTablePagination } from './TablePagination.core'

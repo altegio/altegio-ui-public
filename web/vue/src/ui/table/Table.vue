@@ -1,5 +1,5 @@
 <template>
-  <y-core-table
+  <alt-core-table
     :disabled="disabled"
     :loading="loading"
     :plugins="plugins"
@@ -7,7 +7,7 @@
     :hide-bar="hideHeader"
     :style="computedStyles"
   >
-    <y-core-skeleton-table
+    <alt-core-skeleton-table
       slot="placeholder"
       :columns="skeletonColumns"
       :rows="itemsPerPage"
@@ -17,26 +17,26 @@
       :hide-bar="hideHeader"
     />
 
-    <y-core-table-row
+    <alt-core-table-row
       slot="head"
       :selectable="selectable"
       :sticky="sticky"
       :disabled="disabled"
     >
-      <y-core-table-head-cell
+      <alt-core-table-head-cell
         v-if="selectable"
         :sticky="sticky"
       >
-        <y-core-simple-checkbox
+        <alt-core-simple-checkbox
           slot="cell"
           :checked="checkedAll"
           :indeterminate="indeterminateAll"
           :disabled="disabled"
           @checked="toggleAll"
         />
-      </y-core-table-head-cell>
+      </alt-core-table-head-cell>
 
-      <y-core-table-head-cell
+      <alt-core-table-head-cell
         v-for="(headCell, headCellKey, headCellIndex) in headers"
         :key="`headCell-${headCellKey}`"
         :header="headCell"
@@ -79,10 +79,10 @@
             />
           </slot>
         </div>
-      </y-core-table-head-cell>
-    </y-core-table-row>
+      </alt-core-table-head-cell>
+    </alt-core-table-row>
 
-    <y-core-table-bar slot="bar" />
+    <alt-core-table-bar slot="bar" />
 
     <template
       v-for="(row, rowIndex) in items"
@@ -97,7 +97,7 @@
           :row="row"
           :index="rowIndex"
         >
-          <y-core-table-row
+          <alt-core-table-row
             slot="body"
             :data-group="row.group"
             :data-row-index="rowIndex"
@@ -116,18 +116,18 @@
                 :row="row"
                 :index="rowIndex"
               >
-                <y-core-table-cell
+                <alt-core-table-cell
                   v-if="selectable"
                   :disabled="disabled"
                   :sticky="sticky"
                 >
-                  <y-core-simple-checkbox
+                  <alt-core-simple-checkbox
                     slot="cell"
                     :checked="selected.includes(row.rowId)"
                     :disabled="disabled"
                     @checked="toggleRow(row)"
                   />
-                </y-core-table-cell>
+                </alt-core-table-cell>
 
                 <template
                   v-for="(headCell, headCellKey, headCellIndex) in headers"
@@ -143,7 +143,7 @@
                       :cell="row[headCellKey]"
                       :row="row"
                     >
-                      <y-core-table-cell
+                      <alt-core-table-cell
                         :disabled="disabled"
                         :item="row[headCellKey]"
                         :align="headCell.align"
@@ -169,18 +169,18 @@
                             />
                           </slot>
                         </div>
-                      </y-core-table-cell>
+                      </alt-core-table-cell>
                     </slot>
                   </slot>
                 </template>
               </slot>
             </slot>
-          </y-core-table-row>
+          </alt-core-table-row>
         </slot>
       </slot>
     </template>
 
-    <y-core-table-pagination
+    <alt-core-table-pagination
       v-if="showPagination"
       slot="pagination"
       :disabled="disabled"
@@ -194,7 +194,7 @@
       @change-page="$emit('update:page', $event.detail.page)"
       @change-items-per-page="$emit('update:itemsPerPage', $event.detail.itemsPerPage)"
     />
-  </y-core-table>
+  </alt-core-table>
 </template>
 
 <script setup lang="ts">
@@ -212,25 +212,25 @@
 
   import {
     createVueTableProps,
-    type IYVueTableProps,
-    type IYVueTableEmits,
+    type IAltVueTableProps,
+    type IAltVueTableEmits,
     type ISkeletonTableColumn,
-    type IYVueCoreTableProps,
-    type IYVueTableSlots,
-    type TYVueTableItems,
+    type IAltVueCoreTableProps,
+    type IAltVueTableSlots,
+    type TAltVueTableItems,
   } from './models/types'
   import type { TableHeadCellSortEvent, TableHeadCellCheckedEvent } from '~core/ui/tableHeadCell/models/types'
 
-  defineOptions({ name: 'YTable' })
+  defineOptions({ name: 'AltTable' })
 
-  const emit = defineEmits<IYVueTableEmits>()
+  const emit = defineEmits<IAltVueTableEmits>()
 
-  defineSlots<Partial<IYVueTableSlots>>()
+  defineSlots<Partial<IAltVueTableSlots>>()
 
   const props = withDefaults(
-    defineProps<IYVueTableProps>(),
+    defineProps<IAltVueTableProps>(),
     createVueTableProps(),
-  ) satisfies IYVueCoreTableProps
+  ) satisfies IAltVueCoreTableProps
 
   const checkedAll = computed(() => props.selected.length === props.items.length)
   const indeterminateAll = computed(() => inRange(
@@ -249,7 +249,7 @@
     return props.selectable ? [{ align: 'center', gridTemplate: 'min-content' }, ...headersSkeletonColumns.value] : headersSkeletonColumns.value
   })
 
-  const toggleRow = (row: TYVueTableItems[number]) => {
+  const toggleRow = (row: TAltVueTableItems[number]) => {
     const { rowId } = row
 
     if (props.selected.includes(rowId)) {

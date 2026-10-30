@@ -6,13 +6,13 @@ import { renderIcon } from '~core/renderers'
 
 import {
   createCoreIconButtonProps,
-  type IYCoreIconButtonProps,
+  type IAltCoreIconButtonProps,
 } from '~core/ui/iconButton/models/types'
-import { EYSizes } from '~shared/types/global'
-import { YCoreIconButtonTagName as tagName } from '~shared/constants'
+import { EAltSizes } from '~shared/types/global'
+import { AltCoreIconButtonTagName as tagName } from '~shared/constants'
 
-import YCoreIconButtonScopedCSS from '~core/ui/iconButton/css/IconButton.scoped.css?inline'
-import YCoreIconButtonVarsCSS from '~core/ui/iconButton/css/IconButton.vars.css?inline'
+import AltCoreIconButtonScopedCSS from '~core/ui/iconButton/css/IconButton.scoped.css?inline'
+import AltCoreIconButtonVarsCSS from '~core/ui/iconButton/css/IconButton.vars.css?inline'
 
 import '~core/ui/simpleButton'
 
@@ -25,25 +25,25 @@ const { disabled, href, icon, loading, size, variant, target, fullWidth } = crea
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreIconButton extends LitElement implements IYCoreIconButtonProps {
-  @property({ type: String }) size: IYCoreIconButtonProps['size'] = size
-  @property({ type: String }) variant: IYCoreIconButtonProps['variant'] = variant
-  @property({ type: Boolean }) disabled: IYCoreIconButtonProps['disabled'] = disabled
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) loading: IYCoreIconButtonProps['loading'] = loading
-  @property({ type: String }) href: IYCoreIconButtonProps['href'] = href
-  @property({ type: String }) target: IYCoreIconButtonProps['target'] = target
-  @property({ type: Object }) icon: IYCoreIconButtonProps['icon'] = icon
-  @property({ type: Boolean, attribute: 'full-width' }) fullWidth: IYCoreIconButtonProps['fullWidth'] = fullWidth
+export class AltCoreIconButton extends LitElement implements IAltCoreIconButtonProps {
+  @property({ type: String }) size: IAltCoreIconButtonProps['size'] = size
+  @property({ type: String }) variant: IAltCoreIconButtonProps['variant'] = variant
+  @property({ type: Boolean }) disabled: IAltCoreIconButtonProps['disabled'] = disabled
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) loading: IAltCoreIconButtonProps['loading'] = loading
+  @property({ type: String }) href: IAltCoreIconButtonProps['href'] = href
+  @property({ type: String }) target: IAltCoreIconButtonProps['target'] = target
+  @property({ type: Object }) icon: IAltCoreIconButtonProps['icon'] = icon
+  @property({ type: Boolean, attribute: 'full-width' }) fullWidth: IAltCoreIconButtonProps['fullWidth'] = fullWidth
 
   private readonly baseClass = tagName
 
   static readonly styles = [
-    css`${unsafeCSS(YCoreIconButtonVarsCSS)}`,
-    css`${unsafeCSS(YCoreIconButtonScopedCSS)}`,
+    css`${unsafeCSS(AltCoreIconButtonVarsCSS)}`,
+    css`${unsafeCSS(AltCoreIconButtonScopedCSS)}`,
   ]
 
   private get computedIconSize() {
-    return this.size === EYSizes.LARGE
+    return this.size === EAltSizes.LARGE
       ? '24px'
       : '16px'
   }
@@ -51,7 +51,7 @@ export class YCoreIconButton extends LitElement implements IYCoreIconButtonProps
 
   protected render() {
     return html`
-      <y-core-simple-button
+      <alt-core-simple-button
         href=${ifDefined(this.href)}
         target=${ifDefined(this.target)}
         variant=${ifDefined(this.variant)}
@@ -59,11 +59,11 @@ export class YCoreIconButton extends LitElement implements IYCoreIconButtonProps
         .disabled=${this.disabled}
         .loading=${this.loading}
         .fullWidth=${this.fullWidth}
-        .hostStyles=${YCoreIconButtonVarsCSS}
+        .hostStyles=${AltCoreIconButtonVarsCSS}
         class=${this.baseClass}
       >
         ${renderIcon({ icon: this.icon, size: this.computedIconSize })}
-      </y-core-simple-button>
+      </alt-core-simple-button>
     `
   }
 }

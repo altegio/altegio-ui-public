@@ -3,29 +3,29 @@ import { mount } from '@vue/test-utils'
 
 import { textWithTag } from '~shared/tests/slotContents'
 import { href } from '~shared/tests/mockData'
-import { EAnchorTarget, EYSizes } from '~shared/types/global'
-import { createCoreSimpleButtonProps, EYCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
+import { EAnchorTarget, EAltSizes } from '~shared/types/global'
+import { createCoreSimpleButtonProps, EAltCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
 
-import { YCoreSimpleButtonTagName } from '~shared/constants'
+import { AltCoreSimpleButtonTagName } from '~shared/constants'
 
-import { YCoreSimpleButton } from '~core/ui/simpleButton'
-import { YSimpleButton } from '~vue/ui/simpleButton'
+import { AltCoreSimpleButton } from '~core/ui/simpleButton'
+import { AltSimpleButton } from '~vue/ui/simpleButton'
 
 const {
   size: defaultSize,
   variant: defaultVariant,
 } = createCoreSimpleButtonProps()
 
-const tagName = YCoreSimpleButtonTagName
+const tagName = AltCoreSimpleButtonTagName
 
 describe(
-  'Vue/YSimpleButton',
+  'Vue/AltSimpleButton',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreSimpleButton,
+          AltCoreSimpleButton,
         )
       }
     })
@@ -36,10 +36,10 @@ describe(
         it(
           'Changing prop size should update CoreButton',
           () => {
-            const size = EYSizes.MEDIUM
+            const size = EAltSizes.MEDIUM
 
             const wrapper = mount(
-              YSimpleButton,
+              AltSimpleButton,
               { props: { size } },
             )
 
@@ -52,10 +52,10 @@ describe(
         it(
           'Changing prop variant should update CoreButton',
           () => {
-            const variant = EYCoreSimpleButtonVariant.OUTLINE
+            const variant = EAltCoreSimpleButtonVariant.OUTLINE
 
             const wrapper = mount(
-              YSimpleButton,
+              AltSimpleButton,
               { props: { variant } },
             )
 
@@ -69,7 +69,7 @@ describe(
           'Changing prop disabled should update CoreButton',
           () => {
             const wrapper = mount(
-              YSimpleButton,
+              AltSimpleButton,
               { props: { disabled: true } },
             )
 
@@ -83,7 +83,7 @@ describe(
           'Changing prop loading should update CoreButton',
           () => {
             const wrapper = mount(
-              YSimpleButton,
+              AltSimpleButton,
               { props: { loading: true } },
             )
 
@@ -97,7 +97,7 @@ describe(
           'Changing prop href should update CoreButton',
           () => {
             const wrapper = mount(
-              YSimpleButton,
+              AltSimpleButton,
               { props: { href } },
             )
 
@@ -113,7 +113,7 @@ describe(
             const target = EAnchorTarget.BLANK
 
             const wrapper = mount(
-              YSimpleButton,
+              AltSimpleButton,
               { props: { target } },
             )
 
@@ -127,7 +127,7 @@ describe(
           'Should set the default size when it is undefined',
           () => {
             const wrapper = mount(
-              YSimpleButton,
+              AltSimpleButton,
               { props: { size: undefined } },
             )
 
@@ -141,7 +141,7 @@ describe(
           'Should set the default variant when it is undefined',
           () => {
             const wrapper = mount(
-              YSimpleButton,
+              AltSimpleButton,
               { props: { variant: undefined } },
             )
 
@@ -160,7 +160,7 @@ describe(
           'Should render the markup from the default slot',
           () => {
             const wrapper = mount(
-              YSimpleButton,
+              AltSimpleButton,
               { slots: { default: textWithTag } },
             )
 
@@ -178,7 +178,7 @@ describe(
           async() => {
             const handleClick = vi.fn()
 
-            const wrapper = mount(YSimpleButton)
+            const wrapper = mount(AltSimpleButton)
 
             const coreElement = wrapper.find(tagName)
 
@@ -195,7 +195,7 @@ describe(
           'Should not call the click handler when the button is disabled',
           async() => {
             const wrapper = mount(
-              YSimpleButton,
+              AltSimpleButton,
               { props: { disabled: true } },
             )
 

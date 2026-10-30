@@ -1,7 +1,7 @@
 import {
   createCoreSearchFieldExternalProps,
-  type IYCoreSearchFieldExternalProps,
-  type IYCoreTextFieldExternalProps,
+  type IAltCoreSearchFieldExternalProps,
+  type IAltCoreTextFieldExternalProps,
   type InputEvent,
   type BlurEvent,
   type FocusEvent,
@@ -11,30 +11,30 @@ import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
 export { SEARCH_FIELD_ICON } from '~core/ui/textField/models/types'
 
-export interface IYVueCoreSearchFieldProps extends IYCoreSearchFieldExternalProps {
-  modelValue: IYCoreTextFieldExternalProps['value']
+export interface IAltVueCoreSearchFieldProps extends IAltCoreSearchFieldExternalProps {
+  modelValue: IAltCoreTextFieldExternalProps['value']
 }
 
-export interface IYVueSearchFieldProps {
-  modelValue?: IYCoreTextFieldExternalProps['value']
-  name?: IYCoreSearchFieldExternalProps['name']
-  placeholder?: IYCoreSearchFieldExternalProps['placeholder']
-  disabled?: IYCoreSearchFieldExternalProps['disabled']
-  autofocus?: IYCoreSearchFieldExternalProps['autofocus']
-  error?: IYCoreSearchFieldExternalProps['error']
-  errors?: IYCoreSearchFieldExternalProps['errors']
-  size?: IYCoreSearchFieldExternalProps['size']
-  labelText?: IYCoreSearchFieldExternalProps['labelText']
-  labelTooltipText?: IYCoreSearchFieldExternalProps['labelTooltipText']
-  annotationText?: IYCoreSearchFieldExternalProps['annotationText']
-  labelDebounce?: IYCoreSearchFieldExternalProps['labelDebounce']
-  locator?: IYCoreSearchFieldExternalProps['locator']
-  locatorLabel?: IYCoreSearchFieldExternalProps['locatorLabel']
-  locatorError?: IYCoreSearchFieldExternalProps['locatorError']
-  locatorClearIcon?: IYCoreSearchFieldExternalProps['locatorClearIcon']
+export interface IAltVueSearchFieldProps {
+  modelValue?: IAltCoreTextFieldExternalProps['value']
+  name?: IAltCoreSearchFieldExternalProps['name']
+  placeholder?: IAltCoreSearchFieldExternalProps['placeholder']
+  disabled?: IAltCoreSearchFieldExternalProps['disabled']
+  autofocus?: IAltCoreSearchFieldExternalProps['autofocus']
+  error?: IAltCoreSearchFieldExternalProps['error']
+  errors?: IAltCoreSearchFieldExternalProps['errors']
+  size?: IAltCoreSearchFieldExternalProps['size']
+  labelText?: IAltCoreSearchFieldExternalProps['labelText']
+  labelTooltipText?: IAltCoreSearchFieldExternalProps['labelTooltipText']
+  annotationText?: IAltCoreSearchFieldExternalProps['annotationText']
+  labelDebounce?: IAltCoreSearchFieldExternalProps['labelDebounce']
+  locator?: IAltCoreSearchFieldExternalProps['locator']
+  locatorLabel?: IAltCoreSearchFieldExternalProps['locatorLabel']
+  locatorError?: IAltCoreSearchFieldExternalProps['locatorError']
+  locatorClearIcon?: IAltCoreSearchFieldExternalProps['locatorClearIcon']
 }
 
-export const createVueSearchFieldProps = (): TDefinedVueProps<IYVueSearchFieldProps> => {
+export const createVueSearchFieldProps = (): TDefinedVueProps<IAltVueSearchFieldProps> => {
   const {
     error,
     errors,
@@ -77,22 +77,22 @@ export const createVueSearchFieldProps = (): TDefinedVueProps<IYVueSearchFieldPr
  * Input value for the update:modelValue event
  * Matches detail.value of the core InputEvent
  */
-export type TYSearchFieldEvent = InputEvent
+export type TAltSearchFieldEvent = InputEvent
 
 /** SearchField blur event */
-export type TYSearchBlurEvent = BlurEvent
+export type TAltSearchBlurEvent = BlurEvent
 
 /** SearchField focus event */
-export type TYSearchFocusEvent = FocusEvent
+export type TAltSearchFocusEvent = FocusEvent
 
 /** Clear event */
-export type TYSearchClearEvent = ClearEvent
+export type TAltSearchClearEvent = ClearEvent
 
 /** Search icon click event */
-export type TYSearchClickSearchIconEvent = Event
+export type TAltSearchClickSearchIconEvent = Event
 
 /**
- * Events emitted by YSearchField
+ * Events emitted by AltSearchField
  *
  * - update:modelValue: (value: string) => void
  * - blur: (event: BlurEvent) => void
@@ -100,7 +100,7 @@ export type TYSearchClickSearchIconEvent = Event
  * - clear: (event: ClearEvent) => void
  * - click-search-icon: (event: Event) => void
  */
-export interface IYSearchFieldEmits {
+export interface IAltSearchFieldEmits {
   (event: 'update:modelValue', payload: InputEvent['detail']['value']): void
   (event: 'blur', payload: BlurEvent): void
   (event: 'focus', payload: FocusEvent): void

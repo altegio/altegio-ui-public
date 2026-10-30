@@ -1,4 +1,4 @@
-export enum EYCoreTextSize {
+export enum EAltCoreTextSize {
   H1_SEMIBOLD = 'h1-semibold',
   H2_SEMIBOLD = 'h2-semibold',
   H3_SEMIBOLD = 'h3-semibold',
@@ -17,7 +17,7 @@ export enum EYCoreTextSize {
   A4_MEDIUM = 'a4-medium',
 }
 
-export enum EYCoreTextVariant {
+export enum EAltCoreTextVariant {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
   TERTIARY = 'tertiary',
@@ -27,21 +27,21 @@ export enum EYCoreTextVariant {
   ACCENT = 'accent',
 }
 
-export type TYCoreTextSize = `${EYCoreTextSize}`
-export type TYCoreTextVariant = `${EYCoreTextVariant}`
+export type TAltCoreTextSize = `${EAltCoreTextSize}`
+export type TAltCoreTextVariant = `${EAltCoreTextVariant}`
 
-export interface IYCoreTextExternalProps {
-  size: TYCoreTextSize | undefined
-  variant: TYCoreTextVariant | undefined
+export interface IAltCoreTextExternalProps {
+  size: TAltCoreTextSize | undefined
+  variant: TAltCoreTextVariant | undefined
   ellipsis: boolean | undefined
   lineclamp: number | undefined
   locator: string | undefined
 }
 
-export const createCoreTextExternalProps = (): IYCoreTextExternalProps => {
+export const createCoreTextExternalProps = (): IAltCoreTextExternalProps => {
   return {
-    size: EYCoreTextSize.P2_REGULAR,
-    variant: EYCoreTextVariant.PRIMARY,
+    size: EAltCoreTextSize.P2_REGULAR,
+    variant: EAltCoreTextVariant.PRIMARY,
     ellipsis: false,
     lineclamp: 1,
     locator: undefined,

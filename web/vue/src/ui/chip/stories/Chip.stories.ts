@@ -2,11 +2,11 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import { useArgs } from 'storybook/preview-api'
 import { action } from 'storybook/actions'
 
-import YCoreChipStoryMeta from '~core/ui/chip/stories/Chip.stories'
-import { YChip } from '~vue/ui/chip'
-import { type IYVueChipProps } from '~vue/ui/chip/models/types'
+import AltCoreChipStoryMeta from '~core/ui/chip/stories/Chip.stories'
+import { AltChip } from '~vue/ui/chip'
+import { type IAltVueChipProps } from '~vue/ui/chip/models/types'
 
-type TVueChipStoryMeta = IYVueChipProps
+type TVueChipStoryMeta = IAltVueChipProps
 
 const meta: Meta<TVueChipStoryMeta> = {
   title: '✅ Chip',
@@ -20,7 +20,7 @@ const meta: Meta<TVueChipStoryMeta> = {
     const [, updateArgs] = useArgs()
 
     return {
-      components: { YChip },
+      components: { AltChip },
       setup() {
         const handleClick = (active: boolean) => {
           updateArgs({ active })
@@ -30,14 +30,14 @@ const meta: Meta<TVueChipStoryMeta> = {
         return { args, handleClick }
       },
       template:
-        `<YChip
+        `<AltChip
           v-bind="args"
           @update:active="handleClick"
         />`,
     }
   },
-  argTypes: { ...YCoreChipStoryMeta.argTypes },
-  args: { ...YCoreChipStoryMeta.args },
+  argTypes: { ...AltCoreChipStoryMeta.argTypes },
+  args: { ...AltCoreChipStoryMeta.args },
 }
 
 export default meta

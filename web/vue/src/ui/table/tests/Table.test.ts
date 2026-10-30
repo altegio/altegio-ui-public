@@ -2,28 +2,28 @@ import { describe, expect, it, beforeAll } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import {
-  YCoreTableTagName,
-  YCoreTableBarTagName,
-  YCoreTableCellTagName,
-  YCoreTablePaginationTagName,
-  YCoreTableRowTagName,
-  YCoreTableHeadCellTagName,
-  YCoreSkeletonTableTagName,
-  YCoreSimpleCheckboxTagName,
+  AltCoreTableTagName,
+  AltCoreTableBarTagName,
+  AltCoreTableCellTagName,
+  AltCoreTablePaginationTagName,
+  AltCoreTableRowTagName,
+  AltCoreTableHeadCellTagName,
+  AltCoreSkeletonTableTagName,
+  AltCoreSimpleCheckboxTagName,
 } from '~shared/constants'
-import type { YCoreSimpleCheckbox } from '~core/index'
+import type { AltCoreSimpleCheckbox } from '~core/index'
 import {
-  YCoreTable,
-  YCoreTableBar,
-  YCoreTableCell,
-  YCoreTablePagination,
-  YCoreTableRow,
-  YCoreTableHeadCell,
-  YCoreSkeletonTable,
+  AltCoreTable,
+  AltCoreTableBar,
+  AltCoreTableCell,
+  AltCoreTablePagination,
+  AltCoreTableRow,
+  AltCoreTableHeadCell,
+  AltCoreSkeletonTable,
 } from '~core/index'
 import { defineCustomElement } from '~shared/utils/components'
 
-import { YTable } from '~vue/ui/table'
+import { AltTable } from '~vue/ui/table'
 
 import {
   slotCellColDynamicTestCases,
@@ -74,23 +74,23 @@ import {
   eventUpdateSelectedTestCases,
   eventUpdatePageTestCases,
   eventUpdateItemsPerPageTestCases,
-  type TYSortPayload,
-  type TYUpdateSelectedPayload,
-  type TYUpdatePagePayload,
-  type TYUpdateItemsPerPagePayload,
+  type TAltSortPayload,
+  type TAltUpdateSelectedPayload,
+  type TAltUpdatePagePayload,
+  type TAltUpdateItemsPerPagePayload,
 } from './cases/events'
 
 describe(
-  'Vue/YTable',
+  'Vue/AltTable',
   () => {
     beforeAll(() => {
-      defineCustomElement(YCoreTableTagName, YCoreTable)
-      defineCustomElement(YCoreTableBarTagName, YCoreTableBar)
-      defineCustomElement(YCoreTableCellTagName, YCoreTableCell)
-      defineCustomElement(YCoreTablePaginationTagName, YCoreTablePagination)
-      defineCustomElement(YCoreTableRowTagName, YCoreTableRow)
-      defineCustomElement(YCoreTableHeadCellTagName, YCoreTableHeadCell)
-      defineCustomElement(YCoreSkeletonTableTagName, YCoreSkeletonTable)
+      defineCustomElement(AltCoreTableTagName, AltCoreTable)
+      defineCustomElement(AltCoreTableBarTagName, AltCoreTableBar)
+      defineCustomElement(AltCoreTableCellTagName, AltCoreTableCell)
+      defineCustomElement(AltCoreTablePaginationTagName, AltCoreTablePagination)
+      defineCustomElement(AltCoreTableRowTagName, AltCoreTableRow)
+      defineCustomElement(AltCoreTableHeadCellTagName, AltCoreTableHeadCell)
+      defineCustomElement(AltCoreSkeletonTableTagName, AltCoreSkeletonTable)
     })
 
     describe(
@@ -123,7 +123,7 @@ describe(
                 `Slot "${testCase.slot}" should render ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YTable,
+                    AltTable,
                     {
                       props: {
                         items: testItems,
@@ -147,14 +147,14 @@ describe(
           () => {
             for (const testCase of [...propDisabledTestCases]) {
               it(
-                `Prop "${testCase.prop}" should set the same property on the core component ${YCoreTableTagName}`,
+                `Prop "${testCase.prop}" should set the same property on the core component ${AltCoreTableTagName}`,
                 () => {
                   const wrapper = mount(
-                    YTable,
+                    AltTable,
                     { props: { [testCase.prop]: testCase.value } },
                   )
 
-                  const coreTableElement = wrapper.find(YCoreTableTagName).element
+                  const coreTableElement = wrapper.find(AltCoreTableTagName).element
 
                   expect(coreTableElement[testCase.prop]).toBe(testCase.expected)
                 },
@@ -163,14 +163,14 @@ describe(
 
             for (const testCase of [...propLoadingTestCases]) {
               it(
-                `Prop "${testCase.prop}" should set the same property on the core component ${YCoreTableTagName}`,
+                `Prop "${testCase.prop}" should set the same property on the core component ${AltCoreTableTagName}`,
                 () => {
                   const wrapper = mount(
-                    YTable,
+                    AltTable,
                     { props: { [testCase.prop]: testCase.value } },
                   )
 
-                  const coreTableElement = wrapper.find(YCoreTableTagName).element
+                  const coreTableElement = wrapper.find(AltCoreTableTagName).element
 
                   expect(coreTableElement[testCase.prop]).toBe(testCase.expected)
                 },
@@ -179,14 +179,14 @@ describe(
 
             for (const testCase of [...propPluginsTestCases]) {
               it(
-                `Prop "${testCase.prop}" should set the same property on the core component ${YCoreTableTagName}`,
+                `Prop "${testCase.prop}" should set the same property on the core component ${AltCoreTableTagName}`,
                 () => {
                   const wrapper = mount(
-                    YTable,
+                    AltTable,
                     { props: { [testCase.prop]: testCase.value } },
                   )
 
-                  const coreTableElement = wrapper.find(YCoreTableTagName).element
+                  const coreTableElement = wrapper.find(AltCoreTableTagName).element
 
                   expect(JSON.stringify(coreTableElement[testCase.prop])).toBe(JSON.stringify(testCase.expected))
                 },
@@ -195,14 +195,14 @@ describe(
 
             for (const testCase of [...propHideHeaderTestCases]) {
               it(
-                `Prop "${testCase.prop}" should set "hideHead" and "hideBar" on the core component ${YCoreTableTagName}`,
+                `Prop "${testCase.prop}" should set "hideHead" and "hideBar" on the core component ${AltCoreTableTagName}`,
                 () => {
                   const wrapper = mount(
-                    YTable,
+                    AltTable,
                     { props: { [testCase.prop]: testCase.value } },
                   )
 
-                  const coreTableElement = wrapper.find(YCoreTableTagName).element
+                  const coreTableElement = wrapper.find(AltCoreTableTagName).element
 
                   expect(coreTableElement.hideHead).toBe(testCase.expected)
                   expect(coreTableElement.hideBar).toBe(testCase.expected)
@@ -212,16 +212,16 @@ describe(
 
             for (const testCase of [...propCounterTextTestCases]) {
               it(
-                `Prop "${testCase.prop}" should update the core component ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${AltCoreTablePaginationTagName}`,
                 () => {
-                  const wrapper = mount(YTable, {
+                  const wrapper = mount(AltTable, {
                     props: {
                       showPagination: true,
                       [testCase.prop]: testCase.value,
                     },
                   })
 
-                  const coreTablePaginationElement = wrapper.find(YCoreTablePaginationTagName).element
+                  const coreTablePaginationElement = wrapper.find(AltCoreTablePaginationTagName).element
 
                   expect(coreTablePaginationElement.counterText).toBe(testCase.expected)
                 },
@@ -230,10 +230,10 @@ describe(
 
             for (const testCase of [...propHeadersTestCases]) {
               it(
-                `Prop "${testCase.prop}" should set the properties on the core components ${YCoreSkeletonTableTagName} and ${YCoreTableHeadCellTagName}`,
+                `Prop "${testCase.prop}" should set the properties on the core components ${AltCoreSkeletonTableTagName} and ${AltCoreTableHeadCellTagName}`,
                 () => {
                   const wrapper = mount(
-                    YTable,
+                    AltTable,
                     { props: { [testCase.prop]: testCase.value } },
                   )
 
@@ -243,8 +243,8 @@ describe(
                   }))
 
 
-                  const coreSkeletonTableElement = wrapper.find(YCoreSkeletonTableTagName).element
-                  const coreTableHeadCellElements = wrapper.findAll(YCoreTableHeadCellTagName)
+                  const coreSkeletonTableElement = wrapper.find(AltCoreSkeletonTableTagName).element
+                  const coreTableHeadCellElements = wrapper.findAll(AltCoreTableHeadCellTagName)
 
                   expect(JSON.stringify(coreSkeletonTableElement.columns)).toEqual(JSON.stringify(cols))
                   expect(coreTableHeadCellElements.length).toBe(cols.length)
@@ -254,16 +254,16 @@ describe(
 
             for (const testCase of [...propItemLabelTestCases]) {
               it(
-                `Prop "${testCase.prop}" should update the core component ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${AltCoreTablePaginationTagName}`,
                 () => {
-                  const wrapper = mount(YTable, {
+                  const wrapper = mount(AltTable, {
                     props: {
                       showPagination: true,
                       [testCase.prop]: testCase.value,
                     },
                   })
 
-                  const coreTablePaginationElement = wrapper.find(YCoreTablePaginationTagName).element
+                  const coreTablePaginationElement = wrapper.find(AltCoreTablePaginationTagName).element
 
                   expect(coreTablePaginationElement.itemLabel).toBe(testCase.expected)
                 },
@@ -272,16 +272,16 @@ describe(
 
             for (const testCase of [...propItemValueTestCases]) {
               it(
-                `Prop "${testCase.prop}" should update the core component ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${AltCoreTablePaginationTagName}`,
                 () => {
-                  const wrapper = mount(YTable, {
+                  const wrapper = mount(AltTable, {
                     props: {
                       showPagination: true,
                       [testCase.prop]: testCase.value,
                     },
                   })
 
-                  const coreTablePaginationElement = wrapper.find(YCoreTablePaginationTagName).element
+                  const coreTablePaginationElement = wrapper.find(AltCoreTablePaginationTagName).element
 
                   expect(coreTablePaginationElement.itemValue).toBe(testCase.expected)
                 },
@@ -290,17 +290,17 @@ describe(
 
             for (const testCase of [...propItemsPerPageTestCases]) {
               it(
-                `Prop "${testCase.prop}" should set the property on the core components ${YCoreSkeletonTableTagName} and ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should set the property on the core components ${AltCoreSkeletonTableTagName} and ${AltCoreTablePaginationTagName}`,
                 () => {
-                  const wrapper = mount(YTable, {
+                  const wrapper = mount(AltTable, {
                     props: {
                       showPagination: true,
                       [testCase.prop]: testCase.value,
                     },
                   })
 
-                  const coreSkeletonTableElement = wrapper.find(YCoreSkeletonTableTagName).element
-                  const coreTablePaginationElement = wrapper.find(YCoreTablePaginationTagName).element
+                  const coreSkeletonTableElement = wrapper.find(AltCoreSkeletonTableTagName).element
+                  const coreTablePaginationElement = wrapper.find(AltCoreTablePaginationTagName).element
 
                   expect(coreSkeletonTableElement.rows).toBe(testCase.expected)
                   expect(coreTablePaginationElement.itemsPerPage).toBe(testCase.expected)
@@ -310,16 +310,16 @@ describe(
 
             for (const testCase of [...propItemsTestCases]) {
               it(
-                `Prop "${testCase.prop}" should change the number of rows ${YCoreTableRowTagName} and cells ${YCoreTableCellTagName}. Case: "${testCase.case}"`,
+                `Prop "${testCase.prop}" should change the number of rows ${AltCoreTableRowTagName} and cells ${AltCoreTableCellTagName}. Case: "${testCase.case}"`,
                 () => {
                   const props = {
                     [testCase.prop]: testCase.value,
                     ...testCase.additionalProps || {},
                   }
-                  const wrapper = mount(YTable, { props })
+                  const wrapper = mount(AltTable, { props })
 
-                  const coreTableRowElements = wrapper.findAll(`${YCoreTableRowTagName}[slot="body"]`)
-                  const coreTableCellElements = wrapper.findAll(YCoreTableCellTagName)
+                  const coreTableRowElements = wrapper.findAll(`${AltCoreTableRowTagName}[slot="body"]`)
+                  const coreTableCellElements = wrapper.findAll(AltCoreTableCellTagName)
 
                   expect(coreTableRowElements.length).toBe(testCase.expected?.rows)
                   expect(coreTableCellElements.length).toBe(testCase.expected?.cells)
@@ -329,16 +329,16 @@ describe(
 
             for (const testCase of [...propOptionsItemsPerPageTestCases]) {
               it(
-                `Prop "${testCase.prop}" should update the core component ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${AltCoreTablePaginationTagName}`,
                 () => {
-                  const wrapper = mount(YTable, {
+                  const wrapper = mount(AltTable, {
                     props: {
                       showPagination: true,
                       [testCase.prop]: testCase.value,
                     },
                   })
 
-                  const coreTablePaginationElement = wrapper.find(YCoreTablePaginationTagName).element
+                  const coreTablePaginationElement = wrapper.find(AltCoreTablePaginationTagName).element
 
                   expect(JSON.stringify(coreTablePaginationElement.optionsItemsPerPage)).toBe(JSON.stringify(testCase.expected))
                 },
@@ -347,16 +347,16 @@ describe(
 
             for (const testCase of [...propPageTestCases]) {
               it(
-                `Prop "${testCase.prop}" should update the core component ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${AltCoreTablePaginationTagName}`,
                 () => {
-                  const wrapper = mount(YTable, {
+                  const wrapper = mount(AltTable, {
                     props: {
                       showPagination: true,
                       [testCase.prop]: testCase.value,
                     },
                   })
 
-                  const coreTablePaginationElement = wrapper.find(YCoreTablePaginationTagName).element
+                  const coreTablePaginationElement = wrapper.find(AltCoreTablePaginationTagName).element
 
                   expect(coreTablePaginationElement.page).toBe(testCase.expected)
                 },
@@ -365,11 +365,11 @@ describe(
 
             for (const testCase of [...propShowPaginationTestCases]) {
               it(
-                `Prop "${testCase.prop}" should update the core component ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${AltCoreTablePaginationTagName}`,
                 () => {
-                  const wrapper = mount(YTable, { props: { [testCase.prop]: testCase.value } })
+                  const wrapper = mount(AltTable, { props: { [testCase.prop]: testCase.value } })
 
-                  const coreTablePaginationElement = wrapper.find(YCoreTablePaginationTagName)
+                  const coreTablePaginationElement = wrapper.find(AltCoreTablePaginationTagName)
 
                   expect(coreTablePaginationElement.exists()).toBe(testCase.expected)
                 },
@@ -378,16 +378,16 @@ describe(
 
             for (const testCase of [...propTotalTestCases]) {
               it(
-                `Prop "${testCase.prop}" should update the core component ${YCoreTablePaginationTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${AltCoreTablePaginationTagName}`,
                 () => {
-                  const wrapper = mount(YTable, {
+                  const wrapper = mount(AltTable, {
                     props: {
                       showPagination: true,
                       [testCase.prop]: testCase.value,
                     },
                   })
 
-                  const coreTablePaginationElement = wrapper.find(YCoreTablePaginationTagName).element
+                  const coreTablePaginationElement = wrapper.find(AltCoreTablePaginationTagName).element
 
                   expect(coreTablePaginationElement.total).toBe(testCase.expected)
                 },
@@ -396,9 +396,9 @@ describe(
 
             for (const testCase of [...propStickyTestCases]) {
               it(
-                `Prop "${testCase.prop}" should set the property on the core components ${YCoreTableHeadCellTagName}, ${YCoreTableRowTagName} and ${YCoreTableCellTagName}`,
+                `Prop "${testCase.prop}" should set the property on the core components ${AltCoreTableHeadCellTagName}, ${AltCoreTableRowTagName} and ${AltCoreTableCellTagName}`,
                 () => {
-                  const wrapper = mount(YTable, {
+                  const wrapper = mount(AltTable, {
                     props: {
                       headers: testHeaders,
                       items: testItems,
@@ -406,10 +406,10 @@ describe(
                     },
                   })
 
-                  const coreTableHeadCellFirstElement = wrapper.findAll(YCoreTableHeadCellTagName)[0].element
-                  const coreTableRowElements = wrapper.findAll<YCoreTableRow>(`${YCoreTableRowTagName}[slot="body"]`)
+                  const coreTableHeadCellFirstElement = wrapper.findAll(AltCoreTableHeadCellTagName)[0].element
+                  const coreTableRowElements = wrapper.findAll<AltCoreTableRow>(`${AltCoreTableRowTagName}[slot="body"]`)
                   const coreTableCellElements = coreTableRowElements
-                    .map((element) => element.findAll(YCoreTableCellTagName)[0])
+                    .map((element) => element.findAll(AltCoreTableCellTagName)[0])
 
                   expect(coreTableHeadCellFirstElement.sticky).toBe(testCase.expected)
                   coreTableRowElements.forEach(({ element }) => {
@@ -424,9 +424,9 @@ describe(
 
             for (const testCase of [...propStripeTestCases]) {
               it(
-                `Prop "${testCase.prop}" should set the property on the core components ${YCoreSkeletonTableTagName} and ${YCoreTableRowTagName}`,
+                `Prop "${testCase.prop}" should set the property on the core components ${AltCoreSkeletonTableTagName} and ${AltCoreTableRowTagName}`,
                 () => {
-                  const wrapper = mount(YTable, {
+                  const wrapper = mount(AltTable, {
                     props: {
                       headers: testHeaders,
                       items: testItems,
@@ -434,8 +434,8 @@ describe(
                     },
                   })
 
-                  const coreSkeletonTableElement = wrapper.find(YCoreSkeletonTableTagName).element
-                  const coreTableRowElements = wrapper.findAll<YCoreTableRow>(`${YCoreTableRowTagName}[slot="body"]`)
+                  const coreSkeletonTableElement = wrapper.find(AltCoreSkeletonTableTagName).element
+                  const coreTableRowElements = wrapper.findAll<AltCoreTableRow>(`${AltCoreTableRowTagName}[slot="body"]`)
 
                   expect(coreSkeletonTableElement.stripe).toBe(testCase.expected)
                   coreTableRowElements.forEach(({ element }) => {
@@ -447,9 +447,9 @@ describe(
 
             for (const testCase of [...propSelectableTestCases]) {
               it(
-                `Prop "${testCase.prop}" should update the core component ${YCoreTableRowTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${AltCoreTableRowTagName}`,
                 () => {
-                  const wrapper = mount(YTable, {
+                  const wrapper = mount(AltTable, {
                     props: {
                       headers: testHeaders,
                       items: testItems,
@@ -457,7 +457,7 @@ describe(
                     },
                   })
 
-                  const coreTableRowElements = wrapper.findAll(YCoreTableRowTagName)
+                  const coreTableRowElements = wrapper.findAll(AltCoreTableRowTagName)
 
                   coreTableRowElements.forEach(({ element }) => {
                     expect(element.selectable).toBe(testCase.expected)
@@ -468,9 +468,9 @@ describe(
 
             for (const testCase of [...propSelectedTestCases]) {
               it(
-                `Prop "${testCase.prop}" should update the core component ${YCoreTableRowTagName}`,
+                `Prop "${testCase.prop}" should update the core component ${AltCoreTableRowTagName}`,
                 () => {
-                  const wrapper = mount(YTable, {
+                  const wrapper = mount(AltTable, {
                     props: {
                       headers: testHeaders,
                       items: testItems,
@@ -479,15 +479,15 @@ describe(
                     },
                   })
 
-                  const coreTableRowElements = wrapper.findAll<YCoreTableRow>(`${YCoreTableRowTagName}[slot="body"]`)
+                  const coreTableRowElements = wrapper.findAll<AltCoreTableRow>(`${AltCoreTableRowTagName}[slot="body"]`)
 
-                  const coreHeadCheckboxElement = wrapper.find<YCoreSimpleCheckbox>(`${YCoreTableRowTagName}[slot="head"] ${YCoreSimpleCheckboxTagName}[slot="cell"]`).element
+                  const coreHeadCheckboxElement = wrapper.find<AltCoreSimpleCheckbox>(`${AltCoreTableRowTagName}[slot="head"] ${AltCoreSimpleCheckboxTagName}[slot="cell"]`).element
 
                   expect(coreHeadCheckboxElement.checked).toBe(testCase.expected?.head.checked)
                   expect(coreHeadCheckboxElement.indeterminate).toBe(testCase.expected?.head.indeterminate)
 
                   coreTableRowElements.forEach((_, index) => {
-                    const coreBodyCheckboxElement = wrapper.findAll<YCoreSimpleCheckbox>(`${YCoreTableRowTagName}[slot="body"] ${YCoreSimpleCheckboxTagName}[slot="cell"]`)[index].element
+                    const coreBodyCheckboxElement = wrapper.findAll<AltCoreSimpleCheckbox>(`${AltCoreTableRowTagName}[slot="body"] ${AltCoreSimpleCheckboxTagName}[slot="cell"]`)[index].element
 
                     expect(coreBodyCheckboxElement.checked).toBe(testCase.expected?.rows[index])
                   })
@@ -502,7 +502,7 @@ describe(
           () => {
             for (const testCase of [...eventSortTestCases]) {
               it(testCase.case, () => {
-                const wrapper = mount(YTable, {
+                const wrapper = mount(AltTable, {
                   props: {
                     headers: testHeaders,
                     items: testItems,
@@ -511,7 +511,7 @@ describe(
 
                 wrapper.vm.$emit(testCase.event, testCase.payload)
 
-                const payload = wrapper.emitted(testCase.event)?.[0][0] as TYSortPayload
+                const payload = wrapper.emitted(testCase.event)?.[0][0] as TAltSortPayload
 
                 const headId = payload.headId
                 const direction = payload.event.direction
@@ -523,7 +523,7 @@ describe(
 
             for (const testCase of [...eventUpdateSelectedTestCases]) {
               it(testCase.case, () => {
-                const wrapper = mount(YTable, {
+                const wrapper = mount(AltTable, {
                   props: {
                     selectable: true,
                     headers: testHeaders,
@@ -533,7 +533,7 @@ describe(
 
                 wrapper.vm.$emit(testCase.event, testCase.payload)
 
-                const payload = wrapper.emitted(testCase.event)?.[0][0] as TYUpdateSelectedPayload
+                const payload = wrapper.emitted(testCase.event)?.[0][0] as TAltUpdateSelectedPayload
 
                 expect(payload).toEqual(testCase.expected)
               })
@@ -541,7 +541,7 @@ describe(
 
             for (const testCase of [...eventUpdatePageTestCases]) {
               it(testCase.case, () => {
-                const wrapper = mount(YTable, {
+                const wrapper = mount(AltTable, {
                   props: {
                     showPagination: true,
                     headers: testHeaders,
@@ -551,7 +551,7 @@ describe(
 
                 wrapper.vm.$emit(testCase.event, testCase.payload)
 
-                const payload = wrapper.emitted(testCase.event)?.[0][0] as TYUpdatePagePayload
+                const payload = wrapper.emitted(testCase.event)?.[0][0] as TAltUpdatePagePayload
 
                 expect(payload).toEqual(testCase.expected)
               })
@@ -559,7 +559,7 @@ describe(
 
             for (const testCase of [...eventUpdateItemsPerPageTestCases]) {
               it(testCase.case, () => {
-                const wrapper = mount(YTable, {
+                const wrapper = mount(AltTable, {
                   props: {
                     headers: testHeaders,
                     items: testItems,
@@ -569,7 +569,7 @@ describe(
 
                 wrapper.vm.$emit(testCase.event, testCase.payload)
 
-                const payload = wrapper.emitted(testCase.event)?.[0][0] as TYUpdateItemsPerPagePayload
+                const payload = wrapper.emitted(testCase.event)?.[0][0] as TAltUpdateItemsPerPagePayload
 
                 expect(payload).toEqual(testCase.expected)
               })

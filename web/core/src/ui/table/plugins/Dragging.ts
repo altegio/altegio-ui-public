@@ -1,19 +1,19 @@
 import type { ITablePlugin, TTablePluginComponents } from './types'
 import {
-  YCoreTableCellTagName,
-  YCoreTableHeadCellTagName,
-  YCoreTableRowTagName,
-  YCoreIconTagName,
-  YCoreTableTagName,
+  AltCoreTableCellTagName,
+  AltCoreTableHeadCellTagName,
+  AltCoreTableRowTagName,
+  AltCoreIconTagName,
+  AltCoreTableTagName,
 } from '~shared/constants'
-import { yDragAndDrop } from '~shared/icons'
-import { type YCoreTableRow } from '~core/ui/tableRow'
-import { type YCoreIcon } from '~core/ui/icon'
-import { type YCoreTableHeadCell } from '~core/ui/tableHeadCell'
-import { type YCoreTableCell } from '~core/ui/tableCell'
+import { altDragAndDrop } from '~shared/icons'
+import { type AltCoreTableRow } from '~core/ui/tableRow'
+import { type AltCoreIcon } from '~core/ui/icon'
+import { type AltCoreTableHeadCell } from '~core/ui/tableHeadCell'
+import { type AltCoreTableCell } from '~core/ui/tableCell'
 import { isSupportsTouchEvents, TOUCH_DRAG_DELAY, type ITouchDragState } from '~web/shared/utils/touchEvents'
-import { YCoreTable } from '~core/ui/table'
-import { isYCoreTableRow } from '~core/ui/tableRow/models/types/isYCoreTableRow'
+import { AltCoreTable } from '~core/ui/table'
+import { isAltCoreTableRow } from '~core/ui/tableRow/models/types/isAltCoreTableRow'
 import { preventAndStopEvent } from '~web/shared/utils'
 
 export interface IDraggingPlugin extends ITablePlugin<TTablePluginComponents> {}
@@ -36,7 +36,7 @@ declare global {
 
 let rowObserver: MutationObserver | null = null
 
-const touchDragState: ITouchDragState<YCoreTableRow> = {
+const touchDragState: ITouchDragState<AltCoreTableRow> = {
   active: false,
   startX: 0,
   startY: 0,
@@ -48,7 +48,7 @@ const touchDragState: ITouchDragState<YCoreTableRow> = {
   dragReady: false,
 }
 
-const moveRow = (sourceRow: YCoreTableRow, targetRow: YCoreTableRow) => {
+const moveRow = (sourceRow: AltCoreTableRow, targetRow: AltCoreTableRow) => {
   const parent = targetRow.parentNode
   if (!parent) return
 
@@ -67,8 +67,8 @@ const moveRow = (sourceRow: YCoreTableRow, targetRow: YCoreTableRow) => {
   }
 }
 
-const setDataTableHeadRow = (row: YCoreTableRow) => {
-  const firstCell = row.querySelector<YCoreTableCell>(YCoreTableHeadCellTagName)
+const setDataTableHeadRow = (row: AltCoreTableRow) => {
+  const firstCell = row.querySelector<AltCoreTableCell>(AltCoreTableHeadCellTagName)
 
   if (!firstCell) return
 
@@ -90,11 +90,11 @@ const setDataTableHeadRow = (row: YCoreTableRow) => {
   return row
 }
 
-const onTableRowDrop = (row: YCoreTableRow) => (event: DragEvent) => {
+const onTableRowDrop = (row: AltCoreTableRow) => (event: DragEvent) => {
   event.preventDefault()
 
   const rowIndex = parseInt(row.dataset.rowIndex ?? '0')
-  const newOrder = Array.from(row.parentElement?.querySelectorAll<YCoreTableRow>(`${YCoreTableRowTagName}[slot="body"]`) ?? [])
+  const newOrder = Array.from(row.parentElement?.querySelectorAll<AltCoreTableRow>(`${AltCoreTableRowTagName}[slot="body"]`) ?? [])
     .map((row) => row.dataset.rowId && !isNaN(parseInt(row.dataset.rowId)) ? parseInt(row.dataset.rowId) : parseInt(row.dataset.rowIndex ?? '0'))
 
   row.dispatchEvent(new CustomEvent(
@@ -111,19 +111,19 @@ const onTableRowDrop = (row: YCoreTableRow) => (event: DragEvent) => {
   ))
 }
 
-const onTableRowDragEnter = (row: YCoreTableRow) => (event: DragEvent) => {
+const onTableRowDragEnter = (row: AltCoreTableRow) => (event: DragEvent) => {
   event.preventDefault()
 
   const groupSelector = row.dataset.group ? `[data-group="${row.dataset.group}"]` : ''
-  const sourceSelector = `${YCoreTableRowTagName}[data-dragging="true"]${groupSelector}`
-  const sourceRow = document.querySelector<YCoreTableRow>(`${YCoreTableTagName} > ${sourceSelector}`)
+  const sourceSelector = `${AltCoreTableRowTagName}[data-dragging="true"]${groupSelector}`
+  const sourceRow = document.querySelector<AltCoreTableRow>(`${AltCoreTableTagName} > ${sourceSelector}`)
 
   if (sourceRow && sourceRow !== row) {
     moveRow(sourceRow, row)
   }
 }
 
-const onTableRowDragStart = (row: YCoreTableRow) => (event: DragEvent) => {
+const onTableRowDragStart = (row: AltCoreTableRow) => (event: DragEvent) => {
   row.style.cursor = 'grabbing'
   row.style.opacity = '0.5'
   row.dataset.dragging = 'true'
@@ -149,7 +149,7 @@ const onTableRowDragStart = (row: YCoreTableRow) => (event: DragEvent) => {
   event.dataTransfer.effectAllowed = 'move'
 }
 
-const onTableRowDragEnd = (row: YCoreTableRow) => (event: DragEvent) => {
+const onTableRowDragEnd = (row: AltCoreTableRow) => (event: DragEvent) => {
   event.preventDefault()
 
   row.style.cursor = 'grab'
@@ -157,19 +157,19 @@ const onTableRowDragEnd = (row: YCoreTableRow) => (event: DragEvent) => {
   row.dataset.dragging = 'false'
 }
 
-const setDraggingIcon = (row: YCoreTableRow) => {
-  const firstCell = row.querySelector<YCoreTableCell>(YCoreTableCellTagName)
+const setDraggingIcon = (row: AltCoreTableRow) => {
+  const firstCell = row.querySelector<AltCoreTableCell>(AltCoreTableCellTagName)
 
   if (!firstCell) return
 
-  const hasIcon = Boolean(firstCell.querySelector<YCoreIcon>(YCoreIconTagName))
+  const hasIcon = Boolean(firstCell.querySelector<AltCoreIcon>(AltCoreIconTagName))
 
   if (hasIcon) return
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-  const icon: YCoreIcon = document.createElement(YCoreIconTagName) as YCoreIcon
+  const icon: AltCoreIcon = document.createElement(AltCoreIconTagName) as AltCoreIcon
 
-  icon.icon = yDragAndDrop
+  icon.icon = altDragAndDrop
   icon.size = '16px'
   icon.style.padding = '2px 8px 2px 0px'
   icon.setAttribute('slot', 'plugin')
@@ -177,14 +177,14 @@ const setDraggingIcon = (row: YCoreTableRow) => {
   firstCell.appendChild(icon)
 }
 
-const setRowDragable = (row: YCoreTableRow) => {
+const setRowDragable = (row: AltCoreTableRow) => {
   const isDragDisabled = row.disabled
 
   row.draggable = !isDragDisabled
   row.style.cursor = isDragDisabled ? 'not-allowed' : 'grab'
 }
 
-const setDataTableBodyRow = (row: YCoreTableRow) => {
+const setDataTableBodyRow = (row: AltCoreTableRow) => {
   if (row.draggable) return
 
   setRowDragable(row)
@@ -201,7 +201,7 @@ const setDataTableBodyRow = (row: YCoreTableRow) => {
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
-const clearDataTableRow = (row: YCoreTableRow) => {
+const clearDataTableRow = (row: AltCoreTableRow) => {
   if (row.dataset.dragging === 'true') return
 
   row.draggable = false
@@ -215,8 +215,8 @@ const clearDataTableRow = (row: YCoreTableRow) => {
   row.ondragend = null
   row.ondragover = null
 
-  const firstHeadCell = row.querySelector<YCoreTableHeadCell>(YCoreTableHeadCellTagName)
-  const firstBodyCell = row.querySelector<YCoreTableCell>(YCoreTableCellTagName)
+  const firstHeadCell = row.querySelector<AltCoreTableHeadCell>(AltCoreTableHeadCellTagName)
+  const firstBodyCell = row.querySelector<AltCoreTableCell>(AltCoreTableCellTagName)
 
   if (firstHeadCell) {
     const span = firstHeadCell.querySelector('span[slot="plugin"]')
@@ -225,13 +225,13 @@ const clearDataTableRow = (row: YCoreTableRow) => {
   }
 
   if (firstBodyCell) {
-    const icon = firstBodyCell.querySelector<YCoreIcon>(`${YCoreIconTagName}[slot="plugin"]`)
+    const icon = firstBodyCell.querySelector<AltCoreIcon>(`${AltCoreIconTagName}[slot="plugin"]`)
 
     if (icon) firstBodyCell.removeChild(icon)
   }
 }
 
-const setRowObserver = (row: YCoreTableRow) => {
+const setRowObserver = (row: AltCoreTableRow) => {
   rowObserver = new MutationObserver((mutations) => {
     mutations.forEach(() => { setRowDragable(row) })
   })
@@ -252,7 +252,7 @@ const handleTouchStart = (event: TouchEvent) => {
   const touch = event.touches[0]
   const sourceItem = event.currentTarget
 
-  if (!isYCoreTableRow(sourceItem) || !sourceItem.draggable) return
+  if (!isAltCoreTableRow(sourceItem) || !sourceItem.draggable) return
 
   touchDragState.touchStartTimeout = setTimeout(() => {
     touchDragState.touchStartTimeout = null
@@ -298,13 +298,13 @@ const handleTouchDragging = (event: TouchEvent) => {
   updateTouchDragPosition(touchInfo)
 }
 
-const findTargetCollapseItem = (touchInfo: Touch): YCoreTableRow | null => {
+const findTargetCollapseItem = (touchInfo: Touch): AltCoreTableRow | null => {
   let targetElement = document.elementFromPoint(touchInfo.clientX, touchInfo.clientY)
 
   const { sourceItem } = touchDragState
 
-  while (targetElement && !(targetElement instanceof YCoreTable)) {
-    if (isYCoreTableRow(targetElement) && targetElement !== sourceItem) {
+  while (targetElement && !(targetElement instanceof AltCoreTable)) {
+    if (isAltCoreTableRow(targetElement) && targetElement !== sourceItem) {
       return targetElement
     }
 
@@ -314,7 +314,7 @@ const findTargetCollapseItem = (touchInfo: Touch): YCoreTableRow | null => {
   return null
 }
 
-const rowsCanBeMoved = (targetItem: YCoreTableRow | null, sourceItem: YCoreTableRow | null) => {
+const rowsCanBeMoved = (targetItem: AltCoreTableRow | null, sourceItem: AltCoreTableRow | null) => {
   if (!targetItem || !sourceItem || targetItem === sourceItem) return false
 
   return targetItem.draggable && targetItem.dataset.group === sourceItem.dataset.group
@@ -360,7 +360,7 @@ const updateTouchDragStatePosition = (isAfter: boolean, offset: number) => {
   }
 }
 
-const resetDragPosition = (item: YCoreTableRow) => {
+const resetDragPosition = (item: AltCoreTableRow) => {
   item.style.pointerEvents = 'all'
   item.style.transform = ''
 }
@@ -371,14 +371,14 @@ const resetTouchDragState = () => {
   touchDragState.targetItem = null
 }
 
-const setTableRowTouchEvents = (row: YCoreTableRow) => {
+const setTableRowTouchEvents = (row: AltCoreTableRow) => {
   row.addEventListener('touchstart', handleTouchStart)
   row.addEventListener('touchmove', handleTouchMove)
   row.addEventListener('touchend', handleTouchEnd)
   row.addEventListener('touchcancel', handleTouchEnd)
 }
 
-const clearTableRowTouchEvents = (row: YCoreTableRow) => {
+const clearTableRowTouchEvents = (row: AltCoreTableRow) => {
   row.removeEventListener('touchstart', handleTouchStart)
   row.removeEventListener('touchmove', handleTouchMove)
   row.removeEventListener('touchend', handleTouchEnd)
@@ -390,9 +390,9 @@ export class Dragging implements IDraggingPlugin {
   supportsTouchEvents: boolean = isSupportsTouchEvents()
 
   install: IDraggingPlugin['install'] = (component) => {
-    if (component.tagName.toLocaleLowerCase() !== YCoreTableRowTagName) return
+    if (component.tagName.toLocaleLowerCase() !== AltCoreTableRowTagName) return
 
-    const row = component as YCoreTableRow
+    const row = component as AltCoreTableRow
     const isHeadRow = row.getAttribute('slot') === 'head'
 
     if (isHeadRow) {
@@ -407,9 +407,9 @@ export class Dragging implements IDraggingPlugin {
   }
 
   uninstall: IDraggingPlugin['uninstall'] = (component) => {
-    if (component.tagName.toLocaleLowerCase() !== YCoreTableRowTagName) return
+    if (component.tagName.toLocaleLowerCase() !== AltCoreTableRowTagName) return
 
-    const row = component as YCoreTableRow
+    const row = component as AltCoreTableRow
 
     clearDataTableRow(row)
     clearRowObserver()

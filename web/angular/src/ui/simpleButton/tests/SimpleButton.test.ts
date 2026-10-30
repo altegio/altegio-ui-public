@@ -3,19 +3,19 @@ import { userEvent } from 'vitest/browser'
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
 import { href } from '~shared/tests/mockData'
-import { YCoreSimpleButtonTagName } from '~shared/constants'
+import { AltCoreSimpleButtonTagName } from '~shared/constants'
 import type { TPropTestCase, TSlotTestCase } from '~shared/types/tests'
 import { text, empty } from '~shared/tests/slotContents'
-import { EAnchorTarget, EYSizes } from '~shared/types/global'
-import { createCoreSimpleButtonExternalProps, EYCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
-import { type IYNgSimpleButtonProps } from '~ng/ui/simpleButton/models/types'
-import { YSimpleButton } from '~ng/ui/simpleButton'
+import { EAnchorTarget, EAltSizes } from '~shared/types/global'
+import { createCoreSimpleButtonExternalProps, EAltCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
+import { type IAltNgSimpleButtonProps } from '~ng/ui/simpleButton/models/types'
+import { AltSimpleButton } from '~ng/ui/simpleButton'
 
 interface ICreateComponentArgs {
   slots?: {
     default?: string
   }
-  props?: Partial<IYNgSimpleButtonProps>
+  props?: Partial<IAltNgSimpleButtonProps>
 }
 
 const {
@@ -29,19 +29,19 @@ const {
 
 const createComponent = async({ slots, props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YSimpleButton] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltSimpleButton] }).compileComponents()
 
   @Component({
     template: `
-      <YSimpleButton
+      <AltSimpleButton
         [size]="size"
         [variant]="variant"
         [disabled]="disabled"
         [loading]="loading"
         [href]="href"
         [target]="target"
-      >{{content}}</YSimpleButton>`,
-    imports: [YSimpleButton],
+      >{{content}}</AltSimpleButton>`,
+    imports: [AltSimpleButton],
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
   })
@@ -57,19 +57,19 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
   return TestComponent
 }
 
-const tagName = YCoreSimpleButtonTagName
+const tagName = AltCoreSimpleButtonTagName
 
 // Unit test cases:
 const slotDefaultTestCases: TSlotTestCase[] = [
   { slot: 'default', case: 'with content', content: text },
   { slot: 'default', case: 'without content', content: empty },
 ]
-const propSizeTestCases: TPropTestCase<IYNgSimpleButtonProps, 'size'>[] = [
+const propSizeTestCases: TPropTestCase<IAltNgSimpleButtonProps, 'size'>[] = [
   {
     prop: 'size',
     case: 'with a value',
-    value: EYSizes.MEDIUM,
-    expected: EYSizes.MEDIUM,
+    value: EAltSizes.MEDIUM,
+    expected: EAltSizes.MEDIUM,
   },
   {
     prop: 'size',
@@ -78,12 +78,12 @@ const propSizeTestCases: TPropTestCase<IYNgSimpleButtonProps, 'size'>[] = [
     expected: defaultSize,
   },
 ]
-const propVariantTestCases: TPropTestCase<IYNgSimpleButtonProps, 'variant'>[] = [
+const propVariantTestCases: TPropTestCase<IAltNgSimpleButtonProps, 'variant'>[] = [
   {
     prop: 'variant',
     case: 'with a value',
-    value: EYCoreSimpleButtonVariant.OUTLINE,
-    expected: EYCoreSimpleButtonVariant.OUTLINE,
+    value: EAltCoreSimpleButtonVariant.OUTLINE,
+    expected: EAltCoreSimpleButtonVariant.OUTLINE,
   },
   {
     prop: 'variant',
@@ -92,7 +92,7 @@ const propVariantTestCases: TPropTestCase<IYNgSimpleButtonProps, 'variant'>[] = 
     expected: defaultVariant,
   },
 ]
-const propDisabledTestCases: TPropTestCase<IYNgSimpleButtonProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltNgSimpleButtonProps, 'disabled'>[] = [
   {
     prop: 'disabled',
     case: 'with a value',
@@ -106,7 +106,7 @@ const propDisabledTestCases: TPropTestCase<IYNgSimpleButtonProps, 'disabled'>[] 
     expected: defaultDisabled,
   },
 ]
-const propLoadingTestCases: TPropTestCase<IYNgSimpleButtonProps, 'loading'>[] = [
+const propLoadingTestCases: TPropTestCase<IAltNgSimpleButtonProps, 'loading'>[] = [
   {
     prop: 'loading',
     case: 'with a value',
@@ -120,7 +120,7 @@ const propLoadingTestCases: TPropTestCase<IYNgSimpleButtonProps, 'loading'>[] = 
     expected: defaultLoading,
   },
 ]
-const propHrefTestCases: TPropTestCase<IYNgSimpleButtonProps, 'href'>[] = [
+const propHrefTestCases: TPropTestCase<IAltNgSimpleButtonProps, 'href'>[] = [
   {
     prop: 'href',
     case: 'with a value',
@@ -134,7 +134,7 @@ const propHrefTestCases: TPropTestCase<IYNgSimpleButtonProps, 'href'>[] = [
     expected: defaultHref,
   },
 ]
-const propTargetTestCases: TPropTestCase<IYNgSimpleButtonProps, 'target'>[] = [
+const propTargetTestCases: TPropTestCase<IAltNgSimpleButtonProps, 'target'>[] = [
   {
     prop: 'target',
     case: 'with a value',
@@ -150,7 +150,7 @@ const propTargetTestCases: TPropTestCase<IYNgSimpleButtonProps, 'target'>[] = [
 ]
 
 describe(
-  'Angular/YSimpleButton',
+  'Angular/AltSimpleButton',
   () => {
     describe(
       'Props',

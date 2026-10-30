@@ -1,11 +1,11 @@
 import {
   createCoreCardButtonExternalProps,
-  type IYCoreCardButtonExternalProps,
+  type IAltCoreCardButtonExternalProps,
 } from './external'
 
 export * from './external'
 export * from './events'
 
-export interface IYCoreCardButtonProps extends IYCoreCardButtonExternalProps {}
+export interface IAltCoreCardButtonProps extends IAltCoreCardButtonExternalProps {}
 
-export const createCoreCardButtonProps = (): IYCoreCardButtonProps => ({ ...createCoreCardButtonExternalProps() })
+export const createCoreCardButtonProps = (): IAltCoreCardButtonProps => ({ ...createCoreCardButtonExternalProps() })

@@ -4,8 +4,8 @@ import { html } from 'lit'
 import '~core/ui/tag'
 
 import { ifDefined } from 'lit/directives/if-defined.js'
-import { YCoreTagTagName } from '~shared/constants'
-import { yRocket, yLoader } from '~shared/icons'
+import { AltCoreTagTagName } from '~shared/constants'
+import { altRocket, altLoader } from '~shared/icons'
 import '../Tag.core'
 import { getComponentContentTable, getComponentStateTable, storyControlsTable } from '~shared/.storybook/tables'
 import type { ITextStoryProps } from '~shared/.storybook/argTypes'
@@ -13,29 +13,29 @@ import {
   disabled as disabledArgType,
   isLongText as isLongTextArgType,
 } from '~shared/.storybook/argTypes'
-import type { IYCoreTagProps } from '../models/types'
-import { createCoreTagProps, EYCoreTagVariant } from '../models/types'
-import { EYSizes } from '~shared/types/global'
+import type { IAltCoreTagProps } from '../models/types'
+import { createCoreTagProps, EAltCoreTagVariant } from '../models/types'
+import { EAltSizes } from '~shared/types/global'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import type { TYCoreTagEvents } from '../models/types/events'
+import type { TAltCoreTagEvents } from '../models/types/events'
 
 const { size, variant, disabled, iconLeft, locator, locatorLabel, locatorIcon } = createCoreTagProps()
 
 const iconOptions = {
-  rocket: yRocket,
-  loader: yLoader,
+  rocket: altRocket,
+  loader: altLoader,
 }
 
-export type TYCoreTagMeta = IYCoreTagProps & ITextStoryProps & TYCoreTagEvents & {
+export type TAltCoreTagMeta = IAltCoreTagProps & ITextStoryProps & TAltCoreTagEvents & {
   text?: string
 }
 
-type Story = StoryObj<TYCoreTagMeta>
+type Story = StoryObj<TAltCoreTagMeta>
 
-const meta: Meta<TYCoreTagMeta> = {
+const meta: Meta<TAltCoreTagMeta> = {
   title: '✅ Tag',
   id: 'tag',
-  component: YCoreTagTagName,
+  component: AltCoreTagTagName,
   tags: ['autodocs'],
   argTypes: {
     locator: {
@@ -46,9 +46,9 @@ const meta: Meta<TYCoreTagMeta> = {
     size: {
       control: 'select',
       options: [
-        EYSizes.SMALL,
-        EYSizes.MEDIUM,
-        EYSizes.LARGE,
+        EAltSizes.SMALL,
+        EAltSizes.MEDIUM,
+        EAltSizes.LARGE,
       ],
       description: 'Tag size',
       ...getComponentStateTable(size),
@@ -56,7 +56,7 @@ const meta: Meta<TYCoreTagMeta> = {
     },
     variant: {
       control: 'select',
-      options: Object.values(EYCoreTagVariant),
+      options: Object.values(EAltCoreTagVariant),
       description: 'Tag variant',
       ...getComponentStateTable(variant),
     },
@@ -107,7 +107,7 @@ export const Basic: Story = {
     const computedText = args.isLongText ? LOREM_IPSUM : args.text
 
     return html`
-      <y-core-tag
+      <alt-core-tag
         size=${ifDefined(args.size)}
         variant=${ifDefined(args.variant)}
         .disabled=${args.disabled}
@@ -116,7 +116,7 @@ export const Basic: Story = {
         locator-icon=${ifDefined(args.locatorIcon)}
       >
         ${computedText}
-      </y-core-tag>
+      </alt-core-tag>
     `
   },
 }
@@ -125,19 +125,19 @@ export const Basic: Story = {
 export const AllVariants: Story = {
   render: () => html`
     <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-      <y-core-tag variant="accent">Accent</y-core-tag>
+      <alt-core-tag variant="accent">Accent</alt-core-tag>
       
-      <y-core-tag variant="muted">Muted</y-core-tag>
+      <alt-core-tag variant="muted">Muted</alt-core-tag>
       
-      <y-core-tag variant="danger">Danger</y-core-tag>
+      <alt-core-tag variant="danger">Danger</alt-core-tag>
       
-      <y-core-tag variant="success">Success</y-core-tag>
+      <alt-core-tag variant="success">Success</alt-core-tag>
       
-      <y-core-tag variant="warning">Warning</y-core-tag>
+      <alt-core-tag variant="warning">Warning</alt-core-tag>
       
-      <y-core-tag variant="information">Information</y-core-tag>
+      <alt-core-tag variant="information">Information</alt-core-tag>
       
-      <y-core-tag variant="discovery">Discovery</y-core-tag>
+      <alt-core-tag variant="discovery">Discovery</alt-core-tag>
     </div>
   `,
 }
@@ -146,22 +146,22 @@ export const AllVariants: Story = {
 export const Sizes: Story = {
   render: () => html`
     <div style="display: flex; gap: 8px; align-items: center;">
-      <y-core-tag size="small">Small</y-core-tag>
+      <alt-core-tag size="small">Small</alt-core-tag>
 
-      <y-core-tag size="medium">Medium</y-core-tag>
+      <alt-core-tag size="medium">Medium</alt-core-tag>
 
-      <y-core-tag size="large">Large</y-core-tag>
+      <alt-core-tag size="large">Large</alt-core-tag>
     </div>
   `,
 }
 
 // With an icon
 export const WithIcon: Story = {
-  args: { iconLeft: yRocket },
+  args: { iconLeft: altRocket },
   render: (args) => html`
-    <y-core-tag .iconLeft=${args.iconLeft}>
+    <alt-core-tag .iconLeft=${args.iconLeft}>
       With an icon
-    </y-core-tag>
+    </alt-core-tag>
   `,
 }
 
@@ -172,43 +172,43 @@ export const Disabled: Story = {
       <div>
         <h3>Default disabled state:</h3>
         
-        <y-core-tag disabled>Unavailable</y-core-tag>
+        <alt-core-tag disabled>Unavailable</alt-core-tag>
       </div>
 
       <div>
         <h3>Disabled states for all variants:</h3>
         
         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <y-core-tag variant="accent" disabled>Accent</y-core-tag>
+          <alt-core-tag variant="accent" disabled>Accent</alt-core-tag>
           
-          <y-core-tag variant="muted" disabled>Muted</y-core-tag>
+          <alt-core-tag variant="muted" disabled>Muted</alt-core-tag>
           
-          <y-core-tag variant="danger" disabled>Danger</y-core-tag>
+          <alt-core-tag variant="danger" disabled>Danger</alt-core-tag>
           
-          <y-core-tag variant="success" disabled>Success</y-core-tag>
+          <alt-core-tag variant="success" disabled>Success</alt-core-tag>
           
-          <y-core-tag variant="warning" disabled>Warning</y-core-tag>
+          <alt-core-tag variant="warning" disabled>Warning</alt-core-tag>
           
-          <y-core-tag variant="information" disabled>Information</y-core-tag>
+          <alt-core-tag variant="information" disabled>Information</alt-core-tag>
           
-          <y-core-tag variant="discovery" disabled>Discovery</y-core-tag>
+          <alt-core-tag variant="discovery" disabled>Discovery</alt-core-tag>
         </div>
       </div>
 
       <div>
         <h3>Disabled with an icon:</h3>
-        <y-core-tag .iconLeft=${yRocket} disabled>With a left icon</y-core-tag>
+        <alt-core-tag .iconLeft=${altRocket} disabled>With a left icon</alt-core-tag>
         </div>
 
       <div>
         <h3>Disabled at different sizes:</h3>
 
         <div style="display: flex; gap: 8px; align-items: center;">
-          <y-core-tag size="small" disabled>Small</y-core-tag>
+          <alt-core-tag size="small" disabled>Small</alt-core-tag>
 
-          <y-core-tag size="medium" disabled>Medium</y-core-tag>
+          <alt-core-tag size="medium" disabled>Medium</alt-core-tag>
 
-          <y-core-tag size="large" disabled>Large</y-core-tag>
+          <alt-core-tag size="large" disabled>Large</alt-core-tag>
         </div>
       </div>
     </div>
@@ -223,11 +223,11 @@ export const Examples: Story = {
         <h3>Status examples:</h3>
         
         <div style="display: flex; gap: 8px;">
-          <y-core-tag variant="success">Available</y-core-tag>
+          <alt-core-tag variant="success">Available</alt-core-tag>
           
-          <y-core-tag variant="danger">Canceled</y-core-tag>
+          <alt-core-tag variant="danger">Canceled</alt-core-tag>
           
-          <y-core-tag variant="warning">Unavailable</y-core-tag>
+          <alt-core-tag variant="warning">Unavailable</alt-core-tag>
         </div>
       </div>
 
@@ -235,11 +235,11 @@ export const Examples: Story = {
         <h3>Information examples:</h3>
         
         <div style="display: flex; gap: 8px;">
-          <y-core-tag variant="information">New</y-core-tag>
+          <alt-core-tag variant="information">New</alt-core-tag>
           
-          <y-core-tag variant="discovery">Updated</y-core-tag>
+          <alt-core-tag variant="discovery">Updated</alt-core-tag>
           
-          <y-core-tag variant="accent">What is new</y-core-tag>
+          <alt-core-tag variant="accent">What is new</alt-core-tag>
         </div>
       </div>
 
@@ -250,13 +250,13 @@ export const Examples: Story = {
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <span>Manicure</span>
             
-            <y-core-tag variant="warning" size="small">Fully booked</y-core-tag>
+            <alt-core-tag variant="warning" size="small">Fully booked</alt-core-tag>
           </div>
           
           <div style="display: flex; gap: 8px; align-items: center;">
-            <y-core-tag variant="muted" size="small">1 h 30 min</y-core-tag>
+            <alt-core-tag variant="muted" size="small">1 h 30 min</alt-core-tag>
             
-            <y-core-tag variant="muted" size="small">Room 45</y-core-tag>
+            <alt-core-tag variant="muted" size="small">Room 45</alt-core-tag>
           </div>
         </div>
       </div>

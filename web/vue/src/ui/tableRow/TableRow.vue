@@ -1,27 +1,27 @@
 <template>
-  <y-core-table-row
+  <alt-core-table-row
     v-bind="props"
   >
     <slot />
-  </y-core-table-row>
+  </alt-core-table-row>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/tableRow'
   import {
     createVueTableRowProps,
-    type IYVueTableRowProps,
-    type IYVueCoreTableRowProps,
+    type IAltVueTableRowProps,
+    type IAltVueCoreTableRowProps,
   } from '~vue/ui/tableRow/models/types'
 
-  defineOptions({ name: 'YTableRow' })
+  defineOptions({ name: 'AltTableRow' })
 
   defineSlots<{
     default: () => unknown
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueTableRowProps>(),
+    defineProps<IAltVueTableRowProps>(),
     createVueTableRowProps(),
-  ) satisfies IYVueCoreTableRowProps
+  ) satisfies IAltVueCoreTableRowProps
 </script>

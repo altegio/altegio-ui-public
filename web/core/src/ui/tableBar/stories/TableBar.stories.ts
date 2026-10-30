@@ -4,16 +4,16 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 import '~core/ui/tableBar'
 
 import {
-  type IYCoreTableBarProps,
+  type IAltCoreTableBarProps,
 } from '~core/ui/tableBar/models/types'
 import {
-  YCoreTableBarTagName as tagName,
+  AltCoreTableBarTagName as tagName,
 } from '~shared/constants'
 
 /**
  * ## Core TableBar
  */
-const meta: Meta<IYCoreTableBarProps> = {
+const meta: Meta<IAltCoreTableBarProps> = {
   title: 'TableBar',
   id: 'tableBar',
   parameters: { controls: { sort: 'alpha' } },
@@ -24,14 +24,14 @@ const meta: Meta<IYCoreTableBarProps> = {
   ],
   render: () => {
     return html`
-      <y-core-table-bar></y-core-table-bar>
+      <alt-core-table-bar></alt-core-table-bar>
     `
   },
   argTypes: {},
   args: {},
-} satisfies Meta<IYCoreTableBarProps>
+} satisfies Meta<IAltCoreTableBarProps>
 
 export default meta
-type Story = StoryObj<IYCoreTableBarProps>
+type Story = StoryObj<IAltCoreTableBarProps>
 
 export const Playground: Story = { args: {} }

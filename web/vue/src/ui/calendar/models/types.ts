@@ -1,25 +1,25 @@
 import {
   createCoreCalendarProps,
-  type IYCoreCalendarProps,
+  type IAltCoreCalendarProps,
 } from '~core/ui/calendar/models/types'
 import type { SelectEvent } from '~core/ui/calendar/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreCalendarProps extends Omit<IYCoreCalendarProps, 'date'> {
-  modelValue: IYCoreCalendarProps['date']
+export interface IAltVueCoreCalendarProps extends Omit<IAltCoreCalendarProps, 'date'> {
+  modelValue: IAltCoreCalendarProps['date']
 }
 
-export interface IYVueCalendarProps {
-  modelValue: IYVueCoreCalendarProps['modelValue']
-  disabled?: IYVueCoreCalendarProps['disabled']
-  isRange?: IYVueCoreCalendarProps['isRange']
-  minDate?: IYVueCoreCalendarProps['minDate']
-  maxDate?: IYVueCoreCalendarProps['maxDate']
-  headerSelectors?: IYVueCoreCalendarProps['headerSelectors']
-  locale?: IYVueCoreCalendarProps['locale']
+export interface IAltVueCalendarProps {
+  modelValue: IAltVueCoreCalendarProps['modelValue']
+  disabled?: IAltVueCoreCalendarProps['disabled']
+  isRange?: IAltVueCoreCalendarProps['isRange']
+  minDate?: IAltVueCoreCalendarProps['minDate']
+  maxDate?: IAltVueCoreCalendarProps['maxDate']
+  headerSelectors?: IAltVueCoreCalendarProps['headerSelectors']
+  locale?: IAltVueCoreCalendarProps['locale']
 }
 
-export const createVueCalendarProps = (): TDefinedVueProps<IYVueCalendarProps> => {
+export const createVueCalendarProps = (): TDefinedVueProps<IAltVueCalendarProps> => {
   const { isRange, minDate, maxDate, disabled, headerSelectors, locale } = createCoreCalendarProps()
 
   return {
@@ -32,6 +32,6 @@ export const createVueCalendarProps = (): TDefinedVueProps<IYVueCalendarProps> =
   }
 }
 
-export interface IYVueCalendarEmits {
+export interface IAltVueCalendarEmits {
   (event: 'update:modelValue', payload: SelectEvent['detail']['value']): void
 }

@@ -1,4 +1,4 @@
-$component: $YCoreSelectFieldTagName;
+$component: $AltCoreSelectFieldTagName;
 
 :host {
   display: block;
@@ -7,14 +7,14 @@ $component: $YCoreSelectFieldTagName;
 .$(component) {
   display: flex;
   flex-direction: column;
-  gap: var(--y-core-size-spacing-x);
-  min-width: var(--y-core-select-field-min-width);
-  max-width: var(--y-core-select-field-max-width);
-  font-family: var(--y-core-font-family);
+  gap: var(--alt-core-size-spacing-x);
+  min-width: var(--alt-core-select-field-min-width);
+  max-width: var(--alt-core-select-field-max-width);
+  font-family: var(--alt-core-font-family);
 
   &__activator {
-    --y-core-input-flex-wrap: wrap;
-    --y-core-input-min-width: 0;
+    --alt-core-input-flex-wrap: wrap;
+    --alt-core-input-min-width: 0;
 
     &_readonly,
     &_disabled {
@@ -29,20 +29,20 @@ $component: $YCoreSelectFieldTagName;
   }
 
   &__input {
-    --y-core-field-input-cursor: pointer;
+    --alt-core-field-input-cursor: pointer;
 
     &_disabled,
     &_readonly {
-      --y-core-field-input-cursor: default;
+      --alt-core-field-input-cursor: default;
     }
   }
 
   &__content {
-    --y-core-dropdown-list-min-width: var(--y-core-select-field-min-width);
-    --y-core-dropdown-list-max-width: var(--y-core-select-field-max-width);
+    --alt-core-dropdown-list-min-width: var(--alt-core-select-field-min-width);
+    --alt-core-dropdown-list-max-width: var(--alt-core-select-field-max-width);
 
-    max-width: var(--y-core-select-field-max-width);
-    margin-top: var(--y-core-size-spacing-x);
+    max-width: var(--alt-core-select-field-max-width);
+    margin-top: var(--alt-core-size-spacing-x);
   }
 
   &__list-item {

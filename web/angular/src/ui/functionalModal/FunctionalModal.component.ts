@@ -1,10 +1,10 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, type ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core'
 
-import { type YCoreFunctionalModal } from '~core/ui/functionalModal'
+import { type AltCoreFunctionalModal } from '~core/ui/functionalModal'
 import '~core/ui/functionalModal'
 import {
   createNgFunctionalModalProps,
-  type IYNgFunctionalModalProps,
+  type IAltNgFunctionalModalProps,
 } from './models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { cleanupInnerHTML } from '~shared/utils'
@@ -12,11 +12,11 @@ import { cleanupInnerHTML } from '~shared/utils'
 const { open, size, width, hideOverlay, hideFooter, preventEscape, fullScreen, heading, subHeading, dialogLabel, locale } = createNgFunctionalModalProps()
 
 @Component({
-  selector: 'YFunctionalModal',
+  selector: 'AltFunctionalModal',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-functional-modal
+    <alt-core-functional-modal
       #functionalModal
       [open]="open"
       [size]="size"
@@ -107,21 +107,21 @@ const { open, size, width, hideOverlay, hideFooter, preventEscape, fullScreen, h
           [innerHTML]="cleanupHTML(footer)"
         ></div>
       }
-    </y-core-functional-modal>
+    </alt-core-functional-modal>
   `,
 })
-export class YFunctionalModal implements IYNgFunctionalModalProps {
-  @Input() @DefaultValue(open) open: IYNgFunctionalModalProps['open'] = open
-  @Input() @DefaultValue(size) size: IYNgFunctionalModalProps['size'] = size
-  @Input() @DefaultValue(width) width: IYNgFunctionalModalProps['width'] = width
-  @Input() @DefaultValue(hideOverlay) hideOverlay: IYNgFunctionalModalProps['hideOverlay'] = hideOverlay
-  @Input() @DefaultValue(hideFooter) hideFooter: IYNgFunctionalModalProps['hideFooter'] = hideFooter
-  @Input() @DefaultValue(preventEscape) preventEscape: IYNgFunctionalModalProps['preventEscape'] = preventEscape
-  @Input() @DefaultValue(fullScreen) fullScreen: IYNgFunctionalModalProps['fullScreen'] = fullScreen
-  @Input() @DefaultValue(heading) heading: IYNgFunctionalModalProps['heading'] = heading
-  @Input() @DefaultValue(subHeading) subHeading: IYNgFunctionalModalProps['subHeading'] = subHeading
-  @Input() @DefaultValue(dialogLabel) dialogLabel: IYNgFunctionalModalProps['dialogLabel'] = dialogLabel
-  @Input() @DefaultValue(locale) locale: IYNgFunctionalModalProps['locale'] = locale
+export class AltFunctionalModal implements IAltNgFunctionalModalProps {
+  @Input() @DefaultValue(open) open: IAltNgFunctionalModalProps['open'] = open
+  @Input() @DefaultValue(size) size: IAltNgFunctionalModalProps['size'] = size
+  @Input() @DefaultValue(width) width: IAltNgFunctionalModalProps['width'] = width
+  @Input() @DefaultValue(hideOverlay) hideOverlay: IAltNgFunctionalModalProps['hideOverlay'] = hideOverlay
+  @Input() @DefaultValue(hideFooter) hideFooter: IAltNgFunctionalModalProps['hideFooter'] = hideFooter
+  @Input() @DefaultValue(preventEscape) preventEscape: IAltNgFunctionalModalProps['preventEscape'] = preventEscape
+  @Input() @DefaultValue(fullScreen) fullScreen: IAltNgFunctionalModalProps['fullScreen'] = fullScreen
+  @Input() @DefaultValue(heading) heading: IAltNgFunctionalModalProps['heading'] = heading
+  @Input() @DefaultValue(subHeading) subHeading: IAltNgFunctionalModalProps['subHeading'] = subHeading
+  @Input() @DefaultValue(dialogLabel) dialogLabel: IAltNgFunctionalModalProps['dialogLabel'] = dialogLabel
+  @Input() @DefaultValue(locale) locale: IAltNgFunctionalModalProps['locale'] = locale
 
   @Output() openEvent = new EventEmitter()
   handleOpen(event: Event) {
@@ -164,7 +164,7 @@ export class YFunctionalModal implements IYNgFunctionalModalProps {
   }
 
   @ViewChild('functionalModal', { static: true })
-  private functionalModalRef?: ElementRef<YCoreFunctionalModal>
+  private functionalModalRef?: ElementRef<AltCoreFunctionalModal>
 
   scrollToTop(): void {
     this.functionalModalRef?.nativeElement.scrollToTop()

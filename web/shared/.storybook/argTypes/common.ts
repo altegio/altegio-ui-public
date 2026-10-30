@@ -1,6 +1,6 @@
 import type { InputType } from '@storybook/csf'
 import { getComponentContentTable, getComponentEmitsTable, getComponentStateTable } from '~shared/.storybook/tables'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 
 export const error: InputType = {
   type: 'boolean',
@@ -26,11 +26,11 @@ export const items: InputType = {
   ...getComponentContentTable(),
 }
 
-export const size = (sizes?: readonly EYSizes[]): InputType => {
+export const size = (sizes?: readonly EAltSizes[]): InputType => {
   return {
     type: 'string',
     control: 'radio',
-    options: sizes ? [...sizes] : Object.values(EYSizes),
+    options: sizes ? [...sizes] : Object.values(EAltSizes),
     description: 'Component size',
     ...getComponentStateTable(),
   }

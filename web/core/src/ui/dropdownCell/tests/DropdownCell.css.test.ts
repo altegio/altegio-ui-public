@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreDropdownCellTagName } from '~shared/constants'
+import { AltCoreDropdownCellTagName } from '~shared/constants'
 import {
   createCoreDropdownCellProps,
 } from '~core/ui/dropdownCell/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/dropdownCell/tests/cases/css'
 
-const tagName = YCoreDropdownCellTagName
+const tagName = AltCoreDropdownCellTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YDropdownCell/CSS',
+  'Core/AltDropdownCell/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

@@ -1,2 +1,2 @@
-export { YFunctionalModal } from './FunctionalModal.component'
+export { AltFunctionalModal } from './FunctionalModal.component'
 export type * from './models/types'

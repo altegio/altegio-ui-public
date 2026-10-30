@@ -7,8 +7,8 @@
 
 import type { EFrameworkName } from '~web/shared/.storybook/enums/frameworkName'
 import type { IStoryConfig } from '~web/shared/.storybook/types'
-import { EYSizes } from '~web/shared/types/global'
-import { EYCoreBrandButtonVariant } from '../models/types/external'
+import { EAltSizes } from '~web/shared/types/global'
+import { EAltCoreBrandButtonVariant } from '../models/types/external'
 
 // =============================================================================
 // STORY CONFIGURATION
@@ -59,6 +59,6 @@ export const createBrandButtonParameters = (frameworkName: EFrameworkName, frame
   docs: { description: { component: createBrandButtonDescription(frameworkName, frameworkSpecifics) } },
 })
 
-export const brandButtonSizes = [EYSizes.SMALL, EYSizes.MEDIUM, EYSizes.LARGE] as const
+export const brandButtonSizes = [EAltSizes.SMALL, EAltSizes.MEDIUM, EAltSizes.LARGE] as const
 
-export const brandButtonVariants = Object.values(EYCoreBrandButtonVariant)
+export const brandButtonVariants = Object.values(EAltCoreBrandButtonVariant)

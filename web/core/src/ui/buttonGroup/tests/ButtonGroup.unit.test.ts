@@ -1,6 +1,6 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
-import { YCoreButtonGroupTagName, YCoreButtonTagName } from '~shared/constants'
+import { AltCoreButtonGroupTagName, AltCoreButtonTagName } from '~shared/constants'
 import { createCoreButtonGroupProps } from '~core/ui/buttonGroup/models/types'
 import '~core/ui/buttonGroup'
 import '~core/ui/button'
@@ -21,15 +21,15 @@ const {
   injectComponentToBody,
   removeComponent,
 } = useCoreTests(
-  YCoreButtonGroupTagName,
+  AltCoreButtonGroupTagName,
   createCoreButtonGroupProps(),
 )
 
 const getButtonsInLightDOM = () => {
-  return component.querySelectorAll(YCoreButtonTagName)
+  return component.querySelectorAll(AltCoreButtonTagName)
 }
 
-describe('Core/YCoreButtonGroup', () => {
+describe('Core/AltCoreButtonGroup', () => {
   beforeAll(() => {
     injectComponentToBody()
   })
@@ -103,16 +103,16 @@ describe('Core/YCoreButtonGroup', () => {
           component.innerHTML = buttonsHtmlThree
           await component.updateComplete
 
-          const buttonElements = component.querySelectorAll(YCoreButtonTagName)
+          const buttonElements = component.querySelectorAll(AltCoreButtonTagName)
 
           const button = buttonElements[testCase.index]
           const computedStyle = window.getComputedStyle(button)
 
           const radiusProperties = [
-            { property: '--y-core-simple-button-border-top-right-radius', expected: testCase.expectedTopRightRadius },
-            { property: '--y-core-simple-button-border-bottom-right-radius', expected: testCase.expectedBottomRightRadius },
-            { property: '--y-core-simple-button-border-top-left-radius', expected: testCase.expectedTopLeftRadius },
-            { property: '--y-core-simple-button-border-bottom-left-radius', expected: testCase.expectedBottomLeftRadius },
+            { property: '--alt-core-simple-button-border-top-right-radius', expected: testCase.expectedTopRightRadius },
+            { property: '--alt-core-simple-button-border-bottom-right-radius', expected: testCase.expectedBottomRightRadius },
+            { property: '--alt-core-simple-button-border-top-left-radius', expected: testCase.expectedTopLeftRadius },
+            { property: '--alt-core-simple-button-border-bottom-left-radius', expected: testCase.expectedBottomLeftRadius },
           ]
 
           radiusProperties.forEach(({ property, expected }) => {

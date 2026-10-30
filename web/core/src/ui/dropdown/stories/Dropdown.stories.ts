@@ -4,29 +4,29 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 
 import {
   createCoreDropdownExternalProps,
-  type IYCoreDropdownProps,
-  EYCoreDropdownTrigger,
-  EYCoreDropdownPlacement,
-  EYCoreDropdownStrategy,
+  type IAltCoreDropdownProps,
+  EAltCoreDropdownTrigger,
+  EAltCoreDropdownPlacement,
+  EAltCoreDropdownStrategy,
   createCoreDropdownProps,
 } from '../models/types'
-import { YCoreDropdownTagName as tagName } from '~shared/constants'
+import { AltCoreDropdownTagName as tagName } from '~shared/constants'
 import { getComponentStateTable, storyControlsTable } from '~shared/.storybook/tables'
 import { onVisibleEmit } from '~shared/.storybook/argTypes'
-import type { TYCoreDropdownActionEvents } from '../models/types/events'
+import type { TAltCoreDropdownActionEvents } from '../models/types/events'
 
 import '~core/ui/dropdown'
 import '~core/ui/simpleButton'
 
-export interface IYCoreDropdownStorySlots {
+export interface IAltCoreDropdownStorySlots {
   showActivatorSlot: boolean
   showContentSlot: boolean
 }
 
-export const mapTriggerToLabel: Record<EYCoreDropdownTrigger, string> = {
-  [EYCoreDropdownTrigger.CLICK]: 'Click me',
-  [EYCoreDropdownTrigger.HOVER]: 'Hover over me',
-  [EYCoreDropdownTrigger.MANUAL]: 'Manual control',
+export const mapTriggerToLabel: Record<EAltCoreDropdownTrigger, string> = {
+  [EAltCoreDropdownTrigger.CLICK]: 'Click me',
+  [EAltCoreDropdownTrigger.HOVER]: 'Hover over me',
+  [EAltCoreDropdownTrigger.MANUAL]: 'Manual control',
 }
 
 const {
@@ -41,12 +41,12 @@ const {
   inline,
 } = createCoreDropdownProps()
 
-type TYCoreMetaDropdown = Meta<IYCoreDropdownProps & TYCoreDropdownActionEvents & IYCoreDropdownStorySlots>
+type TAltCoreMetaDropdown = Meta<IAltCoreDropdownProps & TAltCoreDropdownActionEvents & IAltCoreDropdownStorySlots>
 
 /**
  * ## Core Dropdown
  */
-const meta: TYCoreMetaDropdown = {
+const meta: TAltCoreMetaDropdown = {
   title: '⚙️ Dropdown',
   id: 'dropdown',
   component: tagName,
@@ -66,7 +66,7 @@ const meta: TYCoreMetaDropdown = {
     onVisible,
     onClickOutside,
   }) => html`
-    <y-core-dropdown
+    <alt-core-dropdown
       .trigger=${trigger}
       .placement=${placement}
       .strategy=${strategy}
@@ -84,11 +84,11 @@ const meta: TYCoreMetaDropdown = {
           showActivatorSlot
             ? 'showActivatorSlot'
             : html`
-              <y-core-simple-button>${
+              <alt-core-simple-button>${
                 trigger
                   ? mapTriggerToLabel[trigger]
-                  : mapTriggerToLabel[EYCoreDropdownTrigger.CLICK]
-              }</y-core-simple-button>
+                  : mapTriggerToLabel[EAltCoreDropdownTrigger.CLICK]
+              }</alt-core-simple-button>
             `
         }
       </div>
@@ -100,12 +100,12 @@ const meta: TYCoreMetaDropdown = {
             : 'Dropdown content'
         }
       </div>
-    </y-core-dropdown>
+    </alt-core-dropdown>
   `,
   argTypes: {
     trigger: {
       control: 'select',
-      options: Object.values(EYCoreDropdownTrigger),
+      options: Object.values(EAltCoreDropdownTrigger),
       description: 'Dropdown trigger',
       ...getComponentStateTable(trigger),
     },
@@ -116,13 +116,13 @@ const meta: TYCoreMetaDropdown = {
     },
     placement: {
       control: 'select',
-      options: Object.values(EYCoreDropdownPlacement),
+      options: Object.values(EAltCoreDropdownPlacement),
       description: 'Dropdown placement',
       ...getComponentStateTable(placement),
     },
     strategy: {
       control: 'select',
-      options: Object.values(EYCoreDropdownStrategy),
+      options: Object.values(EAltCoreDropdownStrategy),
       description: 'Positioning strategy',
       ...getComponentStateTable(strategy),
     },
@@ -178,6 +178,6 @@ const meta: TYCoreMetaDropdown = {
 }
 
 export default meta
-type Story = StoryObj<TYCoreMetaDropdown>
+type Story = StoryObj<TAltCoreMetaDropdown>
 
 export const Playground: Story = { args: { } }

@@ -1,1 +1,1 @@
-export { YCorePopover } from './Popover.core'
+export { AltCorePopover } from './Popover.core'

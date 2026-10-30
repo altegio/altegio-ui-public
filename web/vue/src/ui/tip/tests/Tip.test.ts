@@ -1,10 +1,10 @@
 import { describe, expect, it, beforeAll, beforeEach, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { YCoreTipTagName } from '~shared/constants'
+import { AltCoreTipTagName } from '~shared/constants'
 
-import { YTip } from '~vue/ui/tip'
-import { YCoreTip } from '~core/index'
+import { AltTip } from '~vue/ui/tip'
+import { AltCoreTip } from '~core/index'
 import {
   slotActivatorTestCases,
   slotContentTestCases,
@@ -20,17 +20,17 @@ import {
   propTypeTestCases,
 } from './cases/props'
 
-const tagName = YCoreTipTagName
+const tagName = AltCoreTipTagName
 
 describe(
-  'Vue/YTip',
+  'Vue/AltTip',
   () => {
     beforeAll(() => {
       // register the core component before the tests run
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreTip,
+          AltCoreTip,
         )
       }
     })
@@ -49,7 +49,7 @@ describe(
                 `Should render the ${testCase.slot} slot ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YTip,
+                    AltTip,
                     { slots: { [testCase.slot]: testCase.content } },
                   )
 
@@ -89,7 +89,7 @@ describe(
                 `Changing prop ${testCase.prop} should update the core component ${tagName} (${testCase.case})`,
                 () => {
                   const wrapper = mount(
-                    YTip,
+                    AltTip,
                     {
                       props: { [testCase.prop]: testCase.value },
                       attachTo: container,

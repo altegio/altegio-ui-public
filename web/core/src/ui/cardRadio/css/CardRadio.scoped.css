@@ -1,4 +1,4 @@
-$component: $YCoreCardRadioTagName;
+$component: $AltCoreCardRadioTagName;
 
 :host {
   display: inline-flex;
@@ -11,15 +11,15 @@ $component: $YCoreCardRadioTagName;
 
   &_size {
     &_small {
-      padding: var(--y-core-card-radio-small-padding-y) var(--y-core-card-radio-small-padding-x);
+      padding: var(--alt-core-card-radio-small-padding-y) var(--alt-core-card-radio-small-padding-x);
     }
 
     &_medium {
-      padding: var(--y-core-card-radio-medium-padding-y) var(--y-core-card-radio-medium-padding-x);
+      padding: var(--alt-core-card-radio-medium-padding-y) var(--alt-core-card-radio-medium-padding-x);
     }
 
     &_large {
-      padding: var(--y-core-card-radio-large-padding-y) var(--y-core-card-radio-large-padding-x);
+      padding: var(--alt-core-card-radio-large-padding-y) var(--alt-core-card-radio-large-padding-x);
     }
   }
 }

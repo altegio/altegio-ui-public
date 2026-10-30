@@ -1,12 +1,12 @@
 import {
   createCoreTextExternalProps,
-  type IYCoreTextExternalProps,
+  type IAltCoreTextExternalProps,
 } from './external'
 
 export * from './external'
 
-export interface IYCoreTextProps extends IYCoreTextExternalProps {}
+export interface IAltCoreTextProps extends IAltCoreTextExternalProps {}
 
-export const createCoreTextProps = (): IYCoreTextProps => {
+export const createCoreTextProps = (): IAltCoreTextProps => {
   return { ...createCoreTextExternalProps() }
 }

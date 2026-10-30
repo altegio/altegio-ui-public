@@ -1,21 +1,21 @@
-import { createCoreLabelExternalProps, type IYCoreLabelExternalProps } from '~core/ui/label/models/types'
-import { createCoreAnnotationExternalProps, type IYCoreAnnotationExternalProps } from '~core/ui/annotation/models/types'
-import { createCoreErrorExternalProps, type IYCoreErrorExternalProps } from '~core/ui/error/models/types'
-import { createCoreSimpleRadioButtonExternalProps, type IYCoreSimpleRadioButtonExternalProps } from '~core/ui/simpleRadioButton/models/types'
+import { createCoreLabelExternalProps, type IAltCoreLabelExternalProps } from '~core/ui/label/models/types'
+import { createCoreAnnotationExternalProps, type IAltCoreAnnotationExternalProps } from '~core/ui/annotation/models/types'
+import { createCoreErrorExternalProps, type IAltCoreErrorExternalProps } from '~core/ui/error/models/types'
+import { createCoreSimpleRadioButtonExternalProps, type IAltCoreSimpleRadioButtonExternalProps } from '~core/ui/simpleRadioButton/models/types'
 
 
-export interface IYCoreRadioButtonExternalProps extends Omit<IYCoreSimpleRadioButtonExternalProps, 'error'>,
-  Omit<IYCoreLabelExternalProps, 'text' | 'tooltipText' | 'disabled' | 'debounce'>,
-  Omit<IYCoreAnnotationExternalProps, 'text' | 'disabled'>,
-  IYCoreErrorExternalProps {
+export interface IAltCoreRadioButtonExternalProps extends Omit<IAltCoreSimpleRadioButtonExternalProps, 'error'>,
+  Omit<IAltCoreLabelExternalProps, 'text' | 'tooltipText' | 'disabled' | 'debounce'>,
+  Omit<IAltCoreAnnotationExternalProps, 'text' | 'disabled'>,
+  IAltCoreErrorExternalProps {
   value: string | number | boolean | null | undefined
-  labelText: IYCoreLabelExternalProps['text']
-  labelTooltipText: IYCoreLabelExternalProps['tooltipText']
-  labelOverflowDebounce: IYCoreLabelExternalProps['debounce']
-  annotationText: IYCoreAnnotationExternalProps['text']
+  labelText: IAltCoreLabelExternalProps['text']
+  labelTooltipText: IAltCoreLabelExternalProps['tooltipText']
+  labelOverflowDebounce: IAltCoreLabelExternalProps['debounce']
+  annotationText: IAltCoreAnnotationExternalProps['text']
 }
 
-export const createCoreRadioButtonExternalProps = (): IYCoreRadioButtonExternalProps => {
+export const createCoreRadioButtonExternalProps = (): IAltCoreRadioButtonExternalProps => {
   const {
     text: labelText,
     tooltipText: labelTooltipText,

@@ -2,17 +2,17 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import { ref } from 'vue'
 import { useArgs } from 'storybook/preview-api'
 
-import { EYCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
-import type { IYVueCardSelectProps } from '~vue/ui/cardSelect/models/types'
-import { yMagic } from '~shared/icons'
+import { EAltCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
+import type { IAltVueCardSelectProps } from '~vue/ui/cardSelect/models/types'
+import { altMagic } from '~shared/icons'
 
-import type { IYCoreCardSelectStorySlots } from '~core/ui/cardSelect/stories/CardSelect.stories'
-import yCoreCardSelectStoryMeta from '~core/ui/cardSelect/stories/CardSelect.stories'
-import { YCardIcon } from '~vue/ui/cardIcon'
-import { YCardCheckbox } from '~vue/ui/cardCheckbox'
-import { YCardSelect } from '~vue/ui/cardSelect'
+import type { IAltCoreCardSelectStorySlots } from '~core/ui/cardSelect/stories/CardSelect.stories'
+import altCoreCardSelectStoryMeta from '~core/ui/cardSelect/stories/CardSelect.stories'
+import { AltCardIcon } from '~vue/ui/cardIcon'
+import { AltCardCheckbox } from '~vue/ui/cardCheckbox'
+import { AltCardSelect } from '~vue/ui/cardSelect'
 
-type TVueCardSelectStoryMeta = IYVueCardSelectProps & IYCoreCardSelectStorySlots
+type TVueCardSelectStoryMeta = IAltVueCardSelectProps & IAltCoreCardSelectStorySlots
 
 /**
  * Vue wrapper for Core CardSelect
@@ -26,7 +26,7 @@ const meta: Meta<TVueCardSelectStoryMeta> = {
     'autodocs',
   ],
   render: (args) => {
-    const [, updateArgs] = useArgs<IYVueCardSelectProps>()
+    const [, updateArgs] = useArgs<IAltVueCardSelectProps>()
 
     const handleClick = () => {
       if (args.showCardCheckbox) {
@@ -37,41 +37,41 @@ const meta: Meta<TVueCardSelectStoryMeta> = {
     }
 
     return {
-      components: { YCardSelect, YCardIcon, YCardCheckbox },
+      components: { AltCardSelect, AltCardIcon, AltCardCheckbox },
       setup() {
         const checked = ref<boolean>(false)
 
         return {
           args,
           checked,
-          yMagic,
-          EYCoreColorIconVariant,
+          altMagic,
+          EAltCoreColorIconVariant,
           handleClick,
         }
       },
       template: `
-        <YCardSelect
+        <AltCardSelect
           v-bind="args"
           @click="handleClick"
           @blur="args.onBlur"
           @focus="args.onFocus"
         >
           <template v-if="args.showCardIcon" #before>
-            <YCardIcon
-              :icon="yMagic"
-              :variant="EYCoreColorIconVariant.GREY"
+            <AltCardIcon
+              :icon="altMagic"
+              :variant="EAltCoreColorIconVariant.GREY"
             />
           </template>
 
           <template v-if="args.showCardCheckbox" #after>
-            <YCardCheckbox @click="handleClick" />
+            <AltCardCheckbox @click="handleClick" />
           </template>
-        </YCardSelect>
+        </AltCardSelect>
       `,
     }
   },
-  argTypes: { ...yCoreCardSelectStoryMeta.argTypes },
-  args: { ...yCoreCardSelectStoryMeta.args },
+  argTypes: { ...altCoreCardSelectStoryMeta.argTypes },
+  args: { ...altCoreCardSelectStoryMeta.args },
 }
 
 export default meta

@@ -1,32 +1,32 @@
 import { omit } from 'radash'
 import {
   createCoreFieldWrapperProps,
-  type IYCoreFieldWrapperProps,
+  type IAltCoreFieldWrapperProps,
 } from '~core/ui/fieldWrapper/models/types'
 import {
   createCoreFieldInputProps,
-  type IYCoreFieldInputProps,
+  type IAltCoreFieldInputProps,
 } from '~core/ui/fieldInput/models/types'
 import {
   createCoreLabelExternalProps,
-  type IYCoreLabelExternalProps,
+  type IAltCoreLabelExternalProps,
 } from '~core/ui/label/models/types'
 import {
-  type IYCoreAnnotationExternalProps,
+  type IAltCoreAnnotationExternalProps,
   createCoreAnnotationExternalProps,
 } from '~core/ui/annotation/models/types'
 import {
-  type IYCoreErrorExternalProps,
+  type IAltCoreErrorExternalProps,
   createCoreErrorExternalProps,
 } from '~core/ui/error/models/types'
-import type { TYCountry, TYCountryMappedById } from '~shared/types/country'
+import type { TAltCountry, TAltCountryMappedById } from '~shared/types/country'
 import { addPrefixToObjectKeys, type TAddPrefixToObject } from '~shared/utils'
 import {
   createCoreEmptyStateExternalProps,
-  type IYCoreEmptyStateExternalProps,
+  type IAltCoreEmptyStateExternalProps,
 } from '~core/ui/emptyState/models/types/external'
 
-export type TYCorePhoneFieldAutocompleteOption = {
+export type TAltCorePhoneFieldAutocompleteOption = {
   id: string | number
   title?: string
   phone?: string
@@ -35,33 +35,33 @@ export type TYCorePhoneFieldAutocompleteOption = {
   [key: string]: unknown
 }
 
-export type TYCorePhoneFieldInfoWithMeta = {
+export type TAltCorePhoneFieldInfoWithMeta = {
   phone: string
   meta: {
-    country: TYCountry | null
+    country: TAltCountry | null
     phoneBody: string
   }
 }
 
-export interface IYCorePhoneFieldExternalProps extends
-  Omit<IYCoreFieldWrapperProps, 'clickable'>,
-  Omit<IYCoreFieldInputProps, 'hideSpaceLeft' | 'hideSpaceRight' | 'disabled' | 'size' | 'readonly' | 'maxlength' | 'type' | 'autocomplete'>,
-  TAddPrefixToObject<Omit<IYCoreLabelExternalProps, 'alignment' | 'disabled' | 'required' | 'tooltipPlacement'>, 'label'>,
-  TAddPrefixToObject<Omit<IYCoreAnnotationExternalProps, 'disabled'>, 'annotation'>,
-  IYCoreErrorExternalProps {
+export interface IAltCorePhoneFieldExternalProps extends
+  Omit<IAltCoreFieldWrapperProps, 'clickable'>,
+  Omit<IAltCoreFieldInputProps, 'hideSpaceLeft' | 'hideSpaceRight' | 'disabled' | 'size' | 'readonly' | 'maxlength' | 'type' | 'autocomplete'>,
+  TAddPrefixToObject<Omit<IAltCoreLabelExternalProps, 'alignment' | 'disabled' | 'required' | 'tooltipPlacement'>, 'label'>,
+  TAddPrefixToObject<Omit<IAltCoreAnnotationExternalProps, 'disabled'>, 'annotation'>,
+  IAltCoreErrorExternalProps {
   minSearchLength: number | undefined
   withoutCodeSelection: boolean | undefined
   disabledAutocomplete: boolean | undefined
-  searchFunction: ((detail: TYCorePhoneFieldInfoWithMeta) => Promise<TYCorePhoneFieldAutocompleteOption[]> | TYCorePhoneFieldAutocompleteOption[]) | undefined
-  countries: TYCountryMappedById | undefined
+  searchFunction: ((detail: TAltCorePhoneFieldInfoWithMeta) => Promise<TAltCorePhoneFieldAutocompleteOption[]> | TAltCorePhoneFieldAutocompleteOption[]) | undefined
+  countries: TAltCountryMappedById | undefined
   defaultCountryId: number | undefined
   optionPhonePrivacyEnabled: boolean | undefined
-  emptyStateTitle: IYCoreEmptyStateExternalProps['title'] | undefined
-  emptyStateDescription: IYCoreEmptyStateExternalProps['description'] | undefined
-  emptyStateIcon: IYCoreEmptyStateExternalProps['icon'] | undefined
+  emptyStateTitle: IAltCoreEmptyStateExternalProps['title'] | undefined
+  emptyStateDescription: IAltCoreEmptyStateExternalProps['description'] | undefined
+  emptyStateIcon: IAltCoreEmptyStateExternalProps['icon'] | undefined
 }
 
-export const createCorePhoneFieldExternalProps = (): IYCorePhoneFieldExternalProps => {
+export const createCorePhoneFieldExternalProps = (): IAltCorePhoneFieldExternalProps => {
   return {
     ...omit(createCoreFieldWrapperProps(), ['clickable']),
     ...omit(createCoreFieldInputProps(), ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly']),

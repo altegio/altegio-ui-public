@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreTextareaTagName } from '~shared/constants'
+import { AltCoreTextareaTagName } from '~shared/constants'
 import {
   createCoreTextareaProps,
 } from '~core/ui/textarea/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/textarea/tests/cases/css'
 
-const tagName = YCoreTextareaTagName
+const tagName = AltCoreTextareaTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreTextarea/CSS',
+  'Core/AltCoreTextarea/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

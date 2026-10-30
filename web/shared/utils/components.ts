@@ -1,7 +1,7 @@
 import type { TValueOf } from '~shared/types/utils'
-import type * as YCoreElements from '~shared/constants'
+import type * as AltCoreElements from '~shared/constants'
 
-export type TCoreTagName = Record<TValueOf<typeof YCoreElements>, HTMLElement>
+export type TCoreTagName = Record<TValueOf<typeof AltCoreElements>, HTMLElement>
 
 export const defineCustomElement = (
   tagName: keyof TCoreTagName,

@@ -1,5 +1,5 @@
 <template>
-  <y-core-segment-control
+  <alt-core-segment-control
     v-bind="props"
     :value="modelValue"
     @click="handleSegmentClick"
@@ -10,22 +10,22 @@
   import '~core/ui/segmentControl'
   import {
     createVueSegmentControlProps,
-    type IYVueSegmentControlEmits,
-    type IYVueSegmentControlProps,
+    type IAltVueSegmentControlEmits,
+    type IAltVueSegmentControlProps,
   } from '~vue/ui/segmentControl/models/types'
 
   import type {
     ClickEvent,
   } from '~vue/ui/segmentControl/models/types'
 
-  defineOptions({ name: 'YSegmentControl' })
+  defineOptions({ name: 'AltSegmentControl' })
 
   const props = withDefaults(
-    defineProps<IYVueSegmentControlProps>(),
+    defineProps<IAltVueSegmentControlProps>(),
     createVueSegmentControlProps(),
   )
 
-  const emit = defineEmits<IYVueSegmentControlEmits>()
+  const emit = defineEmits<IAltVueSegmentControlEmits>()
 
   const handleSegmentClick = (ev: ClickEvent) => {
     const value = ev.detail.value

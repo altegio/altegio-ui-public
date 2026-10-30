@@ -4,11 +4,11 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 
 import {
   createCoreGlobalProviderProps,
-  type IYCoreGlobalProviderProps,
-  type TYCoreGlobalProviderEvents,
+  type IAltCoreGlobalProviderProps,
+  type TAltCoreGlobalProviderEvents,
 } from '../models/types'
 import {
-  YCoreGlobalProviderTagName as tagName,
+  AltCoreGlobalProviderTagName as tagName,
 } from '~shared/constants'
 import { QueuePlugin } from '../plugins/queue'
 
@@ -23,7 +23,7 @@ import '~core/ui/globalProvider'
  *
  * Plugins extend its functionality.
  */
-const meta: Meta<IYCoreGlobalProviderProps & TYCoreGlobalProviderEvents> = {
+const meta: Meta<IAltCoreGlobalProviderProps & TAltCoreGlobalProviderEvents> = {
   title: '✅ GlobalProvider',
   id: 'globalProvider',
   parameters: { controls: { sort: 'alpha' } },
@@ -41,7 +41,7 @@ const meta: Meta<IYCoreGlobalProviderProps & TYCoreGlobalProviderEvents> = {
 }
 
 export default meta
-type Story = StoryObj<IYCoreGlobalProviderProps & TYCoreGlobalProviderEvents>
+type Story = StoryObj<IAltCoreGlobalProviderProps & TAltCoreGlobalProviderEvents>
 
 /**
  * Basic example with the queue plugin
@@ -60,12 +60,12 @@ export const Empty: Story = {
     })
 
     return html`
-      <y-core-global-provider 
+      <alt-core-global-provider 
         .plugins=${[queuePlugin, queuePlugin2]}
         @ready=${onReady}
       >
-        <y-core-test-consumer>Consumer</y-core-test-consumer>
-      </y-core-global-provider>
+        <alt-core-test-consumer>Consumer</alt-core-test-consumer>
+      </alt-core-global-provider>
     `
   },
   args: {

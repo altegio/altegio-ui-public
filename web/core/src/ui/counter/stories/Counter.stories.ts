@@ -2,19 +2,19 @@ import { html } from 'lit'
 import type { Meta, StoryObj } from '@storybook/web-components'
 
 import '~core/ui/counter'
-import { YCoreCounterTagName as tagName } from '~shared/constants'
+import { AltCoreCounterTagName as tagName } from '~shared/constants'
 import {
-  type IYCoreCounterExternalProps,
+  type IAltCoreCounterExternalProps,
   createCoreCounterProps,
   createCoreCounterExternalProps,
-  EYCoreCounterVariant,
+  EAltCoreCounterVariant,
 } from '~core/ui/counter/models/types'
 import {
   size as sizeArgType,
   disabled as disabledArgType,
 } from '~shared/.storybook/argTypes'
 import { getComponentContentTable, getComponentStateTable } from '~shared/.storybook/tables'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 
 const { size, value, disabled, variant, withPlusSign, locator } = createCoreCounterProps()
 
@@ -23,7 +23,7 @@ const { size, value, disabled, variant, withPlusSign, locator } = createCoreCoun
  * Counter component
  */
 
-const meta: Meta<IYCoreCounterExternalProps> = {
+const meta: Meta<IAltCoreCounterExternalProps> = {
   title: '✅ Counter',
   id: 'counter',
   parameters: { controls: { sort: 'alpha' } },
@@ -41,14 +41,14 @@ const meta: Meta<IYCoreCounterExternalProps> = {
     locator,
   }) => {
     return html`
-      <y-core-counter
+      <alt-core-counter
         .size=${size}
         .value=${value}
         .variant=${variant}
         .disabled=${disabled}
         .withPlusSign=${withPlusSign}
         .locator=${locator}
-      ></y-core-counter>
+      ></alt-core-counter>
     `
   },
   argTypes: {
@@ -76,14 +76,14 @@ const meta: Meta<IYCoreCounterExternalProps> = {
     },
     variant: {
       control: 'select',
-      options: Object.values(EYCoreCounterVariant),
+      options: Object.values(EAltCoreCounterVariant),
       description: 'Component color',
       ...getComponentStateTable(variant),
     },
     size: {
       ...sizeArgType([
-        EYSizes.SMALL,
-        EYSizes.MEDIUM,
+        EAltSizes.SMALL,
+        EAltSizes.MEDIUM,
       ]),
       description: 'Component size',
       ...getComponentStateTable(size),
@@ -94,9 +94,9 @@ const meta: Meta<IYCoreCounterExternalProps> = {
     },
   },
   args: { ...createCoreCounterExternalProps() },
-} satisfies Meta<IYCoreCounterExternalProps>
+} satisfies Meta<IAltCoreCounterExternalProps>
 
 export default meta
-type Story = StoryObj<IYCoreCounterExternalProps>
+type Story = StoryObj<IAltCoreCounterExternalProps>
 
 export const Playground: Story = { args: {} }

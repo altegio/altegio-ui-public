@@ -6,14 +6,14 @@ import { integerSequence } from '~shared/utils/integerSequence'
 
 import {
   createCoreCollapseProps,
-  type IYCoreCollapseProps,
-  EYCoreCollapseType,
-  type TYCoreCollapseEvents,
+  type IAltCoreCollapseProps,
+  EAltCoreCollapseType,
+  type TAltCoreCollapseEvents,
   type CollapseChangeEvent,
   type CollapseMoveEvent,
 } from '~core/ui/collapse/models/types'
 import {
-  YCoreCollapseTagName as tagName,
+  AltCoreCollapseTagName as tagName,
 } from '~shared/constants'
 import {
   getComponentStateTable,
@@ -23,20 +23,20 @@ import { pick } from 'radash'
 
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-import yCoreCollapseItemStoryMeta from '~core/ui/collapseItem/stories/CollapseItem.stories'
-import { yCopy, yInfo } from '~shared/icons'
+import altCoreCollapseItemStoryMeta from '~core/ui/collapseItem/stories/CollapseItem.stories'
+import { altCopy, altInfo } from '~shared/icons'
 
 import '~core/ui/collapse'
 import '~core/ui/collapseItem'
 
 const { value, type, draggable, allowCrossLevelMove } = createCoreCollapseProps()
 
-export type TYCoreCollapseMeta = IYCoreCollapseProps & TYCoreCollapseEvents
+export type TAltCoreCollapseMeta = IAltCoreCollapseProps & TAltCoreCollapseEvents
 
 /**
  * ## Core Collapse
  */
-const meta: Meta<TYCoreCollapseMeta> = {
+const meta: Meta<TAltCoreCollapseMeta> = {
   title: '✅ Collapse',
   id: 'collapse',
   parameters: { controls: { sort: 'alpha' } },
@@ -52,7 +52,7 @@ const meta: Meta<TYCoreCollapseMeta> = {
     draggable,
     allowCrossLevelMove,
   }) => {
-    const computedValue: IYCoreCollapseProps['value'] = type === EYCoreCollapseType.SINGLE
+    const computedValue: IAltCoreCollapseProps['value'] = type === EAltCoreCollapseType.SINGLE
       ? value
       : []
 
@@ -64,34 +64,34 @@ const meta: Meta<TYCoreCollapseMeta> = {
       action('collapse-move')(event)
     }
 
-    const isMultiple = type === EYCoreCollapseType.MULTIPLE
+    const isMultiple = type === EAltCoreCollapseType.MULTIPLE
 
     const renderBottomLevel = (i: number, j: number) => repeat(integerSequence(3), (k) => `bottom-level-${k}`, (k) => html`
-        <y-core-collapse-item value=${`top-level-${i}-middle-level-${j}-bottom-level-${k}`}>
-          <y-core-icon slot="after" .icon=${yCopy} size="16px"></y-core-icon>
+        <alt-core-collapse-item value=${`top-level-${i}-middle-level-${j}-bottom-level-${k}`}>
+          <alt-core-icon slot="after" .icon=${altCopy} size="16px"></alt-core-icon>
           
           <div slot="label" style="display: flex; align-items: center;gap: 8px;">
             <span>LabelSlot-${i}-${j}-${k}</span>
             
-            <y-core-tag size="small" variant="accent">TagLabel-${i}-${j}-${k}</y-core-tag>
-            <y-core-icon .icon=${yInfo} size="16px"></y-core-icon>
+            <alt-core-tag size="small" variant="accent">TagLabel-${i}-${j}-${k}</alt-core-tag>
+            <alt-core-icon .icon=${altInfo} size="16px"></alt-core-icon>
           </div>
           
           <div slot="annotation">AnnotationSlot-${i}-${j}-${k}</div>
           
           <div slot="content">${LOREM_IPSUM} ${LOREM_IPSUM}</div>
-        </y-core-collapse-item>
+        </alt-core-collapse-item>
       `)
 
     const renderMiddleLevel = (i: number) => repeat(integerSequence(5), (j) => `middle-level-${j}`, (j) => html`
-        <y-core-collapse-item value=${`top-level-${i}-middle-level-${j}`}>
-          <y-core-icon slot="after" .icon=${yCopy} size="16px"></y-core-icon>
+        <alt-core-collapse-item value=${`top-level-${i}-middle-level-${j}`}>
+          <alt-core-icon slot="after" .icon=${altCopy} size="16px"></alt-core-icon>
           
           <div slot="label" style="display: flex; align-items: center;gap: 8px;">
             <span>LabelSlot-${i}-${j}</span>
             
-            <y-core-tag size="small" variant="accent">TagLabel-${i}-${j}</y-core-tag>
-            <y-core-icon .icon=${yInfo} size="16px"></y-core-icon>
+            <alt-core-tag size="small" variant="accent">TagLabel-${i}-${j}</alt-core-tag>
+            <alt-core-icon .icon=${altInfo} size="16px"></alt-core-icon>
           </div>
           
           <div slot="annotation">AnnotationSlot-${i}-${j}</div>
@@ -99,7 +99,7 @@ const meta: Meta<TYCoreCollapseMeta> = {
           <div slot="content">
             ${isMultiple
               ? html`
-                <y-core-collapse
+                <alt-core-collapse
                   .type=${type}
                   .variant=${variant}
                   .draggable=${draggable}
@@ -108,22 +108,22 @@ const meta: Meta<TYCoreCollapseMeta> = {
                   @collapse-move=${handleCollapseMove}
                 >
                   ${renderBottomLevel(i, j)}
-                </y-core-collapse>
+                </alt-core-collapse>
               `
               : html`${LOREM_IPSUM} ${LOREM_IPSUM}`}
           </div>
-        </y-core-collapse-item>
+        </alt-core-collapse-item>
       `)
 
     const renderTopLevel = () => repeat(integerSequence(5), (i) => `top-level-${i}`, (i) => html`
-        <y-core-collapse-item value=${`top-level-${i}`}>
-          <y-core-icon slot="after" .icon=${yCopy} size="16px"></y-core-icon>
+        <alt-core-collapse-item value=${`top-level-${i}`}>
+          <alt-core-icon slot="after" .icon=${altCopy} size="16px"></alt-core-icon>
           
           <div slot="label" style="display: flex; align-items: center;gap: 8px;">
             <span>LabelSlot-${i}</span>
             
-            <y-core-tag size="small" variant="accent">TagLabel-${i}</y-core-tag>
-            <y-core-icon .icon=${yInfo} size="16px"></y-core-icon>
+            <alt-core-tag size="small" variant="accent">TagLabel-${i}</alt-core-tag>
+            <alt-core-icon .icon=${altInfo} size="16px"></alt-core-icon>
           </div>
           
           <div slot="annotation">AnnotationSlot-${i}</div>
@@ -131,7 +131,7 @@ const meta: Meta<TYCoreCollapseMeta> = {
           <div slot="content">
             ${isMultiple
               ? html`
-                <y-core-collapse
+                <alt-core-collapse
                   .type=${type}
                   .variant=${variant}
                   .draggable=${draggable}
@@ -140,15 +140,15 @@ const meta: Meta<TYCoreCollapseMeta> = {
                   @collapse-move=${handleCollapseMove}
                 >
                   ${renderMiddleLevel(i)}
-                </y-core-collapse>
+                </alt-core-collapse>
               `
               : html`${LOREM_IPSUM} ${LOREM_IPSUM}`}
           </div>
-        </y-core-collapse-item>
+        </alt-core-collapse-item>
       `)
 
     return html`
-        <y-core-collapse
+        <alt-core-collapse
           .value=${computedValue}
           .type=${type}
           .variant=${variant}
@@ -158,11 +158,11 @@ const meta: Meta<TYCoreCollapseMeta> = {
           @collapse-move=${handleCollapseMove}
         >
           ${renderTopLevel()}
-      </y-core-collapse>
+      </alt-core-collapse>
       `
   },
   argTypes: {
-    ...pick(yCoreCollapseItemStoryMeta.argTypes ?? {}, ['variant']),
+    ...pick(altCoreCollapseItemStoryMeta.argTypes ?? {}, ['variant']),
     value: {
       type: 'string',
       description: 'Value',
@@ -171,7 +171,7 @@ const meta: Meta<TYCoreCollapseMeta> = {
     type: {
       control: { type: 'select' },
       description: 'Expansion mode: one item or multiple items',
-      options: Object.values(EYCoreCollapseType),
+      options: Object.values(EAltCoreCollapseType),
       ...getComponentStateTable(type),
     },
     draggable: {
@@ -197,15 +197,15 @@ const meta: Meta<TYCoreCollapseMeta> = {
     },
   },
   args: {
-    ...pick(yCoreCollapseItemStoryMeta.args ?? {}, ['variant']),
+    ...pick(altCoreCollapseItemStoryMeta.args ?? {}, ['variant']),
     value,
     type,
     draggable: true,
   },
-} satisfies Meta<TYCoreCollapseMeta>
+} satisfies Meta<TAltCoreCollapseMeta>
 
 export default meta
-type Story = StoryObj<TYCoreCollapseMeta>
+type Story = StoryObj<TAltCoreCollapseMeta>
 
 export const Playground: Story = { args: {} }
 
@@ -218,7 +218,7 @@ export const ShallowItems: Story = {
     draggable,
     allowCrossLevelMove,
   }) => {
-    const computedValue: IYCoreCollapseProps['value'] = type === EYCoreCollapseType.SINGLE
+    const computedValue: IAltCoreCollapseProps['value'] = type === EAltCoreCollapseType.SINGLE
       ? value
       : []
 
@@ -231,7 +231,7 @@ export const ShallowItems: Story = {
     }
 
     return html`
-      <y-core-collapse
+      <alt-core-collapse
         .value=${computedValue}
         .type=${type}
         .variant=${variant}
@@ -241,10 +241,10 @@ export const ShallowItems: Story = {
         @collapse-move=${handleCollapseMove}
       >
         ${repeat(integerSequence(5), (i) => `shallow-${i}`, (i) => html`
-          <y-core-collapse-item value=${`shallow-${i}`} .shallow=${true}>
-          </y-core-collapse-item>
+          <alt-core-collapse-item value=${`shallow-${i}`} .shallow=${true}>
+          </alt-core-collapse-item>
         `)}
-      </y-core-collapse>
+      </alt-core-collapse>
     `
   },
 }

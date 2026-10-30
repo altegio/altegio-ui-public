@@ -2,13 +2,13 @@ import { omit } from 'radash'
 
 import {
   createCoreCountFieldProps,
-  type IYCoreCountFieldProps,
+  type IAltCoreCountFieldProps,
 } from '~core/ui/countField/models/types'
 
-export type TYNgCountFieldModel = number
+export type TAltNgCountFieldModel = number
 
-export interface IYNgCountFieldProps extends Omit<IYCoreCountFieldProps, 'value'> {}
+export interface IAltNgCountFieldProps extends Omit<IAltCoreCountFieldProps, 'value'> {}
 
-export const createNgCountFieldProps = (): IYNgCountFieldProps => {
+export const createNgCountFieldProps = (): IAltNgCountFieldProps => {
   return { ...omit(createCoreCountFieldProps(), ['value']) }
 }

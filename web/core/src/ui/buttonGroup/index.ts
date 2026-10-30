@@ -1,1 +1,1 @@
-export { YCoreButtonGroup } from './ButtonGroup.core'
+export { AltCoreButtonGroup } from './ButtonGroup.core'

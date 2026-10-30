@@ -1,14 +1,14 @@
 import { pick } from 'radash'
-import { createCoreCardWrapperProps, type IYCoreCardWrapperProps } from '~core/ui/cardWrapper/models/types'
+import { createCoreCardWrapperProps, type IAltCoreCardWrapperProps } from '~core/ui/cardWrapper/models/types'
 
-export interface IYCoreCardMainExternalProps
-  extends Pick<IYCoreCardWrapperProps, 'disabled' | 'size'> {
+export interface IAltCoreCardMainExternalProps
+  extends Pick<IAltCoreCardWrapperProps, 'disabled' | 'size'> {
   hideSpaceLeft: boolean | undefined
   hideSpaceRight: boolean | undefined
   hasAnnotation: boolean | undefined
 }
 
-export const createCoreCardMainExternalProps = (): IYCoreCardMainExternalProps => ({
+export const createCoreCardMainExternalProps = (): IAltCoreCardMainExternalProps => ({
   ...pick(createCoreCardWrapperProps(), ['disabled', 'size']),
   hideSpaceLeft: false,
   hideSpaceRight: false,

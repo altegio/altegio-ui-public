@@ -1,21 +1,21 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
-import type { IYCoreCollapseProps } from './index'
+import type { IAltCoreCollapseProps } from './index'
 
-export interface IYCoreCollapseChangePayload {
+export interface IAltCoreCollapseChangePayload {
   event: Event
-  value: IYCoreCollapseProps['value']
+  value: IAltCoreCollapseProps['value']
 }
 
-export interface IYCoreCollapseMovePayload {
+export interface IAltCoreCollapseMovePayload {
   event: DragEvent
-  order: IYCoreCollapseProps['value'][]
+  order: IAltCoreCollapseProps['value'][]
 }
 
-export class CollapseChangeEvent extends CustomEvent<IYCoreCollapseChangePayload> {}
+export class CollapseChangeEvent extends CustomEvent<IAltCoreCollapseChangePayload> {}
 
-export class CollapseMoveEvent extends CustomEvent<IYCoreCollapseMovePayload> {}
+export class CollapseMoveEvent extends CustomEvent<IAltCoreCollapseMovePayload> {}
 
-export type TYCoreCollapseEvents = TEventsStoryArgs<{
+export type TAltCoreCollapseEvents = TEventsStoryArgs<{
   CollapseChangeEvent: typeof CollapseChangeEvent
   CollapseMoveEvent: typeof CollapseMoveEvent
 }>

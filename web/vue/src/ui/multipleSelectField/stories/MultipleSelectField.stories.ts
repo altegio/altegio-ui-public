@@ -2,15 +2,15 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import { computed, ref } from 'vue'
 import { omit } from 'radash'
 
-import { YMultipleSelectField } from '~vue/ui/multipleSelectField'
-import { type IYVueMultipleSelectFieldProps } from '~vue/ui/multipleSelectField/models/types'
-import yMultipleSelectFieldStoryMeta, {
-  type TYCoreMultipleSelectFieldStoryMeta,
+import { AltMultipleSelectField } from '~vue/ui/multipleSelectField'
+import { type IAltVueMultipleSelectFieldProps } from '~vue/ui/multipleSelectField/models/types'
+import altMultipleSelectFieldStoryMeta, {
+  type TAltCoreMultipleSelectFieldStoryMeta,
 } from '~core/ui/multipleSelectField/stories/MultipleSelectField.stories'
 import { getComponentContentTable } from '~shared/.storybook/tables'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-type TVueMultipleSelectFieldStoryMeta = IYVueMultipleSelectFieldProps & TYCoreMultipleSelectFieldStoryMeta
+type TVueMultipleSelectFieldStoryMeta = IAltVueMultipleSelectFieldProps & TAltCoreMultipleSelectFieldStoryMeta
 
 /**
  * Vue wrapper for MultipleSelectField
@@ -24,13 +24,13 @@ const meta: Meta<TVueMultipleSelectFieldStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YMultipleSelectField },
+    components: { AltMultipleSelectField },
     setup() {
       const isCheckKeepAlive = ref(true)
       const computedLabelText = computed(() => args.isLongText ? LOREM_IPSUM : args.labelText)
       const computedErrors = computed(() => args.errors ?? args.showErrors)
-      const modelValue = ref<IYVueMultipleSelectFieldProps['modelValue']>([args.items?.[0], args.items?.[1]])
-      const modelValue2 = ref<IYVueMultipleSelectFieldProps['modelValue']>([])
+      const modelValue = ref<IAltVueMultipleSelectFieldProps['modelValue']>([args.items?.[0], args.items?.[1]])
+      const modelValue2 = ref<IAltVueMultipleSelectFieldProps['modelValue']>([])
       return {
         isCheckKeepAlive,
         args,
@@ -38,7 +38,7 @@ const meta: Meta<TVueMultipleSelectFieldStoryMeta> = {
         modelValue2,
         computedLabelText,
         computedErrors,
-        componentIs: YMultipleSelectField,
+        componentIs: AltMultipleSelectField,
       }
     },
     template: `
@@ -106,7 +106,7 @@ const meta: Meta<TVueMultipleSelectFieldStoryMeta> = {
   }),
   argTypes: {
     ...omit(
-      yMultipleSelectFieldStoryMeta.argTypes ?? {},
+      altMultipleSelectFieldStoryMeta.argTypes ?? {},
       ['value'],
     ),
 
@@ -118,7 +118,7 @@ const meta: Meta<TVueMultipleSelectFieldStoryMeta> = {
   },
   args: {
     ...omit(
-      yMultipleSelectFieldStoryMeta.args ?? {},
+      altMultipleSelectFieldStoryMeta.args ?? {},
       ['value'],
     ),
 

@@ -1,8 +1,8 @@
-export interface IYCoreErrorExternalProps {
+export interface IAltCoreErrorExternalProps {
   errors: string[] | undefined
   locator?: string
 }
 
-export const createCoreErrorExternalProps = (): IYCoreErrorExternalProps => {
+export const createCoreErrorExternalProps = (): IAltCoreErrorExternalProps => {
   return { errors: undefined }
 }

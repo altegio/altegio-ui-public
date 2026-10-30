@@ -1,23 +1,23 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 import {
   createCoreIconButtonProps,
-  type IYCoreIconButtonProps,
+  type IAltCoreIconButtonProps,
 } from '~core/ui/iconButton/models/types'
 
-export interface IYVueCoreIconButtonProps extends IYCoreIconButtonProps {}
+export interface IAltVueCoreIconButtonProps extends IAltCoreIconButtonProps {}
 
-export interface IYVueIconButtonProps {
-  icon: IYVueCoreIconButtonProps['icon']
-  size?: IYVueCoreIconButtonProps['size']
-  variant?: IYVueCoreIconButtonProps['variant']
-  disabled?: IYVueCoreIconButtonProps['disabled']
-  loading?: IYVueCoreIconButtonProps['loading']
-  href?: IYVueCoreIconButtonProps['href']
-  target?: IYVueCoreIconButtonProps['target']
-  fullWidth?: IYVueCoreIconButtonProps['fullWidth']
+export interface IAltVueIconButtonProps {
+  icon: IAltVueCoreIconButtonProps['icon']
+  size?: IAltVueCoreIconButtonProps['size']
+  variant?: IAltVueCoreIconButtonProps['variant']
+  disabled?: IAltVueCoreIconButtonProps['disabled']
+  loading?: IAltVueCoreIconButtonProps['loading']
+  href?: IAltVueCoreIconButtonProps['href']
+  target?: IAltVueCoreIconButtonProps['target']
+  fullWidth?: IAltVueCoreIconButtonProps['fullWidth']
 }
 
-export const createVueIconButtonProps = (): TDefinedVueProps<IYVueIconButtonProps> => {
+export const createVueIconButtonProps = (): TDefinedVueProps<IAltVueIconButtonProps> => {
   const { size, variant, disabled, loading, href, target, fullWidth } = createCoreIconButtonProps()
 
   return {

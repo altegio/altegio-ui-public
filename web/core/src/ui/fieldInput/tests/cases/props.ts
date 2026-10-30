@@ -1,11 +1,11 @@
 import type { TPropTestCase } from '~shared/types/tests'
-import type { IYCoreFieldInputExternalProps } from '~core/ui/fieldInput/models/types'
+import type { IAltCoreFieldInputExternalProps } from '~core/ui/fieldInput/models/types'
 import { empty, number, text } from '~shared/tests/slotContents'
-import { EYInputAutocomplete, EYInputType, EYSizes } from '~shared/types/global'
+import { EAltInputAutocomplete, EAltInputType, EAltSizes } from '~shared/types/global'
 
-export const sizes = Object.values(EYSizes).filter((size) => size !== EYSizes.EXTRA_LARGE && size !== EYSizes.EXTRA_SMALL)
+export const sizes = Object.values(EAltSizes).filter((size) => size !== EAltSizes.EXTRA_LARGE && size !== EAltSizes.EXTRA_SMALL)
 
-type TPropFieldInputTestCase<T extends keyof IYCoreFieldInputExternalProps> = TPropTestCase<IYCoreFieldInputExternalProps, T> & {
+type TPropFieldInputTestCase<T extends keyof IAltCoreFieldInputExternalProps> = TPropTestCase<IAltCoreFieldInputExternalProps, T> & {
   attribute?: keyof HTMLInputElement
   classModifier?: string
 }
@@ -59,8 +59,8 @@ export const propRequiredTestCases: TPropFieldInputTestCase<'required'>[] = [
 ]
 
 export const propTypeTestCases: TPropFieldInputTestCase<'type'>[] = [
-  { prop: 'type', case: EYInputType.TEXT, value: EYInputType.TEXT, attribute: 'type' },
-  { prop: 'type', case: EYInputType.NUMBER, value: EYInputType.NUMBER, attribute: 'type' },
+  { prop: 'type', case: EAltInputType.TEXT, value: EAltInputType.TEXT, attribute: 'type' },
+  { prop: 'type', case: EAltInputType.NUMBER, value: EAltInputType.NUMBER, attribute: 'type' },
   { prop: 'type', case: 'undefined', value: undefined, attribute: 'type' },
 ]
 
@@ -82,7 +82,7 @@ export const propHideSpaceRightTestCases: TPropFieldInputTestCase<'hideSpaceRigh
 ]
 
 export const propAutocompleteTestCases: TPropFieldInputTestCase<'autocomplete'>[] = [
-  { prop: 'autocomplete', case: EYInputAutocomplete.ON, value: EYInputAutocomplete.ON, attribute: 'autocomplete' },
-  { prop: 'autocomplete', case: EYInputAutocomplete.TEL, value: EYInputAutocomplete.TEL, attribute: 'autocomplete' },
+  { prop: 'autocomplete', case: EAltInputAutocomplete.ON, value: EAltInputAutocomplete.ON, attribute: 'autocomplete' },
+  { prop: 'autocomplete', case: EAltInputAutocomplete.TEL, value: EAltInputAutocomplete.TEL, attribute: 'autocomplete' },
   { prop: 'autocomplete', case: 'undefined', value: undefined, attribute: 'autocomplete' },
 ]

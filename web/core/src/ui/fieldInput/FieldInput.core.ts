@@ -6,7 +6,7 @@ import { consume } from '@lit/context'
 
 import {
   createCoreFieldInputProps,
-  type IYCoreFieldInputProps,
+  type IAltCoreFieldInputProps,
   InputEvent,
   FocusEvent,
   BlurEvent,
@@ -14,7 +14,7 @@ import {
   RenderEvent,
 } from './models/types'
 import {
-  YCoreFieldInputTagName as tagName,
+  AltCoreFieldInputTagName as tagName,
 } from '~shared/constants'
 
 import { booleanConverter, numberConverter } from '~core/utils/converters'
@@ -23,8 +23,8 @@ import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
 import { preventAndStopEvent } from '~shared/utils/helpers'
 import { disabledContextCreated, sizeContextCreated, readonlyContextCreated, focusedContextCreated } from '~core/ui/fieldWrapper/providers'
 
-import YCoreFieldInputVarsCss from '~core/ui/fieldInput/css/FieldInput.vars.css?inline'
-import YCoreFieldInputScopedCss from '~core/ui/fieldInput/css/FieldInput.scoped.css?inline'
+import AltCoreFieldInputVarsCss from '~core/ui/fieldInput/css/FieldInput.vars.css?inline'
+import AltCoreFieldInputScopedCss from '~core/ui/fieldInput/css/FieldInput.scoped.css?inline'
 import { withLocator } from '~core/utils/locator'
 
 const { disabled, size, readonly, value, name, type, placeholder, required, maxlength, autofocus, hideSpaceLeft, hideSpaceRight, autocomplete } = createCoreFieldInputProps()
@@ -32,25 +32,25 @@ const { disabled, size, readonly, value, name, type, placeholder, required, maxl
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreFieldInput
+export class AltCoreFieldInput
   extends LitElement
-  implements IYCoreFieldInputProps {
+  implements IAltCoreFieldInputProps {
   @consume({ context: disabledContextCreated, subscribe: true })
-  @property({ type: Boolean }) disabled: IYCoreFieldInputProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreFieldInputProps['disabled'] = disabled
   @consume({ context: sizeContextCreated, subscribe: true })
-  @property({ type: String, reflect: true }) size: IYCoreFieldInputProps['size'] = size
-  @property({ type: Boolean }) readonly: IYCoreFieldInputProps['readonly'] = readonly
+  @property({ type: String, reflect: true }) size: IAltCoreFieldInputProps['size'] = size
+  @property({ type: Boolean }) readonly: IAltCoreFieldInputProps['readonly'] = readonly
 
-  @property({ type: String, reflect: true }) value: IYCoreFieldInputProps['value'] = value
-  @property({ type: String, reflect: true }) name: IYCoreFieldInputProps['name'] = name
-  @property({ type: String, reflect: true }) placeholder: IYCoreFieldInputProps['placeholder'] = placeholder
-  @property({ type: String, reflect: true }) type: IYCoreFieldInputProps['type'] = type
-  @property({ type: String, reflect: true }) autocomplete: IYCoreFieldInputProps['autocomplete'] = autocomplete
-  @property({ type: Number, reflect: true, converter: numberConverter }) maxlength: IYCoreFieldInputProps['maxlength'] = maxlength
-  @property({ type: Boolean }) required: IYCoreFieldInputProps['required'] = required
-  @property({ type: Boolean }) autofocus: IYCoreFieldInputProps['autofocus'] = autofocus
-  @property({ type: Boolean, reflect: true, converter: booleanConverter, attribute: 'hide-space-left' }) hideSpaceLeft: IYCoreFieldInputProps['hideSpaceLeft'] = hideSpaceLeft
-  @property({ type: Boolean, reflect: true, converter: booleanConverter, attribute: 'hide-space-right' }) hideSpaceRight: IYCoreFieldInputProps['hideSpaceRight'] = hideSpaceRight
+  @property({ type: String, reflect: true }) value: IAltCoreFieldInputProps['value'] = value
+  @property({ type: String, reflect: true }) name: IAltCoreFieldInputProps['name'] = name
+  @property({ type: String, reflect: true }) placeholder: IAltCoreFieldInputProps['placeholder'] = placeholder
+  @property({ type: String, reflect: true }) type: IAltCoreFieldInputProps['type'] = type
+  @property({ type: String, reflect: true }) autocomplete: IAltCoreFieldInputProps['autocomplete'] = autocomplete
+  @property({ type: Number, reflect: true, converter: numberConverter }) maxlength: IAltCoreFieldInputProps['maxlength'] = maxlength
+  @property({ type: Boolean }) required: IAltCoreFieldInputProps['required'] = required
+  @property({ type: Boolean }) autofocus: IAltCoreFieldInputProps['autofocus'] = autofocus
+  @property({ type: Boolean, reflect: true, converter: booleanConverter, attribute: 'hide-space-left' }) hideSpaceLeft: IAltCoreFieldInputProps['hideSpaceLeft'] = hideSpaceLeft
+  @property({ type: Boolean, reflect: true, converter: booleanConverter, attribute: 'hide-space-right' }) hideSpaceRight: IAltCoreFieldInputProps['hideSpaceRight'] = hideSpaceRight
 
   @query('input') public readonly inputElement?: HTMLInputElement
 
@@ -95,8 +95,8 @@ export class YCoreFieldInput
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreFieldInputVarsCss)}
-      ${unsafeCSS(YCoreFieldInputScopedCss)}
+      ${unsafeCSS(AltCoreFieldInputVarsCss)}
+      ${unsafeCSS(AltCoreFieldInputScopedCss)}
     `,
   ]
 

@@ -1,11 +1,11 @@
 import {
   createCoreCalendarProps,
-  type IYCoreCalendarProps,
-  type IYCoreCalendarSelectEvent,
+  type IAltCoreCalendarProps,
+  type IAltCoreCalendarSelectEvent,
 } from '~core/ui/calendar/models/types'
 
-export interface IYNgCalendarProps extends IYCoreCalendarProps {}
-export type TYNgCalendarEvents = IYCoreCalendarSelectEvent
+export interface IAltNgCalendarProps extends IAltCoreCalendarProps {}
+export type TAltNgCalendarEvents = IAltCoreCalendarSelectEvent
 export { SelectEvent } from '~core/ui/calendar/models/types'
 
-export const createNgCalendarProps = (): IYNgCalendarProps => createCoreCalendarProps()
+export const createNgCalendarProps = (): IAltNgCalendarProps => createCoreCalendarProps()

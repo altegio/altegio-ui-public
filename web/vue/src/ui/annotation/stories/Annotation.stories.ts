@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { computed } from 'vue'
 
-import { YAnnotation } from '~vue/ui/annotation'
-import { type IYVueAnnotationProps } from '~vue/ui/annotation/models/types'
-import yCoreAnnotationStoryMeta, { type IYCoreAnnotationStoryProps } from '~core/ui/annotation/stories/Annotation.stories'
+import { AltAnnotation } from '~vue/ui/annotation'
+import { type IAltVueAnnotationProps } from '~vue/ui/annotation/models/types'
+import altCoreAnnotationStoryMeta, { type IAltCoreAnnotationStoryProps } from '~core/ui/annotation/stories/Annotation.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-type TVueAnnotationStoryMeta = IYVueAnnotationProps & IYCoreAnnotationStoryProps
+type TVueAnnotationStoryMeta = IAltVueAnnotationProps & IAltCoreAnnotationStoryProps
 
 /**
  * Vue wrapper for Core Annotation
@@ -20,7 +20,7 @@ const meta: Meta<TVueAnnotationStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YAnnotation },
+    components: { AltAnnotation },
     setup() {
       const computedText = computed(() => args.isLongText ? LOREM_IPSUM : String(args.text))
 
@@ -30,13 +30,13 @@ const meta: Meta<TVueAnnotationStoryMeta> = {
       }
     },
     template: `
-      <YAnnotation v-bind="args">
+      <AltAnnotation v-bind="args">
         {{ computedText }}
-      </YAnnotation>
+      </AltAnnotation>
     `,
   }),
-  argTypes: { ...yCoreAnnotationStoryMeta.argTypes },
-  args: { ...yCoreAnnotationStoryMeta.args },
+  argTypes: { ...altCoreAnnotationStoryMeta.argTypes },
+  args: { ...altCoreAnnotationStoryMeta.args },
 }
 
 export default meta

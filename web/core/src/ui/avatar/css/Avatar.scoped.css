@@ -1,6 +1,6 @@
 @import url('./Avatar.mixins.css');
 
-$component: $YCoreAvatarTagName;
+$component: $AltCoreAvatarTagName;
 
 .$(component) {
   box-sizing: border-box;
@@ -8,10 +8,10 @@ $component: $YCoreAvatarTagName;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  font-family: var(--y-font-family);
+  font-family: var(--alt-font-family);
   font-weight: 500;
-  color: var(--y-avatar-text-color);
-  background-color: var(--y-avatar-bg);
+  color: var(--alt-avatar-text-color);
+  background-color: var(--alt-avatar-bg);
 
   &__image {
     width: 100%;
@@ -34,19 +34,19 @@ $component: $YCoreAvatarTagName;
 
   &_size {
     &_extra-small {
-      @mixin avatar-size var(--y-avatar-size-extra-small), var(--y-avatar-font-size-extra-small), var(--y-avatar-line-height-extra-small), var(--y-avatar-radius-extra-small);
+      @mixin avatar-size var(--alt-avatar-size-extra-small), var(--alt-avatar-font-size-extra-small), var(--alt-avatar-line-height-extra-small), var(--alt-avatar-radius-extra-small);
     }
 
     &_small {
-      @mixin avatar-size var(--y-avatar-size-small), var(--y-avatar-font-size-small), var(--y-avatar-line-height-small), var(--y-avatar-radius-small);
+      @mixin avatar-size var(--alt-avatar-size-small), var(--alt-avatar-font-size-small), var(--alt-avatar-line-height-small), var(--alt-avatar-radius-small);
     }
 
     &_medium {
-      @mixin avatar-size var(--y-avatar-size-medium), var(--y-avatar-font-size-medium), var(--y-avatar-line-height-medium), var(--y-avatar-radius-medium);
+      @mixin avatar-size var(--alt-avatar-size-medium), var(--alt-avatar-font-size-medium), var(--alt-avatar-line-height-medium), var(--alt-avatar-radius-medium);
     }
 
     &_large {
-      @mixin avatar-size var(--y-avatar-size-large), var(--y-avatar-font-size-large), var(--y-avatar-line-height-large), var(--y-avatar-radius-large);
+      @mixin avatar-size var(--alt-avatar-size-large), var(--alt-avatar-font-size-large), var(--alt-avatar-line-height-large), var(--alt-avatar-radius-large);
     }
   }
 

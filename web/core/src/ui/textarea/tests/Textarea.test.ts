@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
-import { YCoreTextareaTagName } from '~shared/constants'
+import { AltCoreTextareaTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 
 import {
@@ -7,7 +7,7 @@ import {
 } from '~core/ui/textarea/models/types'
 import '~core/ui/textarea'
 
-const tagName = YCoreTextareaTagName
+const tagName = AltCoreTextareaTagName
 
 const {
   component,
@@ -40,7 +40,7 @@ import {
 } from './cases/events'
 
 describe(
-  'Core/YTextarea',
+  'Core/AltTextarea',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -145,7 +145,7 @@ describe(
               async() => {
                 await updateComponent({ props: { maxlength: 50, value: 'test' } })
 
-                const counter = component.shadowRoot?.querySelector('.y-core-textarea__counter')
+                const counter = component.shadowRoot?.querySelector('.alt-core-textarea__counter')
                 expect(counter).toBeTruthy()
                 expect(counter?.textContent).toBe('4 / 50')
               },
@@ -156,7 +156,7 @@ describe(
               async() => {
                 await updateComponent({ props: { maxlength: undefined, value: 'test' } })
 
-                const counter = component.shadowRoot?.querySelector('.y-core-textarea__counter')
+                const counter = component.shadowRoot?.querySelector('.alt-core-textarea__counter')
                 expect(counter).toBeFalsy()
               },
             )
@@ -166,12 +166,12 @@ describe(
               async() => {
                 await updateComponent({ props: { maxlength: 100, value: 'test' } })
 
-                let counter = component.shadowRoot?.querySelector('.y-core-textarea__counter')
+                let counter = component.shadowRoot?.querySelector('.alt-core-textarea__counter')
                 expect(counter?.textContent).toBe('4 / 100')
 
                 await updateComponent({ props: { value: 'test test' } })
 
-                counter = component.shadowRoot?.querySelector('.y-core-textarea__counter')
+                counter = component.shadowRoot?.querySelector('.alt-core-textarea__counter')
                 expect(counter?.textContent).toBe('9 / 100')
               },
             )
@@ -181,7 +181,7 @@ describe(
               async() => {
                 await updateComponent({ props: { maxlength: 50, value: '' } })
 
-                const counter = component.shadowRoot?.querySelector('.y-core-textarea__counter')
+                const counter = component.shadowRoot?.querySelector('.alt-core-textarea__counter')
                 expect(counter?.textContent).toBe('0 / 50')
               },
             )

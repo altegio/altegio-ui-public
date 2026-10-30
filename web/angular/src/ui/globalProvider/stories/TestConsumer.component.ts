@@ -5,6 +5,6 @@ import '~core/ui/globalProvider/stories/TestConsumer.core'
   selector: 'TestConsumer',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: '<y-core-test-consumer></y-core-test-consumer>',
+  template: '<alt-core-test-consumer></alt-core-test-consumer>',
 })
 export class TestConsumer {}

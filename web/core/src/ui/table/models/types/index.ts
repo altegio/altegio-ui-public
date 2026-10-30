@@ -1,18 +1,18 @@
 import {
   createCoreTableExternalProps,
-  type IYCoreTableExternalProps,
+  type IAltCoreTableExternalProps,
 } from './external'
 import {
   createCoreTableInternalProps,
-  type IYCoreTableInternalProps,
+  type IAltCoreTableInternalProps,
 } from './internal'
 
 export * from './external'
 export * from './internal'
 
-export interface IYCoreTableProps extends IYCoreTableExternalProps, IYCoreTableInternalProps {}
+export interface IAltCoreTableProps extends IAltCoreTableExternalProps, IAltCoreTableInternalProps {}
 
-export const createCoreTableProps = (): IYCoreTableProps => ({
+export const createCoreTableProps = (): IAltCoreTableProps => ({
   ...createCoreTableExternalProps(),
   ...createCoreTableInternalProps(),
 })

@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { omit } from 'radash'
 
-import yCoreSimpleRadioButtonStoryMeta from '~core/ui/simpleRadioButton/stories/SimpleRadioButton.stories'
-import { YSimpleRadioButton } from '~vue/ui/simpleRadioButton'
-import { type IYVueSimpleRadioButtonProps } from '~vue/ui/simpleRadioButton/models/types'
+import altCoreSimpleRadioButtonStoryMeta from '~core/ui/simpleRadioButton/stories/SimpleRadioButton.stories'
+import { AltSimpleRadioButton } from '~vue/ui/simpleRadioButton'
+import { type IAltVueSimpleRadioButtonProps } from '~vue/ui/simpleRadioButton/models/types'
 import { getComponentContentTable } from '~shared/.storybook/tables'
 
-type TVueSimpleRadioButtonStoryMeta = IYVueSimpleRadioButtonProps
+type TVueSimpleRadioButtonStoryMeta = IAltVueSimpleRadioButtonProps
 
 /**
  * Vue wrapper for Core SimpleRadioButton
@@ -20,12 +20,12 @@ const meta: Meta<TVueSimpleRadioButtonStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YSimpleRadioButton },
+    components: { AltSimpleRadioButton },
     setup() {
       return { args }
     },
     template: `
-      <YSimpleRadioButton
+      <AltSimpleRadioButton
         v-bind="args"
         v-model="args.modelValue"
       />
@@ -33,7 +33,7 @@ const meta: Meta<TVueSimpleRadioButtonStoryMeta> = {
   }),
   argTypes: {
     ...omit(
-      yCoreSimpleRadioButtonStoryMeta.argTypes ?? {},
+      altCoreSimpleRadioButtonStoryMeta.argTypes ?? {},
       ['checked'],
     ),
     modelValue: {
@@ -45,7 +45,7 @@ const meta: Meta<TVueSimpleRadioButtonStoryMeta> = {
   },
   args: {
     ...omit(
-      yCoreSimpleRadioButtonStoryMeta.args ?? {},
+      altCoreSimpleRadioButtonStoryMeta.args ?? {},
       ['checked'],
     ),
     modelValue: false,

@@ -1,7 +1,7 @@
 import { omit } from 'radash'
 import {
   createCoreTextareaProps,
-  type IYCoreTextareaProps,
+  type IAltCoreTextareaProps,
 } from '~core/ui/textarea/models/types'
 
 export {
@@ -16,10 +16,10 @@ export {
   RenderEvent,
 } from '~core/ui/textarea/models/types'
 
-export type TYNgTextareaModel = IYCoreTextareaProps['value']
+export type TAltNgTextareaModel = IAltCoreTextareaProps['value']
 
-export interface IYNgTextareaProps extends Omit<IYCoreTextareaProps, 'value'> {}
+export interface IAltNgTextareaProps extends Omit<IAltCoreTextareaProps, 'value'> {}
 
-export const createNgTextareaProps = (): IYNgTextareaProps => {
+export const createNgTextareaProps = (): IAltNgTextareaProps => {
   return { ...omit(createCoreTextareaProps(), ['value']) }
 }

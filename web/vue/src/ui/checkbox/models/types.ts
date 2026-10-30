@@ -1,30 +1,30 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 import {
   createCoreCheckboxProps,
-  type IYCoreCheckboxProps,
+  type IAltCoreCheckboxProps,
   type CheckboxCheckedEvent,
 } from '~core/ui/checkbox/models/types'
 
-export interface IYVueCoreCheckboxProps extends Omit<IYCoreCheckboxProps, 'checked'> {
-  modelValue: IYCoreCheckboxProps['checked']
+export interface IAltVueCoreCheckboxProps extends Omit<IAltCoreCheckboxProps, 'checked'> {
+  modelValue: IAltCoreCheckboxProps['checked']
 }
 
-export interface IYVueCheckboxProps {
-  modelValue: IYVueCoreCheckboxProps['modelValue']
-  indeterminate?: IYVueCoreCheckboxProps['indeterminate']
-  required?: IYVueCoreCheckboxProps['required']
-  size?: IYVueCoreCheckboxProps['size']
-  disabled?: IYVueCoreCheckboxProps['disabled']
-  labelText?: IYVueCoreCheckboxProps['labelText']
-  labelTooltipText?: IYVueCoreCheckboxProps['labelTooltipText']
-  annotationText?: IYVueCoreCheckboxProps['annotationText']
-  labelOverflowDebounce?: IYVueCoreCheckboxProps['labelOverflowDebounce']
-  alignment?: IYVueCoreCheckboxProps['alignment']
-  errors?: IYVueCoreCheckboxProps['errors']
-  labelTooltipPlacement?: IYVueCoreCheckboxProps['labelTooltipPlacement']
+export interface IAltVueCheckboxProps {
+  modelValue: IAltVueCoreCheckboxProps['modelValue']
+  indeterminate?: IAltVueCoreCheckboxProps['indeterminate']
+  required?: IAltVueCoreCheckboxProps['required']
+  size?: IAltVueCoreCheckboxProps['size']
+  disabled?: IAltVueCoreCheckboxProps['disabled']
+  labelText?: IAltVueCoreCheckboxProps['labelText']
+  labelTooltipText?: IAltVueCoreCheckboxProps['labelTooltipText']
+  annotationText?: IAltVueCoreCheckboxProps['annotationText']
+  labelOverflowDebounce?: IAltVueCoreCheckboxProps['labelOverflowDebounce']
+  alignment?: IAltVueCoreCheckboxProps['alignment']
+  errors?: IAltVueCoreCheckboxProps['errors']
+  labelTooltipPlacement?: IAltVueCoreCheckboxProps['labelTooltipPlacement']
 }
 
-export const createVueCheckboxProps = (): TDefinedVueProps<IYVueCheckboxProps> => {
+export const createVueCheckboxProps = (): TDefinedVueProps<IAltVueCheckboxProps> => {
   const {
     size,
     required,
@@ -56,6 +56,6 @@ export const createVueCheckboxProps = (): TDefinedVueProps<IYVueCheckboxProps> =
   }
 }
 
-export interface IYVueCheckboxEmits {
+export interface IAltVueCheckboxEmits {
   (event: 'update:modelValue', payload: CheckboxCheckedEvent['detail']['checked']): void
 }

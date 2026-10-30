@@ -1,1 +1,1 @@
-export { YCoreSimpleCheckbox } from './SimpleCheckbox.core'
+export { AltCoreSimpleCheckbox } from './SimpleCheckbox.core'

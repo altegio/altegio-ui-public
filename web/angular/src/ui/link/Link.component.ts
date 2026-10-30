@@ -1,27 +1,27 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core'
 
 import '~core/ui/link'
-import { createNgLinkProps, type IYNgLinkProps } from './models/types'
+import { createNgLinkProps, type IAltNgLinkProps } from './models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 
 const { href, target, textWrap } = createNgLinkProps()
 
 @Component({
-  selector: 'YLink',
+  selector: 'AltLink',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-link
+    <alt-core-link
       [href]="href"
       [target]="target"
       [textWrap]="textWrap"
     >
       <ng-content></ng-content>
-    </y-core-link>
+    </alt-core-link>
   `,
 })
-export class YLink implements IYNgLinkProps {
-  @Input() @DefaultValue(href) href: IYNgLinkProps['href'] = href
-  @Input() @DefaultValue(target) target: IYNgLinkProps['target'] = target
-  @Input() @DefaultValue(target) textWrap: IYNgLinkProps['textWrap'] = textWrap
+export class AltLink implements IAltNgLinkProps {
+  @Input() @DefaultValue(href) href: IAltNgLinkProps['href'] = href
+  @Input() @DefaultValue(target) target: IAltNgLinkProps['target'] = target
+  @Input() @DefaultValue(target) textWrap: IAltNgLinkProps['textWrap'] = textWrap
 }

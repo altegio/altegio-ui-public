@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { useArgs } from 'storybook/preview-api'
 
-import { YSimpleToggle } from '~ng/ui/simpleToggle'
+import { AltSimpleToggle } from '~ng/ui/simpleToggle'
 
 import { omit } from 'radash'
-import yCoreSimpleToggleStoryMeta from '~core/ui/simpleToggle/stories/SimpleToggle.stories'
+import altCoreSimpleToggleStoryMeta from '~core/ui/simpleToggle/stories/SimpleToggle.stories'
 import type { SimpleToggleCheckedEvent } from '~core/ui/simpleToggle/models/types/events'
 
 /**
  * Angular wrapper for Core SimpleToggle
  */
-const meta: Meta<YSimpleToggle> = {
+const meta: Meta<AltSimpleToggle> = {
   title: 'Toggle/🔍 SimpleToggle',
   id: 'simpleToggle',
   parameters: { controls: { sort: 'alpha' } },
-  component: YSimpleToggle,
+  component: AltSimpleToggle,
   tags: [
     'angular',
     'autodocs',
@@ -30,29 +30,29 @@ const meta: Meta<YSimpleToggle> = {
         },
       },
       template: `
-        <YSimpleToggle
+        <AltSimpleToggle
           [checked]="checked"
           [disabled]="disabled"
           [size]="size"
           (checked)="onChecked($event)"
         >
-        </YSimpleToggle>
+        </AltSimpleToggle>
       `,
     }
   },
   argTypes: omit(
-    yCoreSimpleToggleStoryMeta.argTypes ?? {},
+    altCoreSimpleToggleStoryMeta.argTypes ?? {},
     ['onChecked'],
   ),
   args: {
     ...omit(
-      yCoreSimpleToggleStoryMeta.args ?? {},
+      altCoreSimpleToggleStoryMeta.args ?? {},
       ['onChecked'],
     ),
   },
-} satisfies Meta<YSimpleToggle>
+} satisfies Meta<AltSimpleToggle>
 
 export default meta
-type Story = StoryObj<YSimpleToggle>
+type Story = StoryObj<AltSimpleToggle>
 
 export const Playground: Story = { args: {} }

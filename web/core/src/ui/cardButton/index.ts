@@ -1,1 +1,1 @@
-export { YCoreCardButton } from './CardButton.core'
+export { AltCoreCardButton } from './CardButton.core'

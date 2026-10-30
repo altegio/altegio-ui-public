@@ -1,13 +1,13 @@
-$component: $YCoreDropdownTagName;
+$component: $AltCoreDropdownTagName;
 
 :host {
-  font-family: var(--y-core-font-family);
+  font-family: var(--alt-core-font-family);
 }
 
 .$(component) {
   position: relative;
-  width: var(--y-core-dropdown-width);
-  max-width: var(--y-core-dropdown-max-width);
+  width: var(--alt-core-dropdown-width);
+  max-width: var(--alt-core-dropdown-max-width);
 
   &_disabled {
     .$(component)__activator {
@@ -17,20 +17,20 @@ $component: $YCoreDropdownTagName;
 
   &__activator {
     display: block;
-    width: var(--y-core-dropdown-activator-width);
-    max-width: var(--y-core-dropdown-activator-max-width);
+    width: var(--alt-core-dropdown-activator-width);
+    max-width: var(--alt-core-dropdown-activator-max-width);
 
     &_inline {
       display: inline-block;
-      width: var(--y-core-dropdown-activator-width-inline);
+      width: var(--alt-core-dropdown-activator-width-inline);
       max-width: unset;
     }
   }
 
   &__content {
     position: fixed;
-    z-index: var(--y-core-z-index-100);
-    width: var(--y-core-dropdown-content-width);
-    max-width: var(--y-core-dropdown-content-max-width);
+    z-index: var(--alt-core-z-index-100);
+    width: var(--alt-core-dropdown-content-width);
+    max-width: var(--alt-core-dropdown-content-max-width);
   }
 }

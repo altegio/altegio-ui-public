@@ -1,19 +1,19 @@
 import {
   createCoreLabelExternalProps,
-  type IYCoreLabelExternalProps,
+  type IAltCoreLabelExternalProps,
 } from './external'
 import {
   createCoreLabelInternalProps,
-  type IYCoreLabelInternalProps,
+  type IAltCoreLabelInternalProps,
 } from './internal'
 
 export * from './events'
 export * from './external'
 export * from './internal'
 
-export interface IYCoreLabelProps extends IYCoreLabelExternalProps, IYCoreLabelInternalProps {}
+export interface IAltCoreLabelProps extends IAltCoreLabelExternalProps, IAltCoreLabelInternalProps {}
 
-export const createCoreLabelProps = (): IYCoreLabelProps => ({
+export const createCoreLabelProps = (): IAltCoreLabelProps => ({
   ...createCoreLabelExternalProps(),
   ...createCoreLabelInternalProps(),
 })

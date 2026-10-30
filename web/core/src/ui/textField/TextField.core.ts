@@ -6,7 +6,7 @@ import { Maskito, maskitoTransform } from '@maskito/core'
 
 import {
   createCoreTextFieldProps,
-  type IYCoreTextFieldProps,
+  type IAltCoreTextFieldProps,
   ClickOutsideEvent,
   MouseEnterEvent,
   MouseLeaveEvent,
@@ -18,14 +18,14 @@ import {
   ClearEvent,
 } from './models/types'
 import {
-  YCoreTextFieldTagName as tagName,
-  YCoreFieldIconTagName,
-  YCoreFieldInputTagName,
-  YCoreFieldWrapperTagName,
+  AltCoreTextFieldTagName as tagName,
+  AltCoreFieldIconTagName,
+  AltCoreFieldInputTagName,
+  AltCoreFieldWrapperTagName,
 } from '~shared/constants'
 
-import YCoreTextFieldVarsCss from '~core/ui/textField/css/TextField.vars.css?inline'
-import YCoreTextFieldScopedCss from '~core/ui/textField/css/TextField.scoped.css?inline'
+import AltCoreTextFieldVarsCss from '~core/ui/textField/css/TextField.vars.css?inline'
+import AltCoreTextFieldScopedCss from '~core/ui/textField/css/TextField.scoped.css?inline'
 
 import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
 import { booleanConverter } from '~core/utils/converters'
@@ -38,54 +38,54 @@ import classMapToString from '~core/utils/classMapToString'
 
 import { preventAndStopEvent } from '~shared/utils/helpers'
 
-import { YCoreFieldInput } from '~core/ui/fieldInput'
+import { AltCoreFieldInput } from '~core/ui/fieldInput'
 
 import '~core/ui/fieldWrapper'
 import '~core/ui/fieldInput'
 import '~core/ui/fieldIcon'
 
-import { yClose } from '~shared/icons'
-import type { IYCoreFieldInputKeydownEvent } from '../fieldInput/models/types'
+import { altClose } from '~shared/icons'
+import type { IAltCoreFieldInputKeydownEvent } from '../fieldInput/models/types'
 
 const { disabled, readonly, error, size, value, name, type, placeholder, required, maxlength, autofocus, labelText, labelTooltipText, labelDebounce, annotationText, errors, clearable, maskOptions, locator, locatorLabel, locatorError, locatorClearIcon } = createCoreTextFieldProps()
 
 import { defineCustomElement } from '~web/shared/utils/components'
-import { YCoreFieldIcon } from '~core/ui/fieldIcon'
-import { YCoreFieldWrapper } from '~core/ui/fieldWrapper'
+import { AltCoreFieldIcon } from '~core/ui/fieldIcon'
+import { AltCoreFieldWrapper } from '~core/ui/fieldWrapper'
 import { withLocator } from '~core/utils/locator'
 
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreTextField
+export class AltCoreTextField
   extends LitElement
-  implements IYCoreTextFieldProps {
+  implements IAltCoreTextFieldProps {
   @provide({ context: disabledContextCreated })
-  @property({ type: Boolean }) disabled: IYCoreTextFieldProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreTextFieldProps['disabled'] = disabled
   @provide({ context: readonlyContextCreated })
-  @property({ type: Boolean }) readonly: IYCoreTextFieldProps['readonly'] = readonly
+  @property({ type: Boolean }) readonly: IAltCoreTextFieldProps['readonly'] = readonly
   @provide({ context: errorContextCreated })
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IYCoreTextFieldProps['error'] = error
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IAltCoreTextFieldProps['error'] = error
   @provide({ context: sizeContextCreated })
-  @property({ type: String, reflect: true }) size: IYCoreTextFieldProps['size'] = size
-  @property({ type: String, reflect: true }) value: IYCoreTextFieldProps['value'] = value
-  @property({ type: String, reflect: true }) name: IYCoreTextFieldProps['name'] = name
-  @property({ type: String, reflect: true }) type: IYCoreTextFieldProps['type'] = type
-  @property({ type: String, reflect: true }) placeholder: IYCoreTextFieldProps['placeholder'] = placeholder
-  @property({ type: Boolean, reflect: true }) required: IYCoreTextFieldProps['required'] = required
-  @property({ type: Number, reflect: true }) maxlength: IYCoreTextFieldProps['maxlength'] = maxlength
-  @property({ type: Boolean, reflect: true }) autofocus: IYCoreTextFieldProps['autofocus'] = autofocus
-  @property({ type: String, reflect: true, attribute: 'label-text' }) labelText: IYCoreTextFieldProps['labelText'] = labelText
-  @property({ type: String, reflect: true, attribute: 'label-tooltip-text' }) labelTooltipText: IYCoreTextFieldProps['labelTooltipText'] = labelTooltipText
-  @property({ type: Number, reflect: true, attribute: 'label-debounce' }) labelDebounce: IYCoreTextFieldProps['labelDebounce'] = labelDebounce
-  @property({ type: String, reflect: true, attribute: 'annotation-text' }) annotationText: IYCoreTextFieldProps['annotationText'] = annotationText
-  @property({ type: Array }) errors: IYCoreTextFieldProps['errors'] = errors
-  @property({ type: Boolean, reflect: true }) clearable: IYCoreTextFieldProps['clearable'] = clearable
-  @property({ type: Object, attribute: 'mask-options' }) maskOptions: IYCoreTextFieldProps['maskOptions'] = maskOptions
-  @property({ type: String }) locator: IYCoreTextFieldProps['locator'] = locator
-  @property({ type: String, attribute: 'locator-label' }) locatorLabel: IYCoreTextFieldProps['locatorLabel'] = locatorLabel
-  @property({ type: String, attribute: 'locator-error' }) locatorError: IYCoreTextFieldProps['locatorError'] = locatorError
-  @property({ type: String, attribute: 'locator-clear-icon' }) locatorClearIcon: IYCoreTextFieldProps['locatorClearIcon'] = locatorClearIcon
+  @property({ type: String, reflect: true }) size: IAltCoreTextFieldProps['size'] = size
+  @property({ type: String, reflect: true }) value: IAltCoreTextFieldProps['value'] = value
+  @property({ type: String, reflect: true }) name: IAltCoreTextFieldProps['name'] = name
+  @property({ type: String, reflect: true }) type: IAltCoreTextFieldProps['type'] = type
+  @property({ type: String, reflect: true }) placeholder: IAltCoreTextFieldProps['placeholder'] = placeholder
+  @property({ type: Boolean, reflect: true }) required: IAltCoreTextFieldProps['required'] = required
+  @property({ type: Number, reflect: true }) maxlength: IAltCoreTextFieldProps['maxlength'] = maxlength
+  @property({ type: Boolean, reflect: true }) autofocus: IAltCoreTextFieldProps['autofocus'] = autofocus
+  @property({ type: String, reflect: true, attribute: 'label-text' }) labelText: IAltCoreTextFieldProps['labelText'] = labelText
+  @property({ type: String, reflect: true, attribute: 'label-tooltip-text' }) labelTooltipText: IAltCoreTextFieldProps['labelTooltipText'] = labelTooltipText
+  @property({ type: Number, reflect: true, attribute: 'label-debounce' }) labelDebounce: IAltCoreTextFieldProps['labelDebounce'] = labelDebounce
+  @property({ type: String, reflect: true, attribute: 'annotation-text' }) annotationText: IAltCoreTextFieldProps['annotationText'] = annotationText
+  @property({ type: Array }) errors: IAltCoreTextFieldProps['errors'] = errors
+  @property({ type: Boolean, reflect: true }) clearable: IAltCoreTextFieldProps['clearable'] = clearable
+  @property({ type: Object, attribute: 'mask-options' }) maskOptions: IAltCoreTextFieldProps['maskOptions'] = maskOptions
+  @property({ type: String }) locator: IAltCoreTextFieldProps['locator'] = locator
+  @property({ type: String, attribute: 'locator-label' }) locatorLabel: IAltCoreTextFieldProps['locatorLabel'] = locatorLabel
+  @property({ type: String, attribute: 'locator-error' }) locatorError: IAltCoreTextFieldProps['locatorError'] = locatorError
+  @property({ type: String, attribute: 'locator-clear-icon' }) locatorClearIcon: IAltCoreTextFieldProps['locatorClearIcon'] = locatorClearIcon
 
   @bubblingEvent(
     ClickOutsideEvent,
@@ -148,12 +148,12 @@ export class YCoreTextField
   @state() private hasAfterSlot = false
   @state() private hasAnnotationSlot = false
 
-  @query(YCoreFieldInputTagName) public readonly fieldInput?: YCoreFieldInput
+  @query(AltCoreFieldInputTagName) public readonly fieldInput?: AltCoreFieldInput
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreTextFieldVarsCss)}
-      ${unsafeCSS(YCoreTextFieldScopedCss)}
+      ${unsafeCSS(AltCoreTextFieldVarsCss)}
+      ${unsafeCSS(AltCoreTextFieldScopedCss)}
     `,
   ]
 
@@ -302,7 +302,7 @@ export class YCoreTextField
     this._blur({ detail: { event } })
   }
 
-  private handleKeydown = (event: KeyboardEvent & { detail: IYCoreFieldInputKeydownEvent }) => {
+  private handleKeydown = (event: KeyboardEvent & { detail: IAltCoreFieldInputKeydownEvent }) => {
     event.stopImmediatePropagation()
 
     if (this.disabled) return
@@ -333,7 +333,7 @@ export class YCoreTextField
 
   protected renderInput() {
     return html`
-      <y-core-field-wrapper
+      <alt-core-field-wrapper
         .disabled=${this.disabled}
         .readonly=${this.readonly}
         .error=${this.hasError}
@@ -349,7 +349,7 @@ export class YCoreTextField
           name="before"
           @slotchange=${this.handleSlotBeforeChange}
         ></slot>
-        <y-core-field-input
+        <alt-core-field-input
           .value=${this.maskedValue}
           .name=${this.name}
           .type=${this.type}
@@ -362,15 +362,15 @@ export class YCoreTextField
           @input=${this.handleInput}
           @keydown=${this.handleKeydown}
           @render=${this.handleRender}
-        ></y-core-field-input>
+        ></alt-core-field-input>
         ${this.value && this.clearable
           ? html`
-            <y-core-field-icon
-              .icon=${yClose}
+            <alt-core-field-icon
+              .icon=${altClose}
               .locator=${this.locatorClearIcon}
               hoverable
               @click=${this.handleClear}
-            ></y-core-field-icon>
+            ></alt-core-field-icon>
           `
           : nothing
         }
@@ -378,14 +378,14 @@ export class YCoreTextField
           name="after"
           @slotchange=${this.handleSlotAfterChange}
         ></slot>
-      </y-core-field-wrapper>
+      </alt-core-field-wrapper>
     `
   }
 
   protected firstUpdated(): void {
-    defineCustomElement(YCoreFieldIconTagName, YCoreFieldIcon)
-    defineCustomElement(YCoreFieldInputTagName, YCoreFieldInput)
-    defineCustomElement(YCoreFieldWrapperTagName, YCoreFieldWrapper)
+    defineCustomElement(AltCoreFieldIconTagName, AltCoreFieldIcon)
+    defineCustomElement(AltCoreFieldInputTagName, AltCoreFieldInput)
+    defineCustomElement(AltCoreFieldWrapperTagName, AltCoreFieldWrapper)
   }
 
 

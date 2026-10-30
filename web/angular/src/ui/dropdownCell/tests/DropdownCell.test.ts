@@ -3,24 +3,24 @@ import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
 import type { TSlotTestCase } from '~shared/types/tests'
 import { text, empty } from '~shared/tests/slotContents'
-import { YDropdownCell } from '~ng/ui/dropdownCell'
+import { AltDropdownCell } from '~ng/ui/dropdownCell'
 import {
-  type IYNgDropdownCellProps,
+  type IAltNgDropdownCellProps,
 } from '~ng/ui/dropdownCell/models/types'
 
 interface ICreateComponentArgs {
   slots?: {
     default?: string
   }
-  props?: Partial<IYNgDropdownCellProps>
+  props?: Partial<IAltNgDropdownCellProps>
 }
 const createComponent = async({ slots }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YDropdownCell] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltDropdownCell] }).compileComponents()
 
   @Component({
-    template: '<YDropdownCell>{{content}}</YDropdownCell>',
-    imports: [YDropdownCell],
+    template: '<AltDropdownCell>{{content}}</AltDropdownCell>',
+    imports: [AltDropdownCell],
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
   })
@@ -41,7 +41,7 @@ const slotDefaultTestCases: TSlotTestCase[] = [
 ]
 
 describe(
-  'Angular/YDropdownCell',
+  'Angular/AltDropdownCell',
   () => {
     describe(
       'Unit',

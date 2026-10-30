@@ -2,10 +2,10 @@ import { readFileSync, writeFileSync } from 'node:fs'
 
 // Keep icon paths and runtime names stable when the SVG generator is rerun.
 const renames = [
-  { file: 'y-clients.icon.ts', newName: 'yClientGroup' },
-  { file: 'y-client-service.icon.ts', newName: 'yServiceClient' },
+  { file: 'alt-clients.icon.ts', newName: 'altClientGroup' },
+  { file: 'alt-client-service.icon.ts', newName: 'altServiceClient' },
 ]
-const iconSetPath = new URL('../web/shared/icons/build/y-icons-set.ts', import.meta.url)
+const iconSetPath = new URL('../web/shared/icons/build/alt-icons-set.ts', import.meta.url)
 let iconSet = readFileSync(iconSetPath, 'utf8')
 
 for (const { file, newName } of renames) {

@@ -1,17 +1,17 @@
 import {
   createCoreSimpleCheckboxExternalProps,
   createCoreSimpleCheckboxInternalProps,
-  type IYCoreSimpleCheckboxExternalProps,
-  type IYCoreSimpleCheckboxInternalProps,
-  type IYSimpleCheckboxCheckedEvent,
+  type IAltCoreSimpleCheckboxExternalProps,
+  type IAltCoreSimpleCheckboxInternalProps,
+  type IAltSimpleCheckboxCheckedEvent,
 } from '~core/ui/simpleCheckbox/models/types'
 
-export interface IYNgSimpleCheckboxProps extends IYCoreSimpleCheckboxExternalProps, IYCoreSimpleCheckboxInternalProps {}
+export interface IAltNgSimpleCheckboxProps extends IAltCoreSimpleCheckboxExternalProps, IAltCoreSimpleCheckboxInternalProps {}
 
 export { SimpleCheckboxCheckedEvent } from '~core/ui/simpleCheckbox/models/types/events'
-export type TYNgSimpleCheckboxCheckboxEvents = IYSimpleCheckboxCheckedEvent
+export type TAltNgSimpleCheckboxCheckboxEvents = IAltSimpleCheckboxCheckedEvent
 
-export const createNgSimpleCheckboxProps = (): IYNgSimpleCheckboxProps => {
+export const createNgSimpleCheckboxProps = (): IAltNgSimpleCheckboxProps => {
   return {
     ...createCoreSimpleCheckboxExternalProps(),
     ...createCoreSimpleCheckboxInternalProps(),

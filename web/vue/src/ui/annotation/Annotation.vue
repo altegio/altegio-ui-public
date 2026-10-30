@@ -1,30 +1,30 @@
 <template>
-  <y-core-annotation v-bind="props">
+  <alt-core-annotation v-bind="props">
     <div
       v-if="$slots.default && $slots.default()"
       slot="annotation"
     >
       <slot />
     </div>
-  </y-core-annotation>
+  </alt-core-annotation>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/annotation'
   import {
     createVueAnnotationProps,
-    type IYVueAnnotationProps,
-    type IYVueCoreAnnotationProps,
+    type IAltVueAnnotationProps,
+    type IAltVueCoreAnnotationProps,
   } from '~vue/ui/annotation/models/types'
 
-  defineOptions({ name: 'YAnnotation' })
+  defineOptions({ name: 'AltAnnotation' })
 
   defineSlots<{
     default: () => unknown
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueAnnotationProps>(),
+    defineProps<IAltVueAnnotationProps>(),
     createVueAnnotationProps(),
-  ) satisfies IYVueCoreAnnotationProps
+  ) satisfies IAltVueCoreAnnotationProps
 </script>

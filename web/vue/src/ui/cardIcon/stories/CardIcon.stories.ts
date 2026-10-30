@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YCardIcon } from '~vue/ui/cardIcon'
-import { type IYVueCardIconProps } from '~vue/ui/cardIcon/models/types'
-import yCoreCardIconStoryMeta from '~core/ui/cardIcon/stories/CardIcon.stories'
+import { AltCardIcon } from '~vue/ui/cardIcon'
+import { type IAltVueCardIconProps } from '~vue/ui/cardIcon/models/types'
+import altCoreCardIconStoryMeta from '~core/ui/cardIcon/stories/CardIcon.stories'
 
-type TVueCardIconStoryMeta = IYVueCardIconProps
+type TVueCardIconStoryMeta = IAltVueCardIconProps
 
 /**
  * Vue wrapper for Core CardIcon
@@ -19,19 +19,19 @@ const meta: Meta<TVueCardIconStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YCardIcon },
+    components: { AltCardIcon },
     setup() {
       return { args }
     },
     template: `
-      <YCardIcon
+      <AltCardIcon
         v-bind="args"
         style="border: 1px dashed;"
-      ></YCardIcon>
+      ></AltCardIcon>
     `,
   }),
-  argTypes: { ...yCoreCardIconStoryMeta.argTypes },
-  args: { ...yCoreCardIconStoryMeta.args },
+  argTypes: { ...altCoreCardIconStoryMeta.argTypes },
+  args: { ...altCoreCardIconStoryMeta.args },
 }
 
 export default meta

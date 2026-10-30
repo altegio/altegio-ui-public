@@ -6,10 +6,10 @@ import { ifDefined } from 'lit/directives/if-defined.js'
 
 import {
   createCoreCardWrapperProps,
-  type IYCoreCardWrapperProps,
+  type IAltCoreCardWrapperProps,
   BlurEvent, FocusEvent,
 } from '~core/ui/cardWrapper/models/types'
-import { YCoreCardWrapperTagName as tagName } from '~shared/constants'
+import { AltCoreCardWrapperTagName as tagName } from '~shared/constants'
 
 import { checkedContextCreated, disabledContextCreated, hoverableContextCreated, focusableContextCreated, sizeContextCreated, hoveredContextCreated, focusedContextCreated } from '~core/ui/cardWrapper/providers'
 
@@ -17,8 +17,8 @@ import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
 import { preventAndStopEvent } from '~shared/utils/helpers'
 import { interceptEvents } from '~core/utils/event-interceptor'
 
-import YCardWrapperVarsCss from '~core/ui/cardWrapper/css/CardWrapper.vars.css?inline'
-import YCardWrapperScopedCss from '~core/ui/cardWrapper/css/CardWrapper.scoped.css?inline'
+import AltCardWrapperVarsCss from '~core/ui/cardWrapper/css/CardWrapper.vars.css?inline'
+import AltCardWrapperScopedCss from '~core/ui/cardWrapper/css/CardWrapper.scoped.css?inline'
 import { withLocator } from '~core/utils/locator'
 
 const { checked, disabled, hoverable, focusable, size } = createCoreCardWrapperProps()
@@ -26,19 +26,19 @@ const { checked, disabled, hoverable, focusable, size } = createCoreCardWrapperP
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreCardWrapper
+export class AltCoreCardWrapper
   extends LitElement
-  implements IYCoreCardWrapperProps {
+  implements IAltCoreCardWrapperProps {
   @provide({ context: checkedContextCreated })
-  @property({ type: Boolean }) checked: IYCoreCardWrapperProps['checked'] = checked
+  @property({ type: Boolean }) checked: IAltCoreCardWrapperProps['checked'] = checked
   @provide({ context: disabledContextCreated })
-  @property({ type: Boolean }) disabled: IYCoreCardWrapperProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreCardWrapperProps['disabled'] = disabled
   @provide({ context: hoverableContextCreated })
-  @property({ type: Boolean }) hoverable: IYCoreCardWrapperProps['hoverable'] = hoverable
+  @property({ type: Boolean }) hoverable: IAltCoreCardWrapperProps['hoverable'] = hoverable
   @provide({ context: focusableContextCreated })
-  @property({ type: Boolean }) focusable: IYCoreCardWrapperProps['focusable'] = focusable
+  @property({ type: Boolean }) focusable: IAltCoreCardWrapperProps['focusable'] = focusable
   @provide({ context: sizeContextCreated })
-  @property({ type: String, reflect: true }) size: IYCoreCardWrapperProps['size'] = size
+  @property({ type: String, reflect: true }) size: IAltCoreCardWrapperProps['size'] = size
 
   @provide({ context: hoveredContextCreated })
   @state() private hovered = false
@@ -62,8 +62,8 @@ export class YCoreCardWrapper
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCardWrapperVarsCss)}
-      ${unsafeCSS(YCardWrapperScopedCss)}
+      ${unsafeCSS(AltCardWrapperVarsCss)}
+      ${unsafeCSS(AltCardWrapperScopedCss)}
     `,
   ]
 

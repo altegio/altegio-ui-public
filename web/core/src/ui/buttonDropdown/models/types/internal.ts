@@ -1,11 +1,11 @@
-import type { IYIcon } from '~shared/icons'
+import type { IAltIcon } from '~shared/icons'
 
-export interface IYCoreButtonDropdownIconsSet {
-  leftIcon: IYIcon | undefined
-  rightIcon: IYIcon | undefined
+export interface IAltCoreButtonDropdownIconsSet {
+  leftIcon: IAltIcon | undefined
+  rightIcon: IAltIcon | undefined
 }
 
-export enum EYCoreButtonDropdownIconTypes {
+export enum EAltCoreButtonDropdownIconTypes {
   LEFT = 'left',
   RIGHT = 'right',
 }

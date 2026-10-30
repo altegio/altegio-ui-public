@@ -1,4 +1,4 @@
-$component: $YCoreTableCellTagName;
+$component: $AltCoreTableCellTagName;
 
 :host {
   box-sizing: border-box;
@@ -13,7 +13,7 @@ $component: $YCoreTableCellTagName;
 }
 
 :host([bordered]) {
-  border-right: 1px solid var(--y-core-table-cell-border-color);
+  border-right: 1px solid var(--alt-core-table-cell-border-color);
 }
 
 .$(component) {
@@ -21,7 +21,7 @@ $component: $YCoreTableCellTagName;
   display: inline-flex;
   align-items: center;
   width: 100%;
-  padding: var(--y-core-table-cell-padding-y) var(--y-core-table-cell-padding-x);
+  padding: var(--alt-core-table-cell-padding-y) var(--alt-core-table-cell-padding-x);
 
   &_align {
     &_left {
@@ -39,7 +39,7 @@ $component: $YCoreTableCellTagName;
 
   &__content {
     width: 100%;
-    min-width: var(--y-core-table-cell-size);
-    min-height: var(--y-core-table-cell-size);
+    min-width: var(--alt-core-table-cell-size);
+    min-height: var(--alt-core-table-cell-size);
   }
 }

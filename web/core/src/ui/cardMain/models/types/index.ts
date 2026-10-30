@@ -1,10 +1,10 @@
 import {
   createCoreCardMainExternalProps,
-  type IYCoreCardMainExternalProps,
+  type IAltCoreCardMainExternalProps,
 } from './external'
 
 export * from './external'
 
-export interface IYCoreCardMainProps extends IYCoreCardMainExternalProps {}
+export interface IAltCoreCardMainProps extends IAltCoreCardMainExternalProps {}
 
-export const createCoreCardMainProps = (): IYCoreCardMainProps => ({ ...createCoreCardMainExternalProps() })
+export const createCoreCardMainProps = (): IAltCoreCardMainProps => ({ ...createCoreCardMainExternalProps() })

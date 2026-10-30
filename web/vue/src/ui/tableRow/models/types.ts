@@ -1,19 +1,19 @@
 import {
   createCoreTableRowProps,
-  type IYCoreTableRowProps,
+  type IAltCoreTableRowProps,
 } from '~core/ui/tableRow/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreTableRowProps extends IYCoreTableRowProps {}
+export interface IAltVueCoreTableRowProps extends IAltCoreTableRowProps {}
 
-export interface IYVueTableRowProps {
-  stripe?: IYVueCoreTableRowProps['stripe']
-  selectable?: IYVueCoreTableRowProps['selectable']
-  sticky?: IYVueCoreTableRowProps['sticky']
-  disabled?: IYVueCoreTableRowProps['disabled']
+export interface IAltVueTableRowProps {
+  stripe?: IAltVueCoreTableRowProps['stripe']
+  selectable?: IAltVueCoreTableRowProps['selectable']
+  sticky?: IAltVueCoreTableRowProps['sticky']
+  disabled?: IAltVueCoreTableRowProps['disabled']
 }
 
-export const createVueTableRowProps = (): TDefinedVueProps<IYVueTableRowProps> => {
+export const createVueTableRowProps = (): TDefinedVueProps<IAltVueTableRowProps> => {
   const {
     stripe,
     selectable,

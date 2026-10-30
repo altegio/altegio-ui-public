@@ -1,4 +1,4 @@
-import type { TYCountry } from '~shared/types/country'
+import type { TAltCountry } from '~shared/types/country'
 import type { MaskitoMask, MaskitoMaskExpression } from '@maskito/core'
 
 const COUNTRY_MASK_DIGIT_SYMBOL = 'x'
@@ -9,21 +9,21 @@ const RUSSIAN_PHONE_FULL_REG_EXP = /^\+?\s*[78]\d\d\d\d\d\d\d\d\d\d$/
 
 /**
  * Converts a country mask such as 'xxx xx-xx-xx' into an array like [/\d/, '-', ...]
- * @param countryMask {TYCountry['mask']} - Country mask
+ * @param countryMask {TAltCountry['mask']} - Country mask
  * @returns The mask as an array
  */
-const transformCountryMaskToMaskitoMask = (countryMask: TYCountry['mask']): (RegExp | string)[] => {
+const transformCountryMaskToMaskitoMask = (countryMask: TAltCountry['mask']): (RegExp | string)[] => {
   return countryMask.split('').map((item) => item === COUNTRY_MASK_DIGIT_SYMBOL ? /\d/ : item)
 }
 
 /**
  * Converts the country mask into a Maskito mask
- * @param country {TYCountry} - Country
+ * @param country {TAltCountry} - Country
  * @param withoutCode {boolean} - Whether to build the mask without the country code
  * @returns Dynamic Maskito mask
  */
-export const getMaskitoMaskByCountry = (country: TYCountry, withoutCode = false): MaskitoMask => {
-  let countryMask: TYCountry['mask'] = country.mask
+export const getMaskitoMaskByCountry = (country: TAltCountry, withoutCode = false): MaskitoMask => {
+  let countryMask: TAltCountry['mask'] = country.mask
 
   if (withoutCode) {
     const firstDigitIndex = countryMask.indexOf(COUNTRY_MASK_DIGIT_SYMBOL)
@@ -47,20 +47,20 @@ export const getMaskitoMaskByCountry = (country: TYCountry, withoutCode = false)
 }
 
 /**
- * @param country {TYCountry} - Country
+ * @param country {TAltCountry} - Country
  * @returns RegExp for the country code
  */
-const getPhoneCodeRegExp = (country: TYCountry): RegExp => {
+const getPhoneCodeRegExp = (country: TAltCountry): RegExp => {
   if (country.id === RUSSIAN_COUNTRY_ID) return RUSSIAN_PHONE_CODE_REG_EXP
 
   return new RegExp('^\\+?' + country.code + '\\s*')
 }
 
 /**
- * @param country {TYCountry} - Country
+ * @param country {TAltCountry} - Country
  * @returns RegExp for the number without the country code
  */
-const getPhoneFullRegExp = (country: TYCountry): RegExp => {
+const getPhoneFullRegExp = (country: TAltCountry): RegExp => {
   if (country.id === RUSSIAN_COUNTRY_ID) return RUSSIAN_PHONE_FULL_REG_EXP
 
   const toRegExpTemplate = (str: string): string => {
@@ -83,7 +83,7 @@ const getPhoneFullRegExp = (country: TYCountry): RegExp => {
  * @param phoneWithPlus {string} - Phone number with a leading plus
  * @returns ID of the country matched by the phone code
  */
-const matchCountryByCode = (phoneWithPlus: string, countries: TYCountry[]): TYCountry['id'] | null => {
+const matchCountryByCode = (phoneWithPlus: string, countries: TAltCountry[]): TAltCountry['id'] | null => {
   const countriesMatched = countries.filter((country) => getPhoneCodeRegExp(country).test(phoneWithPlus))
 
   return countriesMatched[0]?.id || null
@@ -93,7 +93,7 @@ const matchCountryByCode = (phoneWithPlus: string, countries: TYCountry[]): TYCo
  * @param phoneWithPlus {string} - Phone number with a leading plus
  * @returns ID of the country matched by the number pattern without the code
  */
-const matchCountryByTemplate = (phoneWithPlus: string, countries: TYCountry[]): TYCountry['id'] | null => {
+const matchCountryByTemplate = (phoneWithPlus: string, countries: TAltCountry[]): TAltCountry['id'] | null => {
   const countriesMatched = countries.filter((country) => getPhoneFullRegExp(country).test(phoneWithPlus))
 
   return countriesMatched[0]?.id || null
@@ -104,6 +104,6 @@ const matchCountryByTemplate = (phoneWithPlus: string, countries: TYCountry[]): 
  * @param phoneWithPlus {string} - Phone number with a leading plus
  * @returns ID of the country matched by the phone code or by the number pattern without the code
  */
-export const matchCountry = (phoneWithPlus: string, countries: TYCountry[]): TYCountry['id'] | null => {
+export const matchCountry = (phoneWithPlus: string, countries: TAltCountry[]): TAltCountry['id'] | null => {
   return matchCountryByTemplate(phoneWithPlus, countries) || matchCountryByCode(phoneWithPlus, countries)
 }

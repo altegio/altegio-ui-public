@@ -1,14 +1,14 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
-import type { IYCorePaginationProps } from '~web/core/src/ui/pagination/models/types'
+import type { IAltCorePaginationProps } from '~web/core/src/ui/pagination/models/types'
 import { type ChangePageEvent, createCorePaginationProps } from '~web/core/src/ui/pagination/models/types'
 
 export type TVuePaginationChangePageEvent = ChangePageEvent
 
-export interface IYVueCorePaginationProps extends IYCorePaginationProps {}
+export interface IAltVueCorePaginationProps extends IAltCorePaginationProps {}
 
-export interface IYVuePaginationProps {}
+export interface IAltVuePaginationProps {}
 
-export const createVuePaginationProps = (): TDefinedVueProps<IYVuePaginationProps> => {
+export const createVuePaginationProps = (): TDefinedVueProps<IAltVuePaginationProps> => {
   return createCorePaginationProps()
 }
 

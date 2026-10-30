@@ -1,25 +1,25 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { YCoreTagTagName } from '~shared/constants'
-import { YCoreTag } from '~core/ui/tag'
-import { EYCoreTagVariant } from '~core/ui/tag/models/types/external'
-import { EYSizes } from '~shared/types/global'
-import type { IYIcon } from '~shared/icons'
+import { AltCoreTagTagName } from '~shared/constants'
+import { AltCoreTag } from '~core/ui/tag'
+import { EAltCoreTagVariant } from '~core/ui/tag/models/types/external'
+import { EAltSizes } from '~shared/types/global'
+import type { IAltIcon } from '~shared/icons'
 
-import { YTag } from '~vue/ui/tag'
+import { AltTag } from '~vue/ui/tag'
 import { propLocatorTestCases } from '~vue/ui/tag/tests/cases/css.ts'
 
-const tagName = YCoreTagTagName
+const tagName = AltCoreTagTagName
 
 describe(
-  'Vue/YTag',
+  'Vue/AltTag',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreTag,
+          AltCoreTag,
         )
       }
     })
@@ -32,11 +32,11 @@ describe(
             `Prop: "${testCase.prop}" ${typeof testCase.value === 'object' ? JSON.stringify(testCase.value) : testCase.value} should ${testCase.value === undefined ? 'not' : ''} set ${testCase.prop} on the core component`,
             () => {
               const wrapper = mount(
-                YTag,
+                AltTag,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
-              const coreElement = wrapper.find(tagName).element as YCoreTag
+              const coreElement = wrapper.find(tagName).element as AltCoreTag
 
               expect(coreElement[testCase.prop]).toEqual(testCase.expected)
             },
@@ -45,9 +45,9 @@ describe(
         it(
           'Should pass size to the web component',
           () => {
-            const size = EYSizes.SMALL
+            const size = EAltSizes.SMALL
             const wrapper = mount(
-              YTag,
+              AltTag,
               { props: { size } },
             )
             const coreElement = wrapper.find(tagName)
@@ -60,22 +60,22 @@ describe(
           'Should handle undefined size in the web component',
           () => {
             const wrapper = mount(
-              YTag,
+              AltTag,
               { props: { size: undefined } },
             )
             const coreElement = wrapper.find(tagName)
 
             // Defaults to medium
-            expect(coreElement.element.size).toBe(EYSizes.MEDIUM)
+            expect(coreElement.element.size).toBe(EAltSizes.MEDIUM)
           },
         )
 
         it(
           'Should pass variant to the web component',
           () => {
-            const variant = EYCoreTagVariant.DANGER
+            const variant = EAltCoreTagVariant.DANGER
             const wrapper = mount(
-              YTag,
+              AltTag,
               { props: { variant } },
             )
             const coreElement = wrapper.find(tagName)
@@ -88,13 +88,13 @@ describe(
           'Should handle undefined variant in the web component',
           () => {
             const wrapper = mount(
-              YTag,
+              AltTag,
               { props: { variant: undefined } },
             )
             const coreElement = wrapper.find(tagName)
 
             // Defaults to accent
-            expect(coreElement.element.variant).toBe(EYCoreTagVariant.ACCENT)
+            expect(coreElement.element.variant).toBe(EAltCoreTagVariant.ACCENT)
           },
         )
 
@@ -103,7 +103,7 @@ describe(
           () => {
             const disabled = true
             const wrapper = mount(
-              YTag,
+              AltTag,
               { props: { disabled } },
             )
             const coreElement = wrapper.find(tagName)
@@ -116,7 +116,7 @@ describe(
           'Should handle undefined disabled in the web component',
           () => {
             const wrapper = mount(
-              YTag,
+              AltTag,
               { props: { disabled: undefined } },
             )
             const coreElement = wrapper.find(tagName)
@@ -129,9 +129,9 @@ describe(
         it(
           'Should pass iconLeft to the web component',
           () => {
-            const iconLeft: IYIcon = { name: 'check', data: '' }
+            const iconLeft: IAltIcon = { name: 'check', data: '' }
             const wrapper = mount(
-              YTag,
+              AltTag,
               { props: { iconLeft } },
             )
             const coreElement = wrapper.find(tagName)
@@ -144,7 +144,7 @@ describe(
           'Should handle undefined iconLeft in the web component',
           () => {
             const wrapper = mount(
-              YTag,
+              AltTag,
               { props: { iconLeft: undefined } },
             )
             const coreElement = wrapper.find(tagName)
@@ -163,7 +163,7 @@ describe(
           () => {
             const slotContent = 'Test tag'
             const wrapper = mount(
-              YTag,
+              AltTag,
               { slots: { default: slotContent } },
             )
 

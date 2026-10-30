@@ -3,9 +3,9 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output } from '
 import '~core/ui/calendar'
 import {
   createNgCalendarProps,
-  type IYNgCalendarProps,
+  type IAltNgCalendarProps,
   type SelectEvent,
-  type TYNgCalendarEvents,
+  type TAltNgCalendarEvents,
 } from '~ng/ui/calendar/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 
@@ -20,11 +20,11 @@ const {
 } = createNgCalendarProps()
 
 @Component({
-  selector: 'YCalendar',
+  selector: 'AltCalendar',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-calendar
+    <alt-core-calendar
       [date]="date"
       [isRange]="isRange"
       [minDate]="minDate"
@@ -34,20 +34,20 @@ const {
       [headerSelectors]="headerSelectors"
       (select)="handleSelectEvent($event)"
     >
-    </y-core-calendar>
+    </alt-core-calendar>
   `,
 })
 
-export class YCalendar implements IYNgCalendarProps {
-  @Input() @DefaultValue(date) date: IYNgCalendarProps['date'] = date
-  @Input() @DefaultValue(isRange) isRange: IYNgCalendarProps['isRange'] = isRange
-  @Input() @DefaultValue(minDate) minDate: IYNgCalendarProps['minDate'] = minDate
-  @Input() @DefaultValue(maxDate) maxDate: IYNgCalendarProps['maxDate'] = maxDate
-  @Input() @DefaultValue(disabled) disabled: IYNgCalendarProps['disabled'] = disabled
-  @Input() @DefaultValue(headerSelectors) headerSelectors: IYNgCalendarProps['headerSelectors'] = headerSelectors
-  @Input() @DefaultValue(locale) locale: IYNgCalendarProps['locale'] = locale
+export class AltCalendar implements IAltNgCalendarProps {
+  @Input() @DefaultValue(date) date: IAltNgCalendarProps['date'] = date
+  @Input() @DefaultValue(isRange) isRange: IAltNgCalendarProps['isRange'] = isRange
+  @Input() @DefaultValue(minDate) minDate: IAltNgCalendarProps['minDate'] = minDate
+  @Input() @DefaultValue(maxDate) maxDate: IAltNgCalendarProps['maxDate'] = maxDate
+  @Input() @DefaultValue(disabled) disabled: IAltNgCalendarProps['disabled'] = disabled
+  @Input() @DefaultValue(headerSelectors) headerSelectors: IAltNgCalendarProps['headerSelectors'] = headerSelectors
+  @Input() @DefaultValue(locale) locale: IAltNgCalendarProps['locale'] = locale
 
-  @Output() select = new EventEmitter<TYNgCalendarEvents['value']>()
+  @Output() select = new EventEmitter<TAltNgCalendarEvents['value']>()
 
   handleSelectEvent(e: Event) {
     const selectEvent = e as SelectEvent

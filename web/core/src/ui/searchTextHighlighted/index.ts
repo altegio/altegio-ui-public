@@ -1,1 +1,1 @@
-export { YCoreSearchTextHighlighted } from './SearchTextHighlighted.core'
+export { AltCoreSearchTextHighlighted } from './SearchTextHighlighted.core'

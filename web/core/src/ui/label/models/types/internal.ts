@@ -1,19 +1,19 @@
-import { EYCoreTextSize, EYCoreTextVariant } from '~core/ui/text/models/types/external'
+import { EAltCoreTextSize, EAltCoreTextVariant } from '~core/ui/text/models/types/external'
 
-export type TYCoreLabelSize = EYCoreTextSize.A2_REGULAR | EYCoreTextSize.P2_REGULAR
+export type TAltCoreLabelSize = EAltCoreTextSize.A2_REGULAR | EAltCoreTextSize.P2_REGULAR
 
-export type TYCoreLabelVariant = EYCoreTextVariant.PRIMARY | EYCoreTextVariant.SECONDARY
+export type TAltCoreLabelVariant = EAltCoreTextVariant.PRIMARY | EAltCoreTextVariant.SECONDARY
 
-export interface IYCoreLabelInternalProps {
+export interface IAltCoreLabelInternalProps {
   tooltipActive: boolean | undefined
   wrap: boolean | undefined
-  size: TYCoreLabelSize | undefined
-  variant: TYCoreLabelVariant | undefined
+  size: TAltCoreLabelSize | undefined
+  variant: TAltCoreLabelVariant | undefined
 }
 
 
-export const createCoreLabelInternalProps = (): IYCoreLabelInternalProps => {
-  return { tooltipActive: true, wrap: false, size: EYCoreTextSize.P2_REGULAR, variant: EYCoreTextVariant.PRIMARY }
+export const createCoreLabelInternalProps = (): IAltCoreLabelInternalProps => {
+  return { tooltipActive: true, wrap: false, size: EAltCoreTextSize.P2_REGULAR, variant: EAltCoreTextVariant.PRIMARY }
 }
 
-export const internalPropsKeys = Object.keys(createCoreLabelInternalProps()) as (keyof IYCoreLabelInternalProps)[]
+export const internalPropsKeys = Object.keys(createCoreLabelInternalProps()) as (keyof IAltCoreLabelInternalProps)[]

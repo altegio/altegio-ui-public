@@ -1,5 +1,5 @@
 <template>
-  <y-core-dropdown-list
+  <alt-core-dropdown-list
     v-bind="props"
     @item-click="$emit('item-click', $event)"
   >
@@ -33,8 +33,8 @@
               :item="item"
               :item-label="itemLabel"
             >
-              <y-core-dropdown-cell
-                :locator="`${YCoreDropdownCellTagName}_${item.id}`"
+              <alt-core-dropdown-cell
+                :locator="`${AltCoreDropdownCellTagName}_${item.id}`"
               >
                 <slot
                   :name="`item-inner-${item.id}`"
@@ -49,7 +49,7 @@
                     {{ item[itemLabel] }}
                   </slot>
                 </slot>
-              </y-core-dropdown-cell>
+              </alt-core-dropdown-cell>
             </slot>
           </slot>
         </template>
@@ -62,7 +62,7 @@
     >
       <slot name="bottom" />
     </div>
-  </y-core-dropdown-list>
+  </alt-core-dropdown-list>
 </template>
 
 <script setup lang="ts">
@@ -70,20 +70,20 @@
   import '~core/ui/dropdownList'
   import {
     createVueDropdownListProps,
-    type IYVueDropdownListProps,
-    type IYVueDropdownListEmits,
-    type IYVueCoreDropdownListProps,
+    type IAltVueDropdownListProps,
+    type IAltVueDropdownListEmits,
+    type IAltVueCoreDropdownListProps,
   } from '~vue/ui/dropdownList/models/types'
-  import { YCoreDropdownCellTagName } from '~web/shared/constants'
+  import { AltCoreDropdownCellTagName } from '~web/shared/constants'
 
   interface IListScopedProps {
-    items: IYVueCoreDropdownListProps['items']
-    itemLabel: IYVueCoreDropdownListProps['itemLabel']
+    items: IAltVueCoreDropdownListProps['items']
+    itemLabel: IAltVueCoreDropdownListProps['itemLabel']
   }
 
   interface IItemScopedProps {
-    item: NonNullable<IYVueCoreDropdownListProps['items']>[number]
-    itemLabel: IYVueCoreDropdownListProps['itemLabel']
+    item: NonNullable<IAltVueCoreDropdownListProps['items']>[number]
+    itemLabel: IAltVueCoreDropdownListProps['itemLabel']
   }
 
   interface ISlots {
@@ -96,18 +96,18 @@
     [key: `item-inner-${string}`]: (props: IItemScopedProps) => unknown
   }
 
-  defineOptions({ name: 'YDropdownList' })
+  defineOptions({ name: 'AltDropdownList' })
 
   defineSlots<Partial<ISlots>>()
 
   const props = withDefaults(
-    defineProps<IYVueDropdownListProps>(),
+    defineProps<IAltVueDropdownListProps>(),
     createVueDropdownListProps(),
-  ) satisfies IYVueCoreDropdownListProps
+  ) satisfies IAltVueCoreDropdownListProps
 
   const hasItemOrListSlot = (slots: Partial<ISlots>) => {
     return Object.keys(slots).some((key) => key.startsWith('item') || key.startsWith('list'))
   }
 
-  defineEmits<IYVueDropdownListEmits>()
+  defineEmits<IAltVueDropdownListEmits>()
 </script>

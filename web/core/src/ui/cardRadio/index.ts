@@ -1,1 +1,1 @@
-export { YCoreCardRadio } from './CardRadio.core'
+export { AltCoreCardRadio } from './CardRadio.core'

@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCorePhoneCodeTagName } from '~shared/constants'
-import { YPhoneCode } from '~ng/ui/phoneCode'
+import { AltCorePhoneCodeTagName } from '~shared/constants'
+import { AltPhoneCode } from '~ng/ui/phoneCode'
 import {
-  type IYNgPhoneCodeProps,
+  type IAltNgPhoneCodeProps,
 } from '~ng/ui/phoneCode/models/types'
 import {
   propCodeTestCases,
@@ -12,19 +12,19 @@ import {
   propSizeTestCases,
 } from './cases/props'
 
-const tagName = YCorePhoneCodeTagName
+const tagName = AltCorePhoneCodeTagName
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgPhoneCodeProps>
+  props?: Partial<IAltNgPhoneCodeProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YPhoneCode] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltPhoneCode] }).compileComponents()
 
   @Component({
-    template: '<YPhoneCode [code]="code" [disabled]="disabled" [readonly]="readonly" [size]="size"></YPhoneCode>',
-    imports: [YPhoneCode],
+    template: '<AltPhoneCode [code]="code" [disabled]="disabled" [readonly]="readonly" [size]="size"></AltPhoneCode>',
+    imports: [AltPhoneCode],
     standalone: true,
   })
   class TestComponent {
@@ -35,7 +35,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
   return TestComponent
 }
 
-describe('Angular/YPhoneCode', () => {
+describe('Angular/AltPhoneCode', () => {
   describe('Unit', () => {
     describe('Props', () => {
       for (const testCase of [

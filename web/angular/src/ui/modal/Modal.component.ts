@@ -3,7 +3,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output } from '
 import '~core/ui/modal'
 import {
   createNgModalProps,
-  type IYNgModalProps,
+  type IAltNgModalProps,
 } from '~ng/ui/modal/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { cleanupInnerHTML } from '~shared/utils'
@@ -11,11 +11,11 @@ import { cleanupInnerHTML } from '~shared/utils'
 const { open, size, variant, width, hideOverlay, preventEscape, fullScreen, dialogLabel } = createNgModalProps()
 
 @Component({
-  selector: 'YModal',
+  selector: 'AltModal',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-modal
+    <alt-core-modal
       [open]="open"
       [size]="size"
       [variant]="variant"
@@ -50,18 +50,18 @@ const { open, size, variant, width, hideOverlay, preventEscape, fullScreen, dial
       @if (cleanupHTML(close)) {
         <div slot="close" [innerHTML]="cleanupHTML(close)"></div>
       }
-    </y-core-modal>
+    </alt-core-modal>
   `,
 })
-export class YModal implements IYNgModalProps {
-  @Input() @DefaultValue(open) open: IYNgModalProps['open'] = open
-  @Input() @DefaultValue(size) size: IYNgModalProps['size'] = size
-  @Input() @DefaultValue(variant) variant: IYNgModalProps['variant'] = variant
-  @Input() @DefaultValue(width) width: IYNgModalProps['width'] = width
-  @Input() @DefaultValue(hideOverlay) hideOverlay: IYNgModalProps['hideOverlay'] = hideOverlay
-  @Input() @DefaultValue(preventEscape) preventEscape: IYNgModalProps['preventEscape'] = preventEscape
-  @Input() @DefaultValue(fullScreen) fullScreen: IYNgModalProps['fullScreen'] = fullScreen
-  @Input() @DefaultValue(dialogLabel) dialogLabel: IYNgModalProps['dialogLabel'] = dialogLabel
+export class AltModal implements IAltNgModalProps {
+  @Input() @DefaultValue(open) open: IAltNgModalProps['open'] = open
+  @Input() @DefaultValue(size) size: IAltNgModalProps['size'] = size
+  @Input() @DefaultValue(variant) variant: IAltNgModalProps['variant'] = variant
+  @Input() @DefaultValue(width) width: IAltNgModalProps['width'] = width
+  @Input() @DefaultValue(hideOverlay) hideOverlay: IAltNgModalProps['hideOverlay'] = hideOverlay
+  @Input() @DefaultValue(preventEscape) preventEscape: IAltNgModalProps['preventEscape'] = preventEscape
+  @Input() @DefaultValue(fullScreen) fullScreen: IAltNgModalProps['fullScreen'] = fullScreen
+  @Input() @DefaultValue(dialogLabel) dialogLabel: IAltNgModalProps['dialogLabel'] = dialogLabel
 
   @Output() openEvent = new EventEmitter()
   handleOpen(event: Event) {

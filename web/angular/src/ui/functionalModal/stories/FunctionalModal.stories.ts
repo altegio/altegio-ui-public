@@ -2,21 +2,21 @@ import type { Meta, StoryObj } from '@storybook/angular'
 import { action } from 'storybook/actions'
 import { useArgs } from 'storybook/preview-api'
 
-import { YFunctionalModal } from '~ng/ui/functionalModal'
+import { AltFunctionalModal } from '~ng/ui/functionalModal'
 
-import { YButton } from '~ng/ui/button'
-import { YText } from '~ng/ui/text'
-import yCoreFunctionalModalStoryMeta from '~core/ui/functionalModal/stories/FunctionalModal.stories'
+import { AltButton } from '~ng/ui/button'
+import { AltText } from '~ng/ui/text'
+import altCoreFunctionalModalStoryMeta from '~core/ui/functionalModal/stories/FunctionalModal.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants/text'
 
 /**
  * Angular wrapper for Core FunctionalModal
  */
-const meta: Meta<YFunctionalModal> = {
+const meta: Meta<AltFunctionalModal> = {
   title: 'Modals/⚠️ FunctionalModal',
   id: 'functionalModal',
   parameters: { controls: { sort: 'alpha' } },
-  component: YFunctionalModal,
+  component: AltFunctionalModal,
   tags: ['angular', 'autodocs'],
   render: (args) => {
     const [, updateArgs] = useArgs()
@@ -62,7 +62,7 @@ const meta: Meta<YFunctionalModal> = {
     }
 
     return {
-      moduleMetadata: { imports: [YButton, YText] },
+      moduleMetadata: { imports: [AltButton, AltText] },
       props: {
         ...args,
         LOREM_IPSUM,
@@ -77,7 +77,7 @@ const meta: Meta<YFunctionalModal> = {
       },
       template: `
       <div style="min-height: 450px;">
-        <YFunctionalModal
+        <AltFunctionalModal
           [open]="open"
           [size]="size"
           [width]="width"
@@ -106,15 +106,15 @@ const meta: Meta<YFunctionalModal> = {
 
           @if (showContentSlot) {
             <span content>
-              <YText size="p2-regular">
+              <AltText size="p2-regular">
                 {{ contentText }}
-              </YText>
+              </AltText>
             </span>
           }
 
           @if (showActivatorSlot) {
             <div activator>
-              <YButton label="Open modal" />
+              <AltButton label="Open modal" />
             </div>
           }
 
@@ -135,16 +135,16 @@ const meta: Meta<YFunctionalModal> = {
               Footer slot content
             </span>
           }
-        </YFunctionalModal>
+        </AltFunctionalModal>
       </div>
       `,
     }
   },
-  argTypes: { ...yCoreFunctionalModalStoryMeta.argTypes },
-  args: { ...yCoreFunctionalModalStoryMeta.args },
-} satisfies Meta<YFunctionalModal>
+  argTypes: { ...altCoreFunctionalModalStoryMeta.argTypes },
+  args: { ...altCoreFunctionalModalStoryMeta.args },
+} satisfies Meta<AltFunctionalModal>
 
 export default meta
-type Story = StoryObj<YFunctionalModal>
+type Story = StoryObj<AltFunctionalModal>
 
 export const Playground: Story = { args: {} }

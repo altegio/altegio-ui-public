@@ -1,1 +1,1 @@
-export { YCoreDropdownCellText } from './DropdownCellText'
+export { AltCoreDropdownCellText } from './DropdownCellText'

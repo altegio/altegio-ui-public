@@ -3,11 +3,11 @@ import type { TemplateRef } from '@angular/core'
 import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, forwardRef, ContentChild, signal } from '@angular/core'
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms'
 import '~core/ui/checkbox'
-import { YCoreCheckbox } from '~core/ui/checkbox'
-import type { TYNgCheckboxModel } from '~ng/ui/checkbox/models/types'
-import { createNgCheckboxProps, type IYNgCheckboxProps, type CheckboxCheckedEvent } from '~ng/ui/checkbox/models/types'
+import { AltCoreCheckbox } from '~core/ui/checkbox'
+import type { TAltNgCheckboxModel } from '~ng/ui/checkbox/models/types'
+import { createNgCheckboxProps, type IAltNgCheckboxProps, type CheckboxCheckedEvent } from '~ng/ui/checkbox/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
-import { YCoreCheckboxTagName } from '~web/shared/constants'
+import { AltCoreCheckboxTagName } from '~web/shared/constants'
 import { defineCustomElement } from '~web/shared/utils/components'
 import { ControlValueAccessorBase } from '~ng/types/ControlValueAccessorBase'
 
@@ -25,15 +25,15 @@ const {
   labelTooltipPlacement,
 } = createNgCheckboxProps()
 
-defineCustomElement(YCoreCheckboxTagName, YCoreCheckbox)
+defineCustomElement(AltCoreCheckboxTagName, AltCoreCheckbox)
 
 @Component({
-  selector: 'YCheckbox',
+  selector: 'AltCheckbox',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [FormsModule, NgTemplateOutlet],
   template: `
-    <y-core-checkbox
+    <alt-core-checkbox
       (checked)="handleCheckedEvent($event)"
       [labelText]="labelText"
       [labelTooltipText]="labelTooltipText"
@@ -65,34 +65,34 @@ defineCustomElement(YCoreCheckboxTagName, YCoreCheckbox)
           <ng-container *ngTemplateOutlet="tooltipContentRef" />
         </div>
       }
-    </y-core-checkbox>
+    </alt-core-checkbox>
   `,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => YCheckbox),
+      useExisting: forwardRef(() => AltCheckbox),
       multi: true,
     },
   ],
 })
-export class YCheckbox extends ControlValueAccessorBase<TYNgCheckboxModel> implements IYNgCheckboxProps {
-  @Input() @DefaultValue(labelText) labelText: IYNgCheckboxProps['labelText'] = labelText
-  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IYNgCheckboxProps['labelTooltipText'] = labelTooltipText
-  @Input() @DefaultValue(labelOverflowDebounce) labelOverflowDebounce: IYNgCheckboxProps['labelOverflowDebounce'] = labelOverflowDebounce
-  @Input() @DefaultValue(annotationText) annotationText: IYNgCheckboxProps['annotationText'] = annotationText
-  @Input() @DefaultValue(size) size: IYNgCheckboxProps['size'] = size
-  @Input() @DefaultValue(disabled) disabled: IYNgCheckboxProps['disabled'] = disabled
-  @Input() @DefaultValue(required) required: IYNgCheckboxProps['required'] = required
-  @Input() @DefaultValue(indeterminate) indeterminate: IYNgCheckboxProps['indeterminate'] = indeterminate
-  @Input() @DefaultValue(errors) errors: IYNgCheckboxProps['errors'] = errors
-  @Input() @DefaultValue(alignment) alignment: IYNgCheckboxProps['alignment'] = alignment
-  @Input() @DefaultValue(labelTooltipPlacement) labelTooltipPlacement: IYNgCheckboxProps['labelTooltipPlacement'] = labelTooltipPlacement
+export class AltCheckbox extends ControlValueAccessorBase<TAltNgCheckboxModel> implements IAltNgCheckboxProps {
+  @Input() @DefaultValue(labelText) labelText: IAltNgCheckboxProps['labelText'] = labelText
+  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IAltNgCheckboxProps['labelTooltipText'] = labelTooltipText
+  @Input() @DefaultValue(labelOverflowDebounce) labelOverflowDebounce: IAltNgCheckboxProps['labelOverflowDebounce'] = labelOverflowDebounce
+  @Input() @DefaultValue(annotationText) annotationText: IAltNgCheckboxProps['annotationText'] = annotationText
+  @Input() @DefaultValue(size) size: IAltNgCheckboxProps['size'] = size
+  @Input() @DefaultValue(disabled) disabled: IAltNgCheckboxProps['disabled'] = disabled
+  @Input() @DefaultValue(required) required: IAltNgCheckboxProps['required'] = required
+  @Input() @DefaultValue(indeterminate) indeterminate: IAltNgCheckboxProps['indeterminate'] = indeterminate
+  @Input() @DefaultValue(errors) errors: IAltNgCheckboxProps['errors'] = errors
+  @Input() @DefaultValue(alignment) alignment: IAltNgCheckboxProps['alignment'] = alignment
+  @Input() @DefaultValue(labelTooltipPlacement) labelTooltipPlacement: IAltNgCheckboxProps['labelTooltipPlacement'] = labelTooltipPlacement
 
   @ContentChild('checkboxLabel') checkboxLabelRef: TemplateRef<unknown> | undefined
   @ContentChild('checkboxAnnotation') checkboxAnnotationRef: TemplateRef<unknown> | undefined
   @ContentChild('tooltipContent') tooltipContentRef: TemplateRef<unknown> | undefined
 
-  modelValue = signal<TYNgCheckboxModel>(false)
+  modelValue = signal<TAltNgCheckboxModel>(false)
 
   writeValue(value: boolean) {
     this.modelValue.set(value)

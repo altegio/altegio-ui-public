@@ -1,10 +1,10 @@
 import {
   createCoreSimpleRadioButtonExternalProps,
-  type IYCoreSimpleRadioButtonExternalProps,
+  type IAltCoreSimpleRadioButtonExternalProps,
 } from './external'
 import {
   createCoreSimpleRadioButtonInternalProps,
-  type IYCoreSimpleRadioButtonInternalProps,
+  type IAltCoreSimpleRadioButtonInternalProps,
 } from './internal'
 
 export * from './external'
@@ -12,9 +12,9 @@ export * from './internal'
 export * from './events'
 
 
-export interface IYCoreSimpleRadioButtonProps extends IYCoreSimpleRadioButtonExternalProps, IYCoreSimpleRadioButtonInternalProps {}
+export interface IAltCoreSimpleRadioButtonProps extends IAltCoreSimpleRadioButtonExternalProps, IAltCoreSimpleRadioButtonInternalProps {}
 
-export const createCoreSimpleRadioButtonProps = (): IYCoreSimpleRadioButtonProps => {
+export const createCoreSimpleRadioButtonProps = (): IAltCoreSimpleRadioButtonProps => {
   return {
     ...createCoreSimpleRadioButtonExternalProps(),
     ...createCoreSimpleRadioButtonInternalProps(),

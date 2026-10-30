@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest'
-import { YCoreTipTagName } from '~shared/constants'
+import { AltCoreTipTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import {
   createCoreTipProps,
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from './cases/css'
 
-const tagName = YCoreTipTagName
+const tagName = AltCoreTipTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreTip/CSS',
+  'Core/AltCoreTip/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

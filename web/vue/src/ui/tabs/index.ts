@@ -1,2 +1,2 @@
-export { default as YTabs } from './Tabs.vue'
+export { default as AltTabs } from './Tabs.vue'
 export type * from './models/types'

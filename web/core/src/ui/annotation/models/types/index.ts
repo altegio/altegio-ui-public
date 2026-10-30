@@ -1,12 +1,12 @@
 import {
   createCoreAnnotationExternalProps,
-  type IYCoreAnnotationExternalProps,
+  type IAltCoreAnnotationExternalProps,
 } from './external'
 
 export * from './external'
 
-export interface IYCoreAnnotationProps extends IYCoreAnnotationExternalProps {}
+export interface IAltCoreAnnotationProps extends IAltCoreAnnotationExternalProps {}
 
-export const createCoreAnnotationProps = (): IYCoreAnnotationProps => {
+export const createCoreAnnotationProps = (): IAltCoreAnnotationProps => {
   return { ...createCoreAnnotationExternalProps() }
 }

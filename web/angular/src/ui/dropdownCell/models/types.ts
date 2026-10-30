@@ -1,8 +1,8 @@
 import {
   createCoreDropdownCellProps,
-  type IYCoreDropdownCellProps,
+  type IAltCoreDropdownCellProps,
 } from '~core/ui/dropdownCell/models/types'
 
-export interface IYNgDropdownCellProps extends IYCoreDropdownCellProps {}
+export interface IAltNgDropdownCellProps extends IAltCoreDropdownCellProps {}
 
-export const createNgDropdownCellProps = (): IYNgDropdownCellProps => createCoreDropdownCellProps()
+export const createNgDropdownCellProps = (): IAltNgDropdownCellProps => createCoreDropdownCellProps()

@@ -1,1 +1,1 @@
-export { YCoreCardCheckbox } from './CardCheckbox.core'
+export { AltCoreCardCheckbox } from './CardCheckbox.core'

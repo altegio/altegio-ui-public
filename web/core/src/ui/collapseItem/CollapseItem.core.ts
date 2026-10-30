@@ -7,18 +7,18 @@ import { debounce } from 'radash'
 
 import {
   createCoreCollapseItemProps,
-  type IYCoreCollapseItemProps,
+  type IAltCoreCollapseItemProps,
   CollapseItemClickEvent,
-  EYCoreCollapseItemVariant,
+  EAltCoreCollapseItemVariant,
 } from '~core/ui/collapseItem/models/types'
 import {
-  YCoreCollapseItemTagName as tagName,
+  AltCoreCollapseItemTagName as tagName,
 } from '~shared/constants'
 
 import {
   createCoreCollapseProps,
-  type IYCoreCollapseProps,
-  EYCoreCollapseType,
+  type IAltCoreCollapseProps,
+  EAltCoreCollapseType,
 } from '~core/ui/collapse/models/types'
 
 import '~core/ui/text'
@@ -26,14 +26,14 @@ import '~core/ui/icon'
 
 import { hasSlotContent } from '~core/utils/lit-slots'
 import { booleanConverter } from '~core/utils/converters'
-import { yBigChevronUp, yBigChevronDown } from '~shared/icons'
+import { altBigChevronUp, altBigChevronDown } from '~shared/icons'
 import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
 
-import YCoreCollapseItemVarsCSS from '~core/ui/collapseItem/css/CollapseItem.vars.css?inline'
-import YCoreCollapseItemScopedCSS from '~core/ui/collapseItem/css/CollapseItem.scoped.css?inline'
+import AltCoreCollapseItemVarsCSS from '~core/ui/collapseItem/css/CollapseItem.vars.css?inline'
+import AltCoreCollapseItemScopedCSS from '~core/ui/collapseItem/css/CollapseItem.scoped.css?inline'
 
 import { valueContextCreated, typeContextCreated, variantContextCreated } from '~core/ui/collapse/providers'
-import { EYCoreTextSize } from '~core/ui/text/models/types'
+import { EAltCoreTextSize } from '~core/ui/text/models/types'
 import { withLocator } from '~core/utils/locator'
 
 const { value: collapseValue, type: collapseType } = createCoreCollapseProps()
@@ -41,24 +41,24 @@ const { label, annotation, opened, value, variant, loading, shallow } = createCo
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreCollapseItem
+export class AltCoreCollapseItem
   extends LitElement
-  implements IYCoreCollapseItemProps {
-  @property({ type: String }) label: IYCoreCollapseItemProps['label'] = label
-  @property({ type: String }) annotation: IYCoreCollapseItemProps['annotation'] = annotation
-  @property({ type: Boolean }) opened: IYCoreCollapseItemProps['opened'] = opened
-  @property({ type: Boolean }) loading: IYCoreCollapseItemProps['loading'] = loading
-  @property({ type: Boolean, converter: booleanConverter }) shallow: IYCoreCollapseItemProps['shallow'] = shallow
-  @property({ type: String, reflect: true }) value: IYCoreCollapseItemProps['value'] = value
+  implements IAltCoreCollapseItemProps {
+  @property({ type: String }) label: IAltCoreCollapseItemProps['label'] = label
+  @property({ type: String }) annotation: IAltCoreCollapseItemProps['annotation'] = annotation
+  @property({ type: Boolean }) opened: IAltCoreCollapseItemProps['opened'] = opened
+  @property({ type: Boolean }) loading: IAltCoreCollapseItemProps['loading'] = loading
+  @property({ type: Boolean, converter: booleanConverter }) shallow: IAltCoreCollapseItemProps['shallow'] = shallow
+  @property({ type: String, reflect: true }) value: IAltCoreCollapseItemProps['value'] = value
   @consume({ context: variantContextCreated, subscribe: true })
-  @property({ type: String }) variant: IYCoreCollapseItemProps['variant'] = variant
+  @property({ type: String }) variant: IAltCoreCollapseItemProps['variant'] = variant
 
   private readonly baseClass = tagName
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreCollapseItemVarsCSS)}
-      ${unsafeCSS(YCoreCollapseItemScopedCSS)}
+      ${unsafeCSS(AltCoreCollapseItemVarsCSS)}
+      ${unsafeCSS(AltCoreCollapseItemScopedCSS)}
     `,
   ]
 
@@ -69,9 +69,9 @@ export class YCoreCollapseItem
   @state() contentHeightAuto = false
 
   @consume({ context: valueContextCreated, subscribe: true })
-  @state() collapseValue: IYCoreCollapseProps['value'] = collapseValue
+  @state() collapseValue: IAltCoreCollapseProps['value'] = collapseValue
   @consume({ context: typeContextCreated, subscribe: true })
-  @state() collapseType: IYCoreCollapseProps['type'] = collapseType
+  @state() collapseType: IAltCoreCollapseProps['type'] = collapseType
 
   @query('[data-activator]') public readonly activatorElement?: HTMLDivElement
   @query('[data-content]') public readonly contentElement?: HTMLDivElement
@@ -136,17 +136,17 @@ export class YCoreCollapseItem
   }
 
   private get hasHeightRestriction(): boolean {
-    return this.variant === EYCoreCollapseItemVariant.PRIMARY || this.variant === EYCoreCollapseItemVariant.SECONDARY
+    return this.variant === EAltCoreCollapseItemVariant.PRIMARY || this.variant === EAltCoreCollapseItemVariant.SECONDARY
   }
 
-  private get textFontSize(): EYCoreTextSize {
+  private get textFontSize(): EAltCoreTextSize {
     switch (this.variant) {
-      case EYCoreCollapseItemVariant.PRIMARY:
-        return EYCoreTextSize.P1_MEDIUM
-      case EYCoreCollapseItemVariant.SECONDARY:
-        return EYCoreTextSize.P2_MEDIUM
-      case EYCoreCollapseItemVariant.GHOST:
-        return EYCoreTextSize.H3_SEMIBOLD
+      case EAltCoreCollapseItemVariant.PRIMARY:
+        return EAltCoreTextSize.P1_MEDIUM
+      case EAltCoreCollapseItemVariant.SECONDARY:
+        return EAltCoreTextSize.P2_MEDIUM
+      case EAltCoreCollapseItemVariant.GHOST:
+        return EAltCoreTextSize.H3_SEMIBOLD
       default:
         throw new Error(`Unknown variant: ${this.variant}`)
     }
@@ -182,7 +182,7 @@ export class YCoreCollapseItem
       return true
     }
 
-    if (this.collapseType === EYCoreCollapseType.SINGLE) {
+    if (this.collapseType === EAltCoreCollapseType.SINGLE) {
       return this.collapseValue === this.value
     }
 
@@ -354,7 +354,7 @@ export class YCoreCollapseItem
     if (this.shallow) return nothing
 
     return html`
-      <y-core-text
+      <alt-core-text
         variant="primary"
         class=${classMap(this.computedMainWrapperClasses)}
         .size=${this.textFontSize}
@@ -363,34 +363,34 @@ export class YCoreCollapseItem
       >
         <slot name="main">
           <div class=${classMap(this.computedMainClasses)}>
-            <y-core-text
+            <alt-core-text
               variant="primary"
               .size=${this.textFontSize}
               .ellipsis=${this.hasHeightRestriction}
               .lineclamp=${this.hasHeightRestriction ? 1 : undefined}
             >
               <slot name="label">${this.label}</slot>
-            </y-core-text>
+            </alt-core-text>
 
-            <y-core-text
+            <alt-core-text
               variant="secondary"
               size="a2-regular"
               .ellipsis=${this.hasHeightRestriction}
               .lineclamp=${this.hasHeightRestriction ? 1 : undefined}
             >
               <slot name="annotation">${this.annotation}</slot>
-            </y-core-text>
+            </alt-core-text>
           </div>
         </slot>
-      </y-core-text>
+      </alt-core-text>
       <div class=${classMap(this.computedAfterClasses)}>
         <slot name="after" @slotchange=${this.handleAfterSlotChange}></slot>
       </div>
       <div class=${classMap(this.computedIconClasses)}>
-        <y-core-icon
-          .icon=${this.computedOpened ? yBigChevronUp : yBigChevronDown}
+        <alt-core-icon
+          .icon=${this.computedOpened ? altBigChevronUp : altBigChevronDown}
           size="16px"
-        ></y-core-icon>
+        ></alt-core-icon>
       </div>
     `
   }

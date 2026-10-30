@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YCardIcon } from '~ng/ui/cardIcon'
-import yCardIconStoryMeta from '~core/ui/cardIcon/stories/CardIcon.stories'
+import { AltCardIcon } from '~ng/ui/cardIcon'
+import altCardIconStoryMeta from '~core/ui/cardIcon/stories/CardIcon.stories'
 
 /**
  * Angular wrapper for CardIcon
  */
-const meta: Meta<YCardIcon> = {
+const meta: Meta<AltCardIcon> = {
   title: 'Cards/Partials/✅ CardIcon',
   id: 'cardIcon',
   parameters: { controls: { sort: 'alpha' } },
-  component: YCardIcon,
+  component: AltCardIcon,
   tags: [
     'angular',
     'autodocs',
@@ -18,19 +18,19 @@ const meta: Meta<YCardIcon> = {
   render: (args) => ({
     props: { ...args },
     template: `
-      <YCardIcon
+      <AltCardIcon
         [size]="size"
         [icon]="icon"
         [variant]="variant"
         [disabled]="disabled"
         style="border: 1px dashed;width: min-content;display: inline-flex;"
-      ></YCardIcon>`,
+      ></AltCardIcon>`,
   }),
-  argTypes: { ...yCardIconStoryMeta.argTypes },
-  args: { ...yCardIconStoryMeta.args },
-} satisfies Meta<YCardIcon>
+  argTypes: { ...altCardIconStoryMeta.argTypes },
+  args: { ...altCardIconStoryMeta.args },
+} satisfies Meta<AltCardIcon>
 
 export default meta
-type Story = StoryObj<YCardIcon>
+type Story = StoryObj<AltCardIcon>
 
 export const Playground: Story = { args: {} }

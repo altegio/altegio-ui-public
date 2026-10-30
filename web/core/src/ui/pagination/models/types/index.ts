@@ -1,19 +1,19 @@
 import {
   createCorePaginationExternalProps,
-  type IYCorePaginationExternalProps,
+  type IAltCorePaginationExternalProps,
 } from './external'
 import {
   createCorePaginationInternalProps,
-  type IYCorePaginationInternalProps,
+  type IAltCorePaginationInternalProps,
 } from './internal'
 
 export * from './external'
 export * from './internal'
 export * from './events'
 
-export interface IYCorePaginationProps extends IYCorePaginationExternalProps, IYCorePaginationInternalProps {}
+export interface IAltCorePaginationProps extends IAltCorePaginationExternalProps, IAltCorePaginationInternalProps {}
 
-export const createCorePaginationProps = (): IYCorePaginationProps => ({
+export const createCorePaginationProps = (): IAltCorePaginationProps => ({
   ...createCorePaginationExternalProps(),
   ...createCorePaginationInternalProps(),
 })

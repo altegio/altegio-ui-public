@@ -1,2 +1,2 @@
-export { YSearchTextHighlighted } from './SearchTextHighlighted.component'
+export { AltSearchTextHighlighted } from './SearchTextHighlighted.component'
 export type * from './models/types'

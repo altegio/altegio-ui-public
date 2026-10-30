@@ -1,12 +1,12 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
-import type { IYCoreRadioButtonExternalProps } from './external'
+import type { IAltCoreRadioButtonExternalProps } from './external'
 
-export interface IYRadioButtonCheckedEvent {
+export interface IAltRadioButtonCheckedEvent {
   checked: boolean
-  value: IYCoreRadioButtonExternalProps['value']
+  value: IAltCoreRadioButtonExternalProps['value']
 }
 
 
-export class RadioButtonCheckedEvent extends CustomEvent<IYRadioButtonCheckedEvent> {}
+export class RadioButtonCheckedEvent extends CustomEvent<IAltRadioButtonCheckedEvent> {}
 
-export type TYCoreRadioButtonEvents = TEventsStoryArgs<{ CheckedEvent: typeof RadioButtonCheckedEvent }>
+export type TAltCoreRadioButtonEvents = TEventsStoryArgs<{ CheckedEvent: typeof RadioButtonCheckedEvent }>

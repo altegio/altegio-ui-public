@@ -1,4 +1,4 @@
-$component: $YCoreAnnotationTagName;
+$component: $AltCoreAnnotationTagName;
 
 .$(component) {
   &_disabled {

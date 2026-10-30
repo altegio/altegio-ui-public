@@ -1,10 +1,10 @@
 import {
   createCoreFieldTextareaProps,
-  type IYCoreFieldTextareaProps,
+  type IAltCoreFieldTextareaProps,
 } from '~core/ui/fieldTextarea/models/types'
 
 export { InputEvent, FocusEvent, BlurEvent, KeydownEvent, RenderEvent } from '~core/ui/fieldTextarea/models/types'
 
-export interface IYNgFieldTextareaProps extends IYCoreFieldTextareaProps {}
+export interface IAltNgFieldTextareaProps extends IAltCoreFieldTextareaProps {}
 
-export const createNgFieldTextareaProps = (): IYNgFieldTextareaProps => createCoreFieldTextareaProps()
+export const createNgFieldTextareaProps = (): IAltNgFieldTextareaProps => createCoreFieldTextareaProps()

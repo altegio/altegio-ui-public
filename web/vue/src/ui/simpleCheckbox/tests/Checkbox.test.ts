@@ -1,12 +1,12 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { ref } from 'vue'
 import { mount } from '@vue/test-utils'
-import { YCoreSimpleCheckboxTagName as tagName } from '~shared/constants'
+import { AltCoreSimpleCheckboxTagName as tagName } from '~shared/constants'
 import type { TPropTestCase } from '~shared/types/tests'
-import { EYSizes } from '~shared/types/global'
-import { YCoreSimpleCheckbox } from '~core/index'
-import { createVueSimpleCheckboxProps, type IYVueSimpleCheckboxProps } from '~vue/ui/simpleCheckbox/models/types'
-import { YSimpleCheckbox } from '~vue/ui/simpleCheckbox'
+import { EAltSizes } from '~shared/types/global'
+import { AltCoreSimpleCheckbox } from '~core/index'
+import { createVueSimpleCheckboxProps, type IAltVueSimpleCheckboxProps } from '~vue/ui/simpleCheckbox/models/types'
+import { AltSimpleCheckbox } from '~vue/ui/simpleCheckbox'
 
 
 const {
@@ -17,31 +17,31 @@ const {
   error: defaultError,
 } = createVueSimpleCheckboxProps()
 
-const propIndeterminateTestCases: TPropTestCase<IYVueSimpleCheckboxProps, 'indeterminate'>[] = [
+const propIndeterminateTestCases: TPropTestCase<IAltVueSimpleCheckboxProps, 'indeterminate'>[] = [
   { prop: 'indeterminate', case: 'true', value: true, expected: true },
   { prop: 'indeterminate', case: 'false', value: false, expected: false },
   { prop: 'indeterminate', case: 'undefined', value: undefined, expected: defaultIndeterminate },
 ]
 
-const propSizeTestCases: TPropTestCase<IYVueSimpleCheckboxProps, 'size'>[] = [
-  { prop: 'size', case: EYSizes.SMALL, value: EYSizes.SMALL, expected: EYSizes.SMALL },
-  { prop: 'size', case: EYSizes.MEDIUM, value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
+const propSizeTestCases: TPropTestCase<IAltVueSimpleCheckboxProps, 'size'>[] = [
+  { prop: 'size', case: EAltSizes.SMALL, value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
+  { prop: 'size', case: EAltSizes.MEDIUM, value: EAltSizes.MEDIUM, expected: EAltSizes.MEDIUM },
   { prop: 'size', case: 'undefined', value: undefined, expected: defaultSize },
 ]
 
-const propDisabledTestCases: TPropTestCase<IYVueSimpleCheckboxProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltVueSimpleCheckboxProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true, expected: true },
   { prop: 'disabled', case: 'false', value: false, expected: false },
   { prop: 'disabled', case: 'undefined', value: undefined, expected: defaultDisabled },
 ]
 
-const propHoveredTestCases: TPropTestCase<IYVueSimpleCheckboxProps, 'hovered'>[] = [
+const propHoveredTestCases: TPropTestCase<IAltVueSimpleCheckboxProps, 'hovered'>[] = [
   { prop: 'hovered', case: 'true', value: true, expected: true },
   { prop: 'hovered', case: 'false, ', value: false, expected: false },
   { prop: 'hovered', case: 'undefined', value: undefined, expected: defaultHovered },
 ]
 
-const propErrorTestCases: TPropTestCase<IYVueSimpleCheckboxProps, 'error'>[] = [
+const propErrorTestCases: TPropTestCase<IAltVueSimpleCheckboxProps, 'error'>[] = [
   { prop: 'error', case: 'true', value: true, expected: true },
   { prop: 'error', case: 'false', value: false, expected: false },
   { prop: 'error', case: 'undefined', value: undefined, expected: defaultError },
@@ -49,13 +49,13 @@ const propErrorTestCases: TPropTestCase<IYVueSimpleCheckboxProps, 'error'>[] = [
 
 
 describe(
-  'Vue/YSimpleCheckbox',
+  'Vue/AltSimpleCheckbox',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreSimpleCheckbox,
+          AltCoreSimpleCheckbox,
         )
       }
     })
@@ -75,7 +75,7 @@ describe(
             () => {
               const checked = ref(false)
               const wrapper = mount(
-                YSimpleCheckbox,
+                AltSimpleCheckbox,
                 {
                   props: {
                     [testCase.prop]: testCase.value,
@@ -104,7 +104,7 @@ describe(
           'Should emit "update:modelValue" when the checkbox state changes',
           async() => {
             const wrapper = mount(
-              YSimpleCheckbox,
+              AltSimpleCheckbox,
               { props: { modelValue: false } },
             )
 

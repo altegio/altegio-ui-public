@@ -1,28 +1,28 @@
-import { createCoreModalProps, type IYCoreModalProps } from '~core/ui/modal/models/types'
+import { createCoreModalProps, type IAltCoreModalProps } from '~core/ui/modal/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreModalProps extends Omit<IYCoreModalProps, 'open'> {
-  modelValue: IYCoreModalProps['open']
+export interface IAltVueCoreModalProps extends Omit<IAltCoreModalProps, 'open'> {
+  modelValue: IAltCoreModalProps['open']
 }
 
-export interface IYVueModalProps {
-  modelValue: IYVueCoreModalProps['modelValue']
-  size: IYVueCoreModalProps['size']
-  variant: IYVueCoreModalProps['variant']
-  width: IYVueCoreModalProps['width']
-  hideOverlay: IYVueCoreModalProps['hideOverlay']
-  preventEscape: IYVueCoreModalProps['preventEscape']
-  fullScreen: IYVueCoreModalProps['fullScreen']
-  dialogLabel: IYVueCoreModalProps['dialogLabel']
+export interface IAltVueModalProps {
+  modelValue: IAltVueCoreModalProps['modelValue']
+  size: IAltVueCoreModalProps['size']
+  variant: IAltVueCoreModalProps['variant']
+  width: IAltVueCoreModalProps['width']
+  hideOverlay: IAltVueCoreModalProps['hideOverlay']
+  preventEscape: IAltVueCoreModalProps['preventEscape']
+  fullScreen: IAltVueCoreModalProps['fullScreen']
+  dialogLabel: IAltVueCoreModalProps['dialogLabel']
   enableTeleport: boolean | undefined
 }
 
-export interface IYVueModalEmits {
+export interface IAltVueModalEmits {
   (event: 'open' | 'close' | 'click-close-icon' | 'click-overlay' | 'click-activator' | 'press-escape'): void
-  (event: 'update:modelValue', payload: IYCoreModalProps['open']): void
+  (event: 'update:modelValue', payload: IAltCoreModalProps['open']): void
 }
 
-export const createVueModalProps = (): TDefinedVueProps<IYVueModalProps> => {
+export const createVueModalProps = (): TDefinedVueProps<IAltVueModalProps> => {
   const {
     open: modelValue,
     size,

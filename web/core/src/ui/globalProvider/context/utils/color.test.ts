@@ -8,9 +8,9 @@ describe('palette expressions', () => {
     const transformers = generateTransformersFromJson(colorTokenTransformersRaw)
     const accent = { h: 120, s: 40, l: 25, a: 1 }
 
-    expect(transformers['--y-core-color-surface-accent-low'][EColorTheme.dark][EColorType.dark](accent))
+    expect(transformers['--alt-core-color-surface-accent-low'][EColorTheme.dark][EColorType.dark](accent))
       .toEqual({ h: 120, s: 40, l: 75, a: 0.15 })
-    expect(transformers['--y-core-color-surface-accent-high'][EColorTheme.light][EColorType.light](accent))
+    expect(transformers['--alt-core-color-surface-accent-high'][EColorTheme.light][EColorType.light](accent))
       .toEqual({ h: 120, s: 40, l: 5, a: 1 })
   })
 
@@ -27,7 +27,7 @@ describe('palette expressions', () => {
     }
     const transformers = generateTransformersFromJson(raw)
 
-    expect(transformers['--y-core-color-text-accent'][EColorTheme.light][EColorType.light]({ h: 120, s: 40, l: 25, a: 1 }))
+    expect(transformers['--alt-core-color-text-accent'][EColorTheme.light][EColorType.light]({ h: 120, s: 40, l: 25, a: 1 }))
       .toEqual({ h: 120, s: 40, l: 30, a: 1 })
   })
 })

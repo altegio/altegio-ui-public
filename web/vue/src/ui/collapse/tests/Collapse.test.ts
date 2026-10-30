@@ -1,12 +1,12 @@
 import { describe, expect, it, beforeAll, afterEach, afterAll } from 'vitest'
 
 import { useVueTests } from '~shared/tests/vue'
-import { YCoreCollapseTagName } from '~shared/constants'
-import { YCollapse } from '~vue/ui/collapse'
-import { YCoreCollapse } from '~core/ui/collapse'
+import { AltCoreCollapseTagName } from '~shared/constants'
+import { AltCollapse } from '~vue/ui/collapse'
+import { AltCoreCollapse } from '~core/ui/collapse'
 import type {
-  IYCoreCollapseChangePayload,
-  IYCoreCollapseMovePayload,
+  IAltCoreCollapseChangePayload,
+  IAltCoreCollapseMovePayload,
 } from '~core/ui/collapse/models/types'
 
 import {
@@ -31,14 +31,14 @@ const {
   resetComponent,
   removeComponent,
   initCoreComponent,
-} = useVueTests(YCollapse)
+} = useVueTests(AltCollapse)
 
 
 describe(
-  'Vue/YCollapse',
+  'Vue/AltCollapse',
   () => {
     beforeAll(() => {
-      initCoreComponent(YCoreCollapseTagName, YCoreCollapse)
+      initCoreComponent(AltCoreCollapseTagName, AltCoreCollapse)
     })
 
     afterEach(async() => {
@@ -83,7 +83,7 @@ describe(
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
-                  const coreElement = wrapper.find(YCoreCollapseTagName).element as YCoreCollapse
+                  const coreElement = wrapper.find(AltCoreCollapseTagName).element as AltCoreCollapse
 
                   expect(JSON.stringify(coreElement[coreTestProp])).toBe(JSON.stringify(testCase.expected))
                 },
@@ -99,7 +99,7 @@ describe(
               it(testCase.case, () => {
                 wrapper.vm.$emit(testCase.event, testCase.payload)
 
-                const payload = wrapper.emitted(testCase.event)?.[0][0] as IYCoreCollapseChangePayload | IYCoreCollapseMovePayload
+                const payload = wrapper.emitted(testCase.event)?.[0][0] as IAltCoreCollapseChangePayload | IAltCoreCollapseMovePayload
 
                 expect(payload).toEqual(testCase.expected)
               })

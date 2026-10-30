@@ -1,20 +1,20 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 import {
   createCoreDropdownListProps,
-  type IYCoreDropdownListProps,
+  type IAltCoreDropdownListProps,
   type ItemClickEvent,
 } from '~core/ui/dropdownList/models/types'
 
-export interface IYVueCoreDropdownListProps extends IYCoreDropdownListProps {}
+export interface IAltVueCoreDropdownListProps extends IAltCoreDropdownListProps {}
 
-export interface IYVueDropdownListProps {
-  items?: IYVueCoreDropdownListProps['items']
-  itemLabel?: IYVueCoreDropdownListProps['itemLabel']
-  minWidth?: IYVueCoreDropdownListProps['minWidth']
-  noMaxHeight?: IYVueCoreDropdownListProps['noMaxHeight']
+export interface IAltVueDropdownListProps {
+  items?: IAltVueCoreDropdownListProps['items']
+  itemLabel?: IAltVueCoreDropdownListProps['itemLabel']
+  minWidth?: IAltVueCoreDropdownListProps['minWidth']
+  noMaxHeight?: IAltVueCoreDropdownListProps['noMaxHeight']
 }
 
-export const createVueDropdownListProps = (): TDefinedVueProps<IYVueDropdownListProps> => {
+export const createVueDropdownListProps = (): TDefinedVueProps<IAltVueDropdownListProps> => {
   const { items, itemLabel, minWidth, noMaxHeight } = createCoreDropdownListProps()
   return {
     items: items ? () => items : undefined,
@@ -24,6 +24,6 @@ export const createVueDropdownListProps = (): TDefinedVueProps<IYVueDropdownList
   }
 }
 
-export interface IYVueDropdownListEmits {
+export interface IAltVueDropdownListEmits {
   (event: 'item-click', payload: ItemClickEvent): void
 }

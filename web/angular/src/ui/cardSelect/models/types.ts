@@ -1,10 +1,10 @@
 import {
   createCoreCardSelectProps,
-  type IYCoreCardSelectProps,
+  type IAltCoreCardSelectProps,
 } from '~core/ui/cardSelect/models/types'
 
-export { FocusEvent as YNgCardSelectFocusEvent, BlurEvent as YNgCardSelectBlurEvent } from '~core/ui/cardSelect/models/types/events'
+export { FocusEvent as AltNgCardSelectFocusEvent, BlurEvent as AltNgCardSelectBlurEvent } from '~core/ui/cardSelect/models/types/events'
 
-export interface IYNgCardSelectProps extends IYCoreCardSelectProps {}
+export interface IAltNgCardSelectProps extends IAltCoreCardSelectProps {}
 
-export const createNgCardSelectProps = (): IYNgCardSelectProps => createCoreCardSelectProps()
+export const createNgCardSelectProps = (): IAltNgCardSelectProps => createCoreCardSelectProps()

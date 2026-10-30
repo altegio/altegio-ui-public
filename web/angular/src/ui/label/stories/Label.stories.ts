@@ -1,21 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YLabel } from '~ng/ui/label'
-import yCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
+import { AltLabel } from '~ng/ui/label'
+import altCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-type TYNgLabelStoryMeta = YLabel & {
+type TAltNgLabelStoryMeta = AltLabel & {
   isLongText?: boolean
 }
 
 /**
  * Angular wrapper for Core Label
  */
-const meta: Meta<TYNgLabelStoryMeta> = {
+const meta: Meta<TAltNgLabelStoryMeta> = {
   title: 'Inputs/Partials/🔍 Label',
   id: 'label',
   parameters: { controls: { sort: 'alpha' } },
-  component: YLabel,
+  component: AltLabel,
   tags: [
     'angular',
     'autodocs',
@@ -26,7 +26,7 @@ const meta: Meta<TYNgLabelStoryMeta> = {
       computedText: args.isLongText ? LOREM_IPSUM : args.text,
     },
     template: `
-      <YLabel 
+      <AltLabel 
         [disabled]="disabled" 
         [required]="required" 
         [text]="computedText" 
@@ -37,14 +37,14 @@ const meta: Meta<TYNgLabelStoryMeta> = {
         <ng-template #tooltipContent>
           {{ tooltipContentSlot }}
         </ng-template>
-      </YLabel>
+      </AltLabel>
     `,
   }),
-  argTypes: { ...yCoreLabelStoryMeta.argTypes },
-  args: { ...yCoreLabelStoryMeta.args },
-} satisfies Meta<TYNgLabelStoryMeta>
+  argTypes: { ...altCoreLabelStoryMeta.argTypes },
+  args: { ...altCoreLabelStoryMeta.args },
+} satisfies Meta<TAltNgLabelStoryMeta>
 
 export default meta
-type Story = StoryObj<YLabel>
+type Story = StoryObj<AltLabel>
 
 export const Playground: Story = { args: {} }

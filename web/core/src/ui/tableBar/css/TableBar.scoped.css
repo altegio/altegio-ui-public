@@ -1,4 +1,4 @@
-$component: $YCoreTableBarTagName;
+$component: $AltCoreTableBarTagName;
 
 :host {
   display: grid;
@@ -9,5 +9,5 @@ $component: $YCoreTableBarTagName;
   grid-column: 1 / max;
   width: 100%;
   height: 2px;
-  background-color: var(--y-core-table-bar-background-color);
+  background-color: var(--alt-core-table-bar-background-color);
 }

@@ -1,1 +1,1 @@
-export { YCoreLink } from './Link.core'
+export { AltCoreLink } from './Link.core'

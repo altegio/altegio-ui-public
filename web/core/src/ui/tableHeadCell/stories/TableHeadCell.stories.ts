@@ -4,26 +4,26 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 
 import {
   createCoreTableHeadCellProps,
-  type IYCoreTableHeadCellProps,
-  type TYCoreTableHeadCellEvents,
+  type IAltCoreTableHeadCellProps,
+  type TAltCoreTableHeadCellEvents,
 } from '~core/ui/tableHeadCell/models/types'
 import {
-  YCoreTableCellTagName as tagName,
+  AltCoreTableCellTagName as tagName,
 } from '~shared/constants'
 import { storyControlsTable, getComponentEmitsTable, getComponentStateTable } from '~shared/.storybook/tables'
-import yCoreTableCellStoryMeta, {
-  type IYCoreTableCellStorySlots,
+import altCoreTableCellStoryMeta, {
+  type IAltCoreTableCellStorySlots,
 } from '~core/ui/tableCell/stories/TableCell.stories'
 import { omit } from 'radash'
 import { ESort } from '~shared/types/global'
 
 import '~core/ui/tableHeadCell'
 
-export interface IYCoreTableHeadCellStorySlots {
+export interface IAltCoreTableHeadCellStorySlots {
   showHintSlot: boolean
 }
 
-export type TYCoreTableHeadCellMeta = IYCoreTableHeadCellProps & IYCoreTableHeadCellStorySlots & TYCoreTableHeadCellEvents & IYCoreTableCellStorySlots
+export type TAltCoreTableHeadCellMeta = IAltCoreTableHeadCellProps & IAltCoreTableHeadCellStorySlots & TAltCoreTableHeadCellEvents & IAltCoreTableCellStorySlots
 
 const storyHeader = {
   id: '1',
@@ -36,7 +36,7 @@ const { sortDirection } = createCoreTableHeadCellProps()
 /**
  * ## Core TableCell
  */
-const meta: Meta<TYCoreTableHeadCellMeta> = {
+const meta: Meta<TAltCoreTableHeadCellMeta> = {
   title: 'TableHeadCell',
   id: 'tableHeadCell',
   parameters: { controls: { sort: 'alpha' } },
@@ -58,7 +58,7 @@ const meta: Meta<TYCoreTableHeadCellMeta> = {
     onSort,
   }) => {
     return html`
-      <y-core-table-head-cell
+      <alt-core-table-head-cell
         .sticky=${sticky}
         .align=${align}
         .disabled=${disabled}
@@ -84,12 +84,12 @@ const meta: Meta<TYCoreTableHeadCellMeta> = {
           `
           : ''
         }
-      </y-core-table-head-cell>
+      </alt-core-table-head-cell>
     `
   },
   argTypes: {
     ...omit(
-      yCoreTableCellStoryMeta.argTypes ?? {},
+      altCoreTableCellStoryMeta.argTypes ?? {},
       ['item', 'itemLabel'],
     ),
 
@@ -131,7 +131,7 @@ const meta: Meta<TYCoreTableHeadCellMeta> = {
   },
   args: {
     ...omit(
-      yCoreTableCellStoryMeta.args ?? {},
+      altCoreTableCellStoryMeta.args ?? {},
       ['item', 'itemLabel'],
     ),
 
@@ -141,9 +141,9 @@ const meta: Meta<TYCoreTableHeadCellMeta> = {
     showHintSlot: false,
     onSort: fn(),
   },
-} satisfies Meta<TYCoreTableHeadCellMeta>
+} satisfies Meta<TAltCoreTableHeadCellMeta>
 
 export default meta
-type Story = StoryObj<IYCoreTableHeadCellProps>
+type Story = StoryObj<IAltCoreTableHeadCellProps>
 
 export const Playground: Story = { args: {} }

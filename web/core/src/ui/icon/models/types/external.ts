@@ -1,14 +1,14 @@
-import { type IYIcon } from '~shared/icons'
+import { type IAltIcon } from '~shared/icons'
 
-export interface IYCoreIconExternalProps {
-  icon: IYIcon
+export interface IAltCoreIconExternalProps {
+  icon: IAltIcon
   size: string | undefined
 }
 
-export const createCoreIconExternalProps = (): IYCoreIconExternalProps => {
+export const createCoreIconExternalProps = (): IAltCoreIconExternalProps => {
   return {
     icon: {
-      name: 'none' as IYIcon['name'],
+      name: 'none' as IAltIcon['name'],
       data: 'none',
     },
     size: '24px',

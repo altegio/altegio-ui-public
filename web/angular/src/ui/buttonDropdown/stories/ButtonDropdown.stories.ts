@@ -8,18 +8,18 @@ import {
   createButtonDropdownParameters,
   BUTTON_DROPDOWN_STORIES_CONFIG,
 } from '~core/ui/buttonDropdown/stories/ButtonDropdown.stories.utils'
-import yCoreButtonDropdownStoryMeta from '~core/ui/buttonDropdown/stories/ButtonDropdown.stories'
-import { EYCoreButtonDropdownIconTypes } from '~core/ui/buttonDropdown/models/types/internal'
-import { EYCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
+import altCoreButtonDropdownStoryMeta from '~core/ui/buttonDropdown/stories/ButtonDropdown.stories'
+import { EAltCoreButtonDropdownIconTypes } from '~core/ui/buttonDropdown/models/types/internal'
+import { EAltCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
 
-import type { ItemClickEvent, IYNgButtonDropdownProps, VisibleEvent } from '~ng/ui/buttonDropdown/models/types'
-import { YButtonDropdown } from '~ng/ui/buttonDropdown'
+import type { ItemClickEvent, IAltNgButtonDropdownProps, VisibleEvent } from '~ng/ui/buttonDropdown/models/types'
+import { AltButtonDropdown } from '~ng/ui/buttonDropdown'
 
-const meta: Meta<IYNgButtonDropdownProps> = {
+const meta: Meta<IAltNgButtonDropdownProps> = {
   title: 'Buttons/🔍 ButtonDropdown',
   id: 'buttonDropdown',
   parameters: createButtonDropdownParameters(EFrameworkName.ANGULAR),
-  component: YButtonDropdown,
+  component: AltButtonDropdown,
   tags: ['angular', 'autodocs'],
   render: (args) => {
     const handlers = {
@@ -39,7 +39,7 @@ const meta: Meta<IYNgButtonDropdownProps> = {
       },
       template: `
       <div style="padding: 50px 50px 350px; margin: 20px; border: 1px dashed black; border-radius: 8px; overflow: auto">
-          <YButtonDropdown
+          <AltButtonDropdown
             [label]="isLongText ? LOREM_IPSUM : label"
             [variant]="variant"
             [size]="size"
@@ -65,17 +65,17 @@ const meta: Meta<IYNgButtonDropdownProps> = {
                 ContentSlot
               </div>
             }
-          </YButtonDropdown>
+          </AltButtonDropdown>
         </div>
       `,
     }
   },
-  argTypes: { ...yCoreButtonDropdownStoryMeta.argTypes },
-  args: { ...yCoreButtonDropdownStoryMeta.args },
-} satisfies Meta<IYNgButtonDropdownProps>
+  argTypes: { ...altCoreButtonDropdownStoryMeta.argTypes },
+  args: { ...altCoreButtonDropdownStoryMeta.args },
+} satisfies Meta<IAltNgButtonDropdownProps>
 
 export default meta
-type Story = StoryObj<YButtonDropdown>
+type Story = StoryObj<AltButtonDropdown>
 
 export const Playground: Story = {
   parameters: BUTTON_DROPDOWN_STORIES_CONFIG.Playground.parameters,
@@ -86,16 +86,16 @@ export const Variants: Story = {
   parameters: BUTTON_DROPDOWN_STORIES_CONFIG.Variants.parameters,
   args: BUTTON_DROPDOWN_STORIES_CONFIG.Variants.args,
   render: (args) => ({
-    props: { items: args.items, variants: Object.values(EYCoreSimpleButtonVariant) },
+    props: { items: args.items, variants: Object.values(EAltCoreSimpleButtonVariant) },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
         <ng-container *ngFor="let variant of variants">
-          <YButtonDropdown
+          <AltButtonDropdown
             [items]="items"
             [variant]="variant"
             [label]="variant"
           >
-          </YButtonDropdown>
+          </AltButtonDropdown>
         </ng-container>
       </div>
     `,
@@ -106,17 +106,17 @@ export const States: Story = {
   parameters: BUTTON_DROPDOWN_STORIES_CONFIG.States.parameters,
   args: BUTTON_DROPDOWN_STORIES_CONFIG.Variants.args,
   render: (args) => ({
-    components: { YButtonDropdown },
+    components: { AltButtonDropdown },
     props: { items: args.items },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YButtonDropdown [items]="items" label="Default"></YButtonDropdown>
+        <AltButtonDropdown [items]="items" label="Default"></AltButtonDropdown>
 
-        <YButtonDropdown [items]="items" label="Disabled" [disabled]="true"></YButtonDropdown>
+        <AltButtonDropdown [items]="items" label="Disabled" [disabled]="true"></AltButtonDropdown>
         
-        <YButtonDropdown [items]="items" label="Loading" [loading]="true"></YButtonDropdown>
+        <AltButtonDropdown [items]="items" label="Loading" [loading]="true"></AltButtonDropdown>
 
-        <YButtonDropdown [items]="items" label="Open" [isOpen]="true"></YButtonDropdown>
+        <AltButtonDropdown [items]="items" label="Open" [isOpen]="true"></AltButtonDropdown>
       </div>
     `,
   }),
@@ -126,21 +126,21 @@ export const IconType: Story = {
   parameters: BUTTON_DROPDOWN_STORIES_CONFIG.IconType.parameters,
   args: BUTTON_DROPDOWN_STORIES_CONFIG.IconType.args,
   render: (args) => ({
-    components: { YButtonDropdown },
-    props: { items: args.items, label: args.label, EYCoreButtonDropdownIconTypes },
+    components: { AltButtonDropdown },
+    props: { items: args.items, label: args.label, EAltCoreButtonDropdownIconTypes },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YButtonDropdown
+        <AltButtonDropdown
           [items]="items"
           [label]="label"
-          [iconType]="EYCoreButtonDropdownIconTypes.LEFT"
-        ></YButtonDropdown>
+          [iconType]="EAltCoreButtonDropdownIconTypes.LEFT"
+        ></AltButtonDropdown>
 
-        <YButtonDropdown
+        <AltButtonDropdown
           [items]="items"
           [label]="label"
-          [iconType]="EYCoreButtonDropdownIconTypes.RIGHT"
-        ></YButtonDropdown>
+          [iconType]="EAltCoreButtonDropdownIconTypes.RIGHT"
+        ></AltButtonDropdown>
       </div>
     `,
   }),
@@ -150,15 +150,15 @@ export const FullWidth: Story = {
   parameters: BUTTON_DROPDOWN_STORIES_CONFIG.FullWidth.parameters,
   args: BUTTON_DROPDOWN_STORIES_CONFIG.FullWidth.args,
   render: (args) => ({
-    components: { YButtonDropdown },
+    components: { AltButtonDropdown },
     props: { items: args.items },
     template: `
       <div style="min-height: 100px;">
-        <YButtonDropdown
+        <AltButtonDropdown
           label="Full-width button"
           [fullWidth]="true"
           [items]="items"
-        ></YButtonDropdown>
+        ></AltButtonDropdown>
       </div>
     `,
   }),

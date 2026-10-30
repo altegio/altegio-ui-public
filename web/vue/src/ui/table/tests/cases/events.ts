@@ -1,24 +1,24 @@
 import type { TEventTestCase } from '~shared/types/tests'
 import { ESort, type TSort } from '~shared/types/global'
-import type { IYCoreTablePaginationProps } from '~core/ui/tablePagination/models/types'
-import type { IYVueTableItem } from '~vue/ui/table/models/types'
+import type { IAltCoreTablePaginationProps } from '~core/ui/tablePagination/models/types'
+import type { IAltVueTableItem } from '~vue/ui/table/models/types'
 
 import {
   testHeaders,
   testItems,
 } from './props'
 
-export type TYSortPayload = {
+export type TAltSortPayload = {
   headId: string
   event: {
     direction: TSort
   }
 }
-export type TYSortExpected = {
+export type TAltSortExpected = {
   headId: string
   direction: TSort
 }
-export const eventSortTestCases: TEventTestCase<TYSortPayload, TYSortExpected>[] = [
+export const eventSortTestCases: TEventTestCase<TAltSortPayload, TAltSortExpected>[] = [
   {
     event: 'sort',
     case: 'ascending sort',
@@ -47,9 +47,9 @@ export const eventSortTestCases: TEventTestCase<TYSortPayload, TYSortExpected>[]
   },
 ]
 
-export type TYUpdateSelectedPayload = IYVueTableItem['id'][]
-export type TYUpdateSelectedExpected = IYVueTableItem['id'][]
-export const eventUpdateSelectedTestCases: TEventTestCase<TYUpdateSelectedPayload, TYUpdateSelectedExpected>[] = [
+export type TAltUpdateSelectedPayload = IAltVueTableItem['id'][]
+export type TAltUpdateSelectedExpected = IAltVueTableItem['id'][]
+export const eventUpdateSelectedTestCases: TEventTestCase<TAltUpdateSelectedPayload, TAltUpdateSelectedExpected>[] = [
   {
     event: 'update:selected',
     case: 'row selection',
@@ -66,8 +66,8 @@ export const eventUpdateSelectedTestCases: TEventTestCase<TYUpdateSelectedPayloa
   },
 ]
 
-export type TYUpdatePagePayload = IYCoreTablePaginationProps['page']
-export const eventUpdatePageTestCases: TEventTestCase<TYUpdatePagePayload, number>[] = [
+export type TAltUpdatePagePayload = IAltCoreTablePaginationProps['page']
+export const eventUpdatePageTestCases: TEventTestCase<TAltUpdatePagePayload, number>[] = [
   {
     event: 'update:page',
     case: 'page change',
@@ -77,8 +77,8 @@ export const eventUpdatePageTestCases: TEventTestCase<TYUpdatePagePayload, numbe
   },
 ]
 
-export type TYUpdateItemsPerPagePayload = IYCoreTablePaginationProps['itemsPerPage']
-export const eventUpdateItemsPerPageTestCases: TEventTestCase<TYUpdateItemsPerPagePayload, number>[] = [
+export type TAltUpdateItemsPerPagePayload = IAltCoreTablePaginationProps['itemsPerPage']
+export const eventUpdateItemsPerPageTestCases: TEventTestCase<TAltUpdateItemsPerPagePayload, number>[] = [
   {
     event: 'update:itemsPerPage',
     case: 'items-per-page change',

@@ -1,5 +1,5 @@
 <template>
-  <y-core-checkbox
+  <alt-core-checkbox
     v-bind="props"
     :checked="modelValue"
     @checked="$emit('update:modelValue', $event.detail.checked)"
@@ -24,19 +24,19 @@
     >
       <slot name="tooltip-content" />
     </div>
-  </y-core-checkbox>
+  </alt-core-checkbox>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/checkbox'
   import {
     createVueCheckboxProps,
-    type IYVueCheckboxEmits,
-    type IYVueCheckboxProps,
-    type IYVueCoreCheckboxProps,
+    type IAltVueCheckboxEmits,
+    type IAltVueCheckboxProps,
+    type IAltVueCoreCheckboxProps,
   } from '~vue/ui/checkbox/models/types'
 
-  defineOptions({ name: 'YCheckbox' })
+  defineOptions({ name: 'AltCheckbox' })
 
   defineSlots<{
     label?: () => unknown
@@ -45,9 +45,9 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueCheckboxProps>(),
+    defineProps<IAltVueCheckboxProps>(),
     createVueCheckboxProps(),
-  ) satisfies IYVueCoreCheckboxProps
+  ) satisfies IAltVueCoreCheckboxProps
 
-  defineEmits<IYVueCheckboxEmits>()
+  defineEmits<IAltVueCheckboxEmits>()
 </script>

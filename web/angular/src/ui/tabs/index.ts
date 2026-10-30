@@ -1,2 +1,2 @@
-export { YTabs } from './Tabs.component'
+export { AltTabs } from './Tabs.component'
 export type * from './models/types'

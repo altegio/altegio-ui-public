@@ -2,16 +2,16 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import { action } from 'storybook/actions'
 import { useArgs } from 'storybook/preview-api'
 import type { CollapseItemClickEvent } from '~core/ui/collapseItem/models/types'
-import { YCollapseItem } from '~vue/ui/collapseItem'
-import { type IYVueCollapseItemProps } from '~vue/ui/collapseItem/models/types'
-import { YAvatar } from '~vue/ui/avatar'
-import { YIcon } from '~vue/ui/icon'
-import { YTag } from '~vue/ui/tag'
-import yCoreCollapseItemStoryMeta, { type TYCoreCollapseItemMeta } from '~core/ui/collapseItem/stories/CollapseItem.stories'
-import { yCopy, yDragAndDrop, yInfo } from '~shared/icons'
+import { AltCollapseItem } from '~vue/ui/collapseItem'
+import { type IAltVueCollapseItemProps } from '~vue/ui/collapseItem/models/types'
+import { AltAvatar } from '~vue/ui/avatar'
+import { AltIcon } from '~vue/ui/icon'
+import { AltTag } from '~vue/ui/tag'
+import altCoreCollapseItemStoryMeta, { type TAltCoreCollapseItemMeta } from '~core/ui/collapseItem/stories/CollapseItem.stories'
+import { altCopy, altDragAndDrop, altInfo } from '~shared/icons'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-type TVueCollapseItemStoryMeta = IYVueCollapseItemProps & TYCoreCollapseItemMeta
+type TVueCollapseItemStoryMeta = IAltVueCollapseItemProps & TAltCoreCollapseItemMeta
 
 /**
  * Vue wrapper for Core CollapseItem
@@ -28,27 +28,27 @@ const meta: Meta<TVueCollapseItemStoryMeta> = {
     const [, updateArgs] = useArgs()
 
     return {
-      components: { YCollapseItem, YIcon, YTag, YAvatar },
+      components: { AltCollapseItem, AltIcon, AltTag, AltAvatar },
       setup() {
         const handleCollapseItemClick = (event: CollapseItemClickEvent) => {
           updateArgs({ opened: !args.opened })
 
           action('collapse-item-click')(event)
         }
-        return { args, handleCollapseItemClick, yCopy, yDragAndDrop, yInfo, content: LOREM_IPSUM + LOREM_IPSUM }
+        return { args, handleCollapseItemClick, altCopy, altDragAndDrop, altInfo, content: LOREM_IPSUM + LOREM_IPSUM }
       },
       template: `
-        <YCollapseItem v-bind="args" @collapse-item-click="handleCollapseItemClick">
+        <AltCollapseItem v-bind="args" @collapse-item-click="handleCollapseItemClick">
           <template v-if="args.showAfterSlot" #after>
-            <YIcon :icon="yCopy" size="16px" />
+            <AltIcon :icon="altCopy" size="16px" />
           </template>
 
           <template v-if="args.showBeforeSlot" #before>
-            <YIcon :icon="yDragAndDrop" size="16px" />
+            <AltIcon :icon="altDragAndDrop" size="16px" />
           </template>
 
           <template v-if="args.showAvatarSlot" #avatar>
-            <YAvatar photo="https://i.pravatar.cc/300" size="small" />
+            <AltAvatar photo="https://i.pravatar.cc/300" size="small" />
           </template>
 
           <template v-if="args.showMainSlot" #main>
@@ -59,9 +59,9 @@ const meta: Meta<TVueCollapseItemStoryMeta> = {
             <div style="display: flex; align-items: center;gap: 8px;">
               <span>LabelSlot</span>
               
-              <YTag size="small" variant="accent">TagLabel</YTag>
+              <AltTag size="small" variant="accent">TagLabel</AltTag>
               
-              <YIcon :icon="yInfo" size="16px" />
+              <AltIcon :icon="altInfo" size="16px" />
             </div>
           </template>
 
@@ -72,12 +72,12 @@ const meta: Meta<TVueCollapseItemStoryMeta> = {
           <template v-if="args.showContentSlot" #content>
             {{ args.loading ? 'CONTENT IS LOADING' : content }}
           </template>
-        </YCollapseItem>
+        </AltCollapseItem>
       `,
     }
   },
-  argTypes: { ...yCoreCollapseItemStoryMeta.argTypes },
-  args: { ...yCoreCollapseItemStoryMeta.args },
+  argTypes: { ...altCoreCollapseItemStoryMeta.argTypes },
+  args: { ...altCoreCollapseItemStoryMeta.args },
 }
 
 export default meta

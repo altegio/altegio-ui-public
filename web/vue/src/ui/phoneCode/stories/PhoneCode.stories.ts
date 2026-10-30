@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YPhoneCode } from '~vue/ui/phoneCode'
-import { type IYVuePhoneCodeProps } from '~vue/ui/phoneCode/models/types'
-import yCorePhoneCodeStoryMeta from '~core/ui/phoneCode/stories/PhoneCode.stories'
+import { AltPhoneCode } from '~vue/ui/phoneCode'
+import { type IAltVuePhoneCodeProps } from '~vue/ui/phoneCode/models/types'
+import altCorePhoneCodeStoryMeta from '~core/ui/phoneCode/stories/PhoneCode.stories'
 
-type TVuePhoneCodeStoryMeta = IYVuePhoneCodeProps
+type TVuePhoneCodeStoryMeta = IAltVuePhoneCodeProps
 
 /**
  * Vue wrapper for Core PhoneCode
@@ -18,19 +18,19 @@ const meta: Meta<TVuePhoneCodeStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YPhoneCode },
+    components: { AltPhoneCode },
     setup() {
       return { args }
     },
     template: `
-      <YPhoneCode
+      <AltPhoneCode
         v-bind="args"
         style="border: 1px dashed;"
-      ></YPhoneCode>
+      ></AltPhoneCode>
     `,
   }),
-  argTypes: { ...yCorePhoneCodeStoryMeta.argTypes },
-  args: { ...yCorePhoneCodeStoryMeta.args },
+  argTypes: { ...altCorePhoneCodeStoryMeta.argTypes },
+  args: { ...altCorePhoneCodeStoryMeta.args },
 }
 
 export default meta

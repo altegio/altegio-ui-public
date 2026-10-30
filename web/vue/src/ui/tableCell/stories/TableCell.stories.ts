@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YTableCell } from '~vue/ui/tableCell'
-import { type IYVueTableCellProps } from '~vue/ui/tableCell/models/types'
-import yCoreTableCellStoryMeta, {
-  type TYCoreTableCellMeta,
+import { AltTableCell } from '~vue/ui/tableCell'
+import { type IAltVueTableCellProps } from '~vue/ui/tableCell/models/types'
+import altCoreTableCellStoryMeta, {
+  type TAltCoreTableCellMeta,
 } from '~core/ui/tableCell/stories/TableCell.stories'
 
-type TVueTableCellStoryMeta = IYVueTableCellProps & TYCoreTableCellMeta
+type TVueTableCellStoryMeta = IAltVueTableCellProps & TAltCoreTableCellMeta
 
 /**
  * Vue wrapper for Core TableCell
@@ -20,12 +20,12 @@ const meta: Meta<TVueTableCellStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YTableCell },
+    components: { AltTableCell },
     setup() {
       return { args }
     },
     template: `
-      <YTableCell
+      <AltTableCell
         v-bind="args"
         style="border: 1px dashed;width: min-content;"
       >
@@ -34,11 +34,11 @@ const meta: Meta<TVueTableCellStoryMeta> = {
             cell
           </p>
         </template>
-      </YTableCell>
+      </AltTableCell>
     `,
   }),
-  argTypes: { ...yCoreTableCellStoryMeta.argTypes },
-  args: { ...yCoreTableCellStoryMeta.args },
+  argTypes: { ...altCoreTableCellStoryMeta.argTypes },
+  args: { ...altCoreTableCellStoryMeta.args },
 }
 
 export default meta

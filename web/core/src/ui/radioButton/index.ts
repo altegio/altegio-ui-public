@@ -1,1 +1,1 @@
-export { YCoreRadioButton } from './RadioButton.core'
+export { AltCoreRadioButton } from './RadioButton.core'

@@ -1,10 +1,10 @@
 import { empty, text } from '~shared/tests/slotContents'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import type { TPropTestCase } from '~shared/types/tests'
 import {
-  createCoreAutocompleteFieldProps, type IYCoreAutocompleteFieldProps,
+  createCoreAutocompleteFieldProps, type IAltCoreAutocompleteFieldProps,
 } from '~core/ui/autocompleteField/models/types'
-import type { IYVueAutocompleteFieldProps } from '~vue/ui/autocompleteField/models/types'
+import type { IAltVueAutocompleteFieldProps } from '~vue/ui/autocompleteField/models/types'
 
 const {
   name,
@@ -23,81 +23,81 @@ const {
   searchFunction,
 } = createCoreAutocompleteFieldProps()
 
-export const propValueTestCases: TPropTestCase<IYVueAutocompleteFieldProps, 'value'>[] = [
+export const propValueTestCases: TPropTestCase<IAltVueAutocompleteFieldProps, 'value'>[] = [
   { prop: 'value', case: 'with a value', value: text, expected: text },
   { prop: 'value', case: 'without a value', value: '', expected: '' },
 ]
 
-export const propNameTestCases: TPropTestCase<IYVueAutocompleteFieldProps, 'name'>[] = [
+export const propNameTestCases: TPropTestCase<IAltVueAutocompleteFieldProps, 'name'>[] = [
   { prop: 'name', case: 'with text', value: text, expected: text },
   { prop: 'name', case: 'without text', value: '', expected: '' },
   { prop: 'name', case: 'undefined', value: undefined, expected: name },
 ]
-export const propPlaceholderTestCases: TPropTestCase<IYVueAutocompleteFieldProps, 'placeholder'>[] = [
+export const propPlaceholderTestCases: TPropTestCase<IAltVueAutocompleteFieldProps, 'placeholder'>[] = [
   { prop: 'placeholder', case: 'with text', value: text, expected: text },
   { prop: 'placeholder', case: 'without text', value: '', expected: '' },
   { prop: 'placeholder', case: 'undefined', value: undefined, expected: placeholder },
 ]
-export const propAutofocusTestCases: TPropTestCase<IYVueAutocompleteFieldProps, 'autofocus'>[] = [
+export const propAutofocusTestCases: TPropTestCase<IAltVueAutocompleteFieldProps, 'autofocus'>[] = [
   { prop: 'autofocus', case: 'true', value: true, expected: true },
   { prop: 'autofocus', case: 'false', value: false, expected: false },
   { prop: 'autofocus', case: 'undefined', value: undefined, expected: autofocus },
 ]
-export const propDisabledTestCases: TPropTestCase<IYVueAutocompleteFieldProps, 'disabled'>[] = [
+export const propDisabledTestCases: TPropTestCase<IAltVueAutocompleteFieldProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true, expected: true },
   { prop: 'disabled', case: 'false', value: false, expected: false },
   { prop: 'disabled', case: 'undefined', value: undefined, expected: disabled },
 ]
-export const propReadonlyTestCases: TPropTestCase<IYVueAutocompleteFieldProps, 'readonly'>[] = [
+export const propReadonlyTestCases: TPropTestCase<IAltVueAutocompleteFieldProps, 'readonly'>[] = [
   { prop: 'readonly', case: 'true', value: true, expected: true },
   { prop: 'readonly', case: 'false', value: false, expected: false },
   { prop: 'readonly', case: 'undefined', value: undefined, expected: readonly },
 ]
-export const propRequiredTestCases: TPropTestCase<IYVueAutocompleteFieldProps, 'required'>[] = [
+export const propRequiredTestCases: TPropTestCase<IAltVueAutocompleteFieldProps, 'required'>[] = [
   { prop: 'required', case: 'true', value: true, expected: true },
   { prop: 'required', case: 'false', value: false, expected: false },
   { prop: 'required', case: 'undefined', value: undefined, expected: required },
 ]
-export const propErrorsTestCases: TPropTestCase<IYVueAutocompleteFieldProps, 'errors'>[] = [
+export const propErrorsTestCases: TPropTestCase<IAltVueAutocompleteFieldProps, 'errors'>[] = [
   { prop: 'errors', case: 'array with errors', value: ['error'], expected: ['error'] },
   { prop: 'errors', case: 'empty array', value: [], expected: [] },
   { prop: 'errors', case: 'undefined', value: undefined, expected: errors },
 ]
-export const propSizeTestCases: TPropTestCase<IYVueAutocompleteFieldProps, 'size'>[] = [
-  { prop: 'size', case: EYSizes.SMALL, value: EYSizes.SMALL, expected: EYSizes.SMALL },
-  { prop: 'size', case: EYSizes.MEDIUM, value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
+export const propSizeTestCases: TPropTestCase<IAltVueAutocompleteFieldProps, 'size'>[] = [
+  { prop: 'size', case: EAltSizes.SMALL, value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
+  { prop: 'size', case: EAltSizes.MEDIUM, value: EAltSizes.MEDIUM, expected: EAltSizes.MEDIUM },
   { prop: 'size', case: 'undefined', value: undefined, expected: size },
 ]
-export const propLabelTextTestCases: TPropTestCase<IYVueAutocompleteFieldProps, 'labelText'>[] = [
+export const propLabelTextTestCases: TPropTestCase<IAltVueAutocompleteFieldProps, 'labelText'>[] = [
   { prop: 'labelText', case: 'text', value: text, expected: text },
   { prop: 'labelText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: labelText },
 ]
-export const propLabelTooltipTextTestCases: TPropTestCase<IYVueAutocompleteFieldProps, 'labelTooltipText'>[] = [
+export const propLabelTooltipTextTestCases: TPropTestCase<IAltVueAutocompleteFieldProps, 'labelTooltipText'>[] = [
   { prop: 'labelTooltipText', case: 'text', value: text, expected: text },
   { prop: 'labelTooltipText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: labelTooltipText },
 ]
-export const propAnnotationTextTestCases: TPropTestCase<IYVueAutocompleteFieldProps, 'annotationText'>[] = [
+export const propAnnotationTextTestCases: TPropTestCase<IAltVueAutocompleteFieldProps, 'annotationText'>[] = [
   { prop: 'annotationText', case: 'text', value: text, expected: text },
   { prop: 'annotationText', case: 'empty string', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: annotationText },
 ]
 
-export const propMinSearchLengthTestCases: TPropTestCase<IYVueAutocompleteFieldProps, 'minSearchLength'>[] = [
+export const propMinSearchLengthTestCases: TPropTestCase<IAltVueAutocompleteFieldProps, 'minSearchLength'>[] = [
   { prop: 'minSearchLength', case: 'length', value: 3, expected: 3 },
   { prop: 'minSearchLength', case: 'undefined', value: undefined, expected: minSearchLength },
 ]
 
-export const propDisabledAutocompleteTestCases: TPropTestCase<IYVueAutocompleteFieldProps, 'disabledAutocomplete'>[] = [
+export const propDisabledAutocompleteTestCases: TPropTestCase<IAltVueAutocompleteFieldProps, 'disabledAutocomplete'>[] = [
   { prop: 'disabledAutocomplete', case: 'true', value: true, expected: true },
   { prop: 'disabledAutocomplete', case: 'false', value: false, expected: false },
   { prop: 'disabledAutocomplete', case: 'undefined', value: undefined, expected: disabledAutocomplete },
 ]
 
-export const searchFunctionMock: IYCoreAutocompleteFieldProps['searchFunction'] = () => []
+export const searchFunctionMock: IAltCoreAutocompleteFieldProps['searchFunction'] = () => []
 
-export const propSearchFunctionTestCases: TPropTestCase<IYVueAutocompleteFieldProps, 'searchFunction'>[] = [
+export const propSearchFunctionTestCases: TPropTestCase<IAltVueAutocompleteFieldProps, 'searchFunction'>[] = [
   { prop: 'searchFunction', case: 'function', value: searchFunctionMock, expected: searchFunctionMock },
   { prop: 'searchFunction', case: 'undefined', value: searchFunction },
 ]

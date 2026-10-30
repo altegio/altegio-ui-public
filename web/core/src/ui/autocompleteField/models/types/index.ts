@@ -1,12 +1,12 @@
 import {
   createCoreAutocompleteFieldExternalProps,
-  type IYCoreAutocompleteFieldExternalProps,
+  type IAltCoreAutocompleteFieldExternalProps,
 } from './external'
 
 
 export * from './external'
 export * from './events'
 
-export interface IYCoreAutocompleteFieldProps extends IYCoreAutocompleteFieldExternalProps {}
+export interface IAltCoreAutocompleteFieldProps extends IAltCoreAutocompleteFieldExternalProps {}
 
-export const createCoreAutocompleteFieldProps = (): IYCoreAutocompleteFieldProps => ({ ...createCoreAutocompleteFieldExternalProps() })
+export const createCoreAutocompleteFieldProps = (): IAltCoreAutocompleteFieldProps => ({ ...createCoreAutocompleteFieldExternalProps() })

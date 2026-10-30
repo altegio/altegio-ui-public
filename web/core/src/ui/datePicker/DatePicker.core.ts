@@ -11,18 +11,18 @@ import { disabledContextCreated, readonlyContextCreated, errorContextCreated, si
 import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
 import {
   createCoreDatePickerProps,
-  type IYCoreDatePickerProps,
-  type IYCoreDatePickerExternalProps,
+  type IAltCoreDatePickerProps,
+  type IAltCoreDatePickerExternalProps,
   PickEvent,
 } from '~core/ui/datePicker/models/types'
 import {
-  YCoreDatePickerTagName as tagName,
-  YCoreFieldInputTagName,
-  YCoreCalendarTagName,
+  AltCoreDatePickerTagName as tagName,
+  AltCoreFieldInputTagName,
+  AltCoreCalendarTagName,
 } from '~shared/constants'
-import { yCalendar2, yClose } from '~shared/icons'
+import { altCalendar2, altClose } from '~shared/icons'
 
-import { type YCoreFieldInput } from '~core/ui/fieldInput'
+import { type AltCoreFieldInput } from '~core/ui/fieldInput'
 
 import '~core/ui/fieldWrapper'
 import '~core/ui/fieldInput'
@@ -32,7 +32,7 @@ import '~core/ui/dropdown'
 import '~core/ui/dropdownList'
 
 import type { InputEvent } from '~core/ui/fieldInput/models/types/events'
-import type { YCoreCalendar } from '~core/ui/calendar'
+import type { AltCoreCalendar } from '~core/ui/calendar'
 import { booleanConverter } from '~core/utils/converters'
 import { hasSlotContent } from '~core/utils/lit-slots'
 import type { SelectEvent, RangeStartEvent } from '~core/ui/calendar/models/types/events'
@@ -41,10 +41,10 @@ import classMapToString from '~core/utils/classMapToString'
 import { preventAndStopEvent } from '~shared/utils/helpers'
 import { parseDate, formatDate, FORMAT_DATE_DMY, getDefaultMinDate, getDefaultMaxDate } from '~shared/utils/dateTime'
 
-import { EYCoreDropdownPlacement, EYCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
+import { EAltCoreDropdownPlacement, EAltCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
 
-import YCoreDatePickerVarsCSS from '~core/ui/datePicker/css/DatePicker.vars.css?inline'
-import YCoreDatePickerScopedCSS from '~core/ui/datePicker/css/DatePicker.scoped.css?inline'
+import AltCoreDatePickerVarsCSS from '~core/ui/datePicker/css/DatePicker.vars.css?inline'
+import AltCoreDatePickerScopedCSS from '~core/ui/datePicker/css/DatePicker.scoped.css?inline'
 
 import { LocalizedElement } from '~core/i18n/LocalizedElement'
 import { withLocator } from '~core/utils/locator'
@@ -73,36 +73,36 @@ const RANGE_SEPARATOR = ' - '
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreDatePicker
+export class AltCoreDatePicker
   extends LocalizedElement
-  implements IYCoreDatePickerProps {
+  implements IAltCoreDatePickerProps {
   @provide({ context: disabledContextCreated })
-  @property({ type: Boolean }) disabled: IYCoreDatePickerExternalProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreDatePickerExternalProps['disabled'] = disabled
   @provide({ context: readonlyContextCreated })
-  @property({ type: Boolean }) readonly: IYCoreDatePickerExternalProps['readonly'] = readonly
+  @property({ type: Boolean }) readonly: IAltCoreDatePickerExternalProps['readonly'] = readonly
   @provide({ context: errorContextCreated })
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IYCoreDatePickerExternalProps['error'] = error
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IAltCoreDatePickerExternalProps['error'] = error
   @provide({ context: sizeContextCreated })
-  @property({ type: String, reflect: true }) size: IYCoreDatePickerExternalProps['size'] = size
-  @property({ type: String }) date: IYCoreDatePickerExternalProps['date'] = date
-  @property({ type: String }) name: IYCoreDatePickerExternalProps['name'] = name
-  @property({ type: String }) placeholder: IYCoreDatePickerExternalProps['placeholder'] = placeholder
-  @property({ type: Boolean, reflect: true }) required: IYCoreDatePickerExternalProps['required'] = required
-  @property({ type: String, attribute: 'label-text' }) labelText: IYCoreDatePickerExternalProps['labelText'] = labelText
-  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IYCoreDatePickerExternalProps['labelTooltipText'] = labelTooltipText
-  @property({ type: Number, attribute: 'label-debounce' }) labelDebounce: IYCoreDatePickerExternalProps['labelDebounce'] = labelDebounce
-  @property({ type: String, attribute: 'annotation-text' }) annotationText: IYCoreDatePickerExternalProps['annotationText'] = annotationText
-  @property({ type: Array }) errors: IYCoreDatePickerExternalProps['errors'] = errors
-  @property({ type: Boolean, attribute: 'is-range' }) isRange: IYCoreDatePickerExternalProps['isRange'] = isRange
-  @property({ type: Boolean, attribute: 'calendar-header-selectors' }) calendarHeaderSelectors: IYCoreDatePickerExternalProps['calendarHeaderSelectors'] = calendarHeaderSelectors
-  @property({ type: String, attribute: 'min-date' }) minDate: IYCoreDatePickerExternalProps['minDate'] = minDate
-  @property({ type: String, attribute: 'max-date' }) maxDate: IYCoreDatePickerExternalProps['maxDate'] = maxDate
+  @property({ type: String, reflect: true }) size: IAltCoreDatePickerExternalProps['size'] = size
+  @property({ type: String }) date: IAltCoreDatePickerExternalProps['date'] = date
+  @property({ type: String }) name: IAltCoreDatePickerExternalProps['name'] = name
+  @property({ type: String }) placeholder: IAltCoreDatePickerExternalProps['placeholder'] = placeholder
+  @property({ type: Boolean, reflect: true }) required: IAltCoreDatePickerExternalProps['required'] = required
+  @property({ type: String, attribute: 'label-text' }) labelText: IAltCoreDatePickerExternalProps['labelText'] = labelText
+  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IAltCoreDatePickerExternalProps['labelTooltipText'] = labelTooltipText
+  @property({ type: Number, attribute: 'label-debounce' }) labelDebounce: IAltCoreDatePickerExternalProps['labelDebounce'] = labelDebounce
+  @property({ type: String, attribute: 'annotation-text' }) annotationText: IAltCoreDatePickerExternalProps['annotationText'] = annotationText
+  @property({ type: Array }) errors: IAltCoreDatePickerExternalProps['errors'] = errors
+  @property({ type: Boolean, attribute: 'is-range' }) isRange: IAltCoreDatePickerExternalProps['isRange'] = isRange
+  @property({ type: Boolean, attribute: 'calendar-header-selectors' }) calendarHeaderSelectors: IAltCoreDatePickerExternalProps['calendarHeaderSelectors'] = calendarHeaderSelectors
+  @property({ type: String, attribute: 'min-date' }) minDate: IAltCoreDatePickerExternalProps['minDate'] = minDate
+  @property({ type: String, attribute: 'max-date' }) maxDate: IAltCoreDatePickerExternalProps['maxDate'] = maxDate
 
   @state() private isOpened = false
   @state() private hasAnnotationSlot = false
 
-  @query(YCoreFieldInputTagName) public readonly fieldInput?: YCoreFieldInput
-  @query(YCoreCalendarTagName) public readonly calendar?: YCoreCalendar
+  @query(AltCoreFieldInputTagName) public readonly fieldInput?: AltCoreFieldInput
+  @query(AltCoreCalendarTagName) public readonly calendar?: AltCoreCalendar
 
   @bubblingEvent(
     PickEvent,
@@ -116,8 +116,8 @@ export class YCoreDatePicker
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreDatePickerVarsCSS)}
-      ${unsafeCSS(YCoreDatePickerScopedCSS)}
+      ${unsafeCSS(AltCoreDatePickerVarsCSS)}
+      ${unsafeCSS(AltCoreDatePickerScopedCSS)}
     `,
   ]
 
@@ -144,7 +144,7 @@ export class YCoreDatePicker
   }
 
   private get dropdownMiddlewares() {
-    const allowedPlacements = [EYCoreDropdownPlacement.BOTTOM, EYCoreDropdownPlacement.TOP]
+    const allowedPlacements = [EAltCoreDropdownPlacement.BOTTOM, EAltCoreDropdownPlacement.TOP]
 
     return [autoPlacementMiddleware({ allowedPlacements })]
   }
@@ -346,7 +346,7 @@ export class YCoreDatePicker
 
   protected renderDropdownActivator() {
     return html`
-      <y-core-field-wrapper
+      <alt-core-field-wrapper
         slot="activator"
         .disabled=${this.disabled}
         .readonly=${this.readonly}
@@ -356,7 +356,7 @@ export class YCoreDatePicker
         @blur=${this.handleBlur}
         @focus=${this.handleFocus}
       >
-        <y-core-field-input
+        <alt-core-field-input
           .value=${this.maskedValue}
           .name=${this.name}
           .placeholder=${this.placeholder}
@@ -366,14 +366,14 @@ export class YCoreDatePicker
           autocomplete="off"
           @input=${this.handleInput}
           @render=${this.handleFieldInputRender}
-        ></y-core-field-input>
-        <y-core-field-icon
-          .icon=${this.isDeleteIcon ? yClose : yCalendar2}
+        ></alt-core-field-input>
+        <alt-core-field-icon
+          .icon=${this.isDeleteIcon ? altClose : altCalendar2}
           .clickable=${true}
           @mousedown=${this.handleIconMouseDown}
           @click=${this.handleIconClick}
-        ></y-core-field-icon>
-      </y-core-field-wrapper>
+        ></alt-core-field-icon>
+      </alt-core-field-wrapper>
     `
   }
 
@@ -381,9 +381,9 @@ export class YCoreDatePicker
     if (!this.isOpened) return nothing
 
     return html`
-      <y-core-dropdown-list ?no-max-height=${true}>
+      <alt-core-dropdown-list ?no-max-height=${true}>
         <div slot="list" class="${this.baseClass}__calendar" @mousedown=${this.handleCalendarMouseDown}>
-          <y-core-calendar
+          <alt-core-calendar
             .locale=${this.locale}
             .date=${this.date}
             .isRange=${this.isRange}
@@ -393,9 +393,9 @@ export class YCoreDatePicker
             @select=${this.handleCalendarDateSelect}
             @range-start=${this.handleCalendarRangeStart}
           >
-          </y-core-calendar>
+          </alt-core-calendar>
         </div>
-      </y-core-dropdown-list>
+      </alt-core-dropdown-list>
     `
   }
 
@@ -414,10 +414,10 @@ export class YCoreDatePicker
           handleClick: this.handleLabelClick,
           className: classMapToString(this.computedLabelClasses),
         })}
-        <y-core-dropdown
+        <alt-core-dropdown
           .isOpen=${this.isOpened}
-          .trigger=${EYCoreDropdownTrigger.MANUAL}
-          .placement=${EYCoreDropdownPlacement.BOTTOM_START}
+          .trigger=${EAltCoreDropdownTrigger.MANUAL}
+          .placement=${EAltCoreDropdownPlacement.BOTTOM_START}
           .offset=${{ mainAxis: 4 }}
           .middlewares=${this.dropdownMiddlewares}
           .disabled=${this.disabled || this.readonly}
@@ -427,7 +427,7 @@ export class YCoreDatePicker
           <div slot="content" class="${this.baseClass}__dropdown-content">
             ${this.renderDropdownContent()}
           </div>
-        </y-core-dropdown>
+        </alt-core-dropdown>
         ${renderAnnotation({
           text: this.annotationText,
           disabled: this.computedDisabledOrReadonly,

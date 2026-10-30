@@ -1,19 +1,19 @@
 <template>
-  <y-core-icon-button v-bind="props" />
+  <alt-core-icon-button v-bind="props" />
 </template>
 
 <script setup lang="ts">
   import '~core/ui/iconButton'
   import {
     createVueIconButtonProps,
-    type IYVueIconButtonProps,
-    type IYVueCoreIconButtonProps,
+    type IAltVueIconButtonProps,
+    type IAltVueCoreIconButtonProps,
   } from '~vue/ui/iconButton/models/types'
 
-  defineOptions({ name: 'YIconButton' })
+  defineOptions({ name: 'AltIconButton' })
 
   const props = withDefaults(
-    defineProps<IYVueIconButtonProps>(),
+    defineProps<IAltVueIconButtonProps>(),
     createVueIconButtonProps(),
-  ) satisfies IYVueCoreIconButtonProps
+  ) satisfies IAltVueCoreIconButtonProps
 </script>

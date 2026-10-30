@@ -1,1 +1,1 @@
-export { default as YCardCheckbox } from './CardCheckbox.vue'
+export { default as AltCardCheckbox } from './CardCheckbox.vue'

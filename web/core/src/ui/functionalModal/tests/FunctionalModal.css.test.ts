@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
-import { YCoreFunctionalModalTagName as tagName } from '~shared/constants'
+import { AltCoreFunctionalModalTagName as tagName } from '~shared/constants'
 import '~core/ui/functionalModal'
 import {
   CSSVariablesHostToRootCases,
@@ -17,7 +17,7 @@ const {
   createCoreFunctionalModalProps(),
 )
 
-describe('Core/YCoreFunctionalModal/CSS', () => {
+describe('Core/AltCoreFunctionalModal/CSS', () => {
   beforeAll(() => {
     injectComponentToBody()
   })

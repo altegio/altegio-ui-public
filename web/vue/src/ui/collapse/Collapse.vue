@@ -1,33 +1,33 @@
 <template>
-  <y-core-collapse
+  <alt-core-collapse
     v-bind="props"
     :value="modelValue"
     @collapse-change="$emit('update:modelValue', $event.detail.value)"
     @collapse-move="$emit('collapse-move', $event)"
   >
     <slot />
-  </y-core-collapse>
+  </alt-core-collapse>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/collapse'
   import {
     createVueCollapseProps,
-    type IYVueCollapseProps,
-    type IYVueCoreCollapseProps,
-    type IYVueCollapseEmits,
+    type IAltVueCollapseProps,
+    type IAltVueCoreCollapseProps,
+    type IAltVueCollapseEmits,
   } from '~vue/ui/collapse/models/types'
 
-  defineOptions({ name: 'YCollapse' })
+  defineOptions({ name: 'AltCollapse' })
 
   defineSlots<{
     default?: () => unknown
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueCollapseProps>(),
+    defineProps<IAltVueCollapseProps>(),
     createVueCollapseProps(),
-  ) satisfies IYVueCoreCollapseProps
+  ) satisfies IAltVueCoreCollapseProps
 
-  defineEmits<IYVueCollapseEmits>()
+  defineEmits<IAltVueCollapseEmits>()
 </script>

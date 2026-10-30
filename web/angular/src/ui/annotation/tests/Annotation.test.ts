@@ -2,26 +2,26 @@ import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
 import { text } from '~shared/tests/slotContents'
-import { YCoreAnnotationTagName } from '~shared/constants'
+import { AltCoreAnnotationTagName } from '~shared/constants'
 import type { TPropTestCase } from '~shared/types/tests'
-import { YAnnotation } from '~ng/ui/annotation/Annotation.component'
+import { AltAnnotation } from '~ng/ui/annotation/Annotation.component'
 
 import {
   createNgAnnotationProps,
-  type IYNgAnnotationProps,
+  type IAltNgAnnotationProps,
 } from '~ng/ui/annotation/models/types'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgAnnotationProps>
+  props?: Partial<IAltNgAnnotationProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs = {}) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YAnnotation] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltAnnotation] }).compileComponents()
 
   @Component({
-    template: '<YAnnotation [text]="text" [disabled]="disabled" />',
-    imports: [YAnnotation],
+    template: '<AltAnnotation [text]="text" [disabled]="disabled" />',
+    imports: [AltAnnotation],
     standalone: true,
   })
   class TestComponent {
@@ -32,11 +32,11 @@ const createComponent = async({ props }: ICreateComponentArgs = {}) => {
 }
 
 const { text: defaultText, disabled: defaultDisabled } = createNgAnnotationProps()
-const tagName = YCoreAnnotationTagName
+const tagName = AltCoreAnnotationTagName
 
 
 // Unit test cases:
-const propTextTestCases: TPropTestCase<IYNgAnnotationProps, 'text'>[] = [
+const propTextTestCases: TPropTestCase<IAltNgAnnotationProps, 'text'>[] = [
   {
     prop: 'text',
     case: 'test text',
@@ -50,7 +50,7 @@ const propTextTestCases: TPropTestCase<IYNgAnnotationProps, 'text'>[] = [
     expected: defaultText,
   },
 ]
-const propDisabledTestCases: TPropTestCase<IYNgAnnotationProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltNgAnnotationProps, 'disabled'>[] = [
   {
     prop: 'disabled',
     case: 'true',
@@ -66,7 +66,7 @@ const propDisabledTestCases: TPropTestCase<IYNgAnnotationProps, 'disabled'>[] = 
 ]
 
 describe(
-  'Angular/YAnnotation',
+  'Angular/AltAnnotation',
   () => {
     describe(
       'Props',

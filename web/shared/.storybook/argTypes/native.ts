@@ -1,7 +1,7 @@
 import type { InputType } from '@storybook/csf'
 import { getComponentStateTable, getComponentContentTable } from '~shared/.storybook/tables'
 
-import { EAnchorTarget, EYInputAutocomplete, EYInputType } from '~shared/types/global'
+import { EAnchorTarget, EAltInputAutocomplete, EAltInputType } from '~shared/types/global'
 
 export const value: InputType = {
   type: 'string',
@@ -60,14 +60,14 @@ export const autofocus: InputType = {
 export const type: InputType = {
   control: { type: 'select' },
   description: 'Input type. Defaults to text. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types.',
-  options: Object.values(EYInputType),
+  options: Object.values(EAltInputType),
   ...getComponentStateTable(),
 }
 
 export const autocomplete: InputType = {
   control: { type: 'select' },
   description: 'Controls browser autocomplete for form data',
-  options: Object.values(EYInputAutocomplete),
+  options: Object.values(EAltInputAutocomplete),
   ...getComponentStateTable(),
 }
 

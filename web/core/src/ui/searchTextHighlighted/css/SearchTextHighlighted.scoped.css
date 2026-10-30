@@ -1,6 +1,6 @@
-$component: $YCoreSearchTextHighlightedTagName;
+$component: $AltCoreSearchTextHighlightedTagName;
 
 .$(component) {
-  display: var(--y-core-search-text-highlighted-display);
-  font-family: var(--y-core-font-family);
+  display: var(--alt-core-search-text-highlighted-display);
+  font-family: var(--alt-core-font-family);
 }

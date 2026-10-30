@@ -5,26 +5,26 @@ import { classMap } from 'lit/directives/class-map.js'
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
 import {
   createCoreSimpleRadioButtonProps,
-  type IYCoreSimpleRadioButtonProps,
+  type IAltCoreSimpleRadioButtonProps,
 } from '~core/ui/simpleRadioButton/models/types'
 import { SimpleRadioButtonCheckedEvent } from './models/types/events'
-import { YCoreSimpleRadioButtonTagName as tagName } from '~shared/constants'
+import { AltCoreSimpleRadioButtonTagName as tagName } from '~shared/constants'
 
-import YCoreSimpleRadioButtonVarsCSS from '~core/ui/simpleRadioButton/css/SimpleRadioButton.vars.css?inline'
-import YCoreSimpleRadioButtonScopedCSS from '~core/ui/simpleRadioButton/css/SimpleRadioButton.scoped.css?inline'
+import AltCoreSimpleRadioButtonVarsCSS from '~core/ui/simpleRadioButton/css/SimpleRadioButton.vars.css?inline'
+import AltCoreSimpleRadioButtonScopedCSS from '~core/ui/simpleRadioButton/css/SimpleRadioButton.scoped.css?inline'
 import { withLocator } from '~core/utils/locator'
 
 const { size, checked, disabled, name, error, hovered } = { ...createCoreSimpleRadioButtonProps() }
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreSimpleRadioButton extends LitElement implements IYCoreSimpleRadioButtonProps {
-  @property({ type: String, reflect: true }) size: IYCoreSimpleRadioButtonProps['size'] = size
-  @property({ type: Boolean, reflect: true }) checked: IYCoreSimpleRadioButtonProps['checked'] = checked
-  @property({ type: Boolean, reflect: true }) error: IYCoreSimpleRadioButtonProps['error'] = error
-  @property({ type: Boolean }) disabled: IYCoreSimpleRadioButtonProps['disabled'] = disabled
-  @property({ type: String }) name: IYCoreSimpleRadioButtonProps['name'] = name
-  @property({ type: Boolean, reflect: true }) hovered: IYCoreSimpleRadioButtonProps['hovered'] = hovered
+export class AltCoreSimpleRadioButton extends LitElement implements IAltCoreSimpleRadioButtonProps {
+  @property({ type: String, reflect: true }) size: IAltCoreSimpleRadioButtonProps['size'] = size
+  @property({ type: Boolean, reflect: true }) checked: IAltCoreSimpleRadioButtonProps['checked'] = checked
+  @property({ type: Boolean, reflect: true }) error: IAltCoreSimpleRadioButtonProps['error'] = error
+  @property({ type: Boolean }) disabled: IAltCoreSimpleRadioButtonProps['disabled'] = disabled
+  @property({ type: String }) name: IAltCoreSimpleRadioButtonProps['name'] = name
+  @property({ type: Boolean, reflect: true }) hovered: IAltCoreSimpleRadioButtonProps['hovered'] = hovered
 
   @bubblingEvent(
     SimpleRadioButtonCheckedEvent,
@@ -48,8 +48,8 @@ export class YCoreSimpleRadioButton extends LitElement implements IYCoreSimpleRa
   }
 
   static readonly styles = [
-    css`${unsafeCSS(YCoreSimpleRadioButtonVarsCSS)}`,
-    css`${unsafeCSS(YCoreSimpleRadioButtonScopedCSS)}`,
+    css`${unsafeCSS(AltCoreSimpleRadioButtonVarsCSS)}`,
+    css`${unsafeCSS(AltCoreSimpleRadioButtonScopedCSS)}`,
   ]
 
 

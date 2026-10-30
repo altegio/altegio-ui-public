@@ -1,8 +1,8 @@
 import {
   createCoreButtonGroupExternalProps,
-  type IYCoreButtonGroupExternalProps,
+  type IAltCoreButtonGroupExternalProps,
 } from '~core/ui/buttonGroup/models/types'
 
-export interface IYNgButtonGroupProps extends IYCoreButtonGroupExternalProps {}
+export interface IAltNgButtonGroupProps extends IAltCoreButtonGroupExternalProps {}
 
-export const createNgButtonGroupProps = (): IYNgButtonGroupProps => createCoreButtonGroupExternalProps()
+export const createNgButtonGroupProps = (): IAltNgButtonGroupProps => createCoreButtonGroupExternalProps()

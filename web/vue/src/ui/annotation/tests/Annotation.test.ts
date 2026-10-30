@@ -2,21 +2,21 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import { text } from '~shared/tests/slotContents'
-import { YCoreAnnotationTagName } from '~shared/constants'
+import { AltCoreAnnotationTagName } from '~shared/constants'
 import type { TPropTestCase } from '~shared/types/tests'
-import { YCoreAnnotation } from '~core/ui/annotation'
+import { AltCoreAnnotation } from '~core/ui/annotation'
 
 import {
   createVueAnnotationProps,
-  type IYVueAnnotationProps,
+  type IAltVueAnnotationProps,
 } from '~vue/ui/annotation/models/types'
-import { YAnnotation } from '~vue/ui/annotation'
+import { AltAnnotation } from '~vue/ui/annotation'
 
 const { text: defaultText, disabled: defaultDisabled } = createVueAnnotationProps()
-const tagName = YCoreAnnotationTagName
+const tagName = AltCoreAnnotationTagName
 
 // Unit test cases:
-const propTextTestCases: TPropTestCase<IYVueAnnotationProps, 'text'>[] = [
+const propTextTestCases: TPropTestCase<IAltVueAnnotationProps, 'text'>[] = [
   {
     prop: 'text',
     case: 'test text',
@@ -30,7 +30,7 @@ const propTextTestCases: TPropTestCase<IYVueAnnotationProps, 'text'>[] = [
     expected: defaultText,
   },
 ]
-const propDisabledTestCases: TPropTestCase<IYVueAnnotationProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltVueAnnotationProps, 'disabled'>[] = [
   {
     prop: 'disabled',
     case: 'true',
@@ -46,13 +46,13 @@ const propDisabledTestCases: TPropTestCase<IYVueAnnotationProps, 'disabled'>[] =
 ]
 
 describe(
-  'Vue/YAnnotation',
+  'Vue/AltAnnotation',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreAnnotation,
+          AltCoreAnnotation,
         )
       }
     })
@@ -68,7 +68,7 @@ describe(
             `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,
             () => {
               const wrapper = mount(
-                YAnnotation,
+                AltAnnotation,
                 { props: { [testCase.prop]: testCase.value } },
               )
 

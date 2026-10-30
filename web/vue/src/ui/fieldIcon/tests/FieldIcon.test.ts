@@ -1,8 +1,8 @@
 import { describe, expect, it, beforeAll } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { YCoreFieldIconTagName as tagName } from '~shared/constants'
-import { YFieldIcon } from '~vue/ui/fieldIcon'
-import { YCoreFieldIcon } from '~core/ui/fieldIcon'
+import { AltCoreFieldIconTagName as tagName } from '~shared/constants'
+import { AltFieldIcon } from '~vue/ui/fieldIcon'
+import { AltCoreFieldIcon } from '~core/ui/fieldIcon'
 import {
   propDisabledCases,
   propHoverableCases,
@@ -12,11 +12,11 @@ import {
 } from '~core/ui/fieldIcon/tests/cases/props'
 
 describe(
-  'Vue/YFieldIcon/Unit',
+  'Vue/AltFieldIcon/Unit',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
-        customElements.define(tagName, YCoreFieldIcon)
+        customElements.define(tagName, AltCoreFieldIcon)
       }
     })
 
@@ -32,8 +32,8 @@ describe(
           it(
             `Prop "${testCase.prop}" should work ${testCase.case}`,
             () => {
-              const wrapper = mount(YFieldIcon, { props: { [testCase.prop]: testCase.value } })
-              const coreElement = wrapper.find(tagName).element as YCoreFieldIcon
+              const wrapper = mount(AltFieldIcon, { props: { [testCase.prop]: testCase.value } })
+              const coreElement = wrapper.find(tagName).element as AltCoreFieldIcon
 
               expect(coreElement[testCase.prop]).toBe(testCase.value)
             },
@@ -44,8 +44,8 @@ describe(
           it(
               `Prop "${testCase.prop}" should work ${testCase.case}`,
               () => {
-                const wrapper = mount(YFieldIcon, { props: { [testCase.prop]: testCase.value } })
-                const coreElement = wrapper.find(tagName).element as YCoreFieldIcon
+                const wrapper = mount(AltFieldIcon, { props: { [testCase.prop]: testCase.value } })
+                const coreElement = wrapper.find(tagName).element as AltCoreFieldIcon
 
                 expect(coreElement[testCase.prop]).toStrictEqual(testCase.value)
               },

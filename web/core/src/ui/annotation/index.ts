@@ -1,1 +1,1 @@
-export { YCoreAnnotation } from './Annotation.core'
+export { AltCoreAnnotation } from './Annotation.core'

@@ -1,6 +1,6 @@
 import { type ILocale } from '~core/i18n'
 
-export interface IYCoreCalendarExternalProps {
+export interface IAltCoreCalendarExternalProps {
   date: string | [string, string] | undefined
   isRange: boolean | undefined
   minDate: string | undefined
@@ -10,4 +10,4 @@ export interface IYCoreCalendarExternalProps {
   locale: ILocale | undefined
 }
 
-export const createCoreCalendarExternalProps = (): IYCoreCalendarExternalProps => ({ date: undefined, isRange: false, minDate: undefined, maxDate: undefined, disabled: false, headerSelectors: true, locale: undefined })
+export const createCoreCalendarExternalProps = (): IAltCoreCalendarExternalProps => ({ date: undefined, isRange: false, minDate: undefined, maxDate: undefined, disabled: false, headerSelectors: true, locale: undefined })

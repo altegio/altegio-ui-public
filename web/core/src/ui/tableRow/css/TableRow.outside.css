@@ -1,22 +1,22 @@
-$component: $YCoreTableRowTagName;
-$cell: $YCoreTableCellTagName;
-$headCell: $YCoreTableHeadCellTagName;
+$component: $AltCoreTableRowTagName;
+$cell: $AltCoreTableCellTagName;
+$headCell: $AltCoreTableHeadCellTagName;
 
 $(component) {
   &[slot="body"] {
     &:not([stripe]) {
       & + & {
-        border-top: 1px solid var(--y-core-color-stroke-primary);
+        border-top: 1px solid var(--alt-core-color-stroke-primary);
       }
     }
 
     &[stripe] {
       &:nth-of-type(odd) {
-        background-color: var(--y-core-table-row-stripe-background-color);
+        background-color: var(--alt-core-table-row-stripe-background-color);
       }
 
       &:nth-of-type(even) {
-        background-color: var(--y-core-table-row-default-background-color);
+        background-color: var(--alt-core-table-row-default-background-color);
       }
     }
 
@@ -25,14 +25,14 @@ $(component) {
         &:nth-of-type(odd) {
           $(cell),
           $(headCell) {
-            background-color: var(--y-core-table-row-stripe-background-color);
+            background-color: var(--alt-core-table-row-stripe-background-color);
           }
         }
 
         &:nth-of-type(even) {
           $(cell),
           $(headCell) {
-            background-color: var(--y-core-table-row-default-background-color);
+            background-color: var(--alt-core-table-row-default-background-color);
           }
         }
       }
@@ -40,7 +40,7 @@ $(component) {
       &:not([stripe]) {
         $(cell),
         $(headCell) {
-          background-color: var(--y-core-table-row-default-background-color);
+          background-color: var(--alt-core-table-row-default-background-color);
         }
       }
     }

@@ -1,14 +1,14 @@
 import {
   createCoreTableRowExternalProps,
-  type IYCoreTableRowExternalProps,
+  type IAltCoreTableRowExternalProps,
 } from './external'
 
 export * from './external'
 export * from './internal'
 
-export interface IYCoreTableRowProps extends IYCoreTableRowExternalProps {}
+export interface IAltCoreTableRowProps extends IAltCoreTableRowExternalProps {}
 
-export const createCoreTableRowProps = (): IYCoreTableRowProps => {
+export const createCoreTableRowProps = (): IAltCoreTableRowProps => {
   const {
     stripe,
     selectable,

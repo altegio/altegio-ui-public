@@ -7,7 +7,7 @@ export class ClickOverlayEvent extends CustomEvent<Event> {}
 export class ClickActivatorEvent extends CustomEvent<Event> {}
 export class PressEscapeEvent extends CustomEvent<Event> {}
 
-export type TYCoreModalEvents = TEventsStoryArgs<{
+export type TAltCoreModalEvents = TEventsStoryArgs<{
   OpenEvent: typeof OpenEvent
   CloseEvent: typeof CloseEvent
   ClickCloseIconEvent: typeof ClickCloseIconEvent

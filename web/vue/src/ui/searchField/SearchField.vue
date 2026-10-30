@@ -1,5 +1,5 @@
 <template>
-  <y-core-text-field
+  <alt-core-text-field
     ref="textField"
     v-bind="props"
     :value="modelValue"
@@ -9,7 +9,7 @@
     @focus="$emit('focus', $event)"
     @clear="$emit('clear', $event)"
   >
-    <y-core-field-icon
+    <alt-core-field-icon
       slot="before"
       clickable
       :icon="SEARCH_FIELD_ICON"
@@ -29,25 +29,25 @@
     >
       <slot name="after" />
     </div>
-  </y-core-text-field>
+  </alt-core-text-field>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/textField'
   import '~core/ui/fieldIcon'
   import {
-    type IYVueSearchFieldProps,
-    type IYVueCoreSearchFieldProps,
-    type IYSearchFieldEmits,
+    type IAltVueSearchFieldProps,
+    type IAltVueCoreSearchFieldProps,
+    type IAltSearchFieldEmits,
     createVueSearchFieldProps,
     SEARCH_FIELD_ICON,
   } from './models/types'
-  import { type YCoreTextField } from '~core/ui/textField'
+  import { type AltCoreTextField } from '~core/ui/textField'
   import { ref } from 'vue'
 
-  const textField = ref<YCoreTextField>()
+  const textField = ref<AltCoreTextField>()
 
-  defineOptions({ name: 'YSearchField' })
+  defineOptions({ name: 'AltSearchField' })
 
   defineSlots<{
     annotation: () => unknown
@@ -55,11 +55,11 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueSearchFieldProps>(),
+    defineProps<IAltVueSearchFieldProps>(),
     createVueSearchFieldProps(),
-  ) satisfies IYVueCoreSearchFieldProps
+  ) satisfies IAltVueCoreSearchFieldProps
 
-  const emit = defineEmits<IYSearchFieldEmits>()
+  const emit = defineEmits<IAltSearchFieldEmits>()
 
   const handleClickSearchIcon = (event: Event) => {
     textField.value?.fieldInput?.inputElement?.focus()

@@ -1,6 +1,6 @@
 import type { OffsetOptions, Padding, Placement, Strategy } from '@floating-ui/dom'
 
-export enum EYCoreDropdownPlacement {
+export enum EAltCoreDropdownPlacement {
   TOP = 'top',
   TOP_START = 'top-start',
   TOP_END = 'top-end',
@@ -15,23 +15,23 @@ export enum EYCoreDropdownPlacement {
   RIGHT_END = 'right-end',
 }
 
-export enum EYCoreDropdownStrategy {
+export enum EAltCoreDropdownStrategy {
   ABSOLUTE = 'absolute',
   FIXED = 'fixed',
 }
 
-export enum EYCoreDropdownTrigger {
+export enum EAltCoreDropdownTrigger {
   CLICK = 'click',
   HOVER = 'hover',
   MANUAL = 'manual',
 }
 
-export type TEYCoreDropdownTrigger = `${EYCoreDropdownTrigger}`
+export type TEAltCoreDropdownTrigger = `${EAltCoreDropdownTrigger}`
 
-export interface IYCoreDropdownExternalProps {
+export interface IAltCoreDropdownExternalProps {
   padding: Padding | undefined
   offset: OffsetOptions | undefined
-  trigger: TEYCoreDropdownTrigger | undefined
+  trigger: TEAltCoreDropdownTrigger | undefined
   isOpen: boolean | undefined
   placement: Placement | undefined
   strategy: Strategy | undefined
@@ -40,13 +40,13 @@ export interface IYCoreDropdownExternalProps {
   inline: boolean | undefined
 }
 
-export const createCoreDropdownExternalProps = (): IYCoreDropdownExternalProps => ({
-  trigger: EYCoreDropdownTrigger.CLICK,
+export const createCoreDropdownExternalProps = (): IAltCoreDropdownExternalProps => ({
+  trigger: EAltCoreDropdownTrigger.CLICK,
   isOpen: false,
   padding: 0,
   offset: 0,
-  placement: EYCoreDropdownPlacement.BOTTOM_START,
-  strategy: EYCoreDropdownStrategy.FIXED,
+  placement: EAltCoreDropdownPlacement.BOTTOM_START,
+  strategy: EAltCoreDropdownStrategy.FIXED,
   transition: 'fade',
   disabled: false,
   inline: false,

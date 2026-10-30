@@ -1,27 +1,27 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreTagTagName } from '~shared/constants'
-import { YCoreTag } from '~core/ui/tag'
-import { EYCoreTagVariant } from '~core/ui/tag/models/types/external'
-import { EYSizes } from '~shared/types/global'
-import type { IYIcon } from '~shared/icons'
+import { AltCoreTagTagName } from '~shared/constants'
+import { AltCoreTag } from '~core/ui/tag'
+import { EAltCoreTagVariant } from '~core/ui/tag/models/types/external'
+import { EAltSizes } from '~shared/types/global'
+import type { IAltIcon } from '~shared/icons'
 
-import { YTag } from '~ng/ui/tag'
-import { type IYNgTagProps } from '~ng/ui/tag/models/types'
+import { AltTag } from '~ng/ui/tag'
+import { type IAltNgTagProps } from '~ng/ui/tag/models/types'
 import { propsLocatorTestCases } from '~ng/ui/tag/tests/cases/css.ts'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgTagProps>
+  props?: Partial<IAltNgTagProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YTag] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltTag] }).compileComponents()
 
   @Component({
     template: `
-      <YTag 
+      <AltTag 
         [size]="size" 
         [variant]="variant" 
         [disabled]="disabled" 
@@ -29,9 +29,9 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
         [locator]="locator"
       >
         {{slotContent}}
-      </YTag>
+      </AltTag>
     `,
-    imports: [YTag],
+    imports: [AltTag],
     standalone: true,
   })
   class TestComponent {
@@ -45,16 +45,16 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
   return TestComponent
 }
 
-const tagName = YCoreTagTagName
+const tagName = AltCoreTagTagName
 
 describe(
-  'Angular/YTag',
+  'Angular/AltTag',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreTag,
+          AltCoreTag,
         )
       }
     })
@@ -82,7 +82,7 @@ describe(
         it(
           'Should pass size to the web component',
           async() => {
-            const size = EYSizes.SMALL
+            const size = EAltSizes.SMALL
             const component = await createComponent({ props: { size } })
             const fixture = TestBed.createComponent(component)
             fixture.detectChanges()
@@ -105,14 +105,14 @@ describe(
 
             const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
             // Defaults to medium
-            expect(coreElement?.size).toBe(EYSizes.MEDIUM)
+            expect(coreElement?.size).toBe(EAltSizes.MEDIUM)
           },
         )
 
         it(
           'Should pass variant to the web component',
           async() => {
-            const variant = EYCoreTagVariant.DANGER
+            const variant = EAltCoreTagVariant.DANGER
             const component = await createComponent({ props: { variant } })
             const fixture = TestBed.createComponent(component)
             fixture.detectChanges()
@@ -135,7 +135,7 @@ describe(
 
             const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
             // Defaults to accent
-            expect(coreElement?.variant).toBe(EYCoreTagVariant.ACCENT)
+            expect(coreElement?.variant).toBe(EAltCoreTagVariant.ACCENT)
           },
         )
 
@@ -172,7 +172,7 @@ describe(
         it(
           'Should pass iconLeft to the web component',
           async() => {
-            const iconLeft: IYIcon = { name: 'check', data: '' }
+            const iconLeft: IAltIcon = { name: 'check', data: '' }
             const component = await createComponent({ props: { iconLeft } })
             const fixture = TestBed.createComponent(component)
             fixture.detectChanges()

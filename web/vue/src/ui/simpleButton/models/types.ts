@@ -1,25 +1,25 @@
 import {
   createCoreSimpleButtonProps,
-  type IYCoreSimpleButtonProps,
+  type IAltCoreSimpleButtonProps,
 } from '~core/ui/simpleButton/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreSimpleButtonProps extends IYCoreSimpleButtonProps {}
+export interface IAltVueCoreSimpleButtonProps extends IAltCoreSimpleButtonProps {}
 
-export interface IYVueSimpleButtonProps {
-  size?: IYVueCoreSimpleButtonProps['size']
-  variant?: IYVueCoreSimpleButtonProps['variant']
-  disabled?: IYVueCoreSimpleButtonProps['disabled']
-  loading?: IYVueCoreSimpleButtonProps['loading']
-  href?: IYVueCoreSimpleButtonProps['href']
-  target?: IYVueCoreSimpleButtonProps['target']
-  alignment?: IYVueCoreSimpleButtonProps['alignment']
-  fullWidth?: IYVueCoreSimpleButtonProps['fullWidth']
-  hostStyles?: IYVueCoreSimpleButtonProps['hostStyles']
-  loaderVariant?: IYVueCoreSimpleButtonProps['loaderVariant']
+export interface IAltVueSimpleButtonProps {
+  size?: IAltVueCoreSimpleButtonProps['size']
+  variant?: IAltVueCoreSimpleButtonProps['variant']
+  disabled?: IAltVueCoreSimpleButtonProps['disabled']
+  loading?: IAltVueCoreSimpleButtonProps['loading']
+  href?: IAltVueCoreSimpleButtonProps['href']
+  target?: IAltVueCoreSimpleButtonProps['target']
+  alignment?: IAltVueCoreSimpleButtonProps['alignment']
+  fullWidth?: IAltVueCoreSimpleButtonProps['fullWidth']
+  hostStyles?: IAltVueCoreSimpleButtonProps['hostStyles']
+  loaderVariant?: IAltVueCoreSimpleButtonProps['loaderVariant']
 }
 
-export const createVueSimpleButtonProps = (): TDefinedVueProps<IYVueSimpleButtonProps> => {
+export const createVueSimpleButtonProps = (): TDefinedVueProps<IAltVueSimpleButtonProps> => {
   const { size, variant, disabled, loading, href, target, alignment, fullWidth, hostStyles, loaderVariant } = createCoreSimpleButtonProps()
 
   return {
@@ -36,6 +36,6 @@ export const createVueSimpleButtonProps = (): TDefinedVueProps<IYVueSimpleButton
   }
 }
 
-export interface IYVueSimpleButtonEmits {
+export interface IAltVueSimpleButtonEmits {
   (event: 'click', payload: Event): void
 }

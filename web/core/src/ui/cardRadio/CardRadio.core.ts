@@ -3,40 +3,40 @@ import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { consume } from '@lit/context'
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
-import { createCoreCardRadioProps, type IYCoreCardRadioProps, CoreCardRadioCheckedEvent } from '~core/ui/cardRadio/models/types'
-import { type IYCoreSimpleRadioButtonProps } from '~core/ui/simpleRadioButton/models/types'
+import { createCoreCardRadioProps, type IAltCoreCardRadioProps, CoreCardRadioCheckedEvent } from '~core/ui/cardRadio/models/types'
+import { type IAltCoreSimpleRadioButtonProps } from '~core/ui/simpleRadioButton/models/types'
 
-import { EYSizes } from '~shared/types/global'
-import { YCoreCardRadioTagName as tagName } from '~shared/constants'
+import { EAltSizes } from '~shared/types/global'
+import { AltCoreCardRadioTagName as tagName } from '~shared/constants'
 import { preventAndStopEvent } from '~shared/utils/helpers'
 
 import { disabledContextCreated, sizeContextCreated, checkedContextCreated, hoveredContextCreated } from '~core/ui/cardWrapper/providers'
 
-import YCardRadioVarsCss from '~core/ui/cardRadio/css/CardRadio.vars.css?inline'
-import YCardRadioScopedCss from '~core/ui/cardRadio/css/CardRadio.scoped.css?inline'
+import AltCardRadioVarsCss from '~core/ui/cardRadio/css/CardRadio.vars.css?inline'
+import AltCardRadioScopedCss from '~core/ui/cardRadio/css/CardRadio.scoped.css?inline'
 
 import '~core/ui/simpleRadioButton'
 import { withLocator } from '~core/utils/locator'
 
 const { disabled, size, checked } = createCoreCardRadioProps()
 
-const mapSizeToRadioSize: Record<NonNullable<IYCoreCardRadioProps['size']>, NonNullable<IYCoreSimpleRadioButtonProps['size']>> = {
-  [EYSizes.SMALL]: EYSizes.SMALL,
-  [EYSizes.MEDIUM]: EYSizes.MEDIUM,
-  [EYSizes.LARGE]: EYSizes.MEDIUM,
+const mapSizeToRadioSize: Record<NonNullable<IAltCoreCardRadioProps['size']>, NonNullable<IAltCoreSimpleRadioButtonProps['size']>> = {
+  [EAltSizes.SMALL]: EAltSizes.SMALL,
+  [EAltSizes.MEDIUM]: EAltSizes.MEDIUM,
+  [EAltSizes.LARGE]: EAltSizes.MEDIUM,
 }
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreCardRadio
+export class AltCoreCardRadio
   extends LitElement
-  implements IYCoreCardRadioProps {
+  implements IAltCoreCardRadioProps {
   @consume({ context: disabledContextCreated, subscribe: true })
-  @property({ type: Boolean }) disabled: IYCoreCardRadioProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreCardRadioProps['disabled'] = disabled
   @consume({ context: sizeContextCreated, subscribe: true })
-  @property({ type: String, reflect: true }) size: IYCoreCardRadioProps['size'] = size
+  @property({ type: String, reflect: true }) size: IAltCoreCardRadioProps['size'] = size
   @consume({ context: checkedContextCreated, subscribe: true })
-  @property({ type: Boolean }) checked: IYCoreCardRadioProps['checked'] = checked
+  @property({ type: Boolean }) checked: IAltCoreCardRadioProps['checked'] = checked
 
   @consume({ context: hoveredContextCreated, subscribe: true })
   @state() private hovered = false
@@ -51,8 +51,8 @@ export class YCoreCardRadio
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCardRadioVarsCss)}
-      ${unsafeCSS(YCardRadioScopedCss)}
+      ${unsafeCSS(AltCardRadioVarsCss)}
+      ${unsafeCSS(AltCardRadioScopedCss)}
     `,
   ]
 
@@ -64,7 +64,7 @@ export class YCoreCardRadio
   }
 
   private get computedSize() {
-    return this.size ?? EYSizes.MEDIUM
+    return this.size ?? EAltSizes.MEDIUM
   }
 
   private get computedRadioSize() {
@@ -83,13 +83,13 @@ export class YCoreCardRadio
   protected render() {
     return html`
       <div class=${classMap(this.computedClasses)}>
-        <y-core-simple-radio-button
+        <alt-core-simple-radio-button
           .size=${this.computedRadioSize}
           .checked=${this.checked}
           .disabled=${this.disabled}
           .hovered=${this.hovered}
           @checked=${this.handleChecked}
-        ></y-core-simple-radio-button>
+        ></alt-core-simple-radio-button>
       </div>
     `
   }

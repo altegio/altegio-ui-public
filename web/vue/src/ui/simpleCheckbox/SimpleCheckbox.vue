@@ -1,5 +1,5 @@
 <template>
-  <y-core-simple-checkbox
+  <alt-core-simple-checkbox
     v-bind="props"
     :checked="modelValue"
     @checked="$emit('update:modelValue', $event.detail.checked)"
@@ -10,17 +10,17 @@
   import '~core/ui/simpleCheckbox'
   import {
     createVueSimpleCheckboxProps,
-    type IYVueSimpleCheckboxProps,
-    type IYVueSimpleCheckboxEmits,
-    type IYVueCoreSimpleCheckboxProps,
+    type IAltVueSimpleCheckboxProps,
+    type IAltVueSimpleCheckboxEmits,
+    type IAltVueCoreSimpleCheckboxProps,
   } from '~vue/ui/simpleCheckbox/models/types'
 
-  defineOptions({ name: 'YSimpleCheckbox' })
+  defineOptions({ name: 'AltSimpleCheckbox' })
 
   const props = withDefaults(
-    defineProps<IYVueSimpleCheckboxProps>(),
+    defineProps<IAltVueSimpleCheckboxProps>(),
     createVueSimpleCheckboxProps(),
-  ) satisfies IYVueCoreSimpleCheckboxProps
+  ) satisfies IAltVueCoreSimpleCheckboxProps
 
-  defineEmits<IYVueSimpleCheckboxEmits>()
+  defineEmits<IAltVueSimpleCheckboxEmits>()
 </script>

@@ -1,21 +1,21 @@
 import {
-  type IYCoreFieldWrapperProps,
+  type IAltCoreFieldWrapperProps,
   createCoreFieldWrapperProps,
 } from '~core/ui/fieldWrapper/models/types'
 import {
-  type IYCoreIconProps,
+  type IAltCoreIconProps,
   createCoreIconProps,
 } from '~core/ui/icon/models/types'
 
-export interface IYCoreFieldIconExternalProps extends
-  Pick<IYCoreFieldWrapperProps, 'disabled' | 'size' | 'readonly'>,
-  Pick<IYCoreIconProps, 'icon'> {
+export interface IAltCoreFieldIconExternalProps extends
+  Pick<IAltCoreFieldWrapperProps, 'disabled' | 'size' | 'readonly'>,
+  Pick<IAltCoreIconProps, 'icon'> {
   hoverable: boolean | undefined
   clickable: boolean | undefined
   locator?: string
 }
 
-export const createCoreFieldIconExternalProps = (): IYCoreFieldIconExternalProps => {
+export const createCoreFieldIconExternalProps = (): IAltCoreFieldIconExternalProps => {
   const { disabled, size, readonly } = createCoreFieldWrapperProps()
   const { icon } = createCoreIconProps()
 

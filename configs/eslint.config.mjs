@@ -195,7 +195,7 @@ export default tslint.config(
         'warn',
         {
           ignore: ['div', 'span'],
-          ignoreParents: ['/^y-core-/'],
+          ignoreParents: ['/^alt-core-/'],
         },
       ],
       'vue/script-indent': ['error', 2, { baseIndent: 1 }],

@@ -1,3 +1,3 @@
-export interface IYCoreDropdownCellInternalProps {}
+export interface IAltCoreDropdownCellInternalProps {}
 
-export const createCoreDropdownCellInternalProps = (): IYCoreDropdownCellInternalProps => ({})
+export const createCoreDropdownCellInternalProps = (): IAltCoreDropdownCellInternalProps => ({})

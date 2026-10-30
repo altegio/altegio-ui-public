@@ -1,31 +1,31 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import type { IYNgTabProps } from '~ng/ui/tab'
-import { YTab } from '~ng/ui/tab'
-import { YIcon } from '~ng/ui/icon'
-import { YTag } from '~ng/ui/tag'
-import yCoreTabStoryMeta from '~core/ui/tab/stories/Tab.stories.ts'
-import { EYCoreTagVariant } from '~core/ui/tag/models/types'
-import { EYSizes } from '~shared/types/global.ts'
-import { yAi } from '~shared/icons'
+import type { IAltNgTabProps } from '~ng/ui/tab'
+import { AltTab } from '~ng/ui/tab'
+import { AltIcon } from '~ng/ui/icon'
+import { AltTag } from '~ng/ui/tag'
+import altCoreTabStoryMeta from '~core/ui/tab/stories/Tab.stories.ts'
+import { EAltCoreTagVariant } from '~core/ui/tag/models/types'
+import { EAltSizes } from '~shared/types/global.ts'
+import { altAi } from '~shared/icons'
 
 /**
  * Angular wrapper for Core Tab
  */
-const meta: Meta<IYNgTabProps> = {
+const meta: Meta<IAltNgTabProps> = {
   title: '⚙️ Tab',
   id: 'tab',
   parameters: { controls: { sort: 'alpha' } },
-  component: YTab,
+  component: AltTab,
   tags: [
     'vue',
     'autodocs',
   ],
   render: (args) => ({
-    moduleMetadata: { imports: [YIcon, YTag] },
-    props: { ...args, yAi, EYCoreTagVariant, EYSizes },
+    moduleMetadata: { imports: [AltIcon, AltTag] },
+    props: { ...args, altAi, EAltCoreTagVariant, EAltSizes },
     template: `
-      <YTab
+      <AltTab
         [tagVariant]="tagVariant"
         [counterValue]="counterValue"
         [leftIcon]="leftIcon"
@@ -42,20 +42,20 @@ const meta: Meta<IYNgTabProps> = {
       >
         @if (showBeforeSlot) {
           <ng-template #tabBefore>
-            <YIcon [icon]="yAi" size="16px"></YIcon>
+            <AltIcon [icon]="altAi" size="16px"></AltIcon>
           </ng-template>
         }
   
         @if (showAfterSlot) {
           <ng-template #tabAfter>
-            <YTag [variant]="EYCoreTagVariant.ACCENT" [size]="EYSizes.SMALL">Slot tag</YTag>
+            <AltTag [variant]="EAltCoreTagVariant.ACCENT" [size]="EAltSizes.SMALL">Slot tag</AltTag>
           </ng-template>
         }
-      </YTab>
+      </AltTab>
     `,
   }),
-  argTypes: { ...yCoreTabStoryMeta.argTypes },
-  args: { ...yCoreTabStoryMeta.args },
+  argTypes: { ...altCoreTabStoryMeta.argTypes },
+  args: { ...altCoreTabStoryMeta.args },
 }
 
 export default meta

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import { YMultipleSelectField } from '../MultipleSelectField.component'
-import yMultipleSelectFieldStoryMeta, { type TYCoreMultipleSelectFieldStoryMeta } from '~core/ui/multipleSelectField/stories/MultipleSelectField.stories'
+import { AltMultipleSelectField } from '../MultipleSelectField.component'
+import altMultipleSelectFieldStoryMeta, { type TAltCoreMultipleSelectFieldStoryMeta } from '~core/ui/multipleSelectField/stories/MultipleSelectField.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import {
-  type YNgMultipleSelectFieldInputEvent,
+  type AltNgMultipleSelectFieldInputEvent,
 } from '../models/types'
 import { omit } from 'radash'
 import { action } from 'storybook/actions'
@@ -12,11 +12,11 @@ import { useArgs } from 'storybook/preview-api'
 /**
  * Angular wrapper for MultipleSelectField
  */
-const meta: Meta<YMultipleSelectField & TYCoreMultipleSelectFieldStoryMeta> = {
+const meta: Meta<AltMultipleSelectField & TAltCoreMultipleSelectFieldStoryMeta> = {
   title: 'Unverified/Inputs/MultipleSelectField',
   id: 'multipleSelectField',
   parameters: { controls: { sort: 'alpha' } },
-  component: YMultipleSelectField,
+  component: AltMultipleSelectField,
   tags: [
     'angular',
     'autodocs',
@@ -25,11 +25,11 @@ const meta: Meta<YMultipleSelectField & TYCoreMultipleSelectFieldStoryMeta> = {
     const [, updateArgs] = useArgs()
 
     const handlers = {
-      onInputEmit: (event: YNgMultipleSelectFieldInputEvent) => {
+      onInputEmit: (event: AltNgMultipleSelectFieldInputEvent) => {
         action('input')(event)
         updateArgs({ value: event.detail.value })
       },
-      onSelectEmit: (event: YNgMultipleSelectFieldInputEvent) => {
+      onSelectEmit: (event: AltNgMultipleSelectFieldInputEvent) => {
         action('select')(event)
         updateArgs({ value: event.detail.value })
       },
@@ -48,7 +48,7 @@ const meta: Meta<YMultipleSelectField & TYCoreMultipleSelectFieldStoryMeta> = {
       },
       template: `
       <div style="padding: 50px 50px 300px; margin: 20px; border: 1px dashed black; border-radius: 8px">
-        <YMultipleSelectField
+        <AltMultipleSelectField
           [value]="value"
           [name]="name"
           [placeholder]="placeholder"
@@ -91,16 +91,16 @@ const meta: Meta<YMultipleSelectField & TYCoreMultipleSelectFieldStoryMeta> = {
               dropdownListBottom
             </div>
           }
-        </YMultipleSelectField>
+        </AltMultipleSelectField>
       </div>
     `,
     }
   },
-  argTypes: { ...omit(yMultipleSelectFieldStoryMeta.argTypes ?? {}, ['readonly']) },
-  args: { ...omit(yMultipleSelectFieldStoryMeta.args ?? {}, ['readonly']) },
-} satisfies Meta<YMultipleSelectField & TYCoreMultipleSelectFieldStoryMeta>
+  argTypes: { ...omit(altMultipleSelectFieldStoryMeta.argTypes ?? {}, ['readonly']) },
+  args: { ...omit(altMultipleSelectFieldStoryMeta.args ?? {}, ['readonly']) },
+} satisfies Meta<AltMultipleSelectField & TAltCoreMultipleSelectFieldStoryMeta>
 
 export default meta
-type Story = StoryObj<YMultipleSelectField>
+type Story = StoryObj<AltMultipleSelectField>
 
 export const Playground: Story = { args: {} }

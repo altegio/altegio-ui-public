@@ -1,17 +1,17 @@
 import {
   createCorePaginationProps,
-  type IYCorePaginationProps,
+  type IAltCorePaginationProps,
 } from '~core/ui/pagination/models/types'
 import {
-  type IYCoreSelectFieldProps,
+  type IAltCoreSelectFieldProps,
 } from '~core/ui/selectField/models/types'
 
-export interface IYCoreTablePaginationExternalProps extends IYCorePaginationProps, Pick<IYCoreSelectFieldProps, 'itemValue' | 'itemLabel'> {
+export interface IAltCoreTablePaginationExternalProps extends IAltCorePaginationProps, Pick<IAltCoreSelectFieldProps, 'itemValue' | 'itemLabel'> {
   optionsItemsPerPage: number[] | undefined
   counterText: string | undefined
 }
 
-export const createCoreTablePaginationExternalProps = (): IYCoreTablePaginationExternalProps => ({
+export const createCoreTablePaginationExternalProps = (): IAltCoreTablePaginationExternalProps => ({
   ...createCorePaginationProps(),
   counterText: '',
   optionsItemsPerPage: [],

@@ -1,10 +1,10 @@
 import {
   createCoreTextFieldExternalProps,
-  type IYCoreTextFieldExternalProps,
+  type IAltCoreTextFieldExternalProps,
 } from './external'
 import {
   createCoreTextFieldInternalProps,
-  type IYCoreTextFieldInternalProps,
+  type IAltCoreTextFieldInternalProps,
 } from './internal'
 
 export * from './external'
@@ -12,9 +12,9 @@ export * from './internal'
 export * from './events'
 export * from './constants'
 
-export interface IYCoreTextFieldProps extends IYCoreTextFieldExternalProps, IYCoreTextFieldInternalProps {}
+export interface IAltCoreTextFieldProps extends IAltCoreTextFieldExternalProps, IAltCoreTextFieldInternalProps {}
 
-export const createCoreTextFieldProps = (): IYCoreTextFieldProps => ({
+export const createCoreTextFieldProps = (): IAltCoreTextFieldProps => ({
   ...createCoreTextFieldExternalProps(),
   ...createCoreTextFieldInternalProps(),
 })

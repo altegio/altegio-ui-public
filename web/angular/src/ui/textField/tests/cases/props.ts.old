@@ -1,91 +1,91 @@
 import { type TPropTestCase } from '~shared/types/tests'
-import { type IYNgInputFieldProps } from '~ng/ui/inputField/models/types'
-import { EYSizes } from '~shared/types/global'
+import { type IAltNgInputFieldProps } from '~ng/ui/inputField/models/types'
+import { EAltSizes } from '~shared/types/global'
 import { text, empty, number } from '~shared/tests/slotContents'
 import { createCoreInputFieldProps } from '~core/ui/inputField/models/types'
-import { EYCoreInputTypeProp } from '~core/ui/inputField/models/types'
+import { EAltCoreInputTypeProp } from '~core/ui/inputField/models/types'
 import { testMaskOptions } from '~core/ui/inputField/tests/cases/props'
 
 const { required, size, disabled, maxlength, autofocus, type, clearable, labelText, labelTooltipText, annotationText, labelOverflowDebounce, maskOptions, errors, name, placeholder, readonly } = createCoreInputFieldProps()
 
-export const propValueCases: TPropTestCase<IYNgInputFieldProps, 'value'>[] = [
+export const propValueCases: TPropTestCase<IAltNgInputFieldProps, 'value'>[] = [
   { prop: 'value', case: 'with text', value: text, expected: text },
   { prop: 'value', case: 'without text', value: '', expected: '' },
 ]
-export const propNameTestCases: TPropTestCase<IYNgInputFieldProps, 'name'>[] = [
+export const propNameTestCases: TPropTestCase<IAltNgInputFieldProps, 'name'>[] = [
   { prop: 'name', case: 'with text', value: text, expected: text },
   { prop: 'name', case: 'without text', value: '', expected: '' },
   { prop: 'name', case: 'undefined', value: undefined, expected: name },
 ]
-export const propPlaceholderTestCases: TPropTestCase<IYNgInputFieldProps, 'placeholder'>[] = [
+export const propPlaceholderTestCases: TPropTestCase<IAltNgInputFieldProps, 'placeholder'>[] = [
   { prop: 'placeholder', case: 'with text', value: text, expected: text },
   { prop: 'placeholder', case: 'without text', value: '', expected: '' },
   { prop: 'placeholder', case: 'undefined', value: undefined, expected: placeholder },
 ]
-export const propAutofocusTestCases: TPropTestCase<IYNgInputFieldProps, 'autofocus'>[] = [
+export const propAutofocusTestCases: TPropTestCase<IAltNgInputFieldProps, 'autofocus'>[] = [
   { prop: 'autofocus', case: 'true', value: true, expected: true },
   { prop: 'autofocus', case: 'false', value: false, expected: false },
   { prop: 'autofocus', case: 'undefined', value: undefined, expected: autofocus },
 ]
-export const propTypeTestCases: TPropTestCase<IYNgInputFieldProps, 'type'>[] = [
-  { prop: 'type', case: 'text', value: EYCoreInputTypeProp.TEXT, expected: EYCoreInputTypeProp.TEXT },
-  { prop: 'type', case: 'number', value: EYCoreInputTypeProp.NUMBER, expected: EYCoreInputTypeProp.NUMBER },
+export const propTypeTestCases: TPropTestCase<IAltNgInputFieldProps, 'type'>[] = [
+  { prop: 'type', case: 'text', value: EAltCoreInputTypeProp.TEXT, expected: EAltCoreInputTypeProp.TEXT },
+  { prop: 'type', case: 'number', value: EAltCoreInputTypeProp.NUMBER, expected: EAltCoreInputTypeProp.NUMBER },
   { prop: 'type', case: 'undefined', value: undefined, expected: type },
 ]
-export const propDisabledTestCases: TPropTestCase<IYNgInputFieldProps, 'disabled'>[] = [
+export const propDisabledTestCases: TPropTestCase<IAltNgInputFieldProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true, expected: true },
   { prop: 'disabled', case: 'false', value: false, expected: false },
   { prop: 'disabled', case: 'undefined', value: undefined, expected: disabled },
 ]
-export const propReadonlyTestCases: TPropTestCase<IYNgInputFieldProps, 'readonly'>[] = [
+export const propReadonlyTestCases: TPropTestCase<IAltNgInputFieldProps, 'readonly'>[] = [
   // { prop: 'readonly', case: 'true', value: true, expected: true }, // TODO: fix readonly
   { prop: 'readonly', case: 'false', value: false, expected: false },
   { prop: 'readonly', case: 'undefined', value: undefined, expected: readonly },
 ]
-export const propRequiredTestCases: TPropTestCase<IYNgInputFieldProps, 'required'>[] = [
+export const propRequiredTestCases: TPropTestCase<IAltNgInputFieldProps, 'required'>[] = [
   { prop: 'required', case: 'true', value: true, expected: true },
   { prop: 'required', case: 'false', value: false, expected: false },
   { prop: 'required', case: 'undefined', value: undefined, expected: required },
 ]
-export const propMaxlengthTestCases: TPropTestCase<IYNgInputFieldProps, 'maxlength'>[] = [
+export const propMaxlengthTestCases: TPropTestCase<IAltNgInputFieldProps, 'maxlength'>[] = [
   { prop: 'maxlength', case: '10', value: 10, expected: 10 },
   { prop: 'maxlength', case: '0', value: 0, expected: 0 },
   { prop: 'maxlength', case: 'undefined', value: undefined, expected: maxlength },
 ]
-export const propMaskOptionsTestCases: TPropTestCase<IYNgInputFieldProps, 'maskOptions'>[] = [
+export const propMaskOptionsTestCases: TPropTestCase<IAltNgInputFieldProps, 'maskOptions'>[] = [
   { prop: 'maskOptions', case: 'with a mask', value: testMaskOptions, expected: testMaskOptions },
   { prop: 'maskOptions', case: 'undefined', value: undefined, expected: maskOptions },
 ]
-export const propErrorsTestCases: TPropTestCase<IYNgInputFieldProps, 'errors'>[] = [
+export const propErrorsTestCases: TPropTestCase<IAltNgInputFieldProps, 'errors'>[] = [
   { prop: 'errors', case: 'array with errors', value: ['error'], expected: ['error'] },
   { prop: 'errors', case: 'empty array', value: [], expected: [] },
   { prop: 'errors', case: 'undefined', value: undefined, expected: errors },
 ]
-export const propClearableTestCases: TPropTestCase<IYNgInputFieldProps, 'clearable'>[] = [
+export const propClearableTestCases: TPropTestCase<IAltNgInputFieldProps, 'clearable'>[] = [
   { prop: 'clearable', case: 'true', value: true, expected: true },
   { prop: 'clearable', case: 'false', value: false, expected: false },
   { prop: 'clearable', case: 'undefined', value: undefined, expected: clearable },
 ]
-export const propSizeTestCases: TPropTestCase<IYNgInputFieldProps, 'size'>[] = [
-  { prop: 'size', case: EYSizes.SMALL, value: EYSizes.SMALL, expected: EYSizes.SMALL },
-  { prop: 'size', case: EYSizes.MEDIUM, value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
+export const propSizeTestCases: TPropTestCase<IAltNgInputFieldProps, 'size'>[] = [
+  { prop: 'size', case: EAltSizes.SMALL, value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
+  { prop: 'size', case: EAltSizes.MEDIUM, value: EAltSizes.MEDIUM, expected: EAltSizes.MEDIUM },
   { prop: 'size', case: 'undefined', value: undefined, expected: size },
 ]
-export const propLabelOverflowDebounceTestCases: TPropTestCase<IYNgInputFieldProps, 'labelOverflowDebounce'>[] = [
+export const propLabelOverflowDebounceTestCases: TPropTestCase<IAltNgInputFieldProps, 'labelOverflowDebounce'>[] = [
   { prop: 'labelOverflowDebounce', case: 'number', value: Number(number), expected: number },
   { prop: 'labelOverflowDebounce', case: 'undefined', value: undefined, expected: labelOverflowDebounce },
 ]
-export const propLabelTextTestCases: TPropTestCase<IYNgInputFieldProps, 'labelText'>[] = [
+export const propLabelTextTestCases: TPropTestCase<IAltNgInputFieldProps, 'labelText'>[] = [
   { prop: 'labelText', case: 'text', value: text, expected: text },
   { prop: 'labelText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: labelText },
 ]
-export const propLabelTooltipTextTestCases: TPropTestCase<IYNgInputFieldProps, 'labelTooltipText'>[] = [
+export const propLabelTooltipTextTestCases: TPropTestCase<IAltNgInputFieldProps, 'labelTooltipText'>[] = [
   { prop: 'labelTooltipText', case: 'text', value: text, expected: text },
   { prop: 'labelTooltipText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: labelTooltipText },
 ]
-export const propAnnotationTextTestCases: TPropTestCase<IYNgInputFieldProps, 'annotationText'>[] = [
+export const propAnnotationTextTestCases: TPropTestCase<IAltNgInputFieldProps, 'annotationText'>[] = [
   { prop: 'annotationText', case: 'text', value: text, expected: text },
   { prop: 'annotationText', case: 'empty string', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: annotationText },

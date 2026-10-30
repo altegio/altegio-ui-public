@@ -1,14 +1,14 @@
 import { omit } from 'radash'
 import {
   createCoreCheckboxExternalProps,
-  type IYCoreCheckboxExternalProps,
+  type IAltCoreCheckboxExternalProps,
 } from '~core/ui/checkbox/models/types'
 
 export { CheckboxCheckedEvent } from '~core/ui/checkbox/models/types'
 
-export type TYNgCheckboxModel = IYCoreCheckboxExternalProps['checked']
-export interface IYNgCheckboxProps extends Omit<IYCoreCheckboxExternalProps, 'checked'> {}
+export type TAltNgCheckboxModel = IAltCoreCheckboxExternalProps['checked']
+export interface IAltNgCheckboxProps extends Omit<IAltCoreCheckboxExternalProps, 'checked'> {}
 
-export const createNgCheckboxProps = (): IYNgCheckboxProps => {
+export const createNgCheckboxProps = (): IAltNgCheckboxProps => {
   return { ...omit(createCoreCheckboxExternalProps(), ['checked']) }
 }

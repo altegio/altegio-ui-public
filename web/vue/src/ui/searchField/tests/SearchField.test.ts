@@ -1,21 +1,21 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { YCoreTextFieldTagName } from '~shared/constants'
-import { YCoreTextField } from '~core/index'
-import { YSearchField } from '~vue/ui/searchField'
-// import type { IYCoreFieldInputInputEvent } from '~core/ui/textField/models/types'
+import { AltCoreTextFieldTagName } from '~shared/constants'
+import { AltCoreTextField } from '~core/index'
+import { AltSearchField } from '~vue/ui/searchField'
+// import type { IAltCoreFieldInputInputEvent } from '~core/ui/textField/models/types'
 
 // import { eventsVueCases } from './cases/events'
 import { propSizeTestCases, propDisabledTestCases, propLabelTextTestCases, propLabelTooltipTextTestCases, propLabelDebounceTestCases, propErrorsTestCases, propAutofocusTestCases, propErrorTestCases, propNameTestCases, propPlaceholderTestCases, propModelValueTestCases } from './cases/props'
 
 describe(
-  'Vue/YSearchField',
+  'Vue/AltSearchField',
   () => {
     beforeAll(() => {
-      if (!customElements.get(YCoreTextFieldTagName)) {
+      if (!customElements.get(AltCoreTextFieldTagName)) {
         customElements.define(
-          YCoreTextFieldTagName,
-          YCoreTextField,
+          AltCoreTextFieldTagName,
+          AltCoreTextField,
         )
       }
     })
@@ -28,11 +28,11 @@ describe(
             `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
-                YSearchField,
+                AltSearchField,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
-              const coreElement = wrapper.find(YCoreTextFieldTagName)
+              const coreElement = wrapper.find(AltCoreTextFieldTagName)
 
               expect(coreElement.element.value).toBe(testCase.expected)
             },
@@ -54,7 +54,7 @@ describe(
             `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
-                YSearchField,
+                AltSearchField,
                 {
                   props: {
                     modelValue: '',
@@ -63,7 +63,7 @@ describe(
                 },
               )
 
-              const coreElement = wrapper.find(YCoreTextFieldTagName)
+              const coreElement = wrapper.find(AltCoreTextFieldTagName)
 
               if (Array.isArray(testCase.value)) {
                 expect(coreElement.element[testCase.prop]).toStrictEqual(testCase.expected)
@@ -85,7 +85,7 @@ describe(
     //         `Should emit "${emitName}" ${eventCase}`,
     //         () => {
     //           const wrapper = mount(
-    //             YSearchField,
+    //             AltSearchField,
     //             { props: { modelValue: '' } },
     //           )
 
@@ -93,7 +93,7 @@ describe(
     //           coreInput.dispatchEvent(event)
 
     //           expect(wrapper.emitted()).toHaveProperty(emitName)
-    //           expect(JSON.stringify((wrapper.emitted(emitName)?.[0][0] as CustomEvent<IYCoreFieldInputInputEvent>).detail)).toEqual(JSON.stringify(payload))
+    //           expect(JSON.stringify((wrapper.emitted(emitName)?.[0][0] as CustomEvent<IAltCoreFieldInputInputEvent>).detail)).toEqual(JSON.stringify(payload))
     //         },
     //       )
 
@@ -101,7 +101,7 @@ describe(
     //         `Should not emit "${emitName}" ${eventCase} when the component is disabled`,
     //         () => {
     //           const wrapper = mount(
-    //             YSearchField,
+    //             AltSearchField,
     //             { props: { modelValue: '', disabled: true } },
     //           )
 

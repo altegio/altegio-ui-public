@@ -1,10 +1,10 @@
 import {
   createCoreLinkExternalProps,
-  type IYCoreLinkExternalProps,
+  type IAltCoreLinkExternalProps,
 } from './external'
 
 export * from './external'
 
-export interface IYCoreLinkProps extends IYCoreLinkExternalProps {}
+export interface IAltCoreLinkProps extends IAltCoreLinkExternalProps {}
 
-export const createCoreLinkProps = (): IYCoreLinkProps => ({ ...createCoreLinkExternalProps() })
+export const createCoreLinkProps = (): IAltCoreLinkProps => ({ ...createCoreLinkExternalProps() })

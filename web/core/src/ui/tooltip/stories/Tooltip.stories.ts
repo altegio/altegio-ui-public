@@ -6,19 +6,19 @@ import '~core/ui/link'
 
 import {
   createCoreTooltipProps,
-  type IYCoreTooltipProps,
+  type IAltCoreTooltipProps,
 } from '../models/types'
-import { YCoreTooltipTagName as tagName } from '~shared/constants'
+import { AltCoreTooltipTagName as tagName } from '~shared/constants'
 import { getComponentContentTable, getComponentStateTable, storyControlsTable } from '~shared/.storybook/tables'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { isLongText as isLongTextArgType } from '~shared/.storybook/argTypes'
 import type { ITextStoryProps } from '~shared/.storybook/argTypes'
-import { EYCoreDropdownPlacement } from '~core/ui/dropdown/models/types'
+import { EAltCoreDropdownPlacement } from '~core/ui/dropdown/models/types'
 
-type TTooltipStory = Required<NonNullable<IYCoreTooltipProps>>
-type TTooltipStoryMeta = IYCoreTooltipProps & IYCoreLabelStoryProps & { isSlotExists: boolean }
+type TTooltipStory = Required<NonNullable<IAltCoreTooltipProps>>
+type TTooltipStoryMeta = IAltCoreTooltipProps & IAltCoreLabelStoryProps & { isSlotExists: boolean }
 
-export interface IYCoreLabelStoryProps extends ITextStoryProps {}
+export interface IAltCoreLabelStoryProps extends ITextStoryProps {}
 
 const { text } = { ...createCoreTooltipProps() }
 
@@ -51,7 +51,7 @@ const meta: Meta<TTooltipStoryMeta> = {
       return isSlotExists
           ? html`
             <div slot="content">Content with a
-              <y-core-link href="https://www.google.com" target="_blank">link</y-core-link>
+              <alt-core-link href="https://www.google.com" target="_blank">link</alt-core-link>
 
               <div>${contentSlotText()}</div>
             </div>`
@@ -60,14 +60,14 @@ const meta: Meta<TTooltipStoryMeta> = {
 
     return html`
       <div style="padding:50px calc(50% - 60px); width: fit-content;">
-        <y-core-tooltip
+        <alt-core-tooltip
           .text=${isLongText ? LOREM_IPSUM : text}
           .disabled=${disabled ?? false}
           .placement=${placement}
         >
           <div slot="activator">Activator</div>
           ${contentSlotTemplate()}
-        </y-core-tooltip>
+        </alt-core-tooltip>
       </div>
     `
   },
@@ -87,7 +87,7 @@ const meta: Meta<TTooltipStoryMeta> = {
 
     placement: {
       control: 'select',
-      options: Object.values(EYCoreDropdownPlacement),
+      options: Object.values(EAltCoreDropdownPlacement),
       description: 'Dropdown placement',
     },
 

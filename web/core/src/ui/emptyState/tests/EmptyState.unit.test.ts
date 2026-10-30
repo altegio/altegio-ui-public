@@ -1,6 +1,6 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
 import {
-  YCoreEmptyStateTagName as tagName, YCoreIconTagName,
+  AltCoreEmptyStateTagName as tagName, AltCoreIconTagName,
 } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import {
@@ -10,7 +10,7 @@ import {
   getWCShadowRoot,
   trimTextContent,
 } from '~shared/tests/utils'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import type { TPropTestCase, TSlotTestCase } from '~shared/types/tests'
 
 import '~core/ui/emptyState'
@@ -18,11 +18,11 @@ import '~core/ui/icon'
 
 import {
   createCoreEmptyStateExternalProps,
-  type IYCoreEmptyStateExternalProps,
+  type IAltCoreEmptyStateExternalProps,
 } from '~core/ui/emptyState/models/types/external'
 import { empty, text } from '~shared/tests/slotContents'
-import { yMagic, yRocket } from '~shared/icons'
-import type { IYCoreTooltipProps } from '~core/ui/tooltip/models/types'
+import { altMagic, altRocket } from '~shared/icons'
+import type { IAltCoreTooltipProps } from '~core/ui/tooltip/models/types'
 
 const {
   component,
@@ -47,34 +47,34 @@ const localClassWithModifier = (modifier: string) => classWithModifier(
   modifier,
 )
 
-const propSizeTestCases: TPropTestCase<IYCoreEmptyStateExternalProps, 'size'>[] = [
-  { prop: 'size', case: EYSizes.SMALL, value: EYSizes.SMALL, expected: EYSizes.SMALL },
-  { prop: 'size', case: EYSizes.MEDIUM, value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
+const propSizeTestCases: TPropTestCase<IAltCoreEmptyStateExternalProps, 'size'>[] = [
+  { prop: 'size', case: EAltSizes.SMALL, value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
+  { prop: 'size', case: EAltSizes.MEDIUM, value: EAltSizes.MEDIUM, expected: EAltSizes.MEDIUM },
   { prop: 'size', case: 'undefined', value: undefined, expected: undefined },
 ]
 
-const propTitleTestCases: TPropTestCase<IYCoreEmptyStateExternalProps, 'title'>[] = [
+const propTitleTestCases: TPropTestCase<IAltCoreEmptyStateExternalProps, 'title'>[] = [
   { prop: 'title', case: 'with content', value: text, expected: text },
   { prop: 'title', case: 'without content', value: empty, expected: empty },
 ]
 
-const propDescriptionTestCases: TPropTestCase<IYCoreEmptyStateExternalProps, 'description'>[] = [
+const propDescriptionTestCases: TPropTestCase<IAltCoreEmptyStateExternalProps, 'description'>[] = [
   { prop: 'description', case: 'with content', value: text, expected: text },
   { prop: 'description', case: 'without content', value: empty, expected: empty },
 ]
 
-const propIconTestCases: TPropTestCase<IYCoreEmptyStateExternalProps, 'icon'>[] = [
-  { prop: 'icon', case: 'with the given icon', value: yRocket, expected: yRocket.name },
-  { prop: 'icon', case: 'with the default icon', value: undefined, expected: yMagic.name },
+const propIconTestCases: TPropTestCase<IAltCoreEmptyStateExternalProps, 'icon'>[] = [
+  { prop: 'icon', case: 'with the given icon', value: altRocket, expected: altRocket.name },
+  { prop: 'icon', case: 'with the default icon', value: undefined, expected: altMagic.name },
 ]
 
-export const slotActionsTestCases: TSlotTestCase<string, IYCoreTooltipProps>[] = [
+export const slotActionsTestCases: TSlotTestCase<string, IAltCoreTooltipProps>[] = [
   { slot: 'actions', case: 'the "actions" slot is provided', content: 'Content' },
   { slot: 'actions', case: 'the "actions" slot is not provided', content: empty },
 ]
 
 describe(
-  'Core/YCoreEmptyState/Unit',
+  'Core/AltCoreEmptyState/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -133,7 +133,7 @@ describe(
             async() => {
               await updateComponent({ props: { icon: testCase.value } })
 
-              const iconElement = getWCShadowRoot(component).querySelector(YCoreIconTagName)
+              const iconElement = getWCShadowRoot(component).querySelector(AltCoreIconTagName)
               const icon = iconElement?.icon.name
 
               expect(icon).toBe(testCase.expected)

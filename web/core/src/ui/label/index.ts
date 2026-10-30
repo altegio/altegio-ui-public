@@ -1,1 +1,1 @@
-export { YCoreLabel } from './Label.core'
+export { AltCoreLabel } from './Label.core'

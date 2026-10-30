@@ -1,3 +1,3 @@
-export interface IYCoreCountFieldInternalProps {}
+export interface IAltCoreCountFieldInternalProps {}
 
-export const createCoreCountFieldInternalProps = (): IYCoreCountFieldInternalProps => ({})
+export const createCoreCountFieldInternalProps = (): IAltCoreCountFieldInternalProps => ({})

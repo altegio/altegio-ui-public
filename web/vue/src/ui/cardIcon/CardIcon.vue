@@ -1,19 +1,19 @@
 <template>
-  <y-core-card-icon v-bind="props" />
+  <alt-core-card-icon v-bind="props" />
 </template>
 
 <script setup lang="ts">
   import '~core/ui/cardIcon'
   import {
     createVueCardIconProps,
-    type IYVueCardIconProps,
-    type IYVueCoreCardIconProps,
+    type IAltVueCardIconProps,
+    type IAltVueCoreCardIconProps,
   } from '~vue/ui/cardIcon/models/types'
 
-  defineOptions({ name: 'YCardIcon' })
+  defineOptions({ name: 'AltCardIcon' })
 
   const props = withDefaults(
-    defineProps<IYVueCardIconProps>(),
+    defineProps<IAltVueCardIconProps>(),
     createVueCardIconProps(),
-  ) satisfies IYVueCoreCardIconProps
+  ) satisfies IAltVueCoreCardIconProps
 </script>

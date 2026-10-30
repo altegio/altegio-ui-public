@@ -1,12 +1,12 @@
 import {
   createCorePhoneFieldExternalProps,
-  type IYCorePhoneFieldExternalProps,
+  type IAltCorePhoneFieldExternalProps,
 } from './external'
 
 
 export * from './external'
 export * from './events'
 
-export interface IYCorePhoneFieldProps extends IYCorePhoneFieldExternalProps {}
+export interface IAltCorePhoneFieldProps extends IAltCorePhoneFieldExternalProps {}
 
-export const createCorePhoneFieldProps = (): IYCorePhoneFieldProps => ({ ...createCorePhoneFieldExternalProps() })
+export const createCorePhoneFieldProps = (): IAltCorePhoneFieldProps => ({ ...createCorePhoneFieldExternalProps() })

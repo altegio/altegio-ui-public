@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YDropdownCell } from '~vue/ui/dropdownCell'
-import { type IYVueDropdownCellProps } from '~vue/ui/dropdownCell/models/types'
-import yCoreDropdownCellStoryMeta from '~core/ui/dropdownCell/stories/DropdownCell.stories'
+import { AltDropdownCell } from '~vue/ui/dropdownCell'
+import { type IAltVueDropdownCellProps } from '~vue/ui/dropdownCell/models/types'
+import altCoreDropdownCellStoryMeta from '~core/ui/dropdownCell/stories/DropdownCell.stories'
 
-type TVueDropdownCellStoryMeta = IYVueDropdownCellProps
+type TVueDropdownCellStoryMeta = IAltVueDropdownCellProps
 
 /**
  * Vue wrapper for Core DropdownCell
@@ -18,12 +18,12 @@ const meta: Meta<TVueDropdownCellStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YDropdownCell },
+    components: { AltDropdownCell },
     setup() {
       return { args }
     },
     template: `
-      <YDropdownCell v-bind="args">
+      <AltDropdownCell v-bind="args">
         <template #prepend>
           Prepend
         </template>
@@ -35,11 +35,11 @@ const meta: Meta<TVueDropdownCellStoryMeta> = {
         <template #append>
           Append
         </template>
-      </YDropdownCell>
+      </AltDropdownCell>
     `,
   }),
-  argTypes: { ...yCoreDropdownCellStoryMeta.argTypes },
-  args: { ...yCoreDropdownCellStoryMeta.args },
+  argTypes: { ...altCoreDropdownCellStoryMeta.argTypes },
+  args: { ...altCoreDropdownCellStoryMeta.args },
 }
 
 export default meta

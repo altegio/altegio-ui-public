@@ -4,12 +4,12 @@ import { classMap } from 'lit/directives/class-map.js'
 
 import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
 import { hasSlotContent } from '~core/utils/lit-slots'
-import { type IYCoreToggleExternalProps, createCoreToggleExternalProps } from './models/types'
+import { type IAltCoreToggleExternalProps, createCoreToggleExternalProps } from './models/types'
 import { ToggleCheckedEvent } from './models/types'
-import { YCoreToggleTagName as tagName } from '~shared/constants'
+import { AltCoreToggleTagName as tagName } from '~shared/constants'
 
-import YCoreToggleScopedCSS from '~core/ui/toggle/css/Toggle.scoped.css?inline'
-import YCoreToggleVarsCSS from '~core/ui/toggle/css/Toggle.vars.css?inline'
+import AltCoreToggleScopedCSS from '~core/ui/toggle/css/Toggle.scoped.css?inline'
+import AltCoreToggleVarsCSS from '~core/ui/toggle/css/Toggle.vars.css?inline'
 
 import '~core/ui/annotation'
 import '~core/ui/simpleToggle'
@@ -20,15 +20,15 @@ const { checked, disabled, labelText, labelTooltipText, annotationText, labelOve
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreToggle extends LitElement implements IYCoreToggleExternalProps {
-  @property({ type: Boolean }) disabled: IYCoreToggleExternalProps['disabled'] = disabled
-  @property({ type: Boolean, reflect: true }) checked: IYCoreToggleExternalProps['checked'] = checked
-  @property({ type: String, attribute: 'label-text' }) labelText: IYCoreToggleExternalProps['labelText'] = labelText
-  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IYCoreToggleExternalProps['labelTooltipText'] = labelTooltipText
-  @property({ type: String, attribute: 'annotation-text' }) annotationText: IYCoreToggleExternalProps['annotationText'] = annotationText
-  @property({ type: Number, attribute: 'label-overflow-debounce' }) labelOverflowDebounce: IYCoreToggleExternalProps['labelOverflowDebounce'] = labelOverflowDebounce
-  @property({ type: String, reflect: true }) alignment: IYCoreToggleExternalProps['alignment'] = alignment
-  @property({ type: String, reflect: true }) size: IYCoreToggleExternalProps['size'] = size
+export class AltCoreToggle extends LitElement implements IAltCoreToggleExternalProps {
+  @property({ type: Boolean }) disabled: IAltCoreToggleExternalProps['disabled'] = disabled
+  @property({ type: Boolean, reflect: true }) checked: IAltCoreToggleExternalProps['checked'] = checked
+  @property({ type: String, attribute: 'label-text' }) labelText: IAltCoreToggleExternalProps['labelText'] = labelText
+  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IAltCoreToggleExternalProps['labelTooltipText'] = labelTooltipText
+  @property({ type: String, attribute: 'annotation-text' }) annotationText: IAltCoreToggleExternalProps['annotationText'] = annotationText
+  @property({ type: Number, attribute: 'label-overflow-debounce' }) labelOverflowDebounce: IAltCoreToggleExternalProps['labelOverflowDebounce'] = labelOverflowDebounce
+  @property({ type: String, reflect: true }) alignment: IAltCoreToggleExternalProps['alignment'] = alignment
+  @property({ type: String, reflect: true }) size: IAltCoreToggleExternalProps['size'] = size
 
   @bubblingEvent(
     ToggleCheckedEvent,
@@ -73,8 +73,8 @@ export class YCoreToggle extends LitElement implements IYCoreToggleExternalProps
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreToggleVarsCSS)}
-      ${unsafeCSS(YCoreToggleScopedCSS)}
+      ${unsafeCSS(AltCoreToggleVarsCSS)}
+      ${unsafeCSS(AltCoreToggleScopedCSS)}
     `,
   ]
 
@@ -113,7 +113,7 @@ export class YCoreToggle extends LitElement implements IYCoreToggleExternalProps
 
     return html`
       <div class=${`${this.baseClass}__info`}>
-        <y-core-label
+        <alt-core-label
           .text=${this.labelText}
           .tooltipText=${this.labelTooltipText}
           .tooltipActive=${!this.disabled}
@@ -126,10 +126,10 @@ export class YCoreToggle extends LitElement implements IYCoreToggleExternalProps
           @content-mouse-leave=${this.handleMouseLeave}
         >
           <slot slot="tooltip-content" name="tooltip-content"></slot>
-        </y-core-label>
+        </alt-core-label>
 
         <div class=${`${this.baseClass}__annotation-wrapper`}>
-          <y-core-annotation
+          <alt-core-annotation
             .disabled=${this.disabled}
             class=${classMap(this.computedAnnotationClasses)}
             @mouseenter=${this.handleMouseEnter}
@@ -138,7 +138,7 @@ export class YCoreToggle extends LitElement implements IYCoreToggleExternalProps
             <slot slot="annotation" name="annotation" @slotchange=${this.handleSlotAnnotationChange}>
               ${this.annotationText}
             </slot>
-          </y-core-annotation>
+          </alt-core-annotation>
         </div>
       </div>`
   }
@@ -146,7 +146,7 @@ export class YCoreToggle extends LitElement implements IYCoreToggleExternalProps
   protected render() {
     return html`
       <div class=${classMap(this.toggleClasses)} @click=${this.handleClick}>
-        <y-core-simple-toggle
+        <alt-core-simple-toggle
           .size=${this.size}
           .disabled=${this.disabled}
           .checked=${this.checked}
@@ -156,7 +156,7 @@ export class YCoreToggle extends LitElement implements IYCoreToggleExternalProps
           @mouseenter=${this.handleMouseEnter}
           @mouseleave=${this.handleMouseLeave}
         >
-        </y-core-simple-toggle>
+        </alt-core-simple-toggle>
 
         ${this.renderInfoContent()}
       </div>

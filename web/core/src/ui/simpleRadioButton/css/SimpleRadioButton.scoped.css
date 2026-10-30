@@ -1,6 +1,6 @@
 @import url('./SimpleRadioButton.mixins.css');
 
-$component: $YCoreSimpleRadioButtonTagName;
+$component: $AltCoreSimpleRadioButtonTagName;
 
 .$(component) {
   box-sizing: border-box;
@@ -20,7 +20,7 @@ $component: $YCoreSimpleRadioButtonTagName;
       background-color 0.2s ease,
       box-shadow 0.2s ease;
 
-    @mixin radio-button-shadow var(--y-core-simple-radio-button-default-border-color);
+    @mixin radio-button-shadow var(--alt-core-simple-radio-button-default-border-color);
 
     &::after {
       position: absolute;
@@ -30,7 +30,7 @@ $component: $YCoreSimpleRadioButtonTagName;
       width: calc(100% - 6px);
       height: calc(100% - 6px);
       content: '';
-      background-color: var(--y-core-simple-radio-button-default-background-color);
+      background-color: var(--alt-core-simple-radio-button-default-background-color);
       border-radius: 50%;
       transform: translate(-50%, -50%);
       transition: background-color 0.2s ease
@@ -40,20 +40,20 @@ $component: $YCoreSimpleRadioButtonTagName;
   &_size {
     &_small {
       @mixin radio-button-size
-        --y-core-simple-radio-button-size-small-width,
-        --y-core-simple-radio-button-size-small-height,
-        --y-core-simple-radio-button-size-small-padding,
-        --y-core-simple-radio-button-size-small-icon-checked-width,
-        --y-core-simple-radio-button-size-small-icon-checked-height;
+        --alt-core-simple-radio-button-size-small-width,
+        --alt-core-simple-radio-button-size-small-height,
+        --alt-core-simple-radio-button-size-small-padding,
+        --alt-core-simple-radio-button-size-small-icon-checked-width,
+        --alt-core-simple-radio-button-size-small-icon-checked-height;
     }
 
     &_medium {
       @mixin radio-button-size
-        --y-core-simple-radio-button-size-medium-width,
-        --y-core-simple-radio-button-size-medium-height,
-        --y-core-simple-radio-button-size-medium-padding,
-        --y-core-simple-radio-button-size-medium-icon-checked-width,
-        --y-core-simple-radio-button-size-medium-icon-checked-height;
+        --alt-core-simple-radio-button-size-medium-width,
+        --alt-core-simple-radio-button-size-medium-height,
+        --alt-core-simple-radio-button-size-medium-padding,
+        --alt-core-simple-radio-button-size-medium-icon-checked-width,
+        --alt-core-simple-radio-button-size-medium-icon-checked-height;
     }
   }
 
@@ -61,7 +61,7 @@ $component: $YCoreSimpleRadioButtonTagName;
     &_checked {
       .$(component)__body {
         &::after {
-          background-color: var(--y-core-simple-radio-button-checked-background-color);
+          background-color: var(--alt-core-simple-radio-button-checked-background-color);
         }
       }
     }
@@ -69,7 +69,7 @@ $component: $YCoreSimpleRadioButtonTagName;
 
   &_error {
     .$(component)__body {
-      @mixin radio-button-shadow var(--y-core-simple-radio-button-error-border-color);
+      @mixin radio-button-shadow var(--alt-core-simple-radio-button-error-border-color);
     }
 
     &.$(component)_status {
@@ -77,7 +77,7 @@ $component: $YCoreSimpleRadioButtonTagName;
         .$(component) {
           &__body {
             &::after {
-              background-color: var(--y-core-simple-radio-button-error-background-color);
+              background-color: var(--alt-core-simple-radio-button-error-background-color);
             }
           }
         }
@@ -89,17 +89,17 @@ $component: $YCoreSimpleRadioButtonTagName;
     cursor: not-allowed;
 
     .$(component)__body {
-      @mixin radio-button-shadow var(--y-core-simple-radio-button-disabled-color);
+      @mixin radio-button-shadow var(--alt-core-simple-radio-button-disabled-color);
     }
 
     &.$(component)_status {
       &_checked {
         .$(component) {
           &__body {
-            @mixin radio-button-shadow var(--y-core-simple-radio-button-disabled-color);
+            @mixin radio-button-shadow var(--alt-core-simple-radio-button-disabled-color);
 
             &::after {
-              background-color: var(--y-core-simple-radio-button-disabled-checked-color);
+              background-color: var(--alt-core-simple-radio-button-disabled-checked-color);
             }
           }
         }
@@ -111,9 +111,9 @@ $component: $YCoreSimpleRadioButtonTagName;
   &_hovered {
     &:not(.$(component)_disabled, .$(component)_error) {
       .$(component)__body {
-        background-color: var(--y-core-simple-radio-button-default-hover-background-color);
+        background-color: var(--alt-core-simple-radio-button-default-hover-background-color);
 
-        @mixin radio-button-shadow var(--y-core-simple-radio-button-default-hover-border-color);
+        @mixin radio-button-shadow var(--alt-core-simple-radio-button-default-hover-border-color);
 
         &::after {
           background-color: transparent;
@@ -122,10 +122,10 @@ $component: $YCoreSimpleRadioButtonTagName;
 
       &.$(component)_status_checked {
         .$(component)__body {
-          @mixin radio-button-shadow var(--y-core-simple-radio-button-checked-hover-border-color);
+          @mixin radio-button-shadow var(--alt-core-simple-radio-button-checked-hover-border-color);
 
           &::after {
-            background-color: var(--y-core-simple-radio-button-checked-hover-background-color);
+            background-color: var(--alt-core-simple-radio-button-checked-hover-background-color);
           }
         }
       }

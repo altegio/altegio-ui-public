@@ -1,4 +1,4 @@
-export interface IYCoreCardWrapperInternalProps {
+export interface IAltCoreCardWrapperInternalProps {
 }
 
-export const createCoreCardWrapperInternalProps = (): IYCoreCardWrapperInternalProps => ({ })
+export const createCoreCardWrapperInternalProps = (): IAltCoreCardWrapperInternalProps => ({ })

@@ -4,13 +4,13 @@ import { omit } from 'radash'
 import { useArgs } from 'storybook/preview-api'
 import { action } from 'storybook/actions'
 
-import yCoreToggleStoryMeta, { type IYCoreToggleStoryProps } from '~core/ui/toggle/stories/Toggle.stories'
+import altCoreToggleStoryMeta, { type IAltCoreToggleStoryProps } from '~core/ui/toggle/stories/Toggle.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { getComponentContentTable } from '~shared/.storybook/tables'
-import { YToggle } from '~vue/ui/toggle'
-import { type IYVueToggleProps } from '~vue/ui/toggle/models/types'
+import { AltToggle } from '~vue/ui/toggle'
+import { type IAltVueToggleProps } from '~vue/ui/toggle/models/types'
 
-type TVueToggleStoryMeta = IYVueToggleProps & IYCoreToggleStoryProps
+type TVueToggleStoryMeta = IAltVueToggleProps & IAltCoreToggleStoryProps
 
 /**
  * Vue wrapper for Core Toggle
@@ -23,7 +23,7 @@ const meta: Meta<TVueToggleStoryMeta> = {
     const [, updateArgs] = useArgs()
 
     return {
-      components: { YToggle },
+      components: { AltToggle },
       setup() {
         const computedLabelText = computed(() => args.isLongText ? LOREM_IPSUM : String(args.labelText))
         const computedlabelTooltipText = computed(() => args.isLongText ? LOREM_IPSUM : String(args.labelTooltipText))
@@ -43,7 +43,7 @@ const meta: Meta<TVueToggleStoryMeta> = {
         }
       },
       template: `
-        <YToggle
+        <AltToggle
           v-bind="args"
           :label-text="computedLabelText"
           :label-tooltip-text="computedlabelTooltipText"
@@ -60,7 +60,7 @@ const meta: Meta<TVueToggleStoryMeta> = {
           <template #tooltip-content>
             <span>{{ args.tooltipContentSlot }}</span>
           </template>
-        </YToggle>
+        </AltToggle>
       `,
     }
   },
@@ -70,7 +70,7 @@ const meta: Meta<TVueToggleStoryMeta> = {
   ],
   argTypes: {
     ...omit(
-      yCoreToggleStoryMeta.argTypes ?? {},
+      altCoreToggleStoryMeta.argTypes ?? {},
       ['checked'],
     ),
     modelValue: {
@@ -81,7 +81,7 @@ const meta: Meta<TVueToggleStoryMeta> = {
   },
   args: {
     ...omit(
-      yCoreToggleStoryMeta.args ?? {},
+      altCoreToggleStoryMeta.args ?? {},
       ['checked'],
     ),
     modelValue: false,

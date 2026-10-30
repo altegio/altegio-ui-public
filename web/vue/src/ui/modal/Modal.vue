@@ -8,9 +8,9 @@
 
   <teleport
     :disabled="!enableTeleport"
-    :to="YCoreGlobalProviderTagName"
+    :to="AltCoreGlobalProviderTagName"
   >
-    <y-core-modal
+    <alt-core-modal
       v-bind="props"
       :open="modelValue"
       @open="handleOpen"
@@ -33,7 +33,7 @@
       >
         <slot name="content" />
       </div>
-    </y-core-modal>
+    </alt-core-modal>
   </teleport>
 </template>
 
@@ -41,18 +41,18 @@
   import '~core/ui/modal'
   import {
     createVueModalProps,
-    type IYVueModalProps,
-    type IYVueModalEmits,
-    type IYVueCoreModalProps,
+    type IAltVueModalProps,
+    type IAltVueModalEmits,
+    type IAltVueCoreModalProps,
   } from '~vue/ui/modal/models/types'
 
   import {
-    YCoreGlobalProviderTagName,
+    AltCoreGlobalProviderTagName,
   } from '~shared/constants'
 
-  defineOptions({ name: 'YModal' })
+  defineOptions({ name: 'AltModal' })
 
-  const emit = defineEmits<IYVueModalEmits>()
+  const emit = defineEmits<IAltVueModalEmits>()
 
   defineSlots<{
     activator: () => unknown
@@ -61,9 +61,9 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueModalProps>(),
+    defineProps<IAltVueModalProps>(),
     createVueModalProps(),
-  ) satisfies IYVueCoreModalProps
+  ) satisfies IAltVueCoreModalProps
 
   const handleOpen = () => {
     emit('update:modelValue', true)

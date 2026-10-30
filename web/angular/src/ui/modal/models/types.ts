@@ -1,4 +1,4 @@
-import { createCoreModalProps, type IYCoreModalProps } from '~core/ui/modal/models/types'
+import { createCoreModalProps, type IAltCoreModalProps } from '~core/ui/modal/models/types'
 
 export {
   OpenEvent,
@@ -9,6 +9,6 @@ export {
   PressEscapeEvent,
 } from '~core/ui/modal/models/types/events'
 
-export interface IYNgModalProps extends IYCoreModalProps {}
+export interface IAltNgModalProps extends IAltCoreModalProps {}
 
-export const createNgModalProps = (): IYNgModalProps => createCoreModalProps()
+export const createNgModalProps = (): IAltNgModalProps => createCoreModalProps()

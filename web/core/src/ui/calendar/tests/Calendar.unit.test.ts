@@ -3,19 +3,19 @@ import { userEvent } from 'vitest/browser'
 import { capitalize } from 'radash'
 import { type Dayjs } from 'dayjs'
 import { formatDate, parseDate, FORMAT_MONTH, FORMAT_YEAR } from '~shared/utils/dateTime'
-import { YCoreCalendarTagName, YCoreDropdownTagName, YCoreButtonTagName } from '~shared/constants'
+import { AltCoreCalendarTagName, AltCoreDropdownTagName, AltCoreButtonTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { getShadowElement, getElementClasses } from '~shared/tests/utils'
 import type { TPropTestCase } from '~shared/types/tests'
 import {
   createCoreCalendarProps,
-  type IYCoreCalendarProps,
+  type IAltCoreCalendarProps,
 } from '~core/ui/calendar/models/types'
 import '~core/ui/calendar'
-import type { YCoreButton } from '~core/ui/button'
+import type { AltCoreButton } from '~core/ui/button'
 import { en } from '~core/i18n'
 
-const tagName = YCoreCalendarTagName
+const tagName = AltCoreCalendarTagName
 
 const {
   component,
@@ -42,7 +42,7 @@ const getDateMonthString = (date: Dayjs) => {
 const dayCellSelector = `.${tagName}__day:not(.${tagName}__day_out-of-month)`
 const disabledDayCellCssClass = `${tagName}__day_disabled`
 const initialTestDate = '01-01-2021'
-const initialTestDateRange: IYCoreCalendarProps['date'] = [
+const initialTestDateRange: IAltCoreCalendarProps['date'] = [
   '01-01-2021',
   '02-01-2021',
 ]
@@ -50,30 +50,30 @@ const initialTestMinDate = '10-01-2021'
 const initialTestMaxDate = '20-01-2021'
 
 // Unit test cases:
-const propDisabledTestCases: TPropTestCase<IYCoreCalendarProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltCoreCalendarProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'have', value: true },
   { prop: 'disabled', case: 'not have', value: false },
 ]
-const propHeaderSelectorsTestCases: TPropTestCase<IYCoreCalendarProps, 'headerSelectors'>[] = [
+const propHeaderSelectorsTestCases: TPropTestCase<IAltCoreCalendarProps, 'headerSelectors'>[] = [
   { prop: 'headerSelectors', case: 'have', value: true },
   { prop: 'headerSelectors', case: 'not have', value: false },
 ]
-const propDateTestCases: TPropTestCase<IYCoreCalendarProps, 'date'>[] = [
+const propDateTestCases: TPropTestCase<IAltCoreCalendarProps, 'date'>[] = [
   { prop: 'date', case: 'Should', value: initialTestDate },
   { prop: 'date', case: 'Should', value: initialTestDateRange },
   { prop: 'date', case: 'Should not', value: undefined },
 ]
-const propMinDateTestCases: TPropTestCase<IYCoreCalendarProps, 'minDate'>[] = [
+const propMinDateTestCases: TPropTestCase<IAltCoreCalendarProps, 'minDate'>[] = [
   { prop: 'minDate', case: 'should be disabled', value: initialTestMinDate },
   { prop: 'minDate', case: 'should not be disabled', value: undefined },
 ]
-const propMaxDateTestCases: TPropTestCase<IYCoreCalendarProps, 'maxDate'>[] = [
+const propMaxDateTestCases: TPropTestCase<IAltCoreCalendarProps, 'maxDate'>[] = [
   { prop: 'maxDate', case: 'should be disabled', value: initialTestMaxDate },
   { prop: 'maxDate', case: 'should not be disabled', value: undefined },
 ]
 
 describe(
-  'Core/YCalendar',
+  'Core/AltCalendar',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -110,11 +110,11 @@ describe(
 
         for (const testCase of propHeaderSelectorsTestCases) {
           it(
-            `Should ${testCase.case} component ${YCoreDropdownTagName} when prop ${testCase.prop} is ${testCase.value}`,
+            `Should ${testCase.case} component ${AltCoreDropdownTagName} when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
-              const dropdown = getLocalShadowElement(YCoreDropdownTagName)
+              const dropdown = getLocalShadowElement(AltCoreDropdownTagName)
 
               if (testCase.value) {
                 expect(dropdown).not.toBeNull()
@@ -131,8 +131,8 @@ describe(
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
-              const monthButton = getLocalShadowElement(`${YCoreButtonTagName}.${tagName}__month-button`) as YCoreButton | null
-              const yearButton = getLocalShadowElement(`${YCoreButtonTagName}.${tagName}__year-button`) as YCoreButton | null
+              const monthButton = getLocalShadowElement(`${AltCoreButtonTagName}.${tagName}__month-button`) as AltCoreButton | null
+              const yearButton = getLocalShadowElement(`${AltCoreButtonTagName}.${tagName}__year-button`) as AltCoreButton | null
 
               let testCaseDate = parseDate()
 
@@ -198,7 +198,7 @@ describe(
         it('Uses the page language locale, English here, by default', async() => {
           await updateComponent({ props: { date: '01-01-2025' } })
 
-          const monthButton = getLocalShadowElement(`${YCoreButtonTagName}.${tagName}__month-button`) as YCoreButton | null
+          const monthButton = getLocalShadowElement(`${AltCoreButtonTagName}.${tagName}__month-button`) as AltCoreButton | null
 
           const date = new Date()
           date.setMonth(0)
@@ -274,7 +274,7 @@ describe(
             await userEvent.click(dayCell)
             await userEvent.click(secondDayCell)
 
-            const eventValue = (handleSelect.mock.calls[0]?.[0] as CustomEvent<{ value: IYCoreCalendarProps['date'] }>).detail.value
+            const eventValue = (handleSelect.mock.calls[0]?.[0] as CustomEvent<{ value: IAltCoreCalendarProps['date'] }>).detail.value
 
             expect(handleSelect).toHaveBeenCalledTimes(1)
             expect(Array.isArray(eventValue)).toBe(true)
@@ -299,7 +299,7 @@ describe(
 
             await userEvent.click(dayCell)
 
-            const eventValue = (handleSelect.mock.calls[0]?.[0] as CustomEvent<{ value: IYCoreCalendarProps['date'] }>).detail.value
+            const eventValue = (handleSelect.mock.calls[0]?.[0] as CustomEvent<{ value: IAltCoreCalendarProps['date'] }>).detail.value
 
             expect(handleSelect).toHaveBeenCalledTimes(1)
             expect(typeof eventValue).toBe('string')

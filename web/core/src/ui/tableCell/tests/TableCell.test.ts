@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
-import { YCoreTableCellTagName as tagName, YCoreTextTagName } from '~shared/constants'
+import { AltCoreTableCellTagName as tagName, AltCoreTextTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { getElementClasses, getShadowRootElement, getWCShadowRoot, trimTextContent } from '~shared/tests/utils'
 import {
@@ -40,7 +40,7 @@ const getRootElement = () => {
 }
 
 describe(
-  'Core/YCoreTableCell',
+  'Core/AltCoreTableCell',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -120,11 +120,11 @@ describe(
 
             for (const testCase of [...propEllipsisTestCases, ...propLineclampTestCases]) {
               it(
-                `Prop "${testCase.prop}" should set ${testCase.prop} on the ${YCoreTextTagName} component. Case: ${testCase.case}`,
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the ${AltCoreTextTagName} component. Case: ${testCase.case}`,
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
-                  const textComponent = getWCShadowRoot(component).querySelector(YCoreTextTagName)
+                  const textComponent = getWCShadowRoot(component).querySelector(AltCoreTextTagName)
 
                   expect(textComponent?.[testCase.prop]).toBe(testCase.expected)
                 },
@@ -137,7 +137,7 @@ describe(
                 async() => {
                   await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
-                  const textComponent = getWCShadowRoot(component).querySelector(YCoreTextTagName)
+                  const textComponent = getWCShadowRoot(component).querySelector(AltCoreTextTagName)
                   const actualContent = trimTextContent(textComponent?.textContent)
                   expect(actualContent).toBe(testCase.expected)
                 },
@@ -155,7 +155,7 @@ describe(
                     },
                   })
 
-                  const textComponent = getWCShadowRoot(component).querySelector(YCoreTextTagName)
+                  const textComponent = getWCShadowRoot(component).querySelector(AltCoreTextTagName)
                   const actualContent = trimTextContent(textComponent?.textContent)
                   expect(actualContent).toBe(testCase.expected)
                 },

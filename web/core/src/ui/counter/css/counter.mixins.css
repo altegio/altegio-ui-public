@@ -1,4 +1,4 @@
-$component: $YCoreCounterTagName;
+$component: $AltCoreCounterTagName;
 
 @define-mixin counter-size
   $height,

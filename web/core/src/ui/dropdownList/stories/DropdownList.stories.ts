@@ -6,11 +6,11 @@ import '~core/ui/dropdownList'
 
 import {
   createCoreDropdownListProps,
-  type IYCoreDropdownListProps,
-  type TYCoreDropdownListEvents,
+  type IAltCoreDropdownListProps,
+  type TAltCoreDropdownListEvents,
 } from '~core/ui/dropdownList/models/types'
 import {
-  YCoreDropdownListTagName as tagName,
+  AltCoreDropdownListTagName as tagName,
 } from '~shared/constants'
 import {
   getComponentStateTable,
@@ -22,7 +22,7 @@ import {
 } from '~shared/.storybook/argTypes'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-export interface IYCoreDropdownListStorySlots {
+export interface IAltCoreDropdownListStorySlots {
   showTopSlot: boolean
   showBottomSlot: boolean
   showListSlot: boolean
@@ -43,7 +43,7 @@ const items = Array.from(Array(ITEMS_COUNT).keys())
     label: LOREM_IPSUM,
   })
 
-export type TDropdownListStoryMeta = Meta<IYCoreDropdownListProps & IYCoreDropdownListStorySlots & TYCoreDropdownListEvents>
+export type TDropdownListStoryMeta = Meta<IAltCoreDropdownListProps & IAltCoreDropdownListStorySlots & TAltCoreDropdownListEvents>
 
 /**
  * ## Core DropdownList
@@ -66,7 +66,7 @@ const meta: TDropdownListStoryMeta = {
     onItemClick,
   }) => {
     return html`
-      <y-core-dropdown-list
+      <alt-core-dropdown-list
         .items=${items}
         .itemLabel=${itemLabel}
         @item-click=${onItemClick}
@@ -88,7 +88,7 @@ const meta: TDropdownListStoryMeta = {
             BottomSlot
           </span>
         `}
-      </y-core-dropdown-list>
+      </alt-core-dropdown-list>
     `
   },
   argTypes: {

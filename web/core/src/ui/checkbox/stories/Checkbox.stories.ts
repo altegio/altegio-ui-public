@@ -4,36 +4,36 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 import { useArgs } from 'storybook/preview-api'
 import { omit } from 'radash'
 
-import { type IYCoreCheckboxExternalProps } from '~core/ui/checkbox/models/types'
-import yCoreSimpleCheckboxStoryMeta from '~core/ui/simpleCheckbox/stories/SimpleCheckbox.stories'
-import { type TYCoreCheckboxEvents } from '~core/ui/checkbox/models/types'
-import { YCoreCheckboxTagName as tagName } from '~shared/constants'
+import { type IAltCoreCheckboxExternalProps } from '~core/ui/checkbox/models/types'
+import altCoreSimpleCheckboxStoryMeta from '~core/ui/simpleCheckbox/stories/SimpleCheckbox.stories'
+import { type TAltCoreCheckboxEvents } from '~core/ui/checkbox/models/types'
+import { AltCoreCheckboxTagName as tagName } from '~shared/constants'
 
-import type { IYCoreLabelStoryProps, IYCoreLabelStorySlots } from '~core/ui/label/stories/Label.stories'
-import yCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
-import type { IYCoreAnnotationStoryProps } from '~core/ui/annotation/stories/Annotation.stories'
-import yCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
-import yCoreErrorStoryMeta, { type IYCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
+import type { IAltCoreLabelStoryProps, IAltCoreLabelStorySlots } from '~core/ui/label/stories/Label.stories'
+import altCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
+import type { IAltCoreAnnotationStoryProps } from '~core/ui/annotation/stories/Annotation.stories'
+import altCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
+import altCoreErrorStoryMeta, { type IAltCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import type { IYCoreSimpleCheckboxExternalProps } from '~core/ui/simpleCheckbox/models/types'
+import type { IAltCoreSimpleCheckboxExternalProps } from '~core/ui/simpleCheckbox/models/types'
 import { internalPropsKeys } from '~core/ui/simpleCheckbox/models/types'
 import { internalPropsKeys as labelInternalPropsKeys } from '~core/ui/label/models/types'
 
 import '~core/ui/checkbox'
 
-export interface IYCoreCheckboxStoryProps extends
-  IYCoreSimpleCheckboxExternalProps,
-  IYCoreLabelStoryProps,
-  IYCoreAnnotationStoryProps,
-  IYCoreCheckboxExternalProps,
-  IYCoreErrorStoryProps {}
+export interface IAltCoreCheckboxStoryProps extends
+  IAltCoreSimpleCheckboxExternalProps,
+  IAltCoreLabelStoryProps,
+  IAltCoreAnnotationStoryProps,
+  IAltCoreCheckboxExternalProps,
+  IAltCoreErrorStoryProps {}
 
-export interface IYCoreCheckboxStoryEvents extends TYCoreCheckboxEvents {}
-export interface IYCoreCheckboxStorySlots extends IYCoreLabelStorySlots {}
+export interface IAltCoreCheckboxStoryEvents extends TAltCoreCheckboxEvents {}
+export interface IAltCoreCheckboxStorySlots extends IAltCoreLabelStorySlots {}
 
-export type TYCoreCheckboxStoryMeta = IYCoreCheckboxStoryProps & IYCoreCheckboxStoryEvents & IYCoreCheckboxStorySlots
+export type TAltCoreCheckboxStoryMeta = IAltCoreCheckboxStoryProps & IAltCoreCheckboxStoryEvents & IAltCoreCheckboxStorySlots
 
-const yCoreLabelStoryMetaOmitKeys = [
+const altCoreLabelStoryMetaOmitKeys = [
   'text',
   'tooltipText',
   'debounce',
@@ -46,7 +46,7 @@ const yCoreLabelStoryMetaOmitKeys = [
  * Checkbox with a label and supporting text
  *
  */
-const meta: Meta<TYCoreCheckboxStoryMeta> = {
+const meta: Meta<TAltCoreCheckboxStoryMeta> = {
   title: '✅ Checkbox',
   id: 'checkbox',
   parameters: { controls: { sort: 'alpha' } },
@@ -73,7 +73,7 @@ const meta: Meta<TYCoreCheckboxStoryMeta> = {
     const [
       args,
       updateArgs,
-    ] = useArgs<TYCoreCheckboxStoryMeta>()
+    ] = useArgs<TAltCoreCheckboxStoryMeta>()
 
     const { checked, indeterminate } = args
     const onChecked = () => {
@@ -81,7 +81,7 @@ const meta: Meta<TYCoreCheckboxStoryMeta> = {
     }
 
     return html`
-      <y-core-checkbox
+      <alt-core-checkbox
         .size=${size}
         .labelText=${isLongText ? LOREM_IPSUM : labelText}
         .labelTooltipText=${isLongText ? LOREM_IPSUM : labelTooltipText}
@@ -101,60 +101,60 @@ const meta: Meta<TYCoreCheckboxStoryMeta> = {
         }
 
         <span slot="tooltip-content">${tooltipContentSlot}</span> 
-      </y-core-checkbox>
+      </alt-core-checkbox>
     `
   },
   argTypes: {
     ...omit(
-      yCoreSimpleCheckboxStoryMeta.argTypes ?? {},
+      altCoreSimpleCheckboxStoryMeta.argTypes ?? {},
       ['error', ...internalPropsKeys],
     ),
 
     ...omit(
-      yCoreLabelStoryMeta.argTypes ?? {},
-      [...yCoreLabelStoryMetaOmitKeys],
+      altCoreLabelStoryMeta.argTypes ?? {},
+      [...altCoreLabelStoryMetaOmitKeys],
     ),
-    labelText: yCoreLabelStoryMeta.argTypes?.text ?? {},
-    labelTooltipText: yCoreLabelStoryMeta.argTypes?.tooltipText ?? {},
-    labelOverflowDebounce: yCoreLabelStoryMeta.argTypes?.debounce ?? {},
-    labelTooltipPlacement: yCoreLabelStoryMeta.argTypes?.tooltipPlacement ?? {},
+    labelText: altCoreLabelStoryMeta.argTypes?.text ?? {},
+    labelTooltipText: altCoreLabelStoryMeta.argTypes?.tooltipText ?? {},
+    labelOverflowDebounce: altCoreLabelStoryMeta.argTypes?.debounce ?? {},
+    labelTooltipPlacement: altCoreLabelStoryMeta.argTypes?.tooltipPlacement ?? {},
 
     ...omit(
-      yCoreAnnotationStoryMeta.argTypes ?? {},
+      altCoreAnnotationStoryMeta.argTypes ?? {},
       ['text'],
     ),
-    annotationText: yCoreAnnotationStoryMeta.argTypes?.text ?? {},
+    annotationText: altCoreAnnotationStoryMeta.argTypes?.text ?? {},
 
-    ...yCoreErrorStoryMeta.argTypes ?? {},
+    ...altCoreErrorStoryMeta.argTypes ?? {},
   },
   args: {
     ...omit(
-      yCoreSimpleCheckboxStoryMeta.args ?? {},
+      altCoreSimpleCheckboxStoryMeta.args ?? {},
       ['error', ...internalPropsKeys],
     ),
 
     ...omit(
-      yCoreLabelStoryMeta.args ?? {},
-      [...yCoreLabelStoryMetaOmitKeys],
+      altCoreLabelStoryMeta.args ?? {},
+      [...altCoreLabelStoryMetaOmitKeys],
     ),
     labelText: 'Label text',
     labelTooltipText: 'Tooltip text',
-    labelOverflowDebounce: yCoreLabelStoryMeta.args?.debounce,
-    labelTooltipPlacement: yCoreLabelStoryMeta.args?.tooltipPlacement,
+    labelOverflowDebounce: altCoreLabelStoryMeta.args?.debounce,
+    labelTooltipPlacement: altCoreLabelStoryMeta.args?.tooltipPlacement,
 
     ...omit(
-      yCoreAnnotationStoryMeta.args ?? {},
+      altCoreAnnotationStoryMeta.args ?? {},
       ['text'],
     ),
     annotationText: 'Annotation text',
 
-    isLongText: yCoreLabelStoryMeta.args?.isLongText,
-    showErrors: yCoreErrorStoryMeta.args?.showErrors,
+    isLongText: altCoreLabelStoryMeta.args?.isLongText,
+    showErrors: altCoreErrorStoryMeta.args?.showErrors,
     onChecked: fn(),
   },
-} satisfies Meta<TYCoreCheckboxStoryMeta>
+} satisfies Meta<TAltCoreCheckboxStoryMeta>
 
 export default meta
-type Story = StoryObj<TYCoreCheckboxStoryMeta>
+type Story = StoryObj<TAltCoreCheckboxStoryMeta>
 
 export const Playground: Story = {}

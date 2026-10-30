@@ -1,4 +1,4 @@
-$component: $YCoreTableTagName;
+$component: $AltCoreTableTagName;
 
 :host {
   display: inline-grid;
@@ -11,7 +11,7 @@ $component: $YCoreTableTagName;
   grid-template-columns: subgrid;
   grid-column: 1 / max;
   width: 100%;
-  font-family: var(--y-core-font-family);
+  font-family: var(--alt-core-font-family);
 
   slot {
     display: grid;

@@ -1,2 +1,2 @@
-export { default as YDatePicker } from './DatePicker.vue'
+export { default as AltDatePicker } from './DatePicker.vue'
 export type * from './models/types'

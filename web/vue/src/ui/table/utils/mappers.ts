@@ -1,4 +1,4 @@
-import type { TYVueTableHeaders, TYVueTableItems, IYVueTableItem, TYVueTableCellItem, IYVueTableHeadItem } from '../models/types'
+import type { TAltVueTableHeaders, TAltVueTableItems, IAltVueTableItem, TAltVueTableCellItem, IAltVueTableHeadItem } from '../models/types'
 
 /**
  * Plain table row data
@@ -14,11 +14,11 @@ export interface ISimpleTableRow {
 export interface ISimpleTableHeader {
   key: string
   label: string
-  sortable?: IYVueTableHeadItem['sortable']
-  align?: IYVueTableHeadItem['align']
-  gridTemplate?: IYVueTableHeadItem['gridTemplate']
-  ellipsis?: IYVueTableHeadItem['ellipsis']
-  lineclamp?: IYVueTableHeadItem['lineclamp']
+  sortable?: IAltVueTableHeadItem['sortable']
+  align?: IAltVueTableHeadItem['align']
+  gridTemplate?: IAltVueTableHeadItem['gridTemplate']
+  ellipsis?: IAltVueTableHeadItem['ellipsis']
+  lineclamp?: IAltVueTableHeadItem['lineclamp']
 }
 
 /**
@@ -42,8 +42,8 @@ export interface ITableMappingOptions {
 /**
  * Converts plain headers into the table header format
  */
-export function mapHeaders(headers: ISimpleTableHeader[]): TYVueTableHeaders {
-  const result: TYVueTableHeaders = {}
+export function mapHeaders(headers: ISimpleTableHeader[]): TAltVueTableHeaders {
+  const result: TAltVueTableHeaders = {}
 
   headers.forEach((header) => {
     result[header.key] = {
@@ -73,10 +73,10 @@ function isPrimitive(value: unknown): value is string | number | boolean | null 
 function createPrimitiveCell(
   value: string | number | boolean | null | undefined,
   cellId: string,
-  header: TYVueTableHeaders[string],
+  header: TAltVueTableHeaders[string],
   autoEllipsis: boolean,
-): TYVueTableCellItem {
-  const cellItem: TYVueTableCellItem = {
+): TAltVueTableCellItem {
+  const cellItem: TAltVueTableCellItem = {
     id: cellId,
     label: value?.toString() ?? '',
     head: header,
@@ -95,8 +95,8 @@ function createPrimitiveCell(
 function createObjectCell(
   value: unknown,
   cellId: string,
-  header: TYVueTableHeaders[string],
-): TYVueTableCellItem {
+  header: TAltVueTableHeaders[string],
+): TAltVueTableCellItem {
   return {
     id: cellId,
     head: header,
@@ -111,12 +111,12 @@ function createTableRow(
   row: ISimpleTableRow,
   index: number,
   headers: ISimpleTableHeader[],
-  headerMap: TYVueTableHeaders,
+  headerMap: TAltVueTableHeaders,
   options: Required<ITableMappingOptions>,
-): IYVueTableItem {
+): IAltVueTableItem {
   const { rowIdField, generateRowId, generateCellId, autoEllipsis } = options
   const rowId = row[rowIdField]?.toString() ?? generateRowId(row, index)
-  const tableItem: IYVueTableItem = { rowId }
+  const tableItem: IAltVueTableItem = { rowId }
 
   headers.forEach((header) => {
     const value = row[header.key]
@@ -139,7 +139,7 @@ export function mapTableData(
   data: ISimpleTableRow[],
   headers: ISimpleTableHeader[],
   options: ITableMappingOptions = {},
-): TYVueTableItems {
+): TAltVueTableItems {
   const defaultOptions: Required<ITableMappingOptions> = {
     rowIdField: 'id',
     generateRowId: (_, index) => `row-${index}`,

@@ -1,10 +1,10 @@
-export interface IYCoreDropdownCellTextExternalProps {
+export interface IAltCoreDropdownCellTextExternalProps {
   label: string
   subtitle: string
   subhead: string
 }
 
-export const createCoreDropdownCellTextExternalProps = (): IYCoreDropdownCellTextExternalProps => ({
+export const createCoreDropdownCellTextExternalProps = (): IAltCoreDropdownCellTextExternalProps => ({
   label: '',
   subtitle: '',
   subhead: '',

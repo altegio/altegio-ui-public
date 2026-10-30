@@ -1,10 +1,10 @@
 import {
   createCoreDatePickerProps,
-  type IYCoreDatePickerProps,
+  type IAltCoreDatePickerProps,
 } from '~core/ui/datePicker/models/types'
 
 export { PickEvent } from '~core/ui/datePicker/models/types/events'
 
-export interface IYNgDatePickerProps extends IYCoreDatePickerProps {}
+export interface IAltNgDatePickerProps extends IAltCoreDatePickerProps {}
 
-export const createNgDatePickerProps = (): IYNgDatePickerProps => createCoreDatePickerProps()
+export const createNgDatePickerProps = (): IAltNgDatePickerProps => createCoreDatePickerProps()

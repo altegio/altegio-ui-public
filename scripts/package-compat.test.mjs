@@ -8,7 +8,7 @@ import { build } from 'esbuild'
 import ts from 'typescript'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
-const hasPrivateAliases = existsSync(new URL('./private-icon-compat.mjs', import.meta.url))
+const hasPrivateAliases = existsSync(new URL('./private-compat/apply.mjs', import.meta.url))
 const packageJson = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
 
 test('published entry points and CLI resolve to files in the package', () => {
@@ -18,9 +18,9 @@ test('published entry points and CLI resolve to files in the package', () => {
       assert.ok(existsSync(new URL(`../${target}`, import.meta.url)), `${name}: ${target}`)
     }
   }
-  const cli = new URL(`../${packageJson.bin.yds}`, import.meta.url)
-  assert.ok(existsSync(cli), packageJson.bin.yds)
-  assert.match(execFileSync(process.execPath, [fileURLToPath(cli), '--help'], { encoding: 'utf8' }), /yds/)
+  const cli = new URL(`../${packageJson.bin['alt-ds']}`, import.meta.url)
+  assert.ok(existsSync(cli), packageJson.bin['alt-ds'])
+  assert.match(execFileSync(process.execPath, [fileURLToPath(cli), '--help'], { encoding: 'utf8' }), /alt-ds/)
 })
 
 test('npm pack includes every public entry point', () => {
@@ -33,13 +33,13 @@ test('npm pack includes every public entry point', () => {
       assert.ok(path.endsWith('/') ? [...files].some(file => file.startsWith(path)) : files.has(path), `${name}: ${target}`)
     }
   }
-  assert.ok(files.has(packageJson.bin.yds.replace(/^\.\//, '')), packageJson.bin.yds)
+  assert.ok(files.has(packageJson.bin['alt-ds'].replace(/^\.\//, '')), packageJson.bin['alt-ds'])
 })
 
 test('Vue declarations preserve the Maskito number API for NodeNext consumers', () => {
   const consumer = new URL(`../.package-compat-${randomUUID()}.mts`, import.meta.url)
   try {
-    writeFileSync(consumer, "import { YButton, maskitoNumberOptionsGenerator } from '@platform/altegio-ui/vue'\nimport { maskitoNumberOptionsGenerator as directMaskitoNumber } from '@maskito/kit'\ntype Button = typeof YButton\nmaskitoNumberOptionsGenerator({ thousandSeparator: ' ', precision: 2, max: 1000 })\ndirectMaskitoNumber({ thousandSeparator: ' ', precision: 2, max: 1000 })\n")
+    writeFileSync(consumer, "import { AltButton, maskitoNumberOptionsGenerator } from '@platform/altegio-ui/vue'\nimport { maskitoNumberOptionsGenerator as directMaskitoNumber } from '@maskito/kit'\ntype Button = typeof AltButton\nmaskitoNumberOptionsGenerator({ thousandSeparator: ' ', precision: 2, max: 1000 })\ndirectMaskitoNumber({ thousandSeparator: ' ', precision: 2, max: 1000 })\n")
     const program = ts.createProgram([fileURLToPath(consumer)], {
       module: ts.ModuleKind.NodeNext,
       moduleResolution: ts.ModuleResolutionKind.NodeNext,
@@ -53,18 +53,14 @@ test('Vue declarations preserve the Maskito number API for NodeNext consumers', 
   }
 })
 
-test('published tokens preserve values and resolve for NodeNext consumers', async () => {
+test('published tokens use the ALT_ prefix and resolve for NodeNext consumers', async () => {
   const tokens = await import('@platform/altegio-ui/tokens')
-  const canonicalNames = Object.keys(tokens).filter(name => name.startsWith('ALT_'))
-  assert.ok(canonicalNames.length >= 355)
-  assert.equal(Object.keys(tokens).filter(name => name.startsWith('YC_')).length, canonicalNames.length)
-  for (const name of canonicalNames) {
-    assert.equal(tokens[`YC_${name.slice(4)}`], tokens[name], name)
-  }
+  assert.ok(Object.keys(tokens).length >= 355)
+  assert.deepEqual(Object.keys(tokens).filter(name => !name.startsWith('ALT_')), [])
 
   const consumer = new URL(`../.package-compat-${randomUUID()}.mts`, import.meta.url)
   try {
-    writeFileSync(consumer, "import { ALT_TEXT_PRIMARY, YC_TEXT_PRIMARY } from '@platform/altegio-ui/tokens'\nconsole.log(ALT_TEXT_PRIMARY, YC_TEXT_PRIMARY)\n")
+    writeFileSync(consumer, "import { ALT_TEXT_PRIMARY } from '@platform/altegio-ui/tokens'\nconsole.log(ALT_TEXT_PRIMARY)\n")
     const options = {
       module: ts.ModuleKind.NodeNext,
       moduleResolution: ts.ModuleResolutionKind.NodeNext,
@@ -81,7 +77,7 @@ test('published tokens preserve values and resolve for NodeNext consumers', asyn
 })
 
 test('published icons keep the consumer names supported by this build', async () => {
-  const names = ['yClientGroup', 'yServiceClient']
+  const names = ['altClientGroup', 'altServiceClient']
   if (hasPrivateAliases) names.push('y' + 'Clients', 'y' + 'ClientService')
   const directImport = await import('@platform/altegio-ui/icons')
   const { outputFiles } = await build({
@@ -96,18 +92,18 @@ test('published icons keep the consumer names supported by this build', async ()
     write: false,
   })
   const icons = await import(`data:text/javascript;base64,${Buffer.from(outputFiles[0].text).toString('base64')}`)
-  assert.equal(icons.yClientGroup.name, 'clients')
-  assert.equal(icons.yServiceClient.name, 'client_service')
-  assert.equal(directImport.yClientGroup.name, 'clients')
-  assert.equal(directImport.yServiceClient.name, 'client_service')
+  assert.equal(icons.altClientGroup.name, 'clients')
+  assert.equal(icons.altServiceClient.name, 'client_service')
+  assert.equal(directImport.altClientGroup.name, 'clients')
+  assert.equal(directImport.altServiceClient.name, 'client_service')
   if (hasPrivateAliases) {
-    assert.equal(icons['y' + 'Clients'], icons.yClientGroup)
-    assert.equal(icons['y' + 'ClientService'], icons.yServiceClient)
+    assert.equal(icons['y' + 'Clients'], icons.altClientGroup)
+    assert.equal(icons['y' + 'ClientService'], icons.altServiceClient)
   }
 
   const consumer = new URL(`../.package-compat-${randomUUID()}.mts`, import.meta.url)
   try {
-    writeFileSync(consumer, "import { yClientGroup } from '@platform/altegio-ui/icons'\nconsole.log(yClientGroup.name)\n")
+    writeFileSync(consumer, "import { altClientGroup } from '@platform/altegio-ui/icons'\nconsole.log(altClientGroup.name)\n")
     const program = ts.createProgram([fileURLToPath(consumer)], {
       module: ts.ModuleKind.NodeNext,
       moduleResolution: ts.ModuleResolutionKind.NodeNext,

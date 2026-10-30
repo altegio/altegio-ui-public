@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YFieldIcon } from '~vue/ui/fieldIcon'
-import { type IYVueFieldIconProps } from '~vue/ui/fieldIcon/models/types'
-import yCoreFieldIconStoryMeta from '~core/ui/fieldIcon/stories/FieldIcon.stories'
+import { AltFieldIcon } from '~vue/ui/fieldIcon'
+import { type IAltVueFieldIconProps } from '~vue/ui/fieldIcon/models/types'
+import altCoreFieldIconStoryMeta from '~core/ui/fieldIcon/stories/FieldIcon.stories'
 
-type TVueFieldIconStoryMeta = IYVueFieldIconProps
+type TVueFieldIconStoryMeta = IAltVueFieldIconProps
 
 /**
  * Vue wrapper for Core FieldIcon
@@ -18,16 +18,16 @@ const meta: Meta<TVueFieldIconStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YFieldIcon },
+    components: { AltFieldIcon },
     setup() {
       return { args }
     },
     template: `
-      <YFieldIcon v-bind="args" style="border: 1px dashed;width: min-content;"></YFieldIcon>
+      <AltFieldIcon v-bind="args" style="border: 1px dashed;width: min-content;"></AltFieldIcon>
     `,
   }),
-  argTypes: { ...yCoreFieldIconStoryMeta.argTypes },
-  args: { ...yCoreFieldIconStoryMeta.args },
+  argTypes: { ...altCoreFieldIconStoryMeta.argTypes },
+  args: { ...altCoreFieldIconStoryMeta.args },
 }
 
 export default meta

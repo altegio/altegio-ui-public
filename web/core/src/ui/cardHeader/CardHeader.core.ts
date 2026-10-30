@@ -3,57 +3,57 @@ import { customElement, property } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { consume } from '@lit/context'
 
-import { createCoreCardHeaderProps, type IYCoreCardHeaderProps } from '~core/ui/cardHeader/models/types'
-import { YCoreCardHeaderTagName as tagName } from '~shared/constants'
+import { createCoreCardHeaderProps, type IAltCoreCardHeaderProps } from '~core/ui/cardHeader/models/types'
+import { AltCoreCardHeaderTagName as tagName } from '~shared/constants'
 
 import { disabledContextCreated, sizeContextCreated } from '~core/ui/cardWrapper/providers'
 import { renderIcon, renderTag } from '~core/renderers'
 
-import YCardHeaderVarsCss from '~core/ui/cardHeader/css/CardHeader.vars.css?inline'
-import YCardHeaderScopedCss from '~core/ui/cardHeader/css/CardHeader.scoped.css?inline'
+import AltCardHeaderVarsCss from '~core/ui/cardHeader/css/CardHeader.vars.css?inline'
+import AltCardHeaderScopedCss from '~core/ui/cardHeader/css/CardHeader.scoped.css?inline'
 
-import { EYSizes } from '~shared/types/global'
-import type { TYCoreTagSize } from '~core/ui/tag/models/types'
-import type { TYCoreTextVariant } from '~core/ui/text/models/types'
-import { EYCoreTextSize, EYCoreTextVariant, type TYCoreTextSize } from '~core/ui/text/models/types'
+import { EAltSizes } from '~shared/types/global'
+import type { TAltCoreTagSize } from '~core/ui/tag/models/types'
+import type { TAltCoreTextVariant } from '~core/ui/text/models/types'
+import { EAltCoreTextSize, EAltCoreTextVariant, type TAltCoreTextSize } from '~core/ui/text/models/types'
 
 import '~core/ui/text'
 import { withLocator } from '~core/utils/locator'
 
 const { disabled, size, headerText, tagText, tagVariant, headerIcon } = createCoreCardHeaderProps()
 
-const mapSizeToTextSize: Record<NonNullable<IYCoreCardHeaderProps['size']>, TYCoreTextSize> = {
-  [EYSizes.SMALL]: EYCoreTextSize.H4_SEMIBOLD,
-  [EYSizes.MEDIUM]: EYCoreTextSize.H3_SEMIBOLD,
-  [EYSizes.LARGE]: EYCoreTextSize.H2_SEMIBOLD,
+const mapSizeToTextSize: Record<NonNullable<IAltCoreCardHeaderProps['size']>, TAltCoreTextSize> = {
+  [EAltSizes.SMALL]: EAltCoreTextSize.H4_SEMIBOLD,
+  [EAltSizes.MEDIUM]: EAltCoreTextSize.H3_SEMIBOLD,
+  [EAltSizes.LARGE]: EAltCoreTextSize.H2_SEMIBOLD,
 }
 
-const mapSizeToTagSize: Record<NonNullable<IYCoreCardHeaderProps['size']>, TYCoreTagSize> = {
-  [EYSizes.SMALL]: EYSizes.SMALL,
-  [EYSizes.MEDIUM]: EYSizes.MEDIUM,
-  [EYSizes.LARGE]: EYSizes.MEDIUM,
+const mapSizeToTagSize: Record<NonNullable<IAltCoreCardHeaderProps['size']>, TAltCoreTagSize> = {
+  [EAltSizes.SMALL]: EAltSizes.SMALL,
+  [EAltSizes.MEDIUM]: EAltSizes.MEDIUM,
+  [EAltSizes.LARGE]: EAltSizes.MEDIUM,
 }
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreCardHeader
+export class AltCoreCardHeader
   extends LitElement
-  implements IYCoreCardHeaderProps {
+  implements IAltCoreCardHeaderProps {
   @consume({ context: disabledContextCreated, subscribe: true })
-  @property({ type: Boolean }) disabled: IYCoreCardHeaderProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreCardHeaderProps['disabled'] = disabled
   @consume({ context: sizeContextCreated, subscribe: true })
-  @property({ type: String, reflect: true }) size: IYCoreCardHeaderProps['size'] = size
-  @property({ type: String, attribute: 'header-text' }) headerText: IYCoreCardHeaderProps['headerText'] = headerText
-  @property({ type: String, attribute: 'tag-text' }) tagText: IYCoreCardHeaderProps['tagText'] = tagText
-  @property({ type: String, attribute: 'tag-variant' }) tagVariant: IYCoreCardHeaderProps['tagVariant'] = tagVariant
-  @property({ type: Object, attribute: 'header-icon' }) headerIcon: IYCoreCardHeaderProps['headerIcon'] = headerIcon
+  @property({ type: String, reflect: true }) size: IAltCoreCardHeaderProps['size'] = size
+  @property({ type: String, attribute: 'header-text' }) headerText: IAltCoreCardHeaderProps['headerText'] = headerText
+  @property({ type: String, attribute: 'tag-text' }) tagText: IAltCoreCardHeaderProps['tagText'] = tagText
+  @property({ type: String, attribute: 'tag-variant' }) tagVariant: IAltCoreCardHeaderProps['tagVariant'] = tagVariant
+  @property({ type: Object, attribute: 'header-icon' }) headerIcon: IAltCoreCardHeaderProps['headerIcon'] = headerIcon
 
   private readonly baseClass = tagName
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCardHeaderVarsCss)}
-      ${unsafeCSS(YCardHeaderScopedCss)}
+      ${unsafeCSS(AltCardHeaderVarsCss)}
+      ${unsafeCSS(AltCardHeaderScopedCss)}
     `,
   ]
 
@@ -62,17 +62,17 @@ export class YCoreCardHeader
   }
 
   private get computedSize() {
-    return this.size ?? EYSizes.MEDIUM
+    return this.size ?? EAltSizes.MEDIUM
   }
 
   private get computedTextSize() {
     return mapSizeToTextSize[this.computedSize]
   }
 
-  private get computedTextVariant(): TYCoreTextVariant {
-    if (this.disabled) return EYCoreTextVariant.TERTIARY
+  private get computedTextVariant(): TAltCoreTextVariant {
+    if (this.disabled) return EAltCoreTextVariant.TERTIARY
 
-    return EYCoreTextVariant.PRIMARY
+    return EAltCoreTextVariant.PRIMARY
   }
 
   private get computedTagSize() {
@@ -83,13 +83,13 @@ export class YCoreCardHeader
     if (!this.headerText) return nothing
 
     return html`
-      <y-core-text
+      <alt-core-text
         .size=${this.computedTextSize}
         .variant=${this.computedTextVariant}
         class=${`${this.baseClass}__title`}
       >
         ${this.headerText}
-      </y-core-text>
+      </alt-core-text>
     `
   }
 

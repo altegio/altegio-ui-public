@@ -4,18 +4,18 @@ import { useCoreTests } from '~shared/tests/core'
 import { getShadowElement } from '~shared/tests/utils'
 
 import {
-  YCoreButtonDropdownTagName,
-  YCoreButtonTagName,
-  YCoreDropdownListTagName,
-  YCoreDropdownCellTagName,
-  YCoreDropdownTagName,
-  YCoreSimpleButtonTagName,
-  YCoreIconTagName,
+  AltCoreButtonDropdownTagName,
+  AltCoreButtonTagName,
+  AltCoreDropdownListTagName,
+  AltCoreDropdownCellTagName,
+  AltCoreDropdownTagName,
+  AltCoreSimpleButtonTagName,
+  AltCoreIconTagName,
 } from '~shared/constants'
-import type { IYIcon } from '~shared/icons'
+import type { IAltIcon } from '~shared/icons'
 
 import '../ButtonDropdown.core'
-import type { YCoreButtonDropdown } from '../ButtonDropdown.core'
+import type { AltCoreButtonDropdown } from '../ButtonDropdown.core'
 
 import {
   propIconTestCases,
@@ -35,7 +35,7 @@ import {
 import { createCoreButtonDropdownProps } from '../models/types'
 import { VisibleEvent } from '../models/types/events'
 
-const tagName = YCoreButtonDropdownTagName
+const tagName = AltCoreButtonDropdownTagName
 
 const {
   component,
@@ -59,13 +59,13 @@ const getSvgPathData = (svgString: string): string | null => {
   const match = (/<path[^>]*>/).exec(svgString)
   return match ? match[1] : null
 }
-const compareIcons = (svgString: string, icon: IYIcon): boolean => {
+const compareIcons = (svgString: string, icon: IAltIcon): boolean => {
   const pathData = getSvgPathData(svgString)
   return pathData === getSvgPathData(icon.data)
 }
 
 describe(
-  'Core/YButtonDropdown/Unit',
+  'Core/AltButtonDropdown/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -114,18 +114,18 @@ describe(
                 async() => {
                   await updateComponent({ props: { iconType: testCase.value } })
 
-                  const buttonElement = getLocalShadowElement(YCoreButtonTagName) as YCoreButtonDropdown | null
+                  const buttonElement = getLocalShadowElement(AltCoreButtonTagName) as AltCoreButtonDropdown | null
                   if (!buttonElement) {
                     throw new Error('Button not found')
                   }
 
-                  const simpleButtonElement = getShadowElement(buttonElement, YCoreSimpleButtonTagName)
+                  const simpleButtonElement = getShadowElement(buttonElement, AltCoreSimpleButtonTagName)
                   if (!simpleButtonElement) {
                     throw new Error('Simple button not found')
                   }
 
 
-                  const iconElements = simpleButtonElement.querySelectorAll(YCoreIconTagName)
+                  const iconElements = simpleButtonElement.querySelectorAll(AltCoreIconTagName)
                   if (iconElements.length !== 1) {
                     throw new Error('Icon count is not 1')
                   }
@@ -149,16 +149,16 @@ describe(
           'Events',
           () => {
             it(
-              `Should emit "item-click" when ${YCoreDropdownCellTagName} emits "click"`,
+              `Should emit "item-click" when ${AltCoreDropdownCellTagName} emits "click"`,
               async() => {
                 await updateComponent({ props: { items: [{ id: '0', label: 'Item 1' }] } })
 
-                const dropdownListElement = getLocalShadowElement(YCoreDropdownListTagName)
+                const dropdownListElement = getLocalShadowElement(AltCoreDropdownListTagName)
                 if (!dropdownListElement) {
                   throw new Error('DropdownList not found')
                 }
 
-                const dropdownCellElement = dropdownListElement.querySelector(`div > slot > ${YCoreDropdownCellTagName}`)
+                const dropdownCellElement = dropdownListElement.querySelector(`div > slot > ${AltCoreDropdownCellTagName}`)
                 if (!dropdownCellElement) {
                   throw new Error('Dropdown cell not found')
                 }
@@ -177,9 +177,9 @@ describe(
             )
 
             it(
-              `Should emit "change-visible" when ${YCoreDropdownTagName} emits "change-visible"`,
+              `Should emit "change-visible" when ${AltCoreDropdownTagName} emits "change-visible"`,
               () => {
-                const dropdownElement = getLocalShadowElement(YCoreDropdownTagName)
+                const dropdownElement = getLocalShadowElement(AltCoreDropdownTagName)
                 if (!dropdownElement) {
                   throw new Error('Dropdown not found')
                 }

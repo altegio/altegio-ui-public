@@ -1,12 +1,12 @@
-$component: $YCoreButtonDropdownTagName;
+$component: $AltCoreButtonDropdownTagName;
 
 .$(component) {
-  --y-core-dropdown-width: fit-content;
+  --alt-core-dropdown-width: fit-content;
 
   &_full-width {
-    --y-core-dropdown-width: 100%;
-    --y-core-dropdown-activator-width: 100%;
-    --y-core-dropdown-activator-width-inline: 100%;
+    --alt-core-dropdown-width: 100%;
+    --alt-core-dropdown-activator-width: 100%;
+    --alt-core-dropdown-activator-width-inline: 100%;
   }
 
   &__dropdown {

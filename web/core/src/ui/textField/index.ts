@@ -1,1 +1,1 @@
-export { YCoreTextField } from './TextField.core'
+export { AltCoreTextField } from './TextField.core'

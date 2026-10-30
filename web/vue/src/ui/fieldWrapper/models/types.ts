@@ -1,6 +1,6 @@
 import {
   createCoreFieldWrapperProps,
-  type IYCoreFieldWrapperProps,
+  type IAltCoreFieldWrapperProps,
   type ClickOutsideEvent,
   type FocusEvent,
   type BlurEvent,
@@ -9,17 +9,17 @@ import {
 } from '~core/ui/fieldWrapper/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreFieldWrapperProps extends IYCoreFieldWrapperProps {}
+export interface IAltVueCoreFieldWrapperProps extends IAltCoreFieldWrapperProps {}
 
-export interface IYVueFieldWrapperProps {
-  disabled?: IYVueCoreFieldWrapperProps['disabled']
-  readonly?: IYVueCoreFieldWrapperProps['readonly']
-  error?: IYVueCoreFieldWrapperProps['error']
-  size?: IYVueCoreFieldWrapperProps['size']
-  clickable?: IYVueCoreFieldWrapperProps['clickable']
+export interface IAltVueFieldWrapperProps {
+  disabled?: IAltVueCoreFieldWrapperProps['disabled']
+  readonly?: IAltVueCoreFieldWrapperProps['readonly']
+  error?: IAltVueCoreFieldWrapperProps['error']
+  size?: IAltVueCoreFieldWrapperProps['size']
+  clickable?: IAltVueCoreFieldWrapperProps['clickable']
 }
 
-export const createVueFieldWrapperProps = (): TDefinedVueProps<IYVueFieldWrapperProps> => {
+export const createVueFieldWrapperProps = (): TDefinedVueProps<IAltVueFieldWrapperProps> => {
   const { disabled, readonly, error, size, clickable } = createCoreFieldWrapperProps()
   return {
     disabled,
@@ -30,7 +30,7 @@ export const createVueFieldWrapperProps = (): TDefinedVueProps<IYVueFieldWrapper
   }
 }
 
-export interface IYVueFieldWrapperEmits {
+export interface IAltVueFieldWrapperEmits {
   (event: 'click', payload: Event): void
   (event: 'click-outside', payload: ClickOutsideEvent): void
   (event: 'focus', payload: FocusEvent): void

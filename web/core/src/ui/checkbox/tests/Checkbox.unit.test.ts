@@ -1,11 +1,11 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
 import { text, empty, number } from '~shared/tests/slotContents'
 import {
-  YCoreCheckboxTagName as tagName,
-  YCoreSimpleCheckboxTagName,
-  YCoreLabelTagName,
-  YCoreAnnotationTagName,
-  YCoreErrorTagName,
+  AltCoreCheckboxTagName as tagName,
+  AltCoreSimpleCheckboxTagName,
+  AltCoreLabelTagName,
+  AltCoreAnnotationTagName,
+  AltCoreErrorTagName,
 } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import {
@@ -15,13 +15,13 @@ import {
   getShadowRootElement,
   trimTextContent,
 } from '~shared/tests/utils'
-import { type IYCoreCheckboxExternalProps, createCoreCheckboxExternalProps } from '../models/types'
-import { EYSizes } from '~shared/types/global'
+import { type IAltCoreCheckboxExternalProps, createCoreCheckboxExternalProps } from '../models/types'
+import { EAltSizes } from '~shared/types/global'
 import type { TPropTestCase } from '~shared/types/tests'
-import type { YCoreSimpleCheckbox, YCoreLabel, YCoreAnnotation, YCoreError } from '~core/index'
+import type { AltCoreSimpleCheckbox, AltCoreLabel, AltCoreAnnotation, AltCoreError } from '~core/index'
 
 import '~core/ui/checkbox'
-import { EYCoreLabelAlignment } from '~core/ui/label/models/types'
+import { EAltCoreLabelAlignment } from '~core/ui/label/models/types'
 import { userEvent } from 'vitest/browser'
 
 const {
@@ -49,79 +49,79 @@ const getLocalShadowElement = (selector: string) => {
   )
 }
 
-const getSimpleCheckboxElement = () => getLocalShadowElement(YCoreSimpleCheckboxTagName) as YCoreSimpleCheckbox | undefined
-const getLabelElement = () => getLocalShadowElement(YCoreLabelTagName) as YCoreLabel | undefined
-const getAnnotationElement = () => getLocalShadowElement(YCoreAnnotationTagName) as YCoreAnnotation | undefined
-const getErrorElement = () => getLocalShadowElement(YCoreErrorTagName) as YCoreError | undefined
+const getSimpleCheckboxElement = () => getLocalShadowElement(AltCoreSimpleCheckboxTagName) as AltCoreSimpleCheckbox | undefined
+const getLabelElement = () => getLocalShadowElement(AltCoreLabelTagName) as AltCoreLabel | undefined
+const getAnnotationElement = () => getLocalShadowElement(AltCoreAnnotationTagName) as AltCoreAnnotation | undefined
+const getErrorElement = () => getLocalShadowElement(AltCoreErrorTagName) as AltCoreError | undefined
 
 const localClassWithModifier = (modifier: string) => classWithModifier(
   tagName,
   modifier,
 )
 
-const propSizeTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'size'>[] = [
-  { prop: 'size', case: EYSizes.SMALL, value: EYSizes.SMALL, expected: EYSizes.SMALL },
-  { prop: 'size', case: EYSizes.MEDIUM, value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
+const propSizeTestCases: TPropTestCase<IAltCoreCheckboxExternalProps, 'size'>[] = [
+  { prop: 'size', case: EAltSizes.SMALL, value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
+  { prop: 'size', case: EAltSizes.MEDIUM, value: EAltSizes.MEDIUM, expected: EAltSizes.MEDIUM },
   { prop: 'size', case: 'undefined', value: undefined, expected: undefined },
 ]
 
-const propCheckedTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'checked'>[] = [
+const propCheckedTestCases: TPropTestCase<IAltCoreCheckboxExternalProps, 'checked'>[] = [
   { prop: 'checked', case: 'true', value: true, expected: true },
   { prop: 'checked', case: 'false', value: false, expected: false },
 ]
 
-const propIndeterminateTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'indeterminate'>[] = [
+const propIndeterminateTestCases: TPropTestCase<IAltCoreCheckboxExternalProps, 'indeterminate'>[] = [
   { prop: 'indeterminate', case: 'true', value: true, expected: true },
   { prop: 'indeterminate', case: 'false', value: false, expected: false },
 ]
 
-const propDisabledTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltCoreCheckboxExternalProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'have', value: true, expected: true },
   { prop: 'disabled', case: 'not have', value: false, expected: false },
 ]
 
-const propAlignmentTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'alignment'>[] = [
-  { prop: 'alignment', case: EYCoreLabelAlignment.TOP, value: EYCoreLabelAlignment.TOP, expected: EYCoreLabelAlignment.TOP },
-  { prop: 'alignment', case: EYCoreLabelAlignment.CENTER, value: EYCoreLabelAlignment.CENTER, expected: EYCoreLabelAlignment.CENTER },
+const propAlignmentTestCases: TPropTestCase<IAltCoreCheckboxExternalProps, 'alignment'>[] = [
+  { prop: 'alignment', case: EAltCoreLabelAlignment.TOP, value: EAltCoreLabelAlignment.TOP, expected: EAltCoreLabelAlignment.TOP },
+  { prop: 'alignment', case: EAltCoreLabelAlignment.CENTER, value: EAltCoreLabelAlignment.CENTER, expected: EAltCoreLabelAlignment.CENTER },
   { prop: 'alignment', case: 'undefined', value: undefined, expected: undefined },
 ]
 
-const propLabelTextTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'labelText'>[] = [
+const propLabelTextTestCases: TPropTestCase<IAltCoreCheckboxExternalProps, 'labelText'>[] = [
   { prop: 'labelText', case: 'with content', value: text, expected: text },
   { prop: 'labelText', case: 'without content', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: undefined },
 ]
 
-const propLabelTooltipTextTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'labelTooltipText'>[] = [
+const propLabelTooltipTextTestCases: TPropTestCase<IAltCoreCheckboxExternalProps, 'labelTooltipText'>[] = [
   { prop: 'labelTooltipText', case: 'with content', value: text, expected: text },
   { prop: 'labelTooltipText', case: 'without content', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: undefined },
 ]
 
-const propRequiredTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'required'>[] = [
+const propRequiredTestCases: TPropTestCase<IAltCoreCheckboxExternalProps, 'required'>[] = [
   { prop: 'required', case: 'true', value: true, expected: true },
   { prop: 'required', case: 'false', value: false, expected: false },
 ]
 
-const propAnnotationTextTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'annotationText'>[] = [
+const propAnnotationTextTestCases: TPropTestCase<IAltCoreCheckboxExternalProps, 'annotationText'>[] = [
   { prop: 'annotationText', case: 'with content', value: text, expected: text },
   { prop: 'annotationText', case: 'without content', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: empty },
 ]
 
-const propLabelOverflowDebounceTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'labelOverflowDebounce'>[] = [
+const propLabelOverflowDebounceTestCases: TPropTestCase<IAltCoreCheckboxExternalProps, 'labelOverflowDebounce'>[] = [
   { prop: 'labelOverflowDebounce', case: 'with content', value: number, expected: number },
   { prop: 'labelOverflowDebounce', case: 'undefined', value: undefined, expected: undefined },
 ]
 
-const propErrorsTestCases: TPropTestCase<IYCoreCheckboxExternalProps, 'errors'>[] = [
+const propErrorsTestCases: TPropTestCase<IAltCoreCheckboxExternalProps, 'errors'>[] = [
   { prop: 'errors', case: 'with an array of errors', value: ['error'], expected: true },
   { prop: 'errors', case: 'with an empty array', value: [], expected: false },
   { prop: 'errors', case: 'undefined', value: undefined, expected: false },
 ]
 
 describe(
-  'Core/YCoreCheckbox/Unit',
+  'Core/AltCoreCheckbox/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -286,7 +286,7 @@ describe(
         }
 
         for (const testCase of propLabelTextTestCases) {
-          const expectedCssClass = 'y-core-checkbox__label_hidden'
+          const expectedCssClass = 'alt-core-checkbox__label_hidden'
 
           it(
             `Prop "${testCase.prop}" with value "${testCase.value}" should ${testCase.value ? 'not ' : ''}change the Label class to "${expectedCssClass}"`,

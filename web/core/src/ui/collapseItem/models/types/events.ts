@@ -1,14 +1,14 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
-import type { IYCoreCollapseItemProps } from './index'
+import type { IAltCoreCollapseItemProps } from './index'
 
-export interface IYCoreCollapseItemCollapseItemClickPayload {
+export interface IAltCoreCollapseItemCollapseItemClickPayload {
   event: Event
-  value: IYCoreCollapseItemProps['value']
-  opened: IYCoreCollapseItemProps['opened']
+  value: IAltCoreCollapseItemProps['value']
+  opened: IAltCoreCollapseItemProps['opened']
 }
 
-export class CollapseItemClickEvent extends CustomEvent<IYCoreCollapseItemCollapseItemClickPayload> {}
+export class CollapseItemClickEvent extends CustomEvent<IAltCoreCollapseItemCollapseItemClickPayload> {}
 
-export type TYCoreCollapseItemEvents = TEventsStoryArgs<{
+export type TAltCoreCollapseItemEvents = TEventsStoryArgs<{
   CollapseItemClickEvent: typeof CollapseItemClickEvent
 }>

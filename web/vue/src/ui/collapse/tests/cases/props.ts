@@ -1,7 +1,7 @@
 import type { TPropTestCase } from '~shared/types/tests'
 import {
   createVueCollapseProps,
-  type IYVueCollapseProps,
+  type IAltVueCollapseProps,
 } from '~vue/ui/collapse/models/types'
 import {
   propValueCases as corePropValueCases,
@@ -17,26 +17,26 @@ const {
   variant: defaultVariant,
 } = createVueCollapseProps()
 
-export const propModelValueCases: TPropTestCase<IYVueCollapseProps, 'modelValue'>[] = [
+export const propModelValueCases: TPropTestCase<IAltVueCollapseProps, 'modelValue'>[] = [
   ...corePropValueCases.map((testCase) => ({
     ...testCase,
     prop: 'modelValue',
     expected: testCase.value,
-  })) as TPropTestCase<IYVueCollapseProps, 'modelValue'>[],
+  })) as TPropTestCase<IAltVueCollapseProps, 'modelValue'>[],
   { prop: 'modelValue', case: 'undefined', value: undefined, expected: defaultValue },
 ]
 
-export const propTypeCases: TPropTestCase<IYVueCollapseProps, 'type'>[] = [
+export const propTypeCases: TPropTestCase<IAltVueCollapseProps, 'type'>[] = [
   ...corePropTypeCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   { prop: 'type', case: 'undefined', value: undefined, expected: defaultType },
 ]
 
-export const propDraggableCases: TPropTestCase<IYVueCollapseProps, 'draggable'>[] = [
+export const propDraggableCases: TPropTestCase<IAltVueCollapseProps, 'draggable'>[] = [
   ...corePropDraggableCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   { prop: 'draggable', case: 'undefined', value: undefined, expected: defaultDraggable },
 ]
 
-export const propVariantCases: TPropTestCase<IYVueCollapseProps, 'variant'>[] = [
+export const propVariantCases: TPropTestCase<IAltVueCollapseProps, 'variant'>[] = [
   ...corePropVariantCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   { prop: 'variant', case: 'undefined', value: undefined, expected: defaultVariant },
 ]

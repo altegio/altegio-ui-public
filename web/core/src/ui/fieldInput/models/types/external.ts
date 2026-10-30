@@ -1,38 +1,38 @@
 import { pick } from 'radash'
 
 import {
-  type IYCoreFieldWrapperProps,
+  type IAltCoreFieldWrapperProps,
   createCoreFieldWrapperProps,
 } from '~core/ui/fieldWrapper/models/types'
-import type { TYInputAutocomplete } from '~shared/types/global'
-import { EYInputAutocomplete, EYInputType, type TYInputType } from '~shared/types/global'
+import type { TAltInputAutocomplete } from '~shared/types/global'
+import { EAltInputAutocomplete, EAltInputType, type TAltInputType } from '~shared/types/global'
 
-export interface IYCoreFieldInputExternalProps
-  extends Pick<IYCoreFieldWrapperProps, 'disabled' | 'size' | 'readonly'> {
+export interface IAltCoreFieldInputExternalProps
+  extends Pick<IAltCoreFieldWrapperProps, 'disabled' | 'size' | 'readonly'> {
   value: string
   name: string | undefined
-  type: TYInputType | undefined
+  type: TAltInputType | undefined
   placeholder: string | undefined
   required: boolean | undefined
   maxlength: number | undefined
   autofocus: boolean
   hideSpaceLeft: boolean | undefined
   hideSpaceRight: boolean | undefined
-  autocomplete: TYInputAutocomplete | undefined
+  autocomplete: TAltInputAutocomplete | undefined
 }
 
-export const createCoreFieldInputExternalProps = (): IYCoreFieldInputExternalProps => {
+export const createCoreFieldInputExternalProps = (): IAltCoreFieldInputExternalProps => {
   return {
     ...pick(createCoreFieldWrapperProps(), ['disabled', 'size', 'readonly']),
     value: '',
     name: undefined,
-    type: EYInputType.TEXT,
+    type: EAltInputType.TEXT,
     placeholder: '',
     required: false,
     maxlength: undefined,
     autofocus: false,
     hideSpaceLeft: false,
     hideSpaceRight: false,
-    autocomplete: EYInputAutocomplete.ON,
+    autocomplete: EAltInputAutocomplete.ON,
   }
 }

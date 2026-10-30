@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { YGlobalProvider } from '~vue/ui/globalProvider'
-import { type IYVueGlobalProviderProps } from '~vue/ui/globalProvider/models/types'
-import yCoreGlobalProviderStoryMeta from '~core/ui/globalProvider/stories/GlobalProvider.stories'
+import { AltGlobalProvider } from '~vue/ui/globalProvider'
+import { type IAltVueGlobalProviderProps } from '~vue/ui/globalProvider/models/types'
+import altCoreGlobalProviderStoryMeta from '~core/ui/globalProvider/stories/GlobalProvider.stories'
 import TestConsumer from './TestConsumer.vue'
 import I18nConsumer from './I18nConsumer.vue'
 import { I18nPlugin } from '~core/ui/globalProvider/plugins/i18n'
 import { ru } from '~core/i18n'
 import { QueuePlugin } from '~core/ui/globalProvider/plugins/queue'
 
-type TVueGlobalProviderStoryMeta = IYVueGlobalProviderProps
+type TVueGlobalProviderStoryMeta = IAltVueGlobalProviderProps
 
 /**
  * Vue wrapper for Core GlobalProvider
@@ -22,18 +22,18 @@ const meta: Meta<TVueGlobalProviderStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YGlobalProvider, TestConsumer },
+    components: { AltGlobalProvider, TestConsumer },
     setup() {
       return { args }
     },
     template: `
-      <YGlobalProvider v-bind="args">
+      <AltGlobalProvider v-bind="args">
         <TestConsumer />
-      </YGlobalProvider>
+      </AltGlobalProvider>
     `,
   }),
   argTypes: {},
-  args: { ...yCoreGlobalProviderStoryMeta.args },
+  args: { ...altCoreGlobalProviderStoryMeta.args },
 }
 
 export default meta
@@ -44,7 +44,7 @@ export const Playground: Story = {}
 
 export const WithTestConsumer: Story = {
   render: () => ({
-    components: { YGlobalProvider, TestConsumer },
+    components: { AltGlobalProvider, TestConsumer },
     setup() {
       const queuePlugin = new QueuePlugin({
         id: 'queue',
@@ -59,9 +59,9 @@ export const WithTestConsumer: Story = {
       return { plugins: [queuePlugin, queuePlugin2] }
     },
     template: `
-      <YGlobalProvider :plugins="plugins">
+      <AltGlobalProvider :plugins="plugins">
         <TestConsumer />
-      </YGlobalProvider>
+      </AltGlobalProvider>
     `,
   }),
 }
@@ -71,7 +71,7 @@ export const WithTestConsumer: Story = {
  */
 export const WithI18nConsumerRu: Story = {
   render: () => ({
-    components: { YGlobalProvider, I18nConsumer },
+    components: { AltGlobalProvider, I18nConsumer },
     setup() {
       // Localization plugin with the Russian locale
       const i18nPlugin = new I18nPlugin(ru)
@@ -83,9 +83,9 @@ export const WithI18nConsumerRu: Story = {
       return { plugins: [i18nPlugin, queuePlugin] }
     },
     template: `
-      <YGlobalProvider :plugins="plugins">
+      <AltGlobalProvider :plugins="plugins">
         <I18nConsumer />
-      </YGlobalProvider>
+      </AltGlobalProvider>
     `,
   }),
 }

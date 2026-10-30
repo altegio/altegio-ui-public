@@ -1,16 +1,16 @@
 import {
   createCoreErrorExternalProps,
-  type IYCoreErrorExternalProps,
+  type IAltCoreErrorExternalProps,
 } from '~core/ui/error/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreErrorProps extends IYCoreErrorExternalProps {}
+export interface IAltVueCoreErrorProps extends IAltCoreErrorExternalProps {}
 
-export interface IYVueErrorProps {
-  errors?: IYVueCoreErrorProps['errors']
+export interface IAltVueErrorProps {
+  errors?: IAltVueCoreErrorProps['errors']
 }
 
-export const createVueErrorProps = (): TDefinedVueProps<IYVueErrorProps> => {
+export const createVueErrorProps = (): TDefinedVueProps<IAltVueErrorProps> => {
   const { errors } = createCoreErrorExternalProps()
   return { errors: errors ? () => errors : undefined }
 }

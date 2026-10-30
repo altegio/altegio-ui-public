@@ -1,2 +1,2 @@
-export { YCoreGlobalProvider } from './GlobalProvider.core'
+export { AltCoreGlobalProvider } from './GlobalProvider.core'
 export * from './plugins'

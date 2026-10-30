@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YSimpleButton } from '~vue/ui/simpleButton'
-import { YPopover } from '~vue/ui/popover'
-import { type IYVuePopoverProps } from '~vue/ui/popover/models/types'
-import yCorePopoverStoryMeta from '~core/ui/popover/stories/Popover.stories'
+import { AltSimpleButton } from '~vue/ui/simpleButton'
+import { AltPopover } from '~vue/ui/popover'
+import { type IAltVuePopoverProps } from '~vue/ui/popover/models/types'
+import altCorePopoverStoryMeta from '~core/ui/popover/stories/Popover.stories'
 
-type TVuePopoverStoryMeta = IYVuePopoverProps
+type TVuePopoverStoryMeta = IAltVuePopoverProps
 
 /**
  * Vue wrapper for Popover
@@ -19,24 +19,24 @@ const meta: Meta<TVuePopoverStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YPopover, YSimpleButton },
+    components: { AltPopover, AltSimpleButton },
     setup() {
       return { args }
     },
     template: `
       <div style="width: 300px; height: 300px; border: 1px dashed; display: flex; justify-content: center; align-items: center;border-radius: 10px;">
-        <YPopover v-bind="args">
+        <AltPopover v-bind="args">
           <template #activator>
-            <YSimpleButton label="Click me" />
+            <AltSimpleButton label="Click me" />
           </template>
 
           <template #content>{{ args.tipContent }}</template>
-        </YPopover>
+        </AltPopover>
       </div>
     `,
   }),
-  argTypes: { ...yCorePopoverStoryMeta.argTypes },
-  args: { ...yCorePopoverStoryMeta.args },
+  argTypes: { ...altCorePopoverStoryMeta.argTypes },
+  args: { ...altCorePopoverStoryMeta.args },
 }
 
 export default meta

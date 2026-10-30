@@ -1,18 +1,18 @@
-$component: $YCorePhoneFieldTagName;
+$component: $AltCorePhoneFieldTagName;
 
 :host {
   /* Sizes */
-  --y-core-phone-field-min-width: 88px;
-  --y-core-phone-field-max-width: 404px;
-  --y-core-phone-field-dropdown-min-height: 200px;
-  --y-core-dropdown-content-max-width: 404px;
-  --y-core-dropdown-activator-width: 100%;
-  --y-core-dropdown-max-width: 100%;
+  --alt-core-phone-field-min-width: 88px;
+  --alt-core-phone-field-max-width: 404px;
+  --alt-core-phone-field-dropdown-min-height: 200px;
+  --alt-core-dropdown-content-max-width: 404px;
+  --alt-core-dropdown-activator-width: 100%;
+  --alt-core-dropdown-max-width: 100%;
 
   /* General */
-  --y-core-phone-field-display: flex;
-  --y-core-phone-field-color: var(--y-core-color-text-primary);
-  --y-core-phone-field-gap: var(--y-core-size-spacing-x);
-  --y-core-phone-field-content-margin-top: var(--y-core-size-spacing-x);
-  --y-core-phone-field-loader-background-color: var(--y-core-color-surface-primary);
+  --alt-core-phone-field-display: flex;
+  --alt-core-phone-field-color: var(--alt-core-color-text-primary);
+  --alt-core-phone-field-gap: var(--alt-core-size-spacing-x);
+  --alt-core-phone-field-content-margin-top: var(--alt-core-size-spacing-x);
+  --alt-core-phone-field-loader-background-color: var(--alt-core-color-surface-primary);
 }

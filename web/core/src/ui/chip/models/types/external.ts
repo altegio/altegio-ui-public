@@ -1,20 +1,20 @@
-import { EYSizes } from '~shared/types/global'
-import type { TYSizes } from '~shared/types/global'
-import type { IYIcon } from '~shared/icons'
+import { EAltSizes } from '~shared/types/global'
+import type { TAltSizes } from '~shared/types/global'
+import type { IAltIcon } from '~shared/icons'
 
-export type TYCoreChipSize = Extract<TYSizes, 'small' | 'large'>
+export type TAltCoreChipSize = Extract<TAltSizes, 'small' | 'large'>
 
-export interface IYCoreChipExternalProps {
+export interface IAltCoreChipExternalProps {
   labelText: string
-  iconLeft: IYIcon | undefined
-  size: TYCoreChipSize | undefined
+  iconLeft: IAltIcon | undefined
+  size: TAltCoreChipSize | undefined
   active: boolean | undefined
   disabled: boolean | undefined
 }
 
-export const createCoreChipExternalProps = (): IYCoreChipExternalProps => ({
+export const createCoreChipExternalProps = (): IAltCoreChipExternalProps => ({
   labelText: '',
-  size: EYSizes.SMALL,
+  size: EAltSizes.SMALL,
   iconLeft: undefined,
   active: undefined,
   disabled: undefined,

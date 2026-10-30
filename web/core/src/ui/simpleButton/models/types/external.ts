@@ -1,42 +1,42 @@
-import { EYSizes, type TYSizes, type TAnchorTarget } from '~shared/types/global'
+import { EAltSizes, type TAltSizes, type TAnchorTarget } from '~shared/types/global'
 
 
-export enum EYCoreSimpleButtonVariant {
+export enum EAltCoreSimpleButtonVariant {
   PRIMARY = 'primary',
   OUTLINE = 'outline',
   OUTLINE_FILLED = 'outline-filled',
   TEXT = 'text',
 }
 
-export enum EYCoreSimpleButtonContentAlignment {
+export enum EAltCoreSimpleButtonContentAlignment {
   START = 'start',
   CENTER = 'center',
   END = 'end',
 }
 
-export type TYCoreSimpleButtonVariant = `${EYCoreSimpleButtonVariant}`
-export type TYCoreSimpleButtonContentAlignment = `${EYCoreSimpleButtonContentAlignment}`
+export type TAltCoreSimpleButtonVariant = `${EAltCoreSimpleButtonVariant}`
+export type TAltCoreSimpleButtonContentAlignment = `${EAltCoreSimpleButtonContentAlignment}`
 
-export interface IYCoreSimpleButtonExternalProps {
-  size: Extract<TYSizes, 'small' | 'medium' | 'large'> | undefined
-  variant: TYCoreSimpleButtonVariant | undefined
+export interface IAltCoreSimpleButtonExternalProps {
+  size: Extract<TAltSizes, 'small' | 'medium' | 'large'> | undefined
+  variant: TAltCoreSimpleButtonVariant | undefined
   fullWidth: boolean | undefined
   disabled: boolean | undefined
   loading: boolean | undefined
   href: string | undefined
   target: TAnchorTarget | undefined
-  alignment: TYCoreSimpleButtonContentAlignment | undefined
+  alignment: TAltCoreSimpleButtonContentAlignment | undefined
 }
 
-export const createCoreSimpleButtonExternalProps = (): IYCoreSimpleButtonExternalProps => {
+export const createCoreSimpleButtonExternalProps = (): IAltCoreSimpleButtonExternalProps => {
   return {
     disabled: false,
     loading: false,
-    size: EYSizes.SMALL,
-    variant: EYCoreSimpleButtonVariant.PRIMARY,
+    size: EAltSizes.SMALL,
+    variant: EAltCoreSimpleButtonVariant.PRIMARY,
     fullWidth: false,
     href: undefined,
     target: undefined,
-    alignment: EYCoreSimpleButtonContentAlignment.CENTER,
+    alignment: EAltCoreSimpleButtonContentAlignment.CENTER,
   }
 }

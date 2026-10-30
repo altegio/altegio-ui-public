@@ -18,7 +18,7 @@ export interface IToken {
 
 export type TTokensJSON = Record<string, IToken>
 
-export const cssVarPrefix = 'y-core'
+export const cssVarPrefix = 'alt-core'
 
 export enum ECssVarTokenPrefixes {
   COLOR = 'color',

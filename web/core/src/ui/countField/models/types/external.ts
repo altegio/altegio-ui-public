@@ -1,15 +1,15 @@
 import {
   createCoreTextFieldExternalProps,
-  type IYCoreTextFieldExternalProps,
+  type IAltCoreTextFieldExternalProps,
 } from '~core/ui/textField/models/types'
 import { omit } from 'radash'
 
-export interface IYCoreCountFieldExternalProps extends Omit<IYCoreTextFieldExternalProps, 'clearable' | 'type' | 'maxlength' | 'maskOptions'> {
+export interface IAltCoreCountFieldExternalProps extends Omit<IAltCoreTextFieldExternalProps, 'clearable' | 'type' | 'maxlength' | 'maskOptions'> {
   min: number | undefined
   max: number | undefined
 }
 
-export const createCoreCountFieldExternalProps = (): IYCoreCountFieldExternalProps => ({
+export const createCoreCountFieldExternalProps = (): IAltCoreCountFieldExternalProps => ({
   ...omit(createCoreTextFieldExternalProps(), ['clearable', 'type', 'maxlength']),
   min: undefined,
   max: undefined,

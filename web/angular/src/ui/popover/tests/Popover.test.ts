@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCorePopoverTagName } from '~shared/constants'
-import { YPopover } from '~ng/ui/popover'
+import { AltCorePopoverTagName } from '~shared/constants'
+import { AltPopover } from '~ng/ui/popover'
 import {
-  type IYNgPopoverProps,
+  type IAltNgPopoverProps,
 } from '~ng/ui/popover/models/types'
 
 import {
@@ -22,22 +22,22 @@ import {
   propTypeTestCases,
 } from './cases/props'
 
-const tagName = YCorePopoverTagName
+const tagName = AltCorePopoverTagName
 
 interface ICreateComponentArgs {
   slots?: {
     activator?: string
     content?: string
   }
-  props?: Partial<IYNgPopoverProps>
+  props?: Partial<IAltNgPopoverProps>
 }
 const createComponent = async({ slots, props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YPopover] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltPopover] }).compileComponents()
 
   @Component({
     template: `
-      <YPopover
+      <AltPopover
         [trigger]="trigger"
         [isOpen]="isOpen"
         [offset]="offset"
@@ -65,9 +65,9 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
             {{ actions-slot }}
           </div>
         }
-      </YPopover>
+      </AltPopover>
     `,
-    imports: [YPopover],
+    imports: [AltPopover],
     standalone: true,
   })
   class TestComponent {
@@ -86,7 +86,7 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YPopover',
+  'Angular/AltPopover',
   () => {
     describe(
       'Unit',

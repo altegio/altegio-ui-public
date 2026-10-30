@@ -2,11 +2,11 @@ import { LitElement, html, css, unsafeCSS } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 
-import { createCoreTextProps, type IYCoreTextProps } from './models/types'
-import { YCoreTextTagName as tagName } from '~shared/constants'
+import { createCoreTextProps, type IAltCoreTextProps } from './models/types'
+import { AltCoreTextTagName as tagName } from '~shared/constants'
 
-import YCoreTextScopedCss from '~core/ui/text/css/Text.scoped.css?inline'
-import YCoreTextVarsCss from '~core/ui/text/css/Text.vars.css?inline'
+import AltCoreTextScopedCss from '~core/ui/text/css/Text.scoped.css?inline'
+import AltCoreTextVarsCss from '~core/ui/text/css/Text.vars.css?inline'
 import { defineCustomElement } from '~web/shared/utils/components'
 import { withLocator } from '~core/utils/locator'
 
@@ -14,19 +14,19 @@ const { size, variant, ellipsis, lineclamp, locator } = createCoreTextProps()
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreText extends LitElement implements IYCoreTextProps {
-  @property({ type: String, reflect: true }) size: IYCoreTextProps['size'] = size
-  @property({ type: String, reflect: true }) variant: IYCoreTextProps['variant'] = variant
-  @property({ type: Boolean }) ellipsis: IYCoreTextProps['ellipsis'] = ellipsis
-  @property({ type: Number }) lineclamp: IYCoreTextProps['lineclamp'] = lineclamp
-  @property({ type: String }) locator: IYCoreTextProps['locator'] = locator
+export class AltCoreText extends LitElement implements IAltCoreTextProps {
+  @property({ type: String, reflect: true }) size: IAltCoreTextProps['size'] = size
+  @property({ type: String, reflect: true }) variant: IAltCoreTextProps['variant'] = variant
+  @property({ type: Boolean }) ellipsis: IAltCoreTextProps['ellipsis'] = ellipsis
+  @property({ type: Number }) lineclamp: IAltCoreTextProps['lineclamp'] = lineclamp
+  @property({ type: String }) locator: IAltCoreTextProps['locator'] = locator
 
   private readonly baseClass = tagName
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreTextVarsCss)}
-      ${unsafeCSS(YCoreTextScopedCss)}
+      ${unsafeCSS(AltCoreTextVarsCss)}
+      ${unsafeCSS(AltCoreTextScopedCss)}
     `,
   ]
 
@@ -44,7 +44,7 @@ export class YCoreText extends LitElement implements IYCoreTextProps {
   }
 
   protected firstUpdated(): void {
-    defineCustomElement(tagName, YCoreText)
+    defineCustomElement(tagName, AltCoreText)
   }
 
   protected render() {

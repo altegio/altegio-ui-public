@@ -1,20 +1,20 @@
 import { describe, expect, it, beforeAll } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { YCoreTextareaTagName } from '~shared/constants'
-import { YTextarea } from '~vue/ui/textarea'
-import { YCoreTextarea } from '~core/ui/textarea'
+import { AltCoreTextareaTagName } from '~shared/constants'
+import { AltTextarea } from '~vue/ui/textarea'
+import { AltCoreTextarea } from '~core/ui/textarea'
 
-const tagName = YCoreTextareaTagName
+const tagName = AltCoreTextareaTagName
 
 describe(
-  'Vue/YTextarea',
+  'Vue/AltTextarea',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreTextarea,
+          AltCoreTextarea,
         )
       }
     })
@@ -24,19 +24,19 @@ describe(
       () => {
         describe('Component', () => {
           it('should render', () => {
-            const wrapper = mount(YTextarea)
+            const wrapper = mount(AltTextarea)
             expect(wrapper.find(tagName).exists()).toBe(true)
           })
 
           it('should pass v-model to value', () => {
-            const wrapper = mount(YTextarea, { props: { modelValue: 'Test text' } })
+            const wrapper = mount(AltTextarea, { props: { modelValue: 'Test text' } })
 
-            const coreElement = wrapper.find(tagName).element as YCoreTextarea
+            const coreElement = wrapper.find(tagName).element as AltCoreTextarea
             expect(coreElement.value).toBe('Test text')
           })
 
           it('should update modelValue on input', () => {
-            const wrapper = mount(YTextarea, { props: { modelValue: '' } })
+            const wrapper = mount(AltTextarea, { props: { modelValue: '' } })
 
             wrapper.vm.$emit('update:modelValue', 'New value')
             expect(wrapper.emitted('update:modelValue')).toBeTruthy()
@@ -46,7 +46,7 @@ describe(
 
         describe('Events', () => {
           it('should emit focus events', () => {
-            const wrapper = mount(YTextarea)
+            const wrapper = mount(AltTextarea)
 
             wrapper.vm.$emit('focus', { detail: { event: new Event('focus') } })
             expect(wrapper.emitted('focus')).toBeTruthy()
@@ -56,7 +56,7 @@ describe(
           })
 
           it('should emit keydown events', () => {
-            const wrapper = mount(YTextarea)
+            const wrapper = mount(AltTextarea)
 
             wrapper.vm.$emit('keydown', { detail: { event: new KeyboardEvent('keydown'), code: 'KeyA' } })
             expect(wrapper.emitted('keydown')).toBeTruthy()
@@ -65,7 +65,7 @@ describe(
 
         describe('Props', () => {
           it('should apply the props', () => {
-            const wrapper = mount(YTextarea, {
+            const wrapper = mount(AltTextarea, {
               props: {
                 placeholder: 'Test placeholder',
                 disabled: true,
@@ -74,7 +74,7 @@ describe(
               },
             })
 
-            const coreElement = wrapper.find(tagName).element as YCoreTextarea
+            const coreElement = wrapper.find(tagName).element as AltCoreTextarea
             expect(coreElement.placeholder).toBe('Test placeholder')
             expect(coreElement.disabled).toBe(true)
             expect(coreElement.rows).toBe(5)
@@ -84,7 +84,7 @@ describe(
 
         describe('Slots', () => {
           it('should render the slots', () => {
-            const wrapper = mount(YTextarea, {
+            const wrapper = mount(AltTextarea, {
               slots: {
                 before: 'Before content',
                 after: 'After content',

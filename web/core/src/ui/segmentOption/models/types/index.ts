@@ -1,19 +1,19 @@
 import {
   createCoreSegmentOptionInternalProps,
-  type IYCoreSegmentOptionInternalProps,
+  type IAltCoreSegmentOptionInternalProps,
 } from './internal'
 import {
   createCoreSegmentOptionExternalProps,
-  type IYCoreSegmentOptionExternalProps,
+  type IAltCoreSegmentOptionExternalProps,
 } from './external'
 
 export * from './events'
 export * from './internal'
 export * from './external'
 
-export interface IYCoreSegmentOptionProps extends IYCoreSegmentOptionInternalProps, IYCoreSegmentOptionExternalProps {}
+export interface IAltCoreSegmentOptionProps extends IAltCoreSegmentOptionInternalProps, IAltCoreSegmentOptionExternalProps {}
 
-export const createCoreSegmentOptionProps = (): IYCoreSegmentOptionProps => ({
+export const createCoreSegmentOptionProps = (): IAltCoreSegmentOptionProps => ({
   ...createCoreSegmentOptionInternalProps(),
   ...createCoreSegmentOptionExternalProps(),
 })

@@ -1,6 +1,6 @@
 import {
   createCoreFieldTextareaProps,
-  type IYCoreFieldTextareaProps,
+  type IAltCoreFieldTextareaProps,
   type InputEvent,
   type FocusEvent,
   type BlurEvent,
@@ -8,28 +8,28 @@ import {
 } from '~core/ui/fieldTextarea/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreFieldTextareaProps extends Omit<IYCoreFieldTextareaProps, 'value'> {
-  modelValue?: IYCoreFieldTextareaProps['value']
+export interface IAltVueCoreFieldTextareaProps extends Omit<IAltCoreFieldTextareaProps, 'value'> {
+  modelValue?: IAltCoreFieldTextareaProps['value']
 }
 
-export interface IYVueFieldTextareaProps {
-  disabled?: IYVueCoreFieldTextareaProps['disabled']
-  size?: IYVueCoreFieldTextareaProps['size']
-  readonly?: IYVueCoreFieldTextareaProps['readonly']
-  modelValue?: IYVueCoreFieldTextareaProps['modelValue']
-  name?: IYVueCoreFieldTextareaProps['name']
-  placeholder?: IYVueCoreFieldTextareaProps['placeholder']
-  required?: IYVueCoreFieldTextareaProps['required']
-  maxlength?: IYVueCoreFieldTextareaProps['maxlength']
-  autofocus?: IYVueCoreFieldTextareaProps['autofocus']
-  rows?: IYVueCoreFieldTextareaProps['rows']
-  resize?: IYVueCoreFieldTextareaProps['resize']
-  hideSpaceLeft?: IYVueCoreFieldTextareaProps['hideSpaceLeft']
-  hideSpaceRight?: IYVueCoreFieldTextareaProps['hideSpaceRight']
-  autocomplete?: IYVueCoreFieldTextareaProps['autocomplete']
+export interface IAltVueFieldTextareaProps {
+  disabled?: IAltVueCoreFieldTextareaProps['disabled']
+  size?: IAltVueCoreFieldTextareaProps['size']
+  readonly?: IAltVueCoreFieldTextareaProps['readonly']
+  modelValue?: IAltVueCoreFieldTextareaProps['modelValue']
+  name?: IAltVueCoreFieldTextareaProps['name']
+  placeholder?: IAltVueCoreFieldTextareaProps['placeholder']
+  required?: IAltVueCoreFieldTextareaProps['required']
+  maxlength?: IAltVueCoreFieldTextareaProps['maxlength']
+  autofocus?: IAltVueCoreFieldTextareaProps['autofocus']
+  rows?: IAltVueCoreFieldTextareaProps['rows']
+  resize?: IAltVueCoreFieldTextareaProps['resize']
+  hideSpaceLeft?: IAltVueCoreFieldTextareaProps['hideSpaceLeft']
+  hideSpaceRight?: IAltVueCoreFieldTextareaProps['hideSpaceRight']
+  autocomplete?: IAltVueCoreFieldTextareaProps['autocomplete']
 }
 
-export const createVueFieldTextareaProps = (): TDefinedVueProps<IYVueFieldTextareaProps> => {
+export const createVueFieldTextareaProps = (): TDefinedVueProps<IAltVueFieldTextareaProps> => {
   const { disabled, size, readonly, value: modelValue, name, placeholder, required, maxlength, autofocus, rows, resize, hideSpaceLeft, hideSpaceRight, autocomplete } = createCoreFieldTextareaProps()
 
   return {
@@ -50,7 +50,7 @@ export const createVueFieldTextareaProps = (): TDefinedVueProps<IYVueFieldTextar
   }
 }
 
-export interface IYVueFieldTextareaEmits {
+export interface IAltVueFieldTextareaEmits {
   (e: 'update:modelValue', value: InputEvent['detail']['value']): void
   (e: 'focus', event: FocusEvent): void
   (e: 'blur', event: BlurEvent): void

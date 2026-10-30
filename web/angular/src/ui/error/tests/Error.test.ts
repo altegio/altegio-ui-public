@@ -2,24 +2,24 @@ import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
 import { text } from '~shared/tests/slotContents'
-import { YCoreErrorTagName } from '~shared/constants'
-import { YError } from '~ng/ui/error'
+import { AltCoreErrorTagName } from '~shared/constants'
+import { AltError } from '~ng/ui/error'
 
 import {
-  type IYNgErrorProps,
+  type IAltNgErrorProps,
 } from '~ng/ui/error/models/types'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgErrorProps>
+  props?: Partial<IAltNgErrorProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YError] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltError] }).compileComponents()
 
   @Component({
-    template: '<YError [errors]="errors" />',
-    imports: [YError],
+    template: '<AltError [errors]="errors" />',
+    imports: [AltError],
     standalone: true,
   })
   class TestComponent {
@@ -28,10 +28,10 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
   return TestComponent
 }
 
-const tagName = YCoreErrorTagName
+const tagName = AltCoreErrorTagName
 
 describe(
-  'Angular/YError',
+  'Angular/AltError',
   () => {
     describe(
       'Props',

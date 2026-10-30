@@ -1,3 +1,3 @@
-export interface IYCoreTagInternalProps {}
+export interface IAltCoreTagInternalProps {}
 
-export const createCoreTagInternalProps = (): IYCoreTagInternalProps => ({ })
+export const createCoreTagInternalProps = (): IAltCoreTagInternalProps => ({ })

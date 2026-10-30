@@ -3,25 +3,25 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 
 import {
   createCoreTableCellProps,
-  type IYCoreTableCellProps,
+  type IAltCoreTableCellProps,
   ETableCellAlign,
 } from '../models/types'
 import {
-  YCoreTableCellTagName as tagName,
+  AltCoreTableCellTagName as tagName,
 } from '~shared/constants'
 import { storyControlsTable, getComponentStateTable } from '~shared/.storybook/tables'
-import yCoreTextStoryMeta from '~core/ui/text/stories/Text.stories'
+import altCoreTextStoryMeta from '~core/ui/text/stories/Text.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
 import '~core/ui/tableCell'
 
 const { sticky, align, disabled, bordered } = createCoreTableCellProps()
 
-export interface IYCoreTableCellStorySlots {
+export interface IAltCoreTableCellStorySlots {
   showCellSlot: boolean
 }
 
-export type TYCoreTableCellMeta = IYCoreTableCellProps & IYCoreTableCellStorySlots
+export type TAltCoreTableCellMeta = IAltCoreTableCellProps & IAltCoreTableCellStorySlots
 
 const storyItem = {
   id: '1',
@@ -32,7 +32,7 @@ const storyItemLabel = 'label'
 /**
  * ## Core TableCell
  */
-const meta: Meta<TYCoreTableCellMeta> = {
+const meta: Meta<TAltCoreTableCellMeta> = {
   title: 'TableCell',
   id: 'tableCell',
   parameters: { controls: { sort: 'alpha' } },
@@ -53,7 +53,7 @@ const meta: Meta<TYCoreTableCellMeta> = {
     showCellSlot,
   }) => {
     return html`
-      <y-core-table-cell
+      <alt-core-table-cell
         .sticky=${sticky}
         .align=${align}
         .item=${item}
@@ -71,7 +71,7 @@ const meta: Meta<TYCoreTableCellMeta> = {
           `
           : ''
         }
-      </y-core-table-cell>
+      </alt-core-table-cell>
     `
   },
   argTypes: {
@@ -106,8 +106,8 @@ const meta: Meta<TYCoreTableCellMeta> = {
       description: 'Disable the cell',
       ...getComponentStateTable(disabled),
     },
-    ellipsis: yCoreTextStoryMeta.argTypes?.ellipsis,
-    lineclamp: yCoreTextStoryMeta.argTypes?.lineclamp,
+    ellipsis: altCoreTextStoryMeta.argTypes?.ellipsis,
+    lineclamp: altCoreTextStoryMeta.argTypes?.lineclamp,
 
     // Story Controls
     showCellSlot: {
@@ -123,13 +123,13 @@ const meta: Meta<TYCoreTableCellMeta> = {
     item: storyItem,
     itemLabel: storyItemLabel,
     disabled,
-    ellipsis: yCoreTextStoryMeta.args?.ellipsis,
-    lineclamp: yCoreTextStoryMeta.args?.lineclamp,
+    ellipsis: altCoreTextStoryMeta.args?.ellipsis,
+    lineclamp: altCoreTextStoryMeta.args?.lineclamp,
     showCellSlot: false,
   },
-} satisfies Meta<TYCoreTableCellMeta>
+} satisfies Meta<TAltCoreTableCellMeta>
 
 export default meta
-type Story = StoryObj<TYCoreTableCellMeta>
+type Story = StoryObj<TAltCoreTableCellMeta>
 
 export const Playground: Story = { args: {} }

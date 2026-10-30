@@ -12,13 +12,13 @@ import {
   type RenderEvent,
 } from '~core/ui/fieldTextarea/models/types'
 
-import { YFieldTextarea } from '~vue/ui/fieldTextarea'
-import { type IYVueFieldTextareaProps } from '~vue/ui/fieldTextarea/models/types'
-import yCoreFieldTextareaStoryMeta, { type TYCoreFieldTextareaMeta } from '~core/ui/fieldTextarea/stories/FieldTextarea.stories'
+import { AltFieldTextarea } from '~vue/ui/fieldTextarea'
+import { type IAltVueFieldTextareaProps } from '~vue/ui/fieldTextarea/models/types'
+import altCoreFieldTextareaStoryMeta, { type TAltCoreFieldTextareaMeta } from '~core/ui/fieldTextarea/stories/FieldTextarea.stories'
 
-type TVueFieldTextareaStoryMeta = IYVueFieldTextareaProps & TYCoreFieldTextareaMeta & {
-  modelValue: TYCoreFieldTextareaMeta['value']
-  onUpdateModelValue: TYCoreFieldTextareaMeta['onInput']
+type TVueFieldTextareaStoryMeta = IAltVueFieldTextareaProps & TAltCoreFieldTextareaMeta & {
+  modelValue: TAltCoreFieldTextareaMeta['value']
+  onUpdateModelValue: TAltCoreFieldTextareaMeta['onInput']
 }
 
 /**
@@ -57,7 +57,7 @@ const meta: Meta<TVueFieldTextareaStoryMeta> = {
     }
 
     return {
-      components: { YFieldTextarea },
+      components: { AltFieldTextarea },
       setup() {
         const vModelValue = computed({
           get: () => args.modelValue,
@@ -67,7 +67,7 @@ const meta: Meta<TVueFieldTextareaStoryMeta> = {
         return { args, vModelValue, handleBlur, handleFocus, handleKeydown, handleRender }
       },
       template: `
-        <YFieldTextarea
+        <AltFieldTextarea
           v-bind="args"
           v-model="vModelValue"
           style="border: 1px dashed;"
@@ -75,19 +75,19 @@ const meta: Meta<TVueFieldTextareaStoryMeta> = {
           @focus="handleFocus"
           @keydown="handleKeydown"
           @render="handleRender"
-        ></YFieldTextarea>
+        ></AltFieldTextarea>
       `,
     }
   },
   argTypes: {
-    ...omit(yCoreFieldTextareaStoryMeta.argTypes ?? {}, ['value', 'onInput']),
-    modelValue: yCoreFieldTextareaStoryMeta.argTypes?.value,
-    onUpdateModelValue: yCoreFieldTextareaStoryMeta.argTypes?.onInput,
+    ...omit(altCoreFieldTextareaStoryMeta.argTypes ?? {}, ['value', 'onInput']),
+    modelValue: altCoreFieldTextareaStoryMeta.argTypes?.value,
+    onUpdateModelValue: altCoreFieldTextareaStoryMeta.argTypes?.onInput,
   },
   args: {
-    ...omit(yCoreFieldTextareaStoryMeta.args ?? {}, ['value', 'onInput', 'onBlur', 'onFocus', 'onKeydown', 'onRender']),
-    modelValue: yCoreFieldTextareaStoryMeta.args?.value,
-    onUpdateModelValue: yCoreFieldTextareaStoryMeta.args?.onInput,
+    ...omit(altCoreFieldTextareaStoryMeta.args ?? {}, ['value', 'onInput', 'onBlur', 'onFocus', 'onKeydown', 'onRender']),
+    modelValue: altCoreFieldTextareaStoryMeta.args?.value,
+    onUpdateModelValue: altCoreFieldTextareaStoryMeta.args?.onInput,
   },
 }
 

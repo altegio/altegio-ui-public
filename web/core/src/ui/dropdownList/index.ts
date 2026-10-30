@@ -1,1 +1,1 @@
-export { YCoreDropdownList } from './DropdownList.core'
+export { AltCoreDropdownList } from './DropdownList.core'

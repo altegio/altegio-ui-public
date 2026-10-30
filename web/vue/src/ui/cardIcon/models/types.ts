@@ -1,16 +1,16 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
-import { createCoreCardIconProps, type IYCoreCardIconProps } from '~core/ui/cardIcon/models/types'
+import { createCoreCardIconProps, type IAltCoreCardIconProps } from '~core/ui/cardIcon/models/types'
 
-export interface IYVueCoreCardIconProps extends IYCoreCardIconProps {}
+export interface IAltVueCoreCardIconProps extends IAltCoreCardIconProps {}
 
-export interface IYVueCardIconProps {
-  icon: IYVueCoreCardIconProps['icon']
-  disabled?: IYVueCoreCardIconProps['disabled']
-  size?: IYVueCoreCardIconProps['size']
-  variant?: IYVueCoreCardIconProps['variant']
+export interface IAltVueCardIconProps {
+  icon: IAltVueCoreCardIconProps['icon']
+  disabled?: IAltVueCoreCardIconProps['disabled']
+  size?: IAltVueCoreCardIconProps['size']
+  variant?: IAltVueCoreCardIconProps['variant']
 }
 
-export const createVueCardIconProps = (): TDefinedVueProps<IYVueCardIconProps> => {
+export const createVueCardIconProps = (): TDefinedVueProps<IAltVueCardIconProps> => {
   const { disabled, size, variant } = createCoreCardIconProps()
 
   return {

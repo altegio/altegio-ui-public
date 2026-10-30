@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest'
-import { YCoreDropdownListTagName } from '~shared/constants'
+import { AltCoreDropdownListTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import {
   createCoreDropdownListProps,
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from './cases/css'
 
-const tagName = YCoreDropdownListTagName
+const tagName = AltCoreDropdownListTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YDropdownList/CSS',
+  'Core/AltDropdownList/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

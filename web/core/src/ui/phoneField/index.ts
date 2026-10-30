@@ -1,1 +1,1 @@
-export { YCorePhoneField } from './PhoneField.core'
+export { AltCorePhoneField } from './PhoneField.core'

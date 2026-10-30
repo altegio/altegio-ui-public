@@ -1,10 +1,10 @@
 import {
   createCoreDropdownListProps,
-  type IYCoreDropdownListProps,
+  type IAltCoreDropdownListProps,
 } from '~core/ui/dropdownList/models/types'
 
-export { ItemClickEvent as YNgDropdownListItemClickEvent } from '~core/ui/dropdownList/models/types/events'
+export { ItemClickEvent as AltNgDropdownListItemClickEvent } from '~core/ui/dropdownList/models/types/events'
 
-export interface IYNgDropdownListProps extends IYCoreDropdownListProps {}
+export interface IAltNgDropdownListProps extends IAltCoreDropdownListProps {}
 
-export const createNgDropdownListProps = (): IYNgDropdownListProps => createCoreDropdownListProps()
+export const createNgDropdownListProps = (): IAltNgDropdownListProps => createCoreDropdownListProps()

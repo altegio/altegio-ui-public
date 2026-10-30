@@ -5,40 +5,40 @@ import { provide } from '@lit/context'
 
 import {
   createCoreTableProps,
-  type IYCoreTableProps,
+  type IAltCoreTableProps,
 } from '~core/ui/table/models/types'
 import {
-  YCoreTableTagName as tagName,
+  AltCoreTableTagName as tagName,
 } from '~shared/constants'
 import { booleanConverter } from '~core/utils/converters'
 
 import { pluginsContextCreated, installPlugins, uninstallPlugins } from './plugins/context'
 
-import YCoreTableVarsCss from '~core/ui/table/css/Table.vars.css?inline'
-import YCoreTableScopedCss from '~core/ui/table/css/Table.scoped.css?inline'
+import AltCoreTableVarsCss from '~core/ui/table/css/Table.vars.css?inline'
+import AltCoreTableScopedCss from '~core/ui/table/css/Table.scoped.css?inline'
 import { withLocator } from '~core/utils/locator'
 
 const { loading, disabled, plugins, hideHead, hideBar } = createCoreTableProps()
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreTable
+export class AltCoreTable
   extends LitElement
-  implements IYCoreTableProps {
-  @property({ type: Boolean, converter: booleanConverter, attribute: 'loading' }) loading: IYCoreTableProps['loading'] = loading
-  @property({ type: Boolean }) disabled: IYCoreTableProps['disabled'] = disabled
-  @property({ type: Boolean, converter: booleanConverter, attribute: 'hide-head' }) hideHead: IYCoreTableProps['hideHead'] = hideHead
-  @property({ type: Boolean, converter: booleanConverter, attribute: 'hide-bar' }) hideBar: IYCoreTableProps['hideBar'] = hideBar
+  implements IAltCoreTableProps {
+  @property({ type: Boolean, converter: booleanConverter, attribute: 'loading' }) loading: IAltCoreTableProps['loading'] = loading
+  @property({ type: Boolean }) disabled: IAltCoreTableProps['disabled'] = disabled
+  @property({ type: Boolean, converter: booleanConverter, attribute: 'hide-head' }) hideHead: IAltCoreTableProps['hideHead'] = hideHead
+  @property({ type: Boolean, converter: booleanConverter, attribute: 'hide-bar' }) hideBar: IAltCoreTableProps['hideBar'] = hideBar
 
   @provide({ context: pluginsContextCreated })
-  @property({ type: Object }) plugins: IYCoreTableProps['plugins'] = plugins
+  @property({ type: Object }) plugins: IAltCoreTableProps['plugins'] = plugins
 
   private readonly baseClass = tagName
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreTableVarsCss)}
-      ${unsafeCSS(YCoreTableScopedCss)}
+      ${unsafeCSS(AltCoreTableVarsCss)}
+      ${unsafeCSS(AltCoreTableScopedCss)}
     `,
   ]
 

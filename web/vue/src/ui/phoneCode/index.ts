@@ -1,2 +1,2 @@
-export { default as YPhoneCode } from './PhoneCode.vue'
+export { default as AltPhoneCode } from './PhoneCode.vue'
 export type * from './models/types'

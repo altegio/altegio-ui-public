@@ -1,23 +1,23 @@
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 
 import {
-  YCoreErrorTagName,
-  YCoreFieldInputTagName,
-  YCorePhoneFieldTagName,
-  YCoreDropdownCellTagName,
-  YCoreDropdownCellTextTagName,
-  YCoreAnnotationTagName,
-  YCoreDropdownListTagName,
-  YCorePhoneCodeTagName,
-  YCoreFieldWrapperTagName,
-  YCoreLabelTagName,
+  AltCoreErrorTagName,
+  AltCoreFieldInputTagName,
+  AltCorePhoneFieldTagName,
+  AltCoreDropdownCellTagName,
+  AltCoreDropdownCellTextTagName,
+  AltCoreAnnotationTagName,
+  AltCoreDropdownListTagName,
+  AltCorePhoneCodeTagName,
+  AltCoreFieldWrapperTagName,
+  AltCoreLabelTagName,
 } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot } from '~shared/tests/utils'
 import '~core/ui/phoneField'
 import type {
-  TYCorePhoneFieldAutocompleteOption,
-  TYCorePhoneFieldInfoWithMeta,
+  TAltCorePhoneFieldAutocompleteOption,
+  TAltCorePhoneFieldInfoWithMeta,
 } from '~core/ui/phoneField/models/types'
 import {
   createCorePhoneFieldProps,
@@ -43,9 +43,9 @@ import {
 } from '~core/ui/phoneField/tests/cases/props'
 import { defaultCountriesData } from '~shared/utils/countries'
 import { en, type ILocale } from '~core/i18n'
-import type { YCoreDropdownCellText } from '~core/ui/dropdownCellText'
+import type { AltCoreDropdownCellText } from '~core/ui/dropdownCellText'
 
-const tagName = YCorePhoneFieldTagName
+const tagName = AltCorePhoneFieldTagName
 
 const {
   component,
@@ -58,7 +58,7 @@ const {
   createCorePhoneFieldProps(),
 )
 
-type TSubComponent = typeof YCoreFieldInputTagName | typeof YCoreAnnotationTagName | typeof YCoreErrorTagName | typeof YCoreDropdownListTagName | typeof YCoreDropdownCellTagName | typeof YCorePhoneCodeTagName | typeof YCoreFieldWrapperTagName | typeof YCoreLabelTagName
+type TSubComponent = typeof AltCoreFieldInputTagName | typeof AltCoreAnnotationTagName | typeof AltCoreErrorTagName | typeof AltCoreDropdownListTagName | typeof AltCoreDropdownCellTagName | typeof AltCorePhoneCodeTagName | typeof AltCoreFieldWrapperTagName | typeof AltCoreLabelTagName
 
 const getSubWC = <T extends TSubComponent>(primaryWC: HTMLElement, secondaryWC: T) => {
   const subWC = getWCShadowRoot(primaryWC).querySelector(secondaryWC)
@@ -71,7 +71,7 @@ const callHandleInputEvent = async(searchPhone = searchNumberValue) => {
 
   const inputField = getSubWC(
     component,
-    YCoreFieldInputTagName,
+    AltCoreFieldInputTagName,
   )
 
   const fieldInputEvent = new CustomEvent(
@@ -85,7 +85,7 @@ const callHandleInputEvent = async(searchPhone = searchNumberValue) => {
 }
 
 describe(
-  'Core/YCorePhoneField/Unit',
+  'Core/AltCorePhoneField/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -144,7 +144,7 @@ describe(
 
               const inputField = getSubWC(
                 component,
-                YCoreFieldInputTagName,
+                AltCoreFieldInputTagName,
               )
 
               expect(inputField[prop]).toBe(value)
@@ -163,7 +163,7 @@ describe(
 
               const inputField = getSubWC(
                 component,
-                YCoreFieldWrapperTagName,
+                AltCoreFieldWrapperTagName,
               )
 
               expect(inputField[prop]).toBe(value)
@@ -180,14 +180,14 @@ describe(
               if (value) {
                 const labelElement = getSubWC(
                   component,
-                  YCoreLabelTagName,
+                  AltCoreLabelTagName,
                 )
                 expect(labelElement[labelProp]).toBe(value)
               } else {
                 expect(() => getSubWC(
                   component,
-                  YCoreLabelTagName,
-                )).toThrow(`${YCoreLabelTagName} not found`)
+                  AltCoreLabelTagName,
+                )).toThrow(`${AltCoreLabelTagName} not found`)
               }
             },
           )
@@ -206,7 +206,7 @@ describe(
 
               const labelElement = getSubWC(
                 component,
-                YCoreLabelTagName,
+                AltCoreLabelTagName,
               )
 
               expect(labelElement[labelProp]).toBe(value)
@@ -222,17 +222,17 @@ describe(
 
               const inputFieldElement = getSubWC(
                 component,
-                YCoreFieldInputTagName,
+                AltCoreFieldInputTagName,
               )
 
               const annotationElement = getSubWC(
                 component,
-                YCoreAnnotationTagName,
+                AltCoreAnnotationTagName,
               )
 
               const labelElement = getSubWC(
                 component,
-                YCoreLabelTagName,
+                AltCoreLabelTagName,
               )
 
               expect(labelElement.disabled).toBe(value)
@@ -251,14 +251,14 @@ describe(
               if (value?.length) {
                 const errorElement = getSubWC(
                   component,
-                  YCoreErrorTagName,
+                  AltCoreErrorTagName,
                 )
                 expect(errorElement.errors).toBe(value)
               } else {
                 expect(() => getSubWC(
                   component,
-                  YCoreErrorTagName,
-                )).toThrow(`${YCoreErrorTagName} not found`)
+                  AltCoreErrorTagName,
+                )).toThrow(`${AltCoreErrorTagName} not found`)
               }
             },
           )
@@ -272,7 +272,7 @@ describe(
 
               const annotationElement = getSubWC(
                 component,
-                YCoreAnnotationTagName,
+                AltCoreAnnotationTagName,
               )
 
               expect(annotationElement[annotationProp]).toBe(value)
@@ -290,7 +290,7 @@ describe(
               await callHandleInputEvent()
 
               if (value) {
-                const dropdownList = getWCShadowRoot(component).querySelector(YCoreDropdownListTagName)
+                const dropdownList = getWCShadowRoot(component).querySelector(AltCoreDropdownListTagName)
                 expect(dropdownList).toBeNull()
                 expect(handleSearch).not.toHaveBeenCalled()
               } else {
@@ -312,7 +312,7 @@ describe(
               if (searchPhone.length >= Number(value)) {
                 expect(handleSearch).toHaveBeenCalled()
               } else {
-                const dropdownList = getWCShadowRoot(component).querySelector(YCoreDropdownListTagName)
+                const dropdownList = getWCShadowRoot(component).querySelector(AltCoreDropdownListTagName)
                 expect(dropdownList).toBeNull()
                 expect(handleSearch).not.toHaveBeenCalled()
               }
@@ -326,7 +326,7 @@ describe(
             async() => {
               await updateComponent({ props: { [prop]: value } })
 
-              const phoneCode = getWCShadowRoot(component).querySelector(YCorePhoneCodeTagName)
+              const phoneCode = getWCShadowRoot(component).querySelector(AltCorePhoneCodeTagName)
 
               if (value) {
                 expect(phoneCode).toBeNull()
@@ -345,7 +345,7 @@ describe(
 
               await callHandleInputEvent()
 
-              const dropdownList = getWCShadowRoot(component).querySelector(YCoreDropdownListTagName)
+              const dropdownList = getWCShadowRoot(component).querySelector(AltCoreDropdownListTagName)
 
               if (value) {
                 expect(dropdownList).not.toBeNull()
@@ -362,7 +362,7 @@ describe(
             async() => {
               await updateComponent({ props: { [prop]: value } })
 
-              const phoneCode = getSubWC(component, YCorePhoneCodeTagName)
+              const phoneCode = getSubWC(component, AltCorePhoneCodeTagName)
 
               const firstCountryIdInList = parseInt(Object.keys(defaultCountriesData)[0], 10)
               const defaultCountry = value ? defaultCountriesData[value] : defaultCountriesData[firstCountryIdInList]
@@ -383,7 +383,7 @@ describe(
             () => {
               const inputField = getSubWC(
                 component,
-                YCoreFieldInputTagName,
+                AltCoreFieldInputTagName,
               )
 
               const handler = vi.fn()
@@ -397,7 +397,7 @@ describe(
               expect(handler).toHaveBeenCalledTimes(1)
 
               if (payload) {
-                expect(JSON.stringify((handler.mock.calls[0][0] as CustomEvent<TYCorePhoneFieldInfoWithMeta>).detail.meta.phoneBody)).toBe(JSON.stringify(payload.value))
+                expect(JSON.stringify((handler.mock.calls[0][0] as CustomEvent<TAltCorePhoneFieldInfoWithMeta>).detail.meta.phoneBody)).toBe(JSON.stringify(payload.value))
               }
             },
           )
@@ -409,7 +409,7 @@ describe(
 
               const fieldInputElement = getSubWC(
                 component,
-                YCoreFieldInputTagName,
+                AltCoreFieldInputTagName,
               )
 
               const handler = vi.fn()
@@ -431,7 +431,7 @@ describe(
             () => {
               const inputField = getSubWC(
                 component,
-                YCoreFieldWrapperTagName,
+                AltCoreFieldWrapperTagName,
               )
 
               const handler = vi.fn()
@@ -445,7 +445,7 @@ describe(
               expect(handler).toHaveBeenCalledTimes(1)
 
               if (payload) {
-                expect(JSON.stringify((handler.mock.calls[0][0] as CustomEvent<TYCorePhoneFieldInfoWithMeta>).detail.meta.phoneBody)).toBe(JSON.stringify(payload.value))
+                expect(JSON.stringify((handler.mock.calls[0][0] as CustomEvent<TAltCorePhoneFieldInfoWithMeta>).detail.meta.phoneBody)).toBe(JSON.stringify(payload.value))
               }
             },
           )
@@ -457,7 +457,7 @@ describe(
 
               const fieldWrapperElement = getSubWC(
                 component,
-                YCoreFieldWrapperTagName,
+                AltCoreFieldWrapperTagName,
               )
 
               const handler = vi.fn()
@@ -485,12 +485,12 @@ describe(
 
             await callHandleInputEvent()
 
-            const dropdownListItem = getSubWC(component, YCoreDropdownCellTagName)
+            const dropdownListItem = getSubWC(component, AltCoreDropdownCellTagName)
 
             await userEvent.click(dropdownListItem)
             expect(handler).toHaveBeenCalled()
 
-            expect(JSON.stringify((handler.mock.calls[0][0] as CustomEvent<TYCorePhoneFieldAutocompleteOption>).detail)).toBe(JSON.stringify(autocompleteOptions[0]))
+            expect(JSON.stringify((handler.mock.calls[0][0] as CustomEvent<TAltCorePhoneFieldAutocompleteOption>).detail)).toBe(JSON.stringify(autocompleteOptions[0]))
           },
         )
       },
@@ -513,11 +513,11 @@ describe(
 
           try {
             await phoneField.updateComplete
-            getSubWC(phoneField, YCorePhoneCodeTagName).click()
+            getSubWC(phoneField, AltCorePhoneCodeTagName).click()
 
             return await vi.waitFor(() => {
               const cellText = getWCShadowRoot(phoneField)
-                .querySelector<YCoreDropdownCellText>(`[locator="${YCoreDropdownCellTagName}_${latviaId}"] ${YCoreDropdownCellTextTagName}`)
+                .querySelector<AltCoreDropdownCellText>(`[locator="${AltCoreDropdownCellTagName}_${latviaId}"] ${AltCoreDropdownCellTextTagName}`)
               const label = cellText?.label ?? ''
               if (!label.includes('(') || label.endsWith('()')) throw new Error('Country names are not loaded')
 

@@ -1,20 +1,20 @@
 import {
   createCoreFieldAvatarProps,
-  type IYCoreFieldAvatarProps,
+  type IAltCoreFieldAvatarProps,
 } from '~core/ui/fieldAvatar/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreFieldAvatarProps extends IYCoreFieldAvatarProps {}
+export interface IAltVueCoreFieldAvatarProps extends IAltCoreFieldAvatarProps {}
 
-export interface IYVueFieldAvatarProps {
-  photo?: IYVueCoreFieldAvatarProps['photo']
-  initials?: IYVueCoreFieldAvatarProps['initials']
-  icon?: IYVueCoreFieldAvatarProps['icon']
-  disabled?: IYVueCoreFieldAvatarProps['disabled']
-  size?: IYVueCoreFieldAvatarProps['size']
+export interface IAltVueFieldAvatarProps {
+  photo?: IAltVueCoreFieldAvatarProps['photo']
+  initials?: IAltVueCoreFieldAvatarProps['initials']
+  icon?: IAltVueCoreFieldAvatarProps['icon']
+  disabled?: IAltVueCoreFieldAvatarProps['disabled']
+  size?: IAltVueCoreFieldAvatarProps['size']
 }
 
-export const createVueFieldAvatarProps = (): TDefinedVueProps<IYVueFieldAvatarProps> => {
+export const createVueFieldAvatarProps = (): TDefinedVueProps<IAltVueFieldAvatarProps> => {
   const { photo, initials, icon, disabled, size } = createCoreFieldAvatarProps()
   return {
     photo,

@@ -1,25 +1,25 @@
-import { EYSizes, type TYSizes } from '~shared/types/global'
+import { EAltSizes, type TAltSizes } from '~shared/types/global'
 
-export type TYCoreLoaderSize = Extract<
-  TYSizes, 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large'
+export type TAltCoreLoaderSize = Extract<
+  TAltSizes, 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large'
 >
 
-export enum EYCoreLoaderVariant {
+export enum EAltCoreLoaderVariant {
   BLACK = 'black',
   WHITE = 'white',
   YELLOW = 'yellow',
 }
 
-export type TYCoreLoaderVariant = `${EYCoreLoaderVariant}`
+export type TAltCoreLoaderVariant = `${EAltCoreLoaderVariant}`
 
-export interface IYCoreLoaderExternalProps {
-  size: TYCoreLoaderSize | undefined
-  variant: TYCoreLoaderVariant | undefined
+export interface IAltCoreLoaderExternalProps {
+  size: TAltCoreLoaderSize | undefined
+  variant: TAltCoreLoaderVariant | undefined
 }
 
-export const createCoreLoaderExternalProps = (): IYCoreLoaderExternalProps => {
+export const createCoreLoaderExternalProps = (): IAltCoreLoaderExternalProps => {
   return {
-    size: EYSizes.SMALL,
-    variant: EYCoreLoaderVariant.BLACK,
+    size: EAltSizes.SMALL,
+    variant: EAltCoreLoaderVariant.BLACK,
   }
 }

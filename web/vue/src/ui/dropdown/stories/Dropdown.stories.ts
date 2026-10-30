@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { shallowRef, ref } from 'vue'
 
-import { YDropdown } from '~vue/ui/dropdown'
-import yCoreDropdownStoryMeta from '~core/ui/dropdown/stories/Dropdown.stories'
-import { type IYVueDropdownProps } from '~vue/ui/dropdown/models/types'
+import { AltDropdown } from '~vue/ui/dropdown'
+import altCoreDropdownStoryMeta from '~core/ui/dropdown/stories/Dropdown.stories'
+import { type IAltVueDropdownProps } from '~vue/ui/dropdown/models/types'
 
-type TVueDropdownStoryMeta = IYVueDropdownProps
+type TVueDropdownStoryMeta = IAltVueDropdownProps
 
 /**
  * Vue wrapper for DropdownCell
@@ -19,10 +19,10 @@ const meta: Meta<TVueDropdownStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YDropdown },
+    components: { AltDropdown },
     setup() {
       const show = ref(true)
-      return { args, cachedDropdown: shallowRef(YDropdown), show }
+      return { args, cachedDropdown: shallowRef(AltDropdown), show }
     },
     template: `
       <button @click="show = !show">show</button>
@@ -50,8 +50,8 @@ const meta: Meta<TVueDropdownStoryMeta> = {
       </keep-alive>
     `,
   }),
-  argTypes: { ...yCoreDropdownStoryMeta.argTypes },
-  args: { ...yCoreDropdownStoryMeta.args },
+  argTypes: { ...altCoreDropdownStoryMeta.argTypes },
+  args: { ...altCoreDropdownStoryMeta.args },
 }
 
 export default meta

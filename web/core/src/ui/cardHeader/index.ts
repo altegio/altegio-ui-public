@@ -1,1 +1,1 @@
-export { YCoreCardHeader } from './CardHeader.core'
+export { AltCoreCardHeader } from './CardHeader.core'

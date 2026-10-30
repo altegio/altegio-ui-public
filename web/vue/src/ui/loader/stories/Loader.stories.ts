@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import yLoaderStoryMeta from '~core/ui/loader/stories/Loader.stories'
-import { YLoader } from '~vue/ui/loader'
-import { type IYVueLoaderProps } from '~vue/ui/loader/models/types'
+import altLoaderStoryMeta from '~core/ui/loader/stories/Loader.stories'
+import { AltLoader } from '~vue/ui/loader'
+import { type IAltVueLoaderProps } from '~vue/ui/loader/models/types'
 
-type TVueLoaderStoryMeta = IYVueLoaderProps
+type TVueLoaderStoryMeta = IAltVueLoaderProps
 
 /**
  * Vue wrapper for Core Loader
@@ -18,16 +18,16 @@ const meta: Meta<TVueLoaderStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YLoader },
+    components: { AltLoader },
     setup() {
       return { args }
     },
     template: `
-      <YLoader v-bind="args"></YLoader>
+      <AltLoader v-bind="args"></AltLoader>
     `,
   }),
-  argTypes: yLoaderStoryMeta.argTypes,
-  args: yLoaderStoryMeta.args,
+  argTypes: altLoaderStoryMeta.argTypes,
+  args: altLoaderStoryMeta.args,
 }
 
 export default meta

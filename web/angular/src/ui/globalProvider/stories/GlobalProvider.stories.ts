@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common'
 import { fn } from 'storybook/test'
 import { omit } from 'radash'
 
-import { YGlobalProvider } from '../GlobalProvider.component'
-import yGlobalProviderStoryMeta from '~core/ui/globalProvider/stories/GlobalProvider.stories'
+import { AltGlobalProvider } from '../GlobalProvider.component'
+import altGlobalProviderStoryMeta from '~core/ui/globalProvider/stories/GlobalProvider.stories'
 import { TestConsumer } from './TestConsumer.component'
 import { I18nConsumer } from './I18nConsumer.component'
 import { QueuePlugin } from '~core/ui/globalProvider/plugins/queue'
@@ -14,11 +14,11 @@ import { en } from '~core/i18n'
 /**
  * Angular wrapper for GlobalProvider
  */
-const meta: Meta<YGlobalProvider> = {
+const meta: Meta<AltGlobalProvider> = {
   title: '🔍 GlobalProvider',
   id: 'globalProvider',
   parameters: { controls: { sort: 'alpha' } },
-  component: YGlobalProvider,
+  component: AltGlobalProvider,
   tags: [
     'angular',
     'autodocs',
@@ -33,16 +33,16 @@ const meta: Meta<YGlobalProvider> = {
       ],
     },
     template: `
-      <YGlobalProvider [plugins]="plugins" (ready)="ready">
+      <AltGlobalProvider [plugins]="plugins" (ready)="ready">
         <TestConsumer />
         
         <I18nConsumer />
-      </YGlobalProvider>`,
+      </AltGlobalProvider>`,
   }),
   argTypes: {},
   args: {
     ...omit(
-      yGlobalProviderStoryMeta.args ?? {},
+      altGlobalProviderStoryMeta.args ?? {},
       ['onReady'],
     ),
     ready: fn(),
@@ -61,9 +61,9 @@ const meta: Meta<YGlobalProvider> = {
       new I18nPlugin(en),
     ],
   },
-} satisfies Meta<YGlobalProvider>
+} satisfies Meta<AltGlobalProvider>
 
 export default meta
-type Story = StoryObj<YGlobalProvider>
+type Story = StoryObj<AltGlobalProvider>
 
 export const Playground: Story = { args: {} }

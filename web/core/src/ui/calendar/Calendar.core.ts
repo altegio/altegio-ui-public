@@ -11,13 +11,13 @@ import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
 import { SelectEvent, RangeStartEvent, RangeEndEvent } from './models/types/events'
 import {
   createCoreCalendarProps,
-  type IYCoreCalendarProps,
+  type IAltCoreCalendarProps,
 } from '~core/ui/calendar/models/types'
 import { getYearsList, getPrevMonthDays, getNextMonthDays, getCurrentMonthDays } from '~core/ui/calendar/utils/calendarLists'
 import {
-  YCoreCalendarTagName as tagName,
+  AltCoreCalendarTagName as tagName,
 } from '~shared/constants'
-import { yChevronLeft, yChevronRight, yChevronDown, yChevronUp } from '~shared/icons'
+import { altChevronLeft, altChevronRight, altChevronDown, altChevronUp } from '~shared/icons'
 
 import '~core/ui/text'
 import '~core/ui/dropdown'
@@ -25,36 +25,36 @@ import '~core/ui/dropdownList'
 import '~core/ui/button'
 import '~core/ui/iconButton'
 
-import type { YCoreDropdown } from '~core/ui/dropdown'
-import { EYCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
+import type { AltCoreDropdown } from '~core/ui/dropdown'
+import { EAltCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
 import type { VisibleEvent, ClickOutsideEvent } from '~core/ui/dropdown/models/types/events'
-import { EYCoreTextVariant, EYCoreTextSize } from '~core/ui/text/models/types/external'
+import { EAltCoreTextVariant, EAltCoreTextSize } from '~core/ui/text/models/types/external'
 import type { ItemClickEvent } from '~core/ui/dropdownList/models/types/events'
 import { LocalizedElement } from '~core/i18n/LocalizedElement'
 
-import YCalendarVarsCss from '~core/ui/calendar/css/Calendar.vars.css?inline'
-import YCalendarScopedCss from '~core/ui/calendar/css/Calendar.scoped.css?inline'
+import AltCalendarVarsCss from '~core/ui/calendar/css/Calendar.vars.css?inline'
+import AltCalendarScopedCss from '~core/ui/calendar/css/Calendar.scoped.css?inline'
 import { withLocator } from '~core/utils/locator'
 
 const { date, isRange, minDate, maxDate, disabled, headerSelectors } = createCoreCalendarProps()
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreCalendar
+export class AltCoreCalendar
   extends LocalizedElement
-  implements IYCoreCalendarProps {
-  @property() date: IYCoreCalendarProps['date'] = date
-  @property({ type: Boolean }) disabled: IYCoreCalendarProps['disabled'] = disabled
-  @property({ type: Boolean, attribute: 'is-range' }) isRange: IYCoreCalendarProps['isRange'] = isRange
-  @property({ type: String, attribute: 'min-date' }) minDate: IYCoreCalendarProps['minDate'] = minDate
-  @property({ type: String, attribute: 'max-date' }) maxDate: IYCoreCalendarProps['maxDate'] = maxDate
-  @property({ type: Boolean, attribute: 'header-selectors' }) headerSelectors: IYCoreCalendarProps['headerSelectors'] = headerSelectors
+  implements IAltCoreCalendarProps {
+  @property() date: IAltCoreCalendarProps['date'] = date
+  @property({ type: Boolean }) disabled: IAltCoreCalendarProps['disabled'] = disabled
+  @property({ type: Boolean, attribute: 'is-range' }) isRange: IAltCoreCalendarProps['isRange'] = isRange
+  @property({ type: String, attribute: 'min-date' }) minDate: IAltCoreCalendarProps['minDate'] = minDate
+  @property({ type: String, attribute: 'max-date' }) maxDate: IAltCoreCalendarProps['maxDate'] = maxDate
+  @property({ type: Boolean, attribute: 'header-selectors' }) headerSelectors: IAltCoreCalendarProps['headerSelectors'] = headerSelectors
 
   @state() private isMonthDropdownVisible = false
   @state() private isYearDropdownVisible = false
 
-  @query('y-core-dropdown:first-of-type') private monthDropdown?: YCoreDropdown
-  @query('y-core-dropdown:last-of-type') private yearDropdown?: YCoreDropdown
+  @query('alt-core-dropdown:first-of-type') private monthDropdown?: AltCoreDropdown
+  @query('alt-core-dropdown:last-of-type') private yearDropdown?: AltCoreDropdown
 
   @bubblingEvent(
     SelectEvent,
@@ -246,7 +246,7 @@ export class YCoreCalendar
     this.currentDate = this.date ? parseDate(Array.isArray(this.date) ? this.date[0] : this.date) : parseDate()
   }
 
-  public updateDate(value: IYCoreCalendarProps['date']): void {
+  public updateDate(value: IAltCoreCalendarProps['date']): void {
     this.date = value
   }
 
@@ -266,8 +266,8 @@ export class YCoreCalendar
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCalendarVarsCss)}
-      ${unsafeCSS(YCalendarScopedCss)}
+      ${unsafeCSS(AltCalendarVarsCss)}
+      ${unsafeCSS(AltCalendarScopedCss)}
     `,
   ]
 
@@ -280,74 +280,74 @@ export class YCoreCalendar
   protected renderHeaderDate() {
     return this.headerSelectors
       ? html`
-        <y-core-dropdown
-          .trigger=${EYCoreDropdownTrigger.MANUAL}
+        <alt-core-dropdown
+          .trigger=${EAltCoreDropdownTrigger.MANUAL}
           .isOpen=${this.isMonthDropdownVisible}
           class="${this.baseClass}__header-dropdown"
           @click-outside=${this.handleClickOutside}
           @change-visible=${this.handleMonthDropdownVisibleChange}
         >
-          <y-core-button
+          <alt-core-button
             class="${this.baseClass}__month-button"
             label=${capitalize(this.currentDate.format(FORMAT_MONTH))}
             variant="text"
             size="small"
-            .iconRight=${this.isMonthDropdownVisible ? yChevronUp : yChevronDown}
+            .iconRight=${this.isMonthDropdownVisible ? altChevronUp : altChevronDown}
             slot="activator"
             @click=${this.handleMonthDropdownClick}
           >
-          </y-core-button>
+          </alt-core-button>
 
-          <y-core-dropdown-list
+          <alt-core-dropdown-list
             slot="content"
             .items=${this.getLocaleService()?.getMonths('long') || []}
             @item-click=${this.handleMonthSelect}
           >
-          </y-core-dropdown-list>
-        </y-core-dropdown>
+          </alt-core-dropdown-list>
+        </alt-core-dropdown>
 
-        <y-core-dropdown
-          .trigger=${EYCoreDropdownTrigger.MANUAL}
+        <alt-core-dropdown
+          .trigger=${EAltCoreDropdownTrigger.MANUAL}
           .isOpen=${this.isYearDropdownVisible}
           class="${this.baseClass}__header-dropdown"
           @click-outside=${this.handleClickOutside}
           @change-visible=${this.handleYearDropdownVisibleChange}
         >
-          <y-core-button
+          <alt-core-button
             class="${this.baseClass}__year-button"
             label=${this.currentDate.format(FORMAT_YEAR)}
             variant="text"
             size="small"
-            .iconRight=${this.isYearDropdownVisible ? yChevronUp : yChevronDown}
+            .iconRight=${this.isYearDropdownVisible ? altChevronUp : altChevronDown}
             slot="activator"
             @click=${this.handleYearDropdownClick}
           >
-          </y-core-button>
+          </alt-core-button>
 
-          <y-core-dropdown-list
+          <alt-core-dropdown-list
             slot="content"
             .items=${this.yearsList}
             @item-click=${this.handleYearSelect}
           >
-          </y-core-dropdown-list>
-        </y-core-dropdown>
+          </alt-core-dropdown-list>
+        </alt-core-dropdown>
       `
       : html`
-        <y-core-text
-          size=${EYCoreTextSize.A2_MEDIUM}
-          variant=${EYCoreTextVariant.PRIMARY}
+        <alt-core-text
+          size=${EAltCoreTextSize.A2_MEDIUM}
+          variant=${EAltCoreTextVariant.PRIMARY}
           >${capitalize(this.currentDate.format(FORMAT_MONTH))} ${this.currentDate.format(FORMAT_YEAR)}
-        </y-core-text>
+        </alt-core-text>
       `
   }
 
   protected renderWeekDays() {
     return (this.getLocaleService()?.getWeekDays('short') || []).map((day) => html`
-      <y-core-text
-        size=${EYCoreTextSize.A2_REGULAR}
-        variant=${EYCoreTextVariant.SECONDARY}
+      <alt-core-text
+        size=${EAltCoreTextSize.A2_REGULAR}
+        variant=${EAltCoreTextVariant.SECONDARY}
         class="${this.baseClass}__week-day"
-      >${day}</y-core-text>
+      >${day}</alt-core-text>
     `)
   }
 
@@ -356,11 +356,11 @@ export class YCoreCalendar
       getPrevMonthDays(this.currentDate),
       (day) => day,
       (day) => html`
-        <y-core-text
-          size=${EYCoreTextSize.A2_MEDIUM}
-        variant=${this.disabled ? EYCoreTextVariant.TERTIARY : EYCoreTextVariant.SECONDARY}
+        <alt-core-text
+          size=${EAltCoreTextSize.A2_MEDIUM}
+        variant=${this.disabled ? EAltCoreTextVariant.TERTIARY : EAltCoreTextVariant.SECONDARY}
         class="${this.baseClass}__day ${this.baseClass}__day_out-of-month"
-        >${day}</y-core-text>
+        >${day}</alt-core-text>
       `,
     )
   }
@@ -370,11 +370,11 @@ export class YCoreCalendar
       getNextMonthDays(this.currentDate),
       (day) => day,
       (day) => html`
-        <y-core-text
-          size=${EYCoreTextSize.A2_MEDIUM}
-        variant=${this.disabled ? EYCoreTextVariant.TERTIARY : EYCoreTextVariant.SECONDARY}
+        <alt-core-text
+          size=${EAltCoreTextSize.A2_MEDIUM}
+        variant=${this.disabled ? EAltCoreTextVariant.TERTIARY : EAltCoreTextVariant.SECONDARY}
         class="${this.baseClass}__day ${this.baseClass}__day_out-of-month"
-        >${day}</y-core-text>
+        >${day}</alt-core-text>
       `,
     )
   }
@@ -406,9 +406,9 @@ export class YCoreCalendar
 
 
         return html`
-          <y-core-text
-            size=${EYCoreTextSize.A2_MEDIUM}
-            variant=${isDisabled ? EYCoreTextVariant.TERTIARY : EYCoreTextVariant.PRIMARY}
+          <alt-core-text
+            size=${EAltCoreTextSize.A2_MEDIUM}
+            variant=${isDisabled ? EAltCoreTextVariant.TERTIARY : EAltCoreTextVariant.PRIMARY}
             class=${classMap(dayClasses)}
             data-value=${day}
             @click=${(event: Event) => {
@@ -416,7 +416,7 @@ export class YCoreCalendar
 
               this.handleDayClick(event, date)
             }}
-          >${day}</y-core-text>
+          >${day}</alt-core-text>
         `
       },
     )
@@ -434,25 +434,25 @@ export class YCoreCalendar
     return html`
       <div class=${this.baseClass}>
         <div class="${this.baseClass}__header">
-          <y-core-icon-button
+          <alt-core-icon-button
             .disabled=${this.isDisabledPrevButton}
-            .icon=${yChevronLeft}
+            .icon=${altChevronLeft}
             variant="text"
             @click=${this.toPrevMonth}
           >
-          </y-core-icon-button>
+          </alt-core-icon-button>
 
           <div class="${this.baseClass}__header-date">
             ${this.renderHeaderDate()}
           </div>
 
-          <y-core-icon-button
+          <alt-core-icon-button
             .disabled=${this.isDisabledNextButton}
-            .icon=${yChevronRight}
+            .icon=${altChevronRight}
             variant="text"
             @click=${this.toNextMonth}
           >
-          </y-core-icon-button>
+          </alt-core-icon-button>
         </div>
 
         <div class="${this.baseClass}__grid">

@@ -1,8 +1,8 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { YCorePhoneFieldTagName as tagName } from '~shared/constants'
-import { YPhoneField } from '~vue/ui/phoneField'
-import { YCorePhoneField } from '~core/ui/phoneField'
+import { AltCorePhoneFieldTagName as tagName } from '~shared/constants'
+import { AltPhoneField } from '~vue/ui/phoneField'
+import { AltCorePhoneField } from '~core/ui/phoneField'
 
 import { vueInputEvents } from './cases/events'
 import {
@@ -20,13 +20,13 @@ import {
 import { slotAnnotationTestCases, slotListTestCases } from './cases/slots'
 
 describe(
-  'Vue/YPhoneField',
+  'Vue/AltPhoneField',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCorePhoneField,
+          AltCorePhoneField,
         )
       }
     })
@@ -39,7 +39,7 @@ describe(
             `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
-                YPhoneField,
+                AltPhoneField,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
@@ -72,7 +72,7 @@ describe(
             `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
-                YPhoneField,
+                AltPhoneField,
                 { props: { value: '', [testCase.prop]: testCase.value } },
               )
 
@@ -100,7 +100,7 @@ describe(
             `Slot "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
-                YPhoneField,
+                AltPhoneField,
                 {
                   props: { value: '' },
                   slots: {
@@ -129,7 +129,7 @@ describe(
             `Should emit "${emitEventName}" ${eventCase}`,
             () => {
               const wrapper = mount(
-                YPhoneField,
+                AltPhoneField,
                 { props: { value: '' } },
               )
 

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YSearchTextHighlighted } from '~vue/ui/searchTextHighlighted'
-import { type IYVueSearchTextHighlightedProps } from '~vue/ui/searchTextHighlighted/models/types'
-import yCoreSearchTextHighlightedStoryMeta from '~core/ui/searchTextHighlighted/stories/SearchTextHighlighted.stories'
+import { AltSearchTextHighlighted } from '~vue/ui/searchTextHighlighted'
+import { type IAltVueSearchTextHighlightedProps } from '~vue/ui/searchTextHighlighted/models/types'
+import altCoreSearchTextHighlightedStoryMeta from '~core/ui/searchTextHighlighted/stories/SearchTextHighlighted.stories'
 
-type TVueSearchTextHighlightedStoryMeta = IYVueSearchTextHighlightedProps
+type TVueSearchTextHighlightedStoryMeta = IAltVueSearchTextHighlightedProps
 
 /**
  * Vue wrapper for Core SearchTextHighlighted
@@ -18,16 +18,16 @@ const meta: Meta<TVueSearchTextHighlightedStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YSearchTextHighlighted },
+    components: { AltSearchTextHighlighted },
     setup() {
       return { args }
     },
     template: `
-      <YSearchTextHighlighted v-bind="args" />
+      <AltSearchTextHighlighted v-bind="args" />
     `,
   }),
-  argTypes: { ...yCoreSearchTextHighlightedStoryMeta.argTypes },
-  args: { ...yCoreSearchTextHighlightedStoryMeta.args },
+  argTypes: { ...altCoreSearchTextHighlightedStoryMeta.argTypes },
+  args: { ...altCoreSearchTextHighlightedStoryMeta.args },
 }
 
 export default meta

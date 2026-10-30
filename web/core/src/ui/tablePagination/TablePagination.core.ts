@@ -6,12 +6,12 @@ import { consume } from '@lit/context'
 
 import {
   createCoreTablePaginationProps,
-  type IYCoreTablePaginationProps,
+  type IAltCoreTablePaginationProps,
   ChangePageEvent,
   ChangeItemsPerPageEvent,
 } from './models/types'
 import {
-  YCoreTablePaginationTagName as tagName,
+  AltCoreTablePaginationTagName as tagName,
 } from '~shared/constants'
 
 import { LocalizedElement } from '~core/i18n/LocalizedElement'
@@ -20,8 +20,8 @@ import { interceptEvents } from '~core/utils/event-interceptor'
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
 import { arrayConverter } from '~core/utils/converters'
 
-import YCoreTablePaginationVarsCss from '~core/ui/tablePagination/css/TablePagination.vars.css?inline'
-import YCoreTablePaginationScopedCss from '~core/ui/tablePagination/css/TablePagination.scoped.css?inline'
+import AltCoreTablePaginationVarsCss from '~core/ui/tablePagination/css/TablePagination.vars.css?inline'
+import AltCoreTablePaginationScopedCss from '~core/ui/tablePagination/css/TablePagination.scoped.css?inline'
 import { type SelectEvent } from '~core/ui/selectField/models/types'
 
 import {
@@ -43,17 +43,17 @@ const CURRENT_ITEMS_SEPARATOR = '-'
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreTablePagination
+export class AltCoreTablePagination
   extends LocalizedElement
-  implements IYCoreTablePaginationProps {
-  @property({ type: Number }) page: IYCoreTablePaginationProps['page'] = page
-  @property({ type: Number, attribute: 'items-per-page' }) itemsPerPage: IYCoreTablePaginationProps['itemsPerPage'] = itemsPerPage
-  @property({ type: Number }) total: IYCoreTablePaginationProps['total'] = total
-  @property({ type: Boolean }) disabled: IYCoreTablePaginationProps['disabled'] = disabled
-  @property({ type: String, attribute: 'counter-text' }) counterText: IYCoreTablePaginationProps['counterText'] = counterText
-  @property({ type: Array, attribute: 'options-items-per-page', converter: arrayConverter }) optionsItemsPerPage: IYCoreTablePaginationProps['optionsItemsPerPage'] = optionsItemsPerPage
-  @property({ type: String, attribute: 'item-value' }) itemValue: IYCoreTablePaginationProps['itemValue'] = itemValue
-  @property({ type: String, attribute: 'item-label' }) itemLabel: IYCoreTablePaginationProps['itemLabel'] = itemLabel
+  implements IAltCoreTablePaginationProps {
+  @property({ type: Number }) page: IAltCoreTablePaginationProps['page'] = page
+  @property({ type: Number, attribute: 'items-per-page' }) itemsPerPage: IAltCoreTablePaginationProps['itemsPerPage'] = itemsPerPage
+  @property({ type: Number }) total: IAltCoreTablePaginationProps['total'] = total
+  @property({ type: Boolean }) disabled: IAltCoreTablePaginationProps['disabled'] = disabled
+  @property({ type: String, attribute: 'counter-text' }) counterText: IAltCoreTablePaginationProps['counterText'] = counterText
+  @property({ type: Array, attribute: 'options-items-per-page', converter: arrayConverter }) optionsItemsPerPage: IAltCoreTablePaginationProps['optionsItemsPerPage'] = optionsItemsPerPage
+  @property({ type: String, attribute: 'item-value' }) itemValue: IAltCoreTablePaginationProps['itemValue'] = itemValue
+  @property({ type: String, attribute: 'item-label' }) itemLabel: IAltCoreTablePaginationProps['itemLabel'] = itemLabel
 
   @consume({ context: pluginsContextCreated, subscribe: true })
   @state()
@@ -75,8 +75,8 @@ export class YCoreTablePagination
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreTablePaginationVarsCss)}
-      ${unsafeCSS(YCoreTablePaginationScopedCss)}
+      ${unsafeCSS(AltCoreTablePaginationVarsCss)}
+      ${unsafeCSS(AltCoreTablePaginationScopedCss)}
     `,
   ]
 
@@ -175,7 +175,7 @@ export class YCoreTablePagination
       <div class=${classMap(this.computedClasses)}>
         <div class=${`${this.baseClass}__counter`}>
           <div class=${`${this.baseClass}__counter-select`}>
-            <y-core-select-field
+            <alt-core-select-field
               .value=${this.itemsPerPage}
               .items=${this.computedOptionsItemsPerPage}
               .disabled=${this.disabled}
@@ -184,21 +184,21 @@ export class YCoreTablePagination
               is-map-options
               size="small"
               @select=${this.handleSelect}
-            ></y-core-select-field>
+            ></alt-core-select-field>
           </div>
 
-          <y-core-text size="p2-regular" variant="secondary">${this.counterText}</y-core-text>
+          <alt-core-text size="p2-regular" variant="secondary">${this.counterText}</alt-core-text>
         </div>
 
-        <y-core-text size="p2-regular" variant="secondary">${this.computedMiddleText}</y-core-text>
+        <alt-core-text size="p2-regular" variant="secondary">${this.computedMiddleText}</alt-core-text>
 
-        <y-core-pagination
+        <alt-core-pagination
           .page=${this.page}
           .itemsPerPage=${this.itemsPerPage}
           .total=${this.total}
           .disabled=${this.disabled}
           @change-page=${this.handleChangePage}
-        ></y-core-pagination>
+        ></alt-core-pagination>
       </div>
     `
   }

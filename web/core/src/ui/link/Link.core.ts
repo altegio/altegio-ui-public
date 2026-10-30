@@ -5,27 +5,27 @@ import { classMap } from 'lit/directives/class-map.js'
 
 import { booleanConverter } from '~core/utils/converters'
 
-import YCoreLinkScopedCSS from '~core/ui/link/css/Link.scoped.css?inline'
-import YCoreLinkVarsCSS from '~core/ui/link/css/Link.vars.css?inline'
+import AltCoreLinkScopedCSS from '~core/ui/link/css/Link.scoped.css?inline'
+import AltCoreLinkVarsCSS from '~core/ui/link/css/Link.vars.css?inline'
 
-import { YCoreLinkTagName as tagName } from '~shared/constants'
-import { createCoreLinkProps, type IYCoreLinkProps } from '~core/ui/link/models/types'
+import { AltCoreLinkTagName as tagName } from '~shared/constants'
+import { createCoreLinkProps, type IAltCoreLinkProps } from '~core/ui/link/models/types'
 import { withLocator } from '~core/utils/locator'
 
 const { href, target, textWrap } = createCoreLinkProps()
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreLink extends LitElement implements IYCoreLinkProps {
-  @property({ type: String }) href: IYCoreLinkProps['href'] = href
-  @property({ type: String }) target: IYCoreLinkProps['target'] = target
-  @property({ type: Boolean, converter: booleanConverter, attribute: 'text-wrap' }) textWrap: IYCoreLinkProps['textWrap'] = textWrap
+export class AltCoreLink extends LitElement implements IAltCoreLinkProps {
+  @property({ type: String }) href: IAltCoreLinkProps['href'] = href
+  @property({ type: String }) target: IAltCoreLinkProps['target'] = target
+  @property({ type: Boolean, converter: booleanConverter, attribute: 'text-wrap' }) textWrap: IAltCoreLinkProps['textWrap'] = textWrap
 
   private readonly baseClass = tagName
 
   static readonly styles = [
-    css`${unsafeCSS(YCoreLinkVarsCSS)}`,
-    css`${unsafeCSS(YCoreLinkScopedCSS)}`,
+    css`${unsafeCSS(AltCoreLinkVarsCSS)}`,
+    css`${unsafeCSS(AltCoreLinkScopedCSS)}`,
   ]
 
   private get computedClasses() {

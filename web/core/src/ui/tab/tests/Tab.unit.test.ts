@@ -1,7 +1,7 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
 import {
-  YCoreIconTagName,
-  YCoreTabTagName as tagName,
+  AltCoreIconTagName,
+  AltCoreTabTagName as tagName,
 } from '~web/shared/constants'
 import { useCoreTests } from '~shared/tests/core.ts'
 import {
@@ -82,7 +82,7 @@ const basePropsCheck = () => {
 }
 
 describe(
-  'Core/YCoreTab/Unit',
+  'Core/AltCoreTab/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -114,7 +114,7 @@ describe(
             async() => {
               await updateComponent({ props: { leftIcon: testCase.value } })
 
-              const iconElement = getLocalShadowElement(YCoreIconTagName)
+              const iconElement = getLocalShadowElement(AltCoreIconTagName)
 
               if (testCase.value) {
                 expect(iconElement).toBeTruthy()

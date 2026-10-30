@@ -3,18 +3,18 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, ViewChild, signal } from '@an
 
 import '~core/ui/tooltip'
 
-import { createNgTooltipProps, type IYNgTooltipProps } from '~ng/ui/tooltip/models/types'
+import { createNgTooltipProps, type IAltNgTooltipProps } from '~ng/ui/tooltip/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { cleanupInnerHTML } from '~shared/utils'
 
 const { text, disabled, placement, type } = createNgTooltipProps()
 
 @Component({
-  selector: 'YTooltip',
+  selector: 'AltTooltip',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-tooltip [text]="text" [disabled]="isTooltipDisabled" [placement]="placement" [type]="type">
+    <alt-core-tooltip [text]="text" [disabled]="isTooltipDisabled" [placement]="placement" [type]="type">
       <div slot="activator">
         <ng-content select="[activator]" />
       </div>
@@ -26,14 +26,14 @@ const { text, disabled, placement, type } = createNgTooltipProps()
       @if (cleanupHTML(content)) {
         <div slot="content" [innerHTML]="cleanupHTML(content)"></div>
       }
-    </y-core-tooltip>
+    </alt-core-tooltip>
   `,
 })
-export class YTooltip implements IYNgTooltipProps, AfterViewInit {
-  @Input({ required: false }) @DefaultValue(text) text: IYNgTooltipProps['text'] = text
-  @Input({ required: false }) @DefaultValue(disabled) disabled: IYNgTooltipProps['disabled'] = disabled
-  @Input({ required: false }) @DefaultValue(placement) placement: IYNgTooltipProps['placement'] = placement
-  @Input({ required: false }) @DefaultValue(type) type: IYNgTooltipProps['type'] = type
+export class AltTooltip implements IAltNgTooltipProps, AfterViewInit {
+  @Input({ required: false }) @DefaultValue(text) text: IAltNgTooltipProps['text'] = text
+  @Input({ required: false }) @DefaultValue(disabled) disabled: IAltNgTooltipProps['disabled'] = disabled
+  @Input({ required: false }) @DefaultValue(placement) placement: IAltNgTooltipProps['placement'] = placement
+  @Input({ required: false }) @DefaultValue(type) type: IAltNgTooltipProps['type'] = type
 
   @ViewChild('content') contentRef!: ElementRef<HTMLElement>
   protected cleanupHTML = cleanupInnerHTML

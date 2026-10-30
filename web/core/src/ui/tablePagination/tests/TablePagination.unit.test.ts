@@ -2,14 +2,14 @@ import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getShadowRootElement } from '~shared/tests/utils'
 
-import { YCoreTablePaginationTagName } from '~shared/constants'
+import { AltCoreTablePaginationTagName } from '~shared/constants'
 import { createCoreTablePaginationProps } from '~core/ui/tablePagination/models/types'
 import { defineLocale } from '~core/i18n/locale/defineLocale'
 import { en } from '~core/i18n/locale/en'
 import { ru } from '~core/i18n/locale/ru'
 import '~core/ui/tablePagination'
 
-const tagName = YCoreTablePaginationTagName
+const tagName = AltCoreTablePaginationTagName
 
 const {
   component,
@@ -23,14 +23,14 @@ const {
 )
 
 const getRangeText = () => getShadowRootElement(component, tagName)
-  ?.querySelector(':scope > y-core-text')
+  ?.querySelector(':scope > alt-core-text')
   ?.textContent
   .trim()
 
 const range = { page: 2, itemsPerPage: 10, total: 25 }
 
 describe(
-  'Core/YCoreTablePagination/Unit',
+  'Core/AltCoreTablePagination/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()

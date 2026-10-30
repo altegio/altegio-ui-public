@@ -1,42 +1,42 @@
 import { omit } from 'radash'
 import {
-  type IYCoreCalendarExternalProps,
+  type IAltCoreCalendarExternalProps,
   createCoreCalendarExternalProps,
 } from '~core/ui/calendar/models/types'
 import {
   createCoreFieldWrapperProps,
-  type IYCoreFieldWrapperProps,
+  type IAltCoreFieldWrapperProps,
 } from '~core/ui/fieldWrapper/models/types'
 import {
   createCoreFieldInputProps,
-  type IYCoreFieldInputProps,
+  type IAltCoreFieldInputProps,
 } from '~core/ui/fieldInput/models/types'
 import {
   createCoreLabelExternalProps,
-  type IYCoreLabelExternalProps,
+  type IAltCoreLabelExternalProps,
 } from '~core/ui/label/models/types'
 import {
-  type IYCoreAnnotationExternalProps,
+  type IAltCoreAnnotationExternalProps,
   createCoreAnnotationExternalProps,
 } from '~core/ui/annotation/models/types'
 import {
-  type IYCoreErrorExternalProps,
+  type IAltCoreErrorExternalProps,
   createCoreErrorExternalProps,
 } from '~core/ui/error/models/types'
 import { addPrefixToObjectKeys, type TAddPrefixToObject } from '~shared/utils'
 
 
-export interface IYCoreDatePickerExternalProps extends
-  Omit<IYCoreFieldWrapperProps, 'clickable'>,
-  Omit<IYCoreFieldInputProps, 'hideSpaceLeft' | 'hideSpaceRight' | 'disabled' | 'size' | 'readonly' | 'value' | 'maxlength' | 'type' | 'autocomplete'>,
-  Omit<IYCoreCalendarExternalProps, 'disabled' | 'headerSelectors'>,
-  TAddPrefixToObject<Omit<IYCoreLabelExternalProps, 'alignment' | 'disabled' | 'required'>, 'label'>,
-  TAddPrefixToObject<Omit<IYCoreAnnotationExternalProps, 'disabled'>, 'annotation'>,
-  IYCoreErrorExternalProps {
-  calendarHeaderSelectors: IYCoreCalendarExternalProps['headerSelectors']
+export interface IAltCoreDatePickerExternalProps extends
+  Omit<IAltCoreFieldWrapperProps, 'clickable'>,
+  Omit<IAltCoreFieldInputProps, 'hideSpaceLeft' | 'hideSpaceRight' | 'disabled' | 'size' | 'readonly' | 'value' | 'maxlength' | 'type' | 'autocomplete'>,
+  Omit<IAltCoreCalendarExternalProps, 'disabled' | 'headerSelectors'>,
+  TAddPrefixToObject<Omit<IAltCoreLabelExternalProps, 'alignment' | 'disabled' | 'required'>, 'label'>,
+  TAddPrefixToObject<Omit<IAltCoreAnnotationExternalProps, 'disabled'>, 'annotation'>,
+  IAltCoreErrorExternalProps {
+  calendarHeaderSelectors: IAltCoreCalendarExternalProps['headerSelectors']
 }
 
-export const createCoreDatePickerExternalProps = (): IYCoreDatePickerExternalProps => {
+export const createCoreDatePickerExternalProps = (): IAltCoreDatePickerExternalProps => {
   const calendarProps = createCoreCalendarExternalProps()
   return {
     ...omit(createCoreFieldWrapperProps(), ['clickable']),

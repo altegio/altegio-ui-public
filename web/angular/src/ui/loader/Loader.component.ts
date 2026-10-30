@@ -6,30 +6,30 @@ import '~core/ui/loader'
 
 import {
   createNgLoaderProps,
-  type IYNgLoaderProps,
+  type IAltNgLoaderProps,
 } from '~ng/ui/loader/models/types'
 import { defineCustomElement } from '~web/shared/utils/components'
-import { YCoreLoaderTagName } from '~web/shared/constants'
-import { YCoreLoader } from '~core/ui/loader'
+import { AltCoreLoaderTagName } from '~web/shared/constants'
+import { AltCoreLoader } from '~core/ui/loader'
 
 const { size, variant } = createNgLoaderProps()
 
-defineCustomElement(YCoreLoaderTagName, YCoreLoader)
+defineCustomElement(AltCoreLoaderTagName, AltCoreLoader)
 
 @Component({
-  selector: 'YLoader',
+  selector: 'AltLoader',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-loader
+    <alt-core-loader
       [size]="size"
       [variant]="variant"
     >
-    </y-core-loader>
+    </alt-core-loader>
   `,
 })
 
-export class YLoader implements IYNgLoaderProps {
-  @Input() @DefaultValue(size) size: IYNgLoaderProps['size'] = size
-  @Input() @DefaultValue(variant) variant: IYNgLoaderProps['variant'] = variant
+export class AltLoader implements IAltNgLoaderProps {
+  @Input() @DefaultValue(size) size: IAltNgLoaderProps['size'] = size
+  @Input() @DefaultValue(variant) variant: IAltNgLoaderProps['variant'] = variant
 }

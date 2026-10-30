@@ -1,4 +1,4 @@
-export type TYNgControlValueTypes<T> = {
+export type TAltNgControlValueTypes<T> = {
   ngModel: T
   ngModelChange: (value: T) => void
 }

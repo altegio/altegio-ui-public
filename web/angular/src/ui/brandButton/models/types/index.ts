@@ -1,12 +1,12 @@
 import {
   createCoreBrandButtonProps,
-  type IYCoreBrandButtonProps,
+  type IAltCoreBrandButtonProps,
 } from '~core/ui/brandButton/models/types'
 
 import { type ClickEvent } from '~core/ui/brandButton/models/types/events'
 
-export type TYNgBrandButtonClickEvent = ClickEvent
+export type TAltNgBrandButtonClickEvent = ClickEvent
 
-export interface IYNgBrandButtonProps extends IYCoreBrandButtonProps {}
+export interface IAltNgBrandButtonProps extends IAltCoreBrandButtonProps {}
 
-export const createNgBrandButtonProps = (): IYNgBrandButtonProps => createCoreBrandButtonProps()
+export const createNgBrandButtonProps = (): IAltNgBrandButtonProps => createCoreBrandButtonProps()

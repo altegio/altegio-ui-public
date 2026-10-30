@@ -454,7 +454,7 @@ function injectCssTokens(content) {
         
     //     for (const [key, token] of Object.entries(tokens)) {
     //       const kebabKey = toKebabCase(key);
-    //       const varName = `--y-core-${prefix}-${kebabKey}`;
+    //       const varName = `--alt-core-${prefix}-${kebabKey}`;
     //       tokensVariables += `  ${varName}: ${token.cssValue};\n`;
     //     }
     //   }

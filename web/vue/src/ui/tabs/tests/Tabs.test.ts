@@ -1,9 +1,9 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 
 import { mount } from '@vue/test-utils'
-import { YCoreTabs } from '~web/core/src'
-import { YTabs } from '~vue/ui/tabs'
-import { YCoreTabsTagName as tagName } from '~shared/constants'
+import { AltCoreTabs } from '~web/core/src'
+import { AltTabs } from '~vue/ui/tabs'
+import { AltCoreTabsTagName as tagName } from '~shared/constants'
 import {
   propsTabsTestCases,
 } from '~vue/ui/tabs/tests/cases/props.ts'
@@ -16,7 +16,7 @@ const baseSlotsCheck = () => {
       `Slot: "${testCase.slot}" should render ${testCase.case}`,
       () => {
         const wrapper = mount(
-          YTabs,
+          AltTabs,
           {
             slots: {
               default: () => undefined,
@@ -37,11 +37,11 @@ const basePropsCheck = () => {
       `Prop: "${testCase.prop}" ${typeof testCase.value === 'object' ? JSON.stringify(testCase.value) : testCase.value} should ${testCase.value === undefined ? 'not' : ''} set ${testCase.prop} on the core component`,
       () => {
         const wrapper = mount(
-          YTabs,
+          AltTabs,
           { props: { [testCase.prop]: testCase.value } },
         )
 
-        const coreElement = wrapper.find(tagName).element as YCoreTabs
+        const coreElement = wrapper.find(tagName).element as AltCoreTabs
 
         expect(coreElement[testCase.prop]).toEqual(testCase.expected)
       },
@@ -54,7 +54,7 @@ const baseEventsCheck = () => {
     it(
       `Event: "${testCase.event}" ${testCase.case}`,
       () => {
-        const wrapper = mount(YTabs)
+        const wrapper = mount(AltTabs)
 
         const coreElement = wrapper.find(tagName)
 
@@ -67,13 +67,13 @@ const baseEventsCheck = () => {
 }
 
 describe(
-  'Vue/YTabs/Unit',
+  'Vue/AltTabs/Unit',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreTabs,
+          AltCoreTabs,
         )
       }
     })

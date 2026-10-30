@@ -1,13 +1,13 @@
 import {
   createCoreLoaderExternalProps,
-  type IYCoreLoaderExternalProps,
+  type IAltCoreLoaderExternalProps,
 } from './external'
 
 export * from './external'
 
-export interface IYCoreLoaderProps extends IYCoreLoaderExternalProps {}
+export interface IAltCoreLoaderProps extends IAltCoreLoaderExternalProps {}
 
-export const createCoreLoaderProps = (): IYCoreLoaderProps => {
+export const createCoreLoaderProps = (): IAltCoreLoaderProps => {
   const { size, variant } = createCoreLoaderExternalProps()
 
   return {

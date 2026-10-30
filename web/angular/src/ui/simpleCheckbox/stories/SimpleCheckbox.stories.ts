@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import { YSimpleCheckbox } from '~ng/ui/simpleCheckbox'
-import yCoreSimpleCheckboxStoryMeta from '~core/ui/simpleCheckbox/stories/SimpleCheckbox.stories'
+import { AltSimpleCheckbox } from '~ng/ui/simpleCheckbox'
+import altCoreSimpleCheckboxStoryMeta from '~core/ui/simpleCheckbox/stories/SimpleCheckbox.stories'
 import { action } from 'storybook/actions'
 import { useArgs } from 'storybook/preview-api'
 import type { SimpleCheckboxCheckedEvent } from '../models/types'
@@ -8,11 +8,11 @@ import type { SimpleCheckboxCheckedEvent } from '../models/types'
 /**
  * Angular wrapper for Core SimpleCheckbox
  */
-const meta: Meta<YSimpleCheckbox> = {
+const meta: Meta<AltSimpleCheckbox> = {
   title: 'Checkbox/🔍 SimpleCheckbox',
   id: 'simpleCheckbox',
   parameters: { controls: { sort: 'alpha' } },
-  component: YSimpleCheckbox,
+  component: AltSimpleCheckbox,
   tags: [
     'angular',
     'autodocs',
@@ -33,7 +33,7 @@ const meta: Meta<YSimpleCheckbox> = {
         ...handlers,
       },
       template: `
-        <YSimpleCheckbox
+        <AltSimpleCheckbox
           [size]="size"
           [checked]="checked"
           [indeterminate]="indeterminate"
@@ -42,15 +42,15 @@ const meta: Meta<YSimpleCheckbox> = {
           [hovered]="hovered"
           (checked)="onChecked($event)"
         >
-        </YSimpleCheckbox>
+        </AltSimpleCheckbox>
       `,
     }
   },
-  argTypes: yCoreSimpleCheckboxStoryMeta.argTypes,
-  args: yCoreSimpleCheckboxStoryMeta.args,
+  argTypes: altCoreSimpleCheckboxStoryMeta.argTypes,
+  args: altCoreSimpleCheckboxStoryMeta.args,
 }
 
 export default meta
-type Story = StoryObj<YSimpleCheckbox>
+type Story = StoryObj<AltSimpleCheckbox>
 
 export const Playground: Story = { args: {} }

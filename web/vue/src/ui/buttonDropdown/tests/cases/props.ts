@@ -11,13 +11,13 @@ import {
   propAutoCloseTestCases as corePropAutoCloseTestCases,
 } from '~core/ui/buttonDropdown/tests/cases/props'
 
-import type { IYVueButtonDropdownProps } from '~vue/ui/buttonDropdown/models/types'
+import type { IAltVueButtonDropdownProps } from '~vue/ui/buttonDropdown/models/types'
 
-export const propItemsTestCases: TPropTestCase<IYVueButtonDropdownProps, 'items'>[] = [...corePropItemsTestCases]
-export const propVariantTestCases: TPropTestCase<IYVueButtonDropdownProps, 'variant'>[] = [...corePropVariantTestCases]
-export const propDisabledTestCases: TPropTestCase<IYVueButtonDropdownProps, 'disabled'>[] = [...corePropDisabledTestCases]
-export const propSizeCases: TPropTestCase<IYVueButtonDropdownProps, 'size'>[] = [...corePropSizeCases]
-export const propLoadingTestCases: TPropTestCase<IYVueButtonDropdownProps, 'loading'>[] = [...corePropLoadingTestCases]
-export const propLabelTestCases: TPropTestCase<IYVueButtonDropdownProps, 'label'>[] = [...corePropLabelTestCases]
-export const propFullWidthTestCases: TPropTestCase<IYVueButtonDropdownProps, 'fullWidth'>[] = [...corePropFullWidthTestCases]
-export const propAutoCloseTestCases: TPropTestCase<IYVueButtonDropdownProps, 'autoClose'>[] = [...corePropAutoCloseTestCases]
+export const propItemsTestCases: TPropTestCase<IAltVueButtonDropdownProps, 'items'>[] = [...corePropItemsTestCases]
+export const propVariantTestCases: TPropTestCase<IAltVueButtonDropdownProps, 'variant'>[] = [...corePropVariantTestCases]
+export const propDisabledTestCases: TPropTestCase<IAltVueButtonDropdownProps, 'disabled'>[] = [...corePropDisabledTestCases]
+export const propSizeCases: TPropTestCase<IAltVueButtonDropdownProps, 'size'>[] = [...corePropSizeCases]
+export const propLoadingTestCases: TPropTestCase<IAltVueButtonDropdownProps, 'loading'>[] = [...corePropLoadingTestCases]
+export const propLabelTestCases: TPropTestCase<IAltVueButtonDropdownProps, 'label'>[] = [...corePropLabelTestCases]
+export const propFullWidthTestCases: TPropTestCase<IAltVueButtonDropdownProps, 'fullWidth'>[] = [...corePropFullWidthTestCases]
+export const propAutoCloseTestCases: TPropTestCase<IAltVueButtonDropdownProps, 'autoClose'>[] = [...corePropAutoCloseTestCases]

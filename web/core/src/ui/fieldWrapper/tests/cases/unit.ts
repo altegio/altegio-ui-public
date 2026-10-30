@@ -1,17 +1,17 @@
 import type { TPropTestCase } from '~shared/types/tests'
-import { YCoreFieldInputTagName } from '~shared/constants'
+import { AltCoreFieldInputTagName } from '~shared/constants'
 import {
-  type IYCoreFieldWrapperProps,
+  type IAltCoreFieldWrapperProps,
 } from '~core/ui/fieldWrapper/models/types'
 import { vi } from 'vitest'
 
 export const fieldInputHtml = `
-  <${YCoreFieldInputTagName} value="Default value"></${YCoreFieldInputTagName}>
+  <${AltCoreFieldInputTagName} value="Default value"></${AltCoreFieldInputTagName}>
 `
 
 export const emptyFieldInputHtml = ''
 
-export const propsTestCases: TPropTestCase<IYCoreFieldWrapperProps, keyof IYCoreFieldWrapperProps>[] = [
+export const propsTestCases: TPropTestCase<IAltCoreFieldWrapperProps, keyof IAltCoreFieldWrapperProps>[] = [
   { prop: 'disabled', case: 'true', value: true },
   { prop: 'disabled', case: 'false', value: false },
   { prop: 'readonly', case: 'true', value: true },
@@ -29,7 +29,7 @@ export const eventsTestCases: {
   event: Event
   handler: () => void
   expectedCallCount: number
-  props?: Partial<IYCoreFieldWrapperProps>
+  props?: Partial<IAltCoreFieldWrapperProps>
 }[] = [
   {
     name: 'click',

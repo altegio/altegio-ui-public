@@ -1,19 +1,19 @@
 <template>
-  <y-core-card-checkbox v-bind="props" />
+  <alt-core-card-checkbox v-bind="props" />
 </template>
 
 <script setup lang="ts">
   import '~core/ui/cardCheckbox'
   import {
     createVueCardCheckboxProps,
-    type IYVueCardCheckboxProps,
-    type IYVueCoreCardCheckboxProps,
+    type IAltVueCardCheckboxProps,
+    type IAltVueCoreCardCheckboxProps,
   } from '~vue/ui/cardCheckbox/models/types'
 
-  defineOptions({ name: 'YCardCheckbox' })
+  defineOptions({ name: 'AltCardCheckbox' })
 
   const props = withDefaults(
-    defineProps<IYVueCardCheckboxProps>(),
+    defineProps<IAltVueCardCheckboxProps>(),
     createVueCardCheckboxProps(),
-  ) satisfies IYVueCoreCardCheckboxProps
+  ) satisfies IAltVueCoreCardCheckboxProps
 </script>

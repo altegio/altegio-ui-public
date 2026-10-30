@@ -1,20 +1,20 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { YCoreIconButtonTagName } from '~shared/constants'
-import { yRocket } from '~shared/icons'
-import { YCoreIconButton } from '~core/ui/iconButton'
-import { YIconButton } from '~vue/ui/iconButton'
+import { AltCoreIconButtonTagName } from '~shared/constants'
+import { altRocket } from '~shared/icons'
+import { AltCoreIconButton } from '~core/ui/iconButton'
+import { AltIconButton } from '~vue/ui/iconButton'
 
-const tagName = YCoreIconButtonTagName
+const tagName = AltCoreIconButtonTagName
 
 describe(
-  'YIconButton',
+  'AltIconButton',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreIconButton,
+          AltCoreIconButton,
         )
       }
     })
@@ -26,13 +26,13 @@ describe(
           'Changing prop icon should update CoreIconButton',
           () => {
             const wrapper = mount(
-              YIconButton,
-              { props: { icon: yRocket } },
+              AltIconButton,
+              { props: { icon: altRocket } },
             )
 
             const coreElement = wrapper.find(tagName)
 
-            expect(coreElement.element.icon?.name).toBe(yRocket.name)
+            expect(coreElement.element.icon?.name).toBe(altRocket.name)
           },
         )
       },

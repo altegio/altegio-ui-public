@@ -1,4 +1,4 @@
-$component: $YCoreToggleTagName;
+$component: $AltCoreToggleTagName;
 
 :host {
   display: flex;
@@ -6,8 +6,8 @@ $component: $YCoreToggleTagName;
 
 .$(component) {
   display: inline-flex;
-  gap: var(--y-core-toggle-x-gap);
-  max-width: var(--y-core-toggle-max-width);
+  gap: var(--alt-core-toggle-x-gap);
+  max-width: var(--alt-core-toggle-max-width);
   cursor: pointer;
 
   &_disabled {
@@ -40,7 +40,7 @@ $component: $YCoreToggleTagName;
   &__info {
     display: flex;
     flex-direction: column;
-    gap: var(--y-core-toggle-info-gap);
+    gap: var(--alt-core-toggle-info-gap);
     align-items: flex-start;
   }
 

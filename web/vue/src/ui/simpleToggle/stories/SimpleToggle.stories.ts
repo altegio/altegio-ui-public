@@ -2,13 +2,13 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import { useArgs } from 'storybook/preview-api'
 import { action } from 'storybook/actions'
 
-import { YSimpleToggle } from '~vue/ui/simpleToggle'
-import { type IYVueSimpleToggleProps } from '~vue/ui/simpleToggle/models/types'
-import yCoreSimpleToggleStoryMeta from '~core/ui/simpleToggle/stories/SimpleToggle.stories'
+import { AltSimpleToggle } from '~vue/ui/simpleToggle'
+import { type IAltVueSimpleToggleProps } from '~vue/ui/simpleToggle/models/types'
+import altCoreSimpleToggleStoryMeta from '~core/ui/simpleToggle/stories/SimpleToggle.stories'
 import { omit } from 'radash'
 import { getComponentContentTable } from '~shared/.storybook/tables'
 
-type TVueSimpleToggleStoryMeta = IYVueSimpleToggleProps
+type TVueSimpleToggleStoryMeta = IAltVueSimpleToggleProps
 
 /**
  * Vue wrapper for SimpleToggle
@@ -21,7 +21,7 @@ const meta: Meta<TVueSimpleToggleStoryMeta> = {
     const [, updateArgs] = useArgs()
 
     return {
-      components: { YSimpleToggle },
+      components: { AltSimpleToggle },
       setup() {
         const handleUpdateModelValue = (modelValue: boolean) => {
           updateArgs({ modelValue })
@@ -31,7 +31,7 @@ const meta: Meta<TVueSimpleToggleStoryMeta> = {
         return { args, handleUpdateModelValue }
       },
       template: `
-        <YSimpleToggle v-bind="args" @update:modelValue="handleUpdateModelValue"/>
+        <AltSimpleToggle v-bind="args" @update:modelValue="handleUpdateModelValue"/>
       `,
     }
   },
@@ -41,7 +41,7 @@ const meta: Meta<TVueSimpleToggleStoryMeta> = {
   ],
   argTypes: {
     ...omit(
-      yCoreSimpleToggleStoryMeta.argTypes ?? {},
+      altCoreSimpleToggleStoryMeta.argTypes ?? {},
       ['checked'],
     ),
     modelValue: {
@@ -52,7 +52,7 @@ const meta: Meta<TVueSimpleToggleStoryMeta> = {
   },
   args: {
     ...omit(
-      yCoreSimpleToggleStoryMeta.args ?? {},
+      altCoreSimpleToggleStoryMeta.args ?? {},
       ['checked'],
     ),
     modelValue: false,

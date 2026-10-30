@@ -1,1 +1,1 @@
-export { YCoreSimpleToggle } from './SimpleToggle.core'
+export { AltCoreSimpleToggle } from './SimpleToggle.core'

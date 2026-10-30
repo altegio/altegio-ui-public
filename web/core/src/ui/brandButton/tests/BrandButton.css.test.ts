@@ -2,14 +2,14 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreBrandButtonTagName as tagName } from '~shared/constants'
+import { AltCoreBrandButtonTagName as tagName } from '~shared/constants'
 import '~core/ui/brandButton'
 
 import {
   CSSVariablesHostToRootCases,
   CSSVariablesHostToValueCases,
 } from './cases/css'
-import { createCoreBrandButtonProps, EYCoreBrandButtonVariant } from '~core/ui/brandButton/models/types'
+import { createCoreBrandButtonProps, EAltCoreBrandButtonVariant } from '~core/ui/brandButton/models/types'
 
 const {
   component,
@@ -18,11 +18,11 @@ const {
   tagName,
   {
     ...createCoreBrandButtonProps(),
-    variant: EYCoreBrandButtonVariant.WhatsApp,
+    variant: EAltCoreBrandButtonVariant.WhatsApp,
   },
 )
 
-describe('Core/YCoreBrandButton/CSS', () => {
+describe('Core/AltCoreBrandButton/CSS', () => {
   beforeAll(() => {
     injectComponentToBody()
   })
@@ -44,7 +44,7 @@ describe('Core/YCoreBrandButton/CSS', () => {
   for (const { host, value } of CSSVariablesHostToValueCases) {
     it(`Computed host CSS variable ${host} should equal ${value}`, () => {
       const brandButtonShadow = getWCShadowRoot(component)
-      const simpleButton = brandButtonShadow.querySelector('y-core-simple-button')!
+      const simpleButton = brandButtonShadow.querySelector('alt-core-simple-button')!
       const simpleButtonShadow = getWCShadowRoot(simpleButton)
 
       const varValue = getComputedStyle(simpleButtonShadow.host).getPropertyValue(host).trim()

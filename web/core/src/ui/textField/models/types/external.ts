@@ -1,35 +1,35 @@
 import { omit } from 'radash'
 import {
   createCoreFieldWrapperProps,
-  type IYCoreFieldWrapperProps,
+  type IAltCoreFieldWrapperProps,
 } from '~core/ui/fieldWrapper/models/types'
 import {
   createCoreFieldInputProps,
-  type IYCoreFieldInputProps,
+  type IAltCoreFieldInputProps,
 } from '~core/ui/fieldInput/models/types'
 import {
   createCoreLabelExternalProps,
-  type IYCoreLabelExternalProps,
+  type IAltCoreLabelExternalProps,
 } from '~core/ui/label/models/types'
 import {
-  type IYCoreAnnotationExternalProps,
+  type IAltCoreAnnotationExternalProps,
   createCoreAnnotationExternalProps,
 } from '~core/ui/annotation/models/types'
 import {
-  type IYCoreErrorExternalProps,
+  type IAltCoreErrorExternalProps,
   createCoreErrorExternalProps,
 } from '~core/ui/error/models/types'
 import { addPrefixToObjectKeys, type TAddPrefixToObject } from '~shared/utils'
 import type { MaskitoOptions } from '@maskito/core'
 
-export type { IYIcon } from '~shared/icons'
+export type { IAltIcon } from '~shared/icons'
 
-export interface IYCoreTextFieldExternalProps extends
-  Omit<IYCoreFieldWrapperProps, 'clickable'>,
-  Omit<IYCoreFieldInputProps, 'hideSpaceLeft' | 'hideSpaceRight' | 'disabled' | 'size' | 'readonly' | 'autocomplete'>,
-  TAddPrefixToObject<Omit<IYCoreLabelExternalProps, 'alignment' | 'disabled' | 'required' | 'tooltipPlacement'>, 'label'>,
-  TAddPrefixToObject<Omit<IYCoreAnnotationExternalProps, 'disabled'>, 'annotation'>,
-  IYCoreErrorExternalProps {
+export interface IAltCoreTextFieldExternalProps extends
+  Omit<IAltCoreFieldWrapperProps, 'clickable'>,
+  Omit<IAltCoreFieldInputProps, 'hideSpaceLeft' | 'hideSpaceRight' | 'disabled' | 'size' | 'readonly' | 'autocomplete'>,
+  TAddPrefixToObject<Omit<IAltCoreLabelExternalProps, 'alignment' | 'disabled' | 'required' | 'tooltipPlacement'>, 'label'>,
+  TAddPrefixToObject<Omit<IAltCoreAnnotationExternalProps, 'disabled'>, 'annotation'>,
+  IAltCoreErrorExternalProps {
   clearable: boolean | undefined
   maskOptions: MaskitoOptions | undefined
   locator?: string
@@ -38,7 +38,7 @@ export interface IYCoreTextFieldExternalProps extends
   locatorClearIcon?: string
 }
 
-export const createCoreTextFieldExternalProps = (): IYCoreTextFieldExternalProps => {
+export const createCoreTextFieldExternalProps = (): IAltCoreTextFieldExternalProps => {
   return {
     ...omit(createCoreFieldWrapperProps(), ['clickable']),
     ...omit(createCoreFieldInputProps(), ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly']),
@@ -57,11 +57,11 @@ export const createCoreTextFieldExternalProps = (): IYCoreTextFieldExternalProps
 /**
  * Props interface for the SearchField wrappers
  */
-export interface IYCoreSearchFieldExternalProps extends Omit<IYCoreTextFieldExternalProps,
+export interface IAltCoreSearchFieldExternalProps extends Omit<IAltCoreTextFieldExternalProps,
   'clearable' | 'maskOptions' | 'value' | 'readonly' | 'required' | 'maxlength' | 'type'> {
 }
 
-export const createCoreSearchFieldExternalProps = (): IYCoreSearchFieldExternalProps => {
+export const createCoreSearchFieldExternalProps = (): IAltCoreSearchFieldExternalProps => {
   return {
     ...omit(
       createCoreTextFieldExternalProps(),

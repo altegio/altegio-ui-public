@@ -1,2 +1,2 @@
-export { YChip } from './Chip.component'
+export { AltChip } from './Chip.component'
 export type * from './models/types'

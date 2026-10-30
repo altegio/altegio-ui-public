@@ -1,35 +1,35 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreSimpleRadioButtonTagName as tagName } from '~shared/constants'
-import type { IYNgSimpleRadioButtonProps } from '~ng/ui/simpleRadioButton/models/types'
+import { AltCoreSimpleRadioButtonTagName as tagName } from '~shared/constants'
+import type { IAltNgSimpleRadioButtonProps } from '~ng/ui/simpleRadioButton/models/types'
 import {
   propSizeTestCases,
   propDisabledTestCases,
   propHoveredTestCases,
   propErrorTestCases,
 } from './cases/props'
-import { YSimpleRadioButton } from '~ng/ui/simpleRadioButton'
+import { AltSimpleRadioButton } from '~ng/ui/simpleRadioButton'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgSimpleRadioButtonProps>
+  props?: Partial<IAltNgSimpleRadioButtonProps>
 }
 
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YSimpleRadioButton] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltSimpleRadioButton] }).compileComponents()
 
   @Component({
     template: `
-      <YSimpleRadioButton
+      <AltSimpleRadioButton
       [size]="size"
       [disabled]="disabled"
       [hovered]="hovered"
       [error]="error"
       [ngModel]="ngModel"
       />`,
-    imports: [YSimpleRadioButton],
+    imports: [AltSimpleRadioButton],
     standalone: true,
   })
   class TestComponent {
@@ -42,7 +42,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YSimpleRadioButton',
+  'Angular/AltSimpleRadioButton',
   () => {
     describe(
       'Props',

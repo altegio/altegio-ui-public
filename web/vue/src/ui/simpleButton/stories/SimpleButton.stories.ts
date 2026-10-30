@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { YSimpleButton } from '~vue/ui/simpleButton'
-import { EYCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
-import { type IYVueSimpleButtonProps } from '~vue/ui/simpleButton/models/types'
+import { AltSimpleButton } from '~vue/ui/simpleButton'
+import { EAltCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
+import { type IAltVueSimpleButtonProps } from '~vue/ui/simpleButton/models/types'
 
 import { createSimpleButtonParameters, SIMPLE_BUTTON_STORIES_CONFIG } from '~core/ui/simpleButton/stories/SimpleButton.stories.utils'
 import { EFrameworkName } from '~web/shared/.storybook/enums/frameworkName'
-import yCoreSimpleButtonStoryMeta from '~core/ui/simpleButton/stories/SimpleButton.stories'
+import altCoreSimpleButtonStoryMeta from '~core/ui/simpleButton/stories/SimpleButton.stories'
 
-import { YIcon } from '~vue/ui/icon'
-import { ySearch } from '~shared/icons/build/y-search.icon'
+import { AltIcon } from '~vue/ui/icon'
+import { altSearch } from '~shared/icons/build/alt-search.icon'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { action } from 'storybook/actions'
 
-type TVueSimpleButtonStoryMeta = IYVueSimpleButtonProps
+type TVueSimpleButtonStoryMeta = IAltVueSimpleButtonProps
 
 const meta: Meta<TVueSimpleButtonStoryMeta> = {
   title: 'Buttons/⚙️ SimpleButton',
@@ -23,12 +23,12 @@ const meta: Meta<TVueSimpleButtonStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YSimpleButton, YIcon },
+    components: { AltSimpleButton, AltIcon },
     setup() {
-      return { args, ySearch, LOREM_IPSUM, onClick: action('click') }
+      return { args, altSearch, LOREM_IPSUM, onClick: action('click') }
     },
     template: `
-      <YSimpleButton
+      <AltSimpleButton
         :variant="args.variant"
         :size="args.size"
         :disabled="args.disabled"
@@ -40,10 +40,10 @@ const meta: Meta<TVueSimpleButtonStoryMeta> = {
         @click="onClick"
       >
         <template v-if="args.showDefaultSlot">
-          <y-vue-icon 
-            :icon="ySearch" 
+          <alt-vue-icon 
+            :icon="altSearch" 
             :size="args.size === 'large' ? '24px' : '16px'"
-          ></y-vue-icon>
+          ></alt-vue-icon>
           
           <span>{{ args.isLongText ? LOREM_IPSUM : args.text }}</span>
         </template>
@@ -51,11 +51,11 @@ const meta: Meta<TVueSimpleButtonStoryMeta> = {
         <template v-else>
           {{ args.isLongText ? LOREM_IPSUM : args.text }}
         </template>
-      </YSimpleButton>
+      </AltSimpleButton>
     `,
   }),
-  argTypes: { ...yCoreSimpleButtonStoryMeta.argTypes },
-  args: { ...yCoreSimpleButtonStoryMeta.args },
+  argTypes: { ...altCoreSimpleButtonStoryMeta.argTypes },
+  args: { ...altCoreSimpleButtonStoryMeta.args },
 }
 
 export default meta
@@ -67,21 +67,21 @@ export const Playground: Story = { parameters: SIMPLE_BUTTON_STORIES_CONFIG.Play
 export const Variants: Story = {
   parameters: SIMPLE_BUTTON_STORIES_CONFIG.Variants.parameters,
   render: () => ({
-    components: { YSimpleButton },
+    components: { AltSimpleButton },
     setup() {
-      const variants = Object.values(EYCoreSimpleButtonVariant)
+      const variants = Object.values(EAltCoreSimpleButtonVariant)
       return { variants }
     },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YSimpleButton
+        <AltSimpleButton
           v-for="variant in variants" 
           :key="variant"
           :is="tagName"
           :variant="variant"
         >
           {{ variant }}
-        </YSimpleButton>
+        </AltSimpleButton>
       </div>
     `,
   }),
@@ -90,24 +90,24 @@ export const Variants: Story = {
 export const Sizes: Story = {
   parameters: SIMPLE_BUTTON_STORIES_CONFIG.Sizes.parameters,
   render: () => ({
-    components: { YSimpleButton, YIcon },
+    components: { AltSimpleButton, AltIcon },
     setup() {
       const sizes = ['small', 'medium', 'large'] as const
-      return { sizes, ySearch }
+      return { sizes, altSearch }
     },
     template: `
       <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-        <YSimpleButton
+        <AltSimpleButton
           v-for="size in sizes" 
           :key="size"
           :size="size"
         >
-          <YIcon
-            :icon="ySearch" 
+          <AltIcon
+            :icon="altSearch" 
             :size="size === 'large' ? '24px' : '16px'"
-          ></YIcon>
+          ></AltIcon>
           {{ size }}
-        </YSimpleButton>
+        </AltSimpleButton>
       </div>
     `,
   }),
@@ -116,14 +116,14 @@ export const Sizes: Story = {
 export const States: Story = {
   parameters: SIMPLE_BUTTON_STORIES_CONFIG.States.parameters,
   render: () => ({
-    components: { YSimpleButton },
+    components: { AltSimpleButton },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YSimpleButton>Default</YSimpleButton>
+        <AltSimpleButton>Default</AltSimpleButton>
         
-        <YSimpleButton :disabled="true">Disabled</YSimpleButton>
+        <AltSimpleButton :disabled="true">Disabled</AltSimpleButton>
         
-        <YSimpleButton :loading="true">Loading</YSimpleButton>
+        <AltSimpleButton :loading="true">Loading</AltSimpleButton>
       </div>
     `,
   }),
@@ -132,22 +132,22 @@ export const States: Story = {
 export const PseudoStates: Story = {
   parameters: SIMPLE_BUTTON_STORIES_CONFIG.PseudoStates.parameters,
   render: () => ({
-    components: { YSimpleButton },
+    components: { AltSimpleButton },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YSimpleButton>Default</YSimpleButton>
+        <AltSimpleButton>Default</AltSimpleButton>
         
-        <YSimpleButton 
-          style="--y-core-simple-button-variant-primary-background-color: var(--y-core-simple-button-variant-primary-hover-background-color);"
+        <AltSimpleButton 
+          style="--alt-core-simple-button-variant-primary-background-color: var(--alt-core-simple-button-variant-primary-hover-background-color);"
         >
           Hover
-        </YSimpleButton>
+        </AltSimpleButton>
         
-        <YSimpleButton 
-          style="--y-core-simple-button-variant-primary-background-color: var(--y-core-simple-button-variant-primary-hover-background-color);"
+        <AltSimpleButton 
+          style="--alt-core-simple-button-variant-primary-background-color: var(--alt-core-simple-button-variant-primary-hover-background-color);"
         >
           Active
-        </YSimpleButton>
+        </AltSimpleButton>
       </div>
     `,
   }),
@@ -157,16 +157,16 @@ export const FullWidth: Story = {
   parameters: SIMPLE_BUTTON_STORIES_CONFIG.FullWidth.parameters,
   args: SIMPLE_BUTTON_STORIES_CONFIG.FullWidth.args,
   render: () => ({
-    components: { YSimpleButton, YIcon },
+    components: { AltSimpleButton, AltIcon },
     setup() {
-      return { ySearch }
+      return { altSearch }
     },
     template: `
       <div>
-        <YSimpleButton :fullWidth="true">
-          <YIcon :icon="ySearch" size="16px"></YIcon>
+        <AltSimpleButton :fullWidth="true">
+          <AltIcon :icon="altSearch" size="16px"></AltIcon>
           Full-width button
-        </YSimpleButton>
+        </AltSimpleButton>
       </div>
     `,
   }),
@@ -175,20 +175,20 @@ export const FullWidth: Story = {
 export const LinkMode: Story = {
   parameters: SIMPLE_BUTTON_STORIES_CONFIG.LinkMode.parameters,
   render: () => ({
-    components: { YSimpleButton, YIcon },
+    components: { AltSimpleButton, AltIcon },
     setup() {
-      return { ySearch }
+      return { altSearch }
     },
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YSimpleButton href="https://example.com" target="_blank">
-          <YIcon :icon="ySearch" size="16px"></YIcon>
+        <AltSimpleButton href="https://example.com" target="_blank">
+          <AltIcon :icon="altSearch" size="16px"></AltIcon>
           External link
-        </YSimpleButton>
+        </AltSimpleButton>
         
-        <YSimpleButton href="/internal-page">
+        <AltSimpleButton href="/internal-page">
           Internal link
-        </YSimpleButton>
+        </AltSimpleButton>
       </div>
     `,
   }),
@@ -197,9 +197,9 @@ export const LinkMode: Story = {
 export const ComplexDemo: Story = {
   parameters: SIMPLE_BUTTON_STORIES_CONFIG.ComplexDemo.parameters,
   render: () => ({
-    components: { YSimpleButton },
+    components: { AltSimpleButton },
     setup() {
-      const variants = Object.values(EYCoreSimpleButtonVariant)
+      const variants = Object.values(EAltCoreSimpleButtonVariant)
       const sizes = ['small', 'medium', 'large'] as const
       return { variants, sizes }
     },
@@ -212,18 +212,18 @@ export const ComplexDemo: Story = {
         >
           <div style="width: 80px; font-weight: 500;">{{ variant }}:</div>
           
-          <YSimpleButton
+          <AltSimpleButton
             v-for="size in sizes" 
             :key="size"
             :variant="variant" 
             :size="size"
           >
             {{ size }}
-          </YSimpleButton>
+          </AltSimpleButton>
           
-          <YSimpleButton :variant="variant" size="medium" :disabled="true">Disabled</YSimpleButton>
+          <AltSimpleButton :variant="variant" size="medium" :disabled="true">Disabled</AltSimpleButton>
           
-          <YSimpleButton :variant="variant" size="medium" :loading="true">Loading</YSimpleButton>
+          <AltSimpleButton :variant="variant" size="medium" :loading="true">Loading</AltSimpleButton>
         </div>
       </div>
     `,

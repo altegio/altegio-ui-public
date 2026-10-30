@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { computed } from 'vue'
 
-import yCoreTextFieldStoryMeta, { type TYCoreTextFieldMeta } from '~core/ui/textField/stories/TextField.stories'
+import altCoreTextFieldStoryMeta, { type TAltCoreTextFieldMeta } from '~core/ui/textField/stories/TextField.stories'
 import { omit } from 'radash'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { getComponentContentTable } from '~shared/.storybook/tables'
-import { ySearch, yChevronDown } from '~shared/icons'
+import { altSearch, altChevronDown } from '~shared/icons'
 import type { TAnyVoidFunction } from '~shared/types/utils'
-import { YFieldIcon } from '~vue/ui/fieldIcon'
-import { YTextField } from '~vue/ui/textField'
-import { type IYVueTextFieldProps } from '~vue/ui/textField/models/types'
+import { AltFieldIcon } from '~vue/ui/fieldIcon'
+import { AltTextField } from '~vue/ui/textField'
+import { type IAltVueTextFieldProps } from '~vue/ui/textField/models/types'
 import { MASK_EXAMPLES } from '~web/shared/.storybook/constants/maskExamples'
 
-type TVueTextFieldStoryMeta = IYVueTextFieldProps & TYCoreTextFieldMeta & {
+type TVueTextFieldStoryMeta = IAltVueTextFieldProps & TAltCoreTextFieldMeta & {
   modelValue: string
   onUpdateModelValue?: TAnyVoidFunction
 }
@@ -25,7 +25,7 @@ const meta: Meta<TVueTextFieldStoryMeta> = {
   id: 'textField',
   parameters: { controls: { sort: 'alpha' } },
   render: (args) => ({
-    components: { YTextField, YFieldIcon },
+    components: { AltTextField, AltFieldIcon },
     setup() {
       const computedLabelText = computed(() => args.isLongText ? LOREM_IPSUM : args.labelText)
       const computedAnnotationText = computed(() => args.isLongText ? LOREM_IPSUM : args.annotationText)
@@ -41,13 +41,13 @@ const meta: Meta<TVueTextFieldStoryMeta> = {
         computedLabelText,
         computedAnnotationText,
         computedErrors,
-        ySearch,
-        yChevronDown,
+        altSearch,
+        altChevronDown,
         onUpdateModelValue,
       }
     },
     template: `
-      <YTextField
+      <AltTextField
         v-bind="args"
         :model-value="args.modelValue"
         :labelText="computedLabelText"
@@ -56,9 +56,9 @@ const meta: Meta<TVueTextFieldStoryMeta> = {
         @clear="args.onClear"
       >
         <template v-if="args.showBeforeSlot" #before>
-          <y-field-icon
-            :icon="ySearch"
-          ></y-field-icon>
+          <alt-field-icon
+            :icon="altSearch"
+          ></alt-field-icon>
         </template>
         
         <template v-if="args.annotationText" #annotation>
@@ -66,13 +66,13 @@ const meta: Meta<TVueTextFieldStoryMeta> = {
         </template>
 
         <template v-if="args.showAfterSlot" #after>
-          <y-field-icon
-            :icon="yChevronDown"
-          ></y-field-icon>
+          <alt-field-icon
+            :icon="altChevronDown"
+          ></alt-field-icon>
         </template>
-      </YTextField>
+      </AltTextField>
       
-        <YTextField
+        <AltTextField
           v-bind="args"
           :model-value="args.modelValue"
           :labelText="computedLabelText"
@@ -81,9 +81,9 @@ const meta: Meta<TVueTextFieldStoryMeta> = {
           @clear="args.onClear"
         >
           <template v-if="args.showBeforeSlot" #before>
-            <y-field-icon
-              :icon="ySearch"
-            ></y-field-icon>
+            <alt-field-icon
+              :icon="altSearch"
+            ></alt-field-icon>
           </template>
           
           <template v-if="args.annotationText" #annotation>
@@ -91,11 +91,11 @@ const meta: Meta<TVueTextFieldStoryMeta> = {
           </template>
 
           <template v-if="args.showAfterSlot" #after>
-            <y-field-icon
-              :icon="yChevronDown"
-            ></y-field-icon>
+            <alt-field-icon
+              :icon="altChevronDown"
+            ></alt-field-icon>
           </template>
-      </YTextField>
+      </AltTextField>
     `,
   }),
   tags: [
@@ -104,7 +104,7 @@ const meta: Meta<TVueTextFieldStoryMeta> = {
   ],
   argTypes: {
     ...omit(
-      yCoreTextFieldStoryMeta.argTypes ?? {},
+      altCoreTextFieldStoryMeta.argTypes ?? {},
       ['value', 'onInput', 'onClick', 'onClickOutside', 'onMouseEnter', 'onMouseLeave', 'onRenderInput', 'onKeydown'],
     ),
     modelValue: {
@@ -112,15 +112,15 @@ const meta: Meta<TVueTextFieldStoryMeta> = {
       description: 'Default v-model for the input value. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value',
       ...getComponentContentTable(),
     },
-    onUpdateModelValue: yCoreTextFieldStoryMeta.argTypes?.onInput,
+    onUpdateModelValue: altCoreTextFieldStoryMeta.argTypes?.onInput,
   },
   args: {
     ...omit(
-      yCoreTextFieldStoryMeta.args ?? {},
+      altCoreTextFieldStoryMeta.args ?? {},
       ['value', 'onInput', 'onClick', 'onClickOutside', 'onMouseEnter', 'onMouseLeave', 'onRenderInput', 'onKeydown'],
     ),
     modelValue: '',
-    onUpdateModelValue: yCoreTextFieldStoryMeta.args?.onInput,
+    onUpdateModelValue: altCoreTextFieldStoryMeta.args?.onInput,
   },
 }
 

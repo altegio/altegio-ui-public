@@ -1,2 +1,2 @@
-export { YCardRadio } from './CardRadio.component'
+export { AltCardRadio } from './CardRadio.component'
 export type * from './models/types'

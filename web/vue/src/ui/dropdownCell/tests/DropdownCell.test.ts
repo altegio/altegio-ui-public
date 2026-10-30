@@ -4,7 +4,7 @@ import { mount } from '@vue/test-utils'
 import type { TSlotTestCase } from '~shared/types/tests'
 import { text, empty } from '~shared/tests/slotContents'
 
-import { YDropdownCell } from '~vue/ui/dropdownCell'
+import { AltDropdownCell } from '~vue/ui/dropdownCell'
 
 // Unit test cases:
 const slotDefaultTestCases: TSlotTestCase[] = [
@@ -21,7 +21,7 @@ const slotDefaultTestCases: TSlotTestCase[] = [
 ]
 
 describe(
-  'Vue/YDropdownCell',
+  'Vue/AltDropdownCell',
   () => {
     describe(
       'Unit',
@@ -34,7 +34,7 @@ describe(
                 `Slot "${testCase.slot}" should render ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YDropdownCell,
+                    AltDropdownCell,
                     { slots: { [testCase.slot]: testCase.content } },
                   )
 

@@ -83,240 +83,240 @@ export * from '../../shared/utils/maskito'
 export * from './i18n/locales'
 
 import type {
-  YCoreTextTagName,
-  YCoreIconTagName,
-  YCoreButtonTagName,
-  YCoreIconButtonTagName,
-  YCoreSimpleButtonTagName,
-  YCoreButtonGroupTagName,
-  YCoreLabelTagName,
-  YCoreAnnotationTagName,
-  YCoreErrorTagName,
-  YCoreSimpleToggleTagName,
-  YCoreSimpleCheckboxTagName,
-  YCoreSimpleRadioButtonTagName,
-  YCoreToggleTagName,
-  YCoreCheckboxTagName,
-  YCoreRadioButtonTagName,
-  YCoreRadioButtonGroupTagName,
-  YCoreTooltipTagName,
-  YCoreDropdownTagName,
-  YCoreLinkTagName,
-  YCoreGlobalProviderTagName,
-  YCoreLoaderTagName,
-  YCoreDropdownCellTagName,
-  YCoreDropdownListTagName,
-  YCoreTipTagName,
-  YCorePopoverTagName,
-  YCoreTagTagName,
-  YCoreSegmentOptionTagName,
-  YCoreSegmentControlTagName,
-  YCoreTableTagName,
-  YCoreTableBarTagName,
-  YCoreTableRowTagName,
-  YCoreTableCellTagName,
-  YCoreTableHeadCellTagName,
-  YCoreTablePaginationTagName,
-  YCoreCounterTagName,
-  YCoreCalendarTagName,
-  YCoreSkeletonTableTagName,
-  YCoreAvatarTagName,
-  YCorePaginationTagName,
-  YCoreSelectFieldTagName,
-  YCoreMultipleSelectFieldTagName,
-  YCoreFieldWrapperTagName,
-  YCoreDropdownCellTextTagName,
-  YCoreFieldIconTagName,
-  YCoreFieldAvatarTagName,
-  YCoreFieldInputTagName,
-  YCorePhoneFieldTagName,
-  YCoreEmptyStateTagName,
-  YCorePhoneCodeTagName,
-  YCoreSimpleChipTagName,
-  YCoreDatePickerTagName,
-  YCoreTextFieldTagName,
-  YCoreFieldTextareaTagName,
-  YCoreTextareaTagName,
-  YCoreChipTagName,
-  YCoreSearchTextHighlightedTagName,
-  YCoreCardWrapperTagName,
-  YCoreCardMainTagName,
-  YCoreCardHeaderTagName,
-  YCoreCardIconTagName,
-  YCoreColorIconTagName,
-  YCoreCardCheckboxTagName,
-  YCoreCardRadioTagName,
-  YCoreCardButtonTagName,
-  YCoreCardSelectTagName,
-  YCoreButtonDropdownTagName,
-  YCoreCollapseItemTagName,
-  YCoreCollapseTagName,
-  YCoreCountFieldTagName,
-  YCoreAutocompleteFieldTagName,
-  YCoreModalTagName,
-  YCoreFunctionalModalTagName,
-  YCoreTabTagName,
-  YCoreTabsTagName,
-  YCoreBrandButtonTagName,
+  AltCoreTextTagName,
+  AltCoreIconTagName,
+  AltCoreButtonTagName,
+  AltCoreIconButtonTagName,
+  AltCoreSimpleButtonTagName,
+  AltCoreButtonGroupTagName,
+  AltCoreLabelTagName,
+  AltCoreAnnotationTagName,
+  AltCoreErrorTagName,
+  AltCoreSimpleToggleTagName,
+  AltCoreSimpleCheckboxTagName,
+  AltCoreSimpleRadioButtonTagName,
+  AltCoreToggleTagName,
+  AltCoreCheckboxTagName,
+  AltCoreRadioButtonTagName,
+  AltCoreRadioButtonGroupTagName,
+  AltCoreTooltipTagName,
+  AltCoreDropdownTagName,
+  AltCoreLinkTagName,
+  AltCoreGlobalProviderTagName,
+  AltCoreLoaderTagName,
+  AltCoreDropdownCellTagName,
+  AltCoreDropdownListTagName,
+  AltCoreTipTagName,
+  AltCorePopoverTagName,
+  AltCoreTagTagName,
+  AltCoreSegmentOptionTagName,
+  AltCoreSegmentControlTagName,
+  AltCoreTableTagName,
+  AltCoreTableBarTagName,
+  AltCoreTableRowTagName,
+  AltCoreTableCellTagName,
+  AltCoreTableHeadCellTagName,
+  AltCoreTablePaginationTagName,
+  AltCoreCounterTagName,
+  AltCoreCalendarTagName,
+  AltCoreSkeletonTableTagName,
+  AltCoreAvatarTagName,
+  AltCorePaginationTagName,
+  AltCoreSelectFieldTagName,
+  AltCoreMultipleSelectFieldTagName,
+  AltCoreFieldWrapperTagName,
+  AltCoreDropdownCellTextTagName,
+  AltCoreFieldIconTagName,
+  AltCoreFieldAvatarTagName,
+  AltCoreFieldInputTagName,
+  AltCorePhoneFieldTagName,
+  AltCoreEmptyStateTagName,
+  AltCorePhoneCodeTagName,
+  AltCoreSimpleChipTagName,
+  AltCoreDatePickerTagName,
+  AltCoreTextFieldTagName,
+  AltCoreFieldTextareaTagName,
+  AltCoreTextareaTagName,
+  AltCoreChipTagName,
+  AltCoreSearchTextHighlightedTagName,
+  AltCoreCardWrapperTagName,
+  AltCoreCardMainTagName,
+  AltCoreCardHeaderTagName,
+  AltCoreCardIconTagName,
+  AltCoreColorIconTagName,
+  AltCoreCardCheckboxTagName,
+  AltCoreCardRadioTagName,
+  AltCoreCardButtonTagName,
+  AltCoreCardSelectTagName,
+  AltCoreButtonDropdownTagName,
+  AltCoreCollapseItemTagName,
+  AltCoreCollapseTagName,
+  AltCoreCountFieldTagName,
+  AltCoreAutocompleteFieldTagName,
+  AltCoreModalTagName,
+  AltCoreFunctionalModalTagName,
+  AltCoreTabTagName,
+  AltCoreTabsTagName,
+  AltCoreBrandButtonTagName,
 } from '../../shared/constants'
 
 import type {
-  YCoreText,
-  YCoreIcon,
-  YCoreButton,
-  YCoreIconButton,
-  YCoreSimpleButton,
-  YCoreButtonGroup,
-  YCoreLabel,
-  YCoreAnnotation,
-  YCoreError,
-  YCoreSimpleToggle,
-  YCoreSimpleCheckbox,
-  YCoreSimpleRadioButton,
-  YCoreToggle,
-  YCoreCheckbox,
-  YCoreRadioButton,
-  YCoreRadioButtonGroup,
-  YCoreTooltip,
-  YCoreDropdown,
-  YCoreLink,
-  YCoreGlobalProvider,
-  YCoreLoader,
-  YCoreDropdownCell,
-  YCoreDropdownList,
-  YCoreTip,
-  YCorePopover,
-  YCoreTag,
-  YCoreSegmentOption,
-  YCoreSegmentControl,
-  YCoreTable,
-  YCoreTableBar,
-  YCoreTableRow,
-  YCoreTableCell,
-  YCoreTableHeadCell,
-  YCoreTablePagination,
-  YCoreCounter,
-  YCoreCalendar,
-  YCoreSkeletonTable,
-  YCoreAvatar,
-  YCorePagination,
-  YCoreSelectField,
-  YCoreMultipleSelectField,
-  YCoreFieldWrapper,
-  YCoreDropdownCellText,
-  YCoreFieldIcon,
-  YCoreFieldAvatar,
-  YCoreFieldInput,
-  YCorePhoneField,
-  YCoreSimpleChip,
-  YCoreChip,
-  YCoreEmptyState,
-  YCorePhoneCode,
-  YCoreDatePicker,
-  YCoreTextField,
-  YCoreFieldTextarea,
-  YCoreTextarea,
-  YCoreSearchTextHighlighted,
-  YCoreCardWrapper,
-  YCoreCardMain,
-  YCoreCardHeader,
-  YCoreCardIcon,
-  YCoreColorIcon,
-  YCoreCardCheckbox,
-  YCoreCardRadio,
-  YCoreCardButton,
-  YCoreCardSelect,
-  YCoreButtonDropdown,
-  YCoreCollapseItem,
-  YCoreCollapse,
-  YCoreCountField,
-  YCoreAutocompleteField,
-  YCoreModal,
-  YCoreFunctionalModal,
-  YCoreTab,
-  YCoreTabs,
-  YCoreBrandButton,
+  AltCoreText,
+  AltCoreIcon,
+  AltCoreButton,
+  AltCoreIconButton,
+  AltCoreSimpleButton,
+  AltCoreButtonGroup,
+  AltCoreLabel,
+  AltCoreAnnotation,
+  AltCoreError,
+  AltCoreSimpleToggle,
+  AltCoreSimpleCheckbox,
+  AltCoreSimpleRadioButton,
+  AltCoreToggle,
+  AltCoreCheckbox,
+  AltCoreRadioButton,
+  AltCoreRadioButtonGroup,
+  AltCoreTooltip,
+  AltCoreDropdown,
+  AltCoreLink,
+  AltCoreGlobalProvider,
+  AltCoreLoader,
+  AltCoreDropdownCell,
+  AltCoreDropdownList,
+  AltCoreTip,
+  AltCorePopover,
+  AltCoreTag,
+  AltCoreSegmentOption,
+  AltCoreSegmentControl,
+  AltCoreTable,
+  AltCoreTableBar,
+  AltCoreTableRow,
+  AltCoreTableCell,
+  AltCoreTableHeadCell,
+  AltCoreTablePagination,
+  AltCoreCounter,
+  AltCoreCalendar,
+  AltCoreSkeletonTable,
+  AltCoreAvatar,
+  AltCorePagination,
+  AltCoreSelectField,
+  AltCoreMultipleSelectField,
+  AltCoreFieldWrapper,
+  AltCoreDropdownCellText,
+  AltCoreFieldIcon,
+  AltCoreFieldAvatar,
+  AltCoreFieldInput,
+  AltCorePhoneField,
+  AltCoreSimpleChip,
+  AltCoreChip,
+  AltCoreEmptyState,
+  AltCorePhoneCode,
+  AltCoreDatePicker,
+  AltCoreTextField,
+  AltCoreFieldTextarea,
+  AltCoreTextarea,
+  AltCoreSearchTextHighlighted,
+  AltCoreCardWrapper,
+  AltCoreCardMain,
+  AltCoreCardHeader,
+  AltCoreCardIcon,
+  AltCoreColorIcon,
+  AltCoreCardCheckbox,
+  AltCoreCardRadio,
+  AltCoreCardButton,
+  AltCoreCardSelect,
+  AltCoreButtonDropdown,
+  AltCoreCollapseItem,
+  AltCoreCollapse,
+  AltCoreCountField,
+  AltCoreAutocompleteField,
+  AltCoreModal,
+  AltCoreFunctionalModal,
+  AltCoreTab,
+  AltCoreTabs,
+  AltCoreBrandButton,
 } from '../../core/src/'
 
 declare global {
   interface HTMLElementTagNameMap {
-    [YCoreTextTagName]: YCoreText
-    [YCoreIconTagName]: YCoreIcon
-    [YCoreDropdownTagName]: YCoreDropdown
-    [YCoreSimpleButtonTagName]: YCoreSimpleButton
-    [YCoreButtonGroupTagName]: YCoreButtonGroup
-    [YCoreLabelTagName]: YCoreLabel
-    [YCoreAnnotationTagName]: YCoreAnnotation
-    [YCoreErrorTagName]: YCoreError
-    [YCoreSimpleToggleTagName]: YCoreSimpleToggle
-    [YCoreSimpleCheckboxTagName]: YCoreSimpleCheckbox
-    [YCoreSimpleRadioButtonTagName]: YCoreSimpleRadioButton
-    [YCoreTooltipTagName]: YCoreTooltip
-    [YCoreGlobalProviderTagName]: YCoreGlobalProvider
-    [YCoreSegmentOptionTagName]: YCoreSegmentOption
-    [YCoreCounterTagName]: YCoreCounter
+    [AltCoreTextTagName]: AltCoreText
+    [AltCoreIconTagName]: AltCoreIcon
+    [AltCoreDropdownTagName]: AltCoreDropdown
+    [AltCoreSimpleButtonTagName]: AltCoreSimpleButton
+    [AltCoreButtonGroupTagName]: AltCoreButtonGroup
+    [AltCoreLabelTagName]: AltCoreLabel
+    [AltCoreAnnotationTagName]: AltCoreAnnotation
+    [AltCoreErrorTagName]: AltCoreError
+    [AltCoreSimpleToggleTagName]: AltCoreSimpleToggle
+    [AltCoreSimpleCheckboxTagName]: AltCoreSimpleCheckbox
+    [AltCoreSimpleRadioButtonTagName]: AltCoreSimpleRadioButton
+    [AltCoreTooltipTagName]: AltCoreTooltip
+    [AltCoreGlobalProviderTagName]: AltCoreGlobalProvider
+    [AltCoreSegmentOptionTagName]: AltCoreSegmentOption
+    [AltCoreCounterTagName]: AltCoreCounter
 
     // Product components
-    [YCoreTagTagName]: YCoreTag
-    [YCoreToggleTagName]: YCoreToggle
-    [YCoreCheckboxTagName]: YCoreCheckbox
-    [YCoreRadioButtonTagName]: YCoreRadioButton
-    [YCoreRadioButtonGroupTagName]: YCoreRadioButtonGroup
-    [YCoreButtonTagName]: YCoreButton
-    [YCoreIconButtonTagName]: YCoreIconButton
-    [YCoreLinkTagName]: YCoreLink
-    [YCoreLoaderTagName]: YCoreLoader
-    [YCoreDropdownCellTagName]: YCoreDropdownCell
-    [YCoreDropdownListTagName]: YCoreDropdownList
-    [YCoreTipTagName]: YCoreTip
-    [YCorePopoverTagName]: YCorePopover
-    [YCoreSegmentControlTagName]: YCoreSegmentControl
-    [YCoreTableTagName]: YCoreTable
-    [YCoreTableBarTagName]: YCoreTableBar
-    [YCoreTableRowTagName]: YCoreTableRow
-    [YCoreTableHeadCellTagName]: YCoreTableHeadCell
-    [YCoreTableCellTagName]: YCoreTableCell
-    [YCoreCalendarTagName]: YCoreCalendar
-    [YCoreTablePaginationTagName]: YCoreTablePagination
-    [YCoreSkeletonTableTagName]: YCoreSkeletonTable
-    [YCoreAvatarTagName]: YCoreAvatar
-    [YCorePaginationTagName]: YCorePagination
-    [YCoreSelectFieldTagName]: YCoreSelectField
-    [YCoreMultipleSelectFieldTagName]: YCoreMultipleSelectField
-    [YCoreFieldWrapperTagName]: YCoreFieldWrapper
-    [YCoreDropdownCellTextTagName]: YCoreDropdownCellText
-    [YCoreFieldIconTagName]: YCoreFieldIcon
-    [YCoreFieldAvatarTagName]: YCoreFieldAvatar
-    [YCoreFieldInputTagName]: YCoreFieldInput
-    [YCorePhoneFieldTagName]: YCorePhoneField
-    [YCoreSimpleChipTagName]: YCoreSimpleChip
-    [YCoreEmptyStateTagName]: YCoreEmptyState
-    [YCorePhoneCodeTagName]: YCorePhoneCode
-    [YCoreDatePickerTagName]: YCoreDatePicker
-    [YCoreTextFieldTagName]: YCoreTextField
-    [YCoreFieldTextareaTagName]: YCoreFieldTextarea
-    [YCoreTextareaTagName]: YCoreTextarea
-    [YCoreTextareaTagName]: YCoreTextarea
-    [YCoreChipTagName]: YCoreChip
-    [YCoreSearchTextHighlightedTagName]: YCoreSearchTextHighlighted
-    [YCoreCardWrapperTagName]: YCoreCardWrapper
-    [YCoreCardMainTagName]: YCoreCardMain
-    [YCoreCardHeaderTagName]: YCoreCardHeader
-    [YCoreCardIconTagName]: YCoreCardIcon
-    [YCoreColorIconTagName]: YCoreColorIcon
-    [YCoreCardCheckboxTagName]: YCoreCardCheckbox
-    [YCoreCardRadioTagName]: YCoreCardRadio
-    [YCoreCardButtonTagName]: YCoreCardButton
-    [YCoreCardSelectTagName]: YCoreCardSelect
-    [YCoreButtonDropdownTagName]: YCoreButtonDropdown
-    [YCoreCollapseItemTagName]: YCoreCollapseItem
-    [YCoreCollapseTagName]: YCoreCollapse
-    [YCoreCountFieldTagName]: YCoreCountField
-    [YCoreAutocompleteFieldTagName]: YCoreAutocompleteField
-    [YCoreModalTagName]: YCoreModal
-    [YCoreFunctionalModalTagName]: YCoreFunctionalModal
-    [YCoreTabTagName]: YCoreTab
-    [YCoreTabsTagName]: YCoreTabs
-    [YCoreBrandButtonTagName]: YCoreBrandButton
+    [AltCoreTagTagName]: AltCoreTag
+    [AltCoreToggleTagName]: AltCoreToggle
+    [AltCoreCheckboxTagName]: AltCoreCheckbox
+    [AltCoreRadioButtonTagName]: AltCoreRadioButton
+    [AltCoreRadioButtonGroupTagName]: AltCoreRadioButtonGroup
+    [AltCoreButtonTagName]: AltCoreButton
+    [AltCoreIconButtonTagName]: AltCoreIconButton
+    [AltCoreLinkTagName]: AltCoreLink
+    [AltCoreLoaderTagName]: AltCoreLoader
+    [AltCoreDropdownCellTagName]: AltCoreDropdownCell
+    [AltCoreDropdownListTagName]: AltCoreDropdownList
+    [AltCoreTipTagName]: AltCoreTip
+    [AltCorePopoverTagName]: AltCorePopover
+    [AltCoreSegmentControlTagName]: AltCoreSegmentControl
+    [AltCoreTableTagName]: AltCoreTable
+    [AltCoreTableBarTagName]: AltCoreTableBar
+    [AltCoreTableRowTagName]: AltCoreTableRow
+    [AltCoreTableHeadCellTagName]: AltCoreTableHeadCell
+    [AltCoreTableCellTagName]: AltCoreTableCell
+    [AltCoreCalendarTagName]: AltCoreCalendar
+    [AltCoreTablePaginationTagName]: AltCoreTablePagination
+    [AltCoreSkeletonTableTagName]: AltCoreSkeletonTable
+    [AltCoreAvatarTagName]: AltCoreAvatar
+    [AltCorePaginationTagName]: AltCorePagination
+    [AltCoreSelectFieldTagName]: AltCoreSelectField
+    [AltCoreMultipleSelectFieldTagName]: AltCoreMultipleSelectField
+    [AltCoreFieldWrapperTagName]: AltCoreFieldWrapper
+    [AltCoreDropdownCellTextTagName]: AltCoreDropdownCellText
+    [AltCoreFieldIconTagName]: AltCoreFieldIcon
+    [AltCoreFieldAvatarTagName]: AltCoreFieldAvatar
+    [AltCoreFieldInputTagName]: AltCoreFieldInput
+    [AltCorePhoneFieldTagName]: AltCorePhoneField
+    [AltCoreSimpleChipTagName]: AltCoreSimpleChip
+    [AltCoreEmptyStateTagName]: AltCoreEmptyState
+    [AltCorePhoneCodeTagName]: AltCorePhoneCode
+    [AltCoreDatePickerTagName]: AltCoreDatePicker
+    [AltCoreTextFieldTagName]: AltCoreTextField
+    [AltCoreFieldTextareaTagName]: AltCoreFieldTextarea
+    [AltCoreTextareaTagName]: AltCoreTextarea
+    [AltCoreTextareaTagName]: AltCoreTextarea
+    [AltCoreChipTagName]: AltCoreChip
+    [AltCoreSearchTextHighlightedTagName]: AltCoreSearchTextHighlighted
+    [AltCoreCardWrapperTagName]: AltCoreCardWrapper
+    [AltCoreCardMainTagName]: AltCoreCardMain
+    [AltCoreCardHeaderTagName]: AltCoreCardHeader
+    [AltCoreCardIconTagName]: AltCoreCardIcon
+    [AltCoreColorIconTagName]: AltCoreColorIcon
+    [AltCoreCardCheckboxTagName]: AltCoreCardCheckbox
+    [AltCoreCardRadioTagName]: AltCoreCardRadio
+    [AltCoreCardButtonTagName]: AltCoreCardButton
+    [AltCoreCardSelectTagName]: AltCoreCardSelect
+    [AltCoreButtonDropdownTagName]: AltCoreButtonDropdown
+    [AltCoreCollapseItemTagName]: AltCoreCollapseItem
+    [AltCoreCollapseTagName]: AltCoreCollapse
+    [AltCoreCountFieldTagName]: AltCoreCountField
+    [AltCoreAutocompleteFieldTagName]: AltCoreAutocompleteField
+    [AltCoreModalTagName]: AltCoreModal
+    [AltCoreFunctionalModalTagName]: AltCoreFunctionalModal
+    [AltCoreTabTagName]: AltCoreTab
+    [AltCoreTabsTagName]: AltCoreTabs
+    [AltCoreBrandButtonTagName]: AltCoreBrandButton
   }
 }

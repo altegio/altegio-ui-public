@@ -1,10 +1,10 @@
 <template>
-  <y-core-global-provider
+  <alt-core-global-provider
     v-bind="props"
     @ready="handleReady"
   >
     <slot />
-  </y-core-global-provider>
+  </alt-core-global-provider>
 </template>
 
 <script setup lang="ts">
@@ -12,9 +12,9 @@
   import '~core/ui/globalProvider'
   import {
     createVueGlobalProviderProps,
-    type IYVueGlobalProviderProps,
-    type IYVueGlobalProviderEmits,
-    type IYVueCoreGlobalProviderProps,
+    type IAltVueGlobalProviderProps,
+    type IAltVueGlobalProviderEmits,
+    type IAltVueCoreGlobalProviderProps,
   } from '~vue/ui/globalProvider/models/types'
   import {
     type GlobalProviderReadyEvent,
@@ -25,7 +25,7 @@
 
   /* import { SentryPlugin } from '~vue/plugins/sentry' */
 
-  defineOptions({ name: 'YGlobalProvider' })
+  defineOptions({ name: 'AltGlobalProvider' })
 
   defineSlots<{
     default: () => unknown
@@ -33,12 +33,12 @@
 
   const globalContext = ref<IGlobalContext>()
 
-  const emit = defineEmits<IYVueGlobalProviderEmits>()
+  const emit = defineEmits<IAltVueGlobalProviderEmits>()
 
   const props = withDefaults(
-    defineProps<IYVueGlobalProviderProps>(),
+    defineProps<IAltVueGlobalProviderProps>(),
     createVueGlobalProviderProps(),
-  ) satisfies IYVueCoreGlobalProviderProps
+  ) satisfies IAltVueCoreGlobalProviderProps
 
   provide(
     'globalContext',

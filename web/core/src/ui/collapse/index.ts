@@ -1,1 +1,1 @@
-export { YCoreCollapse } from './Collapse.core'
+export { AltCoreCollapse } from './Collapse.core'

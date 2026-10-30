@@ -1,19 +1,19 @@
 import type { TPropTestCase } from '~shared/types/tests'
 import {
-  type IYCorePopoverProps,
+  type IAltCorePopoverProps,
 } from '~core/ui/popover/models/types'
-import { EYCoreTipType } from '~core/ui/tip/models/types'
-import { EYCoreDropdownTrigger, EYCoreDropdownPlacement, EYCoreDropdownStrategy } from '~core/ui/dropdown/models/types'
+import { EAltCoreTipType } from '~core/ui/tip/models/types'
+import { EAltCoreDropdownTrigger, EAltCoreDropdownPlacement, EAltCoreDropdownStrategy } from '~core/ui/dropdown/models/types'
 
-export const propTypeTestCases: TPropTestCase<IYCorePopoverProps, 'type'>[] = Object
-  .values(EYCoreTipType)
+export const propTypeTestCases: TPropTestCase<IAltCorePopoverProps, 'type'>[] = Object
+  .values(EAltCoreTipType)
   .map((type) => ({
     prop: 'type',
     case: type,
     value: type,
   }))
 
-export const propPaddingTestCases: TPropTestCase<IYCorePopoverProps, 'padding'>[] = [
+export const propPaddingTestCases: TPropTestCase<IAltCorePopoverProps, 'padding'>[] = [
   {
     prop: 'padding',
     case: 'with a value',
@@ -21,7 +21,7 @@ export const propPaddingTestCases: TPropTestCase<IYCorePopoverProps, 'padding'>[
   },
 ]
 
-export const propOffsetTestCases: TPropTestCase<IYCorePopoverProps, 'offset'>[] = [
+export const propOffsetTestCases: TPropTestCase<IAltCorePopoverProps, 'offset'>[] = [
   {
     prop: 'offset',
     case: 'with a value',
@@ -29,18 +29,18 @@ export const propOffsetTestCases: TPropTestCase<IYCorePopoverProps, 'offset'>[] 
   },
 ]
 
-export const propTriggerTestCases: TPropTestCase<IYCorePopoverProps, 'trigger'>[] = Object.values(EYCoreDropdownTrigger).map((value) => ({ prop: 'trigger', case: `with value ${value}`, value }))
+export const propTriggerTestCases: TPropTestCase<IAltCorePopoverProps, 'trigger'>[] = Object.values(EAltCoreDropdownTrigger).map((value) => ({ prop: 'trigger', case: `with value ${value}`, value }))
 
-export const propIsOpenTestCases: TPropTestCase<IYCorePopoverProps, 'isOpen'>[] = [
+export const propIsOpenTestCases: TPropTestCase<IAltCorePopoverProps, 'isOpen'>[] = [
   true,
   false,
 ].map((value) => ({ prop: 'isOpen', case: `with value ${value}`, value }))
 
-export const propPlacementTestCases: TPropTestCase<IYCorePopoverProps, 'placement'>[] = Object.values(EYCoreDropdownPlacement).map((value) => ({ prop: 'placement', case: `with value ${value}`, value }))
+export const propPlacementTestCases: TPropTestCase<IAltCorePopoverProps, 'placement'>[] = Object.values(EAltCoreDropdownPlacement).map((value) => ({ prop: 'placement', case: `with value ${value}`, value }))
 
-export const propStrategyTestCases: TPropTestCase<IYCorePopoverProps, 'strategy'>[] = Object.values(EYCoreDropdownStrategy).map((value) => ({ prop: 'strategy', case: `with value ${value}`, value }))
+export const propStrategyTestCases: TPropTestCase<IAltCorePopoverProps, 'strategy'>[] = Object.values(EAltCoreDropdownStrategy).map((value) => ({ prop: 'strategy', case: `with value ${value}`, value }))
 
-export const propTransitionTestCases: TPropTestCase<IYCorePopoverProps, 'transition'>[] = [
+export const propTransitionTestCases: TPropTestCase<IAltCorePopoverProps, 'transition'>[] = [
   {
     prop: 'transition',
     case: 'with a value',
@@ -48,13 +48,13 @@ export const propTransitionTestCases: TPropTestCase<IYCorePopoverProps, 'transit
   },
 ]
 
-export const propSubmitTextTestCases: TPropTestCase<IYCorePopoverProps, 'submitText'> = {
+export const propSubmitTextTestCases: TPropTestCase<IAltCorePopoverProps, 'submitText'> = {
   prop: 'submitText',
   case: 'with a value',
   value: 'Next',
 }
 
-export const propCancelTextTestCases: TPropTestCase<IYCorePopoverProps, 'cancelText'> = {
+export const propCancelTextTestCases: TPropTestCase<IAltCorePopoverProps, 'cancelText'> = {
   prop: 'cancelText',
   case: 'with a value',
   value: 'Next',

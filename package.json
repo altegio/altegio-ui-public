@@ -11,7 +11,7 @@
     "dist/"
   ],
   "bin": {
-    "yds": "./dist/web/cli/yds.mjs"
+    "alt-ds": "./dist/web/cli/alt-ds.mjs"
   },
   "exports": {
     ".": {

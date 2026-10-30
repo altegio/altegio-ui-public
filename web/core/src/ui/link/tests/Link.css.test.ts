@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreLinkTagName } from '~shared/constants'
+import { AltCoreLinkTagName } from '~shared/constants'
 import {
   createCoreLinkProps,
 } from '~core/ui/link/models/types'
@@ -13,7 +13,7 @@ import {
   CSSVariablesTextWrapCases,
 } from '~core/ui/link/tests/cases/css'
 
-const tagName = YCoreLinkTagName
+const tagName = AltCoreLinkTagName
 
 const {
   component,
@@ -24,7 +24,7 @@ const {
 )
 
 describe(
-  'Core/YCoreLink/CSS',
+  'Core/AltCoreLink/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

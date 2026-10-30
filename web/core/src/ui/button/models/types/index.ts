@@ -1,10 +1,10 @@
 import {
   createCoreButtonExternalProps,
-  type IYCoreButtonExternalProps,
+  type IAltCoreButtonExternalProps,
 } from './external'
 
 export * from './external'
 
-export interface IYCoreButtonProps extends IYCoreButtonExternalProps {}
+export interface IAltCoreButtonProps extends IAltCoreButtonExternalProps {}
 
-export const createCoreButtonProps = (): IYCoreButtonProps => ({ ...createCoreButtonExternalProps() })
+export const createCoreButtonProps = (): IAltCoreButtonProps => ({ ...createCoreButtonExternalProps() })

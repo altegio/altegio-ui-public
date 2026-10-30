@@ -14,6 +14,18 @@ const scannerChecksums = {
   darwin_arm64: 'b40ab0ae55c505963e365f271a8d3846efbc170aa17f2607f13df610a9aeb6a5',
 };
 const retiredBrand = new RegExp('yc' + 'lients', 'i');
+// Names that still carry the pre-3.0 prefix: components, types, icons, tags, custom properties, the old CLI and the old token aliases.
+const legacyPrefix = new RegExp([
+  '(?<!\\w)(?:I|T|E|is|TE)?Y(?=[A-Z][a-z0-9])',
+  '(?<![\\w$])y(?=[A-Z]|\\d[A-Za-z])',
+  '(?:(?<![\\w-])|(?<=(?<![\\w-])--))y-(?=[a-z0-9])',
+  '(?<![\\w-])y' + 'ds(?![\\w-])',
+  '(?<!\\w)Y' + 'C_(?=[A-Z])',
+].join('|'));
+// Binary assets and the lockfile (integrity hashes, third-party names) are not scanned for names.
+const unscannedFile = /\.(png|jpe?g|gif|ico|webp|woff2?|ttf|otf|eot|pdf|zip|gz)$|^pnpm-lock\.yaml$/i;
+// Markdown migration notes may list the old names between these comments.
+const migrationNotes = /<!-- legacy-names:start -->[\s\S]*?<!-- legacy-names:end -->/g;
 
 function run(command, args, options = {}) {
   const result = spawnSync(command, args, { cwd: root, maxBuffer: 256 * 1024 * 1024, ...options });
@@ -28,8 +40,7 @@ export function sanitize(directory) {
   if (existsSync(npmrc)) writeFileSync(npmrc, 'registry=https://registry.npmjs.org/\n');
   const ci = join(directory, '.gitlab-ci.yml');
   if (existsSync(ci)) writeFileSync(ci, '# Internal delivery configuration is maintained in the source repository.\n');
-  const privateCompatibility = join(directory, 'scripts/private-icon-compat.mjs');
-  if (existsSync(privateCompatibility)) rmSync(privateCompatibility);
+  rmSync(join(directory, 'scripts/private-compat'), { recursive: true, force: true });
   const changelog = join(directory, 'CHANGELOG.md');
   if (existsSync(changelog)) {
     writeFileSync(changelog, `# Changelog
@@ -72,6 +83,20 @@ See the [README](./README.md) for setup, build, test, and component development 
     }
   }
   checkRetiredBrand(directory);
+  function checkLegacyPrefix(path) {
+    for (const entry of readdirSync(path, { withFileTypes: true })) {
+      const file = join(path, entry.name);
+      const content = entry.isFile() && !unscannedFile.test(entry.name) ? readFileSync(file, 'utf8') : '';
+      const match = entry.name.match(legacyPrefix)
+        ?? (entry.name.endsWith('.md') ? content.replace(migrationNotes, '') : content).match(legacyPrefix);
+      if (match) {
+        const context = match.input.slice(match.index, match.index + 40).split(/\s/)[0];
+        throw new Error(`Public export blocked: legacy Y prefix "${context}" found in ${file}.`);
+      }
+      if (entry.isDirectory()) checkLegacyPrefix(file);
+    }
+  }
+  checkLegacyPrefix(directory);
 }
 
 export function prepare(directory, ref = 'HEAD', source = root) {

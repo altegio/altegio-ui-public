@@ -1,7 +1,7 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
 
 import { useCoreTests } from '~shared/tests/core'
-import { YCoreSimpleRadioButtonTagName as tagName } from '~shared/constants'
+import { AltCoreSimpleRadioButtonTagName as tagName } from '~shared/constants'
 import { dispatchEvent, getElementClasses, getShadowRootElement } from '~shared/tests/utils'
 
 import {
@@ -37,7 +37,7 @@ const getRootElement = () => {
 }
 
 describe(
-  'Core/YCoreSimpleRadioButton/Unit',
+  'Core/AltCoreSimpleRadioButton/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()

@@ -1,19 +1,19 @@
 <template>
-  <y-core-counter v-bind="props" />
+  <alt-core-counter v-bind="props" />
 </template>
 
 <script setup lang="ts">
   import '~core/ui/counter'
   import {
     createVueCounterProps,
-    type IYVueCounterProps,
-    type IYVueCoreCounterProps,
+    type IAltVueCounterProps,
+    type IAltVueCoreCounterProps,
   } from '~vue/ui/counter/models/types'
 
-  defineOptions({ name: 'YCounter' })
+  defineOptions({ name: 'AltCounter' })
 
   const props = withDefaults(
-    defineProps<IYVueCounterProps>(),
+    defineProps<IAltVueCounterProps>(),
     createVueCounterProps(),
-  ) satisfies IYVueCoreCounterProps
+  ) satisfies IAltVueCoreCounterProps
 </script>

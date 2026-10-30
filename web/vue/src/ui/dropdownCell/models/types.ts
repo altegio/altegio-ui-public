@@ -1,13 +1,13 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 import {
   createCoreDropdownCellProps,
-  type IYCoreDropdownCellProps,
+  type IAltCoreDropdownCellProps,
 } from '~core/ui/dropdownCell/models/types'
 
-export interface IYVueCoreDropdownCellProps extends IYCoreDropdownCellProps {}
+export interface IAltVueCoreDropdownCellProps extends IAltCoreDropdownCellProps {}
 
-export interface IYVueDropdownCellProps {}
+export interface IAltVueDropdownCellProps {}
 
-export const createVueDropdownCellProps = (): TDefinedVueProps<IYVueDropdownCellProps> => {
+export const createVueDropdownCellProps = (): TDefinedVueProps<IAltVueDropdownCellProps> => {
   return createCoreDropdownCellProps()
 }

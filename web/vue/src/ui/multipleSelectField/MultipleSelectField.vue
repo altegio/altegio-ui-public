@@ -1,5 +1,5 @@
 <template>
-  <y-core-multiple-select-field
+  <alt-core-multiple-select-field
     v-bind="props"
     :value="modelValue"
     @select="$emit('update:modelValue', $event.detail.value)"
@@ -37,18 +37,18 @@
     >
       <slot name="dropdown-list-bottom" />
     </div>
-  </y-core-multiple-select-field>
+  </alt-core-multiple-select-field>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/multipleSelectField'
   import {
     createVueMultipleSelectFieldProps,
-    type IYVueMultipleSelectFieldProps,
-    type IYVueMultipleSelectFieldEmits,
+    type IAltVueMultipleSelectFieldProps,
+    type IAltVueMultipleSelectFieldEmits,
   } from '~vue/ui/multipleSelectField/models/types'
 
-  defineOptions({ name: 'YMultipleSelectField' })
+  defineOptions({ name: 'AltMultipleSelectField' })
 
   defineSlots<{
     annotation: () => unknown
@@ -58,9 +58,9 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueMultipleSelectFieldProps>(),
+    defineProps<IAltVueMultipleSelectFieldProps>(),
     createVueMultipleSelectFieldProps(),
   )
 
-  defineEmits<IYVueMultipleSelectFieldEmits>()
+  defineEmits<IAltVueMultipleSelectFieldEmits>()
 </script>

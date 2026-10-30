@@ -1,5 +1,5 @@
 <template>
-  <y-core-pagination
+  <alt-core-pagination
     v-bind="props"
     @change-page="emit('change-page', $event)"
   />
@@ -7,15 +7,15 @@
 
 <script setup lang="ts">
   import '~core/ui/pagination'
-  import type { TVuePaginationChangePageEvent, IYVueCorePaginationProps } from '~vue/ui/pagination/models/types'
+  import type { TVuePaginationChangePageEvent, IAltVueCorePaginationProps } from '~vue/ui/pagination/models/types'
   import { createVuePaginationProps } from '~vue/ui/pagination/models/types'
 
-  defineOptions({ name: 'YPagination' })
+  defineOptions({ name: 'AltPagination' })
 
   const props = withDefaults(
-    defineProps<IYVueCorePaginationProps>(),
+    defineProps<IAltVueCorePaginationProps>(),
     createVuePaginationProps(),
-  ) satisfies IYVueCorePaginationProps
+  ) satisfies IAltVueCorePaginationProps
 
   interface Emits {
     (e: 'change-page', page: TVuePaginationChangePageEvent): void

@@ -1,6 +1,6 @@
 import type { TPropTestCase } from '~shared/types/tests'
 import {
-  type IYVueTipProps,
+  type IAltVueTipProps,
 } from '~vue/ui/tip/models/types'
 import {
   propIsOpenTestCases as corePropIsOpenTestCases,
@@ -27,7 +27,7 @@ const {
   type: defaultType,
 } = createCoreTipProps()
 
-export const propIsOpenTestCases: TPropTestCase<IYVueTipProps, 'isOpen'>[] = [
+export const propIsOpenTestCases: TPropTestCase<IAltVueTipProps, 'isOpen'>[] = [
   ...corePropIsOpenTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'isOpen',
@@ -36,7 +36,7 @@ export const propIsOpenTestCases: TPropTestCase<IYVueTipProps, 'isOpen'>[] = [
     expected: defaultIsOpen,
   },
 ]
-export const propOffsetTestCases: TPropTestCase<IYVueTipProps, 'offset'>[] = [
+export const propOffsetTestCases: TPropTestCase<IAltVueTipProps, 'offset'>[] = [
   ...corePropOffsetTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'offset',
@@ -45,7 +45,7 @@ export const propOffsetTestCases: TPropTestCase<IYVueTipProps, 'offset'>[] = [
     expected: defaultOffset,
   },
 ]
-export const propPaddingTestCases: TPropTestCase<IYVueTipProps, 'padding'>[] = [
+export const propPaddingTestCases: TPropTestCase<IAltVueTipProps, 'padding'>[] = [
   ...corePropPaddingTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'padding',
@@ -54,7 +54,7 @@ export const propPaddingTestCases: TPropTestCase<IYVueTipProps, 'padding'>[] = [
     expected: defaultPadding,
   },
 ]
-export const propPlacementTestCases: TPropTestCase<IYVueTipProps, 'placement'>[] = [
+export const propPlacementTestCases: TPropTestCase<IAltVueTipProps, 'placement'>[] = [
   ...corePropPlacementTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'placement',
@@ -63,7 +63,7 @@ export const propPlacementTestCases: TPropTestCase<IYVueTipProps, 'placement'>[]
     expected: defaultPlacement,
   },
 ]
-export const propStrategyTestCases: TPropTestCase<IYVueTipProps, 'strategy'>[] = [
+export const propStrategyTestCases: TPropTestCase<IAltVueTipProps, 'strategy'>[] = [
   ...corePropStrategyTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'strategy',
@@ -72,7 +72,7 @@ export const propStrategyTestCases: TPropTestCase<IYVueTipProps, 'strategy'>[] =
     expected: defaultStrategy,
   },
 ]
-export const propTransitionTestCases: TPropTestCase<IYVueTipProps, 'transition'>[] = [
+export const propTransitionTestCases: TPropTestCase<IAltVueTipProps, 'transition'>[] = [
   ...corePropTransitionTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'transition',
@@ -81,7 +81,7 @@ export const propTransitionTestCases: TPropTestCase<IYVueTipProps, 'transition'>
     expected: defaultTransition,
   },
 ]
-export const propTriggerTestCases: TPropTestCase<IYVueTipProps, 'trigger'>[] = [
+export const propTriggerTestCases: TPropTestCase<IAltVueTipProps, 'trigger'>[] = [
   ...corePropTriggerTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'trigger',
@@ -90,7 +90,7 @@ export const propTriggerTestCases: TPropTestCase<IYVueTipProps, 'trigger'>[] = [
     expected: defaultTrigger,
   },
 ]
-export const propTypeTestCases: TPropTestCase<IYVueTipProps, 'type'>[] = [
+export const propTypeTestCases: TPropTestCase<IAltVueTipProps, 'type'>[] = [
   ...corePropTypeTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'type',

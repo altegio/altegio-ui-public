@@ -1,2 +1,2 @@
-export { YFieldIcon } from './FieldIcon.component'
+export { AltFieldIcon } from './FieldIcon.component'
 export type * from './models/types'

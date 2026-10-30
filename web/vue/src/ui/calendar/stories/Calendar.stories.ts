@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YCalendar } from '~vue/ui/calendar'
-import { type IYVueCalendarProps } from '~vue/ui/calendar/models/types'
-import yCoreCalendarStoryMeta, { type TStoryProps } from '~core/ui/calendar/stories/Calendar.stories'
-import { YGlobalProvider } from '~vue/ui/globalProvider'
+import { AltCalendar } from '~vue/ui/calendar'
+import { type IAltVueCalendarProps } from '~vue/ui/calendar/models/types'
+import altCoreCalendarStoryMeta, { type TStoryProps } from '~core/ui/calendar/stories/Calendar.stories'
+import { AltGlobalProvider } from '~vue/ui/globalProvider'
 import { locales } from '~core/i18n/locales'
 import { I18nPlugin } from '~core/ui/globalProvider/plugins/i18n'
 
-type TVueCalendarStoryMeta = IYVueCalendarProps & TStoryProps
+type TVueCalendarStoryMeta = IAltVueCalendarProps & TStoryProps
 
 /**
  * Vue wrapper for Core Calendar
@@ -21,17 +21,17 @@ const meta: Meta<TVueCalendarStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YCalendar, YGlobalProvider },
+    components: { AltCalendar, AltGlobalProvider },
     setup() {
       return { args }
     },
     template: ` 
-      <YCalendar v-bind="args" :locale="args.localeData">
-      </YCalendar>
+      <AltCalendar v-bind="args" :locale="args.localeData">
+      </AltCalendar>
     `,
   }),
-  argTypes: { ...yCoreCalendarStoryMeta.argTypes },
-  args: { ...yCoreCalendarStoryMeta.args },
+  argTypes: { ...altCoreCalendarStoryMeta.argTypes },
+  args: { ...altCoreCalendarStoryMeta.args },
 }
 
 export default meta
@@ -42,15 +42,15 @@ export const Playground: Story = {}
 
 export const WithRussianLocale: Story = {
   render: (args) => ({
-    components: { YCalendar, YGlobalProvider },
+    components: { AltCalendar, AltGlobalProvider },
     setup() {
       const i18nPlugin = new I18nPlugin(locales['ru-RU'])
       return { args, plugins: [i18nPlugin] }
     },
     template: `
-      <YGlobalProvider :plugins="plugins">
-        <YCalendar v-bind="args" />
-      </YGlobalProvider>
+      <AltGlobalProvider :plugins="plugins">
+        <AltCalendar v-bind="args" />
+      </AltGlobalProvider>
     `,
   }),
   name: 'With the Russian locale via GlobalProvider',
@@ -58,15 +58,15 @@ export const WithRussianLocale: Story = {
 
 export const WithEnglishLocale: Story = {
   render: (args) => ({
-    components: { YCalendar, YGlobalProvider },
+    components: { AltCalendar, AltGlobalProvider },
     setup() {
       const i18nPlugin = new I18nPlugin(locales['en-US'])
       return { args, plugins: [i18nPlugin] }
     },
     template: `
-      <YGlobalProvider :plugins="plugins">
-        <YCalendar v-bind="args" />
-      </YGlobalProvider>
+      <AltGlobalProvider :plugins="plugins">
+        <AltCalendar v-bind="args" />
+      </AltGlobalProvider>
     `,
   }),
   name: 'With the English locale via GlobalProvider',

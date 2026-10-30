@@ -25,6 +25,32 @@ pnpm story-dev
 | Vue | http://localhost:6007 | `pnpm story-dev-vue` |
 | Angular | http://localhost:6008 | `pnpm story-dev-ng` |
 
+## Migrating from 2.x
+
+Version 3.0 replaces the `Y` and `y-` prefixes inherited from the retired brand with `Alt` and `alt-` across the whole public API. Component behavior, props, events, and slots are unchanged, so migrating is a rename:
+
+<!-- legacy-names:start -->
+| Area | 2.x | 3.0 |
+| --- | --- | --- |
+| Vue and Angular components | `YButton` | `AltButton` |
+| Angular element selectors | `<YButton>` | `<AltButton>` |
+| Web component classes | `YCoreButton` | `AltCoreButton` |
+| Tag name constants | `YCoreButtonTagName` | `AltCoreButtonTagName` |
+| Tags, default `data-locator` values, and BEM classes | `y-core-button` | `alt-core-button` |
+| Interfaces, types, and enums | `IYVueButtonProps`, `TYIcons`, `EYSizes` | `IAltVueButtonProps`, `TAltIcons`, `EAltSizes` |
+| Type guards | `isYCoreTableRow` | `isAltCoreTableRow` |
+| Icons | `yArrowLeft`, `y3Dots` | `altArrowLeft`, `alt3Dots` |
+| Icon modules | `assets/icons/build/y-arrow-left.icon` | `assets/icons/build/alt-arrow-left.icon` |
+| CSS custom properties | `--y-core-color-text-primary`, `--y-core-text-color-primary` | `--alt-core-color-text-primary`, `--alt-core-text-color-primary` |
+| Scrollbar utility class and mixin | `.y-scrollbar`, `@mixin y-scrollbar` | `.alt-scrollbar`, `@mixin alt-scrollbar` |
+| Token constants | `YC_TEXT_PRIMARY` (deprecated in 2.x, removed) | `ALT_TEXT_PRIMARY` |
+| Component CLI | `yds` | `alt-ds` |
+<!-- legacy-names:end -->
+
+Default `data-locator` values follow the tag names, so autotest selectors that rely on the defaults need the new names. If your Vue build marks custom elements by prefix, match `alt-core-` rather than `alt-`, so that `<alt-button>` still resolves to the Vue component.
+
+Private package builds of 3.x keep the 2.x names working as deprecated aliases for existing products; public code snapshots omit them.
+
 ## Migrating from 1.x
 
 The modernized package keeps Maskito 3, so Vue consumers can continue using `maskitoNumberOptionsGenerator` with `precision`. Angular consumers must upgrade from Angular 18 to Angular 22 before moving to the new major version. Node 20 consumers must move to Node 22.15+ or 24.15+.
@@ -61,9 +87,9 @@ pnpm icons-build           # Generate icon modules from SVG files
 
 Run `pnpm vars-build` before individual library builds when generated assets are absent or tokens have changed. `make lib-build` runs it automatically.
 
-TypeScript token constants use the `ALT_` prefix. The token generator puts the canonical values in `web/shared/constants/tokens/canonical.ts` and the deprecated `YC_` aliases in `web/shared/constants/tokens/legacy.ts`. The existing `./tokens` entry point re-exports both, so consumers can migrate imports gradually. Removing the aliases requires a separate major release.
+TypeScript token constants use the `ALT_` prefix. The token generator writes them to `web/shared/constants/tokens/canonical.ts`, and the `./tokens` entry point re-exports them.
 
-The built `./tokens` entry point ships JavaScript and TypeScript declarations for NodeNext consumers. Private package builds add deprecated icon export aliases for existing products; public code snapshots omit those aliases.
+The built `./tokens` entry point ships JavaScript and TypeScript declarations for NodeNext consumers.
 
 ## Run checks
 
@@ -108,10 +134,10 @@ Build the [component CLI](./web/cli/README.md) to scaffold or update components:
 
 ```bash
 pnpm cli-build
-yds create
+alt-ds create
 ```
 
-The CLI build also links the `yds` command globally. Run it from the repository root so it can find the component directories. Use Storybook to review component behavior and run the relevant unit tests before submitting changes.
+The CLI build also links the `alt-ds` command globally. Run it from the repository root so it can find the component directories. Use Storybook to review component behavior and run the relevant unit tests before submitting changes.
 
 Additional guides:
 

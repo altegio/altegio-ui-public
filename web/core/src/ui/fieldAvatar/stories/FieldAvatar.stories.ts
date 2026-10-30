@@ -3,21 +3,21 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 import { pick } from 'radash'
 
 import {
-  type IYCoreFieldAvatarProps,
+  type IAltCoreFieldAvatarProps,
 } from '~core/ui/fieldAvatar/models/types'
 import {
-  YCoreFieldAvatarTagName as tagName,
+  AltCoreFieldAvatarTagName as tagName,
 } from '~shared/constants'
 
-import yCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
-import yCoreAvatarStoryMeta from '~core/ui/avatar/stories/Avatar.stories'
+import altCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
+import altCoreAvatarStoryMeta from '~core/ui/avatar/stories/Avatar.stories'
 
 import '~core/ui/fieldAvatar'
 
 /**
  * ## Core FieldAvatar
  */
-const meta: Meta<IYCoreFieldAvatarProps> = {
+const meta: Meta<IAltCoreFieldAvatarProps> = {
   title: 'Inputs/Partials/⚠️ FieldAvatar',
   id: 'fieldAvatar',
   parameters: { controls: { sort: 'alpha' } },
@@ -34,28 +34,28 @@ const meta: Meta<IYCoreFieldAvatarProps> = {
     icon,
   }) => {
     return html`
-      <y-core-field-avatar
+      <alt-core-field-avatar
         .disabled=${disabled}
         .size=${size}
         .photo=${photo}
         .initials=${initials}
         .icon=${icon}
         style="border: 1px dashed;"
-      ></y-core-field-avatar>
+      ></alt-core-field-avatar>
     `
   },
   argTypes: {
-    ...pick(yCoreFieldWrapperStoryMeta.argTypes ?? {}, ['disabled', 'size']),
-    ...pick(yCoreAvatarStoryMeta.argTypes ?? {}, ['photo', 'initials', 'icon']),
+    ...pick(altCoreFieldWrapperStoryMeta.argTypes ?? {}, ['disabled', 'size']),
+    ...pick(altCoreAvatarStoryMeta.argTypes ?? {}, ['photo', 'initials', 'icon']),
   },
   args: {
-    ...pick(yCoreFieldWrapperStoryMeta.args ?? {}, ['disabled', 'size']),
-    ...pick(yCoreAvatarStoryMeta.args ?? {}, ['photo', 'initials', 'icon']),
+    ...pick(altCoreFieldWrapperStoryMeta.args ?? {}, ['disabled', 'size']),
+    ...pick(altCoreAvatarStoryMeta.args ?? {}, ['photo', 'initials', 'icon']),
     photo: 'https://i.pravatar.cc/300',
   },
-} satisfies Meta<IYCoreFieldAvatarProps>
+} satisfies Meta<IAltCoreFieldAvatarProps>
 
 export default meta
-type Story = StoryObj<IYCoreFieldAvatarProps>
+type Story = StoryObj<IAltCoreFieldAvatarProps>
 
 export const Playground: Story = { args: {} }

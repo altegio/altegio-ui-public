@@ -1,1 +1,1 @@
-export { YCoreFieldIcon } from './FieldIcon.core'
+export { AltCoreFieldIcon } from './FieldIcon.core'

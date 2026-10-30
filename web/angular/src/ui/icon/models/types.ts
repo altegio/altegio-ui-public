@@ -1,5 +1,5 @@
-import { createCoreIconExternalProps, type IYCoreIconExternalProps } from '~core/ui/icon/models/types'
+import { createCoreIconExternalProps, type IAltCoreIconExternalProps } from '~core/ui/icon/models/types'
 
-export interface IYNgIconProps extends IYCoreIconExternalProps {}
+export interface IAltNgIconProps extends IAltCoreIconExternalProps {}
 
-export const createNgIconProps = (): IYNgIconProps => createCoreIconExternalProps()
+export const createNgIconProps = (): IAltNgIconProps => createCoreIconExternalProps()

@@ -6,33 +6,33 @@ import { uid } from 'radash'
 
 import {
   createCoreCollapseProps,
-  type IYCoreCollapseProps,
-  EYCoreCollapseType,
+  type IAltCoreCollapseProps,
+  EAltCoreCollapseType,
   CollapseChangeEvent,
   CollapseMoveEvent,
   type TCollapseItemValueSingle,
 } from '~core/ui/collapse/models/types'
 import {
-  YCoreCollapseTagName as tagName,
-  YCoreCollapseItemTagName,
-  YCoreIconTagName,
+  AltCoreCollapseTagName as tagName,
+  AltCoreCollapseItemTagName,
+  AltCoreIconTagName,
 } from '~shared/constants'
-import { yDragAndDrop } from '~shared/icons'
+import { altDragAndDrop } from '~shared/icons'
 
 import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
 import { preventAndStopEvent } from '~shared/utils'
 
 import { valueContextCreated, typeContextCreated, variantContextCreated } from './providers'
 
-import YCoreCollapseVarsCSS from '~core/ui/collapse/css/Collapse.vars.css?inline'
-import YCoreCollapseScopedCSS from '~core/ui/collapse/css/Collapse.scoped.css?inline'
+import AltCoreCollapseVarsCSS from '~core/ui/collapse/css/Collapse.vars.css?inline'
+import AltCoreCollapseScopedCSS from '~core/ui/collapse/css/Collapse.scoped.css?inline'
 
-import { type YCoreCollapseItem } from '~core/ui/collapseItem'
-import { YCoreIcon } from '~core/ui/icon'
+import { type AltCoreCollapseItem } from '~core/ui/collapseItem'
+import { AltCoreIcon } from '~core/ui/icon'
 import { type CollapseItemClickEvent } from '~core/ui/collapseItem/models/types'
 import { booleanConverter } from '~core/utils/converters'
 import { isSupportsTouchEvents, TOUCH_DRAG_DELAY, type ITouchDragState } from '~web/shared/utils/touchEvents'
-import { isYCoreCollapseItem } from '../collapseItem/models/types/isYCoreCollapseItem'
+import { isAltCoreCollapseItem } from '../collapseItem/models/types/isAltCoreCollapseItem'
 import { withLocator } from '~core/utils/locator'
 
 const { value, type, variant, draggable, allowCrossLevelMove } = createCoreCollapseProps()
@@ -42,28 +42,28 @@ const DRAG_THRESHOLD = 15 // Minimum pointer movement in pixels before a drag st
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreCollapse
+export class AltCoreCollapse
   extends LitElement
-  implements IYCoreCollapseProps {
+  implements IAltCoreCollapseProps {
   @provide({ context: valueContextCreated })
-  @property({ type: String }) value: IYCoreCollapseProps['value'] = value
+  @property({ type: String }) value: IAltCoreCollapseProps['value'] = value
   @provide({ context: typeContextCreated })
-  @property({ type: String }) type: IYCoreCollapseProps['type'] = type
+  @property({ type: String }) type: IAltCoreCollapseProps['type'] = type
   @provide({ context: variantContextCreated })
-  @property({ type: String }) variant: IYCoreCollapseProps['variant'] = variant
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) draggable: IYCoreCollapseProps['draggable'] = draggable
-  @property({ type: Boolean, reflect: true, converter: booleanConverter, attribute: 'allow-cross-level-move' }) allowCrossLevelMove: IYCoreCollapseProps['allowCrossLevelMove'] = allowCrossLevelMove
+  @property({ type: String }) variant: IAltCoreCollapseProps['variant'] = variant
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) draggable: IAltCoreCollapseProps['draggable'] = draggable
+  @property({ type: Boolean, reflect: true, converter: booleanConverter, attribute: 'allow-cross-level-move' }) allowCrossLevelMove: IAltCoreCollapseProps['allowCrossLevelMove'] = allowCrossLevelMove
 
   private readonly baseClass = tagName
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreCollapseVarsCSS)}
-      ${unsafeCSS(YCoreCollapseScopedCSS)}
+      ${unsafeCSS(AltCoreCollapseVarsCSS)}
+      ${unsafeCSS(AltCoreCollapseScopedCSS)}
     `,
   ]
 
-  private touchDragState: ITouchDragState<YCoreCollapseItem> = {
+  private touchDragState: ITouchDragState<AltCoreCollapseItem> = {
     active: false,
     startX: 0,
     startY: 0,
@@ -112,7 +112,7 @@ export class YCoreCollapse
   private scrollToActiveItem = (itemValue: TCollapseItemValueSingle) => {
     setTimeout(() => {
       // Look for the active item among this collapse's direct children only
-      const activeItem = this.querySelector<YCoreCollapseItem>(`${this.tagName.toLowerCase()}[data-uid="${this.dataset.uid}"] > ${YCoreCollapseItemTagName}[value="${itemValue}"]`)
+      const activeItem = this.querySelector<AltCoreCollapseItem>(`${this.tagName.toLowerCase()}[data-uid="${this.dataset.uid}"] > ${AltCoreCollapseItemTagName}[value="${itemValue}"]`)
 
       if (activeItem && this.value === itemValue) {
         // Scroll smoothly to the active item
@@ -131,7 +131,7 @@ export class YCoreCollapse
 
     const itemValue = (event as CollapseItemClickEvent).detail.value
 
-    if (this.type === EYCoreCollapseType.SINGLE) {
+    if (this.type === EAltCoreCollapseType.SINGLE) {
       this.setSingleValue(itemValue)
       // Scroll to the active item once the transition ends
       this.scrollToActiveItem(itemValue)
@@ -147,18 +147,18 @@ export class YCoreCollapse
     })
   }
 
-  private getItemLevel = (item: YCoreCollapseItem): number => {
-    const parentItem = item.parentElement?.closest(YCoreCollapseItemTagName)
+  private getItemLevel = (item: AltCoreCollapseItem): number => {
+    const parentItem = item.parentElement?.closest(AltCoreCollapseItemTagName)
     return parentItem ? 1 + this.getItemLevel(parentItem) : 0
   }
 
-  private canMove = (sourceItem: YCoreCollapseItem, targetItem: YCoreCollapseItem): boolean => {
+  private canMove = (sourceItem: AltCoreCollapseItem, targetItem: AltCoreCollapseItem): boolean => {
     const sourceLevel = this.getItemLevel(sourceItem)
     const targetLevel = this.getItemLevel(targetItem)
     return sourceLevel === targetLevel || sourceLevel === targetLevel + 1
   }
 
-  private insertItem = (sourceItem: YCoreCollapseItem, targetItem: YCoreCollapseItem, isAfter: boolean): void => {
+  private insertItem = (sourceItem: AltCoreCollapseItem, targetItem: AltCoreCollapseItem, isAfter: boolean): void => {
     const sourceLevel = this.getItemLevel(sourceItem)
     const targetLevel = this.getItemLevel(targetItem)
     if (sourceLevel === targetLevel) {
@@ -173,21 +173,21 @@ export class YCoreCollapse
   }
 
 
-  private insertIntoInnerCollapse = (sourceItem: YCoreCollapseItem, targetItem: YCoreCollapseItem) => {
-    const innerCollapse = targetItem.querySelector<YCoreCollapse>(this.tagName)
+  private insertIntoInnerCollapse = (sourceItem: AltCoreCollapseItem, targetItem: AltCoreCollapseItem) => {
+    const innerCollapse = targetItem.querySelector<AltCoreCollapse>(this.tagName)
     if (!innerCollapse) return
     innerCollapse.insertBefore(sourceItem, innerCollapse.firstChild)
   }
 
-  private moveDraggableItem = (sourceItem: YCoreCollapseItem, targetItem: YCoreCollapseItem, dragEvent: DragEvent) => {
+  private moveDraggableItem = (sourceItem: AltCoreCollapseItem, targetItem: AltCoreCollapseItem, dragEvent: DragEvent) => {
     if (!this.canMove(sourceItem, targetItem)) return
 
 
     let parent = targetItem.parentNode
-    if (!(parent instanceof YCoreCollapse)) {
-      parent = parent?.parentNode as (YCoreCollapse | null)
-      sourceItem = sourceItem.parentNode as YCoreCollapseItem
-      targetItem = targetItem.parentNode as YCoreCollapseItem
+    if (!(parent instanceof AltCoreCollapse)) {
+      parent = parent?.parentNode as (AltCoreCollapse | null)
+      sourceItem = sourceItem.parentNode as AltCoreCollapseItem
+      targetItem = targetItem.parentNode as AltCoreCollapseItem
     }
     if (!parent) return
 
@@ -199,7 +199,7 @@ export class YCoreCollapse
   private handleDragStart = (dragEvent: DragEvent) => {
     const targetItem = dragEvent.target || this.touchDragState.sourceItem
 
-    if (!isYCoreCollapseItem(targetItem)) return
+    if (!isAltCoreCollapseItem(targetItem)) return
 
     targetItem.style.cursor = 'grabbing'
     targetItem.style.opacity = '0.5'
@@ -215,7 +215,7 @@ export class YCoreCollapse
 
     const targetItem = dragEvent.target || this.touchDragState.sourceItem
 
-    if (!isYCoreCollapseItem(targetItem)) return
+    if (!isAltCoreCollapseItem(targetItem)) return
 
     targetItem.style.cursor = 'grab'
     targetItem.style.opacity = '1'
@@ -226,7 +226,7 @@ export class YCoreCollapse
     dragEvent.preventDefault()
 
     const targetItem = this.getTargetItem(dragEvent) || this.touchDragState.targetItem
-    if (!isYCoreCollapseItem(targetItem)) return
+    if (!isAltCoreCollapseItem(targetItem)) return
 
     const sourceItem = this.findSourceItem()
     if (sourceItem && sourceItem !== targetItem) {
@@ -238,16 +238,16 @@ export class YCoreCollapse
     return this.allowCrossLevelMove ? dragEvent.target : dragEvent.currentTarget
   }
 
-  private findSourceItem(): YCoreCollapseItem | null {
-    const sourceSelector = `${YCoreCollapseItemTagName}[draggable="true"][data-dragging="true"]`
+  private findSourceItem(): AltCoreCollapseItem | null {
+    const sourceSelector = `${AltCoreCollapseItemTagName}[draggable="true"][data-dragging="true"]`
 
     if (this.allowCrossLevelMove) {
-      return document.querySelector<YCoreCollapseItem>(sourceSelector)
+      return document.querySelector<AltCoreCollapseItem>(sourceSelector)
     }
 
     return (
-      this.querySelector<YCoreCollapseItem>(`:scope > ${sourceSelector}`) ||
-      this.querySelector<YCoreCollapseItem>(`:scope > * > ${sourceSelector}`)
+      this.querySelector<AltCoreCollapseItem>(`:scope > ${sourceSelector}`) ||
+      this.querySelector<AltCoreCollapseItem>(`:scope > * > ${sourceSelector}`)
     )
   }
 
@@ -270,9 +270,9 @@ export class YCoreCollapse
     const parentCollapse = sourceItem.closest(tagName)
     if (!parentCollapse) return
 
-    let draggableItems = parentCollapse.querySelectorAll<YCoreCollapseItem>(`:scope > ${YCoreCollapseItemTagName}[draggable="true"]`)
+    let draggableItems = parentCollapse.querySelectorAll<AltCoreCollapseItem>(`:scope > ${AltCoreCollapseItemTagName}[draggable="true"]`)
     if (!draggableItems.length) {
-      draggableItems = parentCollapse.querySelectorAll<YCoreCollapseItem>(`:scope > * > ${YCoreCollapseItemTagName}[draggable="true"]`)
+      draggableItems = parentCollapse.querySelectorAll<AltCoreCollapseItem>(`:scope > * > ${AltCoreCollapseItemTagName}[draggable="true"]`)
     }
     this._collapseMove({
       detail: {
@@ -282,7 +282,7 @@ export class YCoreCollapse
     })
   }
 
-  private clearDraggingItem = (draggableItem: YCoreCollapseItem) => {
+  private clearDraggingItem = (draggableItem: AltCoreCollapseItem) => {
     delete draggableItem.dataset.dragging
     delete draggableItem.dataset.hasListeners
     draggableItem.removeAttribute('draggable')
@@ -293,7 +293,7 @@ export class YCoreCollapse
     draggableItem.removeEventListener('dragover', this.handleDragOver)
     draggableItem.removeEventListener('drop', this.handleDrop)
 
-    const icon = draggableItem.querySelector(`:scope > ${YCoreIconTagName}[slot="before"]`)
+    const icon = draggableItem.querySelector(`:scope > ${AltCoreIconTagName}[slot="before"]`)
 
     if (icon) {
       draggableItem.removeChild(icon)
@@ -304,8 +304,8 @@ export class YCoreCollapse
     }
   }
 
-  private createDraggableClone = (sourceItem: YCoreCollapseItem): YCoreCollapseItem => {
-    const clone = sourceItem.cloneNode(true) as YCoreCollapseItem
+  private createDraggableClone = (sourceItem: AltCoreCollapseItem): AltCoreCollapseItem => {
+    const clone = sourceItem.cloneNode(true) as AltCoreCollapseItem
     clone.style.position = 'fixed'
     const rect = sourceItem.getBoundingClientRect()
 
@@ -325,7 +325,7 @@ export class YCoreCollapse
     const touch = event.touches[0]
     const sourceItem = event.currentTarget
 
-    if (!isYCoreCollapseItem(sourceItem) || sourceItem.computedOpened || event.touches.length !== 1) return
+    if (!isAltCoreCollapseItem(sourceItem) || sourceItem.computedOpened || event.touches.length !== 1) return
 
     const touchDragState = this.touchDragState
 
@@ -362,7 +362,7 @@ export class YCoreCollapse
   }
 
 
-  private shouldBlockEvent(state: ITouchDragState<YCoreCollapseItem>) {
+  private shouldBlockEvent(state: ITouchDragState<AltCoreCollapseItem>) {
     return (state.dragReady || state.active) && state.sourceItem
   }
 
@@ -377,7 +377,7 @@ export class YCoreCollapse
     this.touchDragState.touchStartTimeout = null
   }
 
-  private tryActivateDrag(event: TouchEvent, state: ITouchDragState<YCoreCollapseItem>) {
+  private tryActivateDrag(event: TouchEvent, state: ITouchDragState<AltCoreCollapseItem>) {
     const touch = event.touches[0]
     const deltaX = Math.abs(touch.clientX - state.startX)
     const deltaY = Math.abs(touch.clientY - state.startY)
@@ -414,13 +414,13 @@ export class YCoreCollapse
     this.updateTouchDragPosition(touchInfo)
   }
 
-  private findTargetCollapseItem(touchInfo: Touch): YCoreCollapseItem | null {
+  private findTargetCollapseItem(touchInfo: Touch): AltCoreCollapseItem | null {
     let targetElement = document.elementFromPoint(touchInfo.clientX, touchInfo.clientY)
 
     const { sourceItem } = this.touchDragState
 
     while (targetElement && targetElement !== this) {
-      if (isYCoreCollapseItem(targetElement) && targetElement !== sourceItem) {
+      if (isAltCoreCollapseItem(targetElement) && targetElement !== sourceItem) {
         return targetElement
       }
 
@@ -430,7 +430,7 @@ export class YCoreCollapse
     return null
   }
 
-  private itemsAreSiblings = (targetItem: YCoreCollapseItem | null, sourceItem: YCoreCollapseItem | null) => {
+  private itemsAreSiblings = (targetItem: AltCoreCollapseItem | null, sourceItem: AltCoreCollapseItem | null) => {
     if (!targetItem || !sourceItem || targetItem === sourceItem) return false
 
     const sourceParent = sourceItem.closest(this.tagName.toLowerCase())
@@ -478,7 +478,7 @@ export class YCoreCollapse
   }
 
 
-  private resetDragPosition(item: YCoreCollapseItem) {
+  private resetDragPosition(item: AltCoreCollapseItem) {
     item.style.transform = ''
   }
 
@@ -491,14 +491,14 @@ export class YCoreCollapse
     state.targetItem = null
   }
 
-  private setTouchDraggindEvents = (draggableItem: YCoreCollapseItem) => {
+  private setTouchDraggindEvents = (draggableItem: AltCoreCollapseItem) => {
     draggableItem.addEventListener('touchstart', this.handleTouchStart)
     draggableItem.addEventListener('touchmove', this.handleTouchMove, { passive: false })
     draggableItem.addEventListener('touchend', this.handleTouchEnd)
     draggableItem.addEventListener('touchcancel', this.handleTouchEnd)
   }
 
-  private clearTouchDraggindEvents = (draggableItem: YCoreCollapseItem) => {
+  private clearTouchDraggindEvents = (draggableItem: AltCoreCollapseItem) => {
     draggableItem.removeEventListener('touchstart', this.handleTouchStart)
     draggableItem.removeEventListener('touchmove', this.handleTouchMove)
     draggableItem.removeEventListener('touchend', this.handleTouchEnd)
@@ -507,37 +507,37 @@ export class YCoreCollapse
     this.resetDragPosition(draggableItem)
   }
 
-  private disableDragging = (draggableItem: YCoreCollapseItem) => {
+  private disableDragging = (draggableItem: AltCoreCollapseItem) => {
     draggableItem.setAttribute('draggable', 'false')
 
-    const draggableIcon = draggableItem.querySelector(`:scope > ${YCoreIconTagName}[slot="before"]`)
+    const draggableIcon = draggableItem.querySelector(`:scope > ${AltCoreIconTagName}[slot="before"]`)
 
-    if (draggableIcon instanceof YCoreIcon) {
+    if (draggableIcon instanceof AltCoreIcon) {
       draggableIcon.style.cursor = 'not-allowed'
     }
   }
 
   private clearDragging = () => {
-    let draggableItems = this.querySelectorAll<YCoreCollapseItem>(`:scope > ${YCoreCollapseItemTagName}[draggable]`)
+    let draggableItems = this.querySelectorAll<AltCoreCollapseItem>(`:scope > ${AltCoreCollapseItemTagName}[draggable]`)
     if (!draggableItems.length) {
-      draggableItems = this.querySelectorAll<YCoreCollapseItem>(`:scope > * > ${YCoreCollapseItemTagName}[draggable]`)
+      draggableItems = this.querySelectorAll<AltCoreCollapseItem>(`:scope > * > ${AltCoreCollapseItemTagName}[draggable]`)
     }
     draggableItems.forEach(this.clearDraggingItem)
   }
 
-  private setDraggingItem = (draggableItem: YCoreCollapseItem) => {
+  private setDraggingItem = (draggableItem: AltCoreCollapseItem) => {
     if (!draggableItem.dataset.hasListeners) {
       draggableItem.setAttribute('draggable', 'true')
       draggableItem.dataset.hasListeners = ''
 
-      const slotBeforeItems = draggableItem.querySelectorAll<YCoreIcon>(`:scope > ${YCoreIconTagName}[slot="before"]`)
+      const slotBeforeItems = draggableItem.querySelectorAll<AltCoreIcon>(`:scope > ${AltCoreIconTagName}[slot="before"]`)
 
       slotBeforeItems.forEach((icon) => {
         draggableItem.removeChild(icon)
       })
 
-      const icon = document.createElement(YCoreIconTagName)
-      icon.icon = yDragAndDrop
+      const icon = document.createElement(AltCoreIconTagName)
+      icon.icon = altDragAndDrop
       icon.size = '16px'
       icon.setAttribute('slot', 'before')
       icon.style.cursor = 'grab'
@@ -565,9 +565,9 @@ export class YCoreCollapse
       return
     }
 
-    let draggableItems = this.querySelectorAll<YCoreCollapseItem>(`:scope > ${YCoreCollapseItemTagName}`)
+    let draggableItems = this.querySelectorAll<AltCoreCollapseItem>(`:scope > ${AltCoreCollapseItemTagName}`)
     if (!draggableItems.length) {
-      draggableItems = this.querySelectorAll<YCoreCollapseItem>(`:scope > * > ${YCoreCollapseItemTagName}`)
+      draggableItems = this.querySelectorAll<AltCoreCollapseItem>(`:scope > * > ${AltCoreCollapseItemTagName}`)
     }
     draggableItems.forEach(this.setDraggingItem)
   }

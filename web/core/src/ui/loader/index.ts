@@ -1,1 +1,1 @@
-export { YCoreLoader } from './Loader.core'
+export { AltCoreLoader } from './Loader.core'

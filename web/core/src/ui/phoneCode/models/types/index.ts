@@ -1,4 +1,4 @@
-import type { IYCorePhoneCodeExternalProps } from './external'
+import type { IAltCorePhoneCodeExternalProps } from './external'
 import {
   createCorePhoneCodeExternalProps,
 } from './external'
@@ -6,6 +6,6 @@ import {
 
 export * from './external'
 
-export interface IYCorePhoneCodeProps extends IYCorePhoneCodeExternalProps {}
+export interface IAltCorePhoneCodeProps extends IAltCorePhoneCodeExternalProps {}
 
-export const createCorePhoneCodeProps = (): IYCorePhoneCodeProps => ({ ...createCorePhoneCodeExternalProps() })
+export const createCorePhoneCodeProps = (): IAltCorePhoneCodeProps => ({ ...createCorePhoneCodeExternalProps() })

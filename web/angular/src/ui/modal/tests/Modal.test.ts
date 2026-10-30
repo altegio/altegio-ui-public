@@ -1,10 +1,10 @@
 import { slotDefaultTestCases } from '~vue/ui/modal/tests/cases/slots'
 import { describe, expect, it, vi } from 'vitest'
-import { YCoreModalTagName as tagName } from '~shared/constants'
+import { AltCoreModalTagName as tagName } from '~shared/constants'
 import { TestBed } from '~ng/tests/setup'
-import { YModal } from '~ng/ui/modal'
+import { AltModal } from '~ng/ui/modal'
 import { Component } from '@angular/core'
-import type { IYNgModalProps } from '~ng/ui/modal/models/types'
+import type { IAltNgModalProps } from '~ng/ui/modal/models/types'
 import {
   propsFullScreenTestCases,
   propsHideOverlayTestCases,
@@ -27,16 +27,16 @@ interface ICreateComponentArgs {
     content?: string
     close?: string
   }
-  props?: Partial<IYNgModalProps>
+  props?: Partial<IAltNgModalProps>
 }
 
 const createComponent = async({ slots, props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YModal] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltModal] }).compileComponents()
 
   @Component({
     template: `
-      <YModal
+      <AltModal
         [open]="open"
         [size]="size"
         [variant]="variant"
@@ -66,9 +66,9 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
             {{ close }}
           </div>
         }
-      </YModal>
+      </AltModal>
     `,
-    imports: [YModal],
+    imports: [AltModal],
     standalone: true,
   })
   class TestComponent {
@@ -176,7 +176,7 @@ const baseEventsCheck = () => {
 }
 
 describe(
-  'Angular/YCoreOrganismModal/Unit',
+  'Angular/AltCoreOrganismModal/Unit',
   () => {
     describe(
       'Slots',

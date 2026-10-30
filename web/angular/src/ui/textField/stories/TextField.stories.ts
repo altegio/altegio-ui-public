@@ -1,30 +1,30 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { FormsModule, ReactiveFormsModule, FormControl, Validators } from '@angular/forms'
 import type { ValidatorFn } from '@angular/forms'
-import { ERROR_LOCATOR, LABEL_LOCATOR, YTextField } from '~ng/ui/textField'
-import yCoreTextFieldStoryMeta, { type TYCoreTextFieldMeta } from '~core/ui/textField/stories/TextField.stories'
+import { ERROR_LOCATOR, LABEL_LOCATOR, AltTextField } from '~ng/ui/textField'
+import altCoreTextFieldStoryMeta, { type TAltCoreTextFieldMeta } from '~core/ui/textField/stories/TextField.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { omit } from 'radash'
 import { action } from 'storybook/actions'
-import type { TYNgTextFieldModel } from '~ng/ui/textField/models/types'
+import type { TAltNgTextFieldModel } from '~ng/ui/textField/models/types'
 
 import { useArgs } from 'storybook/preview-api'
 import { MASK_EXAMPLES } from '~web/shared/.storybook/constants/maskExamples'
 import { getComponentContentTable, getComponentEmitsTable, getComponentStateTable } from '~web/shared/.storybook/tables'
-import type { TYNgControlValueTypes } from '~web/angular/src/types/ControlValueAccessorTypes'
-import { YFieldIcon } from '~ng/ui/fieldIcon'
-import { ySearch, yCopy } from '~shared/icons'
+import type { TAltNgControlValueTypes } from '~web/angular/src/types/ControlValueAccessorTypes'
+import { AltFieldIcon } from '~ng/ui/fieldIcon'
+import { altSearch, altCopy } from '~shared/icons'
 
-type IYStoryBookTextFieldMeta = YTextField & TYCoreTextFieldMeta & TYNgControlValueTypes<TYNgTextFieldModel>
+type IAltStoryBookTextFieldMeta = AltTextField & TAltCoreTextFieldMeta & TAltNgControlValueTypes<TAltNgTextFieldModel>
 
 /**
  * Angular wrapper for Core InputField
  */
-const meta: Meta<IYStoryBookTextFieldMeta> = {
+const meta: Meta<IAltStoryBookTextFieldMeta> = {
   title: 'Inputs/✅ TextField',
   id: 'textField',
   parameters: { controls: { sort: 'alpha' } },
-  component: YTextField,
+  component: AltTextField,
   tags: [
     'angular',
     'autodocs',
@@ -33,7 +33,7 @@ const meta: Meta<IYStoryBookTextFieldMeta> = {
     const [, updateArgs] = useArgs()
 
     const handlers = {
-      onModelChange: (ngModel: TYNgTextFieldModel) => {
+      onModelChange: (ngModel: TAltNgTextFieldModel) => {
         action('onModelChange')(ngModel)
         updateArgs({ ngModel })
       },
@@ -49,12 +49,12 @@ const meta: Meta<IYStoryBookTextFieldMeta> = {
         computedLabelTooltipText: args.isLongText ? LOREM_IPSUM : args.labelTooltipText,
         computedLabelText: args.isLongText ? LOREM_IPSUM : args.labelText,
         computedAnnotationText: args.isLongText ? LOREM_IPSUM : args.annotationText,
-        ySearch,
-        yCopy,
+        altSearch,
+        altCopy,
       },
-      moduleMetadata: { imports: [FormsModule, YFieldIcon] },
+      moduleMetadata: { imports: [FormsModule, AltFieldIcon] },
       template: `
-        <YTextField
+        <AltTextField
         (ngModelChange)="onModelChange($event)"
         (focus)="onFocusEmit($event)"
         (blur)="onBlurEmit($event)"
@@ -81,9 +81,9 @@ const meta: Meta<IYStoryBookTextFieldMeta> = {
         >
           @if (showBeforeSlot) {
             <ng-template #textFieldBefore>
-              <YFieldIcon
-                [icon]="ySearch"
-              ></YFieldIcon>
+              <AltFieldIcon
+                [icon]="altSearch"
+              ></AltFieldIcon>
             </ng-template>
           }
           <ng-template #textFieldAnnotation>
@@ -92,17 +92,17 @@ const meta: Meta<IYStoryBookTextFieldMeta> = {
           
           @if (showAfterSlot) {
             <ng-template #textFieldAfter>
-              <YFieldIcon
-                [icon]="yCopy"
-              ></YFieldIcon>
+              <AltFieldIcon
+                [icon]="altCopy"
+              ></AltFieldIcon>
           </ng-template>
           }
-          </YTextField>
+          </AltTextField>
         `,
     }
   },
   argTypes: {
-    ...omit(yCoreTextFieldStoryMeta.argTypes ?? {}, ['readonly', 'value', 'onInput']),
+    ...omit(altCoreTextFieldStoryMeta.argTypes ?? {}, ['readonly', 'value', 'onInput']),
     ngModel: {
       type: 'string',
       description: 'TextField ngModel value',
@@ -125,15 +125,15 @@ const meta: Meta<IYStoryBookTextFieldMeta> = {
     },
   },
   args: {
-    ...omit(yCoreTextFieldStoryMeta.args ?? {}, ['readonly', 'value', 'onInput']),
+    ...omit(altCoreTextFieldStoryMeta.args ?? {}, ['readonly', 'value', 'onInput']),
     ngModel: '',
     locatorLabel: undefined,
     locatorError: undefined,
   },
-} satisfies Meta<IYStoryBookTextFieldMeta>
+} satisfies Meta<IAltStoryBookTextFieldMeta>
 
 export default meta
-type Story = StoryObj<IYStoryBookTextFieldMeta>
+type Story = StoryObj<IAltStoryBookTextFieldMeta>
 
 export const Playground: Story = {
   args: {
@@ -191,7 +191,7 @@ export const WithFormControlAutoRequired: Story = {
     },
     moduleMetadata: { imports: [ReactiveFormsModule] },
     template: `
-      <YTextField
+      <AltTextField
         [formControl]="nameControl"
         [labelText]="'Name'"
         [placeholder]="'Enter a name'"
@@ -226,7 +226,7 @@ export const WithAutoErrorMessages: Story = {
       moduleMetadata: { imports: [ReactiveFormsModule] },
       template: `
         <div style="display: flex; flex-direction: column; gap: 16px;">
-          <YTextField
+          <AltTextField
             [formControl]="nameControl"
             [labelText]="'Name'"
             [placeholder]="'Enter a name'"

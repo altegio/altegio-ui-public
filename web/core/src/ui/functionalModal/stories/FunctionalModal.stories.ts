@@ -8,29 +8,29 @@ import '~core/ui/button'
 import '~core/ui/text'
 
 import {
-  type IYCoreFunctionalModalProps,
+  type IAltCoreFunctionalModalProps,
   createCoreFunctionalModalProps,
   createCoreFunctionalModalExternalProps,
 } from '~core/ui/functionalModal/models/types'
-import type { TYCoreFunctionalModalEvents } from '~core/ui/functionalModal/models/types/events'
+import type { TAltCoreFunctionalModalEvents } from '~core/ui/functionalModal/models/types/events'
 
-import { YCoreFunctionalModalTagName as tagName } from '~shared/constants'
+import { AltCoreFunctionalModalTagName as tagName } from '~shared/constants'
 import { getComponentEmitsTable, getComponentStateTable, storyControlsTable } from '~shared/.storybook/tables'
 import { size as sizeArgType } from '~shared/.storybook/argTypes'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import { locales } from '~core/i18n/locales'
 
 const { open, size, width, hideOverlay, hideFooter, preventEscape, fullScreen, heading, subHeading, locale } = createCoreFunctionalModalProps()
 
-export interface IYCoreFunctionalModalStoryProps extends IYCoreFunctionalModalProps {
+export interface IAltCoreFunctionalModalStoryProps extends IAltCoreFunctionalModalProps {
 
   /** Text displayed in the content area */
   contentText: string
 }
 
-export interface IYCoreFunctionalModalStorySlots {
+export interface IAltCoreFunctionalModalStorySlots {
   showHeaderSlot: boolean
   showContentSlot: boolean
   showActivatorSlot: boolean
@@ -40,15 +40,15 @@ export interface IYCoreFunctionalModalStorySlots {
   showHeaderMediaSlot: boolean
 }
 
-type TYCoreFunctionalModalStoryMeta = Meta<
-  IYCoreFunctionalModalProps & TYCoreFunctionalModalEvents & IYCoreFunctionalModalStoryProps & IYCoreFunctionalModalStorySlots
+type TAltCoreFunctionalModalStoryMeta = Meta<
+  IAltCoreFunctionalModalProps & TAltCoreFunctionalModalEvents & IAltCoreFunctionalModalStoryProps & IAltCoreFunctionalModalStorySlots
 >
 
 /**
  * ## Core Functional Modal
  *
  */
-const meta: TYCoreFunctionalModalStoryMeta = {
+const meta: TAltCoreFunctionalModalStoryMeta = {
   title: '✅ Functional Modal',
   id: 'functionalModal',
   parameters: { controls: { sort: 'alpha' } },
@@ -79,7 +79,7 @@ const meta: TYCoreFunctionalModalStoryMeta = {
     onCancel,
     onSubmit,
   }) => {
-    const [args, updateArgs] = useArgs<IYCoreFunctionalModalProps>()
+    const [args, updateArgs] = useArgs<IAltCoreFunctionalModalProps>()
 
     const { open } = args
     const changeStoryOpenProp = (value: boolean) => {
@@ -98,7 +98,7 @@ const meta: TYCoreFunctionalModalStoryMeta = {
 
     return html`
       <div style="min-height: 600px;">
-        <y-core-functional-modal
+        <alt-core-functional-modal
           .open=${open}
           .size=${size}
           .width=${width}
@@ -123,27 +123,27 @@ const meta: TYCoreFunctionalModalStoryMeta = {
           ${showHeaderSlot ? html` <span slot="header"> Header slot content </span> ` : nothing}
 
           ${showContentSlot
-            ? html` <y-core-text
+            ? html` <alt-core-text
                 size="p2-regular"
                 slot="content"
               >
                 ${contentText + LOREM_IPSUM}
-              </y-core-text>`
+              </alt-core-text>`
             : nothing}
 
           ${showActivatorSlot
             ? html`
-                <y-core-button
+                <alt-core-button
                   label="Open modal"
                   slot="activator"
                 >
-                </y-core-button>
+                </alt-core-button>
               `
             : nothing}
           ${showActionsSlot ? html` <span slot="actions"> Actions slot content </span> ` : nothing}
           ${showBeforeActionsSlot ? html` <span slot="before-actions"> Before-actions slot content </span> ` : nothing}
           ${showFooterSlot ? html` <span slot="footer"> Footer slot content </span> ` : nothing}
-        </y-core-functional-modal>
+        </alt-core-functional-modal>
       </div>
     `
   },
@@ -154,7 +154,7 @@ const meta: TYCoreFunctionalModalStoryMeta = {
       ...getComponentStateTable(open),
     },
     size: {
-      ...sizeArgType([EYSizes.SMALL, EYSizes.LARGE]),
+      ...sizeArgType([EAltSizes.SMALL, EAltSizes.LARGE]),
       ...getComponentStateTable(size),
     },
     width: {
@@ -302,9 +302,9 @@ const meta: TYCoreFunctionalModalStoryMeta = {
     showFooterSlot: false,
     locale: locales['en-US'],
   },
-} satisfies TYCoreFunctionalModalStoryMeta
+} satisfies TAltCoreFunctionalModalStoryMeta
 
 export default meta
-type Story = StoryObj<TYCoreFunctionalModalStoryMeta>
+type Story = StoryObj<TAltCoreFunctionalModalStoryMeta>
 
 export const Playground: Story = { args: {} }

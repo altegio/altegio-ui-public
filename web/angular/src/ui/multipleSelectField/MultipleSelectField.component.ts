@@ -3,10 +3,10 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output } from '
 import '~core/ui/multipleSelectField'
 import {
   createNgMultipleSelectFieldProps,
-  type IYNgMultipleSelectFieldProps,
-  type YNgMultipleSelectFieldFocusEvent,
-  type YNgMultipleSelectFieldInputEvent,
-  type YNgMultipleSelectFieldSelectEvent,
+  type IAltNgMultipleSelectFieldProps,
+  type AltNgMultipleSelectFieldFocusEvent,
+  type AltNgMultipleSelectFieldInputEvent,
+  type AltNgMultipleSelectFieldSelectEvent,
 } from '~ng/ui/multipleSelectField/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { cleanupInnerHTML } from '~shared/utils'
@@ -14,11 +14,11 @@ import { cleanupInnerHTML } from '~shared/utils'
 const { value, name, placeholder, autofocus, disabled, readonly, error, errors, size, required, labelText, labelTooltipText, annotationText, labelDebounce, isMapOptions, items, itemLabel, itemValue, isCustomFilter, isFilterable, filterValue, filterCallback } = createNgMultipleSelectFieldProps()
 
 @Component({
-  selector: 'YMultipleSelectField',
+  selector: 'AltMultipleSelectField',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-multiple-select-field
+    <alt-core-multiple-select-field
       [value]="value"
       [name]="name"
       [placeholder]="placeholder"
@@ -88,47 +88,47 @@ const { value, name, placeholder, autofocus, disabled, readonly, error, errors, 
           [innerHTML]="cleanupHTML(dropdownListBottom)"
         ></div>
       }
-    </y-core-multiple-select-field>
+    </alt-core-multiple-select-field>
   `,
 })
 
-export class YMultipleSelectField implements IYNgMultipleSelectFieldProps {
-  @Input() @DefaultValue(value) value: IYNgMultipleSelectFieldProps['value'] = value
-  @Input() @DefaultValue(name) name: IYNgMultipleSelectFieldProps['name'] = name
-  @Input() @DefaultValue(placeholder) placeholder: IYNgMultipleSelectFieldProps['placeholder'] = placeholder
-  @Input() @DefaultValue(autofocus) autofocus: IYNgMultipleSelectFieldProps['autofocus'] = autofocus
-  @Input() @DefaultValue(disabled) disabled: IYNgMultipleSelectFieldProps['disabled'] = disabled
-  @Input() @DefaultValue(readonly) readonly: IYNgMultipleSelectFieldProps['readonly'] = readonly
-  @Input() @DefaultValue(required) required: IYNgMultipleSelectFieldProps['required'] = required
-  @Input() @DefaultValue(errors) errors: IYNgMultipleSelectFieldProps['errors'] = errors
-  @Input() @DefaultValue(error) error: IYNgMultipleSelectFieldProps['error'] = error
-  @Input() @DefaultValue(size) size: IYNgMultipleSelectFieldProps['size'] = size
-  @Input() @DefaultValue(labelDebounce) labelDebounce: IYNgMultipleSelectFieldProps['labelDebounce'] = labelDebounce
-  @Input() @DefaultValue(isMapOptions) isMapOptions: IYNgMultipleSelectFieldProps['isMapOptions'] = isMapOptions
-  @Input() @DefaultValue(labelText) labelText: IYNgMultipleSelectFieldProps['labelText'] = labelText
-  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IYNgMultipleSelectFieldProps['labelTooltipText'] = labelTooltipText
-  @Input() @DefaultValue(annotationText) annotationText: IYNgMultipleSelectFieldProps['annotationText'] = annotationText
-  @Input() @DefaultValue(items) items: IYNgMultipleSelectFieldProps['items'] = items
-  @Input() @DefaultValue(itemLabel) itemLabel: IYNgMultipleSelectFieldProps['itemLabel'] = itemLabel
-  @Input() @DefaultValue(itemValue) itemValue: IYNgMultipleSelectFieldProps['itemValue'] = itemValue
-  @Input() @DefaultValue(isCustomFilter) isCustomFilter: IYNgMultipleSelectFieldProps['isCustomFilter'] = isCustomFilter
-  @Input() @DefaultValue(isFilterable) isFilterable: IYNgMultipleSelectFieldProps['isFilterable'] = isFilterable
-  @Input() @DefaultValue(filterValue) filterValue: IYNgMultipleSelectFieldProps['filterValue'] = filterValue
-  @Input() @DefaultValue(filterCallback) filterCallback: IYNgMultipleSelectFieldProps['filterCallback'] = filterCallback
+export class AltMultipleSelectField implements IAltNgMultipleSelectFieldProps {
+  @Input() @DefaultValue(value) value: IAltNgMultipleSelectFieldProps['value'] = value
+  @Input() @DefaultValue(name) name: IAltNgMultipleSelectFieldProps['name'] = name
+  @Input() @DefaultValue(placeholder) placeholder: IAltNgMultipleSelectFieldProps['placeholder'] = placeholder
+  @Input() @DefaultValue(autofocus) autofocus: IAltNgMultipleSelectFieldProps['autofocus'] = autofocus
+  @Input() @DefaultValue(disabled) disabled: IAltNgMultipleSelectFieldProps['disabled'] = disabled
+  @Input() @DefaultValue(readonly) readonly: IAltNgMultipleSelectFieldProps['readonly'] = readonly
+  @Input() @DefaultValue(required) required: IAltNgMultipleSelectFieldProps['required'] = required
+  @Input() @DefaultValue(errors) errors: IAltNgMultipleSelectFieldProps['errors'] = errors
+  @Input() @DefaultValue(error) error: IAltNgMultipleSelectFieldProps['error'] = error
+  @Input() @DefaultValue(size) size: IAltNgMultipleSelectFieldProps['size'] = size
+  @Input() @DefaultValue(labelDebounce) labelDebounce: IAltNgMultipleSelectFieldProps['labelDebounce'] = labelDebounce
+  @Input() @DefaultValue(isMapOptions) isMapOptions: IAltNgMultipleSelectFieldProps['isMapOptions'] = isMapOptions
+  @Input() @DefaultValue(labelText) labelText: IAltNgMultipleSelectFieldProps['labelText'] = labelText
+  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IAltNgMultipleSelectFieldProps['labelTooltipText'] = labelTooltipText
+  @Input() @DefaultValue(annotationText) annotationText: IAltNgMultipleSelectFieldProps['annotationText'] = annotationText
+  @Input() @DefaultValue(items) items: IAltNgMultipleSelectFieldProps['items'] = items
+  @Input() @DefaultValue(itemLabel) itemLabel: IAltNgMultipleSelectFieldProps['itemLabel'] = itemLabel
+  @Input() @DefaultValue(itemValue) itemValue: IAltNgMultipleSelectFieldProps['itemValue'] = itemValue
+  @Input() @DefaultValue(isCustomFilter) isCustomFilter: IAltNgMultipleSelectFieldProps['isCustomFilter'] = isCustomFilter
+  @Input() @DefaultValue(isFilterable) isFilterable: IAltNgMultipleSelectFieldProps['isFilterable'] = isFilterable
+  @Input() @DefaultValue(filterValue) filterValue: IAltNgMultipleSelectFieldProps['filterValue'] = filterValue
+  @Input() @DefaultValue(filterCallback) filterCallback: IAltNgMultipleSelectFieldProps['filterCallback'] = filterCallback
 
-  @Output() focus = new EventEmitter<YNgMultipleSelectFieldFocusEvent>()
+  @Output() focus = new EventEmitter<AltNgMultipleSelectFieldFocusEvent>()
   handleFocusEvent(event: Event) {
-    this.focus.emit(event as YNgMultipleSelectFieldFocusEvent)
+    this.focus.emit(event as AltNgMultipleSelectFieldFocusEvent)
   }
 
-  @Output() select = new EventEmitter<YNgMultipleSelectFieldSelectEvent>()
+  @Output() select = new EventEmitter<AltNgMultipleSelectFieldSelectEvent>()
   handleSelectEvent(event: Event) {
-    this.select.emit(event as YNgMultipleSelectFieldSelectEvent)
+    this.select.emit(event as AltNgMultipleSelectFieldSelectEvent)
   }
 
-  @Output() input = new EventEmitter<YNgMultipleSelectFieldInputEvent>()
+  @Output() input = new EventEmitter<AltNgMultipleSelectFieldInputEvent>()
   handleInputEvent(event: Event) {
-    this.input.emit(event as YNgMultipleSelectFieldInputEvent)
+    this.input.emit(event as AltNgMultipleSelectFieldInputEvent)
   }
 
   protected cleanupHTML = cleanupInnerHTML

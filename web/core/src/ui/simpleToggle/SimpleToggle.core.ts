@@ -3,22 +3,22 @@ import { customElement, property } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 
 import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
-import { YCoreSimpleToggleTagName as tagName } from '~shared/constants'
-import { createCoreSimpleToggleProps, type IYCoreSimpleToggleProps } from './models/types'
+import { AltCoreSimpleToggleTagName as tagName } from '~shared/constants'
+import { createCoreSimpleToggleProps, type IAltCoreSimpleToggleProps } from './models/types'
 import { SimpleToggleCheckedEvent } from './models/types/events'
-import YCoreSimpleToggleVarsCSS from '~core/ui/simpleToggle/css/SimpleToggle.vars.css?inline'
-import YCoreSimpleToggleScopedCSS from '~core/ui/simpleToggle/css/SimpleToggle.scoped.css?inline'
+import AltCoreSimpleToggleVarsCSS from '~core/ui/simpleToggle/css/SimpleToggle.vars.css?inline'
+import AltCoreSimpleToggleScopedCSS from '~core/ui/simpleToggle/css/SimpleToggle.scoped.css?inline'
 import { withLocator } from '~core/utils/locator'
 
 const { checked, disabled, size, hovered } = createCoreSimpleToggleProps()
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreSimpleToggle extends LitElement implements IYCoreSimpleToggleProps {
-  @property({ type: Boolean }) disabled: IYCoreSimpleToggleProps['disabled'] = disabled
-  @property({ type: Boolean, reflect: true }) checked: IYCoreSimpleToggleProps['checked'] = checked
-  @property({ type: Boolean }) hovered: IYCoreSimpleToggleProps['hovered'] = hovered
-  @property({ type: String }) size: IYCoreSimpleToggleProps['size'] = size
+export class AltCoreSimpleToggle extends LitElement implements IAltCoreSimpleToggleProps {
+  @property({ type: Boolean }) disabled: IAltCoreSimpleToggleProps['disabled'] = disabled
+  @property({ type: Boolean, reflect: true }) checked: IAltCoreSimpleToggleProps['checked'] = checked
+  @property({ type: Boolean }) hovered: IAltCoreSimpleToggleProps['hovered'] = hovered
+  @property({ type: String }) size: IAltCoreSimpleToggleProps['size'] = size
 
   @bubblingEvent(
     SimpleToggleCheckedEvent,
@@ -39,8 +39,8 @@ export class YCoreSimpleToggle extends LitElement implements IYCoreSimpleToggleP
   }
 
   static readonly styles = [
-    css`${unsafeCSS(YCoreSimpleToggleVarsCSS)}`,
-    css`${unsafeCSS(YCoreSimpleToggleScopedCSS)}`,
+    css`${unsafeCSS(AltCoreSimpleToggleVarsCSS)}`,
+    css`${unsafeCSS(AltCoreSimpleToggleScopedCSS)}`,
   ]
 
   private handleClick = () => {

@@ -1,5 +1,5 @@
 import type { ILocale } from './types'
-import type { TYCountryNameMappedById } from '~shared/types/country'
+import type { TAltCountryNameMappedById } from '~shared/types/country'
 import { defaultCountriesData } from '~shared/utils/countries'
 import { getLanguageShortCode } from './language'
 
@@ -8,7 +8,7 @@ import { getLanguageShortCode } from './language'
  * @param language BCP 47 language tag
  * @param fallback English country names
  */
-const getDisplayCountryNames = (language: string, fallback: TYCountryNameMappedById): TYCountryNameMappedById => {
+const getDisplayCountryNames = (language: string, fallback: TAltCountryNameMappedById): TAltCountryNameMappedById => {
   let displayNames: Intl.DisplayNames
 
   try {
@@ -164,7 +164,7 @@ export class LocaleService {
    * Returns the list of countries
    * @param language Language of the names, the locale language by default
    */
-  public async getCountries(language: string = this.currentLocale.code): Promise<TYCountryNameMappedById> {
+  public async getCountries(language: string = this.currentLocale.code): Promise<TAltCountryNameMappedById> {
     switch (getLanguageShortCode(language)) {
       case 'ru':
         return (await import('./locale/countries/ru')).countries

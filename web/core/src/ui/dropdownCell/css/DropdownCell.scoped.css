@@ -1,4 +1,4 @@
-$component: $YCoreDropdownCellTagName;
+$component: $AltCoreDropdownCellTagName;
 
 :host {
   display: block;
@@ -7,24 +7,24 @@ $component: $YCoreDropdownCellTagName;
 .$(component) {
   display: flex;
   align-items: center;
-  width: var(--y-core-dropdown-cell-default-width);
-  padding: var(--y-core-dropdown-cell-padding-y) var(--y-core-dropdown-cell-padding-x);
-  font-family: var(--y-core-font-family);
-  font-size: var(--y-core-dropdown-cell-size-p2-regular-font-size);
-  font-weight: var(--y-core-dropdown-cell-size-p2-regular-font-weight);
-  line-height: var(--y-core-dropdown-cell-size-p2-regular-line-height);
-  color: var(--y-core-dropdown-cell-default-color);
+  width: var(--alt-core-dropdown-cell-default-width);
+  padding: var(--alt-core-dropdown-cell-padding-y) var(--alt-core-dropdown-cell-padding-x);
+  font-family: var(--alt-core-font-family);
+  font-size: var(--alt-core-dropdown-cell-size-p2-regular-font-size);
+  font-weight: var(--alt-core-dropdown-cell-size-p2-regular-font-weight);
+  line-height: var(--alt-core-dropdown-cell-size-p2-regular-line-height);
+  color: var(--alt-core-dropdown-cell-default-color);
   cursor: pointer;
-  background-color: var(--y-core-dropdown-cell-default-background-color);
+  background-color: var(--alt-core-dropdown-cell-default-background-color);
 
   &:hover {
-    background-color: var(--y-core-dropdown-cell-default-hover-background-color);
+    background-color: var(--alt-core-dropdown-cell-default-hover-background-color);
   }
   
   &__prepend {
     display: flex;
     align-items: center;
-    padding-right: var(--y-core-dropdown-cell-padding-left-content);
+    padding-right: var(--alt-core-dropdown-cell-padding-left-content);
 
     &_hidden {
       display: none;
@@ -36,7 +36,7 @@ $component: $YCoreDropdownCellTagName;
     flex: 1 0 auto;
     align-items: center;
     justify-content: flex-end;
-    padding-left: var(--y-core-dropdown-cell-padding-right-content);
+    padding-left: var(--alt-core-dropdown-cell-padding-right-content);
 
     &_hidden {
       display: none;

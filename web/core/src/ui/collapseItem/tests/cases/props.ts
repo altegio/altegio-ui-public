@@ -1,26 +1,26 @@
 import type { TPropTestCase } from '~shared/types/tests'
-import { EYCoreCollapseItemVariant } from '~core/ui/collapseItem/models/types'
+import { EAltCoreCollapseItemVariant } from '~core/ui/collapseItem/models/types'
 import { text } from '~shared/tests/slotContents'
 
-import type { IYCoreCollapseItemProps } from '~core/ui/collapseItem/models/types'
+import type { IAltCoreCollapseItemProps } from '~core/ui/collapseItem/models/types'
 
-export const propLabelCases: TPropTestCase<IYCoreCollapseItemProps, 'label'>[] = [
+export const propLabelCases: TPropTestCase<IAltCoreCollapseItemProps, 'label'>[] = [
   { prop: 'label', case: 'with text', value: text },
   { prop: 'label', case: 'without text', value: '' },
 ]
-export const propAnnotationCases: TPropTestCase<IYCoreCollapseItemProps, 'annotation'>[] = [
+export const propAnnotationCases: TPropTestCase<IAltCoreCollapseItemProps, 'annotation'>[] = [
   { prop: 'annotation', case: 'with text', value: text },
   { prop: 'annotation', case: 'without text', value: '' },
 ]
-export const propOpenedCases: TPropTestCase<IYCoreCollapseItemProps, 'opened'>[] = [
+export const propOpenedCases: TPropTestCase<IAltCoreCollapseItemProps, 'opened'>[] = [
   { prop: 'opened', case: 'true', value: true },
   { prop: 'opened', case: 'false', value: false },
 ]
-export const propValueCases: TPropTestCase<IYCoreCollapseItemProps, 'value'>[] = [
+export const propValueCases: TPropTestCase<IAltCoreCollapseItemProps, 'value'>[] = [
   { prop: 'value', case: 'with text', value: text },
   { prop: 'value', case: 'without text', value: '' },
 ]
-export const propVariantCases: TPropTestCase<IYCoreCollapseItemProps, 'variant'>[] = [
-  { prop: 'variant', case: 'primary', value: EYCoreCollapseItemVariant.PRIMARY },
-  { prop: 'variant', case: 'secondary', value: EYCoreCollapseItemVariant.SECONDARY },
+export const propVariantCases: TPropTestCase<IAltCoreCollapseItemProps, 'variant'>[] = [
+  { prop: 'variant', case: 'primary', value: EAltCoreCollapseItemVariant.PRIMARY },
+  { prop: 'variant', case: 'secondary', value: EAltCoreCollapseItemVariant.SECONDARY },
 ]

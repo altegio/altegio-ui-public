@@ -1,8 +1,8 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { YCoreCardCheckboxTagName as tagName } from '~shared/constants'
-import { YCoreCardCheckbox } from '~core/index'
-import { YCardCheckbox } from '~vue/ui/cardCheckbox'
+import { AltCoreCardCheckboxTagName as tagName } from '~shared/constants'
+import { AltCoreCardCheckbox } from '~core/index'
+import { AltCardCheckbox } from '~vue/ui/cardCheckbox'
 
 import {
   propDisabledCases,
@@ -11,13 +11,13 @@ import {
 } from './cases/props'
 
 describe(
-  'Vue/YCardCheckbox/Unit',
+  'Vue/AltCardCheckbox/Unit',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreCardCheckbox,
+          AltCoreCardCheckbox,
         )
       }
     })
@@ -34,11 +34,11 @@ describe(
             `Prop: "${testCase.prop}" should set ${testCase.prop} on the core component`,
             () => {
               const wrapper = mount(
-                YCardCheckbox,
+                AltCardCheckbox,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
-              const coreElement = wrapper.find(tagName).element as YCoreCardCheckbox
+              const coreElement = wrapper.find(tagName).element as AltCoreCardCheckbox
 
               expect(coreElement[testCase.prop]).toBe(testCase.expected)
             },

@@ -2,28 +2,28 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getHostCSSVariableValue, getWCShadowRoot } from '~shared/tests/utils'
 
-import { YCoreFieldIconTagName } from '~shared/constants'
+import { AltCoreFieldIconTagName } from '~shared/constants'
 import { createCoreFieldIconExternalProps } from '~core/ui/fieldIcon/models/types/external'
 
 import '~core/ui/fieldIcon'
 import '~core/ui/icon'
 
 import { CSSVariablesHostToRootCases, CSSVariablesHostToValueCases } from '~core/ui/fieldIcon/tests/cases/css'
-import { yMagic } from '~shared/icons'
+import { altMagic } from '~shared/icons'
 
 const {
   component,
   injectComponentToBody,
 } = useCoreTests(
-  YCoreFieldIconTagName,
-  { ...createCoreFieldIconExternalProps(), icon: yMagic },
+  AltCoreFieldIconTagName,
+  { ...createCoreFieldIconExternalProps(), icon: altMagic },
 )
 
 describe(
-  'Core/YCoreFieldIcon/CSS',
+  'Core/AltCoreFieldIcon/CSS',
   () => {
     beforeAll(() => {
-      component.icon = yMagic
+      component.icon = altMagic
       injectComponentToBody()
     })
 

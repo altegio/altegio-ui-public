@@ -2,8 +2,8 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, forwardRef, Input } from '@angular/c
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms'
 
 import '~core/ui/simpleRadioButton'
-import type { SimpleRadioButtonCheckedEvent, TYNgSimpleRadioButtonModel } from '~ng/ui/simpleRadioButton/models/types'
-import { createNgSimpleRadioButtonProps, type IYNgSimpleRadioButtonProps } from '~ng/ui/simpleRadioButton/models/types'
+import type { SimpleRadioButtonCheckedEvent, TAltNgSimpleRadioButtonModel } from '~ng/ui/simpleRadioButton/models/types'
+import { createNgSimpleRadioButtonProps, type IAltNgSimpleRadioButtonProps } from '~ng/ui/simpleRadioButton/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { ControlValueAccessorBase } from '~ng/types/ControlValueAccessorBase'
 import { DEFAULT_CHECKED_VALUE } from './models/constants'
@@ -11,19 +11,19 @@ import { DEFAULT_CHECKED_VALUE } from './models/constants'
 const { size, name, error, disabled, hovered } = createNgSimpleRadioButtonProps()
 
 @Component({
-  selector: 'YSimpleRadioButton',
+  selector: 'AltSimpleRadioButton',
   standalone: true,
   imports: [FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => YSimpleRadioButton),
+      useExisting: forwardRef(() => AltSimpleRadioButton),
       multi: true,
     },
   ],
   template: `
-    <y-core-simple-radio-button
+    <alt-core-simple-radio-button
       [size]="size"
       [checked]="isChecked"
       [name]="name"
@@ -32,19 +32,19 @@ const { size, name, error, disabled, hovered } = createNgSimpleRadioButtonProps(
       [hovered]="hovered"
       (checked)="handleCheckedEvent($event)"
     >
-    </y-core-simple-radio-button>
+    </alt-core-simple-radio-button>
   `,
 })
-export class YSimpleRadioButton extends ControlValueAccessorBase<TYNgSimpleRadioButtonModel> implements IYNgSimpleRadioButtonProps {
-  @Input() @DefaultValue(size) size: IYNgSimpleRadioButtonProps['size'] = size
-  @Input() @DefaultValue(name) name: IYNgSimpleRadioButtonProps['name'] = name
-  @Input() @DefaultValue(error) error: IYNgSimpleRadioButtonProps['error'] = error
-  @Input() @DefaultValue(disabled) disabled: IYNgSimpleRadioButtonProps['disabled'] = disabled
-  @Input() @DefaultValue(hovered) hovered: IYNgSimpleRadioButtonProps['hovered'] = hovered
+export class AltSimpleRadioButton extends ControlValueAccessorBase<TAltNgSimpleRadioButtonModel> implements IAltNgSimpleRadioButtonProps {
+  @Input() @DefaultValue(size) size: IAltNgSimpleRadioButtonProps['size'] = size
+  @Input() @DefaultValue(name) name: IAltNgSimpleRadioButtonProps['name'] = name
+  @Input() @DefaultValue(error) error: IAltNgSimpleRadioButtonProps['error'] = error
+  @Input() @DefaultValue(disabled) disabled: IAltNgSimpleRadioButtonProps['disabled'] = disabled
+  @Input() @DefaultValue(hovered) hovered: IAltNgSimpleRadioButtonProps['hovered'] = hovered
 
-  isChecked: TYNgSimpleRadioButtonModel = DEFAULT_CHECKED_VALUE
+  isChecked: TAltNgSimpleRadioButtonModel = DEFAULT_CHECKED_VALUE
 
-  writeValue(value: TYNgSimpleRadioButtonModel) {
+  writeValue(value: TAltNgSimpleRadioButtonModel) {
     this.isChecked = value
   }
 

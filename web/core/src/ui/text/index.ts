@@ -1,1 +1,1 @@
-export { YCoreText } from './Text.core'
+export { AltCoreText } from './Text.core'

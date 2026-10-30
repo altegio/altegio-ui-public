@@ -1,17 +1,17 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { YCoreFieldWrapperTagName } from '~shared/constants'
+import { AltCoreFieldWrapperTagName } from '~shared/constants'
 import type { TPropTestCase } from '~shared/types/tests'
 import { text, empty } from '~shared/tests/slotContents'
 
-import { YFieldWrapper } from '~vue/ui/fieldWrapper'
+import { AltFieldWrapper } from '~vue/ui/fieldWrapper'
 import {
-  type IYVueFieldWrapperProps,
+  type IAltVueFieldWrapperProps,
 } from '~vue/ui/fieldWrapper/models/types'
-import { YCoreFieldWrapper } from '~core/ui/fieldWrapper'
+import { AltCoreFieldWrapper } from '~core/ui/fieldWrapper'
 
-const tagName = YCoreFieldWrapperTagName
+const tagName = AltCoreFieldWrapperTagName
 
 const slotDefaultTestCases = [
   { case: 'with content', content: text },
@@ -19,7 +19,7 @@ const slotDefaultTestCases = [
 ]
 
 
-const propTestCases: TPropTestCase<IYVueFieldWrapperProps, keyof IYVueFieldWrapperProps>[] = [
+const propTestCases: TPropTestCase<IAltVueFieldWrapperProps, keyof IAltVueFieldWrapperProps>[] = [
   { prop: 'disabled', case: 'true', value: true },
   { prop: 'disabled', case: 'false', value: false },
   { prop: 'readonly', case: 'true', value: true },
@@ -34,13 +34,13 @@ const propTestCases: TPropTestCase<IYVueFieldWrapperProps, keyof IYVueFieldWrapp
 ]
 
 describe(
-  'Vue/YFieldWrapper',
+  'Vue/AltFieldWrapper',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreFieldWrapper,
+          AltCoreFieldWrapper,
         )
       }
     })
@@ -56,7 +56,7 @@ describe(
                 `Slot should render ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YFieldWrapper,
+                    AltFieldWrapper,
                     { slots: { default: testCase.content } },
                   )
 
@@ -76,13 +76,13 @@ describe(
                 `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 () => {
                   const wrapper = mount(
-                    YFieldWrapper,
+                    AltFieldWrapper,
                     { props: { [testCase.prop]: testCase.value } },
                   )
 
-                  const coreElement = wrapper.find(tagName).element as YCoreFieldWrapper
+                  const coreElement = wrapper.find(tagName).element as AltCoreFieldWrapper
 
-                  const propValue = coreElement[testCase.prop as keyof YCoreFieldWrapper]
+                  const propValue = coreElement[testCase.prop as keyof AltCoreFieldWrapper]
                   expect(propValue).toBe(testCase.value)
                 },
               )

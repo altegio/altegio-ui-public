@@ -5,8 +5,8 @@ import { useArgs } from 'storybook/preview-api'
 
 import '~core/ui/simpleCheckbox'
 
-import { YCoreSimpleCheckboxTagName as tagName } from '~shared/constants'
-import { EYSizes } from '~shared/types/global'
+import { AltCoreSimpleCheckboxTagName as tagName } from '~shared/constants'
+import { EAltSizes } from '~shared/types/global'
 import {
   size as sizeArgType,
   hovered as hoveredArgType,
@@ -17,20 +17,20 @@ import {
 import { getComponentEmitsTable, getComponentStateTable } from '~shared/.storybook/tables'
 import {
   createCoreSimpleCheckboxProps,
-  type IYCoreSimpleCheckboxProps,
+  type IAltCoreSimpleCheckboxProps,
 } from '../models/types'
-import type { TYCoreSimpleCheckboxEvents } from '../models/types/events'
+import type { TAltCoreSimpleCheckboxEvents } from '../models/types/events'
 
 const { checked, indeterminate, size, disabled, error, hovered } = { ...createCoreSimpleCheckboxProps() }
 
-type TYCoreCheckboxStoryMeta = IYCoreSimpleCheckboxProps &
-  TYCoreSimpleCheckboxEvents
+type TAltCoreCheckboxStoryMeta = IAltCoreSimpleCheckboxProps &
+  TAltCoreSimpleCheckboxEvents
 
 /**
  * ## Core SimpleCheckbox
  *
  */
-const meta: Meta<TYCoreCheckboxStoryMeta> = {
+const meta: Meta<TAltCoreCheckboxStoryMeta> = {
   title: '⚙️ Checkbox',
   id: 'simpleCheckbox',
   parameters: { controls: { sort: 'alpha' } },
@@ -43,7 +43,7 @@ const meta: Meta<TYCoreCheckboxStoryMeta> = {
     const [
       args,
       updateArgs,
-    ] = useArgs<TYCoreCheckboxStoryMeta>()
+    ] = useArgs<TAltCoreCheckboxStoryMeta>()
 
     const { checked, indeterminate } = args
     const onChecked = () => {
@@ -51,7 +51,7 @@ const meta: Meta<TYCoreCheckboxStoryMeta> = {
     }
 
     return html`
-      <y-core-simple-checkbox
+      <alt-core-simple-checkbox
         .size=${size}
         .checked=${checked}
         .indeterminate=${indeterminate}
@@ -59,7 +59,7 @@ const meta: Meta<TYCoreCheckboxStoryMeta> = {
         .error=${error}
         .hovered=${hovered}
         @checked=${onChecked}
-      ></y-core-simple-checkbox>
+      ></alt-core-simple-checkbox>
     `
   },
   argTypes: {
@@ -74,8 +74,8 @@ const meta: Meta<TYCoreCheckboxStoryMeta> = {
     },
     size: {
       ...sizeArgType([
-        EYSizes.SMALL,
-        EYSizes.MEDIUM,
+        EAltSizes.SMALL,
+        EAltSizes.MEDIUM,
       ]),
       ...getComponentStateTable(size),
     },
@@ -101,9 +101,9 @@ const meta: Meta<TYCoreCheckboxStoryMeta> = {
     ...createCoreSimpleCheckboxProps(),
     onChecked: fn(),
   },
-} satisfies Meta<TYCoreCheckboxStoryMeta>
+} satisfies Meta<TAltCoreCheckboxStoryMeta>
 
 export default meta
-type Story = StoryObj<TYCoreCheckboxStoryMeta>
+type Story = StoryObj<TAltCoreCheckboxStoryMeta>
 
 export const Playground: Story = {}

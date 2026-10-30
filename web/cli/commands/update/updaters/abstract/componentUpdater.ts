@@ -119,17 +119,17 @@ export abstract class ComponentUpdater implements IComponentUpdater {
       },
       {
         search: new RegExp(
-          `Y${pascal(this.oldComponentName)}`,
+          `Alt${pascal(this.oldComponentName)}`,
           'g',
         ),
-        replace: `Y${pascal(this.newComponentName)}`,
+        replace: `Alt${pascal(this.newComponentName)}`,
       },
       {
         search: new RegExp(
-          `Y${pascal(this.options.oldName)}`,
+          `Alt${pascal(this.options.oldName)}`,
           'g',
         ),
-        replace: `Y${pascal(this.options.newName)}`,
+        replace: `Alt${pascal(this.options.newName)}`,
       },
       {
         search: new RegExp(

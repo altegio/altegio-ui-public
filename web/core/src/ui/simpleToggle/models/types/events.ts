@@ -1,9 +1,9 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
 
-export interface IYCoreSimpleToggleCheckedEvent {
+export interface IAltCoreSimpleToggleCheckedEvent {
   checked: boolean
 }
 
-export class SimpleToggleCheckedEvent extends CustomEvent<IYCoreSimpleToggleCheckedEvent> {}
+export class SimpleToggleCheckedEvent extends CustomEvent<IAltCoreSimpleToggleCheckedEvent> {}
 
-export type TYCoreSimpleToggleEvents = TEventsStoryArgs<{ CheckedEvent: typeof SimpleToggleCheckedEvent }>
+export type TAltCoreSimpleToggleEvents = TEventsStoryArgs<{ CheckedEvent: typeof SimpleToggleCheckedEvent }>

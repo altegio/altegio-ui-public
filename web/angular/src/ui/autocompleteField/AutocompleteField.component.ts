@@ -2,7 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output, Templat
 
 import '~core/ui/autocompleteField'
 import {
-  type IYNgAutocompleteFieldProps,
+  type IAltNgAutocompleteFieldProps,
   type AutocompleteFieldFocusEvent,
   type AutocompleteFieldBlurEvent,
   type AutocompleteFieldChangeEvent,
@@ -11,7 +11,7 @@ import {
 } from '~ng/ui/autocompleteField/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { cleanupInnerHTML } from '~shared/utils'
-import type { TYCoreAutocompleteFieldAutocompleteOption } from '~core/ui/autocompleteField/models/types'
+import type { TAltCoreAutocompleteFieldAutocompleteOption } from '~core/ui/autocompleteField/models/types'
 
 const {
   value,
@@ -36,11 +36,11 @@ const {
 } = createNgAutocompleteFieldProps()
 
 @Component({
-  selector: 'YAutocompleteField',
+  selector: 'AltAutocompleteField',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-autocomplete-field
+    <alt-core-autocomplete-field
       [value]="value"
       [name]="name"
       [placeholder]="placeholder"
@@ -84,29 +84,29 @@ const {
           [innerHTML]="cleanupHTML(annotation)"
         ></div>
       }
-    </y-core-autocomplete-field>
+    </alt-core-autocomplete-field>
   `,
 })
-export class YAutocompleteField implements IYNgAutocompleteFieldProps {
-  @Input() @DefaultValue(value) value: IYNgAutocompleteFieldProps['value'] = value
-  @Input() @DefaultValue(name) name: IYNgAutocompleteFieldProps['name'] = name
-  @Input() @DefaultValue(placeholder) placeholder: IYNgAutocompleteFieldProps['placeholder'] = placeholder
-  @Input() @DefaultValue(autofocus) autofocus: IYNgAutocompleteFieldProps['autofocus'] = autofocus
-  @Input() @DefaultValue(disabled) disabled: IYNgAutocompleteFieldProps['disabled'] = disabled
-  @Input() @DefaultValue(required) required: IYNgAutocompleteFieldProps['required'] = required
-  @Input() @DefaultValue(errors) errors: IYNgAutocompleteFieldProps['errors'] = errors
-  @Input() @DefaultValue(error) error: IYNgAutocompleteFieldProps['error'] = error
-  @Input() @DefaultValue(size) size: IYNgAutocompleteFieldProps['size'] = size
-  @Input() @DefaultValue(labelText) labelText: IYNgAutocompleteFieldProps['labelText'] = labelText
-  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IYNgAutocompleteFieldProps['labelTooltipText'] = labelTooltipText
-  @Input() @DefaultValue(labelDebounce) labelDebounce: IYNgAutocompleteFieldProps['labelDebounce'] = labelDebounce
-  @Input() @DefaultValue(minSearchLength) minSearchLength: IYNgAutocompleteFieldProps['minSearchLength'] = minSearchLength
-  @Input() @DefaultValue(disabledAutocomplete) disabledAutocomplete: IYNgAutocompleteFieldProps['disabledAutocomplete'] = disabledAutocomplete
-  @Input() @DefaultValue(searchFunction) searchFunction: IYNgAutocompleteFieldProps['searchFunction'] = searchFunction
-  @Input() @DefaultValue(annotationText) annotationText: IYNgAutocompleteFieldProps['annotationText'] = annotationText
-  @Input() @DefaultValue(emptyStateIcon) emptyStateIcon: IYNgAutocompleteFieldProps['emptyStateIcon'] = emptyStateIcon
-  @Input() @DefaultValue(emptyStateTitle) emptyStateTitle: IYNgAutocompleteFieldProps['emptyStateTitle'] = emptyStateTitle
-  @Input() @DefaultValue(emptyStateDescription) emptyStateDescription: IYNgAutocompleteFieldProps['emptyStateDescription'] = emptyStateDescription
+export class AltAutocompleteField implements IAltNgAutocompleteFieldProps {
+  @Input() @DefaultValue(value) value: IAltNgAutocompleteFieldProps['value'] = value
+  @Input() @DefaultValue(name) name: IAltNgAutocompleteFieldProps['name'] = name
+  @Input() @DefaultValue(placeholder) placeholder: IAltNgAutocompleteFieldProps['placeholder'] = placeholder
+  @Input() @DefaultValue(autofocus) autofocus: IAltNgAutocompleteFieldProps['autofocus'] = autofocus
+  @Input() @DefaultValue(disabled) disabled: IAltNgAutocompleteFieldProps['disabled'] = disabled
+  @Input() @DefaultValue(required) required: IAltNgAutocompleteFieldProps['required'] = required
+  @Input() @DefaultValue(errors) errors: IAltNgAutocompleteFieldProps['errors'] = errors
+  @Input() @DefaultValue(error) error: IAltNgAutocompleteFieldProps['error'] = error
+  @Input() @DefaultValue(size) size: IAltNgAutocompleteFieldProps['size'] = size
+  @Input() @DefaultValue(labelText) labelText: IAltNgAutocompleteFieldProps['labelText'] = labelText
+  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IAltNgAutocompleteFieldProps['labelTooltipText'] = labelTooltipText
+  @Input() @DefaultValue(labelDebounce) labelDebounce: IAltNgAutocompleteFieldProps['labelDebounce'] = labelDebounce
+  @Input() @DefaultValue(minSearchLength) minSearchLength: IAltNgAutocompleteFieldProps['minSearchLength'] = minSearchLength
+  @Input() @DefaultValue(disabledAutocomplete) disabledAutocomplete: IAltNgAutocompleteFieldProps['disabledAutocomplete'] = disabledAutocomplete
+  @Input() @DefaultValue(searchFunction) searchFunction: IAltNgAutocompleteFieldProps['searchFunction'] = searchFunction
+  @Input() @DefaultValue(annotationText) annotationText: IAltNgAutocompleteFieldProps['annotationText'] = annotationText
+  @Input() @DefaultValue(emptyStateIcon) emptyStateIcon: IAltNgAutocompleteFieldProps['emptyStateIcon'] = emptyStateIcon
+  @Input() @DefaultValue(emptyStateTitle) emptyStateTitle: IAltNgAutocompleteFieldProps['emptyStateTitle'] = emptyStateTitle
+  @Input() @DefaultValue(emptyStateDescription) emptyStateDescription: IAltNgAutocompleteFieldProps['emptyStateDescription'] = emptyStateDescription
 
   @Output() focus = new EventEmitter<AutocompleteFieldFocusEvent>()
   handleFocusEvent(event: Event) {
@@ -130,7 +130,7 @@ export class YAutocompleteField implements IYNgAutocompleteFieldProps {
 
   protected cleanupHTML = cleanupInnerHTML
 
-  autocompleteOptions: TYCoreAutocompleteFieldAutocompleteOption[] = []
+  autocompleteOptions: TAltCoreAutocompleteFieldAutocompleteOption[] = []
 
   @ViewChild('customOptionTemplate', { read: TemplateRef }) customOptionTemplate!: TemplateRef<unknown>
   private customOptionTemplates = new Map<string | number, TemplateRef<unknown>>()

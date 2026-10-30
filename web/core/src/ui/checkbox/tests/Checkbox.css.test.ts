@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreCheckboxTagName } from '~shared/constants'
+import { AltCoreCheckboxTagName } from '~shared/constants'
 import {
   createCoreCheckboxProps,
 } from '~core/ui/checkbox/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/checkbox/tests/cases/css'
 
-const tagName = YCoreCheckboxTagName
+const tagName = AltCoreCheckboxTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreCheckbox/CSS',
+  'Core/AltCoreCheckbox/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

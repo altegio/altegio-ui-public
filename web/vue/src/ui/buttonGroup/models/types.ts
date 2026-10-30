@@ -1,13 +1,13 @@
 import { createCoreButtonGroupExternalProps } from '~core/ui/buttonGroup/models/types'
-import type { IYCoreButtonGroupExternalProps } from '~core/ui/buttonGroup/models/types'
+import type { IAltCoreButtonGroupExternalProps } from '~core/ui/buttonGroup/models/types'
 
-export interface IYVueButtonGroupProps {
-  size?: IYCoreButtonGroupExternalProps['size']
-  variant?: IYCoreButtonGroupExternalProps['variant']
+export interface IAltVueButtonGroupProps {
+  size?: IAltCoreButtonGroupExternalProps['size']
+  variant?: IAltCoreButtonGroupExternalProps['variant']
 }
 
 
-export const createVueButtonGroupProps = (): IYVueButtonGroupProps => {
+export const createVueButtonGroupProps = (): IAltVueButtonGroupProps => {
   const { size, variant } = createCoreButtonGroupExternalProps()
   return {
     size,

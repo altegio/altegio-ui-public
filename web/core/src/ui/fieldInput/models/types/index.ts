@@ -1,19 +1,19 @@
 import {
   createCoreFieldInputExternalProps,
-  type IYCoreFieldInputExternalProps,
+  type IAltCoreFieldInputExternalProps,
 } from './external'
 import {
   createCoreFieldInputInternalProps,
-  type IYCoreFieldInputInternalProps,
+  type IAltCoreFieldInputInternalProps,
 } from './internal'
 
 export * from './external'
 export * from './internal'
 export * from './events'
 
-export interface IYCoreFieldInputProps extends IYCoreFieldInputExternalProps, IYCoreFieldInputInternalProps {}
+export interface IAltCoreFieldInputProps extends IAltCoreFieldInputExternalProps, IAltCoreFieldInputInternalProps {}
 
-export const createCoreFieldInputProps = (): IYCoreFieldInputProps => ({
+export const createCoreFieldInputProps = (): IAltCoreFieldInputProps => ({
   ...createCoreFieldInputExternalProps(),
   ...createCoreFieldInputInternalProps(),
 })

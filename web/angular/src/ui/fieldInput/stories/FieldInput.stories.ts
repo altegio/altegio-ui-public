@@ -1,21 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import { YFieldInput } from '~ng/ui/fieldInput'
-import yCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
+import { AltFieldInput } from '~ng/ui/fieldInput'
+import altCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
 import { omit } from 'radash'
 import { action } from 'storybook/actions'
 import { useArgs } from 'storybook/preview-api'
 import {
-  type YNgFieldInputInputEvent,
+  type AltNgFieldInputInputEvent,
 } from '~ng/ui/fieldInput/models/types'
 
 /**
  * Angular wrapper for Core FieldInput
  */
-const meta: Meta<YFieldInput> = {
+const meta: Meta<AltFieldInput> = {
   title: 'Inputs/Partials/🔍 FieldInput',
   id: 'fieldInput',
   parameters: { controls: { sort: 'alpha' } },
-  component: YFieldInput,
+  component: AltFieldInput,
   tags: [
     'angular',
     'autodocs',
@@ -23,7 +23,7 @@ const meta: Meta<YFieldInput> = {
   render: (args) => {
     const [, updateArgs] = useArgs()
     const handlers = {
-      onInput: (event: YNgFieldInputInputEvent) => {
+      onInput: (event: AltNgFieldInputInputEvent) => {
         action('input')(event)
         updateArgs({ value: event.detail.value })
       },
@@ -39,7 +39,7 @@ const meta: Meta<YFieldInput> = {
         ...handlers,
       },
       template: `
-      <YFieldInput
+      <AltFieldInput
         [disabled]="disabled"
         [size]="size"
         [readonly]="readonly"
@@ -58,14 +58,14 @@ const meta: Meta<YFieldInput> = {
         (keydown)="onKeydown($event)"
         (render)="onRender($event)"
         style="border: 1px dashed;display: inline-flex;"
-      ></YFieldInput>`,
+      ></AltFieldInput>`,
     }
   },
-  argTypes: { ...omit(yCoreFieldInputStoryMeta.argTypes ?? {}, ['readonly']) },
-  args: { ...omit(yCoreFieldInputStoryMeta.args ?? {}, ['readonly']) },
-} satisfies Meta<YFieldInput>
+  argTypes: { ...omit(altCoreFieldInputStoryMeta.argTypes ?? {}, ['readonly']) },
+  args: { ...omit(altCoreFieldInputStoryMeta.args ?? {}, ['readonly']) },
+} satisfies Meta<AltFieldInput>
 
 export default meta
-type Story = StoryObj<YFieldInput>
+type Story = StoryObj<AltFieldInput>
 
 export const Playground: Story = { args: {} }

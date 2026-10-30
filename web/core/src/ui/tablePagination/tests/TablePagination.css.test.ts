@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreTablePaginationTagName } from '~shared/constants'
+import { AltCoreTablePaginationTagName } from '~shared/constants'
 import {
   createCoreTablePaginationProps,
 } from '~core/ui/tablePagination/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/tablePagination/tests/cases/css'
 
-const tagName = YCoreTablePaginationTagName
+const tagName = AltCoreTablePaginationTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreTablePagination/CSS',
+  'Core/AltCoreTablePagination/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

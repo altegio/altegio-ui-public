@@ -1,56 +1,56 @@
 import { omit } from 'radash'
 import {
   createCoreFieldWrapperProps,
-  type IYCoreFieldWrapperProps,
+  type IAltCoreFieldWrapperProps,
 } from '~core/ui/fieldWrapper/models/types'
 import {
   createCoreFieldInputProps,
-  type IYCoreFieldInputProps,
+  type IAltCoreFieldInputProps,
 } from '~core/ui/fieldInput/models/types'
 import {
   createCoreLabelExternalProps,
-  type IYCoreLabelExternalProps,
+  type IAltCoreLabelExternalProps,
 } from '~core/ui/label/models/types'
 import {
-  type IYCoreAnnotationExternalProps,
+  type IAltCoreAnnotationExternalProps,
   createCoreAnnotationExternalProps,
 } from '~core/ui/annotation/models/types'
 import {
-  type IYCoreErrorExternalProps,
+  type IAltCoreErrorExternalProps,
   createCoreErrorExternalProps,
 } from '~core/ui/error/models/types'
 import { addPrefixToObjectKeys, type TAddPrefixToObject } from '~shared/utils'
 import {
   createCoreEmptyStateExternalProps,
-  type IYCoreEmptyStateExternalProps,
+  type IAltCoreEmptyStateExternalProps,
 } from '~core/ui/emptyState/models/types/external'
 
-export type TYCoreAutocompleteFieldAutocompleteOption = {
+export type TAltCoreAutocompleteFieldAutocompleteOption = {
   id: string | number
   value?: string
   additionalInfo?: string[]
   [key: string]: unknown
 }
 
-export type TYCoreAutocompleteFieldInfo = {
+export type TAltCoreAutocompleteFieldInfo = {
   value: string
 }
 
-export interface IYCoreAutocompleteFieldExternalProps extends
-  Omit<IYCoreFieldWrapperProps, 'clickable'>,
-  Omit<IYCoreFieldInputProps, 'hideSpaceLeft' | 'hideSpaceRight' | 'disabled' | 'size' | 'readonly' | 'maxlength' | 'type' | 'autocomplete'>,
-  TAddPrefixToObject<Omit<IYCoreLabelExternalProps, 'alignment' | 'disabled' | 'required' | 'tooltipPlacement'>, 'label'>,
-  TAddPrefixToObject<Omit<IYCoreAnnotationExternalProps, 'disabled'>, 'annotation'>,
-  IYCoreErrorExternalProps {
+export interface IAltCoreAutocompleteFieldExternalProps extends
+  Omit<IAltCoreFieldWrapperProps, 'clickable'>,
+  Omit<IAltCoreFieldInputProps, 'hideSpaceLeft' | 'hideSpaceRight' | 'disabled' | 'size' | 'readonly' | 'maxlength' | 'type' | 'autocomplete'>,
+  TAddPrefixToObject<Omit<IAltCoreLabelExternalProps, 'alignment' | 'disabled' | 'required' | 'tooltipPlacement'>, 'label'>,
+  TAddPrefixToObject<Omit<IAltCoreAnnotationExternalProps, 'disabled'>, 'annotation'>,
+  IAltCoreErrorExternalProps {
   minSearchLength: number | undefined
   disabledAutocomplete: boolean | undefined
-  searchFunction: ((query: TYCoreAutocompleteFieldInfo) => Promise<TYCoreAutocompleteFieldAutocompleteOption[]> | TYCoreAutocompleteFieldAutocompleteOption[]) | undefined
-  emptyStateTitle: IYCoreEmptyStateExternalProps['title'] | undefined
-  emptyStateDescription: IYCoreEmptyStateExternalProps['description'] | undefined
-  emptyStateIcon: IYCoreEmptyStateExternalProps['icon'] | undefined
+  searchFunction: ((query: TAltCoreAutocompleteFieldInfo) => Promise<TAltCoreAutocompleteFieldAutocompleteOption[]> | TAltCoreAutocompleteFieldAutocompleteOption[]) | undefined
+  emptyStateTitle: IAltCoreEmptyStateExternalProps['title'] | undefined
+  emptyStateDescription: IAltCoreEmptyStateExternalProps['description'] | undefined
+  emptyStateIcon: IAltCoreEmptyStateExternalProps['icon'] | undefined
 }
 
-export const createCoreAutocompleteFieldExternalProps = (): IYCoreAutocompleteFieldExternalProps => {
+export const createCoreAutocompleteFieldExternalProps = (): IAltCoreAutocompleteFieldExternalProps => {
   return {
     ...omit(createCoreFieldWrapperProps(), ['clickable']),
     ...omit(createCoreFieldInputProps(), ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly']),

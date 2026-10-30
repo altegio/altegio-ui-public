@@ -2,18 +2,18 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, ContentChild, type TemplateRe
 import { NgTemplateOutlet } from '@angular/common'
 
 import '~core/ui/label'
-import { type IYNgLabelProps, createNgLabelProps } from '~ng/ui/label/models/types'
+import { type IAltNgLabelProps, createNgLabelProps } from '~ng/ui/label/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 
 const { disabled, required, text, tooltipText, debounce, tooltipActive, wrap, alignment, size, variant, tooltipPlacement } = createNgLabelProps()
 
 @Component({
-  selector: 'YLabel',
+  selector: 'AltLabel',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [NgTemplateOutlet],
   template: `
-  <y-core-label
+  <alt-core-label
     [disabled]="disabled"
     [required]="required"
     [text]="text"
@@ -31,20 +31,20 @@ const { disabled, required, text, tooltipText, debounce, tooltipActive, wrap, al
         <ng-container *ngTemplateOutlet="tooltipContentRef" />
       </div>
     }
-  </y-core-label> `,
+  </alt-core-label> `,
 })
-export class YLabel implements IYNgLabelProps {
-  @Input() @DefaultValue(disabled) disabled: IYNgLabelProps['disabled'] = disabled
-  @Input() @DefaultValue(required) required: IYNgLabelProps['required'] = required
-  @Input() @DefaultValue(text) text: IYNgLabelProps['text'] = text
-  @Input() @DefaultValue(tooltipText) tooltipText: IYNgLabelProps['tooltipText'] = tooltipText
-  @Input() @DefaultValue(debounce) debounce: IYNgLabelProps['debounce'] = debounce
-  @Input() @DefaultValue(tooltipActive) tooltipActive: IYNgLabelProps['tooltipActive'] = tooltipActive
-  @Input() @DefaultValue(wrap) wrap: IYNgLabelProps['wrap'] = wrap
-  @Input() @DefaultValue(alignment) alignment: IYNgLabelProps['alignment'] = alignment
-  @Input() @DefaultValue(size) size: IYNgLabelProps['size'] = size
-  @Input() @DefaultValue(variant) variant: IYNgLabelProps['variant'] = variant
-  @Input() @DefaultValue(tooltipPlacement) tooltipPlacement: IYNgLabelProps['tooltipPlacement'] = tooltipPlacement
+export class AltLabel implements IAltNgLabelProps {
+  @Input() @DefaultValue(disabled) disabled: IAltNgLabelProps['disabled'] = disabled
+  @Input() @DefaultValue(required) required: IAltNgLabelProps['required'] = required
+  @Input() @DefaultValue(text) text: IAltNgLabelProps['text'] = text
+  @Input() @DefaultValue(tooltipText) tooltipText: IAltNgLabelProps['tooltipText'] = tooltipText
+  @Input() @DefaultValue(debounce) debounce: IAltNgLabelProps['debounce'] = debounce
+  @Input() @DefaultValue(tooltipActive) tooltipActive: IAltNgLabelProps['tooltipActive'] = tooltipActive
+  @Input() @DefaultValue(wrap) wrap: IAltNgLabelProps['wrap'] = wrap
+  @Input() @DefaultValue(alignment) alignment: IAltNgLabelProps['alignment'] = alignment
+  @Input() @DefaultValue(size) size: IAltNgLabelProps['size'] = size
+  @Input() @DefaultValue(variant) variant: IAltNgLabelProps['variant'] = variant
+  @Input() @DefaultValue(tooltipPlacement) tooltipPlacement: IAltNgLabelProps['tooltipPlacement'] = tooltipPlacement
 
   @ContentChild('tooltipContent') tooltipContentRef: TemplateRef<unknown> | undefined
 }

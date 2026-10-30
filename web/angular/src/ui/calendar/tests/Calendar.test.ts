@@ -1,32 +1,32 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreCalendarTagName } from '~shared/constants'
+import { AltCoreCalendarTagName } from '~shared/constants'
 import type { TPropTestCase } from '~shared/types/tests'
 import { text, empty } from '~shared/tests/slotContents'
-import { YCalendar } from '~ng/ui/calendar'
-import type { IYNgCalendarProps } from '~ng/ui/calendar/models/types'
+import { AltCalendar } from '~ng/ui/calendar'
+import type { IAltNgCalendarProps } from '~ng/ui/calendar/models/types'
 
-const tagName = YCoreCalendarTagName
+const tagName = AltCoreCalendarTagName
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgCalendarProps>
+  props?: Partial<IAltNgCalendarProps>
 }
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YCalendar] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltCalendar] }).compileComponents()
 
   @Component({
     template: `
-      <YCalendar
+      <AltCalendar
         [disabled]="disabled"
         [headerSelectors]="headerSelectors"
         [date]="date"
         [minDate]="minDate"
         [maxDate]="maxDate"
         [isRange]="isRange"
-      ></YCalendar>`,
-    imports: [YCalendar],
+      ></AltCalendar>`,
+    imports: [AltCalendar],
     standalone: true,
   })
   class TestComponent {
@@ -41,39 +41,39 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 // Unit test cases:
-const propDisabledTestCases: TPropTestCase<IYNgCalendarProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltNgCalendarProps, 'disabled'>[] = [
   { prop: 'disabled', case: '', value: true, expected: true },
   { prop: 'disabled', case: '', value: false, expected: false },
   { prop: 'disabled', case: '', value: undefined, expected: false },
 ]
-const propHeaderSelectorsTestCases: TPropTestCase<IYNgCalendarProps, 'headerSelectors'>[] = [
+const propHeaderSelectorsTestCases: TPropTestCase<IAltNgCalendarProps, 'headerSelectors'>[] = [
   { prop: 'headerSelectors', case: '', value: true, expected: true },
   { prop: 'headerSelectors', case: '', value: false, expected: false },
   { prop: 'headerSelectors', case: '', value: undefined, expected: true },
 ]
-const propDateTestCases: TPropTestCase<IYNgCalendarProps, 'date'>[] = [
+const propDateTestCases: TPropTestCase<IAltNgCalendarProps, 'date'>[] = [
   { prop: 'date', case: '', value: text, expected: text },
   { prop: 'date', case: '', value: empty, expected: empty },
   { prop: 'date', case: '', value: undefined, expected: undefined },
 ]
-const propMinDateTestCases: TPropTestCase<IYNgCalendarProps, 'minDate'>[] = [
+const propMinDateTestCases: TPropTestCase<IAltNgCalendarProps, 'minDate'>[] = [
   { prop: 'minDate', case: '', value: text, expected: text },
   { prop: 'minDate', case: '', value: empty, expected: empty },
   { prop: 'minDate', case: '', value: undefined, expected: undefined },
 ]
-const propMaxDateTestCases: TPropTestCase<IYNgCalendarProps, 'maxDate'>[] = [
+const propMaxDateTestCases: TPropTestCase<IAltNgCalendarProps, 'maxDate'>[] = [
   { prop: 'maxDate', case: '', value: text, expected: text },
   { prop: 'maxDate', case: '', value: empty, expected: empty },
   { prop: 'maxDate', case: '', value: undefined, expected: undefined },
 ]
-const isRange: TPropTestCase<IYNgCalendarProps, 'isRange'>[] = [
+const isRange: TPropTestCase<IAltNgCalendarProps, 'isRange'>[] = [
   { prop: 'isRange', case: '', value: true, expected: true },
   { prop: 'isRange', case: '', value: false, expected: false },
   { prop: 'isRange', case: '', value: undefined, expected: false },
 ]
 
 describe(
-  'Angular/YCalendar',
+  'Angular/AltCalendar',
   () => {
     describe(
       'Unit',

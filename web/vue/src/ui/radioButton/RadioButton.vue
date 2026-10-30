@@ -1,5 +1,5 @@
 <template>
-  <y-core-radio-button
+  <alt-core-radio-button
     v-bind="props"
     :checked="modelValue"
     @checked="$emit('update:modelValue', $event.detail.checked)"
@@ -24,19 +24,19 @@
     >
       <slot name="tooltip-content" />
     </div>
-  </y-core-radio-button>
+  </alt-core-radio-button>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/radioButton'
   import {
     createVueRadioButtonProps,
-    type IYVueRadioButtonEmits,
-    type IYVueRadioButtonProps,
-    type IYVueCoreRadioButtonProps,
+    type IAltVueRadioButtonEmits,
+    type IAltVueRadioButtonProps,
+    type IAltVueCoreRadioButtonProps,
   } from '~vue/ui/radioButton/models/types'
 
-  defineOptions({ name: 'YRadioButton' })
+  defineOptions({ name: 'AltRadioButton' })
 
   defineSlots<{
     label?: () => unknown
@@ -45,9 +45,9 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueRadioButtonProps>(),
+    defineProps<IAltVueRadioButtonProps>(),
     createVueRadioButtonProps(),
-  ) satisfies IYVueCoreRadioButtonProps
+  ) satisfies IAltVueCoreRadioButtonProps
 
-  defineEmits<IYVueRadioButtonEmits>()
+  defineEmits<IAltVueRadioButtonEmits>()
 </script>

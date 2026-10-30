@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreCardMainTagName } from '~shared/constants'
+import { AltCoreCardMainTagName } from '~shared/constants'
 import {
   createCoreCardMainProps,
 } from '~core/ui/cardMain/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/cardMain/tests/cases/css'
 
-const tagName = YCoreCardMainTagName
+const tagName = AltCoreCardMainTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreCardMain/CSS',
+  'Core/AltCoreCardMain/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

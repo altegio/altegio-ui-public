@@ -4,11 +4,11 @@ import { text, empty } from '~shared/tests/slotContents'
 import type { TSlotTestCase, TPropTestCase } from '~shared/types/tests'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot } from '~shared/tests/utils'
-import { YCoreTextTagName } from '~shared/constants'
-import { EYCoreTextSize, EYCoreTextVariant } from '~core/ui/text/models/types'
+import { AltCoreTextTagName } from '~shared/constants'
+import { EAltCoreTextSize, EAltCoreTextVariant } from '~core/ui/text/models/types'
 import {
   createCoreTextExternalProps,
-  type IYCoreTextExternalProps,
+  type IAltCoreTextExternalProps,
 } from '~core/ui/text/models/types'
 import '~core/ui/text'
 
@@ -17,18 +17,18 @@ const slotDefaultTestCases: TSlotTestCase[] = [
   { slot: 'default', case: 'with content', content: text },
   { slot: 'default', case: 'without content', content: empty },
 ]
-const propSizeTestCases: TPropTestCase<IYCoreTextExternalProps, 'size'>[] = Object.values(EYCoreTextSize).map((size) => ({
+const propSizeTestCases: TPropTestCase<IAltCoreTextExternalProps, 'size'>[] = Object.values(EAltCoreTextSize).map((size) => ({
   prop: 'size',
   case: size,
   value: size,
 }))
-const propVariantTestCases: TPropTestCase<IYCoreTextExternalProps, 'variant'>[] = Object.values(EYCoreTextVariant).map((variant) => ({
+const propVariantTestCases: TPropTestCase<IAltCoreTextExternalProps, 'variant'>[] = Object.values(EAltCoreTextVariant).map((variant) => ({
   prop: 'variant',
   case: variant,
   value: variant,
 }))
 
-const tagName = YCoreTextTagName
+const tagName = AltCoreTextTagName
 
 const {
   component,
@@ -42,7 +42,7 @@ const {
 )
 
 describe(
-  'Core/YCoreText/Unit',
+  'Core/AltCoreText/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()

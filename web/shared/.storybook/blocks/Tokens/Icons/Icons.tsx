@@ -1,5 +1,5 @@
 import React from 'react'
-import type { IYIcon } from '~web/shared/icons'
+import type { IAltIcon } from '~web/shared/icons'
 
 import '~shared/.storybook/assets/css/iframe.css'
 import '~shared/.storybook/blocks/Tokens/Icons/Icons.css'
@@ -7,7 +7,7 @@ import { copyToClipboard } from '~web/shared/.storybook/utils'
 import { useToast } from '../../Toasts/ToastProvider'
 
 type TIconsProps = {
-  icons: IYIcon[]
+  icons: IAltIcon[]
 }
 const setNormalIconName = (name: string) =>
   name.split('_').map((nameStr) =>
@@ -16,7 +16,7 @@ const setNormalIconName = (name: string) =>
 export const Icons = ({ icons }: TIconsProps) => {
   const { show } = useToast()
   const changedIcons = icons.map((icon) => {
-    const normalizedIconName = `y${setNormalIconName(icon.name)}`
+    const normalizedIconName = `alt${setNormalIconName(icon.name)}`
 
     return { ...icon, name: normalizedIconName }
   })

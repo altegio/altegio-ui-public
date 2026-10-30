@@ -2,16 +2,16 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import { computed, ref } from 'vue'
 import { omit } from 'radash'
 
-import { ySearch } from '~shared/icons'
-import yCoreSelectFieldStoryMeta, {
-  type TYCoreSelectFieldStoryMeta,
+import { altSearch } from '~shared/icons'
+import altCoreSelectFieldStoryMeta, {
+  type TAltCoreSelectFieldStoryMeta,
 } from '~core/ui/selectField/stories/SelectField.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import { YSelectField } from '~vue/ui/selectField'
-import { type IYVueSelectFieldProps } from '~vue/ui/selectField/models/types'
-import { YFieldIcon } from '~vue/ui/fieldIcon'
+import { AltSelectField } from '~vue/ui/selectField'
+import { type IAltVueSelectFieldProps } from '~vue/ui/selectField/models/types'
+import { AltFieldIcon } from '~vue/ui/fieldIcon'
 
-type TVueSelectFieldStoryMeta = IYVueSelectFieldProps & TYCoreSelectFieldStoryMeta
+type TVueSelectFieldStoryMeta = IAltVueSelectFieldProps & TAltCoreSelectFieldStoryMeta
 
 /**
  * Vue wrapper for Core SelectField
@@ -25,7 +25,7 @@ const meta: Meta<TVueSelectFieldStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YSelectField, YFieldIcon },
+    components: { AltSelectField, AltFieldIcon },
     setup() {
       const computedLabelText = computed(() => args.isLongText ? LOREM_IPSUM : args.labelText)
       const computedErrors = computed(() => args.errors ?? args.showErrors)
@@ -35,12 +35,12 @@ const meta: Meta<TVueSelectFieldStoryMeta> = {
         computedLabelText,
         computedErrors,
         modelValue,
-        ySearch,
+        altSearch,
       }
     },
     template: `
       <div style="padding: 50px 50px 300px; margin: 20px; border: 1px dashed black; border-radius: 8px">
-        <YSelectField 
+        <AltSelectField 
           v-bind="args"
           v-model="modelValue"
    
@@ -62,9 +62,9 @@ const meta: Meta<TVueSelectFieldStoryMeta> = {
           <template v-if="args.showDropdownListBottom" #dropdown-list-bottom>
             showDropdownListBottom
           </template>
-        </YSelectField>
+        </AltSelectField>
         
-        <YSelectField 
+        <AltSelectField 
           v-bind="argsWithoutValue"
           v-model="modelValue"
    
@@ -87,13 +87,13 @@ const meta: Meta<TVueSelectFieldStoryMeta> = {
           </template>
           
             <template v-if="args.showBefore" #before>
-              <y-field-icon
-                :icon="ySearch"
-              ></y-field-icon>
+              <alt-field-icon
+                :icon="altSearch"
+              ></alt-field-icon>
           </template>
-        </YSelectField>
+        </AltSelectField>
 
-        <YSelectField 
+        <AltSelectField 
           v-bind="argsWithoutValue"
           v-model="modelValue"
           :items="items"
@@ -116,17 +116,17 @@ const meta: Meta<TVueSelectFieldStoryMeta> = {
           </template>
           
           <template v-if="args.showBefore" #before>
-              <y-field-icon
-                :icon="ySearch"
-              ></y-field-icon>
+              <alt-field-icon
+                :icon="altSearch"
+              ></alt-field-icon>
           </template>
-        </YSelectField>
+        </AltSelectField>
 
         <p style="margin: 40px 0 10px; font-size: 12px;">
           Component with a width of 200px
         </p>
         
-        <YSelectField 
+        <AltSelectField 
           style="max-width: 200px"
           v-bind="args"
           v-model="modelValue"
@@ -148,12 +148,12 @@ const meta: Meta<TVueSelectFieldStoryMeta> = {
           <template v-if="args.showDropdownListBottom" #dropdown-list-bottom>
             showDropdownListBottom
           </template>
-        </YSelectField>
+        </AltSelectField>
       </div>
     `,
   }),
-  argTypes: { ...yCoreSelectFieldStoryMeta.argTypes },
-  args: { ...omit(yCoreSelectFieldStoryMeta.args ?? {}, ['value']) },
+  argTypes: { ...altCoreSelectFieldStoryMeta.argTypes },
+  args: { ...omit(altCoreSelectFieldStoryMeta.args ?? {}, ['value']) },
 }
 
 export default meta

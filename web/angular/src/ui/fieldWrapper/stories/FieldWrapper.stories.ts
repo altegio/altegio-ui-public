@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YFieldWrapper } from '~ng/ui/fieldWrapper'
-import yCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
+import { AltFieldWrapper } from '~ng/ui/fieldWrapper'
+import altCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
 
 import '~core/ui/fieldAvatar'
 import '~core/ui/fieldIcon'
 import '~core/ui/fieldInput'
 
-import { yChevronDown } from '~shared/icons'
+import { altChevronDown } from '~shared/icons'
 
 import { omit } from 'radash'
 import { action } from 'storybook/actions'
@@ -15,11 +15,11 @@ import { action } from 'storybook/actions'
 /**
  * Angular wrapper for Core FieldWrapper
  */
-const meta: Meta<YFieldWrapper> = {
+const meta: Meta<AltFieldWrapper> = {
   title: 'Inputs/Partials/🔍 FieldWrapper',
   id: 'fieldWrapper',
   parameters: { controls: { sort: 'alpha' } },
-  component: YFieldWrapper,
+  component: AltFieldWrapper,
   tags: [
     'angular',
     'autodocs',
@@ -38,10 +38,10 @@ const meta: Meta<YFieldWrapper> = {
       props: {
         ...args,
         ...handlers,
-        yChevronDown,
+        altChevronDown,
       },
       template: `
-        <YFieldWrapper
+        <AltFieldWrapper
           [disabled]="disabled"
           [readonly]="readonly"
           [error]="error"
@@ -55,22 +55,22 @@ const meta: Meta<YFieldWrapper> = {
           (mouse-leave)="onMouseLeave($event)"
         >
           @if (showFieldAvatar) {
-            <y-core-field-avatar photo="https://i.pravatar.cc/100" initials="Altegio Clients"></y-core-field-avatar>
+            <alt-core-field-avatar photo="https://i.pravatar.cc/100" initials="Altegio Clients"></alt-core-field-avatar>
           }
           @if (showFieldInput) {
-            <y-core-field-input value="Default value" [hideSpaceLeft]="showFieldAvatar" [hideSpaceRight]="showFieldIcon"></y-core-field-input>
+            <alt-core-field-input value="Default value" [hideSpaceLeft]="showFieldAvatar" [hideSpaceRight]="showFieldIcon"></alt-core-field-input>
           }
           @if (showFieldIcon) {
-            <y-core-field-icon [icon]="yChevronDown"></y-core-field-icon>
+            <alt-core-field-icon [icon]="altChevronDown"></alt-core-field-icon>
           }
-        </YFieldWrapper>`,
+        </AltFieldWrapper>`,
     }
   },
-  argTypes: { ...omit(yCoreFieldWrapperStoryMeta.argTypes ?? {}, ['readonly']) },
-  args: { ...omit(yCoreFieldWrapperStoryMeta.args ?? {}, ['readonly']) },
-} satisfies Meta<YFieldWrapper>
+  argTypes: { ...omit(altCoreFieldWrapperStoryMeta.argTypes ?? {}, ['readonly']) },
+  args: { ...omit(altCoreFieldWrapperStoryMeta.args ?? {}, ['readonly']) },
+} satisfies Meta<AltFieldWrapper>
 
 export default meta
-type Story = StoryObj<YFieldWrapper>
+type Story = StoryObj<AltFieldWrapper>
 
 export const Playground: Story = { args: {} }

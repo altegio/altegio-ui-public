@@ -1,17 +1,17 @@
-import { EYSizes, type TYSizes } from '~shared/types/global'
+import { EAltSizes, type TAltSizes } from '~shared/types/global'
 
-export interface IYCoreCardWrapperExternalProps {
+export interface IAltCoreCardWrapperExternalProps {
   checked: boolean | undefined
   disabled: boolean | undefined
   hoverable: boolean | undefined
   focusable: boolean | undefined
-  size: Extract<TYSizes, 'small' | 'medium' | 'large'> | undefined
+  size: Extract<TAltSizes, 'small' | 'medium' | 'large'> | undefined
 }
 
-export const createCoreCardWrapperExternalProps = (): IYCoreCardWrapperExternalProps => ({
+export const createCoreCardWrapperExternalProps = (): IAltCoreCardWrapperExternalProps => ({
   checked: false,
   disabled: false,
   hoverable: true,
   focusable: false,
-  size: EYSizes.MEDIUM,
+  size: EAltSizes.MEDIUM,
 })

@@ -1,6 +1,6 @@
 import {
   createCoreTextFieldProps,
-  type IYCoreTextFieldProps,
+  type IAltCoreTextFieldProps,
   type InputEvent,
   type BlurEvent,
   type FocusEvent,
@@ -9,32 +9,32 @@ import {
 } from '~core/ui/textField/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreTextFieldProps extends Omit<IYCoreTextFieldProps, 'value'> {
-  modelValue: IYCoreTextFieldProps['value'] | undefined
+export interface IAltVueCoreTextFieldProps extends Omit<IAltCoreTextFieldProps, 'value'> {
+  modelValue: IAltCoreTextFieldProps['value'] | undefined
 }
 
-export interface IYVueTextFieldProps {
-  modelValue?: IYCoreTextFieldProps['value']
-  name?: IYCoreTextFieldProps['name']
-  placeholder?: IYCoreTextFieldProps['placeholder']
-  disabled?: IYCoreTextFieldProps['disabled']
-  required?: IYCoreTextFieldProps['required']
-  readonly?: IYCoreTextFieldProps['readonly']
-  maxlength?: IYCoreTextFieldProps['maxlength']
-  autofocus?: IYCoreTextFieldProps['autofocus']
-  type?: IYCoreTextFieldProps['type']
-  error?: IYCoreTextFieldProps['error']
-  errors?: IYCoreTextFieldProps['errors']
-  clearable?: IYCoreTextFieldProps['clearable']
-  maskOptions?: IYCoreTextFieldProps['maskOptions']
-  size?: IYCoreTextFieldProps['size']
-  labelText?: IYCoreTextFieldProps['labelText']
-  labelTooltipText?: IYCoreTextFieldProps['labelTooltipText']
-  annotationText?: IYCoreTextFieldProps['annotationText']
-  labelDebounce?: IYCoreTextFieldProps['labelDebounce']
+export interface IAltVueTextFieldProps {
+  modelValue?: IAltCoreTextFieldProps['value']
+  name?: IAltCoreTextFieldProps['name']
+  placeholder?: IAltCoreTextFieldProps['placeholder']
+  disabled?: IAltCoreTextFieldProps['disabled']
+  required?: IAltCoreTextFieldProps['required']
+  readonly?: IAltCoreTextFieldProps['readonly']
+  maxlength?: IAltCoreTextFieldProps['maxlength']
+  autofocus?: IAltCoreTextFieldProps['autofocus']
+  type?: IAltCoreTextFieldProps['type']
+  error?: IAltCoreTextFieldProps['error']
+  errors?: IAltCoreTextFieldProps['errors']
+  clearable?: IAltCoreTextFieldProps['clearable']
+  maskOptions?: IAltCoreTextFieldProps['maskOptions']
+  size?: IAltCoreTextFieldProps['size']
+  labelText?: IAltCoreTextFieldProps['labelText']
+  labelTooltipText?: IAltCoreTextFieldProps['labelTooltipText']
+  annotationText?: IAltCoreTextFieldProps['annotationText']
+  labelDebounce?: IAltCoreTextFieldProps['labelDebounce']
 }
 
-export const createVueTextFieldProps = (): TDefinedVueProps<IYVueTextFieldProps> => {
+export const createVueTextFieldProps = (): TDefinedVueProps<IAltVueTextFieldProps> => {
   const { error, errors, annotationText, labelText, labelTooltipText, labelDebounce, required, autofocus, clearable, maskOptions, size, disabled, maxlength, name, placeholder, readonly, type } = createCoreTextFieldProps()
 
   return {
@@ -63,7 +63,7 @@ export const createVueTextFieldProps = (): TDefinedVueProps<IYVueTextFieldProps>
   }
 }
 
-export interface IYTextFieldEmits {
+export interface IAltTextFieldEmits {
   (event: 'update:modelValue', payload: InputEvent['detail']['value']): void
   (event: 'blur', payload: BlurEvent): void
   (event: 'focus', payload: FocusEvent): void

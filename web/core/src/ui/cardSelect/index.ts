@@ -1,1 +1,1 @@
-export { YCoreCardSelect } from './CardSelect.core'
+export { AltCoreCardSelect } from './CardSelect.core'

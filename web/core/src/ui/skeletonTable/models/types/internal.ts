@@ -1,3 +1,3 @@
-export interface IYCoreSkeletonTableInternalProps {}
+export interface IAltCoreSkeletonTableInternalProps {}
 
-export const createCoreSkeletonTableInternalProps = (): IYCoreSkeletonTableInternalProps => ({})
+export const createCoreSkeletonTableInternalProps = (): IAltCoreSkeletonTableInternalProps => ({})

@@ -1,5 +1,5 @@
 <template>
-  <y-core-button-dropdown
+  <alt-core-button-dropdown
     v-bind="props"
     :is-open="modelValue"
     @change-visible="$emit('update:modelValue', $event.detail.value)"
@@ -18,19 +18,19 @@
     >
       <slot name="content" />
     </div>
-  </y-core-button-dropdown>
+  </alt-core-button-dropdown>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/buttonDropdown'
   import {
     createVueButtonDropdownProps,
-    type IYVueButtonDropdownProps,
-    type IYVueButtonDropdownEmits,
-    type IYVueCoreButtonDropdownProps,
+    type IAltVueButtonDropdownProps,
+    type IAltVueButtonDropdownEmits,
+    type IAltVueCoreButtonDropdownProps,
   } from '~vue/ui/buttonDropdown/models/types'
 
-  defineOptions({ name: 'YButtonDropdown' })
+  defineOptions({ name: 'AltButtonDropdown' })
 
   defineSlots<{
     activator?: () => unknown
@@ -38,9 +38,9 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueButtonDropdownProps>(),
+    defineProps<IAltVueButtonDropdownProps>(),
     createVueButtonDropdownProps(),
-  ) satisfies IYVueCoreButtonDropdownProps
+  ) satisfies IAltVueCoreButtonDropdownProps
 
-  defineEmits<IYVueButtonDropdownEmits>()
+  defineEmits<IAltVueButtonDropdownEmits>()
 </script>

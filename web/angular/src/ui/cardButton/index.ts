@@ -1,2 +1,2 @@
-export { YCardButton } from './CardButton.component'
+export { AltCardButton } from './CardButton.component'
 export type * from './models/types'

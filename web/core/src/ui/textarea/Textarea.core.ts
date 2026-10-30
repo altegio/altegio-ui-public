@@ -5,7 +5,7 @@ import { classMap } from 'lit/directives/class-map.js'
 
 import {
   createCoreTextareaProps,
-  type IYCoreTextareaProps,
+  type IAltCoreTextareaProps,
   ClickOutsideEvent,
   MouseEnterEvent,
   MouseLeaveEvent,
@@ -17,12 +17,12 @@ import {
   ClearEvent,
 } from './models/types'
 import {
-  YCoreTextareaTagName as tagName,
-  YCoreFieldTextareaTagName,
+  AltCoreTextareaTagName as tagName,
+  AltCoreFieldTextareaTagName,
 } from '~shared/constants'
 
-import YCoreTextareaVarsCss from '~core/ui/textarea/css/Textarea.vars.css?inline'
-import YCoreTextareaScopedCss from '~core/ui/textarea/css/Textarea.scoped.css?inline'
+import AltCoreTextareaVarsCss from '~core/ui/textarea/css/Textarea.vars.css?inline'
+import AltCoreTextareaScopedCss from '~core/ui/textarea/css/Textarea.scoped.css?inline'
 
 import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
 import { booleanConverter } from '~core/utils/converters'
@@ -37,13 +37,13 @@ import classMapToString from '~core/utils/classMapToString'
 import { preventAndStopEvent } from '~shared/utils/helpers'
 import { EventListenersList } from '~shared/utils/eventListenersList'
 
-import type { YCoreFieldTextarea } from '~core/ui/fieldTextarea'
+import type { AltCoreFieldTextarea } from '~core/ui/fieldTextarea'
 
 import '~core/ui/fieldWrapper'
 import '~core/ui/fieldTextarea'
 import '~core/ui/fieldIcon'
 
-import { yClose } from '~shared/icons'
+import { altClose } from '~shared/icons'
 import { withLocator } from '~core/utils/locator'
 
 const { disabled, readonly, error, size, value, name, placeholder, required, maxlength, autofocus, labelText, labelTooltipText, labelDebounce, errors, clearable, rows, resize, locatorLabel, locatorError } = createCoreTextareaProps()
@@ -51,32 +51,32 @@ const { disabled, readonly, error, size, value, name, placeholder, required, max
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreTextarea
+export class AltCoreTextarea
   extends LitElement
-  implements IYCoreTextareaProps {
+  implements IAltCoreTextareaProps {
   @provide({ context: disabledContextCreated })
-  @property({ type: Boolean }) disabled: IYCoreTextareaProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreTextareaProps['disabled'] = disabled
   @provide({ context: readonlyContextCreated })
-  @property({ type: Boolean }) readonly: IYCoreTextareaProps['readonly'] = readonly
+  @property({ type: Boolean }) readonly: IAltCoreTextareaProps['readonly'] = readonly
   @provide({ context: errorContextCreated })
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IYCoreTextareaProps['error'] = error
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IAltCoreTextareaProps['error'] = error
   @provide({ context: sizeContextCreated })
-  @property({ type: String, reflect: true }) size: IYCoreTextareaProps['size'] = size
-  @property({ type: String, reflect: true }) value: IYCoreTextareaProps['value'] = value
-  @property({ type: String, reflect: true }) name: IYCoreTextareaProps['name'] = name
-  @property({ type: String, reflect: true }) placeholder: IYCoreTextareaProps['placeholder'] = placeholder
-  @property({ type: Boolean, reflect: true }) required: IYCoreTextareaProps['required'] = required
-  @property({ type: Number, reflect: true }) maxlength: IYCoreTextareaProps['maxlength'] = maxlength
-  @property({ type: Boolean, reflect: true }) autofocus: IYCoreTextareaProps['autofocus'] = autofocus
-  @property({ type: String, reflect: true, attribute: 'label-text' }) labelText: IYCoreTextareaProps['labelText'] = labelText
-  @property({ type: String, reflect: true, attribute: 'label-tooltip-text' }) labelTooltipText: IYCoreTextareaProps['labelTooltipText'] = labelTooltipText
-  @property({ type: Number, reflect: true, attribute: 'label-debounce' }) labelDebounce: IYCoreTextareaProps['labelDebounce'] = labelDebounce
-  @property({ type: Array }) errors: IYCoreTextareaProps['errors'] = errors
-  @property({ type: Boolean, reflect: true }) clearable: IYCoreTextareaProps['clearable'] = clearable
-  @property({ type: Number, reflect: true }) rows: IYCoreTextareaProps['rows'] = rows
-  @property({ type: String, reflect: true }) resize: IYCoreTextareaProps['resize'] = resize
-  @property({ type: String, attribute: 'locator-label' }) locatorLabel: IYCoreTextareaProps['locatorLabel'] = locatorLabel
-  @property({ type: String, attribute: 'locator-error' }) locatorError: IYCoreTextareaProps['locatorError'] = locatorError
+  @property({ type: String, reflect: true }) size: IAltCoreTextareaProps['size'] = size
+  @property({ type: String, reflect: true }) value: IAltCoreTextareaProps['value'] = value
+  @property({ type: String, reflect: true }) name: IAltCoreTextareaProps['name'] = name
+  @property({ type: String, reflect: true }) placeholder: IAltCoreTextareaProps['placeholder'] = placeholder
+  @property({ type: Boolean, reflect: true }) required: IAltCoreTextareaProps['required'] = required
+  @property({ type: Number, reflect: true }) maxlength: IAltCoreTextareaProps['maxlength'] = maxlength
+  @property({ type: Boolean, reflect: true }) autofocus: IAltCoreTextareaProps['autofocus'] = autofocus
+  @property({ type: String, reflect: true, attribute: 'label-text' }) labelText: IAltCoreTextareaProps['labelText'] = labelText
+  @property({ type: String, reflect: true, attribute: 'label-tooltip-text' }) labelTooltipText: IAltCoreTextareaProps['labelTooltipText'] = labelTooltipText
+  @property({ type: Number, reflect: true, attribute: 'label-debounce' }) labelDebounce: IAltCoreTextareaProps['labelDebounce'] = labelDebounce
+  @property({ type: Array }) errors: IAltCoreTextareaProps['errors'] = errors
+  @property({ type: Boolean, reflect: true }) clearable: IAltCoreTextareaProps['clearable'] = clearable
+  @property({ type: Number, reflect: true }) rows: IAltCoreTextareaProps['rows'] = rows
+  @property({ type: String, reflect: true }) resize: IAltCoreTextareaProps['resize'] = resize
+  @property({ type: String, attribute: 'locator-label' }) locatorLabel: IAltCoreTextareaProps['locatorLabel'] = locatorLabel
+  @property({ type: String, attribute: 'locator-error' }) locatorError: IAltCoreTextareaProps['locatorError'] = locatorError
 
   @bubblingEvent(
     ClickOutsideEvent,
@@ -137,12 +137,12 @@ export class YCoreTextarea
   @state() private hasBeforeSlot = false
   @state() private hasAfterSlot = false
 
-  @query(YCoreFieldTextareaTagName) public readonly fieldTextarea?: YCoreFieldTextarea
+  @query(AltCoreFieldTextareaTagName) public readonly fieldTextarea?: AltCoreFieldTextarea
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreTextareaVarsCss)}
-      ${unsafeCSS(YCoreTextareaScopedCss)}
+      ${unsafeCSS(AltCoreTextareaVarsCss)}
+      ${unsafeCSS(AltCoreTextareaScopedCss)}
     `,
   ]
 
@@ -295,7 +295,7 @@ export class YCoreTextarea
 
   protected renderTextarea() {
     return html`
-      <y-core-field-wrapper
+      <alt-core-field-wrapper
         .disabled=${this.disabled}
         .readonly=${this.readonly}
         .error=${this.error}
@@ -311,7 +311,7 @@ export class YCoreTextarea
             name="before"
             @slotchange=${this.handleSlotBeforeChange}
           ></slot>
-          <y-core-field-textarea
+          <alt-core-field-textarea
             .value=${this.value}
             .name=${this.name}
             .placeholder=${this.placeholder}
@@ -324,14 +324,14 @@ export class YCoreTextarea
             @input=${this.handleInput}
             @keydown=${this.handleKeydown}
             @render=${this.handleRender}
-          ></y-core-field-textarea>
+          ></alt-core-field-textarea>
           ${this.showClearIcon
             ? html`
-              <y-core-field-icon
-                .icon=${yClose}
+              <alt-core-field-icon
+                .icon=${altClose}
                 hoverable
                 @click=${this.handleClear}
-              ></y-core-field-icon>
+              ></alt-core-field-icon>
             `
             : nothing
           }
@@ -340,7 +340,7 @@ export class YCoreTextarea
             @slotchange=${this.handleSlotAfterChange}
           ></slot>
         </div>
-      </y-core-field-wrapper>
+      </alt-core-field-wrapper>
     `
   }
 

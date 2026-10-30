@@ -1,4 +1,4 @@
-import { createCoreFunctionalModalProps, type IYCoreFunctionalModalProps } from '~core/ui/functionalModal/models/types'
+import { createCoreFunctionalModalProps, type IAltCoreFunctionalModalProps } from '~core/ui/functionalModal/models/types'
 
 export {
   OpenEvent,
@@ -11,6 +11,6 @@ export {
   SubmitEvent,
 } from '~core/ui/functionalModal/models/types/events'
 
-export interface IYNgFunctionalModalProps extends IYCoreFunctionalModalProps {}
+export interface IAltNgFunctionalModalProps extends IAltCoreFunctionalModalProps {}
 
-export const createNgFunctionalModalProps = (): IYNgFunctionalModalProps => createCoreFunctionalModalProps()
+export const createNgFunctionalModalProps = (): IAltNgFunctionalModalProps => createCoreFunctionalModalProps()

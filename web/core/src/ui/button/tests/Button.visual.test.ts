@@ -1,19 +1,19 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import { page } from 'vitest/browser'
-import { YCoreButtonTagName } from '~shared/constants'
-import type { YCoreButton } from '~core/ui/button/Button.core'
+import { AltCoreButtonTagName } from '~shared/constants'
+import type { AltCoreButton } from '~core/ui/button/Button.core'
 import '~core/ui/button'
 
-let button: YCoreButton | undefined
+let button: AltCoreButton | undefined
 
 afterEach(() => {
   button?.remove()
   button = undefined
 })
 
-describe('Core/YCoreButton/Visual', () => {
+describe('Core/AltCoreButton/Visual', () => {
   it('keeps the primary button appearance', async() => {
-    button = document.createElement(YCoreButtonTagName) as YCoreButton
+    button = document.createElement(AltCoreButtonTagName) as AltCoreButton
     button.label = 'Continue'
     document.body.append(button)
     await button.updateComplete

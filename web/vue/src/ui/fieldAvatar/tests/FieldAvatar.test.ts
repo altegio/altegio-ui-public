@@ -1,8 +1,8 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { YCoreFieldAvatarTagName as tagName } from '~shared/constants'
-import { YFieldAvatar } from '~vue/ui/fieldAvatar'
-import { YCoreFieldAvatar } from '~core/ui/fieldAvatar'
+import { AltCoreFieldAvatarTagName as tagName } from '~shared/constants'
+import { AltFieldAvatar } from '~vue/ui/fieldAvatar'
+import { AltCoreFieldAvatar } from '~core/ui/fieldAvatar'
 import {
   propDisabledTestCases, propIconTestCases,
   propInitialsTestCases,
@@ -11,13 +11,13 @@ import {
 } from './cases/props'
 
 describe(
-  'Vue/YFieldAvatar',
+  'Vue/AltFieldAvatar',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreFieldAvatar,
+          AltCoreFieldAvatar,
         )
       }
     })
@@ -36,7 +36,7 @@ describe(
             `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
-                YFieldAvatar,
+                AltFieldAvatar,
                 { props: { [testCase.prop]: testCase.value } },
               )
 

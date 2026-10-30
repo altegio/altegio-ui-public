@@ -2,37 +2,37 @@ import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
 import { text, empty } from '~shared/tests/slotContents'
 import type { TPropTestCase } from '~shared/types/tests'
 import { useCoreTests } from '~shared/tests/core'
-import { EYSizes } from '~shared/types/global'
-import { YCoreButtonTagName, YCoreIconTagName } from '~shared/constants'
+import { EAltSizes } from '~shared/types/global'
+import { AltCoreButtonTagName, AltCoreIconTagName } from '~shared/constants'
 import { getShadowElement } from '~shared/tests/utils'
-import { yRocket } from '~shared/icons'
-import type { YCoreIcon } from '~core/ui/icon'
+import { altRocket } from '~shared/icons'
+import type { AltCoreIcon } from '~core/ui/icon'
 import {
   createCoreButtonProps,
-  type IYCoreButtonProps,
+  type IAltCoreButtonProps,
 } from '~core/ui/button/models/types'
 import '~core/ui/button'
 
 // Unit test cases:
-const propLabelTestCases: TPropTestCase<IYCoreButtonProps, 'label'>[] = [
+const propLabelTestCases: TPropTestCase<IAltCoreButtonProps, 'label'>[] = [
   { prop: 'label', case: 'with content', value: text },
   { prop: 'label', case: 'without content', value: empty },
 ]
-const propIconLeftTestCases: TPropTestCase<IYCoreButtonProps, 'iconLeft'>[] = [
-  { prop: 'iconLeft', case: 'with an icon', value: yRocket },
+const propIconLeftTestCases: TPropTestCase<IAltCoreButtonProps, 'iconLeft'>[] = [
+  { prop: 'iconLeft', case: 'with an icon', value: altRocket },
   { prop: 'iconLeft', case: 'without an icon', value: undefined },
 ]
-const propIconRightTestCases: TPropTestCase<IYCoreButtonProps, 'iconRight'>[] = [
-  { prop: 'iconRight', case: 'with an icon', value: yRocket },
+const propIconRightTestCases: TPropTestCase<IAltCoreButtonProps, 'iconRight'>[] = [
+  { prop: 'iconRight', case: 'with an icon', value: altRocket },
   { prop: 'iconRight', case: 'without an icon', value: undefined },
 ]
-const propSizeTestCases: TPropTestCase<IYCoreButtonProps, 'size'>[] = [
-  { prop: 'size', case: 'small', value: EYSizes.SMALL, expected: '16px' },
-  { prop: 'size', case: 'medium', value: EYSizes.MEDIUM, expected: '16px' },
-  { prop: 'size', case: 'large', value: EYSizes.LARGE, expected: '24px' },
+const propSizeTestCases: TPropTestCase<IAltCoreButtonProps, 'size'>[] = [
+  { prop: 'size', case: 'small', value: EAltSizes.SMALL, expected: '16px' },
+  { prop: 'size', case: 'medium', value: EAltSizes.MEDIUM, expected: '16px' },
+  { prop: 'size', case: 'large', value: EAltSizes.LARGE, expected: '24px' },
 ]
 
-const tagName = YCoreButtonTagName
+const tagName = AltCoreButtonTagName
 
 const {
   component,
@@ -53,7 +53,7 @@ const getLocalShadowElement = (selector: string) => {
 }
 
 describe(
-  'Core/YCoreButton',
+  'Core/AltCoreButton',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -96,7 +96,7 @@ describe(
                 async() => {
                   await updateComponent({ props: { iconLeft: testCase.value } })
 
-                  const iconElement = getLocalShadowElement(YCoreIconTagName)
+                  const iconElement = getLocalShadowElement(AltCoreIconTagName)
 
                   if (testCase.value) {
                     expect(iconElement).toBeTruthy()
@@ -113,7 +113,7 @@ describe(
                 async() => {
                   await updateComponent({ props: { iconRight: testCase.value } })
 
-                  const iconElement = getLocalShadowElement(YCoreIconTagName)
+                  const iconElement = getLocalShadowElement(AltCoreIconTagName)
 
                   if (testCase.value) {
                     expect(iconElement).toBeTruthy()
@@ -128,9 +128,9 @@ describe(
               it(
                 `Prop size should set the icon size when prop size is ${testCase.case}`,
                 async() => {
-                  await updateComponent({ props: { iconLeft: yRocket, size: testCase.value } })
+                  await updateComponent({ props: { iconLeft: altRocket, size: testCase.value } })
 
-                  const iconElement = getLocalShadowElement(YCoreIconTagName) as YCoreIcon | null
+                  const iconElement = getLocalShadowElement(AltCoreIconTagName) as AltCoreIcon | null
 
                   expect(iconElement?.size).toBe(testCase.expected)
                 },

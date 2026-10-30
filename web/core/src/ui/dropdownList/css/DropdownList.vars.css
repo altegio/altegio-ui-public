@@ -1,19 +1,19 @@
 :host {
   /* Sizes */
-  --y-core-dropdown-list-min-height: 36px;
-  --y-core-dropdown-list-max-height: 278px;
-  --y-core-dropdown-list-min-width: 88px;
-  --y-core-dropdown-list-max-width: 404px;
+  --alt-core-dropdown-list-min-height: 36px;
+  --alt-core-dropdown-list-max-height: 278px;
+  --alt-core-dropdown-list-min-width: 88px;
+  --alt-core-dropdown-list-max-width: 404px;
 
   /* General */
-  --y-core-dropdown-list-display: flex;
-  --y-core-dropdown-list-flex-direction: column;
-  --y-core-dropdown-list-gap: 0px;
-  --y-core-dropdown-list-padding-x: 0px;
+  --alt-core-dropdown-list-display: flex;
+  --alt-core-dropdown-list-flex-direction: column;
+  --alt-core-dropdown-list-gap: 0px;
+  --alt-core-dropdown-list-padding-x: 0px;
 
   /* Token-based values */
-  --y-core-dropdown-list-background: var(--y-core-color-surface-primary);
-  --y-core-dropdown-list-padding-y: var(--y-core-size-spacing-x);
-  --y-core-dropdown-list-shadow: var(--y-core-effects-pop-up-drop-shadow);
-  --y-core-dropdown-list-border-radius: var(--y-core-size-radius-2-x);
+  --alt-core-dropdown-list-background: var(--alt-core-color-surface-primary);
+  --alt-core-dropdown-list-padding-y: var(--alt-core-size-spacing-x);
+  --alt-core-dropdown-list-shadow: var(--alt-core-effects-pop-up-drop-shadow);
+  --alt-core-dropdown-list-border-radius: var(--alt-core-size-radius-2-x);
 }

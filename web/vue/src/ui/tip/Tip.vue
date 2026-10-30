@@ -1,5 +1,5 @@
 <template>
-  <y-core-tip v-bind="props">
+  <alt-core-tip v-bind="props">
     <div
       v-if="$slots.activator && $slots.activator()"
       slot="activator"
@@ -13,18 +13,18 @@
     >
       <slot name="content" />
     </div>
-  </y-core-tip>
+  </alt-core-tip>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/tip'
   import {
     createVueTipProps,
-    type IYVueTipProps,
-    type IYVueCoreTipProps,
+    type IAltVueTipProps,
+    type IAltVueCoreTipProps,
   } from '~vue/ui/tip/models/types'
 
-  defineOptions({ name: 'YTip' })
+  defineOptions({ name: 'AltTip' })
 
   defineSlots<{
     activator?: () => unknown
@@ -32,7 +32,7 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueTipProps>(),
+    defineProps<IAltVueTipProps>(),
     createVueTipProps(),
-  ) satisfies IYVueCoreTipProps
+  ) satisfies IAltVueCoreTipProps
 </script>

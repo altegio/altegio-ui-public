@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreCardCheckboxTagName as tagName } from '~shared/constants'
-import { YCardCheckbox } from '~ng/ui/cardCheckbox'
-import type { IYNgCardCheckboxProps } from '~ng/ui/cardCheckbox/models/types'
+import { AltCoreCardCheckboxTagName as tagName } from '~shared/constants'
+import { AltCardCheckbox } from '~ng/ui/cardCheckbox'
+import type { IAltNgCardCheckboxProps } from '~ng/ui/cardCheckbox/models/types'
 
 import {
   propCheckedCases,
@@ -12,20 +12,20 @@ import {
 } from './cases/props'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgCardCheckboxProps>
+  props?: Partial<IAltNgCardCheckboxProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YCardCheckbox] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltCardCheckbox] }).compileComponents()
 
   @Component({
-    template: `<YCardCheckbox
+    template: `<AltCardCheckbox
       [checked]="checked"
       [disabled]="disabled"
       [size]="size"
-    ></YCardCheckbox>`,
-    imports: [YCardCheckbox],
+    ></AltCardCheckbox>`,
+    imports: [AltCardCheckbox],
     standalone: true,
   })
   class TestComponent {
@@ -37,7 +37,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YCardCheckbox/Unit',
+  'Angular/AltCardCheckbox/Unit',
   () => {
     describe(
       'Props',

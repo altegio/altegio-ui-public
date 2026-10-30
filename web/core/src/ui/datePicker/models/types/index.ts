@@ -1,12 +1,12 @@
 import {
   createCoreDatePickerExternalProps,
-  type IYCoreDatePickerExternalProps,
+  type IAltCoreDatePickerExternalProps,
 } from './external'
 
 
 export * from './external'
 export * from './events'
 
-export interface IYCoreDatePickerProps extends IYCoreDatePickerExternalProps {}
+export interface IAltCoreDatePickerProps extends IAltCoreDatePickerExternalProps {}
 
-export const createCoreDatePickerProps = (): IYCoreDatePickerProps => ({ ...createCoreDatePickerExternalProps() })
+export const createCoreDatePickerProps = (): IAltCoreDatePickerProps => ({ ...createCoreDatePickerExternalProps() })

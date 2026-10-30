@@ -3,59 +3,59 @@ import type {
   BlurEvent,
   SelectOptionEvent,
   PhoneFieldChangeEvent,
-  TYCorePhoneFieldEvents,
-  TYCorePhoneFieldAutocompleteOption,
+  TAltCorePhoneFieldEvents,
+  TAltCorePhoneFieldAutocompleteOption,
 } from '~core/ui/phoneField/models/types'
 import {
   createCorePhoneFieldProps,
-  type IYCorePhoneFieldProps,
+  type IAltCorePhoneFieldProps,
 } from '~core/ui/phoneField/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCorePhoneFieldProps extends
-Omit<IYCorePhoneFieldProps, 'emptyStateTitle' | 'emptyStateDescription'>,
-Partial<Pick<IYCorePhoneFieldProps, 'emptyStateTitle' | 'emptyStateDescription'>> {}
+export interface IAltVueCorePhoneFieldProps extends
+Omit<IAltCorePhoneFieldProps, 'emptyStateTitle' | 'emptyStateDescription'>,
+Partial<Pick<IAltCorePhoneFieldProps, 'emptyStateTitle' | 'emptyStateDescription'>> {}
 
-export type TYVuePhoneFieldEvents = TYCorePhoneFieldEvents
+export type TAltVuePhoneFieldEvents = TAltCorePhoneFieldEvents
 
-export type TYVuePhoneFieldAutocompleteOption = TYCorePhoneFieldAutocompleteOption
+export type TAltVuePhoneFieldAutocompleteOption = TAltCorePhoneFieldAutocompleteOption
 
-export type TYVuePhoneFieldFocusEvent = FocusEvent
+export type TAltVuePhoneFieldFocusEvent = FocusEvent
 
-export type TYVuePhoneFieldBlurEvent = BlurEvent
+export type TAltVuePhoneFieldBlurEvent = BlurEvent
 
-export type TYVuePhoneFieldSelectOptionEvent = SelectOptionEvent
+export type TAltVuePhoneFieldSelectOptionEvent = SelectOptionEvent
 
-export type TYVuePhoneFieldChangeEvent = PhoneFieldChangeEvent
+export type TAltVuePhoneFieldChangeEvent = PhoneFieldChangeEvent
 
-export interface IYVuePhoneFieldProps {
-  value: IYVueCorePhoneFieldProps['value']
-  name?: IYVueCorePhoneFieldProps['name']
-  disabled?: IYVueCorePhoneFieldProps['disabled']
-  required?: IYVueCorePhoneFieldProps['required']
-  readonly?: IYVueCorePhoneFieldProps['readonly']
-  autofocus?: IYVueCorePhoneFieldProps['autofocus']
-  error?: IYVueCorePhoneFieldProps['error']
-  errors?: IYVueCorePhoneFieldProps['errors']
-  size?: IYVueCorePhoneFieldProps['size']
-  placeholder?: IYVueCorePhoneFieldProps['placeholder']
-  labelText?: IYVueCorePhoneFieldProps['labelText']
-  labelTooltipText?: IYVueCorePhoneFieldProps['labelTooltipText']
-  labelDebounce?: IYVueCorePhoneFieldProps['labelDebounce']
-  annotationText?: IYVueCorePhoneFieldProps['annotationText']
-  minSearchLength?: IYVueCorePhoneFieldProps['minSearchLength']
-  withoutCodeSelection?: IYVueCorePhoneFieldProps['withoutCodeSelection']
-  searchFunction?: IYVueCorePhoneFieldProps['searchFunction']
-  disabledAutocomplete?: IYVueCorePhoneFieldProps['disabledAutocomplete']
-  countries?: IYVueCorePhoneFieldProps['countries']
-  defaultCountryId?: IYVueCorePhoneFieldProps['defaultCountryId']
-  emptyStateIcon?: IYVueCorePhoneFieldProps['emptyStateIcon']
-  emptyStateTitle?: IYVueCorePhoneFieldProps['emptyStateTitle']
-  emptyStateDescription?: IYVueCorePhoneFieldProps['emptyStateDescription']
-  optionPhonePrivacyEnabled?: IYVueCorePhoneFieldProps['optionPhonePrivacyEnabled']
+export interface IAltVuePhoneFieldProps {
+  value: IAltVueCorePhoneFieldProps['value']
+  name?: IAltVueCorePhoneFieldProps['name']
+  disabled?: IAltVueCorePhoneFieldProps['disabled']
+  required?: IAltVueCorePhoneFieldProps['required']
+  readonly?: IAltVueCorePhoneFieldProps['readonly']
+  autofocus?: IAltVueCorePhoneFieldProps['autofocus']
+  error?: IAltVueCorePhoneFieldProps['error']
+  errors?: IAltVueCorePhoneFieldProps['errors']
+  size?: IAltVueCorePhoneFieldProps['size']
+  placeholder?: IAltVueCorePhoneFieldProps['placeholder']
+  labelText?: IAltVueCorePhoneFieldProps['labelText']
+  labelTooltipText?: IAltVueCorePhoneFieldProps['labelTooltipText']
+  labelDebounce?: IAltVueCorePhoneFieldProps['labelDebounce']
+  annotationText?: IAltVueCorePhoneFieldProps['annotationText']
+  minSearchLength?: IAltVueCorePhoneFieldProps['minSearchLength']
+  withoutCodeSelection?: IAltVueCorePhoneFieldProps['withoutCodeSelection']
+  searchFunction?: IAltVueCorePhoneFieldProps['searchFunction']
+  disabledAutocomplete?: IAltVueCorePhoneFieldProps['disabledAutocomplete']
+  countries?: IAltVueCorePhoneFieldProps['countries']
+  defaultCountryId?: IAltVueCorePhoneFieldProps['defaultCountryId']
+  emptyStateIcon?: IAltVueCorePhoneFieldProps['emptyStateIcon']
+  emptyStateTitle?: IAltVueCorePhoneFieldProps['emptyStateTitle']
+  emptyStateDescription?: IAltVueCorePhoneFieldProps['emptyStateDescription']
+  optionPhonePrivacyEnabled?: IAltVueCorePhoneFieldProps['optionPhonePrivacyEnabled']
 }
 
-export interface IYVuePhoneFieldEmits {
+export interface IAltVuePhoneFieldEmits {
   (event: 'blur', payload: BlurEvent): void
   (event: 'focus', payload: FocusEvent): void
   (event: 'change', payload: PhoneFieldChangeEvent): void
@@ -63,7 +63,7 @@ export interface IYVuePhoneFieldEmits {
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
-export const createVuePhoneFieldProps = (): TDefinedVueProps<IYVuePhoneFieldProps> => {
+export const createVuePhoneFieldProps = (): TDefinedVueProps<IAltVuePhoneFieldProps> => {
   const {
     name,
     disabled,

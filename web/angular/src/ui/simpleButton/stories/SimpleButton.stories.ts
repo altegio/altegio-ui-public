@@ -4,19 +4,19 @@ import {
 } from '@storybook/angular'
 import { CommonModule } from '@angular/common'
 
-import { YSimpleButton } from '~ng/ui/simpleButton'
-import { YIcon } from '~ng/ui/icon'
-import { ySearch } from '~shared/icons/build/y-search.icon'
-import yCoreSimpleButtonStoryMeta from '~core/ui/simpleButton/stories/SimpleButton.stories'
+import { AltSimpleButton } from '~ng/ui/simpleButton'
+import { AltIcon } from '~ng/ui/icon'
+import { altSearch } from '~shared/icons/build/alt-search.icon'
+import altCoreSimpleButtonStoryMeta from '~core/ui/simpleButton/stories/SimpleButton.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { action } from 'storybook/actions'
 import { createSimpleButtonParameters, SIMPLE_BUTTON_STORIES_CONFIG } from '~core/ui/simpleButton/stories/SimpleButton.stories.utils'
 import { EFrameworkName } from '~web/shared/.storybook/enums/frameworkName'
 
-const meta: Meta<YSimpleButton> = {
+const meta: Meta<AltSimpleButton> = {
   title: 'Buttons/⚙️ SimpleButton',
   id: 'simpleButton',
-  component: YSimpleButton,
+  component: AltSimpleButton,
   parameters: createSimpleButtonParameters(EFrameworkName.ANGULAR),
   tags: [
     'angular',
@@ -25,18 +25,18 @@ const meta: Meta<YSimpleButton> = {
   render: (args) => ({
     props: {
       ...args,
-      ySearch,
+      altSearch,
       LOREM_IPSUM,
       onClick: action('click'),
     },
     moduleMetadata: {
       imports: [
         CommonModule,
-        YIcon,
+        AltIcon,
       ],
     },
     template: `
-      <YSimpleButton
+      <AltSimpleButton
         [size]="size"
         [variant]="variant"
         [disabled]="disabled"
@@ -49,7 +49,7 @@ const meta: Meta<YSimpleButton> = {
         (click)="onClick($event)"
       >
         @if (showContent) {
-          <YIcon [icon]="ySearch" size="16px" />
+          <AltIcon [icon]="altSearch" size="16px" />
 
           <span>
             {{ isLongText ? LOREM_IPSUM : text }}
@@ -59,14 +59,14 @@ const meta: Meta<YSimpleButton> = {
         @if (!showContent) {
           {{ isLongText ? LOREM_IPSUM : text }}
         }
-      </YSimpleButton>`,
+      </AltSimpleButton>`,
   }),
-  argTypes: { ...yCoreSimpleButtonStoryMeta.argTypes },
-  args: { ...yCoreSimpleButtonStoryMeta.args },
-} satisfies Meta<YSimpleButton>
+  argTypes: { ...altCoreSimpleButtonStoryMeta.argTypes },
+  args: { ...altCoreSimpleButtonStoryMeta.args },
+} satisfies Meta<AltSimpleButton>
 
 export default meta
-type Story = StoryObj<YSimpleButton>
+type Story = StoryObj<AltSimpleButton>
 
 export const Playground: Story = { args: {} }
 
@@ -75,13 +75,13 @@ export const Variants: Story = {
   render: () => ({
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YSimpleButton variant="primary">Primary</YSimpleButton>
+        <AltSimpleButton variant="primary">Primary</AltSimpleButton>
 
-        <YSimpleButton variant="outline">Outline</YSimpleButton>
+        <AltSimpleButton variant="outline">Outline</AltSimpleButton>
 
-        <YSimpleButton variant="outline-filled">Outline-filled</YSimpleButton>
+        <AltSimpleButton variant="outline-filled">Outline-filled</AltSimpleButton>
 
-        <YSimpleButton variant="text">Text</YSimpleButton>
+        <AltSimpleButton variant="text">Text</AltSimpleButton>
       </div>
     `,
   }),
@@ -92,21 +92,21 @@ export const Sizes: Story = {
   render: () => ({
     props: {
       sizes: ['small', 'medium', 'large'],
-      ySearch,
+      altSearch,
     },
-    moduleMetadata: { imports: [YIcon] },
+    moduleMetadata: { imports: [AltIcon] },
     template: `
       <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-        <YSimpleButton
+        <AltSimpleButton
           *ngFor="let size of sizes"
           [size]="size"
         >
-          <YIcon
-            [icon]="ySearch"
+          <AltIcon
+            [icon]="altSearch"
             [size]="size === 'large' ? '24px' : '16px'"
-          ></YIcon>
+          ></AltIcon>
           {{ size }}
-        </YSimpleButton>
+        </AltSimpleButton>
       </div>
     `,
   }),
@@ -117,11 +117,11 @@ export const States: Story = {
   render: () => ({
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YSimpleButton>Default</YSimpleButton>
+        <AltSimpleButton>Default</AltSimpleButton>
 
-        <YSimpleButton disabled>Disabled</YSimpleButton>
+        <AltSimpleButton disabled>Disabled</AltSimpleButton>
 
-        <YSimpleButton loading>Loading</YSimpleButton>
+        <AltSimpleButton loading>Loading</AltSimpleButton>
       </div>
     `,
   }),
@@ -132,11 +132,11 @@ export const PseudoStates: Story = {
   render: () => ({
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YSimpleButton>Default</YSimpleButton>
+        <AltSimpleButton>Default</AltSimpleButton>
 
-        <YSimpleButton disabled>Disabled</YSimpleButton>
+        <AltSimpleButton disabled>Disabled</AltSimpleButton>
 
-        <YSimpleButton loading>Loading</YSimpleButton>
+        <AltSimpleButton loading>Loading</AltSimpleButton>
       </div>
     `,
   }),
@@ -148,7 +148,7 @@ export const FullWidth: Story = {
     template: `
     
       <div>
-        <YSimpleButton [fullWidth]="true">Full-width button</YSimpleButton>
+        <AltSimpleButton [fullWidth]="true">Full-width button</AltSimpleButton>
       </div>
     `,
   }),
@@ -159,9 +159,9 @@ export const LinkMode: Story = {
   render: () => ({
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YSimpleButton href="https://example.com" target="_blank">External Link</YSimpleButton>
+        <AltSimpleButton href="https://example.com" target="_blank">External Link</AltSimpleButton>
 
-        <YSimpleButton href="/internal-page">Internal Link</YSimpleButton>
+        <AltSimpleButton href="/internal-page">Internal Link</AltSimpleButton>
       </div>
     `,
   }),
@@ -172,13 +172,13 @@ export const ComplexDemo: Story = {
   render: () => ({
     template: `
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <YSimpleButton variant="primary">Primary</YSimpleButton>
+        <AltSimpleButton variant="primary">Primary</AltSimpleButton>
 
-        <YSimpleButton variant="outline">Outline</YSimpleButton>
+        <AltSimpleButton variant="outline">Outline</AltSimpleButton>
 
-        <YSimpleButton variant="outline-filled">Outline-filled</YSimpleButton>
+        <AltSimpleButton variant="outline-filled">Outline-filled</AltSimpleButton>
 
-        <YSimpleButton variant="text">Text</YSimpleButton>
+        <AltSimpleButton variant="text">Text</AltSimpleButton>
       </div>
     `,
   }),

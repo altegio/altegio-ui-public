@@ -1,8 +1,8 @@
 import {
   createCoreLoaderProps,
-  type IYCoreLoaderProps,
+  type IAltCoreLoaderProps,
 } from '~core/ui/loader/models/types'
 
-export interface IYNgLoaderProps extends IYCoreLoaderProps {}
+export interface IAltNgLoaderProps extends IAltCoreLoaderProps {}
 
-export const createNgLoaderProps = (): IYNgLoaderProps => createCoreLoaderProps()
+export const createNgLoaderProps = (): IAltNgLoaderProps => createCoreLoaderProps()

@@ -1,30 +1,30 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreChipTagName as tagName } from '~shared/constants'
-import { type IYNgChipProps } from '~ng/ui/chip/models/types'
-import { YChip } from '~ng/ui/chip'
+import { AltCoreChipTagName as tagName } from '~shared/constants'
+import { type IAltNgChipProps } from '~ng/ui/chip/models/types'
+import { AltChip } from '~ng/ui/chip'
 import { propActiveTestCases, propDisabledTestCases, propIconLeftTestCases, propLabelTestCases, propSizeTestCases } from './cases/props'
 import { dispatchEvent } from '~shared/tests/utils'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgChipProps>
+  props?: Partial<IAltNgChipProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YChip] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltChip] }).compileComponents()
 
   @Component({
     template: `
-      <YChip
+      <AltChip
         [labelText]="labelText"
         [iconLeft]="iconLeft"
         [size]="size"
         [active]="active"
         [disabled]="disabled"
       />`,
-    imports: [YChip],
+    imports: [AltChip],
     standalone: true,
   })
   class TestComponent {
@@ -38,7 +38,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YChip',
+  'Angular/AltChip',
   () => {
     describe(
       'Props',

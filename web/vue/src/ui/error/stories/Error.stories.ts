@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YError } from '~vue/ui/error'
-import { type IYVueErrorProps } from '~vue/ui/error/models/types'
-import yCoreErrorStoryMeta, { type IYCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
+import { AltError } from '~vue/ui/error'
+import { type IAltVueErrorProps } from '~vue/ui/error/models/types'
+import altCoreErrorStoryMeta, { type IAltCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
 import { computed } from 'vue'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-type TVueErrorStoryMeta = IYVueErrorProps & IYCoreErrorStoryProps
+type TVueErrorStoryMeta = IAltVueErrorProps & IAltCoreErrorStoryProps
 
 /**
  * Vue wrapper for Core Error
@@ -20,7 +20,7 @@ const meta: Meta<TVueErrorStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YError },
+    components: { AltError },
     setup() {
       const computedError = computed(() => {
         if (args.isLongText) {
@@ -35,10 +35,10 @@ const meta: Meta<TVueErrorStoryMeta> = {
       })
       return { args, computedError }
     },
-    template: '<YError v-bind="args" :errors="computedError" />',
+    template: '<AltError v-bind="args" :errors="computedError" />',
   }),
-  argTypes: { ...yCoreErrorStoryMeta.argTypes },
-  args: { ...yCoreErrorStoryMeta.args },
+  argTypes: { ...altCoreErrorStoryMeta.argTypes },
+  args: { ...altCoreErrorStoryMeta.args },
 }
 
 export default meta

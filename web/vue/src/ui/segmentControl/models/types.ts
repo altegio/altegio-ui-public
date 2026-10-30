@@ -1,18 +1,18 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-import type { ClickEvent, IYCoreSegmentControlProps } from '~core/ui/segmentControl/models/types'
+import type { ClickEvent, IAltCoreSegmentControlProps } from '~core/ui/segmentControl/models/types'
 import { createCoreSegmentControlProps } from '~core/ui/segmentControl/models/types'
 
-export interface IYVueCoreSegmentControlProps extends IYCoreSegmentControlProps {}
+export interface IAltVueCoreSegmentControlProps extends IAltCoreSegmentControlProps {}
 
-export interface IYVueSegmentControlProps {
-  options?: IYVueCoreSegmentControlProps['options']
-  size?: IYVueCoreSegmentControlProps['size']
-  manual?: IYVueCoreSegmentControlProps['manual']
-  modelValue?: IYVueCoreSegmentControlProps['value']
+export interface IAltVueSegmentControlProps {
+  options?: IAltVueCoreSegmentControlProps['options']
+  size?: IAltVueCoreSegmentControlProps['size']
+  manual?: IAltVueCoreSegmentControlProps['manual']
+  modelValue?: IAltVueCoreSegmentControlProps['value']
 }
 
-export const createVueSegmentControlProps = (): TDefinedVueProps<IYVueSegmentControlProps> => {
+export const createVueSegmentControlProps = (): TDefinedVueProps<IAltVueSegmentControlProps> => {
   const { options, size, manual, value } = createCoreSegmentControlProps()
   return {
     options: options ? () => options : undefined,
@@ -23,6 +23,6 @@ export const createVueSegmentControlProps = (): TDefinedVueProps<IYVueSegmentCon
 }
 
 export { ClickEvent } from '~core/ui/segmentControl/models/types'
-export interface IYVueSegmentControlEmits {
+export interface IAltVueSegmentControlEmits {
   (event: 'click' | 'update:modelValue', payload: ClickEvent['detail']['value']): void
 }

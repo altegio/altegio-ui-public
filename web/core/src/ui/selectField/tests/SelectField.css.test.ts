@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreSelectFieldTagName } from '~shared/constants'
+import { AltCoreSelectFieldTagName } from '~shared/constants'
 import {
   createCoreSelectFieldProps,
 } from '~core/ui/selectField/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from './cases/css'
 
-const tagName = YCoreSelectFieldTagName
+const tagName = AltCoreSelectFieldTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreSelectField/CSS',
+  'Core/AltCoreSelectField/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

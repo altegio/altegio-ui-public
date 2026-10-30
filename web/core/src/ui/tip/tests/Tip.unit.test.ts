@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
-import { YCoreTipTagName, YCoreDropdownTagName } from '~shared/constants'
+import { AltCoreTipTagName, AltCoreDropdownTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import {
   createCoreTipProps,
@@ -21,7 +21,7 @@ import {
   propTriggerTestCases,
 } from './cases/props'
 
-const tagName = YCoreTipTagName
+const tagName = AltCoreTipTagName
 
 const {
   component,
@@ -35,7 +35,7 @@ const {
 )
 
 describe(
-  'Core/YTip/Unit',
+  'Core/AltTip/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -92,11 +92,11 @@ describe(
           ...propTriggerTestCases,
         ]) {
           it(
-            `Prop "${testCase.prop}" with value ${JSON.stringify(testCase.value)} should map the prop to a class in ${YCoreDropdownTagName}`,
+            `Prop "${testCase.prop}" with value ${JSON.stringify(testCase.value)} should map the prop to a class in ${AltCoreDropdownTagName}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
-              const dropdownElement = getWCShadowRoot(component).querySelector(YCoreDropdownTagName)
+              const dropdownElement = getWCShadowRoot(component).querySelector(AltCoreDropdownTagName)
 
               expect(dropdownElement?.[testCase.prop]).toBe(testCase.value)
             },

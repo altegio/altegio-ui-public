@@ -15,11 +15,11 @@ import '~core/ui/text'
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
 import { BreakpointsController } from '~core/utils/breakpoints'
 
-import { YCoreFunctionalModalTagName as tagName } from '~shared/constants'
+import { AltCoreFunctionalModalTagName as tagName } from '~shared/constants'
 
 import {
   createCoreFunctionalModalProps,
-  type IYCoreFunctionalModalProps,
+  type IAltCoreFunctionalModalProps,
 } from '~core/ui/functionalModal/models/types'
 import {
   OpenEvent,
@@ -32,8 +32,8 @@ import {
   SubmitEvent,
 } from '~core/ui/functionalModal/models/types/events'
 
-import YCoreFunctionalModalVarsCSS from '~core/ui/functionalModal/css/FunctionalModal.vars.css?inline'
-import YCoreFunctionalModalScopedCSS from '~core/ui/functionalModal/css/FunctionalModal.scoped.css?inline'
+import AltCoreFunctionalModalVarsCSS from '~core/ui/functionalModal/css/FunctionalModal.vars.css?inline'
+import AltCoreFunctionalModalScopedCSS from '~core/ui/functionalModal/css/FunctionalModal.scoped.css?inline'
 import { withLocator } from '~core/utils/locator'
 
 const { open, size, width, preventEscape, hideOverlay, hideFooter, fullScreen, heading, subHeading, dialogLabel } = createCoreFunctionalModalProps()
@@ -42,17 +42,17 @@ const RESIZE_OBSERVER_DELAY_MS = 100
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreFunctionalModal extends LocalizedElement implements IYCoreFunctionalModalProps {
-  @property({ type: Boolean }) open: IYCoreFunctionalModalProps['open'] = open
-  @property({ type: String }) size: IYCoreFunctionalModalProps['size'] = size
-  @property({ type: String }) width: IYCoreFunctionalModalProps['width'] = width
-  @property({ type: Boolean, attribute: 'prevent-escape' }) preventEscape: IYCoreFunctionalModalProps['preventEscape'] = preventEscape
-  @property({ type: Boolean, attribute: 'hide-overlay' }) hideOverlay: IYCoreFunctionalModalProps['hideOverlay'] = hideOverlay
-  @property({ type: Boolean, attribute: 'hide-footer' }) hideFooter: IYCoreFunctionalModalProps['hideFooter'] = hideFooter
-  @property({ type: Boolean, attribute: 'full-screen' }) fullScreen: IYCoreFunctionalModalProps['fullScreen'] = fullScreen
-  @property({ type: String }) heading: IYCoreFunctionalModalProps['heading'] = heading
-  @property({ type: String, attribute: 'sub-heading' }) subHeading: IYCoreFunctionalModalProps['subHeading'] = subHeading
-  @property({ type: String, attribute: 'dialog-label' }) dialogLabel: IYCoreFunctionalModalProps['dialogLabel'] = dialogLabel
+export class AltCoreFunctionalModal extends LocalizedElement implements IAltCoreFunctionalModalProps {
+  @property({ type: Boolean }) open: IAltCoreFunctionalModalProps['open'] = open
+  @property({ type: String }) size: IAltCoreFunctionalModalProps['size'] = size
+  @property({ type: String }) width: IAltCoreFunctionalModalProps['width'] = width
+  @property({ type: Boolean, attribute: 'prevent-escape' }) preventEscape: IAltCoreFunctionalModalProps['preventEscape'] = preventEscape
+  @property({ type: Boolean, attribute: 'hide-overlay' }) hideOverlay: IAltCoreFunctionalModalProps['hideOverlay'] = hideOverlay
+  @property({ type: Boolean, attribute: 'hide-footer' }) hideFooter: IAltCoreFunctionalModalProps['hideFooter'] = hideFooter
+  @property({ type: Boolean, attribute: 'full-screen' }) fullScreen: IAltCoreFunctionalModalProps['fullScreen'] = fullScreen
+  @property({ type: String }) heading: IAltCoreFunctionalModalProps['heading'] = heading
+  @property({ type: String, attribute: 'sub-heading' }) subHeading: IAltCoreFunctionalModalProps['subHeading'] = subHeading
+  @property({ type: String, attribute: 'dialog-label' }) dialogLabel: IAltCoreFunctionalModalProps['dialogLabel'] = dialogLabel
 
   @bubblingEvent(OpenEvent, { name: 'open' })
   protected _open!: TDispatcher<OpenEvent>
@@ -116,7 +116,7 @@ export class YCoreFunctionalModal extends LocalizedElement implements IYCoreFunc
       [`${this.baseContentClass}-full-height`]: this.isFullScreen,
       [`${this.baseContentClass}-hidden`]: !this.hasContentSlot,
       [`${this.baseContentClass}-margin-top`]: this.hasHeaderContent,
-      'y-scrollbar': true,
+      'alt-scrollbar': true,
     }
   }
 
@@ -211,16 +211,16 @@ export class YCoreFunctionalModal extends LocalizedElement implements IYCoreFunc
           class="${this.baseHeaderClass}-wrapper"
           @slotchange=${this.handleSlotHeaderChange}
         >
-          <y-core-text size="h2-semibold">
+          <alt-core-text size="h2-semibold">
             ${this.heading ?? nothing}
-          </y-core-text>
+          </alt-core-text>
 
           ${
             this.subHeading
             ? html`
-              <y-core-text size="p2-regular">
+              <alt-core-text size="p2-regular">
                 ${this.subHeading}
-              </y-core-text>`
+              </alt-core-text>`
             : nothing
           }
         </slot>
@@ -229,7 +229,7 @@ export class YCoreFunctionalModal extends LocalizedElement implements IYCoreFunc
 
   protected override render() {
     return html`
-      <y-core-modal
+      <alt-core-modal
         class=${this.baseClass}
         .open=${this.open}
         .size=${this.size}
@@ -278,16 +278,16 @@ export class YCoreFunctionalModal extends LocalizedElement implements IYCoreFunc
 
                   <div class="${this.baseClass}__actions">
                     <slot name="actions">
-                      <y-core-button
+                      <alt-core-button
                         label=${this.getLocale().messages.cancel}
                         variant="outline"
                         @click=${this.handleCancelClick}
-                      ></y-core-button>
+                      ></alt-core-button>
 
-                      <y-core-button
+                      <alt-core-button
                         label=${this.getLocale().messages.good}
                         @click=${this._submit}
-                      ></y-core-button>
+                      ></alt-core-button>
                     </slot>
                   </div>
                 </slot>
@@ -300,14 +300,14 @@ export class YCoreFunctionalModal extends LocalizedElement implements IYCoreFunc
           name="activator"
         >
         </slot>
-      </y-core-modal>
+      </alt-core-modal>
     `
   }
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreFunctionalModalVarsCSS)}
-      ${unsafeCSS(YCoreFunctionalModalScopedCSS)}
+      ${unsafeCSS(AltCoreFunctionalModalVarsCSS)}
+      ${unsafeCSS(AltCoreFunctionalModalScopedCSS)}
     `,
   ]
 

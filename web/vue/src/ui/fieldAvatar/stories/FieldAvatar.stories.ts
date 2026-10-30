@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YFieldAvatar } from '~vue/ui/fieldAvatar'
-import { type IYVueFieldAvatarProps } from '~vue/ui/fieldAvatar/models/types'
-import yCoreFieldAvatarStoryMeta from '~core/ui/fieldAvatar/stories/FieldAvatar.stories'
+import { AltFieldAvatar } from '~vue/ui/fieldAvatar'
+import { type IAltVueFieldAvatarProps } from '~vue/ui/fieldAvatar/models/types'
+import altCoreFieldAvatarStoryMeta from '~core/ui/fieldAvatar/stories/FieldAvatar.stories'
 
-type TVueFieldAvatarStoryMeta = IYVueFieldAvatarProps
+type TVueFieldAvatarStoryMeta = IAltVueFieldAvatarProps
 
 /**
  * Vue wrapper for Core FieldAvatar
@@ -18,16 +18,16 @@ const meta: Meta<TVueFieldAvatarStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YFieldAvatar },
+    components: { AltFieldAvatar },
     setup() {
       return { args }
     },
     template: `
-      <YFieldAvatar v-bind="args" style="border: 1px dashed;width: min-content;"></YFieldAvatar>
+      <AltFieldAvatar v-bind="args" style="border: 1px dashed;width: min-content;"></AltFieldAvatar>
     `,
   }),
-  argTypes: { ...yCoreFieldAvatarStoryMeta.argTypes },
-  args: { ...yCoreFieldAvatarStoryMeta.args },
+  argTypes: { ...altCoreFieldAvatarStoryMeta.argTypes },
+  args: { ...altCoreFieldAvatarStoryMeta.args },
 }
 
 export default meta

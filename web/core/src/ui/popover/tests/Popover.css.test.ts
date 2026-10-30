@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCorePopoverTagName } from '~shared/constants'
+import { AltCorePopoverTagName } from '~shared/constants'
 import {
   createCorePopoverProps,
 } from '~core/ui/popover/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/popover/tests/cases/css'
 
-const tagName = YCorePopoverTagName
+const tagName = AltCorePopoverTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCorePopover/CSS',
+  'Core/AltCorePopover/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

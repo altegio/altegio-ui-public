@@ -1,28 +1,28 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 import {
   createCoreDropdownProps,
-  type IYCoreDropdownProps,
+  type IAltCoreDropdownProps,
 } from '~core/ui/dropdown/models/types'
 
-export interface IYVueCoreDropdownProps extends IYCoreDropdownProps {}
+export interface IAltVueCoreDropdownProps extends IAltCoreDropdownProps {}
 
-export interface IYVueDropdownProps {
-  trigger?: IYVueCoreDropdownProps['trigger']
-  isOpen?: IYVueCoreDropdownProps['isOpen']
-  offset?: IYVueCoreDropdownProps['offset']
-  padding?: IYVueCoreDropdownProps['padding']
-  placement?: IYVueCoreDropdownProps['placement']
-  strategy?: IYVueCoreDropdownProps['strategy']
-  middlewares?: IYVueCoreDropdownProps['middlewares']
-  handlers?: IYVueCoreDropdownProps['handlers']
-  transition?: IYVueCoreDropdownProps['transition']
-  disabled?: IYVueCoreDropdownProps['disabled']
-  inline?: IYVueCoreDropdownProps['inline']
-  strictWidth?: IYVueCoreDropdownProps['strictWidth']
+export interface IAltVueDropdownProps {
+  trigger?: IAltVueCoreDropdownProps['trigger']
+  isOpen?: IAltVueCoreDropdownProps['isOpen']
+  offset?: IAltVueCoreDropdownProps['offset']
+  padding?: IAltVueCoreDropdownProps['padding']
+  placement?: IAltVueCoreDropdownProps['placement']
+  strategy?: IAltVueCoreDropdownProps['strategy']
+  middlewares?: IAltVueCoreDropdownProps['middlewares']
+  handlers?: IAltVueCoreDropdownProps['handlers']
+  transition?: IAltVueCoreDropdownProps['transition']
+  disabled?: IAltVueCoreDropdownProps['disabled']
+  inline?: IAltVueCoreDropdownProps['inline']
+  strictWidth?: IAltVueCoreDropdownProps['strictWidth']
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
-export const createVueDropdownProps = (): TDefinedVueProps<IYVueDropdownProps> => {
+export const createVueDropdownProps = (): TDefinedVueProps<IAltVueDropdownProps> => {
   const { trigger, isOpen, placement, strategy, padding, offset, middlewares, handlers, transition, disabled, inline, strictWidth } = createCoreDropdownProps()
 
   return {

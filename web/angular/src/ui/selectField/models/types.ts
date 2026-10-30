@@ -1,10 +1,10 @@
 import {
   createCoreSelectFieldProps,
-  type IYCoreSelectFieldProps,
+  type IAltCoreSelectFieldProps,
 } from '~core/ui/selectField/models/types'
 
-export { FocusEvent as YNgSelectFieldFocusEvent, SelectEvent as YNgSelectFieldSelectEvent, InputEvent as YNgSelectFieldInputEvent, BlurEvent as YNgSelectFieldBlurEvent } from '~core/ui/selectField/models/types/events'
+export { FocusEvent as AltNgSelectFieldFocusEvent, SelectEvent as AltNgSelectFieldSelectEvent, InputEvent as AltNgSelectFieldInputEvent, BlurEvent as AltNgSelectFieldBlurEvent } from '~core/ui/selectField/models/types/events'
 
-export interface IYNgSelectFieldProps extends IYCoreSelectFieldProps {}
+export interface IAltNgSelectFieldProps extends IAltCoreSelectFieldProps {}
 
-export const createNgSelectFieldProps = (): IYNgSelectFieldProps => createCoreSelectFieldProps()
+export const createNgSelectFieldProps = (): IAltNgSelectFieldProps => createCoreSelectFieldProps()

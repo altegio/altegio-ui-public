@@ -6,12 +6,12 @@ import '~core/ui/searchTextHighlighted'
 
 import {
   createCoreSearchTextHighlightedProps,
-  type IYCoreSearchTextHighlightedProps,
+  type IAltCoreSearchTextHighlightedProps,
 } from '~core/ui/searchTextHighlighted/models/types'
 import {
-  YCoreSearchTextHighlightedTagName as tagName,
+  AltCoreSearchTextHighlightedTagName as tagName,
 } from '~shared/constants'
-import yCoreTextStoryMeta from '~core/ui/text/stories/Text.stories'
+import altCoreTextStoryMeta from '~core/ui/text/stories/Text.stories'
 import { getComponentContentTable, getComponentStateTable } from '~shared/.storybook/tables'
 
 const { text, search, ignoredSymbols, stopHighlight, caseSensitive } = createCoreSearchTextHighlightedProps()
@@ -19,7 +19,7 @@ const { text, search, ignoredSymbols, stopHighlight, caseSensitive } = createCor
 /**
  * ## Core SearchTextHighlighted
  */
-const meta: Meta<IYCoreSearchTextHighlightedProps> = {
+const meta: Meta<IAltCoreSearchTextHighlightedProps> = {
   title: '⚠️ SearchTextHighlighted',
   id: 'searchTextHighlighted',
   parameters: { controls: { sort: 'alpha' } },
@@ -30,7 +30,7 @@ const meta: Meta<IYCoreSearchTextHighlightedProps> = {
   ],
   render: ({ text, variant, search, ignoredSymbols, stopHighlight, size, highlightTextVariant, highlightTextSize, caseSensitive }) => {
     return html`
-      <y-core-search-text-highlighted
+      <alt-core-search-text-highlighted
         .text=${text}
         .variant=${variant}
         .search=${search}
@@ -41,11 +41,11 @@ const meta: Meta<IYCoreSearchTextHighlightedProps> = {
         .highlightTextVariant=${highlightTextVariant}
         .highlightTextSize=${highlightTextSize}
       >
-      </y-core-search-text-highlighted>
+      </alt-core-search-text-highlighted>
     `
   },
   argTypes: {
-    ...omit(yCoreTextStoryMeta.argTypes ?? {}, ['text', 'isLongText']),
+    ...omit(altCoreTextStoryMeta.argTypes ?? {}, ['text', 'isLongText']),
     search: {
       type: 'string',
       description: 'Search query fragment',
@@ -72,27 +72,27 @@ const meta: Meta<IYCoreSearchTextHighlightedProps> = {
       ...getComponentStateTable(ignoredSymbols),
     },
     highlightTextVariant: {
-      ...yCoreTextStoryMeta.argTypes?.variant,
+      ...altCoreTextStoryMeta.argTypes?.variant,
       description: 'Highlighted text style',
     },
     highlightTextSize: {
-      ...yCoreTextStoryMeta.argTypes?.size,
+      ...altCoreTextStoryMeta.argTypes?.size,
       description: 'Highlighted text size',
     },
   },
   args: {
-    ...omit(yCoreTextStoryMeta.args ?? {}, ['text', 'isLongText']),
+    ...omit(altCoreTextStoryMeta.args ?? {}, ['text', 'isLongText']),
     search: '',
     text: '999) 157-91-72',
     caseSensitive,
     stopHighlight: false,
     ignoredSymbols: ['-', 's', '(', ')', ' '],
-    highlightTextVariant: yCoreTextStoryMeta.args?.variant,
-    highlightTextSize: yCoreTextStoryMeta.args?.size,
+    highlightTextVariant: altCoreTextStoryMeta.args?.variant,
+    highlightTextSize: altCoreTextStoryMeta.args?.size,
   },
-} satisfies Meta<IYCoreSearchTextHighlightedProps>
+} satisfies Meta<IAltCoreSearchTextHighlightedProps>
 
 export default meta
-type Story = StoryObj<IYCoreSearchTextHighlightedProps>
+type Story = StoryObj<IAltCoreSearchTextHighlightedProps>
 
 export const Playground: Story = { args: {} }

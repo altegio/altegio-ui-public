@@ -1,12 +1,12 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
-import type { IYSimpleRadioButtonCheckedEvent } from '~core/ui/simpleRadioButton/models/types'
+import type { IAltSimpleRadioButtonCheckedEvent } from '~core/ui/simpleRadioButton/models/types'
 
-export interface IYCoreCardRadioCheckedEvent
-  extends IYSimpleRadioButtonCheckedEvent {
+export interface IAltCoreCardRadioCheckedEvent
+  extends IAltSimpleRadioButtonCheckedEvent {
 }
 
-export class CoreCardRadioCheckedEvent extends CustomEvent<IYCoreCardRadioCheckedEvent> {}
+export class CoreCardRadioCheckedEvent extends CustomEvent<IAltCoreCardRadioCheckedEvent> {}
 
-export type TYCoreCardRadioEvents = TEventsStoryArgs<{
+export type TAltCoreCardRadioEvents = TEventsStoryArgs<{
   CoreCardRadioCheckedEvent: typeof CoreCardRadioCheckedEvent
 }>

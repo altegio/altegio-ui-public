@@ -1,2 +1,2 @@
-export { YCoreToggle } from './Toggle.core'
+export { AltCoreToggle } from './Toggle.core'
 export * from './models/types'

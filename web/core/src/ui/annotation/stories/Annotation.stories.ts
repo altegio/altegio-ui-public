@@ -4,11 +4,11 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 import '~core/ui/annotation'
 
 import {
-  type IYCoreAnnotationExternalProps,
+  type IAltCoreAnnotationExternalProps,
   createCoreAnnotationExternalProps,
 } from '~core/ui/annotation/models/types'
 
-import { YCoreAnnotationTagName as tagName } from '~shared/constants'
+import { AltCoreAnnotationTagName as tagName } from '~shared/constants'
 
 import {
   disabled as disabledArgType,
@@ -20,15 +20,15 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
 const { text, disabled } = createCoreAnnotationExternalProps()
 
-export interface IYCoreAnnotationStoryProps extends ITextStoryProps {}
+export interface IAltCoreAnnotationStoryProps extends ITextStoryProps {}
 
-type TYCoreAnnotationMeta = IYCoreAnnotationExternalProps & IYCoreAnnotationStoryProps
+type TAltCoreAnnotationMeta = IAltCoreAnnotationExternalProps & IAltCoreAnnotationStoryProps
 
 /**
  * ## Core Annotation
  * Supporting text for input fields
  */
-const meta: Meta<TYCoreAnnotationMeta> = {
+const meta: Meta<TAltCoreAnnotationMeta> = {
   title: '⚙️ Annotation',
   id: 'annotation',
   parameters: { controls: { sort: 'alpha' } },
@@ -45,13 +45,13 @@ const meta: Meta<TYCoreAnnotationMeta> = {
     const computedText = isLongText ? LOREM_IPSUM : text
 
     return html`
-      <y-core-annotation
+      <alt-core-annotation
         .disabled=${disabled}
       >
         <div slot="annotation">
           ${computedText}
         </div>
-      </y-core-annotation>
+      </alt-core-annotation>
     `
   },
   argTypes: {
@@ -74,9 +74,9 @@ const meta: Meta<TYCoreAnnotationMeta> = {
     text: 'Annotation text',
     isLongText: false,
   },
-} satisfies Meta<TYCoreAnnotationMeta>
+} satisfies Meta<TAltCoreAnnotationMeta>
 
 export default meta
-type Story = StoryObj<TYCoreAnnotationMeta>
+type Story = StoryObj<TAltCoreAnnotationMeta>
 
 export const Playground: Story = { args: {} }

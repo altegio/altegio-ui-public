@@ -1,5 +1,5 @@
 <template>
-  <y-core-dropdown v-bind="props">
+  <alt-core-dropdown v-bind="props">
     <div
       v-if="$slots.activator"
       slot="activator"
@@ -13,18 +13,18 @@
     >
       <slot name="content" />
     </div>
-  </y-core-dropdown>
+  </alt-core-dropdown>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/dropdown'
   import {
     createVueDropdownProps,
-    type IYVueDropdownProps,
-    type IYVueCoreDropdownProps,
+    type IAltVueDropdownProps,
+    type IAltVueCoreDropdownProps,
   } from '~vue/ui/dropdown/models/types'
 
-  defineOptions({ name: 'YDropdown' })
+  defineOptions({ name: 'AltDropdown' })
 
   defineSlots<{
     activator?: () => unknown
@@ -32,7 +32,7 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueDropdownProps>(),
+    defineProps<IAltVueDropdownProps>(),
     createVueDropdownProps(),
-  ) satisfies IYVueCoreDropdownProps
+  ) satisfies IAltVueCoreDropdownProps
 </script>

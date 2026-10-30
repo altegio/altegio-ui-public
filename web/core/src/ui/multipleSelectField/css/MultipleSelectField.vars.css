@@ -1,12 +1,12 @@
 :host {
   /* Sizes */
-  --y-core-multiple-select-field-min-width: 88px;
-  --y-core-multiple-select-field-max-width: 404px;
-  --y-core-dropdown-content-max-width: 404px;
-  --y-core-dropdown-activator-width: 100%;
-  --y-core-dropdown-max-width: 100%;
+  --alt-core-multiple-select-field-min-width: 88px;
+  --alt-core-multiple-select-field-max-width: 404px;
+  --alt-core-dropdown-content-max-width: 404px;
+  --alt-core-dropdown-activator-width: 100%;
+  --alt-core-dropdown-max-width: 100%;
 
   /* General */
-  --y-core-multiple-select-field-display: flex;
-  --y-core-multiple-select-field-color: var(--y-core-color-text-primary);
+  --alt-core-multiple-select-field-display: flex;
+  --alt-core-multiple-select-field-color: var(--alt-core-color-text-primary);
 }

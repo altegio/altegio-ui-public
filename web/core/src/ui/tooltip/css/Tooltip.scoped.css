@@ -1,6 +1,6 @@
-.y-core-tooltip {
+.alt-core-tooltip {
   &__content {
-    max-width: var(--y-core-tooltip-max-width);
+    max-width: var(--alt-core-tooltip-max-width);
     word-break: normal;
   }
 }

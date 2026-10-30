@@ -1,1 +1,1 @@
-export { YCoreRadioButtonGroup } from './RadioButtonGroup.core'
+export { AltCoreRadioButtonGroup } from './RadioButtonGroup.core'

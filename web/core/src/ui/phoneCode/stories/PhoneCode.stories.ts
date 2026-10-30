@@ -4,13 +4,13 @@ import { pick } from 'radash'
 
 import {
   createCorePhoneCodeProps,
-  type IYCorePhoneCodeProps,
+  type IAltCorePhoneCodeProps,
 } from '~core/ui/phoneCode/models/types'
 import {
-  YCorePhoneCodeTagName as tagName,
+  AltCorePhoneCodeTagName as tagName,
 } from '~shared/constants'
 
-import yCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
+import altCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
 
 import { defaultCountriesData } from '~shared/utils/countries'
 
@@ -25,7 +25,7 @@ const { code: defaultCode } = createCorePhoneCodeProps()
 /**
  * ## Core PhoneCode
  */
-const meta: Meta<IYCorePhoneCodeProps> = {
+const meta: Meta<IAltCorePhoneCodeProps> = {
   title: 'Inputs/Partials/⚠️ PhoneCode',
   id: 'phoneCode',
   parameters: { controls: { sort: 'alpha' } },
@@ -41,17 +41,17 @@ const meta: Meta<IYCorePhoneCodeProps> = {
     code,
   }) => {
     return html`
-      <y-core-phone-code
+      <alt-core-phone-code
         .disabled=${disabled}
         .readonly=${readonly}
         .size=${size}
         .code=${code}
         style="border: 1px dashed;"
-      ></y-core-phone-code>
+      ></alt-core-phone-code>
     `
   },
   argTypes: {
-    ...pick(yCoreFieldWrapperStoryMeta.argTypes ?? {}, ['disabled', 'readonly', 'size']),
+    ...pick(altCoreFieldWrapperStoryMeta.argTypes ?? {}, ['disabled', 'readonly', 'size']),
 
     code: {
       control: { type: 'select' },
@@ -60,13 +60,13 @@ const meta: Meta<IYCorePhoneCodeProps> = {
     },
   },
   args: {
-    ...pick(yCoreFieldWrapperStoryMeta.args ?? {}, ['disabled', 'readonly', 'size']),
+    ...pick(altCoreFieldWrapperStoryMeta.args ?? {}, ['disabled', 'readonly', 'size']),
 
     code: defaultCountriesData[1].code,
   },
-} satisfies Meta<IYCorePhoneCodeProps>
+} satisfies Meta<IAltCorePhoneCodeProps>
 
 export default meta
-type Story = StoryObj<IYCorePhoneCodeProps>
+type Story = StoryObj<IAltCorePhoneCodeProps>
 
 export const Playground: Story = { args: {} }

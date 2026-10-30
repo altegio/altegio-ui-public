@@ -1,9 +1,9 @@
 import { text } from '~shared/tests/slotContents'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import type { TPropTestCase } from '~shared/types/tests'
-import { type IYCoreInputFieldProps, EYCoreInputTypeProp } from '../../models/types'
-import { type IYCoreLabelExternalProps } from '~core/ui/label/models/types'
-import { type IYCoreAnnotationExternalProps } from '~core/ui/annotation/models/types'
+import { type IAltCoreInputFieldProps, EAltCoreInputTypeProp } from '../../models/types'
+import { type IAltCoreLabelExternalProps } from '~core/ui/label/models/types'
+import { type IAltCoreAnnotationExternalProps } from '~core/ui/annotation/models/types'
 import { type MaskitoOptions } from '@maskito/core'
 
 export const testMaskOptions: MaskitoOptions = { mask: /^\d+$/ }
@@ -12,66 +12,66 @@ export const testErrors = [
   text,
 ]
 
-export const sizes = Object.values(EYSizes).filter((size) => size !== EYSizes.EXTRA_LARGE && size !== EYSizes.EXTRA_SMALL)
+export const sizes = Object.values(EAltSizes).filter((size) => size !== EAltSizes.EXTRA_LARGE && size !== EAltSizes.EXTRA_SMALL)
 
-export const propValueCases: TPropTestCase<IYCoreInputFieldProps, 'value'>[] = [
+export const propValueCases: TPropTestCase<IAltCoreInputFieldProps, 'value'>[] = [
   { prop: 'value', case: 'with text', value: text },
   { prop: 'value', case: 'without text', value: '' },
 ]
-export const propNameCases: TPropTestCase<IYCoreInputFieldProps, 'name'>[] = [
+export const propNameCases: TPropTestCase<IAltCoreInputFieldProps, 'name'>[] = [
   { prop: 'name', case: 'with text', value: text },
   { prop: 'name', case: 'without text', value: '' },
 ]
-export const propPlaceholderCases: TPropTestCase<IYCoreInputFieldProps, 'placeholder'>[] = [
+export const propPlaceholderCases: TPropTestCase<IAltCoreInputFieldProps, 'placeholder'>[] = [
   { prop: 'placeholder', case: 'with text', value: text },
   { prop: 'placeholder', case: 'without text', value: '' },
 ]
-export const propAutofocusCases: TPropTestCase<IYCoreInputFieldProps, 'autofocus'>[] = [
+export const propAutofocusCases: TPropTestCase<IAltCoreInputFieldProps, 'autofocus'>[] = [
   { prop: 'autofocus', case: 'true', value: true },
   { prop: 'autofocus', case: 'false', value: false },
 ]
-export const propTypeCases: TPropTestCase<IYCoreInputFieldProps, 'type'>[] = Object.values(EYCoreInputTypeProp).map((type) => ({
+export const propTypeCases: TPropTestCase<IAltCoreInputFieldProps, 'type'>[] = Object.values(EAltCoreInputTypeProp).map((type) => ({
   prop: 'type',
   case: type,
   value: type,
 }))
-export const propDisabledCases: TPropTestCase<IYCoreInputFieldProps, 'disabled'>[] = [
+export const propDisabledCases: TPropTestCase<IAltCoreInputFieldProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true },
   { prop: 'disabled', case: 'false', value: false },
 ]
-export const propReadonlyCases: TPropTestCase<IYCoreInputFieldProps, 'readonly'>[] = [
+export const propReadonlyCases: TPropTestCase<IAltCoreInputFieldProps, 'readonly'>[] = [
   { prop: 'readonly', case: 'true', value: true },
   { prop: 'readonly', case: 'false', value: false },
 ]
-export const propRequiredCases: TPropTestCase<IYCoreInputFieldProps, 'required'>[] = [
+export const propRequiredCases: TPropTestCase<IAltCoreInputFieldProps, 'required'>[] = [
   { prop: 'required', case: 'true', value: true },
   { prop: 'required', case: 'false', value: false },
 ]
-export const propMaxlengthCases: TPropTestCase<IYCoreInputFieldProps, 'maxlength'>[] = [
+export const propMaxlengthCases: TPropTestCase<IAltCoreInputFieldProps, 'maxlength'>[] = [
   { prop: 'maxlength', case: '10', value: 10 },
   { prop: 'maxlength', case: '0', value: 0 },
 ]
-export const propMaskOptionsCases: TPropTestCase<IYCoreInputFieldProps, 'maskOptions'>[] = [
+export const propMaskOptionsCases: TPropTestCase<IAltCoreInputFieldProps, 'maskOptions'>[] = [
   { prop: 'maskOptions', case: 'with a mask', value: testMaskOptions },
   { prop: 'maskOptions', case: 'without a mask', value: undefined },
 ]
-export const propErrorsCases: TPropTestCase<IYCoreInputFieldProps, 'errors'>[] = [
+export const propErrorsCases: TPropTestCase<IAltCoreInputFieldProps, 'errors'>[] = [
   { prop: 'errors', case: 'with errors', value: testErrors },
   { prop: 'errors', case: 'with one error', value: [testErrors[0]] },
   { prop: 'errors', case: 'without errors', value: [] },
 ]
-export const propClearableCases: TPropTestCase<IYCoreInputFieldProps, 'clearable'>[] = [
+export const propClearableCases: TPropTestCase<IAltCoreInputFieldProps, 'clearable'>[] = [
   { prop: 'clearable', case: 'clearable', value: true },
   { prop: 'clearable', case: 'not clearable', value: false },
 ]
-export const propSizeCases: TPropTestCase<IYCoreInputFieldProps, 'size'>[] = sizes.map((size) => ({
+export const propSizeCases: TPropTestCase<IAltCoreInputFieldProps, 'size'>[] = sizes.map((size) => ({
   prop: 'size',
   case: size,
   value: size,
 }))
 
-type TPropLabel<K extends keyof IYCoreInputFieldProps, T extends keyof IYCoreLabelExternalProps> = TPropTestCase<IYCoreInputFieldProps, K> & { labelProp: T }
-type TPropAnnotation<K extends keyof IYCoreInputFieldProps, T extends keyof IYCoreAnnotationExternalProps> = TPropTestCase<IYCoreInputFieldProps, K> & { annotationProp: T }
+type TPropLabel<K extends keyof IAltCoreInputFieldProps, T extends keyof IAltCoreLabelExternalProps> = TPropTestCase<IAltCoreInputFieldProps, K> & { labelProp: T }
+type TPropAnnotation<K extends keyof IAltCoreInputFieldProps, T extends keyof IAltCoreAnnotationExternalProps> = TPropTestCase<IAltCoreInputFieldProps, K> & { annotationProp: T }
 
 export const propLabelOverflowDebounceCases: (TPropLabel<'labelOverflowDebounce', 'debounce'>)[] = [
   { prop: 'labelOverflowDebounce', labelProp: 'debounce', case: '100', value: 100 },

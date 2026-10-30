@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreCardRadioTagName } from '~shared/constants'
+import { AltCoreCardRadioTagName } from '~shared/constants'
 import {
   createCoreCardRadioProps,
 } from '~core/ui/cardRadio/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/cardRadio/tests/cases/css'
 
-const tagName = YCoreCardRadioTagName
+const tagName = AltCoreCardRadioTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreCardRadio/CSS',
+  'Core/AltCoreCardRadio/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { YCoreSelectFieldTagName as tagName } from '~web/shared/constants'
+import { AltCoreSelectFieldTagName as tagName } from '~web/shared/constants'
 import { ngInputEvents } from './cases/events'
 import {
   propAnnotationTextTestCases,
@@ -20,22 +20,22 @@ import {
   propValueTestCases,
 } from './cases/props'
 import { TestBed } from '~ng/tests/setup'
-import { YSelectField } from '~ng/ui/selectField'
+import { AltSelectField } from '~ng/ui/selectField'
 import { Component } from '@angular/core'
-import type { IYNgSelectFieldProps } from '~ng/ui/selectField/models/types'
+import type { IAltNgSelectFieldProps } from '~ng/ui/selectField/models/types'
 import { dispatchEvent } from '~shared/tests/utils'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgSelectFieldProps>
+  props?: Partial<IAltNgSelectFieldProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YSelectField] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltSelectField] }).compileComponents()
 
   @Component({
     template: `
-      <YSelectField
+      <AltSelectField
           [value]="value"
           [name]="name"
           [placeholder]="placeholder"
@@ -62,7 +62,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
           (blur)="onBlur($event)"
           (select)="onSelect($event)"
         />`,
-    imports: [YSelectField],
+    imports: [AltSelectField],
     standalone: true,
   })
   class TestComponent {
@@ -98,7 +98,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 
 
 describe(
-  'Angular/YSelectField',
+  'Angular/AltSelectField',
   () => {
     describe(
       'Props',

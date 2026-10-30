@@ -5,18 +5,18 @@ import { useArgs } from 'storybook/preview-api'
 
 import {
   createCoreCardSelectProps,
-  type IYCoreCardSelectProps,
-  type TYCoreCardSelectEvents,
+  type IAltCoreCardSelectProps,
+  type TAltCoreCardSelectEvents,
 } from '~core/ui/cardSelect/models/types'
-import { YCoreCardSelectTagName as tagName } from '~shared/constants'
+import { AltCoreCardSelectTagName as tagName } from '~shared/constants'
 
 import { getComponentContentTable, storyControlsTable } from '~shared/.storybook/tables'
 
-import { EYCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
-import { yMagic } from '~shared/icons'
+import { EAltCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
+import { altMagic } from '~shared/icons'
 
-import yCoreCardWrapperStoryMeta from '~core/ui/cardWrapper/stories/CardWrapper.stories'
-import yCoreCardHeaderStoryMeta from '~core/ui/cardHeader/stories/CardHeader.stories'
+import altCoreCardWrapperStoryMeta from '~core/ui/cardWrapper/stories/CardWrapper.stories'
+import altCoreCardHeaderStoryMeta from '~core/ui/cardHeader/stories/CardHeader.stories'
 
 import '~core/ui/cardSelect'
 import '~core/ui/cardIcon'
@@ -24,12 +24,12 @@ import '~core/ui/cardCheckbox'
 
 const { annotation } = createCoreCardSelectProps()
 
-export interface IYCoreCardSelectStorySlots {
+export interface IAltCoreCardSelectStorySlots {
   showCardIcon: boolean
   showCardCheckbox: boolean
 }
 
-type TYCoreCardSelectMeta = Meta<IYCoreCardSelectProps & IYCoreCardSelectStorySlots & Pick<TYCoreCardSelectEvents, 'onBlur' | 'onFocus'> & {
+type TAltCoreCardSelectMeta = Meta<IAltCoreCardSelectProps & IAltCoreCardSelectStorySlots & Pick<TAltCoreCardSelectEvents, 'onBlur' | 'onFocus'> & {
   onClick: (event: Event) => void
   hasAnnotationSlot: boolean
 }>
@@ -37,7 +37,7 @@ type TYCoreCardSelectMeta = Meta<IYCoreCardSelectProps & IYCoreCardSelectStorySl
 /**
  * ## Core CardSelect
  */
-const meta: TYCoreCardSelectMeta = {
+const meta: TAltCoreCardSelectMeta = {
   title: 'Cards/✅ CardSelect',
   id: 'cardSelect',
   parameters: { controls: { sort: 'alpha' } },
@@ -66,7 +66,7 @@ const meta: TYCoreCardSelectMeta = {
     const [
       args,
       updateArgs,
-    ] = useArgs<IYCoreCardSelectProps>()
+    ] = useArgs<IAltCoreCardSelectProps>()
 
     const { checked } = args
     const handleOnClick = (event: Event) => {
@@ -85,7 +85,7 @@ const meta: TYCoreCardSelectMeta = {
     }
 
     return html`
-      <y-core-card-select
+      <alt-core-card-select
         .checked=${checked}
         .disabled=${disabled}
         .hoverable=${hoverable}
@@ -102,22 +102,22 @@ const meta: TYCoreCardSelectMeta = {
       >
         ${showCardIcon
           ? html`
-              <y-core-card-icon
-                .icon=${yMagic}
-                .variant=${EYCoreColorIconVariant.GREY}
+              <alt-core-card-icon
+                .icon=${altMagic}
+                .variant=${EAltCoreColorIconVariant.GREY}
                 slot="before"
               >
-              </y-core-card-icon>
+              </alt-core-card-icon>
             `
           : nothing
         }
 
         ${showCardCheckbox
           ? html`
-            <y-core-card-checkbox
+            <alt-core-card-checkbox
               slot="after"
               @checked=${onChecked}
-            ></y-core-card-checkbox>`
+            ></alt-core-card-checkbox>`
           : nothing
         }
 
@@ -125,12 +125,12 @@ const meta: TYCoreCardSelectMeta = {
           ? html`<span slot="annotation">Slot for annotation text</span>`
           : nothing
         }
-      </y-core-card-select>
+      </alt-core-card-select>
     `
   },
   argTypes: {
-    ...pick(yCoreCardWrapperStoryMeta.argTypes ?? {}, ['checked', 'disabled', 'hoverable', 'focusable', 'size']),
-    ...pick(yCoreCardHeaderStoryMeta.argTypes ?? {}, ['headerText', 'tagText', 'tagVariant', 'headerIcon']),
+    ...pick(altCoreCardWrapperStoryMeta.argTypes ?? {}, ['checked', 'disabled', 'hoverable', 'focusable', 'size']),
+    ...pick(altCoreCardHeaderStoryMeta.argTypes ?? {}, ['headerText', 'tagText', 'tagVariant', 'headerIcon']),
 
     // Story Controls
     annotation: {
@@ -143,20 +143,20 @@ const meta: TYCoreCardSelectMeta = {
       description: 'Show the annotation slot',
       ...storyControlsTable,
     },
-    ...pick(yCoreCardWrapperStoryMeta.argTypes ?? {}, ['showCardIcon', 'showCardCheckbox']),
+    ...pick(altCoreCardWrapperStoryMeta.argTypes ?? {}, ['showCardIcon', 'showCardCheckbox']),
 
     // Component Events
-    ...pick(yCoreCardWrapperStoryMeta.argTypes ?? {}, ['onClick', 'onBlur', 'onFocus']),
+    ...pick(altCoreCardWrapperStoryMeta.argTypes ?? {}, ['onClick', 'onBlur', 'onFocus']),
   },
   args: {
-    ...pick(yCoreCardWrapperStoryMeta.args ?? {}, ['checked', 'disabled', 'hoverable', 'focusable', 'size', 'showCardIcon', 'showCardCheckbox', 'onClick', 'onBlur', 'onFocus']),
-    ...pick(yCoreCardHeaderStoryMeta.args ?? {}, ['headerText', 'tagText', 'tagVariant', 'headerIcon']),
+    ...pick(altCoreCardWrapperStoryMeta.args ?? {}, ['checked', 'disabled', 'hoverable', 'focusable', 'size', 'showCardIcon', 'showCardCheckbox', 'onClick', 'onBlur', 'onFocus']),
+    ...pick(altCoreCardHeaderStoryMeta.args ?? {}, ['headerText', 'tagText', 'tagVariant', 'headerIcon']),
     annotation: 'Annotation',
     hasAnnotationSlot: false,
   },
-} satisfies TYCoreCardSelectMeta
+} satisfies TAltCoreCardSelectMeta
 
 export default meta
-type Story = StoryObj<IYCoreCardSelectProps>
+type Story = StoryObj<IAltCoreCardSelectProps>
 
 export const Playground: Story = { args: {} }

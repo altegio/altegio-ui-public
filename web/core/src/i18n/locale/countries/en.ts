@@ -1,6 +1,6 @@
-import type { TYCountryNameMappedById } from '~shared/types/country'
+import type { TAltCountryNameMappedById } from '~shared/types/country'
 
-export const countries: TYCountryNameMappedById = Object.freeze({
+export const countries: TAltCountryNameMappedById = Object.freeze({
   1: { title: 'Russia', fullTitle: 'Russian Federation' },
   2: { title: 'Latvia', fullTitle: 'Latvian republic' },
   3: { title: 'Belarus', fullTitle: 'Belarus' },

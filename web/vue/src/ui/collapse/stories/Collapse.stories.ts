@@ -5,19 +5,19 @@ import { action } from 'storybook/actions'
 import { useArgs } from 'storybook/preview-api'
 
 import type { CollapseChangeEvent, CollapseMoveEvent } from '~core/ui/collapse/models/types'
-import { YCollapse } from '~vue/ui/collapse'
-import { type IYVueCollapseProps } from '~vue/ui/collapse/models/types'
-import { YIcon } from '~vue/ui/icon'
-import { YTag } from '~vue/ui/tag'
-import { YCollapseItem } from '~vue/ui/collapseItem'
+import { AltCollapse } from '~vue/ui/collapse'
+import { type IAltVueCollapseProps } from '~vue/ui/collapse/models/types'
+import { AltIcon } from '~vue/ui/icon'
+import { AltTag } from '~vue/ui/tag'
+import { AltCollapseItem } from '~vue/ui/collapseItem'
 
-import yCoreCollapseStoryMeta, { type TYCoreCollapseMeta } from '~core/ui/collapse/stories/Collapse.stories'
+import altCoreCollapseStoryMeta, { type TAltCoreCollapseMeta } from '~core/ui/collapse/stories/Collapse.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import { yCopy, yInfo } from '~shared/icons'
+import { altCopy, altInfo } from '~shared/icons'
 
-type TVueCollapseStoryMeta = IYVueCollapseProps & TYCoreCollapseMeta & {
-  modelValue: TYCoreCollapseMeta['value']
-  onUpdateModelValue: TYCoreCollapseMeta['onCollapseChange']
+type TVueCollapseStoryMeta = IAltVueCollapseProps & TAltCoreCollapseMeta & {
+  modelValue: TAltCoreCollapseMeta['value']
+  onUpdateModelValue: TAltCoreCollapseMeta['onCollapseChange']
 }
 
 /**
@@ -35,7 +35,7 @@ const meta: Meta<TVueCollapseStoryMeta> = {
     const [, updateArgs] = useArgs()
 
     return {
-      components: { YCollapse, YCollapseItem, YIcon, YTag },
+      components: { AltCollapse, AltCollapseItem, AltIcon, AltTag },
       setup() {
         const handleUpdateModelValue = (modelValue: CollapseChangeEvent['detail']['value']) => {
           updateArgs({ modelValue })
@@ -51,26 +51,26 @@ const meta: Meta<TVueCollapseStoryMeta> = {
           set: handleUpdateModelValue,
         })
 
-        return { args, handleUpdateModelValue, handleCollapseMove, vModelValue, yCopy, yInfo }
+        return { args, handleUpdateModelValue, handleCollapseMove, vModelValue, altCopy, altInfo }
       },
       template: `
-        <YCollapse
+        <AltCollapse
           v-bind="args"
           v-model="vModelValue"
           @collapse-move="handleCollapseMove"
         >
-          <YCollapseItem v-for="i in 5" :key="i" :value="i.toString()">
+          <AltCollapseItem v-for="i in 5" :key="i" :value="i.toString()">
             <template #after>
-              <YIcon :icon="yCopy" size="16px" />
+              <AltIcon :icon="altCopy" size="16px" />
             </template>
 
             <template #label>
               <div style="display: flex; align-items: center;gap: 8px;">
                 <span>LabelSlot{{ i }}</span>
 
-                <YTag size="small" :variant="i % 2 ? 'accent' : 'discovery'">TagLabel</YTag>
+                <AltTag size="small" :variant="i % 2 ? 'accent' : 'discovery'">TagLabel</AltTag>
 
-                <YIcon :icon="yInfo" size="16px" />
+                <AltIcon :icon="altInfo" size="16px" />
               </div>
             </template>
 
@@ -79,20 +79,20 @@ const meta: Meta<TVueCollapseStoryMeta> = {
             </template>
 
             <template #content>${LOREM_IPSUM} ${LOREM_IPSUM}</template>
-          </YCollapseItem>
-        </YCollapse>
+          </AltCollapseItem>
+        </AltCollapse>
       `,
     }
   },
   argTypes: {
-    ...omit(yCoreCollapseStoryMeta.argTypes ?? {}, ['value', 'onCollapseChange']),
-    modelValue: yCoreCollapseStoryMeta.argTypes?.value,
-    onUpdateModelValue: yCoreCollapseStoryMeta.argTypes?.onCollapseChange,
+    ...omit(altCoreCollapseStoryMeta.argTypes ?? {}, ['value', 'onCollapseChange']),
+    modelValue: altCoreCollapseStoryMeta.argTypes?.value,
+    onUpdateModelValue: altCoreCollapseStoryMeta.argTypes?.onCollapseChange,
   },
   args: {
-    ...omit(yCoreCollapseStoryMeta.args ?? {}, ['value', 'onCollapseChange']),
-    modelValue: yCoreCollapseStoryMeta.args?.value,
-    onUpdateModelValue: yCoreCollapseStoryMeta.args?.onCollapseChange,
+    ...omit(altCoreCollapseStoryMeta.args ?? {}, ['value', 'onCollapseChange']),
+    modelValue: altCoreCollapseStoryMeta.args?.value,
+    onUpdateModelValue: altCoreCollapseStoryMeta.args?.onCollapseChange,
   },
 }
 
@@ -107,7 +107,7 @@ export const WithNestedItems: Story = {
     const [, updateArgs] = useArgs()
 
     return {
-      components: { YCollapse, YCollapseItem, YIcon, YTag },
+      components: { AltCollapse, AltCollapseItem, AltIcon, AltTag },
       setup() {
         const handleUpdateModelValue = (modelValue: CollapseChangeEvent['detail']['value']) => {
           updateArgs({ modelValue })
@@ -123,28 +123,28 @@ export const WithNestedItems: Story = {
           set: handleUpdateModelValue,
         })
 
-        return { args, handleUpdateModelValue, handleCollapseMove, vModelValue, yCopy, yInfo }
+        return { args, handleUpdateModelValue, handleCollapseMove, vModelValue, altCopy, altInfo }
       },
       template: `
-        <YCollapse
+        <AltCollapse
           v-bind="args"
           v-model="vModelValue"
           type="multiple"
           :allowCrossLevelMove="true"
           @collapse-move="handleCollapseMove"
         >
-          <YCollapseItem v-for="i in 3" :key="i" :value="i">
+          <AltCollapseItem v-for="i in 3" :key="i" :value="i">
             <template #after>
-              <YIcon :icon="yCopy" size="16px" />
+              <AltIcon :icon="altCopy" size="16px" />
             </template>
 
             <template #label>
               <div style="display: flex; align-items: center;gap: 8px;">
                 <span>Parent item {{ i }}</span>
 
-                <YTag size="small" :variant="i % 2 ? 'accent' : 'discovery'">Level 1</YTag>
+                <AltTag size="small" :variant="i % 2 ? 'accent' : 'discovery'">Level 1</AltTag>
 
-                <YIcon :icon="yInfo" size="16px" />
+                <AltIcon :icon="altInfo" size="16px" />
               </div>
             </template>
 
@@ -156,17 +156,17 @@ export const WithNestedItems: Story = {
               <div style="padding: 16px 0;">
                 <p style="margin: 0 0 16px 0; color: #666;">Parent item content {{ i }}</p>
 
-                <YCollapse :model-value="[]" draggable type="multiple" :allowCrossLevelMove="true">
-                  <YCollapseItem v-for="j in 3" :key="\`\${i}-\${j}\`" :value="\`\${i}-\${j}\`">
+                <AltCollapse :model-value="[]" draggable type="multiple" :allowCrossLevelMove="true">
+                  <AltCollapseItem v-for="j in 3" :key="\`\${i}-\${j}\`" :value="\`\${i}-\${j}\`">
                     <template #after>
-                      <YIcon :icon="yCopy" size="14px" />
+                      <AltIcon :icon="altCopy" size="14px" />
                     </template>
 
                     <template #label>
                       <div style="display: flex; align-items: center;gap: 6px;">
                         <span>Child item {{ i }}.{{ j }}</span>
 
-                        <YTag size="small" variant="neutral">Level 2</YTag>
+                        <AltTag size="small" variant="neutral">Level 2</AltTag>
                       </div>
                     </template>
 
@@ -175,17 +175,17 @@ export const WithNestedItems: Story = {
                     </template>
 
                     <template #content>
-                      <YCollapse :model-value="[]" draggable type="multiple" :allowCrossLevelMove="true">
-                        <YCollapseItem v-for="k in 3" :key="\`\${i}-\${j}-\${k}\`" :value="\`\${i}-\${j}-\${k}\`">
+                      <AltCollapse :model-value="[]" draggable type="multiple" :allowCrossLevelMove="true">
+                        <AltCollapseItem v-for="k in 3" :key="\`\${i}-\${j}-\${k}\`" :value="\`\${i}-\${j}-\${k}\`">
                           <template #after>
-                            <YIcon :icon="yCopy" size="14px" />
+                            <AltIcon :icon="altCopy" size="14px" />
                           </template>
 
                           <template #label>
                             <div style="display: flex; align-items: center;gap: 6px;">
                               <span>Child item {{ i }}.{{ j }}.{{ k }}</span>
 
-                              <YTag size="small" variant="neutral">Level 3</YTag>
+                              <AltTag size="small" variant="neutral">Level 3</AltTag>
                             </div>
                           </template>
 
@@ -200,15 +200,15 @@ export const WithNestedItems: Story = {
                               </p>
                             </div>
                           </template>
-                        </YCollapseItem>
-                      </YCollapse>
+                        </AltCollapseItem>
+                      </AltCollapse>
                     </template>
-                  </YCollapseItem>
-                </YCollapse>
+                  </AltCollapseItem>
+                </AltCollapse>
               </div>
             </template>
-          </YCollapseItem>
-        </YCollapse>
+          </AltCollapseItem>
+        </AltCollapse>
       `,
     }
   },
@@ -220,7 +220,7 @@ export const ShallowItems: Story = {
     const [, updateArgs] = useArgs()
 
     return {
-      components: { YCollapse, YCollapseItem },
+      components: { AltCollapse, AltCollapseItem },
       setup() {
         const handleUpdateModelValue = (modelValue: CollapseChangeEvent['detail']['value']) => {
           updateArgs({ modelValue })
@@ -239,14 +239,14 @@ export const ShallowItems: Story = {
         return { args, handleCollapseMove, vModelValue }
       },
       template: `
-        <YCollapse
+        <AltCollapse
           v-bind="args"
           v-model="vModelValue"
           @collapse-move="handleCollapseMove"
         >
-          <YCollapseItem v-for="i in 5" :key="i" :value="i.toString()" :shallow="true">
-          </YCollapseItem>
-        </YCollapse>
+          <AltCollapseItem v-for="i in 5" :key="i" :value="i.toString()" :shallow="true">
+          </AltCollapseItem>
+        </AltCollapse>
       `,
     }
   },
@@ -262,7 +262,7 @@ export const WithLargeContent: Story = {
     const [, updateArgs] = useArgs()
 
     return {
-      components: { YCollapse, YCollapseItem, YIcon, YTag },
+      components: { AltCollapse, AltCollapseItem, AltIcon, AltTag },
       setup() {
         const handleUpdateModelValue = (modelValue: CollapseChangeEvent['detail']['value']) => {
           updateArgs({ modelValue })
@@ -329,8 +329,8 @@ export const WithLargeContent: Story = {
           handleUpdateModelValue,
           handleCollapseMove,
           vModelValue,
-          yCopy,
-          yInfo,
+          altCopy,
+          altInfo,
           generateLargeContent,
         }
       },
@@ -345,25 +345,25 @@ export const WithLargeContent: Story = {
             </p>
           </div>
 
-          <YCollapse
+          <AltCollapse
             v-bind="args"
             v-model="vModelValue"
             @collapse-move="handleCollapseMove"
           >
-            <YCollapseItem v-for="i in 8" :key="i" :value="i">
+            <AltCollapseItem v-for="i in 8" :key="i" :value="i">
               <template #after>
-                <YIcon :icon="yCopy" size="16px" />
+                <AltIcon :icon="altCopy" size="16px" />
               </template>
 
               <template #label>
                 <div style="display: flex; align-items: center; gap: 8px;">
                   <span style="font-weight: 500;">Item with long content {{ i }}</span>
 
-                  <YTag size="small" :variant="i % 3 === 0 ? 'accent' : i % 3 === 1 ? 'discovery' : 'success'">
+                  <AltTag size="small" :variant="i % 3 === 0 ? 'accent' : i % 3 === 1 ? 'discovery' : 'success'">
                     {{ i % 3 === 0 ? 'Tall' : i % 3 === 1 ? 'Very tall' : 'Maximum height' }} content
-                  </YTag>
+                  </AltTag>
 
-                  <YIcon :icon="yInfo" size="16px" />
+                  <AltIcon :icon="altInfo" size="16px" />
                 </div>
               </template>
 
@@ -384,8 +384,8 @@ export const WithLargeContent: Story = {
                   </p>
                 </div>
               </template>
-            </YCollapseItem>
-          </YCollapse>
+            </AltCollapseItem>
+          </AltCollapse>
 
           <div style="margin-top: 40px; padding: 16px; background: #f3e5f5; border-radius: 8px;">
             <h3 style="margin: 0 0 8px 0; color: #7b1fa2;">End of page</h3>

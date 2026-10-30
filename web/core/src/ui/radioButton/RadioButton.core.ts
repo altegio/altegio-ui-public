@@ -4,15 +4,15 @@ import { classMap } from 'lit/directives/class-map.js'
 
 import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
 import { hasSlotContent } from '~core/utils/lit-slots'
-import { YCoreRadioButtonTagName as tagName } from '~shared/constants'
+import { AltCoreRadioButtonTagName as tagName } from '~shared/constants'
 import {
   createCoreRadioButtonExternalProps,
   RadioButtonCheckedEvent,
-  type IYCoreRadioButtonExternalProps,
+  type IAltCoreRadioButtonExternalProps,
 } from './models/types'
 
-import YCoreRadioButtonScopedCSS from '~core/ui/radioButton/css/RadioButton.scoped.css?inline'
-import YCoreRadioButtonVarsCSS from '~core/ui/radioButton/css/RadioButton.vars.css?inline'
+import AltCoreRadioButtonScopedCSS from '~core/ui/radioButton/css/RadioButton.scoped.css?inline'
+import AltCoreRadioButtonVarsCSS from '~core/ui/radioButton/css/RadioButton.vars.css?inline'
 import { alignmentContextCreated, groupValueContextCreated, sizeContextCreated } from '~core/ui/radioButtonGroup/providers'
 import { consume } from '@lit/context'
 
@@ -26,24 +26,24 @@ const { size, name, checked, value, disabled, labelText, labelTooltipText, annot
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreRadioButton extends LitElement implements Omit<IYCoreRadioButtonExternalProps, 'error'> {
+export class AltCoreRadioButton extends LitElement implements Omit<IAltCoreRadioButtonExternalProps, 'error'> {
   @consume({ context: sizeContextCreated, subscribe: true })
-  @property({ type: String, reflect: true }) size: IYCoreRadioButtonExternalProps['size'] = size
-  @property({ type: Boolean, reflect: true }) checked: IYCoreRadioButtonExternalProps['checked'] = checked
-  @property({ type: String, reflect: true }) value: IYCoreRadioButtonExternalProps['value'] = value
-  @property({ type: Boolean }) disabled: IYCoreRadioButtonExternalProps['disabled'] = disabled
-  @property({ type: String }) name: IYCoreRadioButtonExternalProps['name'] = name
+  @property({ type: String, reflect: true }) size: IAltCoreRadioButtonExternalProps['size'] = size
+  @property({ type: Boolean, reflect: true }) checked: IAltCoreRadioButtonExternalProps['checked'] = checked
+  @property({ type: String, reflect: true }) value: IAltCoreRadioButtonExternalProps['value'] = value
+  @property({ type: Boolean }) disabled: IAltCoreRadioButtonExternalProps['disabled'] = disabled
+  @property({ type: String }) name: IAltCoreRadioButtonExternalProps['name'] = name
   @consume({ context: alignmentContextCreated, subscribe: true })
-  @property({ type: String, reflect: true }) alignment: IYCoreRadioButtonExternalProps['alignment'] = alignment
-  @property({ type: String, attribute: 'label-text' }) labelText: IYCoreRadioButtonExternalProps['labelText'] = labelText
-  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IYCoreRadioButtonExternalProps['labelTooltipText'] = labelTooltipText
-  @property({ type: Boolean }) required: IYCoreRadioButtonExternalProps['required'] = required
-  @property({ type: String, attribute: 'annotation-text' }) annotationText: IYCoreRadioButtonExternalProps['annotationText'] = annotationText
-  @property({ type: Number, attribute: 'label-overflow-debounce' }) labelOverflowDebounce: IYCoreRadioButtonExternalProps['labelOverflowDebounce'] = labelOverflowDebounce
-  @property({ type: Array }) errors: IYCoreRadioButtonExternalProps['errors'] = errors
+  @property({ type: String, reflect: true }) alignment: IAltCoreRadioButtonExternalProps['alignment'] = alignment
+  @property({ type: String, attribute: 'label-text' }) labelText: IAltCoreRadioButtonExternalProps['labelText'] = labelText
+  @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IAltCoreRadioButtonExternalProps['labelTooltipText'] = labelTooltipText
+  @property({ type: Boolean }) required: IAltCoreRadioButtonExternalProps['required'] = required
+  @property({ type: String, attribute: 'annotation-text' }) annotationText: IAltCoreRadioButtonExternalProps['annotationText'] = annotationText
+  @property({ type: Number, attribute: 'label-overflow-debounce' }) labelOverflowDebounce: IAltCoreRadioButtonExternalProps['labelOverflowDebounce'] = labelOverflowDebounce
+  @property({ type: Array }) errors: IAltCoreRadioButtonExternalProps['errors'] = errors
 
   @consume({ context: groupValueContextCreated, subscribe: true })
-  @state() private groupValue: IYCoreRadioButtonExternalProps['value']
+  @state() private groupValue: IAltCoreRadioButtonExternalProps['value']
 
   @bubblingEvent(
     RadioButtonCheckedEvent,
@@ -84,8 +84,8 @@ export class YCoreRadioButton extends LitElement implements Omit<IYCoreRadioButt
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreRadioButtonVarsCSS)}
-      ${unsafeCSS(YCoreRadioButtonScopedCSS)}
+      ${unsafeCSS(AltCoreRadioButtonVarsCSS)}
+      ${unsafeCSS(AltCoreRadioButtonScopedCSS)}
       `,
   ]
 
@@ -142,7 +142,7 @@ export class YCoreRadioButton extends LitElement implements Omit<IYCoreRadioButt
         @click=${this.handleClick}
       >
         <div class=${`${this.baseClass}__content`}>
-          <y-core-simple-radio-button
+          <alt-core-simple-radio-button
             .size=${this.size}
             .checked=${this.checked}
             .disabled=${this.disabled}
@@ -154,10 +154,10 @@ export class YCoreRadioButton extends LitElement implements Omit<IYCoreRadioButt
             @mouseenter=${this.handleMouseEnter}
             @mouseleave=${this.handleMouseLeave}
           >
-          </y-core-simple-radio-button>
+          </alt-core-simple-radio-button>
 
           <div class=${`${this.baseClass}__info`}>
-            <y-core-label
+            <alt-core-label
               .text=${this.labelText}
               .tooltipText=${this.labelTooltipText}
               .alignment=${this.alignment}
@@ -171,9 +171,9 @@ export class YCoreRadioButton extends LitElement implements Omit<IYCoreRadioButt
               @content-mouse-leave=${this.handleMouseLeave}
             >
               <slot slot="tooltip-content" name="tooltip-content"></slot>
-            </y-core-label>
+            </alt-core-label>
 
-            <y-core-annotation
+            <alt-core-annotation
               .disabled=${this.disabled}
               class=${classMap(this.computedAnnotationClasses)}
               @mouseenter=${this.handleMouseEnter}
@@ -186,16 +186,16 @@ export class YCoreRadioButton extends LitElement implements Omit<IYCoreRadioButt
               >
                 ${this.annotationText}
               </slot>
-            </y-core-annotation>
+            </alt-core-annotation>
 
           </div>
         </div>
         ${!this.disabled
           ? html`
-              <y-core-error
+              <alt-core-error
                 class=${`${this.baseClass}__error`}
                 .errors=${this.errors}
-              ></y-core-error>
+              ></alt-core-error>
             `
           : nothing
         }

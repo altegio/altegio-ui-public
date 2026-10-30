@@ -1,19 +1,19 @@
-$component: $YCoreDropdownListTagName;
+$component: $AltCoreDropdownListTagName;
 
 .$(component) {
-  display: var(--y-core-dropdown-list-display);
-  flex-direction: var(--y-core-dropdown-list-flex-direction);
-  gap: var(--y-core-dropdown-list-gap);
-  min-width: var(--y-core-dropdown-list-min-width);
-  max-width: var(--y-core-dropdown-list-max-width);
-  min-height: var(--y-core-dropdown-list-min-height);
-  max-height: var(--y-core-dropdown-list-max-height);
-  padding: var(--y-core-dropdown-list-padding-y) var(--y-core-dropdown-list-padding-x);
+  display: var(--alt-core-dropdown-list-display);
+  flex-direction: var(--alt-core-dropdown-list-flex-direction);
+  gap: var(--alt-core-dropdown-list-gap);
+  min-width: var(--alt-core-dropdown-list-min-width);
+  max-width: var(--alt-core-dropdown-list-max-width);
+  min-height: var(--alt-core-dropdown-list-min-height);
+  max-height: var(--alt-core-dropdown-list-max-height);
+  padding: var(--alt-core-dropdown-list-padding-y) var(--alt-core-dropdown-list-padding-x);
   overflow-y: auto;
-  font-family: var(--y-core-font-family);
-  background-color: var(--y-core-dropdown-list-background);
-  border-radius: var(--y-core-dropdown-list-border-radius);
-  box-shadow: var(--y-core-dropdown-list-shadow);
+  font-family: var(--alt-core-font-family);
+  background-color: var(--alt-core-dropdown-list-background);
+  border-radius: var(--alt-core-dropdown-list-border-radius);
+  box-shadow: var(--alt-core-dropdown-list-shadow);
 
   &_no-max-height {
     max-height: unset;

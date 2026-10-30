@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreTextFieldTagName as tagName } from '~shared/constants'
-import { YSearchField } from '~ng/ui/searchField'
-import { type IYNgSearchFieldProps } from '~ng/ui/searchField/models/types'
+import { AltCoreTextFieldTagName as tagName } from '~shared/constants'
+import { AltSearchField } from '~ng/ui/searchField'
+import { type IAltNgSearchFieldProps } from '~ng/ui/searchField/models/types'
 import {
   propPlaceholderTestCases,
   propAutofocusTestCases,
@@ -18,16 +18,16 @@ import {
 import { FormsModule } from '@angular/forms'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgSearchFieldProps>
+  props?: Partial<IAltNgSearchFieldProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YSearchField, FormsModule] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltSearchField, FormsModule] }).compileComponents()
 
   @Component({
     template: `
-      <YSearchField
+      <AltSearchField
         (ngModelChange)="onModelChange($event)"
         (focus)="handleFocus($event)"
         (blur)="handleBlur($event)"
@@ -48,7 +48,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
         [labelDebounce]="labelDebounce"
         [annotationText]="annotationText"
       />`,
-    imports: [YSearchField, FormsModule],
+    imports: [AltSearchField, FormsModule],
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
   })
@@ -73,7 +73,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YSearchField',
+  'Angular/AltSearchField',
   () => {
     describe(
       'Props',

@@ -1,17 +1,17 @@
 import { beforeAll, beforeEach, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
 
-import { YCoreLabelTagName as tagName, YCoreTextTagName, YCoreTooltipTagName } from '~shared/constants'
+import { AltCoreLabelTagName as tagName, AltCoreTextTagName, AltCoreTooltipTagName } from '~shared/constants'
 import { createComponent, useCoreTests } from '~shared/tests/core'
 import { generatePropTestCases, getElementClasses, getShadowRootElement, getStyleRule, getWCShadowRoot } from '~shared/tests/utils'
-import type { IYCoreLabelExternalProps, IYCoreLabelInternalProps } from '~core/ui/label/models/types'
-import { createCoreLabelInternalProps, EYCoreLabelAlignment } from '~core/ui/label/models/types'
+import type { IAltCoreLabelExternalProps, IAltCoreLabelInternalProps } from '~core/ui/label/models/types'
+import { createCoreLabelInternalProps, EAltCoreLabelAlignment } from '~core/ui/label/models/types'
 import '~core/ui/label'
 import { SIZES } from '~tokens/index'
-import { EYCoreTextSize, EYCoreTextVariant } from '~core/ui/text/models/types/external'
+import { EAltCoreTextSize, EAltCoreTextVariant } from '~core/ui/text/models/types/external'
 import { booleanTestValues } from '~shared/tests/mockData'
 import { empty, text } from '~shared/tests/slotContents'
 
-type IYCoreLabelProps = IYCoreLabelExternalProps & IYCoreLabelInternalProps
+type IAltCoreLabelProps = IAltCoreLabelExternalProps & IAltCoreLabelInternalProps
 
 // Unit test cases:
 const texts = [
@@ -19,7 +19,7 @@ const texts = [
   ' ',
   empty,
 ]
-const propsTextTestCases = generatePropTestCases<IYCoreLabelProps, 'text'>(
+const propsTextTestCases = generatePropTestCases<IAltCoreLabelProps, 'text'>(
   'text',
   texts,
 )
@@ -28,31 +28,31 @@ const tooltipTexts = [
   text,
   ' ',
 ]
-const propsTooltipTextTestCases = generatePropTestCases<IYCoreLabelProps, 'tooltipText'>(
+const propsTooltipTextTestCases = generatePropTestCases<IAltCoreLabelProps, 'tooltipText'>(
   'tooltipText',
   tooltipTexts,
 )
 
-const alignments = Object.values(EYCoreLabelAlignment)
-const propsAlignmentTestCases = generatePropTestCases<IYCoreLabelProps, 'alignment'>(
+const alignments = Object.values(EAltCoreLabelAlignment)
+const propsAlignmentTestCases = generatePropTestCases<IAltCoreLabelProps, 'alignment'>(
   'alignment',
   alignments,
 )
 
-const variants: IYCoreLabelProps['variant'][] = [
-  EYCoreTextVariant.PRIMARY,
-  EYCoreTextVariant.SECONDARY,
+const variants: IAltCoreLabelProps['variant'][] = [
+  EAltCoreTextVariant.PRIMARY,
+  EAltCoreTextVariant.SECONDARY,
 ]
-const propsVariantTestCases = generatePropTestCases<IYCoreLabelProps, 'variant'>(
+const propsVariantTestCases = generatePropTestCases<IAltCoreLabelProps, 'variant'>(
   'variant',
   variants,
 )
 
-const sizes: IYCoreLabelProps['size'][] = [
-  EYCoreTextSize.A2_REGULAR,
-  EYCoreTextSize.P2_REGULAR,
+const sizes: IAltCoreLabelProps['size'][] = [
+  EAltCoreTextSize.A2_REGULAR,
+  EAltCoreTextSize.P2_REGULAR,
 ]
-const propsSizeTestCases = generatePropTestCases<IYCoreLabelProps, 'size'>(
+const propsSizeTestCases = generatePropTestCases<IAltCoreLabelProps, 'size'>(
   'size',
   sizes,
 )
@@ -62,26 +62,26 @@ const debounceTestCaseValues = [
   0,
   50,
 ]
-const propsDebounceTestCases = generatePropTestCases<IYCoreLabelProps, 'debounce'>(
+const propsDebounceTestCases = generatePropTestCases<IAltCoreLabelProps, 'debounce'>(
   'debounce',
   debounceTestCaseValues,
 )
 
-const propsTooltipActiveTestCases = generatePropTestCases<IYCoreLabelProps, 'tooltipActive'>(
+const propsTooltipActiveTestCases = generatePropTestCases<IAltCoreLabelProps, 'tooltipActive'>(
   'tooltipActive',
   booleanTestValues,
 )
-const propsDisabledTestCases = generatePropTestCases<IYCoreLabelProps, 'disabled'>(
+const propsDisabledTestCases = generatePropTestCases<IAltCoreLabelProps, 'disabled'>(
   'disabled',
   booleanTestValues,
 )
 
-const propsRequiredTestCases = generatePropTestCases<IYCoreLabelProps, 'required'>(
+const propsRequiredTestCases = generatePropTestCases<IAltCoreLabelProps, 'required'>(
   'required',
   booleanTestValues,
 )
 
-const propsWrapTestCases = generatePropTestCases<IYCoreLabelProps, 'wrap'>(
+const propsWrapTestCases = generatePropTestCases<IAltCoreLabelProps, 'wrap'>(
   'wrap',
   booleanTestValues,
 )
@@ -90,7 +90,7 @@ const propsWrapTestCases = generatePropTestCases<IYCoreLabelProps, 'wrap'>(
 const mapCssPropertiesToStyles: Record<string, string> = { marginLeft: String(SIZES.spacing_x.cssValue) }
 
 
-type TSubComponent = typeof tagName | typeof YCoreTextTagName | typeof YCoreTooltipTagName
+type TSubComponent = typeof tagName | typeof AltCoreTextTagName | typeof AltCoreTooltipTagName
 const getSubWC = <T extends TSubComponent>(primaryWC: HTMLElement, secondaryWC: T) => {
   const subWC = getWCShadowRoot(primaryWC).querySelector(secondaryWC)
   if (!subWC) throw new Error(`${secondaryWC} not found`)
@@ -115,7 +115,7 @@ const getRootElement = () => {
 }
 
 describe(
-  'Core/YCoreLabel/Unit',
+  'Core/AltCoreLabel/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -228,7 +228,7 @@ describe(
 
               const textElement = getSubWC(
                 component,
-                YCoreTextTagName,
+                AltCoreTextTagName,
               )
 
               expect(textElement[testCase.prop]).toBe(testCase.expected)
@@ -238,16 +238,16 @@ describe(
 
         for (const testCase of propsVariantTestCases) {
           it(
-            `With disabled: true, should not ${testCase.case} pass prop ${testCase.prop} ${testCase.value}; ${testCase.prop} ${EYCoreTextVariant.TERTIARY} is passed to text instead`,
+            `With disabled: true, should not ${testCase.case} pass prop ${testCase.prop} ${testCase.value}; ${testCase.prop} ${EAltCoreTextVariant.TERTIARY} is passed to text instead`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value, disabled: true } })
 
               const textElement = getSubWC(
                 component,
-                YCoreTextTagName,
+                AltCoreTextTagName,
               )
 
-              expect(textElement[testCase.prop]).toBe(EYCoreTextVariant.TERTIARY)
+              expect(textElement[testCase.prop]).toBe(EAltCoreTextVariant.TERTIARY)
             },
           )
         }
@@ -261,7 +261,7 @@ describe(
 
               const textComponent = getSubWC(
                 component,
-                YCoreTextTagName,
+                AltCoreTextTagName,
               )
 
               const textWrapper = textComponent.querySelector(expectedTextClass)
@@ -276,13 +276,13 @@ describe(
 
         for (const testCase of propsTooltipTextTestCases) {
           it(
-            `Should ${testCase.case} add a prop to ${YCoreTooltipTagName} when prop ${testCase.prop} is ${testCase.value}`,
+            `Should ${testCase.case} add a prop to ${AltCoreTooltipTagName} when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value, tooltipActive: true } })
 
               const tooltipElement = getSubWC(
                 component,
-                YCoreTooltipTagName,
+                AltCoreTooltipTagName,
               )
 
               expect(tooltipElement.text).toBe(testCase.expected)
@@ -292,13 +292,13 @@ describe(
 
         for (const testCase of propsTooltipActiveTestCases) {
           it(
-            `Should ${testCase.case} add a prop to ${YCoreTooltipTagName} when prop ${testCase.prop} is ${testCase.value}`,
+            `Should ${testCase.case} add a prop to ${AltCoreTooltipTagName} when prop ${testCase.prop} is ${testCase.value}`,
             async() => {
               await updateComponent({ props: { tooltipText: text, [testCase.prop]: testCase.value } })
 
               const tooltipElement = getSubWC(
                 component,
-                YCoreTooltipTagName,
+                AltCoreTooltipTagName,
               )
 
               expect(tooltipElement.disabled).toBe(!testCase.expected)
@@ -348,7 +348,7 @@ describe(
             beforeAll(async() => {
               await updateComponent({ props: { } })
             })
-            const varMarginLeftName = '--y-core-label-margin-left-tooltip'
+            const varMarginLeftName = '--alt-core-label-margin-left-tooltip'
 
             it(
               'CSS classes should use variables in their values',

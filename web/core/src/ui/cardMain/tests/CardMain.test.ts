@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
-import { YCoreCardMainTagName as tagName } from '~shared/constants'
+import { AltCoreCardMainTagName as tagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import type { TSlotTestCase } from '~shared/types/tests'
 import { text, empty } from '~shared/tests/slotContents'
@@ -38,7 +38,7 @@ const slotDefaultTestCases: TSlotTestCase[] = [
 ]
 
 describe(
-  'Core/YCardMain/Unit',
+  'Core/AltCardMain/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()

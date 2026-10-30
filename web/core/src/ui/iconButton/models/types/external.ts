@@ -1,15 +1,15 @@
-import type { IYIcon } from '~shared/icons'
+import type { IAltIcon } from '~shared/icons'
 
 import {
-  type IYCoreSimpleButtonExternalProps,
+  type IAltCoreSimpleButtonExternalProps,
   createCoreSimpleButtonExternalProps,
 } from '~core/ui/simpleButton/models/types'
 
-export interface IYCoreIconButtonExternalProps extends Omit<IYCoreSimpleButtonExternalProps, 'hostStyles' | 'alignment'> {
-  icon: IYIcon | undefined
+export interface IAltCoreIconButtonExternalProps extends Omit<IAltCoreSimpleButtonExternalProps, 'hostStyles' | 'alignment'> {
+  icon: IAltIcon | undefined
 }
 
-export const createCoreIconButtonExternalProps = (): IYCoreIconButtonExternalProps => {
+export const createCoreIconButtonExternalProps = (): IAltCoreIconButtonExternalProps => {
   const { disabled, loading, size, href, target, variant, fullWidth } = createCoreSimpleButtonExternalProps()
   return {
     disabled,

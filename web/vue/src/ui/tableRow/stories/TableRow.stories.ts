@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YTableRow } from '~vue/ui/tableRow'
-import { type IYVueTableRowProps } from '~vue/ui/tableRow/models/types'
-import yCoreTableRowStoryMeta, {
-  type TYCoreTableRowMeta,
+import { AltTableRow } from '~vue/ui/tableRow'
+import { type IAltVueTableRowProps } from '~vue/ui/tableRow/models/types'
+import altCoreTableRowStoryMeta, {
+  type TAltCoreTableRowMeta,
 } from '~core/ui/tableRow/stories/TableRow.stories'
 
-type TVueTableRowStoryMeta = IYVueTableRowProps & TYCoreTableRowMeta
+type TVueTableRowStoryMeta = IAltVueTableRowProps & TAltCoreTableRowMeta
 
 /**
  * Vue wrapper for Core TableRow
@@ -20,12 +20,12 @@ const meta: Meta<TVueTableRowStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YTableRow },
+    components: { AltTableRow },
     setup() {
       return { args }
     },
     template: `
-      <YTableRow
+      <AltTableRow
         v-bind="args"
         style="border: 1px dashed;"
       >
@@ -34,11 +34,11 @@ const meta: Meta<TVueTableRowStoryMeta> = {
             default
           </p>
         </template>
-      </YTableRow>
+      </AltTableRow>
     `,
   }),
-  argTypes: { ...yCoreTableRowStoryMeta.argTypes },
-  args: { ...yCoreTableRowStoryMeta.args },
+  argTypes: { ...altCoreTableRowStoryMeta.argTypes },
+  args: { ...altCoreTableRowStoryMeta.args },
 }
 
 export default meta

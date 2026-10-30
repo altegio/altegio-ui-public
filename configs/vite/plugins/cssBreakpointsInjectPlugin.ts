@@ -14,7 +14,7 @@ export const cssVariablesContent = (() => {
     .map(([
       key,
       value,
-    ]) => `  --y-core-breakpoint-${dash(key)}: ${value}px;`)
+    ]) => `  --alt-core-breakpoint-${dash(key)}: ${value}px;`)
     .join('\n')}\n}`
 })()
 
@@ -24,7 +24,7 @@ const cssCustomMediaContent = (() => {
     .map(([
       key,
       value,
-    ]) => `@custom-media --y-breakpoint-${dash(key)} (max-width: ${value}px);`)
+    ]) => `@custom-media --alt-breakpoint-${dash(key)} (max-width: ${value}px);`)
     .join('\n')
 })()
 

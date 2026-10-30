@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreDropdownListTagName } from '~shared/constants'
-import { YDropdownList } from '~ng/ui/dropdownList'
+import { AltCoreDropdownListTagName } from '~shared/constants'
+import { AltDropdownList } from '~ng/ui/dropdownList'
 import {
-  type IYNgDropdownListProps,
+  type IAltNgDropdownListProps,
 } from '~ng/ui/dropdownList/models/types'
 
 import {
@@ -18,7 +18,7 @@ import {
   propMinWidthTestCases,
 } from './cases/props'
 
-const tagName = YCoreDropdownListTagName
+const tagName = AltCoreDropdownListTagName
 
 interface ICreateComponentArgs {
   slots?: {
@@ -26,15 +26,15 @@ interface ICreateComponentArgs {
     list?: string
     bottom?: string
   }
-  props?: Partial<IYNgDropdownListProps>
+  props?: Partial<IAltNgDropdownListProps>
 }
 const createComponent = async({ slots, props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YDropdownList] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltDropdownList] }).compileComponents()
 
   @Component({
     template: `
-      <YDropdownList
+      <AltDropdownList
         [items]="items"
         [itemLabel]="itemLabel"
         [minWidth]="minWidth"
@@ -59,9 +59,9 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
             {{ bottomSlot }}
           </div>
         }
-      </YDropdownList>
+      </AltDropdownList>
     `,
-    imports: [YDropdownList],
+    imports: [AltDropdownList],
     standalone: true,
   })
   class TestComponent {
@@ -76,7 +76,7 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YDropdownList',
+  'Angular/AltDropdownList',
   () => {
     describe(
       'Unit',

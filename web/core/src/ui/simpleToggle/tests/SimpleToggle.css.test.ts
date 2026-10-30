@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreSimpleToggleTagName } from '~shared/constants'
+import { AltCoreSimpleToggleTagName } from '~shared/constants'
 import {
   createCoreSimpleToggleProps,
 } from '~core/ui/simpleToggle/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/simpleToggle/tests/cases/css'
 
-const tagName = YCoreSimpleToggleTagName
+const tagName = AltCoreSimpleToggleTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreSimpleToggle/CSS',
+  'Core/AltCoreSimpleToggle/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

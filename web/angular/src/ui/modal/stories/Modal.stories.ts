@@ -2,18 +2,18 @@ import type { Meta, StoryObj } from '@storybook/angular'
 import { action } from 'storybook/actions'
 import { useArgs } from 'storybook/preview-api'
 
-import { YModal } from '~ng/ui/modal'
-import { YButton } from '~ng/ui/button'
-import yCoreModalStoryMeta from '~core/ui/modal/stories/Modal.stories'
+import { AltModal } from '~ng/ui/modal'
+import { AltButton } from '~ng/ui/button'
+import altCoreModalStoryMeta from '~core/ui/modal/stories/Modal.stories'
 
 /**
  * Angular wrapper for Core Modal
  */
-const meta: Meta<YModal> = {
+const meta: Meta<AltModal> = {
   title: 'Modals/🔍 Modal',
   id: 'modal',
   parameters: { controls: { sort: 'alpha' } },
-  component: YModal,
+  component: AltModal,
   tags: ['angular', 'autodocs'],
   render: (args) => {
     const [, updateArgs] = useArgs()
@@ -51,7 +51,7 @@ const meta: Meta<YModal> = {
     }
 
     return {
-      moduleMetadata: { imports: [YButton] },
+      moduleMetadata: { imports: [AltButton] },
       props: {
         ...args,
         handleOpen,
@@ -63,7 +63,7 @@ const meta: Meta<YModal> = {
       },
       template: `
       <div style="min-height: 450px;">
-        <YModal
+        <AltModal
           [open]="open"
           [size]="size"
           [variant]="variant"
@@ -91,7 +91,7 @@ const meta: Meta<YModal> = {
 
           @if (showActivatorSlot) {
             <div activator>
-              <YButton label="Open modal" />
+              <AltButton label="Open modal" />
             </div>
           }
 
@@ -100,16 +100,16 @@ const meta: Meta<YModal> = {
               <div>Close slot</div>
             </div>
           }
-        </YModal>
+        </AltModal>
       </div>
       `,
     }
   },
-  argTypes: { ...yCoreModalStoryMeta.argTypes },
-  args: { ...yCoreModalStoryMeta.args },
-} satisfies Meta<YModal>
+  argTypes: { ...altCoreModalStoryMeta.argTypes },
+  args: { ...altCoreModalStoryMeta.args },
+} satisfies Meta<AltModal>
 
 export default meta
-type Story = StoryObj<YModal>
+type Story = StoryObj<AltModal>
 
 export const Playground: Story = { args: {} }

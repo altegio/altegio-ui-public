@@ -19,9 +19,9 @@ export const PALETTE_MODULE_ID = 'palette'
  * const palettePlugin = new PalettePlugin('#ffcb00', false);
  *
  * // Pass the plugin to GlobalProvider
- * <YGlobalProvider :plugins="[palettePlugin]">
+ * <AltGlobalProvider :plugins="[palettePlugin]">
  *   <YourComponent />
- * </YGlobalProvider>
+ * </AltGlobalProvider>
  * ```
  */
 export class PalettePlugin implements IGlobalProviderPlugin {

@@ -1,5 +1,5 @@
 <template>
-  <y-core-phone-code
+  <alt-core-phone-code
     v-bind="props"
     @click="$emit('click', $event)"
   />
@@ -9,17 +9,17 @@
   import '~core/ui/phoneCode'
   import {
     createVuePhoneCodeProps,
-    type IYVuePhoneCodeProps,
-    type IYVuePhoneCodeEmits,
-    type IYVueCorePhoneCodeProps,
+    type IAltVuePhoneCodeProps,
+    type IAltVuePhoneCodeEmits,
+    type IAltVueCorePhoneCodeProps,
   } from '~vue/ui/phoneCode/models/types'
 
-  defineOptions({ name: 'YPhoneCode' })
+  defineOptions({ name: 'AltPhoneCode' })
 
   const props = withDefaults(
-    defineProps<IYVuePhoneCodeProps>(),
+    defineProps<IAltVuePhoneCodeProps>(),
     createVuePhoneCodeProps(),
-  ) satisfies IYVueCorePhoneCodeProps
+  ) satisfies IAltVueCorePhoneCodeProps
 
-  defineEmits<IYVuePhoneCodeEmits>()
+  defineEmits<IAltVuePhoneCodeEmits>()
 </script>

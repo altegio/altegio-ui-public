@@ -1,8 +1,8 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { YCoreCardRadioTagName as tagName } from '~shared/constants'
-import { YCoreCardRadio } from '~core/index'
-import { YCardRadio } from '~vue/ui/cardRadio'
+import { AltCoreCardRadioTagName as tagName } from '~shared/constants'
+import { AltCoreCardRadio } from '~core/index'
+import { AltCardRadio } from '~vue/ui/cardRadio'
 
 import {
   propDisabledCases,
@@ -11,13 +11,13 @@ import {
 } from './cases/props'
 
 describe(
-  'Vue/YCardRadio/Unit',
+  'Vue/AltCardRadio/Unit',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreCardRadio,
+          AltCoreCardRadio,
         )
       }
     })
@@ -34,11 +34,11 @@ describe(
             `Prop: "${testCase.prop}" should set ${testCase.prop} on the core component`,
             () => {
               const wrapper = mount(
-                YCardRadio,
+                AltCardRadio,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
-              const coreElement = wrapper.find(tagName).element as YCoreCardRadio
+              const coreElement = wrapper.find(tagName).element as AltCoreCardRadio
 
               expect(coreElement[testCase.prop]).toBe(testCase.expected)
             },

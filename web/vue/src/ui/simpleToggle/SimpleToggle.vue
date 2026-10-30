@@ -1,5 +1,5 @@
 <template>
-  <y-core-simple-toggle
+  <alt-core-simple-toggle
     v-bind="props"
     :checked="modelValue"
     @checked="$emit('update:modelValue', $event.detail.checked)"
@@ -10,17 +10,17 @@
   import '~core/ui/simpleToggle'
   import {
     createVueSimpleToggleProps,
-    type IYVueSimpleToggleProps,
-    type IYVueSimpleToggleEmits,
-    type IYVueCoreSimpleToggleProps,
+    type IAltVueSimpleToggleProps,
+    type IAltVueSimpleToggleEmits,
+    type IAltVueCoreSimpleToggleProps,
   } from '~vue/ui/simpleToggle/models/types'
 
-  defineOptions({ name: 'YSimpleToggle' })
+  defineOptions({ name: 'AltSimpleToggle' })
 
   const props = withDefaults(
-    defineProps<IYVueSimpleToggleProps>(),
+    defineProps<IAltVueSimpleToggleProps>(),
     createVueSimpleToggleProps(),
-  ) satisfies IYVueCoreSimpleToggleProps
+  ) satisfies IAltVueCoreSimpleToggleProps
 
-  defineEmits<IYVueSimpleToggleEmits>()
+  defineEmits<IAltVueSimpleToggleEmits>()
 </script>

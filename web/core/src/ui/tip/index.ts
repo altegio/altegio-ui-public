@@ -1,1 +1,1 @@
-export { YCoreTip } from './Tip.core'
+export { AltCoreTip } from './Tip.core'

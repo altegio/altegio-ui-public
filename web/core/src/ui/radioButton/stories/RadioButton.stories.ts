@@ -5,35 +5,35 @@ import { useArgs } from 'storybook/preview-api'
 import { omit } from 'radash'
 
 import {
-  type TYCoreRadioButtonEvents,
-  type IYCoreRadioButtonExternalProps,
+  type TAltCoreRadioButtonEvents,
+  type IAltCoreRadioButtonExternalProps,
 } from '~core/ui/radioButton/models/types'
-import yCoreSimpleRadioButtonStoryMeta from '~core/ui/simpleRadioButton/stories/SimpleRadioButton.stories'
-import { YCoreRadioButtonTagName as tagName } from '~shared/constants'
+import altCoreSimpleRadioButtonStoryMeta from '~core/ui/simpleRadioButton/stories/SimpleRadioButton.stories'
+import { AltCoreRadioButtonTagName as tagName } from '~shared/constants'
 
-import yCoreLabelStoryMeta, { type IYCoreLabelStoryProps, type IYCoreLabelStorySlots } from '~core/ui/label/stories/Label.stories'
-import yCoreAnnotationStoryMeta, { type IYCoreAnnotationStoryProps } from '~core/ui/annotation/stories/Annotation.stories'
-import yCoreErrorStoryMeta, { type IYCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
+import altCoreLabelStoryMeta, { type IAltCoreLabelStoryProps, type IAltCoreLabelStorySlots } from '~core/ui/label/stories/Label.stories'
+import altCoreAnnotationStoryMeta, { type IAltCoreAnnotationStoryProps } from '~core/ui/annotation/stories/Annotation.stories'
+import altCoreErrorStoryMeta, { type IAltCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import type { IYCoreSimpleRadioButtonExternalProps } from '~core/ui/simpleRadioButton/models/types'
+import type { IAltCoreSimpleRadioButtonExternalProps } from '~core/ui/simpleRadioButton/models/types'
 import { internalPropsKeys as simpleRadioButtonInternalPropsKeys } from '~core/ui/simpleRadioButton/models/types'
 import { internalPropsKeys as labelInternalPropsKeys } from '~core/ui/label/models/types'
 
 import '~core/ui/radioButton'
 
-export interface IYCoreRadioButtonStoryProps extends
-  IYCoreSimpleRadioButtonExternalProps,
-  IYCoreLabelStoryProps,
-  IYCoreAnnotationStoryProps,
-  IYCoreRadioButtonExternalProps,
-  IYCoreErrorStoryProps {}
+export interface IAltCoreRadioButtonStoryProps extends
+  IAltCoreSimpleRadioButtonExternalProps,
+  IAltCoreLabelStoryProps,
+  IAltCoreAnnotationStoryProps,
+  IAltCoreRadioButtonExternalProps,
+  IAltCoreErrorStoryProps {}
 
-export interface IYCoreRadioButtonStoryEvents extends TYCoreRadioButtonEvents {}
-export interface IYCoreRadioButtonStorySlots extends IYCoreLabelStorySlots {}
+export interface IAltCoreRadioButtonStoryEvents extends TAltCoreRadioButtonEvents {}
+export interface IAltCoreRadioButtonStorySlots extends IAltCoreLabelStorySlots {}
 
-type TYCoreRadioButtonStoryMeta = IYCoreRadioButtonStoryProps & TYCoreRadioButtonEvents & IYCoreRadioButtonStorySlots
+type TAltCoreRadioButtonStoryMeta = IAltCoreRadioButtonStoryProps & TAltCoreRadioButtonEvents & IAltCoreRadioButtonStorySlots
 
-const yCoreLabelStoryMetaOmitKeys = [
+const altCoreLabelStoryMetaOmitKeys = [
   'text',
   'tooltipText',
   'debounce',
@@ -46,7 +46,7 @@ const yCoreLabelStoryMetaOmitKeys = [
  * Radio button with a label and supporting text
  *
  */
-const meta: Meta<TYCoreRadioButtonStoryMeta> = {
+const meta: Meta<TAltCoreRadioButtonStoryMeta> = {
   title: '✅ RadioButton',
   id: 'radioButton',
   parameters: { controls: { sort: 'alpha' } },
@@ -72,7 +72,7 @@ const meta: Meta<TYCoreRadioButtonStoryMeta> = {
     const [
       args,
       updateArgs,
-    ] = useArgs<TYCoreRadioButtonStoryMeta>()
+    ] = useArgs<TAltCoreRadioButtonStoryMeta>()
 
     const { checked } = args
     const onChecked = () => {
@@ -80,7 +80,7 @@ const meta: Meta<TYCoreRadioButtonStoryMeta> = {
     }
 
     return html`
-      <y-core-radio-button
+      <alt-core-radio-button
         .size=${size}
         .labelText=${isLongText ? LOREM_IPSUM : labelText}
         .labelTooltipText=${isLongText ? LOREM_IPSUM : labelTooltipText}
@@ -98,58 +98,58 @@ const meta: Meta<TYCoreRadioButtonStoryMeta> = {
         }
 
         <span slot="tooltip-content">${tooltipContentSlot}</span> 
-      </y-core-radio-button>
+      </alt-core-radio-button>
     `
   },
   argTypes: {
     ...omit(
-      yCoreSimpleRadioButtonStoryMeta.argTypes ?? {},
+      altCoreSimpleRadioButtonStoryMeta.argTypes ?? {},
       ['error', ...simpleRadioButtonInternalPropsKeys],
     ),
 
     ...omit(
-      yCoreLabelStoryMeta.argTypes ?? {},
-      [...yCoreLabelStoryMetaOmitKeys],
+      altCoreLabelStoryMeta.argTypes ?? {},
+      [...altCoreLabelStoryMetaOmitKeys],
     ),
-    labelText: yCoreLabelStoryMeta.argTypes?.text ?? {},
-    labelTooltipText: yCoreLabelStoryMeta.argTypes?.tooltipText ?? {},
-    labelOverflowDebounce: yCoreLabelStoryMeta.argTypes?.debounce ?? {},
+    labelText: altCoreLabelStoryMeta.argTypes?.text ?? {},
+    labelTooltipText: altCoreLabelStoryMeta.argTypes?.tooltipText ?? {},
+    labelOverflowDebounce: altCoreLabelStoryMeta.argTypes?.debounce ?? {},
 
     ...omit(
-      yCoreAnnotationStoryMeta.argTypes ?? {},
+      altCoreAnnotationStoryMeta.argTypes ?? {},
       ['text'],
     ),
-    annotationText: yCoreAnnotationStoryMeta.argTypes?.text ?? {},
+    annotationText: altCoreAnnotationStoryMeta.argTypes?.text ?? {},
 
-    ...yCoreErrorStoryMeta.argTypes ?? {},
+    ...altCoreErrorStoryMeta.argTypes ?? {},
   },
   args: {
     ...omit(
-      yCoreSimpleRadioButtonStoryMeta.args ?? {},
+      altCoreSimpleRadioButtonStoryMeta.args ?? {},
       ['error', ...simpleRadioButtonInternalPropsKeys],
     ),
 
     ...omit(
-      yCoreLabelStoryMeta.args ?? {},
-      [...yCoreLabelStoryMetaOmitKeys],
+      altCoreLabelStoryMeta.args ?? {},
+      [...altCoreLabelStoryMetaOmitKeys],
     ),
     labelText: 'Label text',
     labelTooltipText: 'Tooltip text',
-    labelOverflowDebounce: yCoreLabelStoryMeta.args?.debounce,
+    labelOverflowDebounce: altCoreLabelStoryMeta.args?.debounce,
 
     ...omit(
-      yCoreAnnotationStoryMeta.args ?? {},
+      altCoreAnnotationStoryMeta.args ?? {},
       ['text'],
     ),
     annotationText: 'Annotation text',
 
-    isLongText: yCoreLabelStoryMeta.args?.isLongText,
-    showErrors: yCoreErrorStoryMeta.args?.showErrors,
+    isLongText: altCoreLabelStoryMeta.args?.isLongText,
+    showErrors: altCoreErrorStoryMeta.args?.showErrors,
     onChecked: fn(),
   },
-} satisfies Meta<TYCoreRadioButtonStoryMeta>
+} satisfies Meta<TAltCoreRadioButtonStoryMeta>
 
 export default meta
-type Story = StoryObj<TYCoreRadioButtonStoryMeta>
+type Story = StoryObj<TAltCoreRadioButtonStoryMeta>
 
 export const Playground: Story = {}

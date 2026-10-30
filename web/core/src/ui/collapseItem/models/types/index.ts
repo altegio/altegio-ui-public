@@ -1,19 +1,19 @@
 import {
   createCoreCollapseItemExternalProps,
-  type IYCoreCollapseItemExternalProps,
+  type IAltCoreCollapseItemExternalProps,
 } from './external'
 import {
   createCoreCollapseItemInternalProps,
-  type IYCoreCollapseItemInternalProps,
+  type IAltCoreCollapseItemInternalProps,
 } from './internal'
 
 export * from './external'
 export * from './internal'
 export * from './events'
 
-export interface IYCoreCollapseItemProps extends IYCoreCollapseItemExternalProps, IYCoreCollapseItemInternalProps {}
+export interface IAltCoreCollapseItemProps extends IAltCoreCollapseItemExternalProps, IAltCoreCollapseItemInternalProps {}
 
-export const createCoreCollapseItemProps = (): IYCoreCollapseItemProps => ({
+export const createCoreCollapseItemProps = (): IAltCoreCollapseItemProps => ({
   ...createCoreCollapseItemExternalProps(),
   ...createCoreCollapseItemInternalProps(),
 })

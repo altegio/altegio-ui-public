@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreInputFieldTagName } from '~shared/constants'
+import { AltCoreInputFieldTagName } from '~shared/constants'
 import {
   createCoreInputFieldProps,
 } from '~core/ui/inputField/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/inputField/tests/cases/css'
 
-const tagName = YCoreInputFieldTagName
+const tagName = AltCoreInputFieldTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreInputField/CSS',
+  'Core/AltCoreInputField/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

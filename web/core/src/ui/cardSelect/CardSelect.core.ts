@@ -7,10 +7,10 @@ import { classMap } from 'lit/directives/class-map.js'
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
 import {
   createCoreCardSelectProps,
-  type IYCoreCardSelectProps,
+  type IAltCoreCardSelectProps,
   BlurEvent, FocusEvent,
 } from '~core/ui/cardSelect/models/types'
-import { YCoreCardSelectTagName as tagName } from '~shared/constants'
+import { AltCoreCardSelectTagName as tagName } from '~shared/constants'
 import { preventAndStopEvent } from '~shared/utils/helpers'
 import { hasSlotContent } from '~core/utils/lit-slots'
 import { interceptEvents } from '~core/utils/event-interceptor'
@@ -22,12 +22,12 @@ import {
   focusableContextCreated,
   sizeContextCreated,
 } from '~core/ui/cardWrapper/providers'
-import { EYSizes } from '~shared/types/global'
-import type { TYCoreTextSize, TYCoreTextVariant } from '~core/ui/text/models/types'
-import { EYCoreTextSize, EYCoreTextVariant } from '~core/ui/text/models/types'
+import { EAltSizes } from '~shared/types/global'
+import type { TAltCoreTextSize, TAltCoreTextVariant } from '~core/ui/text/models/types'
+import { EAltCoreTextSize, EAltCoreTextVariant } from '~core/ui/text/models/types'
 
-import YCardSelectVarsCss from '~core/ui/cardSelect/css/CardSelect.vars.css?inline'
-import YCardSelectScopedCss from '~core/ui/cardSelect/css/CardSelect.scoped.css?inline'
+import AltCardSelectVarsCss from '~core/ui/cardSelect/css/CardSelect.vars.css?inline'
+import AltCardSelectScopedCss from '~core/ui/cardSelect/css/CardSelect.scoped.css?inline'
 
 import '~core/ui/cardWrapper'
 import '~core/ui/cardMain'
@@ -38,33 +38,33 @@ import { withLocator } from '~core/utils/locator'
 
 const { checked, disabled, hoverable, focusable, size, annotation, headerText, tagText, tagVariant, headerIcon } = createCoreCardSelectProps()
 
-const mapSizeToAnnotationSize: Record<NonNullable<IYCoreCardSelectProps['size']>, TYCoreTextSize> = {
-  [EYSizes.SMALL]: EYCoreTextSize.A1_REGULAR,
-  [EYSizes.MEDIUM]: EYCoreTextSize.P2_REGULAR,
-  [EYSizes.LARGE]: EYCoreTextSize.P1_REGULAR,
+const mapSizeToAnnotationSize: Record<NonNullable<IAltCoreCardSelectProps['size']>, TAltCoreTextSize> = {
+  [EAltSizes.SMALL]: EAltCoreTextSize.A1_REGULAR,
+  [EAltSizes.MEDIUM]: EAltCoreTextSize.P2_REGULAR,
+  [EAltSizes.LARGE]: EAltCoreTextSize.P1_REGULAR,
 }
 
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreCardSelect
+export class AltCoreCardSelect
   extends LitElement
-  implements IYCoreCardSelectProps {
+  implements IAltCoreCardSelectProps {
   @provide({ context: checkedContextCreated })
-  @property({ type: Boolean }) checked: IYCoreCardSelectProps['checked'] = checked
+  @property({ type: Boolean }) checked: IAltCoreCardSelectProps['checked'] = checked
   @provide({ context: disabledContextCreated })
-  @property({ type: Boolean }) disabled: IYCoreCardSelectProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreCardSelectProps['disabled'] = disabled
   @provide({ context: hoverableContextCreated })
-  @property({ type: Boolean }) hoverable: IYCoreCardSelectProps['hoverable'] = hoverable
+  @property({ type: Boolean }) hoverable: IAltCoreCardSelectProps['hoverable'] = hoverable
   @provide({ context: focusableContextCreated })
-  @property({ type: Boolean }) focusable: IYCoreCardSelectProps['focusable'] = focusable
+  @property({ type: Boolean }) focusable: IAltCoreCardSelectProps['focusable'] = focusable
   @provide({ context: sizeContextCreated })
-  @property({ type: String, reflect: true }) size: IYCoreCardSelectProps['size'] = size
-  @property({ type: String, attribute: 'header-text' }) headerText: IYCoreCardSelectProps['headerText'] = headerText
-  @property({ type: String, attribute: 'tag-text' }) tagText: IYCoreCardSelectProps['tagText'] = tagText
-  @property({ type: String, attribute: 'tag-variant' }) tagVariant: IYCoreCardSelectProps['tagVariant'] = tagVariant
-  @property({ type: Object, attribute: 'header-icon' }) headerIcon: IYCoreCardSelectProps['headerIcon'] = headerIcon
-  @property({ type: String }) annotation: IYCoreCardSelectProps['annotation'] = annotation
+  @property({ type: String, reflect: true }) size: IAltCoreCardSelectProps['size'] = size
+  @property({ type: String, attribute: 'header-text' }) headerText: IAltCoreCardSelectProps['headerText'] = headerText
+  @property({ type: String, attribute: 'tag-text' }) tagText: IAltCoreCardSelectProps['tagText'] = tagText
+  @property({ type: String, attribute: 'tag-variant' }) tagVariant: IAltCoreCardSelectProps['tagVariant'] = tagVariant
+  @property({ type: Object, attribute: 'header-icon' }) headerIcon: IAltCoreCardSelectProps['headerIcon'] = headerIcon
+  @property({ type: String }) annotation: IAltCoreCardSelectProps['annotation'] = annotation
 
   private readonly baseClass = tagName
 
@@ -85,8 +85,8 @@ export class YCoreCardSelect
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCardSelectVarsCss)}
-      ${unsafeCSS(YCardSelectScopedCss)}
+      ${unsafeCSS(AltCardSelectVarsCss)}
+      ${unsafeCSS(AltCardSelectScopedCss)}
     `,
   ]
 
@@ -95,17 +95,17 @@ export class YCoreCardSelect
   }
 
   private get computedSize() {
-    return this.size ?? EYSizes.MEDIUM
+    return this.size ?? EAltSizes.MEDIUM
   }
 
   private get computedAnnotationSize() {
     return mapSizeToAnnotationSize[this.computedSize]
   }
 
-  private get computedAnnotationVariant(): TYCoreTextVariant {
-    if (this.disabled) return EYCoreTextVariant.TERTIARY
+  private get computedAnnotationVariant(): TAltCoreTextVariant {
+    if (this.disabled) return EAltCoreTextVariant.TERTIARY
 
-    return EYCoreTextVariant.PRIMARY
+    return EAltCoreTextVariant.PRIMARY
   }
 
   private handleSlotBeforeChange = (event: Event) => {
@@ -158,7 +158,7 @@ export class YCoreCardSelect
 
   protected renderCardAnnotation() {
     return html`
-      <y-core-text
+      <alt-core-text
         .size=${this.computedAnnotationSize}
         .variant=${this.computedAnnotationVariant}
       >
@@ -168,14 +168,14 @@ export class YCoreCardSelect
         >
           ${this.annotation}
         </slot>
-      </y-core-text>
+      </alt-core-text>
     `
   }
 
 
   protected render() {
     return html`
-      <y-core-card-wrapper
+      <alt-core-card-wrapper
         tabindex=${ifDefined(this.computedTabIndex)}
         .checked=${this.checked}
         .disabled=${this.disabled}
@@ -193,20 +193,20 @@ export class YCoreCardSelect
 
         <slot name="main">
           <div class=${`${this.baseClass}__main`}>
-            <y-core-card-main
+            <alt-core-card-main
               .hideSpaceLeft=${this.hasBeforeSlot}
               .hideSpaceRight=${this.hasAfterSlot}
               .hasAnnotation=${this.hasAnnotationContent}
             >
-              <y-core-card-header
+              <alt-core-card-header
                 .headerText=${this.headerText}
                 .tagText=${this.tagText}
                 .tagVariant=${this.tagVariant}
                 .headerIcon=${this.headerIcon}
-              ></y-core-card-header>
+              ></alt-core-card-header>
 
               ${this.renderCardAnnotation()}
-            </y-core-card-main>
+            </alt-core-card-main>
           </div>
         </slot>
 
@@ -214,11 +214,11 @@ export class YCoreCardSelect
           name="after"
           @slotchange=${this.handleSlotAfterChange}
         >
-          <y-core-card-radio
+          <alt-core-card-radio
             slot="right"
-          ></y-core-card-radio>
+          ></alt-core-card-radio>
         </slot>
-      </y-core-card-wrapper>
+      </alt-core-card-wrapper>
     `
   }
 }

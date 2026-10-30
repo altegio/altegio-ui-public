@@ -5,17 +5,17 @@ import { classMap } from 'lit/directives/class-map.js'
 
 import {
   createCoreTableCellProps,
-  type IYCoreTableCellProps,
+  type IAltCoreTableCellProps,
 } from '~core/ui/tableCell/models/types'
 import {
-  YCoreTableCellTagName as tagName,
+  AltCoreTableCellTagName as tagName,
 } from '~shared/constants'
 
 import { booleanConverter } from '~core/utils/converters'
 import { interceptEvents } from '~core/utils/event-interceptor'
 
-import YCoreTableCellVarsCss from '~core/ui/tableCell/css/TableCell.vars.css?inline'
-import YCoreTableCellScopedCss from '~core/ui/tableCell/css/TableCell.scoped.css?inline'
+import AltCoreTableCellVarsCss from '~core/ui/tableCell/css/TableCell.vars.css?inline'
+import AltCoreTableCellScopedCss from '~core/ui/tableCell/css/TableCell.scoped.css?inline'
 import '~core/ui/tableCell/css/TableCell.outside.css'
 
 import {
@@ -33,17 +33,17 @@ const { sticky, align, item, itemLabel, disabled, ellipsis, lineclamp, bordered 
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreTableCell
+export class AltCoreTableCell
   extends LitElement
-  implements IYCoreTableCellProps {
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) sticky: IYCoreTableCellProps['sticky'] = sticky
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) bordered: IYCoreTableCellProps['bordered'] = bordered
-  @property({ type: String }) align: IYCoreTableCellProps['align'] = align
-  @property({ type: Object }) item: IYCoreTableCellProps['item'] = item
-  @property({ type: String, attribute: 'item-label' }) itemLabel: IYCoreTableCellProps['itemLabel'] = itemLabel
-  @property({ type: Boolean }) disabled: IYCoreTableCellProps['disabled'] = disabled
-  @property({ type: Boolean }) ellipsis: IYCoreTableCellProps['ellipsis'] = ellipsis
-  @property({ type: Number }) lineclamp: IYCoreTableCellProps['lineclamp'] = lineclamp
+  implements IAltCoreTableCellProps {
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) sticky: IAltCoreTableCellProps['sticky'] = sticky
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) bordered: IAltCoreTableCellProps['bordered'] = bordered
+  @property({ type: String }) align: IAltCoreTableCellProps['align'] = align
+  @property({ type: Object }) item: IAltCoreTableCellProps['item'] = item
+  @property({ type: String, attribute: 'item-label' }) itemLabel: IAltCoreTableCellProps['itemLabel'] = itemLabel
+  @property({ type: Boolean }) disabled: IAltCoreTableCellProps['disabled'] = disabled
+  @property({ type: Boolean }) ellipsis: IAltCoreTableCellProps['ellipsis'] = ellipsis
+  @property({ type: Number }) lineclamp: IAltCoreTableCellProps['lineclamp'] = lineclamp
 
   @consume({ context: pluginsContextCreated, subscribe: true })
   @state()
@@ -53,8 +53,8 @@ export class YCoreTableCell
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreTableCellVarsCss)}
-      ${unsafeCSS(YCoreTableCellScopedCss)}
+      ${unsafeCSS(AltCoreTableCellVarsCss)}
+      ${unsafeCSS(AltCoreTableCellScopedCss)}
     `,
   ]
 
@@ -120,14 +120,14 @@ export class YCoreTableCell
         class=${classMap(this.computedClasses)}
       >
         <slot name="plugin"></slot>
-        <y-core-text
+        <alt-core-text
           size="p2-regular"
           class="${this.baseClass}__content"
           .ellipsis=${this.ellipsis}
           .lineclamp=${this.lineclamp}
         >
           <slot name="cell">${this.computedContent}</slot>
-        </y-core-text>
+        </alt-core-text>
       </div>
     `
   }

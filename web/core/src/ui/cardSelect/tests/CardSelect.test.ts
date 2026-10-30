@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
-import { YCoreCardSelectTagName as tagName } from '~shared/constants'
+import { AltCoreCardSelectTagName as tagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { getShadowRootElement } from '~shared/tests/utils'
 import { createCoreCardSelectProps } from '~core/ui/cardSelect/models/types'
@@ -47,7 +47,7 @@ const getLocalRootElement = () => {
 }
 
 describe(
-  'Core/YCardSelect/Unit',
+  'Core/AltCardSelect/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()

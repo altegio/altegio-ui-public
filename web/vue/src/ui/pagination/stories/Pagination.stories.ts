@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YPagination } from '~vue/ui/pagination'
-import { type IYVuePaginationProps } from '~vue/ui/pagination/models/types'
-import yCorePaginationStoryMeta from '~core/ui/pagination/stories/Pagination.stories'
+import { AltPagination } from '~vue/ui/pagination'
+import { type IAltVuePaginationProps } from '~vue/ui/pagination/models/types'
+import altCorePaginationStoryMeta from '~core/ui/pagination/stories/Pagination.stories'
 
-type TVuePaginationStoryMeta = IYVuePaginationProps
+type TVuePaginationStoryMeta = IAltVuePaginationProps
 
 /**
  * Vue wrapper for Core Pagination
@@ -18,17 +18,17 @@ const meta: Meta<TVuePaginationStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YPagination },
+    components: { AltPagination },
     setup() {
       return { args }
     },
     template: `
-      <YPagination v-bind="args">
-      </YPagination>
+      <AltPagination v-bind="args">
+      </AltPagination>
     `,
   }),
-  argTypes: { ...yCorePaginationStoryMeta.argTypes },
-  args: { ...yCorePaginationStoryMeta.args },
+  argTypes: { ...altCorePaginationStoryMeta.argTypes },
+  args: { ...altCorePaginationStoryMeta.args },
 }
 
 export default meta

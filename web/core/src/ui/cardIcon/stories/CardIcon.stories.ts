@@ -2,24 +2,24 @@ import { html } from 'lit'
 import { pick } from 'radash'
 import type { Meta, StoryObj } from '@storybook/web-components'
 
-import { type IYCoreCardIconProps } from '~core/ui/cardIcon/models/types'
-import { YCoreCardIconTagName as tagName } from '~shared/constants'
-import { yMagic } from '~shared/icons'
-import { EYSizes } from '~shared/types/global'
-import { EYCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
+import { type IAltCoreCardIconProps } from '~core/ui/cardIcon/models/types'
+import { AltCoreCardIconTagName as tagName } from '~shared/constants'
+import { altMagic } from '~shared/icons'
+import { EAltSizes } from '~shared/types/global'
+import { EAltCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
 
-import yCoreColorIconStoryMeta from '~core/ui/colorIcon/stories/ColorIcon.stories'
-import yCoreCardWrapperStoryMeta from '~core/ui/cardWrapper/stories/CardWrapper.stories'
+import altCoreColorIconStoryMeta from '~core/ui/colorIcon/stories/ColorIcon.stories'
+import altCoreCardWrapperStoryMeta from '~core/ui/cardWrapper/stories/CardWrapper.stories'
 
 import '~core/ui/cardIcon'
 
-type TYCoreCardIconMeta = Meta<IYCoreCardIconProps>
+type TAltCoreCardIconMeta = Meta<IAltCoreCardIconProps>
 
 /**
  * ## CoreCardIcon
  * Helper component used by CardButton and CardSelect
  */
-const meta: TYCoreCardIconMeta = {
+const meta: TAltCoreCardIconMeta = {
   title: 'Cards/Partials/✅ CardIcon',
   id: 'cardIcon',
   parameters: { controls: { sort: 'alpha' } },
@@ -34,27 +34,27 @@ const meta: TYCoreCardIconMeta = {
     variant,
   }) => {
     return html`
-      <y-core-card-icon
+      <alt-core-card-icon
         .icon=${icon}
         .size=${size}
         .variant=${variant}
         style="border: 1px dotted;"
       >
-      </y-core-card-icon>
+      </alt-core-card-icon>
     `
   },
   argTypes: {
-    ...pick(yCoreColorIconStoryMeta.argTypes ?? {}, ['icon', 'variant']),
-    ...pick(yCoreCardWrapperStoryMeta.argTypes ?? {}, ['size']),
+    ...pick(altCoreColorIconStoryMeta.argTypes ?? {}, ['icon', 'variant']),
+    ...pick(altCoreCardWrapperStoryMeta.argTypes ?? {}, ['size']),
   },
   args: {
-    icon: yMagic,
-    size: EYSizes.MEDIUM,
-    variant: EYCoreColorIconVariant.GREY,
+    icon: altMagic,
+    size: EAltSizes.MEDIUM,
+    variant: EAltCoreColorIconVariant.GREY,
   },
-} satisfies TYCoreCardIconMeta
+} satisfies TAltCoreCardIconMeta
 
 export default meta
-type Story = StoryObj<IYCoreCardIconProps>
+type Story = StoryObj<IAltCoreCardIconProps>
 
 export const Playground: Story = { args: {} }

@@ -1,13 +1,13 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
 
-export interface IYCorePopoverCancelEvent extends CustomEvent<Event> {}
+export interface IAltCorePopoverCancelEvent extends CustomEvent<Event> {}
 
-export interface IYCorePopoverSubmitEvent extends CustomEvent<Event> {}
+export interface IAltCorePopoverSubmitEvent extends CustomEvent<Event> {}
 
-export class CancelEvent extends CustomEvent<IYCorePopoverCancelEvent> {}
-export class SubmitEvent extends CustomEvent<IYCorePopoverSubmitEvent> {}
+export class CancelEvent extends CustomEvent<IAltCorePopoverCancelEvent> {}
+export class SubmitEvent extends CustomEvent<IAltCorePopoverSubmitEvent> {}
 
-export type TYCorePopoverActionEvents = TEventsStoryArgs<{
+export type TAltCorePopoverActionEvents = TEventsStoryArgs<{
   CancelEvent: typeof CancelEvent
   SubmitEvent: typeof SubmitEvent
 }>

@@ -1,9 +1,9 @@
 import { ErrorHandler, NgModule } from '@angular/core'
 import { SentryErrorHandler } from '~web/angular/src/plugins/sentry'
-import { YGlobalProvider } from './GlobalProvider.component'
+import { AltGlobalProvider } from './GlobalProvider.component'
 
 @NgModule({
-  imports: [YGlobalProvider],
+  imports: [AltGlobalProvider],
   providers: [{ provide: ErrorHandler, useClass: SentryErrorHandler }],
 })
 export class GlobalProviderModule {}

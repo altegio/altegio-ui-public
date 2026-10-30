@@ -17,38 +17,38 @@ import {
   storyControlsTable,
 } from '~shared/.storybook/tables'
 import {
-  YCoreSegmentOptionTagName as tagName,
+  AltCoreSegmentOptionTagName as tagName,
 } from '~shared/constants'
-import { yInfo, yRocket } from '~shared/icons'
-import { EYSizes } from '~shared/types/global'
+import { altInfo, altRocket } from '~shared/icons'
+import { EAltSizes } from '~shared/types/global'
 
 import {
-  type TYCoreSegmentOptionEvents,
-  type IYCoreSegmentOptionProps,
+  type TAltCoreSegmentOptionEvents,
+  type IAltCoreSegmentOptionProps,
   createCoreSegmentOptionProps,
 } from '~core/ui/segmentOption/models/types'
 
 import '~core/ui/segmentOption'
 
-export interface IYCoreSegmentOptionStoryProps extends ITextStoryProps {
+export interface IAltCoreSegmentOptionStoryProps extends ITextStoryProps {
   showIcon: boolean
   text: string
 }
 
-type TYCoreSegmentOptionMeta = IYCoreSegmentOptionProps & IYCoreSegmentOptionStoryProps & TYCoreSegmentOptionEvents
+type TAltCoreSegmentOptionMeta = IAltCoreSegmentOptionProps & IAltCoreSegmentOptionStoryProps & TAltCoreSegmentOptionEvents
 
 const { active, disabled, hovered, icon, size } = createCoreSegmentOptionProps()
 
 const iconOptions = {
-  info: yInfo,
-  rocket: yRocket,
+  info: altInfo,
+  rocket: altRocket,
 }
 
 /**
  * ## Core SegmentOption
  *
  */
-const meta: Meta<TYCoreSegmentOptionMeta> = {
+const meta: Meta<TAltCoreSegmentOptionMeta> = {
   title: '⚙️ SegmentOption',
   id: 'segmentOption',
   parameters: { controls: { sort: 'alpha' } },
@@ -69,7 +69,7 @@ const meta: Meta<TYCoreSegmentOptionMeta> = {
     onClick,
   }) => {
     return html`
-      <y-core-segment-option
+      <alt-core-segment-option
         ?active=${active}
         ?disabled=${disabled}
         .hovered=${hovered}
@@ -79,7 +79,7 @@ const meta: Meta<TYCoreSegmentOptionMeta> = {
         @click-option=${onClick}
       >
         ${text}
-      </y-core-segment-option>
+      </alt-core-segment-option>
     `
   },
   argTypes: {
@@ -104,9 +104,9 @@ const meta: Meta<TYCoreSegmentOptionMeta> = {
     },
     size: {
       ...sizeArgType([
-        EYSizes.SMALL,
-        EYSizes.MEDIUM,
-        EYSizes.LARGE,
+        EAltSizes.SMALL,
+        EAltSizes.MEDIUM,
+        EAltSizes.LARGE,
       ]),
       ...getComponentStateTable(size),
     },
@@ -136,9 +136,9 @@ const meta: Meta<TYCoreSegmentOptionMeta> = {
     value: '',
     onClick: fn(),
   },
-} satisfies Meta<TYCoreSegmentOptionMeta>
+} satisfies Meta<TAltCoreSegmentOptionMeta>
 
 export default meta
-type Story = StoryObj<TYCoreSegmentOptionMeta>
+type Story = StoryObj<TAltCoreSegmentOptionMeta>
 
 export const Playground: Story = { args: {} }

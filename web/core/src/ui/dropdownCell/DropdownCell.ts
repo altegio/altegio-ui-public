@@ -4,17 +4,17 @@ import { classMap } from 'lit/directives/class-map.js'
 
 import {
   createCoreDropdownCellProps,
-  type IYCoreDropdownCellProps,
+  type IAltCoreDropdownCellProps,
 } from '~core/ui/dropdownCell/models/types'
 import {
-  YCoreDropdownCellTagName as tagName,
+  AltCoreDropdownCellTagName as tagName,
 } from '~shared/constants'
 
 import '~core/ui/dropdownCellText'
 
 
-import YCoreDropdownCellVarsCSS from '~core/ui/dropdownCell/css/DropdownCell.vars.css?inline'
-import YCoreDropdownCellScopedCSS from '~core/ui/dropdownCell/css/DropdownCell.scoped.css?inline'
+import AltCoreDropdownCellVarsCSS from '~core/ui/dropdownCell/css/DropdownCell.vars.css?inline'
+import AltCoreDropdownCellScopedCSS from '~core/ui/dropdownCell/css/DropdownCell.scoped.css?inline'
 import { hasSlotContent } from '~core/utils/lit-slots'
 import { withLocator } from '~core/utils/locator'
 
@@ -22,8 +22,8 @@ const { locator } = createCoreDropdownCellProps()
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreDropdownCell extends LitElement implements IYCoreDropdownCellProps {
-  @property({ type: String }) locator: IYCoreDropdownCellProps['locator'] = locator
+export class AltCoreDropdownCell extends LitElement implements IAltCoreDropdownCellProps {
+  @property({ type: String }) locator: IAltCoreDropdownCellProps['locator'] = locator
   @state() hasLeftSlot = false
   @state() hasRightSlot = false
 
@@ -31,8 +31,8 @@ export class YCoreDropdownCell extends LitElement implements IYCoreDropdownCellP
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreDropdownCellVarsCSS)}
-      ${unsafeCSS(YCoreDropdownCellScopedCSS)}
+      ${unsafeCSS(AltCoreDropdownCellVarsCSS)}
+      ${unsafeCSS(AltCoreDropdownCellScopedCSS)}
     `,
   ]
 
@@ -77,11 +77,11 @@ export class YCoreDropdownCell extends LitElement implements IYCoreDropdownCellP
           </div>
           <div class="${this.baseClass}__content">
             <slot name="content">
-              <y-core-dropdown-cell-text>
+              <alt-core-dropdown-cell-text>
                 <div slot="label">
                   <slot name="label"></slot>
                 </div>
-              </y-core-dropdown-cell-text>
+              </alt-core-dropdown-cell-text>
             </slot>
           </div>
           <div class=${classMap(this.computedRightContentClasses)}>

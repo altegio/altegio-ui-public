@@ -1,7 +1,7 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
 import {
-  YCoreTabsTagName as tagName,
-  YCoreTabTagName,
+  AltCoreTabsTagName as tagName,
+  AltCoreTabTagName,
 } from '~web/shared/constants'
 import { useCoreTests } from '~shared/tests/core.ts'
 import {
@@ -66,7 +66,7 @@ const basePropsCheck = () => {
 }
 
 describe(
-  'Core/YCoreTabs/Unit',
+  'Core/AltCoreTabs/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -115,7 +115,7 @@ describe(
       it('Tab click', async() => {
         await updateComponent({ props: { tabs } })
 
-        const tabRootElement = getLocalShadowElement(YCoreTabTagName)
+        const tabRootElement = getLocalShadowElement(AltCoreTabTagName)
 
         if (!tabRootElement) {
           throw new Error('TabRootElement not found')
@@ -138,14 +138,14 @@ describe(
           throw new Error('TabShadow not found')
         }
 
-        const activatorElement = tabElement.firstElementChild?.querySelector('.y-core-tab__activator')
+        const activatorElement = tabElement.firstElementChild?.querySelector('.alt-core-tab__activator')
 
         if (!activatorElement) {
           throw new Error('ActivatorElement not found')
         }
 
         const activatorClasses = getElementClasses(activatorElement)
-        expect(activatorClasses).toContain('y-core-tab__activator_active')
+        expect(activatorClasses).toContain('alt-core-tab__activator_active')
       })
     })
   },

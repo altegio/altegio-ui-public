@@ -1,27 +1,27 @@
 import { describe, expect, it } from 'vitest'
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { EYCoreTextSize, EYCoreTextVariant, createCoreTextExternalProps } from '~core/ui/text/models/types'
-import { YCoreTextTagName } from '~shared/constants'
+import { EAltCoreTextSize, EAltCoreTextVariant, createCoreTextExternalProps } from '~core/ui/text/models/types'
+import { AltCoreTextTagName } from '~shared/constants'
 import type { TPropTestCase, TSlotTestCase } from '~shared/types/tests'
 import { text, empty } from '~shared/tests/slotContents'
-import { YText } from '~ng/ui/text'
+import { AltText } from '~ng/ui/text'
 
-import { type IYNgTextProps } from '~ng/ui/text/models/types'
+import { type IAltNgTextProps } from '~ng/ui/text/models/types'
 
 interface ICreateComponentArgs {
   slots?: {
     default?: string
   }
-  props?: Partial<IYNgTextProps>
+  props?: Partial<IAltNgTextProps>
 }
 const createComponent = async({ slots, props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YText] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltText] }).compileComponents()
 
   @Component({
-    template: '<YText [size]="size" [variant]="variant">{{content}}</YText>',
-    imports: [YText],
+    template: '<AltText [size]="size" [variant]="variant">{{content}}</AltText>',
+    imports: [AltText],
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
   })
@@ -34,19 +34,19 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
 }
 
 const { size: defaultSize, variant: defaultVariant } = createCoreTextExternalProps()
-const tagName = YCoreTextTagName
+const tagName = AltCoreTextTagName
 
 // Unit test cases:
 const slotDefaultTestCases: TSlotTestCase[] = [
   { slot: 'default', case: 'with content', content: text },
   { slot: 'default', case: 'without content', content: empty },
 ]
-const propSizeTestCases: TPropTestCase<IYNgTextProps, 'size'>[] = [
+const propSizeTestCases: TPropTestCase<IAltNgTextProps, 'size'>[] = [
   {
     prop: 'size',
     case: 'with a value',
-    value: EYCoreTextSize.A1_MEDIUM,
-    expected: EYCoreTextSize.A1_MEDIUM,
+    value: EAltCoreTextSize.A1_MEDIUM,
+    expected: EAltCoreTextSize.A1_MEDIUM,
   },
   {
     prop: 'size',
@@ -55,12 +55,12 @@ const propSizeTestCases: TPropTestCase<IYNgTextProps, 'size'>[] = [
     expected: defaultSize,
   },
 ]
-const propVariantTestCases: TPropTestCase<IYNgTextProps, 'variant'>[] = [
+const propVariantTestCases: TPropTestCase<IAltNgTextProps, 'variant'>[] = [
   {
     prop: 'variant',
     case: 'with a value',
-    value: EYCoreTextVariant.NEGATIVE,
-    expected: EYCoreTextVariant.NEGATIVE,
+    value: EAltCoreTextVariant.NEGATIVE,
+    expected: EAltCoreTextVariant.NEGATIVE,
   },
   {
     prop: 'variant',
@@ -71,7 +71,7 @@ const propVariantTestCases: TPropTestCase<IYNgTextProps, 'variant'>[] = [
 ]
 
 describe(
-  'Angular/YText',
+  'Angular/AltText',
   () => {
     describe(
       'Slots',

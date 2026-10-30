@@ -1,5 +1,5 @@
 <template>
-  <y-core-tab v-bind="props">
+  <alt-core-tab v-bind="props">
     <div
       v-if="$slots['before']"
       slot="before"
@@ -15,15 +15,15 @@
         name="after"
       />
     </div>
-  </y-core-tab>
+  </alt-core-tab>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/tab'
-  import type { IYVueTabProps } from '~vue/ui/tab/models/types.ts'
+  import type { IAltVueTabProps } from '~vue/ui/tab/models/types.ts'
   import { createVueTabProps } from '~vue/ui/tab/models/types.ts'
 
-  defineOptions({ name: 'YTab' })
+  defineOptions({ name: 'AltTab' })
 
   defineSlots<{
     before: () => unknown
@@ -32,8 +32,8 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueTabProps>(),
+    defineProps<IAltVueTabProps>(),
     createVueTabProps(),
-  ) satisfies IYVueTabProps
+  ) satisfies IAltVueTabProps
 </script>
 

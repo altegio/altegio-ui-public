@@ -1,10 +1,10 @@
 :host {
   /* Host */
-  --y-core-table-cell-size: 20px;
-  --y-core-table-cell-padding-x: var(--y-core-size-spacing-3-x);
-  --y-core-table-head-cell-host-border-color: var(--y-core-color-stroke-primary);
-  --y-core-table-head-cell-host-background-color: var(--y-core-color-surface-primary);
+  --alt-core-table-cell-size: 20px;
+  --alt-core-table-cell-padding-x: var(--alt-core-size-spacing-3-x);
+  --alt-core-table-head-cell-host-border-color: var(--alt-core-color-stroke-primary);
+  --alt-core-table-head-cell-host-background-color: var(--alt-core-color-surface-primary);
 
   /* Wrap */
-  --y-core-table-head-cell-wrap-gap: var(--y-core-size-spacing-x);
+  --alt-core-table-head-cell-wrap-gap: var(--alt-core-size-spacing-x);
 }

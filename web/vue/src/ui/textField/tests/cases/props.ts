@@ -1,81 +1,81 @@
 import { empty, text } from '~shared/tests/slotContents'
-import { EYSizes, EYInputType } from '~shared/types/global'
+import { EAltSizes, EAltInputType } from '~shared/types/global'
 import type { TPropTestCase } from '~shared/types/tests'
-import { createVueTextFieldProps, type IYVueTextFieldProps } from '~vue/ui/textField/models/types'
+import { createVueTextFieldProps, type IAltVueTextFieldProps } from '~vue/ui/textField/models/types'
 
 const { labelDebounce } = createVueTextFieldProps()
 
-export const propValueTestCases: TPropTestCase<IYVueTextFieldProps, 'modelValue'>[] = [
+export const propValueTestCases: TPropTestCase<IAltVueTextFieldProps, 'modelValue'>[] = [
   { prop: 'modelValue', case: 'with text', value: text, expected: text },
   { prop: 'modelValue', case: 'without text', value: empty, expected: empty },
 ]
 
-export const propNameTestCases: TPropTestCase<IYVueTextFieldProps, 'name'>[] = [
+export const propNameTestCases: TPropTestCase<IAltVueTextFieldProps, 'name'>[] = [
   { prop: 'name', case: 'with text', value: text, expected: text },
   { prop: 'name', case: 'without text', value: empty, expected: empty },
 ]
 
-export const propPlaceholderTestCases: TPropTestCase<IYVueTextFieldProps, 'placeholder'>[] = [
+export const propPlaceholderTestCases: TPropTestCase<IAltVueTextFieldProps, 'placeholder'>[] = [
   { prop: 'placeholder', case: 'with text', value: text, expected: text },
   { prop: 'placeholder', case: 'without text', value: empty, expected: empty },
 ]
 
-export const propAnnotationTextTestCases: TPropTestCase<IYVueTextFieldProps, 'annotationText'>[] = [
+export const propAnnotationTextTestCases: TPropTestCase<IAltVueTextFieldProps, 'annotationText'>[] = [
   { prop: 'annotationText', case: 'with text', value: text, expected: text },
   { prop: 'annotationText', case: 'without text', value: empty, expected: empty },
 ]
 
-export const propLabelTooltipTextTestCases: TPropTestCase<IYVueTextFieldProps, 'labelTooltipText'>[] = [
+export const propLabelTooltipTextTestCases: TPropTestCase<IAltVueTextFieldProps, 'labelTooltipText'>[] = [
   { prop: 'labelTooltipText', case: 'with text', value: text, expected: text },
   { prop: 'labelTooltipText', case: 'without text', value: empty, expected: empty },
 ]
 
-export const propLabelTextTestCases: TPropTestCase<IYVueTextFieldProps, 'labelText'>[] = [
+export const propLabelTextTestCases: TPropTestCase<IAltVueTextFieldProps, 'labelText'>[] = [
   { prop: 'labelText', case: 'with text', value: text, expected: text },
   { prop: 'labelText', case: 'without text', value: empty, expected: empty },
 ]
 
-export const propsDisabledTestCases: TPropTestCase<IYVueTextFieldProps, 'disabled'>[] = [
+export const propsDisabledTestCases: TPropTestCase<IAltVueTextFieldProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true, expected: true },
   { prop: 'disabled', case: 'false', value: false, expected: false },
 ]
 
-export const propsRequiredTestCases: TPropTestCase<IYVueTextFieldProps, 'required'>[] = [
+export const propsRequiredTestCases: TPropTestCase<IAltVueTextFieldProps, 'required'>[] = [
   { prop: 'required', case: 'true', value: true, expected: true },
   { prop: 'required', case: 'false', value: false, expected: false },
 ]
 
-export const propsReadonlyTestCases: TPropTestCase<IYVueTextFieldProps, 'readonly'>[] = [
+export const propsReadonlyTestCases: TPropTestCase<IAltVueTextFieldProps, 'readonly'>[] = [
   { prop: 'readonly', case: 'true', value: true, expected: true },
   { prop: 'readonly', case: 'false', value: false, expected: false },
 ]
 
-export const propsMaxlengthTestCases: TPropTestCase<IYVueTextFieldProps, 'maxlength'>[] = [
+export const propsMaxlengthTestCases: TPropTestCase<IAltVueTextFieldProps, 'maxlength'>[] = [
   { prop: 'maxlength', case: 'with a value', value: 10, expected: 10 },
   { prop: 'maxlength', case: 'without a value', value: undefined, expected: undefined },
 ]
 
-export const propsLabelDebounceTestCases: TPropTestCase<IYVueTextFieldProps, 'labelDebounce'>[] = [
+export const propsLabelDebounceTestCases: TPropTestCase<IAltVueTextFieldProps, 'labelDebounce'>[] = [
   { prop: 'labelDebounce', case: 'with a value', value: 10, expected: 10 },
   { prop: 'labelDebounce', case: 'without a value', value: undefined, expected: labelDebounce },
 ]
 
-export const propsAutofocusTestCases: TPropTestCase<IYVueTextFieldProps, 'autofocus'>[] = [
+export const propsAutofocusTestCases: TPropTestCase<IAltVueTextFieldProps, 'autofocus'>[] = [
   { prop: 'autofocus', case: 'true', value: true, expected: true },
   { prop: 'autofocus', case: 'false', value: false, expected: false },
 ]
 
-export const propsClearableTestCases: TPropTestCase<IYVueTextFieldProps, 'clearable'>[] = [
+export const propsClearableTestCases: TPropTestCase<IAltVueTextFieldProps, 'clearable'>[] = [
   { prop: 'clearable', case: 'true', value: true, expected: true },
   { prop: 'clearable', case: 'false', value: false, expected: false },
 ]
 
-export const propsSizeTestCases: TPropTestCase<IYVueTextFieldProps, 'size'>[] = [
-  { prop: 'size', case: 'small', value: EYSizes.SMALL, expected: EYSizes.SMALL },
-  { prop: 'size', case: 'large', value: EYSizes.LARGE, expected: EYSizes.LARGE },
+export const propsSizeTestCases: TPropTestCase<IAltVueTextFieldProps, 'size'>[] = [
+  { prop: 'size', case: 'small', value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
+  { prop: 'size', case: 'large', value: EAltSizes.LARGE, expected: EAltSizes.LARGE },
 ]
 
-export const propsTypeTestCases: TPropTestCase<IYVueTextFieldProps, 'type'>[] = [
-  { prop: 'type', case: EYInputType.TEXT, value: EYInputType.TEXT, expected: EYInputType.TEXT },
-  { prop: 'type', case: EYInputType.PASSWORD, value: EYInputType.PASSWORD, expected: EYInputType.PASSWORD },
+export const propsTypeTestCases: TPropTestCase<IAltVueTextFieldProps, 'type'>[] = [
+  { prop: 'type', case: EAltInputType.TEXT, value: EAltInputType.TEXT, expected: EAltInputType.TEXT },
+  { prop: 'type', case: EAltInputType.PASSWORD, value: EAltInputType.PASSWORD, expected: EAltInputType.PASSWORD },
 ]

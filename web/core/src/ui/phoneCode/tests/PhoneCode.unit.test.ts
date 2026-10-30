@@ -1,5 +1,5 @@
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest'
-import { YCorePhoneCodeTagName } from '~shared/constants'
+import { AltCorePhoneCodeTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { createCorePhoneCodeProps } from '~core/ui/phoneCode/models/types'
 import '~core/ui/phoneCode'
@@ -17,11 +17,11 @@ const {
   injectComponentToBody,
   removeComponent,
 } = useCoreTests(
-  YCorePhoneCodeTagName,
+  AltCorePhoneCodeTagName,
   createCorePhoneCodeProps(),
 )
 
-describe('Core/YPhoneCode', () => {
+describe('Core/AltPhoneCode', () => {
   beforeAll(() => {
     injectComponentToBody()
   })

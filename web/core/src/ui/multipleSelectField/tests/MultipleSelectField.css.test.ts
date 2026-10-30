@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot } from '~shared/tests/utils'
 
-import { YCoreMultipleSelectFieldTagName } from '~shared/constants'
+import { AltCoreMultipleSelectFieldTagName } from '~shared/constants'
 import {
   createCoreMultipleSelectFieldProps,
 } from '~core/ui/multipleSelectField/models/types'
@@ -11,7 +11,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/multipleSelectField/tests/cases/css'
 
-const tagName = YCoreMultipleSelectFieldTagName
+const tagName = AltCoreMultipleSelectFieldTagName
 
 const {
   component,
@@ -22,7 +22,7 @@ const {
 )
 
 describe(
-  'Core/YCoreMultipleSelectField/CSS',
+  'Core/AltCoreMultipleSelectField/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

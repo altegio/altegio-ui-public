@@ -1,4 +1,4 @@
-$component: $YCoreSegmentOptionTagName;
+$component: $AltCoreSegmentOptionTagName;
 
 @define-mixin segment-option-size $height, $padding-x, $padding-y, $font-size, $line-height, $font-weight, $border-radius, $gap {
   gap: var($gap);

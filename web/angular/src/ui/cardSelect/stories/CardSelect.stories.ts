@@ -2,27 +2,27 @@
 
 import type { Meta, StoryObj } from '@storybook/angular'
 import { CommonModule } from '@angular/common'
-import yCoreCardSelectStoryMeta from '~core/ui/cardSelect/stories/CardSelect.stories'
-import { EYCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
-import { yMagic } from '~shared/icons'
-import { YCardSelect } from '~ng/ui/cardSelect'
-import { YCardIcon } from '~ng/ui/cardIcon'
-import { YCardCheckbox } from '~ng/ui/cardCheckbox'
+import altCoreCardSelectStoryMeta from '~core/ui/cardSelect/stories/CardSelect.stories'
+import { EAltCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
+import { altMagic } from '~shared/icons'
+import { AltCardSelect } from '~ng/ui/cardSelect'
+import { AltCardIcon } from '~ng/ui/cardIcon'
+import { AltCardCheckbox } from '~ng/ui/cardCheckbox'
 import { action } from 'storybook/actions'
 import { useArgs } from 'storybook/preview-api'
 import {
-  type YNgCardSelectFocusEvent,
-  type YNgCardSelectBlurEvent,
+  type AltNgCardSelectFocusEvent,
+  type AltNgCardSelectBlurEvent,
 } from '~ng/ui/cardSelect/models/types'
 
 /**
  * Angular wrapper for CardSelect
  */
-const meta: Meta<YCardSelect> = {
+const meta: Meta<AltCardSelect> = {
   title: 'Cards/✅ CardSelect',
   id: 'cardSelect',
   parameters: { controls: { sort: 'alpha' } },
-  component: YCardSelect,
+  component: AltCardSelect,
   tags: [
     'angular',
     'autodocs',
@@ -31,10 +31,10 @@ const meta: Meta<YCardSelect> = {
     const [, updateArgs] = useArgs()
 
     const handlers = {
-      onFocusEmit: (event: YNgCardSelectFocusEvent) => {
+      onFocusEmit: (event: AltNgCardSelectFocusEvent) => {
         action('blur')(event)
       },
-      onBlurEmit: (event: YNgCardSelectBlurEvent) => {
+      onBlurEmit: (event: AltNgCardSelectBlurEvent) => {
         action('focus')(event)
       },
       onClickEmit: (event: Event) => {
@@ -47,18 +47,18 @@ const meta: Meta<YCardSelect> = {
       props: {
         ...args,
         ...handlers,
-        yMagic,
-        EYCoreColorIconVariant,
+        altMagic,
+        EAltCoreColorIconVariant,
       },
       moduleMetadata: {
         imports: [
           CommonModule,
-          YCardIcon,
-          YCardCheckbox,
+          AltCardIcon,
+          AltCardCheckbox,
         ],
       },
       template: `
-      <YCardSelect
+      <AltCardSelect
         [annotation]="annotation"
         [checked]="checked"
         [disabled]="disabled"
@@ -74,15 +74,15 @@ const meta: Meta<YCardSelect> = {
         (blur)="onBlurEmit($event)"
       >
         @if (showCardIcon) {
-          <YCardIcon
-            [icon]="yMagic"
-            [variant]="EYCoreColorIconVariant.GREY"
+          <AltCardIcon
+            [icon]="altMagic"
+            [variant]="EAltCoreColorIconVariant.GREY"
             card-select-before
-          ></YCardIcon>
+          ></AltCardIcon>
         }
         
         @if (showCardCheckbox) {
-          <YCardCheckbox 
+          <AltCardCheckbox 
             (clickEvent)="onClickEmit($event)"
             card-select-after
           />
@@ -91,14 +91,14 @@ const meta: Meta<YCardSelect> = {
         <div card-select-annotation>
           {{annotation}}
         </div>
-      </YCardSelect>`,
+      </AltCardSelect>`,
     }
   },
-  argTypes: { ...yCoreCardSelectStoryMeta.argTypes },
-  args: { ...yCoreCardSelectStoryMeta.args },
-} satisfies Meta<YCardSelect>
+  argTypes: { ...altCoreCardSelectStoryMeta.argTypes },
+  args: { ...altCoreCardSelectStoryMeta.args },
+} satisfies Meta<AltCardSelect>
 
 export default meta
-type Story = StoryObj<YCardSelect>
+type Story = StoryObj<AltCardSelect>
 
 export const Playground: Story = { args: {} }

@@ -1,19 +1,19 @@
 <template>
-  <y-core-search-text-highlighted v-bind="props" />
+  <alt-core-search-text-highlighted v-bind="props" />
 </template>
 
 <script setup lang="ts">
   import '~core/ui/searchTextHighlighted'
   import {
     createVueSearchTextHighlightedProps,
-    type IYVueSearchTextHighlightedProps,
-    type IYVueCoreSearchTextHighlightedProps,
+    type IAltVueSearchTextHighlightedProps,
+    type IAltVueCoreSearchTextHighlightedProps,
   } from '~web/vue/src/ui/searchTextHighlighted/models/types'
 
-  defineOptions({ name: 'YSearchTextHighlighted' })
+  defineOptions({ name: 'AltSearchTextHighlighted' })
 
   const props = withDefaults(
-    defineProps<IYVueSearchTextHighlightedProps>(),
+    defineProps<IAltVueSearchTextHighlightedProps>(),
     createVueSearchTextHighlightedProps(),
-  ) satisfies IYVueCoreSearchTextHighlightedProps
+  ) satisfies IAltVueCoreSearchTextHighlightedProps
 </script>

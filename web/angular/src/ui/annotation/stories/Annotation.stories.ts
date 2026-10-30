@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YAnnotation } from '~ng/ui/annotation'
-import yCoreAnnotationStoryMeta, { type IYCoreAnnotationStoryProps } from '~core/ui/annotation/stories/Annotation.stories'
+import { AltAnnotation } from '~ng/ui/annotation'
+import altCoreAnnotationStoryMeta, { type IAltCoreAnnotationStoryProps } from '~core/ui/annotation/stories/Annotation.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
 /**
  * Angular wrapper for Core Annotation
  */
-const meta: Meta<YAnnotation & IYCoreAnnotationStoryProps> = {
+const meta: Meta<AltAnnotation & IAltCoreAnnotationStoryProps> = {
   title: '⚙️ Annotation',
   id: 'annotation',
   parameters: { controls: { sort: 'alpha' } },
-  component: YAnnotation,
+  component: AltAnnotation,
   tags: [
     'angular',
     'autodocs',
@@ -22,7 +22,7 @@ const meta: Meta<YAnnotation & IYCoreAnnotationStoryProps> = {
       computedText: args.isLongText ? LOREM_IPSUM : args.text,
     },
     template: `
-      <YNgAnnotation
+      <AltNgAnnotation
         [text]="computedText"
         [disabled]="${String(args.disabled)}"
       >
@@ -31,13 +31,13 @@ const meta: Meta<YAnnotation & IYCoreAnnotationStoryProps> = {
             {{ computedText }}
           </span>
         </div>
-      </YNgAnnotation>`,
+      </AltNgAnnotation>`,
   }),
-  argTypes: { ...yCoreAnnotationStoryMeta.argTypes },
-  args: { ...yCoreAnnotationStoryMeta.args },
-} satisfies Meta<YAnnotation & IYCoreAnnotationStoryProps>
+  argTypes: { ...altCoreAnnotationStoryMeta.argTypes },
+  args: { ...altCoreAnnotationStoryMeta.args },
+} satisfies Meta<AltAnnotation & IAltCoreAnnotationStoryProps>
 
 export default meta
-type Story = StoryObj<YAnnotation>
+type Story = StoryObj<AltAnnotation>
 
 export const Playground: Story = { args: {} }

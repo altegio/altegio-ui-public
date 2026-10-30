@@ -3,23 +3,23 @@ import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest
 import { text } from '~shared/tests/slotContents'
 import { href } from '~shared/tests/mockData'
 import { useCoreTests } from '~shared/tests/core'
-import { EAnchorTarget, EYSizes } from '~shared/types/global'
-import { YCoreSimpleButtonTagName, YCoreLoaderTagName } from '~shared/constants'
+import { EAnchorTarget, EAltSizes } from '~shared/types/global'
+import { AltCoreSimpleButtonTagName, AltCoreLoaderTagName } from '~shared/constants'
 import { classWithModifier, getElementClasses, getShadowElement, getShadowRootElement } from '~shared/tests/utils'
-import type { IYCoreSimpleButtonProps } from '~core/ui/simpleButton/models/types'
+import type { IAltCoreSimpleButtonProps } from '~core/ui/simpleButton/models/types'
 import {
   createCoreSimpleButtonExternalProps,
   createCoreSimpleButtonProps,
-  EYCoreSimpleButtonVariant,
-  type IYCoreSimpleButtonExternalProps,
+  EAltCoreSimpleButtonVariant,
+  type IAltCoreSimpleButtonExternalProps,
 } from '~core/ui/simpleButton/models/types'
 import type { TPropTestCase } from '~shared/types/tests'
 import '~core/ui/simpleButton'
 
-const defaultProps: IYCoreSimpleButtonProps = createCoreSimpleButtonProps()
+const defaultProps: IAltCoreSimpleButtonProps = createCoreSimpleButtonProps()
 
 // Unit test cases:
-const propDisabledTestCases: TPropTestCase<IYCoreSimpleButtonExternalProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltCoreSimpleButtonExternalProps, 'disabled'>[] = [
   {
     prop: 'disabled',
     case: 'have',
@@ -31,24 +31,24 @@ const propDisabledTestCases: TPropTestCase<IYCoreSimpleButtonExternalProps, 'dis
     value: false,
   },
 ]
-const allowedSizes: (EYSizes.SMALL | EYSizes.MEDIUM | EYSizes.LARGE)[] = [EYSizes.SMALL, EYSizes.MEDIUM, EYSizes.LARGE]
-const propSizeTestCases: TPropTestCase<IYCoreSimpleButtonExternalProps, 'size'>[] = allowedSizes.map((size) => ({
+const allowedSizes: (EAltSizes.SMALL | EAltSizes.MEDIUM | EAltSizes.LARGE)[] = [EAltSizes.SMALL, EAltSizes.MEDIUM, EAltSizes.LARGE]
+const propSizeTestCases: TPropTestCase<IAltCoreSimpleButtonExternalProps, 'size'>[] = allowedSizes.map((size) => ({
   prop: 'size',
   case: size,
   value: size,
 }))
-const propVariantTestCases: TPropTestCase<IYCoreSimpleButtonExternalProps, 'variant'>[] = Object.values(EYCoreSimpleButtonVariant).map((variant) => ({
+const propVariantTestCases: TPropTestCase<IAltCoreSimpleButtonExternalProps, 'variant'>[] = Object.values(EAltCoreSimpleButtonVariant).map((variant) => ({
   prop: 'variant',
   case: variant,
   value: variant,
 }))
-const propFullWidthTestCases: TPropTestCase<IYCoreSimpleButtonExternalProps, 'fullWidth'>[] = [
+const propFullWidthTestCases: TPropTestCase<IAltCoreSimpleButtonExternalProps, 'fullWidth'>[] = [
   { prop: 'fullWidth', case: 'true', value: true, expected: true },
   { prop: 'fullWidth', case: 'false', value: false, expected: false },
   { prop: 'fullWidth', case: 'default', value: undefined, expected: defaultProps.fullWidth },
 ]
 
-const tagName = YCoreSimpleButtonTagName
+const tagName = AltCoreSimpleButtonTagName
 
 const {
   component,
@@ -74,7 +74,7 @@ const getLocalShadowElement = (selector: string) => {
 }
 
 describe(
-  'Core/YCoreSimpleButton',
+  'Core/AltCoreSimpleButton',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -144,7 +144,7 @@ describe(
                 const expectedCssClass = localClassWithModifier('loading')
 
                 // Act
-                const loader = getLocalShadowElement(YCoreLoaderTagName)
+                const loader = getLocalShadowElement(AltCoreLoaderTagName)
 
                 // Assert
                 expect(rootElementClasses).toContain(expectedCssClass)
@@ -163,7 +163,7 @@ describe(
                 const expectedCssClass = localClassWithModifier('loading')
 
                 // Act
-                const loader = rootElement?.querySelector('y-core-loading')
+                const loader = rootElement?.querySelector('alt-core-loading')
 
                 // Assert
                 expect(rootElementClasses).not.toContain(expectedCssClass)

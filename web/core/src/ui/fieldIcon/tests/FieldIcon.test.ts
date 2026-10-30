@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
-import { YCoreFieldIconTagName as tagName } from '~shared/constants'
+import { AltCoreFieldIconTagName as tagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { getElementClasses, getShadowRootElement } from '~shared/tests/utils'
 import { createCoreFieldIconProps } from '~core/ui/fieldIcon/models/types'
@@ -15,7 +15,7 @@ import {
   propIconCases,
 } from './cases/props'
 
-import { yMagic } from '~shared/icons'
+import { altMagic } from '~shared/icons'
 
 const {
   component,
@@ -36,11 +36,11 @@ const getLocalRootElement = () => {
 }
 
 const setIconToComponent = () => {
-  component.icon = yMagic
+  component.icon = altMagic
 }
 
 describe(
-  'Core/YFieldIcon/Unit',
+  'Core/AltFieldIcon/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -102,7 +102,7 @@ describe(
             `Prop "${testCase.prop}" ${testCase.case} should apply the CSS class "${expectedCssClass}"`,
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
-              component.icon = yMagic
+              component.icon = altMagic
 
               const rootElement = getLocalRootElement()
               const classes = getElementClasses(rootElement)

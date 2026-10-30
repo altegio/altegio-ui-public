@@ -9,10 +9,10 @@ import {
   type IGlobalContext,
 } from '../context'
 
-export const tagName = 'y-core-test-consumer'
+export const tagName = 'alt-core-test-consumer'
 
 @customElement(tagName)
-export class YCoreTestConsumer extends LitElement {
+export class AltCoreTestConsumer extends LitElement {
   @consume({ context: globalContextCreated, subscribe: true })
   @state()
   private globalContext!: IGlobalContext
@@ -312,6 +312,6 @@ export class YCoreTestConsumer extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: YCoreTestConsumer
+    [tagName]: AltCoreTestConsumer
   }
 }

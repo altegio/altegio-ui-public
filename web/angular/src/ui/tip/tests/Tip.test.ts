@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreTipTagName } from '~shared/constants'
-import { YTip } from '~ng/ui/tip'
-import { type IYNgTipProps } from '~ng/ui/tip/models/types'
+import { AltCoreTipTagName } from '~shared/constants'
+import { AltTip } from '~ng/ui/tip'
+import { type IAltNgTipProps } from '~ng/ui/tip/models/types'
 
 import {
   slotActivatorTestCases,
@@ -20,22 +20,22 @@ import {
   propTypeTestCases,
 } from './cases/props'
 
-const tagName = YCoreTipTagName
+const tagName = AltCoreTipTagName
 
 interface ICreateComponentArgs {
   slots?: {
     activator?: string
     content?: string
   }
-  props?: Partial<IYNgTipProps>
+  props?: Partial<IAltNgTipProps>
 }
 const createComponent = async({ slots, props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YTip] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltTip] }).compileComponents()
 
   @Component({
     template: `
-      <YTip
+      <AltTip
         [trigger]="trigger"
         [isOpen]="isOpen"
         [offset]="offset"
@@ -56,9 +56,9 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
             {{ contentSlot }}
           </div>
         }
-      </YTip>
+      </AltTip>
     `,
-    imports: [YTip],
+    imports: [AltTip],
     standalone: true,
   })
   class TestComponent {
@@ -77,7 +77,7 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YTip',
+  'Angular/AltTip',
   () => {
     describe(
       'Unit',

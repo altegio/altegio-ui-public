@@ -3,18 +3,18 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core'
 import '~core/ui/avatar'
 import {
   createNgAvatarProps,
-  type IYNgAvatarProps,
+  type IAltNgAvatarProps,
 } from './models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 
 const { photo, initials, icon, size, disabled } = createNgAvatarProps()
 
 @Component({
-  selector: 'YAvatar',
+  selector: 'AltAvatar',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-avatar
+    <alt-core-avatar
       [photo]="photo"
       [initials]="initials"
       [disabled]="disabled"
@@ -24,10 +24,10 @@ const { photo, initials, icon, size, disabled } = createNgAvatarProps()
   `,
 })
 
-export class YAvatar implements IYNgAvatarProps {
-  @Input() @DefaultValue(photo) photo: IYNgAvatarProps['photo'] = photo
-  @Input() @DefaultValue(initials) initials: IYNgAvatarProps['initials'] = initials
-  @Input() @DefaultValue(icon) icon: IYNgAvatarProps['icon'] = icon
-  @Input() @DefaultValue(size) size: IYNgAvatarProps['size'] = size
-  @Input() @DefaultValue(disabled) disabled: IYNgAvatarProps['disabled'] = disabled
+export class AltAvatar implements IAltNgAvatarProps {
+  @Input() @DefaultValue(photo) photo: IAltNgAvatarProps['photo'] = photo
+  @Input() @DefaultValue(initials) initials: IAltNgAvatarProps['initials'] = initials
+  @Input() @DefaultValue(icon) icon: IAltNgAvatarProps['icon'] = icon
+  @Input() @DefaultValue(size) size: IAltNgAvatarProps['size'] = size
+  @Input() @DefaultValue(disabled) disabled: IAltNgAvatarProps['disabled'] = disabled
 }

@@ -1,29 +1,29 @@
 import {
   createCoreFunctionalModalProps,
-  type IYCoreFunctionalModalProps,
+  type IAltCoreFunctionalModalProps,
 } from '~core/ui/functionalModal/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreFunctionalModalProps extends Omit<IYCoreFunctionalModalProps, 'open'> {
-  modelValue: IYCoreFunctionalModalProps['open']
+export interface IAltVueCoreFunctionalModalProps extends Omit<IAltCoreFunctionalModalProps, 'open'> {
+  modelValue: IAltCoreFunctionalModalProps['open']
 }
 
-export interface IYVueFunctionalModalProps {
-  modelValue: IYCoreFunctionalModalProps['open']
-  size?: IYCoreFunctionalModalProps['size']
-  width?: IYCoreFunctionalModalProps['width']
-  hideOverlay?: IYCoreFunctionalModalProps['hideOverlay']
-  hideFooter?: IYCoreFunctionalModalProps['hideFooter']
-  preventEscape?: IYCoreFunctionalModalProps['preventEscape']
-  fullScreen?: IYCoreFunctionalModalProps['fullScreen']
-  heading?: IYCoreFunctionalModalProps['heading']
-  subHeading?: IYCoreFunctionalModalProps['subHeading']
-  dialogLabel?: IYCoreFunctionalModalProps['dialogLabel']
-  locale?: IYCoreFunctionalModalProps['locale']
+export interface IAltVueFunctionalModalProps {
+  modelValue: IAltCoreFunctionalModalProps['open']
+  size?: IAltCoreFunctionalModalProps['size']
+  width?: IAltCoreFunctionalModalProps['width']
+  hideOverlay?: IAltCoreFunctionalModalProps['hideOverlay']
+  hideFooter?: IAltCoreFunctionalModalProps['hideFooter']
+  preventEscape?: IAltCoreFunctionalModalProps['preventEscape']
+  fullScreen?: IAltCoreFunctionalModalProps['fullScreen']
+  heading?: IAltCoreFunctionalModalProps['heading']
+  subHeading?: IAltCoreFunctionalModalProps['subHeading']
+  dialogLabel?: IAltCoreFunctionalModalProps['dialogLabel']
+  locale?: IAltCoreFunctionalModalProps['locale']
   enableTeleport?: boolean
 }
 
-export const createVueFunctionalModalProps = (): TDefinedVueProps<IYVueFunctionalModalProps> => {
+export const createVueFunctionalModalProps = (): TDefinedVueProps<IAltVueFunctionalModalProps> => {
   const { locale, ...props } = createCoreFunctionalModalProps()
 
   return {
@@ -41,7 +41,7 @@ export const createVueFunctionalModalProps = (): TDefinedVueProps<IYVueFunctiona
   }
 }
 
-export interface IYVueFunctionalModalEmits {
+export interface IAltVueFunctionalModalEmits {
   (
     event:
       'open' |
@@ -53,5 +53,5 @@ export interface IYVueFunctionalModalEmits {
       'cancel' |
       'submit',
   ): void
-  (event: 'update:modelValue', payload: IYCoreFunctionalModalProps['open']): void
+  (event: 'update:modelValue', payload: IAltCoreFunctionalModalProps['open']): void
 }

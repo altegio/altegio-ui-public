@@ -3,61 +3,61 @@ import { COLORS, SIZES } from '~root/tokens'
 export const CSSVariablesHostToRootCases = [
   // Colors
   {
-    host: '--y-core-segment-control-border-color',
-    root: '--y-core-color-stroke-primary-low',
+    host: '--alt-core-segment-control-border-color',
+    root: '--alt-core-color-stroke-primary-low',
   },
   {
-    host: '--y-core-segment-control-background-color',
-    root: '--y-core-color-surface-secondary',
+    host: '--alt-core-segment-control-background-color',
+    root: '--alt-core-color-surface-secondary',
   },
 
   // Sizes
   {
-    host: '--y-core-segment-control-size-border-radius',
-    root: '--y-core-size-radius-2-x',
+    host: '--alt-core-segment-control-size-border-radius',
+    root: '--alt-core-size-radius-2-x',
   },
   {
-    host: '--y-core-segment-control-size-padding',
-    root: '--y-core-size-spacing-0-5-x',
+    host: '--alt-core-segment-control-size-padding',
+    root: '--alt-core-size-spacing-0-5-x',
   },
   {
-    host: '--y-core-segment-control-size-gap',
-    root: '--y-core-size-spacing-0-5-x',
+    host: '--alt-core-segment-control-size-gap',
+    root: '--alt-core-size-spacing-0-5-x',
   },
 ]
 
 export const CSSVariablesHostToValueCases = [
   // General
   {
-    host: '--y-core-segment-control-display',
+    host: '--alt-core-segment-control-display',
     value: 'flex',
   },
 
   // Colors
   {
-    host: '--y-core-segment-control-border-color',
+    host: '--alt-core-segment-control-border-color',
     value: COLORS.stroke_primary_low.cssValue,
   },
   {
-    host: '--y-core-segment-control-background-color',
+    host: '--alt-core-segment-control-background-color',
     value: COLORS.surface_secondary.cssValue,
   },
 
   // Sizes
   {
-    host: '--y-core-segment-control-border-size',
+    host: '--alt-core-segment-control-border-size',
     value: '1px',
   },
   {
-    host: '--y-core-segment-control-size-border-radius',
+    host: '--alt-core-segment-control-size-border-radius',
     value: SIZES.radius_2_x.cssValue,
   },
   {
-    host: '--y-core-segment-control-size-padding',
+    host: '--alt-core-segment-control-size-padding',
     value: SIZES.spacing_0_5_x.cssValue,
   },
   {
-    host: '--y-core-segment-control-size-gap',
+    host: '--alt-core-segment-control-size-gap',
     value: SIZES.spacing_0_5_x.cssValue,
   },
 ]

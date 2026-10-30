@@ -8,7 +8,7 @@
 import type { EFrameworkName } from '~web/shared/.storybook/enums/frameworkName'
 import type { IStoryConfig } from '~web/shared/.storybook/types'
 
-import yCoreDropdownListStoryMeta from '~core/ui/dropdownList/stories/DropdownList.stories'
+import altCoreDropdownListStoryMeta from '~core/ui/dropdownList/stories/DropdownList.stories'
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
 import type { ItemClickEvent, VisibleEvent } from '~core/ui/buttonDropdown/models/types/events'
 
@@ -17,7 +17,7 @@ export type TButtonDropdownStoryEmits = TEventsStoryArgs<{
   VisibleEvent: typeof VisibleEvent
 }>
 
-const DEFAULT_ITEMS = yCoreDropdownListStoryMeta.args?.items?.slice(0, 2) ?? []
+const DEFAULT_ITEMS = altCoreDropdownListStoryMeta.args?.items?.slice(0, 2) ?? []
 
 // =============================================================================
 // STORY CONFIGURATION

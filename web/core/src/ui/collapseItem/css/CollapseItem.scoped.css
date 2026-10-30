@@ -1,4 +1,4 @@
-$component: $YCoreCollapseItemTagName;
+$component: $AltCoreCollapseItemTagName;
 
 :host {
   display: block;
@@ -14,30 +14,30 @@ $component: $YCoreCollapseItemTagName;
     min-height: 54px;
     overflow: hidden;
     cursor: pointer;
-    border-radius: var(--y-core-collapse-item-radius);
+    border-radius: var(--alt-core-collapse-item-radius);
 
     &_shallow {
-      padding: var(--y-core-collapse-item-padding-y) 0;
+      padding: var(--alt-core-collapse-item-padding-y) 0;
     }
 
     &_variant {
       &_primary {
-        padding-right: var(--y-core-collapse-item-padding-x);
-        padding-left: var(--y-core-collapse-item-padding-x);
-        background-color: var(--y-core-collapse-item-variant-primary-background-color);
+        padding-right: var(--alt-core-collapse-item-padding-x);
+        padding-left: var(--alt-core-collapse-item-padding-x);
+        background-color: var(--alt-core-collapse-item-variant-primary-background-color);
 
         &:hover {
-          background-color: var(--y-core-collapse-item-variant-primary-background-color-hover);
+          background-color: var(--alt-core-collapse-item-variant-primary-background-color-hover);
         }
       }
 
       &_secondary {
-        padding-right: var(--y-core-collapse-item-padding-x);
-        padding-left: var(--y-core-collapse-item-padding-x);
-        background-color: var(--y-core-collapse-item-variant-secondary-background-color);
+        padding-right: var(--alt-core-collapse-item-padding-x);
+        padding-left: var(--alt-core-collapse-item-padding-x);
+        background-color: var(--alt-core-collapse-item-variant-secondary-background-color);
 
         &:hover {
-          background-color: var(--y-core-collapse-item-variant-secondary-background-color-hover);
+          background-color: var(--alt-core-collapse-item-variant-secondary-background-color-hover);
         }
       }
     }
@@ -53,7 +53,7 @@ $component: $YCoreCollapseItemTagName;
     will-change: height;
 
     &_opened {
-      margin: var(--y-core-collapse-item-content-margin-top) var(--y-core-collapse-item-content-margin-horizontal) 0;
+      margin: var(--alt-core-collapse-item-content-margin-top) var(--alt-core-collapse-item-content-margin-horizontal) 0;
       transition: height 0.3s;
     }
     
@@ -72,18 +72,18 @@ $component: $YCoreCollapseItemTagName;
     align-items: center;
     align-self: stretch;
     justify-content: center;
-    padding: var(--y-core-collapse-item-padding-y) 0 var(--y-core-collapse-item-padding-y) var(--y-core-collapse-item-padding-x);
-    color: var(--y-core-collapse-item-toggle-icon-color);
+    padding: var(--alt-core-collapse-item-padding-y) 0 var(--alt-core-collapse-item-padding-y) var(--alt-core-collapse-item-padding-x);
+    color: var(--alt-core-collapse-item-toggle-icon-color);
   }
 
   &__main {
     display: flex;
     flex-direction: column;
-    gap: var(--y-core-collapse-item-main-gap);
+    gap: var(--alt-core-collapse-item-main-gap);
     align-self: stretch;
 
     &-wrapper {
-      padding: var(--y-core-collapse-item-padding-y) var(--y-core-collapse-item-padding-x) var(--y-core-collapse-item-padding-y) 0;
+      padding: var(--alt-core-collapse-item-padding-y) var(--alt-core-collapse-item-padding-x) var(--alt-core-collapse-item-padding-y) 0;
       margin-right: auto;
     }
   }
@@ -96,9 +96,9 @@ $component: $YCoreCollapseItemTagName;
     align-items: center;
     align-self: stretch;
     justify-content: center;
-    padding-top: var(--y-core-collapse-item-padding-y);
-    padding-bottom: var(--y-core-collapse-item-padding-y);
-    color: var(--y-core-collapse-item-toggle-slot-color);
+    padding-top: var(--alt-core-collapse-item-padding-y);
+    padding-bottom: var(--alt-core-collapse-item-padding-y);
+    color: var(--alt-core-collapse-item-toggle-slot-color);
 
     &_visible {
       display: flex;
@@ -107,17 +107,17 @@ $component: $YCoreCollapseItemTagName;
 
   &__before,
   &__avatar {
-    padding-right: var(--y-core-collapse-item-padding-x);
+    padding-right: var(--alt-core-collapse-item-padding-x);
   }
 
   &__after {
-    gap: var(--y-core-collapse-item-padding-x);
-    padding-left: var(--y-core-collapse-item-padding-x);
+    gap: var(--alt-core-collapse-item-padding-x);
+    padding-left: var(--alt-core-collapse-item-padding-x);
 
     &::after {
       align-self: stretch;
       content: '';
-      border-right: 1px solid var(--y-core-collapse-item-border-color);
+      border-right: 1px solid var(--alt-core-collapse-item-border-color);
     }
 
     &_variant {

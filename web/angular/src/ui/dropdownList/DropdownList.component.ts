@@ -3,19 +3,19 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, Output, EventEmitter } from '
 import '~core/ui/dropdownList'
 import {
   createNgDropdownListProps,
-  type IYNgDropdownListProps,
-  type YNgDropdownListItemClickEvent,
+  type IAltNgDropdownListProps,
+  type AltNgDropdownListItemClickEvent,
 } from '~ng/ui/dropdownList/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { cleanupInnerHTML } from '~shared/utils/helpers'
 
 const { items, itemLabel, minWidth, noMaxHeight } = createNgDropdownListProps()
 @Component({
-  selector: 'YDropdownList',
+  selector: 'AltDropdownList',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-dropdown-list
+    <alt-core-dropdown-list
       [items]="items"
       [itemLabel]="itemLabel"
       [minWidth]="minWidth"
@@ -54,20 +54,20 @@ const { items, itemLabel, minWidth, noMaxHeight } = createNgDropdownListProps()
           [innerHTML]="cleanupHTML(bottom)"
         ></div>
       }
-    </y-core-dropdown-list>
+    </alt-core-dropdown-list>
   `,
 })
 
-export class YDropdownList implements IYNgDropdownListProps {
-  @Input() @DefaultValue(items) items: IYNgDropdownListProps['items'] = items
-  @Input() @DefaultValue(itemLabel) itemLabel: IYNgDropdownListProps['itemLabel'] = itemLabel
-  @Input() @DefaultValue(minWidth) minWidth: IYNgDropdownListProps['minWidth'] = minWidth
-  @Input() @DefaultValue(noMaxHeight) noMaxHeight: IYNgDropdownListProps['noMaxHeight'] = noMaxHeight
+export class AltDropdownList implements IAltNgDropdownListProps {
+  @Input() @DefaultValue(items) items: IAltNgDropdownListProps['items'] = items
+  @Input() @DefaultValue(itemLabel) itemLabel: IAltNgDropdownListProps['itemLabel'] = itemLabel
+  @Input() @DefaultValue(minWidth) minWidth: IAltNgDropdownListProps['minWidth'] = minWidth
+  @Input() @DefaultValue(noMaxHeight) noMaxHeight: IAltNgDropdownListProps['noMaxHeight'] = noMaxHeight
 
-  @Output('item-click') itemClick = new EventEmitter<YNgDropdownListItemClickEvent>()
+  @Output('item-click') itemClick = new EventEmitter<AltNgDropdownListItemClickEvent>()
 
   handleItemClick(event: Event) {
-    this.itemClick.emit(event as YNgDropdownListItemClickEvent)
+    this.itemClick.emit(event as AltNgDropdownListItemClickEvent)
   }
 
   protected cleanupHTML = cleanupInnerHTML

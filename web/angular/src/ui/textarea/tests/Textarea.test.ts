@@ -1,29 +1,29 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreTextareaTagName } from '~shared/constants'
+import { AltCoreTextareaTagName } from '~shared/constants'
 import type { TPropTestCase, TSlotTestCase } from '~shared/types/tests'
 import { text } from '~shared/tests/slotContents'
-import { YTextarea } from '~ng/ui/textarea'
-import { type IYNgTextareaProps } from '~ng/ui/textarea/models/types'
+import { AltTextarea } from '~ng/ui/textarea'
+import { type IAltNgTextareaProps } from '~ng/ui/textarea/models/types'
 
-const tagName = YCoreTextareaTagName
+const tagName = AltCoreTextareaTagName
 
 interface ICreateComponentArgs {
   slots?: {
     before?: string
     after?: string
   }
-  props?: Partial<IYNgTextareaProps>
+  props?: Partial<IAltNgTextareaProps>
 }
 
 const createComponent = async({ slots, props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YTextarea] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltTextarea] }).compileComponents()
 
   @Component({
     template: `
-      <YTextarea
+      <AltTextarea
         (ngModelChange)="handleModelChange($event)"
         (focus)="handleFocus($event)"
         (blur)="handleBlur($event)"
@@ -52,9 +52,9 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
         @if (showAfter) {
           <ng-template #textareaAfter>{{ afterContent }}</ng-template>
         }
-      </YTextarea>
+      </AltTextarea>
     `,
-    imports: [YTextarea],
+    imports: [AltTextarea],
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
   })
@@ -95,20 +95,20 @@ const slotBeforeTestCases: TSlotTestCase[] = [{ slot: 'before', case: 'with cont
 
 const slotAfterTestCases: TSlotTestCase[] = [{ slot: 'after', case: 'with content', content: text }]
 
-const propLabelTextTestCases: TPropTestCase<IYNgTextareaProps, 'labelText'>[] = [{ prop: 'labelText', case: 'with label text', value: 'Test label', expected: 'Test label' }]
+const propLabelTextTestCases: TPropTestCase<IAltNgTextareaProps, 'labelText'>[] = [{ prop: 'labelText', case: 'with label text', value: 'Test label', expected: 'Test label' }]
 
-const propDisabledTestCases: TPropTestCase<IYNgTextareaProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltNgTextareaProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'enabled', value: true, expected: true },
   { prop: 'disabled', case: 'disabled', value: false, expected: false },
 ]
 
-const propErrorTestCases: TPropTestCase<IYNgTextareaProps, 'error'>[] = [
+const propErrorTestCases: TPropTestCase<IAltNgTextareaProps, 'error'>[] = [
   { prop: 'error', case: 'enabled', value: true, expected: true },
   { prop: 'error', case: 'disabled', value: false, expected: false },
 ]
 
 describe(
-  'Angular/YTextarea',
+  'Angular/AltTextarea',
   () => {
     describe(
       'Unit',
@@ -190,7 +190,7 @@ describe(
 
               const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
               const textareaDebugElement = fixture.debugElement.children[0]
-              const textareaComponent = textareaDebugElement.componentInstance as YTextarea
+              const textareaComponent = textareaDebugElement.componentInstance as AltTextarea
               const newValue = 'text'
 
               // Simulate an input event

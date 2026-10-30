@@ -1,24 +1,24 @@
 import {
   createCoreSearchTextHighlightedProps,
-  type IYCoreSearchTextHighlightedProps,
+  type IAltCoreSearchTextHighlightedProps,
 } from '~core/ui/searchTextHighlighted/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreSearchTextHighlightedProps extends IYCoreSearchTextHighlightedProps {}
+export interface IAltVueCoreSearchTextHighlightedProps extends IAltCoreSearchTextHighlightedProps {}
 
-export interface IYVueSearchTextHighlightedProps {
-  text: IYVueCoreSearchTextHighlightedProps['text']
-  search: IYVueCoreSearchTextHighlightedProps['search']
-  variant?: IYVueCoreSearchTextHighlightedProps['variant']
-  ignoredSymbols?: IYVueCoreSearchTextHighlightedProps['ignoredSymbols']
-  caseSensitive?: IYVueCoreSearchTextHighlightedProps['caseSensitive']
-  stopHighlight?: IYVueCoreSearchTextHighlightedProps['stopHighlight']
-  size?: IYVueCoreSearchTextHighlightedProps['size']
-  highlightTextVariant?: IYVueCoreSearchTextHighlightedProps['highlightTextVariant']
-  highlightTextSize?: IYVueCoreSearchTextHighlightedProps['highlightTextSize']
+export interface IAltVueSearchTextHighlightedProps {
+  text: IAltVueCoreSearchTextHighlightedProps['text']
+  search: IAltVueCoreSearchTextHighlightedProps['search']
+  variant?: IAltVueCoreSearchTextHighlightedProps['variant']
+  ignoredSymbols?: IAltVueCoreSearchTextHighlightedProps['ignoredSymbols']
+  caseSensitive?: IAltVueCoreSearchTextHighlightedProps['caseSensitive']
+  stopHighlight?: IAltVueCoreSearchTextHighlightedProps['stopHighlight']
+  size?: IAltVueCoreSearchTextHighlightedProps['size']
+  highlightTextVariant?: IAltVueCoreSearchTextHighlightedProps['highlightTextVariant']
+  highlightTextSize?: IAltVueCoreSearchTextHighlightedProps['highlightTextSize']
 }
 
-export const createVueSearchTextHighlightedProps = (): TDefinedVueProps<IYVueSearchTextHighlightedProps> => {
+export const createVueSearchTextHighlightedProps = (): TDefinedVueProps<IAltVueSearchTextHighlightedProps> => {
   const {
     variant,
     ignoredSymbols,

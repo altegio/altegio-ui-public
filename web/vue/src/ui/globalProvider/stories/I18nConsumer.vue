@@ -12,7 +12,7 @@
       <h4>Calendar using the current locale:</h4>
 
       <div class="calendar-wrapper">
-        <YCalendar v-model="selectedDate" />
+        <AltCalendar v-model="selectedDate" />
       </div>
     </div>
 
@@ -34,7 +34,7 @@
   import type { IGlobalContext } from '~core/ui/globalProvider/context'
   import type { ILocaleModule } from '~core/ui/globalProvider/context/modules'
   import { LOCALE_MODULE_ID } from '~core/ui/globalProvider/plugins/i18n'
-  import { YCalendar } from '~vue/ui/calendar'
+  import { AltCalendar } from '~vue/ui/calendar'
 
   // Read the global context through inject()
   const globalContext = inject<Ref<IGlobalContext | undefined>>('globalContext')

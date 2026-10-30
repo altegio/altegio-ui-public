@@ -7,7 +7,7 @@ import {
 } from '~core/ui/globalProvider/context'
 
 describe(
-  'Core/YCoreGlobalProvider/GlobalContext',
+  'Core/AltCoreGlobalProvider/GlobalContext',
   () => {
     let context: GlobalContext
     let testModule: TGlobalContextModule

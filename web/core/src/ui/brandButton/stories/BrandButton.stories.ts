@@ -1,9 +1,9 @@
 import { html } from 'lit'
 import type { Meta, StoryObj } from '@storybook/web-components'
 
-import { EYCoreBrandButtonVariant } from '../models/types/external'
-import { EYSizes } from '~shared/types/global'
-import { YCoreBrandButtonTagName as tagName } from '~shared/constants'
+import { EAltCoreBrandButtonVariant } from '../models/types/external'
+import { EAltSizes } from '~shared/types/global'
+import { AltCoreBrandButtonTagName as tagName } from '~shared/constants'
 import '~core/ui/brandButton'
 
 import {
@@ -32,7 +32,7 @@ const meta: Meta = {
   tags: ['core', 'autodocs'],
   render: (args) => {
     return html`
-      <y-core-brand-button
+      <alt-core-brand-button
         .variant=${args.variant}
         .size=${args.size}
         .disabled=${args.disabled}
@@ -40,7 +40,7 @@ const meta: Meta = {
         .text=${args.text}
         @click=${args.onClick}
       >
-      </y-core-brand-button>
+      </alt-core-brand-button>
     `
   },
   argTypes: {
@@ -50,11 +50,11 @@ const meta: Meta = {
         '**Brand**\n\nSelects the button style and icon. Each brand has its own colors and SVG icon.',
       options: brandButtonVariants,
       table: {
-        type: { summary: 'EYCoreBrandButtonVariant' },
-        defaultValue: { summary: EYCoreBrandButtonVariant.WhatsApp },
+        type: { summary: 'EAltCoreBrandButtonVariant' },
+        defaultValue: { summary: EAltCoreBrandButtonVariant.WhatsApp },
         category: 'Appearance',
       },
-      ...getComponentStateTable(EYCoreBrandButtonVariant.WhatsApp),
+      ...getComponentStateTable(EAltCoreBrandButtonVariant.WhatsApp),
     },
     size: {
       ...simpleButtonStoryMeta.argTypes.size,
@@ -78,8 +78,8 @@ const meta: Meta = {
     },
   },
   args: {
-    variant: EYCoreBrandButtonVariant.WhatsApp,
-    size: simpleButtonStoryMeta.args.size || EYSizes.SMALL,
+    variant: EAltCoreBrandButtonVariant.WhatsApp,
+    size: simpleButtonStoryMeta.args.size || EAltSizes.SMALL,
     disabled: simpleButtonStoryMeta.args.disabled || false,
     loading: simpleButtonStoryMeta.args.loading || false,
     text: 'Sign in with WhatsApp',
@@ -96,9 +96,9 @@ export const Sizes: Story = {
   parameters: BRAND_BUTTON_STORIES_CONFIG.Sizes.parameters,
   render: () => html`
     <div style="display: flex; gap: 16px; align-items: flex-end;">
-      <y-core-brand-button variant=${EYCoreBrandButtonVariant.WhatsApp} size="small" text="Small"></y-core-brand-button>
-      <y-core-brand-button variant=${EYCoreBrandButtonVariant.WhatsApp} size="medium" text="Medium"></y-core-brand-button>
-      <y-core-brand-button variant=${EYCoreBrandButtonVariant.WhatsApp} size="large" text="Large"></y-core-brand-button>
+      <alt-core-brand-button variant=${EAltCoreBrandButtonVariant.WhatsApp} size="small" text="Small"></alt-core-brand-button>
+      <alt-core-brand-button variant=${EAltCoreBrandButtonVariant.WhatsApp} size="medium" text="Medium"></alt-core-brand-button>
+      <alt-core-brand-button variant=${EAltCoreBrandButtonVariant.WhatsApp} size="large" text="Large"></alt-core-brand-button>
     </div>
   `,
 }
@@ -107,9 +107,9 @@ export const States: Story = {
   parameters: BRAND_BUTTON_STORIES_CONFIG.States.parameters,
   render: () => html`
     <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-      <y-core-brand-button variant=${EYCoreBrandButtonVariant.WhatsApp} text="Default">Default</y-core-brand-button>
-      <y-core-brand-button variant=${EYCoreBrandButtonVariant.WhatsApp} text="Disabled" .disabled=${true}></y-core-brand-button>
-      <y-core-brand-button variant=${EYCoreBrandButtonVariant.WhatsApp} .loading=${true}></y-core-brand-button>
+      <alt-core-brand-button variant=${EAltCoreBrandButtonVariant.WhatsApp} text="Default">Default</alt-core-brand-button>
+      <alt-core-brand-button variant=${EAltCoreBrandButtonVariant.WhatsApp} text="Disabled" .disabled=${true}></alt-core-brand-button>
+      <alt-core-brand-button variant=${EAltCoreBrandButtonVariant.WhatsApp} .loading=${true}></alt-core-brand-button>
     </div>
   `,
 }
@@ -118,7 +118,7 @@ export const Variants: Story = {
   parameters: BRAND_BUTTON_STORIES_CONFIG.Variants.parameters,
   render: () => html`
     <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-      <y-core-brand-button variant=${EYCoreBrandButtonVariant.WhatsApp} text="Variant"></y-core-brand-button>
+      <alt-core-brand-button variant=${EAltCoreBrandButtonVariant.WhatsApp} text="Variant"></alt-core-brand-button>
     </div>
   `,
 }

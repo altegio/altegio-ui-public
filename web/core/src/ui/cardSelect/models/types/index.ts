@@ -1,11 +1,11 @@
 import {
   createCoreCardSelectExternalProps,
-  type IYCoreCardSelectExternalProps,
+  type IAltCoreCardSelectExternalProps,
 } from './external'
 
 export * from './external'
 export * from './events'
 
-export interface IYCoreCardSelectProps extends IYCoreCardSelectExternalProps {}
+export interface IAltCoreCardSelectProps extends IAltCoreCardSelectExternalProps {}
 
-export const createCoreCardSelectProps = (): IYCoreCardSelectProps => ({ ...createCoreCardSelectExternalProps() })
+export const createCoreCardSelectProps = (): IAltCoreCardSelectProps => ({ ...createCoreCardSelectExternalProps() })

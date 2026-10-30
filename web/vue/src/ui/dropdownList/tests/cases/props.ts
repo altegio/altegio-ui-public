@@ -1,6 +1,6 @@
 import type { TPropTestCase } from '~shared/types/tests'
 import {
-  type IYVueDropdownListProps,
+  type IAltVueDropdownListProps,
 } from '~vue/ui/dropdownList/models/types'
 import {
   propItemsTestCases as corePropItemsTestCases,
@@ -13,7 +13,7 @@ import {
 
 const { items: defaultItems, minWidth: defaultMinWidth } = createCoreDropdownListProps()
 
-export const propItemsTestCases: TPropTestCase<IYVueDropdownListProps, 'items'>[] = [
+export const propItemsTestCases: TPropTestCase<IAltVueDropdownListProps, 'items'>[] = [
   ...corePropItemsTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'items',
@@ -22,7 +22,7 @@ export const propItemsTestCases: TPropTestCase<IYVueDropdownListProps, 'items'>[
     expected: defaultItems,
   },
 ]
-export const propItemLabelTestCases: TPropTestCase<IYVueDropdownListProps, 'itemLabel'>[] = [
+export const propItemLabelTestCases: TPropTestCase<IAltVueDropdownListProps, 'itemLabel'>[] = [
   ...corePropItemLabelTestCases,
   {
     prop: 'itemLabel',
@@ -31,7 +31,7 @@ export const propItemLabelTestCases: TPropTestCase<IYVueDropdownListProps, 'item
     expected: true,
   },
 ]
-export const propMinWidthTestCases: TPropTestCase<IYVueDropdownListProps, 'minWidth'>[] = [
+export const propMinWidthTestCases: TPropTestCase<IAltVueDropdownListProps, 'minWidth'>[] = [
   ...corePropMinWidthTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'minWidth',

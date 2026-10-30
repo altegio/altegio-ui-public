@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { YCorePhoneFieldTagName as tagName } from '~shared/constants'
+import { AltCorePhoneFieldTagName as tagName } from '~shared/constants'
 import { ngInputEvents } from './cases/events'
 import {
   propAnnotationTextTestCases,
@@ -14,22 +14,22 @@ import {
   propValueTestCases,
 } from './cases/props'
 import { TestBed } from '~ng/tests/setup'
-import { YPhoneField } from '~ng/ui/phoneField'
+import { AltPhoneField } from '~ng/ui/phoneField'
 import { Component } from '@angular/core'
-import type { IYNgPhoneFieldProps } from '~ng/ui/phoneField/models/types'
+import type { IAltNgPhoneFieldProps } from '~ng/ui/phoneField/models/types'
 import { dispatchEvent } from '~shared/tests/utils'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgPhoneFieldProps>
+  props?: Partial<IAltNgPhoneFieldProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YPhoneField] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltPhoneField] }).compileComponents()
 
   @Component({
     template: `
-      <YPhoneField
+      <AltPhoneField
           [value]="value"
           [name]="name"
           [placeholder]="placeholder"
@@ -54,7 +54,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
           (blur)="onBlur($event)"
           (change)="onChange($event)"
         />`,
-    imports: [YPhoneField],
+    imports: [AltPhoneField],
     standalone: true,
   })
   class TestComponent {
@@ -87,7 +87,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 
 
 describe(
-  'Angular/YPhoneField',
+  'Angular/AltPhoneField',
   () => {
     describe(
       'Props',

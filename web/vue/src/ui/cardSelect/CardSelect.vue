@@ -1,5 +1,5 @@
 <template>
-  <y-core-card-select
+  <alt-core-card-select
     v-bind="props"
     @click="$emit('click', $event)"
     @focus="$emit('focus', $event)"
@@ -25,19 +25,19 @@
     >
       <slot name="after" />
     </div>
-  </y-core-card-select>
+  </alt-core-card-select>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/cardSelect'
   import {
     createVueCardSelectProps,
-    type IYVueCardSelectProps,
-    type IYVueCardSelectEmits,
-    type IYVueCoreCardSelectProps,
+    type IAltVueCardSelectProps,
+    type IAltVueCardSelectEmits,
+    type IAltVueCoreCardSelectProps,
   } from '~vue/ui/cardSelect/models/types'
 
-  defineOptions({ name: 'YCardSelect' })
+  defineOptions({ name: 'AltCardSelect' })
 
   defineSlots<{
     before?: () => unknown
@@ -46,9 +46,9 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueCardSelectProps>(),
+    defineProps<IAltVueCardSelectProps>(),
     createVueCardSelectProps(),
-  ) satisfies IYVueCoreCardSelectProps
+  ) satisfies IAltVueCoreCardSelectProps
 
-  defineEmits<IYVueCardSelectEmits>()
+  defineEmits<IAltVueCardSelectEmits>()
 </script>

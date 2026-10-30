@@ -3,55 +3,55 @@ import type {
   BlurEvent,
   SelectOptionEvent,
   ChangeEvent,
-  TYCoreAutocompleteFieldEvents,
-  TYCoreAutocompleteFieldAutocompleteOption,
+  TAltCoreAutocompleteFieldEvents,
+  TAltCoreAutocompleteFieldAutocompleteOption,
 } from '~core/ui/autocompleteField/models/types'
 import {
   createCoreAutocompleteFieldProps,
-  type IYCoreAutocompleteFieldProps,
+  type IAltCoreAutocompleteFieldProps,
 } from '~core/ui/autocompleteField/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreAutocompleteFieldProps extends
-Omit<IYCoreAutocompleteFieldProps, 'emptyStateTitle' | 'emptyStateDescription'>,
-Partial<Pick<IYCoreAutocompleteFieldProps, 'emptyStateTitle' | 'emptyStateDescription'>> {}
+export interface IAltVueCoreAutocompleteFieldProps extends
+Omit<IAltCoreAutocompleteFieldProps, 'emptyStateTitle' | 'emptyStateDescription'>,
+Partial<Pick<IAltCoreAutocompleteFieldProps, 'emptyStateTitle' | 'emptyStateDescription'>> {}
 
-export type TYVueAutocompleteFieldEvents = TYCoreAutocompleteFieldEvents
+export type TAltVueAutocompleteFieldEvents = TAltCoreAutocompleteFieldEvents
 
-export type TYVueAutocompleteFieldAutocompleteOption = TYCoreAutocompleteFieldAutocompleteOption
+export type TAltVueAutocompleteFieldAutocompleteOption = TAltCoreAutocompleteFieldAutocompleteOption
 
-export type TYVueAutocompleteFieldFocusEvent = FocusEvent
+export type TAltVueAutocompleteFieldFocusEvent = FocusEvent
 
-export type TYVueAutocompleteFieldBlurEvent = BlurEvent
+export type TAltVueAutocompleteFieldBlurEvent = BlurEvent
 
-export type TYVueAutocompleteFieldSelectOptionEvent = SelectOptionEvent
+export type TAltVueAutocompleteFieldSelectOptionEvent = SelectOptionEvent
 
-export type TYVueAutocompleteFieldChangeEvent = ChangeEvent
+export type TAltVueAutocompleteFieldChangeEvent = ChangeEvent
 
-export interface IYVueAutocompleteFieldProps {
-  value: IYVueCoreAutocompleteFieldProps['value']
-  name?: IYVueCoreAutocompleteFieldProps['name']
-  disabled?: IYVueCoreAutocompleteFieldProps['disabled']
-  required?: IYVueCoreAutocompleteFieldProps['required']
-  readonly?: IYVueCoreAutocompleteFieldProps['readonly']
-  autofocus?: IYVueCoreAutocompleteFieldProps['autofocus']
-  error?: IYVueCoreAutocompleteFieldProps['error']
-  errors?: IYVueCoreAutocompleteFieldProps['errors']
-  size?: IYVueCoreAutocompleteFieldProps['size']
-  placeholder?: IYVueCoreAutocompleteFieldProps['placeholder']
-  labelText?: IYVueCoreAutocompleteFieldProps['labelText']
-  labelTooltipText?: IYVueCoreAutocompleteFieldProps['labelTooltipText']
-  labelDebounce?: IYVueCoreAutocompleteFieldProps['labelDebounce']
-  annotationText?: IYVueCoreAutocompleteFieldProps['annotationText']
-  minSearchLength?: IYVueCoreAutocompleteFieldProps['minSearchLength']
-  searchFunction?: IYVueCoreAutocompleteFieldProps['searchFunction']
-  disabledAutocomplete?: IYVueCoreAutocompleteFieldProps['disabledAutocomplete']
-  emptyStateIcon?: IYVueCoreAutocompleteFieldProps['emptyStateIcon']
-  emptyStateTitle?: IYVueCoreAutocompleteFieldProps['emptyStateTitle']
-  emptyStateDescription?: IYVueCoreAutocompleteFieldProps['emptyStateDescription']
+export interface IAltVueAutocompleteFieldProps {
+  value: IAltVueCoreAutocompleteFieldProps['value']
+  name?: IAltVueCoreAutocompleteFieldProps['name']
+  disabled?: IAltVueCoreAutocompleteFieldProps['disabled']
+  required?: IAltVueCoreAutocompleteFieldProps['required']
+  readonly?: IAltVueCoreAutocompleteFieldProps['readonly']
+  autofocus?: IAltVueCoreAutocompleteFieldProps['autofocus']
+  error?: IAltVueCoreAutocompleteFieldProps['error']
+  errors?: IAltVueCoreAutocompleteFieldProps['errors']
+  size?: IAltVueCoreAutocompleteFieldProps['size']
+  placeholder?: IAltVueCoreAutocompleteFieldProps['placeholder']
+  labelText?: IAltVueCoreAutocompleteFieldProps['labelText']
+  labelTooltipText?: IAltVueCoreAutocompleteFieldProps['labelTooltipText']
+  labelDebounce?: IAltVueCoreAutocompleteFieldProps['labelDebounce']
+  annotationText?: IAltVueCoreAutocompleteFieldProps['annotationText']
+  minSearchLength?: IAltVueCoreAutocompleteFieldProps['minSearchLength']
+  searchFunction?: IAltVueCoreAutocompleteFieldProps['searchFunction']
+  disabledAutocomplete?: IAltVueCoreAutocompleteFieldProps['disabledAutocomplete']
+  emptyStateIcon?: IAltVueCoreAutocompleteFieldProps['emptyStateIcon']
+  emptyStateTitle?: IAltVueCoreAutocompleteFieldProps['emptyStateTitle']
+  emptyStateDescription?: IAltVueCoreAutocompleteFieldProps['emptyStateDescription']
 }
 
-export interface IYVueAutocompleteFieldEmits {
+export interface IAltVueAutocompleteFieldEmits {
   (event: 'blur', payload: BlurEvent): void
   (event: 'focus', payload: FocusEvent): void
   (event: 'change', payload: ChangeEvent): void
@@ -59,7 +59,7 @@ export interface IYVueAutocompleteFieldEmits {
 }
 
 
-export const createVueAutocompleteFieldProps = (): TDefinedVueProps<IYVueAutocompleteFieldProps> => {
+export const createVueAutocompleteFieldProps = (): TDefinedVueProps<IAltVueAutocompleteFieldProps> => {
   const {
     name,
     disabled,

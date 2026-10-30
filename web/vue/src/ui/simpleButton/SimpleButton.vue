@@ -1,31 +1,31 @@
 <template>
-  <y-core-simple-button
+  <alt-core-simple-button
     v-bind="props"
     @click="$emit('click', $event)"
   >
     <slot />
-  </y-core-simple-button>
+  </alt-core-simple-button>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/simpleButton'
   import {
     createVueSimpleButtonProps,
-    type IYVueSimpleButtonProps,
-    type IYVueSimpleButtonEmits,
-    type IYVueCoreSimpleButtonProps,
+    type IAltVueSimpleButtonProps,
+    type IAltVueSimpleButtonEmits,
+    type IAltVueCoreSimpleButtonProps,
   } from '~vue/ui/simpleButton/models/types'
 
-  defineOptions({ name: 'YSimpleButton' })
+  defineOptions({ name: 'AltSimpleButton' })
 
-  defineEmits<IYVueSimpleButtonEmits>()
+  defineEmits<IAltVueSimpleButtonEmits>()
 
   defineSlots<{
     default: () => unknown
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueSimpleButtonProps>(),
+    defineProps<IAltVueSimpleButtonProps>(),
     createVueSimpleButtonProps(),
-  ) satisfies IYVueCoreSimpleButtonProps
+  ) satisfies IAltVueCoreSimpleButtonProps
 </script>

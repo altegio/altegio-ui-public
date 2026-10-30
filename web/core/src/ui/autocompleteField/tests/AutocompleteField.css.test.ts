@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreAutocompleteFieldTagName } from '~shared/constants'
+import { AltCoreAutocompleteFieldTagName } from '~shared/constants'
 import '~core/ui/autocompleteField'
 import {
   CSSVariablesHostToRootCases,
@@ -10,7 +10,7 @@ import {
 } from './cases/css'
 import { createCoreAutocompleteFieldProps } from '~core/ui/autocompleteField/models/types'
 
-const tagName = YCoreAutocompleteFieldTagName
+const tagName = AltCoreAutocompleteFieldTagName
 
 const {
   component,
@@ -21,7 +21,7 @@ const {
 )
 
 describe(
-  'Core/YCoreAutocompleteField/CSS',
+  'Core/AltCoreAutocompleteField/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

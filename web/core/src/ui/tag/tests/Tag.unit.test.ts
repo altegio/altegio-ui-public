@@ -1,7 +1,7 @@
 import { beforeAll, afterEach, describe, expect, it, afterAll } from 'vitest'
 import { getShadowRootElement, getWCShadowRoot, getElementClasses } from '~shared/tests/utils'
 import { useCoreTests } from '~shared/tests/core'
-import { YCoreTagTagName, YCoreIconTagName } from '~shared/constants'
+import { AltCoreTagTagName, AltCoreIconTagName } from '~shared/constants'
 import '~core/ui/tag'
 
 import { createCoreTagProps } from '~core/ui/tag/models/types'
@@ -13,7 +13,7 @@ import {
   propLocatorTestCases,
 } from './cases/props'
 
-const tagName = YCoreTagTagName
+const tagName = AltCoreTagTagName
 
 const {
   component,
@@ -27,7 +27,7 @@ const {
 )
 
 describe(
-  'Core/YCoreTag/Unit',
+  'Core/AltCoreTag/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -159,7 +159,7 @@ describe(
               await updateComponent({ props: { iconLeft: testCase.value } })
 
               const shadowRoot = getWCShadowRoot(component)
-              const iconElement = shadowRoot.querySelector(YCoreIconTagName)
+              const iconElement = shadowRoot.querySelector(AltCoreIconTagName)
 
               expect(iconElement).not.toBeNull()
             },

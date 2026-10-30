@@ -1,9 +1,9 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
 import { getWCShadowRoot } from '~shared/tests/utils'
 import {
-  YCoreCardHeaderTagName as tagName,
-  YCoreIconTagName,
-  YCoreTagTagName,
+  AltCoreCardHeaderTagName as tagName,
+  AltCoreIconTagName,
+  AltCoreTagTagName,
 } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { createCoreCardHeaderProps } from '~core/ui/cardHeader/models/types'
@@ -30,7 +30,7 @@ const {
 )
 
 describe(
-  'Core/YCardHeader/Unit',
+  'Core/AltCardHeader/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -72,7 +72,7 @@ describe(
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
               const shadowRoot = getWCShadowRoot(component)
-              const titleElement = shadowRoot.querySelector('.y-core-card-header__title')
+              const titleElement = shadowRoot.querySelector('.alt-core-card-header__title')
 
               const titleText = titleElement?.textContent
               expect(titleText ? titleText.trim() : undefined).toBe(testCase.value || undefined)
@@ -87,7 +87,7 @@ describe(
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
               const shadowRoot = getWCShadowRoot(component)
-              const tagElement = shadowRoot.querySelector(YCoreTagTagName)
+              const tagElement = shadowRoot.querySelector(AltCoreTagTagName)
 
               if (testCase.value) {
                 expect(tagElement).not.toBeNull()
@@ -105,7 +105,7 @@ describe(
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
               const shadowRoot = getWCShadowRoot(component)
-              const iconElement = shadowRoot.querySelector(YCoreIconTagName)
+              const iconElement = shadowRoot.querySelector(AltCoreIconTagName)
 
               if (testCase.value) {
                 expect(iconElement).not.toBeNull()

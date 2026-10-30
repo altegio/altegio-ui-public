@@ -4,27 +4,27 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 
 import {
   createCoreCardMainProps,
-  type IYCoreCardMainProps,
+  type IAltCoreCardMainProps,
 } from '../models/types'
-import { YCoreCardMainTagName as tagName } from '~shared/constants'
+import { AltCoreCardMainTagName as tagName } from '~shared/constants'
 import { getComponentStateTable } from '~shared/.storybook/tables'
 import {
   hideSpaceLeft as hideSpaceLeftArgType,
   hideSpaceRight as hideSpaceRightArgType,
 } from '~shared/.storybook/argTypes'
 
-import yCoreCardWrapperStoryMeta from '~core/ui/cardWrapper/stories/CardWrapper.stories'
+import altCoreCardWrapperStoryMeta from '~core/ui/cardWrapper/stories/CardWrapper.stories'
 
 import '~core/ui/cardMain'
 
 const { hideSpaceLeft, hideSpaceRight } = createCoreCardMainProps()
 
-type YCoreCardMainMeta = Meta<IYCoreCardMainProps>
+type AltCoreCardMainMeta = Meta<IAltCoreCardMainProps>
 
 /**
  * ## Core CardMain
  */
-const meta: YCoreCardMainMeta = {
+const meta: AltCoreCardMainMeta = {
   title: 'Cards/Partials/⚠️ CardMain',
   id: 'cardMain',
   parameters: { controls: { sort: 'alpha' } },
@@ -40,18 +40,18 @@ const meta: YCoreCardMainMeta = {
     hideSpaceRight,
   }) => {
     return html`
-      <y-core-card-main
+      <alt-core-card-main
         .disabled=${disabled}
         .size=${size}
         .hideSpaceLeft=${hideSpaceLeft}
         .hideSpaceRight=${hideSpaceRight}
         style="border: 1px dashed;"
       >
-      </y-core-card-main>
+      </alt-core-card-main>
     `
   },
   argTypes: {
-    ...pick(yCoreCardWrapperStoryMeta.argTypes ?? {}, ['disabled', 'size']),
+    ...pick(altCoreCardWrapperStoryMeta.argTypes ?? {}, ['disabled', 'size']),
     hideSpaceLeft: {
       ...hideSpaceLeftArgType,
       ...getComponentStateTable(hideSpaceLeft),
@@ -62,13 +62,13 @@ const meta: YCoreCardMainMeta = {
     },
   },
   args: {
-    ...pick(yCoreCardWrapperStoryMeta.args ?? {}, ['disabled', 'size']),
+    ...pick(altCoreCardWrapperStoryMeta.args ?? {}, ['disabled', 'size']),
     hideSpaceLeft: false,
     hideSpaceRight: false,
   },
-} satisfies YCoreCardMainMeta
+} satisfies AltCoreCardMainMeta
 
 export default meta
-type Story = StoryObj<IYCoreCardMainProps>
+type Story = StoryObj<IAltCoreCardMainProps>
 
 export const Playground: Story = { args: {} }

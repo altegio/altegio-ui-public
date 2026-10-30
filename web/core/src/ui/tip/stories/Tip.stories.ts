@@ -6,33 +6,33 @@ import '~core/ui/tip'
 
 import {
   createCoreTipProps,
-  type IYCoreTipProps,
-  EYCoreTipType,
+  type IAltCoreTipProps,
+  EAltCoreTipType,
 } from '../models/types'
 import {
-  YCoreTipTagName as tagName,
+  AltCoreTipTagName as tagName,
 } from '~shared/constants'
 
 import { storyControlsTable } from '~shared/.storybook/tables'
 
 import '~core/ui/simpleButton'
 
-import yCoreDropdownStoryMeta from '~core/ui/dropdown/stories/Dropdown.stories'
+import altCoreDropdownStoryMeta from '~core/ui/dropdown/stories/Dropdown.stories'
 import { onVisibleEmit } from '~shared/.storybook/argTypes'
-import type { TYCoreTipActionEvents } from '../models/types/events'
+import type { TAltCoreTipActionEvents } from '../models/types/events'
 
 const { type, offset, padding } = createCoreTipProps()
 
-export interface IYCoreLinkStoryProps {
+export interface IAltCoreLinkStoryProps {
   tipContent: string
 }
 
-type YCoreTipMeta = Meta<IYCoreTipProps & IYCoreLinkStoryProps & TYCoreTipActionEvents>
+type AltCoreTipMeta = Meta<IAltCoreTipProps & IAltCoreLinkStoryProps & TAltCoreTipActionEvents>
 
 /**
  * ## Core Tip
  */
-const meta: YCoreTipMeta = {
+const meta: AltCoreTipMeta = {
   title: 'Tip',
   id: 'tip',
   parameters: { controls: { sort: 'alpha' } },
@@ -44,22 +44,22 @@ const meta: YCoreTipMeta = {
   render: ({ type, trigger, isOpen, placement, strategy, offset, padding, transition, tipContent, inline }) => {
     return html`
       <div style="width: 300px; height: 300px; border: 1px dashed; display: flex; justify-content: center; align-items: center;border-radius: 10px;">
-        <y-core-tip .type=${type} .trigger=${trigger} .isOpen=${isOpen} .placement=${placement} .strategy=${strategy} .offset=${offset} .padding=${padding} .transition=${transition} .inline=${inline}>
-          <y-core-simple-button slot="activator">
+        <alt-core-tip .type=${type} .trigger=${trigger} .isOpen=${isOpen} .placement=${placement} .strategy=${strategy} .offset=${offset} .padding=${padding} .transition=${transition} .inline=${inline}>
+          <alt-core-simple-button slot="activator">
             <span>Click me</span>
-          </y-core-simple-button>
+          </alt-core-simple-button>
 
           <div slot="content">${tipContent}</div>
-        </y-core-tip>
+        </alt-core-tip>
       </div>
     `
   },
   argTypes: {
-    ...yCoreDropdownStoryMeta.argTypes,
+    ...altCoreDropdownStoryMeta.argTypes,
     type: {
       control: 'select',
       description: 'Dropdown and text color',
-      options: Object.values(EYCoreTipType),
+      options: Object.values(EAltCoreTipType),
     },
     onVisible: onVisibleEmit,
     tipContent: {
@@ -73,16 +73,16 @@ const meta: YCoreTipMeta = {
     },
   },
   args: {
-    ...yCoreDropdownStoryMeta.args,
+    ...altCoreDropdownStoryMeta.args,
     padding,
     type,
     offset,
     onVisible: fn(),
     tipContent: 'Hint',
   },
-} satisfies YCoreTipMeta
+} satisfies AltCoreTipMeta
 
 export default meta
-type Story = StoryObj<IYCoreTipProps>
+type Story = StoryObj<IAltCoreTipProps>
 
 export const Playground: Story = { args: {} }

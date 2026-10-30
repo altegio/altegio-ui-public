@@ -7,17 +7,17 @@ import { action } from 'storybook/actions'
 import { useArgs } from 'storybook/preview-api'
 
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import type { TYCoreTextFieldMeta } from '~core/ui/textField/stories/TextField.stories'
-import yCoreTextFieldStoryMeta from '~core/ui/textField/stories/TextField.stories'
-import { type TYNgSearchFieldModel } from '~ng/ui/searchField/models/types'
-import type { TYNgControlValueTypes } from '~web/angular/src/types/ControlValueAccessorTypes'
-import { YSearchField } from '~ng/ui/searchField/SearchField.component'
+import type { TAltCoreTextFieldMeta } from '~core/ui/textField/stories/TextField.stories'
+import altCoreTextFieldStoryMeta from '~core/ui/textField/stories/TextField.stories'
+import { type TAltNgSearchFieldModel } from '~ng/ui/searchField/models/types'
+import type { TAltNgControlValueTypes } from '~web/angular/src/types/ControlValueAccessorTypes'
+import { AltSearchField } from '~ng/ui/searchField/SearchField.component'
 import { getComponentEmitsTable, getComponentStateTable } from '~web/shared/.storybook/tables'
 
-type TYNgSearchFieldControlValueTypes = TYNgControlValueTypes<TYNgSearchFieldModel>
-type TYNgSearchFieldMeta = YSearchField & TYCoreTextFieldMeta & TYNgSearchFieldControlValueTypes
+type TAltNgSearchFieldControlValueTypes = TAltNgControlValueTypes<TAltNgSearchFieldModel>
+type TAltNgSearchFieldMeta = AltSearchField & TAltCoreTextFieldMeta & TAltNgSearchFieldControlValueTypes
 
-const YCoreTextFieldStoryOmitKeys: (keyof TYCoreTextFieldMeta)[] = [
+const AltCoreTextFieldStoryOmitKeys: (keyof TAltCoreTextFieldMeta)[] = [
   'clearable',
   'readonly',
   'maskOptions',
@@ -39,11 +39,11 @@ const YCoreTextFieldStoryOmitKeys: (keyof TYCoreTextFieldMeta)[] = [
 /**
  * Angular wrapper for Core SearchField
  */
-const meta: Meta<TYNgSearchFieldMeta> = {
+const meta: Meta<TAltNgSearchFieldMeta> = {
   title: 'Inputs/🔍 SearchField',
   id: 'searchField',
   parameters: { controls: { sort: 'alpha' } },
-  component: YSearchField,
+  component: AltSearchField,
   tags: [
     'angular',
     'autodocs',
@@ -52,7 +52,7 @@ const meta: Meta<TYNgSearchFieldMeta> = {
     const [, updateArgs] = useArgs()
 
     const handlers = {
-      onModelChange: (ngModel: TYNgSearchFieldModel) => {
+      onModelChange: (ngModel: TAltNgSearchFieldModel) => {
         action('onModelChange')(ngModel)
         updateArgs({ ngModel })
       },
@@ -73,7 +73,7 @@ const meta: Meta<TYNgSearchFieldMeta> = {
       },
       moduleMetadata: { imports: [FormsModule] },
       template: `
-        <YSearchField
+        <AltSearchField
           (ngModelChange)="onModelChange($event)"
           (focus)="onFocus($event)"
           (blur)="onBlur($event)"
@@ -93,14 +93,14 @@ const meta: Meta<TYNgSearchFieldMeta> = {
           [annotationText]="computedAnnotationText"
           [locatorClearIcon]="locatorClearIcon"
         >
-        </YSearchField>
+        </AltSearchField>
       `,
     }
   },
   argTypes: {
     ...omit(
-      yCoreTextFieldStoryMeta.argTypes ?? {},
-      [...YCoreTextFieldStoryOmitKeys],
+      altCoreTextFieldStoryMeta.argTypes ?? {},
+      [...AltCoreTextFieldStoryOmitKeys],
     ),
     ngModel: {
       type: 'string',
@@ -125,15 +125,15 @@ const meta: Meta<TYNgSearchFieldMeta> = {
   },
   args: {
     ...omit(
-      yCoreTextFieldStoryMeta.args ?? {},
-      [...YCoreTextFieldStoryOmitKeys],
+      altCoreTextFieldStoryMeta.args ?? {},
+      [...AltCoreTextFieldStoryOmitKeys],
     ),
     ngModel: '',
   },
-} satisfies Meta<TYNgSearchFieldMeta>
+} satisfies Meta<TAltNgSearchFieldMeta>
 
 export default meta
-type Story = StoryObj<TYNgSearchFieldMeta>
+type Story = StoryObj<TAltNgSearchFieldMeta>
 
 export const Playground: Story = {}
 

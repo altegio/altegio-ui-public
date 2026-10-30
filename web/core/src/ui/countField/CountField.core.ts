@@ -5,18 +5,18 @@ import { Maskito, type MaskitoPostprocessor } from '@maskito/core'
 
 import {
   createCoreCountFieldProps,
-  type IYCoreCountFieldProps,
+  type IAltCoreCountFieldProps,
 } from '~core/ui/countField/models/types'
 import {
-  YCoreCountFieldTagName as tagName,
-  YCoreTextFieldTagName,
+  AltCoreCountFieldTagName as tagName,
+  AltCoreTextFieldTagName,
 } from '~shared/constants'
 
 import '~core/ui/textField'
 import '~core/ui/fieldIcon'
 
-import YCoreCountFieldVarsCSS from '~core/ui/countField/css/CountField.vars.css?inline'
-import YCoreCountFieldScopedCSS from '~core/ui/countField/css/CountField.scoped.css?inline'
+import AltCoreCountFieldVarsCSS from '~core/ui/countField/css/CountField.vars.css?inline'
+import AltCoreCountFieldScopedCSS from '~core/ui/countField/css/CountField.scoped.css?inline'
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
 import { BlurEvent, FocusEvent } from '~core/ui/fieldWrapper/models/types'
 import { KeydownEvent } from '~core/ui/fieldInput/models/types'
@@ -29,8 +29,8 @@ import {
   readonlyContextCreated, sizeContextCreated,
 } from '~core/ui/fieldWrapper/providers'
 import { booleanConverter } from '~core/utils/converters'
-import { yMinus, yPlus } from '~shared/icons'
-import type { YCoreTextField } from '~core/ui/textField'
+import { altMinus, altPlus } from '~shared/icons'
+import type { AltCoreTextField } from '~core/ui/textField'
 import type { TTimeout } from '~shared/types/global'
 import { withLocator } from '~core/utils/locator'
 
@@ -60,29 +60,29 @@ const { min,
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreCountField
+export class AltCoreCountField
   extends LitElement
-  implements IYCoreCountFieldProps {
-  @property({ type: Number, attribute: 'min' }) min: IYCoreCountFieldProps['min'] = min
-  @property({ type: Number, attribute: 'max' }) max: IYCoreCountFieldProps['max'] = max
+  implements IAltCoreCountFieldProps {
+  @property({ type: Number, attribute: 'min' }) min: IAltCoreCountFieldProps['min'] = min
+  @property({ type: Number, attribute: 'max' }) max: IAltCoreCountFieldProps['max'] = max
   @provide({ context: disabledContextCreated })
-  @property({ type: Boolean }) disabled: IYCoreCountFieldProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreCountFieldProps['disabled'] = disabled
   @provide({ context: readonlyContextCreated })
-  @property({ type: Boolean }) readonly: IYCoreCountFieldProps['readonly'] = readonly
+  @property({ type: Boolean }) readonly: IAltCoreCountFieldProps['readonly'] = readonly
   @provide({ context: errorContextCreated })
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IYCoreCountFieldProps['error'] = error
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IAltCoreCountFieldProps['error'] = error
   @provide({ context: sizeContextCreated })
-  @property({ type: String, reflect: true }) size: IYCoreCountFieldProps['size'] = size
-  @property({ type: String, reflect: true }) value: IYCoreCountFieldProps['value'] = value
-  @property({ type: String, reflect: true }) name: IYCoreCountFieldProps['name'] = name
-  @property({ type: String, reflect: true }) placeholder: IYCoreCountFieldProps['placeholder'] = placeholder
-  @property({ type: Boolean, reflect: true }) required: IYCoreCountFieldProps['required'] = required
-  @property({ type: Boolean, reflect: true }) autofocus: IYCoreCountFieldProps['autofocus'] = autofocus
-  @property({ type: String, reflect: true, attribute: 'label-text' }) labelText: IYCoreCountFieldProps['labelText'] = labelText
-  @property({ type: String, reflect: true, attribute: 'label-tooltip-text' }) labelTooltipText: IYCoreCountFieldProps['labelTooltipText'] = labelTooltipText
-  @property({ type: Number, reflect: true, attribute: 'label-debounce' }) labelDebounce: IYCoreCountFieldProps['labelDebounce'] = labelDebounce
-  @property({ type: String, reflect: true, attribute: 'annotation-text' }) annotationText: IYCoreCountFieldProps['annotationText'] = annotationText
-  @property({ type: Array }) errors: IYCoreCountFieldProps['errors'] = errors
+  @property({ type: String, reflect: true }) size: IAltCoreCountFieldProps['size'] = size
+  @property({ type: String, reflect: true }) value: IAltCoreCountFieldProps['value'] = value
+  @property({ type: String, reflect: true }) name: IAltCoreCountFieldProps['name'] = name
+  @property({ type: String, reflect: true }) placeholder: IAltCoreCountFieldProps['placeholder'] = placeholder
+  @property({ type: Boolean, reflect: true }) required: IAltCoreCountFieldProps['required'] = required
+  @property({ type: Boolean, reflect: true }) autofocus: IAltCoreCountFieldProps['autofocus'] = autofocus
+  @property({ type: String, reflect: true, attribute: 'label-text' }) labelText: IAltCoreCountFieldProps['labelText'] = labelText
+  @property({ type: String, reflect: true, attribute: 'label-tooltip-text' }) labelTooltipText: IAltCoreCountFieldProps['labelTooltipText'] = labelTooltipText
+  @property({ type: Number, reflect: true, attribute: 'label-debounce' }) labelDebounce: IAltCoreCountFieldProps['labelDebounce'] = labelDebounce
+  @property({ type: String, reflect: true, attribute: 'annotation-text' }) annotationText: IAltCoreCountFieldProps['annotationText'] = annotationText
+  @property({ type: Array }) errors: IAltCoreCountFieldProps['errors'] = errors
 
   @bubblingEvent(
     ChangedValueEvent,
@@ -108,7 +108,7 @@ export class YCoreCountField
   )
   _keydown!: TDispatcher<KeydownEvent>
 
-  @query(YCoreTextFieldTagName) public readonly textField?: YCoreTextField
+  @query(AltCoreTextFieldTagName) public readonly textField?: AltCoreTextField
 
   private readonly baseClass = tagName
 
@@ -125,8 +125,8 @@ export class YCoreCountField
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreCountFieldVarsCSS)}
-      ${unsafeCSS(YCoreCountFieldScopedCSS)}
+      ${unsafeCSS(AltCoreCountFieldVarsCSS)}
+      ${unsafeCSS(AltCoreCountFieldScopedCSS)}
     `,
   ]
 
@@ -425,7 +425,7 @@ export class YCoreCountField
   protected render() {
     return html`
       <div class=${classMap(this.computedClasses)}>
-        <y-core-text-field
+        <alt-core-text-field
           .disabled=${this.disabled}
           .readonly=${this.readonly}
           .error=${this.error}
@@ -446,28 +446,28 @@ export class YCoreCountField
           @blur=${this.handleBlur}
           @focus=${this.handleFocus}
         >
-          <y-core-field-icon
+          <alt-core-field-icon
             slot="before"
-            .icon=${yMinus}
+            .icon=${altMinus}
             .disabled=${this.isMinThresholdReached()}
             hoverable
             clickable
             @mousedown=${(e: MouseEvent) => { this.handleMouseDown(e, EChangeValueType.DECREASE) }}
             @mouseup=${this.handleMouseUp}
             @mouseleave=${this.handleMouseLeave}
-          ></y-core-field-icon>
+          ></alt-core-field-icon>
 
-          <y-core-field-icon
+          <alt-core-field-icon
             slot="after"
-            .icon=${yPlus}
+            .icon=${altPlus}
             .disabled=${this.isMaxThresholdReached()}
             hoverable
             clickable
             @mousedown=${(e: MouseEvent) => { this.handleMouseDown(e, EChangeValueType.INCREASE) }}
             @mouseup=${this.handleMouseUp}
             @mouseleave=${this.handleMouseLeave}
-          ></y-core-field-icon>
-        </y-core-text-field>
+          ></alt-core-field-icon>
+        </alt-core-text-field>
       </div>
     `
   }

@@ -1,19 +1,19 @@
-import { createCoreSimpleButtonExternalProps, type IYCoreSimpleButtonExternalProps } from '~core/ui/simpleButton/models/types/external'
+import { createCoreSimpleButtonExternalProps, type IAltCoreSimpleButtonExternalProps } from '~core/ui/simpleButton/models/types/external'
 import { pick } from 'radash'
 
-export enum EYCoreBrandButtonVariant {
+export enum EAltCoreBrandButtonVariant {
   WhatsApp = 'whatsapp',
 }
 
-export interface IYCoreBrandButtonExternalProps extends Pick<IYCoreSimpleButtonExternalProps, 'size' | 'disabled' | 'loading'> {
-  variant: EYCoreBrandButtonVariant
+export interface IAltCoreBrandButtonExternalProps extends Pick<IAltCoreSimpleButtonExternalProps, 'size' | 'disabled' | 'loading'> {
+  variant: EAltCoreBrandButtonVariant
   text: string
 }
 
-export const createCoreBrandButtonExternalProps = (): IYCoreBrandButtonExternalProps => {
+export const createCoreBrandButtonExternalProps = (): IAltCoreBrandButtonExternalProps => {
   return {
     ...pick(createCoreSimpleButtonExternalProps(), ['size', 'disabled', 'loading']),
-    variant: EYCoreBrandButtonVariant.WhatsApp,
+    variant: EAltCoreBrandButtonVariant.WhatsApp,
     text: '',
   }
 }

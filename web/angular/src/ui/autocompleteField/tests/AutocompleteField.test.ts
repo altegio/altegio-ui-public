@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { YCoreAutocompleteFieldTagName as tagName } from '~shared/constants'
+import { AltCoreAutocompleteFieldTagName as tagName } from '~shared/constants'
 import { ngInputEvents } from './cases/events'
 import {
   propAnnotationTextTestCases,
@@ -18,22 +18,22 @@ import {
   propValueTestCases,
 } from './cases/props'
 import { TestBed } from '~ng/tests/setup'
-import { YAutocompleteField } from '~ng/ui/autocompleteField'
+import { AltAutocompleteField } from '~ng/ui/autocompleteField'
 import { Component } from '@angular/core'
-import type { IYNgAutocompleteFieldProps } from '~ng/ui/autocompleteField/models/types'
+import type { IAltNgAutocompleteFieldProps } from '~ng/ui/autocompleteField/models/types'
 import { dispatchEvent } from '~shared/tests/utils'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgAutocompleteFieldProps>
+  props?: Partial<IAltNgAutocompleteFieldProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YAutocompleteField] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltAutocompleteField] }).compileComponents()
 
   @Component({
     template: `
-      <YAutocompleteField
+      <AltAutocompleteField
           [value]="value"
           [name]="name"
           [placeholder]="placeholder"
@@ -57,7 +57,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
           (blur)="onBlur($event)"
           (change)="onChange($event)"
         />`,
-    imports: [YAutocompleteField],
+    imports: [AltAutocompleteField],
     standalone: true,
   })
   class TestComponent {
@@ -86,7 +86,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 
 
 describe(
-  'Angular/YAutocompleteField',
+  'Angular/AltAutocompleteField',
   () => {
     describe(
       'Props',

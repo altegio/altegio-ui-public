@@ -1,20 +1,20 @@
 import {
   createCoreTextExternalProps,
-  type IYCoreTextExternalProps,
+  type IAltCoreTextExternalProps,
 } from '~core/ui/text/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreTextProps extends IYCoreTextExternalProps {}
+export interface IAltVueCoreTextProps extends IAltCoreTextExternalProps {}
 
-export interface IYVueTextProps {
-  size?: IYVueCoreTextProps['size']
-  variant?: IYVueCoreTextProps['variant']
-  ellipsis?: IYVueCoreTextProps['ellipsis']
-  lineclamp?: IYVueCoreTextProps['lineclamp']
-  locator?: IYVueCoreTextProps['locator']
+export interface IAltVueTextProps {
+  size?: IAltVueCoreTextProps['size']
+  variant?: IAltVueCoreTextProps['variant']
+  ellipsis?: IAltVueCoreTextProps['ellipsis']
+  lineclamp?: IAltVueCoreTextProps['lineclamp']
+  locator?: IAltVueCoreTextProps['locator']
 }
 
-export const createVueTextProps = (): TDefinedVueProps<IYVueTextProps> => {
+export const createVueTextProps = (): TDefinedVueProps<IAltVueTextProps> => {
   const { size, variant, ellipsis, lineclamp, locator } = createCoreTextExternalProps()
   return {
     size,

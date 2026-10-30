@@ -1,17 +1,17 @@
 import { describe, expect, it } from 'vitest'
-import { YCoreLabelTagName as tagName } from '~shared/constants'
+import { AltCoreLabelTagName as tagName } from '~shared/constants'
 import { TestBed } from '~ng/tests/setup'
-import { createNgLabelProps, type IYNgLabelProps } from '~ng/ui/label/models/types'
+import { createNgLabelProps, type IAltNgLabelProps } from '~ng/ui/label/models/types'
 import { text, empty } from '~shared/tests/slotContents'
-import { YLabel } from '~ng/ui/label'
+import { AltLabel } from '~ng/ui/label'
 import { Component } from '@angular/core'
 import { booleanTestValuesWithUndefined } from '~shared/tests/mockData'
 import { generatePropTestCases } from '~shared/tests/utils'
-import { EYCoreLabelAlignment } from '~core/ui/label/models/types'
-import { EYCoreTextSize, EYCoreTextVariant } from '~core/ui/text/models/types'
+import { EAltCoreLabelAlignment } from '~core/ui/label/models/types'
+import { EAltCoreTextSize, EAltCoreTextVariant } from '~core/ui/text/models/types'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgLabelProps>
+  props?: Partial<IAltNgLabelProps>
 }
 
 // Unit test cases:
@@ -23,7 +23,7 @@ const texts = [
   empty,
   undefined,
 ]
-const propsTextTestCases = generatePropTestCases<IYNgLabelProps, 'text'>(
+const propsTextTestCases = generatePropTestCases<IAltNgLabelProps, 'text'>(
   'text',
   texts,
   defaultProps,
@@ -35,25 +35,25 @@ const tooltipTexts = [
   empty,
   undefined,
 ]
-const propsTooltipTextTestCases = generatePropTestCases<IYNgLabelProps, 'tooltipText'>(
+const propsTooltipTextTestCases = generatePropTestCases<IAltNgLabelProps, 'tooltipText'>(
   'tooltipText',
   tooltipTexts,
   defaultProps,
 )
 
-const propsDisabledTestCases = generatePropTestCases<IYNgLabelProps, 'disabled'>(
+const propsDisabledTestCases = generatePropTestCases<IAltNgLabelProps, 'disabled'>(
   'disabled',
   booleanTestValuesWithUndefined,
   defaultProps,
 )
 
-const propsRequiredTestCases = generatePropTestCases<IYNgLabelProps, 'required'>(
+const propsRequiredTestCases = generatePropTestCases<IAltNgLabelProps, 'required'>(
   'required',
   booleanTestValuesWithUndefined,
   defaultProps,
 )
 
-const propsWrapTestCases = generatePropTestCases<IYNgLabelProps, 'wrap'>(
+const propsWrapTestCases = generatePropTestCases<IAltNgLabelProps, 'wrap'>(
   'wrap',
   booleanTestValuesWithUndefined,
   defaultProps,
@@ -64,46 +64,46 @@ const debounceTestCaseValues = [
   100,
   undefined,
 ]
-const propsDebounceTestCases = generatePropTestCases<IYNgLabelProps, 'debounce'>(
+const propsDebounceTestCases = generatePropTestCases<IAltNgLabelProps, 'debounce'>(
   'debounce',
   debounceTestCaseValues,
   defaultProps,
 )
 
-const propsTooltipActiveTestCases = generatePropTestCases<IYNgLabelProps, 'tooltipActive'>(
+const propsTooltipActiveTestCases = generatePropTestCases<IAltNgLabelProps, 'tooltipActive'>(
   'tooltipActive',
   booleanTestValuesWithUndefined,
   defaultProps,
 )
 
 
-const alignments: IYNgLabelProps['alignment'][] = [
-  ...Object.values(EYCoreLabelAlignment),
+const alignments: IAltNgLabelProps['alignment'][] = [
+  ...Object.values(EAltCoreLabelAlignment),
   undefined,
 ]
-const propsAlignmentTestCases = generatePropTestCases<IYNgLabelProps, 'alignment'>(
+const propsAlignmentTestCases = generatePropTestCases<IAltNgLabelProps, 'alignment'>(
   'alignment',
   alignments,
   defaultProps,
 )
 
 const variants = [
-  EYCoreTextVariant.PRIMARY,
-  EYCoreTextVariant.SECONDARY,
+  EAltCoreTextVariant.PRIMARY,
+  EAltCoreTextVariant.SECONDARY,
   undefined,
-] as IYNgLabelProps['variant'][]
-const propsVariantTestCases = generatePropTestCases<IYNgLabelProps, 'variant'>(
+] as IAltNgLabelProps['variant'][]
+const propsVariantTestCases = generatePropTestCases<IAltNgLabelProps, 'variant'>(
   'variant',
   variants,
   defaultProps,
 )
 
-const sizes: IYNgLabelProps['size'][] = [
-  EYCoreTextSize.A2_REGULAR,
-  EYCoreTextSize.P2_REGULAR,
+const sizes: IAltNgLabelProps['size'][] = [
+  EAltCoreTextSize.A2_REGULAR,
+  EAltCoreTextSize.P2_REGULAR,
   undefined,
 ]
-const propsSizeTestCases = generatePropTestCases<IYNgLabelProps, 'size'>(
+const propsSizeTestCases = generatePropTestCases<IAltNgLabelProps, 'size'>(
   'size',
   sizes,
   defaultProps,
@@ -112,11 +112,11 @@ const propsSizeTestCases = generatePropTestCases<IYNgLabelProps, 'size'>(
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YLabel] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltLabel] }).compileComponents()
 
   @Component({
     template: `
-      <YLabel
+      <AltLabel
         [text]="text"
         [tooltipText]="tooltipText"
         [alignment]="alignment"
@@ -128,8 +128,8 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
         [required]="required"
         [disabled]="disabled"
       >
-      </YLabel>`,
-    imports: [YLabel],
+      </AltLabel>`,
+    imports: [AltLabel],
     standalone: true,
   })
   class TestComponent {
@@ -148,7 +148,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YLabel',
+  'Angular/AltLabel',
   () => {
     describe(
       'Props',

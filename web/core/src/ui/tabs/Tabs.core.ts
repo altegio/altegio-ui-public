@@ -3,17 +3,17 @@ import { css, html, LitElement, nothing, unsafeCSS } from 'lit'
 import { repeat } from 'lit/directives/repeat.js'
 import { customElement, property, query, state } from 'lit/decorators.js'
 
-import YCoreTabsScopedCSS from '~core/ui/tabs/css/Tabs.scoped.css?inline'
-import YCoreTabsVarsCSS from '~core/ui/tabs/css/Tabs.vars.css?inline'
+import AltCoreTabsScopedCSS from '~core/ui/tabs/css/Tabs.scoped.css?inline'
+import AltCoreTabsVarsCSS from '~core/ui/tabs/css/Tabs.vars.css?inline'
 
-import { YCoreTabsTagName as tagName, YCoreTabTagName as tabTagName } from '~shared/constants'
-import { yChevronLeft, yChevronRight } from '~shared/icons'
-import { ChangeActiveTabEvent, createCoreTabsProps, type IYCoreTabsProps } from '~core/ui/tabs/models/types'
+import { AltCoreTabsTagName as tagName, AltCoreTabTagName as tabTagName } from '~shared/constants'
+import { altChevronLeft, altChevronRight } from '~shared/icons'
+import { ChangeActiveTabEvent, createCoreTabsProps, type IAltCoreTabsProps } from '~core/ui/tabs/models/types'
 import { classMap } from 'lit/directives/class-map.js'
 import '~core/ui/iconButton'
 import '~core/ui/tab'
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
-import type { YCoreTab } from '~core/ui/tab'
+import type { AltCoreTab } from '~core/ui/tab'
 import { BreakpointsController } from '~core/utils/breakpoints'
 import { withLocator } from '~core/utils/locator'
 
@@ -24,9 +24,9 @@ const NAV_BUTTON_WIDTH = '32px'
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreTabs extends LitElement implements IYCoreTabsProps {
-  @property({ type: Array, attribute: 'tabs' }) tabs: IYCoreTabsProps['tabs'] = tabs
-  @property({ type: Number, attribute: 'value' }) value: IYCoreTabsProps['value'] = value
+export class AltCoreTabs extends LitElement implements IAltCoreTabsProps {
+  @property({ type: Array, attribute: 'tabs' }) tabs: IAltCoreTabsProps['tabs'] = tabs
+  @property({ type: Number, attribute: 'value' }) value: IAltCoreTabsProps['value'] = value
 
   @state()
   private showLeftButton = false
@@ -35,7 +35,7 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
   private showRightButton = false
 
   @state()
-  private tabElements: YCoreTab[] | NodeListOf<YCoreTab> | null = null
+  private tabElements: AltCoreTab[] | NodeListOf<AltCoreTab> | null = null
 
   @query(`.${tagName}`)
   private rootContainer?: HTMLElement
@@ -55,14 +55,14 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
   private rootContainerResizeObserver: ResizeObserver | null = null
 
   static readonly styles = [
-    css`${unsafeCSS(YCoreTabsVarsCSS)}`,
-    css`${unsafeCSS(YCoreTabsScopedCSS)}`,
+    css`${unsafeCSS(AltCoreTabsVarsCSS)}`,
+    css`${unsafeCSS(AltCoreTabsScopedCSS)}`,
   ]
 
   connectedCallback() {
     super.connectedCallback()
 
-    const tabElements: NodeListOf<YCoreTab> | undefined = this.tabsContainer?.querySelectorAll(tabTagName)
+    const tabElements: NodeListOf<AltCoreTab> | undefined = this.tabsContainer?.querySelectorAll(tabTagName)
 
     if (tabElements) this.initialize(Array.from(tabElements))
 
@@ -74,7 +74,7 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
   }
 
   protected firstUpdated() {
-    const tabElements: NodeListOf<YCoreTab> | undefined = this.tabsContainer?.querySelectorAll(tabTagName)
+    const tabElements: NodeListOf<AltCoreTab> | undefined = this.tabsContainer?.querySelectorAll(tabTagName)
 
     if (tabElements) this.initialize(Array.from(tabElements))
   }
@@ -85,7 +85,7 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
     this.destroy()
   }
 
-  protected initialize(tabElements?: YCoreTab[] | NodeListOf<YCoreTab>) {
+  protected initialize(tabElements?: AltCoreTab[] | NodeListOf<AltCoreTab>) {
     if (!tabElements || this.value === undefined) return
 
     this.tabElements = tabElements
@@ -108,7 +108,7 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
   }
 
   // Lets consumers re-initialize the tabs manually when needed
-  public reinitialize(tabElements?: YCoreTab[] | NodeListOf<YCoreTab>) {
+  public reinitialize(tabElements?: AltCoreTab[] | NodeListOf<AltCoreTab>) {
     this.destroy()
 
     this.initialize(tabElements)
@@ -228,16 +228,16 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
 
     if (!slotElements.length) return
 
-    const nodeList: YCoreTab[] = []
+    const nodeList: AltCoreTab[] = []
 
     const tabTagNameUpperCase = tabTagName.toUpperCase()
 
-    // Find <y-core-tab> elements even when they are wrapped,
-    // e.g. YTab inside the Angular Tab component
+    // Find <alt-core-tab> elements even when they are wrapped,
+    // e.g. AltTab inside the Angular Tab component
     slotElements.forEach((el) => {
-      if (el.tagName === tabTagNameUpperCase) return nodeList.push(el as YCoreTab)
+      if (el.tagName === tabTagNameUpperCase) return nodeList.push(el as AltCoreTab)
 
-      const tabEl = el.querySelector<YCoreTab>(tabTagName)
+      const tabEl = el.querySelector<AltCoreTab>(tabTagName)
 
       if (tabEl) nodeList.push(tabEl)
     })
@@ -274,7 +274,7 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
       this.tabs,
       (_, index) => index,
       (item, index) => html`
-        <y-core-tab
+        <alt-core-tab
           .active=${index === this.value}
           .disabled=${item.disabled}
           .isTagVisible=${item.isTagVisible}
@@ -291,7 +291,7 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
           @click=${(event: Event) => {
             this.handleItemClick(event, index)
           }}
-        ></y-core-tab>
+        ></alt-core-tab>
       `,
     )
   }
@@ -301,12 +301,12 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
 
     return html`
         <div class=${`${this.baseClass}__scroll-left-btn`}>
-          <y-core-icon-button
-            .icon=${yChevronLeft}
+          <alt-core-icon-button
+            .icon=${altChevronLeft}
             variant="text"
             @click=${() => { this.scrollToLeft() }}
           >
-          </y-core-icon-button>
+          </alt-core-icon-button>
         </div>
     `
   }
@@ -316,11 +316,11 @@ export class YCoreTabs extends LitElement implements IYCoreTabsProps {
 
     return html`
         <div class=${`${this.baseClass}__scroll-right-btn`}>
-            <y-core-icon-button
-                    .icon=${yChevronRight}
+            <alt-core-icon-button
+                    .icon=${altChevronRight}
                     variant="text"
                     @click=${() => { this.scrollToRight() }}
-            ></y-core-icon-button>
+            ></alt-core-icon-button>
         </div>
     `
   }

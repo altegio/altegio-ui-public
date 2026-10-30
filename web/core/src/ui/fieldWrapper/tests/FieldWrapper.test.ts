@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
-import { YCoreFieldWrapperTagName } from '~shared/constants'
+import { AltCoreFieldWrapperTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 import {
@@ -10,7 +10,7 @@ import { CSSVariablesHostToRootCases, CSSVariablesHostToValueCases } from './cas
 
 import '~core/ui/fieldWrapper'
 
-const tagName = YCoreFieldWrapperTagName
+const tagName = AltCoreFieldWrapperTagName
 
 const {
   component,
@@ -28,7 +28,7 @@ const getFieldInputInLightDOM = () => {
 }
 
 describe(
-  'Core/YInputWrapper',
+  'Core/AltInputWrapper',
   () => {
     beforeAll(() => {
       injectComponentToBody()

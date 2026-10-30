@@ -1,5 +1,5 @@
 <template>
-  <y-core-card-button
+  <alt-core-card-button
     v-bind="props"
     @click="$emit('click', $event)"
     @focus="$emit('focus', $event)"
@@ -32,19 +32,19 @@
     >
       <slot name="after" />
     </div>
-  </y-core-card-button>
+  </alt-core-card-button>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/cardButton'
   import {
     createVueCardButtonProps,
-    type IYVueCardButtonProps,
-    type IYVueCardButtonEmits,
-    type IYVueCoreCardButtonProps,
+    type IAltVueCardButtonProps,
+    type IAltVueCardButtonEmits,
+    type IAltVueCoreCardButtonProps,
   } from '~vue/ui/cardButton/models/types'
 
-  defineOptions({ name: 'YCardButton' })
+  defineOptions({ name: 'AltCardButton' })
 
   defineSlots<{
     before?: () => unknown
@@ -54,9 +54,9 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueCardButtonProps>(),
+    defineProps<IAltVueCardButtonProps>(),
     createVueCardButtonProps(),
-  ) satisfies IYVueCoreCardButtonProps
+  ) satisfies IAltVueCoreCardButtonProps
 
-  defineEmits<IYVueCardButtonEmits>()
+  defineEmits<IAltVueCardButtonEmits>()
 </script>

@@ -1,20 +1,20 @@
 import { css, html, LitElement, nothing, unsafeCSS } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 
-import YCoreTabScopedCSS from '~core/ui/tab/css/Tab.scoped.css?inline'
-import YCoreTabVarsCSS from '~core/ui/tab/css/Tab.vars.css?inline'
+import AltCoreTabScopedCSS from '~core/ui/tab/css/Tab.scoped.css?inline'
+import AltCoreTabVarsCSS from '~core/ui/tab/css/Tab.vars.css?inline'
 
-import { YCoreTabTagName as tagName } from '~shared/constants'
-import { createCoreTabProps, type IYCoreTabProps } from '~core/ui/tab/models/types'
+import { AltCoreTabTagName as tagName } from '~shared/constants'
+import { createCoreTabProps, type IAltCoreTabProps } from '~core/ui/tab/models/types'
 import { classMap } from 'lit/directives/class-map.js'
 
 import '~core/ui/icon'
 import '~core/ui/counter'
 import '~core/ui/tag'
-import { EYCoreCounterVariant } from '~core/ui/counter/models/types'
-import { EYCoreTextSize, EYCoreTextVariant } from '~core/ui/text/models/types'
+import { EAltCoreCounterVariant } from '~core/ui/counter/models/types'
+import { EAltCoreTextSize, EAltCoreTextVariant } from '~core/ui/text/models/types'
 import { interceptEvents } from '~core/utils/event-interceptor'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import { withLocator } from '~core/utils/locator'
 
 const { active, isCounterVisible, isTagVisible, disabled, text, counterValue, tagVariant, leftIcon, leftIconSize, tagText, locator, locatorTag, locatorCounter } = createCoreTabProps()
@@ -22,26 +22,26 @@ const { active, isCounterVisible, isTagVisible, disabled, text, counterValue, ta
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreTab extends LitElement implements IYCoreTabProps {
-  @property({ type: Boolean, attribute: 'active' }) active: IYCoreTabProps['active'] = active
-  @property({ type: Boolean, attribute: 'disabled' }) disabled: IYCoreTabProps['disabled'] = disabled
-  @property({ type: Boolean, attribute: 'is-tag-visible' }) isTagVisible: IYCoreTabProps['isTagVisible'] = isTagVisible
-  @property({ type: String, attribute: 'tag-text' }) tagText: IYCoreTabProps['tagText'] = tagText
-  @property({ type: String, attribute: 'locator' }) locator: IYCoreTabProps['locator'] = locator
-  @property({ type: String, attribute: 'locator-tag' }) locatorTag: IYCoreTabProps['locatorTag'] = locatorTag
-  @property({ type: String, attribute: 'locator-counter' }) locatorCounter: IYCoreTabProps['locatorCounter'] = locatorCounter
-  @property({ type: Boolean, attribute: 'is-counter-visible' }) isCounterVisible: IYCoreTabProps['isCounterVisible'] = isCounterVisible
-  @property({ type: String, attribute: 'text' }) text: IYCoreTabProps['text'] = text
-  @property({ type: Number, attribute: 'counter-value' }) counterValue: IYCoreTabProps['counterValue'] = counterValue
-  @property({ type: String, attribute: 'tag-variant' }) tagVariant: IYCoreTabProps['tagVariant'] = tagVariant
-  @property({ type: Object, attribute: 'left-icon' }) leftIcon: IYCoreTabProps['leftIcon'] = leftIcon
-  @property({ type: String, attribute: 'left-icon-size' }) leftIconSize: IYCoreTabProps['leftIconSize'] = leftIconSize
+export class AltCoreTab extends LitElement implements IAltCoreTabProps {
+  @property({ type: Boolean, attribute: 'active' }) active: IAltCoreTabProps['active'] = active
+  @property({ type: Boolean, attribute: 'disabled' }) disabled: IAltCoreTabProps['disabled'] = disabled
+  @property({ type: Boolean, attribute: 'is-tag-visible' }) isTagVisible: IAltCoreTabProps['isTagVisible'] = isTagVisible
+  @property({ type: String, attribute: 'tag-text' }) tagText: IAltCoreTabProps['tagText'] = tagText
+  @property({ type: String, attribute: 'locator' }) locator: IAltCoreTabProps['locator'] = locator
+  @property({ type: String, attribute: 'locator-tag' }) locatorTag: IAltCoreTabProps['locatorTag'] = locatorTag
+  @property({ type: String, attribute: 'locator-counter' }) locatorCounter: IAltCoreTabProps['locatorCounter'] = locatorCounter
+  @property({ type: Boolean, attribute: 'is-counter-visible' }) isCounterVisible: IAltCoreTabProps['isCounterVisible'] = isCounterVisible
+  @property({ type: String, attribute: 'text' }) text: IAltCoreTabProps['text'] = text
+  @property({ type: Number, attribute: 'counter-value' }) counterValue: IAltCoreTabProps['counterValue'] = counterValue
+  @property({ type: String, attribute: 'tag-variant' }) tagVariant: IAltCoreTabProps['tagVariant'] = tagVariant
+  @property({ type: Object, attribute: 'left-icon' }) leftIcon: IAltCoreTabProps['leftIcon'] = leftIcon
+  @property({ type: String, attribute: 'left-icon-size' }) leftIconSize: IAltCoreTabProps['leftIconSize'] = leftIconSize
 
   private readonly baseClass = tagName
 
   static readonly styles = [
-    css`${unsafeCSS(YCoreTabVarsCSS)}`,
-    css`${unsafeCSS(YCoreTabScopedCSS)}`,
+    css`${unsafeCSS(AltCoreTabVarsCSS)}`,
+    css`${unsafeCSS(AltCoreTabScopedCSS)}`,
   ]
 
   private get computedClass() {
@@ -50,13 +50,13 @@ export class YCoreTab extends LitElement implements IYCoreTabProps {
 
   private get computedTextVariant() {
     if (this.active) {
-      return this.disabled ? EYCoreTextVariant.TERTIARY : EYCoreTextVariant.PRIMARY
+      return this.disabled ? EAltCoreTextVariant.TERTIARY : EAltCoreTextVariant.PRIMARY
     }
-    return this.disabled ? EYCoreTextVariant.TERTIARY : EYCoreTextVariant.SECONDARY
+    return this.disabled ? EAltCoreTextVariant.TERTIARY : EAltCoreTextVariant.SECONDARY
   }
 
   private get computedCounterVariant() {
-    return this.active ? EYCoreCounterVariant.OTHER_INVERT : EYCoreCounterVariant.SECONDARY
+    return this.active ? EAltCoreCounterVariant.OTHER_INVERT : EAltCoreCounterVariant.SECONDARY
   }
 
   private get computedIconClass() {
@@ -82,46 +82,46 @@ export class YCoreTab extends LitElement implements IYCoreTabProps {
           ${
             this.leftIcon
               ? html`
-                  <y-core-icon
+                  <alt-core-icon
                     class=${classMap(this.computedIconClass)}
                     .icon=${this.leftIcon}
                     .size=${this.leftIconSize}
-                  ></y-core-icon>`
+                  ></alt-core-icon>`
               : nothing
           }
         </slot>
 
-        <y-core-text
+        <alt-core-text
           class=${`${this.baseClass}__text`}
           .variant=${this.computedTextVariant}
-          .size=${EYCoreTextSize.P2_MEDIUM}
+          .size=${EAltCoreTextSize.P2_MEDIUM}
           ellipsis
         >
             ${this.text}
-        </y-core-text>
+        </alt-core-text>
         
         <slot name="after">
           ${
             this.isCounterVisible
               ? html`
-                  <y-core-counter
+                  <alt-core-counter
                     .value=${this.counterValue}
                     .variant=${this.computedCounterVariant}
                     .disabled=${this.disabled}
                     .locator=${this.locatorCounter}
-                  ></y-core-counter>`
+                  ></alt-core-counter>`
               : nothing
           }
           
           ${
             this.isTagVisible && this.tagText
               ? html`
-                  <y-core-tag
+                  <alt-core-tag
                     .variant=${this.tagVariant}
                     .disabled=${this.disabled}
-                    .size=${EYSizes.SMALL}
+                    .size=${EAltSizes.SMALL}
                     .locator=${this.locatorTag}
-                  >${this.tagText}</y-core-tag>`
+                  >${this.tagText}</alt-core-tag>`
               : nothing
           }
         </slot>

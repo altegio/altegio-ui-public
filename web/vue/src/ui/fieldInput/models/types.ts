@@ -1,6 +1,6 @@
 import {
   createCoreFieldInputProps,
-  type IYCoreFieldInputProps,
+  type IAltCoreFieldInputProps,
   type InputEvent,
   type FocusEvent,
   type BlurEvent,
@@ -8,27 +8,27 @@ import {
 } from '~core/ui/fieldInput/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreFieldInputProps extends Omit<IYCoreFieldInputProps, 'value'> {
-  modelValue: IYCoreFieldInputProps['value'] | undefined
+export interface IAltVueCoreFieldInputProps extends Omit<IAltCoreFieldInputProps, 'value'> {
+  modelValue: IAltCoreFieldInputProps['value'] | undefined
 }
 
-export interface IYVueFieldInputProps {
-  disabled?: IYVueCoreFieldInputProps['disabled']
-  size?: IYVueCoreFieldInputProps['size']
-  readonly?: IYVueCoreFieldInputProps['readonly']
-  modelValue?: IYVueCoreFieldInputProps['modelValue']
-  name?: IYVueCoreFieldInputProps['name']
-  type?: IYVueCoreFieldInputProps['type']
-  placeholder?: IYVueCoreFieldInputProps['placeholder']
-  required?: IYVueCoreFieldInputProps['required']
-  maxlength?: IYVueCoreFieldInputProps['maxlength']
-  autofocus?: IYVueCoreFieldInputProps['autofocus']
-  autocomplete?: IYVueCoreFieldInputProps['autocomplete']
-  hideSpaceLeft?: IYVueCoreFieldInputProps['hideSpaceLeft']
-  hideSpaceRight?: IYVueCoreFieldInputProps['hideSpaceRight']
+export interface IAltVueFieldInputProps {
+  disabled?: IAltVueCoreFieldInputProps['disabled']
+  size?: IAltVueCoreFieldInputProps['size']
+  readonly?: IAltVueCoreFieldInputProps['readonly']
+  modelValue?: IAltVueCoreFieldInputProps['modelValue']
+  name?: IAltVueCoreFieldInputProps['name']
+  type?: IAltVueCoreFieldInputProps['type']
+  placeholder?: IAltVueCoreFieldInputProps['placeholder']
+  required?: IAltVueCoreFieldInputProps['required']
+  maxlength?: IAltVueCoreFieldInputProps['maxlength']
+  autofocus?: IAltVueCoreFieldInputProps['autofocus']
+  autocomplete?: IAltVueCoreFieldInputProps['autocomplete']
+  hideSpaceLeft?: IAltVueCoreFieldInputProps['hideSpaceLeft']
+  hideSpaceRight?: IAltVueCoreFieldInputProps['hideSpaceRight']
 }
 
-export const createVueFieldInputProps = (): TDefinedVueProps<IYVueFieldInputProps> => {
+export const createVueFieldInputProps = (): TDefinedVueProps<IAltVueFieldInputProps> => {
   const { disabled, size, readonly, value: modelValue, name, type, placeholder, required, maxlength, autofocus, hideSpaceLeft, hideSpaceRight, autocomplete } = createCoreFieldInputProps()
 
   return {
@@ -48,7 +48,7 @@ export const createVueFieldInputProps = (): TDefinedVueProps<IYVueFieldInputProp
   }
 }
 
-export interface IYVueFieldInputEmits {
+export interface IAltVueFieldInputEmits {
   (e: 'update:modelValue', value: InputEvent['detail']['value']): void
   (e: 'focus', event: FocusEvent): void
   (e: 'blur', event: BlurEvent): void

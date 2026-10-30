@@ -6,7 +6,7 @@ export class BlurEvent extends CustomEvent<{ event: Event }> {}
 export class MouseEnterEvent extends CustomEvent<{ event: Event }> {}
 export class MouseLeaveEvent extends CustomEvent<{ event: Event }> {}
 
-export type TYCoreFieldWrapperEvents = TEventsStoryArgs<{
+export type TAltCoreFieldWrapperEvents = TEventsStoryArgs<{
   ClickOutsideEvent: typeof ClickOutsideEvent
   FocusEvent: typeof FocusEvent
   BlurEvent: typeof BlurEvent

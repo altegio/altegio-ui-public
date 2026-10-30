@@ -1,26 +1,26 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
-import type { IYBaseCustomEvent } from '~shared/types/global'
+import type { IAltBaseCustomEvent } from '~shared/types/global'
 
-export interface IYCoreFieldInputInputEvent extends IYBaseCustomEvent {
+export interface IAltCoreFieldInputInputEvent extends IAltBaseCustomEvent {
   value: string
 }
 
-export interface IYCoreFieldInputKeydownEvent extends IYBaseCustomEvent {
+export interface IAltCoreFieldInputKeydownEvent extends IAltBaseCustomEvent {
   code: string
   event: KeyboardEvent
 }
 
-export class FocusEvent extends CustomEvent<IYBaseCustomEvent> {}
+export class FocusEvent extends CustomEvent<IAltBaseCustomEvent> {}
 
-export class BlurEvent extends CustomEvent<IYBaseCustomEvent> {}
+export class BlurEvent extends CustomEvent<IAltBaseCustomEvent> {}
 
-export class InputEvent extends CustomEvent<IYCoreFieldInputInputEvent> {}
+export class InputEvent extends CustomEvent<IAltCoreFieldInputInputEvent> {}
 
-export class KeydownEvent extends CustomEvent<IYCoreFieldInputKeydownEvent> {}
+export class KeydownEvent extends CustomEvent<IAltCoreFieldInputKeydownEvent> {}
 
-export class RenderEvent extends CustomEvent<IYBaseCustomEvent> {}
+export class RenderEvent extends CustomEvent<IAltBaseCustomEvent> {}
 
-export type TYCoreFieldInputEvents = TEventsStoryArgs<{
+export type TAltCoreFieldInputEvents = TEventsStoryArgs<{
   FocusEvent: typeof FocusEvent
   BlurEvent: typeof BlurEvent
   InputEvent: typeof InputEvent

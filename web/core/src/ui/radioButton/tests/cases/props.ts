@@ -1,62 +1,62 @@
 import { text, empty, number } from '~shared/tests/slotContents'
-import { type IYCoreRadioButtonExternalProps } from '../../models/types'
-import { EYSizes } from '~shared/types/global'
+import { type IAltCoreRadioButtonExternalProps } from '../../models/types'
+import { EAltSizes } from '~shared/types/global'
 import type { TPropTestCase } from '~shared/types/tests'
 
-import { EYCoreLabelAlignment } from '~core/ui/label/models/types'
+import { EAltCoreLabelAlignment } from '~core/ui/label/models/types'
 
 
-export const propSizeTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'size'>[] = [
-  { prop: 'size', case: EYSizes.SMALL, value: EYSizes.SMALL, expected: EYSizes.SMALL },
-  { prop: 'size', case: EYSizes.MEDIUM, value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
+export const propSizeTestCases: TPropTestCase<IAltCoreRadioButtonExternalProps, 'size'>[] = [
+  { prop: 'size', case: EAltSizes.SMALL, value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
+  { prop: 'size', case: EAltSizes.MEDIUM, value: EAltSizes.MEDIUM, expected: EAltSizes.MEDIUM },
   { prop: 'size', case: 'undefined', value: undefined, expected: undefined },
 ]
 
-export const propCheckedTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'checked'>[] = [
+export const propCheckedTestCases: TPropTestCase<IAltCoreRadioButtonExternalProps, 'checked'>[] = [
   { prop: 'checked', case: 'true', value: true, expected: true },
   { prop: 'checked', case: 'false', value: false, expected: false },
 ]
 
-export const propDisabledTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'disabled'>[] = [
+export const propDisabledTestCases: TPropTestCase<IAltCoreRadioButtonExternalProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'have', value: true, expected: true },
   { prop: 'disabled', case: 'not have', value: false, expected: false },
 ]
 
-export const propAlignmentTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'alignment'>[] = [
-  { prop: 'alignment', case: EYCoreLabelAlignment.TOP, value: EYCoreLabelAlignment.TOP, expected: EYCoreLabelAlignment.TOP },
-  { prop: 'alignment', case: EYCoreLabelAlignment.CENTER, value: EYCoreLabelAlignment.CENTER, expected: EYCoreLabelAlignment.CENTER },
+export const propAlignmentTestCases: TPropTestCase<IAltCoreRadioButtonExternalProps, 'alignment'>[] = [
+  { prop: 'alignment', case: EAltCoreLabelAlignment.TOP, value: EAltCoreLabelAlignment.TOP, expected: EAltCoreLabelAlignment.TOP },
+  { prop: 'alignment', case: EAltCoreLabelAlignment.CENTER, value: EAltCoreLabelAlignment.CENTER, expected: EAltCoreLabelAlignment.CENTER },
   { prop: 'alignment', case: 'undefined', value: undefined, expected: undefined },
 ]
 
-export const propLabelTextTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'labelText'>[] = [
+export const propLabelTextTestCases: TPropTestCase<IAltCoreRadioButtonExternalProps, 'labelText'>[] = [
   { prop: 'labelText', case: 'with content', value: text, expected: text },
   { prop: 'labelText', case: 'without content', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: undefined },
 ]
 
-export const propLabelTooltipTextTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'labelTooltipText'>[] = [
+export const propLabelTooltipTextTestCases: TPropTestCase<IAltCoreRadioButtonExternalProps, 'labelTooltipText'>[] = [
   { prop: 'labelTooltipText', case: 'with content', value: text, expected: text },
   { prop: 'labelTooltipText', case: 'without content', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: undefined },
 ]
 
-export const propRequiredTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'required'>[] = [
+export const propRequiredTestCases: TPropTestCase<IAltCoreRadioButtonExternalProps, 'required'>[] = [
   { prop: 'required', case: 'true', value: true, expected: true },
   { prop: 'required', case: 'false', value: false, expected: false },
 ]
 
-export const propAnnotationTextTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'annotationText'>[] = [
+export const propAnnotationTextTestCases: TPropTestCase<IAltCoreRadioButtonExternalProps, 'annotationText'>[] = [
   { prop: 'annotationText', case: 'with content', value: text, expected: text },
   { prop: 'annotationText', case: 'without content', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: empty },
 ]
 
-export const propLabelOverflowDebounceTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'labelOverflowDebounce'>[] = [
+export const propLabelOverflowDebounceTestCases: TPropTestCase<IAltCoreRadioButtonExternalProps, 'labelOverflowDebounce'>[] = [
   { prop: 'labelOverflowDebounce', case: 'with content', value: number, expected: number },
   { prop: 'labelOverflowDebounce', case: 'undefined', value: undefined, expected: undefined },
 ]
 
-export const propErrorsTestCases: TPropTestCase<IYCoreRadioButtonExternalProps, 'errors'>[] = [
+export const propErrorsTestCases: TPropTestCase<IAltCoreRadioButtonExternalProps, 'errors'>[] = [
   { prop: 'errors', case: 'with an array of errors', value: ['error'], expected: true },
   { prop: 'errors', case: 'with an empty array', value: [], expected: false },
   { prop: 'errors', case: 'undefined', value: undefined, expected: false },

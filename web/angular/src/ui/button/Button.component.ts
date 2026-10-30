@@ -4,24 +4,24 @@ import '~core/ui/button'
 
 import {
   createNgButtonProps,
-  type IYNgButtonProps,
+  type IAltNgButtonProps,
 } from '~ng/ui/button/models/types'
 
 import { DefaultValue } from '~ng/utils/default-value.decorator'
-import { YCoreButton } from '~core/ui/button'
-import { YCoreButtonTagName } from '~web/shared/constants'
+import { AltCoreButton } from '~core/ui/button'
+import { AltCoreButtonTagName } from '~web/shared/constants'
 import { defineCustomElement } from '~web/shared/utils/components'
 
 const { disabled, href, iconLeft, iconRight, label, loading, size, target, alignment, variant, fullWidth } = createNgButtonProps()
 
-defineCustomElement(YCoreButtonTagName, YCoreButton)
+defineCustomElement(AltCoreButtonTagName, AltCoreButton)
 
 @Component({
-  selector: 'YButton',
+  selector: 'AltButton',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   standalone: true,
   template: `
-    <y-core-button
+    <alt-core-button
       [label]="label"
       [href]="href"
       [target]="target"
@@ -34,19 +34,19 @@ defineCustomElement(YCoreButtonTagName, YCoreButton)
       [iconLeft]="iconLeft"
       [iconRight]="iconRight"
     >
-    </y-core-button>
+    </alt-core-button>
   `,
 })
-export class YButton implements IYNgButtonProps {
-  @Input() @DefaultValue(label) label: IYNgButtonProps['label'] = label
-  @Input() @DefaultValue(href) href: IYNgButtonProps['href'] = href
-  @Input() @DefaultValue(target) target: IYNgButtonProps['target'] = target
-  @Input() @DefaultValue(size) size: IYNgButtonProps['size'] = size
-  @Input() @DefaultValue(variant) variant: IYNgButtonProps['variant'] = variant
-  @Input() @DefaultValue(disabled) disabled: IYNgButtonProps['disabled'] = disabled
-  @Input() @DefaultValue(loading) loading: IYNgButtonProps['loading'] = loading
-  @Input() @DefaultValue(fullWidth) fullWidth: IYNgButtonProps['fullWidth'] = fullWidth
-  @Input() @DefaultValue(alignment) alignment: IYNgButtonProps['alignment'] = alignment
-  @Input() @DefaultValue(iconLeft) iconLeft: IYNgButtonProps['iconLeft'] = iconLeft
-  @Input() @DefaultValue(iconRight) iconRight: IYNgButtonProps['iconRight'] = iconRight
+export class AltButton implements IAltNgButtonProps {
+  @Input() @DefaultValue(label) label: IAltNgButtonProps['label'] = label
+  @Input() @DefaultValue(href) href: IAltNgButtonProps['href'] = href
+  @Input() @DefaultValue(target) target: IAltNgButtonProps['target'] = target
+  @Input() @DefaultValue(size) size: IAltNgButtonProps['size'] = size
+  @Input() @DefaultValue(variant) variant: IAltNgButtonProps['variant'] = variant
+  @Input() @DefaultValue(disabled) disabled: IAltNgButtonProps['disabled'] = disabled
+  @Input() @DefaultValue(loading) loading: IAltNgButtonProps['loading'] = loading
+  @Input() @DefaultValue(fullWidth) fullWidth: IAltNgButtonProps['fullWidth'] = fullWidth
+  @Input() @DefaultValue(alignment) alignment: IAltNgButtonProps['alignment'] = alignment
+  @Input() @DefaultValue(iconLeft) iconLeft: IAltNgButtonProps['iconLeft'] = iconLeft
+  @Input() @DefaultValue(iconRight) iconRight: IAltNgButtonProps['iconRight'] = iconRight
 }

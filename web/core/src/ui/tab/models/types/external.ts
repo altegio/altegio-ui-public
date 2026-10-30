@@ -1,15 +1,15 @@
 import type { TAddPrefixToObject } from '~shared/types/utils'
 import { addPrefixToObjectKeys } from '~shared/utils'
 import { pick } from 'radash'
-import { createCoreTagExternalProps, type IYTagExternalProps } from '~core/ui/tag/models/types'
-import { createCoreCounterExternalProps, type IYCoreCounterExternalProps } from '~core/ui/counter/models/types'
-import { type IYCoreIconExternalProps } from '~core/ui/icon/models/types'
+import { createCoreTagExternalProps, type IAltTagExternalProps } from '~core/ui/tag/models/types'
+import { createCoreCounterExternalProps, type IAltCoreCounterExternalProps } from '~core/ui/counter/models/types'
+import { type IAltCoreIconExternalProps } from '~core/ui/icon/models/types'
 
-export interface IYCoreTabExternalProps extends
-  TAddPrefixToObject<Pick<IYTagExternalProps, 'variant'>, 'tag'>,
-  TAddPrefixToObject<Pick<IYCoreCounterExternalProps, 'value'>, 'counter'> {
-  leftIcon: IYCoreIconExternalProps['icon'] | undefined
-  leftIconSize: IYCoreIconExternalProps['size']
+export interface IAltCoreTabExternalProps extends
+  TAddPrefixToObject<Pick<IAltTagExternalProps, 'variant'>, 'tag'>,
+  TAddPrefixToObject<Pick<IAltCoreCounterExternalProps, 'value'>, 'counter'> {
+  leftIcon: IAltCoreIconExternalProps['icon'] | undefined
+  leftIconSize: IAltCoreIconExternalProps['size']
   text: string | undefined
   active: boolean | undefined
   disabled: boolean | undefined
@@ -21,7 +21,7 @@ export interface IYCoreTabExternalProps extends
   locatorCounter: string | undefined
 }
 
-export const createCoreTabExternalProps = (): IYCoreTabExternalProps => {
+export const createCoreTabExternalProps = (): IAltCoreTabExternalProps => {
   return {
     ...addPrefixToObjectKeys(pick(createCoreTagExternalProps(), ['variant']), 'tag'),
     ...addPrefixToObjectKeys(pick(createCoreCounterExternalProps(), ['value']), 'counter'),

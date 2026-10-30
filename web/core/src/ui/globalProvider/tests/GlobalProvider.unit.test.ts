@@ -4,7 +4,7 @@ import { text, empty } from '~shared/tests/slotContents'
 import type { TSlotTestCase } from '~shared/types/tests'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot } from '~shared/tests/utils'
-import { YCoreGlobalProviderTagName } from '~shared/constants'
+import { AltCoreGlobalProviderTagName } from '~shared/constants'
 import { GlobalContext } from '~core/ui/globalProvider/context'
 import '~core/ui/globalProvider'
 
@@ -13,7 +13,7 @@ const slotDefaultTestCases: TSlotTestCase[] = [
   { slot: 'default', case: 'without content', content: empty },
 ]
 
-const tagName = YCoreGlobalProviderTagName
+const tagName = AltCoreGlobalProviderTagName
 
 const {
   component,
@@ -24,7 +24,7 @@ const {
 } = useCoreTests(tagName)
 
 describe(
-  'Core/YCoreGlobalProvider/Unit',
+  'Core/AltCoreGlobalProvider/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()

@@ -4,16 +4,16 @@ import { omit } from 'radash'
 import { useArgs } from 'storybook/preview-api'
 import { action } from 'storybook/actions'
 
-import { YCountField } from '~vue/ui/countField'
-import { type IYVueCountFieldProps } from '~vue/ui/countField/models/types'
-import type { TYCoreCountFieldMeta } from '~core/ui/countField/stories/CountField.stories'
-import yCoreCountFieldStoryMeta from '~core/ui/countField/stories/CountField.stories'
+import { AltCountField } from '~vue/ui/countField'
+import { type IAltVueCountFieldProps } from '~vue/ui/countField/models/types'
+import type { TAltCoreCountFieldMeta } from '~core/ui/countField/stories/CountField.stories'
+import altCoreCountFieldStoryMeta from '~core/ui/countField/stories/CountField.stories'
 import { getComponentContentTable } from '~shared/.storybook/tables'
 import type { BlurEvent } from '~core/ui/cardWrapper/models/types'
 import type { KeydownEvent } from '~core/ui/fieldInput/models/types'
 import type { ChangedValueEvent } from '~core/ui/countField/models/types'
 
-type TVueCountFieldStoryMeta = IYVueCountFieldProps & TYCoreCountFieldMeta & {
+type TVueCountFieldStoryMeta = IAltVueCountFieldProps & TAltCoreCountFieldMeta & {
   modelValue: number
 }
 
@@ -50,7 +50,7 @@ const meta: Meta<TVueCountFieldStoryMeta> = {
     }
 
     return {
-      components: { YCountField },
+      components: { AltCountField },
       setup() {
         const vModelValue = computed({
           get: () => args.modelValue,
@@ -69,21 +69,21 @@ const meta: Meta<TVueCountFieldStoryMeta> = {
       },
       template: `
         <div style="width: 250px">
-          <YCountField
+          <AltCountField
             v-bind="args"
             v-model="vModelValue"
             :errors="computedErrors"
             @focus="handleFocus"
             @blur="handleBlur"
             @keydown="handleKeydown"
-          ></YCountField>
+          ></AltCountField>
         </div>
       `,
     }
   },
   argTypes: {
     ...omit(
-        yCoreCountFieldStoryMeta.argTypes ?? {},
+        altCoreCountFieldStoryMeta.argTypes ?? {},
         ['value', 'onChangedValue'],
     ),
     modelValue: {
@@ -94,7 +94,7 @@ const meta: Meta<TVueCountFieldStoryMeta> = {
   },
   args: {
     ...omit(
-        yCoreCountFieldStoryMeta.args ?? {},
+        altCoreCountFieldStoryMeta.args ?? {},
         ['value', 'onChangedValue', 'onInput', 'onKeydown', 'onFocus', 'onBlur'],
     ),
     modelValue: 5,

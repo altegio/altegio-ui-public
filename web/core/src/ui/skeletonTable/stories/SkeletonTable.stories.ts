@@ -3,15 +3,15 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 import { pick } from 'radash'
 
 import {
-  type IYCoreSkeletonTableProps,
+  type IAltCoreSkeletonTableProps,
   type ISkeletonTableColumn,
 } from '~core/ui/skeletonTable/models/types'
 import {
-  YCoreSkeletonTableTagName as tagName,
+  AltCoreSkeletonTableTagName as tagName,
 } from '~shared/constants'
 import { getComponentStateTable } from '~shared/.storybook/tables'
 
-import yTableStoryMeta from '~core/ui/table/stories/Table.stories'
+import altTableStoryMeta from '~core/ui/table/stories/Table.stories'
 
 const storyColumns: ISkeletonTableColumn[] = [
   { gridTemplate: '170px', align: 'left' },
@@ -28,7 +28,7 @@ const storyRows = 10
 /**
  * ## Core SkeletonTable
  */
-const meta: Meta<IYCoreSkeletonTableProps> = {
+const meta: Meta<IAltCoreSkeletonTableProps> = {
   title: 'SkeletonTable',
   id: 'skeletonTable',
   parameters: { controls: { sort: 'alpha' } },
@@ -44,17 +44,17 @@ const meta: Meta<IYCoreSkeletonTableProps> = {
     hideBar,
   }) => {
     return html`
-      <y-core-skeleton-table
+      <alt-core-skeleton-table
         .columns=${columns}
         .rows=${rows}
         .hideHead=${hideHead}
         .hideBar=${hideBar}
-      ></y-core-skeleton-table>
+      ></alt-core-skeleton-table>
     `
   },
   argTypes: {
     ...pick(
-      yTableStoryMeta.argTypes ?? {},
+      altTableStoryMeta.argTypes ?? {},
       ['hideHead', 'hideBar'],
     ),
     columns: {
@@ -70,15 +70,15 @@ const meta: Meta<IYCoreSkeletonTableProps> = {
   },
   args: {
     ...pick(
-      yTableStoryMeta.args ?? {},
+      altTableStoryMeta.args ?? {},
       ['hideHead', 'hideBar'],
     ),
     columns: storyColumns,
     rows: storyRows,
   },
-} satisfies Meta<IYCoreSkeletonTableProps>
+} satisfies Meta<IAltCoreSkeletonTableProps>
 
 export default meta
-type Story = StoryObj<IYCoreSkeletonTableProps>
+type Story = StoryObj<IAltCoreSkeletonTableProps>
 
 export const Playground: Story = { args: {} }

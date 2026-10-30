@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YFieldAvatar } from '~ng/ui/fieldAvatar'
-import yCoreFieldAvatarStoryMeta from '~core/ui/fieldAvatar/stories/FieldAvatar.stories'
+import { AltFieldAvatar } from '~ng/ui/fieldAvatar'
+import altCoreFieldAvatarStoryMeta from '~core/ui/fieldAvatar/stories/FieldAvatar.stories'
 
 /**
  * Angular wrapper for Core FieldAvatar
  */
-const meta: Meta<YFieldAvatar> = {
+const meta: Meta<AltFieldAvatar> = {
   title: 'Inputs/Partials/⚠️ FieldAvatar',
   id: 'fieldAvatar',
   parameters: { controls: { sort: 'alpha' } },
-  component: YFieldAvatar,
+  component: AltFieldAvatar,
   tags: [
     'angular',
     'autodocs',
@@ -18,20 +18,20 @@ const meta: Meta<YFieldAvatar> = {
   render: (args) => ({
     props: { ...args },
     template: `
-      <YFieldAvatar
+      <AltFieldAvatar
         [disabled]="disabled"
         [size]="size"
         [photo]="photo"
         [initials]="initials"
         [icon]="icon"
         style="border: 1px dashed;width: min-content;display: inline-flex;"
-      ></YFieldAvatar>`,
+      ></AltFieldAvatar>`,
   }),
-  argTypes: { ...yCoreFieldAvatarStoryMeta.argTypes },
-  args: { ...yCoreFieldAvatarStoryMeta.args },
-} satisfies Meta<YFieldAvatar>
+  argTypes: { ...altCoreFieldAvatarStoryMeta.argTypes },
+  args: { ...altCoreFieldAvatarStoryMeta.args },
+} satisfies Meta<AltFieldAvatar>
 
 export default meta
-type Story = StoryObj<YFieldAvatar>
+type Story = StoryObj<AltFieldAvatar>
 
 export const Playground: Story = { args: {} }

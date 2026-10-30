@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 
 import { useState, useEffect } from 'storybook/preview-api'
 
-import { YCoreTabsTagName as tagName } from '~shared/constants'
+import { AltCoreTabsTagName as tagName } from '~shared/constants'
 import { items as itemsArgType } from '~shared/.storybook/argTypes'
 import { getComponentStateTable, storyControlsTable } from '~shared/.storybook/tables'
 
@@ -14,18 +14,18 @@ import '~core/ui/tabs'
 import type { ChangeActiveTabEvent } from '~core/ui/tabs/models/types'
 import { createCoreTabsExternalProps } from '~core/ui/tabs/models/types'
 import {
-  type IYCoreTabsExternalProps, type IYCoreTabsItem,
+  type IAltCoreTabsExternalProps, type IAltCoreTabsItem,
 } from '~core/ui/tabs/models/types'
 import { createCoreTabExternalProps } from '~core/ui/tab/models/types'
-import { yAi } from '~shared/icons'
+import { altAi } from '~shared/icons'
 import { repeat } from 'lit/directives/repeat.js'
 import { nothing } from 'lit'
 
-export interface IYCoreTabsStorySlots {
+export interface IAltCoreTabsStorySlots {
   showDefaultSlot: boolean
 }
 
-export type TYCoreTabsStoryMeta = IYCoreTabsExternalProps & IYCoreTabsStorySlots
+export type TAltCoreTabsStoryMeta = IAltCoreTabsExternalProps & IAltCoreTabsStorySlots
 
 const TABS_COUNT = 5
 
@@ -33,7 +33,7 @@ const tabDefaultProps = createCoreTabExternalProps()
 
 const { value, tabs } = createCoreTabsExternalProps()
 
-const tabItems: IYCoreTabsItem[] = Array.from(Array(TABS_COUNT).keys())
+const tabItems: IAltCoreTabsItem[] = Array.from(Array(TABS_COUNT).keys())
   .map((i) => (
     {
       ...tabDefaultProps,
@@ -43,13 +43,13 @@ const tabItems: IYCoreTabsItem[] = Array.from(Array(TABS_COUNT).keys())
   .concat({
     ...tabDefaultProps,
     text: 'Tab with icon',
-    leftIcon: yAi,
+    leftIcon: altAi,
     leftIconSize: '16px',
   })
   .concat({
     ...tabDefaultProps,
     text: 'Disabled Tab with icon and counter',
-    leftIcon: yAi,
+    leftIcon: altAi,
     leftIconSize: '16px',
     isCounterVisible: true,
     counterValue: 16,
@@ -58,7 +58,7 @@ const tabItems: IYCoreTabsItem[] = Array.from(Array(TABS_COUNT).keys())
   .concat({
     ...tabDefaultProps,
     text: 'Tab with icon and counter',
-    leftIcon: yAi,
+    leftIcon: altAi,
     leftIconSize: '16px',
     isCounterVisible: true,
     counterValue: 16,
@@ -66,7 +66,7 @@ const tabItems: IYCoreTabsItem[] = Array.from(Array(TABS_COUNT).keys())
   .concat({
     ...tabDefaultProps,
     text: 'Tab with icon and counter and tag',
-    leftIcon: yAi,
+    leftIcon: altAi,
     leftIconSize: '16px',
     isCounterVisible: true,
     counterValue: 16,
@@ -74,7 +74,7 @@ const tabItems: IYCoreTabsItem[] = Array.from(Array(TABS_COUNT).keys())
     tagText: 'New',
   })
 
-const meta: Meta<TYCoreTabsStoryMeta> = {
+const meta: Meta<TAltCoreTabsStoryMeta> = {
   title: '✅ Tabs',
   id: 'tabs',
   parameters: { controls: { sort: 'alpha' } },
@@ -107,7 +107,7 @@ const meta: Meta<TYCoreTabsStoryMeta> = {
         tabs.slice(0, 3),
         (_, index) => index,
         (item, index) => html`
-          <y-core-tab
+          <alt-core-tab
             .active=${index === activeTab}
             .disabled=${item.disabled}
             .isTagVisible=${item.isTagVisible}
@@ -121,20 +121,20 @@ const meta: Meta<TYCoreTabsStoryMeta> = {
             @click=${() => {
           setActiveTab(index)
         }}
-          ></y-core-tab>
+          ></alt-core-tab>
         `,
       )
     }
 
     return html`
-      <y-core-tabs
+      <alt-core-tabs
         .tabs=${tabs}
         .value=${activeTab}
         @change-active-tab=${changeTabHandler}
       >${showDefaultSlot
           ? slotTabs()
           : nothing
-        }</y-core-tabs>
+        }</alt-core-tabs>
     `
   },
   argTypes: {
@@ -155,9 +155,9 @@ const meta: Meta<TYCoreTabsStoryMeta> = {
     },
   },
   args: { tabs: tabItems, value: 0, showDefaultSlot: false },
-} satisfies Meta<TYCoreTabsStoryMeta>
+} satisfies Meta<TAltCoreTabsStoryMeta>
 
 export default meta
-type Story = StoryObj<TYCoreTabsStoryMeta>
+type Story = StoryObj<TAltCoreTabsStoryMeta>
 
 export const Playground: Story = { args: {} }

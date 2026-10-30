@@ -1,19 +1,19 @@
 <template>
-  <y-core-field-avatar v-bind="props" />
+  <alt-core-field-avatar v-bind="props" />
 </template>
 
 <script setup lang="ts">
   import '~core/ui/fieldAvatar'
   import {
     createVueFieldAvatarProps,
-    type IYVueFieldAvatarProps,
-    type IYVueCoreFieldAvatarProps,
+    type IAltVueFieldAvatarProps,
+    type IAltVueCoreFieldAvatarProps,
   } from '~vue/ui/fieldAvatar/models/types'
 
-  defineOptions({ name: 'YFieldAvatar' })
+  defineOptions({ name: 'AltFieldAvatar' })
 
   const props = withDefaults(
-    defineProps<IYVueFieldAvatarProps>(),
+    defineProps<IAltVueFieldAvatarProps>(),
     createVueFieldAvatarProps(),
-  ) satisfies IYVueCoreFieldAvatarProps
+  ) satisfies IAltVueCoreFieldAvatarProps
 </script>

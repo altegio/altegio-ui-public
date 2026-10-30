@@ -1,2 +1,2 @@
-export { default as YSearchField } from './SearchField.vue'
+export { default as AltSearchField } from './SearchField.vue'
 export type * from './models/types'

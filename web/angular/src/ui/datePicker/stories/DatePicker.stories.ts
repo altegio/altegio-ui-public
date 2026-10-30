@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YDatePicker } from '~ng/ui/datePicker'
-import yCoreDatePickerStoryMeta, { type IYCoreDatePickerStoryProps } from '~core/ui/datePicker/stories/DatePicker.stories'
+import { AltDatePicker } from '~ng/ui/datePicker'
+import altCoreDatePickerStoryMeta, { type IAltCoreDatePickerStoryProps } from '~core/ui/datePicker/stories/DatePicker.stories'
 import { omit } from 'radash'
-import type { IYNgDatePickerProps } from '~ng/ui/datePicker/models/types'
+import type { IAltNgDatePickerProps } from '~ng/ui/datePicker/models/types'
 import { action } from 'storybook/actions'
 import {
   type PickEvent,
 } from '~ng/ui/datePicker/models/types'
 
-type TAngularDatePickerMeta = IYNgDatePickerProps & IYCoreDatePickerStoryProps
+type TAngularDatePickerMeta = IAltNgDatePickerProps & IAltCoreDatePickerStoryProps
 
 /**
  * Angular wrapper for DatePicker
@@ -18,7 +18,7 @@ const meta: Meta<TAngularDatePickerMeta> = {
   title: 'Inputs/🔍 DatePicker',
   id: 'datePicker',
   parameters: { controls: { sort: 'alpha' } },
-  component: YDatePicker,
+  component: AltDatePicker,
   tags: [
     'angular',
     'autodocs',
@@ -39,7 +39,7 @@ const meta: Meta<TAngularDatePickerMeta> = {
       template: `
         <div style="padding: 50px 50px 350px; margin: 20px; border: 1px dashed black; border-radius: 8px;">
           <div style="max-width: 300px; padding: 10px; overflow: hidden">
-            <YDatePicker
+            <AltDatePicker
               [date]="date"
               [isRange]="isRange"
               [minDate]="minDate"
@@ -61,13 +61,13 @@ const meta: Meta<TAngularDatePickerMeta> = {
               [locale]="localeData"
               (pick)="onPick($event)"
             >
-            </YDatePicker>
+            </AltDatePicker>
           </div>
         </div>`,
     }
   },
-  argTypes: { ...omit(yCoreDatePickerStoryMeta.argTypes ?? {}, ['readonly']) },
-  args: { ...omit(yCoreDatePickerStoryMeta.args ?? {}, ['readonly']) },
+  argTypes: { ...omit(altCoreDatePickerStoryMeta.argTypes ?? {}, ['readonly']) },
+  args: { ...omit(altCoreDatePickerStoryMeta.args ?? {}, ['readonly']) },
 } satisfies Meta<TAngularDatePickerMeta>
 
 export default meta

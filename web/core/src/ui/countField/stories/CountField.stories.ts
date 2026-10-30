@@ -6,22 +6,22 @@ import '~core/ui/countField'
 
 import {
   createCoreCountFieldProps,
-  type IYCoreCountFieldProps,
+  type IAltCoreCountFieldProps,
   type ChangedValueEvent,
-  type TYCoreCountFieldEvents,
+  type TAltCoreCountFieldEvents,
   DEFAULT_STRING_VALUE,
 } from '~core/ui/countField/models/types'
 import {
-  YCoreCountFieldTagName as tagName,
+  AltCoreCountFieldTagName as tagName,
 } from '~shared/constants'
 import { omit, pick } from 'radash'
-import yCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
-import yCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
+import altCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
+import altCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
 import { addPrefixToObjectKeys } from '~shared/utils'
-import yCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
-import yCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
-import type { IYCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
-import yCoreErrorStoryMeta from '~core/ui/error/stories/Error.stories'
+import altCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
+import altCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
+import type { IAltCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
+import altCoreErrorStoryMeta from '~core/ui/error/stories/Error.stories'
 import { getComponentEmitsTable, getComponentStateTable } from '~shared/.storybook/tables'
 import { useArgs } from 'storybook/preview-api'
 import { action } from 'storybook/actions'
@@ -44,12 +44,12 @@ const { min,
   errors,
   name } = createCoreCountFieldProps()
 
-export type TYCoreCountFieldMeta = IYCoreCountFieldProps & Pick<IYCoreErrorStoryProps, 'showErrors'> & TYCoreCountFieldEvents
+export type TAltCoreCountFieldMeta = IAltCoreCountFieldProps & Pick<IAltCoreErrorStoryProps, 'showErrors'> & TAltCoreCountFieldEvents
 
 /**
  * ## Core CountField
  */
-const meta: Meta<TYCoreCountFieldMeta> = {
+const meta: Meta<TAltCoreCountFieldMeta> = {
   title: '✅ CountField',
   id: 'countField',
   parameters: { controls: { sort: 'alpha' } },
@@ -99,7 +99,7 @@ const meta: Meta<TYCoreCountFieldMeta> = {
 
     return html`
       <div style="width: 250px">
-        <y-core-count-field 
+        <alt-core-count-field 
           min=${ifDefined(min)}
           max=${ifDefined(max)}
           .disabled=${disabled}
@@ -120,7 +120,7 @@ const meta: Meta<TYCoreCountFieldMeta> = {
           @blur=${handleBlur}
           @keydown=${handleKeydown}
           @changed-value=${handleChangedValue}
-        ></y-core-count-field>
+        ></alt-core-count-field>
       </div>
     `
   },
@@ -140,11 +140,11 @@ const meta: Meta<TYCoreCountFieldMeta> = {
       description: 'Value change event',
       ...getComponentEmitsTable(),
     },
-    ...omit(yCoreFieldWrapperStoryMeta.argTypes ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon', 'onClick', 'onClickOutside', 'onMouseEnter', 'onMouseLeave']),
-    ...omit(yCoreFieldInputStoryMeta.argTypes ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'onRender', 'type', 'maxlength']),
-    ...addPrefixToObjectKeys(omit(yCoreLabelStoryMeta.argTypes ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText']), 'label'),
-    ...addPrefixToObjectKeys(omit(yCoreAnnotationStoryMeta.argTypes ?? {}, ['disabled', 'isLongText']), 'annotation'),
-    ...pick(yCoreErrorStoryMeta.argTypes ?? {}, ['showErrors']),
+    ...omit(altCoreFieldWrapperStoryMeta.argTypes ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon', 'onClick', 'onClickOutside', 'onMouseEnter', 'onMouseLeave']),
+    ...omit(altCoreFieldInputStoryMeta.argTypes ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'onRender', 'type', 'maxlength']),
+    ...addPrefixToObjectKeys(omit(altCoreLabelStoryMeta.argTypes ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText']), 'label'),
+    ...addPrefixToObjectKeys(omit(altCoreAnnotationStoryMeta.argTypes ?? {}, ['disabled', 'isLongText']), 'annotation'),
+    ...pick(altCoreErrorStoryMeta.argTypes ?? {}, ['showErrors']),
   },
   args: {
     value: DEFAULT_STRING_VALUE,
@@ -163,11 +163,11 @@ const meta: Meta<TYCoreCountFieldMeta> = {
     annotationText,
     errors,
     name,
-    ...pick(yCoreFieldInputStoryMeta.args ?? {}, ['onFocus', 'onBlur', 'onKeydown']),
+    ...pick(altCoreFieldInputStoryMeta.args ?? {}, ['onFocus', 'onBlur', 'onKeydown']),
   },
-} satisfies Meta<TYCoreCountFieldMeta>
+} satisfies Meta<TAltCoreCountFieldMeta>
 
 export default meta
-type Story = StoryObj<TYCoreCountFieldMeta>
+type Story = StoryObj<TAltCoreCountFieldMeta>
 
 export const Playground: Story = { args: {} }

@@ -1,10 +1,10 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
-import { YCoreFunctionalModalTagName as tagName, YCoreModalTagName } from '~shared/constants'
+import { AltCoreFunctionalModalTagName as tagName, AltCoreModalTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { createCoreFunctionalModalProps } from '~core/ui/functionalModal/models/types'
 import { getShadowElement, trimTextContent } from '~shared/tests/utils'
 import '~core/ui/functionalModal'
-import type { YCoreModal } from '~core/ui/modal'
+import type { AltCoreModal } from '~core/ui/modal'
 
 import { slotsTestCases } from './cases/slots'
 import {
@@ -40,7 +40,7 @@ const {
   createCoreFunctionalModalProps(),
 )
 
-describe('Core/YCoreFunctionalModal/Unit', () => {
+describe('Core/AltCoreFunctionalModal/Unit', () => {
   beforeAll(() => {
     injectComponentToBody()
   })
@@ -87,7 +87,7 @@ describe('Core/YCoreFunctionalModal/Unit', () => {
         async() => {
           await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
-          const modalElement = getLocalShadowElement(YCoreModalTagName) as YCoreModal | null
+          const modalElement = getLocalShadowElement(AltCoreModalTagName) as AltCoreModal | null
 
           if (!modalElement) {
             throw new Error('modalElement not found')
@@ -110,7 +110,7 @@ describe('Core/YCoreFunctionalModal/Unit', () => {
 
           await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
-          const modalElement = getLocalShadowElement(YCoreModalTagName) as YCoreModal | null
+          const modalElement = getLocalShadowElement(AltCoreModalTagName) as AltCoreModal | null
 
           if (!modalElement) {
             throw new Error('modalElement not found')
@@ -130,9 +130,9 @@ describe('Core/YCoreFunctionalModal/Unit', () => {
           const header = getLocalShadowElement(`.${tagName}__header`)
           expect(header).not.toBeNull()
 
-          const yCoreText = header?.querySelector('y-core-text')
-          expect(yCoreText).not.toBeNull()
-          expect(trimTextContent(yCoreText?.textContent)).toBe(testCase.expected)
+          const altCoreText = header?.querySelector('alt-core-text')
+          expect(altCoreText).not.toBeNull()
+          expect(trimTextContent(altCoreText?.textContent)).toBe(testCase.expected)
         },
       )
     }
@@ -146,9 +146,9 @@ describe('Core/YCoreFunctionalModal/Unit', () => {
           const header = getLocalShadowElement(`.${tagName}__header`)
           expect(header).not.toBeNull()
 
-          const yCoreTexts = header?.querySelectorAll('y-core-text')
+          const altCoreTexts = header?.querySelectorAll('alt-core-text')
 
-          expect(trimTextContent(yCoreTexts?.[1]?.textContent)).toBe(testCase.expected)
+          expect(trimTextContent(altCoreTexts?.[1]?.textContent)).toBe(testCase.expected)
         },
       )
     }

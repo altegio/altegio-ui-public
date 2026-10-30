@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { useArgs } from 'storybook/preview-api'
 import { action } from 'storybook/actions'
-import { YFieldTextarea } from '~ng/ui/fieldTextarea'
-import yCoreFieldTextareaStoryMeta from '~core/ui/fieldTextarea/stories/FieldTextarea.stories'
+import { AltFieldTextarea } from '~ng/ui/fieldTextarea'
+import altCoreFieldTextareaStoryMeta from '~core/ui/fieldTextarea/stories/FieldTextarea.stories'
 import { omit } from 'radash'
 import {
   type InputEvent,
@@ -11,11 +11,11 @@ import {
 /**
  * Angular wrapper for Core FieldTextarea
  */
-const meta: Meta<YFieldTextarea> = {
+const meta: Meta<AltFieldTextarea> = {
   title: 'Inputs/Partials/🔍 FieldTextarea',
   id: 'fieldTextarea',
   parameters: { controls: { sort: 'alpha' } },
-  component: YFieldTextarea,
+  component: AltFieldTextarea,
   tags: [
     'angular',
     'autodocs',
@@ -39,7 +39,7 @@ const meta: Meta<YFieldTextarea> = {
         ...handlers,
       },
       template: `
-        <YFieldTextarea
+        <AltFieldTextarea
           [disabled]="disabled"
           [size]="size"
           [readonly]="readonly"
@@ -59,14 +59,14 @@ const meta: Meta<YFieldTextarea> = {
           (blur)="onBlur($event)"
           (keydown)="onKeydown($event)"
           (render)="onRender($event)"
-        ></YFieldTextarea>`,
+        ></AltFieldTextarea>`,
     }
   },
-  argTypes: { ...omit(yCoreFieldTextareaStoryMeta.argTypes ?? {}, ['readonly']) },
-  args: { ...omit(yCoreFieldTextareaStoryMeta.args ?? {}, ['readonly', 'onInput', 'onFocus', 'onBlur', 'onKeydown', 'onRender']) },
-} satisfies Meta<YFieldTextarea>
+  argTypes: { ...omit(altCoreFieldTextareaStoryMeta.argTypes ?? {}, ['readonly']) },
+  args: { ...omit(altCoreFieldTextareaStoryMeta.args ?? {}, ['readonly', 'onInput', 'onFocus', 'onBlur', 'onKeydown', 'onRender']) },
+} satisfies Meta<AltFieldTextarea>
 
 export default meta
-type Story = StoryObj<YFieldTextarea>
+type Story = StoryObj<AltFieldTextarea>
 
 export const Playground: Story = { args: {} }

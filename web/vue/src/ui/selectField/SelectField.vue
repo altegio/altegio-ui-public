@@ -1,5 +1,5 @@
 <template>
-  <y-core-select-field
+  <alt-core-select-field
     v-bind="props"
     :value="modelValue"
     @select="$emit('update:modelValue', $event.detail.value)"
@@ -45,18 +45,18 @@
     >
       <slot name="dropdown-list-bottom" />
     </div>
-  </y-core-select-field>
+  </alt-core-select-field>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/selectField'
   import {
     createVueSelectFieldProps,
-    type IYVueSelectFieldProps,
-    type IYVueSelectFieldEmits,
+    type IAltVueSelectFieldProps,
+    type IAltVueSelectFieldEmits,
   } from '~vue/ui/selectField/models/types'
 
-  defineOptions({ name: 'YSelectField' })
+  defineOptions({ name: 'AltSelectField' })
 
   defineSlots<{
     before: () => unknown
@@ -67,9 +67,9 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueSelectFieldProps>(),
+    defineProps<IAltVueSelectFieldProps>(),
     createVueSelectFieldProps(),
   )
 
-  defineEmits<IYVueSelectFieldEmits>()
+  defineEmits<IAltVueSelectFieldEmits>()
 </script>

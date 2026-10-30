@@ -1,8 +1,8 @@
 import {
   createCoreAvatarProps,
-  type IYCoreAvatarProps,
+  type IAltCoreAvatarProps,
 } from '~core/ui/avatar/models/types'
 
-export interface IYNgAvatarProps extends IYCoreAvatarProps {}
+export interface IAltNgAvatarProps extends IAltCoreAvatarProps {}
 
-export const createNgAvatarProps = (): IYNgAvatarProps => createCoreAvatarProps()
+export const createNgAvatarProps = (): IAltNgAvatarProps => createCoreAvatarProps()

@@ -2,24 +2,24 @@ import type { Meta, StoryObj } from '@storybook/angular'
 import { CommonModule } from '@angular/common'
 import { action } from 'storybook/actions'
 
-import { YCollapse } from '~ng/ui/collapse'
-import { YCollapseItem } from '~ng/ui/collapseItem'
-import yCoreCollapseStoryMeta from '~core/ui/collapse/stories/Collapse.stories'
+import { AltCollapse } from '~ng/ui/collapse'
+import { AltCollapseItem } from '~ng/ui/collapseItem'
+import altCoreCollapseStoryMeta from '~core/ui/collapse/stories/Collapse.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { useArgs } from 'storybook/preview-api'
 import type { CollapseChangeEvent } from '~ng/ui/collapse/models/types'
-import { YTag } from '~ng/ui/tag'
-import { YIcon } from '~ng/ui/icon'
-import { yCopy, yInfo } from '~shared/icons'
+import { AltTag } from '~ng/ui/tag'
+import { AltIcon } from '~ng/ui/icon'
+import { altCopy, altInfo } from '~shared/icons'
 
 /**
  * Angular wrapper for CoreCollapse
  */
-const meta: Meta<YCollapse> = {
+const meta: Meta<AltCollapse> = {
   title: 'Collapse/🔍 Collapse',
   id: 'collapse',
   parameters: { controls: { sort: 'alpha' } },
-  component: YCollapse,
+  component: AltCollapse,
   tags: [
     'angular',
     'autodocs',
@@ -39,19 +39,19 @@ const meta: Meta<YCollapse> = {
       props: {
         ...args,
         ...handlers,
-        yCopy,
-        yInfo,
+        altCopy,
+        altInfo,
       },
       moduleMetadata: {
         imports: [
           CommonModule,
-          YCollapseItem,
-          YIcon,
-          YTag,
+          AltCollapseItem,
+          AltIcon,
+          AltTag,
         ],
       },
       template: `
-        <YCollapse
+        <AltCollapse
           [value]="value"
           [type]="type"
           [variant]="variant"
@@ -61,18 +61,18 @@ const meta: Meta<YCollapse> = {
           (collapse-move)="onCollapseMoveEvent($event)"
         >
           @for (i of ['1', '2', '3', '4', '5']; track i) {
-            <YCollapseItem [value]="i">
+            <AltCollapseItem [value]="i">
               <ng-template #collapseItemAfter>
-                <YIcon [icon]="yCopy" size="16px" />
+                <AltIcon [icon]="altCopy" size="16px" />
               </ng-template>
 
               <ng-template #collapseItemLabel>
                 <div style="display: flex; align-items: center;gap: 8px;">
                   <span>LabelSlot{{ i }}</span>
                   
-                  <YTag size="small" variant="accent">TagLabel{{ i }}</YTag>
+                  <AltTag size="small" variant="accent">TagLabel{{ i }}</AltTag>
                   
-                  <YIcon [icon]="yInfo" size="16px" />
+                  <AltIcon [icon]="altInfo" size="16px" />
                 </div>
               </ng-template>
 
@@ -83,19 +83,19 @@ const meta: Meta<YCollapse> = {
               <ng-template #collapseItemContent>
                 ${LOREM_IPSUM} ${LOREM_IPSUM}
               </ng-template>
-            </YCollapseItem>
+            </AltCollapseItem>
           }
 
 
-        </YCollapse>`,
+        </AltCollapse>`,
     }
   },
-  argTypes: { ...yCoreCollapseStoryMeta.argTypes },
-  args: { ...yCoreCollapseStoryMeta.args },
-} satisfies Meta<YCollapse>
+  argTypes: { ...altCoreCollapseStoryMeta.argTypes },
+  args: { ...altCoreCollapseStoryMeta.args },
+} satisfies Meta<AltCollapse>
 
 export default meta
-type Story = StoryObj<YCollapse>
+type Story = StoryObj<AltCollapse>
 
 export const Playground: Story = { args: {} }
 
@@ -113,10 +113,10 @@ export const WithNestedItems: Story = {
     }
 
     return {
-      props: { ...args, ...handlers, yCopy, yInfo },
-      moduleMetadata: { imports: [CommonModule, YCollapse, YCollapseItem, YIcon, YTag] },
+      props: { ...args, ...handlers, altCopy, altInfo },
+      moduleMetadata: { imports: [CommonModule, AltCollapse, AltCollapseItem, AltIcon, AltTag] },
       template: `
-        <YCollapse
+        <AltCollapse
           [value]="value"
           [type]="'multiple'"
           [variant]="variant"
@@ -126,14 +126,14 @@ export const WithNestedItems: Story = {
           (collapse-move)="onCollapseMoveEvent($event)"
         >
           @for (i of ['1','2','3']; track i) {
-            <YCollapseItem [value]="i">
+            <AltCollapseItem [value]="i">
               <ng-template #collapseItemLabel>
                 <div style="display: flex; align-items: center; gap: 8px;">
                   <span>Parent item {{ i }}</span>
                   
-                  <YTag size="small" variant="accent">Level 1</YTag>
+                  <AltTag size="small" variant="accent">Level 1</AltTag>
                   
-                  <YIcon [icon]="yInfo" size="16px" />
+                  <AltIcon [icon]="altInfo" size="16px" />
                 </div>
               </ng-template>
 
@@ -148,14 +148,14 @@ export const WithNestedItems: Story = {
                   </p>
 
                   <!-- Nested Collapse -->
-                  <YCollapse [value]="[]" type="multiple" [draggable]="true" [allowCrossLevelMove]="true">
+                  <AltCollapse [value]="[]" type="multiple" [draggable]="true" [allowCrossLevelMove]="true">
                     @for (j of ['1','2','3']; track j) {
-                      <YCollapseItem [value]="i + '-' + j">
+                      <AltCollapseItem [value]="i + '-' + j">
                         <ng-template #collapseItemLabel>
                           <div style="display: flex; align-items: center; gap: 6px;">
                             <span>Child item {{ i }}.{{ j }}</span>
                             
-                            <YTag size="small" variant="neutral">Level 2</YTag>
+                            <AltTag size="small" variant="neutral">Level 2</AltTag>
                           </div>
                         </ng-template>
 
@@ -166,14 +166,14 @@ export const WithNestedItems: Story = {
                         <ng-template #collapseItemContent>
                           <div style="padding: 12px 0;">
                           <!-- Nested Collapse -->
-                          <YCollapse [value]="[]" type="multiple" [draggable]="true" [allowCrossLevelMove]="true">
+                          <AltCollapse [value]="[]" type="multiple" [draggable]="true" [allowCrossLevelMove]="true">
                             @for (k of ['1','2','3']; track j) {
-                              <YCollapseItem [value]="i + '-' + j + '-' + k">
+                              <AltCollapseItem [value]="i + '-' + j + '-' + k">
                                 <ng-template #collapseItemLabel>
                                   <div style="display: flex; align-items: center; gap: 6px;">
                                     <span>Child item {{ i }}.{{ j }}.{{ k }}</span>
                                     
-                                    <YTag size="small" variant="neutral">Level 3</YTag>
+                                    <AltTag size="small" variant="neutral">Level 3</AltTag>
                                   </div>
                                 </ng-template>
         
@@ -188,19 +188,19 @@ export const WithNestedItems: Story = {
                                     </p>
                                   </div>
                                 </ng-template>
-                              </YCollapseItem>
+                              </AltCollapseItem>
                             }
-                          </YCollapse>
+                          </AltCollapse>
                           </div>
                         </ng-template>
-                      </YCollapseItem>
+                      </AltCollapseItem>
                     }
-                  </YCollapse>
+                  </AltCollapse>
                 </div>
               </ng-template>
-            </YCollapseItem>
+            </AltCollapseItem>
           }
-        </YCollapse>
+        </AltCollapse>
       `,
     }
   },
@@ -220,9 +220,9 @@ export const ShallowItems: Story = {
 
     return {
       props: { ...args, ...handlers },
-      moduleMetadata: { imports: [CommonModule, YCollapseItem] },
+      moduleMetadata: { imports: [CommonModule, AltCollapseItem] },
       template: `
-        <YCollapse
+        <AltCollapse
           [value]="value"
           [type]="type"
           [variant]="variant"
@@ -232,10 +232,10 @@ export const ShallowItems: Story = {
           (collapse-move)="onCollapseMoveEvent($event)"
         >
           @for (i of ['1','2','3','4','5']; track i) {
-            <YCollapseItem [value]="i" [shallow]="true">
-            </YCollapseItem>
+            <AltCollapseItem [value]="i" [shallow]="true">
+            </AltCollapseItem>
           }
-        </YCollapse>
+        </AltCollapse>
       `,
     }
   },

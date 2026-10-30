@@ -1,13 +1,13 @@
 import { describe, expect, it, beforeAll } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { YCorePhoneCodeTagName } from '~shared/constants'
+import { AltCorePhoneCodeTagName } from '~shared/constants'
 
-import { YPhoneCode } from '~vue/ui/phoneCode'
+import { AltPhoneCode } from '~vue/ui/phoneCode'
 import {
-  type IYVuePhoneCodeProps,
+  type IAltVuePhoneCodeProps,
 } from '~vue/ui/phoneCode/models/types'
-import { YCorePhoneCode } from '~core/ui/phoneCode'
+import { AltCorePhoneCode } from '~core/ui/phoneCode'
 import {
   propCodeTestCases,
   propDisabledTestCases,
@@ -15,18 +15,18 @@ import {
   propSizeTestCases,
 } from './cases/props'
 
-const tagName = YCorePhoneCodeTagName
+const tagName = AltCorePhoneCodeTagName
 
 interface ICreateComponentArgs {
-  props?: Partial<IYVuePhoneCodeProps>
+  props?: Partial<IAltVuePhoneCodeProps>
 }
 
-const createComponent = ({ props }: ICreateComponentArgs) => mount(YPhoneCode, { props })
+const createComponent = ({ props }: ICreateComponentArgs) => mount(AltPhoneCode, { props })
 
-describe('Vue/YPhoneCode', () => {
+describe('Vue/AltPhoneCode', () => {
   beforeAll(() => {
     if (!customElements.get(tagName)) {
-      customElements.define(tagName, YCorePhoneCode)
+      customElements.define(tagName, AltCorePhoneCode)
     }
   })
 

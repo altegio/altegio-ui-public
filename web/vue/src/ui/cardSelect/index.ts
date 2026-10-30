@@ -1,2 +1,2 @@
-export { default as YCardSelect } from './CardSelect.vue'
+export { default as AltCardSelect } from './CardSelect.vue'
 export type * from './models/types'

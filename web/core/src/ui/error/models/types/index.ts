@@ -1,10 +1,10 @@
 import {
   createCoreErrorExternalProps,
-  type IYCoreErrorExternalProps,
+  type IAltCoreErrorExternalProps,
 } from './external'
 
 export * from './external'
 
-export interface IYCoreErrorProps extends IYCoreErrorExternalProps {}
+export interface IAltCoreErrorProps extends IAltCoreErrorExternalProps {}
 
-export const createCoreErrorProps = (): IYCoreErrorProps => ({ ...createCoreErrorExternalProps() })
+export const createCoreErrorProps = (): IAltCoreErrorProps => ({ ...createCoreErrorExternalProps() })

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { action } from 'storybook/actions'
 
-import { YPhoneField } from '~ng/ui/phoneField'
-import yCorePhoneFieldStoryMeta, { type TYCorePhoneFieldStoryMeta } from '~core/ui/phoneField/stories/PhoneField.stories'
+import { AltPhoneField } from '~ng/ui/phoneField'
+import altCorePhoneFieldStoryMeta, { type TAltCorePhoneFieldStoryMeta } from '~core/ui/phoneField/stories/PhoneField.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import type { SelectOptionEvent, FocusEvent, BlurEvent, PhoneFieldChangeEvent } from '~core/ui/phoneField/models/types'
 import { useArgs } from 'storybook/preview-api'
@@ -10,11 +10,11 @@ import { useArgs } from 'storybook/preview-api'
 /**
  * Angular wrapper for Core PhoneField
  */
-const meta: Meta<TYCorePhoneFieldStoryMeta> = {
+const meta: Meta<TAltCorePhoneFieldStoryMeta> = {
   title: 'Inputs/🔍 PhoneField',
   id: 'phoneField',
   parameters: { controls: { sort: 'alpha' } },
-  component: YPhoneField,
+  component: AltPhoneField,
   tags: [
     'angular',
     'autodocs',
@@ -52,7 +52,7 @@ const meta: Meta<TYCorePhoneFieldStoryMeta> = {
       },
       template: `
       <div style="padding: 50px 50px 300px; margin: 20px; border: 1px dashed black; border-radius: 8px;">
-        <YPhoneField
+        <AltPhoneField
           [value]="value"
           [name]="name"
           [placeholder]="placeholder"
@@ -85,19 +85,19 @@ const meta: Meta<TYCorePhoneFieldStoryMeta> = {
           <div phone-field-annotation>
             {{computedAnnotationText}}
           </div>
-        </YPhoneField>
+        </AltPhoneField>
       </div>
     `,
     }
   },
   argTypes: {
-    ...yCorePhoneFieldStoryMeta.argTypes,
+    ...altCorePhoneFieldStoryMeta.argTypes,
     searchFunction: { action: 'searchFunction' },
   },
-  args: { ...yCorePhoneFieldStoryMeta.args },
-} satisfies Meta<TYCorePhoneFieldStoryMeta>
+  args: { ...altCorePhoneFieldStoryMeta.args },
+} satisfies Meta<TAltCorePhoneFieldStoryMeta>
 
 export default meta
-type Story = StoryObj<TYCorePhoneFieldStoryMeta>
+type Story = StoryObj<TAltCorePhoneFieldStoryMeta>
 
 export const Playground: Story = { args: {} }

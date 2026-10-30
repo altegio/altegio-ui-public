@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YTableHeadCell } from '~vue/ui/tableHeadCell'
-import { type IYVueTableHeadCellProps } from '~vue/ui/tableHeadCell/models/types'
-import yCoreTableHeadCellStoryMeta, {
-  type TYCoreTableHeadCellMeta,
+import { AltTableHeadCell } from '~vue/ui/tableHeadCell'
+import { type IAltVueTableHeadCellProps } from '~vue/ui/tableHeadCell/models/types'
+import altCoreTableHeadCellStoryMeta, {
+  type TAltCoreTableHeadCellMeta,
 } from '~core/ui/tableHeadCell/stories/TableHeadCell.stories'
 
-type TVueTableHeadCellStoryMeta = IYVueTableHeadCellProps & TYCoreTableHeadCellMeta
+type TVueTableHeadCellStoryMeta = IAltVueTableHeadCellProps & TAltCoreTableHeadCellMeta
 
 /**
  * Vue wrapper for TableHeadCell
@@ -20,12 +20,12 @@ const meta: Meta<TVueTableHeadCellStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YTableHeadCell },
+    components: { AltTableHeadCell },
     setup() {
       return { args }
     },
     template: `
-      <YTableHeadCell
+      <AltTableHeadCell
         v-bind="args"
         style="border: 1px dashed;width: min-content;"
         @sort="args.onSort"
@@ -41,11 +41,11 @@ const meta: Meta<TVueTableHeadCellStoryMeta> = {
             hint
           </p>
         </template>
-      </YTableHeadCell>
+      </AltTableHeadCell>
     `,
   }),
-  argTypes: { ...yCoreTableHeadCellStoryMeta.argTypes },
-  args: { ...yCoreTableHeadCellStoryMeta.args },
+  argTypes: { ...altCoreTableHeadCellStoryMeta.argTypes },
+  args: { ...altCoreTableHeadCellStoryMeta.args },
 }
 
 export default meta

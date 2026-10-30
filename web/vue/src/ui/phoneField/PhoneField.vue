@@ -1,5 +1,5 @@
 <template>
-  <y-core-phone-field
+  <alt-core-phone-field
     v-bind="props"
     @focus="$emit('focus', $event)"
     @blur="$emit('blur', $event)"
@@ -32,7 +32,7 @@
         name="empty-state-actions"
       />
     </div>
-  </y-core-phone-field>
+  </alt-core-phone-field>
 </template>
 
 <script setup lang="ts">
@@ -40,11 +40,11 @@
 
   import {
     createVuePhoneFieldProps,
-    type IYVuePhoneFieldProps,
-    type IYVuePhoneFieldEmits,
+    type IAltVuePhoneFieldProps,
+    type IAltVuePhoneFieldEmits,
   } from '~vue/ui/phoneField/models/types'
 
-  defineOptions({ name: 'YPhoneField' })
+  defineOptions({ name: 'AltPhoneField' })
 
   defineSlots<{
     annotation: () => unknown
@@ -52,10 +52,10 @@
     'empty-state-actions': () => unknown
   }>()
 
-  defineEmits<IYVuePhoneFieldEmits>()
+  defineEmits<IAltVuePhoneFieldEmits>()
 
   const props = withDefaults(
-    defineProps<IYVuePhoneFieldProps>(),
+    defineProps<IAltVuePhoneFieldProps>(),
     createVuePhoneFieldProps(),
-  ) satisfies IYVuePhoneFieldProps
+  ) satisfies IAltVuePhoneFieldProps
 </script>

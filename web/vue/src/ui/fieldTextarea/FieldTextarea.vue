@@ -1,5 +1,5 @@
 <template>
-  <y-core-field-textarea
+  <alt-core-field-textarea
     v-bind="props"
     :value="modelValue"
     @input="$emit('update:modelValue', $event.detail.value)"
@@ -14,17 +14,17 @@
   import '~core/ui/fieldTextarea'
   import {
     createVueFieldTextareaProps,
-    type IYVueFieldTextareaProps,
-    type IYVueFieldTextareaEmits,
-    type IYVueCoreFieldTextareaProps,
+    type IAltVueFieldTextareaProps,
+    type IAltVueFieldTextareaEmits,
+    type IAltVueCoreFieldTextareaProps,
   } from '~vue/ui/fieldTextarea/models/types'
 
-  defineOptions({ name: 'YFieldTextarea' })
+  defineOptions({ name: 'AltFieldTextarea' })
 
   const props = withDefaults(
-    defineProps<IYVueFieldTextareaProps>(),
+    defineProps<IAltVueFieldTextareaProps>(),
     createVueFieldTextareaProps(),
-  ) satisfies IYVueCoreFieldTextareaProps
+  ) satisfies IAltVueCoreFieldTextareaProps
 
-  defineEmits<IYVueFieldTextareaEmits>()
+  defineEmits<IAltVueFieldTextareaEmits>()
 </script>

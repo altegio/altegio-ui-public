@@ -1,3 +1,3 @@
-export interface IYCoreTextFieldInternalProps {}
+export interface IAltCoreTextFieldInternalProps {}
 
-export const createCoreTextFieldInternalProps = (): IYCoreTextFieldInternalProps => ({})
+export const createCoreTextFieldInternalProps = (): IAltCoreTextFieldInternalProps => ({})

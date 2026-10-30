@@ -1,15 +1,15 @@
 import { describe, expect, it, beforeAll } from 'vitest'
 import { type Ref, type VNode, inject, h } from 'vue'
 import { mount } from '@vue/test-utils'
-import { YGlobalProvider } from '~vue/ui/globalProvider'
+import { AltGlobalProvider } from '~vue/ui/globalProvider'
 import { GlobalProviderReadyEvent } from '~core/ui/globalProvider/models/types'
 import {
-  type IYVueGlobalProviderEmits,
+  type IAltVueGlobalProviderEmits,
 } from '~vue/ui/globalProvider/models/types'
 import { text, empty } from '~shared/tests/slotContents'
 import type { TSlotTestCase } from '~shared/types/tests'
-import { YCoreGlobalProviderTagName as tagName } from '~shared/constants'
-import { YCoreGlobalProvider } from '~core/ui/globalProvider'
+import { AltCoreGlobalProviderTagName as tagName } from '~shared/constants'
+import { AltCoreGlobalProvider } from '~core/ui/globalProvider'
 import type { IGlobalContext } from '~core/ui/globalProvider/context'
 
 interface ICreateComponentArgs {
@@ -20,7 +20,7 @@ interface ICreateComponentArgs {
 
 const createComponent = ({ slots }: ICreateComponentArgs) => {
   return mount(
-    YGlobalProvider,
+    AltGlobalProvider,
     { slots },
   )
 }
@@ -41,13 +41,13 @@ const TestConsumer = {
 }
 
 describe(
-  'Vue/YGlobalProvider',
+  'Vue/AltGlobalProvider',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreGlobalProvider,
+          AltCoreGlobalProvider,
         )
       }
     })
@@ -101,7 +101,7 @@ describe(
             const coreElement = wrapper.find(tagName).element
             coreElement.connectedCallback()
             coreElement.firstUpdated()
-            const emitted = wrapper.emitted<IYVueGlobalProviderEmits>()
+            const emitted = wrapper.emitted<IAltVueGlobalProviderEmits>()
             const readyEvents = emitted.ready as unknown as GlobalProviderReadyEvent[][]
             expect(emitted).toHaveProperty('ready')
             expect(readyEvents[0][0]).toBeInstanceOf(GlobalProviderReadyEvent)

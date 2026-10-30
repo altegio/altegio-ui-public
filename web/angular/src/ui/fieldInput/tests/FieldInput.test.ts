@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreFieldInputTagName } from '~shared/constants'
-import { YFieldInput } from '~ng/ui/fieldInput/FieldInput.component'
+import { AltCoreFieldInputTagName } from '~shared/constants'
+import { AltFieldInput } from '~ng/ui/fieldInput/FieldInput.component'
 import {
-  type IYNgFieldInputProps,
+  type IAltNgFieldInputProps,
 } from '~ng/ui/fieldInput/models/types'
 import {
   propAutocompleteTestCases,
@@ -17,21 +17,21 @@ import {
 import { ngInputEvents } from '~ng/ui/fieldInput/tests/cases/events'
 import { dispatchEvent } from '~shared/tests/utils'
 
-const tagName = YCoreFieldInputTagName
+const tagName = AltCoreFieldInputTagName
 
 interface ICreateComponentArgs {
   slots?: {
     default?: string
   }
-  props?: Partial<IYNgFieldInputProps>
+  props?: Partial<IAltNgFieldInputProps>
 }
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YFieldInput] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltFieldInput] }).compileComponents()
 
   @Component({
     template: `
-      <YFieldInput
+      <AltFieldInput
         [disabled]="disabled"
         [size]="size"
         [readonly]="readonly"
@@ -50,8 +50,8 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
         (blur)="onBlur($event)"
         (keydown)="onKeydown($event)"
         (render)="onRender($event)"
-      ></YFieldInput>`,
-    imports: [YFieldInput],
+      ></AltFieldInput>`,
+    imports: [AltFieldInput],
     standalone: true,
   })
   class TestComponent {
@@ -79,7 +79,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YFieldInput',
+  'Angular/AltFieldInput',
   () => {
     describe(
       'Unit',

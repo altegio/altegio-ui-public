@@ -1,12 +1,12 @@
 import {
-  type IYCoreModalExternalProps,
+  type IAltCoreModalExternalProps,
   createCoreModalExternalProps,
 } from './external'
 
 export * from './external'
 
-export interface IYCoreModalProps extends IYCoreModalExternalProps {}
+export interface IAltCoreModalProps extends IAltCoreModalExternalProps {}
 
-export const createCoreModalProps = (): IYCoreModalProps => {
+export const createCoreModalProps = (): IAltCoreModalProps => {
   return { ...createCoreModalExternalProps() }
 }

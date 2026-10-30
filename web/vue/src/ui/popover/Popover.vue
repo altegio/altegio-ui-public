@@ -1,5 +1,5 @@
 <template>
-  <y-core-popover
+  <alt-core-popover
     v-bind="props"
     @submit="$emit('submit')"
     @cancel="$emit('cancel')"
@@ -24,19 +24,19 @@
     >
       <slot name="actions" />
     </div>
-  </y-core-popover>
+  </alt-core-popover>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/popover'
   import {
     createVuePopoverProps,
-    type IYVuePopoverEmits,
-    type IYVuePopoverProps,
-    type IYVueCorePopoverProps,
+    type IAltVuePopoverEmits,
+    type IAltVuePopoverProps,
+    type IAltVueCorePopoverProps,
   } from '~vue/ui/popover/models/types'
 
-  defineOptions({ name: 'YPopover' })
+  defineOptions({ name: 'AltPopover' })
 
   defineSlots<{
     activator?: () => unknown
@@ -44,10 +44,10 @@
     actions?: () => unknown
   }>()
 
-  defineEmits<IYVuePopoverEmits>()
+  defineEmits<IAltVuePopoverEmits>()
 
   const props = withDefaults(
-    defineProps<IYVuePopoverProps>(),
+    defineProps<IAltVuePopoverProps>(),
     createVuePopoverProps(),
-  ) satisfies IYVueCorePopoverProps
+  ) satisfies IAltVueCorePopoverProps
 </script>

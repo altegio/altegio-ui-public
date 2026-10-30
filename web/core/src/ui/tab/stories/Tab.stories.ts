@@ -5,15 +5,15 @@
 import { html } from 'lit/static-html.js'
 import type { Meta, StoryObj } from '@storybook/web-components'
 
-import { YCoreTabTagName as tagName } from '~shared/constants'
-import { createCoreTabExternalProps, type IYCoreTabExternalProps } from '~core/ui/tab/models/types/external'
+import { AltCoreTabTagName as tagName } from '~shared/constants'
+import { createCoreTabExternalProps, type IAltCoreTabExternalProps } from '~core/ui/tab/models/types/external'
 import { createCoreTabInternalProps } from '~core/ui/tab/models/types/internal'
 import {
   disabled as disabledArgType,
   active as activeArgType,
 } from '~shared/.storybook/argTypes'
 import { getComponentContentTable, storyControlsTable } from '~shared/.storybook/tables'
-import { EYCoreTagVariant } from '~core/ui/tag/models/types'
+import { EAltCoreTagVariant } from '~core/ui/tag/models/types'
 
 import '~core/ui/tab'
 import '~core/ui/icon'
@@ -21,22 +21,22 @@ import '~core/ui/tag'
 
 import { iconOptions } from '~core/ui/icon/stories/Icon.stories.ts'
 import { nothing } from 'lit'
-import { yAi } from '~shared/icons'
-import { EYSizes } from '~shared/types/global.ts'
+import { altAi } from '~shared/icons'
+import { EAltSizes } from '~shared/types/global.ts'
 
-export interface IYCoreTabStorySlots {
+export interface IAltCoreTabStorySlots {
   showBeforeSlot: boolean
   showAfterSlot: boolean
 }
 
-type IYCoreTabStoryMeta = IYCoreTabExternalProps & IYCoreTabStorySlots
+type IAltCoreTabStoryMeta = IAltCoreTabExternalProps & IAltCoreTabStorySlots
 
 const { text, isCounterVisible, isTagVisible, tagVariant, counterValue, leftIconSize, tagText, locator, locatorTag, locatorCounter } = {
   ...createCoreTabExternalProps(),
   ...createCoreTabInternalProps(),
 }
 
-const meta: Meta<IYCoreTabStoryMeta> = {
+const meta: Meta<IAltCoreTabStoryMeta> = {
   title: '✅ Tab',
   id: 'tab',
   parameters: { controls: { sort: 'alpha' } },
@@ -59,7 +59,7 @@ const meta: Meta<IYCoreTabStoryMeta> = {
     showBeforeSlot,
     showAfterSlot,
   }) => html`
-    <y-core-tab
+    <alt-core-tab
       .leftIcon=${leftIcon}
       .leftIconSize=${leftIconSize}
       .active=${active}
@@ -74,7 +74,7 @@ const meta: Meta<IYCoreTabStoryMeta> = {
       ${showBeforeSlot
         ? html`
             <div slot="before">
-              <y-core-icon .icon=${yAi} size="16px"></y-core-icon>
+              <alt-core-icon .icon=${altAi} size="16px"></alt-core-icon>
             </div>
           `
       : nothing}
@@ -83,11 +83,11 @@ const meta: Meta<IYCoreTabStoryMeta> = {
       ${showAfterSlot
         ? html`
             <div slot="after">
-              <y-core-tag .variant=${EYCoreTagVariant.ACCENT} .size=${EYSizes.SMALL}>Slot Tag</y-core-tag>
+              <alt-core-tag .variant=${EAltCoreTagVariant.ACCENT} .size=${EAltSizes.SMALL}>Slot Tag</alt-core-tag>
             </div>
           `
       : nothing}
-    </y-core-tab>
+    </alt-core-tab>
   `,
   argTypes: {
     active: activeArgType,
@@ -146,7 +146,7 @@ const meta: Meta<IYCoreTabStoryMeta> = {
     },
     tagVariant: {
       control: 'select',
-      options: Object.values(EYCoreTagVariant),
+      options: Object.values(EAltCoreTagVariant),
       description: 'Tag variant',
       ...getComponentContentTable(tagVariant),
     },
@@ -170,9 +170,9 @@ const meta: Meta<IYCoreTabStoryMeta> = {
     showBeforeSlot: false,
     showAfterSlot: false,
   },
-} satisfies Meta<IYCoreTabStoryMeta>
+} satisfies Meta<IAltCoreTabStoryMeta>
 
 export default meta
-type Story = StoryObj<IYCoreTabStoryMeta>
+type Story = StoryObj<IAltCoreTabStoryMeta>
 
 export const Playground: Story = {}

@@ -5,16 +5,16 @@ import { repeat } from 'lit/directives/repeat.js'
 
 import {
   createCoreSearchTextHighlightedProps,
-  type IYCoreSearchTextHighlightedProps,
+  type IAltCoreSearchTextHighlightedProps,
 } from '~core/ui/searchTextHighlighted/models/types'
 import {
-  YCoreSearchTextHighlightedTagName as tagName,
+  AltCoreSearchTextHighlightedTagName as tagName,
 } from '~shared/constants'
 
 import '~core/ui/text'
 
-import YCoreSearchTextHighlightedVarsCss from '~core/ui/searchTextHighlighted/css/SearchTextHighlighted.vars.css?inline'
-import YCoreSearchTextHighlightedScopedCss from '~core/ui/searchTextHighlighted/css/SearchTextHighlighted.scoped.css?inline'
+import AltCoreSearchTextHighlightedVarsCss from '~core/ui/searchTextHighlighted/css/SearchTextHighlighted.vars.css?inline'
+import AltCoreSearchTextHighlightedScopedCss from '~core/ui/searchTextHighlighted/css/SearchTextHighlighted.scoped.css?inline'
 import { withLocator } from '~core/utils/locator'
 
 type Segment = {
@@ -29,23 +29,23 @@ const { text, variant, search, ignoredSymbols, stopHighlight, size, highlightTex
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreSearchTextHighlighted extends LitElement implements IYCoreSearchTextHighlightedProps {
-  @property({ type: String }) text: IYCoreSearchTextHighlightedProps['text'] = text
-  @property({ type: String }) search: IYCoreSearchTextHighlightedProps['search'] = search
-  @property({ type: String }) size: IYCoreSearchTextHighlightedProps['size'] = size
-  @property({ type: String }) variant: IYCoreSearchTextHighlightedProps['variant'] = variant
-  @property({ type: Array, attribute: 'ignored-symbols' }) ignoredSymbols: IYCoreSearchTextHighlightedProps['ignoredSymbols'] = ignoredSymbols
-  @property({ type: Boolean, attribute: 'stop-highlight' }) stopHighlight: IYCoreSearchTextHighlightedProps['stopHighlight'] = stopHighlight
-  @property({ type: Boolean, attribute: 'case-sensitive' }) caseSensitive: IYCoreSearchTextHighlightedProps['caseSensitive'] = caseSensitive
-  @property({ type: String, attribute: 'highlight-text-size' }) highlightTextSize: IYCoreSearchTextHighlightedProps['highlightTextSize'] = highlightTextSize
-  @property({ type: String, attribute: 'highlight-text-variant' }) highlightTextVariant: IYCoreSearchTextHighlightedProps['highlightTextVariant'] = highlightTextVariant
+export class AltCoreSearchTextHighlighted extends LitElement implements IAltCoreSearchTextHighlightedProps {
+  @property({ type: String }) text: IAltCoreSearchTextHighlightedProps['text'] = text
+  @property({ type: String }) search: IAltCoreSearchTextHighlightedProps['search'] = search
+  @property({ type: String }) size: IAltCoreSearchTextHighlightedProps['size'] = size
+  @property({ type: String }) variant: IAltCoreSearchTextHighlightedProps['variant'] = variant
+  @property({ type: Array, attribute: 'ignored-symbols' }) ignoredSymbols: IAltCoreSearchTextHighlightedProps['ignoredSymbols'] = ignoredSymbols
+  @property({ type: Boolean, attribute: 'stop-highlight' }) stopHighlight: IAltCoreSearchTextHighlightedProps['stopHighlight'] = stopHighlight
+  @property({ type: Boolean, attribute: 'case-sensitive' }) caseSensitive: IAltCoreSearchTextHighlightedProps['caseSensitive'] = caseSensitive
+  @property({ type: String, attribute: 'highlight-text-size' }) highlightTextSize: IAltCoreSearchTextHighlightedProps['highlightTextSize'] = highlightTextSize
+  @property({ type: String, attribute: 'highlight-text-variant' }) highlightTextVariant: IAltCoreSearchTextHighlightedProps['highlightTextVariant'] = highlightTextVariant
 
   private readonly baseClass = tagName
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreSearchTextHighlightedVarsCss)}
-      ${unsafeCSS(YCoreSearchTextHighlightedScopedCss)}
+      ${unsafeCSS(AltCoreSearchTextHighlightedVarsCss)}
+      ${unsafeCSS(AltCoreSearchTextHighlightedScopedCss)}
     `,
   ]
 
@@ -139,7 +139,7 @@ export class YCoreSearchTextHighlighted extends LitElement implements IYCoreSear
               const size = segment.highlighted ? this.highlightTextSize : this.size
               const variant = segment.highlighted ? this.highlightTextVariant : this.variant
 
-              return html`<y-core-text style=${cssDisplay} .size=${size} .variant=${variant}>${segment.value}</y-core-text>`
+              return html`<alt-core-text style=${cssDisplay} .size=${size} .variant=${variant}>${segment.value}</alt-core-text>`
             },
           )
         }

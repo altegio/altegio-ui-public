@@ -1,11 +1,11 @@
 import { html } from 'lit'
 import type { Meta, StoryObj } from '@storybook/web-components'
 
-import { YCoreButtonGroupTagName as tagName } from '~shared/constants'
+import { AltCoreButtonGroupTagName as tagName } from '~shared/constants'
 import {
   createCoreButtonGroupProps,
-  EYCoreButtonGroupVariant,
-  type IYCoreButtonGroupProps,
+  EAltCoreButtonGroupVariant,
+  type IAltCoreButtonGroupProps,
 } from '~core/ui/buttonGroup/models/types'
 
 import {
@@ -18,16 +18,16 @@ import { ifDefined } from 'lit/directives/if-defined.js'
 import '~core/ui/buttonGroup'
 import '~core/ui/button'
 
-import { yInfo, yRocket } from '~shared/icons'
+import { altInfo, altRocket } from '~shared/icons'
 
 import {
   size as sizeArgType,
 } from '~shared/.storybook/argTypes'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 
-export interface IButtonGroupStoryProps extends IYCoreButtonGroupProps {}
+export interface IButtonGroupStoryProps extends IAltCoreButtonGroupProps {}
 
-type TButtonGroupStoryMeta = Meta<IYCoreButtonGroupProps>
+type TButtonGroupStoryMeta = Meta<IAltCoreButtonGroupProps>
 
 const { size, variant } = { ...createCoreButtonGroupProps() }
 
@@ -50,18 +50,18 @@ const meta: TButtonGroupStoryMeta = {
     variant,
   }) => {
     const createButtonGroup = (count: number, withIcon = false) => html`
-      <y-core-button-group
+      <alt-core-button-group
         size=${ifDefined(size)}
         variant=${ifDefined(variant)}
       >
         ${Array.from({ length: count }, (_, index) => html`
-          <y-core-button
+          <alt-core-button
             label='Item'
-            .iconLeft=${withIcon && index === 0 ? yInfo : undefined}
-            .iconRight=${withIcon && index === count - 1 ? yRocket : undefined}
-          ></y-core-button>
+            .iconLeft=${withIcon && index === 0 ? altInfo : undefined}
+            .iconRight=${withIcon && index === count - 1 ? altRocket : undefined}
+          ></alt-core-button>
         `)}
-      </y-core-button-group>
+      </alt-core-button-group>
     `
 
     const groups = [2, 3, 4, 5].map((count) => createButtonGroup(count))
@@ -76,9 +76,9 @@ const meta: TButtonGroupStoryMeta = {
   argTypes: {
     size: {
       ...sizeArgType([
-        EYSizes.SMALL,
-        EYSizes.MEDIUM,
-        EYSizes.LARGE,
+        EAltSizes.SMALL,
+        EAltSizes.MEDIUM,
+        EAltSizes.LARGE,
       ]),
       ...getComponentStateTable(size),
     },
@@ -86,7 +86,7 @@ const meta: TButtonGroupStoryMeta = {
       control: { type: 'select' },
       description:
         '**Button style**\n\n- `primary`: accent-colored button\n- `outline`: transparent background with a border\n- `outline-filled`: white background with a border',
-      options: Object.values(EYCoreButtonGroupVariant),
+      options: Object.values(EAltCoreButtonGroupVariant),
       ...getComponentStateTable(variant),
     },
   },

@@ -1,20 +1,20 @@
 import { searchNumberValue, text } from '~shared/tests/slotContents'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import type { TPropTestCase } from '~shared/types/tests'
-import { type IYCoreAnnotationExternalProps } from '~core/ui/annotation/models/types'
-import type { IYCorePhoneFieldProps } from '~core/ui/phoneField/models/types'
-import type { IYCoreLabelExternalProps } from '~core/ui/label/models/types'
+import { type IAltCoreAnnotationExternalProps } from '~core/ui/annotation/models/types'
+import type { IAltCorePhoneFieldProps } from '~core/ui/phoneField/models/types'
+import type { IAltCoreLabelExternalProps } from '~core/ui/label/models/types'
 
 export const testErrors = [
   text,
   text,
 ]
 
-export const sizes = Object.values(EYSizes).filter((size) => size !== EYSizes.EXTRA_LARGE && size !== EYSizes.EXTRA_SMALL)
+export const sizes = Object.values(EAltSizes).filter((size) => size !== EAltSizes.EXTRA_LARGE && size !== EAltSizes.EXTRA_SMALL)
 
 export const autocompleteOptions = [{ id: 1, title: 'Some title', phone: '+7 999 157-91-72' }]
 
-export const searchFunction: IYCorePhoneFieldProps['searchFunction'] = (detail) => {
+export const searchFunction: IAltCorePhoneFieldProps['searchFunction'] = (detail) => {
   const { meta } = detail
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -23,43 +23,43 @@ export const searchFunction: IYCorePhoneFieldProps['searchFunction'] = (detail) 
   })
 }
 
-export const propValueCases: TPropTestCase<IYCorePhoneFieldProps, 'value'>[] = [
+export const propValueCases: TPropTestCase<IAltCorePhoneFieldProps, 'value'>[] = [
   { prop: 'value', case: 'with a number', value: searchNumberValue },
   { prop: 'value', case: 'without a number', value: '' },
 ]
-export const propNameCases: TPropTestCase<IYCorePhoneFieldProps, 'name'>[] = [
+export const propNameCases: TPropTestCase<IAltCorePhoneFieldProps, 'name'>[] = [
   { prop: 'name', case: 'with text', value: text },
   { prop: 'name', case: 'without text', value: '' },
 ]
-export const propPlaceholderCases: TPropTestCase<IYCorePhoneFieldProps, 'placeholder'>[] = [{ prop: 'placeholder', case: 'with text', value: text }]
-export const propAutofocusCases: TPropTestCase<IYCorePhoneFieldProps, 'autofocus'>[] = [
+export const propPlaceholderCases: TPropTestCase<IAltCorePhoneFieldProps, 'placeholder'>[] = [{ prop: 'placeholder', case: 'with text', value: text }]
+export const propAutofocusCases: TPropTestCase<IAltCorePhoneFieldProps, 'autofocus'>[] = [
   { prop: 'autofocus', case: 'true', value: true },
   { prop: 'autofocus', case: 'false', value: false },
 ]
-export const propDisabledCases: TPropTestCase<IYCorePhoneFieldProps, 'disabled'>[] = [
+export const propDisabledCases: TPropTestCase<IAltCorePhoneFieldProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true },
   { prop: 'disabled', case: 'false', value: false },
 ]
-export const propReadonlyCases: TPropTestCase<IYCorePhoneFieldProps, 'readonly'>[] = [
+export const propReadonlyCases: TPropTestCase<IAltCorePhoneFieldProps, 'readonly'>[] = [
   { prop: 'readonly', case: 'true', value: true },
   { prop: 'readonly', case: 'false', value: false },
 ]
-export const propRequiredCases: TPropTestCase<IYCorePhoneFieldProps, 'required'>[] = [
+export const propRequiredCases: TPropTestCase<IAltCorePhoneFieldProps, 'required'>[] = [
   { prop: 'required', case: 'true', value: true },
   { prop: 'required', case: 'false', value: false },
 ]
-export const propErrorsCases: TPropTestCase<IYCorePhoneFieldProps, 'errors'>[] = [
+export const propErrorsCases: TPropTestCase<IAltCorePhoneFieldProps, 'errors'>[] = [
   { prop: 'errors', case: 'with errors', value: testErrors },
   { prop: 'errors', case: 'with one error', value: [testErrors[0]] },
   { prop: 'errors', case: 'without errors', value: [] },
 ]
-export const propSizeCases: TPropTestCase<IYCorePhoneFieldProps, 'size'>[] = sizes.map((size) => ({
+export const propSizeCases: TPropTestCase<IAltCorePhoneFieldProps, 'size'>[] = sizes.map((size) => ({
   prop: 'size',
   case: size,
   value: size,
 }))
 
-type TPropMinSearchlength = TPropTestCase<IYCorePhoneFieldProps, 'minSearchLength'> & { searchPhone: string }
+type TPropMinSearchlength = TPropTestCase<IAltCorePhoneFieldProps, 'minSearchLength'> & { searchPhone: string }
 
 export const propMinSearchLengthCases: TPropMinSearchlength[] = [
   { prop: 'minSearchLength', case: 'is greater than the phone length', value: 3, searchPhone: '99' },
@@ -67,28 +67,28 @@ export const propMinSearchLengthCases: TPropMinSearchlength[] = [
   { prop: 'minSearchLength', case: 'is less than the phone length', value: 3, searchPhone: '9999' },
 ]
 
-export const propDisabledAutocompleteCases: TPropTestCase<IYCorePhoneFieldProps, 'disabledAutocomplete'>[] = [
+export const propDisabledAutocompleteCases: TPropTestCase<IAltCorePhoneFieldProps, 'disabledAutocomplete'>[] = [
   { prop: 'disabledAutocomplete', case: 'true', value: true },
   { prop: 'disabledAutocomplete', case: 'false', value: false },
 ]
 
-export const propWithoutCodeSelectionCases: TPropTestCase<IYCorePhoneFieldProps, 'withoutCodeSelection'>[] = [
+export const propWithoutCodeSelectionCases: TPropTestCase<IAltCorePhoneFieldProps, 'withoutCodeSelection'>[] = [
   { prop: 'withoutCodeSelection', case: 'false', value: false },
   { prop: 'withoutCodeSelection', case: 'true', value: true },
 ]
 
-export const propSearchFunctionCases: TPropTestCase<IYCorePhoneFieldProps, 'searchFunction'>[] = [
+export const propSearchFunctionCases: TPropTestCase<IAltCorePhoneFieldProps, 'searchFunction'>[] = [
   { prop: 'searchFunction', case: 'function', value: searchFunction },
   { prop: 'searchFunction', case: 'undefined', value: undefined },
 ]
 
-export const propDefaultCountryIdCases: TPropTestCase<IYCorePhoneFieldProps, 'defaultCountryId'>[] = [
+export const propDefaultCountryIdCases: TPropTestCase<IAltCorePhoneFieldProps, 'defaultCountryId'>[] = [
   { prop: 'defaultCountryId', case: 'set', value: 2 },
   { prop: 'defaultCountryId', case: 'not set', value: undefined },
 ]
 
-type TPropAnnotation<K extends keyof IYCorePhoneFieldProps, T extends keyof IYCoreAnnotationExternalProps> = TPropTestCase<IYCorePhoneFieldProps, K> & { annotationProp: T }
-type TPropLabel<K extends keyof IYCorePhoneFieldProps, T extends keyof IYCoreLabelExternalProps> = TPropTestCase<IYCorePhoneFieldProps, K> & { labelProp: T }
+type TPropAnnotation<K extends keyof IAltCorePhoneFieldProps, T extends keyof IAltCoreAnnotationExternalProps> = TPropTestCase<IAltCorePhoneFieldProps, K> & { annotationProp: T }
+type TPropLabel<K extends keyof IAltCorePhoneFieldProps, T extends keyof IAltCoreLabelExternalProps> = TPropTestCase<IAltCorePhoneFieldProps, K> & { labelProp: T }
 
 export const propLabelTextCases: TPropLabel<'labelText', 'text'>[] = [
   { prop: 'labelText', labelProp: 'text', case: 'with text', value: text },

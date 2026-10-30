@@ -1,27 +1,27 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreLinkTagName } from '~shared/constants'
+import { AltCoreLinkTagName } from '~shared/constants'
 import { href } from '~shared/tests/mockData'
-import { YLink } from '~ng/ui/link'
+import { AltLink } from '~ng/ui/link'
 
-import { type IYNgLinkProps } from '~ng/ui/link/models/types'
+import { type IAltNgLinkProps } from '~ng/ui/link/models/types'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgLinkProps>
+  props?: Partial<IAltNgLinkProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YLink] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltLink] }).compileComponents()
 
   @Component({
     template: `
-      <YLink [href]="href" [target]="target">
+      <AltLink [href]="href" [target]="target">
         <span>{{slotContent}}</span>
-      </YLink>
+      </AltLink>
     `,
-    imports: [YLink],
+    imports: [AltLink],
     standalone: true,
   })
   class TestComponent {
@@ -31,10 +31,10 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
   return TestComponent
 }
 
-const tagName = YCoreLinkTagName
+const tagName = AltCoreLinkTagName
 
 describe(
-  'Angular/YLink',
+  'Angular/AltLink',
   () => {
     describe(
       'Props',

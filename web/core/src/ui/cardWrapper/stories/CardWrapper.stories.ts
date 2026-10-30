@@ -4,11 +4,11 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 
 import {
   createCoreCardWrapperProps,
-  type IYCoreCardWrapperProps,
-  type TYCoreCardWrapperEvents,
+  type IAltCoreCardWrapperProps,
+  type TAltCoreCardWrapperEvents,
 } from '~core/ui/cardWrapper/models/types'
 import {
-  YCoreCardWrapperTagName as tagName,
+  AltCoreCardWrapperTagName as tagName,
 } from '~shared/constants'
 import {
   storyControlsTable,
@@ -22,9 +22,9 @@ import {
   focusable as focusableArgType,
   size as sizeArgType,
 } from '~shared/.storybook/argTypes'
-import { EYSizes } from '~shared/types/global'
-import { yMagic } from '~shared/icons'
-import { EYCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
+import { EAltSizes } from '~shared/types/global'
+import { altMagic } from '~shared/icons'
+import { EAltCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
 
 import '~core/ui/cardWrapper'
 import '~core/ui/cardIcon'
@@ -33,20 +33,20 @@ import '~core/ui/cardCheckbox'
 
 const { checked, disabled, hoverable, focusable, size } = createCoreCardWrapperProps()
 
-export interface IYCoreCardWrapperStorySlots {
+export interface IAltCoreCardWrapperStorySlots {
   showCardIcon: boolean
   showCardRadio: boolean
   showCardCheckbox: boolean
 }
 
-type YCoreCardWrapperMeta = Meta<IYCoreCardWrapperProps & IYCoreCardWrapperStorySlots & Pick<TYCoreCardWrapperEvents, 'onBlur' | 'onFocus'> & {
+type AltCoreCardWrapperMeta = Meta<IAltCoreCardWrapperProps & IAltCoreCardWrapperStorySlots & Pick<TAltCoreCardWrapperEvents, 'onBlur' | 'onFocus'> & {
   onClick: (event: Event) => void
 }>
 
 /**
  * ## Core CardWrapper
  */
-const meta: YCoreCardWrapperMeta = {
+const meta: AltCoreCardWrapperMeta = {
   title: 'Cards/Partials/⚠️ CardWrapper',
   id: 'cardWrapper',
   parameters: { controls: { sort: 'alpha' } },
@@ -69,7 +69,7 @@ const meta: YCoreCardWrapperMeta = {
     onFocus,
   }) => {
     return html`
-      <y-core-card-wrapper
+      <alt-core-card-wrapper
         .checked=${checked}
         .disabled=${disabled}
         .hoverable=${hoverable}
@@ -81,23 +81,23 @@ const meta: YCoreCardWrapperMeta = {
       >
         ${showCardIcon
           ? html`
-              <y-core-card-icon
-                .icon=${yMagic}
-                .variant=${EYCoreColorIconVariant.GREY}
+              <alt-core-card-icon
+                .icon=${altMagic}
+                .variant=${EAltCoreColorIconVariant.GREY}
               >
-              </y-core-card-icon>
+              </alt-core-card-icon>
             `
           : nothing
         }
         ${showCardRadio
-          ? html`<y-core-card-radio></y-core-card-radio>`
+          ? html`<alt-core-card-radio></alt-core-card-radio>`
           : nothing
         }
         ${showCardCheckbox && !showCardRadio
-          ? html`<y-core-card-checkbox></y-core-card-checkbox>`
+          ? html`<alt-core-card-checkbox></alt-core-card-checkbox>`
           : nothing
         }
-      </y-core-card-wrapper>
+      </alt-core-card-wrapper>
     `
   },
   argTypes: {
@@ -119,9 +119,9 @@ const meta: YCoreCardWrapperMeta = {
     },
     size: {
       ...sizeArgType([
-        EYSizes.SMALL,
-        EYSizes.MEDIUM,
-        EYSizes.LARGE,
+        EAltSizes.SMALL,
+        EAltSizes.MEDIUM,
+        EAltSizes.LARGE,
       ]),
       ...getComponentStateTable(size),
     },
@@ -173,9 +173,9 @@ const meta: YCoreCardWrapperMeta = {
     onBlur: fn(),
     onFocus: fn(),
   },
-} satisfies YCoreCardWrapperMeta
+} satisfies AltCoreCardWrapperMeta
 
 export default meta
-type Story = StoryObj<IYCoreCardWrapperProps>
+type Story = StoryObj<IAltCoreCardWrapperProps>
 
 export const Playground: Story = { args: {} }

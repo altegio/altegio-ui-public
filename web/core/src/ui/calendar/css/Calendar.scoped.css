@@ -1,8 +1,8 @@
-$component: $YCoreCalendarTagName;
+$component: $AltCoreCalendarTagName;
 
 .$(component) {
-  min-width: var(--y-core-calendar-min-width);
-  max-width: var(--y-core-calendar-max-width);
+  min-width: var(--alt-core-calendar-min-width);
+  max-width: var(--alt-core-calendar-max-width);
 
   &__header {
     display: flex;
@@ -17,14 +17,14 @@ $component: $YCoreCalendarTagName;
 
   &__header-dropdown {
     position: relative;
-    z-index: var(--y-core-z-index-100);
+    z-index: var(--alt-core-z-index-100);
   }
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
     row-gap: 4px;
-    margin-top: var(--y-core-calendar-grid-margin-top);
+    margin-top: var(--alt-core-calendar-grid-margin-top);
   }
 
   &__week-day {
@@ -32,8 +32,8 @@ $component: $YCoreCalendarTagName;
     align-items: center;
     justify-content: center;
     padding: 10px;
-    padding: var(--y-core-calendar-week-day-padding-y) var(--y-core-calendar-week-day-padding-x);
-    margin-bottom: var(--y-core-calendar-week-day-margin-bottom);
+    padding: var(--alt-core-calendar-week-day-padding-y) var(--alt-core-calendar-week-day-padding-x);
+    margin-bottom: var(--alt-core-calendar-week-day-margin-bottom);
   }
   
   &__day {
@@ -41,15 +41,15 @@ $component: $YCoreCalendarTagName;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--y-core-calendar-day-padding-y) var(--y-core-calendar-day-padding-x);
+    padding: var(--alt-core-calendar-day-padding-y) var(--alt-core-calendar-day-padding-x);
     cursor: pointer;
     user-select: none;
-    border-radius: var(--y-core-calendar-day-radius);
+    border-radius: var(--alt-core-calendar-day-radius);
     -webkit-tap-highlight-color: transparent;
 
     @media (hover: hover) {
       &:hover:not(.$(component)__day_disabled, .$(component)__day_out-of-month) {
-        background-color: var(--y-core-calendar-day-background-hover);
+        background-color: var(--alt-core-calendar-day-background-hover);
       }
     }
 
@@ -61,64 +61,64 @@ $component: $YCoreCalendarTagName;
         width: 16px;
         height: 2px;
         content: '';
-        background-color: var(--y-core-calendar-day-today-line-color);
+        background-color: var(--alt-core-calendar-day-today-line-color);
         border-radius: 2px;
       }
     }
     
     &_selected {
-      background-color: var(--y-core-calendar-selected-day-background);
+      background-color: var(--alt-core-calendar-selected-day-background);
 
       @media (hover: hover) {
         &:hover:not(.$(component)__day_disabled) {
-          background-color: var(--y-core-calendar-selected-day-background-hover);
+          background-color: var(--alt-core-calendar-selected-day-background-hover);
         }
       }
 
 
       &::before {
-        background-color: var(--y-core-calendar-day-today-line-color-on-selected);
+        background-color: var(--alt-core-calendar-day-today-line-color-on-selected);
       }
     }
     
     &_in-range {
-      background-color: var(--y-core-calendar-range-day-background);
+      background-color: var(--alt-core-calendar-range-day-background);
       border-radius: unset;
 
       &::before {
-        background-color: var(--y-core-calendar-day-today-line-color-on-selected);
+        background-color: var(--alt-core-calendar-day-today-line-color-on-selected);
       }
 
       @media (hover: hover) {
         &:hover:not(.$(component)__day_disabled) {
-          background-color: var(--y-core-calendar-range-day-background-hover);
+          background-color: var(--alt-core-calendar-range-day-background-hover);
         }
       }
     }
     
     &_range-start, &_range-end {
-      background-color: var(--y-core-calendar-selected-day-background);
+      background-color: var(--alt-core-calendar-selected-day-background);
       border-radius: unset;
 
       &::before {
-        background-color: var(--y-core-calendar-day-today-line-color-on-selected);
+        background-color: var(--alt-core-calendar-day-today-line-color-on-selected);
       }
 
       @media (hover: hover) {
         &:hover:not(.$(component)__day_disabled) {
-          background-color: var(--y-core-calendar-selected-day-background-hover);
+          background-color: var(--alt-core-calendar-selected-day-background-hover);
         }
       }
     }
     
     &_range-start {
-      border-top-left-radius: var(--y-core-calendar-day-radius);
-      border-bottom-left-radius: var(--y-core-calendar-day-radius);
+      border-top-left-radius: var(--alt-core-calendar-day-radius);
+      border-bottom-left-radius: var(--alt-core-calendar-day-radius);
     }
     
     &_range-end {
-      border-top-right-radius: var(--y-core-calendar-day-radius);
-      border-bottom-right-radius: var(--y-core-calendar-day-radius);
+      border-top-right-radius: var(--alt-core-calendar-day-radius);
+      border-bottom-right-radius: var(--alt-core-calendar-day-radius);
     }
     
     &_out-of-month {
@@ -129,10 +129,10 @@ $component: $YCoreCalendarTagName;
       cursor: not-allowed;
 
       &.$(component)__day_selected {
-        background-color: var(--y-core-calendar-selected-day-background-disabled);
+        background-color: var(--alt-core-calendar-selected-day-background-disabled);
       }
       &.$(component)__day_in-range {
-        background-color: var(--y-core-calendar-range-day-background-disabled);
+        background-color: var(--alt-core-calendar-range-day-background-disabled);
       }
     }
   }

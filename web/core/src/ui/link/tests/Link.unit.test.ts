@@ -2,13 +2,13 @@ import { beforeAll, afterEach, describe, expect, it, afterAll } from 'vitest'
 import { getShadowRootElement, getWCShadowRoot } from '~shared/tests/utils'
 import { href } from '~shared/tests/mockData'
 import { useCoreTests } from '~shared/tests/core'
-import { YCoreLinkTagName } from '~shared/constants'
+import { AltCoreLinkTagName } from '~shared/constants'
 import '~core/ui/link'
 
 import { createCoreLinkProps } from '~core/ui/link/models/types'
 import { propTextWrapCases } from '~core/ui/link/tests/cases/unit'
 
-const tagName = YCoreLinkTagName
+const tagName = AltCoreLinkTagName
 
 const {
   component,
@@ -21,7 +21,7 @@ const {
 )
 
 describe(
-  'Core/YCoreLink/Unit',
+  'Core/AltCoreLink/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()

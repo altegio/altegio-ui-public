@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
-import { YCoreCardWrapperTagName as tagName } from '~shared/constants'
+import { AltCoreCardWrapperTagName as tagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { getElementClasses, getShadowRootElement } from '~shared/tests/utils'
 import type { TSlotTestCase } from '~shared/types/tests'
@@ -45,7 +45,7 @@ const slotDefaultTestCases: TSlotTestCase[] = [
 ]
 
 describe(
-  'Core/YCardWrapper/Unit',
+  'Core/AltCardWrapper/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()

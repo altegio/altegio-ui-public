@@ -1,13 +1,13 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { YCalendar } from '~ng/ui/calendar/Calendar.component'
+import { AltCalendar } from '~ng/ui/calendar/Calendar.component'
 
 @Component({
   selector: 'I18nCalendar',
   standalone: true,
-  imports: [CommonModule, YCalendar],
+  imports: [CommonModule, AltCalendar],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: ' <YCalendar [date]="selectedDate" (selectEvent)="onDateSelect($event)"></YCalendar> ',
+  template: ' <AltCalendar [date]="selectedDate" (selectEvent)="onDateSelect($event)"></AltCalendar> ',
 })
 export class I18nCalendar {
   // Date selected in the calendar

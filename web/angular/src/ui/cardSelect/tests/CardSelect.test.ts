@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreCardSelectTagName as tagName } from '~shared/constants'
-import { YCardSelect } from '~ng/ui/cardSelect'
-import type { IYNgCardSelectProps } from '~ng/ui/cardSelect/models/types'
+import { AltCoreCardSelectTagName as tagName } from '~shared/constants'
+import { AltCardSelect } from '~ng/ui/cardSelect'
+import type { IAltNgCardSelectProps } from '~ng/ui/cardSelect/models/types'
 
 import {
   propCheckedCases,
@@ -30,16 +30,16 @@ interface ICreateComponentArgs {
     cardSelectAnnotation?: string
     cardSelectAfter?: string
   }
-  props?: Partial<IYNgCardSelectProps>
+  props?: Partial<IAltNgCardSelectProps>
 }
 
 const createComponent = async({ slots, props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YCardSelect] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltCardSelect] }).compileComponents()
 
   @Component({
     template: `
-      <YCardSelect
+      <AltCardSelect
         [checked]="checked"
         [annotation]="annotation"
         [disabled]="disabled"
@@ -69,9 +69,9 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
             {{ afterSlot }}
           </div>
         }
-      </YCardSelect>
+      </AltCardSelect>
     `,
-    imports: [YCardSelect],
+    imports: [AltCardSelect],
     standalone: true,
   })
   class TestComponent {
@@ -97,7 +97,7 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YCardSelect/Unit',
+  'Angular/AltCardSelect/Unit',
   () => {
     describe(
       'Slots',

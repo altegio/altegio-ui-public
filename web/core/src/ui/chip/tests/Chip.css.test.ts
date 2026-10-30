@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreChipTagName } from '~shared/constants'
+import { AltCoreChipTagName } from '~shared/constants'
 import {
   createCoreChipProps,
 } from '~core/ui/chip/models/types'
@@ -14,7 +14,7 @@ import {
   CSSVariablesHostToValueCases,
 } from './cases/css'
 
-const tagName = YCoreChipTagName
+const tagName = AltCoreChipTagName
 
 const {
   component,
@@ -25,7 +25,7 @@ const {
 )
 
 describe(
-  'Core/YCoreChip/CSS',
+  'Core/AltCoreChip/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

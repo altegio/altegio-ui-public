@@ -1,1 +1,1 @@
-export { YCorePhoneCode } from './PhoneCode.core'
+export { AltCorePhoneCode } from './PhoneCode.core'

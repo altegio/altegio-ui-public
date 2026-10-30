@@ -7,12 +7,12 @@ import '~core/ui/pagination'
 
 import {
   createCorePaginationProps,
-  type IYCorePaginationProps,
-  type TYCorePaginationEvents,
+  type IAltCorePaginationProps,
+  type TAltCorePaginationEvents,
   type ChangePageEvent,
 } from '~core/ui/pagination/models/types'
 import {
-  YCorePaginationTagName as tagName,
+  AltCorePaginationTagName as tagName,
 } from '~shared/constants'
 import { getComponentStateTable, getComponentEmitsTable } from '~shared/.storybook/tables'
 
@@ -21,12 +21,12 @@ const { disabled, itemsPerPage, total, page } = createCorePaginationProps()
 const storyTotal = 50
 
 
-export type TYCorePaginationMeta = Meta<IYCorePaginationProps & TYCorePaginationEvents>
+export type TAltCorePaginationMeta = Meta<IAltCorePaginationProps & TAltCorePaginationEvents>
 
 /**
  * ## Core Pagination
  */
-const meta: TYCorePaginationMeta = {
+const meta: TAltCorePaginationMeta = {
   title: '⚠️ Pagination',
   id: 'pagination',
   parameters: { controls: { sort: 'alpha' } },
@@ -45,7 +45,7 @@ const meta: TYCorePaginationMeta = {
     const [
       args,
       updateArgs,
-    ] = useArgs<IYCorePaginationProps>()
+    ] = useArgs<IAltCorePaginationProps>()
 
     const onStoryPageChange = (event: ChangePageEvent) => {
       updateArgs({ ...args, page: event.detail.page })
@@ -53,14 +53,14 @@ const meta: TYCorePaginationMeta = {
     }
 
     return html`
-      <y-core-pagination
+      <alt-core-pagination
         .disabled=${disabled}
         .itemsPerPage=${itemsPerPage}
         .page=${page}
         .total=${total}
         @change-page=${onStoryPageChange}
       >
-      </y-core-pagination>
+      </alt-core-pagination>
     `
   },
   argTypes: {
@@ -97,9 +97,9 @@ const meta: TYCorePaginationMeta = {
     total: storyTotal,
     onChangePage: fn(),
   },
-} satisfies TYCorePaginationMeta
+} satisfies TAltCorePaginationMeta
 
 export default meta
-type Story = StoryObj<IYCorePaginationProps>
+type Story = StoryObj<IAltCorePaginationProps>
 
 export const Playground: Story = { args: {} }

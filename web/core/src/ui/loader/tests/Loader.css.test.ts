@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreLoaderTagName } from '~shared/constants'
+import { AltCoreLoaderTagName } from '~shared/constants'
 import {
   createCoreLoaderProps,
 } from '~core/ui/loader/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/loader/tests/cases/css'
 
-const tagName = YCoreLoaderTagName
+const tagName = AltCoreLoaderTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YLoader/CSS',
+  'Core/AltLoader/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

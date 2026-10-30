@@ -1,2 +1,2 @@
-export { default as YFieldInput } from './FieldInput.vue'
+export { default as AltFieldInput } from './FieldInput.vue'
 export type * from './models/types'

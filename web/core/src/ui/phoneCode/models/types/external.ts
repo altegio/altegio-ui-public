@@ -1,34 +1,34 @@
 import { pick } from 'radash'
 
-import type { TYCountry } from '~shared/types/country'
-import type { TYSizes } from '~shared/types/global'
-import { EYSizes } from '~shared/types/global'
-import { EYCoreTextSize } from '~core/ui/text/models/types'
+import type { TAltCountry } from '~shared/types/country'
+import type { TAltSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
+import { EAltCoreTextSize } from '~core/ui/text/models/types'
 import {
   createCoreFieldWrapperProps,
-  type IYCoreFieldWrapperProps,
+  type IAltCoreFieldWrapperProps,
 } from '~core/ui/fieldWrapper/models/types'
 
-type TPhoneCodeSize = Extract<TYSizes, 'small' | 'medium' | 'large'>
+type TPhoneCodeSize = Extract<TAltSizes, 'small' | 'medium' | 'large'>
 
 export const ICON_SIZES: Record<TPhoneCodeSize, string> = {
-  [EYSizes.SMALL]: '16px',
-  [EYSizes.MEDIUM]: '20px',
-  [EYSizes.LARGE]: '24px',
+  [EAltSizes.SMALL]: '16px',
+  [EAltSizes.MEDIUM]: '20px',
+  [EAltSizes.LARGE]: '24px',
 } as const
 
-export const TEXT_SIZES: Record<TPhoneCodeSize, EYCoreTextSize> = {
-  [EYSizes.SMALL]: EYCoreTextSize.P2_REGULAR,
-  [EYSizes.MEDIUM]: EYCoreTextSize.P1_REGULAR,
-  [EYSizes.LARGE]: EYCoreTextSize.P1_REGULAR,
+export const TEXT_SIZES: Record<TPhoneCodeSize, EAltCoreTextSize> = {
+  [EAltSizes.SMALL]: EAltCoreTextSize.P2_REGULAR,
+  [EAltSizes.MEDIUM]: EAltCoreTextSize.P1_REGULAR,
+  [EAltSizes.LARGE]: EAltCoreTextSize.P1_REGULAR,
 } as const
 
-export interface IYCorePhoneCodeExternalProps extends
-  Pick<IYCoreFieldWrapperProps, 'disabled' | 'size' | 'readonly'> {
-  code: TYCountry['code'] | undefined
+export interface IAltCorePhoneCodeExternalProps extends
+  Pick<IAltCoreFieldWrapperProps, 'disabled' | 'size' | 'readonly'> {
+  code: TAltCountry['code'] | undefined
 }
 
-export const createCorePhoneCodeExternalProps = (): IYCorePhoneCodeExternalProps => {
+export const createCorePhoneCodeExternalProps = (): IAltCorePhoneCodeExternalProps => {
   return {
     ...pick(createCoreFieldWrapperProps(), ['disabled', 'size', 'readonly']),
     code: undefined,

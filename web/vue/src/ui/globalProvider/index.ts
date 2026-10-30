@@ -1,2 +1,2 @@
-export { default as YGlobalProvider } from './GlobalProvider.vue'
+export { default as AltGlobalProvider } from './GlobalProvider.vue'
 export type * from './models/types'

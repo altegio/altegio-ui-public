@@ -1,6 +1,6 @@
 @import url('../../../assets/css/mixins/scrollbar.css');
 
-$component: $YCoreTextareaTagName;
+$component: $AltCoreTextareaTagName;
 
 :host {
   display: block;
@@ -9,10 +9,10 @@ $component: $YCoreTextareaTagName;
 .$(component) {
   display: flex;
   flex-direction: column;
-  gap: var(--y-core-textarea-gap);
+  gap: var(--alt-core-textarea-gap);
   max-width: 100%;
   
-  @mixin y-scrollbar;
+  @mixin alt-scrollbar;
 
   &__field-wrapper-inner {
     display: flex;
@@ -21,13 +21,13 @@ $component: $YCoreTextareaTagName;
   }
 
   &__counter {
-    font-size: var(--y-core-textarea-counter-font-size);
-    font-weight: var(--y-core-textarea-counter-font-weight);
-    line-height: var(--y-core-textarea-counter-line-height);
-    color: var(--y-core-textarea-counter-color);
+    font-size: var(--alt-core-textarea-counter-font-size);
+    font-weight: var(--alt-core-textarea-counter-font-weight);
+    line-height: var(--alt-core-textarea-counter-line-height);
+    color: var(--alt-core-textarea-counter-color);
 
     &_disabled {
-      color: var(--y-core-textarea-counter-disabled-color);
+      color: var(--alt-core-textarea-counter-disabled-color);
     }
   }
 

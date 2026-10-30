@@ -1,1 +1,1 @@
-export { YCoreTable } from './Table.core'
+export { AltCoreTable } from './Table.core'

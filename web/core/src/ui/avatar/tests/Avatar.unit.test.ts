@@ -2,8 +2,8 @@ import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
 
 import { useCoreTests } from '~web/shared/tests/core'
 import {
-  YCoreIconTagName,
-  YCoreAvatarTagName,
+  AltCoreIconTagName,
+  AltCoreAvatarTagName,
 } from '~web/shared/constants'
 import {
   classWithModifier,
@@ -22,9 +22,9 @@ import {
   propSizeTestCases,
 } from '~core/ui/avatar/tests/cases/props'
 
-const tagName = YCoreAvatarTagName
+const tagName = AltCoreAvatarTagName
 
-type TSubComponent = typeof YCoreIconTagName
+type TSubComponent = typeof AltCoreIconTagName
 
 const getSubWC = <T extends TSubComponent>(primaryWC: HTMLElement, secondaryWC: T) => {
   const subWC = getWCShadowRoot(primaryWC).querySelector(secondaryWC)
@@ -58,7 +58,7 @@ const getRootElement = () => {
 }
 
 describe(
-  'Core/YCoreAvatar',
+  'Core/AltCoreAvatar',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -123,14 +123,14 @@ describe(
                   if (value) {
                     const iconElement = getSubWC(
                       component,
-                      YCoreIconTagName,
+                      AltCoreIconTagName,
                     )
                     expect(iconElement.icon).toBe(value)
                   } else {
                     expect(() => getSubWC(
                       component,
-                      YCoreIconTagName,
-                    )).toThrow(`${YCoreIconTagName} not found`)
+                      AltCoreIconTagName,
+                    )).toThrow(`${AltCoreIconTagName} not found`)
                   }
                 },
               )

@@ -1,25 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YIcon } from '~ng/ui/icon'
-import yCoreIconStoryMeta from '~core/ui/icon/stories/Icon.stories'
+import { AltIcon } from '~ng/ui/icon'
+import altCoreIconStoryMeta from '~core/ui/icon/stories/Icon.stories'
 
 /**
  * Angular wrapper for Core Icon
  */
-const meta: Meta<YIcon> = {
+const meta: Meta<AltIcon> = {
   title: 'Icons/🔍 Icon',
   id: 'icon',
   parameters: { controls: { sort: 'alpha' } },
-  component: YIcon,
+  component: AltIcon,
   tags: [
     'angular',
     'autodocs',
   ],
-  argTypes: yCoreIconStoryMeta.argTypes,
-  args: yCoreIconStoryMeta.args,
+  argTypes: altCoreIconStoryMeta.argTypes,
+  args: altCoreIconStoryMeta.args,
 }
 
 export default meta
-type Story = StoryObj<YIcon>
+type Story = StoryObj<AltIcon>
 
 export const Default: Story = { args: {} }

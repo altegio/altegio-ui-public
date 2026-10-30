@@ -1,4 +1,4 @@
-import type { IYCoreTabsItem, IYCoreTabsProps } from '~core/ui/tabs/models/types'
+import type { IAltCoreTabsItem, IAltCoreTabsProps } from '~core/ui/tabs/models/types'
 import {
   createCoreTabsProps,
 } from '~core/ui/tabs/models/types'
@@ -7,14 +7,14 @@ import { createCoreTabExternalProps } from '~core/ui/tab/models/types'
 
 const defaultProps = createCoreTabsProps()
 
-const oneTab: IYCoreTabsItem = { ...createCoreTabExternalProps() }
+const oneTab: IAltCoreTabsItem = { ...createCoreTabExternalProps() }
 
-export const propsTabsTestCases: TPropTestCase<IYCoreTabsProps, 'tabs'>[] = [
+export const propsTabsTestCases: TPropTestCase<IAltCoreTabsProps, 'tabs'>[] = [
   { prop: 'tabs', case: 'tab', value: [oneTab], expected: [oneTab] },
   { prop: 'tabs', case: 'undefined', value: undefined, expected: defaultProps.tabs },
 ]
 
-export const propsValueTestCases: TPropTestCase<IYCoreTabsProps, 'value'>[] = [
+export const propsValueTestCases: TPropTestCase<IAltCoreTabsProps, 'value'>[] = [
   { prop: 'value', case: 'true', value: 0, expected: 0 },
   { prop: 'value', case: 'false', value: 3, expected: 3 },
   { prop: 'value', case: 'undefined', value: undefined, expected: defaultProps.value },

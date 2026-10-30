@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { yRocket } from '~shared/icons'
-import { YCoreIconTagName } from '~shared/constants'
+import { altRocket } from '~shared/icons'
+import { AltCoreIconTagName } from '~shared/constants'
 import { createComponent } from '~shared/tests/core'
 import { getWCShadowRoot } from '~shared/tests/utils'
 import {
@@ -11,10 +11,10 @@ import '~core/ui/icon'
 
 const { size: defaultSize } = createCoreIconExternalProps()
 
-const tagName = YCoreIconTagName
+const tagName = AltCoreIconTagName
 
 describe(
-  'Core/YCoreIcon/Unit',
+  'Core/AltCoreIcon/Unit',
   () => {
     describe(
       'Props',
@@ -41,7 +41,7 @@ describe(
           async() => {
             const component = createComponent(
               tagName,
-              { props: { icon: yRocket } },
+              { props: { icon: altRocket } },
             )
 
             document.body.appendChild(component)
@@ -62,7 +62,7 @@ describe(
             const size = '100px'
             const component = createComponent(
               tagName,
-              { props: { size, icon: yRocket } },
+              { props: { size, icon: altRocket } },
             )
 
             document.body.appendChild(component)
@@ -84,7 +84,7 @@ describe(
           async() => {
             const component = createComponent(
               tagName,
-              { props: { icon: yRocket } },
+              { props: { icon: altRocket } },
             )
 
             document.body.appendChild(component)

@@ -1,6 +1,6 @@
 import type { TTablePluginsContext } from '~core/ui/table/plugins/context'
 
-export interface IYCoreTableExternalProps {
+export interface IAltCoreTableExternalProps {
   loading: boolean | undefined
   disabled: boolean | undefined
   plugins: TTablePluginsContext | undefined
@@ -8,7 +8,7 @@ export interface IYCoreTableExternalProps {
   hideBar: boolean | undefined
 }
 
-export const createCoreTableExternalProps = (): IYCoreTableExternalProps => ({
+export const createCoreTableExternalProps = (): IAltCoreTableExternalProps => ({
   loading: false,
   disabled: false,
   plugins: {},

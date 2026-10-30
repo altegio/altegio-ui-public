@@ -1,5 +1,5 @@
 import {
-  type IYCoreTableCellExternalProps,
+  type IAltCoreTableCellExternalProps,
   type ITableCellItem,
   createCoreTableCellExternalProps,
 } from '~core/ui/tableCell/models/types'
@@ -8,14 +8,14 @@ import { ESort, type TSort } from '~shared/types/global'
 export interface ITableHeadCellItem extends ITableCellItem {
   gridTemplate?: string
 }
-export interface IYCoreTableHeadCellExternalProps extends Omit<IYCoreTableCellExternalProps, 'item' | 'itemLabel' | 'stripe'> {
+export interface IAltCoreTableHeadCellExternalProps extends Omit<IAltCoreTableCellExternalProps, 'item' | 'itemLabel' | 'stripe'> {
   sortable: boolean | undefined
   sortDirection: TSort | undefined
   header: ITableHeadCellItem | undefined
-  headerLabel: IYCoreTableCellExternalProps['itemLabel']
+  headerLabel: IAltCoreTableCellExternalProps['itemLabel']
 }
 
-export const createCoreTableHeadCellExternalProps = (): IYCoreTableHeadCellExternalProps => {
+export const createCoreTableHeadCellExternalProps = (): IAltCoreTableHeadCellExternalProps => {
   const {
     sticky,
     align,

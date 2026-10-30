@@ -6,7 +6,7 @@ import { ifDefined } from 'lit/directives/if-defined.js'
 
 import {
   createCoreFieldTextareaProps,
-  type IYCoreFieldTextareaProps,
+  type IAltCoreFieldTextareaProps,
   InputEvent,
   KeydownEvent,
   FocusEvent,
@@ -14,7 +14,7 @@ import {
   RenderEvent,
 } from '~core/ui/fieldTextarea/models/types'
 import {
-  YCoreFieldTextareaTagName as tagName,
+  AltCoreFieldTextareaTagName as tagName,
 } from '~shared/constants'
 
 import { booleanConverter, numberConverter } from '~core/utils/converters'
@@ -23,8 +23,8 @@ import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
 import { preventAndStopEvent } from '~shared/utils/helpers'
 import { disabledContextCreated, sizeContextCreated, readonlyContextCreated, focusedContextCreated } from '~core/ui/fieldWrapper/providers'
 
-import YCoreFieldTextareaVarsCSS from '~core/ui/fieldTextarea/css/FieldTextarea.vars.css?inline'
-import YCoreFieldTextareaScopedCSS from '~core/ui/fieldTextarea/css/FieldTextarea.scoped.css?inline'
+import AltCoreFieldTextareaVarsCSS from '~core/ui/fieldTextarea/css/FieldTextarea.vars.css?inline'
+import AltCoreFieldTextareaScopedCSS from '~core/ui/fieldTextarea/css/FieldTextarea.scoped.css?inline'
 import { withLocator } from '~core/utils/locator'
 
 const {
@@ -36,27 +36,27 @@ const {
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreFieldTextarea
+export class AltCoreFieldTextarea
   extends LitElement
-  implements IYCoreFieldTextareaProps {
+  implements IAltCoreFieldTextareaProps {
   @consume({ context: disabledContextCreated, subscribe: true })
-  @property({ type: Boolean }) disabled: IYCoreFieldTextareaProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreFieldTextareaProps['disabled'] = disabled
   @consume({ context: sizeContextCreated, subscribe: true })
-  @property({ type: String, reflect: true }) size: IYCoreFieldTextareaProps['size'] = size
+  @property({ type: String, reflect: true }) size: IAltCoreFieldTextareaProps['size'] = size
   @consume({ context: readonlyContextCreated, subscribe: true })
-  @property({ type: Boolean }) readonly: IYCoreFieldTextareaProps['readonly'] = readonly
+  @property({ type: Boolean }) readonly: IAltCoreFieldTextareaProps['readonly'] = readonly
 
-  @property({ type: String, reflect: true }) value: IYCoreFieldTextareaProps['value'] = value
-  @property({ type: String, reflect: true }) name: IYCoreFieldTextareaProps['name'] = name
-  @property({ type: String, reflect: true }) placeholder: IYCoreFieldTextareaProps['placeholder'] = placeholder
-  @property({ type: String, reflect: true }) autocomplete: IYCoreFieldTextareaProps['autocomplete'] = autocomplete
-  @property({ type: Number, reflect: true, converter: numberConverter }) maxlength: IYCoreFieldTextareaProps['maxlength'] = maxlength
-  @property({ type: Boolean }) required: IYCoreFieldTextareaProps['required'] = required
-  @property({ type: Boolean }) autofocus: IYCoreFieldTextareaProps['autofocus'] = autofocus
-  @property({ type: Boolean, reflect: true, converter: booleanConverter, attribute: 'hide-space-left' }) hideSpaceLeft: IYCoreFieldTextareaProps['hideSpaceLeft'] = hideSpaceLeft
-  @property({ type: Boolean, reflect: true, converter: booleanConverter, attribute: 'hide-space-right' }) hideSpaceRight: IYCoreFieldTextareaProps['hideSpaceRight'] = hideSpaceRight
-  @property({ type: Number, reflect: true, converter: numberConverter }) rows: IYCoreFieldTextareaProps['rows'] = rows
-  @property({ type: String, reflect: true }) resize: IYCoreFieldTextareaProps['resize'] = resize
+  @property({ type: String, reflect: true }) value: IAltCoreFieldTextareaProps['value'] = value
+  @property({ type: String, reflect: true }) name: IAltCoreFieldTextareaProps['name'] = name
+  @property({ type: String, reflect: true }) placeholder: IAltCoreFieldTextareaProps['placeholder'] = placeholder
+  @property({ type: String, reflect: true }) autocomplete: IAltCoreFieldTextareaProps['autocomplete'] = autocomplete
+  @property({ type: Number, reflect: true, converter: numberConverter }) maxlength: IAltCoreFieldTextareaProps['maxlength'] = maxlength
+  @property({ type: Boolean }) required: IAltCoreFieldTextareaProps['required'] = required
+  @property({ type: Boolean }) autofocus: IAltCoreFieldTextareaProps['autofocus'] = autofocus
+  @property({ type: Boolean, reflect: true, converter: booleanConverter, attribute: 'hide-space-left' }) hideSpaceLeft: IAltCoreFieldTextareaProps['hideSpaceLeft'] = hideSpaceLeft
+  @property({ type: Boolean, reflect: true, converter: booleanConverter, attribute: 'hide-space-right' }) hideSpaceRight: IAltCoreFieldTextareaProps['hideSpaceRight'] = hideSpaceRight
+  @property({ type: Number, reflect: true, converter: numberConverter }) rows: IAltCoreFieldTextareaProps['rows'] = rows
+  @property({ type: String, reflect: true }) resize: IAltCoreFieldTextareaProps['resize'] = resize
 
   @consume({ context: focusedContextCreated, subscribe: true })
   @state() public focused = false
@@ -97,8 +97,8 @@ export class YCoreFieldTextarea
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreFieldTextareaVarsCSS)}
-      ${unsafeCSS(YCoreFieldTextareaScopedCSS)}
+      ${unsafeCSS(AltCoreFieldTextareaVarsCSS)}
+      ${unsafeCSS(AltCoreFieldTextareaScopedCSS)}
     `,
   ]
 

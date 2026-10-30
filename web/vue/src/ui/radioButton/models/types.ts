@@ -1,29 +1,29 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 import {
   createCoreRadioButtonExternalProps,
-  type IYCoreRadioButtonExternalProps,
+  type IAltCoreRadioButtonExternalProps,
 } from '~core/ui/radioButton/models/types'
 import type { RadioButtonCheckedEvent } from '~core/ui/radioButton/models/types'
 
-export interface IYVueCoreRadioButtonProps extends Omit<IYCoreRadioButtonExternalProps, 'checked' | 'value'> {
-  modelValue: IYCoreRadioButtonExternalProps['value']
+export interface IAltVueCoreRadioButtonProps extends Omit<IAltCoreRadioButtonExternalProps, 'checked' | 'value'> {
+  modelValue: IAltCoreRadioButtonExternalProps['value']
 }
 
-export interface IYVueRadioButtonProps {
-  modelValue?: IYVueCoreRadioButtonProps['modelValue']
-  name?: IYVueCoreRadioButtonProps['name']
-  required?: IYVueCoreRadioButtonProps['required']
-  size?: IYVueCoreRadioButtonProps['size']
-  disabled?: IYVueCoreRadioButtonProps['disabled']
-  labelText?: IYVueCoreRadioButtonProps['labelText']
-  labelTooltipText?: IYVueCoreRadioButtonProps['labelTooltipText']
-  annotationText?: IYVueCoreRadioButtonProps['annotationText']
-  labelOverflowDebounce?: IYVueCoreRadioButtonProps['labelOverflowDebounce']
-  alignment?: IYVueCoreRadioButtonProps['alignment']
-  errors?: IYVueCoreRadioButtonProps['errors']
+export interface IAltVueRadioButtonProps {
+  modelValue?: IAltVueCoreRadioButtonProps['modelValue']
+  name?: IAltVueCoreRadioButtonProps['name']
+  required?: IAltVueCoreRadioButtonProps['required']
+  size?: IAltVueCoreRadioButtonProps['size']
+  disabled?: IAltVueCoreRadioButtonProps['disabled']
+  labelText?: IAltVueCoreRadioButtonProps['labelText']
+  labelTooltipText?: IAltVueCoreRadioButtonProps['labelTooltipText']
+  annotationText?: IAltVueCoreRadioButtonProps['annotationText']
+  labelOverflowDebounce?: IAltVueCoreRadioButtonProps['labelOverflowDebounce']
+  alignment?: IAltVueCoreRadioButtonProps['alignment']
+  errors?: IAltVueCoreRadioButtonProps['errors']
 }
 
-export const createVueRadioButtonProps = (): TDefinedVueProps<IYVueRadioButtonProps> => {
+export const createVueRadioButtonProps = (): TDefinedVueProps<IAltVueRadioButtonProps> => {
   const {
     size,
     required,
@@ -55,6 +55,6 @@ export const createVueRadioButtonProps = (): TDefinedVueProps<IYVueRadioButtonPr
   }
 }
 
-export interface IYVueRadioButtonEmits {
+export interface IAltVueRadioButtonEmits {
   (event: 'update:modelValue', payload: RadioButtonCheckedEvent['detail']['checked']): void
 }

@@ -5,11 +5,11 @@ import type { Meta, StoryObj } from '@storybook/web-components'
 import '~core/ui/popover'
 import '~core/ui/button'
 
-import { YCorePopoverTagName as tagName } from '~shared/constants'
+import { AltCorePopoverTagName as tagName } from '~shared/constants'
 import {
   createCorePopoverProps,
-  type IYCorePopoverProps,
-  type TYCorePopoverActionEvents,
+  type IAltCorePopoverProps,
+  type TAltCorePopoverActionEvents,
 } from '~core/ui/popover/models/types'
 import { getComponentContentTable, getComponentEmitsTable } from '~shared/.storybook/tables'
 import {
@@ -18,20 +18,20 @@ import {
 import type { ITextStoryProps } from '~shared/.storybook/argTypes'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-import yCoreTipStoryMeta from '~core/ui/tip/stories/Tip.stories'
+import altCoreTipStoryMeta from '~core/ui/tip/stories/Tip.stories'
 
 const {
   submitText,
   cancelText,
 } = createCorePopoverProps()
 
-type TYCorePopoverMeta = Meta<IYCorePopoverProps & TYCorePopoverActionEvents & ITextStoryProps>
+type TAltCorePopoverMeta = Meta<IAltCorePopoverProps & TAltCorePopoverActionEvents & ITextStoryProps>
 
 /**
  * ## Core Popover
  *
  */
-const meta: TYCorePopoverMeta = {
+const meta: TAltCorePopoverMeta = {
   title: 'Popover',
   id: 'popover',
   component: tagName,
@@ -57,7 +57,7 @@ const meta: TYCorePopoverMeta = {
     onSubmit,
   }) => html`
     <div style="width: 300px; height: 300px; border: 1px dashed; display: flex; justify-content: center; align-items: center;border-radius: 10px;">
-      <y-core-popover
+      <alt-core-popover
         .trigger=${trigger}
         .isOpen=${isOpen}
         .offset=${offset}
@@ -72,16 +72,16 @@ const meta: TYCorePopoverMeta = {
         @cancel=${onCancel}
         @submit=${onSubmit}
       >
-        <y-core-button label="Click me" slot="activator"></y-core-button>
+        <alt-core-button label="Click me" slot="activator"></alt-core-button>
         
         <div slot="content">
           <span style="width: 218px;display: block;">${isLongText ? LOREM_IPSUM : 'Popover content'}</span>
         </div>
-      </y-core-popover>
+      </alt-core-popover>
     </div>
   `,
   argTypes: {
-    ...yCoreTipStoryMeta.argTypes,
+    ...altCoreTipStoryMeta.argTypes,
     submitText: {
       type: 'string',
       description: 'Confirm button text',
@@ -105,7 +105,7 @@ const meta: TYCorePopoverMeta = {
     isLongText: isLongTextArgType,
   },
   args: {
-    ...yCoreTipStoryMeta.args,
+    ...altCoreTipStoryMeta.args,
     submitText: 'Next',
     cancelText: 'Cancel',
     onCancel: fn(),
@@ -114,6 +114,6 @@ const meta: TYCorePopoverMeta = {
 }
 
 export default meta
-type Story = StoryObj<IYCorePopoverProps>
+type Story = StoryObj<IAltCorePopoverProps>
 
 export const Playground: Story = { args: {} }

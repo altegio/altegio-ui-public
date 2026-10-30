@@ -1,57 +1,57 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import yCoreButtonGroupStoryMeta from '~core/ui/buttonGroup/stories/ButtonGroup.stories'
-import { YButtonGroup } from '~vue/ui/buttonGroup'
-import { YButton } from '~vue/ui/button'
-import { yInfo, yRocket } from '~shared/icons'
+import altCoreButtonGroupStoryMeta from '~core/ui/buttonGroup/stories/ButtonGroup.stories'
+import { AltButtonGroup } from '~vue/ui/buttonGroup'
+import { AltButton } from '~vue/ui/button'
+import { altInfo, altRocket } from '~shared/icons'
 
-const meta: Meta<typeof YButtonGroup> = {
+const meta: Meta<typeof AltButtonGroup> = {
   title: '✅ ButtonGroup',
   id: 'buttonGroup',
   parameters: { controls: { sort: 'alpha' } },
-  component: YButtonGroup,
+  component: AltButtonGroup,
   tags: ['vue', 'autodocs'],
   render: (args) => ({
-    components: { YButtonGroup, YButton },
+    components: { AltButtonGroup, AltButton },
     setup() {
-      return { args, yInfo, yRocket }
+      return { args, altInfo, altRocket }
     },
     template: `
       <div style="display: flex; flex-direction: column; gap: 16px;">
         <h3>ButtonGroup</h3>
         
-        <YButtonGroup v-bind="args">
-          <YButton v-for="index in 2" :key="index" :label="\`Button \${index}\`" />
-        </YButtonGroup>
+        <AltButtonGroup v-bind="args">
+          <AltButton v-for="index in 2" :key="index" :label="\`Button \${index}\`" />
+        </AltButtonGroup>
 
-        <YButtonGroup v-bind="args">
-          <YButton v-for="index in 3" :key="index + 2" :label="\`Button \${index + 2}\`" />
-        </YButtonGroup>
+        <AltButtonGroup v-bind="args">
+          <AltButton v-for="index in 3" :key="index + 2" :label="\`Button \${index + 2}\`" />
+        </AltButtonGroup>
 
-        <YButtonGroup v-bind="args">
-          <YButton v-for="index in 4" :key="index + 2" :label="\`Button \${index + 2}\`" />
-        </YButtonGroup>
+        <AltButtonGroup v-bind="args">
+          <AltButton v-for="index in 4" :key="index + 2" :label="\`Button \${index + 2}\`" />
+        </AltButtonGroup>
 
-        <YButtonGroup v-bind="args">
-          <YButton v-for="index in 5" :key="index + 2" :label="\`Button \${index + 2}\`" />
-        </YButtonGroup>
+        <AltButtonGroup v-bind="args">
+          <AltButton v-for="index in 5" :key="index + 2" :label="\`Button \${index + 2}\`" />
+        </AltButtonGroup>
 
         <h3>ButtonGroup With Icons</h3>
         
-        <YButtonGroup v-bind="args">
-          <YButton
+        <AltButtonGroup v-bind="args">
+          <AltButton
             v-for="index in 2"
             :key="index"
             :label="\`Button \${index}\`"
-            :iconLeft="index === 1 ? yInfo : undefined"
-            :iconRight="index === 2 ? yRocket : undefined"
+            :iconLeft="index === 1 ? altInfo : undefined"
+            :iconRight="index === 2 ? altRocket : undefined"
           />
-        </YButtonGroup>
+        </AltButtonGroup>
       </div>
     `,
   }),
-  argTypes: { ...yCoreButtonGroupStoryMeta.argTypes },
-  args: { ...yCoreButtonGroupStoryMeta.args },
+  argTypes: { ...altCoreButtonGroupStoryMeta.argTypes },
+  args: { ...altCoreButtonGroupStoryMeta.args },
 }
 
 export default meta

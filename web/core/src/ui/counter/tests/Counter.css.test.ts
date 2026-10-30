@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreCounterTagName } from '~shared/constants'
+import { AltCoreCounterTagName } from '~shared/constants'
 import {
   createCoreCounterProps,
 } from '~core/ui/counter/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from './cases/css'
 
-const tagName = YCoreCounterTagName
+const tagName = AltCoreCounterTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreCounter/CSS',
+  'Core/AltCoreCounter/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

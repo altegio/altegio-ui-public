@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
-import { YCoreFieldInputTagName } from '~shared/constants'
+import { AltCoreFieldInputTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import {
   createCoreFieldInputProps,
@@ -27,7 +27,7 @@ import {
   eventKeydownCases, eventRenderCases,
 } from '~core/ui/fieldInput/tests/cases/events'
 
-const tagName = YCoreFieldInputTagName
+const tagName = AltCoreFieldInputTagName
 
 const {
   component,
@@ -53,7 +53,7 @@ const localClassWithModifier = (modifier: string) => classWithModifier(
 )
 
 describe(
-  'Core/YFieldInput',
+  'Core/AltFieldInput',
   () => {
     beforeAll(() => {
       injectComponentToBody()

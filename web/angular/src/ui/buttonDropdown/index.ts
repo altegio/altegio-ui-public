@@ -1,2 +1,2 @@
-export { YButtonDropdown } from './ButtonDropdown.component'
+export { AltButtonDropdown } from './ButtonDropdown.component'
 export type * from './models/types'

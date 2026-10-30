@@ -7,26 +7,26 @@ import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
 import {
   createCoreSimpleCheckboxProps,
   SimpleCheckboxCheckedEvent,
-  type IYCoreSimpleCheckboxProps,
+  type IAltCoreSimpleCheckboxProps,
 } from './models/types'
-import { YCoreSimpleCheckboxTagName as tagName } from '~shared/constants'
-import { yCheck } from '~shared/icons'
+import { AltCoreSimpleCheckboxTagName as tagName } from '~shared/constants'
+import { altCheck } from '~shared/icons'
 
-import YCoreSimpleCheckboxVarsCSS from '~core/ui/simpleCheckbox/css/SimpleCheckbox.vars.css?inline'
-import YCoreSimpleCheckboxScopedCSS from '~core/ui/simpleCheckbox/css/SimpleCheckbox.scoped.css?inline'
+import AltCoreSimpleCheckboxVarsCSS from '~core/ui/simpleCheckbox/css/SimpleCheckbox.vars.css?inline'
+import AltCoreSimpleCheckboxScopedCSS from '~core/ui/simpleCheckbox/css/SimpleCheckbox.scoped.css?inline'
 import { withLocator } from '~core/utils/locator'
 
 const { size, checked, indeterminate, disabled, error, hovered } = { ...createCoreSimpleCheckboxProps() }
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreSimpleCheckbox extends LitElement implements IYCoreSimpleCheckboxProps {
-  @property({ type: String, reflect: true }) size: IYCoreSimpleCheckboxProps['size'] = size
-  @property({ type: Boolean, reflect: true }) checked: IYCoreSimpleCheckboxProps['checked'] = checked
-  @property({ type: Boolean, reflect: true }) indeterminate: IYCoreSimpleCheckboxProps['indeterminate'] = indeterminate
-  @property({ type: Boolean, reflect: true }) error: IYCoreSimpleCheckboxProps['error'] = error
-  @property({ type: Boolean }) disabled: IYCoreSimpleCheckboxProps['disabled'] = disabled
-  @property({ type: Boolean, reflect: true }) hovered: IYCoreSimpleCheckboxProps['hovered'] = hovered
+export class AltCoreSimpleCheckbox extends LitElement implements IAltCoreSimpleCheckboxProps {
+  @property({ type: String, reflect: true }) size: IAltCoreSimpleCheckboxProps['size'] = size
+  @property({ type: Boolean, reflect: true }) checked: IAltCoreSimpleCheckboxProps['checked'] = checked
+  @property({ type: Boolean, reflect: true }) indeterminate: IAltCoreSimpleCheckboxProps['indeterminate'] = indeterminate
+  @property({ type: Boolean, reflect: true }) error: IAltCoreSimpleCheckboxProps['error'] = error
+  @property({ type: Boolean }) disabled: IAltCoreSimpleCheckboxProps['disabled'] = disabled
+  @property({ type: Boolean, reflect: true }) hovered: IAltCoreSimpleCheckboxProps['hovered'] = hovered
 
   @bubblingEvent(
     SimpleCheckboxCheckedEvent,
@@ -51,14 +51,14 @@ export class YCoreSimpleCheckbox extends LitElement implements IYCoreSimpleCheck
   }
 
   static readonly styles = [
-    css`${unsafeCSS(YCoreSimpleCheckboxVarsCSS)}`,
-    css`${unsafeCSS(YCoreSimpleCheckboxScopedCSS)}`,
+    css`${unsafeCSS(AltCoreSimpleCheckboxVarsCSS)}`,
+    css`${unsafeCSS(AltCoreSimpleCheckboxScopedCSS)}`,
   ]
 
   private renderCheckedIcon() {
     return html`
       <div class="${this.baseClass}__icon ${this.baseClass}__icon-checked">
-        ${unsafeSVG(yCheck.data)}
+        ${unsafeSVG(altCheck.data)}
       </div>
     `
   }

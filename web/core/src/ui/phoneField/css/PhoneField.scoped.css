@@ -1,25 +1,25 @@
-$component: $YCorePhoneFieldTagName;
+$component: $AltCorePhoneFieldTagName;
 
 .$(component) {
-  display: var(--y-core-phone-field-display);
+  display: var(--alt-core-phone-field-display);
   flex-direction: column;
-  gap: var(--y-core-phone-field-gap);
-  min-width: var(--y-core-phone-field-min-width);
-  max-width: var(--y-core-phone-field-max-width);
-  font-family: var(--y-core-font-family);
+  gap: var(--alt-core-phone-field-gap);
+  min-width: var(--alt-core-phone-field-min-width);
+  max-width: var(--alt-core-phone-field-max-width);
+  font-family: var(--alt-core-font-family);
 
   &__activator {
-    --y-core-input-flex-wrap: wrap;
-    --y-core-input-min-width: 0;
+    --alt-core-input-flex-wrap: wrap;
+    --alt-core-input-min-width: 0;
   }
 
   &__content {
-    --y-core-dropdown-list-min-width: var(--y-core-phone-field-min-width);
-    --y-core-dropdown-list-max-width: var(--y-core-phone-field-max-width);
+    --alt-core-dropdown-list-min-width: var(--alt-core-phone-field-min-width);
+    --alt-core-dropdown-list-max-width: var(--alt-core-phone-field-max-width);
 
-    max-width: var(--y-core-phone-field-max-width);
-    min-height: var(--y-core-phone-field-dropdown-min-height);
-    margin-top: var(--y-core-phone-field-content-margin-top);
+    max-width: var(--alt-core-phone-field-max-width);
+    min-height: var(--alt-core-phone-field-dropdown-min-height);
+    margin-top: var(--alt-core-phone-field-content-margin-top);
   }
 
   &__list-item-append {
@@ -40,7 +40,7 @@ $component: $YCorePhoneFieldTagName;
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: var(--y-core-phone-field-loader-background-color);
+    background-color: var(--alt-core-phone-field-loader-background-color);
   }
 
   &__annotation_hide {

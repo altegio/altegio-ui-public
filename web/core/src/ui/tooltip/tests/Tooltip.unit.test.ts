@@ -1,7 +1,7 @@
 import { getWCShadowRoot, trimTextContent } from '~shared/tests/utils'
 import { createCoreTooltipProps } from '~core/ui/tooltip/models/types'
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest'
-import { YCoreTooltipTagName } from '~shared/constants'
+import { AltCoreTooltipTagName } from '~shared/constants'
 import { empty } from '~shared/tests/slotContents'
 import { useCoreTests } from '~shared/tests/core'
 import '~core/ui/tooltip'
@@ -15,13 +15,13 @@ const {
   injectComponentToBody,
   removeComponent,
 } = useCoreTests(
-  YCoreTooltipTagName,
+  AltCoreTooltipTagName,
   createCoreTooltipProps(),
 )
 
 
 describe(
-  'Core/YCoreTooltip/Unit',
+  'Core/AltCoreTooltip/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()

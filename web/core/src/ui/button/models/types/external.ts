@@ -1,17 +1,17 @@
-import type { IYIcon } from '~shared/icons'
+import type { IAltIcon } from '~shared/icons'
 
 import {
-  type IYCoreSimpleButtonExternalProps,
+  type IAltCoreSimpleButtonExternalProps,
   createCoreSimpleButtonExternalProps,
 } from '~core/ui/simpleButton/models/types'
 
-export interface IYCoreButtonExternalProps extends IYCoreSimpleButtonExternalProps {
+export interface IAltCoreButtonExternalProps extends IAltCoreSimpleButtonExternalProps {
   label: string | undefined
-  iconLeft: IYIcon | undefined
-  iconRight: IYIcon | undefined
+  iconLeft: IAltIcon | undefined
+  iconRight: IAltIcon | undefined
 }
 
-export const createCoreButtonExternalProps = (): IYCoreButtonExternalProps => {
+export const createCoreButtonExternalProps = (): IAltCoreButtonExternalProps => {
   const { disabled, loading, size, variant, href, target, alignment, fullWidth } = createCoreSimpleButtonExternalProps()
   return {
     disabled,
@@ -28,5 +28,5 @@ export const createCoreButtonExternalProps = (): IYCoreButtonExternalProps => {
   }
 }
 
-export { EYCoreSimpleButtonVariant as EYCoreButtonVariant } from '~core/ui/simpleButton/models/types'
-export { EYCoreSimpleButtonContentAlignment as EYCoreButtonContentAlignment } from '~core/ui/simpleButton/models/types'
+export { EAltCoreSimpleButtonVariant as EAltCoreButtonVariant } from '~core/ui/simpleButton/models/types'
+export { EAltCoreSimpleButtonContentAlignment as EAltCoreButtonContentAlignment } from '~core/ui/simpleButton/models/types'

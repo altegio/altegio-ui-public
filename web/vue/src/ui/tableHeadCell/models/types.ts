@@ -1,26 +1,26 @@
 import {
   createCoreTableHeadCellProps,
-  type IYCoreTableHeadCellProps,
-  type IYCoreTableHeadCellSortEvent,
+  type IAltCoreTableHeadCellProps,
+  type IAltCoreTableHeadCellSortEvent,
 } from '~core/ui/tableHeadCell/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreTableHeadCellProps extends IYCoreTableHeadCellProps {}
+export interface IAltVueCoreTableHeadCellProps extends IAltCoreTableHeadCellProps {}
 
-export interface IYVueTableHeadCellProps {
-  align?: IYVueCoreTableHeadCellProps['align']
-  disabled?: IYVueCoreTableHeadCellProps['disabled']
-  header?: IYVueCoreTableHeadCellProps['header']
-  headerLabel?: IYVueCoreTableHeadCellProps['headerLabel']
-  sortDirection?: IYVueCoreTableHeadCellProps['sortDirection']
-  sortable?: IYVueCoreTableHeadCellProps['sortable']
-  sticky?: IYVueCoreTableHeadCellProps['sticky']
-  ellipsis?: IYVueCoreTableHeadCellProps['ellipsis']
-  lineclamp?: IYVueCoreTableHeadCellProps['lineclamp']
-  bordered?: IYVueCoreTableHeadCellProps['bordered']
+export interface IAltVueTableHeadCellProps {
+  align?: IAltVueCoreTableHeadCellProps['align']
+  disabled?: IAltVueCoreTableHeadCellProps['disabled']
+  header?: IAltVueCoreTableHeadCellProps['header']
+  headerLabel?: IAltVueCoreTableHeadCellProps['headerLabel']
+  sortDirection?: IAltVueCoreTableHeadCellProps['sortDirection']
+  sortable?: IAltVueCoreTableHeadCellProps['sortable']
+  sticky?: IAltVueCoreTableHeadCellProps['sticky']
+  ellipsis?: IAltVueCoreTableHeadCellProps['ellipsis']
+  lineclamp?: IAltVueCoreTableHeadCellProps['lineclamp']
+  bordered?: IAltVueCoreTableHeadCellProps['bordered']
 }
 
-export const createVueTableHeadCellProps = (): TDefinedVueProps<IYVueTableHeadCellProps> => {
+export const createVueTableHeadCellProps = (): TDefinedVueProps<IAltVueTableHeadCellProps> => {
   const {
     align,
     disabled,
@@ -48,6 +48,6 @@ export const createVueTableHeadCellProps = (): TDefinedVueProps<IYVueTableHeadCe
   }
 }
 
-export interface IYVueTableHeadCellEmits {
-  (event: 'sort', payload: IYCoreTableHeadCellSortEvent): void
+export interface IAltVueTableHeadCellEmits {
+  (event: 'sort', payload: IAltCoreTableHeadCellSortEvent): void
 }

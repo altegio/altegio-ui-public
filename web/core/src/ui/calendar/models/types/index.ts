@@ -1,11 +1,11 @@
 import {
   createCoreCalendarExternalProps,
-  type IYCoreCalendarExternalProps,
+  type IAltCoreCalendarExternalProps,
 } from './external'
 
 export * from './external'
 export * from './events'
 
-export interface IYCoreCalendarProps extends IYCoreCalendarExternalProps {}
+export interface IAltCoreCalendarProps extends IAltCoreCalendarExternalProps {}
 
-export const createCoreCalendarProps = (): IYCoreCalendarProps => ({ ...createCoreCalendarExternalProps() })
+export const createCoreCalendarProps = (): IAltCoreCalendarProps => ({ ...createCoreCalendarExternalProps() })

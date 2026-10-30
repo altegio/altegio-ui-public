@@ -1,9 +1,9 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
 
-export interface IYCoreSegmentControlClickEvent {
+export interface IAltCoreSegmentControlClickEvent {
   value: string
 }
 
-export class ClickEvent extends CustomEvent<IYCoreSegmentControlClickEvent> {}
+export class ClickEvent extends CustomEvent<IAltCoreSegmentControlClickEvent> {}
 
-export type TYCoreSegmentControlEvents = TEventsStoryArgs<{ ClickEvent: typeof ClickEvent }>
+export type TAltCoreSegmentControlEvents = TEventsStoryArgs<{ ClickEvent: typeof ClickEvent }>

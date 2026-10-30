@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url'
 import { build } from 'esbuild'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
-const output = fileURLToPath(new URL('../dist/web/cli/yds.mjs', import.meta.url))
+const output = fileURLToPath(new URL('../dist/web/cli/alt-ds.mjs', import.meta.url))
 
 await build({
   entryPoints: [fileURLToPath(new URL('../web/cli/cli.ts', import.meta.url))],

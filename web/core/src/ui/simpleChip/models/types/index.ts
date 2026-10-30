@@ -1,12 +1,12 @@
 import {
   createCoreSimpleChipExternalProps,
-  type IYCoreSimpleChipExternalProps,
+  type IAltCoreSimpleChipExternalProps,
 } from './external'
 
 
 export * from './external'
 export * from './events'
 
-export interface IYCoreSimpleChipProps extends IYCoreSimpleChipExternalProps {}
+export interface IAltCoreSimpleChipProps extends IAltCoreSimpleChipExternalProps {}
 
-export const createCoreSimpleChipProps = (): IYCoreSimpleChipProps => ({ ...createCoreSimpleChipExternalProps() })
+export const createCoreSimpleChipProps = (): IAltCoreSimpleChipProps => ({ ...createCoreSimpleChipExternalProps() })

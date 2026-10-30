@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreFieldIconTagName as tagName } from '~shared/constants'
-import { YFieldIcon } from '~ng/ui/fieldIcon'
-import type { IYNgFieldIconProps } from '~ng/ui/fieldIcon/models/types'
+import { AltCoreFieldIconTagName as tagName } from '~shared/constants'
+import { AltFieldIcon } from '~ng/ui/fieldIcon'
+import type { IAltNgFieldIconProps } from '~ng/ui/fieldIcon/models/types'
 import {
   propDisabledCases,
   propHoverableCases,
@@ -13,24 +13,24 @@ import {
 } from '~core/ui/fieldIcon/tests/cases/props'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgFieldIconProps>
+  props?: Partial<IAltNgFieldIconProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YFieldIcon] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltFieldIcon] }).compileComponents()
 
   @Component({
     template: `
-      <YFieldIcon
+      <AltFieldIcon
         [disabled]="disabled"
         [size]="size"
         [icon]="icon"
         [hoverable]="hoverable"
         [clickable]="clickable"
-      ></YFieldIcon>
+      ></AltFieldIcon>
     `,
-    imports: [YFieldIcon],
+    imports: [AltFieldIcon],
     standalone: true,
   })
 
@@ -45,7 +45,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YFieldIcon/Unit',
+  'Angular/AltFieldIcon/Unit',
   () => {
     describe(
       'Props',

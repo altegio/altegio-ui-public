@@ -1,12 +1,12 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
 import {
-  YCoreCardRadioTagName as tagName,
-  YCoreSimpleRadioButtonTagName,
+  AltCoreCardRadioTagName as tagName,
+  AltCoreSimpleRadioButtonTagName,
 } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { getElementClasses, getShadowRootElement, getShadowElement } from '~shared/tests/utils'
 import { createCoreCardRadioProps } from '~core/ui/cardRadio/models/types'
-import type { YCoreSimpleRadioButton } from '~core/ui/simpleRadioButton'
+import type { AltCoreSimpleRadioButton } from '~core/ui/simpleRadioButton'
 import '~core/ui/cardRadio'
 
 import {
@@ -41,7 +41,7 @@ const getLocalShadowElement = (selector: string) => {
 }
 
 describe(
-  'Core/YCardRadio/Unit',
+  'Core/AltCardRadio/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()
@@ -98,7 +98,7 @@ describe(
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
-              const colorIconElement = getLocalShadowElement(YCoreSimpleRadioButtonTagName) as YCoreSimpleRadioButton | null
+              const colorIconElement = getLocalShadowElement(AltCoreSimpleRadioButtonTagName) as AltCoreSimpleRadioButton | null
 
               expect(colorIconElement?.[testCase.prop]).toBe(testCase.value)
             },
@@ -111,7 +111,7 @@ describe(
             async() => {
               await updateComponent({ props: { [testCase.prop]: testCase.value } })
 
-              const colorIconElement = getLocalShadowElement(YCoreSimpleRadioButtonTagName) as YCoreSimpleRadioButton | null
+              const colorIconElement = getLocalShadowElement(AltCoreSimpleRadioButtonTagName) as AltCoreSimpleRadioButton | null
 
               expect(colorIconElement?.[testCase.prop]).toBe(testCase.expectedRadioSize)
             },

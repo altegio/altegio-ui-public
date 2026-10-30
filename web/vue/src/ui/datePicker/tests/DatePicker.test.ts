@@ -1,10 +1,10 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { YCoreDatePickerTagName } from '~shared/constants'
+import { AltCoreDatePickerTagName } from '~shared/constants'
 
-import { YDatePicker } from '~vue/ui/datePicker'
-import { YCoreDatePicker } from '~core/ui/datePicker'
+import { AltDatePicker } from '~vue/ui/datePicker'
+import { AltCoreDatePicker } from '~core/ui/datePicker'
 
 import {
   propModelValueCases,
@@ -25,16 +25,16 @@ import {
   propErrorsCases,
 } from './cases/props'
 
-const tagName = YCoreDatePickerTagName
+const tagName = AltCoreDatePickerTagName
 
 describe(
-  'Vue/YDatePicker',
+  'Vue/AltDatePicker',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreDatePicker,
+          AltCoreDatePicker,
         )
       }
     })
@@ -66,11 +66,11 @@ describe(
                 `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 () => {
                   const wrapper = mount(
-                    YDatePicker,
+                    AltDatePicker,
                     { props: { [testCase.prop]: testCase.value, modelValue: undefined } },
                   )
 
-                  const coreElement = wrapper.find(tagName).element as YCoreDatePicker
+                  const coreElement = wrapper.find(tagName).element as AltCoreDatePicker
 
                   if (Array.isArray(testCase.value)) {
                     expect(coreElement[testCase.prop]).toStrictEqual(testCase.expected)
@@ -86,11 +86,11 @@ describe(
                 `Prop "${testCase.prop}" should set date on the core component`,
                 () => {
                   const wrapper = mount(
-                    YDatePicker,
+                    AltDatePicker,
                     { props: { [testCase.prop]: testCase.value } },
                   )
 
-                  const coreElement = wrapper.find(tagName).element as YCoreDatePicker
+                  const coreElement = wrapper.find(tagName).element as AltCoreDatePicker
 
                   expect(coreElement.date).toBe(testCase.expected)
                 },
@@ -106,7 +106,7 @@ describe(
               'Should emit "update:modelValue" on date pick',
               async() => {
                 const wrapper = mount(
-                  YDatePicker,
+                  AltDatePicker,
                   { props: { modelValue: '' } },
                 )
 

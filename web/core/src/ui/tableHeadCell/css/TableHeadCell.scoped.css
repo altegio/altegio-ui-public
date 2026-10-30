@@ -1,4 +1,4 @@
-$component: $YCoreTableHeadCellTagName;
+$component: $AltCoreTableHeadCellTagName;
 
 :host {
   box-sizing: border-box;
@@ -13,18 +13,18 @@ $component: $YCoreTableHeadCellTagName;
 }
 
 :host([bordered]) {
-  border-right: 1px solid var(--y-core-table-head-cell-host-border-color);
+  border-right: 1px solid var(--alt-core-table-head-cell-host-border-color);
 }
 
 .$(component) {
   box-sizing: border-box;
   display: inline-flex;
   width: 100%;
-  background-color: var(--y-core-table-head-cell-host-background-color);
+  background-color: var(--alt-core-table-head-cell-host-background-color);
 
   &__wrap {
     display: inline-flex;
-    gap: var(--y-core-table-head-cell-wrap-gap);
+    gap: var(--alt-core-table-head-cell-wrap-gap);
     align-items: center;
     width: 100%;
   }

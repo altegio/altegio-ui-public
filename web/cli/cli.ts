@@ -2,7 +2,7 @@ import { Command } from 'commander'
 import { addCreateCommand, addUpdateCommand } from './commands'
 
 const program = new Command()
-program.name('yds')
+program.name('alt-ds')
 program.description('Manage Altegio UI components across supported platforms')
 program.helpInformation()
 

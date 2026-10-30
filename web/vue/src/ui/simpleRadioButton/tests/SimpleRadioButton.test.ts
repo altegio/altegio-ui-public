@@ -1,19 +1,19 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { ref } from 'vue'
 import { mount } from '@vue/test-utils'
-import { YCoreSimpleRadioButtonTagName as tagName } from '~shared/constants'
-import { YCoreSimpleRadioButton } from '~core/index'
+import { AltCoreSimpleRadioButtonTagName as tagName } from '~shared/constants'
+import { AltCoreSimpleRadioButton } from '~core/index'
 import { propSizeTestCases, propDisabledTestCases, propHoveredTestCases, propErrorTestCases } from './cases/props'
-import { YSimpleRadioButton } from '~vue/ui/simpleRadioButton'
+import { AltSimpleRadioButton } from '~vue/ui/simpleRadioButton'
 
 describe(
-  'Vue/YSimpleRadioButton',
+  'Vue/AltSimpleRadioButton',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreSimpleRadioButton,
+          AltCoreSimpleRadioButton,
         )
       }
     })
@@ -32,7 +32,7 @@ describe(
             () => {
               const checked = ref(false)
               const wrapper = mount(
-                YSimpleRadioButton,
+                AltSimpleRadioButton,
                 {
                   props: {
                     [testCase.prop]: testCase.value,
@@ -61,7 +61,7 @@ describe(
           'Should emit "update:modelValue" when the checkbox state changes',
           async() => {
             const wrapper = mount(
-              YSimpleRadioButton,
+              AltSimpleRadioButton,
               { props: { modelValue: false } },
             )
 

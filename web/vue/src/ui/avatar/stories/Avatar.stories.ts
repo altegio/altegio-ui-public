@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YAvatar } from '~vue/ui/avatar'
-import { type IYVueAvatarProps } from '~vue/ui/avatar/models/types'
-import yCoreAvatarStoryMeta from '~core/ui/avatar/stories/Avatar.stories'
+import { AltAvatar } from '~vue/ui/avatar'
+import { type IAltVueAvatarProps } from '~vue/ui/avatar/models/types'
+import altCoreAvatarStoryMeta from '~core/ui/avatar/stories/Avatar.stories'
 
-type TVueAvatarStoryMeta = IYVueAvatarProps
+type TVueAvatarStoryMeta = IAltVueAvatarProps
 
 /**
  * ## Vue wrapper for Core Avatar
@@ -32,16 +32,16 @@ const meta: Meta<TVueAvatarStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YAvatar },
+    components: { AltAvatar },
     setup() {
       return { args }
     },
     template: `
-      <YAvatar v-bind="args" />
+      <AltAvatar v-bind="args" />
     `,
   }),
-  argTypes: { ...yCoreAvatarStoryMeta.argTypes },
-  args: { ...yCoreAvatarStoryMeta.args },
+  argTypes: { ...altCoreAvatarStoryMeta.argTypes },
+  args: { ...altCoreAvatarStoryMeta.args },
 }
 
 export default meta

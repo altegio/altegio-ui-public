@@ -1,15 +1,15 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
 
 import { useCoreTests } from '~shared/tests/core'
-import { YCoreSimpleCheckboxTagName as tagName } from '~shared/constants'
+import { AltCoreSimpleCheckboxTagName as tagName } from '~shared/constants'
 import { dispatchEvent, getElementClasses, getShadowRootElement } from '~shared/tests/utils'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import { type TPropTestCase } from '~shared/types/tests'
 import { pick } from 'radash'
 
 import {
   createCoreSimpleCheckboxProps,
-  type IYCoreSimpleCheckboxProps,
+  type IAltCoreSimpleCheckboxProps,
 } from '~core/ui/simpleCheckbox/models/types'
 import '~core/ui/simpleCheckbox'
 
@@ -20,17 +20,17 @@ const booleans = [
 ]
 
 const sizes = Object.values(pick(
-  EYSizes,
+  EAltSizes,
   ['SMALL', 'MEDIUM'],
 ))
 
-const propSizeTestCases: TPropTestCase<IYCoreSimpleCheckboxProps, 'size'>[] = sizes.map((size) => ({
+const propSizeTestCases: TPropTestCase<IAltCoreSimpleCheckboxProps, 'size'>[] = sizes.map((size) => ({
   prop: 'size',
-  value: size as IYCoreSimpleCheckboxProps['size'],
+  value: size as IAltCoreSimpleCheckboxProps['size'],
   case: size,
 }))
 
-const propCheckedTestCases: TPropTestCase<IYCoreSimpleCheckboxProps, 'checked'>[] = booleans.map((checked) => ({
+const propCheckedTestCases: TPropTestCase<IAltCoreSimpleCheckboxProps, 'checked'>[] = booleans.map((checked) => ({
   prop: 'checked',
   value: checked,
   case: 'checked',
@@ -38,28 +38,28 @@ const propCheckedTestCases: TPropTestCase<IYCoreSimpleCheckboxProps, 'checked'>[
 }))
 
 
-const propIndeterminateTestCases: TPropTestCase<IYCoreSimpleCheckboxProps, 'indeterminate'>[] = booleans.map((indeterminate) => ({
+const propIndeterminateTestCases: TPropTestCase<IAltCoreSimpleCheckboxProps, 'indeterminate'>[] = booleans.map((indeterminate) => ({
   prop: 'indeterminate',
   value: indeterminate,
   case: 'indeterminate',
   expected: indeterminate,
 }))
 
-const propErrorTestCases: TPropTestCase<IYCoreSimpleCheckboxProps, 'error'>[] = booleans.map((error) => ({
+const propErrorTestCases: TPropTestCase<IAltCoreSimpleCheckboxProps, 'error'>[] = booleans.map((error) => ({
   prop: 'error',
   value: error,
   case: 'error',
   expected: error,
 }))
 
-const propDisabledTestCases: TPropTestCase<IYCoreSimpleCheckboxProps, 'disabled'>[] = booleans.map((disabled) => ({
+const propDisabledTestCases: TPropTestCase<IAltCoreSimpleCheckboxProps, 'disabled'>[] = booleans.map((disabled) => ({
   prop: 'disabled',
   value: disabled,
   case: 'disabled',
   expected: disabled,
 }))
 
-const propHoveredTestCases: TPropTestCase<IYCoreSimpleCheckboxProps, 'hovered'>[] = booleans.map((hovered) => ({
+const propHoveredTestCases: TPropTestCase<IAltCoreSimpleCheckboxProps, 'hovered'>[] = booleans.map((hovered) => ({
   prop: 'hovered',
   value: hovered,
   case: 'hovered',
@@ -85,7 +85,7 @@ const getRootElement = () => {
 }
 
 describe(
-  'Core/YCoreSimpleCheckbox/Unit',
+  'Core/AltCoreSimpleCheckbox/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()

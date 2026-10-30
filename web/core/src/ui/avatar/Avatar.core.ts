@@ -4,21 +4,21 @@ import { classMap } from 'lit/directives/class-map.js'
 
 import {
   createCoreAvatarProps,
-  type IYCoreAvatarExternalProps,
+  type IAltCoreAvatarExternalProps,
 } from '~core/ui/avatar/models/types'
 import {
-  YCoreAvatarTagName as tagName,
+  AltCoreAvatarTagName as tagName,
 } from '~shared/constants'
 
 import '~core/ui/icon'
 const { size, initials, photo, icon, disabled } = createCoreAvatarProps()
 
-import YAvatarVarsCss from '~core/ui/avatar/css/Avatar.vars.css?inline'
-import YAvatarScopedCss from '~core/ui/avatar/css/Avatar.scoped.css?inline'
+import AltAvatarVarsCss from '~core/ui/avatar/css/Avatar.vars.css?inline'
+import AltAvatarScopedCss from '~core/ui/avatar/css/Avatar.scoped.css?inline'
 import { ifDefined } from 'lit/directives/if-defined.js'
 import { renderIcon } from '~core/renderers'
 import { interceptEvents } from '~core/utils/event-interceptor'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import {
   ALT_AVATAR_ICON_SIZE_100,
   ALT_AVATAR_ICON_SIZE_300,
@@ -30,12 +30,12 @@ import { withLocator } from '~core/utils/locator'
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreAvatar extends LitElement implements IYCoreAvatarExternalProps {
-  @property({ type: String }) size: IYCoreAvatarExternalProps['size'] = size
-  @property({ type: String }) initials: IYCoreAvatarExternalProps['initials'] = initials
-  @property({ type: String }) photo: IYCoreAvatarExternalProps['photo'] = photo
-  @property({ type: Object }) icon: IYCoreAvatarExternalProps['icon'] = icon
-  @property({ type: Boolean }) disabled: IYCoreAvatarExternalProps['disabled'] = disabled
+export class AltCoreAvatar extends LitElement implements IAltCoreAvatarExternalProps {
+  @property({ type: String }) size: IAltCoreAvatarExternalProps['size'] = size
+  @property({ type: String }) initials: IAltCoreAvatarExternalProps['initials'] = initials
+  @property({ type: String }) photo: IAltCoreAvatarExternalProps['photo'] = photo
+  @property({ type: Object }) icon: IAltCoreAvatarExternalProps['icon'] = icon
+  @property({ type: Boolean }) disabled: IAltCoreAvatarExternalProps['disabled'] = disabled
 
   private readonly baseClass = tagName
   @state() imageError = false
@@ -70,8 +70,8 @@ export class YCoreAvatar extends LitElement implements IYCoreAvatarExternalProps
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YAvatarVarsCss)}
-      ${unsafeCSS(YAvatarScopedCss)}
+      ${unsafeCSS(AltAvatarVarsCss)}
+      ${unsafeCSS(AltAvatarScopedCss)}
     `,
   ]
 
@@ -88,12 +88,12 @@ export class YCoreAvatar extends LitElement implements IYCoreAvatarExternalProps
     }
   }
 
-  private resolveIconSize(avatarSize: IYCoreAvatarExternalProps['size']): number {
+  private resolveIconSize(avatarSize: IAltCoreAvatarExternalProps['size']): number {
     switch (avatarSize) {
-      case EYSizes.EXTRA_SMALL: return ALT_AVATAR_ICON_SIZE_100
-      case EYSizes.SMALL: return ALT_AVATAR_ICON_SIZE_300
-      case EYSizes.MEDIUM: return ALT_AVATAR_ICON_SIZE_500
-      case EYSizes.LARGE: return ALT_AVATAR_ICON_SIZE_800
+      case EAltSizes.EXTRA_SMALL: return ALT_AVATAR_ICON_SIZE_100
+      case EAltSizes.SMALL: return ALT_AVATAR_ICON_SIZE_300
+      case EAltSizes.MEDIUM: return ALT_AVATAR_ICON_SIZE_500
+      case EAltSizes.LARGE: return ALT_AVATAR_ICON_SIZE_800
       default: return ALT_AVATAR_ICON_SIZE_500
     }
   }

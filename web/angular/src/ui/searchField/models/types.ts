@@ -1,8 +1,8 @@
 import { omit } from 'radash'
 
 import type {
-  IYCoreSearchFieldExternalProps,
-  IYCoreTextFieldExternalProps,
+  IAltCoreSearchFieldExternalProps,
+  IAltCoreTextFieldExternalProps,
 } from '~core/ui/textField/models/types'
 import {
   createCoreSearchFieldExternalProps,
@@ -16,13 +16,13 @@ export {
   SEARCH_FIELD_ICON,
 } from '~core/ui/textField/models/types'
 
-export type { IYIcon } from '~core/ui/textField/models/types'
+export type { IAltIcon } from '~core/ui/textField/models/types'
 
-export type TYNgSearchFieldModel = IYCoreTextFieldExternalProps['value']
+export type TAltNgSearchFieldModel = IAltCoreTextFieldExternalProps['value']
 
-export interface IYNgSearchFieldProps extends Omit<IYCoreSearchFieldExternalProps, 'name'> {}
+export interface IAltNgSearchFieldProps extends Omit<IAltCoreSearchFieldExternalProps, 'name'> {}
 
-export const createNgSearchFieldProps = (): IYNgSearchFieldProps => {
+export const createNgSearchFieldProps = (): IAltNgSearchFieldProps => {
   return { ...omit(createCoreSearchFieldExternalProps(), ['name']) }
 }
 

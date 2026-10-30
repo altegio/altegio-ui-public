@@ -50,13 +50,13 @@ lib-build:
 	cp -r $$TOKENS_PATH/* $$WEB_ASSETS_PATH/tokens
 	# Package assets expose JavaScript and declarations to NodeNext consumers.
 	pnpm exec tsc --ignoreConfig --module nodenext --moduleResolution nodenext --target es2022 --declaration --skipLibCheck --rootDir web/shared/constants/tokens --outDir $$WEB_ASSETS_PATH/tokens web/shared/constants/tokens/index.ts
-	# Private package compatibility aliases are omitted from public snapshots.
-	@if [ -f scripts/private-icon-compat.mjs ]; then node scripts/private-icon-compat.mjs; fi
 	pnpm build-icons-dist
 	cp -r $$CORE_CSS $$WEB_ASSETS_PATH/css
 	echo $$FONTS_IMPORTS >> $$WEB_ASSETS_PATH/css/altegio-ui-with-fonts.css
 	cat $$CORE_CSS >> $$WEB_ASSETS_PATH/css/altegio-ui-with-fonts.css
 	rm -rf $$CORE_CSS $$FONTS_PATH
+	# The private package keeps the 2.x names working; public code snapshots omit this step.
+	@if [ -d scripts/private-compat ]; then node scripts/private-compat/apply.mjs; fi
 
 publish: init lint lib-build
 	pnpm publish

@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getHostCSSVariableValue, getWCShadowRoot } from '~shared/tests/utils'
 
-import { YCorePhoneCodeTagName } from '~shared/constants'
+import { AltCorePhoneCodeTagName } from '~shared/constants'
 import { createCorePhoneCodeExternalProps } from '~core/ui/phoneCode/models/types'
 import '~core/ui/phoneCode'
 import { CSSVariablesHostToRootCases, CSSVariablesHostToValueCases } from '~core/ui/phoneCode/tests/cases/css'
@@ -11,11 +11,11 @@ const {
   component,
   injectComponentToBody,
 } = useCoreTests(
-  YCorePhoneCodeTagName,
+  AltCorePhoneCodeTagName,
   createCorePhoneCodeExternalProps(),
 )
 
-describe('Core/YCorePhoneCode/CSS', () => {
+describe('Core/AltCorePhoneCode/CSS', () => {
   beforeAll(() => {
     injectComponentToBody()
   })

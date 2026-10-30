@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YTip } from '~ng/ui/tip'
-import yCoreTipStoryMeta from '~core/ui/tip/stories/Tip.stories'
+import { AltTip } from '~ng/ui/tip'
+import altCoreTipStoryMeta from '~core/ui/tip/stories/Tip.stories'
 import '~core/ui/simpleButton'
 
 /**
  * Angular wrapper for Core Tip
  */
-const meta: Meta<YTip> = {
+const meta: Meta<AltTip> = {
   title: 'Tips/🔍 Tip',
   id: 'tip',
   parameters: { controls: { sort: 'alpha' } },
-  component: YTip,
+  component: AltTip,
   tags: [
     'angular',
     'autodocs',
@@ -20,7 +20,7 @@ const meta: Meta<YTip> = {
     props: { ...args },
     template: `
       <div style="width: 300px; height: 300px; border: 1px dashed; display: flex; justify-content: center; align-items: center;border-radius: 10px;">
-        <YTip
+        <AltTip
           [trigger]="trigger"
           [isOpen]="isOpen"
           [offset]="offset"
@@ -41,14 +41,14 @@ const meta: Meta<YTip> = {
               {{ tipContent }}
             </span>
           </div>
-        </YTip>
+        </AltTip>
       </div>`,
   }),
-  argTypes: { ...yCoreTipStoryMeta.argTypes },
-  args: { ...yCoreTipStoryMeta.args },
-} satisfies Meta<YTip>
+  argTypes: { ...altCoreTipStoryMeta.argTypes },
+  args: { ...altCoreTipStoryMeta.args },
+} satisfies Meta<AltTip>
 
 export default meta
-type Story = StoryObj<YTip>
+type Story = StoryObj<AltTip>
 
 export const Playground: Story = { args: {} }

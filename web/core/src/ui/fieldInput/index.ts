@@ -1,1 +1,1 @@
-export { YCoreFieldInput } from './FieldInput.core'
+export { AltCoreFieldInput } from './FieldInput.core'

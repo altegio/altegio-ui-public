@@ -11,9 +11,9 @@ import { NgTemplateOutlet } from '@angular/common'
 import '~core/ui/toggle'
 import {
   createNgToggleProps,
-  type IYNgToggleProps,
+  type IAltNgToggleProps,
   type ToggleCheckedEvent,
-  type TYNgToggleModel,
+  type TAltNgToggleModel,
 } from '~ng/ui/toggle/models/types'
 import { DEFAULT_CHECKED_VALUE } from '~core/ui/simpleToggle/models/types'
 
@@ -32,12 +32,12 @@ const {
 } = createNgToggleProps()
 
 @Component({
-  selector: 'YToggle',
+  selector: 'AltToggle',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [FormsModule, NgTemplateOutlet],
   template: `
-    <y-core-toggle
+    <alt-core-toggle
       (checked)="handleCheckedEvent($event)"
       [checked]="isChecked"
       [labelText]="labelText"
@@ -59,25 +59,25 @@ const {
           <ng-container *ngTemplateOutlet="tooltipContentRef" />
         </div>
       }
-    </y-core-toggle>
+    </alt-core-toggle>
   `,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => YToggle),
+      useExisting: forwardRef(() => AltToggle),
       multi: true,
     },
   ],
 })
 
-export class YToggle extends ControlValueAccessorBase<TYNgToggleModel> implements IYNgToggleProps {
-  @Input() @DefaultValue(disabled) disabled: IYNgToggleProps['disabled'] = disabled
-  @Input() @DefaultValue(labelText) labelText: IYNgToggleProps['labelText'] = labelText
-  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IYNgToggleProps['labelTooltipText'] = labelTooltipText
-  @Input() @DefaultValue(annotationText) annotationText: IYNgToggleProps['annotationText'] = annotationText
-  @Input() @DefaultValue(labelOverflowDebounce) labelOverflowDebounce: IYNgToggleProps['labelOverflowDebounce'] = labelOverflowDebounce
-  @Input() @DefaultValue(alignment) alignment: IYNgToggleProps['alignment'] = alignment
-  @Input() @DefaultValue(size) size: IYNgToggleProps['size'] = size
+export class AltToggle extends ControlValueAccessorBase<TAltNgToggleModel> implements IAltNgToggleProps {
+  @Input() @DefaultValue(disabled) disabled: IAltNgToggleProps['disabled'] = disabled
+  @Input() @DefaultValue(labelText) labelText: IAltNgToggleProps['labelText'] = labelText
+  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IAltNgToggleProps['labelTooltipText'] = labelTooltipText
+  @Input() @DefaultValue(annotationText) annotationText: IAltNgToggleProps['annotationText'] = annotationText
+  @Input() @DefaultValue(labelOverflowDebounce) labelOverflowDebounce: IAltNgToggleProps['labelOverflowDebounce'] = labelOverflowDebounce
+  @Input() @DefaultValue(alignment) alignment: IAltNgToggleProps['alignment'] = alignment
+  @Input() @DefaultValue(size) size: IAltNgToggleProps['size'] = size
 
   @ContentChild('annotation') annotationRef: TemplateRef<unknown> | undefined
   @ContentChild('tooltipContent') tooltipContentRef: TemplateRef<unknown> | undefined

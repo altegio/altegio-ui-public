@@ -3,19 +3,19 @@ import { ref, computed } from 'vue'
 import { fn } from 'storybook/test'
 import { pick, omit } from 'radash'
 
-import { YTable } from '~vue/ui/table'
-import { type IYVueTableProps } from '~vue/ui/table/models/types'
+import { AltTable } from '~vue/ui/table'
+import { type IAltVueTableProps } from '~vue/ui/table/models/types'
 import type { TAnyVoidFunction } from '~shared/types/utils'
-import type { TYCoreTableMeta } from '~core/ui/table/stories/Table.stories'
-import yTableStoryMeta from '~core/ui/table/stories/Table.stories'
-import yTableRowStoryMeta from '~core/ui/tableRow/stories/TableRow.stories'
-import yTableCellStoryMeta from '~core/ui/tableCell/stories/TableCell.stories'
-import yTablePaginationStoryMeta from '~core/ui/tablePagination/stories/TablePagination.stories'
+import type { TAltCoreTableMeta } from '~core/ui/table/stories/Table.stories'
+import altTableStoryMeta from '~core/ui/table/stories/Table.stories'
+import altTableRowStoryMeta from '~core/ui/tableRow/stories/TableRow.stories'
+import altTableCellStoryMeta from '~core/ui/tableCell/stories/TableCell.stories'
+import altTablePaginationStoryMeta from '~core/ui/tablePagination/stories/TablePagination.stories'
 
 import {
-  type TYVueTableHeaders,
-  type TYVueTableItems,
-  type IYVueTableEmitSortPayload,
+  type TAltVueTableHeaders,
+  type TAltVueTableItems,
+  type IAltVueTableEmitSortPayload,
 } from '~vue/ui/table/models/types'
 
 import {
@@ -31,7 +31,7 @@ import type { ITableCellItem } from '~core/ui/tableCell/models/types'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { ESort } from '~shared/types/global'
 
-const headers: TYVueTableHeaders = {
+const headers: TAltVueTableHeaders = {
   services: {
     id: 'services',
     label: 'Services',
@@ -59,7 +59,7 @@ const headers: TYVueTableHeaders = {
     align: 'left',
   },
 }
-const items: TYVueTableItems = [
+const items: TAltVueTableItems = [
   {
     rowId: 'item-1',
     services: {
@@ -164,7 +164,7 @@ const items: TYVueTableItems = [
   },
 ]
 
-type TVueTableStoryMeta = IYVueTableProps & {
+type TVueTableStoryMeta = IAltVueTableProps & {
   showHeadHintAverageSlot: boolean
   showHeadCellTotal: boolean
   showHeadCell: boolean
@@ -183,10 +183,10 @@ type TVueTableStoryMeta = IYVueTableProps & {
   onUpdateSelected: TAnyVoidFunction
   onUpdatePage: TAnyVoidFunction
   onUpdateItemsPerPage: TAnyVoidFunction
-} & TYCoreTableMeta
+} & TAltCoreTableMeta
 
 /**
- * Composite YTable component for Vue
+ * Composite AltTable component for Vue
  */
 const meta: Meta<TVueTableStoryMeta> = {
   title: '✅ Table',
@@ -197,15 +197,15 @@ const meta: Meta<TVueTableStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YTable },
+    components: { AltTable },
     setup() {
       const selected = ref<number[]>([])
-      const headers = ref<TYVueTableHeaders>(args.headers ?? {})
-      const sortedItems = ref<TYVueTableItems>(args.items ?? [])
+      const headers = ref<TAltVueTableHeaders>(args.headers ?? {})
+      const sortedItems = ref<TAltVueTableItems>(args.items ?? [])
       const page = ref<number>(args.page ?? 1)
       const itemsPerPage = ref<number>(args.itemsPerPage ?? 10)
 
-      const onSort = (payload: IYVueTableEmitSortPayload) => {
+      const onSort = (payload: IAltVueTableEmitSortPayload) => {
         headers.value[payload.headId].sortDirection = payload.event.detail.direction
         sortedItems.value = payload.event.detail.direction === ESort.DEFAULT
           ? args.items ?? []
@@ -214,17 +214,17 @@ const meta: Meta<TVueTableStoryMeta> = {
             payload.headId,
             'label',
             payload.event.detail.direction,
-          ) as TYVueTableItems
+          ) as TAltVueTableItems
       }
 
       const pluginsList = [new Dragging()]
-      const plugins = computed<TTablePluginsContext>(() => ({ 'y-core-table-row': args.addDraggingPlugin ? pluginsList : [] }))
+      const plugins = computed<TTablePluginsContext>(() => ({ 'alt-core-table-row': args.addDraggingPlugin ? pluginsList : [] }))
 
       return { args, selected, headers, sortedItems, onSort, plugins, page, itemsPerPage }
     },
     template: `
       <div :style="args.sticky ? 'width: 600px;' : ''">
-        <YTable
+        <AltTable
           v-bind="args"
           v-model:selected="selected"
           v-model:page="page"
@@ -294,25 +294,25 @@ const meta: Meta<TVueTableStoryMeta> = {
               {{ row.rowId }} - Custom slot row-inner
             </div>
           </template>
-        </YTable>
+        </AltTable>
       </div>
     `,
   }),
   argTypes: {
     ...pick(
-      yTableStoryMeta.argTypes ?? {},
+      altTableStoryMeta.argTypes ?? {},
       ['loading', 'disabled'],
     ),
     ...pick(
-      yTableRowStoryMeta.argTypes ?? {},
+      altTableRowStoryMeta.argTypes ?? {},
       ['stripe', 'selectable'],
     ),
     ...pick(
-      yTableCellStoryMeta.argTypes ?? {},
+      altTableCellStoryMeta.argTypes ?? {},
       ['sticky'],
     ),
     ...omit(
-      yTablePaginationStoryMeta.argTypes ?? {},
+      altTablePaginationStoryMeta.argTypes ?? {},
       ['disabled'],
     ),
     headers: {
@@ -433,19 +433,19 @@ const meta: Meta<TVueTableStoryMeta> = {
     items,
     showPagination: false,
     ...pick(
-      yTableStoryMeta.args ?? {},
+      altTableStoryMeta.args ?? {},
       ['loading', 'disabled'],
     ),
     ...pick(
-      yTableRowStoryMeta.args ?? {},
+      altTableRowStoryMeta.args ?? {},
       ['stripe'],
     ),
     ...pick(
-      yTableCellStoryMeta.args ?? {},
+      altTableCellStoryMeta.args ?? {},
       ['sticky'],
     ),
     ...omit(
-      yTablePaginationStoryMeta.args ?? {},
+      altTablePaginationStoryMeta.args ?? {},
       ['disabled'],
     ),
     stripe: false,
@@ -482,7 +482,7 @@ type Story = StoryObj<typeof meta>
 export const Playground: Story = { args: { total: 0 } }
 
 // With pagination
-export const WithPagination: Story = { args: { showPagination: true, total: yTablePaginationStoryMeta.args?.total } }
+export const WithPagination: Story = { args: { showPagination: true, total: altTablePaginationStoryMeta.args?.total } }
 
 // Loading
 export const Loading: Story = { args: { loading: true } }
@@ -500,7 +500,7 @@ export const Disabled: Story = { args: { disabled: true } }
 export const Sticky: Story = { args: { sticky: true } }
 
 // With rowKey
-const itemsWithRowKey: TYVueTableItems = items.map((item, index) => ({
+const itemsWithRowKey: TAltVueTableItems = items.map((item, index) => ({
   ...item,
   rowKey: `unique-key-${index + 1}`,
 }))
@@ -509,13 +509,13 @@ export const WithRowKey: Story = { args: { items: itemsWithRowKey } }
 // Dragging rows between tables
 export const DraggingMultipleTables: Story = {
   render: (args) => ({
-    components: { YTable },
+    components: { AltTable },
     setup() {
       const firstTableItems = ref((args.items ?? []).map((item) => ({ ...item, group: 'group-1' })))
-      const secondTableItems = ref<TYVueTableItems>((args.items ?? []).map((item) => ({ ...item, group: 'group-1' })))
+      const secondTableItems = ref<TAltVueTableItems>((args.items ?? []).map((item) => ({ ...item, group: 'group-1' })))
 
       const pluginsList = [new Dragging()]
-      const plugins = computed<TTablePluginsContext>(() => ({ 'y-core-table-row': args.addDraggingPlugin ? pluginsList : [] }))
+      const plugins = computed<TTablePluginsContext>(() => ({ 'alt-core-table-row': args.addDraggingPlugin ? pluginsList : [] }))
 
       return { args, firstTableItems, secondTableItems, plugins }
     },
@@ -524,13 +524,13 @@ export const DraggingMultipleTables: Story = {
         <div>
           <h2>Table 1</h2>
           
-          <YTable :headers="args.headers" :items="firstTableItems" :plugins="plugins" />
+          <AltTable :headers="args.headers" :items="firstTableItems" :plugins="plugins" />
         </div>
         
         <div>
           <h2>Table 2</h2>
           
-          <YTable :headers="args.headers" :items="secondTableItems" :plugins="plugins" />
+          <AltTable :headers="args.headers" :items="secondTableItems" :plugins="plugins" />
         </div>
       </div>
     `,

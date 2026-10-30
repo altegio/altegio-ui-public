@@ -1,3 +1,3 @@
-export interface IYCoreTableBarExternalProps {}
+export interface IAltCoreTableBarExternalProps {}
 
-export const createCoreTableBarExternalProps = (): IYCoreTableBarExternalProps => ({})
+export const createCoreTableBarExternalProps = (): IAltCoreTableBarExternalProps => ({})

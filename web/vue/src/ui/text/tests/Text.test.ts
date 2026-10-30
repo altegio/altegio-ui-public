@@ -4,30 +4,30 @@ import { mount } from '@vue/test-utils'
 import type { TPropTestCase, TSlotTestCase } from '~shared/types/tests'
 import { text, empty } from '~shared/tests/slotContents'
 import {
-  EYCoreTextSize,
-  EYCoreTextVariant,
+  EAltCoreTextSize,
+  EAltCoreTextVariant,
   createCoreTextExternalProps,
 } from '~core/ui/text/models/types'
-import { YCoreTextTagName } from '~shared/constants'
-import { YCoreText } from '~core/ui/text'
-import { type IYVueTextProps } from '~vue/ui/text/models/types'
+import { AltCoreTextTagName } from '~shared/constants'
+import { AltCoreText } from '~core/ui/text'
+import { type IAltVueTextProps } from '~vue/ui/text/models/types'
 
-import { YText } from '~vue/ui/text'
+import { AltText } from '~vue/ui/text'
 
 const { size: defaultSize, variant: defaultVariant } = createCoreTextExternalProps()
-const tagName = YCoreTextTagName
+const tagName = AltCoreTextTagName
 
 // Unit test cases:
 const slotDefaultTestCases: TSlotTestCase[] = [
   { slot: 'default', case: 'with content', content: text },
   { slot: 'default', case: 'without content', content: empty },
 ]
-const propSizeTestCases: TPropTestCase<IYVueTextProps, 'size'>[] = [
+const propSizeTestCases: TPropTestCase<IAltVueTextProps, 'size'>[] = [
   {
     prop: 'size',
     case: 'with a value',
-    value: EYCoreTextSize.A1_MEDIUM,
-    expected: EYCoreTextSize.A1_MEDIUM,
+    value: EAltCoreTextSize.A1_MEDIUM,
+    expected: EAltCoreTextSize.A1_MEDIUM,
   },
   {
     prop: 'size',
@@ -36,12 +36,12 @@ const propSizeTestCases: TPropTestCase<IYVueTextProps, 'size'>[] = [
     expected: defaultSize,
   },
 ]
-const propVariantTestCases: TPropTestCase<IYVueTextProps, 'variant'>[] = [
+const propVariantTestCases: TPropTestCase<IAltVueTextProps, 'variant'>[] = [
   {
     prop: 'variant',
     case: 'with a value',
-    value: EYCoreTextVariant.NEGATIVE,
-    expected: EYCoreTextVariant.NEGATIVE,
+    value: EAltCoreTextVariant.NEGATIVE,
+    expected: EAltCoreTextVariant.NEGATIVE,
   },
   {
     prop: 'variant',
@@ -52,13 +52,13 @@ const propVariantTestCases: TPropTestCase<IYVueTextProps, 'variant'>[] = [
 ]
 
 describe(
-  'Vue/YText',
+  'Vue/AltText',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreText,
+          AltCoreText,
         )
       }
     })
@@ -72,7 +72,7 @@ describe(
             `Slot "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
-                YText,
+                AltText,
                 { slots: { default: testCase.content } },
               )
 
@@ -94,7 +94,7 @@ describe(
             `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
             () => {
               const wrapper = mount(
-                YText,
+                AltText,
                 { props: { [testCase.prop]: testCase.value } },
               )
 

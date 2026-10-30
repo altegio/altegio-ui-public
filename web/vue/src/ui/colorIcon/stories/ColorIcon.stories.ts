@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YColorIcon } from '~vue/ui/colorIcon'
-import { type IYVueColorIconProps } from '~vue/ui/colorIcon/models/types'
-import yCoreColorIconStoryMeta from '~core/ui/colorIcon/stories/ColorIcon.stories'
-import { EYCoreColorIconVariant, EYCoreColorIconSize } from '~core/ui/colorIcon/models/types'
+import { AltColorIcon } from '~vue/ui/colorIcon'
+import { type IAltVueColorIconProps } from '~vue/ui/colorIcon/models/types'
+import altCoreColorIconStoryMeta from '~core/ui/colorIcon/stories/ColorIcon.stories'
+import { EAltCoreColorIconVariant, EAltCoreColorIconSize } from '~core/ui/colorIcon/models/types'
 
 import {
   createVueColorIconParameters,
@@ -11,7 +11,7 @@ import {
   defaultIcon,
 } from './ColorIcon.stories.utils'
 
-type TVueColorIconStoryMeta = IYVueColorIconProps
+type TVueColorIconStoryMeta = IAltVueColorIconProps
 
 const meta: Meta<TVueColorIconStoryMeta> = {
   title: 'Icons/⚠️ ColorIcon',
@@ -21,9 +21,9 @@ const meta: Meta<TVueColorIconStoryMeta> = {
     'vue',
     'autodocs',
   ],
-  component: YColorIcon,
-  argTypes: { ...yCoreColorIconStoryMeta.argTypes },
-  args: { ...yCoreColorIconStoryMeta.args },
+  component: AltColorIcon,
+  argTypes: { ...altCoreColorIconStoryMeta.argTypes },
+  args: { ...altCoreColorIconStoryMeta.args },
 }
 
 export default meta
@@ -35,16 +35,16 @@ export const Playground: Story = { parameters: COLOR_ICON_STORIES_CONFIG.Playgro
 export const Variants: Story = {
   parameters: COLOR_ICON_STORIES_CONFIG.Variants.parameters,
   render: () => ({
-    components: { YColorIcon },
+    components: { AltColorIcon },
     setup() {
       return {
         defaultIcon,
-        variants: EYCoreColorIconVariant,
+        variants: EAltCoreColorIconVariant,
       }
     },
     template: `
       <div style="display: flex; gap: 16px;">
-        <YColorIcon
+        <AltColorIcon
           v-for="variant in variants"
           :key="variant"
           :variant="variant"
@@ -58,16 +58,16 @@ export const Variants: Story = {
 export const Sizes: Story = {
   parameters: COLOR_ICON_STORIES_CONFIG.Sizes.parameters,
   render: () => ({
-    components: { YColorIcon },
+    components: { AltColorIcon },
     setup() {
       return {
         defaultIcon,
-        sizes: EYCoreColorIconSize,
+        sizes: EAltCoreColorIconSize,
       }
     },
     template: `
       <div style="display: flex; gap: 16px;">
-        <YColorIcon
+        <AltColorIcon
           v-for="size in sizes"
           :key="size"
           :size="size"
@@ -81,15 +81,15 @@ export const Sizes: Story = {
 export const States: Story = {
   parameters: COLOR_ICON_STORIES_CONFIG.States.parameters,
   render: () => ({
-    components: { YColorIcon },
+    components: { AltColorIcon },
     setup() {
       return { defaultIcon }
     },
     template: `
       <div style="display: flex; gap: 16px;">
-        <YColorIcon disabled="true" :icon="defaultIcon" />
+        <AltColorIcon disabled="true" :icon="defaultIcon" />
         
-        <YColorIcon variant="false" :icon="defaultIcon" />
+        <AltColorIcon variant="false" :icon="defaultIcon" />
       </div>
     `,
   }),

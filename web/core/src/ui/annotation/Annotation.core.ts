@@ -3,17 +3,17 @@ import { customElement, property } from 'lit/decorators.js'
 
 import {
   createCoreAnnotationProps,
-  type IYCoreAnnotationProps,
+  type IAltCoreAnnotationProps,
 } from '~core/ui/annotation/models/types'
-import { YCoreAnnotationTagName as tagName } from '~shared/constants'
+import { AltCoreAnnotationTagName as tagName } from '~shared/constants'
 
-import { EYCoreTextVariant, EYCoreTextSize } from '~core/ui/text/models/types/external'
+import { EAltCoreTextVariant, EAltCoreTextSize } from '~core/ui/text/models/types/external'
 import '~core/ui/text'
 import { classMap } from 'lit/directives/class-map.js'
 
-import YCoreAnnotationVarsCss from '~core/ui/annotation/css/Annotation.vars.css?inline'
-import YCoreAnnotationScopedCss from '~core/ui/annotation/css/Annotation.scoped.css?inline'
-import { YCoreText } from '~core/ui/text'
+import AltCoreAnnotationVarsCss from '~core/ui/annotation/css/Annotation.vars.css?inline'
+import AltCoreAnnotationScopedCss from '~core/ui/annotation/css/Annotation.scoped.css?inline'
+import { AltCoreText } from '~core/ui/text'
 import { defineCustomElement } from '~web/shared/utils/components'
 import { withLocator } from '~core/utils/locator'
 
@@ -21,14 +21,14 @@ const { disabled, text } = createCoreAnnotationProps()
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreAnnotation extends LitElement implements IYCoreAnnotationProps {
-  @property({ type: String }) text: IYCoreAnnotationProps['text'] = text
-  @property({ type: Boolean }) disabled: IYCoreAnnotationProps['disabled'] = disabled
+export class AltCoreAnnotation extends LitElement implements IAltCoreAnnotationProps {
+  @property({ type: String }) text: IAltCoreAnnotationProps['text'] = text
+  @property({ type: Boolean }) disabled: IAltCoreAnnotationProps['disabled'] = disabled
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreAnnotationVarsCss)}
-      ${unsafeCSS(YCoreAnnotationScopedCss)}
+      ${unsafeCSS(AltCoreAnnotationVarsCss)}
+      ${unsafeCSS(AltCoreAnnotationScopedCss)}
     `,
   ]
 
@@ -42,20 +42,20 @@ export class YCoreAnnotation extends LitElement implements IYCoreAnnotationProps
 
 
   protected firstUpdated(): void {
-    defineCustomElement(tagName, YCoreText)
+    defineCustomElement(tagName, AltCoreText)
   }
 
   protected render() {
     return html`
       <div class=${classMap(this.computedClasses)}>
-        <y-core-text
-          size=${EYCoreTextSize.A2_REGULAR}
-          variant=${this.disabled ? EYCoreTextVariant.TERTIARY : EYCoreTextVariant.SECONDARY}
+        <alt-core-text
+          size=${EAltCoreTextSize.A2_REGULAR}
+          variant=${this.disabled ? EAltCoreTextVariant.TERTIARY : EAltCoreTextVariant.SECONDARY}
         >
           <slot name="annotation">
             ${this.text}
           </slot>
-        </y-core-text>
+        </alt-core-text>
       </div>
     `
   }

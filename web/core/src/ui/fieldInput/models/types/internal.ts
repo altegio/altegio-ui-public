@@ -1,3 +1,3 @@
-export interface IYCoreFieldInputInternalProps {}
+export interface IAltCoreFieldInputInternalProps {}
 
-export const createCoreFieldInputInternalProps = (): IYCoreFieldInputInternalProps => ({})
+export const createCoreFieldInputInternalProps = (): IAltCoreFieldInputInternalProps => ({})

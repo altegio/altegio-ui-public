@@ -3,7 +3,7 @@ import { html } from 'lit'
 import { ifDefined } from 'lit/directives/if-defined.js'
 
 import { size as sizeArgType } from '~shared/.storybook/argTypes'
-import { YCoreRadioButtonGroupTagName as tagName } from '~shared/constants'
+import { AltCoreRadioButtonGroupTagName as tagName } from '~shared/constants'
 import {
   getComponentContentTable,
   getComponentEmitsTable,
@@ -11,23 +11,23 @@ import {
 } from '~shared/.storybook/tables'
 import type {
   RadioButtonGroupChangeEvent,
-  TYCoreRadioButtonGroupEvents,
+  TAltCoreRadioButtonGroupEvents,
 } from '../models/types'
 import {
   createCoreRadioButtonGroupProps,
-  EYCoreRadioButtonGroupDirection,
-  type IYCoreRadioButtonGroupProps,
+  EAltCoreRadioButtonGroupDirection,
+  type IAltCoreRadioButtonGroupProps,
 } from '../models/types'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import '~core/ui/radioButtonGroup'
 import '~core/ui/radioButton'
 import { useArgs } from 'storybook/preview-api'
 import { action } from 'storybook/actions'
-import { EYCoreLabelAlignment } from '../../label/models/types'
-import yCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
+import { EAltCoreLabelAlignment } from '../../label/models/types'
+import altCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
 
-export type TYCoreRadioButtonGroupStoryMeta =
-  IYCoreRadioButtonGroupProps & TYCoreRadioButtonGroupEvents
+export type TAltCoreRadioButtonGroupStoryMeta =
+  IAltCoreRadioButtonGroupProps & TAltCoreRadioButtonGroupEvents
 
 const { value, size, alignment, direction } = { ...createCoreRadioButtonGroupProps() }
 
@@ -35,7 +35,7 @@ const { value, size, alignment, direction } = { ...createCoreRadioButtonGroupPro
  * ## Core RadioButtonGroup
  *
  */
-const meta: Meta<TYCoreRadioButtonGroupStoryMeta> = {
+const meta: Meta<TAltCoreRadioButtonGroupStoryMeta> = {
   title: '⚠️ RadioButtonGroup',
   id: 'radioButtonGroup',
   parameters: { controls: { sort: 'alpha' } },
@@ -43,7 +43,7 @@ const meta: Meta<TYCoreRadioButtonGroupStoryMeta> = {
   tags: ['core', 'autodocs'],
   render: ({ size, alignment, direction, labelText, labelTooltipText, labelDebounce, labelTooltipActive }) => {
     const [args, updateArgs] =
-      useArgs<TYCoreRadioButtonGroupStoryMeta>()
+      useArgs<TAltCoreRadioButtonGroupStoryMeta>()
 
     const { value } = args
     const onChange = (event: RadioButtonGroupChangeEvent) => {
@@ -53,7 +53,7 @@ const meta: Meta<TYCoreRadioButtonGroupStoryMeta> = {
     }
 
     return html`
-      <y-core-radio-button-group
+      <alt-core-radio-button-group
         value=${ifDefined(value ?? undefined)}
         size=${ifDefined(size)}
         alignment=${ifDefined(alignment)}
@@ -64,18 +64,18 @@ const meta: Meta<TYCoreRadioButtonGroupStoryMeta> = {
         ?label-tooltip-active=${labelTooltipActive}
         @change=${onChange}
       >
-        <y-core-radio-button value="1" label-text="Radio button with value 1"
-          ><div slot="annotation">Annotation text</div></y-core-radio-button
+        <alt-core-radio-button value="1" label-text="Radio button with value 1"
+          ><div slot="annotation">Annotation text</div></alt-core-radio-button
         >
 
-        <y-core-radio-button value="2" label-text="Radio button with value 2"
-          ><div slot="annotation">Annotation text</div></y-core-radio-button
+        <alt-core-radio-button value="2" label-text="Radio button with value 2"
+          ><div slot="annotation">Annotation text</div></alt-core-radio-button
         >
 
-        <y-core-radio-button value="3" label-text="Radio button with value 3"
-          ><div slot="annotation">Annotation text</div></y-core-radio-button
+        <alt-core-radio-button value="3" label-text="Radio button with value 3"
+          ><div slot="annotation">Annotation text</div></alt-core-radio-button
         >
-      </y-core-radio-button-group>
+      </alt-core-radio-button-group>
     `
   },
   argTypes: {
@@ -85,25 +85,25 @@ const meta: Meta<TYCoreRadioButtonGroupStoryMeta> = {
       ...getComponentStateTable(value),
     },
     size: {
-      ...sizeArgType([EYSizes.SMALL, EYSizes.MEDIUM]),
+      ...sizeArgType([EAltSizes.SMALL, EAltSizes.MEDIUM]),
       ...getComponentStateTable(size),
     },
     direction: {
       control: { type: 'radio' },
       description: 'Radio button layout direction',
-      options: Object.values(EYCoreRadioButtonGroupDirection),
+      options: Object.values(EAltCoreRadioButtonGroupDirection),
       ...getComponentStateTable(direction),
     },
     alignment: {
       control: { type: 'radio' },
       description: 'Radio button content alignment',
-      options: Object.values(EYCoreLabelAlignment),
+      options: Object.values(EAltCoreLabelAlignment),
       ...getComponentContentTable(alignment),
     },
-    labelText: yCoreLabelStoryMeta.argTypes?.text,
-    labelTooltipText: yCoreLabelStoryMeta.argTypes?.tooltipText,
-    labelDebounce: yCoreLabelStoryMeta.argTypes?.debounce,
-    labelTooltipActive: yCoreLabelStoryMeta.argTypes?.tooltipActive,
+    labelText: altCoreLabelStoryMeta.argTypes?.text,
+    labelTooltipText: altCoreLabelStoryMeta.argTypes?.tooltipText,
+    labelDebounce: altCoreLabelStoryMeta.argTypes?.debounce,
+    labelTooltipActive: altCoreLabelStoryMeta.argTypes?.tooltipActive,
     onChange: {
       type: 'function',
       description: 'Radio selection change event',
@@ -111,9 +111,9 @@ const meta: Meta<TYCoreRadioButtonGroupStoryMeta> = {
     },
   },
   args: { ...createCoreRadioButtonGroupProps() },
-} satisfies Meta<TYCoreRadioButtonGroupStoryMeta>
+} satisfies Meta<TAltCoreRadioButtonGroupStoryMeta>
 
 export default meta
-type Story = StoryObj<TYCoreRadioButtonGroupStoryMeta>
+type Story = StoryObj<TAltCoreRadioButtonGroupStoryMeta>
 
 export const Playground: Story = { args: {} }

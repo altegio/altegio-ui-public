@@ -1,18 +1,18 @@
 import {
   createCoreTableBarExternalProps,
-  type IYCoreTableBarExternalProps,
+  type IAltCoreTableBarExternalProps,
 } from './external'
 import {
   createCoreTableBarInternalProps,
-  type IYCoreTableBarInternalProps,
+  type IAltCoreTableBarInternalProps,
 } from './internal'
 
 export * from './external'
 export * from './internal'
 
-export interface IYCoreTableBarProps extends IYCoreTableBarExternalProps, IYCoreTableBarInternalProps {}
+export interface IAltCoreTableBarProps extends IAltCoreTableBarExternalProps, IAltCoreTableBarInternalProps {}
 
-export const createCoreTableBarProps = (): IYCoreTableBarProps => ({
+export const createCoreTableBarProps = (): IAltCoreTableBarProps => ({
   ...createCoreTableBarExternalProps(),
   ...createCoreTableBarInternalProps(),
 })

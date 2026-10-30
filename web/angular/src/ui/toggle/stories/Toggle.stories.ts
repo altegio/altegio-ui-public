@@ -5,26 +5,26 @@ import { FormsModule } from '@angular/forms'
 import type { Meta, StoryObj } from '@storybook/angular'
 import { getComponentStateTable, getComponentEmitsTable } from '~shared/.storybook/tables'
 
-import { YToggle } from '~ng/ui/toggle'
-import yCoreToggleStoryMeta, { type IYCoreToggleStoryProps } from '~core/ui/toggle/stories/Toggle.stories'
-import type { TYNgToggleModel } from '~ng/ui/toggle/models/types'
-import type { TYNgControlValueTypes } from '~ng/types/ControlValueAccessorTypes'
+import { AltToggle } from '~ng/ui/toggle'
+import altCoreToggleStoryMeta, { type IAltCoreToggleStoryProps } from '~core/ui/toggle/stories/Toggle.stories'
+import type { TAltNgToggleModel } from '~ng/ui/toggle/models/types'
+import type { TAltNgControlValueTypes } from '~ng/types/ControlValueAccessorTypes'
 
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { DEFAULT_CHECKED_VALUE } from '~core/ui/simpleToggle/models/types'
 
-type TYNgToggleControlValueTypes = TYNgControlValueTypes<TYNgToggleModel>
+type TAltNgToggleControlValueTypes = TAltNgControlValueTypes<TAltNgToggleModel>
 
-type TYNgToggleMeta = YToggle & Omit<IYCoreToggleStoryProps, 'checked'> & TYNgToggleControlValueTypes
+type TAltNgToggleMeta = AltToggle & Omit<IAltCoreToggleStoryProps, 'checked'> & TAltNgToggleControlValueTypes
 
 /**
  * Angular wrapper for Core Toggle
  */
-const meta: Meta<TYNgToggleMeta> = {
+const meta: Meta<TAltNgToggleMeta> = {
   title: 'Toggle/✅ Toggle',
   id: 'toggle',
   parameters: { controls: { sort: 'alpha' } },
-  component: YToggle,
+  component: AltToggle,
   tags: [
     'angular',
     'autodocs',
@@ -33,7 +33,7 @@ const meta: Meta<TYNgToggleMeta> = {
     const [, updateArgs] = useArgs()
 
     const handlers = {
-      onModelChange: (newValue: TYNgToggleModel) => {
+      onModelChange: (newValue: TAltNgToggleModel) => {
         action('ngModelChange')(newValue)
         updateArgs({ ngModel: newValue })
       },
@@ -49,7 +49,7 @@ const meta: Meta<TYNgToggleMeta> = {
       },
       moduleMetadata: { imports: [FormsModule] },
       template: `
-        <YToggle
+        <AltToggle
           (ngModelChange)="onModelChange($event)"
           [ngModel]="ngModel"
           [disabled]="disabled"
@@ -66,12 +66,12 @@ const meta: Meta<TYNgToggleMeta> = {
           <ng-template #tooltipContent>
             {{ tooltipContentSlot }}
           </ng-template>
-        </YToggle>
+        </AltToggle>
       `,
     }
   },
   argTypes: {
-    ...omit(yCoreToggleStoryMeta.argTypes ?? {}, ['checked', 'onChecked']),
+    ...omit(altCoreToggleStoryMeta.argTypes ?? {}, ['checked', 'onChecked']),
     ngModel: {
       type: 'boolean',
       description: 'Toggle checked state',
@@ -84,12 +84,12 @@ const meta: Meta<TYNgToggleMeta> = {
     },
   },
   args: {
-    ...omit(yCoreToggleStoryMeta.args ?? {}, ['checked', 'onChecked']),
+    ...omit(altCoreToggleStoryMeta.args ?? {}, ['checked', 'onChecked']),
     ngModel: DEFAULT_CHECKED_VALUE,
   },
-} satisfies Meta<TYNgToggleMeta>
+} satisfies Meta<TAltNgToggleMeta>
 
 export default meta
-type Story = StoryObj<TYNgToggleMeta>
+type Story = StoryObj<TAltNgToggleMeta>
 
 export const Playground: Story = { args: {} }

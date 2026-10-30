@@ -1,1 +1,1 @@
-export { YCoreColorIcon } from './ColorIcon.core'
+export { AltCoreColorIcon } from './ColorIcon.core'

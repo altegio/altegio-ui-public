@@ -4,16 +4,16 @@ import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { PalettePlugin } from '~core/ui/globalProvider/plugins/palette'
 import type { IPaletteProps } from '~shared/.storybook/argTypes'
 import { paletteArgTypes, paletteProps } from '~shared/.storybook/argTypes'
-import yCoreButtonStoryMeta from '~core/ui/button/stories/Button.stories'
-import { YGlobalProvider } from '~ng/ui/globalProvider'
-import { YButton } from '~ng/ui/button'
+import altCoreButtonStoryMeta from '~core/ui/button/stories/Button.stories'
+import { AltGlobalProvider } from '~ng/ui/globalProvider'
+import { AltButton } from '~ng/ui/button'
 import { action } from 'storybook/actions'
 
-const meta: Meta<YButton & IPaletteProps> = {
+const meta: Meta<AltButton & IPaletteProps> = {
   title: 'Buttons/✅ Button',
   id: 'button',
   parameters: { controls: { sort: 'alpha' } },
-  component: YButton,
+  component: AltButton,
   tags: [
     'angular',
     'autodocs',
@@ -28,10 +28,10 @@ const meta: Meta<YButton & IPaletteProps> = {
         LOREM_IPSUM,
         onClick: action('click'),
       },
-      moduleMetadata: { imports: [YGlobalProvider] },
+      moduleMetadata: { imports: [AltGlobalProvider] },
       template: `
-        <YGlobalProvider [plugins]="plugins" (ready)="ready">
-          <YButton
+        <AltGlobalProvider [plugins]="plugins" (ready)="ready">
+          <AltButton
             [label]="isLongText ? LOREM_IPSUM : label"
             [href]="href"
             [target]="target"
@@ -45,15 +45,15 @@ const meta: Meta<YButton & IPaletteProps> = {
             [alignment]="alignment"
             (click)="onClick($event)"
           />
-        </YGlobalProvider>
+        </AltGlobalProvider>
       `,
     }
   },
-  argTypes: { ...yCoreButtonStoryMeta.argTypes, ...paletteArgTypes },
-  args: { ...yCoreButtonStoryMeta.args, ...paletteProps },
+  argTypes: { ...altCoreButtonStoryMeta.argTypes, ...paletteArgTypes },
+  args: { ...altCoreButtonStoryMeta.args, ...paletteProps },
 }
 
 export default meta
-type Story = StoryObj<YButton>
+type Story = StoryObj<AltButton>
 
 export const Default: Story = { args: {} }

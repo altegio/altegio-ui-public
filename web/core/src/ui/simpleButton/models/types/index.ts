@@ -1,18 +1,18 @@
 import {
   createCoreSimpleButtonExternalProps,
-  type IYCoreSimpleButtonExternalProps,
+  type IAltCoreSimpleButtonExternalProps,
 } from './external'
 import {
   createCoreSimpleButtonInternalProps,
-  type IYCoreSimpleButtonInternalProps,
+  type IAltCoreSimpleButtonInternalProps,
 } from './internal'
 
 export * from './external'
 export * from './internal'
 
-export interface IYCoreSimpleButtonProps extends IYCoreSimpleButtonExternalProps, IYCoreSimpleButtonInternalProps {}
+export interface IAltCoreSimpleButtonProps extends IAltCoreSimpleButtonExternalProps, IAltCoreSimpleButtonInternalProps {}
 
-export const createCoreSimpleButtonProps = (): IYCoreSimpleButtonProps => {
+export const createCoreSimpleButtonProps = (): IAltCoreSimpleButtonProps => {
   return {
     ...createCoreSimpleButtonExternalProps(),
     ...createCoreSimpleButtonInternalProps(),

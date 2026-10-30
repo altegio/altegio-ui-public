@@ -1,15 +1,15 @@
-import { createCoreTipProps, type IYCoreTipProps } from '~core/ui/tip/models/types'
-import { type IYCoreDropdownExternalProps } from '~core/ui/dropdown/models/types'
+import { createCoreTipProps, type IAltCoreTipProps } from '~core/ui/tip/models/types'
+import { type IAltCoreDropdownExternalProps } from '~core/ui/dropdown/models/types'
 
-export interface IYCoreTooltipProps {
+export interface IAltCoreTooltipProps {
   text: string | undefined
-  disabled: IYCoreTipProps['disabled'] | undefined
-  placement: IYCoreDropdownExternalProps['placement'] | undefined
-  type: IYCoreTipProps['type'] | undefined
+  disabled: IAltCoreTipProps['disabled'] | undefined
+  placement: IAltCoreDropdownExternalProps['placement'] | undefined
+  type: IAltCoreTipProps['type'] | undefined
 }
 
 const { disabled, type, placement } = createCoreTipProps()
 
-export const createCoreTooltipProps = (): IYCoreTooltipProps => {
+export const createCoreTooltipProps = (): IAltCoreTooltipProps => {
   return { text: '', disabled, placement, type }
 }

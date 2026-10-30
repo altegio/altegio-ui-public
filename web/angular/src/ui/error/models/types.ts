@@ -1,5 +1,5 @@
-import { createCoreErrorExternalProps, type IYCoreErrorExternalProps } from '~core/ui/error/models/types'
+import { createCoreErrorExternalProps, type IAltCoreErrorExternalProps } from '~core/ui/error/models/types'
 
-export interface IYNgErrorProps extends IYCoreErrorExternalProps {}
+export interface IAltNgErrorProps extends IAltCoreErrorExternalProps {}
 
-export const createNgErrorProps = (): IYNgErrorProps => createCoreErrorExternalProps()
+export const createNgErrorProps = (): IAltNgErrorProps => createCoreErrorExternalProps()

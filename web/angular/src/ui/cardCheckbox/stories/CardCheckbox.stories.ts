@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YCardCheckbox } from '~ng/ui/cardCheckbox'
-import yCardCheckboxStoryMeta from '~core/ui/cardCheckbox/stories/CardCheckbox.stories'
+import { AltCardCheckbox } from '~ng/ui/cardCheckbox'
+import altCardCheckboxStoryMeta from '~core/ui/cardCheckbox/stories/CardCheckbox.stories'
 
 /**
  * Angular wrapper for CardCheckbox
  */
-const meta: Meta<YCardCheckbox> = {
+const meta: Meta<AltCardCheckbox> = {
   title: 'Cards/Partials/✅ CardCheckbox',
   id: 'cardCheckbox',
   parameters: { controls: { sort: 'alpha' } },
-  component: YCardCheckbox,
+  component: AltCardCheckbox,
   tags: [
     'angular',
     'autodocs',
@@ -18,18 +18,18 @@ const meta: Meta<YCardCheckbox> = {
   render: (args) => ({
     props: { ...args },
     template: `
-      <YCardCheckbox
+      <AltCardCheckbox
         [disabled]="disabled"
         [size]="size"
         [checked]="checked"
         style="border: 1px dashed;width: min-content;display: inline-flex;"
-      ></YCardCheckbox>`,
+      ></AltCardCheckbox>`,
   }),
-  argTypes: { ...yCardCheckboxStoryMeta.argTypes },
-  args: { ...yCardCheckboxStoryMeta.args },
-} satisfies Meta<YCardCheckbox>
+  argTypes: { ...altCardCheckboxStoryMeta.argTypes },
+  args: { ...altCardCheckboxStoryMeta.args },
+} satisfies Meta<AltCardCheckbox>
 
 export default meta
-type Story = StoryObj<YCardCheckbox>
+type Story = StoryObj<AltCardCheckbox>
 
 export const Playground: Story = { args: {} }

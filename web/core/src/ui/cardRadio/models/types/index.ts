@@ -1,11 +1,11 @@
 import {
   createCoreCardRadioExternalProps,
-  type IYCoreCardRadioExternalProps,
+  type IAltCoreCardRadioExternalProps,
 } from './external'
 
 export * from './external'
 export * from './events'
 
-export interface IYCoreCardRadioProps extends IYCoreCardRadioExternalProps {}
+export interface IAltCoreCardRadioProps extends IAltCoreCardRadioExternalProps {}
 
-export const createCoreCardRadioProps = (): IYCoreCardRadioProps => ({ ...createCoreCardRadioExternalProps() })
+export const createCoreCardRadioProps = (): IAltCoreCardRadioProps => ({ ...createCoreCardRadioExternalProps() })

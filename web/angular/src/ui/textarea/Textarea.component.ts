@@ -6,10 +6,10 @@ import { FormsModule } from '@angular/forms'
 import { NgTemplateOutlet } from '@angular/common'
 
 import '~core/ui/textarea'
-import type { TYNgTextareaModel } from './models/types'
+import type { TAltNgTextareaModel } from './models/types'
 import {
   createNgTextareaProps,
-  type IYNgTextareaProps,
+  type IAltNgTextareaProps,
   type InputEvent,
   type FocusEvent,
   type BlurEvent,
@@ -24,8 +24,8 @@ import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { preventAndStopEvent } from '~shared/utils'
 import { ControlValueAccessorBase } from '~ng/types/ControlValueAccessorBase'
 import { defineCustomElement } from '~web/shared/utils/components'
-import { YCoreTextareaTagName } from '~web/shared/constants'
-import { YCoreTextarea } from '~core/ui/textarea'
+import { AltCoreTextareaTagName } from '~web/shared/constants'
+import { AltCoreTextarea } from '~core/ui/textarea'
 
 const {
   name, placeholder, required, maxlength, autofocus,
@@ -35,16 +35,16 @@ const {
   locatorLabel, locatorError,
 } = createNgTextareaProps()
 
-defineCustomElement(YCoreTextareaTagName, YCoreTextarea)
+defineCustomElement(AltCoreTextareaTagName, AltCoreTextarea)
 
 @Component({
-  selector: 'YTextarea',
+  selector: 'AltTextarea',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormsModule, NgTemplateOutlet],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-textarea
+    <alt-core-textarea
       (input)="handleInputEvent($event)"
       (focus)="handleFocusEvent($event)"
       (blur)="handleBlurEvent($event)"
@@ -86,7 +86,7 @@ defineCustomElement(YCoreTextareaTagName, YCoreTextarea)
           <ng-container *ngTemplateOutlet="textareaAfterRef" />
         </div>
       }
-    </y-core-textarea>
+    </alt-core-textarea>
   `,
 })
 
@@ -109,31 +109,31 @@ defineCustomElement(YCoreTextareaTagName, YCoreTextarea)
  *
  * @example
  * // With formControl
- * <YTextarea [formControl]="descriptionControl" />
+ * <AltTextarea [formControl]="descriptionControl" />
  *
  * @example
  * // With ngModel
- * <YTextarea [(ngModel)]="description" [required]="true" [errors]="['This field is required']" />
+ * <AltTextarea [(ngModel)]="description" [required]="true" [errors]="['This field is required']" />
  */
-export class YTextarea extends ControlValueAccessorBase<TYNgTextareaModel> implements IYNgTextareaProps, OnInit, OnChanges {
-  @Input() @DefaultValue(name) name: IYNgTextareaProps['name'] = name
-  @Input() @DefaultValue(placeholder) placeholder: IYNgTextareaProps['placeholder'] = placeholder
-  @Input() @DefaultValue(required) required: IYNgTextareaProps['required'] = required
-  @Input() @DefaultValue(maxlength) maxlength: IYNgTextareaProps['maxlength'] = maxlength
-  @Input() @DefaultValue(autofocus) autofocus: IYNgTextareaProps['autofocus'] = autofocus
-  @Input() @DefaultValue(labelText) labelText: IYNgTextareaProps['labelText'] = labelText
-  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IYNgTextareaProps['labelTooltipText'] = labelTooltipText
-  @Input() @DefaultValue(labelDebounce) labelDebounce: IYNgTextareaProps['labelDebounce'] = labelDebounce
-  @Input() @DefaultValue(errors) errors: IYNgTextareaProps['errors'] = errors
-  @Input() @DefaultValue(clearable) clearable: IYNgTextareaProps['clearable'] = clearable
-  @Input() @DefaultValue(rows) rows: IYNgTextareaProps['rows'] = rows
-  @Input() @DefaultValue(resize) resize: IYNgTextareaProps['resize'] = resize
-  @Input() @DefaultValue(disabled) disabled: IYNgTextareaProps['disabled'] = disabled
-  @Input() @DefaultValue(size) size: IYNgTextareaProps['size'] = size
-  @Input() @DefaultValue(readonly) readonly: IYNgTextareaProps['readonly'] = readonly
-  @Input() @DefaultValue(error) error: IYNgTextareaProps['error'] = error
-  @Input() @DefaultValue(locatorLabel) locatorLabel: IYNgTextareaProps['locatorLabel'] = locatorLabel
-  @Input() @DefaultValue(locatorError) locatorError: IYNgTextareaProps['locatorError'] = locatorError
+export class AltTextarea extends ControlValueAccessorBase<TAltNgTextareaModel> implements IAltNgTextareaProps, OnInit, OnChanges {
+  @Input() @DefaultValue(name) name: IAltNgTextareaProps['name'] = name
+  @Input() @DefaultValue(placeholder) placeholder: IAltNgTextareaProps['placeholder'] = placeholder
+  @Input() @DefaultValue(required) required: IAltNgTextareaProps['required'] = required
+  @Input() @DefaultValue(maxlength) maxlength: IAltNgTextareaProps['maxlength'] = maxlength
+  @Input() @DefaultValue(autofocus) autofocus: IAltNgTextareaProps['autofocus'] = autofocus
+  @Input() @DefaultValue(labelText) labelText: IAltNgTextareaProps['labelText'] = labelText
+  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IAltNgTextareaProps['labelTooltipText'] = labelTooltipText
+  @Input() @DefaultValue(labelDebounce) labelDebounce: IAltNgTextareaProps['labelDebounce'] = labelDebounce
+  @Input() @DefaultValue(errors) errors: IAltNgTextareaProps['errors'] = errors
+  @Input() @DefaultValue(clearable) clearable: IAltNgTextareaProps['clearable'] = clearable
+  @Input() @DefaultValue(rows) rows: IAltNgTextareaProps['rows'] = rows
+  @Input() @DefaultValue(resize) resize: IAltNgTextareaProps['resize'] = resize
+  @Input() @DefaultValue(disabled) disabled: IAltNgTextareaProps['disabled'] = disabled
+  @Input() @DefaultValue(size) size: IAltNgTextareaProps['size'] = size
+  @Input() @DefaultValue(readonly) readonly: IAltNgTextareaProps['readonly'] = readonly
+  @Input() @DefaultValue(error) error: IAltNgTextareaProps['error'] = error
+  @Input() @DefaultValue(locatorLabel) locatorLabel: IAltNgTextareaProps['locatorLabel'] = locatorLabel
+  @Input() @DefaultValue(locatorError) locatorError: IAltNgTextareaProps['locatorError'] = locatorError
 
   @Output() focus = new EventEmitter<FocusEvent>()
   @Output() blur = new EventEmitter<BlurEvent>()
@@ -148,12 +148,12 @@ export class YTextarea extends ControlValueAccessorBase<TYNgTextareaModel> imple
   @ContentChild('textareaBefore') textareaBeforeRef: TemplateRef<unknown> | undefined
   @ContentChild('textareaAfter') textareaAfterRef: TemplateRef<unknown> | undefined
 
-  textareaValue = signal<TYNgTextareaModel>('')
+  textareaValue = signal<TAltNgTextareaModel>('')
 
   private formControl = signal<UntypedFormControl>(new UntypedFormControl(''))
   private isTouched = signal(false)
   private isInvalid = signal(false)
-  private errorsSignal = signal<IYNgTextareaProps['errors']>(undefined)
+  private errorsSignal = signal<IAltNgTextareaProps['errors']>(undefined)
   private requiredExplicitlySet = signal(false)
   private controlStatusChanged = signal(0)
 
@@ -348,7 +348,7 @@ export class YTextarea extends ControlValueAccessorBase<TYNgTextareaModel> imple
     this.renderTextarea.emit(event as RenderEvent)
   }
 
-  writeValue(value: TYNgTextareaModel) {
+  writeValue(value: TAltNgTextareaModel) {
     this.textareaValue.set(value)
     this.formControl().setValue(value, { emitEvent: false })
   }

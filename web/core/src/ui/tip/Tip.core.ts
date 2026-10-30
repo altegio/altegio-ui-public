@@ -10,12 +10,12 @@ import {
 
 import {
   createCoreTipProps,
-  type IYCoreTipProps,
+  type IAltCoreTipProps,
 } from './models/types'
 import { getArrowStyles } from './utils/helpers'
 import {
-  YCoreTipTagName as tagName,
-  YCoreDropdownTagName,
+  AltCoreTipTagName as tagName,
+  AltCoreDropdownTagName,
 } from '~shared/constants'
 
 import { bubblingEvent } from '~core/utils/event-decorator'
@@ -23,13 +23,13 @@ import type { TDispatcher } from '~core/utils/event-decorator'
 import { ClickOutsideEvent, VisibleEvent } from './models/types/events'
 
 
-import YCoreTipVarsCss from '~core/ui/tip/css/Tip.vars.css?inline'
-import YCoreTipScopedCss from '~core/ui/tip/css/Tip.scoped.css?inline'
+import AltCoreTipVarsCss from '~core/ui/tip/css/Tip.vars.css?inline'
+import AltCoreTipScopedCss from '~core/ui/tip/css/Tip.scoped.css?inline'
 
-import { yArrowTooltipDown } from '~shared/icons'
-import { type TYCoreDropdownPositionCallback } from '~core/ui/dropdown/models/types/internal'
+import { altArrowTooltipDown } from '~shared/icons'
+import { type TAltCoreDropdownPositionCallback } from '~core/ui/dropdown/models/types/internal'
 import '~core/ui/dropdown'
-import { YCoreDropdown } from '~core/ui/dropdown'
+import { AltCoreDropdown } from '~core/ui/dropdown'
 import { defineCustomElement } from '~web/shared/utils/components'
 import { withLocator } from '~core/utils/locator'
 
@@ -37,19 +37,19 @@ const { trigger, isOpen, offset, padding, placement, strategy, type, transition,
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreTip
+export class AltCoreTip
   extends LitElement
-  implements IYCoreTipProps {
-  @property({ type: String }) trigger: IYCoreTipProps['trigger'] = trigger
-  @property({ type: Boolean, attribute: 'is-open', reflect: true }) isOpen: IYCoreTipProps['isOpen'] = isOpen
-  @property({ type: Object }) offset: IYCoreTipProps['offset'] = offset
-  @property({ type: Object }) padding: IYCoreTipProps['padding'] = padding
-  @property({ type: String }) placement: IYCoreTipProps['placement'] = placement
-  @property({ type: String }) strategy: IYCoreTipProps['strategy'] = strategy
-  @property({ type: String }) type: IYCoreTipProps['type'] = type
-  @property({ type: String }) transition: IYCoreTipProps['transition'] = transition
-  @property({ type: Boolean }) disabled: IYCoreTipProps['disabled'] = disabled
-  @property({ type: Boolean }) inline: IYCoreTipProps['inline'] = inline
+  implements IAltCoreTipProps {
+  @property({ type: String }) trigger: IAltCoreTipProps['trigger'] = trigger
+  @property({ type: Boolean, attribute: 'is-open', reflect: true }) isOpen: IAltCoreTipProps['isOpen'] = isOpen
+  @property({ type: Object }) offset: IAltCoreTipProps['offset'] = offset
+  @property({ type: Object }) padding: IAltCoreTipProps['padding'] = padding
+  @property({ type: String }) placement: IAltCoreTipProps['placement'] = placement
+  @property({ type: String }) strategy: IAltCoreTipProps['strategy'] = strategy
+  @property({ type: String }) type: IAltCoreTipProps['type'] = type
+  @property({ type: String }) transition: IAltCoreTipProps['transition'] = transition
+  @property({ type: Boolean }) disabled: IAltCoreTipProps['disabled'] = disabled
+  @property({ type: Boolean }) inline: IAltCoreTipProps['inline'] = inline
 
   private readonly baseClass = tagName
 
@@ -74,7 +74,7 @@ export class YCoreTip
       : []
   }
 
-  private get positionCallbacks(): TYCoreDropdownPositionCallback[] {
+  private get positionCallbacks(): TAltCoreDropdownPositionCallback[] {
     return this.isArrowMounted
       ? [
         (data) => {
@@ -96,8 +96,8 @@ export class YCoreTip
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreTipVarsCss)}
-      ${unsafeCSS(YCoreTipScopedCss)}
+      ${unsafeCSS(AltCoreTipVarsCss)}
+      ${unsafeCSS(AltCoreTipScopedCss)}
     `,
   ]
 
@@ -126,13 +126,13 @@ export class YCoreTip
 
 
   protected firstUpdated(): void {
-    defineCustomElement(tagName, YCoreTip)
-    defineCustomElement(YCoreDropdownTagName, YCoreDropdown)
+    defineCustomElement(tagName, AltCoreTip)
+    defineCustomElement(AltCoreDropdownTagName, AltCoreDropdown)
   }
 
   protected render() {
     return html`
-      <y-core-dropdown
+      <alt-core-dropdown
         .trigger=${this.trigger}
         .isOpen=${this.isOpen}
         .offset=${this.offset}
@@ -153,12 +153,12 @@ export class YCoreTip
 
         <div class="${this.baseClass}__content" slot="content">
           <div class="${this.baseClass}__arrow"> 
-            ${unsafeSVG(yArrowTooltipDown.data)} 
+            ${unsafeSVG(altArrowTooltipDown.data)} 
           </div>
 
           <slot name="content"></slot>
         </div>
-      </y-core-dropdown>
+      </alt-core-dropdown>
     `
   }
 }

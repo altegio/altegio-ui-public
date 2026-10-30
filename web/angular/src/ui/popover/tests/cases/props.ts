@@ -1,6 +1,6 @@
 import type { TPropTestCase } from '~shared/types/tests'
 import {
-  type IYCorePopoverProps,
+  type IAltCorePopoverProps,
 } from '~core/ui/popover/models/types'
 import {
   propIsOpenTestCases as corePropIsOpenTestCases,
@@ -29,7 +29,7 @@ const {
   cancelText: defaultCancelText,
 } = createCorePopoverProps()
 
-export const propIsOpenTestCases: TPropTestCase<IYCorePopoverProps, 'isOpen'>[] = [
+export const propIsOpenTestCases: TPropTestCase<IAltCorePopoverProps, 'isOpen'>[] = [
   ...corePropIsOpenTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'isOpen',
@@ -38,7 +38,7 @@ export const propIsOpenTestCases: TPropTestCase<IYCorePopoverProps, 'isOpen'>[] 
     expected: defaultIsOpen,
   },
 ]
-export const propOffsetTestCases: TPropTestCase<IYCorePopoverProps, 'offset'>[] = [
+export const propOffsetTestCases: TPropTestCase<IAltCorePopoverProps, 'offset'>[] = [
   ...corePropOffsetTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'offset',
@@ -47,7 +47,7 @@ export const propOffsetTestCases: TPropTestCase<IYCorePopoverProps, 'offset'>[] 
     expected: defaultOffset,
   },
 ]
-export const propPaddingTestCases: TPropTestCase<IYCorePopoverProps, 'padding'>[] = [
+export const propPaddingTestCases: TPropTestCase<IAltCorePopoverProps, 'padding'>[] = [
   ...corePropPaddingTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'padding',
@@ -56,7 +56,7 @@ export const propPaddingTestCases: TPropTestCase<IYCorePopoverProps, 'padding'>[
     expected: defaultPadding,
   },
 ]
-export const propPlacementTestCases: TPropTestCase<IYCorePopoverProps, 'placement'>[] = [
+export const propPlacementTestCases: TPropTestCase<IAltCorePopoverProps, 'placement'>[] = [
   ...corePropPlacementTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'placement',
@@ -65,7 +65,7 @@ export const propPlacementTestCases: TPropTestCase<IYCorePopoverProps, 'placemen
     expected: defaultPlacement,
   },
 ]
-export const propStrategyTestCases: TPropTestCase<IYCorePopoverProps, 'strategy'>[] = [
+export const propStrategyTestCases: TPropTestCase<IAltCorePopoverProps, 'strategy'>[] = [
   ...corePropStrategyTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'strategy',
@@ -74,7 +74,7 @@ export const propStrategyTestCases: TPropTestCase<IYCorePopoverProps, 'strategy'
     expected: defaultStrategy,
   },
 ]
-export const propTransitionTestCases: TPropTestCase<IYCorePopoverProps, 'transition'>[] = [
+export const propTransitionTestCases: TPropTestCase<IAltCorePopoverProps, 'transition'>[] = [
   ...corePropTransitionTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'transition',
@@ -83,7 +83,7 @@ export const propTransitionTestCases: TPropTestCase<IYCorePopoverProps, 'transit
     expected: defaultTransition,
   },
 ]
-export const propTriggerTestCases: TPropTestCase<IYCorePopoverProps, 'trigger'>[] = [
+export const propTriggerTestCases: TPropTestCase<IAltCorePopoverProps, 'trigger'>[] = [
   ...corePropTriggerTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'trigger',
@@ -92,7 +92,7 @@ export const propTriggerTestCases: TPropTestCase<IYCorePopoverProps, 'trigger'>[
     expected: defaultTrigger,
   },
 ]
-export const propTypeTestCases: TPropTestCase<IYCorePopoverProps, 'type'>[] = [
+export const propTypeTestCases: TPropTestCase<IAltCorePopoverProps, 'type'>[] = [
   ...corePropTypeTestCases.map((testCase) => ({ ...testCase, expected: testCase.value })),
   {
     prop: 'type',
@@ -102,7 +102,7 @@ export const propTypeTestCases: TPropTestCase<IYCorePopoverProps, 'type'>[] = [
   },
 ]
 
-export const propSubmitTextTestCases: TPropTestCase<IYCorePopoverProps, 'submitText'>[] = [
+export const propSubmitTextTestCases: TPropTestCase<IAltCorePopoverProps, 'submitText'>[] = [
   {
     prop: 'submitText',
     case: 'without a value',
@@ -111,7 +111,7 @@ export const propSubmitTextTestCases: TPropTestCase<IYCorePopoverProps, 'submitT
   },
 ]
 
-export const propCancelTextTestCases: TPropTestCase<IYCorePopoverProps, 'cancelText'>[] = [
+export const propCancelTextTestCases: TPropTestCase<IAltCorePopoverProps, 'cancelText'>[] = [
   {
     prop: 'cancelText',
     case: 'without a value',

@@ -1,10 +1,10 @@
 import {
   createCoreCollapseItemProps,
-  type IYCoreCollapseItemProps,
+  type IAltCoreCollapseItemProps,
 } from '~core/ui/collapseItem/models/types'
 
 export * from '~core/ui/collapseItem/models/types/events'
 
-export interface IYNgCollapseItemProps extends IYCoreCollapseItemProps {}
+export interface IAltNgCollapseItemProps extends IAltCoreCollapseItemProps {}
 
-export const createNgCollapseItemProps = (): IYNgCollapseItemProps => createCoreCollapseItemProps()
+export const createNgCollapseItemProps = (): IAltNgCollapseItemProps => createCoreCollapseItemProps()

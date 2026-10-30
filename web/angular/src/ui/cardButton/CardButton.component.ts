@@ -4,9 +4,9 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output, signal,
 import '~core/ui/cardButton'
 import {
   createNgCardButtonProps,
-  type IYNgCardButtonProps,
-  type YNgCardButtonFocusEvent,
-  type YNgCardButtonBlurEvent,
+  type IAltNgCardButtonProps,
+  type AltNgCardButtonFocusEvent,
+  type AltNgCardButtonBlurEvent,
 } from '~ng/ui/cardButton/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 import { cleanupInnerHTML } from '~shared/utils'
@@ -16,12 +16,12 @@ import { checkMultipleSlots, hasContent } from '~ng/utils/content-helpers'
 const { annotation, disabled, hoverable, focusable, size, headerText, tagText, tagVariant, headerIcon } = createNgCardButtonProps()
 
 @Component({
-  selector: 'YCardButton',
+  selector: 'AltCardButton',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [NgTemplateOutlet],
   template: `
-    <y-core-card-button
+    <alt-core-card-button
       [annotation]="annotation"
       [disabled]="disabled"
       [hoverable]="hoverable"
@@ -76,20 +76,20 @@ const { annotation, disabled, hoverable, focusable, size, headerText, tagText, t
           <ng-container *ngTemplateOutlet="cardButtonAfter" />
         </div>
       }
-    </y-core-card-button>
+    </alt-core-card-button>
   `,
 })
 
-export class YCardButton implements IYNgCardButtonProps, AfterViewInit {
-  @Input() @DefaultValue(annotation) annotation: IYNgCardButtonProps['annotation'] = annotation
-  @Input() @DefaultValue(disabled) disabled: IYNgCardButtonProps['disabled'] = disabled
-  @Input() @DefaultValue(hoverable) hoverable: IYNgCardButtonProps['hoverable'] = hoverable
-  @Input() @DefaultValue(focusable) focusable: IYNgCardButtonProps['focusable'] = focusable
-  @Input() @DefaultValue(size) size: IYNgCardButtonProps['size'] = size
-  @Input() @DefaultValue(headerText) headerText: IYNgCardButtonProps['headerText'] = headerText
-  @Input() @DefaultValue(tagText) tagText: IYNgCardButtonProps['tagText'] = tagText
-  @Input() @DefaultValue(tagVariant) tagVariant: IYNgCardButtonProps['tagVariant'] = tagVariant
-  @Input() @DefaultValue(headerIcon) headerIcon: IYNgCardButtonProps['headerIcon'] = headerIcon
+export class AltCardButton implements IAltNgCardButtonProps, AfterViewInit {
+  @Input() @DefaultValue(annotation) annotation: IAltNgCardButtonProps['annotation'] = annotation
+  @Input() @DefaultValue(disabled) disabled: IAltNgCardButtonProps['disabled'] = disabled
+  @Input() @DefaultValue(hoverable) hoverable: IAltNgCardButtonProps['hoverable'] = hoverable
+  @Input() @DefaultValue(focusable) focusable: IAltNgCardButtonProps['focusable'] = focusable
+  @Input() @DefaultValue(size) size: IAltNgCardButtonProps['size'] = size
+  @Input() @DefaultValue(headerText) headerText: IAltNgCardButtonProps['headerText'] = headerText
+  @Input() @DefaultValue(tagText) tagText: IAltNgCardButtonProps['tagText'] = tagText
+  @Input() @DefaultValue(tagVariant) tagVariant: IAltNgCardButtonProps['tagVariant'] = tagVariant
+  @Input() @DefaultValue(headerIcon) headerIcon: IAltNgCardButtonProps['headerIcon'] = headerIcon
 
   @Output() click = new EventEmitter<Event>()
 
@@ -100,14 +100,14 @@ export class YCardButton implements IYNgCardButtonProps, AfterViewInit {
   @Output() focus = new EventEmitter<Event>()
 
   handleFocusEvent(event: Event) {
-    const focusEvent = event as YNgCardButtonFocusEvent
+    const focusEvent = event as AltNgCardButtonFocusEvent
     this.focus.emit(focusEvent)
   }
 
   @Output() blur = new EventEmitter<Event>()
 
   handleBlurEvent(event: Event) {
-    const blurEvent = event as YNgCardButtonBlurEvent
+    const blurEvent = event as AltNgCardButtonBlurEvent
     this.blur.emit(blurEvent)
   }
 

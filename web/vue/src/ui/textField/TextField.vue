@@ -1,5 +1,5 @@
 <template>
-  <y-core-text-field
+  <alt-core-text-field
     ref="textField"
     v-bind="props"
     :value="modelValue"
@@ -36,7 +36,7 @@
     >
       <slot name="after" />
     </div>
-  </y-core-text-field>
+  </alt-core-text-field>
 </template>
 
 <script setup lang="ts">
@@ -44,14 +44,14 @@
   import '~core/ui/textField'
   import {
     createVueTextFieldProps,
-    type IYVueTextFieldProps,
-    type IYVueCoreTextFieldProps,
-    type IYTextFieldEmits,
+    type IAltVueTextFieldProps,
+    type IAltVueCoreTextFieldProps,
+    type IAltTextFieldEmits,
   } from './models/types'
-  import { YCoreTextField } from '~core/ui/textField'
+  import { AltCoreTextField } from '~core/ui/textField'
 
 
-  defineOptions({ name: 'YTextField' })
+  defineOptions({ name: 'AltTextField' })
 
   defineSlots<{
     before: () => unknown
@@ -61,13 +61,13 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueTextFieldProps>(),
+    defineProps<IAltVueTextFieldProps>(),
     createVueTextFieldProps(),
-  ) satisfies IYVueCoreTextFieldProps
+  ) satisfies IAltVueCoreTextFieldProps
 
-  defineEmits<IYTextFieldEmits>()
+  defineEmits<IAltTextFieldEmits>()
 
-  const coreTextFieldRef = ref<YCoreTextField>()
+  const coreTextFieldRef = ref<AltCoreTextField>()
 
   const focus = (): void => {
     coreTextFieldRef.value?.focus()

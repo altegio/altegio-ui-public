@@ -1,26 +1,26 @@
 import {
   createCoreLabelProps,
-  type IYCoreLabelProps,
+  type IAltCoreLabelProps,
 } from '~core/ui/label/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreLabelProps extends IYCoreLabelProps {}
+export interface IAltVueCoreLabelProps extends IAltCoreLabelProps {}
 
-export interface IYVueLabelProps {
-  text?: IYVueCoreLabelProps['text']
-  tooltipText?: IYVueCoreLabelProps['tooltipText']
-  tooltipActive?: IYVueCoreLabelProps['tooltipActive']
-  disabled?: IYVueCoreLabelProps['disabled']
-  required?: IYVueCoreLabelProps['required']
-  debounce?: IYVueCoreLabelProps['debounce']
-  alignment?: IYVueCoreLabelProps['alignment']
-  wrap?: IYVueCoreLabelProps['wrap']
-  size?: IYVueCoreLabelProps['size']
-  variant?: IYVueCoreLabelProps['variant']
-  tooltipPlacement?: IYVueCoreLabelProps['tooltipPlacement']
+export interface IAltVueLabelProps {
+  text?: IAltVueCoreLabelProps['text']
+  tooltipText?: IAltVueCoreLabelProps['tooltipText']
+  tooltipActive?: IAltVueCoreLabelProps['tooltipActive']
+  disabled?: IAltVueCoreLabelProps['disabled']
+  required?: IAltVueCoreLabelProps['required']
+  debounce?: IAltVueCoreLabelProps['debounce']
+  alignment?: IAltVueCoreLabelProps['alignment']
+  wrap?: IAltVueCoreLabelProps['wrap']
+  size?: IAltVueCoreLabelProps['size']
+  variant?: IAltVueCoreLabelProps['variant']
+  tooltipPlacement?: IAltVueCoreLabelProps['tooltipPlacement']
 }
 
-export const createVueLabelProps = (): TDefinedVueProps<IYVueLabelProps> => {
+export const createVueLabelProps = (): TDefinedVueProps<IAltVueLabelProps> => {
   const { text, tooltipText, disabled, required, debounce, alignment, tooltipPlacement, tooltipActive, wrap, size, variant } = createCoreLabelProps()
 
   return { text, tooltipText, tooltipActive, disabled, required, debounce, alignment, wrap, size, variant, tooltipPlacement }

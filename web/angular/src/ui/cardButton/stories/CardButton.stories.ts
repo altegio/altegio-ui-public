@@ -1,24 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 import { CommonModule } from '@angular/common'
-import { EYCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
-import { yMagic } from '~shared/icons'
-import yCardButtonStoryMeta from '~core/ui/cardButton/stories/CardButton.stories'
-import { YCardButton } from '~ng/ui/cardButton'
-import { YCardIcon } from '~ng/ui/cardIcon'
+import { EAltCoreColorIconVariant } from '~core/ui/colorIcon/models/types'
+import { altMagic } from '~shared/icons'
+import altCardButtonStoryMeta from '~core/ui/cardButton/stories/CardButton.stories'
+import { AltCardButton } from '~ng/ui/cardButton'
+import { AltCardIcon } from '~ng/ui/cardIcon'
 import { action } from 'storybook/actions'
 import {
-  type YNgCardButtonFocusEvent,
-  type YNgCardButtonBlurEvent,
+  type AltNgCardButtonFocusEvent,
+  type AltNgCardButtonBlurEvent,
 } from '~ng/ui/cardButton/models/types'
 
 /**
  * Angular wrapper for CardButton
  */
-const meta: Meta<YCardButton> = {
+const meta: Meta<AltCardButton> = {
   title: 'Cards/✅ CardButton',
   id: 'cardButton',
   parameters: { controls: { sort: 'alpha' } },
-  component: YCardButton,
+  component: AltCardButton,
   tags: [
     'angular',
     'autodocs',
@@ -28,10 +28,10 @@ const meta: Meta<YCardButton> = {
       onClickEmit: (event: Event) => {
         action('click')(event)
       },
-      onFocusEmit: (event: YNgCardButtonFocusEvent) => {
+      onFocusEmit: (event: AltNgCardButtonFocusEvent) => {
         action('blur')(event)
       },
-      onBlurEmit: (event: YNgCardButtonBlurEvent) => {
+      onBlurEmit: (event: AltNgCardButtonBlurEvent) => {
         action('focus')(event)
       },
     }
@@ -40,17 +40,17 @@ const meta: Meta<YCardButton> = {
       props: {
         ...args,
         ...handlers,
-        yMagic,
-        EYCoreColorIconVariant,
+        altMagic,
+        EAltCoreColorIconVariant,
       },
       moduleMetadata: {
         imports: [
           CommonModule,
-          YCardIcon,
+          AltCardIcon,
         ],
       },
       template: `
-        <YCardButton
+        <AltCardButton
           [annotation]="annotation"
           [disabled]="disabled"
           [hoverable]="hoverable"
@@ -65,24 +65,24 @@ const meta: Meta<YCardButton> = {
           (blur)="onBlurEmit($event)"
         >
           @if (showCardIcon) {
-            <YCardIcon
-              [icon]="yMagic"
-              [variant]="EYCoreColorIconVariant.GREY"
+            <AltCardIcon
+              [icon]="altMagic"
+              [variant]="EAltCoreColorIconVariant.GREY"
               card-button-before
-            ></YCardIcon>
+            ></AltCardIcon>
           }
 
           <div card-button-annotation>
             {{annotation}}
           </div>
-        </YCardButton>`,
+        </AltCardButton>`,
     }
   },
-  argTypes: { ...yCardButtonStoryMeta.argTypes },
-  args: { ...yCardButtonStoryMeta.args },
-} satisfies Meta<YCardButton>
+  argTypes: { ...altCardButtonStoryMeta.argTypes },
+  args: { ...altCardButtonStoryMeta.args },
+} satisfies Meta<AltCardButton>
 
 export default meta
-type Story = StoryObj<YCardButton>
+type Story = StoryObj<AltCardButton>
 
 export const Playground: Story = { args: {} }

@@ -1,10 +1,10 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
-import type { IYCoreDatePickerExternalProps } from './external'
+import type { IAltCoreDatePickerExternalProps } from './external'
 
-export interface IYCoreDatePickerPickEvent {
-  value: IYCoreDatePickerExternalProps['date']
+export interface IAltCoreDatePickerPickEvent {
+  value: IAltCoreDatePickerExternalProps['date']
 }
 
-export class PickEvent extends CustomEvent<IYCoreDatePickerPickEvent> {}
+export class PickEvent extends CustomEvent<IAltCoreDatePickerPickEvent> {}
 
-export type TYCoreDatePickerEvents = TEventsStoryArgs<{ PickEvent: typeof PickEvent }>
+export type TAltCoreDatePickerEvents = TEventsStoryArgs<{ PickEvent: typeof PickEvent }>

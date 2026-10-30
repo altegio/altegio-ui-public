@@ -10,8 +10,8 @@ import '~core/ui/fieldIcon'
 
 import {
   createCoreTextareaProps,
-  type IYCoreTextareaProps,
-  type TYCoreFieldInputEvents,
+  type IAltCoreTextareaProps,
+  type TAltCoreFieldInputEvents,
   type InputEvent,
   type BlurEvent,
   type FocusEvent,
@@ -23,11 +23,11 @@ import {
   type ClearEvent,
 } from '../models/types'
 import {
-  YCoreTextFieldTagName as tagName,
+  AltCoreTextFieldTagName as tagName,
 } from '~shared/constants'
 
-import yCoreTextFieldStoryMeta, { type TYCoreTextFieldMeta, type IYCoreTextFieldStorySlots } from '~core/ui/textField/stories/TextField.stories'
-import yCoreFieldTextareaStoryMeta from '~core/ui/fieldTextarea/stories/FieldTextarea.stories'
+import altCoreTextFieldStoryMeta, { type TAltCoreTextFieldMeta, type IAltCoreTextFieldStorySlots } from '~core/ui/textField/stories/TextField.stories'
+import altCoreFieldTextareaStoryMeta from '~core/ui/fieldTextarea/stories/FieldTextarea.stories'
 
 import {
   storyControlsTable,
@@ -39,20 +39,20 @@ import {
   isLongText as isLongTextArgType,
 } from '~shared/.storybook/argTypes'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import { yChevronDown, ySearch } from '~shared/icons'
+import { altChevronDown, altSearch } from '~shared/icons'
 
-export interface IYCoreTextareaStorySlots extends IYCoreTextFieldStorySlots {}
+export interface IAltCoreTextareaStorySlots extends IAltCoreTextFieldStorySlots {}
 
 const { clearable } = createCoreTextareaProps()
 
-export type TYCoreTextareaMeta = Pick<IYCoreTextareaProps, 'rows' | 'resize'> & Omit<TYCoreTextFieldMeta, 'type' | 'maskOptions' | 'autocomplete'> & {
-  onRenderTextarea: TYCoreFieldInputEvents['onRender']
+export type TAltCoreTextareaMeta = Pick<IAltCoreTextareaProps, 'rows' | 'resize'> & Omit<TAltCoreTextFieldMeta, 'type' | 'maskOptions' | 'autocomplete'> & {
+  onRenderTextarea: TAltCoreFieldInputEvents['onRender']
 }
 
 /**
  * ## Core Textarea
  */
-const meta: Meta<TYCoreTextareaMeta> = {
+const meta: Meta<TAltCoreTextareaMeta> = {
   title: 'Inputs/✅ TextArea',
   id: 'textarea',
   parameters: { controls: { sort: 'alpha' } },
@@ -67,7 +67,7 @@ const meta: Meta<TYCoreTextareaMeta> = {
     const [
       args,
       updateArgs,
-    ] = useArgs<IYCoreTextareaProps>()
+    ] = useArgs<IAltCoreTextareaProps>()
 
     const handleInput = (event: InputEvent) => {
       updateArgs({ ...args, value: String(event.detail.value) })
@@ -122,7 +122,7 @@ const meta: Meta<TYCoreTextareaMeta> = {
       : computedErrors
 
     return html`
-      <y-core-textarea
+      <alt-core-textarea
         .disabled=${disabled}
         .readonly=${readonly}
         .error=${error}
@@ -153,23 +153,23 @@ const meta: Meta<TYCoreTextareaMeta> = {
       >
         ${showBeforeSlot
           ? html`
-              <y-core-field-icon slot="before" .icon=${ySearch}></y-core-field-icon>
+              <alt-core-field-icon slot="before" .icon=${altSearch}></alt-core-field-icon>
             `
           : nothing
         }
         ${showAfterSlot
           ? html`
-              <y-core-field-icon slot="after" .icon=${yChevronDown}></y-core-field-icon>
+              <alt-core-field-icon slot="after" .icon=${altChevronDown}></alt-core-field-icon>
             `
           : nothing
         }
-      </y-core-textarea>
+      </alt-core-textarea>
     `
   },
   argTypes: {
     // Extended Props
-    ...omit(yCoreTextFieldStoryMeta.argTypes ?? {}, ['type', 'onRenderInput', 'maskOptions', 'annotationText', 'autocomplete']),
-    ...pick(yCoreFieldTextareaStoryMeta.argTypes ?? {}, ['rows', 'resize']),
+    ...omit(altCoreTextFieldStoryMeta.argTypes ?? {}, ['type', 'onRenderInput', 'maskOptions', 'annotationText', 'autocomplete']),
+    ...pick(altCoreFieldTextareaStoryMeta.argTypes ?? {}, ['rows', 'resize']),
 
     // Component Props
     clearable: {
@@ -199,7 +199,7 @@ const meta: Meta<TYCoreTextareaMeta> = {
       ...getComponentContentTable(),
     },
     isLongText: isLongTextArgType,
-    onRenderTextarea: yCoreFieldTextareaStoryMeta.argTypes?.onRender,
+    onRenderTextarea: altCoreFieldTextareaStoryMeta.argTypes?.onRender,
     // Component Events
     onClear: {
       type: 'function',
@@ -208,8 +208,8 @@ const meta: Meta<TYCoreTextareaMeta> = {
     },
   },
   args: {
-    ...omit(yCoreTextFieldStoryMeta.args ?? {}, ['type', 'onRenderInput', 'maskOptions', 'annotationText', 'autocomplete']),
-    ...pick(yCoreFieldTextareaStoryMeta.args ?? {}, ['rows', 'resize']),
+    ...omit(altCoreTextFieldStoryMeta.args ?? {}, ['type', 'onRenderInput', 'maskOptions', 'annotationText', 'autocomplete']),
+    ...pick(altCoreFieldTextareaStoryMeta.args ?? {}, ['rows', 'resize']),
 
     clearable: false,
     showBeforeSlot: false,
@@ -217,13 +217,13 @@ const meta: Meta<TYCoreTextareaMeta> = {
     isLongText: false,
     locatorLabel: undefined,
     locatorError: undefined,
-    onRenderTextarea: yCoreFieldTextareaStoryMeta.args?.onRender,
+    onRenderTextarea: altCoreFieldTextareaStoryMeta.args?.onRender,
     onClear: fn(),
   },
-} satisfies Meta<TYCoreTextareaMeta>
+} satisfies Meta<TAltCoreTextareaMeta>
 
 export default meta
-type Story = StoryObj<IYCoreTextareaProps>
+type Story = StoryObj<IAltCoreTextareaProps>
 
 export const Playground: Story = { args: {} }
 

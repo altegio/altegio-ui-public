@@ -11,25 +11,25 @@ import { ClickEvent } from './models/types/events'
 
 import {
   createCoreSegmentControlProps,
-  type IYCoreSegmentControlProps,
+  type IAltCoreSegmentControlProps,
 } from './models/types'
-import { YCoreSegmentControlTagName as tagName } from '~shared/constants'
+import { AltCoreSegmentControlTagName as tagName } from '~shared/constants'
 
 import '~core/ui/segmentOption'
 
-import YCoreSegmentControlVarsCss from '~core/ui/segmentControl/css/SegmentControl.vars.css?inline'
-import YCoreSegmentControlScopedCss from '~core/ui/segmentControl/css/SegmentControl.scoped.css?inline'
+import AltCoreSegmentControlVarsCss from '~core/ui/segmentControl/css/SegmentControl.vars.css?inline'
+import AltCoreSegmentControlScopedCss from '~core/ui/segmentControl/css/SegmentControl.scoped.css?inline'
 import { withLocator } from '~core/utils/locator'
 
 const { options, size, value, manual } = createCoreSegmentControlProps()
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreSegmentControl extends LitElement implements IYCoreSegmentControlProps {
-  @property({ type: Array }) options: IYCoreSegmentControlProps['options'] = options
-  @property({ type: String, reflect: true }) size: IYCoreSegmentControlProps['size'] = size
-  @property({ type: String, attribute: 'value', reflect: true }) value: IYCoreSegmentControlProps['value'] = value
-  @property({ type: Boolean, attribute: 'manual', reflect: true }) manual: IYCoreSegmentControlProps['manual'] = manual
+export class AltCoreSegmentControl extends LitElement implements IAltCoreSegmentControlProps {
+  @property({ type: Array }) options: IAltCoreSegmentControlProps['options'] = options
+  @property({ type: String, reflect: true }) size: IAltCoreSegmentControlProps['size'] = size
+  @property({ type: String, attribute: 'value', reflect: true }) value: IAltCoreSegmentControlProps['value'] = value
+  @property({ type: Boolean, attribute: 'manual', reflect: true }) manual: IAltCoreSegmentControlProps['manual'] = manual
 
   @bubblingEvent(
     ClickEvent,
@@ -44,8 +44,8 @@ export class YCoreSegmentControl extends LitElement implements IYCoreSegmentCont
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreSegmentControlVarsCss)}
-      ${unsafeCSS(YCoreSegmentControlScopedCss)}
+      ${unsafeCSS(AltCoreSegmentControlVarsCss)}
+      ${unsafeCSS(AltCoreSegmentControlScopedCss)}
     `,
   ]
 
@@ -84,7 +84,7 @@ export class YCoreSegmentControl extends LitElement implements IYCoreSegmentCont
       this.options,
       (option) => option.value,
       (option) => html`
-        <y-core-segment-option
+        <alt-core-segment-option
           size=${ifDefined(this.size)}
           value=${option.value}
           .icon=${option.icon}
@@ -95,7 +95,7 @@ export class YCoreSegmentControl extends LitElement implements IYCoreSegmentCont
           @click-option=${this.handleClick}
         >
           ${option.text}
-        </y-core-segment-option>
+        </alt-core-segment-option>
       `,
     )
   }

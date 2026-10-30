@@ -3,7 +3,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, Output, EventEmitter } from '
 import '~core/ui/fieldWrapper'
 import {
   createNgFieldWrapperProps,
-  type IYNgFieldWrapperProps,
+  type IAltNgFieldWrapperProps,
   type ClickOutsideEvent,
   type FocusEvent,
   type BlurEvent,
@@ -15,11 +15,11 @@ import { DefaultValue } from '~ng/utils/default-value.decorator'
 const { disabled, readonly, error, size, clickable } = createNgFieldWrapperProps()
 
 @Component({
-  selector: 'YFieldWrapper',
+  selector: 'AltFieldWrapper',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-field-wrapper
+    <alt-core-field-wrapper
       [disabled]="disabled"
       [readonly]="readonly"
       [error]="error"
@@ -32,16 +32,16 @@ const { disabled, readonly, error, size, clickable } = createNgFieldWrapperProps
       (mouse-leave)="handleMouseLeaveEvent($event)"
     >
       <ng-content />
-    </y-core-field-wrapper>
+    </alt-core-field-wrapper>
   `,
 })
 
-export class YFieldWrapper implements IYNgFieldWrapperProps {
-  @Input() @DefaultValue(disabled) disabled: IYNgFieldWrapperProps['disabled'] = disabled
-  @Input() @DefaultValue(readonly) readonly: IYNgFieldWrapperProps['readonly'] = readonly
-  @Input() @DefaultValue(error) error: IYNgFieldWrapperProps['error'] = error
-  @Input() @DefaultValue(size) size: IYNgFieldWrapperProps['size'] = size
-  @Input() @DefaultValue(clickable) clickable: IYNgFieldWrapperProps['clickable'] = clickable
+export class AltFieldWrapper implements IAltNgFieldWrapperProps {
+  @Input() @DefaultValue(disabled) disabled: IAltNgFieldWrapperProps['disabled'] = disabled
+  @Input() @DefaultValue(readonly) readonly: IAltNgFieldWrapperProps['readonly'] = readonly
+  @Input() @DefaultValue(error) error: IAltNgFieldWrapperProps['error'] = error
+  @Input() @DefaultValue(size) size: IAltNgFieldWrapperProps['size'] = size
+  @Input() @DefaultValue(clickable) clickable: IAltNgFieldWrapperProps['clickable'] = clickable
 
   @Output('click-outside') clickOutside = new EventEmitter<ClickOutsideEvent>()
   handleClickOutsideEvent(event: Event) {

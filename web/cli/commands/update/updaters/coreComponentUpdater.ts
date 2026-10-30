@@ -28,8 +28,8 @@ export class CoreComponentUpdater extends ComponentUpdater {
   }
 
   private updateConstants() {
-    const oldLine = `export const Y${pascal(this.options.oldName)}TagName = 'y-${dash(this.options.oldName)}'`
-    const newLine = `export const Y${pascal(this.options.newName)}TagName = 'y-${dash(this.options.newName)}'`
+    const oldLine = `export const Alt${pascal(this.options.oldName)}TagName = 'y-${dash(this.options.oldName)}'`
+    const newLine = `export const Alt${pascal(this.options.newName)}TagName = 'y-${dash(this.options.newName)}'`
 
     return updateFile(
       COMPONENT_CONSTANTS_RELATIVE_PATH,

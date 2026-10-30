@@ -1,5 +1,5 @@
-import { EYCoreColorIconVariant, EYCoreColorIconSize } from '~core/ui/colorIcon/models/types'
-import { yRocket } from '~shared/icons'
+import { EAltCoreColorIconVariant, EAltCoreColorIconSize } from '~core/ui/colorIcon/models/types'
+import { altRocket } from '~shared/icons'
 
 /**
  * ## Story helpers for ColorIcon
@@ -55,8 +55,8 @@ export const COLOR_ICON_STORIES_CONFIG: Record<string, IStoryConfig> = {
 /**
  * Values listed in the generated description
  */
-const sizes = Object.values(EYCoreColorIconSize)
-const variants = Object.values(EYCoreColorIconVariant)
+const sizes = Object.values(EAltCoreColorIconSize)
+const variants = Object.values(EAltCoreColorIconVariant)
 
 /**
  * Builds the ColorIcon description for the given framework
@@ -85,4 +85,4 @@ export const createColorIconParameters = (frameworkName: EFrameworkName, framewo
   docs: { description: { component: createColorIconDescription(frameworkName, frameworkSpecifics) } },
 })
 
-export const defaultIcon = yRocket
+export const defaultIcon = altRocket

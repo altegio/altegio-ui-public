@@ -1,1 +1,1 @@
-export { YCoreMultipleSelectField } from './MultipleSelectField.core'
+export { AltCoreMultipleSelectField } from './MultipleSelectField.core'

@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
-import { YCoreCollapseItemTagName } from '~shared/constants'
+import { AltCoreCollapseItemTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import {
   createCoreCollapseItemProps,
@@ -25,7 +25,7 @@ import {
   eventCollapseItemClickCases,
 } from './cases/events'
 
-const tagName = YCoreCollapseItemTagName
+const tagName = AltCoreCollapseItemTagName
 
 const {
   component,
@@ -39,7 +39,7 @@ const {
 )
 
 describe(
-  'Core/YCollapseItem',
+  'Core/AltCollapseItem',
   () => {
     beforeAll(() => {
       injectComponentToBody()

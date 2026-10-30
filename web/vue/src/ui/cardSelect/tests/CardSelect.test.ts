@@ -1,8 +1,8 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { YCoreCardSelectTagName as tagName } from '~shared/constants'
-import { YCoreCardSelect } from '~core/index'
-import { YCardSelect } from '~vue/ui/cardSelect'
+import { AltCoreCardSelectTagName as tagName } from '~shared/constants'
+import { AltCoreCardSelect } from '~core/index'
+import { AltCardSelect } from '~vue/ui/cardSelect'
 
 import {
   propCheckedCases,
@@ -28,13 +28,13 @@ import {
 } from './cases/events'
 
 describe(
-  'Vue/YCardSelect/Unit',
+  'Vue/AltCardSelect/Unit',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreCardSelect,
+          AltCoreCardSelect,
         )
       }
     })
@@ -51,7 +51,7 @@ describe(
             `Slot: "${testCase.slot}" should render ${testCase.case}`,
             () => {
               const wrapper = mount(
-                YCardSelect,
+                AltCardSelect,
                 { slots: { [testCase.slot]: testCase.content } },
               )
 
@@ -80,11 +80,11 @@ describe(
             `Prop: "${testCase.prop}" ${testCase.value} should set ${testCase.prop} on the core component`,
             () => {
               const wrapper = mount(
-                YCardSelect,
+                AltCardSelect,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
-              const coreElement = wrapper.find(tagName).element as YCoreCardSelect
+              const coreElement = wrapper.find(tagName).element as AltCoreCardSelect
 
               expect(coreElement[testCase.prop]).toBe(testCase.expected)
             },
@@ -96,11 +96,11 @@ describe(
             `Prop: "${testCase.prop}" should work ${testCase.case} for the core component`,
             () => {
               const wrapper = mount(
-                YCardSelect,
+                AltCardSelect,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
-              const coreElement = wrapper.find(tagName).element as YCoreCardSelect
+              const coreElement = wrapper.find(tagName).element as AltCoreCardSelect
 
               expect(coreElement.headerIcon?.name).toBe(testCase.value?.name)
             },
@@ -117,7 +117,7 @@ describe(
             `Event: "${testCase.emitEventName}" ${testCase.case}`,
             () => {
               const wrapper = mount(
-                YCardSelect,
+                AltCardSelect,
                 { props: { focusable: true } },
               )
 

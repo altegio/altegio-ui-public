@@ -5,15 +5,15 @@ import { useArgs } from 'storybook/preview-api'
 import { action } from 'storybook/actions'
 
 import type { RadioButtonGroupChangeEvent } from '~core/ui/radioButtonGroup/models/types'
-import yCoreRadioButtonGroupStoryMeta, {
-  type TYCoreRadioButtonGroupStoryMeta,
+import altCoreRadioButtonGroupStoryMeta, {
+  type TAltCoreRadioButtonGroupStoryMeta,
 } from '~core/ui/radioButtonGroup/stories/RadioButtonGroup.stories'
-import { YRadioButtonGroup } from '~vue/ui/radioButtonGroup'
-import { type IYVueRadioButtonGroupProps } from '~vue/ui/radioButtonGroup/models/types'
-import { YRadioButton } from '~vue/ui/radioButton'
+import { AltRadioButtonGroup } from '~vue/ui/radioButtonGroup'
+import { type IAltVueRadioButtonGroupProps } from '~vue/ui/radioButtonGroup/models/types'
+import { AltRadioButton } from '~vue/ui/radioButton'
 
-type TVueRadioButtonGroupStoryMeta = IYVueRadioButtonGroupProps & {
-  modelValue: TYCoreRadioButtonGroupStoryMeta['value']
+type TVueRadioButtonGroupStoryMeta = IAltVueRadioButtonGroupProps & {
+  modelValue: TAltCoreRadioButtonGroupStoryMeta['value']
 }
 
 /**
@@ -28,7 +28,7 @@ const meta: Meta<TVueRadioButtonGroupStoryMeta> = {
     const [, updateArgs] = useArgs()
 
     return {
-      components: { YRadioButtonGroup, YRadioButton },
+      components: { AltRadioButtonGroup, AltRadioButton },
       setup() {
         const handleUpdateModelValue = (modelValue: RadioButtonGroupChangeEvent['detail']['value']) => {
           updateArgs({ modelValue })
@@ -43,21 +43,21 @@ const meta: Meta<TVueRadioButtonGroupStoryMeta> = {
         return { args, handleUpdateModelValue, vModelValue }
       },
       template: `
-      <YRadioButtonGroup v-bind="args" v-model="vModelValue">
-        <YRadioButton  v-for="i in 3" :key="i" :label-text="'Radio button with value ' + i" :value="i">
+      <AltRadioButtonGroup v-bind="args" v-model="vModelValue">
+        <AltRadioButton  v-for="i in 3" :key="i" :label-text="'Radio button with value ' + i" :value="i">
           <template #annotation>Annotation text</template>
-        </YRadioButton>
-      </YRadioButtonGroup>
+        </AltRadioButton>
+      </AltRadioButtonGroup>
     `,
     }
   },
   argTypes: {
-    ...omit(yCoreRadioButtonGroupStoryMeta.argTypes ?? {}, ['value']),
-    modelValue: yCoreRadioButtonGroupStoryMeta.argTypes?.value,
+    ...omit(altCoreRadioButtonGroupStoryMeta.argTypes ?? {}, ['value']),
+    modelValue: altCoreRadioButtonGroupStoryMeta.argTypes?.value,
   },
   args: {
-    ...omit(yCoreRadioButtonGroupStoryMeta.args ?? {}, ['value']),
-    modelValue: yCoreRadioButtonGroupStoryMeta.args?.value,
+    ...omit(altCoreRadioButtonGroupStoryMeta.args ?? {}, ['value']),
+    modelValue: altCoreRadioButtonGroupStoryMeta.args?.value,
   },
 }
 

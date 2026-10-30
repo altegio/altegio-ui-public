@@ -1,4 +1,4 @@
-$component: $YCoreSimpleCheckboxTagName;
+$component: $AltCoreSimpleCheckboxTagName;
 
 @define-mixin checkbox-size
   $width,

@@ -6,13 +6,13 @@ import { classMap } from 'lit/directives/class-map.js'
 
 import { renderIcon, renderText } from '~core/renderers'
 
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import {
   createCoreButtonProps,
-  EYCoreButtonContentAlignment,
-  type IYCoreButtonProps,
+  EAltCoreButtonContentAlignment,
+  type IAltCoreButtonProps,
 } from '~core/ui/button/models/types'
-import { YCoreButtonTagName as tagName, YCoreSimpleButtonTagName } from '~shared/constants'
+import { AltCoreButtonTagName as tagName, AltCoreSimpleButtonTagName } from '~shared/constants'
 
 import ButtonScopedCSS from '~core/ui/button/css/Button.scoped.css?inline'
 import ButtonVarsCSS from '~core/ui/button/css/Button.vars.css?inline'
@@ -21,7 +21,7 @@ import '~core/ui/simpleButton'
 import { interceptEvents } from '~core/utils/event-interceptor'
 import { booleanConverter } from '~core/utils/converters'
 import { defineCustomElement } from '~web/shared/utils/components'
-import { YCoreSimpleButton } from '~core/ui/simpleButton'
+import { AltCoreSimpleButton } from '~core/ui/simpleButton'
 import { withLocator } from '~core/utils/locator'
 
 const { disabled, href, iconLeft, iconRight, label, loading, size, variant, target, alignment, fullWidth } = createCoreButtonProps()
@@ -29,18 +29,18 @@ const { disabled, href, iconLeft, iconRight, label, loading, size, variant, targ
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreButton extends LitElement implements IYCoreButtonProps {
-  @property({ type: String }) size: IYCoreButtonProps['size'] = size
-  @property({ type: String, reflect: true }) variant: IYCoreButtonProps['variant'] = variant
-  @property({ type: Boolean }) disabled: IYCoreButtonProps['disabled'] = disabled
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) loading: IYCoreButtonProps['loading'] = loading
-  @property({ type: String }) label: IYCoreButtonProps['label'] = label
-  @property({ type: String }) href: IYCoreButtonProps['href'] = href
-  @property({ type: String }) target: IYCoreButtonProps['target'] = target
-  @property({ type: String, reflect: true }) alignment: IYCoreButtonProps['alignment'] = alignment
-  @property({ type: Object, attribute: 'icon-left' }) iconLeft: IYCoreButtonProps['iconLeft'] = iconLeft
-  @property({ type: Object, attribute: 'icon-right' }) iconRight: IYCoreButtonProps['iconRight'] = iconRight
-  @property({ type: Boolean, reflect: true, attribute: 'full-width', converter: booleanConverter }) fullWidth: IYCoreButtonProps['fullWidth'] = fullWidth
+export class AltCoreButton extends LitElement implements IAltCoreButtonProps {
+  @property({ type: String }) size: IAltCoreButtonProps['size'] = size
+  @property({ type: String, reflect: true }) variant: IAltCoreButtonProps['variant'] = variant
+  @property({ type: Boolean }) disabled: IAltCoreButtonProps['disabled'] = disabled
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) loading: IAltCoreButtonProps['loading'] = loading
+  @property({ type: String }) label: IAltCoreButtonProps['label'] = label
+  @property({ type: String }) href: IAltCoreButtonProps['href'] = href
+  @property({ type: String }) target: IAltCoreButtonProps['target'] = target
+  @property({ type: String, reflect: true }) alignment: IAltCoreButtonProps['alignment'] = alignment
+  @property({ type: Object, attribute: 'icon-left' }) iconLeft: IAltCoreButtonProps['iconLeft'] = iconLeft
+  @property({ type: Object, attribute: 'icon-right' }) iconRight: IAltCoreButtonProps['iconRight'] = iconRight
+  @property({ type: Boolean, reflect: true, attribute: 'full-width', converter: booleanConverter }) fullWidth: IAltCoreButtonProps['fullWidth'] = fullWidth
 
   private readonly baseClass = tagName
 
@@ -56,7 +56,7 @@ export class YCoreButton extends LitElement implements IYCoreButtonProps {
 
     const classes = {
       [textbaseClass]: true,
-      [`${textbaseClass}_align-start`]: this.alignment === EYCoreButtonContentAlignment.START,
+      [`${textbaseClass}_align-start`]: this.alignment === EAltCoreButtonContentAlignment.START,
     }
 
     return Object.keys(classes)
@@ -65,19 +65,19 @@ export class YCoreButton extends LitElement implements IYCoreButtonProps {
   }
 
   private get computedIconSize() {
-    return this.size === EYSizes.LARGE
+    return this.size === EAltSizes.LARGE
       ? '24px'
       : '16px'
   }
 
 
   protected firstUpdated(): void {
-    defineCustomElement(YCoreSimpleButtonTagName, YCoreSimpleButton)
+    defineCustomElement(AltCoreSimpleButtonTagName, AltCoreSimpleButton)
   }
 
   protected render() {
     return html`
-      <y-core-simple-button
+      <alt-core-simple-button
         class=${classMap(this.computedClasses)}
         href=${ifDefined(this.href)}
         target=${ifDefined(this.target)}
@@ -93,7 +93,7 @@ export class YCoreButton extends LitElement implements IYCoreButtonProps {
         ${renderText({ text: this.label, className: this.computedTextClassName })}
 
         ${renderIcon({ icon: this.iconRight, size: this.computedIconSize, className: `${this.baseClass}__icon-right` })}
-      </y-core-simple-button>
+      </alt-core-simple-button>
     `
   }
 

@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
-import { YCoreCardButtonTagName as tagName } from '~shared/constants'
+import { AltCoreCardButtonTagName as tagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import { getElementClasses, getShadowRootElement } from '~shared/tests/utils'
 import { createCoreCardButtonProps } from '~core/ui/cardButton/models/types'
@@ -46,7 +46,7 @@ const getLocalRootElement = () => {
 }
 
 describe(
-  'Core/YCardButton/Unit',
+  'Core/AltCardButton/Unit',
   () => {
     beforeAll(() => {
       injectComponentToBody()

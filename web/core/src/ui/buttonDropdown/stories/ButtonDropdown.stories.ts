@@ -7,20 +7,20 @@ import { action } from 'storybook/actions'
 
 import '~core/ui/buttonDropdown'
 
-import { YCoreButtonDropdownTagName as tagName } from '~shared/constants'
+import { AltCoreButtonDropdownTagName as tagName } from '~shared/constants'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { EFrameworkName } from '~shared/.storybook/enums/frameworkName'
 import { getComponentStateTable, getComponentSlotsTable } from '~shared/.storybook/tables'
 import type { ITextStoryProps } from '~shared/.storybook/argTypes'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 
-import { createCoreButtonDropdownProps, type IYCoreButtonDropdownProps } from '~core/ui/buttonDropdown/models/types'
-import { EYCoreButtonDropdownIconTypes } from '~core/ui/buttonDropdown/models/types/internal'
-import { EYCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
+import { createCoreButtonDropdownProps, type IAltCoreButtonDropdownProps } from '~core/ui/buttonDropdown/models/types'
+import { EAltCoreButtonDropdownIconTypes } from '~core/ui/buttonDropdown/models/types/internal'
+import { EAltCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
 
-import yCoreDropdownStoryMeta, { type IYCoreDropdownStorySlots } from '~core/ui/dropdown/stories/Dropdown.stories'
-import yCoreDropdownListStoryMeta from '~core/ui/dropdownList/stories/DropdownList.stories'
-import yCoreButtonStoryMeta from '~core/ui/button/stories/Button.stories'
+import altCoreDropdownStoryMeta, { type IAltCoreDropdownStorySlots } from '~core/ui/dropdown/stories/Dropdown.stories'
+import altCoreDropdownListStoryMeta from '~core/ui/dropdownList/stories/DropdownList.stories'
+import altCoreButtonStoryMeta from '~core/ui/button/stories/Button.stories'
 
 import {
   createButtonDropdownParameters,
@@ -28,12 +28,12 @@ import {
   type TButtonDropdownStoryEmits,
 } from './ButtonDropdown.stories.utils'
 
-const SIZES = [EYSizes.SMALL, EYSizes.MEDIUM, EYSizes.LARGE] as const
+const SIZES = [EAltSizes.SMALL, EAltSizes.MEDIUM, EAltSizes.LARGE] as const
 
 /**
  * ButtonDropdown story properties
  */
-export interface IButtonDropdownStoryProps extends IYCoreButtonDropdownProps, ITextStoryProps {}
+export interface IButtonDropdownStoryProps extends IAltCoreButtonDropdownProps, ITextStoryProps {}
 
 /**
  * ButtonDropdown slots
@@ -48,15 +48,15 @@ export interface IButtonDropdownStorySlots {
   showContentSlot: boolean
 }
 
-export interface IYCoreButtonDropdownStorySlots extends IYCoreDropdownStorySlots {}
+export interface IAltCoreButtonDropdownStorySlots extends IAltCoreDropdownStorySlots {}
 
 const { autoClose, iconType, variant } = createCoreButtonDropdownProps()
 
-const yCoreButtonOmitKeys = ['iconLeft', 'iconRight', 'href', 'target', 'variant', 'onClick'] as const
-const yCoreDropdownListPickKeys = ['items', 'onItemClick'] as const
-const yCoreDropdownPickKeys = ['isOpen', 'showActivatorSlot', 'showContentSlot', 'onVisible'] as const
+const altCoreButtonOmitKeys = ['iconLeft', 'iconRight', 'href', 'target', 'variant', 'onClick'] as const
+const altCoreDropdownListPickKeys = ['items', 'onItemClick'] as const
+const altCoreDropdownPickKeys = ['isOpen', 'showActivatorSlot', 'showContentSlot', 'onVisible'] as const
 
-type TButtonDropdownStoryArgs = IYCoreButtonDropdownProps &
+type TButtonDropdownStoryArgs = IAltCoreButtonDropdownProps &
   IButtonDropdownStoryProps &
   TButtonDropdownStoryEmits &
   IButtonDropdownStorySlots
@@ -97,7 +97,7 @@ const meta: TButtonDropdownStoryMeta = {
 
     return html`
       <div style="padding: 50px 50px 350px; margin: 20px; border: 1px dashed black; border-radius: 8px; overflow: auto">
-        <y-core-button-dropdown
+        <alt-core-button-dropdown
           label=${ifDefined(isLongText ? LOREM_IPSUM : label)}
           size=${ifDefined(size)}
           .disabled=${disabled}
@@ -114,23 +114,23 @@ const meta: TButtonDropdownStoryMeta = {
         >
           ${showActivatorSlot && html` <span slot="activator"> ActivatorSlot </span> `}
           ${showContentSlot && html` <span slot="content"> ContentSlot </span> `}
-        </y-core-button-dropdown>
+        </alt-core-button-dropdown>
       </div>
     `
   },
   argTypes: {
-    ...omit(yCoreButtonStoryMeta.argTypes ?? {}, [...yCoreButtonOmitKeys]),
-    ...pick(yCoreDropdownListStoryMeta.argTypes ?? {}, [...yCoreDropdownListPickKeys]),
-    ...pick(yCoreDropdownStoryMeta.argTypes ?? {}, [...yCoreDropdownPickKeys]),
+    ...omit(altCoreButtonStoryMeta.argTypes ?? {}, [...altCoreButtonOmitKeys]),
+    ...pick(altCoreDropdownListStoryMeta.argTypes ?? {}, [...altCoreDropdownListPickKeys]),
+    ...pick(altCoreDropdownStoryMeta.argTypes ?? {}, [...altCoreDropdownPickKeys]),
     variant: {
       control: { type: 'select' },
       description: 'Button style',
-      options: Object.values(EYCoreSimpleButtonVariant),
+      options: Object.values(EAltCoreSimpleButtonVariant),
       ...getComponentStateTable(variant),
     },
     iconType: {
       control: { type: 'radio' },
-      options: Object.values(EYCoreButtonDropdownIconTypes),
+      options: Object.values(EAltCoreButtonDropdownIconTypes),
       description: 'Icon placement (left or right)',
       ...getComponentStateTable(iconType),
     },
@@ -153,9 +153,9 @@ const meta: TButtonDropdownStoryMeta = {
     },
   },
   args: {
-    ...omit(yCoreButtonStoryMeta.args ?? {}, [...yCoreButtonOmitKeys]),
-    ...pick(yCoreDropdownListStoryMeta.args ?? {}, [...yCoreDropdownListPickKeys]),
-    ...pick(yCoreDropdownStoryMeta.args ?? {}, [...yCoreDropdownPickKeys]),
+    ...omit(altCoreButtonStoryMeta.args ?? {}, [...altCoreButtonOmitKeys]),
+    ...pick(altCoreDropdownListStoryMeta.args ?? {}, [...altCoreDropdownListPickKeys]),
+    ...pick(altCoreDropdownStoryMeta.args ?? {}, [...altCoreDropdownPickKeys]),
     variant,
     iconType,
     autoClose,
@@ -177,29 +177,29 @@ export const Variants: Story = {
   args: BUTTON_DROPDOWN_STORIES_CONFIG.Variants.args,
   render: (args) => html`
     <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-      <y-core-button-dropdown
+      <alt-core-button-dropdown
         variant="primary"
         label="primary"
         .items=${args.items}
-      ></y-core-button-dropdown>
+      ></alt-core-button-dropdown>
 
-      <y-core-button-dropdown
+      <alt-core-button-dropdown
         variant="outline"
         label="outline"
         .items=${args.items}
-      ></y-core-button-dropdown>
+      ></alt-core-button-dropdown>
 
-      <y-core-button-dropdown
+      <alt-core-button-dropdown
         variant="text"
         label="text"
         .items=${args.items}
-      ></y-core-button-dropdown>
+      ></alt-core-button-dropdown>
 
-      <y-core-button-dropdown
+      <alt-core-button-dropdown
         variant="outline-filled"
         label="outline-filled"
         .items=${args.items}
-      ></y-core-button-dropdown>
+      ></alt-core-button-dropdown>
     </div>
   `,
 }
@@ -211,11 +211,11 @@ export const Sizes: Story = {
     const sizeRows = SIZES.map((size) => html`
     <div style="display: flex; gap: 8px; align-items: center;">
       <div style="width: 80px; font-weight: 500;">${size}:</div>
-      <y-core-button-dropdown
+      <alt-core-button-dropdown
         label=${size}
         size=${size}
         .items=${args.items}
-      ></y-core-button-dropdown>
+      ></alt-core-button-dropdown>
     </div>
     `)
 
@@ -229,28 +229,28 @@ export const States: Story = {
   render: (args) => {
     return html`
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <y-core-button-dropdown
+        <alt-core-button-dropdown
           label="Default"
           .items=${args.items}
-        ></y-core-button-dropdown>
+        ></alt-core-button-dropdown>
 
-        <y-core-button-dropdown
+        <alt-core-button-dropdown
           label="Disabled"
           .disabled=${true}
           .items=${args.items}
-        ></y-core-button-dropdown>
+        ></alt-core-button-dropdown>
 
-        <y-core-button-dropdown
+        <alt-core-button-dropdown
           label="Loading"
           .loading=${true}
           .items=${args.items}
-        ></y-core-button-dropdown>
+        ></alt-core-button-dropdown>
 
-        <y-core-button-dropdown
+        <alt-core-button-dropdown
           label="Open"
           .isOpen=${true}
           .items=${args.items}
-        ></y-core-button-dropdown>
+        ></alt-core-button-dropdown>
       </div>
     `
   },
@@ -262,17 +262,17 @@ export const IconType: Story = {
   render: (args) => {
     return html`
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <y-core-button-dropdown
+        <alt-core-button-dropdown
           .label=${args.label}
-          .iconType=${EYCoreButtonDropdownIconTypes.LEFT}
+          .iconType=${EAltCoreButtonDropdownIconTypes.LEFT}
           .items=${args.items}
-        ></y-core-button-dropdown>
+        ></alt-core-button-dropdown>
 
-        <y-core-button-dropdown
+        <alt-core-button-dropdown
           .label=${args.label}
-          .iconType=${EYCoreButtonDropdownIconTypes.RIGHT}
+          .iconType=${EAltCoreButtonDropdownIconTypes.RIGHT}
           .items=${args.items}
-        ></y-core-button-dropdown>
+        ></alt-core-button-dropdown>
       </div>
     `
   },
@@ -284,11 +284,11 @@ export const FullWidth: Story = {
   render: (args) => {
     return html`
       <div style="min-height: 100px;">
-        <y-core-button-dropdown
+        <alt-core-button-dropdown
           label="Full-width button"
           .fullWidth=${true}
           .items=${args.items}
-        ></y-core-button-dropdown>
+        ></alt-core-button-dropdown>
       </div>
     `
   },

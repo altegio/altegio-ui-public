@@ -1,5 +1,5 @@
 <template>
-  <y-core-brand-button
+  <alt-core-brand-button
     v-bind="props"
     @click="$emit('click', $event)"
   />
@@ -9,17 +9,17 @@
   import '~core/ui/brandButton'
   import {
     createVueBrandButtonProps,
-    type IYVueBrandButtonProps,
-    type IYVueBrandButtonEmits,
+    type IAltVueBrandButtonProps,
+    type IAltVueBrandButtonEmits,
   } from './models/types'
-  import type { IYCoreBrandButtonProps } from '~core/ui/brandButton/models/types'
+  import type { IAltCoreBrandButtonProps } from '~core/ui/brandButton/models/types'
 
-  defineOptions({ name: 'YBrandButton' })
+  defineOptions({ name: 'AltBrandButton' })
 
-  defineEmits<IYVueBrandButtonEmits>()
+  defineEmits<IAltVueBrandButtonEmits>()
 
   const props = withDefaults(
-    defineProps<IYVueBrandButtonProps>(),
+    defineProps<IAltVueBrandButtonProps>(),
     createVueBrandButtonProps(),
-  ) satisfies IYCoreBrandButtonProps
+  ) satisfies IAltCoreBrandButtonProps
 </script>

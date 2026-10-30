@@ -1,8 +1,8 @@
 import { slotDefaultTestCases } from '~ng/ui/tab/tests/cases/slots.ts'
 import { describe, expect, it } from 'vitest'
-import { YCoreTabTagName as tagName } from '~shared/constants'
+import { AltCoreTabTagName as tagName } from '~shared/constants'
 import { TestBed } from '~ng/tests/setup.ts'
-import { YTab } from '~ng/ui/tab'
+import { AltTab } from '~ng/ui/tab'
 import { Component } from '@angular/core'
 import {
   propsActiveTestCases,
@@ -19,7 +19,7 @@ import {
   propsLocatorTagTestCases,
   propsLocatorCounterTestCases,
 } from '~ng/ui/tab/tests/cases/props.ts'
-import type { IYNgTabProps } from '~ng/ui/tab'
+import type { IAltNgTabProps } from '~ng/ui/tab'
 
 interface ICreateComponentArgs {
   slots?: {
@@ -27,16 +27,16 @@ interface ICreateComponentArgs {
     after?: string
     default?: string
   }
-  props?: Partial<IYNgTabProps>
+  props?: Partial<IAltNgTabProps>
 }
 
 const createComponent = async({ slots, props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YTab] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltTab] }).compileComponents()
 
   @Component({
     template: `
-      <YTab
+      <AltTab
         [tagVariant]="tagVariant"
         [counterValue]="counterValue"
         [leftIcon]="leftIcon"
@@ -65,9 +65,9 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
             </div>
           </ng-template>
         }
-      </YTab>
+      </AltTab>
     `,
-    imports: [YTab],
+    imports: [AltTab],
     standalone: true,
   })
   class TestComponent {
@@ -146,7 +146,7 @@ const basePropsCheck = () => {
 }
 
 describe(
-  'Angular/YTab/Unit',
+  'Angular/AltTab/Unit',
   () => {
     describe(
       'Slots',

@@ -1,5 +1,5 @@
 <template>
-  <y-core-loader v-bind="props" />
+  <alt-core-loader v-bind="props" />
 </template>
 
 <script setup lang="ts">
@@ -7,14 +7,14 @@
 
   import {
     createVueLoaderProps,
-    type IYVueLoaderProps,
-    type IYVueCoreLoaderProps,
+    type IAltVueLoaderProps,
+    type IAltVueCoreLoaderProps,
   } from '~web/vue/src/ui/loader/models/types'
 
-  defineOptions({ name: 'YLoader' })
+  defineOptions({ name: 'AltLoader' })
 
   const props = withDefaults(
-    defineProps<IYVueLoaderProps>(),
+    defineProps<IAltVueLoaderProps>(),
     createVueLoaderProps(),
-  ) satisfies IYVueCoreLoaderProps
+  ) satisfies IAltVueCoreLoaderProps
 </script>

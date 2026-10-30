@@ -1,10 +1,10 @@
 import {
   createCoreCountFieldExternalProps,
-  type IYCoreCountFieldExternalProps,
+  type IAltCoreCountFieldExternalProps,
 } from './external'
 import {
   createCoreCountFieldInternalProps,
-  type IYCoreCountFieldInternalProps,
+  type IAltCoreCountFieldInternalProps,
 } from './internal'
 
 export * from './external'
@@ -12,9 +12,9 @@ export * from './internal'
 export * from './events'
 export * from './constants'
 
-export interface IYCoreCountFieldProps extends IYCoreCountFieldExternalProps, IYCoreCountFieldInternalProps {}
+export interface IAltCoreCountFieldProps extends IAltCoreCountFieldExternalProps, IAltCoreCountFieldInternalProps {}
 
-export const createCoreCountFieldProps = (): IYCoreCountFieldProps => ({
+export const createCoreCountFieldProps = (): IAltCoreCountFieldProps => ({
   ...createCoreCountFieldExternalProps(),
   ...createCoreCountFieldInternalProps(),
 })

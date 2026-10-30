@@ -1,26 +1,26 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 import {
   createCoreButtonProps,
-  type IYCoreButtonProps,
+  type IAltCoreButtonProps,
 } from '~core/ui/button/models/types'
 
-export interface IYVueCoreButtonProps extends IYCoreButtonProps {}
+export interface IAltVueCoreButtonProps extends IAltCoreButtonProps {}
 
-export interface IYVueButtonProps {
-  size?: IYVueCoreButtonProps['size']
-  variant?: IYVueCoreButtonProps['variant']
-  label?: IYVueCoreButtonProps['label']
-  disabled?: IYVueCoreButtonProps['disabled']
-  loading?: IYVueCoreButtonProps['loading']
-  href?: IYVueCoreButtonProps['href']
-  alignment?: IYVueCoreButtonProps['alignment']
-  fullWidth?: IYVueCoreButtonProps['fullWidth']
-  target?: IYVueCoreButtonProps['target']
-  iconLeft?: IYVueCoreButtonProps['iconLeft']
-  iconRight?: IYVueCoreButtonProps['iconRight']
+export interface IAltVueButtonProps {
+  size?: IAltVueCoreButtonProps['size']
+  variant?: IAltVueCoreButtonProps['variant']
+  label?: IAltVueCoreButtonProps['label']
+  disabled?: IAltVueCoreButtonProps['disabled']
+  loading?: IAltVueCoreButtonProps['loading']
+  href?: IAltVueCoreButtonProps['href']
+  alignment?: IAltVueCoreButtonProps['alignment']
+  fullWidth?: IAltVueCoreButtonProps['fullWidth']
+  target?: IAltVueCoreButtonProps['target']
+  iconLeft?: IAltVueCoreButtonProps['iconLeft']
+  iconRight?: IAltVueCoreButtonProps['iconRight']
 }
 
-export const createVueButtonProps = (): TDefinedVueProps<IYVueButtonProps> => {
+export const createVueButtonProps = (): TDefinedVueProps<IAltVueButtonProps> => {
   const { disabled, href, iconLeft, iconRight, label, loading, size, variant, target, alignment, fullWidth } = createCoreButtonProps()
   return {
     disabled,
@@ -41,6 +41,6 @@ export const createVueButtonProps = (): TDefinedVueProps<IYVueButtonProps> => {
   }
 }
 
-export interface IYVueButtonEmits {
+export interface IAltVueButtonEmits {
   (e: 'click', value: PointerEvent): void
 }

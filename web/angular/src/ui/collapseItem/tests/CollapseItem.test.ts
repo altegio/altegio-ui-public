@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreCollapseItemTagName } from '~shared/constants'
-import { YCollapseItem } from '~ng/ui/collapseItem'
+import { AltCoreCollapseItemTagName } from '~shared/constants'
+import { AltCollapseItem } from '~ng/ui/collapseItem'
 import {
-  type IYNgCollapseItemProps,
+  type IAltNgCollapseItemProps,
 } from '~ng/ui/collapseItem/models/types'
 
 import {
@@ -28,7 +28,7 @@ import {
   eventCollapseItemClickCases,
 } from './cases/events'
 
-const tagName = YCoreCollapseItemTagName
+const tagName = AltCoreCollapseItemTagName
 
 interface ICreateComponentArgs {
   slots?: {
@@ -39,18 +39,18 @@ interface ICreateComponentArgs {
     content?: string
     after?: string
   }
-  props?: Partial<IYNgCollapseItemProps>
+  props?: Partial<IAltNgCollapseItemProps>
   events?: {
     collapseItemClickEvent?: (event: Event) => void
   }
 }
 const createComponent = async({ slots, props, events }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YCollapseItem] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltCollapseItem] }).compileComponents()
 
   @Component({
     template: `
-      <YCollapseItem
+      <AltCollapseItem
         [label]="label"
         [annotation]="annotation"
         [opened]="opened"
@@ -81,8 +81,8 @@ const createComponent = async({ slots, props, events }: ICreateComponentArgs) =>
         @if (slots?.content) {
           <ng-template #collapseItemContent><div>{{ slots.content }}</div></ng-template>
         }
-      </YCollapseItem>`,
-    imports: [YCollapseItem],
+      </AltCollapseItem>`,
+    imports: [AltCollapseItem],
     standalone: true,
   })
   class TestComponent {
@@ -100,7 +100,7 @@ const createComponent = async({ slots, props, events }: ICreateComponentArgs) =>
 }
 
 describe(
-  'Angular/YCollapseItem',
+  'Angular/AltCollapseItem',
   () => {
     describe(
       'Unit',

@@ -2,17 +2,17 @@ import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
 import { text } from '~shared/tests/slotContents'
-import { YCoreButtonTagName } from '~shared/constants'
+import { AltCoreButtonTagName } from '~shared/constants'
 import type { TPropTestCase } from '~shared/types/tests'
 import {
   createNgButtonProps,
-  type IYNgButtonProps,
+  type IAltNgButtonProps,
 } from '~ng/ui/button/models/types'
-import { YButton } from '~ng/ui/button'
-import { yRocket } from '~shared/icons'
-import type { IYIcon } from '~shared/icons'
+import { AltButton } from '~ng/ui/button'
+import { altRocket } from '~shared/icons'
+import type { IAltIcon } from '~shared/icons'
 interface ICreateComponentArgs {
-  props?: Partial<IYNgButtonProps>
+  props?: Partial<IAltNgButtonProps>
 }
 
 const {
@@ -24,11 +24,11 @@ const {
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YButton] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltButton] }).compileComponents()
 
   @Component({
     template: `
-      <YButton
+      <AltButton
         [size]="size"
         [variant]="variant"
         [disabled]="disabled"
@@ -40,7 +40,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
         [iconRight]="iconRight"
         [fullWidth]="fullWidth"
       />`,
-    imports: [YButton],
+    imports: [AltButton],
     standalone: true,
   })
   class TestComponent {
@@ -58,10 +58,10 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
   return TestComponent
 }
 
-const tagName = YCoreButtonTagName
+const tagName = AltCoreButtonTagName
 
 // Unit tests cases:
-const propLabelTestCases: TPropTestCase<IYNgButtonProps, 'label'>[] = [
+const propLabelTestCases: TPropTestCase<IAltNgButtonProps, 'label'>[] = [
   {
     prop: 'label',
     case: 'with a value',
@@ -75,12 +75,12 @@ const propLabelTestCases: TPropTestCase<IYNgButtonProps, 'label'>[] = [
     expected: defaultLabel,
   },
 ]
-const propIconLeftTestCases: TPropTestCase<IYNgButtonProps, 'iconLeft'>[] = [
+const propIconLeftTestCases: TPropTestCase<IAltNgButtonProps, 'iconLeft'>[] = [
   {
     prop: 'iconLeft',
     case: 'with a value',
-    value: yRocket,
-    expected: yRocket,
+    value: altRocket,
+    expected: altRocket,
   },
   {
     prop: 'iconLeft',
@@ -89,12 +89,12 @@ const propIconLeftTestCases: TPropTestCase<IYNgButtonProps, 'iconLeft'>[] = [
     expected: defaultIconLeft,
   },
 ]
-const propIconRightTestCases: TPropTestCase<IYNgButtonProps, 'iconRight'>[] = [
+const propIconRightTestCases: TPropTestCase<IAltNgButtonProps, 'iconRight'>[] = [
   {
     prop: 'iconRight',
     case: 'with a value',
-    value: yRocket,
-    expected: yRocket,
+    value: altRocket,
+    expected: altRocket,
   },
   {
     prop: 'iconRight',
@@ -104,7 +104,7 @@ const propIconRightTestCases: TPropTestCase<IYNgButtonProps, 'iconRight'>[] = [
   },
 ]
 
-const fullWidthTestCases: TPropTestCase<IYNgButtonProps, 'fullWidth'>[] = [
+const fullWidthTestCases: TPropTestCase<IAltNgButtonProps, 'fullWidth'>[] = [
   {
     prop: 'fullWidth',
     case: 'true',
@@ -126,7 +126,7 @@ const fullWidthTestCases: TPropTestCase<IYNgButtonProps, 'fullWidth'>[] = [
 ]
 
 describe(
-  'Angular/YButton',
+  'Angular/AltButton',
   () => {
     describe(
       'Props',
@@ -162,7 +162,7 @@ describe(
 
               const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
 
-              expect(coreElement?.[testCase.prop]?.name).toBe((testCase.expected as Partial<IYIcon> | undefined)?.name)
+              expect(coreElement?.[testCase.prop]?.name).toBe((testCase.expected as Partial<IAltIcon> | undefined)?.name)
             },
           )
         }

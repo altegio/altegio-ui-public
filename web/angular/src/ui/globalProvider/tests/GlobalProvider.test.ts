@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YGlobalProvider } from '~ng/ui/globalProvider'
+import { AltGlobalProvider } from '~ng/ui/globalProvider'
 import { GlobalProviderReadyEvent } from '~core/ui/globalProvider/models/types'
 import { GlobalContext } from '~core/ui/globalProvider/context'
 import { text, empty } from '~shared/tests/slotContents'
@@ -19,7 +19,7 @@ const createComponent = async({ slots }: ICreateComponentArgs) => {
   readyEvent = null
   TestBed.resetTestingModule()
   await TestBed.configureTestingModule({
-    imports: [YGlobalProvider],
+    imports: [AltGlobalProvider],
     providers: [
       {
         provide: 'globalContext',
@@ -29,8 +29,8 @@ const createComponent = async({ slots }: ICreateComponentArgs) => {
   }).compileComponents()
 
   @Component({
-    template: '<YGlobalProvider (ready)="onReady($event)">{{content}}</YGlobalProvider>',
-    imports: [YGlobalProvider],
+    template: '<AltGlobalProvider (ready)="onReady($event)">{{content}}</AltGlobalProvider>',
+    imports: [AltGlobalProvider],
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
   })
@@ -50,7 +50,7 @@ const slotDefaultTestCases: TSlotTestCase[] = [
 ]
 
 describe(
-  '🔍 YGlobalProvider',
+  '🔍 AltGlobalProvider',
   () => {
     describe(
       'Unit',

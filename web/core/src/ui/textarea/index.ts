@@ -1,1 +1,1 @@
-export { YCoreTextarea } from './Textarea.core'
+export { AltCoreTextarea } from './Textarea.core'

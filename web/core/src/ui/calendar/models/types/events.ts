@@ -1,20 +1,20 @@
 import type { TEventsStoryArgs } from '~core/utils/helpers-utility-types'
-import type { IYCoreCalendarExternalProps } from './external'
+import type { IAltCoreCalendarExternalProps } from './external'
 
-export interface IYCoreCalendarSelectEvent {
-  value: IYCoreCalendarExternalProps['date']
+export interface IAltCoreCalendarSelectEvent {
+  value: IAltCoreCalendarExternalProps['date']
 }
 
-export interface IYCoreCalendarRangeStartEvent {
-  value: Extract<IYCoreCalendarExternalProps['date'], string>
+export interface IAltCoreCalendarRangeStartEvent {
+  value: Extract<IAltCoreCalendarExternalProps['date'], string>
 }
 
-export interface IYCoreCalendarRangeEndEvent {
-  value: Extract<IYCoreCalendarExternalProps['date'], string>
+export interface IAltCoreCalendarRangeEndEvent {
+  value: Extract<IAltCoreCalendarExternalProps['date'], string>
 }
 
-export class SelectEvent extends CustomEvent<IYCoreCalendarSelectEvent> {}
-export class RangeStartEvent extends CustomEvent<IYCoreCalendarRangeStartEvent> {}
-export class RangeEndEvent extends CustomEvent<IYCoreCalendarRangeEndEvent> {}
+export class SelectEvent extends CustomEvent<IAltCoreCalendarSelectEvent> {}
+export class RangeStartEvent extends CustomEvent<IAltCoreCalendarRangeStartEvent> {}
+export class RangeEndEvent extends CustomEvent<IAltCoreCalendarRangeEndEvent> {}
 
-export type TYCoreCalendarEvents = TEventsStoryArgs<{ SelectEvent: typeof SelectEvent; RangeStartEvent: typeof RangeStartEvent; RangeEndEvent: typeof RangeEndEvent }>
+export type TAltCoreCalendarEvents = TEventsStoryArgs<{ SelectEvent: typeof SelectEvent; RangeStartEvent: typeof RangeStartEvent; RangeEndEvent: typeof RangeEndEvent }>

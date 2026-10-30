@@ -1,5 +1,5 @@
 <template>
-  <y-core-chip
+  <alt-core-chip
     v-bind="props"
     @click="$emit('update:active', !props.active)"
   />
@@ -9,17 +9,17 @@
   import '~core/ui/chip'
   import {
     createVueChipProps,
-    type IYVueChipEmits,
-    type IYVueChipProps,
-    type IYVueCoreChipProps,
+    type IAltVueChipEmits,
+    type IAltVueChipProps,
+    type IAltVueCoreChipProps,
   } from '~vue/ui/chip/models/types'
 
-  defineOptions({ name: 'YChip' })
+  defineOptions({ name: 'AltChip' })
 
   const props = withDefaults(
-    defineProps<IYVueChipProps>(),
+    defineProps<IAltVueChipProps>(),
     createVueChipProps(),
-  ) satisfies IYVueCoreChipProps
+  ) satisfies IAltVueCoreChipProps
 
-  defineEmits<IYVueChipEmits>()
+  defineEmits<IAltVueChipEmits>()
 </script>

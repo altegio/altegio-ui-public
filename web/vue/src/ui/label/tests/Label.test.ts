@@ -1,17 +1,17 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { YCoreLabelTagName as tagName } from '~shared/constants'
-import { YCoreLabel } from '~core/index'
-import { createVueLabelProps, type IYVueLabelProps } from '~vue/ui/label/models/types'
-import { YLabel } from '~vue/ui/label'
+import { AltCoreLabelTagName as tagName } from '~shared/constants'
+import { AltCoreLabel } from '~core/index'
+import { createVueLabelProps, type IAltVueLabelProps } from '~vue/ui/label/models/types'
+import { AltLabel } from '~vue/ui/label'
 import { empty, text } from '~shared/tests/slotContents'
 import { booleanTestValuesWithUndefined } from '~shared/tests/mockData'
 import { generatePropTestCases } from '~shared/tests/utils'
-import { EYCoreLabelAlignment } from '~core/ui/label/models/types'
-import { EYCoreTextSize, EYCoreTextVariant } from '~core/ui/text/models/types'
+import { EAltCoreLabelAlignment } from '~core/ui/label/models/types'
+import { EAltCoreTextSize, EAltCoreTextVariant } from '~core/ui/text/models/types'
 
 // Unit test cases:
-const defaultProps = createVueLabelProps() as IYVueLabelProps
+const defaultProps = createVueLabelProps() as IAltVueLabelProps
 
 const texts = [
   text,
@@ -19,7 +19,7 @@ const texts = [
   empty,
   undefined,
 ]
-const propsTextTestCases = generatePropTestCases<IYVueLabelProps, 'text'>(
+const propsTextTestCases = generatePropTestCases<IAltVueLabelProps, 'text'>(
   'text',
   texts,
   defaultProps,
@@ -31,70 +31,70 @@ const tooltipTexts = [
   empty,
   undefined,
 ]
-const propsTooltipTextTestCases = generatePropTestCases<IYVueLabelProps, 'tooltipText'>(
+const propsTooltipTextTestCases = generatePropTestCases<IAltVueLabelProps, 'tooltipText'>(
   'tooltipText',
   tooltipTexts,
   defaultProps,
 )
 
-const propsDisabledTestCases = generatePropTestCases<IYVueLabelProps, 'disabled'>(
+const propsDisabledTestCases = generatePropTestCases<IAltVueLabelProps, 'disabled'>(
   'disabled',
   booleanTestValuesWithUndefined,
   defaultProps,
 )
 
-const propsRequiredTestCases = generatePropTestCases<IYVueLabelProps, 'required'>(
+const propsRequiredTestCases = generatePropTestCases<IAltVueLabelProps, 'required'>(
   'required',
   booleanTestValuesWithUndefined,
   defaultProps,
 )
 
-const propsWrapTestCases = generatePropTestCases<IYVueLabelProps, 'wrap'>(
+const propsWrapTestCases = generatePropTestCases<IAltVueLabelProps, 'wrap'>(
   'wrap',
   booleanTestValuesWithUndefined,
   defaultProps,
 )
 
-const alignments: IYVueLabelProps['alignment'][] = [
-  ...Object.values(EYCoreLabelAlignment),
+const alignments: IAltVueLabelProps['alignment'][] = [
+  ...Object.values(EAltCoreLabelAlignment),
   undefined,
 ]
-const propsAlignmentTestCases = generatePropTestCases<IYVueLabelProps, 'alignment'>(
+const propsAlignmentTestCases = generatePropTestCases<IAltVueLabelProps, 'alignment'>(
   'alignment',
   alignments,
   defaultProps,
 )
 
 const variants = [
-  EYCoreTextVariant.PRIMARY,
-  EYCoreTextVariant.SECONDARY,
+  EAltCoreTextVariant.PRIMARY,
+  EAltCoreTextVariant.SECONDARY,
   undefined,
-] as IYVueLabelProps['variant'][]
-const propsVariantTestCases = generatePropTestCases<IYVueLabelProps, 'variant'>(
+] as IAltVueLabelProps['variant'][]
+const propsVariantTestCases = generatePropTestCases<IAltVueLabelProps, 'variant'>(
   'variant',
   variants,
   defaultProps,
 )
 
-const sizes: IYVueLabelProps['size'][] = [
-  EYCoreTextSize.A2_REGULAR,
-  EYCoreTextSize.P2_REGULAR,
+const sizes: IAltVueLabelProps['size'][] = [
+  EAltCoreTextSize.A2_REGULAR,
+  EAltCoreTextSize.P2_REGULAR,
   undefined,
 ]
-const propsSizeTestCases = generatePropTestCases<IYVueLabelProps, 'size'>(
+const propsSizeTestCases = generatePropTestCases<IAltVueLabelProps, 'size'>(
   'size',
   sizes,
   defaultProps,
 )
 
 describe(
-  'Vue/YLabel',
+  'Vue/AltLabel',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreLabel,
+          AltCoreLabel,
         )
       }
     })
@@ -116,7 +116,7 @@ describe(
             `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
             () => {
               const wrapper = mount(
-                YLabel,
+                AltLabel,
                 { props: { [testCase.prop]: testCase.value } },
               )
 

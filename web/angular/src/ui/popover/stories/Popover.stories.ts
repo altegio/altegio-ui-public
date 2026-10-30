@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/angular'
-import { YPopover } from '~ng/ui/popover'
-import yCorePopoverStoryMeta from '~core/ui/popover/stories/Popover.stories'
+import { AltPopover } from '~ng/ui/popover'
+import altCorePopoverStoryMeta from '~core/ui/popover/stories/Popover.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { action } from 'storybook/actions'
 
 /**
  * Angular wrapper for Core Popover
  */
-const meta: Meta<YPopover> = {
+const meta: Meta<AltPopover> = {
   title: 'Tips/⚠️ Popover',
   id: 'popover',
   parameters: { controls: { sort: 'alpha' } },
-  component: YPopover,
+  component: AltPopover,
   tags: [
     'angular',
     'autodocs',
@@ -30,7 +30,7 @@ const meta: Meta<YPopover> = {
       },
       template: `
         <div style="width: 300px; height: 300px; border: 1px dashed; display: flex; justify-content: center; align-items: center;border-radius: 10px;">
-          <YPopover
+          <AltPopover
             [trigger]="trigger"
             [isOpen]="isOpen"
             [offset]="offset"
@@ -53,15 +53,15 @@ const meta: Meta<YPopover> = {
             <div popover-content>
                 <span style="width: 218px;display: block;">{{isLongText ? LOREM_IPSUM : 'Popover content'}}</span>
             </div>
-          </YPopover>
+          </AltPopover>
         </div>`,
     }
   },
-  argTypes: { ...yCorePopoverStoryMeta.argTypes },
-  args: { ...yCorePopoverStoryMeta.args },
-} satisfies Meta<YPopover>
+  argTypes: { ...altCorePopoverStoryMeta.argTypes },
+  args: { ...altCorePopoverStoryMeta.args },
+} satisfies Meta<AltPopover>
 
 export default meta
-type Story = StoryObj<YPopover>
+type Story = StoryObj<AltPopover>
 
 export const Playground: Story = { args: {} }

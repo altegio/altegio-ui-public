@@ -1,14 +1,14 @@
 import { describe, expect, it, beforeAll } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { YCoreCollapseItemTagName } from '~shared/constants'
-import { YCollapseItem } from '~vue/ui/collapseItem'
-import { YCoreCollapseItem } from '~core/ui/collapseItem'
+import { AltCoreCollapseItemTagName } from '~shared/constants'
+import { AltCollapseItem } from '~vue/ui/collapseItem'
+import { AltCoreCollapseItem } from '~core/ui/collapseItem'
 import type {
-  IYCoreCollapseItemCollapseItemClickPayload,
+  IAltCoreCollapseItemCollapseItemClickPayload,
 } from '~core/ui/collapseItem/models/types'
 
-const tagName = YCoreCollapseItemTagName
+const tagName = AltCoreCollapseItemTagName
 
 import {
   slotBeforeTestCases,
@@ -32,13 +32,13 @@ import {
 } from './cases/events'
 
 describe(
-  'Vue/YCollapseItem',
+  'Vue/AltCollapseItem',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreCollapseItem,
+          AltCoreCollapseItem,
         )
       }
     })
@@ -61,7 +61,7 @@ describe(
                 `Slot "${testCase.slot}" should render ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YCollapseItem,
+                    AltCollapseItem,
                     { slots: { [testCase.slot]: testCase.content } },
                   )
 
@@ -86,11 +86,11 @@ describe(
                 `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 () => {
                   const wrapper = mount(
-                    YCollapseItem,
+                    AltCollapseItem,
                     { props: { [testCase.prop]: testCase.value } },
                   )
 
-                  const coreElement = wrapper.find(tagName).element as YCoreCollapseItem
+                  const coreElement = wrapper.find(tagName).element as AltCoreCollapseItem
 
                   expect(coreElement[testCase.prop]).toBe(testCase.expected)
                 },
@@ -104,11 +104,11 @@ describe(
           () => {
             for (const testCase of [...eventCollapseItemClickCases]) {
               it(testCase.case, () => {
-                const wrapper = mount(YCollapseItem)
+                const wrapper = mount(AltCollapseItem)
 
                 wrapper.vm.$emit(testCase.event, testCase.payload)
 
-                const payload = wrapper.emitted(testCase.event)?.[0][0] as IYCoreCollapseItemCollapseItemClickPayload
+                const payload = wrapper.emitted(testCase.event)?.[0][0] as IAltCoreCollapseItemCollapseItemClickPayload
 
                 expect(payload).toEqual(testCase.expected)
               })

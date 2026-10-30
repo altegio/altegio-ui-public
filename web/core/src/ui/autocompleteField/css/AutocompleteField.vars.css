@@ -1,20 +1,20 @@
-$component: $YCoreAutocompleteFieldTagName;
+$component: $AltCoreAutocompleteFieldTagName;
 
 :host {
   /* Sizes */
-  --y-core-autocomplete-field-min-width: 88px;
-  --y-core-autocomplete-field-max-width: 404px;
-  --y-core-autocomplete-field-dropdown-min-height: 200px;
-  --y-core-autocomplete-field-dropdown-content-min-height: 36px;
-  --y-core-dropdown-content-max-width: 404px;
-  --y-core-dropdown-activator-width: 100%;
-  --y-core-dropdown-max-width: 100%;
+  --alt-core-autocomplete-field-min-width: 88px;
+  --alt-core-autocomplete-field-max-width: 404px;
+  --alt-core-autocomplete-field-dropdown-min-height: 200px;
+  --alt-core-autocomplete-field-dropdown-content-min-height: 36px;
+  --alt-core-dropdown-content-max-width: 404px;
+  --alt-core-dropdown-activator-width: 100%;
+  --alt-core-dropdown-max-width: 100%;
 
   /* General */
-  --y-core-autocomplete-field-display: flex;
-  --y-core-autocomplete-field-color: var(--y-core-color-text-primary);
-  --y-core-autocomplete-field-gap: var(--y-core-size-spacing-x);
-  --y-core-autocomplete-field-content-margin-top: var(--y-core-size-spacing-x);
-  --y-core-autocomplete-field-content-margin-bottom: var(--y-core-size-spacing-x);
-  --y-core-autocomplete-field-loader-background-color: var(--y-core-color-surface-primary);
+  --alt-core-autocomplete-field-display: flex;
+  --alt-core-autocomplete-field-color: var(--alt-core-color-text-primary);
+  --alt-core-autocomplete-field-gap: var(--alt-core-size-spacing-x);
+  --alt-core-autocomplete-field-content-margin-top: var(--alt-core-size-spacing-x);
+  --alt-core-autocomplete-field-content-margin-bottom: var(--alt-core-size-spacing-x);
+  --alt-core-autocomplete-field-loader-background-color: var(--alt-core-color-surface-primary);
 }

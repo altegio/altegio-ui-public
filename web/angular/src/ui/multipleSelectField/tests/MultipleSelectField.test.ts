@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreMultipleSelectFieldTagName } from '~shared/constants'
-import { YMultipleSelectField } from '~ng/ui/multipleSelectField/MultipleSelectField.component'
+import { AltCoreMultipleSelectFieldTagName } from '~shared/constants'
+import { AltMultipleSelectField } from '~ng/ui/multipleSelectField/MultipleSelectField.component'
 import {
-  type IYNgMultipleSelectFieldProps,
+  type IAltNgMultipleSelectFieldProps,
 } from '~ng/ui/multipleSelectField/models/types'
 import {
   propAnnotationTextTestCases,
@@ -28,18 +28,18 @@ import {
 import { ngInputEvents } from '~ng/ui/multipleSelectField/tests/cases/events'
 import { dispatchEvent } from '~shared/tests/utils'
 
-const tagName = YCoreMultipleSelectFieldTagName
+const tagName = AltCoreMultipleSelectFieldTagName
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgMultipleSelectFieldProps>
+  props?: Partial<IAltNgMultipleSelectFieldProps>
 }
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YMultipleSelectField] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltMultipleSelectField] }).compileComponents()
 
   @Component({
     template: `
-        <YMultipleSelectField
+        <AltMultipleSelectField
           [value]="value"
           [name]="name"
           [placeholder]="placeholder"
@@ -66,7 +66,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
           (blur)="onBlur($event)"
           (select)="onSelect($event)"
         />`,
-    imports: [YMultipleSelectField],
+    imports: [AltMultipleSelectField],
     standalone: true,
   })
   class TestComponent {
@@ -101,7 +101,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YMultipleSelectField',
+  'Angular/AltMultipleSelectField',
   () => {
     describe(
       'Unit',

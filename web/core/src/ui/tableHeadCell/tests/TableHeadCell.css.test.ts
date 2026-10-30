@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
 
-import { YCoreTableHeadCellTagName } from '~shared/constants'
+import { AltCoreTableHeadCellTagName } from '~shared/constants'
 import {
   createCoreTableHeadCellProps,
 } from '~core/ui/tableHeadCell/models/types'
@@ -12,7 +12,7 @@ import {
   CSSVariablesHostToValueCases,
 } from '~core/ui/tableHeadCell/tests/cases/css'
 
-const tagName = YCoreTableHeadCellTagName
+const tagName = AltCoreTableHeadCellTagName
 
 const {
   component,
@@ -23,7 +23,7 @@ const {
 )
 
 describe(
-  'Core/YCoreTableHeadCell/CSS',
+  'Core/AltCoreTableHeadCell/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

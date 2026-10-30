@@ -1,11 +1,11 @@
 import { createContext } from '@lit/context'
-import type { IYCoreRadioButtonGroupProps } from '../../models/types'
+import type { IAltCoreRadioButtonGroupProps } from '../../models/types'
 
 export const groupValueContextKey = Symbol('GroupValueContext')
-export const groupValueContextCreated = createContext<IYCoreRadioButtonGroupProps['value']>(groupValueContextKey)
+export const groupValueContextCreated = createContext<IAltCoreRadioButtonGroupProps['value']>(groupValueContextKey)
 
 export const sizeContextKey = Symbol('sizeContext')
-export const sizeContextCreated = createContext<IYCoreRadioButtonGroupProps['size']>(sizeContextKey)
+export const sizeContextCreated = createContext<IAltCoreRadioButtonGroupProps['size']>(sizeContextKey)
 
 export const alignmentContextKey = Symbol('alignmentContext')
-export const alignmentContextCreated = createContext<IYCoreRadioButtonGroupProps['alignment']>(alignmentContextKey)
+export const alignmentContextCreated = createContext<IAltCoreRadioButtonGroupProps['alignment']>(alignmentContextKey)

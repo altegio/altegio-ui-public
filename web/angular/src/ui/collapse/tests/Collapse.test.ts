@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreCollapseTagName } from '~shared/constants'
-import { YCollapse } from '~ng/ui/collapse'
+import { AltCoreCollapseTagName } from '~shared/constants'
+import { AltCollapse } from '~ng/ui/collapse'
 import {
-  type IYNgCollapseProps,
+  type IAltNgCollapseProps,
 } from '~ng/ui/collapse/models/types'
 
 import {
@@ -23,13 +23,13 @@ import {
   eventCollapseMoveCases,
 } from './cases/events'
 
-const tagName = YCoreCollapseTagName
+const tagName = AltCoreCollapseTagName
 
 interface ICreateComponentArgs {
   slots?: {
     default?: string
   }
-  props?: Partial<IYNgCollapseProps>
+  props?: Partial<IAltNgCollapseProps>
   events?: {
     collapseChangeEvent?: (event: Event) => void
     collapseMoveEvent?: (event: Event) => void
@@ -37,19 +37,19 @@ interface ICreateComponentArgs {
 }
 const createComponent = async({ slots, props, events }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YCollapse] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltCollapse] }).compileComponents()
 
   @Component({
     template: `
-      <YCollapse
+      <AltCollapse
         (collapse-change)="collapseChangeEvent($event)"
         (collapse-move)="collapseMoveEvent($event)"
         [value]="value"
         [type]="type"
         [variant]="variant"
         [draggable]="draggable"
-      >{{content}}</YCollapse>`,
-    imports: [YCollapse],
+      >{{content}}</AltCollapse>`,
+    imports: [AltCollapse],
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
   })
@@ -71,7 +71,7 @@ const createComponent = async({ slots, props, events }: ICreateComponentArgs) =>
 }
 
 describe(
-  'Angular/YCollapse',
+  'Angular/AltCollapse',
   () => {
     describe(
       'Unit',

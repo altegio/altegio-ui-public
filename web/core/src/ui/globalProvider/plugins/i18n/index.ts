@@ -20,9 +20,9 @@ export const LOCALE_MODULE_ID = 'locale'
  * const i18nPlugin = new I18nPlugin(en);
  *
  * // Pass the plugin to GlobalProvider
- * <YGlobalProvider :plugins="[i18nPlugin]">
+ * <AltGlobalProvider :plugins="[i18nPlugin]">
  *   <YourComponent />
- * </YGlobalProvider>
+ * </AltGlobalProvider>
  * ```
  *
  * @example

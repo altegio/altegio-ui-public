@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YCardCheckbox } from '~vue/ui/cardCheckbox'
-import { type IYVueCardCheckboxProps } from '~vue/ui/cardCheckbox/models/types'
-import yCoreCardCheckboxStoryMeta from '~core/ui/cardCheckbox/stories/CardCheckbox.stories'
+import { AltCardCheckbox } from '~vue/ui/cardCheckbox'
+import { type IAltVueCardCheckboxProps } from '~vue/ui/cardCheckbox/models/types'
+import altCoreCardCheckboxStoryMeta from '~core/ui/cardCheckbox/stories/CardCheckbox.stories'
 
-type TVueCardCheckboxStoryMeta = IYVueCardCheckboxProps
+type TVueCardCheckboxStoryMeta = IAltVueCardCheckboxProps
 
 /**
  * Vue wrapper for Core CardCheckbox
@@ -19,19 +19,19 @@ const meta: Meta<TVueCardCheckboxStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YCardCheckbox },
+    components: { AltCardCheckbox },
     setup() {
       return { args }
     },
     template: `
-      <YCardCheckbox
+      <AltCardCheckbox
         v-bind="args"
         style="border: 1px dashed;"
       />
     `,
   }),
-  argTypes: { ...yCoreCardCheckboxStoryMeta.argTypes },
-  args: { ...yCoreCardCheckboxStoryMeta.args },
+  argTypes: { ...altCoreCardCheckboxStoryMeta.argTypes },
+  args: { ...altCoreCardCheckboxStoryMeta.args },
 }
 
 export default meta

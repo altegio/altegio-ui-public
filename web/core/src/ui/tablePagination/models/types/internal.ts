@@ -1,3 +1,3 @@
-export interface IYCoreTablePaginationInternalProps {}
+export interface IAltCoreTablePaginationInternalProps {}
 
-export const createCoreTablePaginationInternalProps = (): IYCoreTablePaginationInternalProps => ({})
+export const createCoreTablePaginationInternalProps = (): IAltCoreTablePaginationInternalProps => ({})

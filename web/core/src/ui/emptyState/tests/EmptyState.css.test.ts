@@ -1,12 +1,12 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { useCoreTests } from '~shared/tests/core'
 import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
-import { YCoreEmptyStateTagName } from '~shared/constants'
+import { AltCoreEmptyStateTagName } from '~shared/constants'
 import '~core/ui/emptyState'
 import { createCoreEmptyStateExternalProps } from '~core/ui/emptyState/models/types/external'
 import { CSSVariablesHostToRootCases, CSSVariablesHostToValueCases } from '~core/ui/emptyState/tests/cases/css'
 
-const tagName = YCoreEmptyStateTagName
+const tagName = AltCoreEmptyStateTagName
 
 const {
   component,
@@ -17,7 +17,7 @@ const {
 )
 
 describe(
-  'Core/YCoreEmptyState/CSS',
+  'Core/AltCoreEmptyState/CSS',
   () => {
     beforeAll(() => {
       injectComponentToBody()

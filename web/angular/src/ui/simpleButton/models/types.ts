@@ -1,15 +1,15 @@
 import {
   createCoreSimpleButtonExternalProps,
   createCoreSimpleButtonInternalProps,
-  type IYCoreSimpleButtonExternalProps,
-  type IYCoreSimpleButtonInternalProps,
+  type IAltCoreSimpleButtonExternalProps,
+  type IAltCoreSimpleButtonInternalProps,
 } from '~core/ui/simpleButton/models/types'
 
-export interface IYNgSimpleButtonProps extends
-  IYCoreSimpleButtonExternalProps,
-  IYCoreSimpleButtonInternalProps {}
+export interface IAltNgSimpleButtonProps extends
+  IAltCoreSimpleButtonExternalProps,
+  IAltCoreSimpleButtonInternalProps {}
 
-export const createNgSimpleButtonProps = (): IYNgSimpleButtonProps => ({
+export const createNgSimpleButtonProps = (): IAltNgSimpleButtonProps => ({
   ...createCoreSimpleButtonExternalProps(),
   ...createCoreSimpleButtonInternalProps(),
 })

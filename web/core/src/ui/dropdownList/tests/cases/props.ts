@@ -1,9 +1,9 @@
 import type { TPropTestCase } from '~shared/types/tests'
 import {
-  type IYCoreDropdownListProps,
+  type IAltCoreDropdownListProps,
 } from '~core/ui/dropdownList/models/types'
 
-export const propItemsTestCases: TPropTestCase<IYCoreDropdownListProps, 'items'>[] = [
+export const propItemsTestCases: TPropTestCase<IAltCoreDropdownListProps, 'items'>[] = [
   {
     prop: 'items',
     case: 'with many items',
@@ -24,7 +24,7 @@ export const propItemsTestCases: TPropTestCase<IYCoreDropdownListProps, 'items'>
     value: [],
   },
 ]
-export const propItemLabelTestCases: TPropTestCase<IYCoreDropdownListProps, 'itemLabel'>[] = [
+export const propItemLabelTestCases: TPropTestCase<IAltCoreDropdownListProps, 'itemLabel'>[] = [
   {
     prop: 'itemLabel',
     case: 'with an existing property',
@@ -39,7 +39,7 @@ export const propItemLabelTestCases: TPropTestCase<IYCoreDropdownListProps, 'ite
   },
 ]
 
-export const propMinWidthTestCases: TPropTestCase<IYCoreDropdownListProps, 'minWidth'>[] = [
+export const propMinWidthTestCases: TPropTestCase<IAltCoreDropdownListProps, 'minWidth'>[] = [
   {
     prop: 'minWidth',
     case: 'with the minimum width',

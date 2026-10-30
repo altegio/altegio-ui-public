@@ -1,14 +1,14 @@
-import { createCoreIconExternalProps, type IYCoreIconExternalProps } from '~core/ui/icon/models/types'
+import { createCoreIconExternalProps, type IAltCoreIconExternalProps } from '~core/ui/icon/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreIconProps extends IYCoreIconExternalProps {}
+export interface IAltVueCoreIconProps extends IAltCoreIconExternalProps {}
 
-export interface IYVueIconProps {
-  icon: IYVueCoreIconProps['icon']
-  size?: IYVueCoreIconProps['size']
+export interface IAltVueIconProps {
+  icon: IAltVueCoreIconProps['icon']
+  size?: IAltVueCoreIconProps['size']
 }
 
-export const createVueIconProps = (): TDefinedVueProps<IYVueIconProps> => {
+export const createVueIconProps = (): TDefinedVueProps<IAltVueIconProps> => {
   const { size } = createCoreIconExternalProps()
   return { size }
 }

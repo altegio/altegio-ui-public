@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YDropdownCell } from '~ng/ui/dropdownCell'
-import yCoreDropdownCellStoryMeta from '~core/ui/dropdownCell/stories/DropdownCell.stories'
+import { AltDropdownCell } from '~ng/ui/dropdownCell'
+import altCoreDropdownCellStoryMeta from '~core/ui/dropdownCell/stories/DropdownCell.stories'
 
 /**
  * Angular wrapper for Core DropdownCell
  */
-const meta: Meta<YDropdownCell> = {
+const meta: Meta<AltDropdownCell> = {
   title: '✅ DropdownCell',
   id: 'dropdownCell',
   parameters: { controls: { sort: 'alpha' } },
-  component: YDropdownCell,
+  component: AltDropdownCell,
   tags: [
     'angular',
     'autodocs',
@@ -18,7 +18,7 @@ const meta: Meta<YDropdownCell> = {
   render: (args) => ({
     props: { ...args },
     template: `
-      <YDropdownCell>
+      <AltDropdownCell>
         <div label>
           Label
         </div>
@@ -30,13 +30,13 @@ const meta: Meta<YDropdownCell> = {
         <div append>
           Append
         </div>
-      </YDropdownCell>`,
+      </AltDropdownCell>`,
   }),
-  argTypes: { ...yCoreDropdownCellStoryMeta.argTypes },
-  args: { ...yCoreDropdownCellStoryMeta.args },
-} satisfies Meta<YDropdownCell>
+  argTypes: { ...altCoreDropdownCellStoryMeta.argTypes },
+  args: { ...altCoreDropdownCellStoryMeta.args },
+} satisfies Meta<AltDropdownCell>
 
 export default meta
-type Story = StoryObj<YDropdownCell>
+type Story = StoryObj<AltDropdownCell>
 
 export const Playground: Story = { args: {} }

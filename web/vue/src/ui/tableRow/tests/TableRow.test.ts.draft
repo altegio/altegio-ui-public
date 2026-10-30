@@ -1,18 +1,18 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { YCoreTableRowTagName } from '~shared/constants'
+import { AltCoreTableRowTagName } from '~shared/constants'
 import type { TPropTestCase, TSlotTestCase } from '~shared/types/tests'
 import { text, empty } from '~shared/tests/slotContents'
 
-import YTableRow from '~vue/ui/tableRow/TableRow.vue'
+import AltTableRow from '~vue/ui/tableRow/TableRow.vue'
 import {
   createVueTableRowProps,
-  type IYVueTableRowProps,
+  type IAltVueTableRowProps,
 } from '~vue/ui/tableRow/models/types'
-import { YCoreTableRow } from '~core/ui/tableRow'
+import { AltCoreTableRow } from '~core/ui/tableRow'
 
-const tagName = YCoreTableRowTagName
+const tagName = AltCoreTableRowTagName
 
 const { externalProp: defaultExternalProp, internalProp: defaultInternalProp } = createVueTableRowProps()
 
@@ -21,25 +21,25 @@ const slotDefaultTestCases: TSlotTestCase[] = [
   { slot: 'default', case: 'with content', content: text },
   { slot: 'default', case: 'without content', content: empty },
 ]
-const propExternalPropTestCases: TPropTestCase<IYVueTableRowProps, 'externalProp'>[] = [
+const propExternalPropTestCases: TPropTestCase<IAltVueTableRowProps, 'externalProp'>[] = [
   { prop: 'externalProp', case: 'with content', value: text },
   { prop: 'externalProp', case: 'without content', value: empty },
   { prop: 'externalProp', case: 'without a value', value: defaultExternalProp },
 ]
-const propInternalPropTestCases: TPropTestCase<IYVueTableRowProps, 'internalProp'>[] = [
+const propInternalPropTestCases: TPropTestCase<IAltVueTableRowProps, 'internalProp'>[] = [
   { prop: 'internalProp', case: 'with content', value: text },
   { prop: 'internalProp', case: 'without content', value: empty },
   { prop: 'internalProp', case: 'without a value', value: defaultInternalProp },
 ]
 
 describe(
-  'Vue/YTableRow',
+  'Vue/AltTableRow',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreTableRow,
+          AltCoreTableRow,
         )
       }
     })
@@ -55,7 +55,7 @@ describe(
                 `Slot "${testCase.slot}" should render ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YTableRow,
+                    AltTableRow,
                     { slots: { default: testCase.content } },
                   )
 
@@ -77,11 +77,11 @@ describe(
                 `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
                 () => {
                   const wrapper = mount(
-                    YTableRow,
+                    AltTableRow,
                     { props: { [testCase.prop]: testCase.value } },
                   )
 
-                  const coreElement = wrapper.find(tagName).element as YCoreTableRow
+                  const coreElement = wrapper.find(tagName).element as AltCoreTableRow
 
                   expect(coreElement[testCase.prop]).toBe(testCase.expected)
                 },

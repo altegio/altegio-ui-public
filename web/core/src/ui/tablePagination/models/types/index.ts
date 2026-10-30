@@ -1,10 +1,10 @@
 import {
   createCoreTablePaginationExternalProps,
-  type IYCoreTablePaginationExternalProps,
+  type IAltCoreTablePaginationExternalProps,
 } from './external'
 import {
   createCoreTablePaginationInternalProps,
-  type IYCoreTablePaginationInternalProps,
+  type IAltCoreTablePaginationInternalProps,
 } from './internal'
 
 export * from './external'
@@ -12,9 +12,9 @@ export * from './internal'
 export * from './events'
 export * from '~core/ui/pagination/models/types/events'
 
-export interface IYCoreTablePaginationProps extends IYCoreTablePaginationExternalProps, IYCoreTablePaginationInternalProps {}
+export interface IAltCoreTablePaginationProps extends IAltCoreTablePaginationExternalProps, IAltCoreTablePaginationInternalProps {}
 
-export const createCoreTablePaginationProps = (): IYCoreTablePaginationProps => ({
+export const createCoreTablePaginationProps = (): IAltCoreTablePaginationProps => ({
   ...createCoreTablePaginationExternalProps(),
   ...createCoreTablePaginationInternalProps(),
 })

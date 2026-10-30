@@ -6,18 +6,18 @@ import { ifDefined } from 'lit/directives/if-defined.js'
 
 import {
   createCoreFieldWrapperProps,
-  type IYCoreFieldWrapperProps,
+  type IAltCoreFieldWrapperProps,
   ClickOutsideEvent, BlurEvent, FocusEvent, MouseEnterEvent, MouseLeaveEvent,
 } from '~core/ui/fieldWrapper/models/types'
 import {
-  YCoreFieldWrapperTagName as tagName,
+  AltCoreFieldWrapperTagName as tagName,
 } from '~shared/constants'
 import { EventListenersList } from '~shared/utils/eventListenersList'
 
 import { disabledContextCreated, readonlyContextCreated, errorContextCreated, sizeContextCreated, hoveredContextCreated, focusedContextCreated } from './providers'
 
-import YCoreFieldWrapperVarsCSS from '~core/ui/fieldWrapper/css/FieldWrapper.vars.css?inline'
-import YCoreFieldWrapperScopedCSS from '~core/ui/fieldWrapper/css/FieldWrapper.scoped.css?inline'
+import AltCoreFieldWrapperVarsCSS from '~core/ui/fieldWrapper/css/FieldWrapper.vars.css?inline'
+import AltCoreFieldWrapperScopedCSS from '~core/ui/fieldWrapper/css/FieldWrapper.scoped.css?inline'
 
 import { booleanConverter } from '~core/utils/converters'
 import { interceptEvents } from '~core/utils/event-interceptor'
@@ -31,18 +31,18 @@ const { disabled, readonly, error, size, clickable } = createCoreFieldWrapperPro
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreFieldWrapper
+export class AltCoreFieldWrapper
   extends LitElement
-  implements IYCoreFieldWrapperProps {
+  implements IAltCoreFieldWrapperProps {
   @provide({ context: disabledContextCreated })
-  @property({ type: Boolean }) disabled: IYCoreFieldWrapperProps['disabled'] = disabled
+  @property({ type: Boolean }) disabled: IAltCoreFieldWrapperProps['disabled'] = disabled
   @provide({ context: readonlyContextCreated })
-  @property({ type: Boolean }) readonly: IYCoreFieldWrapperProps['readonly'] = readonly
+  @property({ type: Boolean }) readonly: IAltCoreFieldWrapperProps['readonly'] = readonly
   @provide({ context: errorContextCreated })
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IYCoreFieldWrapperProps['error'] = error
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IAltCoreFieldWrapperProps['error'] = error
   @provide({ context: sizeContextCreated })
-  @property({ type: String, reflect: true }) size: IYCoreFieldWrapperProps['size'] = size
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) clickable: IYCoreFieldWrapperProps['clickable'] = clickable
+  @property({ type: String, reflect: true }) size: IAltCoreFieldWrapperProps['size'] = size
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) clickable: IAltCoreFieldWrapperProps['clickable'] = clickable
 
   @provide({ context: hoveredContextCreated })
   @state() private hovered = false
@@ -79,8 +79,8 @@ export class YCoreFieldWrapper
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreFieldWrapperVarsCSS)}
-      ${unsafeCSS(YCoreFieldWrapperScopedCSS)}
+      ${unsafeCSS(AltCoreFieldWrapperVarsCSS)}
+      ${unsafeCSS(AltCoreFieldWrapperScopedCSS)}
     `,
   ]
 

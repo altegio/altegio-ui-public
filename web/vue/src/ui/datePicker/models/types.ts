@@ -1,37 +1,37 @@
 import {
   createCoreDatePickerProps,
-  type IYCoreDatePickerProps,
+  type IAltCoreDatePickerProps,
 } from '~core/ui/datePicker/models/types'
 import type { PickEvent } from '~core/ui/datePicker/models/types'
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
 
-export interface IYVueCoreDatePickerProps extends Omit<IYCoreDatePickerProps, 'date'> {
-  modelValue?: IYCoreDatePickerProps['date']
+export interface IAltVueCoreDatePickerProps extends Omit<IAltCoreDatePickerProps, 'date'> {
+  modelValue?: IAltCoreDatePickerProps['date']
 }
 
-export interface IYVueDatePickerProps {
-  modelValue?: IYVueCoreDatePickerProps['modelValue']
-  name?: IYVueCoreDatePickerProps['name']
-  placeholder?: IYVueCoreDatePickerProps['placeholder']
-  disabled?: IYVueCoreDatePickerProps['disabled']
-  required?: IYVueCoreDatePickerProps['required']
-  readonly?: IYVueCoreDatePickerProps['readonly']
-  autofocus?: IYVueCoreDatePickerProps['autofocus']
-  errors?: IYVueCoreDatePickerProps['errors']
-  locale?: IYVueCoreDatePickerProps['locale']
-  size?: IYVueCoreDatePickerProps['size']
-  labelText?: IYVueCoreDatePickerProps['labelText']
-  labelTooltipText?: IYVueCoreDatePickerProps['labelTooltipText']
-  labelDebounce?: IYVueCoreDatePickerProps['labelDebounce']
-  annotationText?: IYVueCoreDatePickerProps['annotationText']
-  calendarHeaderSelectors?: IYVueCoreDatePickerProps['calendarHeaderSelectors']
-  isRange?: IYVueCoreDatePickerProps['isRange']
-  minDate?: IYVueCoreDatePickerProps['minDate']
-  maxDate?: IYVueCoreDatePickerProps['maxDate']
-  error?: IYVueCoreDatePickerProps['error']
+export interface IAltVueDatePickerProps {
+  modelValue?: IAltVueCoreDatePickerProps['modelValue']
+  name?: IAltVueCoreDatePickerProps['name']
+  placeholder?: IAltVueCoreDatePickerProps['placeholder']
+  disabled?: IAltVueCoreDatePickerProps['disabled']
+  required?: IAltVueCoreDatePickerProps['required']
+  readonly?: IAltVueCoreDatePickerProps['readonly']
+  autofocus?: IAltVueCoreDatePickerProps['autofocus']
+  errors?: IAltVueCoreDatePickerProps['errors']
+  locale?: IAltVueCoreDatePickerProps['locale']
+  size?: IAltVueCoreDatePickerProps['size']
+  labelText?: IAltVueCoreDatePickerProps['labelText']
+  labelTooltipText?: IAltVueCoreDatePickerProps['labelTooltipText']
+  labelDebounce?: IAltVueCoreDatePickerProps['labelDebounce']
+  annotationText?: IAltVueCoreDatePickerProps['annotationText']
+  calendarHeaderSelectors?: IAltVueCoreDatePickerProps['calendarHeaderSelectors']
+  isRange?: IAltVueCoreDatePickerProps['isRange']
+  minDate?: IAltVueCoreDatePickerProps['minDate']
+  maxDate?: IAltVueCoreDatePickerProps['maxDate']
+  error?: IAltVueCoreDatePickerProps['error']
 }
 
-export const createVueDatePickerProps = (): TDefinedVueProps<IYVueDatePickerProps> => {
+export const createVueDatePickerProps = (): TDefinedVueProps<IAltVueDatePickerProps> => {
   const {
     errors,
     locale,
@@ -77,6 +77,6 @@ export const createVueDatePickerProps = (): TDefinedVueProps<IYVueDatePickerProp
   }
 }
 
-export interface IYVueDatePickerEmits {
+export interface IAltVueDatePickerEmits {
   (event: 'update:modelValue', payload: PickEvent['detail']['value']): void
 }

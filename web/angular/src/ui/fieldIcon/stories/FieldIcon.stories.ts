@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/angular'
 
-import { YFieldIcon } from '~ng/ui/fieldIcon'
-import yCoreFieldIconStoryMeta from '~core/ui/fieldIcon/stories/FieldIcon.stories'
+import { AltFieldIcon } from '~ng/ui/fieldIcon'
+import altCoreFieldIconStoryMeta from '~core/ui/fieldIcon/stories/FieldIcon.stories'
 
 /**
  * Angular wrapper for Core FieldIcon
  */
-const meta: Meta<YFieldIcon> = {
+const meta: Meta<AltFieldIcon> = {
   title: 'Inputs/Partials/⚠️ FieldIcon',
   id: 'fieldIcon',
   parameters: { controls: { sort: 'alpha' } },
-  component: YFieldIcon,
+  component: AltFieldIcon,
   tags: [
     'angular',
     'autodocs',
@@ -18,20 +18,20 @@ const meta: Meta<YFieldIcon> = {
   render: (args) => ({
     props: { ...args },
     template: `
-      <YFieldIcon
+      <AltFieldIcon
         [disabled]="disabled"
         [size]="size"
         [icon]="icon"
         [hoverable]="hoverable"
         [clickable]="clickable"
         style="border: 1px dashed;width: min-content;display: inline-flex;"
-      ></YFieldIcon>`,
+      ></AltFieldIcon>`,
   }),
-  argTypes: { ...yCoreFieldIconStoryMeta.argTypes },
-  args: { ...yCoreFieldIconStoryMeta.args },
-} satisfies Meta<YFieldIcon>
+  argTypes: { ...altCoreFieldIconStoryMeta.argTypes },
+  args: { ...altCoreFieldIconStoryMeta.args },
+} satisfies Meta<AltFieldIcon>
 
 export default meta
-type Story = StoryObj<YFieldIcon>
+type Story = StoryObj<AltFieldIcon>
 
 export const Playground: Story = { args: {} }

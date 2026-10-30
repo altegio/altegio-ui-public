@@ -1,11 +1,11 @@
 import {
   createCoreCheckboxExternalProps,
-  type IYCoreCheckboxExternalProps,
+  type IAltCoreCheckboxExternalProps,
 } from './external'
 
 export * from './external'
 export * from './events'
 
-export interface IYCoreCheckboxProps extends IYCoreCheckboxExternalProps {}
+export interface IAltCoreCheckboxProps extends IAltCoreCheckboxExternalProps {}
 
-export const createCoreCheckboxProps = (): IYCoreCheckboxProps => ({ ...createCoreCheckboxExternalProps() })
+export const createCoreCheckboxProps = (): IAltCoreCheckboxProps => ({ ...createCoreCheckboxExternalProps() })

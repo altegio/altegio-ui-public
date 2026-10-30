@@ -1,5 +1,5 @@
 import { beforeAll, afterEach, afterAll, describe, expect, it } from 'vitest'
-import { YCoreDropdownCellTagName } from '~shared/constants'
+import { AltCoreDropdownCellTagName } from '~shared/constants'
 import { useCoreTests } from '~shared/tests/core'
 import type { TSlotTestCase } from '~shared/types/tests'
 import { text, empty } from '~shared/tests/slotContents'
@@ -8,7 +8,7 @@ import {
 } from '~core/ui/dropdownCell/models/types'
 import '~core/ui/dropdownCell'
 
-const tagName = YCoreDropdownCellTagName
+const tagName = AltCoreDropdownCellTagName
 
 const {
   component,
@@ -30,7 +30,7 @@ const slotDefaultTestCases: TSlotTestCase[] = [
 ]
 
 describe(
-  'Core/YDropdownCell',
+  'Core/AltDropdownCell',
   () => {
     beforeAll(() => {
       injectComponentToBody()

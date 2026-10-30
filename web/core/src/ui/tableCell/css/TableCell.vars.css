@@ -1,9 +1,9 @@
 :host {
   /* General */
-  --y-core-table-cell-size: 20px;
-  --y-core-table-cell-padding-y: var(--y-core-size-spacing-2-x);
-  --y-core-table-cell-padding-x: var(--y-core-size-spacing-3-x);
-  --y-core-table-cell-border-color: var(--y-core-color-stroke-primary);
-  --y-core-table-cell-default-background-color: var(--y-core-color-surface-primary);
-  --y-core-table-cell-stripe-background-color: var(--y-core-color-surface-secondary);
+  --alt-core-table-cell-size: 20px;
+  --alt-core-table-cell-padding-y: var(--alt-core-size-spacing-2-x);
+  --alt-core-table-cell-padding-x: var(--alt-core-size-spacing-3-x);
+  --alt-core-table-cell-border-color: var(--alt-core-color-stroke-primary);
+  --alt-core-table-cell-default-background-color: var(--alt-core-color-surface-primary);
+  --alt-core-table-cell-stripe-background-color: var(--alt-core-color-surface-secondary);
 }

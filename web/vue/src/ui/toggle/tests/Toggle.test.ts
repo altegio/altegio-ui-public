@@ -1,53 +1,53 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { text, empty } from '~shared/tests/slotContents'
-import { YCoreToggle } from '~core/index'
-import { YCoreToggleTagName } from '~shared/constants'
+import { AltCoreToggle } from '~core/index'
+import { AltCoreToggleTagName } from '~shared/constants'
 import type { TPropTestCase, TSlotTestCase } from '~shared/types/tests'
-import { EYCoreLabelAlignment } from '~core/ui/label/models/types'
-import { EYSizes } from '~shared/types/global'
-import { YToggle } from '~vue/ui/toggle'
-import type { IYVueToggleProps } from '~vue/ui/toggle/models/types'
+import { EAltCoreLabelAlignment } from '~core/ui/label/models/types'
+import { EAltSizes } from '~shared/types/global'
+import { AltToggle } from '~vue/ui/toggle'
+import type { IAltVueToggleProps } from '~vue/ui/toggle/models/types'
 
 // Unit test cases:
-const propCheckedTestCases: TPropTestCase<IYVueToggleProps, 'modelValue'>[] = [
+const propCheckedTestCases: TPropTestCase<IAltVueToggleProps, 'modelValue'>[] = [
   { prop: 'modelValue', case: 'enabled', value: true, expected: true },
   { prop: 'modelValue', case: 'disabled', value: false, expected: false },
   { prop: 'modelValue', case: 'undefined', value: undefined, expected: false },
 ]
-const propDisabledTestCases: TPropTestCase<IYVueToggleProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltVueToggleProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'enabled', value: true, expected: true },
   { prop: 'disabled', case: 'disabled', value: false, expected: false },
   { prop: 'disabled', case: 'undefined', value: undefined, expected: false },
 ]
-const propLabelTextTestCases: TPropTestCase<IYVueToggleProps, 'labelText'>[] = [
+const propLabelTextTestCases: TPropTestCase<IAltVueToggleProps, 'labelText'>[] = [
   { prop: 'labelText', case: 'with content', value: text, expected: text },
   { prop: 'labelText', case: 'without content', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: empty },
 ]
-const propLabelTooltipTextTestCases: TPropTestCase<IYVueToggleProps, 'labelTooltipText'>[] = [
+const propLabelTooltipTextTestCases: TPropTestCase<IAltVueToggleProps, 'labelTooltipText'>[] = [
   { prop: 'labelTooltipText', case: 'with content', value: text, expected: text },
   { prop: 'labelTooltipText', case: 'without content', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: empty },
 ]
-const propAnnotationTextTestCases: TPropTestCase<IYVueToggleProps, 'annotationText'>[] = [
+const propAnnotationTextTestCases: TPropTestCase<IAltVueToggleProps, 'annotationText'>[] = [
   { prop: 'annotationText', case: 'with content', value: text, expected: text },
   { prop: 'annotationText', case: 'without content', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: empty },
 ]
-const propLabelOverflowDebounceCases: TPropTestCase<IYVueToggleProps, 'labelOverflowDebounce'>[] = [
+const propLabelOverflowDebounceCases: TPropTestCase<IAltVueToggleProps, 'labelOverflowDebounce'>[] = [
   { prop: 'labelOverflowDebounce', case: 'with a delay', value: 200, expected: 200 },
   { prop: 'labelOverflowDebounce', case: 'without a delay', value: undefined, expected: 300 },
 ]
-const propAlignmentCases: TPropTestCase<IYVueToggleProps, 'alignment'>[] = [
-  { prop: 'alignment', case: 'center alignment', value: EYCoreLabelAlignment.CENTER, expected: EYCoreLabelAlignment.CENTER },
-  { prop: 'alignment', case: 'top alignment', value: EYCoreLabelAlignment.TOP, expected: EYCoreLabelAlignment.TOP },
-  { prop: 'alignment', case: 'without alignment', value: undefined, expected: EYCoreLabelAlignment.CENTER },
+const propAlignmentCases: TPropTestCase<IAltVueToggleProps, 'alignment'>[] = [
+  { prop: 'alignment', case: 'center alignment', value: EAltCoreLabelAlignment.CENTER, expected: EAltCoreLabelAlignment.CENTER },
+  { prop: 'alignment', case: 'top alignment', value: EAltCoreLabelAlignment.TOP, expected: EAltCoreLabelAlignment.TOP },
+  { prop: 'alignment', case: 'without alignment', value: undefined, expected: EAltCoreLabelAlignment.CENTER },
 ]
-const propSizeCases: TPropTestCase<IYVueToggleProps, 'size'>[] = [
-  { prop: 'size', case: 'size M', value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
-  { prop: 'size', case: 'size S', value: EYSizes.SMALL, expected: EYSizes.SMALL },
-  { prop: 'size', case: 'size not set', value: undefined, expected: EYSizes.SMALL },
+const propSizeCases: TPropTestCase<IAltVueToggleProps, 'size'>[] = [
+  { prop: 'size', case: 'size M', value: EAltSizes.MEDIUM, expected: EAltSizes.MEDIUM },
+  { prop: 'size', case: 'size S', value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
+  { prop: 'size', case: 'size not set', value: undefined, expected: EAltSizes.SMALL },
 ]
 
 const slotLabelTestCases: TSlotTestCase[] = [
@@ -60,13 +60,13 @@ const slotAnnotationTestCases: TSlotTestCase[] = [
 ]
 
 describe(
-  'Vue/YToggle',
+  'Vue/AltToggle',
   () => {
     beforeAll(() => {
-      if (!customElements.get(YCoreToggleTagName)) {
+      if (!customElements.get(AltCoreToggleTagName)) {
         customElements.define(
-          YCoreToggleTagName,
-          YCoreToggle,
+          AltCoreToggleTagName,
+          AltCoreToggle,
         )
       }
     })
@@ -90,7 +90,7 @@ describe(
                 `Prop ${testCase.prop} should be ${testCase.case} and have value ${testCase.value}`,
                 () => {
                   const wrapper = mount(
-                    YToggle,
+                    AltToggle,
                     {
                       props: {
                         [testCase.prop]: testCase.value,
@@ -99,7 +99,7 @@ describe(
                     },
                   )
 
-                  const coreElement = wrapper.find(YCoreToggleTagName)
+                  const coreElement = wrapper.find(AltCoreToggleTagName)
 
                   expect(coreElement.element[testCase.prop]).toBe(testCase.expected)
                 },
@@ -111,11 +111,11 @@ describe(
                 `Prop ${testCase.prop} should be ${testCase.case} and have value ${testCase.value}`,
                 () => {
                   const wrapper = mount(
-                    YToggle,
+                    AltToggle,
                     { props: { modelValue: testCase.value } },
                   )
 
-                  const coreElement = wrapper.find(YCoreToggleTagName)
+                  const coreElement = wrapper.find(AltCoreToggleTagName)
 
                   expect(coreElement.element.checked).toBe(testCase.expected)
                 },
@@ -131,11 +131,11 @@ describe(
               'Should emit "update:modelValue" on click',
               async() => {
                 const wrapper = mount(
-                  YToggle,
+                  AltToggle,
                   { props: { modelValue: false } },
                 )
 
-                const coreElement = wrapper.find(YCoreToggleTagName)
+                const coreElement = wrapper.find(AltCoreToggleTagName)
 
                 await coreElement.trigger('click')
 
@@ -158,10 +158,10 @@ describe(
                 `The component should contain slot ${testCase.slot} ${testCase.case}`,
                 () => {
                   const wrapper = mount(
-                    YToggle,
+                    AltToggle,
                     { slots: { [testCase.slot]: testCase.content } },
                   )
-                  const slotContent = wrapper.find(`${YCoreToggleTagName} [slot="${testCase.slot}"]`)
+                  const slotContent = wrapper.find(`${AltCoreToggleTagName} [slot="${testCase.slot}"]`)
 
                   expect(slotContent.exists()).toBe(true)
                   expect(slotContent.text()).toBe(testCase.content)

@@ -7,15 +7,15 @@ import { ifDefined } from 'lit/directives/if-defined.js'
 import { classMap } from 'lit/directives/class-map.js'
 
 import '~core/ui/loader'
-import { YCoreLoader } from '~core/ui/loader'
+import { AltCoreLoader } from '~core/ui/loader'
 
 import {
   createCoreSimpleButtonProps,
-  type IYCoreSimpleButtonProps,
+  type IAltCoreSimpleButtonProps,
 } from '~core/ui/simpleButton/models/types'
 
-import { EYSizes } from '~shared/types/global'
-import { YCoreSimpleButtonTagName as tagName, YCoreLoaderTagName } from '~shared/constants'
+import { EAltSizes } from '~shared/types/global'
+import { AltCoreSimpleButtonTagName as tagName, AltCoreLoaderTagName } from '~shared/constants'
 
 import SimpleButtonVarsCSS from '~core/ui/simpleButton/css/SimpleButton.vars.css?inline'
 import SimpleButtonScopedCSS from '~core/ui/simpleButton/css/SimpleButton.scoped.css?inline'
@@ -30,17 +30,17 @@ const { disabled, href, loading, size, variant, target, alignment, hostStyles, f
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreSimpleButton extends LitElement implements IYCoreSimpleButtonProps {
-  @property({ type: String }) size: IYCoreSimpleButtonProps['size'] = size
-  @property({ type: String }) variant: IYCoreSimpleButtonProps['variant'] = variant
-  @property({ type: Boolean }) disabled: IYCoreSimpleButtonProps['disabled'] = disabled
-  @property({ type: Boolean, reflect: true, converter: booleanConverter }) loading: IYCoreSimpleButtonProps['loading'] = loading
-  @property({ type: String }) href: IYCoreSimpleButtonProps['href'] = href
-  @property({ type: String }) target: IYCoreSimpleButtonProps['target'] = target
-  @property({ type: String }) alignment: IYCoreSimpleButtonProps['alignment'] = alignment
-  @property({ type: Boolean, attribute: 'full-width' }) fullWidth: IYCoreSimpleButtonProps['fullWidth'] = fullWidth
-  @property({ type: String, attribute: 'host-styles' }) hostStyles: IYCoreSimpleButtonProps['hostStyles'] = hostStyles
-  @property({ type: String, attribute: 'loader-variant' }) loaderVariant: IYCoreSimpleButtonProps['loaderVariant'] = loaderVariant
+export class AltCoreSimpleButton extends LitElement implements IAltCoreSimpleButtonProps {
+  @property({ type: String }) size: IAltCoreSimpleButtonProps['size'] = size
+  @property({ type: String }) variant: IAltCoreSimpleButtonProps['variant'] = variant
+  @property({ type: Boolean }) disabled: IAltCoreSimpleButtonProps['disabled'] = disabled
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) loading: IAltCoreSimpleButtonProps['loading'] = loading
+  @property({ type: String }) href: IAltCoreSimpleButtonProps['href'] = href
+  @property({ type: String }) target: IAltCoreSimpleButtonProps['target'] = target
+  @property({ type: String }) alignment: IAltCoreSimpleButtonProps['alignment'] = alignment
+  @property({ type: Boolean, attribute: 'full-width' }) fullWidth: IAltCoreSimpleButtonProps['fullWidth'] = fullWidth
+  @property({ type: String, attribute: 'host-styles' }) hostStyles: IAltCoreSimpleButtonProps['hostStyles'] = hostStyles
+  @property({ type: String, attribute: 'loader-variant' }) loaderVariant: IAltCoreSimpleButtonProps['loaderVariant'] = loaderVariant
 
   private get isLoading() {
     return Boolean(this.loading && !this.disabled)
@@ -68,9 +68,9 @@ export class YCoreSimpleButton extends LitElement implements IYCoreSimpleButtonP
   }
 
   private get computedLoaderSize() {
-    return this.size === EYSizes.LARGE
-      ? EYSizes.MEDIUM
-      : EYSizes.EXTRA_SMALL
+    return this.size === EAltSizes.LARGE
+      ? EAltSizes.MEDIUM
+      : EAltSizes.EXTRA_SMALL
   }
 
   private renderButtonContent() {
@@ -78,11 +78,11 @@ export class YCoreSimpleButton extends LitElement implements IYCoreSimpleButtonP
         ${this.isLoading
             ? html`
             <div class="${this.baseClass}__loader">
-              <y-core-loader
+              <alt-core-loader
                 variant=${ifDefined(this.loaderVariant)}
                 size=${this.computedLoaderSize}
               >
-              </y-core-loader>
+              </alt-core-loader>
             </div>`
             : nothing
         }
@@ -95,7 +95,7 @@ export class YCoreSimpleButton extends LitElement implements IYCoreSimpleButtonP
 
 
   protected firstUpdated(): void {
-    defineCustomElement(YCoreLoaderTagName, YCoreLoader)
+    defineCustomElement(AltCoreLoaderTagName, AltCoreLoader)
   }
 
   protected render() {

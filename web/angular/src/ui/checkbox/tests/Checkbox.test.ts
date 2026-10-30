@@ -2,72 +2,72 @@ import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
 import { text, empty, number } from '~shared/tests/slotContents'
-import { YCoreCheckboxTagName as tagName } from '~shared/constants'
+import { AltCoreCheckboxTagName as tagName } from '~shared/constants'
 import type { TPropTestCase } from '~shared/types/tests'
-import { type IYNgCheckboxProps } from '~ng/ui/checkbox/models/types'
-import { YCheckbox } from '~ng/ui/checkbox'
-import { EYCoreLabelAlignment } from '~core/ui/label/models/types'
-import { EYSizes } from '~shared/types/global'
+import { type IAltNgCheckboxProps } from '~ng/ui/checkbox/models/types'
+import { AltCheckbox } from '~ng/ui/checkbox'
+import { EAltCoreLabelAlignment } from '~core/ui/label/models/types'
+import { EAltSizes } from '~shared/types/global'
 import { FormsModule } from '@angular/forms'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgCheckboxProps>
+  props?: Partial<IAltNgCheckboxProps>
 }
 
-const propIndeterminateTestCases: TPropTestCase<IYNgCheckboxProps, 'indeterminate'>[] = [
+const propIndeterminateTestCases: TPropTestCase<IAltNgCheckboxProps, 'indeterminate'>[] = [
   { prop: 'indeterminate', case: 'true', value: true, expected: true },
   { prop: 'indeterminate', case: 'false', value: false, expected: false },
   { prop: 'indeterminate', case: 'undefined', value: undefined, expected: false },
 ]
 
-const propRequiredTestCases: TPropTestCase<IYNgCheckboxProps, 'required'>[] = [
+const propRequiredTestCases: TPropTestCase<IAltNgCheckboxProps, 'required'>[] = [
   { prop: 'required', case: 'true', value: true, expected: true },
   { prop: 'required', case: 'false', value: false, expected: false },
   { prop: 'required', case: 'undefined', value: undefined, expected: false },
 ]
 
-const propSizeTestCases: TPropTestCase<IYNgCheckboxProps, 'size'>[] = [
-  { prop: 'size', case: EYSizes.SMALL, value: EYSizes.SMALL, expected: EYSizes.SMALL },
-  { prop: 'size', case: EYSizes.MEDIUM, value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
-  { prop: 'size', case: 'undefined', value: undefined, expected: EYSizes.SMALL },
+const propSizeTestCases: TPropTestCase<IAltNgCheckboxProps, 'size'>[] = [
+  { prop: 'size', case: EAltSizes.SMALL, value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
+  { prop: 'size', case: EAltSizes.MEDIUM, value: EAltSizes.MEDIUM, expected: EAltSizes.MEDIUM },
+  { prop: 'size', case: 'undefined', value: undefined, expected: EAltSizes.SMALL },
 ]
 
-const propDisabledTestCases: TPropTestCase<IYNgCheckboxProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltNgCheckboxProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'true', value: true, expected: true },
   { prop: 'disabled', case: 'false', value: false, expected: false },
   { prop: 'disabled', case: 'undefined', value: undefined, expected: false },
 ]
 
-const propLabelTextTestCases: TPropTestCase<IYNgCheckboxProps, 'labelText'>[] = [
+const propLabelTextTestCases: TPropTestCase<IAltNgCheckboxProps, 'labelText'>[] = [
   { prop: 'labelText', case: 'text', value: text, expected: text },
   { prop: 'labelText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelText', case: 'undefined', value: undefined, expected: empty },
 ]
 
-const propLabelTooltipTextTestCases: TPropTestCase<IYNgCheckboxProps, 'labelTooltipText'>[] = [
+const propLabelTooltipTextTestCases: TPropTestCase<IAltNgCheckboxProps, 'labelTooltipText'>[] = [
   { prop: 'labelTooltipText', case: 'text', value: text, expected: text },
   { prop: 'labelTooltipText', case: 'empty string', value: empty, expected: empty },
   { prop: 'labelTooltipText', case: 'undefined', value: undefined, expected: empty },
 ]
 
-const propAnnotationTextTestCases: TPropTestCase<IYNgCheckboxProps, 'annotationText'>[] = [
+const propAnnotationTextTestCases: TPropTestCase<IAltNgCheckboxProps, 'annotationText'>[] = [
   { prop: 'annotationText', case: 'text', value: text, expected: text },
   { prop: 'annotationText', case: 'empty string', value: empty, expected: empty },
   { prop: 'annotationText', case: 'undefined', value: undefined, expected: empty },
 ]
 
-const propLabelOverflowDebounceTestCases: TPropTestCase<IYNgCheckboxProps, 'labelOverflowDebounce'>[] = [
+const propLabelOverflowDebounceTestCases: TPropTestCase<IAltNgCheckboxProps, 'labelOverflowDebounce'>[] = [
   { prop: 'labelOverflowDebounce', case: 'text', value: number, expected: number },
   { prop: 'labelOverflowDebounce', case: 'undefined', value: undefined, expected: 300 },
 ]
 
-const propAlignmentTestCases: TPropTestCase<IYNgCheckboxProps, 'alignment'>[] = [
-  { prop: 'alignment', case: EYCoreLabelAlignment.TOP, value: EYCoreLabelAlignment.TOP, expected: EYCoreLabelAlignment.TOP },
-  { prop: 'alignment', case: EYCoreLabelAlignment.CENTER, value: EYCoreLabelAlignment.CENTER, expected: EYCoreLabelAlignment.CENTER },
-  { prop: 'alignment', case: 'undefined', value: undefined, expected: EYCoreLabelAlignment.CENTER },
+const propAlignmentTestCases: TPropTestCase<IAltNgCheckboxProps, 'alignment'>[] = [
+  { prop: 'alignment', case: EAltCoreLabelAlignment.TOP, value: EAltCoreLabelAlignment.TOP, expected: EAltCoreLabelAlignment.TOP },
+  { prop: 'alignment', case: EAltCoreLabelAlignment.CENTER, value: EAltCoreLabelAlignment.CENTER, expected: EAltCoreLabelAlignment.CENTER },
+  { prop: 'alignment', case: 'undefined', value: undefined, expected: EAltCoreLabelAlignment.CENTER },
 ]
 
-const propErrorsTestCases: TPropTestCase<IYNgCheckboxProps, 'errors'>[] = [
+const propErrorsTestCases: TPropTestCase<IAltNgCheckboxProps, 'errors'>[] = [
   { prop: 'errors', case: 'array with errors', value: ['error'], expected: ['error'] },
   { prop: 'errors', case: 'empty array', value: [], expected: [] },
   { prop: 'errors', case: 'undefined', value: undefined, expected: undefined },
@@ -75,11 +75,11 @@ const propErrorsTestCases: TPropTestCase<IYNgCheckboxProps, 'errors'>[] = [
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YCheckbox, FormsModule] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltCheckbox, FormsModule] }).compileComponents()
 
   @Component({
     template: `
-      <YCheckbox
+      <AltCheckbox
         [ngModel]="checked"
         [labelText]="labelText"
         [labelTooltipText]="labelTooltipText"
@@ -92,7 +92,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
         [labelOverflowDebounce]="labelOverflowDebounce"
         [errors]="errors"
       />`,
-    imports: [YCheckbox, FormsModule],
+    imports: [AltCheckbox, FormsModule],
     standalone: true,
   })
   class TestComponent {
@@ -111,7 +111,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YCheckbox',
+  'Angular/AltCheckbox',
   () => {
     describe(
       'Props',

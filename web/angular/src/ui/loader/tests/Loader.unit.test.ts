@@ -3,28 +3,28 @@ import { describe, expect, it } from 'vitest'
 
 import { TestBed } from '~ng/tests/setup'
 
-import type { TYCoreLoaderSize } from '~core/ui/loader/models/types'
-import { EYCoreLoaderVariant } from '~core/ui/loader/models/types'
+import type { TAltCoreLoaderSize } from '~core/ui/loader/models/types'
+import { EAltCoreLoaderVariant } from '~core/ui/loader/models/types'
 
-import { YCoreLoaderTagName } from '~shared/constants'
-import { EYSizes } from '~shared/types/global'
+import { AltCoreLoaderTagName } from '~shared/constants'
+import { EAltSizes } from '~shared/types/global'
 
-import { createNgLoaderProps, type IYNgLoaderProps } from '~ng/ui/loader/models/types'
-import { YLoader } from '~ng/ui/loader'
+import { createNgLoaderProps, type IAltNgLoaderProps } from '~ng/ui/loader/models/types'
+import { AltLoader } from '~ng/ui/loader'
 
 interface ICreateComponentArgs {
-  props: Partial<IYNgLoaderProps>
+  props: Partial<IAltNgLoaderProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YLoader] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltLoader] }).compileComponents()
 
   @Component({
     template: `
-      <YLoader [size]="size" [variant]="variant" />
+      <AltLoader [size]="size" [variant]="variant" />
     `,
-    imports: [YLoader],
+    imports: [AltLoader],
     standalone: true,
   })
 
@@ -41,25 +41,25 @@ const {
   variant: defaultVariant,
 } = createNgLoaderProps()
 
-const tagName = YCoreLoaderTagName
+const tagName = AltCoreLoaderTagName
 
 describe(
-  'Angular/YLoader',
+  'Angular/AltLoader',
   () => {
     describe(
       'Props',
       () => {
         for (const { size, expectedResult } of [
           { size: undefined, expectedResult: defaultSize },
-          { size: EYSizes.SMALL, expectedResult: EYSizes.SMALL },
-          { size: EYSizes.MEDIUM, expectedResult: EYSizes.MEDIUM },
-          { size: EYSizes.LARGE, expectedResult: EYSizes.LARGE },
+          { size: EAltSizes.SMALL, expectedResult: EAltSizes.SMALL },
+          { size: EAltSizes.MEDIUM, expectedResult: EAltSizes.MEDIUM },
+          { size: EAltSizes.LARGE, expectedResult: EAltSizes.LARGE },
         ]) {
           it(
             `Should pass size "${size}" to the web component`,
             async() => {
               // Arrange
-              const component = await createComponent({ props: { size: size as TYCoreLoaderSize } })
+              const component = await createComponent({ props: { size: size as TAltCoreLoaderSize } })
               const fixture = TestBed.createComponent(component)
 
               fixture.detectChanges()
@@ -74,9 +74,9 @@ describe(
 
         for (const { variant, expectedResult } of [
           { variant: undefined, expectedResult: defaultVariant },
-          { variant: EYCoreLoaderVariant.BLACK, expectedResult: EYCoreLoaderVariant.BLACK },
-          { variant: EYCoreLoaderVariant.WHITE, expectedResult: EYCoreLoaderVariant.WHITE },
-          { variant: EYCoreLoaderVariant.YELLOW, expectedResult: EYCoreLoaderVariant.YELLOW },
+          { variant: EAltCoreLoaderVariant.BLACK, expectedResult: EAltCoreLoaderVariant.BLACK },
+          { variant: EAltCoreLoaderVariant.WHITE, expectedResult: EAltCoreLoaderVariant.WHITE },
+          { variant: EAltCoreLoaderVariant.YELLOW, expectedResult: EAltCoreLoaderVariant.YELLOW },
         ]) {
           it(
             `Should pass variant "${variant}" to the web component`,

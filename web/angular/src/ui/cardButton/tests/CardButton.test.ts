@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreCardButtonTagName as tagName } from '~shared/constants'
-import { YCardButton } from '~ng/ui/cardButton'
-import type { IYNgCardButtonProps } from '~ng/ui/cardButton/models/types'
+import { AltCoreCardButtonTagName as tagName } from '~shared/constants'
+import { AltCardButton } from '~ng/ui/cardButton'
+import type { IAltNgCardButtonProps } from '~ng/ui/cardButton/models/types'
 
 import {
   propDisabledCases,
@@ -31,16 +31,16 @@ interface ICreateComponentArgs {
     cardButtonAnnotation?: string
     cardButtonAfter?: string
   }
-  props?: Partial<IYNgCardButtonProps>
+  props?: Partial<IAltNgCardButtonProps>
 }
 
 const createComponent = async({ slots, props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YCardButton] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltCardButton] }).compileComponents()
 
   @Component({
     template: `
-      <YCardButton
+      <AltCardButton
         [annotation]="annotation"
         [disabled]="disabled"
         [hoverable]="hoverable"
@@ -74,9 +74,9 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
             {{ afterSlot }}
           </div>
         }
-      </YCardButton>
+      </AltCardButton>
     `,
-    imports: [YCardButton],
+    imports: [AltCardButton],
     standalone: true,
   })
   class TestComponent {
@@ -102,7 +102,7 @@ const createComponent = async({ slots, props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YCardButton/Unit',
+  'Angular/AltCardButton/Unit',
   () => {
     describe(
       'Slots',

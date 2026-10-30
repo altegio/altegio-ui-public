@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
-import { YCoreCardRadioTagName as tagName } from '~shared/constants'
-import { YCardRadio } from '~ng/ui/cardRadio'
-import type { IYNgCardRadioProps } from '~ng/ui/cardRadio/models/types'
+import { AltCoreCardRadioTagName as tagName } from '~shared/constants'
+import { AltCardRadio } from '~ng/ui/cardRadio'
+import type { IAltNgCardRadioProps } from '~ng/ui/cardRadio/models/types'
 
 import {
   propCheckedCases,
@@ -12,20 +12,20 @@ import {
 } from './cases/props'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgCardRadioProps>
+  props?: Partial<IAltNgCardRadioProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YCardRadio] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltCardRadio] }).compileComponents()
 
   @Component({
-    template: `<YCardRadio
+    template: `<AltCardRadio
       [checked]="checked"
       [disabled]="disabled"
       [size]="size"
-    ></YCardRadio>`,
-    imports: [YCardRadio],
+    ></AltCardRadio>`,
+    imports: [AltCardRadio],
     standalone: true,
   })
   class TestComponent {
@@ -37,7 +37,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
 }
 
 describe(
-  'Angular/YCardRadio/Unit',
+  'Angular/AltCardRadio/Unit',
   () => {
     describe(
       'Props',

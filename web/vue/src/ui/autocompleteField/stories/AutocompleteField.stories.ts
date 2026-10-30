@@ -3,22 +3,22 @@ import { useArgs } from 'storybook/preview-api'
 import { action } from 'storybook/actions'
 import { computed } from 'vue'
 
-import { YAutocompleteField } from '~vue/ui/autocompleteField'
-import { type IYVueAutocompleteFieldProps } from '~vue/ui/autocompleteField/models/types'
-import { YButton } from '~vue/ui/button'
-import yCoreAutocompleteFieldStoryMeta, {
+import { AltAutocompleteField } from '~vue/ui/autocompleteField'
+import { type IAltVueAutocompleteFieldProps } from '~vue/ui/autocompleteField/models/types'
+import { AltButton } from '~vue/ui/button'
+import altCoreAutocompleteFieldStoryMeta, {
   type ICoreAutocompleteFieldStoryProps,
 } from '~core/ui/autocompleteField/stories/AutocompleteField.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import type { TYVueAutocompleteFieldEvents } from '~vue/ui/autocompleteField/models/types'
+import type { TAltVueAutocompleteFieldEvents } from '~vue/ui/autocompleteField/models/types'
 import type { ChangeEvent, SelectOptionEvent } from '~core/ui/autocompleteField/models/types'
 
-type TYVueAutocompleteFieldStoryMeta = IYVueAutocompleteFieldProps & ICoreAutocompleteFieldStoryProps & TYVueAutocompleteFieldEvents
+type TAltVueAutocompleteFieldStoryMeta = IAltVueAutocompleteFieldProps & ICoreAutocompleteFieldStoryProps & TAltVueAutocompleteFieldEvents
 
 /**
  * Vue wrapper for Core AutocompleteField
  */
-const meta: Meta<TYVueAutocompleteFieldStoryMeta> = {
+const meta: Meta<TAltVueAutocompleteFieldStoryMeta> = {
   title: 'Inputs/🔍 AutocompleteField',
   id: 'AutocompleteField',
   parameters: { controls: { sort: 'alpha' } },
@@ -26,16 +26,16 @@ const meta: Meta<TYVueAutocompleteFieldStoryMeta> = {
     'vue',
     'autodocs',
   ],
-  render: (args: TYVueAutocompleteFieldStoryMeta) => {
+  render: (args: TAltVueAutocompleteFieldStoryMeta) => {
     const [, updateArgs] = useArgs()
 
     return {
-      components: { YAutocompleteField, YButton },
+      components: { AltAutocompleteField, AltButton },
       setup() {
         const computedLabelText = computed(() => args.labelIsLongText ? LOREM_IPSUM : String(args.labelText))
         const computedErrors = computed(() => args.errors ?? args.showErrors)
 
-        const cleanedArgs = computed<TYVueAutocompleteFieldStoryMeta>(() => ({
+        const cleanedArgs = computed<TAltVueAutocompleteFieldStoryMeta>(() => ({
           ...args,
           onSelectOption: onSelectOption,
           onChange: onChange,
@@ -62,7 +62,7 @@ const meta: Meta<TYVueAutocompleteFieldStoryMeta> = {
       },
       template: `
         <div style="padding: 50px 50px 300px; margin: 20px; border: 1px dashed black; border-radius: 8px">
-          <YAutocompleteField
+          <AltAutocompleteField
             v-bind="cleanedArgs"
           > 
             <template #custom-option="{opt}">
@@ -77,23 +77,23 @@ const meta: Meta<TYVueAutocompleteFieldStoryMeta> = {
               v-if="cleanedArgs.emptyStateIsActionsSlotExists"
               #empty-state-actions
             >
-              <YButton
+              <AltButton
                 label="Primary action"
                 variant="primary"
-              ></YButton>
+              ></AltButton>
     
-              <YButton
+              <AltButton
                 label="Secondary action"
                 variant="outline"
-              ></YButton>
+              ></AltButton>
             </template>
-          </YAutocompleteField>
+          </AltAutocompleteField>
         </div>
       `,
     }
   },
-  argTypes: { ...yCoreAutocompleteFieldStoryMeta.argTypes },
-  args: { ...yCoreAutocompleteFieldStoryMeta.args },
+  argTypes: { ...altCoreAutocompleteFieldStoryMeta.argTypes },
+  args: { ...altCoreAutocompleteFieldStoryMeta.args },
 }
 
 export default meta

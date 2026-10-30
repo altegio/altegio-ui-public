@@ -18,13 +18,13 @@ import '~core/ui/countField'
 import {
   DEFAULT_NUMBER_VALUE,
   DEFAULT_STRING_VALUE,
-  type IYCoreCountFieldProps,
+  type IAltCoreCountFieldProps,
 } from '~core/ui/countField/models/types'
 import type { ChangedValueEvent } from '~core/ui/countField/models/types'
 import {
   createNgCountFieldProps,
-  type IYNgCountFieldProps,
-  type TYNgCountFieldModel,
+  type IAltNgCountFieldProps,
+  type TAltNgCountFieldModel,
 } from '~ng/ui/countField/models/types'
 
 import { DefaultValue } from '~ng/utils/default-value.decorator'
@@ -51,12 +51,12 @@ const {
 } = createNgCountFieldProps()
 
 @Component({
-  selector: 'YCountField',
+  selector: 'AltCountField',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [FormsModule],
   template: `
-    <y-core-count-field
+    <alt-core-count-field
       [min]="min"
       [max]="max"
       [disabled]="disabled"
@@ -77,36 +77,36 @@ const {
       (keydown)="handleKeydownEvent($event)"
       (changed-value)="handleChangedValueEvent($event)"
     >
-    </y-core-count-field>
+    </alt-core-count-field>
   `,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => YCountField),
+      useExisting: forwardRef(() => AltCountField),
       multi: true,
     },
   ],
 })
 
-export class YCountField extends ControlValueAccessorBase<TYNgCountFieldModel> implements IYNgCountFieldProps {
-  @Input() @DefaultValue(min) min: IYNgCountFieldProps['min'] = min
-  @Input() @DefaultValue(max) max: IYNgCountFieldProps['max'] = max
-  @Input() @DefaultValue(disabled) disabled: IYNgCountFieldProps['disabled'] = disabled
-  @Input() @DefaultValue(readonly) readonly: IYNgCountFieldProps['readonly'] = readonly
-  @Input() @DefaultValue(error) error: IYNgCountFieldProps['error'] = error
-  @Input() @DefaultValue(size) size: IYNgCountFieldProps['size'] = size
-  @Input() @DefaultValue(placeholder) placeholder: IYNgCountFieldProps['placeholder'] = placeholder
-  @Input() @DefaultValue(required) required: IYNgCountFieldProps['required'] = required
-  @Input() @DefaultValue(autofocus) autofocus: IYNgCountFieldProps['autofocus'] = autofocus
-  @Input() @DefaultValue(labelText) labelText: IYNgCountFieldProps['labelText'] = labelText
-  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IYNgCountFieldProps['labelTooltipText'] = labelTooltipText
-  @Input() @DefaultValue(labelDebounce) labelDebounce: IYNgCountFieldProps['labelDebounce'] = labelDebounce
-  @Input() @DefaultValue(annotationText) annotationText: IYNgCountFieldProps['annotationText'] = annotationText
-  @Input() @DefaultValue(errors) errors: IYNgCountFieldProps['errors'] = errors
-  @Input() @DefaultValue(name) name: IYNgCountFieldProps['name'] = name
+export class AltCountField extends ControlValueAccessorBase<TAltNgCountFieldModel> implements IAltNgCountFieldProps {
+  @Input() @DefaultValue(min) min: IAltNgCountFieldProps['min'] = min
+  @Input() @DefaultValue(max) max: IAltNgCountFieldProps['max'] = max
+  @Input() @DefaultValue(disabled) disabled: IAltNgCountFieldProps['disabled'] = disabled
+  @Input() @DefaultValue(readonly) readonly: IAltNgCountFieldProps['readonly'] = readonly
+  @Input() @DefaultValue(error) error: IAltNgCountFieldProps['error'] = error
+  @Input() @DefaultValue(size) size: IAltNgCountFieldProps['size'] = size
+  @Input() @DefaultValue(placeholder) placeholder: IAltNgCountFieldProps['placeholder'] = placeholder
+  @Input() @DefaultValue(required) required: IAltNgCountFieldProps['required'] = required
+  @Input() @DefaultValue(autofocus) autofocus: IAltNgCountFieldProps['autofocus'] = autofocus
+  @Input() @DefaultValue(labelText) labelText: IAltNgCountFieldProps['labelText'] = labelText
+  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IAltNgCountFieldProps['labelTooltipText'] = labelTooltipText
+  @Input() @DefaultValue(labelDebounce) labelDebounce: IAltNgCountFieldProps['labelDebounce'] = labelDebounce
+  @Input() @DefaultValue(annotationText) annotationText: IAltNgCountFieldProps['annotationText'] = annotationText
+  @Input() @DefaultValue(errors) errors: IAltNgCountFieldProps['errors'] = errors
+  @Input() @DefaultValue(name) name: IAltNgCountFieldProps['name'] = name
 
-  modelValue = signal<TYNgCountFieldModel>(DEFAULT_NUMBER_VALUE)
-  stringModelValue = computed<IYCoreCountFieldProps['value']>(() => {
+  modelValue = signal<TAltNgCountFieldModel>(DEFAULT_NUMBER_VALUE)
+  stringModelValue = computed<IAltCoreCountFieldProps['value']>(() => {
     const value = this.modelValue()
     if (!value && value !== 0) return DEFAULT_STRING_VALUE
     return String(value)

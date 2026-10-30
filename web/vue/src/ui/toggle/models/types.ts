@@ -1,23 +1,23 @@
 import type { TDefinedVueProps } from '~vue/utils/utility-types'
-import { createCoreToggleExternalProps, type IYCoreToggleExternalProps } from '~core/ui/toggle/models/types'
+import { createCoreToggleExternalProps, type IAltCoreToggleExternalProps } from '~core/ui/toggle/models/types'
 import type { ToggleCheckedEvent } from '~core/ui/toggle/models/types'
 
-export interface IYVueCoreToggleProps extends Omit<IYCoreToggleExternalProps, 'checked'> {
-  modelValue: IYCoreToggleExternalProps['checked']
+export interface IAltVueCoreToggleProps extends Omit<IAltCoreToggleExternalProps, 'checked'> {
+  modelValue: IAltCoreToggleExternalProps['checked']
 }
 
-export interface IYVueToggleProps {
-  modelValue: IYVueCoreToggleProps['modelValue']
-  disabled?: IYVueCoreToggleProps['disabled']
-  labelText?: IYVueCoreToggleProps['labelText']
-  labelTooltipText?: IYVueCoreToggleProps['labelTooltipText']
-  annotationText?: IYVueCoreToggleProps['annotationText']
-  labelOverflowDebounce?: IYVueCoreToggleProps['labelOverflowDebounce']
-  alignment?: IYVueCoreToggleProps['alignment']
-  size?: IYVueCoreToggleProps['size']
+export interface IAltVueToggleProps {
+  modelValue: IAltVueCoreToggleProps['modelValue']
+  disabled?: IAltVueCoreToggleProps['disabled']
+  labelText?: IAltVueCoreToggleProps['labelText']
+  labelTooltipText?: IAltVueCoreToggleProps['labelTooltipText']
+  annotationText?: IAltVueCoreToggleProps['annotationText']
+  labelOverflowDebounce?: IAltVueCoreToggleProps['labelOverflowDebounce']
+  alignment?: IAltVueCoreToggleProps['alignment']
+  size?: IAltVueCoreToggleProps['size']
 }
 
-export const createVueToggleProps = (): TDefinedVueProps<IYVueToggleProps> => {
+export const createVueToggleProps = (): TDefinedVueProps<IAltVueToggleProps> => {
   const { disabled, labelText, labelTooltipText, annotationText, labelOverflowDebounce, alignment, size } = createCoreToggleExternalProps()
 
   return {
@@ -31,6 +31,6 @@ export const createVueToggleProps = (): TDefinedVueProps<IYVueToggleProps> => {
   }
 }
 
-export interface IYVueToggleEmits {
+export interface IAltVueToggleEmits {
   (event: 'update:modelValue', payload: ToggleCheckedEvent['detail']['checked']): void
 }

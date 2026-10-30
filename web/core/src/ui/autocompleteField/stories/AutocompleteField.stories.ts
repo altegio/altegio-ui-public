@@ -11,29 +11,29 @@ import '~core/ui/button'
 
 import { addPrefixToObjectKeys } from '~shared/utils'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import yCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
-import yCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
-import yCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
-import yCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
-import yCoreErrorStoryMeta, { type IYCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
-import yCoreEmptyStateStoryMeta from '~core/ui/emptyState/stories/EmptyState.stories'
+import altCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
+import altCoreFieldInputStoryMeta from '~core/ui/fieldInput/stories/FieldInput.stories'
+import altCoreLabelStoryMeta from '~core/ui/label/stories/Label.stories'
+import altCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
+import altCoreErrorStoryMeta, { type IAltCoreErrorStoryProps } from '~core/ui/error/stories/Error.stories'
+import altCoreEmptyStateStoryMeta from '~core/ui/emptyState/stories/EmptyState.stories'
 
-import type { TYCoreAutocompleteFieldInfo } from '../models/types'
+import type { TAltCoreAutocompleteFieldInfo } from '../models/types'
 import {
   type SelectOptionEvent,
-  type TYCoreAutocompleteFieldAutocompleteOption,
-  type TYCoreAutocompleteFieldEvents,
-  type IYCoreAutocompleteFieldExternalProps,
+  type TAltCoreAutocompleteFieldAutocompleteOption,
+  type TAltCoreAutocompleteFieldEvents,
+  type IAltCoreAutocompleteFieldExternalProps,
   type ChangeEvent, createCoreAutocompleteFieldExternalProps,
 } from '../models/types'
 
-import { YCoreAutocompleteFieldTagName as tagName } from '~shared/constants'
+import { AltCoreAutocompleteFieldTagName as tagName } from '~shared/constants'
 import {
   getComponentEmitsTable,
   getComponentStateTable,
   storyControlsTable,
 } from '~shared/.storybook/tables'
-import { ySearch } from '~web/shared/icons'
+import { altSearch } from '~web/shared/icons'
 
 const autocompleteOptions = [
   { id: 1, value: 'Client directory' },
@@ -48,15 +48,15 @@ const autocompleteOptions = [
 ]
 
 export interface ICoreAutocompleteFieldStoryProps extends
-  IYCoreErrorStoryProps {
+  IAltCoreErrorStoryProps {
   labelIsLongText: boolean
   annotationIsLongText: boolean
-  dropdownItems: TYCoreAutocompleteFieldAutocompleteOption[]
+  dropdownItems: TAltCoreAutocompleteFieldAutocompleteOption[]
   emptyStateIsActionsSlotExists: boolean
   showIconSlot: boolean
 }
 
-export type TYCoreAutocompleteFieldStoryMeta = IYCoreAutocompleteFieldExternalProps & ICoreAutocompleteFieldStoryProps & TYCoreAutocompleteFieldEvents
+export type TAltCoreAutocompleteFieldStoryMeta = IAltCoreAutocompleteFieldExternalProps & ICoreAutocompleteFieldStoryProps & TAltCoreAutocompleteFieldEvents
 
 const {
   minSearchLength,
@@ -71,7 +71,7 @@ const {
  * Select a suggestion or enter a custom value.
  */
 
-const meta: Meta<TYCoreAutocompleteFieldStoryMeta> = {
+const meta: Meta<TAltCoreAutocompleteFieldStoryMeta> = {
   title: 'Inputs/🔍 AutocompleteField',
   id: 'AutocompleteField',
   parameters: { controls: { sort: 'alpha' } },
@@ -112,7 +112,7 @@ const meta: Meta<TYCoreAutocompleteFieldStoryMeta> = {
     const [
       args,
       updateArgs,
-    ] = useArgs<TYCoreAutocompleteFieldStoryMeta>()
+    ] = useArgs<TAltCoreAutocompleteFieldStoryMeta>()
 
     const onStoryChange = (event: ChangeEvent) => {
       updateArgs({ ...args, value: String(event.detail.value) })
@@ -122,22 +122,22 @@ const meta: Meta<TYCoreAutocompleteFieldStoryMeta> = {
     const renderEmptyStateActionsSlot = () => {
       return html`
         <div slot="actions">
-          <y-core-button
+          <alt-core-button
             label="Primary button"
             variant="primary"
-          ></y-core-button>
+          ></alt-core-button>
 
-          <y-core-button
+          <alt-core-button
             label="Secondary button"
             variant="outline"
-          ></y-core-button>
+          ></alt-core-button>
         </div>
       `
     }
 
     return html`
       <div style="padding: 50px 50px 300px; margin: 20px; border: 1px dashed black; border-radius: 8px;">
-        <y-core-autocomplete-field
+        <alt-core-autocomplete-field
           .value=${value}
           .labelText=${labelIsLongText ? LOREM_IPSUM : labelText}
           .labelTooltipText=${labelTooltipText}
@@ -182,22 +182,22 @@ const meta: Meta<TYCoreAutocompleteFieldStoryMeta> = {
 
           ${showIconSlot
             ? html`
-              <y-core-field-icon slot="icon" .icon=${ySearch}></y-core-field-icon>`
+              <alt-core-field-icon slot="icon" .icon=${altSearch}></alt-core-field-icon>`
             : nothing
           }
-        </y-core-autocomplete-field>
+        </alt-core-autocomplete-field>
       </div>
     `
   },
   argTypes: {
     // Extended Props
-    ...omit(yCoreFieldWrapperStoryMeta.argTypes ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon', 'onClick', 'onClickOutside', 'onMouseEnter', 'onMouseLeave']),
-    ...omit(yCoreFieldInputStoryMeta.argTypes ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'maxlength', 'type', 'onRender', 'onInput', 'onKeydown']),
-    ...addPrefixToObjectKeys(omit(yCoreLabelStoryMeta.argTypes ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
-    ...addPrefixToObjectKeys(omit(yCoreAnnotationStoryMeta.argTypes ?? {}, ['disabled', 'isLongText']), 'annotation'),
-    ...addPrefixToObjectKeys(omit(yCoreEmptyStateStoryMeta.argTypes ?? {}, ['size']), 'emptyState'),
-    ...omit(yCoreErrorStoryMeta.argTypes ?? {}, ['isLongText']),
-    isLongText: yCoreLabelStoryMeta.argTypes?.isLongText,
+    ...omit(altCoreFieldWrapperStoryMeta.argTypes ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon', 'onClick', 'onClickOutside', 'onMouseEnter', 'onMouseLeave']),
+    ...omit(altCoreFieldInputStoryMeta.argTypes ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'maxlength', 'type', 'onRender', 'onInput', 'onKeydown']),
+    ...addPrefixToObjectKeys(omit(altCoreLabelStoryMeta.argTypes ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
+    ...addPrefixToObjectKeys(omit(altCoreAnnotationStoryMeta.argTypes ?? {}, ['disabled', 'isLongText']), 'annotation'),
+    ...addPrefixToObjectKeys(omit(altCoreEmptyStateStoryMeta.argTypes ?? {}, ['size']), 'emptyState'),
+    ...omit(altCoreErrorStoryMeta.argTypes ?? {}, ['isLongText']),
+    isLongText: altCoreLabelStoryMeta.argTypes?.isLongText,
 
 
     showIconSlot: {
@@ -243,19 +243,19 @@ const meta: Meta<TYCoreAutocompleteFieldStoryMeta> = {
     },
   },
   args: {
-    ...omit(yCoreFieldWrapperStoryMeta.args ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon', 'onClick', 'onClickOutside', 'onMouseEnter', 'onMouseLeave']),
-    ...omit(yCoreFieldInputStoryMeta.args ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'maxlength', 'type', 'onRender', 'onInput', 'onKeydown']),
-    ...addPrefixToObjectKeys(omit(yCoreLabelStoryMeta.args ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
-    ...addPrefixToObjectKeys(omit(yCoreAnnotationStoryMeta.args ?? {}, ['disabled', 'isLongText']), 'annotation'),
-    ...addPrefixToObjectKeys(omit(yCoreEmptyStateStoryMeta.args ?? {}, ['size']), 'emptyState'),
-    ...omit(yCoreErrorStoryMeta.args ?? {}, ['isLongText']),
-    isLongText: yCoreLabelStoryMeta.args?.isLongText,
+    ...omit(altCoreFieldWrapperStoryMeta.args ?? {}, ['clickable', 'showFieldAvatar', 'showFieldInput', 'showFieldIcon', 'onClick', 'onClickOutside', 'onMouseEnter', 'onMouseLeave']),
+    ...omit(altCoreFieldInputStoryMeta.args ?? {}, ['hideSpaceLeft', 'hideSpaceRight', 'disabled', 'size', 'readonly', 'maxlength', 'type', 'onRender', 'onInput', 'onKeydown']),
+    ...addPrefixToObjectKeys(omit(altCoreLabelStoryMeta.args ?? {}, ['alignment', 'disabled', 'required', 'wrap', 'size', 'variant', 'tooltipActive', 'isLongText', 'tooltipPlacement']), 'label'),
+    ...addPrefixToObjectKeys(omit(altCoreAnnotationStoryMeta.args ?? {}, ['disabled', 'isLongText']), 'annotation'),
+    ...addPrefixToObjectKeys(omit(altCoreEmptyStateStoryMeta.args ?? {}, ['size']), 'emptyState'),
+    ...omit(altCoreErrorStoryMeta.args ?? {}, ['isLongText']),
+    isLongText: altCoreLabelStoryMeta.args?.isLongText,
 
     dropdownItems: autocompleteOptions,
 
     onChange: fn(),
 
-    searchFunction: (query: TYCoreAutocompleteFieldInfo) => {
+    searchFunction: (query: TAltCoreAutocompleteFieldInfo) => {
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve(autocompleteOptions.filter((item) => {
@@ -276,10 +276,10 @@ const meta: Meta<TYCoreAutocompleteFieldStoryMeta> = {
     value: '',
     showIconSlot: false,
   },
-} satisfies Meta<TYCoreAutocompleteFieldStoryMeta>
+} satisfies Meta<TAltCoreAutocompleteFieldStoryMeta>
 
 export default meta
-type Story = StoryObj<TYCoreAutocompleteFieldStoryMeta>
+type Story = StoryObj<TAltCoreAutocompleteFieldStoryMeta>
 
 export const Default: Story = {
   args: {},

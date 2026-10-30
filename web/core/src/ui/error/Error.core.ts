@@ -1,15 +1,15 @@
 import { LitElement, html, css, unsafeCSS, nothing } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 
-import { YCoreErrorTagName as tagName } from '~shared/constants'
+import { AltCoreErrorTagName as tagName } from '~shared/constants'
 import {
   createCoreErrorExternalProps,
-  type IYCoreErrorExternalProps,
+  type IAltCoreErrorExternalProps,
 } from '~core/ui/error/models/types/external'
-import YCoreErrorVarsCSS from '~core/ui/error/css/Error.vars.css?inline'
-import YCoreErrorScopedCSS from '~core/ui/error/css/Error.scoped.css?inline'
+import AltCoreErrorVarsCSS from '~core/ui/error/css/Error.vars.css?inline'
+import AltCoreErrorScopedCSS from '~core/ui/error/css/Error.scoped.css?inline'
 
-import { EYCoreTextVariant, EYCoreTextSize } from '~core/ui/text/models/types/external'
+import { EAltCoreTextVariant, EAltCoreTextSize } from '~core/ui/text/models/types/external'
 import '~core/ui/text'
 import { withLocator } from '~core/utils/locator'
 
@@ -17,16 +17,16 @@ const { errors, locator } = createCoreErrorExternalProps()
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreError extends LitElement implements IYCoreErrorExternalProps {
-  @property({ type: Array }) errors: IYCoreErrorExternalProps['errors'] = errors
-  @property({ type: String }) locator: IYCoreErrorExternalProps['locator'] = locator
+export class AltCoreError extends LitElement implements IAltCoreErrorExternalProps {
+  @property({ type: Array }) errors: IAltCoreErrorExternalProps['errors'] = errors
+  @property({ type: String }) locator: IAltCoreErrorExternalProps['locator'] = locator
 
   private readonly baseClass = tagName
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreErrorVarsCSS)}
-      ${unsafeCSS(YCoreErrorScopedCSS)}
+      ${unsafeCSS(AltCoreErrorVarsCSS)}
+      ${unsafeCSS(AltCoreErrorScopedCSS)}
     `,
   ]
 
@@ -48,12 +48,12 @@ export class YCoreError extends LitElement implements IYCoreErrorExternalProps {
 
   protected render() {
     return html`
-      <y-core-text
-        size=${EYCoreTextSize.A2_REGULAR}
-        variant=${EYCoreTextVariant.NEGATIVE}
+      <alt-core-text
+        size=${EAltCoreTextSize.A2_REGULAR}
+        variant=${EAltCoreTextVariant.NEGATIVE}
       >
         ${this.renderErrors()}
-      </y-core-text>
+      </alt-core-text>
     `
   }
 }

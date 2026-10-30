@@ -7,35 +7,35 @@ import '~core/ui/modal'
 import '~core/ui/button'
 
 import {
-  type IYCoreModalProps,
+  type IAltCoreModalProps,
   createCoreModalProps,
   createCoreModalExternalProps,
-  EYCoreModalVariant,
+  EAltCoreModalVariant,
 } from '~core/ui/modal/models/types'
-import type { TYCoreModalEvents } from '~core/ui/modal/models/types/events'
+import type { TAltCoreModalEvents } from '~core/ui/modal/models/types/events'
 
-import { YCoreModalTagName as tagName } from '~shared/constants'
+import { AltCoreModalTagName as tagName } from '~shared/constants'
 import { getComponentEmitsTable, getComponentStateTable, storyControlsTable } from '~shared/.storybook/tables'
 import { size as sizeArgType } from '~shared/.storybook/argTypes'
 
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 
 const { open, size, width, variant, hideOverlay, preventEscape, fullScreen } = createCoreModalProps()
 
-export interface IYCoreModalStorySlots {
+export interface IAltCoreModalStorySlots {
   showContentSlot: boolean
   showActivatorSlot: boolean
 }
 
-type TYCoreModalStoryMeta = Meta<
-  IYCoreModalProps & TYCoreModalEvents & IYCoreModalStorySlots
+type TAltCoreModalStoryMeta = Meta<
+  IAltCoreModalProps & TAltCoreModalEvents & IAltCoreModalStorySlots
 >
 
 /**
  * ## Core Modal
  *
  */
-const meta: TYCoreModalStoryMeta = {
+const meta: TAltCoreModalStoryMeta = {
   title: '⚙️ Modal',
   id: 'modal',
   parameters: { controls: { sort: 'alpha' } },
@@ -55,7 +55,7 @@ const meta: TYCoreModalStoryMeta = {
     onClickActivator,
     onPressEscape,
   }) => {
-    const [args, updateArgs] = useArgs<IYCoreModalProps>()
+    const [args, updateArgs] = useArgs<IAltCoreModalProps>()
 
     const { open } = args
     const changeStoryOpenProp = (value: boolean) => {
@@ -74,7 +74,7 @@ const meta: TYCoreModalStoryMeta = {
 
     return html`
       <div style="min-height: 450px;">
-        <y-core-modal
+        <alt-core-modal
           .open=${open}
           .size=${size}
           .variant=${variant}
@@ -103,13 +103,13 @@ const meta: TYCoreModalStoryMeta = {
             : nothing}
 
           ${showActivatorSlot
-            ? html` <y-core-button
+            ? html` <alt-core-button
                 label="Open modal"
                 slot="activator"
               >
-              </y-core-button>`
+              </alt-core-button>`
             : nothing}
-        </y-core-modal>
+        </alt-core-modal>
       </div>
     `
   },
@@ -120,13 +120,13 @@ const meta: TYCoreModalStoryMeta = {
       ...getComponentStateTable(open),
     },
     size: {
-      ...sizeArgType([EYSizes.SMALL, EYSizes.LARGE]),
+      ...sizeArgType([EAltSizes.SMALL, EAltSizes.LARGE]),
       ...getComponentStateTable(size),
     },
     variant: {
       control: { type: 'select' },
       description: 'Modal style',
-      options: Object.values(EYCoreModalVariant),
+      options: Object.values(EAltCoreModalVariant),
       ...getComponentStateTable(variant),
     },
     width: {
@@ -201,9 +201,9 @@ const meta: TYCoreModalStoryMeta = {
     showContentSlot: true,
     showActivatorSlot: true,
   },
-} satisfies TYCoreModalStoryMeta
+} satisfies TAltCoreModalStoryMeta
 
 export default meta
-type Story = StoryObj<TYCoreModalStoryMeta>
+type Story = StoryObj<TAltCoreModalStoryMeta>
 
 export const Playground: Story = { args: {} }

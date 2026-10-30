@@ -1,1 +1,1 @@
-export { YCoreAvatar } from './Avatar.core'
+export { AltCoreAvatar } from './Avatar.core'

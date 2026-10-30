@@ -1,31 +1,31 @@
 import { describe, expect, it, vi } from 'vitest'
-import { YCoreTabsTagName as tagName } from '~shared/constants'
+import { AltCoreTabsTagName as tagName } from '~shared/constants'
 import { TestBed } from '~ng/tests/setup.ts'
-import { YTabs } from '~ng/ui/tabs'
+import { AltTabs } from '~ng/ui/tabs'
 import { Component } from '@angular/core'
 import {
   propsTabsTestCases,
 } from '~ng/ui/tabs/tests/cases/props.ts'
-import type { IYNgTabsProps } from '~ng/ui/tabs'
+import type { IAltNgTabsProps } from '~ng/ui/tabs'
 import { eventUpdateValue } from '~ng/ui/tabs/tests/cases/events.ts'
 
 interface ICreateComponentArgs {
-  props?: Partial<IYNgTabsProps>
+  props?: Partial<IAltNgTabsProps>
 }
 
 const createComponent = async({ props }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YTabs] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltTabs] }).compileComponents()
 
   @Component({
     template: `
-      <YTabs
+      <AltTabs
         [tabs]="tabs"
         (valueChange)="changeActiveTabHandler($event)"
       >
-      </YTabs>
+      </AltTabs>
     `,
-    imports: [YTabs],
+    imports: [AltTabs],
     standalone: true,
   })
   class TestComponent {
@@ -86,7 +86,7 @@ const baseEventsCheck = () => {
 }
 
 describe(
-  'Angular/YTabs/Unit',
+  'Angular/AltTabs/Unit',
   () => {
     describe(
       'Props',

@@ -2,12 +2,12 @@ import { describe, expect, it } from 'vitest'
 import { Component } from '@angular/core'
 import { TestBed } from '~ng/tests/setup'
 import { empty, text } from '~shared/tests/slotContents'
-import { YCoreToggleTagName } from '~shared/constants'
+import { AltCoreToggleTagName } from '~shared/constants'
 import type { TPropTestCase } from '~shared/types/tests'
-import type { IYNgToggleProps } from '~ng/ui/toggle/models/types'
-import { EYCoreLabelAlignment } from '~core/ui/label/models/types'
-import { EYSizes } from '~shared/types/global'
-import { YToggle } from '~ng/ui/toggle'
+import type { IAltNgToggleProps } from '~ng/ui/toggle/models/types'
+import { EAltCoreLabelAlignment } from '~core/ui/label/models/types'
+import { EAltSizes } from '~shared/types/global'
+import { AltToggle } from '~ng/ui/toggle'
 import { DEFAULT_CHECKED_VALUE } from '~core/ui/simpleToggle/models/types'
 
 import {
@@ -18,18 +18,18 @@ interface ICreateComponentArgs {
   slots?: {
     annotation?: string
   }
-  props?: Partial<IYNgToggleProps>
+  props?: Partial<IAltNgToggleProps>
 }
 
-const tagName = YCoreToggleTagName
+const tagName = AltCoreToggleTagName
 
 const createComponent = async({ props, slots }: ICreateComponentArgs) => {
   TestBed.resetTestingModule()
-  await TestBed.configureTestingModule({ imports: [YToggle] }).compileComponents()
+  await TestBed.configureTestingModule({ imports: [AltToggle] }).compileComponents()
 
   @Component({
     template: `
-      <YToggle
+      <AltToggle
         [ngModel]="ngModel"
         [labelText]="labelText"
         [labelTooltipText]="labelTooltipText"
@@ -42,9 +42,9 @@ const createComponent = async({ props, slots }: ICreateComponentArgs) => {
         @if (slots?.annotation) {
           <ng-template #annotation><div>{{ slots.annotation }}</div></ng-template>
         }
-      </YToggle>
+      </AltToggle>
     `,
-    imports: [YToggle],
+    imports: [AltToggle],
     standalone: true,
   })
 
@@ -63,37 +63,37 @@ const createComponent = async({ props, slots }: ICreateComponentArgs) => {
 }
 
 // Unit test cases:
-const propDisabledTestCases: TPropTestCase<IYNgToggleProps, 'disabled'>[] = [
+const propDisabledTestCases: TPropTestCase<IAltNgToggleProps, 'disabled'>[] = [
   { prop: 'disabled', case: 'enabled', value: true, expected: true },
   { prop: 'disabled', case: 'disabled', value: false, expected: false },
 ]
-const propLabelTextTestCases: TPropTestCase<IYNgToggleProps, 'labelText'>[] = [
+const propLabelTextTestCases: TPropTestCase<IAltNgToggleProps, 'labelText'>[] = [
   { prop: 'labelText', case: 'with content', value: text, expected: text },
   { prop: 'labelText', case: 'without content', value: empty, expected: empty },
 ]
-const propLabelTooltipTextTestCases: TPropTestCase<IYNgToggleProps, 'labelTooltipText'>[] = [
+const propLabelTooltipTextTestCases: TPropTestCase<IAltNgToggleProps, 'labelTooltipText'>[] = [
   { prop: 'labelTooltipText', case: 'with content', value: text, expected: text },
   { prop: 'labelTooltipText', case: 'without content', value: empty, expected: empty },
 ]
-const propAnnotationTextTestCases: TPropTestCase<IYNgToggleProps, 'annotationText'>[] = [
+const propAnnotationTextTestCases: TPropTestCase<IAltNgToggleProps, 'annotationText'>[] = [
   { prop: 'annotationText', case: 'with content', value: text, expected: text },
   { prop: 'annotationText', case: 'without content', value: empty, expected: empty },
 ]
-const propLabelOverflowDebounceCases: TPropTestCase<IYNgToggleProps, 'labelOverflowDebounce'>[] = [
+const propLabelOverflowDebounceCases: TPropTestCase<IAltNgToggleProps, 'labelOverflowDebounce'>[] = [
   { prop: 'labelOverflowDebounce', case: 'with a delay', value: 200, expected: 200 },
   { prop: 'labelOverflowDebounce', case: 'with a delay', value: undefined, expected: 300 },
 ]
-const propAlignmentCases: TPropTestCase<IYNgToggleProps, 'alignment'>[] = [
-  { prop: 'alignment', case: 'center alignment', value: EYCoreLabelAlignment.CENTER, expected: EYCoreLabelAlignment.CENTER },
-  { prop: 'alignment', case: 'top alignment', value: EYCoreLabelAlignment.TOP, expected: EYCoreLabelAlignment.TOP },
+const propAlignmentCases: TPropTestCase<IAltNgToggleProps, 'alignment'>[] = [
+  { prop: 'alignment', case: 'center alignment', value: EAltCoreLabelAlignment.CENTER, expected: EAltCoreLabelAlignment.CENTER },
+  { prop: 'alignment', case: 'top alignment', value: EAltCoreLabelAlignment.TOP, expected: EAltCoreLabelAlignment.TOP },
 ]
-const propSizeCases: TPropTestCase<IYNgToggleProps, 'size'>[] = [
-  { prop: 'size', case: 'size M', value: EYSizes.MEDIUM, expected: EYSizes.MEDIUM },
-  { prop: 'size', case: 'size S', value: EYSizes.SMALL, expected: EYSizes.SMALL },
+const propSizeCases: TPropTestCase<IAltNgToggleProps, 'size'>[] = [
+  { prop: 'size', case: 'size M', value: EAltSizes.MEDIUM, expected: EAltSizes.MEDIUM },
+  { prop: 'size', case: 'size S', value: EAltSizes.SMALL, expected: EAltSizes.SMALL },
 ]
 
 describe(
-  'Angular/YToggle',
+  'Angular/AltToggle',
   () => {
     describe(
       'Unit',

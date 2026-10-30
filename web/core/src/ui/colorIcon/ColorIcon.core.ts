@@ -4,45 +4,45 @@ import { classMap } from 'lit/directives/class-map.js'
 
 import {
   createCoreColorIconProps,
-  EYCoreColorIconSize,
-  type IYCoreColorIconProps,
+  EAltCoreColorIconSize,
+  type IAltCoreColorIconProps,
 } from '~core/ui/colorIcon/models/types'
 import {
-  YCoreColorIconTagName as tagName,
+  AltCoreColorIconTagName as tagName,
 } from '~shared/constants'
 
-import YCoreColorIconVarsCSS from '~core/ui/colorIcon/css/ColorIcon.vars.css?inline'
-import YCoreColorIconScopedCSS from '~core/ui/colorIcon/css/ColorIcon.scoped.css?inline'
+import AltCoreColorIconVarsCSS from '~core/ui/colorIcon/css/ColorIcon.vars.css?inline'
+import AltCoreColorIconScopedCSS from '~core/ui/colorIcon/css/ColorIcon.scoped.css?inline'
 import { renderIcon } from '~core/renderers'
 import { SIZES } from '~tokens/index'
 import { withLocator } from '~core/utils/locator'
 
 const { size, variant, disabled } = createCoreColorIconProps()
 
-const mapSizeToIconSize: Record<NonNullable<IYCoreColorIconProps['size']>, string> = {
-  [EYCoreColorIconSize.X_24]: String(SIZES.spacing_3_x.cssValue),
-  [EYCoreColorIconSize.X_32]: String(SIZES.spacing_4_x.cssValue),
-  [EYCoreColorIconSize.X_40]: String(SIZES.spacing_5_x.cssValue),
-  [EYCoreColorIconSize.X_48]: String(SIZES.spacing_6_x.cssValue),
-  [EYCoreColorIconSize.X_64]: String(SIZES.spacing_10_x.cssValue),
+const mapSizeToIconSize: Record<NonNullable<IAltCoreColorIconProps['size']>, string> = {
+  [EAltCoreColorIconSize.X_24]: String(SIZES.spacing_3_x.cssValue),
+  [EAltCoreColorIconSize.X_32]: String(SIZES.spacing_4_x.cssValue),
+  [EAltCoreColorIconSize.X_40]: String(SIZES.spacing_5_x.cssValue),
+  [EAltCoreColorIconSize.X_48]: String(SIZES.spacing_6_x.cssValue),
+  [EAltCoreColorIconSize.X_64]: String(SIZES.spacing_10_x.cssValue),
 }
 
 @customElement(tagName)
 @withLocator(tagName)
-export class YCoreColorIcon
+export class AltCoreColorIcon
   extends LitElement
-  implements IYCoreColorIconProps {
-  @property({ type: Object }) icon!: IYCoreColorIconProps['icon']
-  @property({ type: String, reflect: true }) size: IYCoreColorIconProps['size'] = size
-  @property({ type: String, reflect: true }) variant: IYCoreColorIconProps['variant'] = variant
-  @property({ type: Boolean, reflect: true }) disabled: IYCoreColorIconProps['disabled'] = disabled
+  implements IAltCoreColorIconProps {
+  @property({ type: Object }) icon!: IAltCoreColorIconProps['icon']
+  @property({ type: String, reflect: true }) size: IAltCoreColorIconProps['size'] = size
+  @property({ type: String, reflect: true }) variant: IAltCoreColorIconProps['variant'] = variant
+  @property({ type: Boolean, reflect: true }) disabled: IAltCoreColorIconProps['disabled'] = disabled
 
   private readonly baseClass = tagName
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreColorIconVarsCSS)}
-      ${unsafeCSS(YCoreColorIconScopedCSS)}
+      ${unsafeCSS(AltCoreColorIconVarsCSS)}
+      ${unsafeCSS(AltCoreColorIconScopedCSS)}
     `,
   ]
 
@@ -56,7 +56,7 @@ export class YCoreColorIcon
   }
 
   private get computedSize() {
-    return this.size ?? EYCoreColorIconSize.X_24
+    return this.size ?? EAltCoreColorIconSize.X_24
   }
 
   private get computedIconSize() {

@@ -1,9 +1,9 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { ref } from 'vue'
 import { mount } from '@vue/test-utils'
-import { YCoreFunctionalModalTagName as tagName } from '~shared/constants'
-import { YCoreFunctionalModal } from '~core/ui/functionalModal'
-import { YFunctionalModal } from '~vue/ui/functionalModal'
+import { AltCoreFunctionalModalTagName as tagName } from '~shared/constants'
+import { AltCoreFunctionalModal } from '~core/ui/functionalModal'
+import { AltFunctionalModal } from '~vue/ui/functionalModal'
 
 import { slotsTestCases } from './cases/slots'
 import {
@@ -30,13 +30,13 @@ import {
 } from './cases/events'
 
 describe(
-  'Vue/YFunctionalModal',
+  'Vue/AltFunctionalModal',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreFunctionalModal,
+          AltCoreFunctionalModal,
         )
       }
     })
@@ -49,7 +49,7 @@ describe(
             `Should render the ${testCase.slot} slot ${testCase.case}`,
             () => {
               const wrapper = mount(
-                YFunctionalModal,
+                AltFunctionalModal,
                 {
               slots: {
                   header: '',
@@ -79,11 +79,11 @@ describe(
             `Prop: "${testCase.prop}" ${testCase.value} should set open on the core component`,
             () => {
               const wrapper = mount(
-                YFunctionalModal,
+                AltFunctionalModal,
                 { props: { [testCase.prop]: testCase.value } },
               )
 
-              const coreElement = wrapper.find(tagName).element as YCoreFunctionalModal
+              const coreElement = wrapper.find(tagName).element as AltCoreFunctionalModal
 
               expect(coreElement.open).toBe(testCase.expected)
             },
@@ -109,7 +109,7 @@ describe(
               const props = { [testCase.prop]: testCase.value, modelValue: modelValue.value }
 
               const wrapper = mount(
-                YFunctionalModal,
+                AltFunctionalModal,
                 { props },
               )
 
@@ -138,7 +138,7 @@ describe(
           it(
             `Should emit ${testCase.event} ${testCase.case} of the core component`,
             async() => {
-              const wrapper = mount(YFunctionalModal, { props: { modelValue: false } })
+              const wrapper = mount(AltFunctionalModal, { props: { modelValue: false } })
 
               const coreElement = wrapper.find(tagName)
               coreElement.trigger(testCase.nodeEventName)
@@ -153,7 +153,7 @@ describe(
           it(
             `Should emit ${testCase.event} ${testCase.case} of the core component`,
             async() => {
-              const wrapper = mount(YFunctionalModal, {
+              const wrapper = mount(AltFunctionalModal, {
                 props: { modelValue: false },
                 slots: {
                   'header-media': '',

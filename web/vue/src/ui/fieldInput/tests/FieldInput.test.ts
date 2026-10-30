@@ -1,10 +1,10 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-import { YCoreFieldInputTagName as tagName } from '~shared/constants'
+import { AltCoreFieldInputTagName as tagName } from '~shared/constants'
 
-import YFieldInput from '~vue/ui/fieldInput/FieldInput.vue'
-import { YCoreFieldInput } from '~core/ui/fieldInput'
+import AltFieldInput from '~vue/ui/fieldInput/FieldInput.vue'
+import { AltCoreFieldInput } from '~core/ui/fieldInput'
 import {
   propAutocompleteTestCases,
   propAutofocusTestCases,
@@ -22,13 +22,13 @@ import {
 import { vueInputEvents } from '~vue/ui/fieldInput/tests/cases/events'
 
 describe(
-  'Vue/YFieldInput',
+  'Vue/AltFieldInput',
   () => {
     beforeAll(() => {
       if (!customElements.get(tagName)) {
         customElements.define(
           tagName,
-          YCoreFieldInput,
+          AltCoreFieldInput,
         )
       }
     })
@@ -44,7 +44,7 @@ describe(
                 `Prop "${testCase.prop}" (${testCase.case}) should set value on the core component to "${String(testCase.expected)}"`,
                 () => {
                   const wrapper = mount(
-                    YFieldInput,
+                    AltFieldInput,
                     { props: { [testCase.prop]: testCase.value } },
                   )
 
@@ -73,7 +73,7 @@ describe(
                 `Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`,
                 () => {
                   const wrapper = mount(
-                    YFieldInput,
+                    AltFieldInput,
                     { props: { [testCase.prop]: testCase.value } },
                   )
 
@@ -94,7 +94,7 @@ describe(
                 `Should emit "${emitEventName}" ${eventCase}`,
                 () => {
                   const wrapper = mount(
-                    YFieldInput,
+                    AltFieldInput,
                     { props: { value: '' } },
                   )
 

@@ -3,23 +3,23 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output } from '
 import '~core/ui/fieldInput'
 import {
   createNgFieldInputProps,
-  type IYNgFieldInputProps,
-  type YNgFieldInputInputEvent,
-  type YNgFieldInputFocusEvent,
-  type YNgFieldInputBlurEvent,
-  type YNgFieldInputKeydownEvent,
-  type YNgFieldInputRenderEvent,
+  type IAltNgFieldInputProps,
+  type AltNgFieldInputInputEvent,
+  type AltNgFieldInputFocusEvent,
+  type AltNgFieldInputBlurEvent,
+  type AltNgFieldInputKeydownEvent,
+  type AltNgFieldInputRenderEvent,
 } from '~ng/ui/fieldInput/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 
 const { disabled, size, readonly, value, name, type, placeholder, required, maxlength, autofocus, hideSpaceLeft, hideSpaceRight, autocomplete } = createNgFieldInputProps()
 
 @Component({
-  selector: 'YFieldInput',
+  selector: 'AltFieldInput',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <y-core-field-input
+    <alt-core-field-input
       [disabled]="disabled"
       [size]="size"
       [readonly]="readonly"
@@ -38,47 +38,47 @@ const { disabled, size, readonly, value, name, type, placeholder, required, maxl
       (blur)="handleBlurEvent($event)"
       (keydown)="handleKeydownEvent($event)"
       (render)="handleRenderEvent($event)"
-    ></y-core-field-input>
+    ></alt-core-field-input>
   `,
 })
 
-export class YFieldInput implements IYNgFieldInputProps {
-  @Input() @DefaultValue(disabled) disabled: IYNgFieldInputProps['disabled'] = disabled
-  @Input() @DefaultValue(size) size: IYNgFieldInputProps['size'] = size
-  @Input() @DefaultValue(readonly) readonly: IYNgFieldInputProps['readonly'] = readonly
-  @Input() @DefaultValue(value) value: IYNgFieldInputProps['value'] = value
-  @Input() @DefaultValue(name) name: IYNgFieldInputProps['name'] = name
-  @Input() @DefaultValue(type) type: IYNgFieldInputProps['type'] = type
-  @Input() @DefaultValue(placeholder) placeholder: IYNgFieldInputProps['placeholder'] = placeholder
-  @Input() @DefaultValue(required) required: IYNgFieldInputProps['required'] = required
-  @Input() @DefaultValue(maxlength) maxlength: IYNgFieldInputProps['maxlength'] = maxlength
-  @Input() @DefaultValue(autofocus) autofocus: IYNgFieldInputProps['autofocus'] = autofocus
-  @Input() @DefaultValue(hideSpaceLeft) hideSpaceLeft: IYNgFieldInputProps['hideSpaceLeft'] = hideSpaceLeft
-  @Input() @DefaultValue(hideSpaceRight) hideSpaceRight: IYNgFieldInputProps['hideSpaceRight'] = hideSpaceRight
-  @Input() @DefaultValue(autocomplete) autocomplete: IYNgFieldInputProps['autocomplete'] = autocomplete
+export class AltFieldInput implements IAltNgFieldInputProps {
+  @Input() @DefaultValue(disabled) disabled: IAltNgFieldInputProps['disabled'] = disabled
+  @Input() @DefaultValue(size) size: IAltNgFieldInputProps['size'] = size
+  @Input() @DefaultValue(readonly) readonly: IAltNgFieldInputProps['readonly'] = readonly
+  @Input() @DefaultValue(value) value: IAltNgFieldInputProps['value'] = value
+  @Input() @DefaultValue(name) name: IAltNgFieldInputProps['name'] = name
+  @Input() @DefaultValue(type) type: IAltNgFieldInputProps['type'] = type
+  @Input() @DefaultValue(placeholder) placeholder: IAltNgFieldInputProps['placeholder'] = placeholder
+  @Input() @DefaultValue(required) required: IAltNgFieldInputProps['required'] = required
+  @Input() @DefaultValue(maxlength) maxlength: IAltNgFieldInputProps['maxlength'] = maxlength
+  @Input() @DefaultValue(autofocus) autofocus: IAltNgFieldInputProps['autofocus'] = autofocus
+  @Input() @DefaultValue(hideSpaceLeft) hideSpaceLeft: IAltNgFieldInputProps['hideSpaceLeft'] = hideSpaceLeft
+  @Input() @DefaultValue(hideSpaceRight) hideSpaceRight: IAltNgFieldInputProps['hideSpaceRight'] = hideSpaceRight
+  @Input() @DefaultValue(autocomplete) autocomplete: IAltNgFieldInputProps['autocomplete'] = autocomplete
 
-  @Output() input = new EventEmitter<YNgFieldInputInputEvent>()
+  @Output() input = new EventEmitter<AltNgFieldInputInputEvent>()
   handleInputEvent(event: Event) {
-    this.input.emit(event as YNgFieldInputInputEvent)
+    this.input.emit(event as AltNgFieldInputInputEvent)
   }
 
-  @Output() focus = new EventEmitter<YNgFieldInputFocusEvent>()
+  @Output() focus = new EventEmitter<AltNgFieldInputFocusEvent>()
   handleFocusEvent(event: Event) {
-    this.focus.emit(event as YNgFieldInputFocusEvent)
+    this.focus.emit(event as AltNgFieldInputFocusEvent)
   }
 
-  @Output() blur = new EventEmitter<YNgFieldInputBlurEvent>()
+  @Output() blur = new EventEmitter<AltNgFieldInputBlurEvent>()
   handleBlurEvent(event: Event) {
-    this.blur.emit(event as YNgFieldInputBlurEvent)
+    this.blur.emit(event as AltNgFieldInputBlurEvent)
   }
 
-  @Output() keydown = new EventEmitter<YNgFieldInputKeydownEvent>()
+  @Output() keydown = new EventEmitter<AltNgFieldInputKeydownEvent>()
   handleKeydownEvent(event: Event) {
-    this.keydown.emit(event as YNgFieldInputKeydownEvent)
+    this.keydown.emit(event as AltNgFieldInputKeydownEvent)
   }
 
-  @Output() render = new EventEmitter<YNgFieldInputRenderEvent>()
+  @Output() render = new EventEmitter<AltNgFieldInputRenderEvent>()
   handleRenderEvent(event: Event) {
-    this.render.emit(event as YNgFieldInputRenderEvent)
+    this.render.emit(event as AltNgFieldInputRenderEvent)
   }
 }

@@ -5,17 +5,17 @@ import { consume } from '@lit/context'
 
 import {
   createCoreFieldIconProps,
-  type IYCoreFieldIconProps,
+  type IAltCoreFieldIconProps,
 } from '~core/ui/fieldIcon/models/types'
 import {
-  YCoreFieldIconTagName as tagName,
+  AltCoreFieldIconTagName as tagName,
 } from '~shared/constants'
 
-import YCoreFieldIconVarsCSS from '~core/ui/fieldIcon/css/FieldIcon.vars.css?inline'
-import YCoreFieldIconScopedCSS from '~core/ui/fieldIcon/css/FieldIcon.scoped.css?inline'
+import AltCoreFieldIconVarsCSS from '~core/ui/fieldIcon/css/FieldIcon.vars.css?inline'
+import AltCoreFieldIconScopedCSS from '~core/ui/fieldIcon/css/FieldIcon.scoped.css?inline'
 
 import { interceptEvents } from '~core/utils/event-interceptor'
-import { EYSizes } from '~shared/types/global'
+import { EAltSizes } from '~shared/types/global'
 import {
   disabledContextCreated,
   readonlyContextCreated,
@@ -27,27 +27,27 @@ import { withLocator } from '~core/utils/locator'
 
 const { disabled, readonly, size, hoverable, clickable, locator } = createCoreFieldIconProps()
 
-const mapSizeToIconSize: Record<NonNullable<IYCoreFieldIconProps['size']>, string> = {
-  [EYSizes.SMALL]: '16px',
-  [EYSizes.MEDIUM]: '20px',
-  [EYSizes.LARGE]: '24px',
+const mapSizeToIconSize: Record<NonNullable<IAltCoreFieldIconProps['size']>, string> = {
+  [EAltSizes.SMALL]: '16px',
+  [EAltSizes.MEDIUM]: '20px',
+  [EAltSizes.LARGE]: '24px',
 }
 
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class YCoreFieldIcon
+export class AltCoreFieldIcon
   extends LitElement
-  implements IYCoreFieldIconProps {
-  @property({ type: Boolean }) disabled: IYCoreFieldIconProps['disabled'] = disabled
+  implements IAltCoreFieldIconProps {
+  @property({ type: Boolean }) disabled: IAltCoreFieldIconProps['disabled'] = disabled
   @consume({ context: readonlyContextCreated, subscribe: true })
-  @property({ type: Boolean, reflect: true }) readonly: IYCoreFieldIconProps['readonly'] = readonly
+  @property({ type: Boolean, reflect: true }) readonly: IAltCoreFieldIconProps['readonly'] = readonly
   @consume({ context: sizeContextCreated, subscribe: true })
-  @property({ type: String, reflect: true }) size: IYCoreFieldIconProps['size'] = size
-  @property({ type: Object }) icon!: IYCoreFieldIconProps['icon']
-  @property({ type: Boolean, reflect: true }) hoverable: IYCoreFieldIconProps['hoverable'] = hoverable
-  @property({ type: Boolean, reflect: true }) clickable: IYCoreFieldIconProps['clickable'] = clickable
-  @property({ type: String }) locator: IYCoreFieldIconProps['locator'] = locator
+  @property({ type: String, reflect: true }) size: IAltCoreFieldIconProps['size'] = size
+  @property({ type: Object }) icon!: IAltCoreFieldIconProps['icon']
+  @property({ type: Boolean, reflect: true }) hoverable: IAltCoreFieldIconProps['hoverable'] = hoverable
+  @property({ type: Boolean, reflect: true }) clickable: IAltCoreFieldIconProps['clickable'] = clickable
+  @property({ type: String }) locator: IAltCoreFieldIconProps['locator'] = locator
 
   @consume({ context: disabledContextCreated, subscribe: true })
   private _contextDisabled?: boolean
@@ -56,13 +56,13 @@ export class YCoreFieldIcon
 
   static readonly styles = [
     css`
-      ${unsafeCSS(YCoreFieldIconVarsCSS)}
-      ${unsafeCSS(YCoreFieldIconScopedCSS)}
+      ${unsafeCSS(AltCoreFieldIconVarsCSS)}
+      ${unsafeCSS(AltCoreFieldIconScopedCSS)}
     `,
   ]
 
   private get computedSize() {
-    return this.size ?? EYSizes.MEDIUM
+    return this.size ?? EAltSizes.MEDIUM
   }
 
   private get computedIconSize() {
@@ -86,10 +86,10 @@ export class YCoreFieldIcon
   protected render() {
     return html`
       <div class=${classMap(this.computedClasses)}>
-        <y-core-icon
+        <alt-core-icon
           .icon=${this.icon}
           .size=${this.computedIconSize}
-        ></y-core-icon>
+        ></alt-core-icon>
       </div>
     `
   }

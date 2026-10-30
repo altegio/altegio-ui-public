@@ -4,16 +4,16 @@ import { action } from 'storybook/actions'
 import { useArgs } from 'storybook/preview-api'
 
 import type { InputEvent, BlurEvent, FocusEvent, KeydownEvent, RenderEvent, MouseEnterEvent, MouseLeaveEvent, ClickOutsideEvent, ClearEvent } from '~core/ui/textarea/models/types'
-import { YTextarea } from '~vue/ui/textarea'
-import { type IYVueTextareaProps } from '~vue/ui/textarea/models/types'
-import yCoreTextareaStoryMeta, { type TYCoreTextareaMeta, WithMaxlength as CoreWithMaxlength } from '~core/ui/textarea/stories/Textarea.stories'
+import { AltTextarea } from '~vue/ui/textarea'
+import { type IAltVueTextareaProps } from '~vue/ui/textarea/models/types'
+import altCoreTextareaStoryMeta, { type TAltCoreTextareaMeta, WithMaxlength as CoreWithMaxlength } from '~core/ui/textarea/stories/Textarea.stories'
 import { omit } from 'radash'
 import { getComponentContentTable } from '~shared/.storybook/tables'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 
-type TVueTextareaStoryMeta = IYVueTextareaProps & TYCoreTextareaMeta & {
-  modelValue: TYCoreTextareaMeta['value']
-  onUpdateModelValue: TYCoreTextareaMeta['onInput']
+type TVueTextareaStoryMeta = IAltVueTextareaProps & TAltCoreTextareaMeta & {
+  modelValue: TAltCoreTextareaMeta['value']
+  onUpdateModelValue: TAltCoreTextareaMeta['onInput']
 }
 
 /**
@@ -72,7 +72,7 @@ const meta: Meta<TVueTextareaStoryMeta> = {
     }
 
     return {
-      components: { YTextarea },
+      components: { AltTextarea },
       setup() {
         const computedLabelText = computed(() => args.isLongText ? LOREM_IPSUM : args.labelText)
         const computedErrors = computed(() => args.errors ?? args.showErrors)
@@ -86,7 +86,7 @@ const meta: Meta<TVueTextareaStoryMeta> = {
       },
       template: `
         <div style="padding: 20px; max-width: 500px;">
-          <YTextarea 
+          <AltTextarea 
             v-bind="args"
             v-model="vModelValue"
             :errors="computedErrors"
@@ -108,14 +108,14 @@ const meta: Meta<TVueTextareaStoryMeta> = {
             <template v-if="args.showAfterSlot" #after>
               <div style="padding: 0 10px;">After slot</div>
             </template>
-          </YTextarea>
+          </AltTextarea>
         </div>
       `,
     }
   },
   argTypes: {
     ...omit(
-      yCoreTextareaStoryMeta.argTypes ?? {},
+      altCoreTextareaStoryMeta.argTypes ?? {},
       ['value'],
     ),
     modelValue: {
@@ -123,11 +123,11 @@ const meta: Meta<TVueTextareaStoryMeta> = {
       description: 'Default v-model for the textarea value',
       ...getComponentContentTable(),
     },
-    onUpdateModelValue: yCoreTextareaStoryMeta.argTypes?.onInput,
+    onUpdateModelValue: altCoreTextareaStoryMeta.argTypes?.onInput,
   },
   args: {
     ...omit(
-      yCoreTextareaStoryMeta.args ?? {},
+      altCoreTextareaStoryMeta.args ?? {},
       ['value', 'onBlur', 'onFocus', 'onKeydown', 'onRenderTextarea', 'onMouseLeave', 'onMouseEnter', 'onClear', 'onInput', 'onClick', 'onClickOutside'],
     ),
     modelValue: 'Sample textarea content',

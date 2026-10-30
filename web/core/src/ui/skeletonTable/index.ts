@@ -1,1 +1,1 @@
-export { YCoreSkeletonTable } from './SkeletonTable.core'
+export { AltCoreSkeletonTable } from './SkeletonTable.core'

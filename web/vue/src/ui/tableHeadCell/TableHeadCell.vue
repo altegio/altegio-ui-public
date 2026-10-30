@@ -1,5 +1,5 @@
 <template>
-  <y-core-table-head-cell
+  <alt-core-table-head-cell
     v-bind="props"
     @sort="$emit('sort', $event)"
   >
@@ -16,19 +16,19 @@
     >
       <slot name="hint" />
     </div>
-  </y-core-table-head-cell>
+  </alt-core-table-head-cell>
 </template>
 
 <script setup lang="ts">
   import '~core/ui/tableHeadCell'
   import {
     createVueTableHeadCellProps,
-    type IYVueTableHeadCellProps,
-    type IYVueTableHeadCellEmits,
-    type IYVueCoreTableHeadCellProps,
+    type IAltVueTableHeadCellProps,
+    type IAltVueTableHeadCellEmits,
+    type IAltVueCoreTableHeadCellProps,
   } from '~vue/ui/tableHeadCell/models/types'
 
-  defineOptions({ name: 'YTableHeadCell' })
+  defineOptions({ name: 'AltTableHeadCell' })
 
   defineSlots<{
     cell: () => unknown
@@ -36,9 +36,9 @@
   }>()
 
   const props = withDefaults(
-    defineProps<IYVueTableHeadCellProps>(),
+    defineProps<IAltVueTableHeadCellProps>(),
     createVueTableHeadCellProps(),
-  ) satisfies IYVueCoreTableHeadCellProps
+  ) satisfies IAltVueCoreTableHeadCellProps
 
-  defineEmits<IYVueTableHeadCellEmits>()
+  defineEmits<IAltVueTableHeadCellEmits>()
 </script>

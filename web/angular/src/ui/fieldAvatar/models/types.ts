@@ -1,8 +1,8 @@
 import {
   createCoreFieldAvatarProps,
-  type IYCoreFieldAvatarProps,
+  type IAltCoreFieldAvatarProps,
 } from '~core/ui/fieldAvatar/models/types'
 
-export interface IYNgFieldAvatarProps extends IYCoreFieldAvatarProps {}
+export interface IAltNgFieldAvatarProps extends IAltCoreFieldAvatarProps {}
 
-export const createNgFieldAvatarProps = (): IYNgFieldAvatarProps => createCoreFieldAvatarProps()
+export const createNgFieldAvatarProps = (): IAltNgFieldAvatarProps => createCoreFieldAvatarProps()

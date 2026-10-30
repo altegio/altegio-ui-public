@@ -1,18 +1,18 @@
 import {
   createCoreSkeletonTableExternalProps,
-  type IYCoreSkeletonTableExternalProps,
+  type IAltCoreSkeletonTableExternalProps,
 } from './external'
 import {
   createCoreSkeletonTableInternalProps,
-  type IYCoreSkeletonTableInternalProps,
+  type IAltCoreSkeletonTableInternalProps,
 } from './internal'
 
 export * from './external'
 export * from './internal'
 
-export interface IYCoreSkeletonTableProps extends IYCoreSkeletonTableExternalProps, IYCoreSkeletonTableInternalProps {}
+export interface IAltCoreSkeletonTableProps extends IAltCoreSkeletonTableExternalProps, IAltCoreSkeletonTableInternalProps {}
 
-export const createCoreSkeletonTableProps = (): IYCoreSkeletonTableProps => ({
+export const createCoreSkeletonTableProps = (): IAltCoreSkeletonTableProps => ({
   ...createCoreSkeletonTableExternalProps(),
   ...createCoreSkeletonTableInternalProps(),
 })

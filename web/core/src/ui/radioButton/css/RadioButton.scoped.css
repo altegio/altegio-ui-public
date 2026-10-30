@@ -1,4 +1,4 @@
-$component: $YCoreRadioButtonTagName;
+$component: $AltCoreRadioButtonTagName;
 
 :host {
   display: flex;
@@ -7,7 +7,7 @@ $component: $YCoreRadioButtonTagName;
 .$(component) {
   display: inline-flex;
   flex-direction: column;
-  max-width: var(--y-core-radio-button-max-width);
+  max-width: var(--alt-core-radio-button-max-width);
   cursor: pointer;
 
   &_disabled {
@@ -35,20 +35,20 @@ $component: $YCoreRadioButtonTagName;
   &_size {
     &-small {
       .$(component)__error {
-        margin-left: var(--y-core-radio-button-small-error-margin-left);
+        margin-left: var(--alt-core-radio-button-small-error-margin-left);
       }
     }
 
     &-medium {
       .$(component)__error {
-        margin-left: var(--y-core-radio-button-medium-error-margin-left);
+        margin-left: var(--alt-core-radio-button-medium-error-margin-left);
       }
     }
   }
 
   &__content {
     display: flex;
-    gap: var(--y-core-radio-button-x-gap);
+    gap: var(--alt-core-radio-button-x-gap);
   }
 
   &__radio-button {
@@ -59,7 +59,7 @@ $component: $YCoreRadioButtonTagName;
   &__info {
     display: flex;
     flex-direction: column;
-    gap: var(--y-core-radio-button-info-gap);
+    gap: var(--alt-core-radio-button-info-gap);
     align-items: flex-start;
   }
 
@@ -76,6 +76,6 @@ $component: $YCoreRadioButtonTagName;
   }
 
   &__error {
-    margin-top: var(--y-core-radio-button-error-margin-top);
+    margin-top: var(--alt-core-radio-button-error-margin-top);
   }
 }

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YFieldWrapper } from '~vue/ui/fieldWrapper'
-import { type IYVueFieldWrapperProps } from '~vue/ui/fieldWrapper/models/types'
-import yCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
+import { AltFieldWrapper } from '~vue/ui/fieldWrapper'
+import { type IAltVueFieldWrapperProps } from '~vue/ui/fieldWrapper/models/types'
+import altCoreFieldWrapperStoryMeta from '~core/ui/fieldWrapper/stories/FieldWrapper.stories'
 
-type TVueFieldWrapperStoryMeta = IYVueFieldWrapperProps
+type TVueFieldWrapperStoryMeta = IAltVueFieldWrapperProps
 
 /**
  * Vue wrapper for Core FieldWrapper
@@ -18,12 +18,12 @@ const meta: Meta<TVueFieldWrapperStoryMeta> = {
     'autodocs',
   ],
   render: (args) => ({
-    components: { YFieldWrapper },
+    components: { AltFieldWrapper },
     setup() {
       return { args }
     },
     template: `
-      <YFieldWrapper
+      <AltFieldWrapper
         v-bind="args"
         style="border: 1px dashed;"
         @click="args.onClick"
@@ -32,11 +32,11 @@ const meta: Meta<TVueFieldWrapperStoryMeta> = {
         @blur="args.onBlur"
         @mouse-enter="args.onMouseEnter"
         @mouse-leave="args.onMouseLeave"
-      >Default slot</YFieldWrapper>
+      >Default slot</AltFieldWrapper>
     `,
   }),
-  argTypes: { ...yCoreFieldWrapperStoryMeta.argTypes },
-  args: { ...yCoreFieldWrapperStoryMeta.args },
+  argTypes: { ...altCoreFieldWrapperStoryMeta.argTypes },
+  args: { ...altCoreFieldWrapperStoryMeta.args },
 }
 
 export default meta

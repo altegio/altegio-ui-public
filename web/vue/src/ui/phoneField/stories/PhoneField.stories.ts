@@ -3,22 +3,22 @@ import { useArgs } from 'storybook/preview-api'
 import { action } from 'storybook/actions'
 import { computed, ref } from 'vue'
 
-import { YPhoneField } from '~vue/ui/phoneField'
-import { type IYVuePhoneFieldProps } from '~vue/ui/phoneField/models/types'
-import { YButton } from '~vue/ui/button'
-import yCorePhoneFieldStoryMeta, {
+import { AltPhoneField } from '~vue/ui/phoneField'
+import { type IAltVuePhoneFieldProps } from '~vue/ui/phoneField/models/types'
+import { AltButton } from '~vue/ui/button'
+import altCorePhoneFieldStoryMeta, {
   type ICorePhoneFieldStoryProps,
 } from '~core/ui/phoneField/stories/PhoneField.stories'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
-import type { TYVuePhoneFieldEvents } from '~vue/ui/phoneField/models/types'
+import type { TAltVuePhoneFieldEvents } from '~vue/ui/phoneField/models/types'
 import type { PhoneFieldChangeEvent, SelectOptionEvent } from '~core/ui/phoneField/models/types'
 
-type TYVuePhoneFieldStoryMeta = IYVuePhoneFieldProps & ICorePhoneFieldStoryProps & TYVuePhoneFieldEvents
+type TAltVuePhoneFieldStoryMeta = IAltVuePhoneFieldProps & ICorePhoneFieldStoryProps & TAltVuePhoneFieldEvents
 
 /**
  * Vue wrapper for Core PhoneField
  */
-const meta: Meta<TYVuePhoneFieldStoryMeta> = {
+const meta: Meta<TAltVuePhoneFieldStoryMeta> = {
   title: 'Inputs/🔍 PhoneField',
   id: 'phoneField',
   parameters: { controls: { sort: 'alpha' } },
@@ -30,12 +30,12 @@ const meta: Meta<TYVuePhoneFieldStoryMeta> = {
     const [, updateArgs] = useArgs()
 
     return {
-      components: { YPhoneField, YButton },
+      components: { AltPhoneField, AltButton },
       setup() {
         const computedLabelText = computed(() => args.labelIsLongText ? LOREM_IPSUM : String(args.labelText))
         const computedErrors = computed(() => args.errors ?? args.showErrors)
 
-        const cleanedArgs = computed<TYVuePhoneFieldStoryMeta>(() => ({
+        const cleanedArgs = computed<TAltVuePhoneFieldStoryMeta>(() => ({
           ...args,
           onSelectOption: onSelectOption,
           onChange: onChange,
@@ -76,7 +76,7 @@ const meta: Meta<TYVuePhoneFieldStoryMeta> = {
           <button @click="changeVisibility" style="margin-bottom: 20px"> Component visibility: {{isVisible}}</button>
           
           <keep-alive>
-            <YPhoneField
+            <AltPhoneField
               v-if="isVisible"
               v-bind="cleanedArgs"
             > 
@@ -88,24 +88,24 @@ const meta: Meta<TYVuePhoneFieldStoryMeta> = {
                 v-if="cleanedArgs.emptyStateIsActionsSlotExists"
                 #empty-state-actions
               >
-                <YButton
+                <AltButton
                   label="Primary action"
                   variant="primary"
-                ></YButton>
+                ></AltButton>
       
-                <YButton
+                <AltButton
                   label="Secondary action"
                   variant="outline"
-                ></YButton>
+                ></AltButton>
               </template>
-            </YPhoneField>
+            </AltPhoneField>
           </keep-alive>
         </div>
       `,
     }
   },
-  argTypes: { ...yCorePhoneFieldStoryMeta.argTypes },
-  args: { ...yCorePhoneFieldStoryMeta.args },
+  argTypes: { ...altCorePhoneFieldStoryMeta.argTypes },
+  args: { ...altCorePhoneFieldStoryMeta.args },
 }
 
 export default meta
