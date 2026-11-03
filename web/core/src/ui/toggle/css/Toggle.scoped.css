@@ -55,4 +55,10 @@ $component: $AltCoreToggleTagName;
       display: none;
     }
   }
+
+  &__error {
+    &_hidden {
+      display: none;
+    }
+  }
 }

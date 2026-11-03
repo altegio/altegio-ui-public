@@ -1,12 +1,12 @@
 import { html, css, unsafeCSS, LitElement, nothing } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
+import { customElement, property, query, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 
 import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
 import { hasSlotContent } from '~core/utils/lit-slots'
 import { type IAltCoreToggleExternalProps, createCoreToggleExternalProps } from './models/types'
 import { ToggleCheckedEvent } from './models/types'
-import { AltCoreToggleTagName as tagName } from '~shared/constants'
+import { AltCoreToggleTagName as tagName, AltCoreSimpleToggleTagName } from '~shared/constants'
 
 import AltCoreToggleScopedCSS from '~core/ui/toggle/css/Toggle.scoped.css?inline'
 import AltCoreToggleVarsCSS from '~core/ui/toggle/css/Toggle.vars.css?inline'
@@ -14,17 +14,20 @@ import AltCoreToggleVarsCSS from '~core/ui/toggle/css/Toggle.vars.css?inline'
 import '~core/ui/annotation'
 import '~core/ui/simpleToggle'
 import '~core/ui/label'
+import '~core/ui/error'
 import { withLocator } from '~core/utils/locator'
-import { FormAssociated } from '~core/utils/a11y/form-associated'
+import { FormAssociated, getNativeValidity } from '~core/utils/a11y/form-associated'
 import { getAccessibleDescription, getSlotText } from '~core/utils/a11y/accessible-text'
 
-const { checked, disabled, labelText, labelTooltipText, annotationText, labelOverflowDebounce, alignment, size, value, accessibleName } = createCoreToggleExternalProps()
+const { checked, disabled, required, errors, labelText, labelTooltipText, annotationText, labelOverflowDebounce, alignment, size, value, accessibleName } = createCoreToggleExternalProps()
 
 @customElement(tagName)
 @withLocator(tagName)
 export class AltCoreToggle extends FormAssociated(LitElement) implements IAltCoreToggleExternalProps {
   @property({ type: Boolean }) disabled: IAltCoreToggleExternalProps['disabled'] = disabled
   @property({ type: Boolean, reflect: true }) checked: IAltCoreToggleExternalProps['checked'] = checked
+  @property({ type: Boolean }) required: IAltCoreToggleExternalProps['required'] = required
+  @property({ type: Array }) errors: IAltCoreToggleExternalProps['errors'] = errors
   @property({ type: String, attribute: 'label-text' }) labelText: IAltCoreToggleExternalProps['labelText'] = labelText
   @property({ type: String, attribute: 'label-tooltip-text' }) labelTooltipText: IAltCoreToggleExternalProps['labelTooltipText'] = labelTooltipText
   @property({ type: String, attribute: 'annotation-text' }) annotationText: IAltCoreToggleExternalProps['annotationText'] = annotationText
@@ -45,9 +48,12 @@ export class AltCoreToggle extends FormAssociated(LitElement) implements IAltCor
   )
   private _checked!: TDispatcher<ToggleCheckedEvent>
 
+  @query(AltCoreSimpleToggleTagName) private readonly control?: HTMLElement
+
   private readonly baseClass = tagName
   private readonly baseLabelClass = `${tagName}__label`
   private readonly baseAnnotationClass = `${tagName}__annotation`
+  private readonly baseErrorClass = `${tagName}__error`
 
   @state() private hasAnnotationSlot = false
   @state() private isHovered = false
@@ -76,10 +82,23 @@ export class AltCoreToggle extends FormAssociated(LitElement) implements IAltCor
     }
   }
 
+  private get computedErrorClasses() {
+    return {
+      [this.baseErrorClass]: true,
+      [`${this.baseErrorClass}_hidden`]: !this.shownErrors?.length,
+    }
+  }
+
   private get hasInfoContent() {
     return this.labelText ||
       this.annotationText ||
-      this.hasAnnotationSlot
+      this.hasAnnotationSlot ||
+      Boolean(this.shownErrors?.length)
+  }
+
+  /** Errors to render, with the message from `validate()` when there are none */
+  private get shownErrors() {
+    return this.withValidationError(this.errors)
   }
 
   static readonly styles = [
@@ -97,6 +116,14 @@ export class AltCoreToggle extends FormAssociated(LitElement) implements IAltCor
     return this.checked
       ? this.value || 'on'
       : null
+  }
+
+  protected get formValidity() {
+    return getNativeValidity(
+      { type: 'checkbox', required: this.required },
+      { checked: Boolean(this.checked) },
+      this.control,
+    )
   }
 
   protected resetFormControl() {
@@ -153,6 +180,7 @@ export class AltCoreToggle extends FormAssociated(LitElement) implements IAltCor
           .alignment=${this.alignment}
           .debounce=${this.labelOverflowDebounce}
           .wrap=${true}
+          .required=${this.required}
           .disabled=${this.isDisabled}
           class=${classMap(this.computedLabelClasses)}
           @content-mouse-enter=${this.handleMouseEnter}
@@ -173,6 +201,16 @@ export class AltCoreToggle extends FormAssociated(LitElement) implements IAltCor
             </slot>
           </alt-core-annotation>
         </div>
+
+        ${!this.isDisabled
+          ? html`
+              <alt-core-error
+                class=${classMap(this.computedErrorClasses)}
+                .errors=${this.shownErrors}
+              ></alt-core-error>
+            `
+          : nothing
+        }
       </div>`
   }
 
@@ -185,7 +223,7 @@ export class AltCoreToggle extends FormAssociated(LitElement) implements IAltCor
           .checked=${this.checked}
           .hovered=${this.isHovered}
           .accessibleName=${this.accessibleName || this.labelText || undefined}
-          .accessibleDescription=${getAccessibleDescription(undefined, this.annotationText || this.slottedAnnotationText)}
+          .accessibleDescription=${getAccessibleDescription(this.shownErrors, this.annotationText || this.slottedAnnotationText)}
           class=${`${this.baseClass}__toggle`}
           @checked=${this.handleChecked}
           @mouseenter=${this.handleMouseEnter}

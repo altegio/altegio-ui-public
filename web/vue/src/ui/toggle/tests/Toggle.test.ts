@@ -69,6 +69,13 @@ const propValueTestCases: TPropTestCase<IAltVueToggleProps, 'value'>[] = [
   { prop: 'value', case: 'undefined', value: undefined, expected: undefined },
 ]
 
+const errors = ['This field is required']
+
+const propRequiredTestCases: TPropTestCase<IAltVueToggleProps, 'required'>[] = [
+  { prop: 'required', case: 'true', value: true, expected: true },
+  { prop: 'required', case: 'undefined', value: undefined, expected: false },
+]
+
 const propAccessibleNameTestCases: TPropTestCase<IAltVueToggleProps, 'accessibleName'>[] = [
   { prop: 'accessibleName', case: 'text', value: text, expected: text },
   { prop: 'accessibleName', case: 'undefined', value: undefined, expected: undefined },
@@ -103,6 +110,7 @@ describe(
               ...propNameTestCases,
               ...propValueTestCases,
               ...propAccessibleNameTestCases,
+              ...propRequiredTestCases,
             ]) {
               it(
                 `Prop ${testCase.prop} should be ${testCase.case} and have value ${testCase.value}`,
@@ -123,6 +131,18 @@ describe(
                 },
               )
             }
+
+            it(
+              'Prop errors should reach the core component',
+              () => {
+                const wrapper = mount(
+                  AltToggle,
+                  { props: { errors, modelValue: false } },
+                )
+
+                expect(wrapper.find(AltCoreToggleTagName).element.errors).toEqual(errors)
+              },
+            )
 
             for (const testCase of propCheckedTestCases) {
               it(

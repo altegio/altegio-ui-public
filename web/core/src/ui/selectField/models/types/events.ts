@@ -12,7 +12,9 @@ export { InputEvent } from '~core/ui/fieldInput/models/types/events'
 
 export interface IAltCoreSelectFieldEvents extends IAltBaseCustomEvent {
   value: IAltCoreSelectFieldExternalProps['value']
-  item: IAltCoreSelectListItem
+
+  /** Selected item; `undefined` when a form reset restores an empty value */
+  item: IAltCoreSelectListItem | undefined
 }
 
 export class SelectEvent extends CustomEvent<IAltCoreSelectFieldEvents> {}

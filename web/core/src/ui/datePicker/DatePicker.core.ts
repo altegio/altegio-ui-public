@@ -39,7 +39,7 @@ import type { SelectEvent, RangeStartEvent } from '~core/ui/calendar/models/type
 import { renderLabel, renderError, renderAnnotation } from '~core/renderers'
 import classMapToString from '~core/utils/classMapToString'
 import { preventAndStopEvent } from '~shared/utils/helpers'
-import { parseDate, formatDate, FORMAT_DATE_DMY, getDefaultMinDate, getDefaultMaxDate } from '~shared/utils/dateTime'
+import { parseDate, formatDate, toIsoDate, FORMAT_DATE_DMY, getDefaultMinDate, getDefaultMaxDate } from '~shared/utils/dateTime'
 
 import { EAltCoreDropdownPlacement, EAltCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
 
@@ -51,6 +51,7 @@ import { withLocator } from '~core/utils/locator'
 import { getAccessibleDescription, hasFieldErrors } from '~core/utils/a11y/accessible-text'
 import { getElementMessage } from '~core/i18n'
 import { getNativeFocusEvent } from '~core/utils/a11y/focus-target'
+import { FormAssociated, getNativeValidity } from '~core/utils/a11y/form-associated'
 
 const {
   isRange,
@@ -59,7 +60,6 @@ const {
   labelDebounce,
   annotationText,
   disabled,
-  name,
   placeholder,
   readonly,
   required,
@@ -74,10 +74,12 @@ const {
 
 const RANGE_SEPARATOR = ' - '
 
+const isSameDate = (first: IAltCoreDatePickerProps['date'], second: IAltCoreDatePickerProps['date']) => String(first ?? '') === String(second ?? '')
+
 @customElement(tagName)
 @withLocator(tagName)
 export class AltCoreDatePicker
-  extends LocalizedElement
+  extends FormAssociated(LocalizedElement)
   implements IAltCoreDatePickerProps {
   @provide({ context: disabledContextCreated })
   @property({ type: Boolean }) disabled: IAltCoreDatePickerExternalProps['disabled'] = disabled
@@ -88,7 +90,6 @@ export class AltCoreDatePicker
   @provide({ context: sizeContextCreated })
   @property({ type: String, reflect: true }) size: IAltCoreDatePickerExternalProps['size'] = size
   @property({ type: String }) date: IAltCoreDatePickerExternalProps['date'] = date
-  @property({ type: String }) name: IAltCoreDatePickerExternalProps['name'] = name
   @property({ type: String }) placeholder: IAltCoreDatePickerExternalProps['placeholder'] = placeholder
   @property({ type: Boolean, reflect: true }) required: IAltCoreDatePickerExternalProps['required'] = required
   @property({ type: String, attribute: 'label-text' }) labelText: IAltCoreDatePickerExternalProps['labelText'] = labelText
@@ -119,6 +120,8 @@ export class AltCoreDatePicker
 
   private maskInstance?: Maskito
 
+  private defaultDate: IAltCoreDatePickerProps['date']
+
   private readonly baseClass = tagName
 
   static readonly styles = [
@@ -143,6 +146,46 @@ export class AltCoreDatePicker
   private get computedFieldWrapperClasses() {
     return { [`${this.baseClass}__field-wrapper`]: true }
   }
+
+  /** Errors to render, with the message from `validate()` when there are none */
+  private get shownErrors() {
+    return this.withValidationError(this.errors)
+  }
+
+  /** The date, or the start and end of a range, as `YYYY-MM-DD` */
+  private get formDates() {
+    const dates = Array.isArray(this.date) ? this.date : [this.date]
+
+    return dates.map(toIsoDate).filter((isoDate) => isoDate !== null)
+  }
+
+  /** The date as `YYYY-MM-DD`, an empty string without one; a range submits its start and end under the same `name` */
+  protected get formValue() {
+    if (!this.isRange) return this.formDates[0] ?? ''
+
+    const formData = new FormData()
+    for (const isoDate of this.formDates) formData.append(this.name ?? '', isoDate)
+
+    return formData
+  }
+
+  protected get formValidity() {
+    return getNativeValidity(
+      { required: this.required, readonly: this.readonly },
+      { value: this.formDates.join(RANGE_SEPARATOR) },
+      this.fieldInput?.inputElement,
+    )
+  }
+
+  protected resetFormControl() {
+    if (isSameDate(this.date, this.defaultDate)) return
+
+    this.date = this.defaultDate
+    this.updateFieldInputValue(this.maskedValue)
+    this.calendar?.updateDate(this.date)
+    this._pick({ detail: { value: this.date } })
+  }
+
   private get computedDisabledOrReadonly() {
     return this.disabled || this.readonly
   }
@@ -437,6 +480,10 @@ export class AltCoreDatePicker
     this.applyMask()
   }
 
+  protected firstUpdated() {
+    this.defaultDate = this.date
+  }
+
   /** The input controls the calendar dialog, which renders only while open */
   updated(changedProperties: PropertyValues<this>): void {
     super.updated(changedProperties)
@@ -455,7 +502,7 @@ export class AltCoreDatePicker
         slot="activator"
         .disabled=${this.disabled}
         .readonly=${this.readonly}
-        .error=${Boolean(this.errors?.length) || this.error}
+        .error=${Boolean(this.shownErrors?.length) || this.error}
         .size=${this.size}
         class=${classMap(this.computedFieldWrapperClasses)}
         @blur=${this.handleBlur}
@@ -470,8 +517,8 @@ export class AltCoreDatePicker
           .autofocus=${this.autofocus}
           .hideSpaceRight=${true}
           .accessibleName=${this.labelText}
-          .accessibleDescription=${getAccessibleDescription(this.errors, this.annotationText)}
-          .accessibleInvalid=${hasFieldErrors(this.errors, this.error)}
+          .accessibleDescription=${getAccessibleDescription(this.shownErrors, this.annotationText)}
+          .accessibleInvalid=${hasFieldErrors(this.shownErrors, this.error)}
           .accessibleRole=${'combobox' as const}
           .accessibleHasPopup=${'dialog' as const}
           .accessibleAutocomplete=${'none' as const}
@@ -555,7 +602,7 @@ export class AltCoreDatePicker
           className: classMapToString(this.computedAnnotationClasses),
           handleSlotAnnotationChange: this.handleSlotAnnotationChange,
         })}
-        ${renderError({ errors: this.errors })}
+        ${renderError({ errors: this.shownErrors })}
       </div>
     `
   }

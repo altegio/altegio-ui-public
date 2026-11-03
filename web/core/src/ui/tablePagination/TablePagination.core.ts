@@ -113,6 +113,8 @@ export class AltCoreTablePagination
 
   private handleSelect = (event: SelectEvent) => {
     event.stopPropagation()
+    if (!event.detail.item) return
+
     const itemsPerPage = Number(event.detail.item.itemsPerPage)
 
     this._changePage({ detail: { page: Number(page), event } })

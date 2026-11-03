@@ -23,6 +23,8 @@ import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms'
 
 const {
   disabled,
+  required,
+  errors,
   labelText,
   labelTooltipText,
   annotationText,
@@ -48,6 +50,8 @@ const {
       [labelOverflowDebounce]="labelOverflowDebounce"
       [annotationText]="annotationText"
       [disabled]="disabled"
+      [required]="required"
+      [errors]="errors"
       [name]="name"
       [value]="value"
       [accessibleName]="accessibleName"
@@ -78,6 +82,8 @@ const {
 
 export class AltToggle extends ControlValueAccessorBase<TAltNgToggleModel> implements IAltNgToggleProps {
   @Input() @DefaultValue(disabled) disabled: IAltNgToggleProps['disabled'] = disabled
+  @Input() @DefaultValue(required) required: IAltNgToggleProps['required'] = required
+  @Input() @DefaultValue(errors) errors: IAltNgToggleProps['errors'] = errors
   @Input() @DefaultValue(name) name: IAltNgToggleProps['name'] = name
   @Input() @DefaultValue(value) value: IAltNgToggleProps['value'] = value
   @Input() @DefaultValue(accessibleName) accessibleName: IAltNgToggleProps['accessibleName'] = accessibleName

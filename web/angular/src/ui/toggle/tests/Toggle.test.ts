@@ -42,6 +42,8 @@ const createComponent = async({ props, slots }: ICreateComponentArgs) => {
         [name]="name"
         [value]="value"
         [accessibleName]="accessibleName"
+        [required]="required"
+        [errors]="errors"
       >
         @if (slots?.annotation) {
           <ng-template #annotation><div>{{ slots.annotation }}</div></ng-template>
@@ -64,6 +66,8 @@ const createComponent = async({ props, slots }: ICreateComponentArgs) => {
     name = props?.name
     value = props?.value
     accessibleName = props?.accessibleName
+    required = props?.required
+    errors = props?.errors
     slots = slots
   }
   return TestComponent
@@ -109,6 +113,13 @@ const propValueTestCases: TPropTestCase<IAltNgToggleProps, 'value'>[] = [
   { prop: 'value', case: 'undefined', value: undefined, expected: undefined },
 ]
 
+const errors = ['This field is required']
+
+const propRequiredTestCases: TPropTestCase<IAltNgToggleProps, 'required'>[] = [
+  { prop: 'required', case: 'true', value: true, expected: true },
+  { prop: 'required', case: 'undefined', value: undefined, expected: false },
+]
+
 const propAccessibleNameTestCases: TPropTestCase<IAltNgToggleProps, 'accessibleName'>[] = [
   { prop: 'accessibleName', case: 'text', value: text, expected: text },
   { prop: 'accessibleName', case: 'undefined', value: undefined, expected: undefined },
@@ -134,6 +145,7 @@ describe(
               ...propNameTestCases,
               ...propValueTestCases,
               ...propAccessibleNameTestCases,
+              ...propRequiredTestCases,
             ]) {
               it(
                 `Prop "${testCase.prop}" should be "${testCase.case}" and have value "${testCase.value}"`,
@@ -150,6 +162,19 @@ describe(
                 },
               )
             }
+
+            it(
+              'Prop "errors" should reach the core component',
+              async() => {
+                const component = await createComponent({ props: { errors } })
+                const fixture = TestBed.createComponent(component)
+                fixture.detectChanges()
+
+                await fixture.whenStable()
+
+                expect((fixture.nativeElement as HTMLElement).querySelector(tagName)?.errors).toEqual(errors)
+              },
+            )
           },
         )
 

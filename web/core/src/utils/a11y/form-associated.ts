@@ -38,7 +38,7 @@ export declare class FormAssociatedElementInterface {
   protected formDisabled: boolean
   protected validationError: string | undefined
   protected withValidationError(errors: string[] | undefined): string[] | undefined
-  protected get formValue(): string | null
+  protected get formValue(): string | FormData | null
   protected get formValidity(): IFormControlValidity
   protected resetFormControl(): void
 }
@@ -126,10 +126,13 @@ export const FormAssociated = <T extends TConstructor<LitElement>>(superClass: T
       this.resetFormControl()
     }
 
-    /** Value submitted with the form, `null` submits nothing */
+    /**
+     * Value submitted with the form, `null` submits nothing.
+     * A `FormData` submits each of its entries, which lets a control submit several values under its `name`.
+     */
     // Components override it with a getter, so it cannot be a readonly field
     // eslint-disable-next-line @typescript-eslint/class-literal-property-style
-    protected get formValue(): string | null {
+    protected get formValue(): string | FormData | null {
       return null
     }
 

@@ -21,6 +21,7 @@ import {
   type IAltCoreSelectFieldExternalProps,
   createCoreSelectFieldExternalProps,
   isValueEqualListItem,
+  getSelectFormValues,
   SelectEvent, FocusEvent, BlurEvent, InputEvent,
   type VisibleEvent,
 } from '~core/ui/selectField/models/types'
@@ -52,13 +53,14 @@ import { withLocator } from '~core/utils/locator'
 import { getScrollBehavior } from '~core/utils/a11y/motion'
 import { getAccessibleDescription, hasFieldErrors } from '~core/utils/a11y/accessible-text'
 import { ListboxController } from '~core/utils/a11y/listbox-controller'
+import { FormAssociated, getNativeValidity } from '~core/utils/a11y/form-associated'
 
-const { value, name, placeholder, autofocus, disabled, readonly, error, errors, size, required, labelText, labelTooltipText, annotationText, labelDebounce, isMapOptions, items, itemLabel, itemValue, isCustomFilter, isFilterable, filterValue, filterCallback, accessibleName } = createCoreSelectFieldExternalProps()
+const { value, placeholder, autofocus, disabled, readonly, error, errors, size, required, labelText, labelTooltipText, annotationText, labelDebounce, isMapOptions, items, itemLabel, itemValue, isCustomFilter, isFilterable, filterValue, filterCallback, accessibleName } = createCoreSelectFieldExternalProps()
 
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class AltCoreSelectField extends LitElement {
+export class AltCoreSelectField extends FormAssociated(LitElement) {
   @provide({ context: disabledContextCreated })
   @property({ type: Boolean }) disabled: IAltCoreSelectFieldExternalProps['disabled'] = disabled
   @provide({ context: readonlyContextCreated })
@@ -70,7 +72,6 @@ export class AltCoreSelectField extends LitElement {
 
   @property({ type: Object }) value: IAltCoreSelectFieldExternalProps['value'] = value
   @property({ type: String, attribute: 'filter-value' }) filterValue: IAltCoreSelectFieldExternalProps['filterValue'] = filterValue
-  @property({ type: String }) name: IAltCoreSelectFieldExternalProps['name'] = name
   @property({ type: String }) placeholder: IAltCoreSelectFieldExternalProps['placeholder'] = placeholder
   @property({ type: Boolean, reflect: true }) autofocus: NonNullable<IAltCoreSelectFieldExternalProps['autofocus']> = Boolean(autofocus)
   @property({ type: Boolean, reflect: true }) required: IAltCoreSelectFieldExternalProps['required'] = required
@@ -121,6 +122,8 @@ export class AltCoreSelectField extends LitElement {
 
   @query(`.${tagName}__list-items`) private listbox?: HTMLElement
   @queryAll(`.${tagName}__list-item`) private optionElements!: NodeListOf<HTMLElement>
+
+  private defaultValue: IAltCoreSelectFieldExternalProps['value']
 
   private readonly baseClass = tagName
   private readonly baseDropdownActivatorClass = `${this.baseClass}__activator`
@@ -194,6 +197,32 @@ export class AltCoreSelectField extends LitElement {
       [`${this.baseInputClass}_disabled`]: Boolean(this.disabled),
       [`${this.baseInputClass}_readonly`]: Boolean(this.readonly),
     }
+  }
+
+  /** Errors to render, with the message from `validate()` when there are none */
+  private get shownErrors() {
+    return this.withValidationError(this.errors)
+  }
+
+  /** The selected item's `itemValue`, an empty string without a selection */
+  protected get formValue() {
+    return getSelectFormValues([this.value], this.itemValue, this.isMapOptions)[0] ?? ''
+  }
+
+  protected get formValidity() {
+    return getNativeValidity(
+      { required: this.required, readonly: this.readonly },
+      { value: this.formValue },
+      this.fieldInput?.inputElement,
+    )
+  }
+
+  protected resetFormControl() {
+    if (this.value === this.defaultValue) return
+
+    this.value = this.defaultValue
+    this.setFilterValue(this.selectedItemByValue ? String(this.selectedItemByValue[this.itemLabel]) : '')
+    this._select({ detail: { value: this.value, item: this.selectedItemByValue, event: new Event('reset') } })
   }
 
   private get computedDisabledOrReadonly() {
@@ -451,6 +480,10 @@ export class AltCoreSelectField extends LitElement {
   }
 
 
+  protected firstUpdated() {
+    this.defaultValue = this.value
+  }
+
   connectedCallback() {
     super.connectedCallback()
 
@@ -523,7 +556,7 @@ export class AltCoreSelectField extends LitElement {
       <alt-core-field-wrapper
         .disabled=${this.disabled}
         .readonly=${this.readonly}
-        .error=${Boolean(this.errors?.length) || this.error}
+        .error=${Boolean(this.shownErrors?.length) || this.error}
         .size=${this.size}
         clickable
         @click=${this.handleClick}
@@ -547,8 +580,8 @@ export class AltCoreSelectField extends LitElement {
           .accessibleExpanded=${this.isDropdownOpened}
           .accessibleAutocomplete=${this.accessibleAutocomplete}
           .accessibleName=${this.computedAccessibleName}
-          .accessibleDescription=${getAccessibleDescription(this.errors, this.annotationText)}
-          .accessibleInvalid=${hasFieldErrors(this.errors, this.error)}
+          .accessibleDescription=${getAccessibleDescription(this.shownErrors, this.annotationText)}
+          .accessibleInvalid=${hasFieldErrors(this.shownErrors, this.error)}
           @input=${this.handleInput}
           @focus=${this.handleFocus}
           @blur=${this.handleBlur}
@@ -632,7 +665,7 @@ export class AltCoreSelectField extends LitElement {
           className: classMapToString(this.computedAnnotationClasses),
           handleSlotAnnotationChange: this.handleSlotAnnotationChange,
         })}
-        ${renderError({ errors: this.errors })}
+        ${renderError({ errors: this.shownErrors })}
       </div>
     `
   }

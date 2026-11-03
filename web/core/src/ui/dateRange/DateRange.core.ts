@@ -1,5 +1,5 @@
 import { LitElement, html, css, unsafeCSS, type PropertyValues } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
+import { customElement, property, query, state } from 'lit/decorators.js'
 
 import {
   DateRangeChangeEvent,
@@ -8,11 +8,13 @@ import {
   type IAltCoreDateRangeValue,
 } from '~core/ui/dateRange/models/types'
 import type { IAltCoreDatePickerExternalProps, PickEvent } from '~core/ui/datePicker/models/types'
-import { AltCoreDateRangeTagName as tagName } from '~shared/constants'
-import { formatDate, parseDate } from '~shared/utils/dateTime'
+import type { AltCoreDatePicker } from '~core/ui/datePicker'
+import { AltCoreDatePickerTagName, AltCoreDateRangeTagName as tagName } from '~shared/constants'
+import { toIsoDate } from '~shared/utils/dateTime'
 import { booleanConverter } from '~core/utils/converters'
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
 import { withLocator } from '~core/utils/locator'
+import { FormAssociated, getNativeValidity } from '~core/utils/a11y/form-associated'
 
 import '~core/ui/datePicker'
 
@@ -22,7 +24,6 @@ import AltCoreDateRangeScopedCss from '~core/ui/dateRange/css/DateRange.scoped.c
 const {
   from,
   to,
-  name,
   placeholder,
   required,
   disabled,
@@ -40,29 +41,20 @@ const {
   locale,
 } = createCoreDateRangeProps()
 
-// The date picker reports typed dates as DD.MM.YYYY and calendar dates as YYYY-MM-DD
-const toIsoDate = (date: string | undefined) => {
-  if (!date) return null
-
-  const parsedDate = parseDate(date)
-
-  return parsedDate.isValid() ? formatDate(parsedDate) : null
-}
-
 /**
  * A field for a period: a masked `DD.MM.YYYY - DD.MM.YYYY` input with a range calendar.
  *
  * `from` and `to` are `YYYY-MM-DD` strings. The `change` event reports both as `YYYY-MM-DD` or `null`:
  * after both dates are picked or typed, and with two `null` values when the field is cleared.
+ * In a form, the field submits `from` and `to` as two values under its `name`.
  */
 @customElement(tagName)
 @withLocator(tagName)
 export class AltCoreDateRange
-  extends LitElement
+  extends FormAssociated(LitElement)
   implements IAltCoreDateRangeProps {
   @property({ type: String }) from: IAltCoreDateRangeProps['from'] = from
   @property({ type: String }) to: IAltCoreDateRangeProps['to'] = to
-  @property({ type: String }) name: IAltCoreDateRangeProps['name'] = name
   @property({ type: String }) placeholder: IAltCoreDateRangeProps['placeholder'] = placeholder
   @property({ type: Boolean, converter: booleanConverter }) required: IAltCoreDateRangeProps['required'] = required
   @property({ type: Boolean, converter: booleanConverter }) disabled: IAltCoreDateRangeProps['disabled'] = disabled
@@ -85,6 +77,10 @@ export class AltCoreDateRange
   @bubblingEvent(DateRangeChangeEvent, { name: 'change' })
   protected _change!: TDispatcher<DateRangeChangeEvent>
 
+  @query(AltCoreDatePickerTagName) private readonly datePicker?: AltCoreDatePicker
+
+  private defaultRange: IAltCoreDateRangeValue = { from: null, to: null }
+
   private readonly baseClass = tagName
 
   static readonly styles = [
@@ -94,7 +90,42 @@ export class AltCoreDateRange
     `,
   ]
 
+  private get formDates() {
+    return [this.from, this.to].map(toIsoDate).filter((isoDate) => isoDate !== null)
+  }
+
+  /** `from` and `to` as two values under the field's `name` */
+  protected get formValue() {
+    const formData = new FormData()
+    for (const isoDate of this.formDates) formData.append(this.name ?? '', isoDate)
+
+    return formData
+  }
+
+  protected get formValidity() {
+    return getNativeValidity(
+      { required: this.required, readonly: this.readonly },
+      { value: this.formDates.length === 2 ? this.formDates.join(' - ') : '' },
+      this.datePicker?.fieldInput?.inputElement,
+    )
+  }
+
+  protected resetFormControl() {
+    const { from: defaultFrom, to: defaultTo } = this.defaultRange
+    if (toIsoDate(this.from) === defaultFrom && toIsoDate(this.to) === defaultTo) return
+
+    this.from = defaultFrom ?? undefined
+    this.to = defaultTo ?? undefined
+    this._change({ detail: { ...this.defaultRange } })
+  }
+
+  protected firstUpdated() {
+    this.defaultRange = { from: toIsoDate(this.from), to: toIsoDate(this.to) }
+  }
+
   protected willUpdate(changedProperties: PropertyValues<this>) {
+    super.willUpdate(changedProperties)
+
     if (changedProperties.has('from') || changedProperties.has('to')) {
       this.pickerDate = this.from && this.to ? [this.from, this.to] : ''
     }
@@ -111,6 +142,9 @@ export class AltCoreDateRange
       to: toIsoDate(rangeTo),
     }
 
+    // The range is the form value, also when no framework writes `change` back
+    this.from = detail.from ?? undefined
+    this.to = detail.to ?? undefined
     this._change({ detail })
   }
 
@@ -126,7 +160,7 @@ export class AltCoreDateRange
         .disabled=${this.disabled}
         .readonly=${this.readonly}
         .error=${this.error}
-        .errors=${this.errors}
+        .errors=${this.withValidationError(this.errors)}
         .size=${this.size}
         .minDate=${this.minDate}
         .maxDate=${this.maxDate}

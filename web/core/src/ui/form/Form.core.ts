@@ -19,7 +19,7 @@ import AltCoreFormScopedCss from '~core/ui/form/css/Form.scoped.css?inline'
 
 const { noErrorFocus } = createCoreFormProps()
 
-/** A field of the form: a form-associated Altegio UI component, a native control or a field with `errors` */
+/** A field of the form: a form-associated Altegio UI component or a native control */
 interface IFormControl extends HTMLElement {
   validate?: () => boolean
   resetValidation?: () => void
@@ -29,14 +29,6 @@ interface IFormControl extends HTMLElement {
   errors?: string[]
   updateComplete?: Promise<boolean>
 }
-
-/** Altegio UI fields that show `errors` but do not take part in a native form */
-const ERROR_FIELDS_SELECTOR = [
-  'alt-core-select-field',
-  'alt-core-multiple-select-field',
-  'alt-core-date-picker',
-  'alt-core-date-range',
-].join(', ')
 
 /** Input types that submit their form with Enter, as in a native form */
 const IMPLICIT_SUBMIT_TYPES = new Set(['text', 'search', 'url', 'tel', 'email', 'password', 'number'])
@@ -144,16 +136,8 @@ export class AltCoreForm
   }
 
   private get controls(): IFormControl[] {
-    const { form } = this
-    if (!form) return []
-
-    const controls = new Set<IFormControl>([
-      ...Array.from(form.elements) as IFormControl[],
-      ...Array.from(form.querySelectorAll<IFormControl>(ERROR_FIELDS_SELECTOR)),
-    ])
-
-    return Array.from(controls)
-      .sort((first, second) => first.compareDocumentPosition(second) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1)
+    // Form-associated fields are listed in `elements` with the native controls, in document order
+    return Array.from(this.form?.elements ?? []) as IFormControl[]
   }
 
   /**

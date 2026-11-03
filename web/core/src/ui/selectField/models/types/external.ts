@@ -61,6 +61,24 @@ export const isValueEqualListItem = (value: TAltCoreSelectFieldItemValue, isMapO
   return Boolean(value && !isMapOptions)
 }
 
+/**
+ * Values a select submits with its form: the `itemValue` of each selected item, as native options submit their values
+ * @param values - Selected values: items, or their `itemValue` with `isMapOptions`
+ * @param itemValue - Item field that holds the value
+ * @param isMapOptions - Whether the values are `itemValue` fields instead of items
+ * @returns {string[]} Submitted values
+ */
+export const getSelectFormValues = (
+  values: TAltCoreSelectFieldItemValue[],
+  itemValue: TItemValue,
+  isMapOptions: IAltCoreSelectFieldProps['isMapOptions'],
+): string[] => values
+  // A framework may pass `null` for an empty value
+  .filter((value) => (value ?? '') !== '')
+  .map((value) => String(isValueEqualListItem(value, isMapOptions)
+    ? value[itemValue]
+    : value))
+
 export const isValueEqualListItemField = (value: TAltCoreSelectFieldItemValue, isMapOptions: IAltCoreSelectFieldProps['isMapOptions']): value is NonNullable<IAltCoreSelectListItem[TItemValue]> => {
   return Boolean(value && isMapOptions)
 }

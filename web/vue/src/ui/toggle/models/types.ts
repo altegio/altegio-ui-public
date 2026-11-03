@@ -9,6 +9,8 @@ export interface IAltVueCoreToggleProps extends Omit<IAltCoreToggleExternalProps
 export interface IAltVueToggleProps {
   modelValue: IAltVueCoreToggleProps['modelValue']
   disabled?: IAltVueCoreToggleProps['disabled']
+  required?: IAltVueCoreToggleProps['required']
+  errors?: IAltVueCoreToggleProps['errors']
   labelText?: IAltVueCoreToggleProps['labelText']
   labelTooltipText?: IAltVueCoreToggleProps['labelTooltipText']
   annotationText?: IAltVueCoreToggleProps['annotationText']
@@ -21,10 +23,14 @@ export interface IAltVueToggleProps {
 }
 
 export const createVueToggleProps = (): TDefinedVueProps<IAltVueToggleProps> => {
-  const { disabled, labelText, labelTooltipText, annotationText, labelOverflowDebounce, alignment, size, name, value, accessibleName } = createCoreToggleExternalProps()
+  const { disabled, required, errors, labelText, labelTooltipText, annotationText, labelOverflowDebounce, alignment, size, name, value, accessibleName } = createCoreToggleExternalProps()
 
   return {
     disabled,
+    required,
+    errors: errors
+      ? () => errors
+      : undefined,
     labelText,
     labelTooltipText,
     annotationText,

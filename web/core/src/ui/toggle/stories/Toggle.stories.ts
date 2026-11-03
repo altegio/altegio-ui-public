@@ -15,6 +15,7 @@ import { AltCoreToggleTagName as tagName } from '~shared/constants'
 import { omit } from 'radash'
 import altCoreLabelStoryMeta, { type IAltCoreLabelStorySlots } from '~core/ui/label/stories/Label.stories'
 import altCoreAnnotationStoryMeta from '~core/ui/annotation/stories/Annotation.stories'
+import altCoreErrorStoryMeta from '~core/ui/error/stories/Error.stories'
 import type { ITextStoryProps } from '~shared/.storybook/argTypes'
 import { LOREM_IPSUM } from '~shared/.storybook/constants'
 import { internalPropsKeys as simpleToggleInternalPropsKeys } from '~core/ui/simpleToggle/models/types'
@@ -49,6 +50,8 @@ const meta: Meta<TAltCoreToggleStoryMeta> = {
     labelTooltipText,
     annotationText,
     disabled,
+    required,
+    errors,
     alignment,
     isLongText,
     labelOverflowDebounce,
@@ -76,6 +79,8 @@ const meta: Meta<TAltCoreToggleStoryMeta> = {
         .labelOverflowDebounce=${labelOverflowDebounce}
         .size=${size}
         .disabled=${disabled}
+        .required=${required}
+        .errors=${errors}
         @checked=${onChange}
       >
         ${annotationText
@@ -102,6 +107,7 @@ const meta: Meta<TAltCoreToggleStoryMeta> = {
     ),
 
     annotationText: altCoreAnnotationStoryMeta.argTypes?.text ?? {},
+    errors: altCoreErrorStoryMeta.argTypes?.errors ?? {},
     ...omit(
       altCoreSimpleToggleStoryMeta.argTypes ?? {},
       [...simpleToggleInternalPropsKeys],

@@ -36,6 +36,7 @@ import type { AltCoreFieldInput } from '~core/ui/fieldInput'
 
 import { getAccessibleDescription, hasFieldErrors } from '~core/utils/a11y/accessible-text'
 import { ListboxController } from '~core/utils/a11y/listbox-controller'
+import { FormAssociated, getNativeValidity } from '~core/utils/a11y/form-associated'
 import '~core/ui/fieldWrapper'
 import '~core/ui/fieldInput'
 import '~core/ui/fieldIcon'
@@ -53,7 +54,7 @@ import { booleanConverter } from '~core/utils/converters'
 import classMapToString from '~core/utils/classMapToString'
 
 import type { KeydownEvent } from '~core/ui/fieldInput/models/types/events'
-import type { IAltCoreSelectListItem, TItemValue, TAltCoreSelectFieldItemValue } from '~core/ui/selectField/models/types/external'
+import { getSelectFormValues, type IAltCoreSelectListItem, type TItemValue, type TAltCoreSelectFieldItemValue } from '~core/ui/selectField/models/types/external'
 import type { ClickIconEmitEvent } from '~core/ui/simpleChip/models/types'
 import { EAltCoreDropdownPlacement, EAltCoreDropdownTrigger } from '~core/ui/dropdown/models/types'
 import { EAltCoreSimpleChipVariant } from '~core/ui/simpleChip/models/types'
@@ -61,16 +62,21 @@ import { hasSlotContent } from '~core/utils/lit-slots'
 import { EAltSizes } from '~shared/types/global'
 import { withLocator } from '~core/utils/locator'
 
-const { value, name, placeholder, autofocus, disabled, readonly, error, errors, size, required, labelText, labelTooltipText, annotationText, labelDebounce, isMapOptions, items, itemLabel, itemValue, isCustomFilter, isFilterable, filterValue, filterCallback, accessibleName } = createCoreMultipleSelectFieldProps()
+const { value, placeholder, autofocus, disabled, readonly, error, errors, size, required, labelText, labelTooltipText, annotationText, labelDebounce, isMapOptions, items, itemLabel, itemValue, isCustomFilter, isFilterable, filterValue, filterCallback, accessibleName } = createCoreMultipleSelectFieldProps()
 
 const BACKSPACE_KEY = 'Backspace'
+
+type TMultipleValue = TAltCoreSelectFieldItemValue[] | undefined
+
+const isSameValue = (first: TMultipleValue, second: TMultipleValue) => first?.length === second?.length &&
+  (first ?? []).every((element, index) => element === second?.[index])
 const MIN_INPUT_WIDTH = 4
 const CLICK_OUTSIDE_DELAY = 150
 
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
-export class AltCoreMultipleSelectField extends LitElement implements IAltCoreMultipleSelectFieldProps {
+export class AltCoreMultipleSelectField extends FormAssociated(LitElement) implements IAltCoreMultipleSelectFieldProps {
   @provide({ context: disabledContextCreated })
   @property({ type: Boolean }) disabled: IAltCoreMultipleSelectFieldProps['disabled'] = disabled
   @provide({ context: readonlyContextCreated })
@@ -82,7 +88,6 @@ export class AltCoreMultipleSelectField extends LitElement implements IAltCoreMu
 
   @property({ type: Array }) value: IAltCoreMultipleSelectFieldProps['value'] = value
   @property({ type: String, attribute: 'filter-value' }) filterValue: IAltCoreMultipleSelectFieldProps['filterValue'] = filterValue
-  @property({ type: String }) name: IAltCoreMultipleSelectFieldProps['name'] = name
   @property({ type: String }) placeholder: IAltCoreMultipleSelectFieldProps['placeholder'] = placeholder
   @property({ type: Boolean, reflect: true }) autofocus: NonNullable<IAltCoreMultipleSelectFieldProps['autofocus']> = Boolean(autofocus)
   @property({ type: Boolean, reflect: true }) required: IAltCoreMultipleSelectFieldProps['required'] = required
@@ -132,6 +137,8 @@ export class AltCoreMultipleSelectField extends LitElement implements IAltCoreMu
   @query(AltCoreFieldInputTagName) public readonly fieldInput?: AltCoreFieldInput
   @query(`.${tagName}__list-items`) private listbox?: HTMLElement
   @queryAll(`.${tagName}__list-item`) private optionElements!: NodeListOf<HTMLElement>
+
+  private defaultValue: IAltCoreMultipleSelectFieldProps['value']
 
   private readonly baseClass = tagName
   private readonly baseDropdownActivatorClass = `${this.baseClass}__activator`
@@ -194,6 +201,39 @@ export class AltCoreMultipleSelectField extends LitElement implements IAltCoreMu
       [this.baseArrowIconClass]: true,
       [`${this.baseArrowIconClass}_rotated`]: this.isOpened,
     }
+  }
+
+  /** Errors to render, with the message from `validate()` when there are none */
+  private get shownErrors() {
+    return this.withValidationError(this.errors)
+  }
+
+  private get formValues() {
+    return getSelectFormValues(this.value ?? [], this.itemValue, this.isMapOptions)
+  }
+
+  /** Each selected item's `itemValue` under the field's `name`, as a native multiple select submits its options */
+  protected get formValue() {
+    const formData = new FormData()
+    for (const formValue of this.formValues) formData.append(this.name ?? '', formValue)
+
+    return formData
+  }
+
+  protected get formValidity() {
+    return getNativeValidity(
+      { required: this.required, readonly: this.readonly },
+      { value: this.formValues.join(',') },
+      this.fieldInput?.inputElement,
+    )
+  }
+
+  protected resetFormControl() {
+    if (isSameValue(this.value, this.defaultValue)) return
+
+    this.value = this.defaultValue && [...this.defaultValue]
+    this.filterValue = ''
+    this._select({ detail: { value: this.value } })
   }
 
   private get computedDisabledOrReadonly() {
@@ -369,6 +409,10 @@ export class AltCoreMultipleSelectField extends LitElement implements IAltCoreMu
     this.value = this.setOrDeleteItemFromValue(item)
     this.filterValue = ''
     this._select({ detail: { value: this.value } })
+  }
+
+  protected firstUpdated() {
+    this.defaultValue = this.value && [...this.value]
   }
 
   protected updated(changedProperties: PropertyValues<this>) {
@@ -568,7 +612,7 @@ export class AltCoreMultipleSelectField extends LitElement implements IAltCoreMu
       <alt-core-field-wrapper
         .disabled=${this.disabled}
         .readonly=${this.readonly}
-        .error=${Boolean(this.errors?.length) || this.error}
+        .error=${Boolean(this.shownErrors?.length) || this.error}
         .size=${this.size}
         clickable
         @click=${this.handleClick}
@@ -591,8 +635,8 @@ export class AltCoreMultipleSelectField extends LitElement implements IAltCoreMu
             .accessibleExpanded=${this.isOpened && !this.computedDisabledOrReadonly}
             .accessibleAutocomplete=${this.accessibleAutocomplete}
             .accessibleName=${this.computedAccessibleName}
-            .accessibleDescription=${getAccessibleDescription(this.errors, this.annotationText)}
-            .accessibleInvalid=${hasFieldErrors(this.errors, this.error)}
+            .accessibleDescription=${getAccessibleDescription(this.shownErrors, this.annotationText)}
+            .accessibleInvalid=${hasFieldErrors(this.shownErrors, this.error)}
             @input=${this.handleInput}
             @keydown=${this.handleKeydown}
             @focus=${this.handleFocus}
@@ -684,7 +728,7 @@ export class AltCoreMultipleSelectField extends LitElement implements IAltCoreMu
           className: classMapToString(this.computedAnnotationClasses),
           handleSlotAnnotationChange: this.handleSlotAnnotationChange,
         })}
-        ${renderError({ errors: this.errors })}
+        ${renderError({ errors: this.shownErrors })}
       </div>
     `
   }

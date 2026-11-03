@@ -22,6 +22,19 @@ export const FORMAT_WEEKDAY_SHORT = 'dd'
 export const FORMAT_DATE_DMY = 'DD.MM.YYYY'
 export const FORMAT_DATE = 'YYYY-MM-DD'
 
+/**
+ * Converts a date typed as DD.MM.YYYY or picked as YYYY-MM-DD to YYYY-MM-DD
+ * @param date - Date string
+ * @returns {string | null} The date as YYYY-MM-DD, `null` when it is empty or invalid
+ */
+export const toIsoDate = (date: string | undefined) => {
+  if (!date) return null
+
+  const parsedDate = dayjs(date, [FORMAT_DATE_DMY, FORMAT_DATE])
+
+  return parsedDate.isValid() ? parsedDate.format(FORMAT_DATE) : null
+}
+
 export const getDefaultMinDate = () => dayjs('01.01.1900', FORMAT_DATE_DMY)
 export const getDefaultMaxDate = () => dayjs().add(1, 'year').endOf('year')
 
