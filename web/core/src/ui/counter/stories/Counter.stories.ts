@@ -16,11 +16,14 @@ import {
 import { getComponentContentTable, getComponentStateTable } from '~shared/.storybook/tables'
 import { EAltSizes } from '~shared/types/global'
 
-const { size, value, disabled, variant, withPlusSign, locator } = createCoreCounterProps()
+const { size, value, disabled, variant, withPlusSign, max, accessibleName, locator } = createCoreCounterProps()
 
 /**
  * ## Core Counter
- * Counter component
+ * A small badge with a number, such as the count of unread notifications.
+ *
+ * - Values above `max` (999 by default) show as "999+"; negative values show as 0.
+ * - Screen readers read the bare number. Give the count its meaning with `accessibleName`, for example "3 unread messages".
  */
 
 const meta: Meta<IAltCoreCounterExternalProps> = {
@@ -38,6 +41,8 @@ const meta: Meta<IAltCoreCounterExternalProps> = {
     variant,
     disabled,
     withPlusSign,
+    max,
+    accessibleName,
     locator,
   }) => {
     return html`
@@ -47,6 +52,8 @@ const meta: Meta<IAltCoreCounterExternalProps> = {
         .variant=${variant}
         .disabled=${disabled}
         .withPlusSign=${withPlusSign}
+        .max=${max}
+        .accessibleName=${accessibleName}
         .locator=${locator}
       ></alt-core-counter>
     `
@@ -67,6 +74,16 @@ const meta: Meta<IAltCoreCounterExternalProps> = {
         step: 1,
       },
       ...getComponentContentTable(value),
+    },
+    max: {
+      type: 'number',
+      description: 'Largest number shown; a larger value shows as "max+"',
+      ...getComponentContentTable(max),
+    },
+    accessibleName: {
+      type: 'string',
+      description: 'Text that screen readers read instead of the number',
+      ...getComponentContentTable(accessibleName),
     },
     withPlusSign: {
       control: 'boolean',

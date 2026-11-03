@@ -78,6 +78,7 @@ export * from './ui/tabPanel'
 export * from './ui/dateRange'
 export * from './ui/linearProgress'
 export * from './ui/rating'
+export * from './ui/status'
 export * from './ui/countField'
 export * from './ui/modal'
 export * from './ui/functionalModal'
@@ -176,6 +177,7 @@ import type {
   AltCoreDateRangeTagName,
   AltCoreLinearProgressTagName,
   AltCoreRatingTagName,
+  AltCoreStatusTagName,
 } from '../../shared/constants'
 
 import type {
@@ -263,6 +265,7 @@ import type {
   AltCoreDateRange,
   AltCoreLinearProgress,
   AltCoreRating,
+  AltCoreStatus,
 } from '../../core/src/'
 
 declare global {
@@ -354,5 +357,6 @@ declare global {
     [AltCoreDateRangeTagName]: AltCoreDateRange
     [AltCoreLinearProgressTagName]: AltCoreLinearProgress
     [AltCoreRatingTagName]: AltCoreRating
+    [AltCoreStatusTagName]: AltCoreStatus
   }
 }

@@ -12,16 +12,20 @@ export interface IAltVueCounterProps {
   size?: IAltVueCoreCounterProps['size']
   disabled?: IAltVueCoreCounterProps['disabled']
   withPlusSign?: IAltVueCoreCounterProps['withPlusSign']
+  max?: IAltVueCoreCounterProps['max']
+  accessibleName?: IAltVueCoreCounterProps['accessibleName']
   locator?: IAltVueCoreCounterProps['locator']
 }
 
 export const createVueCounterProps = (): TDefinedVueProps<IAltVueCounterProps> => {
-  const { size, disabled, withPlusSign, locator } = createCoreCounterProps()
+  const { size, disabled, withPlusSign, max, accessibleName, locator } = createCoreCounterProps()
 
   return {
     size,
     disabled,
     withPlusSign,
+    max,
+    accessibleName,
     locator,
   }
 }

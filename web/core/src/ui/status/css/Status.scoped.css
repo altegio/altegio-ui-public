@@ -1,0 +1,63 @@
+$component: $AltCoreStatusTagName;
+
+:host {
+  display: var(--alt-core-status-display);
+}
+
+.$(component) {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--alt-core-status-gap);
+  font-family: var(--alt-core-status-font-family);
+  color: var(--alt-core-status-color);
+  overflow-wrap: anywhere;
+
+  &_size-large {
+    --alt-core-status-icon-offset: var(--alt-core-status-large-icon-offset);
+
+    padding: var(--alt-core-status-large-padding);
+    border-radius: var(--alt-core-status-large-border-radius);
+  }
+
+  &_size-medium {
+    --alt-core-status-icon-offset: var(--alt-core-status-medium-icon-offset);
+
+    padding: var(--alt-core-status-medium-padding-y) var(--alt-core-status-medium-padding-x);
+    border-radius: var(--alt-core-status-medium-border-radius);
+  }
+
+  &_variant-waiting {
+    --alt-core-status-icon-color: var(--alt-core-status-waiting-icon-color);
+
+    background-color: var(--alt-core-status-waiting-background-color);
+  }
+
+  &_variant-success {
+    --alt-core-status-icon-color: var(--alt-core-status-success-icon-color);
+
+    background-color: var(--alt-core-status-success-background-color);
+  }
+
+  &_variant-error {
+    --alt-core-status-icon-color: var(--alt-core-status-error-icon-color);
+
+    background-color: var(--alt-core-status-error-background-color);
+  }
+
+  &__icon {
+    position: absolute;
+    inset-block-start: var(--alt-core-status-icon-offset);
+    inset-inline-end: var(--alt-core-status-icon-offset);
+    display: flex;
+    color: var(--alt-core-status-icon-color);
+  }
+
+  &__text {
+    padding-inline-end: var(--alt-core-size-spacing-6-x);
+    font-size: var(--alt-core-status-text-font-size);
+    font-weight: var(--alt-core-status-text-font-weight);
+    line-height: var(--alt-core-status-text-line-height);
+  }
+}

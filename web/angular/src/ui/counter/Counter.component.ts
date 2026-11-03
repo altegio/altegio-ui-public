@@ -7,7 +7,7 @@ import {
 } from '~ng/ui/counter/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 
-const { size, variant, value, disabled, withPlusSign, locator } = createNgCounterProps()
+const { size, variant, value, disabled, withPlusSign, max, accessibleName, locator } = createNgCounterProps()
 
 @Component({
   selector: 'AltCounter',
@@ -20,6 +20,8 @@ const { size, variant, value, disabled, withPlusSign, locator } = createNgCounte
       [variant]="variant"
       [disabled]="disabled"
       [withPlusSign]="withPlusSign"
+      [max]="max"
+      [accessibleName]="accessibleName"
       [locator]="locator"
     ></alt-core-counter>
   `,
@@ -32,5 +34,7 @@ export class AltCounter implements TAltNgCounterProps {
   @Input() @DefaultValue(variant) variant: TAltNgCounterProps['variant'] = variant
   @Input() @DefaultValue(disabled) disabled: TAltNgCounterProps['disabled'] = disabled
   @Input() @DefaultValue(withPlusSign) withPlusSign: TAltNgCounterProps['withPlusSign'] = withPlusSign
+  @Input() @DefaultValue(max) max: TAltNgCounterProps['max'] = max
+  @Input() @DefaultValue(accessibleName) accessibleName: TAltNgCounterProps['accessibleName'] = accessibleName
 }
 

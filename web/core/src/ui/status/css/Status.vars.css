@@ -1,0 +1,29 @@
+:host {
+  /* General */
+  --alt-core-status-display: block;
+  --alt-core-status-font-family: var(--alt-core-font-family);
+  --alt-core-status-gap: var(--alt-core-size-spacing-3-x);
+  --alt-core-status-color: var(--alt-core-color-text-primary);
+
+  /* Sizes */
+  --alt-core-status-large-padding: var(--alt-core-size-spacing-7-x);
+  --alt-core-status-large-border-radius: var(--alt-core-size-radius-5-x);
+  --alt-core-status-large-icon-offset: var(--alt-core-size-spacing-3-x);
+  --alt-core-status-medium-padding-x: var(--alt-core-size-spacing-6-x);
+  --alt-core-status-medium-padding-y: var(--alt-core-size-spacing-5-x);
+  --alt-core-status-medium-border-radius: var(--alt-core-size-radius-4-x);
+  --alt-core-status-medium-icon-offset: var(--alt-core-size-spacing-3-x);
+
+  /* Typography */
+  --alt-core-status-text-font-size: var(--alt-core-typography-paragraph-p-1-regular-font-size);
+  --alt-core-status-text-line-height: var(--alt-core-typography-paragraph-p-1-regular-line-height);
+  --alt-core-status-text-font-weight: var(--alt-core-typography-paragraph-p-1-regular-font-weight);
+
+  /* Variants */
+  --alt-core-status-waiting-background-color: var(--alt-core-color-surface-secondary);
+  --alt-core-status-waiting-icon-color: var(--alt-core-color-icon-primary);
+  --alt-core-status-success-background-color: var(--alt-core-color-surface-positive-low);
+  --alt-core-status-success-icon-color: var(--alt-core-color-icon-positive);
+  --alt-core-status-error-background-color: var(--alt-core-color-surface-negative-low);
+  --alt-core-status-error-icon-color: var(--alt-core-color-icon-negative);
+}

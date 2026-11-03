@@ -74,3 +74,13 @@ $component: $AltCoreCounterTagName;
    }
   }
 }
+
+/* Read by screen readers without taking space */
+.$(component)__accessible-name {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
