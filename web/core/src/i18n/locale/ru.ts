@@ -32,6 +32,7 @@ export const ru: ILocale = {
     stepDone: 'выполнен',
     stepError: 'ошибка',
     stepDisabled: 'недоступен',
+    validationRequired: 'Заполните это поле',
   },
   formatters: {
     date: {

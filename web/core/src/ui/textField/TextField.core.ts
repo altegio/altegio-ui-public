@@ -189,8 +189,13 @@ export class AltCoreTextField
     return this.annotationText || this.hasAnnotationSlot
   }
 
+  /** Errors to render, with the message from `validate()` when there are none */
+  private get shownErrors() {
+    return this.withValidationError(this.errors)
+  }
+
   private get hasError() {
-    return Boolean(this.errors?.length) || this.error
+    return Boolean(this.shownErrors?.length) || this.error
   }
 
   private get computedDisabledOrReadonly() {
@@ -389,8 +394,8 @@ export class AltCoreTextField
           .hideSpaceLeft=${this.hasBeforeSlot}
           .hideSpaceRight=${this.hasAfterSlot || Boolean(this.value) && this.clearable}
           .accessibleName=${this.accessibleName || this.labelText}
-          .accessibleDescription=${getAccessibleDescription(this.errors, this.annotationText)}
-          .accessibleInvalid=${hasFieldErrors(this.errors, this.error)}
+          .accessibleDescription=${getAccessibleDescription(this.shownErrors, this.annotationText)}
+          .accessibleInvalid=${hasFieldErrors(this.shownErrors, this.error)}
           @input=${this.handleInput}
           @keydown=${this.handleKeydown}
           @render=${this.handleRender}
@@ -449,7 +454,7 @@ export class AltCoreTextField
           className: classMapToString(this.computedAnnotationClasses),
           handleSlotAnnotationChange: this.handleSlotAnnotationChange,
         })}
-        ${renderError({ errors: this.errors, locator: this.locatorError })}
+        ${renderError({ errors: this.shownErrors, locator: this.locatorError })}
       </div>
     `
   }

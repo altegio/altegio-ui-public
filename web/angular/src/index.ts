@@ -56,5 +56,6 @@ export * from './ui/stepper'
 export * from './ui/step'
 export * from './ui/scrollArea'
 export * from './ui/virtualScroll'
+export * from './ui/form'
 
 export { BREAKPOINTS } from '~shared/constants/breakpoints'

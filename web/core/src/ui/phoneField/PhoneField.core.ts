@@ -693,6 +693,11 @@ export class AltCorePhoneField extends FormAssociated(LocalizedElement) implemen
     return this.value
   }
 
+  /** Errors to render, with the message from `validate()` when there are none */
+  private get shownErrors() {
+    return this.withValidationError(this.errors)
+  }
+
   protected get formValidity() {
     return getNativeValidity(
       { type: 'tel', required: this.required },
@@ -775,7 +780,7 @@ export class AltCorePhoneField extends FormAssociated(LocalizedElement) implemen
       <alt-core-field-wrapper
         .disabled=${this.isFormControlDisabled}
         .readonly=${this.readonly}
-        .error=${Boolean(this.errors?.length) || this.error}
+        .error=${Boolean(this.shownErrors?.length) || this.error}
         .size=${this.size}
         class=${classMap(this.computedFieldWrapperClasses)}
         @blur=${this.handleBlur}
@@ -795,8 +800,8 @@ export class AltCorePhoneField extends FormAssociated(LocalizedElement) implemen
           .accessibleExpanded=${this.isDropdownOpened}
           .accessibleAutocomplete=${'list'}
           .accessibleName=${this.labelText}
-          .accessibleDescription=${getAccessibleDescription(this.errors, this.annotationText)}
-          .accessibleInvalid=${hasFieldErrors(this.errors, this.error)}
+          .accessibleDescription=${getAccessibleDescription(this.shownErrors, this.annotationText)}
+          .accessibleInvalid=${hasFieldErrors(this.shownErrors, this.error)}
           type="tel"
           @input=${this.handleInput}
           @render=${() => { this.applyMask() }}
@@ -1046,7 +1051,7 @@ export class AltCorePhoneField extends FormAssociated(LocalizedElement) implemen
           className: classMapToString(this.computedAnnotationClasses),
           handleSlotAnnotationChange: this.handleSlotAnnotationChange,
         })}
-        ${renderError({ errors: this.errors })}
+        ${renderError({ errors: this.shownErrors })}
       </div>
     `
   }

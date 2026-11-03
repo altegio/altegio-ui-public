@@ -540,7 +540,7 @@ export class AltCoreCountField
           .labelTooltipText=${this.labelTooltipText}
           .labelDebounce=${this.labelDebounce}
           .annotationText=${this.annotationText}
-          .errors=${this.errors}
+          .errors=${this.withValidationError(this.errors)}
           .accessibleName=${this.accessibleName}
           @render=${() => { this.handleRenderInput() }}
           @keydown=${this.handleKeydown}

@@ -291,6 +291,15 @@ export class AltCoreTextarea
     return this.value
   }
 
+  /** Errors to render, with the message from `validate()` when there are none */
+  private get shownErrors() {
+    return this.withValidationError(this.errors)
+  }
+
+  private get hasError() {
+    return Boolean(this.error) || Boolean(this.validationError && !this.errors?.length)
+  }
+
   protected get formValidity() {
     return getNativeValidity(
       { type: 'text', required: this.required },
@@ -331,7 +340,7 @@ export class AltCoreTextarea
       <alt-core-field-wrapper
         .disabled=${this.isFormControlDisabled}
         .readonly=${this.readonly}
-        .error=${this.error}
+        .error=${this.hasError}
         .size=${this.size}
         class=${classMap(this.computedFieldWrapperClasses)}
         @mouse-enter=${this.handleMouseEnter}
@@ -355,8 +364,8 @@ export class AltCoreTextarea
             .hideSpaceLeft=${this.hasBeforeSlot}
             .hideSpaceRight=${this.hasAfterSlot || Boolean(this.value) && this.clearable}
             .accessibleName=${this.accessibleName || this.labelText}
-            .accessibleDescription=${this.error ? getAccessibleDescription(this.errors) : undefined}
-            .accessibleInvalid=${this.error}
+            .accessibleDescription=${this.hasError ? getAccessibleDescription(this.shownErrors) : undefined}
+            .accessibleInvalid=${this.hasError}
             @input=${this.handleInput}
             @keydown=${this.handleKeydown}
             @render=${this.handleRender}
@@ -400,7 +409,7 @@ export class AltCoreTextarea
           ? html`<div class=${classMap(this.computedCounterClasses)}>${this.counterText}</div>`
           : nothing
         }
-        ${this.error ? renderError({ errors: this.errors }) : nothing}
+        ${this.hasError ? renderError({ errors: this.shownErrors }) : nothing}
       </div>
     `
   }

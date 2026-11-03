@@ -1,5 +1,6 @@
 import type { LitElement, PropertyValues } from 'lit'
 import { property, state } from 'lit/decorators.js'
+import { getElementMessage } from '~core/i18n/messages'
 
 // Mixin constructors must accept any arguments (TS2545)
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -29,10 +30,14 @@ export declare class FormAssociatedElementInterface {
   readonly willValidate: boolean
   checkValidity(): boolean
   reportValidity(): boolean
+  validate(): boolean
+  resetValidation(): void
   formDisabledCallback(disabled: boolean): void
   formResetCallback(): void
   protected readonly internals: ElementInternals
   protected formDisabled: boolean
+  protected validationError: string | undefined
+  protected withValidationError(errors: string[] | undefined): string[] | undefined
   protected get formValue(): string | null
   protected get formValidity(): IFormControlValidity
   protected resetFormControl(): void
@@ -45,6 +50,8 @@ export declare class FormAssociatedElementInterface {
  * reports `formValidity` to constraint validation, and restores its initial state on form reset.
  * Without a `name` it submits nothing and never blocks submission, which keeps existing forms working.
  * A disabled `<fieldset>` ancestor sets `formDisabled`.
+ * `validate()` shows the validation message in the component (through `withValidationError`) and keeps it
+ * current while the value changes, until `resetValidation()`; `AltForm` calls both for its fields.
  * @param superClass - Component class
  * @returns {TConstructor<FormAssociatedElementInterface> & T} The component class with form association
  */
@@ -57,6 +64,12 @@ export const FormAssociated = <T extends TConstructor<LitElement>>(superClass: T
 
     /** Whether a disabled fieldset ancestor disables the control */
     @state() protected formDisabled = false
+
+    /** Validation message shown after `validate()` while the value is invalid */
+    @state() protected validationError: string | undefined
+
+    /** Whether `validate()` ran since the last `resetValidation()` */
+    private validationShown = false
 
     protected readonly internals: ElementInternals = this.attachInternals()
 
@@ -88,6 +101,23 @@ export const FormAssociated = <T extends TConstructor<LitElement>>(superClass: T
       return this.internals.reportValidity()
     }
 
+    /**
+     * Checks the value and shows the validation message in the component until the value is valid
+     * @returns {boolean} Whether the value is valid
+     */
+    validate() {
+      this.validationShown = true
+      this.validationError = this.getValidationError()
+
+      return !this.validationError
+    }
+
+    /** Hides the message shown by `validate()` */
+    resetValidation() {
+      this.validationShown = false
+      this.validationError = undefined
+    }
+
     formDisabledCallback(disabled: boolean) {
       this.formDisabled = disabled
     }
@@ -113,11 +143,50 @@ export const FormAssociated = <T extends TConstructor<LitElement>>(superClass: T
       // Components that keep a value override it
     }
 
+    /**
+     * Errors to render: the component's own, otherwise the message shown by `validate()`
+     * @param errors - Errors passed to the component
+     * @returns {string[] | undefined} Errors to render
+     */
+    protected withValidationError(errors: string[] | undefined) {
+      return errors?.length || !this.validationError
+        ? errors
+        : [this.validationError]
+    }
+
+    /** A disabled control is valid, like a disabled native input */
+    private get isBarredFromValidation() {
+      return this.formDisabled || (this as { disabled?: unknown }).disabled === true
+    }
+
+    private get currentValidity() {
+      return this.name && !this.isBarredFromValidation
+        ? this.formValidity
+        : VALID
+    }
+
+    private getValidationError() {
+      const { flags, message } = this.currentValidity
+
+      if (!message) return undefined
+
+      // The browser words its messages in its own language; the most common one follows the page
+      return flags.valueMissing
+        ? getElementMessage('validationRequired', this)
+        : message
+    }
+
+    protected willUpdate(changedProperties: PropertyValues) {
+      super.willUpdate(changedProperties)
+
+      if (this.validationShown) this.validationError = this.getValidationError()
+    }
+
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties)
 
       const participates = Boolean(this.name)
-      const { flags, message, anchor } = participates && !this.formDisabled
+      const { flags, message, anchor } = participates && !this.isBarredFromValidation
         ? this.formValidity
         : VALID
 

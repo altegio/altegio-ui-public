@@ -139,6 +139,13 @@ export class AltCoreRadioButton extends FormAssociated(LitElement) implements Om
       .filter((radioButton) => radioButton.name === this.name && radioButton.form === this.form)
   }
 
+  /** Errors to render; the message from `validate()` shows once, under the last radio button of the group */
+  private get shownErrors() {
+    return this.relatedRadioButtons.at(-1) === this
+      ? this.withValidationError(this.errors)
+      : this.errors
+  }
+
   /** Like native radio buttons, the group misses a value while it is required and none of its radio buttons is checked */
   protected get formValidity() {
     const radioButtons = this.relatedRadioButtons
@@ -223,12 +230,12 @@ export class AltCoreRadioButton extends FormAssociated(LitElement) implements Om
             .size=${this.size}
             .checked=${this.checked}
             .disabled=${this.isDisabled}
-            .error=${Boolean(this.errors?.length)}
+            .error=${Boolean(this.errors?.length) || Boolean(this.validationError)}
             .hovered=${this.isHovered}
             .name=${this.name}
             .tabStop=${this.isTabStop}
             .accessibleName=${this.accessibleName || this.labelText || undefined}
-            .accessibleDescription=${getAccessibleDescription(this.errors, this.annotationText)}
+            .accessibleDescription=${getAccessibleDescription(this.shownErrors, this.annotationText)}
             class=${`${this.baseClass}__radio-button`}
             @checked=${this.handleChecked}
             @mouseenter=${this.handleMouseEnter}
@@ -274,7 +281,7 @@ export class AltCoreRadioButton extends FormAssociated(LitElement) implements Om
           ? html`
               <alt-core-error
                 class=${`${this.baseClass}__error`}
-                .errors=${this.errors}
+                .errors=${this.shownErrors}
               ></alt-core-error>
             `
           : nothing

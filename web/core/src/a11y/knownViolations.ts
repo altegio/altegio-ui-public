@@ -24,6 +24,7 @@ export const knownViolations: Partial<Record<string, string[]>> = {
   'daterange--playground': ['color-contrast'],
   'daterange--with-errors': ['color-contrast'],
   'error--playground': ['color-contrast'],
+  'form--playground': ['color-contrast'],
   'list--playground': ['color-contrast'],
   'list--static-content': ['color-contrast'],
   'listitem--playground': ['color-contrast'],

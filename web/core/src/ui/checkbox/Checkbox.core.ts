@@ -94,7 +94,7 @@ export class AltCoreCheckbox extends FormAssociated(LitElement) implements IAltC
   private get computedErrorClasses() {
     return {
       [this.baseErrorClass]: true,
-      [`${this.baseErrorClass}_hidden`]: !this.errors?.length,
+      [`${this.baseErrorClass}_hidden`]: !this.shownErrors?.length,
     }
   }
 
@@ -128,7 +128,7 @@ export class AltCoreCheckbox extends FormAssociated(LitElement) implements IAltC
 
   private get controlAccessibleDescription() {
     return getAccessibleDescription(
-      this.errors,
+      this.shownErrors,
       this.annotationText || this.slottedAnnotationText,
     )
   }
@@ -137,6 +137,11 @@ export class AltCoreCheckbox extends FormAssociated(LitElement) implements IAltC
     return this.checked
       ? this.value || 'on'
       : null
+  }
+
+  /** Errors to render, with the message from `validate()` when there are none */
+  private get shownErrors() {
+    return this.withValidationError(this.errors)
   }
 
   protected get formValidity() {
@@ -217,7 +222,7 @@ export class AltCoreCheckbox extends FormAssociated(LitElement) implements IAltC
             .checked=${this.checked}
             .indeterminate=${this.indeterminate}
             .disabled=${this.isDisabled}
-            .error=${Boolean(this.errors?.length)}
+            .error=${Boolean(this.shownErrors?.length)}
             .hovered=${this.isHovered}
             .accessibleName=${this.controlAccessibleName}
             .accessibleDescription=${this.controlAccessibleDescription}
@@ -269,7 +274,7 @@ export class AltCoreCheckbox extends FormAssociated(LitElement) implements IAltC
           ? html`
               <alt-core-error
                 class=${classMap(this.computedErrorClasses)}
-                .errors=${this.errors}
+                .errors=${this.shownErrors}
               ></alt-core-error>
             `
           : nothing

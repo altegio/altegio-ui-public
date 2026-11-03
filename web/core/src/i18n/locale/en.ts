@@ -32,6 +32,7 @@ export const en: ILocale = {
     stepDone: 'done',
     stepError: 'error',
     stepDisabled: 'unavailable',
+    validationRequired: 'Fill in this field',
   },
   formatters: {
     date: {

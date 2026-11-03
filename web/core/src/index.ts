@@ -85,6 +85,7 @@ export * from './ui/stepper'
 export * from './ui/step'
 export * from './ui/scrollArea'
 export * from './ui/virtualScroll'
+export * from './ui/form'
 export * from './ui/countField'
 export * from './ui/modal'
 export * from './ui/functionalModal'
@@ -190,6 +191,7 @@ import type {
   AltCoreStepTagName,
   AltCoreScrollAreaTagName,
   AltCoreVirtualScrollTagName,
+  AltCoreFormTagName,
 } from '../../shared/constants'
 
 import type {
@@ -284,6 +286,7 @@ import type {
   AltCoreStep,
   AltCoreScrollArea,
   AltCoreVirtualScroll,
+  AltCoreForm,
 } from '../../core/src/'
 
 declare global {
@@ -382,5 +385,6 @@ declare global {
     [AltCoreStepTagName]: AltCoreStep
     [AltCoreScrollAreaTagName]: AltCoreScrollArea
     [AltCoreVirtualScrollTagName]: AltCoreVirtualScroll
+    [AltCoreFormTagName]: AltCoreForm
   }
 }

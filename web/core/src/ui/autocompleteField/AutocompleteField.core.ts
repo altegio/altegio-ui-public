@@ -399,6 +399,11 @@ export class AltCoreAutocompleteField extends FormAssociated(LitElement) impleme
     return this.value
   }
 
+  /** Errors to render, with the message from `validate()` when there are none */
+  private get shownErrors() {
+    return this.withValidationError(this.errors)
+  }
+
   protected get formValidity() {
     return getNativeValidity(
       { type: 'text', required: this.required },
@@ -454,7 +459,7 @@ export class AltCoreAutocompleteField extends FormAssociated(LitElement) impleme
       <alt-core-field-wrapper
         .disabled=${this.isFormControlDisabled}
         .readonly=${this.readonly}
-        .error=${Boolean(this.errors?.length) || this.error}
+        .error=${Boolean(this.shownErrors?.length) || this.error}
         .size=${this.size}
         class=${classMap(this.computedFieldWrapperClasses)}
         @blur=${this.handleBlur}
@@ -474,8 +479,8 @@ export class AltCoreAutocompleteField extends FormAssociated(LitElement) impleme
           .accessibleExpanded=${this.isDropdownOpened}
           .accessibleAutocomplete=${'list'}
           .accessibleName=${this.computedAccessibleName}
-          .accessibleDescription=${getAccessibleDescription(this.errors, this.annotationText)}
-          .accessibleInvalid=${hasFieldErrors(this.errors, this.error)}
+          .accessibleDescription=${getAccessibleDescription(this.shownErrors, this.annotationText)}
+          .accessibleInvalid=${hasFieldErrors(this.shownErrors, this.error)}
           type="text"
           @input=${this.handleInput}
         ></alt-core-field-input>
@@ -634,7 +639,7 @@ export class AltCoreAutocompleteField extends FormAssociated(LitElement) impleme
           className: classMapToString(this.computedAnnotationClasses),
           handleSlotAnnotationChange: this.handleSlotAnnotationChange,
         })}
-        ${renderError({ errors: this.errors })}
+        ${renderError({ errors: this.shownErrors })}
       </div>
     `
   }
