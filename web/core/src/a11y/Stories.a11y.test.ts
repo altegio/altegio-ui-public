@@ -25,15 +25,22 @@ afterEach(() => {
 
 const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
 
+const hasFiniteAnimations = () => document.getAnimations()
+  .some((animation) => animation.playState === 'running' && Number.isFinite(animation.effect?.getComputedTiming().endTime))
+
 /**
  * Lets entrance transitions, such as a dropdown fading in, finish before axe measures colors:
- * mid-fade text has a lower contrast, which made the check depend on timing. Endless animations are not awaited.
+ * mid-fade text has a lower contrast, which made the check depend on timing. A transition may start a few
+ * frames after the story renders, so this waits for three frames in a row without one (at most 30 frames).
+ * Endless animations are not awaited.
  */
 const waitForTransitions = async() => {
-  await nextFrame()
-  await nextFrame()
-  const finite = document.getAnimations().filter((animation) => Number.isFinite(animation.effect?.getComputedTiming().endTime))
-  await Promise.all(finite.map((animation) => animation.finished.catch(() => undefined)))
+  let quietFrames = 0
+
+  for (let frame = 0; frame < 30 && quietFrames < 3; frame++) {
+    await nextFrame()
+    quietFrames = hasFiniteAnimations() ? 0 : quietFrames + 1
+  }
 }
 
 for (const [
