@@ -61,6 +61,15 @@ export const BUTTON_DROPDOWN_STORIES_CONFIG: Record<string, IStoryConfig> = {
     },
     args: { items: DEFAULT_ITEMS },
   },
+  DisabledItems: {
+    parameters: {
+      docs: {
+        title: 'Disabled items',
+        description: { story: 'An item with `disabled: true` stays in the menu and takes focus, but cannot be picked.' },
+      },
+    },
+    args: { items: [...DEFAULT_ITEMS, { id: 'archive', label: 'Archive', disabled: true }] },
+  },
   IconType: {
     parameters: { docs: { title: 'Icon placement', description: { story: 'Icon placement options.' } } },
     args: { items: DEFAULT_ITEMS },
@@ -87,6 +96,7 @@ Supports multiple variants and sizes, loading and disabled states, and automatic
 - Full width (fullWidth): fills the container width
 - Icon placement: left or right
 - Automatic closing after clicking a dropdown item
+- Disabled items: an item with \`disabled: true\` is announced as unavailable and cannot be picked
 
 ### Slots:
 - **activator** - slot for content that opens the dropdown when clicked.

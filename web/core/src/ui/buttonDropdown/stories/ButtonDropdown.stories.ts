@@ -256,6 +256,18 @@ export const States: Story = {
   },
 }
 
+export const DisabledItems: Story = {
+  parameters: BUTTON_DROPDOWN_STORIES_CONFIG.DisabledItems.parameters,
+  args: BUTTON_DROPDOWN_STORIES_CONFIG.DisabledItems.args,
+  render: (args) => html`
+    <alt-core-button-dropdown
+      label="Actions"
+      .isOpen=${true}
+      .items=${args.items}
+    ></alt-core-button-dropdown>
+  `,
+}
+
 export const IconType: Story = {
   parameters: BUTTON_DROPDOWN_STORIES_CONFIG.IconType.parameters,
   args: BUTTON_DROPDOWN_STORIES_CONFIG.IconType.args,

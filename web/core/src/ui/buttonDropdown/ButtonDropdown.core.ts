@@ -52,6 +52,9 @@ const {
   items,
 } = createCoreButtonDropdownProps()
 
+/** An item with `disabled: true` is shown in the menu but cannot be picked */
+const isDisabledItem = (item: IDropdownListItem) => item.disabled === true
+
 @customElement(tagName)
 @interceptEvents()
 @withLocator(tagName)
@@ -267,6 +270,8 @@ export class AltCoreButtonDropdown extends LitElement implements IAltCoreButtonD
 
   private handleItemClick = (event: ItemClickEvent, item: IDropdownListItem) => {
     event.stopPropagation()
+    // A disabled item stays in the menu and takes focus, but picking it does nothing
+    if (isDisabledItem(item)) return
 
     const hasFocusInside = this.focusedMenuItemIndex !== -1
     this.closeDropdown()
@@ -313,8 +318,13 @@ export class AltCoreButtonDropdown extends LitElement implements IAltCoreButtonD
         <alt-core-dropdown-cell
           role="menuitem"
           tabindex="-1"
+          aria-disabled=${ifDefined(isDisabledItem(item) ? 'true' : undefined)}
           locator=${`${AltCoreDropdownCellTagName}_${item.id}`}
-          class=${`${this.baseDropdownClass} ${this.baseClass}__menu-item`}
+          class=${classMap({
+            [this.baseDropdownClass]: true,
+            [`${this.baseClass}__menu-item`]: true,
+            [`${this.baseClass}__menu-item_disabled`]: isDisabledItem(item),
+          })}
           @click=${(event: ItemClickEvent) => {
             this.handleItemClick(event, item)
           }}

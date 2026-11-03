@@ -118,6 +118,27 @@ describe('Core/AltCoreButtonDropdown/Accessibility', () => {
     expect(getDeepActiveElement()).toBe(getActivator(dropdown))
   })
 
+  it('keeps a disabled item focusable, marks it aria-disabled and ignores picking it', async() => {
+    const dropdown = await mountButtonDropdown({ items: [items[0], { ...items[1], disabled: true }, items[2]] })
+    const onItemClick = vi.fn()
+    dropdown.addEventListener('item-click', onItemClick)
+
+    await openWithKeyboard(dropdown)
+    expect(getMenuItems(dropdown).map((item) => item.getAttribute('aria-disabled'))).toEqual([null, 'true', null])
+
+    await userEvent.keyboard('{ArrowDown}')
+    expect(getFocusedLabel()).toBe('Copy')
+
+    await userEvent.keyboard('{Enter}')
+    getMenuItems(dropdown)[1].click()
+    await waitForLitTree(dropdown)
+
+    expect(onItemClick).not.toHaveBeenCalled()
+    expect(getActivator(dropdown)?.getAttribute('aria-expanded')).toBe('true')
+    expect(getFocusedLabel()).toBe('Copy')
+    await expectNoAxeViolations(dropdown, PATTERN_AXE_OPTIONS)
+  })
+
   it('closes with Escape and returns focus to the button', async() => {
     const dropdown = await mountButtonDropdown()
 

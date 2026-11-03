@@ -25,6 +25,7 @@ export const en: ILocale = {
     chooseDate: 'Choose date',
     move: 'Move',
     moveHint: 'Use the up and down arrow keys to change the order',
+    moveAcrossHint: 'Use the up and down arrow keys to change the order and to move the item to the previous or next group',
   },
   formatters: {
     date: {

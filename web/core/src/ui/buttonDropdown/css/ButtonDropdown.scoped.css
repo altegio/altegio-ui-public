@@ -9,6 +9,11 @@ $component: $AltCoreButtonDropdownTagName;
     --alt-core-dropdown-activator-width-inline: 100%;
   }
 
+  &__menu-item_disabled {
+    --alt-core-dropdown-cell-default-color: var(--alt-core-color-text-tertiary);
+    --alt-core-dropdown-cell-default-hover-background-color: var(--alt-core-dropdown-cell-default-background-color);
+  }
+
   &__dropdown {
     &-label {
       display: -webkit-box;

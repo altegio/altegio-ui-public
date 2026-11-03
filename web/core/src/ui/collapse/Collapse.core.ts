@@ -287,7 +287,7 @@ export class AltCoreCollapse
   /** Message for screen readers after a keyboard move */
   @state() private moveAnnouncement = ''
 
-  /** Where each key moves an item among the items of its level, from its index and the number of items */
+  /** Where each key moves an item among the items of its group, from its index and the number of items */
   private readonly moveKeyTargets: Partial<Record<string, (index: number, count: number) => number>> = {
     ArrowUp: (index) => index - 1,
     ArrowDown: (index) => index + 1,
@@ -300,16 +300,19 @@ export class AltCoreCollapse
     return item.parentElement instanceof AltCoreCollapse ? item : item.parentElement ?? item
   }
 
+  private getMovableNodes(group: Element) {
+    return Array.from(group.children).filter((child) => child.matches(`${AltCoreCollapseItemTagName}, :has(> ${AltCoreCollapseItemTagName})`))
+  }
+
   private getItemLabel(item: AltCoreCollapseItem) {
     return item.label || item.querySelector('[slot="label"]')?.textContent.trim() || ''
   }
 
-  /** The drag handle is also a keyboard control: the arrow keys, Home and End move the item among the items of its level */
+  /** The drag handle is also a keyboard control: the arrow keys, Home and End move the item among the items of its group */
   private describeHandle(item: AltCoreCollapseItem, handle: AltCoreIcon) {
     handle.setAttribute('role', 'button')
     handle.tabIndex = 0
     handle.setAttribute('aria-label', `${getElementMessage('move', this)} ${this.getItemLabel(item)}`.trim())
-    handle.setAttribute('aria-description', getElementMessage('moveHint', this))
     handle.addEventListener('keydown', this.handleHandleKeydown)
   }
 
@@ -326,20 +329,87 @@ export class AltCoreCollapse
 
   private moveWithKeyboard(item: AltCoreCollapseItem, getTarget: (index: number, count: number) => number) {
     const node = this.getMovableNode(item)
-    const siblings = Array.from(node.parentElement?.children ?? []).filter((child) => child.matches(`${AltCoreCollapseItemTagName}, :has(> ${AltCoreCollapseItemTagName})`))
+    const group = node.parentElement
+    if (!(group instanceof AltCoreCollapse)) return
+
+    const siblings = this.getMovableNodes(group)
     const index = siblings.indexOf(node)
-    const target = Math.min(Math.max(getTarget(index, siblings.length), 0), siblings.length - 1)
-    if (target === index) return
+    const target = getTarget(index, siblings.length)
 
-    if (target < index) siblings[target].before(node)
-    else siblings[target].after(node)
+    if (target < 0 || target >= siblings.length) this.moveToNeighbourGroup(item, node, group, Math.sign(target) as -1 | 1)
+    else if (target !== index) this.moveWithinGroup(item, node, group, siblings[target], target < index)
+  }
 
-    this.moveAnnouncement = `${this.getItemLabel(item)}: ${target + 1} ${getElementMessage('of', this)} ${siblings.length}`
-    this._collapseMove({
+  private moveWithinGroup(item: AltCoreCollapseItem, node: Element, group: AltCoreCollapse, sibling: Element, before: boolean) {
+    if (before) sibling.before(node)
+    else sibling.after(node)
+
+    this.reportKeyboardMove(item, group)
+  }
+
+  /**
+   * The keyboard counterpart of allowCrossLevelMove: past the first or last item of its group, an item moves
+   * to the end of the previous or the start of the next shown group of the same level, as a drag onto another parent would
+   */
+  private moveToNeighbourGroup(item: AltCoreCollapseItem, node: Element, group: AltCoreCollapse, step: -1 | 1) {
+    const groups = group.allowCrossLevelMove ? this.getLevelGroups(group) : []
+    const neighbourIndex = groups.indexOf(group) + step
+    const neighbour = neighbourIndex >= 0 ? groups.at(neighbourIndex) : undefined
+    if (!neighbour) return
+
+    this.insertAtGroupEdge(node, neighbour, step < 0 ? 'end' : 'start')
+    this.reportKeyboardMove(item, neighbour, neighbour.parentElement?.closest<AltCoreCollapseItem>(AltCoreCollapseItemTagName))
+  }
+
+  private insertAtGroupEdge(node: Element, group: AltCoreCollapse, edge: 'start' | 'end') {
+    const nodes = this.getMovableNodes(group)
+    const anchor = edge === 'end' ? nodes.at(-1) : nodes.at(0)
+
+    if (!anchor) group.append(node)
+    else if (edge === 'end') anchor.after(node)
+    else anchor.before(node)
+  }
+
+  /** Collapses nested as deep as the group, in document order, leaving out those inside closed items */
+  private getLevelGroups(group: AltCoreCollapse) {
+    const depth = this.getCollapseDepth(group)
+    let root = group
+    for (let parent = root.parentElement?.closest<AltCoreCollapse>(tagName); parent; parent = root.parentElement?.closest<AltCoreCollapse>(tagName)) {
+      root = parent
+    }
+
+    return Array.from(root.querySelectorAll<AltCoreCollapse>(tagName))
+      .filter((collapse) => this.getCollapseDepth(collapse) === depth && (collapse === group || this.isGroupShown(collapse)))
+  }
+
+  private getCollapseDepth(collapse: AltCoreCollapse) {
+    let depth = 0
+    for (let parent = collapse.parentElement?.closest(tagName); parent; parent = parent.parentElement?.closest(tagName)) depth++
+
+    return depth
+  }
+
+  private isGroupShown(collapse: AltCoreCollapse) {
+    for (let item = collapse.parentElement?.closest<AltCoreCollapseItem>(AltCoreCollapseItemTagName); item; item = item.parentElement?.closest<AltCoreCollapseItem>(AltCoreCollapseItemTagName)) {
+      if (!item.computedOpened) return false
+    }
+
+    return true
+  }
+
+  /** The group that now holds the item announces its position and reports its new order */
+  private reportKeyboardMove(item: AltCoreCollapseItem, group: AltCoreCollapse, groupParent?: AltCoreCollapseItem | null) {
+    const items = group.getItems()
+    const position = `${items.indexOf(item) + 1} ${getElementMessage('of', this)} ${items.length}`
+
+    group.moveAnnouncement = groupParent
+      ? `${this.getItemLabel(item)}: ${this.getItemLabel(groupParent)}, ${position}`
+      : `${this.getItemLabel(item)}: ${position}`
+    group._collapseMove({
       detail: {
         // The payload type predates keyboard moves, so a keyboard move reports a synthetic drop
         event: new DragEvent('drop'),
-        order: this.getItems().map((collapseItem) => collapseItem.value),
+        order: items.map((collapseItem) => collapseItem.value),
       },
     })
   }
@@ -627,11 +697,16 @@ export class AltCoreCollapse
         this.setTouchDraggindEvents(draggableItem)
       }
     }
-    if (draggableItem.computedOpened) {
-      this.disableDragging(draggableItem)
-    } else {
-      draggableItem.querySelector(`:scope > ${AltCoreIconTagName}[slot="before"]`)?.removeAttribute('aria-disabled')
-    }
+    this.updateHandle(draggableItem)
+  }
+
+  /** The handle hint follows allowCrossLevelMove, and the handle is disabled while its item is open */
+  private updateHandle(draggableItem: AltCoreCollapseItem) {
+    const handle = draggableItem.querySelector(`:scope > ${AltCoreIconTagName}[slot="before"]`)
+    handle?.setAttribute('aria-description', getElementMessage(this.allowCrossLevelMove ? 'moveAcrossHint' : 'moveHint', this))
+
+    if (draggableItem.computedOpened) this.disableDragging(draggableItem)
+    else handle?.removeAttribute('aria-disabled')
   }
 
   private setDragging = () => {
@@ -662,7 +737,7 @@ export class AltCoreCollapse
   }
 
   updated(_changedProperties: PropertyValues<typeof this>): void {
-    if (_changedProperties.has('draggable') || _changedProperties.has('value')) {
+    if (_changedProperties.has('draggable') || _changedProperties.has('value') || _changedProperties.has('allowCrossLevelMove')) {
       this.setDragging()
     }
   }

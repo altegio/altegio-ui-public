@@ -122,6 +122,16 @@ export const States: Story = {
   }),
 }
 
+export const DisabledItems: Story = {
+  parameters: BUTTON_DROPDOWN_STORIES_CONFIG.DisabledItems.parameters,
+  args: BUTTON_DROPDOWN_STORIES_CONFIG.DisabledItems.args,
+  render: (args) => ({
+    components: { AltButtonDropdown },
+    props: { items: args.items },
+    template: '<AltButtonDropdown [items]="items" label="Actions" [isOpen]="true"></AltButtonDropdown>',
+  }),
+}
+
 export const IconType: Story = {
   parameters: BUTTON_DROPDOWN_STORIES_CONFIG.IconType.parameters,
   args: BUTTON_DROPDOWN_STORIES_CONFIG.IconType.args,

@@ -181,7 +181,7 @@ const meta: Meta<TAltCoreCollapseMeta> = {
     },
     allowCrossLevelMove: {
       control: { type: 'boolean' },
-      description: 'Allow dragging across hierarchy levels',
+      description: 'Allow moving items into other groups of the same level: by dragging, or with the up and down arrow keys past the first or last item',
       ...getComponentStateTable(allowCrossLevelMove),
     },
     onCollapseChange: {
