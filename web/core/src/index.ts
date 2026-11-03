@@ -79,6 +79,8 @@ export * from './ui/dateRange'
 export * from './ui/linearProgress'
 export * from './ui/rating'
 export * from './ui/status'
+export * from './ui/breadcrumbs'
+export * from './ui/breadcrumbsItem'
 export * from './ui/countField'
 export * from './ui/modal'
 export * from './ui/functionalModal'
@@ -178,6 +180,8 @@ import type {
   AltCoreLinearProgressTagName,
   AltCoreRatingTagName,
   AltCoreStatusTagName,
+  AltCoreBreadcrumbsTagName,
+  AltCoreBreadcrumbsItemTagName,
 } from '../../shared/constants'
 
 import type {
@@ -266,6 +270,8 @@ import type {
   AltCoreLinearProgress,
   AltCoreRating,
   AltCoreStatus,
+  AltCoreBreadcrumbs,
+  AltCoreBreadcrumbsItem,
 } from '../../core/src/'
 
 declare global {
@@ -358,5 +364,7 @@ declare global {
     [AltCoreLinearProgressTagName]: AltCoreLinearProgress
     [AltCoreRatingTagName]: AltCoreRating
     [AltCoreStatusTagName]: AltCoreStatus
+    [AltCoreBreadcrumbsTagName]: AltCoreBreadcrumbs
+    [AltCoreBreadcrumbsItemTagName]: AltCoreBreadcrumbsItem
   }
 }

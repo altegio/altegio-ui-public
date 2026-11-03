@@ -50,5 +50,7 @@ export * from './ui/dateRange'
 export * from './ui/linearProgress'
 export * from './ui/rating'
 export * from './ui/status'
+export * from './ui/breadcrumbs'
+export * from './ui/breadcrumbsItem'
 
 export { BREAKPOINTS } from '~shared/constants/breakpoints'

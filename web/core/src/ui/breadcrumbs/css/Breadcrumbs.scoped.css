@@ -1,0 +1,12 @@
+$component: $AltCoreBreadcrumbsTagName;
+
+:host {
+  display: var(--alt-core-breadcrumbs-display);
+}
+
+.$(component) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--alt-core-breadcrumbs-gap);
+  align-items: center;
+}

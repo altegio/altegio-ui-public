@@ -1,0 +1,16 @@
+:host {
+  /* General */
+  --alt-core-breadcrumbs-item-display: inline-flex;
+  --alt-core-breadcrumbs-item-gap: var(--alt-core-size-spacing-x);
+  --alt-core-breadcrumbs-item-font-family: var(--alt-core-font-family);
+  --alt-core-breadcrumbs-item-font-size: var(--alt-core-typography-paragraph-p-2-regular-font-size);
+  --alt-core-breadcrumbs-item-line-height: var(--alt-core-typography-paragraph-p-2-regular-line-height);
+  --alt-core-breadcrumbs-item-font-weight: var(--alt-core-typography-paragraph-p-2-regular-font-weight);
+  --alt-core-breadcrumbs-item-current-font-weight: var(--alt-core-typography-paragraph-p-2-medium-font-weight);
+
+  /* Colors */
+  --alt-core-breadcrumbs-item-link-color: var(--alt-core-color-other-link);
+  --alt-core-breadcrumbs-item-color: var(--alt-core-color-text-primary);
+  --alt-core-breadcrumbs-item-separator-color: var(--alt-core-color-icon-secondary);
+  --alt-core-breadcrumbs-item-border-radius: var(--alt-core-size-radius-x);
+}
