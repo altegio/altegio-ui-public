@@ -11,8 +11,6 @@ export const knownViolations: Partial<Record<string, string[]>> = {
   'brand-button--sizes': ['color-contrast'],
   'brand-button--states': ['color-contrast'],
   'brand-button--variants': ['color-contrast'],
-  'buttondropdown--disabled-items': ['color-contrast'],
-  'buttondropdown--states': ['color-contrast'],
   'calendar--date-range': ['color-contrast'],
   'calendar--disabled': ['color-contrast'],
   'calendar--english-locale': ['color-contrast'],

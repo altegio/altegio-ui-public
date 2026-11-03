@@ -23,6 +23,19 @@ afterEach(() => {
   document.body.replaceChildren()
 })
 
+const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
+
+/**
+ * Lets entrance transitions, such as a dropdown fading in, finish before axe measures colors:
+ * mid-fade text has a lower contrast, which made the check depend on timing. Endless animations are not awaited.
+ */
+const waitForTransitions = async() => {
+  await nextFrame()
+  await nextFrame()
+  const finite = document.getAnimations().filter((animation) => Number.isFinite(animation.effect?.getComputedTiming().endTime))
+  await Promise.all(finite.map((animation) => animation.finished.catch(() => undefined)))
+}
+
 for (const [
   path,
   storyModule,
@@ -40,6 +53,7 @@ for (const [
 
         await story.run({ canvasElement })
         await waitForLitTree(canvasElement)
+        await waitForTransitions()
 
         const violations = await getAxeViolations(canvasElement)
         const known = knownViolations[story.id] ?? []
