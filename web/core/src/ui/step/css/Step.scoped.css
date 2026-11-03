@@ -1,0 +1,9 @@
+$component: $AltCoreStepTagName;
+
+:host {
+  display: var(--alt-core-step-display);
+}
+
+:host(:not([active])) {
+  display: none;
+}

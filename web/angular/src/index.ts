@@ -52,5 +52,7 @@ export * from './ui/rating'
 export * from './ui/status'
 export * from './ui/breadcrumbs'
 export * from './ui/breadcrumbsItem'
+export * from './ui/stepper'
+export * from './ui/step'
 
 export { BREAKPOINTS } from '~shared/constants/breakpoints'

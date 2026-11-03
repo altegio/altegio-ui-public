@@ -28,6 +28,10 @@ export const ru: ILocale = {
     moveAcrossHint: 'Стрелки вверх и вниз меняют порядок и переносят элемент в предыдущую или следующую группу',
     rating: 'Оценка',
     breadcrumb: 'Навигационная цепочка',
+    steps: 'Шаги',
+    stepDone: 'выполнен',
+    stepError: 'ошибка',
+    stepDisabled: 'недоступен',
   },
   formatters: {
     date: {

@@ -28,6 +28,10 @@ export const en: ILocale = {
     moveAcrossHint: 'Use the up and down arrow keys to change the order and to move the item to the previous or next group',
     rating: 'Rating',
     breadcrumb: 'Breadcrumb',
+    steps: 'Steps',
+    stepDone: 'done',
+    stepError: 'error',
+    stepDisabled: 'unavailable',
   },
   formatters: {
     date: {

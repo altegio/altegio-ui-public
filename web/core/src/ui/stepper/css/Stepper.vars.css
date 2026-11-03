@@ -1,0 +1,35 @@
+:host {
+  /* General */
+  --alt-core-stepper-display: block;
+  --alt-core-stepper-gap: var(--alt-core-size-spacing-6-x);
+  --alt-core-stepper-header-gap: var(--alt-core-size-spacing-2-x);
+  --alt-core-stepper-item-gap: var(--alt-core-size-spacing-2-x);
+  --alt-core-stepper-font-family: var(--alt-core-font-family);
+  --alt-core-stepper-color: var(--alt-core-color-text-primary);
+  --alt-core-stepper-connector-color: var(--alt-core-color-stroke-primary-low);
+  --alt-core-stepper-header-border-radius: var(--alt-core-size-radius-2-x);
+  --alt-core-stepper-header-hover-background-color: var(--alt-core-color-surface-secondary-high);
+  --alt-core-stepper-vertical-header-width: 240px;
+
+  /* Indicator */
+  --alt-core-stepper-indicator-size: var(--alt-core-size-spacing-6-x);
+  --alt-core-stepper-indicator-background-color: var(--alt-core-color-surface-secondary);
+  --alt-core-stepper-indicator-color: var(--alt-core-color-text-primary);
+  --alt-core-stepper-active-indicator-background-color: var(--alt-core-color-surface-accent);
+  --alt-core-stepper-active-indicator-color: var(--alt-core-color-text-on-accent);
+  --alt-core-stepper-done-indicator-background-color: var(--alt-core-color-surface-positive-low);
+  --alt-core-stepper-done-indicator-color: var(--alt-core-color-icon-positive);
+  --alt-core-stepper-error-indicator-background-color: var(--alt-core-color-surface-negative-low);
+  --alt-core-stepper-error-indicator-color: var(--alt-core-color-icon-negative);
+  --alt-core-stepper-disabled-opacity: 0.5;
+
+  /* Typography */
+  --alt-core-stepper-indicator-font-size: var(--alt-core-typography-annotation-a-1-medium-font-size);
+  --alt-core-stepper-indicator-font-weight: var(--alt-core-typography-annotation-a-1-medium-font-weight);
+  --alt-core-stepper-title-font-size: var(--alt-core-typography-paragraph-p-2-medium-font-size);
+  --alt-core-stepper-title-line-height: var(--alt-core-typography-paragraph-p-2-medium-line-height);
+  --alt-core-stepper-title-font-weight: var(--alt-core-typography-paragraph-p-2-medium-font-weight);
+  --alt-core-stepper-caption-font-size: var(--alt-core-typography-annotation-a-1-regular-font-size);
+  --alt-core-stepper-caption-line-height: var(--alt-core-typography-annotation-a-1-regular-line-height);
+  --alt-core-stepper-caption-font-weight: var(--alt-core-typography-annotation-a-1-regular-font-weight);
+}
