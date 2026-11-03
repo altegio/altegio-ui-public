@@ -1,0 +1,22 @@
+:host {
+  /* General */
+  --alt-core-collapse-item-radius: var(--alt-core-size-radius-3-x);
+  --alt-core-collapse-item-padding-x: var(--alt-core-size-spacing-3-x);
+  --alt-core-collapse-item-padding-y: var(--alt-core-size-spacing-2-x);
+  --alt-core-collapse-item-border-color: var(--alt-core-color-stroke-primary);
+  --alt-core-collapse-item-toggle-slot-color: var(--alt-core-color-icon-primary);
+  --alt-core-collapse-item-toggle-icon-color: var(--alt-core-color-icon-secondary);
+
+  /* Main content */
+  --alt-core-collapse-item-main-gap: var(--alt-core-size-spacing-0-5-x);
+
+  /* Variants */
+  --alt-core-collapse-item-variant-primary-background-color: var(--alt-core-color-surface-secondary);
+  --alt-core-collapse-item-variant-primary-background-color-hover: var(--alt-core-color-surface-secondary-high);
+  --alt-core-collapse-item-variant-secondary-background-color: var(--alt-core-color-surface-primary);
+  --alt-core-collapse-item-variant-secondary-background-color-hover: var(--alt-core-color-surface-secondary-high);
+
+  /* Content */
+  --alt-core-collapse-item-content-margin-horizontal: var(--alt-core-size-spacing-3-x);
+  --alt-core-collapse-item-content-margin-top: var(--alt-core-size-spacing-2-x);
+}

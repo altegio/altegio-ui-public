@@ -1,0 +1,29 @@
+:host {
+  /* General */
+  --alt-core-list-item-display: block;
+  --alt-core-list-item-font-family: var(--alt-core-font-family);
+  --alt-core-list-item-min-height: var(--alt-core-size-spacing-10-x);
+  --alt-core-list-item-padding-x: var(--alt-core-size-spacing-3-x);
+  --alt-core-list-item-padding-y: var(--alt-core-size-spacing-2-x);
+  --alt-core-list-item-gap: var(--alt-core-size-spacing-3-x);
+  --alt-core-list-item-border-radius: var(--alt-core-size-radius-2-x);
+  --alt-core-list-item-main-gap: var(--alt-core-size-spacing-0-5-x);
+
+  /* Typography */
+  --alt-core-list-item-label-font-size: var(--alt-core-typography-paragraph-p-2-regular-font-size);
+  --alt-core-list-item-label-line-height: var(--alt-core-typography-paragraph-p-2-regular-line-height);
+  --alt-core-list-item-label-font-weight: var(--alt-core-typography-paragraph-p-2-regular-font-weight);
+  --alt-core-list-item-caption-font-size: var(--alt-core-typography-annotation-a-1-regular-font-size);
+  --alt-core-list-item-caption-line-height: var(--alt-core-typography-annotation-a-1-regular-line-height);
+  --alt-core-list-item-caption-font-weight: var(--alt-core-typography-annotation-a-1-regular-font-weight);
+
+  /* Colors */
+  --alt-core-list-item-color: var(--alt-core-color-text-primary);
+  --alt-core-list-item-caption-color: var(--alt-core-color-text-secondary);
+  --alt-core-list-item-side-color: var(--alt-core-color-icon-secondary);
+  --alt-core-list-item-disabled-color: var(--alt-core-color-text-tertiary);
+  --alt-core-list-item-background-color: transparent;
+  --alt-core-list-item-hover-background-color: var(--alt-core-color-surface-secondary-high);
+  --alt-core-list-item-active-background-color: var(--alt-core-color-surface-tertiary);
+  --alt-core-list-item-focus-outline-color: var(--alt-core-color-other-link);
+}

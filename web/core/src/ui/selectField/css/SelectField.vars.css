@@ -1,0 +1,13 @@
+$component: $AltCoreSelectFieldTagName;
+
+:host {
+  /* Sizes */
+  --alt-core-select-field-min-width: 88px;
+  --alt-core-select-field-max-width: 404px;
+  --alt-core-dropdown-content-max-width: 404px;
+  --alt-core-dropdown-activator-width: 100%;
+  --alt-core-dropdown-max-width: 100%;
+
+  /* General */
+  --alt-core-select-field-color: var(--alt-core-color-text-primary);
+}

@@ -1,0 +1,106 @@
+import type { TemplateRef } from '@angular/core'
+import { Component, ContentChild, CUSTOM_ELEMENTS_SCHEMA, forwardRef, Input } from '@angular/core'
+
+import '~core/ui/radioButton'
+import type { TAltNgRadioButtonModel, RadioButtonCheckedEvent } from '~ng/ui/radioButton/models/types'
+import { createNgRadioButtonProps, type IAltNgRadioButtonProps } from '~ng/ui/radioButton/models/types'
+import { DefaultValue } from '~ng/utils/default-value.decorator'
+import { ControlValueAccessorBase } from '~ng/types/ControlValueAccessorBase'
+import { DEFAULT_CHECKED_VALUE } from './models/constants'
+import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms'
+import { NgTemplateOutlet } from '@angular/common'
+
+const {
+  labelText,
+  labelTooltipText,
+  annotationText,
+  size,
+  value,
+  disabled,
+  required,
+  name,
+  errors,
+  alignment,
+  labelOverflowDebounce,
+  accessibleName,
+} = createNgRadioButtonProps()
+
+@Component({
+  selector: 'AltRadioButton',
+  standalone: true,
+  imports: [FormsModule, NgTemplateOutlet],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => AltRadioButton),
+      multi: true,
+    },
+  ],
+  template: `
+    <alt-core-radio-button
+      (checked)="handleCheckedEvent($event)"
+      [labelText]="labelText"
+      [labelTooltipText]="labelTooltipText"
+      [annotationText]="annotationText"
+      [size]="size"
+      [checked]="isChecked"
+      [value]="value"
+      [disabled]="disabled"
+      [accessibleName]="accessibleName"
+      [required]="required"
+      [name]="name"
+      [errors]="errors"
+      [alignment]="alignment"
+      [labelOverflowDebounce]="labelOverflowDebounce"
+    >
+
+      @if (radioButtonAnnotationRef) {
+        <div slot="annotation">
+          <ng-container *ngTemplateOutlet="radioButtonAnnotationRef" />
+        </div>
+      }
+
+      @if (radioButtonTooltipContentRef) {
+        <div slot="tooltip-content">
+          <ng-container *ngTemplateOutlet="radioButtonTooltipContentRef" />
+        </div>
+      }
+    </alt-core-radio-button>
+  `,
+})
+export class AltRadioButton extends ControlValueAccessorBase<TAltNgRadioButtonModel> implements IAltNgRadioButtonProps {
+  @Input() @DefaultValue(labelText) labelText: IAltNgRadioButtonProps['labelText'] = labelText
+  @Input() @DefaultValue(labelTooltipText) labelTooltipText: IAltNgRadioButtonProps['labelTooltipText'] = labelTooltipText
+  @Input() @DefaultValue(labelOverflowDebounce) labelOverflowDebounce: IAltNgRadioButtonProps['labelOverflowDebounce'] = labelOverflowDebounce
+  @Input() @DefaultValue(annotationText) annotationText: IAltNgRadioButtonProps['annotationText'] = annotationText
+  @Input() @DefaultValue(size) size: IAltNgRadioButtonProps['size'] = size
+  @Input() @DefaultValue(value) value: IAltNgRadioButtonProps['value'] = value
+  @Input() @DefaultValue(disabled) disabled: IAltNgRadioButtonProps['disabled'] = disabled
+  @Input() @DefaultValue(accessibleName) accessibleName: IAltNgRadioButtonProps['accessibleName'] = accessibleName
+  @Input() @DefaultValue(required) required: IAltNgRadioButtonProps['required'] = required
+  @Input() @DefaultValue(name) name: IAltNgRadioButtonProps['name'] = name
+  @Input() @DefaultValue(errors) errors: IAltNgRadioButtonProps['errors'] = errors
+  @Input() @DefaultValue(alignment) alignment: IAltNgRadioButtonProps['alignment'] = alignment
+
+
+  @ContentChild('radioButtonAnnotation') radioButtonAnnotationRef: TemplateRef<unknown> | undefined
+  @ContentChild('radioButtonTooltipContent') radioButtonTooltipContentRef: TemplateRef<unknown> | undefined
+
+  isChecked: TAltNgRadioButtonModel = DEFAULT_CHECKED_VALUE
+
+  writeValue(value: TAltNgRadioButtonModel) {
+    this.isChecked = value
+  }
+
+  handleCheckedEvent(event: Event) {
+    event.stopPropagation()
+
+    const { checked } = (event as RadioButtonCheckedEvent).detail
+
+    this.isChecked = checked
+
+    this.onChange(checked)
+    this.onTouched()
+  }
+}

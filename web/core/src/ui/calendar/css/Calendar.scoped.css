@@ -1,0 +1,150 @@
+@import url('../../../assets/css/mixins/a11y.css');
+
+$component: $AltCoreCalendarTagName;
+
+.$(component) {
+  min-width: var(--alt-core-calendar-min-width);
+  max-width: var(--alt-core-calendar-max-width);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__header-date {
+    display: flex;
+    align-items: center;
+  }
+
+  &__header-dropdown {
+    position: relative;
+    z-index: var(--alt-core-z-index-100);
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+    margin-top: var(--alt-core-calendar-grid-margin-top);
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+
+  &__week-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    padding: var(--alt-core-calendar-week-day-padding-y) var(--alt-core-calendar-week-day-padding-x);
+    margin-bottom: var(--alt-core-calendar-week-day-margin-bottom);
+  }
+  
+  &__day {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--alt-core-calendar-day-padding-y) var(--alt-core-calendar-day-padding-x);
+    cursor: pointer;
+    user-select: none;
+    border-radius: var(--alt-core-calendar-day-radius);
+    -webkit-tap-highlight-color: transparent;
+
+    &:focus-visible {
+      @mixin alt-focus-ring;
+    }
+
+    @media (hover: hover) {
+      &:hover:not(.$(component)__day_disabled, .$(component)__day_out-of-month) {
+        background-color: var(--alt-core-calendar-day-background-hover);
+      }
+    }
+
+
+    &_today {
+      &::before {
+        position: absolute;
+        bottom: 6px;
+        width: 16px;
+        height: 2px;
+        content: '';
+        background-color: var(--alt-core-calendar-day-today-line-color);
+        border-radius: 2px;
+      }
+    }
+    
+    &_selected {
+      background-color: var(--alt-core-calendar-selected-day-background);
+
+      @media (hover: hover) {
+        &:hover:not(.$(component)__day_disabled) {
+          background-color: var(--alt-core-calendar-selected-day-background-hover);
+        }
+      }
+
+
+      &::before {
+        background-color: var(--alt-core-calendar-day-today-line-color-on-selected);
+      }
+    }
+    
+    &_in-range {
+      background-color: var(--alt-core-calendar-range-day-background);
+      border-radius: unset;
+
+      &::before {
+        background-color: var(--alt-core-calendar-day-today-line-color-on-selected);
+      }
+
+      @media (hover: hover) {
+        &:hover:not(.$(component)__day_disabled) {
+          background-color: var(--alt-core-calendar-range-day-background-hover);
+        }
+      }
+    }
+    
+    &_range-start, &_range-end {
+      background-color: var(--alt-core-calendar-selected-day-background);
+      border-radius: unset;
+
+      &::before {
+        background-color: var(--alt-core-calendar-day-today-line-color-on-selected);
+      }
+
+      @media (hover: hover) {
+        &:hover:not(.$(component)__day_disabled) {
+          background-color: var(--alt-core-calendar-selected-day-background-hover);
+        }
+      }
+    }
+    
+    &_range-start {
+      border-top-left-radius: var(--alt-core-calendar-day-radius);
+      border-bottom-left-radius: var(--alt-core-calendar-day-radius);
+    }
+    
+    &_range-end {
+      border-top-right-radius: var(--alt-core-calendar-day-radius);
+      border-bottom-right-radius: var(--alt-core-calendar-day-radius);
+    }
+    
+    &_out-of-month {
+      cursor: default;
+    }
+
+    &_disabled {
+      cursor: not-allowed;
+
+      &.$(component)__day_selected {
+        background-color: var(--alt-core-calendar-selected-day-background-disabled);
+      }
+      &.$(component)__day_in-range {
+        background-color: var(--alt-core-calendar-range-day-background-disabled);
+      }
+    }
+  }
+}

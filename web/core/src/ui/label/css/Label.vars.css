@@ -1,0 +1,6 @@
+:host {
+  /* General sizes */
+  --alt-core-label-margin-left-tooltip: var(--alt-core-size-spacing-x);
+  --alt-core-label-color-tooltip: var(--alt-core-color-icon-secondary);
+  --alt-core-label-color-tooltip-disabled: var(--alt-core-color-icon-tertiary);
+}

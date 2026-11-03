@@ -1,0 +1,58 @@
+@import url('./Avatar.mixins.css');
+
+$component: $AltCoreAvatarTagName;
+
+.$(component) {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: var(--alt-font-family);
+  font-weight: 500;
+  color: var(--alt-avatar-text-color);
+  background-color: var(--alt-avatar-bg);
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+
+  &__initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &_disabled {
+    opacity: 0.75;
+  }
+
+  &_size {
+    &_extra-small {
+      @mixin avatar-size var(--alt-avatar-size-extra-small), var(--alt-avatar-font-size-extra-small), var(--alt-avatar-line-height-extra-small), var(--alt-avatar-radius-extra-small);
+    }
+
+    &_small {
+      @mixin avatar-size var(--alt-avatar-size-small), var(--alt-avatar-font-size-small), var(--alt-avatar-line-height-small), var(--alt-avatar-radius-small);
+    }
+
+    &_medium {
+      @mixin avatar-size var(--alt-avatar-size-medium), var(--alt-avatar-font-size-medium), var(--alt-avatar-line-height-medium), var(--alt-avatar-radius-medium);
+    }
+
+    &_large {
+      @mixin avatar-size var(--alt-avatar-size-large), var(--alt-avatar-font-size-large), var(--alt-avatar-line-height-large), var(--alt-avatar-radius-large);
+    }
+  }
+
+  &_type {
+    &_photo {
+      padding: 0;
+    }
+  }
+}

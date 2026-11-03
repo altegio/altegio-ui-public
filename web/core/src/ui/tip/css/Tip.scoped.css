@@ -1,0 +1,54 @@
+$component: $AltCoreTipTagName;
+
+:host {
+  font-family: var(--alt-core-font-family);
+}
+
+.$(component) {
+  &__content {
+    position: relative;
+    padding: var(--alt-core-tip-content-padding-y) var(--alt-core-tip-content-padding-x);
+    font-size: var(--alt-core-tip-text-font-size);
+    font-weight: var(--alt-core-tip-text-font-weight);
+    line-height: var(--alt-core-tip-text-line-height);
+    border-radius: var(--alt-core-tip-content-border-radius);
+  }
+
+  &__arrow {
+    position: absolute;
+    display: flex;
+    width: 24px;
+    height: 7px;
+    pointer-events: none;
+
+    svg {
+      width: 100%;
+      white-space: normal;
+    }
+  }
+
+  &_type {
+    &_invert {
+      .$(component)__content {
+        color: var(--alt-core-tip-type-invert-color);
+        background-color: var(--alt-core-tip-type-invert-background-color);
+      }
+
+      .$(component)__arrow {
+        fill: var(--alt-core-tip-type-invert-background-color);
+      }
+    }
+
+    &_primary {
+      .$(component)__content {
+        color: var(--alt-core-tip-type-primary-color);
+        background-color: var(--alt-core-tip-type-primary-background-color);
+        box-shadow: var(--alt-core-tip-type-primary-shadow);
+      }
+
+      .$(component)__arrow {
+        fill: var(--alt-core-tip-type-primary-background-color);
+      }
+    }
+  }
+}

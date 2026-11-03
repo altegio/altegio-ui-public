@@ -1,0 +1,25 @@
+$component: $AltCoreCardCheckboxTagName;
+
+:host {
+  display: inline-flex;
+}
+
+.$(component) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_size {
+    &_small {
+      padding: var(--alt-core-card-checkbox-small-padding-y) var(--alt-core-card-checkbox-small-padding-x);
+    }
+
+    &_medium {
+      padding: var(--alt-core-card-checkbox-medium-padding-y) var(--alt-core-card-checkbox-medium-padding-x);
+    }
+
+    &_large {
+      padding: var(--alt-core-card-checkbox-large-padding-y) var(--alt-core-card-checkbox-large-padding-x);
+    }
+  }
+}

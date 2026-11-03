@@ -1,0 +1,23 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { BlockWrap, BlockCol, BlockTable } from '~shared/.storybook/blocks'
+import * as Buttons from './Button.stories';
+import { EAltCoreSimpleButtonVariant } from '~core/ui/simpleButton/models/types'
+import { EAltSizes } from '~shared/types/global';
+
+<Meta of={Buttons}  />
+
+<BlockTable
+  of={Buttons.Playground}
+  cols={{
+    arg: 'size',
+    items: [
+      EAltSizes.SMALL,
+      EAltSizes.MEDIUM,
+      EAltSizes.LARGE,
+    ]
+  }}
+  rows={{
+    arg: 'variant',
+    items: Object.values(EAltCoreSimpleButtonVariant)
+  }}
+/>

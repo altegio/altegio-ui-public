@@ -1,0 +1,12 @@
+@import url('../../../../shared/assets/css/build/root-css-variables.css');
+@import url('../../../../shared/assets/css/build/root-css-breakpoints.css');
+
+:root {
+  --alt-core-font-family: inter;
+  --alt-core-z-index-100: 100;
+
+  /* Keyboard focus indicator */
+  --alt-core-focus-ring-color: var(--alt-core-color-stroke-accent);
+  --alt-core-focus-ring-width: 2px;
+  --alt-core-focus-ring-offset: 2px;
+}

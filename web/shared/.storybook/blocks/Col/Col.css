@@ -1,0 +1,32 @@
+.sb-stories-col {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__title {
+    margin-bottom: 32px !important;
+    font-size: 13px !important;
+    font-weight: 700;
+    line-height: 16px;
+    color: #5C6870 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    border: 0;
+  }
+
+  &__item {
+    display: block;
+    border: 1px solid hsl(203deg 50% 30% / 15%);
+    border-radius: 4px;
+
+    &__title {
+      padding: 0.5rem 1rem 0 !important;
+      font-size: 24px !important;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+  }
+}

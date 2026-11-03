@@ -1,0 +1,4 @@
+:host {
+  /* General */
+  --alt-core-card-header-gap: var(--alt-core-size-spacing-x);
+}

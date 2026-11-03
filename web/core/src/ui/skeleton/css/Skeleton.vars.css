@@ -1,0 +1,16 @@
+:host {
+  /* General */
+  --alt-core-skeleton-display: block;
+  --alt-core-skeleton-background-color: var(--alt-core-color-surface-tertiary);
+  --alt-core-skeleton-border-radius: var(--alt-core-size-radius-x);
+
+  /* Sizes */
+  --alt-core-skeleton-small-height: var(--alt-core-size-spacing-3-x);
+  --alt-core-skeleton-medium-height: var(--alt-core-size-spacing-6-x);
+  --alt-core-skeleton-large-height: var(--alt-core-size-spacing-8-x);
+
+  /* Wave animation */
+  --alt-core-skeleton-wave-edge-background-color: var(--alt-core-color-surface-tertiary-low);
+  --alt-core-skeleton-wave-middle-background-color: var(--alt-core-color-surface-tertiary);
+  --alt-core-skeleton-wave-duration: 1s;
+}

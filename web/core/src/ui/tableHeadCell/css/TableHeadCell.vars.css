@@ -1,0 +1,10 @@
+:host {
+  /* Host */
+  --alt-core-table-cell-size: 20px;
+  --alt-core-table-cell-padding-x: var(--alt-core-size-spacing-3-x);
+  --alt-core-table-head-cell-host-border-color: var(--alt-core-color-stroke-primary);
+  --alt-core-table-head-cell-host-background-color: var(--alt-core-color-surface-primary);
+
+  /* Wrap */
+  --alt-core-table-head-cell-wrap-gap: var(--alt-core-size-spacing-x);
+}

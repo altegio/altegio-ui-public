@@ -1,0 +1,15 @@
+import type { TSlotTestCase } from '~shared/types/tests'
+import { text, empty } from '~shared/tests/slotContents'
+
+export const slotBeforeTestCases: TSlotTestCase[] = [
+  { slot: 'before', case: 'with content', content: text },
+  { slot: 'before', case: 'without content', content: empty },
+]
+export const slotAnnotationTestCases: TSlotTestCase[] = [
+  { slot: 'annotation', case: 'with content', content: text },
+  { slot: 'annotation', case: 'without content', content: empty },
+]
+export const slotAfterTestCases: TSlotTestCase[] = [
+  { slot: 'after', case: 'with content', content: text },
+  { slot: 'after', case: 'without content', content: empty },
+]

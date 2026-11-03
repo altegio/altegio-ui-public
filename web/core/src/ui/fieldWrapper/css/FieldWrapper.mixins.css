@@ -1,0 +1,9 @@
+@define-mixin field-wrapper-size
+  $font-size,
+  $line-height,
+  $border-radius
+{
+  font-size: var($font-size);
+  line-height: var($line-height);
+  border-radius: var($border-radius);
+}

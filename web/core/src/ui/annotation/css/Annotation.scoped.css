@@ -1,0 +1,7 @@
+$component: $AltCoreAnnotationTagName;
+
+.$(component) {
+  &_disabled {
+    cursor: not-allowed;
+  }
+}

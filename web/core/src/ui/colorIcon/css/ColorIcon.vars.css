@@ -1,0 +1,53 @@
+:host {
+  /* Sizes */
+
+  /* Default */
+  --alt-core-color-icon-default-size: var(--alt-core-size-spacing-12-x);
+  --alt-core-color-icon-default-radius: calc(var(--alt-core-size-radius-4-x) * 5);
+
+  /* 24_x */
+  --alt-core-color-icon-24-size: var(--alt-core-size-spacing-6-x);
+
+  /* 32_x */
+  --alt-core-color-icon-32-size: var(--alt-core-size-spacing-8-x);
+
+  /* 40_x */
+  --alt-core-color-icon-40-size: var(--alt-core-size-spacing-10-x);
+
+    /* 48_x */
+  --alt-core-color-icon-48-size: var(--alt-core-size-spacing-12-x);
+
+    /* 64_x */
+  --alt-core-color-icon-64-size: calc(var(--alt-core-size-spacing-8-x) * 2);
+
+  /* Variants */
+
+  /* Default */
+  --alt-core-color-icon-default-background-color: var(--alt-core-color-surface-tertiary);
+  --alt-core-color-icon-default-icon-color: var(--alt-core-color-icon-primary);
+
+  /* Grey */
+  --alt-core-color-icon-grey-background-color: var(--alt-core-color-surface-tertiary);
+  --alt-core-color-icon-grey-icon-color: var(--alt-core-color-icon-primary);
+  --alt-core-color-icon-grey-disabled-icon-color: var(--alt-core-color-icon-tertiary);
+
+  /* Red */
+  --alt-core-color-icon-red-background-color: var(--alt-core-color-surface-negative-low);
+  --alt-core-color-icon-red-icon-color: var(--alt-core-color-icon-negative);
+
+  /* Green */
+  --alt-core-color-icon-green-background-color: var(--alt-core-color-surface-positive-low);
+  --alt-core-color-icon-green-icon-color: var(--alt-core-color-icon-positive);
+
+  /* Yellowish */
+  --alt-core-color-icon-yellowish-background-color: var(--alt-core-color-calm-surface-yellow-low);
+  --alt-core-color-icon-yellowish-icon-color: var(--alt-core-color-calm-surface-orange);
+
+  /* Blue */
+  --alt-core-color-icon-blue-background-color: var(--alt-core-color-calm-surface-blue-low);
+  --alt-core-color-icon-blue-icon-color: var(--alt-core-color-calm-surface-blue);
+
+  /* Violet */
+  --alt-core-color-icon-violet-background-color: var(--alt-core-color-calm-surface-purple-low);
+  --alt-core-color-icon-violet-icon-color: var(--alt-core-color-calm-surface-purple);
+}

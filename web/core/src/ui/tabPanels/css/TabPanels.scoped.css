@@ -1,0 +1,9 @@
+$component: $AltCoreTabPanelsTagName;
+
+:host {
+  display: var(--alt-core-tab-panels-display);
+}
+
+.$(component) {
+  display: contents;
+}

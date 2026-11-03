@@ -1,0 +1,30 @@
+@import url('../../../assets/css/mixins/a11y.css');
+
+$component: $AltCoreDropdownListTagName;
+
+.$(component) {
+  display: var(--alt-core-dropdown-list-display);
+  flex-direction: var(--alt-core-dropdown-list-flex-direction);
+  gap: var(--alt-core-dropdown-list-gap);
+  min-width: var(--alt-core-dropdown-list-min-width);
+  max-width: var(--alt-core-dropdown-list-max-width);
+  min-height: var(--alt-core-dropdown-list-min-height);
+  max-height: var(--alt-core-dropdown-list-max-height);
+  padding: var(--alt-core-dropdown-list-padding-y) var(--alt-core-dropdown-list-padding-x);
+  overflow-y: auto;
+  font-family: var(--alt-core-font-family);
+  background-color: var(--alt-core-dropdown-list-background);
+  border-radius: var(--alt-core-dropdown-list-border-radius);
+  box-shadow: var(--alt-core-dropdown-list-shadow);
+
+  &_no-max-height {
+    max-height: unset;
+  }
+}
+
+/* A list that scrolls is a tab stop when no item inside takes focus */
+.$(component):focus-visible {
+  @mixin alt-focus-ring;
+
+  outline-offset: calc(var(--alt-core-focus-ring-width, 2px) * -1);
+}

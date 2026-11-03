@@ -1,0 +1,6 @@
+:host {
+  /* General */
+
+  --alt-core-search-text-highlighted-display: block;
+  --alt-core-search-text-highlighted-color: var(--alt-core-color-text-primary);
+}

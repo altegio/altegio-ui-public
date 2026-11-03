@@ -1,0 +1,10 @@
+:host {
+  /* General */
+  --alt-core-list-display: block;
+  --alt-core-list-gap: 0;
+  --alt-core-list-padding: 0;
+
+  /* Separator */
+  --alt-core-list-separator-color: var(--alt-core-color-stroke-primary-low);
+  --alt-core-list-separator-width: 1px;
+}

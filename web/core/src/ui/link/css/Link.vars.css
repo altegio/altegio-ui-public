@@ -1,0 +1,8 @@
+:host {
+    /* General */
+    --alt-core-link-display: inline-flex;
+    --alt-core-link-text-white-space: nowrap;
+
+    /* Colors */
+    --alt-core-link-color: var(--alt-core-color-other-link);
+}

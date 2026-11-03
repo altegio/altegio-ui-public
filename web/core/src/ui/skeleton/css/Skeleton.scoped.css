@@ -1,0 +1,73 @@
+$component: $AltCoreSkeletonTagName;
+
+:host {
+  display: var(--alt-core-skeleton-display);
+  width: var(--alt-core-skeleton-width, auto);
+  height: var(--alt-core-skeleton-height, auto);
+}
+
+:host([size='small']) {
+  height: var(--alt-core-skeleton-height, var(--alt-core-skeleton-small-height));
+}
+
+:host([size='medium']) {
+  height: var(--alt-core-skeleton-height, var(--alt-core-skeleton-medium-height));
+}
+
+:host([size='large']) {
+  height: var(--alt-core-skeleton-height, var(--alt-core-skeleton-large-height));
+}
+
+:host([shape='circle']) {
+  aspect-ratio: 1;
+}
+
+.$(component) {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--alt-core-skeleton-background-color);
+  border-radius: var(--alt-core-skeleton-border-radius);
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    display: block;
+    content: '';
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--alt-core-skeleton-wave-edge-background-color) 25%,
+      var(--alt-core-skeleton-wave-middle-background-color) 50%,
+      var(--alt-core-skeleton-wave-edge-background-color) 75%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+  }
+}
+
+:host([shape='circle']) .$(component) {
+  border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .$(component)::after {
+    animation: alt-core-skeleton-wave var(--alt-core-skeleton-wave-duration) linear infinite;
+  }
+}
+
+@keyframes alt-core-skeleton-wave {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  75% {
+    transform: translateX(75%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}

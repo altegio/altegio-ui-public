@@ -1,0 +1,136 @@
+import { describe, expect, it } from 'vitest'
+import { Component } from '@angular/core'
+import { TestBed } from '~ng/tests/setup'
+import { AltCoreDropdownListTagName } from '~shared/constants'
+import { AltDropdownList } from '~ng/ui/dropdownList'
+import {
+  type IAltNgDropdownListProps,
+} from '~ng/ui/dropdownList/models/types'
+
+import {
+  slotTopTestCases,
+  slotBottomTestCases,
+  slotListTestCases,
+} from './cases/slots'
+import {
+  propItemsTestCases,
+  propItemLabelTestCases,
+  propMinWidthTestCases,
+} from './cases/props'
+
+const tagName = AltCoreDropdownListTagName
+
+interface ICreateComponentArgs {
+  slots?: {
+    top?: string
+    list?: string
+    bottom?: string
+  }
+  props?: Partial<IAltNgDropdownListProps>
+}
+const createComponent = async({ slots, props }: ICreateComponentArgs) => {
+  TestBed.resetTestingModule()
+  await TestBed.configureTestingModule({ imports: [AltDropdownList] }).compileComponents()
+
+  @Component({
+    template: `
+      <AltDropdownList
+        [items]="items"
+        [itemLabel]="itemLabel"
+        [minWidth]="minWidth"
+      >
+        @if (topSlot) {
+          <div dropdown-list-top>
+            {{ topSlot }}
+          </div>
+        }
+
+        @if (listSlot) {
+          <div dropdown-list-list>
+            {{ listSlot }}
+          </div>
+        }
+
+        @if (bottomSlot) {
+          <div dropdown-list-bottom>
+            {{ bottomSlot }}
+          </div>
+        }
+      </AltDropdownList>
+    `,
+    imports: [AltDropdownList],
+    standalone: true,
+  })
+  class TestComponent {
+    items = props?.items
+    itemLabel = props?.itemLabel
+    minWidth = props?.minWidth
+    topSlot = slots?.top
+    listSlot = slots?.list
+    bottomSlot = slots?.bottom
+  }
+  return TestComponent
+}
+
+describe(
+  'Angular/AltDropdownList',
+  () => {
+    describe(
+      'Unit',
+      () => {
+        describe(
+          'Slots',
+          () => {
+            for (const testCase of [
+              ...slotTopTestCases,
+              ...slotBottomTestCases,
+              ...slotListTestCases,
+            ]) {
+              it(
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
+                async() => {
+                  const component = await createComponent({
+                    slots: { [testCase.slot]: testCase.content },
+                    props: {},
+                  })
+                  const fixture = TestBed.createComponent(component)
+                  fixture.detectChanges()
+
+                  await fixture.whenStable()
+
+                  expect((fixture.nativeElement as HTMLElement).textContent).toContain(testCase.content)
+                },
+              )
+            }
+          },
+        )
+
+        describe(
+          'Props',
+          () => {
+            for (const testCase of [
+              ...propItemsTestCases,
+              ...propItemLabelTestCases,
+              ...propMinWidthTestCases,
+            ]) {
+              it(
+                `Prop "${testCase.prop}" should be "${testCase.case}"`,
+                async() => {
+                  const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
+                  const fixture = TestBed.createComponent(component)
+                  fixture.detectChanges()
+
+                  await fixture.whenStable()
+
+                  const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
+
+                  expect(JSON.stringify(coreElement?.[testCase.prop])).toBe(JSON.stringify(testCase.expected))
+                },
+              )
+            }
+          },
+        )
+      },
+    )
+  },
+)

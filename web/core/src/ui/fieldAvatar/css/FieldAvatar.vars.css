@@ -1,0 +1,16 @@
+:host {
+  /* Sizes */
+
+  /* Small */
+  --alt-core-field-avatar-size-small-padding-left: var(--alt-core-size-spacing-x);
+  --alt-core-field-avatar-size-small-padding-right: var(--alt-core-size-spacing-2-x);
+  --alt-core-field-avatar-size-small-padding-y: var(--alt-core-size-spacing-x);
+
+  /* Medium */
+  --alt-core-field-avatar-size-medium-padding-x: var(--alt-core-size-spacing-2-x);
+  --alt-core-field-avatar-size-medium-padding-y: var(--alt-core-size-spacing-2-x);
+
+  /* Large */
+  --alt-core-field-avatar-size-large-padding-x: var(--alt-core-size-spacing-2-x);
+  --alt-core-field-avatar-size-large-padding-y: var(--alt-core-size-spacing-2-x);
+}

@@ -1,0 +1,98 @@
+import { describe, expect, it } from 'vitest'
+import { Component, ChangeDetectionStrategy } from '@angular/core'
+import { TestBed } from '~ng/tests/setup'
+import { AltGlobalProvider } from '~ng/ui/globalProvider'
+import { GlobalProviderReadyEvent } from '~core/ui/globalProvider/models/types'
+import { GlobalContext } from '~core/ui/globalProvider/context'
+import { text, empty } from '~shared/tests/slotContents'
+import type { TSlotTestCase } from '~shared/types/tests'
+
+interface ICreateComponentArgs {
+  slots?: {
+    default?: string
+  }
+}
+
+let readyEvent: GlobalProviderReadyEvent | null = null
+
+const createComponent = async({ slots }: ICreateComponentArgs) => {
+  readyEvent = null
+  TestBed.resetTestingModule()
+  await TestBed.configureTestingModule({
+    imports: [AltGlobalProvider],
+    providers: [
+      {
+        provide: 'globalContext',
+        useValue: new GlobalContext(),
+      },
+    ],
+  }).compileComponents()
+
+  @Component({
+    template: '<AltGlobalProvider (ready)="onReady($event)">{{content}}</AltGlobalProvider>',
+    imports: [AltGlobalProvider],
+    standalone: true,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+  })
+  class TestComponent {
+    content = slots?.default || ''
+    onReady(event: GlobalProviderReadyEvent) {
+      readyEvent = event
+    }
+  }
+  return TestComponent
+}
+
+// Unit test cases:
+const slotDefaultTestCases: TSlotTestCase[] = [
+  { slot: 'default', case: 'with content', content: text },
+  { slot: 'default', case: 'without content', content: empty },
+]
+
+describe(
+  '🔍 AltGlobalProvider',
+  () => {
+    describe(
+      'Unit',
+      () => {
+        describe(
+          'Slots',
+          () => {
+            for (const testCase of slotDefaultTestCases) {
+              it(
+                `Slot "${testCase.slot}" should render ${testCase.case}`,
+                async() => {
+                  const component = await createComponent({ slots: { [testCase.slot]: testCase.content } })
+                  const fixture = TestBed.createComponent(component)
+                  fixture.detectChanges()
+
+                  await fixture.whenStable()
+
+                  expect((fixture.nativeElement as HTMLElement).textContent).toBe(testCase.content)
+                },
+              )
+            }
+          },
+        )
+
+        describe(
+          'Events',
+          () => {
+            it(
+              'Should handle the ready event',
+              async() => {
+                const component = await createComponent({})
+                const fixture = TestBed.createComponent(component)
+                fixture.detectChanges()
+
+                await fixture.whenStable()
+
+                expect(readyEvent).toBeInstanceOf(GlobalProviderReadyEvent)
+              },
+            )
+          },
+        )
+      },
+    )
+  },
+)

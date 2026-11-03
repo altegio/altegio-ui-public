@@ -1,0 +1,7 @@
+.alt-core-tooltip {
+  &__content {
+    max-width: var(--alt-core-tooltip-max-width);
+    word-break: normal;
+  }
+}
+

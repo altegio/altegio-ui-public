@@ -1,0 +1,229 @@
+import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
+
+import { useCoreTests } from '~shared/tests/core'
+import { AltCoreSimpleCheckboxTagName as tagName } from '~shared/constants'
+import { dispatchEvent, getElementClasses, getShadowRootElement } from '~shared/tests/utils'
+import { EAltSizes } from '~shared/types/global'
+import { type TPropTestCase } from '~shared/types/tests'
+import { pick } from 'radash'
+
+import {
+  createCoreSimpleCheckboxProps,
+  type IAltCoreSimpleCheckboxProps,
+} from '~core/ui/simpleCheckbox/models/types'
+import '~core/ui/simpleCheckbox'
+
+// Unit test cases:
+const booleans = [
+  true,
+  false,
+]
+
+const sizes = Object.values(pick(
+  EAltSizes,
+  ['SMALL', 'MEDIUM'],
+))
+
+const propSizeTestCases: TPropTestCase<IAltCoreSimpleCheckboxProps, 'size'>[] = sizes.map((size) => ({
+  prop: 'size',
+  value: size as IAltCoreSimpleCheckboxProps['size'],
+  case: size,
+}))
+
+const propCheckedTestCases: TPropTestCase<IAltCoreSimpleCheckboxProps, 'checked'>[] = booleans.map((checked) => ({
+  prop: 'checked',
+  value: checked,
+  case: 'checked',
+  expected: checked,
+}))
+
+
+const propIndeterminateTestCases: TPropTestCase<IAltCoreSimpleCheckboxProps, 'indeterminate'>[] = booleans.map((indeterminate) => ({
+  prop: 'indeterminate',
+  value: indeterminate,
+  case: 'indeterminate',
+  expected: indeterminate,
+}))
+
+const propErrorTestCases: TPropTestCase<IAltCoreSimpleCheckboxProps, 'error'>[] = booleans.map((error) => ({
+  prop: 'error',
+  value: error,
+  case: 'error',
+  expected: error,
+}))
+
+const propDisabledTestCases: TPropTestCase<IAltCoreSimpleCheckboxProps, 'disabled'>[] = booleans.map((disabled) => ({
+  prop: 'disabled',
+  value: disabled,
+  case: 'disabled',
+  expected: disabled,
+}))
+
+const propHoveredTestCases: TPropTestCase<IAltCoreSimpleCheckboxProps, 'hovered'>[] = booleans.map((hovered) => ({
+  prop: 'hovered',
+  value: hovered,
+  case: 'hovered',
+  expected: hovered,
+}))
+
+const {
+  component,
+  resetComponent,
+  updateComponent,
+  injectComponentToBody,
+  removeComponent,
+} = useCoreTests(
+  tagName,
+  createCoreSimpleCheckboxProps(),
+)
+
+const getRootElement = () => {
+  return getShadowRootElement(
+    component,
+    tagName,
+  )
+}
+
+describe(
+  'Core/AltCoreSimpleCheckbox/Unit',
+  () => {
+    beforeAll(() => {
+      injectComponentToBody()
+    })
+
+    afterEach(async() => {
+      await resetComponent()
+    })
+
+    afterAll(() => {
+      removeComponent()
+    })
+
+    describe(
+      'Props',
+      () => {
+        for (const testCase of propSizeTestCases) {
+          const expectedCssClass = `${tagName}_size_${testCase.case}`
+
+          it(
+            `Prop "${testCase.prop}" with value "${testCase.value}" should change the rootElement class to "${expectedCssClass}"`,
+            async() => {
+              await updateComponent({ props: { [testCase.prop]: testCase.value } })
+
+              const rootElement = getRootElement()
+              const rootElementClasses = getElementClasses(rootElement)
+
+              expect(rootElementClasses).toContain(expectedCssClass)
+            },
+          )
+        }
+
+        for (const testCase of [
+          ...propErrorTestCases,
+          ...propDisabledTestCases,
+          ...propHoveredTestCases,
+        ]) {
+          const expectedCssClass = `${tagName}_${testCase.case}`
+
+          it(
+            `Should ${testCase.case} class ${expectedCssClass} when prop ${testCase.prop} is ${testCase.value}`,
+            async() => {
+              await updateComponent({ props: { [testCase.prop]: testCase.value } })
+
+              const rootElement = getRootElement()
+              const rootElementClasses = getElementClasses(rootElement)
+
+              if (testCase.value) {
+                expect(rootElementClasses).toContain(expectedCssClass)
+              } else {
+                expect(rootElementClasses).not.toContain(expectedCssClass)
+              }
+            },
+          )
+        }
+
+
+        for (const testCase of [
+          ...propCheckedTestCases,
+          ...propIndeterminateTestCases,
+        ]) {
+          const expectedCssClass = `${tagName}_status_${testCase.prop}`
+
+          it(
+            `Should ${testCase.case} class ${expectedCssClass} when prop ${testCase.prop} is ${testCase.value}`,
+            async() => {
+              await updateComponent({ props: { [testCase.prop]: testCase.value } })
+
+              const rootElement = getRootElement()
+              const rootElementClasses = getElementClasses(rootElement)
+
+              if (testCase.value) {
+                expect(rootElementClasses).toContain(expectedCssClass)
+              } else {
+                expect(rootElementClasses).not.toContain(expectedCssClass)
+              }
+            },
+          )
+        }
+      },
+    )
+
+    describe(
+      'Events',
+      () => {
+        it(
+          'Should call the click handler on checkbox click',
+          async() => {
+            await updateComponent({ props: {} })
+
+            const handleAction = vi.fn()
+
+            const rootElement = getRootElement()
+            const testingNode = rootElement?.querySelector('div')
+            if (!testingNode) throw Error('Checkbox element not found')
+
+            component.addEventListener(
+              'checked',
+              handleAction,
+            )
+
+            dispatchEvent(
+              testingNode,
+              'click',
+              { bubbles: true },
+            )
+
+            expect(handleAction).toHaveBeenCalledTimes(1)
+          },
+        )
+
+        it(
+          'Should not call the click handler when the checkbox is disabled',
+          async() => {
+            await updateComponent({ props: { disabled: true } })
+
+            const handleAction = vi.fn()
+
+            const rootElement = getRootElement()
+            const testingNode = rootElement?.querySelector('div')
+            if (!testingNode) throw Error('Checkbox element not found')
+
+            component.addEventListener(
+              'checked',
+              handleAction,
+            )
+
+            dispatchEvent(
+              testingNode,
+              'click',
+              { bubbles: true },
+            )
+
+
+            expect(handleAction).not.toHaveBeenCalled()
+          },
+        )
+      },
+    )
+  },
+)

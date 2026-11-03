@@ -1,0 +1,161 @@
+$component: $AltCoreBannerTagName;
+
+:host {
+  display: var(--alt-core-banner-display);
+}
+
+.$(component) {
+  display: flex;
+  gap: var(--alt-core-banner-gap);
+  align-items: flex-start;
+  padding: var(--alt-core-banner-padding-y) var(--alt-core-banner-padding-x);
+  font-family: var(--alt-core-banner-font-family);
+  color: var(--alt-core-banner-color);
+  background-color: var(--alt-core-banner-background-color);
+  border-radius: var(--alt-core-banner-border-radius);
+
+  &__body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: var(--alt-core-banner-actions-offset);
+    min-width: 0;
+  }
+
+  &__message {
+    display: flex;
+    gap: var(--alt-core-banner-gap);
+    align-items: flex-start;
+    min-width: 0;
+  }
+
+  &__icon {
+    display: flex;
+    flex-shrink: 0;
+    padding-top: var(--alt-core-banner-icon-offset);
+    color: var(--alt-core-banner-icon-color);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--alt-core-banner-content-gap);
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  &__title {
+    font-size: var(--alt-core-banner-title-font-size);
+    font-weight: var(--alt-core-banner-title-font-weight);
+    line-height: var(--alt-core-banner-title-line-height);
+  }
+
+  &__description {
+    font-size: var(--alt-core-banner-description-font-size);
+    font-weight: var(--alt-core-banner-description-font-weight);
+    line-height: var(--alt-core-banner-description-line-height);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--alt-core-banner-actions-gap);
+
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &_with-icon &__actions {
+    padding-left: calc(var(--alt-core-banner-icon-size) + var(--alt-core-banner-gap));
+  }
+
+  &__close {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: var(--alt-core-banner-close-size);
+    height: var(--alt-core-banner-close-size);
+    padding: 0;
+    margin: calc(var(--alt-core-banner-icon-offset) * -1) calc(var(--alt-core-banner-content-gap) * -1) 0 0;
+    color: var(--alt-core-banner-close-color);
+    cursor: pointer;
+    background: none;
+    border: none;
+    border-radius: var(--alt-core-banner-close-radius);
+
+    &:hover {
+      background-color: var(--alt-core-banner-close-hover-background-color);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--alt-core-banner-focus-outline-color);
+      outline-offset: 0;
+    }
+  }
+
+  &_layout-page {
+    border-radius: var(--alt-core-banner-page-border-radius);
+
+    .$(component)__body {
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .$(component)__actions {
+      padding-left: 0;
+    }
+  }
+
+  &_variant {
+    &-information {
+      --alt-core-banner-background-color: var(--alt-core-banner-information-background-color);
+      --alt-core-banner-icon-color: var(--alt-core-banner-information-icon-color);
+    }
+
+    &-success {
+      --alt-core-banner-background-color: var(--alt-core-banner-success-background-color);
+      --alt-core-banner-icon-color: var(--alt-core-banner-success-icon-color);
+    }
+
+    &-warning {
+      --alt-core-banner-background-color: var(--alt-core-banner-warning-background-color);
+      --alt-core-banner-icon-color: var(--alt-core-banner-warning-icon-color);
+    }
+
+    &-danger {
+      --alt-core-banner-background-color: var(--alt-core-banner-danger-background-color);
+      --alt-core-banner-icon-color: var(--alt-core-banner-danger-icon-color);
+    }
+
+    &-discovery {
+      --alt-core-banner-background-color: var(--alt-core-banner-discovery-background-color);
+      --alt-core-banner-icon-color: var(--alt-core-banner-discovery-icon-color);
+    }
+
+    &-accent {
+      --alt-core-banner-background-color: var(--alt-core-banner-accent-background-color);
+      --alt-core-banner-icon-color: var(--alt-core-banner-accent-icon-color);
+    }
+
+    &-muted {
+      --alt-core-banner-background-color: var(--alt-core-banner-muted-background-color);
+      --alt-core-banner-icon-color: var(--alt-core-banner-muted-icon-color);
+    }
+
+    &-invert {
+      --alt-core-banner-background-color: var(--alt-core-banner-invert-background-color);
+      --alt-core-banner-icon-color: var(--alt-core-banner-invert-icon-color);
+      --alt-core-banner-color: var(--alt-core-banner-invert-color);
+      --alt-core-banner-close-color: var(--alt-core-banner-close-invert-color);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .$(component)__close {
+    transition: background-color 0.2s ease;
+  }
+}

@@ -1,0 +1,7 @@
+:host {
+  /* General */
+
+  --alt-core-date-picker-calendar-padding-x: var(--alt-core-size-spacing-5-x);
+  --alt-core-date-picker-calendar-padding-y: var(--alt-core-size-spacing-4-x);
+  --alt-core-date-picker-calendar-max-width: 307px;
+}

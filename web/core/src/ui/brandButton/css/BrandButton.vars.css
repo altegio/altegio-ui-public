@@ -1,0 +1,13 @@
+$component: $AltCoreSimpleButtonTagName;
+
+:host([data-variant="whatsapp"]) {
+  /* General */
+  --alt-core-simple-button-variant-primary-background-color: var(--alt-core-color-other-brand-whatsapp);
+  --alt-core-simple-button-variant-primary-color: var(--alt-core-color-other-contrast);
+  --alt-core-simple-button-variant-primary-disabled-background-color: rgb(37 211 102 / 30%);
+  --alt-core-simple-button-variant-primary-disabled-color: var(--alt-core-color-other-contrast);
+  --alt-core-simple-button-variant-primary-hover-background-color: var(--alt-core-color-other-brand-whatsapp-high);
+  --alt-core-simple-button-variant-primary-loading-color: var(--alt-core-color-other-contrast);
+  --alt-core-simple-button-size-medium-gap: var(--alt-core-size-spacing-2-x);
+  --alt-core-simple-button-size-small-gap: var(--alt-core-size-spacing-2-x);
+}

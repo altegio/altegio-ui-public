@@ -1,0 +1,82 @@
+{
+  "avatar_icon_size_100": {
+    "type": "FLOAT",
+    "value": 16,
+    "cssValue": "16px"
+  },
+  "avatar_icon_size_300": {
+    "type": "FLOAT",
+    "value": 24,
+    "cssValue": "24px"
+  },
+  "avatar_icon_size_500": {
+    "type": "FLOAT",
+    "value": 24,
+    "cssValue": "24px"
+  },
+  "avatar_icon_size_800": {
+    "type": "FLOAT",
+    "value": 72,
+    "cssValue": "72px"
+  },
+  "avatar_size_100": {
+    "type": "FLOAT",
+    "value": 24,
+    "cssValue": "24px"
+  },
+  "avatar_size_300": {
+    "type": "FLOAT",
+    "value": 32,
+    "cssValue": "32px"
+  },
+  "avatar_size_500": {
+    "type": "FLOAT",
+    "value": 40,
+    "cssValue": "40px"
+  },
+  "avatar_size_800": {
+    "type": "FLOAT",
+    "value": 120,
+    "cssValue": "120px"
+  },
+  "avatar_initial_line_height_size_100": {
+    "type": "FLOAT",
+    "value": 14,
+    "cssValue": "14px"
+  },
+  "avatar_initial_line_height_size_300": {
+    "type": "FLOAT",
+    "value": 16,
+    "cssValue": "16px"
+  },
+  "avatar_initial_line_height_size_500": {
+    "type": "FLOAT",
+    "value": 24,
+    "cssValue": "24px"
+  },
+  "avatar_initial_line_height_size_800": {
+    "type": "FLOAT",
+    "value": 36,
+    "cssValue": "36px"
+  },
+  "avatar_initial_font_size_size_100": {
+    "type": "FLOAT",
+    "value": 8,
+    "cssValue": "8px"
+  },
+  "avatar_initial_font_size_size_300": {
+    "type": "FLOAT",
+    "value": 10,
+    "cssValue": "10px"
+  },
+  "avatar_initial_font_size_size_500": {
+    "type": "FLOAT",
+    "value": 14,
+    "cssValue": "14px"
+  },
+  "avatar_initial_font_size_size_800": {
+    "type": "FLOAT",
+    "value": 36,
+    "cssValue": "36px"
+  }
+}

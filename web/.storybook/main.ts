@@ -1,0 +1,64 @@
+import type { StorybookConfig } from '@storybook/web-components-vite'
+import commonViteConfig from '../../configs/vite/shared/common.vite.config.ts'
+
+const config: StorybookConfig = {
+  framework: '@storybook/web-components-vite',
+  stories: ['./*.mdx'],
+  addons: [
+    '@storybook/addon-docs',
+    '@storybook/addon-a11y',
+  ],
+  refs: (_, { configType }) => {
+    if (configType === 'DEVELOPMENT') {
+      return {
+        vue: {
+          title: 'Vue',
+          url: 'http://localhost:6007',
+        },
+        angular: {
+          title: 'Angular',
+          url: 'http://localhost:6008',
+        },
+        core: {
+          title: 'Core',
+          url: 'http://localhost:6006',
+        },
+      }
+    }
+
+    // Base URL comes from the environment; an empty value keeps paths relative
+    const baseUrl = process.env.STORYBOOK_BASE_URL || ''
+    return {
+      vue: {
+        title: 'Vue',
+        url: `${baseUrl}/vue/`,
+      },
+      angular: {
+        title: 'Angular',
+        url: `${baseUrl}/angular/`,
+      },
+      core: {
+        title: 'Core',
+        url: `${baseUrl}/core/`,
+      },
+    }
+  },
+  async viteFinal(config, { configType }) {
+    const { mergeConfig } = await import('vite')
+
+    // Production builds take the base path from the environment
+    const base = configType === 'PRODUCTION'
+      ? process.env.STORYBOOK_BASE_URL || '/'
+      : '/'
+
+    return mergeConfig(
+      config,
+      {
+        ...commonViteConfig,
+        base,
+      },
+    )
+  },
+}
+
+export default config

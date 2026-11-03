@@ -1,0 +1,11 @@
+$component: $AltCoreCardHeaderTagName;
+
+:host {
+  display: flex;
+}
+
+.$(component) {
+  display: flex;
+  gap: var(--alt-core-card-header-gap);
+  align-items: center;
+}

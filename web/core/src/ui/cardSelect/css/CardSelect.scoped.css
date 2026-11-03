@@ -1,0 +1,11 @@
+$component: $AltCoreCardSelectTagName;
+
+:host {
+  display: var(--alt-card-select-display);
+}
+
+.$(component) {
+  &__main {
+    flex: 1;
+  }
+}

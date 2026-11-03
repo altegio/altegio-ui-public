@@ -1,0 +1,15 @@
+:host {
+  /* Sizes */
+
+  /* Small */
+  --alt-core-card-icon-small-padding-y: var(--alt-core-size-spacing-4-x);
+  --alt-core-card-icon-small-padding-x: var(--alt-core-size-spacing-4-x);
+
+  /* Medium */
+  --alt-core-card-icon-medium-padding-y: var(--alt-core-size-spacing-5-x);
+  --alt-core-card-icon-medium-padding-x: var(--alt-core-size-spacing-5-x);
+
+  /* Large */
+  --alt-core-card-icon-large-padding-y: var(--alt-core-size-spacing-5-x);
+  --alt-core-card-icon-large-padding-x: var(--alt-core-size-spacing-5-x);
+}

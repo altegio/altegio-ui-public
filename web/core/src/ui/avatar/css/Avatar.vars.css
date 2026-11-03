@@ -1,0 +1,38 @@
+:host {
+  /* General */
+  --alt-atom-avatar-display: block;
+  --alt-avatar-gap: var(--alt-core-size-spacing-2-5-x);
+
+  /* Sizes */
+  --alt-avatar-size-extra-small: var(--alt-core-component-avatar-size-100);
+  --alt-avatar-size-small: var(--alt-core-component-avatar-size-300);
+  --alt-avatar-size-medium: var(--alt-core-component-avatar-size-500);
+  --alt-avatar-size-large: var(--alt-core-component-avatar-size-800);
+
+  /* Extra small */
+  --alt-avatar-font-size-extra-small: var(--alt-core-component-avatar-initial-font-size-size-100);
+  --alt-avatar-line-height-extra-small: var(--alt-core-component-avatar-initial-line-height-size-100);
+
+  /* Small */
+  --alt-avatar-font-size-small: var(--alt-core-component-avatar-initial-font-size-size-300);
+  --alt-avatar-line-height-small: var(--alt-core-component-avatar-initial-line-height-size-300);
+
+  /* Medium */
+  --alt-avatar-font-size-medium: var(--alt-core-component-avatar-initial-font-size-size-500);
+  --alt-avatar-line-height-medium: var(--alt-core-component-avatar-initial-line-height-size-500);
+
+  /* Large */
+  --alt-avatar-font-size-large: var(--alt-core-component-avatar-initial-font-size-size-800);
+  --alt-avatar-line-height-large: var(--alt-core-component-avatar-initial-line-height-size-800);
+
+  /* Radii */
+
+  --alt-avatar-radius-extra-small: var(--alt-core-size-radius-x);
+  --alt-avatar-radius-small: var(--alt-core-size-radius-1-5-x);
+  --alt-avatar-radius-medium: var(--alt-core-size-radius-2-x);
+  --alt-avatar-radius-large: var(--alt-core-size-radius-3-x);
+
+  /* Colors */
+  --alt-avatar-bg: var(--alt-core-color-calm-surface-purple-low);
+  --alt-avatar-text-color: var(--alt-core-color-calm-icon-purple);
+}

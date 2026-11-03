@@ -1,0 +1,882 @@
+{
+  "calm_text_green": {
+    "type": "COLOR",
+    "value": "#219464",
+    "cssValue": "#219464"
+  },
+  "calm_icon_green": {
+    "type": "COLOR",
+    "value": "#219464",
+    "cssValue": "#219464"
+  },
+  "calm_stroke_green": {
+    "type": "COLOR",
+    "value": "#219464",
+    "cssValue": "#219464"
+  },
+  "calm_surface_green": {
+    "type": "COLOR",
+    "value": "#219464",
+    "cssValue": "#219464"
+  },
+  "calm_surface_green_low": {
+    "type": "COLOR",
+    "value": "rgba(33, 148, 100, 0.1)",
+    "cssValue": "rgba(33, 148, 100, 0.1)"
+  },
+  "calm_surface_blue": {
+    "type": "COLOR",
+    "value": "#2f53e3",
+    "cssValue": "#2f53e3"
+  },
+  "calm_surface_blue_low": {
+    "type": "COLOR",
+    "value": "rgba(47, 83, 227, 0.1)",
+    "cssValue": "rgba(47, 83, 227, 0.1)"
+  },
+  "calm_surface_orange": {
+    "type": "COLOR",
+    "value": "#df7800",
+    "cssValue": "#df7800"
+  },
+  "calm_surface_orange_low": {
+    "type": "COLOR",
+    "value": "rgba(223, 120, 0, 0.1)",
+    "cssValue": "rgba(223, 120, 0, 0.1)"
+  },
+  "calm_surface_yellow": {
+    "type": "COLOR",
+    "value": "#f8bc3b",
+    "cssValue": "#f8bc3b"
+  },
+  "calm_surface_yellow_low": {
+    "type": "COLOR",
+    "value": "rgba(248, 188, 59, 0.2)",
+    "cssValue": "rgba(248, 188, 59, 0.2)"
+  },
+  "calm_surface_red": {
+    "type": "COLOR",
+    "value": "#e34f2f",
+    "cssValue": "#e34f2f"
+  },
+  "calm_surface_red_low": {
+    "type": "COLOR",
+    "value": "rgba(227, 79, 47, 0.1)",
+    "cssValue": "rgba(227, 79, 47, 0.1)"
+  },
+  "calm_surface_purple": {
+    "type": "COLOR",
+    "value": "#6644e0",
+    "cssValue": "#6644e0"
+  },
+  "calm_surface_purple_low": {
+    "type": "COLOR",
+    "value": "rgba(102, 68, 224, 0.1)",
+    "cssValue": "rgba(102, 68, 224, 0.1)"
+  },
+  "calm_surface_teal": {
+    "type": "COLOR",
+    "value": "#5bb7af",
+    "cssValue": "#5bb7af"
+  },
+  "calm_surface_teal_low": {
+    "type": "COLOR",
+    "value": "rgba(91, 183, 175, 0.1)",
+    "cssValue": "rgba(91, 183, 175, 0.1)"
+  },
+  "calm_surface_pearl": {
+    "type": "COLOR",
+    "value": "#ffb27a",
+    "cssValue": "#ffb27a"
+  },
+  "calm_surface_pearl_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 178, 122, 0.1)",
+    "cssValue": "rgba(255, 178, 122, 0.1)"
+  },
+  "calm_surface_plum": {
+    "type": "COLOR",
+    "value": "#b2596e",
+    "cssValue": "#b2596e"
+  },
+  "calm_surface_plum_low": {
+    "type": "COLOR",
+    "value": "rgba(178, 89, 110, 0.1)",
+    "cssValue": "rgba(178, 89, 110, 0.1)"
+  },
+  "calm_surface_cerulean": {
+    "type": "COLOR",
+    "value": "#0d7ea0",
+    "cssValue": "#0d7ea0"
+  },
+  "calm_surface_cerulean_low": {
+    "type": "COLOR",
+    "value": "rgba(13, 126, 160, 0.1)",
+    "cssValue": "rgba(13, 126, 160, 0.1)"
+  },
+  "calm_surface_aqua": {
+    "type": "COLOR",
+    "value": "#72bef4",
+    "cssValue": "#72bef4"
+  },
+  "calm_surface_aqua_low": {
+    "type": "COLOR",
+    "value": "rgba(114, 190, 244, 0.1)",
+    "cssValue": "rgba(114, 190, 244, 0.1)"
+  },
+  "calm_stroke_green_low": {
+    "type": "COLOR",
+    "value": "rgba(33, 148, 100, 0.1)",
+    "cssValue": "rgba(33, 148, 100, 0.1)"
+  },
+  "calm_stroke_blue": {
+    "type": "COLOR",
+    "value": "#2f53e3",
+    "cssValue": "#2f53e3"
+  },
+  "calm_stroke_blue_low": {
+    "type": "COLOR",
+    "value": "rgba(47, 83, 227, 0.15)",
+    "cssValue": "rgba(47, 83, 227, 0.15)"
+  },
+  "calm_stroke_orange": {
+    "type": "COLOR",
+    "value": "#df7800",
+    "cssValue": "#df7800"
+  },
+  "calm_stroke_orange_low": {
+    "type": "COLOR",
+    "value": "rgba(223, 120, 0, 0.1)",
+    "cssValue": "rgba(223, 120, 0, 0.1)"
+  },
+  "calm_stroke_yellow": {
+    "type": "COLOR",
+    "value": "#f8bc3b",
+    "cssValue": "#f8bc3b"
+  },
+  "calm_stroke_yellow_low": {
+    "type": "COLOR",
+    "value": "rgba(248, 188, 59, 0.2)",
+    "cssValue": "rgba(248, 188, 59, 0.2)"
+  },
+  "calm_stroke_red": {
+    "type": "COLOR",
+    "value": "#e34f2f",
+    "cssValue": "#e34f2f"
+  },
+  "calm_stroke_red_low": {
+    "type": "COLOR",
+    "value": "rgba(227, 79, 47, 0.1)",
+    "cssValue": "rgba(227, 79, 47, 0.1)"
+  },
+  "calm_stroke_purple": {
+    "type": "COLOR",
+    "value": "#6644e0",
+    "cssValue": "#6644e0"
+  },
+  "calm_stroke_purple_low": {
+    "type": "COLOR",
+    "value": "rgba(79, 68, 224, 0.1)",
+    "cssValue": "rgba(79, 68, 224, 0.1)"
+  },
+  "calm_stroke_teal": {
+    "type": "COLOR",
+    "value": "#5bb7af",
+    "cssValue": "#5bb7af"
+  },
+  "calm_stroke_teal_low": {
+    "type": "COLOR",
+    "value": "rgba(91, 183, 175, 0.1)",
+    "cssValue": "rgba(91, 183, 175, 0.1)"
+  },
+  "calm_stroke_pearl": {
+    "type": "COLOR",
+    "value": "#ffb27a",
+    "cssValue": "#ffb27a"
+  },
+  "calm_stroke_pearl_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 178, 122, 0.1)",
+    "cssValue": "rgba(255, 178, 122, 0.1)"
+  },
+  "calm_stroke_plum": {
+    "type": "COLOR",
+    "value": "#b2596e",
+    "cssValue": "#b2596e"
+  },
+  "calm_stroke_plum_low": {
+    "type": "COLOR",
+    "value": "rgba(178, 89, 110, 0.1)",
+    "cssValue": "rgba(178, 89, 110, 0.1)"
+  },
+  "calm_stroke_cerulean": {
+    "type": "COLOR",
+    "value": "#0d7ea0",
+    "cssValue": "#0d7ea0"
+  },
+  "calm_stroke_cerulean_low": {
+    "type": "COLOR",
+    "value": "rgba(13, 126, 160, 0.1)",
+    "cssValue": "rgba(13, 126, 160, 0.1)"
+  },
+  "calm_stroke_aqua": {
+    "type": "COLOR",
+    "value": "#72bef4",
+    "cssValue": "#72bef4"
+  },
+  "calm_stroke_aqua_low": {
+    "type": "COLOR",
+    "value": "rgba(114, 190, 244, 0.1)",
+    "cssValue": "rgba(114, 190, 244, 0.1)"
+  },
+  "calm_icon_green_low": {
+    "type": "COLOR",
+    "value": "rgba(33, 148, 100, 0.2)",
+    "cssValue": "rgba(33, 148, 100, 0.2)"
+  },
+  "calm_icon_blue": {
+    "type": "COLOR",
+    "value": "#2f53e3",
+    "cssValue": "#2f53e3"
+  },
+  "calm_icon_blue_low": {
+    "type": "COLOR",
+    "value": "rgba(47, 83, 227, 0.2)",
+    "cssValue": "rgba(47, 83, 227, 0.2)"
+  },
+  "calm_icon_orange": {
+    "type": "COLOR",
+    "value": "#df7800",
+    "cssValue": "#df7800"
+  },
+  "calm_icon_orange_low": {
+    "type": "COLOR",
+    "value": "rgba(223, 120, 0, 0.15)",
+    "cssValue": "rgba(223, 120, 0, 0.15)"
+  },
+  "calm_icon_yellow": {
+    "type": "COLOR",
+    "value": "#f8bc3b",
+    "cssValue": "#f8bc3b"
+  },
+  "calm_icon_yellow_low": {
+    "type": "COLOR",
+    "value": "rgba(248, 188, 59, 0.2)",
+    "cssValue": "rgba(248, 188, 59, 0.2)"
+  },
+  "calm_icon_red": {
+    "type": "COLOR",
+    "value": "#e34f2f",
+    "cssValue": "#e34f2f"
+  },
+  "calm_icon_red_low": {
+    "type": "COLOR",
+    "value": "rgba(227, 79, 47, 0.2)",
+    "cssValue": "rgba(227, 79, 47, 0.2)"
+  },
+  "calm_icon_purple": {
+    "type": "COLOR",
+    "value": "#6644e0",
+    "cssValue": "#6644e0"
+  },
+  "calm_icon_purple_low": {
+    "type": "COLOR",
+    "value": "rgba(79, 68, 224, 0.2)",
+    "cssValue": "rgba(79, 68, 224, 0.2)"
+  },
+  "calm_icon_teal": {
+    "type": "COLOR",
+    "value": "#5bb7af",
+    "cssValue": "#5bb7af"
+  },
+  "calm_icon_teal_low": {
+    "type": "COLOR",
+    "value": "rgba(91, 183, 175, 0.2)",
+    "cssValue": "rgba(91, 183, 175, 0.2)"
+  },
+  "calm_icon_pearl": {
+    "type": "COLOR",
+    "value": "#ffb27a",
+    "cssValue": "#ffb27a"
+  },
+  "calm_icon_pearl_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 178, 122, 0.2)",
+    "cssValue": "rgba(255, 178, 122, 0.2)"
+  },
+  "calm_icon_plum": {
+    "type": "COLOR",
+    "value": "#b2596e",
+    "cssValue": "#b2596e"
+  },
+  "calm_icon_plum_low": {
+    "type": "COLOR",
+    "value": "rgba(178, 89, 110, 0.2)",
+    "cssValue": "rgba(178, 89, 110, 0.2)"
+  },
+  "calm_icon_cerulean": {
+    "type": "COLOR",
+    "value": "#0d7ea0",
+    "cssValue": "#0d7ea0"
+  },
+  "calm_icon_cerulean_low": {
+    "type": "COLOR",
+    "value": "rgba(13, 126, 160, 0.2)",
+    "cssValue": "rgba(13, 126, 160, 0.2)"
+  },
+  "calm_icon_aqua": {
+    "type": "COLOR",
+    "value": "#72bef4",
+    "cssValue": "#72bef4"
+  },
+  "calm_icon_aqua_low": {
+    "type": "COLOR",
+    "value": "rgba(114, 190, 244, 0.2)",
+    "cssValue": "rgba(114, 190, 244, 0.2)"
+  },
+  "calm_text_green_low": {
+    "type": "COLOR",
+    "value": "rgba(33, 148, 100, 0.2)",
+    "cssValue": "rgba(33, 148, 100, 0.2)"
+  },
+  "calm_text_blue": {
+    "type": "COLOR",
+    "value": "#2f53e3",
+    "cssValue": "#2f53e3"
+  },
+  "calm_text_blue_low": {
+    "type": "COLOR",
+    "value": "rgba(47, 83, 227, 0.2)",
+    "cssValue": "rgba(47, 83, 227, 0.2)"
+  },
+  "calm_text_orange": {
+    "type": "COLOR",
+    "value": "#cc7a00",
+    "cssValue": "#cc7a00"
+  },
+  "calm_text_orange_low": {
+    "type": "COLOR",
+    "value": "rgba(204, 122, 0, 0.15)",
+    "cssValue": "rgba(204, 122, 0, 0.15)"
+  },
+  "calm_text_yellow": {
+    "type": "COLOR",
+    "value": "#f8bc3b",
+    "cssValue": "#f8bc3b"
+  },
+  "calm_text_yellow_low": {
+    "type": "COLOR",
+    "value": "rgba(248, 188, 59, 0.2)",
+    "cssValue": "rgba(248, 188, 59, 0.2)"
+  },
+  "calm_text_red": {
+    "type": "COLOR",
+    "value": "#e34f2f",
+    "cssValue": "#e34f2f"
+  },
+  "calm_text_red_low": {
+    "type": "COLOR",
+    "value": "rgba(227, 79, 47, 0.2)",
+    "cssValue": "rgba(227, 79, 47, 0.2)"
+  },
+  "calm_text_purple": {
+    "type": "COLOR",
+    "value": "#6644e0",
+    "cssValue": "#6644e0"
+  },
+  "calm_text_purple_low": {
+    "type": "COLOR",
+    "value": "rgba(79, 68, 224, 0.2)",
+    "cssValue": "rgba(79, 68, 224, 0.2)"
+  },
+  "calm_text_teal": {
+    "type": "COLOR",
+    "value": "#5bb7af",
+    "cssValue": "#5bb7af"
+  },
+  "calm_text_teal_low": {
+    "type": "COLOR",
+    "value": "rgba(91, 183, 175, 0.2)",
+    "cssValue": "rgba(91, 183, 175, 0.2)"
+  },
+  "calm_text_pearl": {
+    "type": "COLOR",
+    "value": "#ffb27a",
+    "cssValue": "#ffb27a"
+  },
+  "calm_text_pearl_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 178, 122, 0.2)",
+    "cssValue": "rgba(255, 178, 122, 0.2)"
+  },
+  "calm_text_plum": {
+    "type": "COLOR",
+    "value": "#b2596e",
+    "cssValue": "#b2596e"
+  },
+  "calm_text_plum_low": {
+    "type": "COLOR",
+    "value": "rgba(178, 89, 110, 0.2)",
+    "cssValue": "rgba(178, 89, 110, 0.2)"
+  },
+  "calm_text_cerulean": {
+    "type": "COLOR",
+    "value": "#0d7ea0",
+    "cssValue": "#0d7ea0"
+  },
+  "calm_text_cerulean_low": {
+    "type": "COLOR",
+    "value": "rgba(13, 126, 160, 0.2)",
+    "cssValue": "rgba(13, 126, 160, 0.2)"
+  },
+  "calm_text_aqua": {
+    "type": "COLOR",
+    "value": "#72bef4",
+    "cssValue": "#72bef4"
+  },
+  "calm_text_aqua_low": {
+    "type": "COLOR",
+    "value": "rgba(114, 190, 244, 0.2)",
+    "cssValue": "rgba(114, 190, 244, 0.2)"
+  },
+  "sport_text_green": {
+    "type": "COLOR",
+    "value": "#00d17a",
+    "cssValue": "#00d17a"
+  },
+  "sport_icon_green": {
+    "type": "COLOR",
+    "value": "#00d17a",
+    "cssValue": "#00d17a"
+  },
+  "sport_stroke_green": {
+    "type": "COLOR",
+    "value": "#00d17a",
+    "cssValue": "#00d17a"
+  },
+  "sport_stroke_green_low": {
+    "type": "COLOR",
+    "value": "rgba(0, 181, 105, 0.1)",
+    "cssValue": "rgba(0, 181, 105, 0.1)"
+  },
+  "sport_stroke_blue": {
+    "type": "COLOR",
+    "value": "#1342ff",
+    "cssValue": "#1342ff"
+  },
+  "sport_stroke_blue_low": {
+    "type": "COLOR",
+    "value": "rgba(19, 66, 255, 0.1)",
+    "cssValue": "rgba(19, 66, 255, 0.1)"
+  },
+  "sport_stroke_orange": {
+    "type": "COLOR",
+    "value": "#ff7308",
+    "cssValue": "#ff7308"
+  },
+  "sport_stroke_orange_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 140, 5, 0.1)",
+    "cssValue": "rgba(255, 140, 5, 0.1)"
+  },
+  "sport_stroke_yellow": {
+    "type": "COLOR",
+    "value": "#ffe734",
+    "cssValue": "#ffe734"
+  },
+  "sport_stroke_yellow_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 231, 52, 0.2)",
+    "cssValue": "rgba(255, 231, 52, 0.2)"
+  },
+  "sport_stroke_red": {
+    "type": "COLOR",
+    "value": "#ff3d13",
+    "cssValue": "#ff3d13"
+  },
+  "sport_stroke_red_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 61, 19, 0.1)",
+    "cssValue": "rgba(255, 61, 19, 0.1)"
+  },
+  "sport_stroke_purple": {
+    "type": "COLOR",
+    "value": "#9a36ff",
+    "cssValue": "#9a36ff"
+  },
+  "sport_stroke_purple_low": {
+    "type": "COLOR",
+    "value": "rgba(75, 25, 255, 0.1)",
+    "cssValue": "rgba(75, 25, 255, 0.1)"
+  },
+  "sport_stroke_teal": {
+    "type": "COLOR",
+    "value": "#21decd",
+    "cssValue": "#21decd"
+  },
+  "sport_stroke_teal_low": {
+    "type": "COLOR",
+    "value": "rgba(66, 208, 195, 0.1)",
+    "cssValue": "rgba(66, 208, 195, 0.1)"
+  },
+  "sport_stroke_pearl": {
+    "type": "COLOR",
+    "value": "#ff6c5c",
+    "cssValue": "#ff6c5c"
+  },
+  "sport_stroke_pearl_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 130, 92, 0.1)",
+    "cssValue": "rgba(255, 130, 92, 0.1)"
+  },
+  "sport_stroke_plum": {
+    "type": "COLOR",
+    "value": "#d7345a",
+    "cssValue": "#d7345a"
+  },
+  "sport_stroke_plum_low": {
+    "type": "COLOR",
+    "value": "rgba(215, 52, 90, 0.1)",
+    "cssValue": "rgba(215, 52, 90, 0.1)"
+  },
+  "sport_stroke_cerulean": {
+    "type": "COLOR",
+    "value": "#009dcc",
+    "cssValue": "#009dcc"
+  },
+  "sport_stroke_cerulean_low": {
+    "type": "COLOR",
+    "value": "rgba(0, 157, 204, 0.1)",
+    "cssValue": "rgba(0, 157, 204, 0.1)"
+  },
+  "sport_stroke_aqua": {
+    "type": "COLOR",
+    "value": "#1fa2ff",
+    "cssValue": "#1fa2ff"
+  },
+  "sport_stroke_aqua_low": {
+    "type": "COLOR",
+    "value": "rgba(31, 162, 255, 0.1)",
+    "cssValue": "rgba(31, 162, 255, 0.1)"
+  },
+  "sport_icon_green_low": {
+    "type": "COLOR",
+    "value": "rgba(0, 181, 105, 0.2)",
+    "cssValue": "rgba(0, 181, 105, 0.2)"
+  },
+  "sport_icon_blue": {
+    "type": "COLOR",
+    "value": "#1342ff",
+    "cssValue": "#1342ff"
+  },
+  "sport_icon_blue_low": {
+    "type": "COLOR",
+    "value": "rgba(19, 66, 255, 0.2)",
+    "cssValue": "rgba(19, 66, 255, 0.2)"
+  },
+  "sport_icon_orange": {
+    "type": "COLOR",
+    "value": "#ff7308",
+    "cssValue": "#ff7308"
+  },
+  "sport_icon_orange_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 140, 5, 0.15)",
+    "cssValue": "rgba(255, 140, 5, 0.15)"
+  },
+  "sport_icon_yellow": {
+    "type": "COLOR",
+    "value": "#ffe734",
+    "cssValue": "#ffe734"
+  },
+  "sport_icon_yellow_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 231, 52, 0.2)",
+    "cssValue": "rgba(255, 231, 52, 0.2)"
+  },
+  "sport_icon_red": {
+    "type": "COLOR",
+    "value": "#ff3d13",
+    "cssValue": "#ff3d13"
+  },
+  "sport_icon_red_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 61, 19, 0.2)",
+    "cssValue": "rgba(255, 61, 19, 0.2)"
+  },
+  "sport_icon_purple": {
+    "type": "COLOR",
+    "value": "#9a36ff",
+    "cssValue": "#9a36ff"
+  },
+  "sport_icon_purple_low": {
+    "type": "COLOR",
+    "value": "rgba(75, 25, 255, 0.2)",
+    "cssValue": "rgba(75, 25, 255, 0.2)"
+  },
+  "sport_icon_teal": {
+    "type": "COLOR",
+    "value": "#21decd",
+    "cssValue": "#21decd"
+  },
+  "sport_icon_teal_low": {
+    "type": "COLOR",
+    "value": "rgba(66, 208, 195, 0.2)",
+    "cssValue": "rgba(66, 208, 195, 0.2)"
+  },
+  "sport_icon_pearl": {
+    "type": "COLOR",
+    "value": "#ff6c5c",
+    "cssValue": "#ff6c5c"
+  },
+  "sport_icon_pearl_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 130, 92, 0.2)",
+    "cssValue": "rgba(255, 130, 92, 0.2)"
+  },
+  "sport_icon_plum": {
+    "type": "COLOR",
+    "value": "#d7345a",
+    "cssValue": "#d7345a"
+  },
+  "sport_icon_plum_low": {
+    "type": "COLOR",
+    "value": "rgba(215, 52, 90, 0.2)",
+    "cssValue": "rgba(215, 52, 90, 0.2)"
+  },
+  "sport_icon_cerulean": {
+    "type": "COLOR",
+    "value": "#009dcc",
+    "cssValue": "#009dcc"
+  },
+  "sport_icon_cerulean_low": {
+    "type": "COLOR",
+    "value": "rgba(0, 157, 204, 0.2)",
+    "cssValue": "rgba(0, 157, 204, 0.2)"
+  },
+  "sport_icon_aqua": {
+    "type": "COLOR",
+    "value": "#1fa2ff",
+    "cssValue": "#1fa2ff"
+  },
+  "sport_icon_aqua_low": {
+    "type": "COLOR",
+    "value": "rgba(31, 162, 255, 0.2)",
+    "cssValue": "rgba(31, 162, 255, 0.2)"
+  },
+  "sport_surface_green": {
+    "type": "COLOR",
+    "value": "#00d17a",
+    "cssValue": "#00d17a"
+  },
+  "sport_surface_green_low": {
+    "type": "COLOR",
+    "value": "rgba(0, 181, 105, 0.1)",
+    "cssValue": "rgba(0, 181, 105, 0.1)"
+  },
+  "sport_surface_blue": {
+    "type": "COLOR",
+    "value": "#1342ff",
+    "cssValue": "#1342ff"
+  },
+  "sport_surface_blue_low": {
+    "type": "COLOR",
+    "value": "rgba(19, 66, 255, 0.1)",
+    "cssValue": "rgba(19, 66, 255, 0.1)"
+  },
+  "sport_surface_orange": {
+    "type": "COLOR",
+    "value": "#ff7308",
+    "cssValue": "#ff7308"
+  },
+  "sport_surface_orange_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 140, 5, 0.1)",
+    "cssValue": "rgba(255, 140, 5, 0.1)"
+  },
+  "sport_surface_yellow": {
+    "type": "COLOR",
+    "value": "#ffe734",
+    "cssValue": "#ffe734"
+  },
+  "sport_surface_yellow_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 231, 52, 0.2)",
+    "cssValue": "rgba(255, 231, 52, 0.2)"
+  },
+  "sport_surface_red": {
+    "type": "COLOR",
+    "value": "#ff3d13",
+    "cssValue": "#ff3d13"
+  },
+  "sport_surface_red_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 61, 19, 0.1)",
+    "cssValue": "rgba(255, 61, 19, 0.1)"
+  },
+  "sport_surface_purple": {
+    "type": "COLOR",
+    "value": "#9a36ff",
+    "cssValue": "#9a36ff"
+  },
+  "sport_surface_purple_low": {
+    "type": "COLOR",
+    "value": "rgba(154, 54, 255, 0.1)",
+    "cssValue": "rgba(154, 54, 255, 0.1)"
+  },
+  "sport_surface_teal": {
+    "type": "COLOR",
+    "value": "#21decd",
+    "cssValue": "#21decd"
+  },
+  "sport_surface_teal_low": {
+    "type": "COLOR",
+    "value": "rgba(33, 222, 205, 0.1)",
+    "cssValue": "rgba(33, 222, 205, 0.1)"
+  },
+  "sport_surface_pearl": {
+    "type": "COLOR",
+    "value": "#ff6c5c",
+    "cssValue": "#ff6c5c"
+  },
+  "sport_surface_pearl_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 108, 92, 0.1)",
+    "cssValue": "rgba(255, 108, 92, 0.1)"
+  },
+  "sport_surface_plum": {
+    "type": "COLOR",
+    "value": "#d7345a",
+    "cssValue": "#d7345a"
+  },
+  "sport_surface_plum_low": {
+    "type": "COLOR",
+    "value": "rgba(215, 52, 90, 0.1)",
+    "cssValue": "rgba(215, 52, 90, 0.1)"
+  },
+  "sport_surface_cerulean": {
+    "type": "COLOR",
+    "value": "#009dcc",
+    "cssValue": "#009dcc"
+  },
+  "sport_surface_cerulean_low": {
+    "type": "COLOR",
+    "value": "rgba(0, 157, 204, 0.1)",
+    "cssValue": "rgba(0, 157, 204, 0.1)"
+  },
+  "sport_surface_aqua": {
+    "type": "COLOR",
+    "value": "#1fa2ff",
+    "cssValue": "#1fa2ff"
+  },
+  "sport_surface_aqua_low": {
+    "type": "COLOR",
+    "value": "rgba(31, 162, 255, 0.1)",
+    "cssValue": "rgba(31, 162, 255, 0.1)"
+  },
+  "sport_text_green_low": {
+    "type": "COLOR",
+    "value": "rgba(0, 209, 122, 0.2)",
+    "cssValue": "rgba(0, 209, 122, 0.2)"
+  },
+  "sport_text_blue": {
+    "type": "COLOR",
+    "value": "#1342ff",
+    "cssValue": "#1342ff"
+  },
+  "sport_text_blue_low": {
+    "type": "COLOR",
+    "value": "rgba(19, 66, 255, 0.2)",
+    "cssValue": "rgba(19, 66, 255, 0.2)"
+  },
+  "sport_text_orange": {
+    "type": "COLOR",
+    "value": "#ff7308",
+    "cssValue": "#ff7308"
+  },
+  "sport_text_orange_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 115, 8, 0.15)",
+    "cssValue": "rgba(255, 115, 8, 0.15)"
+  },
+  "sport_text_yellow": {
+    "type": "COLOR",
+    "value": "#ffe734",
+    "cssValue": "#ffe734"
+  },
+  "sport_text_yellow_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 231, 52, 0.2)",
+    "cssValue": "rgba(255, 231, 52, 0.2)"
+  },
+  "sport_text_red": {
+    "type": "COLOR",
+    "value": "#ff3d13",
+    "cssValue": "#ff3d13"
+  },
+  "sport_text_red_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 61, 19, 0.2)",
+    "cssValue": "rgba(255, 61, 19, 0.2)"
+  },
+  "sport_text_purple": {
+    "type": "COLOR",
+    "value": "#9a36ff",
+    "cssValue": "#9a36ff"
+  },
+  "sport_text_purple_low": {
+    "type": "COLOR",
+    "value": "rgba(75, 25, 255, 0.2)",
+    "cssValue": "rgba(75, 25, 255, 0.2)"
+  },
+  "sport_text_teal": {
+    "type": "COLOR",
+    "value": "#21decd",
+    "cssValue": "#21decd"
+  },
+  "sport_text_teal_low": {
+    "type": "COLOR",
+    "value": "rgba(66, 208, 195, 0.2)",
+    "cssValue": "rgba(66, 208, 195, 0.2)"
+  },
+  "sport_text_pearl": {
+    "type": "COLOR",
+    "value": "#ff6c5c",
+    "cssValue": "#ff6c5c"
+  },
+  "sport_text_pearl_low": {
+    "type": "COLOR",
+    "value": "rgba(255, 130, 92, 0.2)",
+    "cssValue": "rgba(255, 130, 92, 0.2)"
+  },
+  "sport_text_plum": {
+    "type": "COLOR",
+    "value": "#d7345a",
+    "cssValue": "#d7345a"
+  },
+  "sport_text_plum_low": {
+    "type": "COLOR",
+    "value": "rgba(215, 52, 90, 0.2)",
+    "cssValue": "rgba(215, 52, 90, 0.2)"
+  },
+  "sport_text_cerulean": {
+    "type": "COLOR",
+    "value": "#009dcc",
+    "cssValue": "#009dcc"
+  },
+  "sport_text_cerulean_low": {
+    "type": "COLOR",
+    "value": "rgba(0, 157, 204, 0.2)",
+    "cssValue": "rgba(0, 157, 204, 0.2)"
+  },
+  "sport_text_aqua": {
+    "type": "COLOR",
+    "value": "#1fa2ff",
+    "cssValue": "#1fa2ff"
+  },
+  "sport_text_aqua_low": {
+    "type": "COLOR",
+    "value": "rgba(31, 162, 255, 0.2)",
+    "cssValue": "rgba(31, 162, 255, 0.2)"
+  }
+}

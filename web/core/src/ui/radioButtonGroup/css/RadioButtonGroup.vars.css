@@ -1,0 +1,5 @@
+:host {
+  --alt-core-radio-button-group-label-gap: var(--alt-core-size-spacing-2-x);
+  --alt-core-radio-button-group-vertical-gap: var(--alt-core-size-spacing-2-x);
+  --alt-core-radio-button-group-horizontal-gap: var(--alt-core-size-spacing-4-x);
+}

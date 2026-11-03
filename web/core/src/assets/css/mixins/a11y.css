@@ -1,0 +1,31 @@
+/*
+ * Keyboard focus indicator. Apply it inside a :focus-visible rule so that
+ * pointer users do not see it:
+ *
+ *   &:focus-visible { @mixin alt-focus-ring; }
+ */
+@define-mixin alt-focus-ring {
+  outline: var(--alt-core-focus-ring-width, 2px) solid var(--alt-core-focus-ring-color, var(--alt-core-color-stroke-accent));
+  outline-offset: var(--alt-core-focus-ring-offset, 2px);
+}
+
+/*
+ * Shortens every transition and animation of the component to a single frame
+ * when the user asks the operating system to reduce motion. A tiny non-zero
+ * duration keeps transitionend and animationend firing, which some components wait for.
+ * Include it once at the root of a component stylesheet: @mixin alt-reduced-motion;
+ */
+@define-mixin alt-reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    :host,
+    :host *,
+    :host *::before,
+    :host *::after {
+      scroll-behavior: auto !important;
+      transition-delay: 0s !important;
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
+}

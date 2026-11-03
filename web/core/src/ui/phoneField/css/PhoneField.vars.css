@@ -1,0 +1,18 @@
+$component: $AltCorePhoneFieldTagName;
+
+:host {
+  /* Sizes */
+  --alt-core-phone-field-min-width: 88px;
+  --alt-core-phone-field-max-width: 404px;
+  --alt-core-phone-field-dropdown-min-height: 200px;
+  --alt-core-dropdown-content-max-width: 404px;
+  --alt-core-dropdown-activator-width: 100%;
+  --alt-core-dropdown-max-width: 100%;
+
+  /* General */
+  --alt-core-phone-field-display: flex;
+  --alt-core-phone-field-color: var(--alt-core-color-text-primary);
+  --alt-core-phone-field-gap: var(--alt-core-size-spacing-x);
+  --alt-core-phone-field-content-margin-top: var(--alt-core-size-spacing-x);
+  --alt-core-phone-field-loader-background-color: var(--alt-core-color-surface-primary);
+}

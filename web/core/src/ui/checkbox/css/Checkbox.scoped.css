@@ -1,0 +1,89 @@
+$component: $AltCoreCheckboxTagName;
+
+:host {
+  display: flex;
+}
+
+.$(component) {
+  display: inline-flex;
+  flex-direction: column;
+  max-width: var(--alt-core-checkbox-max-width);
+  cursor: pointer;
+
+  &_disabled {
+    cursor: not-allowed;
+  }
+
+  &_alignment {
+    &-top {
+      .$(component) {
+        &__checkbox {
+          align-items: flex-start;
+        }
+      }
+    }
+
+    &-center {
+      .$(component) {
+        &__checkbox {
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  &_size {
+    &-small {
+      .$(component)__error {
+        margin-left: var(--alt-core-checkbox-small-error-margin-left);
+      }
+    }
+
+    &-medium {
+      .$(component)__error {
+        margin-left: var(--alt-core-checkbox-medium-error-margin-left);
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: var(--alt-core-checkbox-x-gap);
+  }
+
+  &__checkbox {
+    display: flex;
+    height: 100%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--alt-core-checkbox-info-gap);
+    align-items: flex-start;
+
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &__label {
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &__annotation {
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &__error {
+    margin-top: var(--alt-core-checkbox-error-margin-top);
+
+    &_hidden {
+      display: none;
+    }
+  }
+}

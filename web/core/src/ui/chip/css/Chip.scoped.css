@@ -1,0 +1,52 @@
+$component: $AltCoreChipTagName;
+
+:host {
+  display: inline-flex;
+}
+
+.$(component) {
+  display: flex;
+  gap: var(--alt-core-chip-gap);
+  align-items: center;
+  color: var(--alt-core-chip-color-default);
+  background-color: var(--alt-core-chip-bg-default);
+  border-radius: var(--alt-core-chip-border-radius);
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:not(&_disabled, &_active):hover {
+    background-color: var(--alt-core-chip-bg-hover);
+  }
+
+  &_size {
+    &_small {
+      gap: var(--alt-core-chip-size-small-gap);
+      padding: var(--alt-core-chip-size-small-padding-y) var(--alt-core-chip-size-small-padding-x);
+    }
+
+    &_large {
+      gap: var(--alt-core-chip-size-large-gap);
+      padding: var(--alt-core-chip-size-large-padding-y) var(--alt-core-chip-size-large-padding-x);
+    }
+  }
+
+  &_active {
+    color: var(--alt-core-chip-color-active);
+    background-color: var(--alt-core-chip-bg-active);
+    
+    > .$(component)__text {
+      --alt-core-text-color-primary: var(--alt-core-chip-color-active);
+    }
+  }
+
+  &_disabled {
+    color: var(--alt-core-chip-color-disabled);
+    background-color: var(--alt-core-chip-bg-disabled);
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+}

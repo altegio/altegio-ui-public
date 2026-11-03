@@ -1,0 +1,48 @@
+$component: $AltCoreCardMainTagName;
+
+:host {
+  display: block;
+}
+
+.$(component) {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &_size {
+    &_small {
+      padding: var(--alt-core-card-main-size-small-padding-y) var(--alt-core-card-main-size-small-padding-x);
+
+      &.$(component)_has-annotation {
+        gap: var(--alt-core-card-main-size-small-gap);
+      }
+    }
+
+    &_medium {
+      padding: var(--alt-core-card-main-size-medium-padding-y) var(--alt-core-card-main-size-medium-padding-x);
+
+      &.$(component)_has-annotation {
+        gap: var(--alt-core-card-main-size-medium-gap);
+      }
+    }
+
+    &_large {
+      padding: var(--alt-core-card-main-size-large-padding-y) var(--alt-core-card-main-size-large-padding-x);
+
+      &.$(component)_has-annotation {
+        gap: var(--alt-core-card-main-size-large-gap);
+      }
+    }
+  }
+
+  &_hide-space {
+    &-left {
+      padding-left: 0;
+    }
+
+    &-right {
+      padding-right: 0;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+import { beforeAll, describe, expect, it } from 'vitest'
+import { useCoreTests } from '~shared/tests/core'
+import { getHostCSSVariableValue, getWCShadowRoot } from '~shared/tests/utils'
+
+import { AltCorePhoneCodeTagName } from '~shared/constants'
+import { createCorePhoneCodeExternalProps } from '~core/ui/phoneCode/models/types'
+import '~core/ui/phoneCode'
+import { CSSVariablesHostToRootCases, CSSVariablesHostToValueCases } from '~core/ui/phoneCode/tests/cases/css'
+
+const {
+  component,
+  injectComponentToBody,
+} = useCoreTests(
+  AltCorePhoneCodeTagName,
+  createCorePhoneCodeExternalProps(),
+)
+
+describe('Core/AltCorePhoneCode/CSS', () => {
+  beforeAll(() => {
+    injectComponentToBody()
+  })
+
+  for (const { host, root } of CSSVariablesHostToRootCases) {
+    it(`Host CSS variable ${host} should have the value of the :root CSS variable ${root} in the styles`, () => {
+      const shadowRoot = getWCShadowRoot(component)
+
+      const hostCSSVariableValue = getHostCSSVariableValue(
+        shadowRoot.adoptedStyleSheets,
+        host,
+      )
+
+      expect(hostCSSVariableValue).toBe(`var(${root})`)
+    })
+  }
+
+  for (const { host, value } of CSSVariablesHostToValueCases) {
+    it(`Computed host CSS variable ${host} on the created component should have the token value: ${value}`, () => {
+      const shadowRoot = getWCShadowRoot(component)
+
+      const varValue = getComputedStyle(shadowRoot.host).getPropertyValue(host)
+
+      expect(varValue).toBe(value)
+    })
+  }
+})

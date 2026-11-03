@@ -1,0 +1,25 @@
+$component: $AltCoreCardIconTagName;
+
+:host {
+  display: inline-flex;
+}
+
+.$(component) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_size {
+    &_small {
+      padding: var(--alt-core-card-icon-small-padding-y) var(--alt-core-card-icon-small-padding-x);
+    }
+
+    &_medium {
+      padding: var(--alt-core-card-icon-medium-padding-y) var(--alt-core-card-icon-medium-padding-x);
+    }
+
+    &_large {
+      padding: var(--alt-core-card-icon-large-padding-y) var(--alt-core-card-icon-large-padding-x);
+    }
+  }
+}

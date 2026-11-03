@@ -1,0 +1,62 @@
+@import url('./Modal.mixins.css');
+@import url('../../../assets/css/mixins/a11y.css');
+
+$component: $AltCoreModalTagName;
+
+@mixin alt-reduced-motion;
+
+.$(component) {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: var(--alt-core-modal-z-index);
+  padding: var(--alt-core-modal-padding);
+  overflow: hidden;
+  border-radius: var(--alt-core-size-radius-3-x);
+  box-shadow: var(--alt-core-effects-modal-drop-shadow);
+  transform: translate(-50%, -50%);
+
+  --alt-core-fade-transition-duration: 300ms;
+
+  &_size {
+    &_small {
+      @mixin modal-size --alt-core-modal-size-small-width;
+    }
+
+    &_large {
+      @mixin modal-size --alt-core-modal-size-large-width;
+    }
+  }
+
+  &_full-screen {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  &_variant {
+    &_primary {
+      @mixin modal-variant --alt-core-modal-variant-primary-background-color;
+    }
+
+    &_secondary {
+      @mixin modal-variant --alt-core-modal-variant-secondary-background-color;
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--alt-core-modal-overlay-z-index);
+    width: 100%;
+    height: 100%;
+    background-color: var(--alt-core-modal-overlay-color);
+  }
+
+  &__close {
+    position: absolute;
+    top: var(--alt-core-size-spacing-2-x);
+    right: var(--alt-core-size-spacing-2-x);
+  }
+}

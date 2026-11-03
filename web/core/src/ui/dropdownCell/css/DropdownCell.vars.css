@@ -1,0 +1,20 @@
+:host {
+  /* Padding */
+  --alt-core-dropdown-cell-padding-x: var(--alt-core-size-spacing-3-x);
+  --alt-core-dropdown-cell-padding-y: var(--alt-core-size-spacing-2-x);
+  --alt-core-dropdown-cell-padding-right-content: var(--alt-core-size-spacing-2-x);
+  --alt-core-dropdown-cell-padding-left-content: var(--alt-core-size-spacing-x);
+
+  /* Color */
+  --alt-core-dropdown-cell-default-background-color: var(--alt-core-color-surface-primary);
+  --alt-core-dropdown-cell-default-hover-background-color: var(--alt-core-color-surface-secondary-high);
+  --alt-core-dropdown-cell-default-color: var(--alt-core-color-text-primary)
+
+  /* Font */;
+  --alt-core-dropdown-cell-size-p2-regular-font-size: var(--alt-core-typography-paragraph-p-2-regular-font-size);
+  --alt-core-dropdown-cell-size-p2-regular-line-height: var(--alt-core-typography-paragraph-p-2-regular-line-height);
+  --alt-core-dropdown-cell-size-p2-regular-font-weight: var(--alt-core-typography-paragraph-p-2-regular-font-weight);
+
+  /* Width */
+  --alt-core-dropdown-cell-default-width: auto;
+}

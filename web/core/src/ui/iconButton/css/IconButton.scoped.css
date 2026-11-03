@@ -1,0 +1,7 @@
+
+$component: $AltCoreIconButtonTagName;
+
+:host {
+    display: flex;
+}
+

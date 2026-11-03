@@ -1,0 +1,27 @@
+:host {
+  /* General */
+  --alt-core-card-wrapper-border-radius: var(--alt-core-size-radius-3-x);
+
+  /* States */
+
+  /* Default */
+  --alt-core-card-wrapper-border-color: var(--alt-core-color-stroke-primary);
+  --alt-core-card-wrapper-border-width: 1px;
+  --alt-core-card-wrapper-default-background-color: var(--alt-core-color-surface-primary);
+
+  /* Focused */
+  --alt-core-card-wrapper-focused-border-color: var(--alt-core-color-stroke-primary-low);
+  --alt-core-card-wrapper-focused-background-color: var(--alt-core-color-surface-primary-high);
+
+  /* Hovered */
+  --alt-core-card-wrapper-hovered-border-color: var(--alt-core-color-stroke-primary);
+  --alt-core-card-wrapper-hovered-background-color: var(--alt-core-color-surface-primary-high);
+
+  /* Disabled */
+  --alt-core-card-wrapper-disabled-border-color: var(--alt-core-color-stroke-primary);
+  --alt-core-card-wrapper-disabled-background-color: var(--alt-core-color-surface-primary);
+
+  /* Checked */
+  --alt-core-card-wrapper-checked-border-width: 2px;
+  --alt-core-card-wrapper-checked-border-color: var(--alt-core-color-stroke-accent);
+}

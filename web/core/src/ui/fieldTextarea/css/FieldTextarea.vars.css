@@ -1,0 +1,26 @@
+:host {
+  /* Colors */
+  --alt-core-field-textarea-default-color: var(--alt-core-color-text-primary);
+  --alt-core-field-textarea-disabled-color: var(--alt-core-color-text-tertiary);
+  --alt-core-field-textarea-placeholder-color: var(--alt-core-color-text-tertiary);
+
+  /* Sizes */
+
+  /* Small */
+  --alt-core-field-textarea-size-small-padding-x: var(--alt-core-size-spacing-3-x);
+  --alt-core-field-textarea-size-small-padding-y: var(--alt-core-size-spacing-1-5-x);
+  --alt-core-field-textarea-size-small-font-size: var(--alt-core-typography-paragraph-p-2-regular-font-size);
+  --alt-core-field-textarea-size-small-line-height: var(--alt-core-typography-paragraph-p-2-regular-line-height);
+
+  /* Medium */
+  --alt-core-field-textarea-size-medium-padding-x: var(--alt-core-size-spacing-3-x);
+  --alt-core-field-textarea-size-medium-padding-y: var(--alt-core-size-spacing-2-x);
+  --alt-core-field-textarea-size-medium-font-size: var(--alt-core-typography-paragraph-p-1-regular-font-size);
+  --alt-core-field-textarea-size-medium-line-height: var(--alt-core-typography-paragraph-p-1-regular-line-height);
+
+  /* Large */
+  --alt-core-field-textarea-size-large-padding-x: var(--alt-core-size-spacing-3-x);
+  --alt-core-field-textarea-size-large-padding-y: var(--alt-core-size-spacing-3-x);
+  --alt-core-field-textarea-size-large-font-size: var(--alt-core-typography-paragraph-p-1-regular-font-size);
+  --alt-core-field-textarea-size-large-line-height: var(--alt-core-typography-paragraph-p-1-regular-line-height);
+}

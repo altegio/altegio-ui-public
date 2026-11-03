@@ -1,0 +1,17 @@
+:host {
+  /* General */
+
+  --alt-core-segment-control-display: flex;
+
+  /* Sizes */
+
+  --alt-core-segment-control-border-size: 1px;
+  --alt-core-segment-control-size-border-radius: var(--alt-core-size-radius-2-x);
+  --alt-core-segment-control-size-padding: var(--alt-core-size-spacing-0-5-x);
+  --alt-core-segment-control-size-gap: var(--alt-core-size-spacing-0-5-x);
+
+  /* Colors */
+
+  --alt-core-segment-control-border-color: var(--alt-core-color-stroke-primary-low);
+  --alt-core-segment-control-background-color: var(--alt-core-color-surface-secondary)
+}

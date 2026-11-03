@@ -1,0 +1,24 @@
+$component: $AltCoreLinkTagName;
+
+/* Link text does not wrap by default */
+.$(component) {
+  display: var(--alt-core-link-display);
+  align-items: center;
+  font-size: inherit;
+  color: var(--alt-core-link-color);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &__text {
+    white-space: var(--alt-core-link-text-white-space);
+  }
+}
+
+/* Link text wraps at word boundaries */
+.$(component)_text-wrap {
+  --alt-core-link-display: inline;
+  --alt-core-link-text-white-space: normal;
+}

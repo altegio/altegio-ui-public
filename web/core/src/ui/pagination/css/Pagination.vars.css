@@ -1,0 +1,4 @@
+:host {
+  /* General */
+  --alt-core-pagination-gap: var(--alt-core-size-spacing-x);
+}

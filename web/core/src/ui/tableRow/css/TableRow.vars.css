@@ -1,0 +1,9 @@
+:host {
+  /* General */
+
+  --alt-core-table-row-slot-padding-y: var(--alt-core-size-spacing-2-x);
+  --alt-core-table-row-slot-padding-x: var(--alt-core-size-spacing-3-x);
+  --alt-core-table-row-default-background-color: var(--alt-core-color-surface-primary);
+  --alt-core-table-row-stripe-background-color: #f8f8f9;
+  --alt-core-table-row-sticky-background-color: var(--alt-core-color-surface-primary);
+}

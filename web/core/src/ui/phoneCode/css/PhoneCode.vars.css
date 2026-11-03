@@ -1,0 +1,28 @@
+$component: $AltCorePhoneCodeTagName;
+
+:host {
+  /* General */
+  --alt-core-phone-code-background-color-hover: var(--alt-core-color-surface-secondary);
+  --alt-core-phone-code-color-disabled: var(--alt-core-color-icon-tertiary);
+
+  /* Sizes */
+  --alt-core-phone-code-spacing: var(--alt-core-size-spacing-x);
+
+  /* Small */
+  --alt-core-phone-code-size-small-padding-y: var(--alt-core-size-spacing-1-5-x);
+  --alt-core-phone-code-size-small-padding-left: var(--alt-core-size-spacing-3-x);
+  --alt-core-phone-code-size-small-padding-right: var(--alt-core-size-spacing-2-x);
+  --alt-core-phone-code-size-small-border-radius: var(--alt-core-size-radius-1-5-x);
+
+  /* Medium */
+  --alt-core-phone-code-size-medium-padding-y: var(--alt-core-size-spacing-2-x);
+  --alt-core-phone-code-size-medium-padding-left: var(--alt-core-size-spacing-3-x);
+  --alt-core-phone-code-size-medium-padding-right: var(--alt-core-size-spacing-2-x);
+  --alt-core-phone-code-size-medium-border-radius: var(--alt-core-size-radius-2-x);
+
+  /* Large */
+  --alt-core-phone-code-size-large-padding-y: var(--alt-core-size-spacing-3-x);
+  --alt-core-phone-code-size-large-padding-left: var(--alt-core-size-spacing-3-x);
+  --alt-core-phone-code-size-large-padding-right: var(--alt-core-size-spacing-2-x);
+  --alt-core-phone-code-size-large-border-radius: var(--alt-core-size-radius-2-5-x);
+}

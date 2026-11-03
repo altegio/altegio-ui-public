@@ -1,0 +1,204 @@
+import { beforeAll, afterEach, afterAll, describe, expect, it, vi } from 'vitest'
+
+import { AltCoreSimpleToggleTagName } from '~shared/constants'
+import { useCoreTests } from '~shared/tests/core'
+import { dispatchEvent, getElementClasses, getShadowRootElement } from '~shared/tests/utils'
+import type { TPropTestCase } from '~shared/types/tests'
+import { EAltSizes } from '~shared/types/global'
+import {
+  createCoreSimpleToggleProps,
+  type IAltCoreSimpleToggleProps,
+} from '~core/ui/simpleToggle/models/types'
+import '~core/ui/simpleToggle'
+
+const sizes: Extract<EAltSizes, 'small' | 'medium'>[] = [
+  EAltSizes.SMALL,
+  EAltSizes.MEDIUM,
+]
+// Unit test cases:
+const propSizeTestCases: TPropTestCase<IAltCoreSimpleToggleProps, 'size'>[] = sizes.map((size) => ({
+  prop: 'size',
+  value: size,
+  case: size,
+}))
+
+const booleans = [
+  true,
+  false,
+]
+
+const propCheckedTestCases: TPropTestCase<IAltCoreSimpleToggleProps, 'checked'>[] = booleans.map((checked) => ({
+  prop: 'checked',
+  value: checked,
+  case: 'checked',
+}))
+
+
+const propDisabledTestCases: TPropTestCase<IAltCoreSimpleToggleProps, 'disabled'>[] = booleans.map((disabled) => ({
+  prop: 'disabled',
+  value: disabled,
+  case: 'disabled',
+}))
+
+const propHoveredTestCases: TPropTestCase<IAltCoreSimpleToggleProps, 'hovered'>[] = booleans.map((hovered) => ({
+  prop: 'hovered',
+  value: hovered,
+  case: 'hovered',
+}))
+
+const tagName = AltCoreSimpleToggleTagName
+
+const {
+  component,
+  updateComponent,
+  resetComponent,
+  injectComponentToBody,
+  removeComponent,
+} = useCoreTests(
+  tagName,
+  createCoreSimpleToggleProps(),
+)
+
+const getRootElement = () => {
+  return getShadowRootElement(
+    component,
+    tagName,
+  )
+}
+
+describe(
+  'Core/AltCoreSimpleToggle/Unit',
+  () => {
+    beforeAll(() => {
+      injectComponentToBody()
+    })
+
+    afterEach(async() => {
+      await resetComponent()
+    })
+
+    afterAll(() => {
+      removeComponent()
+    })
+
+    describe(
+      'Events',
+      () => {
+        it(
+          'Should call the click handler on toggle click',
+          async() => {
+            await updateComponent({ props: {} })
+
+            const handleAction = vi.fn()
+
+            const rootElement = getRootElement()
+
+            if (!rootElement) throw Error('Toggle element not found')
+
+            component.addEventListener(
+              'checked',
+              handleAction,
+            )
+
+            dispatchEvent(
+              rootElement,
+              'click',
+              { bubbles: true },
+            )
+
+            expect(handleAction).toHaveBeenCalledTimes(1)
+          },
+        )
+
+        it(
+          'Should not call the click handler when the toggle is disabled',
+          async() => {
+            await updateComponent({ props: { disabled: true } })
+
+            const handleAction = vi.fn()
+
+            const rootElement = getRootElement()
+            if (!rootElement) throw Error('Toggle element not found')
+
+            component.addEventListener(
+              'checked',
+              handleAction,
+            )
+
+            dispatchEvent(
+              rootElement,
+              'click',
+              { bubbles: true },
+            )
+
+            expect(handleAction).not.toHaveBeenCalled()
+          },
+        )
+      },
+    )
+
+    describe(
+      'Props',
+      () => {
+        for (const testCase of propSizeTestCases) {
+          const expectedCssClass = `${tagName}_size_${testCase.case}`
+
+          it(
+            `Prop "${testCase.prop}" with value "${testCase.value}" should change the rootElement class to "${expectedCssClass}"`,
+            async() => {
+              await updateComponent({ props: { [testCase.prop]: testCase.value } })
+
+              const rootElement = getRootElement()
+              const rootElementClasses = getElementClasses(rootElement)
+
+              expect(rootElementClasses).toContain(expectedCssClass)
+            },
+          )
+        }
+
+        for (const testCase of [
+          ...propDisabledTestCases,
+          ...propHoveredTestCases,
+        ]) {
+          const expectedCssClass = `${tagName}_${testCase.case}`
+
+          it(
+            `Should ${testCase.case} class ${expectedCssClass} when prop ${testCase.prop} is ${testCase.value}`,
+            async() => {
+              await updateComponent({ props: { [testCase.prop]: testCase.value } })
+
+              const rootElement = getRootElement()
+              const rootElementClasses = getElementClasses(rootElement)
+
+              if (testCase.value) {
+                expect(rootElementClasses).toContain(expectedCssClass)
+              } else {
+                expect(rootElementClasses).not.toContain(expectedCssClass)
+              }
+            },
+          )
+        }
+
+        for (const testCase of propCheckedTestCases) {
+          const expectedCssClass = `${tagName}_${testCase.case}`
+
+          it(
+            `Should ${testCase.case} class ${expectedCssClass} when prop ${testCase.prop} is ${testCase.value}`,
+            async() => {
+              await updateComponent({ props: { [testCase.prop]: testCase.value } })
+
+              const rootElement = getRootElement()
+              const rootElementClasses = getElementClasses(rootElement)
+
+              if (testCase.value) {
+                expect(rootElementClasses).toContain(expectedCssClass)
+              } else {
+                expect(rootElementClasses).not.toContain(expectedCssClass)
+              }
+            },
+          )
+        }
+      },
+    )
+  },
+)

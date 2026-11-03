@@ -1,0 +1,6 @@
+:host {
+  /* General */
+
+  --alt-tab-display: flex;
+  --alt-left-icon-color: var(--alt-core-color-icon-secondary);
+}

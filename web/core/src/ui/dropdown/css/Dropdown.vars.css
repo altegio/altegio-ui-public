@@ -1,0 +1,12 @@
+:host {
+  /* General */
+
+  --alt-core-dropdown-activator-width: unset;
+  --alt-core-dropdown-activator-width-inline: auto;
+  --alt-core-dropdown-content-width: unset;
+  --alt-core-dropdown-width: unset;
+  --alt-core-dropdown-max-width: unset;
+  --alt-core-dropdown-activator-max-width: unset;
+  --alt-core-dropdown-content-max-width: unset;
+
+}

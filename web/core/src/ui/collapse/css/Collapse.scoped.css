@@ -1,0 +1,20 @@
+$component: $AltCoreCollapseTagName;
+
+:host {
+  display: block;
+}
+.$(component) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--alt-core-collapse-gap);
+
+  /* Announces keyboard moves to screen readers without taking space */
+  &__announcement {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    clip-path: inset(50%);
+  }
+}

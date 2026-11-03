@@ -1,0 +1,13 @@
+$component: $AltCoreIconTagName;
+
+:host {
+  display: inline-flex;
+}
+
+.$(component) {
+  display: inline-flex;
+
+  *:not([fill='none']) {
+    fill: currentcolor;
+  }
+}

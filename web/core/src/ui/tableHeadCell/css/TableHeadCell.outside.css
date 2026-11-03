@@ -1,0 +1,9 @@
+$headCell: $AltCoreTableHeadCellTagName;
+
+$(headCell) {
+  &[sticky] {
+    & + & {
+      left: 44px;
+    }
+  }
+}

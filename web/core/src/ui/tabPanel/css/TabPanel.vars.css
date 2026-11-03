@@ -1,0 +1,6 @@
+:host {
+  /* General */
+  --alt-core-tab-panel-display: block;
+  --alt-core-tab-panel-padding: 0;
+  --alt-core-tab-panel-focus-outline-color: var(--alt-core-color-other-link);
+}

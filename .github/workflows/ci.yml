@@ -1,0 +1,53 @@
+# Checks the public snapshots and the pull requests proposed against them.
+# Snapshots come from the source repository; see CONTRIBUTING.md.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm vars-build
+      - run: make lint
+
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    # The Linux screenshot references are rendered in this image, the one the source
+    # repository tests in; the Ubuntu runner itself draws text slightly differently.
+    # Keep it on the .nvmrc version.
+    container: node:24.20.0
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm vars-build
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test-unit
+      - name: Upload screenshot diffs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshot-diffs
+          path: .vitest/attachments/
+          if-no-files-found: ignore

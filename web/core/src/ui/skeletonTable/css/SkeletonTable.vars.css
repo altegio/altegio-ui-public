@@ -1,0 +1,13 @@
+:host {
+  /* Placeholder */
+  --alt-core-skeleton-table-placeholder-background-color: var(--alt-core-color-surface-tertiary);
+  --alt-core-skeleton-table-placeholder-radius: var(--alt-core-size-radius-x);
+
+  /* Placeholder Animation */
+  --alt-core-skeleton-table-placeholder-animation-edge-background-color: var(--alt-core-color-surface-tertiary-low);
+  --alt-core-skeleton-table-placeholder-animation-middle-background-color: var(--alt-core-color-surface-tertiary);
+
+  /* Pagination */
+  --alt-core-skeleton-table-pagination-padding: var(--alt-core-size-spacing-6-x);
+  --alt-core-skeleton-table-pagination-gap: var(--alt-core-size-spacing-6-x);
+}

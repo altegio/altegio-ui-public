@@ -1,0 +1,49 @@
+:host {
+  /* Sizes */
+
+  /* Small */
+  --alt-core-simple-checkbox-size-small-width: 20px;
+  --alt-core-simple-checkbox-size-small-height: 20px;
+  --alt-core-simple-checkbox-size-small-padding: var(--alt-core-size-spacing-0-5-x);
+  --alt-core-simple-checkbox-size-small-icon-checked-width: 12px;
+  --alt-core-simple-checkbox-size-small-icon-checked-height: 12px;
+
+  /* Medium */
+  --alt-core-simple-checkbox-size-medium-width: 24px;
+  --alt-core-simple-checkbox-size-medium-height: 24px;
+  --alt-core-simple-checkbox-size-medium-padding: var(--alt-core-size-spacing-0-5-x);
+  --alt-core-simple-checkbox-size-medium-icon-checked-width: 16px;
+  --alt-core-simple-checkbox-size-medium-icon-checked-height: 16px;
+
+  /* State colors */
+
+  /* Default */
+  --alt-core-simple-checkbox-default-background-color: var(--alt-core-color-surface-primary);
+  --alt-core-simple-checkbox-default-border-color: var(--alt-core-color-stroke-primary);
+  --alt-core-simple-checkbox-default-icon-color: var(--alt-core-color-icon-on-accent);
+  --alt-core-simple-checkbox-default-hover-background-color: var(--alt-core-color-surface-primary-high);
+  --alt-core-simple-checkbox-default-hover-border-color: var(--alt-core-color-stroke-primary-high);
+
+  /* Checked */
+  --alt-core-simple-checkbox-checked-background-color: var(--alt-core-color-surface-accent);
+  --alt-core-simple-checkbox-checked-border-color: var(--alt-core-color-surface-accent);
+  --alt-core-simple-checkbox-checked-hover-background-color: var(--alt-core-color-surface-accent-high);
+  --alt-core-simple-checkbox-checked-hover-border-color: var(--alt-core-color-surface-accent-high);
+  --alt-core-simple-checkbox-checked-hover-icon-color: var(--alt-core-color-icon-on-accent);
+
+  /* Indeterminate */
+  --alt-core-simple-checkbox-indeterminate-icon-color: var(--alt-core-color-icon-accent);
+  --alt-core-simple-checkbox-indeterminate-hover-background-color: var(--alt-core-color-surface-primary-high);
+  --alt-core-simple-checkbox-indeterminate-hover-border-color: var(--alt-core-color-stroke-primary-high);
+  --alt-core-simple-checkbox-indeterminate-hover-icon-color: var(--alt-core-color-surface-accent-high);
+
+  /* Error */
+  --alt-core-simple-checkbox-error-background-color: var(--alt-core-color-surface-negative);
+  --alt-core-simple-checkbox-error-border-color: var(--alt-core-color-surface-negative);
+  --alt-core-simple-checkbox-error-icon-color: var(--alt-core-color-other-contrast);
+
+  /* Disabled */
+  --alt-core-simple-checkbox-disabled-color: var(--alt-core-color-stroke-primary-low);
+  --alt-core-simple-checkbox-disabled-checked-color: var(--alt-core-color-surface-accent-low);
+  --alt-core-simple-checkbox-disabled-icon-color: var(--alt-core-color-icon-tertiary);
+}

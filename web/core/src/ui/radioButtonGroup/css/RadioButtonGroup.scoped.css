@@ -1,0 +1,26 @@
+$component: $AltCoreRadioButtonGroupTagName;
+
+:host {
+  display: block;
+}
+
+.$(component) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--alt-core-radio-button-group-label-gap);
+
+  &__wrapper {
+    display: flex;
+
+    &_direction {
+      &_vertical {
+        flex-direction: column;
+        gap: var(--alt-core-radio-button-group-vertical-gap);
+      }
+
+      &_horizontal {
+        gap: var(--alt-core-radio-button-group-horizontal-gap);
+      }
+    }
+  }
+}

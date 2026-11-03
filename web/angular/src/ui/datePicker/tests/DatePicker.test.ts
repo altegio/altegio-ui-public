@@ -1,0 +1,161 @@
+import { describe, expect, it, vi } from 'vitest'
+import { Component } from '@angular/core'
+import { TestBed } from '~ng/tests/setup'
+import { AltCoreDatePickerTagName } from '~shared/constants'
+import { AltDatePicker } from '~ng/ui/datePicker'
+import { type IAltNgDatePickerProps } from '~ng/ui/datePicker/models/types'
+import {
+  propDateCases,
+  propNameCases,
+  propPlaceholderCases,
+  propDisabledCases,
+  propRequiredCases,
+  propSizeTestCases,
+  propLabelDebounceCases,
+  propLabelTextCases,
+  propLabelTooltipTextCases,
+  propIsRangeCases,
+  propMaxDateCases,
+  propMinDateCases,
+  propAnnotationTextCases,
+  propCalendarHeaderSelectorsCases,
+  propErrorsCases,
+} from './cases/props'
+
+const tagName = AltCoreDatePickerTagName
+
+interface ICreateComponentArgs {
+  props?: Partial<IAltNgDatePickerProps>
+}
+const createComponent = async({ props }: ICreateComponentArgs) => {
+  TestBed.resetTestingModule()
+  await TestBed.configureTestingModule({ imports: [AltDatePicker] }).compileComponents()
+
+  @Component({
+    template: `<AltDatePicker
+      [date]="date"
+      [isRange]="isRange"
+      [minDate]="minDate"
+      [maxDate]="maxDate"
+      [disabled]="disabled"
+      [calendarHeaderSelectors]="calendarHeaderSelectors"
+      [annotationText]="annotationText"
+      [name]="name"
+      [placeholder]="placeholder"
+      [required]="required"
+      [size]="size"
+      [labelText]="labelText"
+      [labelTooltipText]="labelTooltipText"
+      [labelDebounce]="labelDebounce"
+      [error]="error"
+      [errors]="errors"
+      (pick)="pickEvent($event)"></AltDatePicker>`,
+    imports: [AltDatePicker],
+    standalone: true,
+  })
+  class TestComponent {
+    date = props?.date
+    isRange = props?.isRange
+    minDate = props?.minDate
+    maxDate = props?.maxDate
+    disabled = props?.disabled
+    calendarHeaderSelectors = props?.calendarHeaderSelectors
+    annotationText = props?.annotationText
+    name = props?.name
+    placeholder = props?.placeholder
+    required = props?.required
+    readonly = props?.readonly
+    size = props?.size
+    labelText = props?.labelText
+    labelTooltipText = props?.labelTooltipText
+    labelDebounce = props?.labelDebounce
+    error = props?.error
+    errors = props?.errors
+
+    pickEvent = vi.fn()
+  }
+  return TestComponent
+}
+
+describe(
+  'Angular/AltDatePicker',
+  () => {
+    describe(
+      'Unit',
+      () => {
+        describe(
+          'Props',
+          () => {
+            for (const testCase of [
+              ...propDateCases,
+              ...propNameCases,
+              ...propPlaceholderCases,
+              ...propDisabledCases,
+              ...propRequiredCases,
+              ...propSizeTestCases,
+              ...propLabelDebounceCases,
+              ...propLabelTextCases,
+              ...propLabelTooltipTextCases,
+              ...propIsRangeCases,
+              ...propMaxDateCases,
+              ...propMinDateCases,
+              ...propAnnotationTextCases,
+              ...propCalendarHeaderSelectorsCases,
+              ...propErrorsCases,
+            ]) {
+              it(
+                `Prop "${testCase.prop}" should set ${testCase.prop} on the core component`,
+                async() => {
+                  const component = await createComponent({ props: { [testCase.prop]: testCase.value } })
+                  const fixture = TestBed.createComponent(component)
+                  fixture.detectChanges()
+
+                  await fixture.whenStable()
+
+                  const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
+
+                  if (Array.isArray(testCase.value)) {
+                    expect(coreElement?.[testCase.prop]).toStrictEqual(testCase.expected)
+                  } else {
+                    expect(coreElement?.[testCase.prop]).toBe(testCase.expected)
+                  }
+                },
+              )
+            }
+          },
+        )
+
+        describe(
+          'Events',
+          () => {
+            it(
+              'Should emit pickEvent on date pick',
+              async() => {
+                const handleAction = vi.fn()
+                const component = await createComponent({ props: {} })
+                const fixture = TestBed.createComponent(component)
+                fixture.detectChanges()
+
+                await fixture.whenStable()
+                const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName) as HTMLElement
+
+                coreElement.addEventListener(
+                  'pick',
+                  handleAction,
+                )
+
+                coreElement.dispatchEvent(new CustomEvent('pick', {
+                  detail: { value: '01.01.2025' },
+                  bubbles: true,
+                  cancelable: true,
+                }))
+
+                expect(handleAction).toHaveBeenCalled()
+              },
+            )
+          },
+        )
+      },
+    )
+  },
+)

@@ -1,0 +1,10 @@
+:host {
+  /* General */
+
+  --alt-core-table-pagination-padding: var(--alt-core-size-spacing-6-x);
+  --alt-core-table-pagination-gap: var(--alt-core-size-spacing-6-x);
+
+  /* Counter */
+
+  --alt-core-table-pagination-counter-gap: var(--alt-core-size-spacing-2-x);
+}

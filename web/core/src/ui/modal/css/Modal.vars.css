@@ -1,0 +1,21 @@
+:host {
+  /* Sizes */
+  --alt-core-modal-size-small-width: 460px;
+  --alt-core-modal-size-large-width: 964px;
+
+  /* Spacing */
+  --alt-core-modal-padding: var(--alt-core-modal-custom-padding, var(--alt-core-size-spacing-5-x));
+
+  /* Colors */
+  --alt-core-modal-overlay-color: var(--alt-core-color-other-overlay-60);
+  --alt-core-modal-variant-primary-background-color: var(--alt-core-color-surface-primary);
+  --alt-core-modal-variant-secondary-background-color: var(--alt-core-color-other-base);
+
+  /* Z-indexes */
+  --alt-core-modal-z-index: var(--alt-core-modal-custom-z-index, 6000);
+  --alt-core-modal-overlay-z-index: var(--alt-core-modal-custom-overlay-z-index, 6000);
+
+  /* Transition settings */
+  --alt-core-fade-transition-duration: 300ms;
+  --alt-core-fade-transition-duration-timing-function: ease-out;
+}

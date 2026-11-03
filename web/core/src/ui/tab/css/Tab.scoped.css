@@ -1,0 +1,69 @@
+@import url('../../../assets/css/mixins/a11y.css');
+
+$component: $AltCoreTabTagName;
+
+@mixin alt-reduced-motion;
+
+:host {
+  display: var(--alt-tab-display);
+}
+
+:host(:focus-visible) {
+  outline: none;
+}
+
+/* Inset, so that the scrolling tab list does not clip it */
+:host(:focus-visible) .$(component) {
+  @mixin alt-focus-ring;
+
+  outline-offset: calc(var(--alt-core-focus-ring-width, 2px) * -1);
+}
+
+.$(component) {
+  position: relative;
+  display: var(--alt-tab-display);
+  gap: var(--alt-core-size-spacing-x);
+  align-items: center;
+  max-width: 100%;
+  padding: var(--alt-core-size-spacing-3-x);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background-color: var(--alt-core-color-surface-secondary-high);
+  }
+
+  &__text {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__left-icon {
+    color: var(--alt-left-icon-color);
+
+    &_active {
+      --alt-left-icon-color: var(--alt-core-color-icon-primary);
+    }
+
+    &_disabled  {
+      --alt-left-icon-color: var(--alt-core-color-icon-tertiary);
+    }
+  }
+
+  &__activator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+
+    &_active {
+      background-color: var(--alt-core-color-stroke-accent);
+    }
+
+    :has(&_active) &_disabled {
+      background-color: var(--alt-core-color-calm-stroke-yellow-low);
+    }
+  }
+}

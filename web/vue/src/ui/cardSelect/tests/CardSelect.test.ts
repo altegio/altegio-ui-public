@@ -1,0 +1,135 @@
+import { beforeAll, describe, expect, it } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { AltCoreCardSelectTagName as tagName } from '~shared/constants'
+import { AltCoreCardSelect } from '~core/index'
+import { AltCardSelect } from '~vue/ui/cardSelect'
+
+import {
+  propCheckedCases,
+  propDisabledCases,
+  propHoverableCases,
+  propFocusableCases,
+  propSizeCases,
+  propHeaderTextCases,
+  propTagTextCases,
+  propTagVariantCases,
+  propHeaderIconCases,
+  propAnnotationCases,
+} from './cases/props'
+
+import {
+  slotBeforeTestCases,
+  slotAnnotationTestCases,
+  slotAfterTestCases,
+} from './cases/slots'
+
+import {
+  eventsTestCases,
+} from './cases/events'
+
+describe(
+  'Vue/AltCardSelect/Unit',
+  () => {
+    beforeAll(() => {
+      if (!customElements.get(tagName)) {
+        customElements.define(
+          tagName,
+          AltCoreCardSelect,
+        )
+      }
+    })
+
+    describe(
+      'Slots',
+      () => {
+        for (const testCase of [
+          ...slotBeforeTestCases,
+          ...slotAnnotationTestCases,
+          ...slotAfterTestCases,
+        ]) {
+          it(
+            `Slot: "${testCase.slot}" should render ${testCase.case}`,
+            () => {
+              const wrapper = mount(
+                AltCardSelect,
+                { slots: { [testCase.slot]: testCase.content } },
+              )
+
+              expect(wrapper.text()).toBe(testCase.content)
+            },
+          )
+        }
+      },
+    )
+
+    describe(
+      'Props',
+      () => {
+        for (const testCase of [
+          ...propCheckedCases,
+          ...propDisabledCases,
+          ...propHoverableCases,
+          ...propFocusableCases,
+          ...propSizeCases,
+          ...propHeaderTextCases,
+          ...propTagTextCases,
+          ...propTagVariantCases,
+          ...propAnnotationCases,
+        ]) {
+          it(
+            `Prop: "${testCase.prop}" ${testCase.value} should set ${testCase.prop} on the core component`,
+            () => {
+              const wrapper = mount(
+                AltCardSelect,
+                { props: { [testCase.prop]: testCase.value } },
+              )
+
+              const coreElement = wrapper.find(tagName).element as AltCoreCardSelect
+
+              expect(coreElement[testCase.prop]).toBe(testCase.expected)
+            },
+          )
+        }
+
+        for (const testCase of propHeaderIconCases) {
+          it(
+            `Prop: "${testCase.prop}" should work ${testCase.case} for the core component`,
+            () => {
+              const wrapper = mount(
+                AltCardSelect,
+                { props: { [testCase.prop]: testCase.value } },
+              )
+
+              const coreElement = wrapper.find(tagName).element as AltCoreCardSelect
+
+              expect(coreElement.headerIcon?.name).toBe(testCase.value?.name)
+            },
+          )
+        }
+      },
+    )
+
+    describe(
+      'Events',
+      () => {
+        for (const testCase of eventsTestCases) {
+          it(
+            `Event: "${testCase.emitEventName}" ${testCase.case}`,
+            () => {
+              const wrapper = mount(
+                AltCardSelect,
+                { props: { focusable: true } },
+              )
+
+              const coreElement = wrapper.find(tagName)
+
+              coreElement.trigger(testCase.eventName)
+
+              expect(wrapper.emitted()).toHaveProperty(testCase.emitEventName)
+            },
+          )
+        }
+      },
+    )
+  },
+)

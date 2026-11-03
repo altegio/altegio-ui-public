@@ -1,0 +1,3 @@
+:host {
+  --alt-core-annotation-color-text-disabled: var(--alt-core-color-icon-tertiary);
+}

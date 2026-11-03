@@ -1,0 +1,179 @@
+@import url('./SimpleButton.mixins.css');
+
+:host {
+  display: flex;
+}
+
+$component: $AltCoreSimpleButtonTagName;
+
+::slotted(*) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.$(component) {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  width: var(--alt-core-simple-button-width);
+  max-width: 100%;
+  min-height: var(--alt-core-simple-button-size-small-min-height);
+  aspect-ratio: var(--alt-core-simple-button-aspect-ratio);
+  padding: var(--alt-core-simple-button-size-small-padding-y) var(--alt-core-simple-button-size-small-padding-x);
+  font-family: var(--alt-core-font-family);
+  font-size: var(--alt-core-simple-button-size-small-font-size);
+  font-weight: var(--alt-core-simple-button-size-small-font-weight);
+  line-height: var(--alt-core-simple-button-size-small-line-height);
+  color: var(--alt-core-simple-button-variant-primary-color);
+  text-align: center;
+  word-break: break-all;
+  text-decoration: unset;
+  cursor: pointer;
+  outline: none;
+  background-color: var(--alt-core-simple-button-variant-primary-background-color);
+  border: none;
+  border-radius: var(--alt-core-simple-button-size-small-border-radius);
+  box-shadow: var(--alt-core-simple-button-box-shadow);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+
+  &:focus-visible {
+    @mixin alt-focus-ring;
+  }
+
+  &_disabled {
+    pointer-events: none;
+  }
+
+  &_size {
+    &_small {
+      @mixin button-size
+        --alt-core-simple-button-size-small-padding-y,
+        --alt-core-simple-button-size-small-padding-x,
+        --alt-core-simple-button-size-small-font-size,
+        --alt-core-simple-button-size-small-line-height,
+        --alt-core-simple-button-size-small-font-weight,
+        --alt-core-simple-button-size-small-border-radius,
+        --alt-core-simple-button-size-small-gap;
+    }
+
+    &_medium {
+      @mixin button-size
+        --alt-core-simple-button-size-medium-padding-y,
+        --alt-core-simple-button-size-medium-padding-x,
+        --alt-core-simple-button-size-medium-font-size,
+        --alt-core-simple-button-size-medium-line-height,
+        --alt-core-simple-button-size-medium-font-weight,
+        --alt-core-simple-button-size-medium-border-radius,
+        --alt-core-simple-button-size-medium-gap;
+    }
+
+    &_large {
+      @mixin button-size
+        --alt-core-simple-button-size-large-padding-y,
+        --alt-core-simple-button-size-large-padding-x,
+        --alt-core-simple-button-size-large-font-size,
+        --alt-core-simple-button-size-large-line-height,
+        --alt-core-simple-button-size-large-font-weight,
+        --alt-core-simple-button-size-large-border-radius,
+        --alt-core-simple-button-size-large-gap;
+    }
+  }
+
+  &_variant {
+    &_primary {
+      @mixin button-variant
+        --alt-core-simple-button-variant-primary-color,
+        --alt-core-simple-button-variant-primary-border,
+        --alt-core-simple-button-variant-primary-background-color,
+        --alt-core-simple-button-variant-primary-disabled-color,
+        --alt-core-simple-button-variant-primary-disabled-border,
+        --alt-core-simple-button-variant-primary-disabled-background-color,
+        --alt-core-simple-button-variant-primary-loading-color,
+        --alt-core-simple-button-variant-primary-hover-background-color;
+    }
+
+    &_text {
+      @mixin button-variant
+        --alt-core-simple-button-variant-text-color,
+        --alt-core-simple-button-variant-text-border,
+        --alt-core-simple-button-variant-text-background-color,
+        --alt-core-simple-button-variant-text-disabled-color,
+        --alt-core-simple-button-variant-text-disabled-border,
+        --alt-core-simple-button-variant-text-disabled-background-color,
+        --alt-core-simple-button-variant-text-loading-color,
+        --alt-core-simple-button-variant-text-hover-background-color;
+    }
+
+    &_outline {
+      @mixin button-variant
+        --alt-core-simple-button-variant-outline-color,
+        --alt-core-simple-button-variant-outline-border,
+        --alt-core-simple-button-variant-outline-background-color,
+        --alt-core-simple-button-variant-outline-disabled-color,
+        --alt-core-simple-button-variant-outline-disabled-border,
+        --alt-core-simple-button-variant-outline-disabled-background-color,
+        --alt-core-simple-button-variant-outline-loading-color,
+        --alt-core-simple-button-variant-outline-hover-background-color;
+    }
+
+    &_outline-filled {
+      @mixin button-variant
+      --alt-core-simple-button-variant-outline-filled-color,
+      --alt-core-simple-button-variant-outline-filled-border,
+      --alt-core-simple-button-variant-outline-filled-background-color,
+      --alt-core-simple-button-variant-outline-filled-disabled-color,
+      --alt-core-simple-button-variant-outline-filled-disabled-border,
+      --alt-core-simple-button-variant-outline-filled-disabled-background-color,
+      --alt-core-simple-button-variant-outline-filled-loading-color,
+      --alt-core-simple-button-variant-outline-filled-hover-background-color;
+    }
+  }
+
+  &_full-width {
+    --alt-core-simple-button-width: 100%;
+  }
+
+  &__content {
+    display: inline-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-wrap: nowrap;
+
+    &_align {
+      &-start {
+        justify-content: flex-start;
+      }
+
+      &-center {
+        justify-content: center;
+      }
+
+      &-end {
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  &__loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &_loading {
+    cursor: progress;
+
+    /* Transparent rather than hidden, so that the label still names the button */
+    .$(component)__content {
+      opacity: 0;
+    }
+  }
+}

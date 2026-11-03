@@ -1,0 +1,22 @@
+:host {
+  /* General */
+
+  /* Color */
+  --alt-core-field-icon-default-color: var(--alt-core-color-icon-secondary);
+  --alt-core-field-icon-disabled-color: var(--alt-core-color-icon-tertiary);
+  --alt-core-field-icon-hover-color: var(--alt-core-color-icon-primary);
+
+  /* Sizes */
+
+  /* Small */
+  --alt-core-field-icon-size-small-padding-x: var(--alt-core-size-spacing-2-5-x);
+  --alt-core-field-icon-size-small-padding-y: var(--alt-core-size-spacing-2-x);
+
+  /* Medium */
+  --alt-core-field-icon-size-medium-padding-x: var(--alt-core-size-spacing-2-5-x);
+  --alt-core-field-icon-size-medium-padding-y: var(--alt-core-size-spacing-2-5-x);
+
+  /* Large */
+  --alt-core-field-icon-size-large-padding-x: var(--alt-core-size-spacing-2-5-x);
+  --alt-core-field-icon-size-large-padding-y: var(--alt-core-size-spacing-3-x);
+}

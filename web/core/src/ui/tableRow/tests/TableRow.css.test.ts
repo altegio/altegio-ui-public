@@ -1,0 +1,61 @@
+import { beforeAll, describe, expect, it } from 'vitest'
+import { useCoreTests } from '~shared/tests/core'
+import { getWCShadowRoot, getHostCSSVariableValue } from '~shared/tests/utils'
+
+import { AltCoreTableRowTagName } from '~shared/constants'
+import {
+  createCoreTableRowProps,
+} from '~core/ui/tableRow/models/types'
+import '~core/ui/tableRow'
+import {
+  CSSVariablesHostToRootCases,
+  CSSVariablesHostToValueCases,
+} from '~core/ui/tableRow/tests/cases/css'
+
+const tagName = AltCoreTableRowTagName
+
+const {
+  component,
+  injectComponentToBody,
+} = useCoreTests(
+  tagName,
+  createCoreTableRowProps(),
+)
+
+describe(
+  'Core/AltCoreTableRow/CSS',
+  () => {
+    beforeAll(() => {
+      injectComponentToBody()
+    })
+
+    for (const { host, root } of CSSVariablesHostToRootCases) {
+      it(
+        `Host CSS variable ${host} should have the value of the :root CSS variable ${root} in the styles`,
+        () => {
+          const shadowRoot = getWCShadowRoot(component)
+
+          const hostCSSVariableValue = getHostCSSVariableValue(
+            shadowRoot.adoptedStyleSheets,
+            host,
+          )
+
+          expect(hostCSSVariableValue).toBe(`var(${root})`)
+        },
+      )
+    }
+
+    for (const { host, value } of CSSVariablesHostToValueCases) {
+      it(
+        `Computed host CSS variable ${host} on the created component should have the token value: ${value}`,
+        () => {
+          const shadowRoot = getWCShadowRoot(component)
+
+          const varValue = getComputedStyle(shadowRoot.host).getPropertyValue(host)
+
+          expect(varValue).toBe(value)
+        },
+      )
+    }
+  },
+)

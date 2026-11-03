@@ -1,0 +1,113 @@
+import { describe, expect, it, beforeAll } from 'vitest'
+import { type Ref, type VNode, inject, h } from 'vue'
+import { mount } from '@vue/test-utils'
+import { AltGlobalProvider } from '~vue/ui/globalProvider'
+import { GlobalProviderReadyEvent } from '~core/ui/globalProvider/models/types'
+import {
+  type IAltVueGlobalProviderEmits,
+} from '~vue/ui/globalProvider/models/types'
+import { text, empty } from '~shared/tests/slotContents'
+import type { TSlotTestCase } from '~shared/types/tests'
+import { AltCoreGlobalProviderTagName as tagName } from '~shared/constants'
+import { AltCoreGlobalProvider } from '~core/ui/globalProvider'
+import type { IGlobalContext } from '~core/ui/globalProvider/context'
+
+interface ICreateComponentArgs {
+  slots: {
+    default: string | VNode
+  }
+}
+
+const createComponent = ({ slots }: ICreateComponentArgs) => {
+  return mount(
+    AltGlobalProvider,
+    { slots },
+  )
+}
+
+// Unit test cases:
+const slotDefaultTestCases: TSlotTestCase[] = [
+  { slot: 'default', case: 'with content', content: text },
+  { slot: 'default', case: 'without content', content: empty },
+]
+
+const TestConsumer = {
+  render: () => h('div', 'TestConsumer'),
+  setup() {
+    const globalContext = inject<Ref<IGlobalContext>>('globalContext')
+    if (!globalContext) throw new Error('Global context not found')
+    return { globalContext }
+  },
+}
+
+describe(
+  'Vue/AltGlobalProvider',
+  () => {
+    beforeAll(() => {
+      if (!customElements.get(tagName)) {
+        customElements.define(
+          tagName,
+          AltCoreGlobalProvider,
+        )
+      }
+    })
+
+    describe(
+      'Slots',
+      () => {
+        for (const testCase of slotDefaultTestCases) {
+          it(
+            `Slot "${testCase.slot}" should render ${testCase.case}`,
+            () => {
+              const wrapper = createComponent({ slots: { default: testCase.content } })
+
+              expect(wrapper.text()).toBe(testCase.content)
+            },
+          )
+        }
+      },
+    )
+
+    describe(
+      'Providers',
+      () => {
+        it(
+          'Should create the global context',
+          () => {
+            const wrapper = createComponent({ slots: { default: h(TestConsumer) } })
+
+            const coreElement = wrapper.find(tagName).element
+            coreElement.connectedCallback()
+            coreElement.firstUpdated()
+
+            const testConsumer = wrapper.findComponent(TestConsumer)
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            const globalContext = testConsumer.vm.globalContext
+
+            expect(globalContext).toBeDefined()
+          },
+        )
+      },
+    )
+
+    describe(
+      'Events',
+      () => {
+        it(
+          'Should handle the ready event',
+          () => {
+            const wrapper = createComponent({ slots: { default: '' } })
+
+            const coreElement = wrapper.find(tagName).element
+            coreElement.connectedCallback()
+            coreElement.firstUpdated()
+            const emitted = wrapper.emitted<IAltVueGlobalProviderEmits>()
+            const readyEvents = emitted.ready as unknown as GlobalProviderReadyEvent[][]
+            expect(emitted).toHaveProperty('ready')
+            expect(readyEvents[0][0]).toBeInstanceOf(GlobalProviderReadyEvent)
+          },
+        )
+      },
+    )
+  },
+)

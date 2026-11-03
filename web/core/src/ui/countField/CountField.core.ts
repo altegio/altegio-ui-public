@@ -1,0 +1,580 @@
+import { LitElement, html, css, unsafeCSS, type PropertyValues } from 'lit'
+import { customElement, property, query } from 'lit/decorators.js'
+import { classMap } from 'lit/directives/class-map.js'
+import { Maskito, type MaskitoPostprocessor } from '@maskito/core'
+
+import {
+  createCoreCountFieldProps,
+  type IAltCoreCountFieldProps,
+} from '~core/ui/countField/models/types'
+import {
+  AltCoreCountFieldTagName as tagName,
+  AltCoreTextFieldTagName,
+} from '~shared/constants'
+
+import '~core/ui/textField'
+import '~core/ui/fieldIcon'
+
+import AltCoreCountFieldVarsCSS from '~core/ui/countField/css/CountField.vars.css?inline'
+import AltCoreCountFieldScopedCSS from '~core/ui/countField/css/CountField.scoped.css?inline'
+import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
+import { BlurEvent, FocusEvent } from '~core/ui/fieldWrapper/models/types'
+import { KeydownEvent } from '~core/ui/fieldInput/models/types'
+import { ChangedValueEvent } from '~core/ui/countField/models/types'
+import { createNaturalNumberRegex, preventAndStopEvent } from '~shared/utils'
+import { provide } from '@lit/context'
+import {
+  disabledContextCreated,
+  errorContextCreated,
+  readonlyContextCreated, sizeContextCreated,
+} from '~core/ui/fieldWrapper/providers'
+import { booleanConverter } from '~core/utils/converters'
+import { altMinus, altPlus } from '~shared/icons'
+import type { AltCoreTextField } from '~core/ui/textField'
+import type { TTimeout } from '~shared/types/global'
+import { withLocator } from '~core/utils/locator'
+import { getElementMessage } from '~core/i18n'
+import { FormAssociated, getNativeValidity } from '~core/utils/a11y/form-associated'
+
+enum EChangeValueType {
+  INCREASE,
+  DECREASE,
+}
+
+type ElementState = Parameters<MaskitoPostprocessor>[0]
+
+const { min,
+  max,
+  disabled,
+  readonly,
+  error,
+  size,
+  value,
+  placeholder,
+  required,
+  autofocus,
+  labelText,
+  labelTooltipText,
+  labelDebounce,
+  annotationText,
+  errors,
+  name,
+  accessibleName } = createCoreCountFieldProps()
+
+@customElement(tagName)
+@withLocator(tagName)
+export class AltCoreCountField
+  extends FormAssociated(LitElement)
+  implements IAltCoreCountFieldProps {
+  @property({ type: Number, attribute: 'min' }) min: IAltCoreCountFieldProps['min'] = min
+  @property({ type: Number, attribute: 'max' }) max: IAltCoreCountFieldProps['max'] = max
+  @provide({ context: disabledContextCreated })
+  @property({ type: Boolean }) disabled: IAltCoreCountFieldProps['disabled'] = disabled
+  @provide({ context: readonlyContextCreated })
+  @property({ type: Boolean }) readonly: IAltCoreCountFieldProps['readonly'] = readonly
+  @provide({ context: errorContextCreated })
+  @property({ type: Boolean, reflect: true, converter: booleanConverter }) error: IAltCoreCountFieldProps['error'] = error
+  @provide({ context: sizeContextCreated })
+  @property({ type: String, reflect: true }) size: IAltCoreCountFieldProps['size'] = size
+  @property({ type: String, reflect: true }) value: IAltCoreCountFieldProps['value'] = value
+  @property({ type: String, reflect: true }) name: IAltCoreCountFieldProps['name'] = name
+  @property({ type: String, reflect: true }) placeholder: IAltCoreCountFieldProps['placeholder'] = placeholder
+  @property({ type: Boolean, reflect: true }) required: IAltCoreCountFieldProps['required'] = required
+  @property({ type: Boolean, reflect: true }) autofocus: IAltCoreCountFieldProps['autofocus'] = autofocus
+  @property({ type: String, reflect: true, attribute: 'label-text' }) labelText: IAltCoreCountFieldProps['labelText'] = labelText
+  @property({ type: String, reflect: true, attribute: 'label-tooltip-text' }) labelTooltipText: IAltCoreCountFieldProps['labelTooltipText'] = labelTooltipText
+  @property({ type: Number, reflect: true, attribute: 'label-debounce' }) labelDebounce: IAltCoreCountFieldProps['labelDebounce'] = labelDebounce
+  @property({ type: String, reflect: true, attribute: 'annotation-text' }) annotationText: IAltCoreCountFieldProps['annotationText'] = annotationText
+  @property({ type: Array }) errors: IAltCoreCountFieldProps['errors'] = errors
+  @property({ type: String, attribute: 'accessible-name' }) accessibleName: IAltCoreCountFieldProps['accessibleName'] = accessibleName
+
+  @bubblingEvent(
+    ChangedValueEvent,
+    { name: 'changed-value' },
+  )
+  _changedValue!: TDispatcher<ChangedValueEvent>
+
+  @bubblingEvent(
+    FocusEvent,
+    { name: 'focus' },
+  )
+  _focus!: TDispatcher<FocusEvent>
+
+  @bubblingEvent(
+    BlurEvent,
+    { name: 'blur' },
+  )
+  _blur!: TDispatcher<BlurEvent>
+
+  @bubblingEvent(
+    KeydownEvent,
+    { name: 'keydown' },
+  )
+  _keydown!: TDispatcher<KeydownEvent>
+
+  @query(AltCoreTextFieldTagName) public readonly textField?: AltCoreTextField
+
+  private readonly baseClass = tagName
+
+  private readonly NUMBER_VALUE_EMPTY_STATE = 0
+  private readonly VALUE_EMPTY_STATE = ''
+  private readonly VALUE_AUTO_CHANGE_DELAY = 300
+  private readonly VALUE_AUTO_CHANGE_INTERVAL = 100
+
+  private maskInstance: Maskito | null = null
+  private defaultValue = ''
+  private isButtonPressed = false
+
+  private valueAutoChangeProcessId: number | null = null
+  private valueAutoChangeDelayId: TTimeout | null = null
+
+  static readonly styles = [
+    css`
+      ${unsafeCSS(AltCoreCountFieldVarsCSS)}
+      ${unsafeCSS(AltCoreCountFieldScopedCSS)}
+    `,
+  ]
+
+  connectedCallback() {
+    super.connectedCallback()
+
+
+    if (this.inputElement) {
+      this.applyMask(this.inputElement)
+    }
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback()
+    this.destroyMask()
+    this.clearChangeProcess()
+    this.clearDelayProcess()
+  }
+
+  private get computedClasses() {
+    return { [this.baseClass]: true }
+  }
+
+  /**
+   * Arrow keys step the value like the buttons, Home and End jump to the limits that are set.
+   * A handler returns false when it leaves the key to the input, such as Home without a minimum.
+   */
+  private readonly stepKeyHandlers: Partial<Record<string, () => boolean>> = {
+    ArrowUp: () => {
+      this.increaseValue()
+      return true
+    },
+    ArrowDown: () => {
+      this.decreaseValue()
+      return true
+    },
+    Home: () => {
+      if (this.min === undefined) return false
+      this.setValue(this.min)
+      return true
+    },
+    End: () => {
+      if (this.max === undefined) return false
+      this.setValue(this.max)
+      return true
+    },
+  }
+
+  private canStepWithKey(event: KeyboardEvent) {
+    const input = this.inputElement
+    if (this.disabled || this.readonly || !input) return false
+
+    return event.composedPath().includes(input)
+  }
+
+  // Capture: the text field turns the native key event into its own keydown event on the way out
+  private readonly stepKeydownListener = {
+    handleEvent: (event: KeyboardEvent) => {
+      const handler = this.stepKeyHandlers[event.key]
+      if (!handler || !this.canStepWithKey(event)) return
+
+      if (handler()) event.preventDefault()
+    },
+    capture: true,
+  }
+
+  /** The input is a spinbutton: assistive technology reads the number and its limits */
+  private syncSpinbutton() {
+    const fieldInput = this.textField?.fieldInput
+    if (!fieldInput) return
+
+    fieldInput.accessibleRole = 'spinbutton'
+    fieldInput.accessibleValueNow = this.isEmpty(this.value) || this.isMinus(this.value) ? undefined : Number(this.value)
+    fieldInput.accessibleValueMin = this.min
+    fieldInput.accessibleValueMax = this.max
+  }
+
+  /** A disabled fieldset around the field disables it like its own disabled property */
+  private get isFormControlDisabled() {
+    return Boolean(this.disabled) || this.formDisabled
+  }
+
+  protected get formValue() {
+    return this.value
+  }
+
+  protected get formValidity() {
+    return getNativeValidity(
+      { type: 'number', required: this.required, min: this.min, max: this.max },
+      { value: this.isMinus(this.value) ? '' : this.value },
+      this.inputElement,
+    )
+  }
+
+  protected resetFormControl() {
+    this.setValue(this.defaultValue)
+  }
+
+  protected firstUpdated() {
+    this.defaultValue = this.value
+  }
+
+  protected updated(changedProperties: PropertyValues<this>) {
+    super.updated(changedProperties)
+
+    void this.textField?.updateComplete.then(() => { this.syncSpinbutton() })
+  }
+
+  private get inputElement(): HTMLInputElement | undefined {
+    return this.textField?.fieldInput?.inputElement
+  }
+
+  private get mask() {
+    return createNaturalNumberRegex(this.min ?? Infinity, this.max ?? Infinity)
+  }
+
+  private handleInput = (event: InputEvent) => {
+    preventAndStopEvent(event)
+
+    const target = event.target as HTMLInputElement
+
+    this.setValue(target.value)
+  }
+
+  private handleFocus = (event: FocusEvent) => {
+    preventAndStopEvent(event)
+    this._focus({ detail: { event } })
+  }
+
+  private handleBlur = (event: BlurEvent) => {
+    preventAndStopEvent(event)
+
+    const target = event.target as HTMLInputElement
+
+    if (this.isMinus(target.value)) {
+      this.handleMinusOnBlur()
+    } else if (this.min !== undefined && (this.isEmpty(target.value) || Number(target.value) < this.min)) {
+      this.setValue(this.min)
+    }
+
+    this._blur({ detail: { event } })
+  }
+
+  private handleMinusOnBlur(): void {
+    if (this.min !== undefined) {
+      this.setValue(this.min)
+      return
+    }
+
+    this.setValue(this.VALUE_EMPTY_STATE)
+  }
+
+  private handleKeydown = (event: KeyboardEvent) => {
+    event.stopImmediatePropagation()
+
+    if (this.disabled) return
+    this._keydown({ detail: { event, code: event.code } })
+  }
+
+  private handleMouseDown = (event: MouseEvent, type: EChangeValueType) => {
+    preventAndStopEvent(event)
+
+    if (event.button !== 0 || this.disabled || this.readonly) return
+    this.inputElement?.focus()
+
+    this.isButtonPressed = true
+
+    if (type === EChangeValueType.INCREASE) this.increaseValue()
+    else this.decreaseValue()
+
+    this.valueAutoChangeDelayId = setTimeout(() => {
+      if (this.isButtonPressed) {
+        this.startAutoChange(type)
+      }
+    }, this.VALUE_AUTO_CHANGE_DELAY)
+  }
+
+  /** Assistive technology presses the buttons with a click that no mousedown precedes */
+  private handleButtonClick = (event: MouseEvent, type: EChangeValueType) => {
+    if (event.detail !== 0 || this.disabled || this.readonly) return
+
+    if (type === EChangeValueType.INCREASE) this.increaseValue()
+    else this.decreaseValue()
+  }
+
+  private handleMouseUp = () => {
+    this.isButtonPressed = false
+    this.stopAutoChange()
+  }
+
+  private handleMouseLeave = () => {
+    this.isButtonPressed = false
+    this.stopAutoChange()
+  }
+
+  private increaseValue() {
+    if (this.isMaxThresholdReached()) return
+
+    if (this.isMinus(this.value)) {
+      this.setValue(this.min ?? this.NUMBER_VALUE_EMPTY_STATE)
+      return
+    }
+
+    const numberValue = Number(this.value)
+
+    this.setValue(numberValue + 1)
+  }
+
+  private decreaseValue() {
+    if (this.isMinThresholdReached()) return
+
+    if (this.isMinus(this.value)) {
+      this.setValue(this.min ?? this.NUMBER_VALUE_EMPTY_STATE)
+      return
+    }
+
+    const numberValue = Number(this.value)
+
+    this.setValue(numberValue - 1)
+  }
+
+  private applyMask(inputElement: HTMLInputElement) {
+    this.maskInstance?.destroy()
+
+    this.maskInstance = new Maskito(inputElement, {
+      mask: this.mask,
+      postprocessors: [this.createBoundariesPostprocessor()],
+    })
+  }
+
+  private destroyMask() {
+    if (!this.maskInstance) return
+    this.maskInstance.destroy()
+  }
+
+  private applyInputStyles(inputElement: HTMLInputElement) {
+    inputElement.style.textAlign = 'center'
+  }
+
+  private handleRenderInput() {
+    if (!this.inputElement) return
+
+    this.applyMask(this.inputElement)
+    this.applyInputStyles(this.inputElement)
+  }
+
+  private createBoundariesPostprocessor(): MaskitoPostprocessor {
+    const handleEmptyOrMinus = (boundedValueStr: string): ElementState => ({
+      value: boundedValueStr,
+      selection: [boundedValueStr.length, boundedValueStr.length] as const,
+    })
+
+    const handleBoundedValue = (value: string, selection: readonly [number, number], boundedValueStr: string): ElementState => {
+      const oldLength = value.length
+      const newLength = boundedValueStr.length
+      const distanceFromEnd = oldLength - selection[0]
+      const newPosition = Math.max(0, newLength - distanceFromEnd)
+
+      return {
+        value: boundedValueStr,
+        selection: [newPosition, newPosition] as const,
+      }
+    }
+
+    const handleIntermediateValue = (value: string, selection: readonly [number, number]): ElementState => ({
+      value,
+      selection,
+    })
+
+    const handleValidValue = (value: string, selection: readonly [number, number], boundedValue: number): ElementState => {
+      const boundedValueStr = boundedValue.toString()
+
+      this.setValue(boundedValue)
+
+      if (this.isEmpty(value) || this.isMinus(value)) {
+        return handleEmptyOrMinus(boundedValueStr)
+      }
+
+      return handleBoundedValue(value, selection, boundedValueStr)
+    }
+
+    const handleNumericValue = (value: string, selection: readonly [number, number]): ElementState => {
+      const numericValue = parseInt(value, 10)
+
+      if (isNaN(numericValue)) {
+        return { value: this.VALUE_EMPTY_STATE, selection: [0, 0] as const }
+      }
+
+      if (this.min !== undefined && numericValue < this.min && value.length > 0) {
+        return handleIntermediateValue(value, selection)
+      }
+
+      const boundedValue = this.getBoundedValue(numericValue)
+
+      if (boundedValue !== numericValue) {
+        return handleValidValue(value, selection, boundedValue)
+      }
+
+      return {
+        value: boundedValue.toString(),
+        selection,
+      }
+    }
+
+    return ({ value, selection }: ElementState) => {
+      if (this.isEmpty(value) || this.isMinus(value)) {
+        return { value, selection }
+      }
+
+      return handleNumericValue(value, selection)
+    }
+  }
+
+  private isEmpty(value: string): boolean {
+    return value === this.VALUE_EMPTY_STATE
+  }
+
+  private isMinus(value: string): boolean {
+    return value === '-'
+  }
+
+  private getBoundedValue(value: number): number {
+    if (this.max !== undefined && value > this.max) return this.max
+    if (this.min !== undefined && value < this.min) return this.min
+
+    return value
+  }
+
+  private setValue(value: number | string): void {
+    const stringValue = String(value)
+
+    if (this.value === stringValue) {
+      return
+    }
+
+    if (this.isMinus(stringValue)) {
+      this.value = stringValue
+      this._changedValue({ detail: { value: stringValue } })
+      return
+    }
+
+    this.value = stringValue
+    this._changedValue({ detail: { value: stringValue } })
+  }
+
+  private isMaxThresholdReached(value = Number(this.value)): boolean {
+    if (this.max === undefined) return false
+    return Number(value) >= this.max
+  }
+
+  private isMinThresholdReached(value = Number(this.value)): boolean {
+    if (this.min === undefined) return false
+    return Number(value) <= this.min
+  }
+
+  private startAutoChange(type: EChangeValueType) {
+    this.stopAutoChange()
+
+    this.valueAutoChangeProcessId = window.setInterval(() => {
+      if (type === EChangeValueType.INCREASE && !this.isMaxThresholdReached()) {
+        this.increaseValue()
+        return
+      }
+
+      if (type === EChangeValueType.DECREASE && !this.isMinThresholdReached()) {
+        this.decreaseValue()
+        return
+      }
+
+      this.stopAutoChange()
+    }, this.VALUE_AUTO_CHANGE_INTERVAL)
+  }
+
+  private stopAutoChange() {
+    this.clearChangeProcess()
+    this.valueAutoChangeProcessId = null
+  }
+
+  private clearChangeProcess() {
+    if (!this.valueAutoChangeProcessId) return
+    clearInterval(this.valueAutoChangeProcessId)
+  }
+
+  private clearDelayProcess() {
+    if (!this.valueAutoChangeDelayId) return
+    clearTimeout(this.valueAutoChangeDelayId)
+  }
+
+  protected render() {
+    return html`
+      <div
+        class=${classMap(this.computedClasses)}
+        @keydown=${this.stepKeydownListener}
+      >
+        <alt-core-text-field
+          .disabled=${this.isFormControlDisabled}
+          .readonly=${this.readonly}
+          .error=${this.error}
+          .size=${this.size}
+          .value=${this.value}
+          .name=${this.name}
+          .placeholder=${this.placeholder}
+          .required=${this.required}
+          .autofocus=${this.autofocus}
+          .labelText=${this.labelText}
+          .labelTooltipText=${this.labelTooltipText}
+          .labelDebounce=${this.labelDebounce}
+          .annotationText=${this.annotationText}
+          .errors=${this.errors}
+          .accessibleName=${this.accessibleName}
+          @render=${() => { this.handleRenderInput() }}
+          @keydown=${this.handleKeydown}
+          @input=${this.handleInput}
+          @blur=${this.handleBlur}
+          @focus=${this.handleFocus}
+        >
+          <alt-core-field-icon
+            slot="before"
+            .icon=${altMinus}
+            .disabled=${this.isMinThresholdReached()}
+            .accessibleName=${getElementMessage('decrease', this)}
+            hoverable
+            clickable
+            @mousedown=${(e: MouseEvent) => { this.handleMouseDown(e, EChangeValueType.DECREASE) }}
+            @click=${(e: MouseEvent) => { this.handleButtonClick(e, EChangeValueType.DECREASE) }}
+            @mouseup=${this.handleMouseUp}
+            @mouseleave=${this.handleMouseLeave}
+          ></alt-core-field-icon>
+
+          <alt-core-field-icon
+            slot="after"
+            .icon=${altPlus}
+            .disabled=${this.isMaxThresholdReached()}
+            .accessibleName=${getElementMessage('increase', this)}
+            hoverable
+            clickable
+            @mousedown=${(e: MouseEvent) => { this.handleMouseDown(e, EChangeValueType.INCREASE) }}
+            @click=${(e: MouseEvent) => { this.handleButtonClick(e, EChangeValueType.INCREASE) }}
+            @mouseup=${this.handleMouseUp}
+            @mouseleave=${this.handleMouseLeave}
+          ></alt-core-field-icon>
+        </alt-core-text-field>
+      </div>
+    `
+  }
+}

@@ -1,0 +1,36 @@
+:host {
+  /* General */
+  --alt-core-simple-toggle-radius: var(--alt-core-size-radius-4-x);
+  --alt-core-simple-toggle-border-size: 1px;
+
+  /* Sizes */
+
+  /* Small */
+  --alt-core-simple-toggle-size-small-width: 36px;
+  --alt-core-simple-toggle-size-small-height: 20px;
+  --alt-core-simple-toggle-size-small-padding: var(--alt-core-size-spacing-0-5-x);
+  --alt-core-simple-toggle-size-small-thumb-size: 16px;
+
+  /* Medium */
+  --alt-core-simple-toggle-size-medium-width: 56px;
+  --alt-core-simple-toggle-size-medium-height: 32px;
+  --alt-core-simple-toggle-size-medium-padding: var(--alt-core-size-spacing-x);
+  --alt-core-simple-toggle-size-medium-thumb-size: 24px;
+
+  /* State colors */
+
+  /* Unchecked */
+  --alt-core-simple-toggle-unchecked-bg-default: var(--alt-core-color-surface-tertiary);
+  --alt-core-simple-toggle-unchecked-bg-hover: var(--alt-core-color-surface-tertiary-high);
+  --alt-core-simple-toggle-unchecked-bg-disabled: var(--alt-core-color-surface-tertiary-low);
+
+  /* Checked */
+  --alt-core-simple-toggle-checked-bg-default: var(--alt-core-color-surface-accent);
+  --alt-core-simple-toggle-checked-bg-hover: var(--alt-core-color-surface-accent-high);
+  --alt-core-simple-toggle-checked-bg-disabled: var(--alt-core-color-surface-accent-low);
+
+  /* Thumb */
+  --alt-core-simple-toggle-thumb-bg: var(--alt-core-color-surface-primary);
+  --alt-core-simple-toggle-thumb-radius: 9999px;
+  --alt-core-simple-toggle-thumb-box-shadow: 0 1px 2px 0 rgb(33 47 65 / 35%);
+}

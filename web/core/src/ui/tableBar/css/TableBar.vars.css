@@ -1,0 +1,5 @@
+:host {
+  /* General */
+
+  --alt-core-table-bar-background-color: var(--alt-core-color-stroke-primary);
+}

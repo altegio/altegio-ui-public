@@ -1,0 +1,34 @@
+@import url('../../../../shared/assets/css/build/root-css-breakpoints.css');
+@import url('./mixins/a11y.css');
+
+@define-mixin hover-device {
+  @media (hover: hover) and (pointer: fine) {
+    @mixin-content;
+  }
+}
+
+/* breakpoints */
+
+@define-mixin breakpoint-xs {
+  @media (--alt-core-breakpoint-xs) {
+    @mixin-content;
+  }
+}
+
+@define-mixin breakpoint-sm {
+  @media (--alt-core-breakpoint-sm) {
+    @mixin-content;
+  }
+}
+
+@define-mixin breakpoint-md {
+  @media (--alt-core-breakpoint-md) {
+    @mixin-content;
+  }
+}
+
+@define-mixin breakpoint-lg {
+  @media (--alt-core-breakpoint-lg) {
+    @mixin-content;
+  }
+}

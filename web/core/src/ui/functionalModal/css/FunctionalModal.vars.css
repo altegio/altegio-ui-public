@@ -1,0 +1,4 @@
+:host {
+  --alt-core-functional-modal-max-height-offset: calc(4 * var(--alt-core-size-spacing-10-x));
+  --alt-core-functional-modal-header-media-height: 220px;
+}

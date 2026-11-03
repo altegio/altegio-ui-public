@@ -1,0 +1,6 @@
+$component: $AltCoreSearchTextHighlightedTagName;
+
+.$(component) {
+  display: var(--alt-core-search-text-highlighted-display);
+  font-family: var(--alt-core-font-family);
+}

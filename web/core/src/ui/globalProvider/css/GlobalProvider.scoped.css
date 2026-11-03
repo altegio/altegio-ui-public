@@ -1,0 +1,5 @@
+$component: $AltCoreGlobalProviderTagName;
+
+.$(component) {
+  font-family: var(--alt-core-font-family);
+}

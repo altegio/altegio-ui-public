@@ -1,0 +1,81 @@
+$component: $AltCoreRadioButtonTagName;
+
+:host {
+  display: flex;
+}
+
+.$(component) {
+  display: inline-flex;
+  flex-direction: column;
+  max-width: var(--alt-core-radio-button-max-width);
+  cursor: pointer;
+
+  &_disabled {
+    cursor: not-allowed;
+  }
+
+  &_alignment {
+    &-top {
+      .$(component) {
+        &__radio-button {
+          align-items: flex-start;
+        }
+      }
+    }
+
+    &-center {
+      .$(component) {
+        &__radio-button {
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  &_size {
+    &-small {
+      .$(component)__error {
+        margin-left: var(--alt-core-radio-button-small-error-margin-left);
+      }
+    }
+
+    &-medium {
+      .$(component)__error {
+        margin-left: var(--alt-core-radio-button-medium-error-margin-left);
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: var(--alt-core-radio-button-x-gap);
+  }
+
+  &__radio-button {
+    display: flex;
+    height: 100%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--alt-core-radio-button-info-gap);
+    align-items: flex-start;
+  }
+
+  &__label {
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &__annotation {
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &__error {
+    margin-top: var(--alt-core-radio-button-error-margin-top);
+  }
+}

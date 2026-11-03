@@ -1,0 +1,153 @@
+import { Component, computed, CUSTOM_ELEMENTS_SCHEMA, effect, inject, signal } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { ru, en } from '~core/i18n'
+import { LOCALE_MODULE_ID } from '~core/ui/globalProvider/plugins/i18n'
+import type { ILocaleModule } from '~core/ui/globalProvider/context/modules'
+import { AltCalendar } from '~ng/ui/calendar'
+import { GlobalContextService } from '../classes/GlobalContext.service'
+
+@Component({
+  selector: 'I18nConsumer',
+  standalone: true,
+  imports: [
+    CommonModule,
+    AltCalendar,
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <div class="container">
+      <h3>Localization example</h3>
+
+      <div class="locale-info">
+        <p>Current locale: <strong>{{ localeName() }}</strong></p>
+
+        <p>Language code: <strong>{{ localeCode() }}</strong></p>
+      </div>
+
+      <div class="calendar-section">
+        <h4>Calendar using the current locale:</h4>
+
+        <div class="calendar-wrapper">
+          <AltCalendar
+            [date]="selectedDate"
+            (selectEvent)="onDateSelect($event)"
+          ></AltCalendar>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button
+          class="primary-button"
+          (click)="toggleLocale()"
+        >
+          Switch language
+        </button>
+      </div>
+    </div>
+  `,
+  styles: [
+    `
+    .container {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
+      background-color: #f8f8f8;
+      max-width: 600px;
+    }
+
+    .locale-info, .calendar-section {
+      margin: 16px 0;
+      padding: 12px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      background-color: white;
+    }
+
+    .calendar-section h4 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .calendar-wrapper {
+      margin: 16px 0;
+    }
+
+    .selected-date {
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .primary-button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 8px 0;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .primary-button:hover {
+      background-color: #45a049;
+    }
+  `,
+  ],
+})
+export class I18nConsumer {
+  // Date selected in the calendar
+  selectedDate = new Date().toISOString().split('T')[0]
+
+  // Read the global context through inject()
+  private globalContext = inject(GlobalContextService).getContext()
+  private localeToggler = signal(false)
+  localeName = signal('')
+  localeCode = signal('')
+
+  // Locale module from the global context
+  localeModule = computed(() => {
+    return this.globalContext()?.getModule(LOCALE_MODULE_ID) as ILocaleModule | undefined
+  })
+
+  constructor() {
+    effect(() => {
+      this.localeToggler() // re-run the effect when the locale is toggled
+      const module = this.localeModule()
+      this.localeName.set(module?.locale.name ?? 'Not specified')
+      this.localeCode.set(module?.locale.shortCode ?? 'ru')
+    })
+  }
+
+  /**
+   * Handles date selection in the calendar
+   */
+  onDateSelect(event: Event) {
+    this.selectedDate = event as unknown as string
+  }
+
+  /**
+   * Toggles the locale
+   */
+  toggleLocale() {
+    const localeModule = this.localeModule()
+    if (!localeModule) {
+      return
+    }
+
+    // Switch between the Russian and English locales
+    const currentLocale = localeModule.locale
+    localeModule.setLocale(currentLocale.shortCode === 'en' ? ru : en)
+    this.localeToggler.set(!this.localeToggler())
+  }
+}

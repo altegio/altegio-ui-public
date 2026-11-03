@@ -1,0 +1,50 @@
+@import url('../../../assets/css/mixins/a11y.css');
+
+$component: $AltCoreFieldIconTagName;
+
+@mixin alt-reduced-motion;
+
+:host {
+  display: inline-flex;
+}
+
+.$(component) {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--alt-core-field-icon-default-color);
+  user-select: none;
+
+  &_disabled {
+    color: var(--alt-core-field-icon-disabled-color);
+    cursor: not-allowed;
+  }
+
+  &_hoverable:not(&_disabled) {
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--alt-core-field-icon-hover-color);
+    }
+  }
+
+  &_clickable:not(&_disabled) {
+    cursor: pointer;
+  }
+
+  &_size {
+    &_small {
+      padding: var(--alt-core-field-icon-size-small-padding-y) var(--alt-core-field-icon-size-small-padding-x);
+    }
+
+    &_medium {
+      padding: var(--alt-core-field-icon-size-medium-padding-y) var(--alt-core-field-icon-size-medium-padding-x);
+    }
+
+    &_large {
+      padding: var(--alt-core-field-icon-size-large-padding-y) var(--alt-core-field-icon-size-large-padding-x);
+    }
+  }
+}

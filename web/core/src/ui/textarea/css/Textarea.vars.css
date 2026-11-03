@@ -1,0 +1,11 @@
+:host {
+  /* Sizes */
+  --alt-core-textarea-gap: var(--alt-core-size-spacing-x);
+
+  /* Counter */
+  --alt-core-textarea-counter-font-size: var(--alt-core-typography-annotation-a-2-regular-font-size);
+  --alt-core-textarea-counter-font-weight: var(--alt-core-typography-annotation-a-2-regular-font-weight);
+  --alt-core-textarea-counter-line-height: var(--alt-core-typography-annotation-a-2-regular-line-height);
+  --alt-core-textarea-counter-color: var(--alt-core-color-text-secondary);
+  --alt-core-textarea-counter-disabled-color: var(--alt-core-color-text-tertiary);
+}

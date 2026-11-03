@@ -1,0 +1,15 @@
+:host {
+  /* Sizes */
+
+  /* Small */
+  --alt-core-card-button-after-small-padding-y: var(--alt-core-size-spacing-4-x);
+  --alt-core-card-button-after-small-padding-x: var(--alt-core-size-spacing-4-x);
+
+  /* Medium */
+  --alt-core-card-button-after-medium-padding-y: var(--alt-core-size-spacing-5-x);
+  --alt-core-card-button-after-medium-padding-x: var(--alt-core-size-spacing-5-x);
+
+  /* Large */
+  --alt-core-card-button-after-large-padding-y: var(--alt-core-size-spacing-5-x);
+  --alt-core-card-button-after-large-padding-x: var(--alt-core-size-spacing-5-x);
+}

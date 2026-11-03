@@ -1,0 +1,51 @@
+:host {
+  /* Sizes */
+
+  /* Small */
+  --alt-core-counter-size-small-height: 18px;
+  --alt-core-counter-size-small-min-width: 18px;
+  --alt-core-counter-size-small-min-height: 18px;
+  --alt-core-counter-size-small-font-size: var(--alt-core-typography-annotation-a-3-medium-font-size);
+  --alt-core-counter-size-small-line-height: var(--alt-core-typography-annotation-a-3-medium-line-height);
+  --alt-core-counter-size-small-font-weight: var(--alt-core-typography-annotation-a-3-medium-font-weight);
+  --alt-core-counter-size-small-border-radius: var(--alt-core-size-radius-3-x);
+  --alt-core-counter-size-small-padding-y: 0px;
+  --alt-core-counter-size-small-padding-x: var(--alt-core-size-spacing-x, 4px);
+
+  /* Medium */
+  --alt-core-counter-size-medium-height: 24px;
+  --alt-core-counter-size-medium-min-width: 24px;
+  --alt-core-counter-size-medium-min-height: 24px;
+  --alt-core-counter-size-medium-font-size: var(--alt-core-typography-paragraph-p-2-medium-font-size);
+  --alt-core-counter-size-medium-line-height: var(--alt-core-typography-paragraph-p-2-medium-line-height);
+  --alt-core-counter-size-medium-font-weight: var(--alt-core-typography-paragraph-p-2-medium-font-weight);
+  --alt-core-counter-size-medium-border-radius: var(--alt-core-size-radius-3-x);
+  --alt-core-counter-size-medium-padding-y: 0px;
+  --alt-core-counter-size-medium-padding-x: var(--alt-core-size-spacing-x-2, 8px);
+
+  /* Colors */
+
+  /* Primary */
+  --alt-core-counter-variant-primary-color: var(--alt-core-color-text-on-accent);
+  --alt-core-counter-variant-primary-background-color: var(--alt-core-color-surface-accent);
+  --alt-core-counter-variant-primary-disabled-color: var(--alt-core-color-text-tertiary);
+  --alt-core-counter-variant-primary-disabled-background-color: var(--alt-core-color-surface-accent-low);
+
+  /* Secondary */
+  --alt-core-counter-variant-secondary-color: var(--alt-core-color-text-secondary);
+  --alt-core-counter-variant-secondary-background-color: var(--alt-core-color-surface-tertiary);
+  --alt-core-counter-variant-secondary-disabled-color: var(--alt-core-color-text-tertiary);
+  --alt-core-counter-variant-secondary-disabled-background-color: var(--alt-core-color-surface-tertiary-low);
+
+  /* Negative */
+  --alt-core-counter-variant-negative-color: var(--alt-core-color-other-contrast);
+  --alt-core-counter-variant-negative-background-color: var(--alt-core-color-surface-negative);
+  --alt-core-counter-variant-negative-disabled-color: var(--alt-core-color-other-contrast);
+  --alt-core-counter-variant-negative-disabled-background-color: var(--alt-core-color-surface-negative-low);
+
+  /* Other/Invert */
+  --alt-core-counter-variant-other-invert-color: var(--alt-core-color-other-contrast);
+  --alt-core-counter-variant-other-invert-background-color: var(--alt-core-color-other-invert);
+  --alt-core-counter-variant-other-invert-disabled-color: var(--alt-core-color-other-contrast);
+  --alt-core-counter-variant-other-invert-disabled-background-color: var(--alt-core-color-surface-tertiary-high);
+}

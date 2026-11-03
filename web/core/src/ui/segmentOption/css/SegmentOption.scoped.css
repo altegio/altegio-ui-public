@@ -1,0 +1,86 @@
+@import url('./segment-option.mixins.css');
+@import url('../../../assets/css/mixins/a11y.css');
+
+$component: $AltCoreSegmentOptionTagName;
+
+:host(:focus-visible) {
+  outline: none;
+}
+
+/* Inset, so that the segment control does not clip it */
+:host(:focus-visible) .$(component) {
+  @mixin alt-focus-ring;
+
+  outline-offset: calc(var(--alt-core-focus-ring-width, 2px) * -1);
+}
+
+.$(component) {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: var(--alt-core-segment-option-primary-color);
+  cursor: pointer;
+  background-color: var(--alt-core-segment-option-background-color);
+
+  &_active {
+    cursor: default;
+    background-color: var(--alt-core-segment-option-active-background-color);
+    box-shadow: var(--alt-core-segment-option-active-drop-shadow);
+  }
+
+  &_disabled {
+    color: var(--alt-core-segment-option-tertiary-color);
+    cursor: not-allowed;
+  }
+
+  &_hovered,
+  &:not(.$(component)_disabled, .$(component)_active):hover {
+    color: var(--alt-core-segment-option-secondary-color);
+  }
+
+  &_size {
+    &_small {
+      @mixin segment-option-size
+        --alt-core-segment-option-size-small-height,
+        --alt-core-segment-option-size-small-padding-x,
+        --alt-core-segment-option-size-small-padding-y,
+        --alt-core-segment-option-size-small-font-size,
+        --alt-core-segment-option-size-small-line-height,
+        --alt-core-segment-option-size-small-font-weight,
+        --alt-core-segment-option-size-small-border-radius,
+        --alt-core-segment-option-size-small-gap;
+    }
+
+    &_medium {
+      @mixin segment-option-size
+        --alt-core-segment-option-size-medium-height,
+        --alt-core-segment-option-size-medium-padding-x,
+        --alt-core-segment-option-size-medium-padding-y,
+        --alt-core-segment-option-size-medium-font-size,
+        --alt-core-segment-option-size-medium-line-height,
+        --alt-core-segment-option-size-medium-font-weight,
+        --alt-core-segment-option-size-medium-border-radius,
+        --alt-core-segment-option-size-medium-gap;
+    }
+
+    &_large {
+      @mixin segment-option-size
+        --alt-core-segment-option-size-large-height,
+        --alt-core-segment-option-size-large-padding-x,
+        --alt-core-segment-option-size-large-padding-y,
+        --alt-core-segment-option-size-large-font-size,
+        --alt-core-segment-option-size-large-line-height,
+        --alt-core-segment-option-size-large-font-weight,
+        --alt-core-segment-option-size-large-border-radius,
+        --alt-core-segment-option-size-large-gap;
+    }
+  }
+}
+
+.$(component)__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

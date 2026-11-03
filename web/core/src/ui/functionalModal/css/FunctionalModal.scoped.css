@@ -1,0 +1,85 @@
+$component: $AltCoreFunctionalModalTagName;
+
+.$(component) {
+  display: flex;
+
+  --alt-core-modal-custom-padding: 0;
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+  }
+
+  &__header {
+    padding: var(--alt-core-size-spacing-5-x) var(--alt-core-size-spacing-5-x) 0;
+    margin-right: var(--alt-core-size-spacing-6-x);
+  }
+
+  &__header-hidden {
+    display: none;
+  }
+
+  &__main {
+    display: flex;
+    flex: 1;
+    flex-flow: column nowrap;
+    overflow: hidden;
+  }
+
+  &__header-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--alt-core-size-spacing-2-x)
+  }
+
+  &__header-media-wrapper {
+    max-height: var(--alt-core-functional-modal-header-media-height);
+    overflow: hidden;
+  }
+
+  &__content {
+    box-sizing: border-box;
+    flex: 1;
+    max-height: calc(100vh - var(--alt-core-functional-modal-max-height-offset));
+    overflow-y: auto;
+    border-bottom: 1px solid transparent;
+  }
+
+  &__content-wrapper {
+    padding: 0 var(--alt-core-size-spacing-5-x);
+  }
+
+  &__content-border {
+    border-bottom: 1px solid var(--alt-core-color-stroke-primary);
+  }
+
+  &__content-hidden {
+    display: none;
+  }
+
+  &__content-full-height {
+    max-height: none;
+  }
+
+  &__content-margin-top {
+    margin-top: var(--alt-core-size-spacing-4-x);
+  }
+
+  &__footer {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--alt-core-size-spacing-5-x);
+  }
+
+  &__actions {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: var(--alt-core-size-spacing-2-x);
+    align-items: center;
+    justify-content: flex-end;
+  }
+}

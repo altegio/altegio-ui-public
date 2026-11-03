@@ -1,0 +1,19 @@
+$component: $AltCoreTabPanelTagName;
+
+:host {
+  display: var(--alt-core-tab-panel-display);
+  padding: var(--alt-core-tab-panel-padding);
+}
+
+:host(:not([active])) {
+  display: none;
+}
+
+:host(:focus-visible) {
+  outline: 2px solid var(--alt-core-tab-panel-focus-outline-color);
+  outline-offset: 2px;
+}
+
+.$(component) {
+  display: contents;
+}

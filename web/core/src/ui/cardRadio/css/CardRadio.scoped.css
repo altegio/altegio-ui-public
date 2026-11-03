@@ -1,0 +1,25 @@
+$component: $AltCoreCardRadioTagName;
+
+:host {
+  display: inline-flex;
+}
+
+.$(component) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_size {
+    &_small {
+      padding: var(--alt-core-card-radio-small-padding-y) var(--alt-core-card-radio-small-padding-x);
+    }
+
+    &_medium {
+      padding: var(--alt-core-card-radio-medium-padding-y) var(--alt-core-card-radio-medium-padding-x);
+    }
+
+    &_large {
+      padding: var(--alt-core-card-radio-large-padding-y) var(--alt-core-card-radio-large-padding-x);
+    }
+  }
+}

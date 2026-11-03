@@ -1,0 +1,16 @@
+$component: $AltCoreListTagName;
+
+:host {
+  display: var(--alt-core-list-display);
+}
+
+.$(component) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--alt-core-list-gap);
+  padding: var(--alt-core-list-padding);
+}
+
+:host([separator]) ::slotted(:not(:last-child)) {
+  border-bottom: var(--alt-core-list-separator-width) solid var(--alt-core-list-separator-color);
+}

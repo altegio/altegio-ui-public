@@ -1,0 +1,16 @@
+
+:host {
+  /* Sizes */
+
+  /* Small */
+  --alt-core-card-checkbox-small-padding-y: var(--alt-core-size-spacing-4-x);
+  --alt-core-card-checkbox-small-padding-x: var(--alt-core-size-spacing-4-x);
+
+  /* Medium */
+  --alt-core-card-checkbox-medium-padding-y: var(--alt-core-size-spacing-5-x);
+  --alt-core-card-checkbox-medium-padding-x: var(--alt-core-size-spacing-5-x);
+
+  /* Large */
+  --alt-core-card-checkbox-large-padding-y: var(--alt-core-size-spacing-5-x);
+  --alt-core-card-checkbox-large-padding-x: var(--alt-core-size-spacing-5-x);
+}

@@ -1,0 +1,9 @@
+$component: $AltCoreDateRangeTagName;
+
+:host {
+  display: var(--alt-core-date-range-display);
+}
+
+.$(component) {
+  display: block;
+}

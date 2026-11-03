@@ -1,0 +1,6 @@
+:host {
+  --alt-core-text-field-display: block;
+
+  /* Sizes */
+  --alt-core-text-field-gap: var(--alt-core-size-spacing-x);
+}

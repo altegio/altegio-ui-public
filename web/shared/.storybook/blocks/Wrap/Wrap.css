@@ -1,0 +1,5 @@
+.sb-stories-wrap {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 32px;
+}

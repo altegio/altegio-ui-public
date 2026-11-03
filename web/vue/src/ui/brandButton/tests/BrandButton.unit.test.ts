@@ -1,0 +1,50 @@
+import { beforeAll, describe, expect, it } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { AltBrandButton } from '~vue/ui/brandButton'
+import { AltCoreBrandButton } from '~core/ui/brandButton'
+import { AltCoreBrandButtonTagName as tagName } from '~shared/constants'
+import {
+  propSizeTestCases,
+  propVariantTestCases,
+  propDisabledTestCases,
+  propTextTestCases,
+} from './cases/props'
+
+describe('Vue/AltBrandButton', () => {
+  beforeAll(() => {
+    if (!customElements.get(tagName)) {
+      customElements.define(tagName, AltCoreBrandButton)
+    }
+  })
+
+  describe('Props', () => {
+    for (const testCase of [
+      ...propSizeTestCases,
+      ...propVariantTestCases,
+      ...propDisabledTestCases,
+      ...propTextTestCases,
+    ]) {
+      it(`Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`, () => {
+        const wrapper = mount(AltBrandButton, { props: { [testCase.prop]: testCase.value } })
+
+        const coreElement = wrapper.find(tagName)
+        expect(coreElement.element[testCase.prop]).toBe(testCase.expected)
+      })
+    }
+  })
+
+  describe('Events', () => {
+    const eventTestCases = [{ eventName: 'click', emitEventName: 'click', case: 'on click' }]
+
+    for (const { eventName, emitEventName, case: eventCase } of eventTestCases) {
+      it(`Should emit "${emitEventName}" ${eventCase}`, async() => {
+        const wrapper = mount(AltBrandButton, { props: { text: 'DEFAULT' } })
+
+        const coreElement = wrapper.find(tagName)
+        await coreElement.trigger(eventName)
+
+        expect(wrapper.emitted()).toHaveProperty(emitEventName)
+      })
+    }
+  })
+})

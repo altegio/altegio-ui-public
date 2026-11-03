@@ -1,0 +1,55 @@
+:host {
+  /* General */
+  --alt-core-banner-display: block;
+  --alt-core-banner-font-family: var(--alt-core-font-family);
+  --alt-core-banner-gap: var(--alt-core-size-spacing-2-x);
+  --alt-core-banner-padding-x: var(--alt-core-size-spacing-4-x);
+  --alt-core-banner-padding-y: var(--alt-core-size-spacing-3-x);
+  --alt-core-banner-border-radius: var(--alt-core-size-radius-2-x);
+  --alt-core-banner-page-border-radius: 0;
+  --alt-core-banner-content-gap: var(--alt-core-size-spacing-x);
+  --alt-core-banner-actions-gap: var(--alt-core-size-spacing-2-x);
+  --alt-core-banner-actions-offset: var(--alt-core-size-spacing-3-x);
+  --alt-core-banner-icon-size: 16px;
+  --alt-core-banner-icon-offset: var(--alt-core-size-spacing-0-5-x);
+
+  /* Typography */
+  --alt-core-banner-title-font-size: var(--alt-core-typography-subhead-s-1-semibold-font-size);
+  --alt-core-banner-title-line-height: var(--alt-core-typography-subhead-s-1-semibold-line-height);
+  --alt-core-banner-title-font-weight: var(--alt-core-typography-subhead-s-1-semibold-font-weight);
+  --alt-core-banner-description-font-size: var(--alt-core-typography-paragraph-p-2-regular-font-size);
+  --alt-core-banner-description-line-height: var(--alt-core-typography-paragraph-p-2-regular-line-height);
+  --alt-core-banner-description-font-weight: var(--alt-core-typography-paragraph-p-2-regular-font-weight);
+
+  /* Close button */
+  --alt-core-banner-close-size: var(--alt-core-size-spacing-6-x);
+  --alt-core-banner-close-radius: var(--alt-core-size-radius-x);
+  --alt-core-banner-close-color: var(--alt-core-color-icon-secondary);
+  --alt-core-banner-close-hover-background-color: var(--alt-core-color-surface-secondary-high);
+  --alt-core-banner-close-invert-color: var(--alt-core-color-other-contrast);
+  --alt-core-banner-focus-outline-color: var(--alt-core-color-other-link);
+
+  /* Text */
+  --alt-core-banner-color: var(--alt-core-color-text-primary);
+  --alt-core-banner-invert-color: var(--alt-core-color-other-contrast);
+
+  /* Background */
+  --alt-core-banner-information-background-color: var(--alt-core-color-calm-surface-blue-low);
+  --alt-core-banner-success-background-color: var(--alt-core-color-calm-surface-green-low);
+  --alt-core-banner-warning-background-color: var(--alt-core-color-calm-surface-orange-low);
+  --alt-core-banner-danger-background-color: var(--alt-core-color-calm-surface-red-low);
+  --alt-core-banner-discovery-background-color: var(--alt-core-color-calm-surface-purple-low);
+  --alt-core-banner-accent-background-color: var(--alt-core-color-calm-surface-yellow-low);
+  --alt-core-banner-muted-background-color: var(--alt-core-color-surface-tertiary);
+  --alt-core-banner-invert-background-color: var(--alt-core-color-other-invert);
+
+  /* Icon */
+  --alt-core-banner-information-icon-color: var(--alt-core-color-calm-icon-blue);
+  --alt-core-banner-success-icon-color: var(--alt-core-color-calm-icon-green);
+  --alt-core-banner-warning-icon-color: var(--alt-core-color-calm-icon-orange);
+  --alt-core-banner-danger-icon-color: var(--alt-core-color-calm-icon-red);
+  --alt-core-banner-discovery-icon-color: var(--alt-core-color-calm-icon-purple);
+  --alt-core-banner-accent-icon-color: var(--alt-core-color-calm-icon-yellow);
+  --alt-core-banner-muted-icon-color: var(--alt-core-color-icon-secondary);
+  --alt-core-banner-invert-icon-color: var(--alt-core-color-other-contrast);
+}

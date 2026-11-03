@@ -1,0 +1,15 @@
+$component: $AltCoreDropdownCellTextTagName;
+
+.$(component) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--alt-core-cell-text-gap);
+
+  &__subtitle {
+    ::slotted(*) {
+      display: flex;
+      flex-direction: column;
+      gap: var(--alt-core-cell-text-subtitle-gap);
+    }
+  }
+}

@@ -1,0 +1,43 @@
+:host {
+  /* General */
+  --alt-core-field-wrapper-border-width: 1px;
+
+  /* State colors */
+
+  /* Default */
+  --alt-core-field-wrapper-border-color: var(--alt-core-color-stroke-primary);
+  --alt-core-field-wrapper-default-hover-border-color: var(--alt-core-color-stroke-primary-high);
+  --alt-core-field-wrapper-default-background-color: var(--alt-core-color-surface-primary);
+  --alt-core-field-wrapper-default-color: var(--alt-core-color-text-primary);
+
+  /* Disabled */
+  --alt-core-field-wrapper-disabled-border-color: var(--alt-core-color-stroke-primary);
+  --alt-core-field-wrapper-disabled-background-color: var(--alt-core-color-surface-primary-high);
+  --alt-core-field-wrapper-disabled-color: var(--alt-core-color-text-tertiary);
+
+  /* Readonly */
+  --alt-core-field-wrapper-readonly-background-color: var(--alt-core-color-surface-primary-high);
+
+  /* Focused */
+  --alt-core-field-wrapper-focused-border-color: var(--alt-core-color-stroke-accent);
+
+  /* Error */
+  --alt-core-field-wrapper-error-border-color: var(--alt-core-color-stroke-negative);
+
+  /* Sizes */
+
+  /* Small */
+  --alt-core-field-wrapper-size-small-font-size: var(--alt-core-typography-paragraph-p-2-regular-font-size);
+  --alt-core-field-wrapper-size-small-line-height: var(--alt-core-typography-paragraph-p-2-regular-line-height);
+  --alt-core-field-wrapper-size-small-border-radius: var(--alt-core-size-radius-2-x);
+
+  /* Medium */
+  --alt-core-field-wrapper-size-medium-font-size: var(--alt-core-typography-paragraph-p-1-regular-font-size);
+  --alt-core-field-wrapper-size-medium-line-height: var(--alt-core-typography-paragraph-p-1-regular-line-height);
+  --alt-core-field-wrapper-size-medium-border-radius: var(--alt-core-size-radius-2-5-x);
+
+  /* Large */
+  --alt-core-field-wrapper-size-large-font-size: var(--alt-core-typography-paragraph-p-1-regular-font-size);
+  --alt-core-field-wrapper-size-large-line-height: var(--alt-core-typography-paragraph-p-1-regular-line-height);
+  --alt-core-field-wrapper-size-large-border-radius: var(--alt-core-size-radius-3-x);
+}

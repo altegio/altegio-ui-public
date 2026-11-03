@@ -1,0 +1,67 @@
+@import url('../../../assets/css/mixins/a11y.css');
+
+$component: $AltCoreDropdownCellTagName;
+
+:host {
+  display: block;
+}
+
+/* A menu item that has keyboard focus */
+:host(:focus-visible) {
+  outline: none;
+}
+
+:host(:focus-visible) .$(component) {
+  @mixin alt-focus-ring;
+
+  outline-offset: calc(var(--alt-core-focus-ring-width, 2px) * -1);
+  background-color: var(--alt-core-dropdown-cell-default-hover-background-color);
+}
+
+/* The option that has visual focus in a listbox while DOM focus stays in the combobox input */
+:host([data-active]) .$(component) {
+  @mixin alt-focus-ring;
+
+  outline-offset: calc(var(--alt-core-focus-ring-width, 2px) * -1);
+  background-color: var(--alt-core-dropdown-cell-default-hover-background-color);
+}
+
+.$(component) {
+  display: flex;
+  align-items: center;
+  width: var(--alt-core-dropdown-cell-default-width);
+  padding: var(--alt-core-dropdown-cell-padding-y) var(--alt-core-dropdown-cell-padding-x);
+  font-family: var(--alt-core-font-family);
+  font-size: var(--alt-core-dropdown-cell-size-p2-regular-font-size);
+  font-weight: var(--alt-core-dropdown-cell-size-p2-regular-font-weight);
+  line-height: var(--alt-core-dropdown-cell-size-p2-regular-line-height);
+  color: var(--alt-core-dropdown-cell-default-color);
+  cursor: pointer;
+  background-color: var(--alt-core-dropdown-cell-default-background-color);
+
+  &:hover {
+    background-color: var(--alt-core-dropdown-cell-default-hover-background-color);
+  }
+  
+  &__prepend {
+    display: flex;
+    align-items: center;
+    padding-right: var(--alt-core-dropdown-cell-padding-left-content);
+
+    &_hidden {
+      display: none;
+    }
+  }
+  
+  &__append {
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: var(--alt-core-dropdown-cell-padding-right-content);
+
+    &_hidden {
+      display: none;
+    }
+  }
+}

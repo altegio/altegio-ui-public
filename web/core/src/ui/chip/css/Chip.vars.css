@@ -1,0 +1,29 @@
+:host {
+  /* General */
+  --alt-core-chip-border-radius: var(--alt-core-size-radius-2-x);
+  
+  /* Sizes */
+
+  /* Small */
+  --alt-core-chip-size-small-gap: var(--alt-core-size-spacing-x);
+  --alt-core-chip-size-small-padding-y: var(--alt-core-size-spacing-2-x);
+  --alt-core-chip-size-small-padding-x: var(--alt-core-size-spacing-2-x);
+
+  /* Large */
+  --alt-core-chip-size-large-gap: var(--alt-core-size-spacing-2-x);
+  --alt-core-chip-size-large-padding-y: var(--alt-core-size-spacing-3-x);
+  --alt-core-chip-size-large-padding-x: var(--alt-core-size-spacing-3-x);
+  
+  /* Colors */
+
+  /* Text color */
+  --alt-core-chip-color-default: var(--alt-core-color-icon-secondary);
+  --alt-core-chip-color-active: var(--alt-core-color-other-contrast);
+  --alt-core-chip-color-disabled: var(--alt-core-color-text-tertiary);
+  
+  /* Background color */
+  --alt-core-chip-bg-default: var(--alt-core-color-surface-tertiary);
+  --alt-core-chip-bg-active: var(--alt-core-color-other-invert);
+  --alt-core-chip-bg-disabled: var(--alt-core-color-surface-tertiary-low);
+  --alt-core-chip-bg-hover: var(--alt-core-color-surface-tertiary-high);
+}

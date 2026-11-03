@@ -1,0 +1,9 @@
+$component: $AltCoreSimpleButtonTagName;
+
+:host .$(component) {
+  /* General */
+  --alt-core-simple-button-size-small-padding-x: var(--alt-core-simple-button-size-small-padding-y);
+  --alt-core-simple-button-size-medium-padding-x: var(--alt-core-size-spacing-3-x);
+  --alt-core-simple-button-size-medium-padding-y: var(--alt-core-size-spacing-3-x);
+  --alt-core-simple-button-size-large-padding-x: var(--alt-core-simple-button-size-large-padding-y);
+}

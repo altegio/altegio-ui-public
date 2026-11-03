@@ -1,0 +1,17 @@
+:host {
+  /* General sizes */
+  --alt-core-checkbox-max-width: 600px;
+  --alt-core-checkbox-x-gap: var(--alt-core-size-spacing-2-x);
+  --alt-core-checkbox-info-gap: var(--alt-core-size-spacing-0-5-x);
+
+  /* Error message */
+
+  /* General */
+  --alt-core-checkbox-error-margin-top: var(--alt-core-size-spacing-0-5-x);
+
+  /* Small */
+  --alt-core-checkbox-small-error-margin-left: var(--alt-core-size-spacing-7-x);
+
+  /* Medium */
+  --alt-core-checkbox-medium-error-margin-left: var(--alt-core-size-spacing-8-x);
+}
