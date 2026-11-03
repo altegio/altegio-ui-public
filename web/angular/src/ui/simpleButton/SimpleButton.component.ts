@@ -3,7 +3,7 @@ import '~core/ui/simpleButton'
 import { createNgSimpleButtonProps, type IAltNgSimpleButtonProps } from '~ng/ui/simpleButton/models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 
-const { size, variant, disabled, loading, href, target, hostStyles, alignment, fullWidth, loaderVariant, accessibleName } = createNgSimpleButtonProps()
+const { size, variant, disabled, loading, href, target, hostStyles, alignment, fullWidth, type, loaderVariant, accessibleName } = createNgSimpleButtonProps()
 
 @Component({
   selector: 'AltSimpleButton',
@@ -20,6 +20,7 @@ const { size, variant, disabled, loading, href, target, hostStyles, alignment, f
       [alignment]="alignment"
       [target]="target"
       [fullWidth]="fullWidth"
+      [type]="type"
       [hostStyles]="hostStyles"
     >
       <ng-content>
@@ -37,6 +38,7 @@ export class AltSimpleButton implements IAltNgSimpleButtonProps {
   @Input() @DefaultValue(target) target: IAltNgSimpleButtonProps['target'] = target
   @Input() @DefaultValue(alignment) alignment: IAltNgSimpleButtonProps['alignment'] = alignment
   @Input() @DefaultValue(fullWidth) fullWidth: IAltNgSimpleButtonProps['fullWidth'] = fullWidth
+  @Input() @DefaultValue(type) type: IAltNgSimpleButtonProps['type'] = type
   @Input() @DefaultValue(hostStyles) hostStyles: IAltNgSimpleButtonProps['hostStyles'] = hostStyles
   @Input() @DefaultValue(loaderVariant) loaderVariant: IAltNgSimpleButtonProps['loaderVariant'] = loaderVariant
 }

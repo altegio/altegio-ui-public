@@ -11,6 +11,7 @@ import { EAltSizes } from '~shared/types/global'
 import {
   EAltCoreSimpleButtonVariant,
   EAltCoreSimpleButtonContentAlignment,
+  EAltCoreSimpleButtonType,
   createCoreSimpleButtonExternalProps,
   createCoreSimpleButtonInternalProps,
   type IAltCoreSimpleButtonProps,
@@ -44,7 +45,7 @@ import { EAltCoreLoaderVariant } from '../../loader/models/types'
 
 const sizes = [EAltSizes.SMALL, EAltSizes.MEDIUM, EAltSizes.LARGE] as const
 
-const { variant, hostStyles, disabled, loading, target, href, alignment, fullWidth, size, loaderVariant } = {
+const { variant, hostStyles, disabled, loading, target, href, alignment, fullWidth, type, size, loaderVariant } = {
   ...createCoreSimpleButtonExternalProps(),
   ...createCoreSimpleButtonInternalProps(),
 }
@@ -168,6 +169,13 @@ const meta: TSimpleButtonStoryMeta = {
       type: 'boolean',
       description: '**Full width**\n\nWhen `true`, the button fills the available width of its parent container.',
       ...getComponentStateTable(fullWidth),
+    },
+    type: {
+      control: { type: 'select' },
+      description:
+        '**Button type in a form**\n\n- `button`: does nothing in the form\n- `submit`: submits the `<form>` around the button\n- `reset`: resets the `<form>` around the button\n\nA disabled or loading button and a link do nothing.',
+      options: Object.values(EAltCoreSimpleButtonType),
+      ...getComponentStateTable(type),
     },
     // Props for link mode
     href: {

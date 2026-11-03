@@ -12,6 +12,7 @@ import { AltCoreFormTagName as tagName } from '~shared/constants'
 import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
 import { withLocator } from '~core/utils/locator'
 import { booleanConverter } from '~core/utils/converters'
+import { FORM_BUTTON_TYPES } from '~core/utils/form-button'
 
 import AltCoreFormVarsCss from '~core/ui/form/css/Form.vars.css?inline'
 import AltCoreFormScopedCss from '~core/ui/form/css/Form.scoped.css?inline'
@@ -53,7 +54,34 @@ const submitsWithEnter = (origin: EventTarget | undefined) => origin instanceof 
 
 const isNativeFormControl = (element: Element) => element instanceof HTMLButtonElement || element instanceof HTMLInputElement
 
+/**
+ * Whether the element submits or resets the form itself on click: AltButton and AltSimpleButton with a `type`
+ * @param element - Element on the click path
+ * @returns {boolean} Whether the form should leave the click to the element
+ */
+const activatesForm = (element: EventTarget) => element instanceof HTMLElement &&
+  !isNativeFormControl(element) &&
+  FORM_BUTTON_TYPES.has(String((element as { type?: unknown }).type))
+
 const isBusy = (element: EventTarget) => (element as { disabled?: unknown }).disabled === true || (element as { loading?: unknown }).loading === true
+
+const hasTypeAttribute = (target: EventTarget): target is Element => target instanceof Element &&
+  FORM_BUTTON_TYPES.has(target.getAttribute('type') ?? '') &&
+  !isNativeFormControl(target)
+
+/**
+ * Finds the button the form submits or resets for: an Altegio UI button with only the `type` attribute
+ * @param path - Path of the click
+ * @returns {Element | undefined} The button, unless it acted on the form itself or is disabled or loading
+ */
+const getTypeAttributeButton = (path: EventTarget[]) => {
+  const index = path.findIndex(hasTypeAttribute)
+  const buttonPath = path.slice(0, index + 1)
+
+  return index < 0 || buttonPath.some(activatesForm) || buttonPath.some(isBusy)
+    ? undefined
+    : path[index] as Element
+}
 
 /**
  * Fields stop the native `keydown` and fire their own with the original in `detail.event`
@@ -83,8 +111,9 @@ const isValid = (control: IFormControl) => {
  * A submit with invalid fields moves focus to the first one and fires `form-invalid`; a valid one fires
  * `form-submit` with the `FormData` instead of navigating. Resetting the form restores the values and hides the messages.
  *
- * As in a native form, Enter in a single-line field submits. Buttons rendered in shadow DOM cannot submit a form
- * themselves, so an Altegio UI button with the `type="submit"` or `type="reset"` attribute does it through the form.
+ * As in a native form, Enter in a single-line field submits, and `AltButton` / `AltSimpleButton` with
+ * `type="submit"` or `type="reset"` submit or reset it. Other Altegio UI buttons, such as `AltIconButton`, do the same
+ * through the form when they have the `type` attribute.
  */
 @customElement(tagName)
 @withLocator(tagName)
@@ -213,12 +242,8 @@ export class AltCoreForm
   }
 
   private readonly handleClick = (event: MouseEvent) => {
-    const path = event.composedPath()
-    const button = path.find((target): target is Element => target instanceof Element &&
-      ['submit', 'reset'].includes(target.getAttribute('type') ?? '') &&
-      !isNativeFormControl(target))
-
-    if (!button || !this.form?.contains(button) || path.slice(0, path.indexOf(button) + 1).some(isBusy)) return
+    const button = getTypeAttributeButton(event.composedPath())
+    if (!button || !this.form?.contains(button)) return
 
     if (button.getAttribute('type') === 'submit') {
       this.submit()

@@ -12,7 +12,7 @@ import { AltCoreButton } from '~core/ui/button'
 import { AltCoreButtonTagName } from '~web/shared/constants'
 import { defineCustomElement } from '~web/shared/utils/components'
 
-const { disabled, href, iconLeft, iconRight, label, loading, size, target, alignment, variant, fullWidth, accessibleName } = createNgButtonProps()
+const { disabled, href, iconLeft, iconRight, label, loading, size, target, alignment, variant, fullWidth, type, accessibleName } = createNgButtonProps()
 
 defineCustomElement(AltCoreButtonTagName, AltCoreButton)
 
@@ -32,6 +32,7 @@ defineCustomElement(AltCoreButtonTagName, AltCoreButton)
       [loading]="loading"
       [alignment]="alignment"
       [attr.full-width]="fullWidth"
+      [type]="type"
       [iconLeft]="iconLeft"
       [iconRight]="iconRight"
     >
@@ -49,6 +50,7 @@ export class AltButton implements IAltNgButtonProps {
   @Input() @DefaultValue(loading) loading: IAltNgButtonProps['loading'] = loading
   @Input() @DefaultValue(fullWidth) fullWidth: IAltNgButtonProps['fullWidth'] = fullWidth
   @Input() @DefaultValue(alignment) alignment: IAltNgButtonProps['alignment'] = alignment
+  @Input() @DefaultValue(type) type: IAltNgButtonProps['type'] = type
   @Input() @DefaultValue(iconLeft) iconLeft: IAltNgButtonProps['iconLeft'] = iconLeft
   @Input() @DefaultValue(iconRight) iconRight: IAltNgButtonProps['iconRight'] = iconRight
 }

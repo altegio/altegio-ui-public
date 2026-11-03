@@ -24,8 +24,9 @@ import { interceptEvents } from '~core/utils/event-interceptor'
 import { booleanConverter } from '~core/utils/converters'
 import { defineCustomElement } from '~web/shared/utils/components'
 import { withLocator } from '~core/utils/locator'
+import { activateFormButton } from '~core/utils/form-button'
 
-const { disabled, href, loading, size, variant, target, alignment, hostStyles, fullWidth, loaderVariant, accessibleName, accessibleCurrent } = createCoreSimpleButtonProps()
+const { disabled, href, loading, size, variant, target, alignment, type, hostStyles, fullWidth, loaderVariant, accessibleName, accessibleCurrent } = createCoreSimpleButtonProps()
 
 @customElement(tagName)
 @interceptEvents()
@@ -38,6 +39,7 @@ export class AltCoreSimpleButton extends LitElement implements IAltCoreSimpleBut
   @property({ type: String }) href: IAltCoreSimpleButtonProps['href'] = href
   @property({ type: String }) target: IAltCoreSimpleButtonProps['target'] = target
   @property({ type: String }) alignment: IAltCoreSimpleButtonProps['alignment'] = alignment
+  @property({ type: String }) type: IAltCoreSimpleButtonProps['type'] = type
   @property({ type: Boolean, attribute: 'full-width' }) fullWidth: IAltCoreSimpleButtonProps['fullWidth'] = fullWidth
   @property({ type: String, attribute: 'host-styles' }) hostStyles: IAltCoreSimpleButtonProps['hostStyles'] = hostStyles
   @property({ type: String, attribute: 'loader-variant' }) loaderVariant: IAltCoreSimpleButtonProps['loaderVariant'] = loaderVariant
@@ -117,6 +119,10 @@ export class AltCoreSimpleButton extends LitElement implements IAltCoreSimpleBut
   }
 
 
+  private readonly handleClick = () => {
+    activateFormButton(this)
+  }
+
   protected firstUpdated(): void {
     defineCustomElement(AltCoreLoaderTagName, AltCoreLoader)
   }
@@ -146,6 +152,7 @@ export class AltCoreSimpleButton extends LitElement implements IAltCoreSimpleBut
             aria-current=${ifDefined(this.accessibleCurrent)}
             aria-busy=${ifDefined(this.ariaBusyValue)}
             ?disabled=${this.disabled}
+            @click=${this.handleClick}
           >
             ${this.renderButtonContent()}
           </button>`

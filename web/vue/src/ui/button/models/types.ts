@@ -16,13 +16,14 @@ export interface IAltVueButtonProps {
   alignment?: IAltVueCoreButtonProps['alignment']
   fullWidth?: IAltVueCoreButtonProps['fullWidth']
   target?: IAltVueCoreButtonProps['target']
+  type?: IAltVueCoreButtonProps['type']
   iconLeft?: IAltVueCoreButtonProps['iconLeft']
   iconRight?: IAltVueCoreButtonProps['iconRight']
   accessibleName?: IAltVueCoreButtonProps['accessibleName']
 }
 
 export const createVueButtonProps = (): TDefinedVueProps<IAltVueButtonProps> => {
-  const { disabled, href, iconLeft, iconRight, label, loading, size, variant, target, alignment, fullWidth, accessibleName } = createCoreButtonProps()
+  const { disabled, href, iconLeft, iconRight, label, loading, size, variant, target, alignment, fullWidth, type, accessibleName } = createCoreButtonProps()
   return {
     disabled,
     href,
@@ -33,6 +34,7 @@ export const createVueButtonProps = (): TDefinedVueProps<IAltVueButtonProps> => 
     target,
     alignment,
     fullWidth,
+    type,
     iconLeft: iconLeft
       ? () => iconLeft
       : undefined,

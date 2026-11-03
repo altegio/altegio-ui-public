@@ -67,6 +67,11 @@ const propAccessibleNameTestCases: TPropTestCase<IAltVueButtonProps, 'accessible
   { prop: 'accessibleName', case: 'undefined', value: undefined, expected: undefined },
 ]
 
+const propTypeTestCases: TPropTestCase<IAltVueButtonProps, 'type'>[] = [
+  { prop: 'type', case: 'submit', value: 'submit', expected: 'submit' },
+  { prop: 'type', case: 'undefined', value: undefined, expected: 'button' },
+]
+
 describe(
   'Vue/AltCoreButton',
   () => {
@@ -85,6 +90,7 @@ describe(
         for (const testCase of [
           ...propLabelTestCases,
           ...propAccessibleNameTestCases,
+          ...propTypeTestCases,
         ]) {
           it(
             `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,

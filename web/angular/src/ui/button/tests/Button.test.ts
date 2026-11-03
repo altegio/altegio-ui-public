@@ -40,6 +40,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
         [iconRight]="iconRight"
         [fullWidth]="fullWidth"
         [accessibleName]="accessibleName"
+        [type]="type"
       />`,
     imports: [AltButton],
     standalone: true,
@@ -56,6 +57,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
     iconRight = props?.iconRight
     fullWidth = props?.fullWidth
     accessibleName = props?.accessibleName
+    type = props?.type
   }
   return TestComponent
 }
@@ -132,6 +134,11 @@ const propAccessibleNameTestCases: TPropTestCase<IAltNgButtonProps, 'accessibleN
   { prop: 'accessibleName', case: 'undefined', value: undefined, expected: undefined },
 ]
 
+const propTypeTestCases: TPropTestCase<IAltNgButtonProps, 'type'>[] = [
+  { prop: 'type', case: 'submit', value: 'submit', expected: 'submit' },
+  { prop: 'type', case: 'undefined', value: undefined, expected: 'button' },
+]
+
 describe(
   'Angular/AltButton',
   () => {
@@ -141,6 +148,7 @@ describe(
         for (const testCase of [
           ...propLabelTestCases,
           ...propAccessibleNameTestCases,
+          ...propTypeTestCases,
         ]) {
           it(
             `Prop "${testCase.prop}" should set ${testCase.prop} on the core component to "${testCase.case}"`,

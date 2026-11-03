@@ -16,13 +16,14 @@ export interface IAltVueSimpleButtonProps {
   target?: IAltVueCoreSimpleButtonProps['target']
   alignment?: IAltVueCoreSimpleButtonProps['alignment']
   fullWidth?: IAltVueCoreSimpleButtonProps['fullWidth']
+  type?: IAltVueCoreSimpleButtonProps['type']
   hostStyles?: IAltVueCoreSimpleButtonProps['hostStyles']
   loaderVariant?: IAltVueCoreSimpleButtonProps['loaderVariant']
   accessibleName?: IAltVueCoreSimpleButtonProps['accessibleName']
 }
 
 export const createVueSimpleButtonProps = (): TDefinedVueProps<IAltVueSimpleButtonProps> => {
-  const { size, variant, disabled, loading, href, target, alignment, fullWidth, hostStyles, loaderVariant, accessibleName } = createCoreSimpleButtonProps()
+  const { size, variant, disabled, loading, href, target, alignment, fullWidth, type, hostStyles, loaderVariant, accessibleName } = createCoreSimpleButtonProps()
 
   return {
     size,
@@ -33,6 +34,7 @@ export const createVueSimpleButtonProps = (): TDefinedVueProps<IAltVueSimpleButt
     target,
     alignment,
     fullWidth,
+    type,
     hostStyles,
     loaderVariant,
     accessibleName,

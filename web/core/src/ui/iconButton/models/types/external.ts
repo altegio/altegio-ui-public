@@ -5,7 +5,7 @@ import {
   createCoreSimpleButtonExternalProps,
 } from '~core/ui/simpleButton/models/types'
 
-export interface IAltCoreIconButtonExternalProps extends Omit<IAltCoreSimpleButtonExternalProps, 'hostStyles' | 'alignment'> {
+export interface IAltCoreIconButtonExternalProps extends Omit<IAltCoreSimpleButtonExternalProps, 'hostStyles' | 'alignment' | 'type'> {
   icon: IAltIcon | undefined
 }
 

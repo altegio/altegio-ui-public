@@ -10,6 +10,7 @@ import '~core/ui/form'
 import '~core/ui/textField'
 import '~core/ui/checkbox'
 import '~core/ui/button'
+import '~core/ui/iconButton'
 
 const FIELDS = `
   <alt-core-text-field name="name" required></alt-core-text-field>
@@ -119,6 +120,23 @@ describe('Core/AltCoreForm/Accessibility', () => {
     await clickButton(submitButton)
     await vi.waitFor(() => { expect(onSubmit).toHaveBeenCalledTimes(2) })
     expect(onInvalid).not.toHaveBeenCalled()
+  })
+
+  it('submits once through a button with the type attribute only', async() => {
+    const { altForm, name, terms, onSubmit } = await mountForm()
+    name.value = 'Anna'
+    terms.checked = true
+    const iconButton = document.createElement('alt-core-icon-button')
+    Object.assign(iconButton, { accessibleName: 'Send' })
+    iconButton.setAttribute('type', 'submit')
+    altForm.form!.append(iconButton)
+    await waitForLitTree(altForm)
+
+    await clickButton(iconButton)
+    await vi.waitFor(() => { expect(onSubmit).toHaveBeenCalledTimes(1) })
+    await waitForLitTree(altForm)
+
+    expect(onSubmit).toHaveBeenCalledTimes(1)
   })
 
   it('counts a field with its own errors as invalid', async() => {

@@ -12,7 +12,7 @@ export interface IAltCoreButtonExternalProps extends IAltCoreSimpleButtonExterna
 }
 
 export const createCoreButtonExternalProps = (): IAltCoreButtonExternalProps => {
-  const { disabled, loading, size, variant, href, target, alignment, fullWidth, accessibleName } = createCoreSimpleButtonExternalProps()
+  const { disabled, loading, size, variant, href, target, alignment, fullWidth, type, accessibleName } = createCoreSimpleButtonExternalProps()
   return {
     disabled,
     loading,
@@ -22,6 +22,7 @@ export const createCoreButtonExternalProps = (): IAltCoreButtonExternalProps => 
     target,
     alignment,
     fullWidth,
+    type,
     accessibleName,
     label: undefined,
     iconLeft: undefined,
@@ -31,3 +32,4 @@ export const createCoreButtonExternalProps = (): IAltCoreButtonExternalProps => 
 
 export { EAltCoreSimpleButtonVariant as EAltCoreButtonVariant } from '~core/ui/simpleButton/models/types'
 export { EAltCoreSimpleButtonContentAlignment as EAltCoreButtonContentAlignment } from '~core/ui/simpleButton/models/types'
+export { EAltCoreSimpleButtonType as EAltCoreButtonType } from '~core/ui/simpleButton/models/types'

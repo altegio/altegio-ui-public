@@ -14,8 +14,15 @@ export enum EAltCoreSimpleButtonContentAlignment {
   END = 'end',
 }
 
+export enum EAltCoreSimpleButtonType {
+  BUTTON = 'button',
+  SUBMIT = 'submit',
+  RESET = 'reset',
+}
+
 export type TAltCoreSimpleButtonVariant = `${EAltCoreSimpleButtonVariant}`
 export type TAltCoreSimpleButtonContentAlignment = `${EAltCoreSimpleButtonContentAlignment}`
+export type TAltCoreSimpleButtonType = `${EAltCoreSimpleButtonType}`
 
 export interface IAltCoreSimpleButtonExternalProps {
   size: Extract<TAltSizes, 'small' | 'medium' | 'large'> | undefined
@@ -26,6 +33,9 @@ export interface IAltCoreSimpleButtonExternalProps {
   href: string | undefined
   target: TAnchorTarget | undefined
   alignment: TAltCoreSimpleButtonContentAlignment | undefined
+
+  /** What the button does in the `<form>` around it: nothing (`button`), submits it (`submit`) or resets it (`reset`) */
+  type: TAltCoreSimpleButtonType | undefined
 
   /** Accessible name of the button; required when it shows only an icon */
   accessibleName: string | undefined
@@ -41,6 +51,7 @@ export const createCoreSimpleButtonExternalProps = (): IAltCoreSimpleButtonExter
     href: undefined,
     target: undefined,
     alignment: EAltCoreSimpleButtonContentAlignment.CENTER,
+    type: EAltCoreSimpleButtonType.BUTTON,
     accessibleName: undefined,
   }
 }

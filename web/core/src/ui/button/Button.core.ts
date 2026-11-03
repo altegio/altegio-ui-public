@@ -23,8 +23,9 @@ import { booleanConverter } from '~core/utils/converters'
 import { defineCustomElement } from '~web/shared/utils/components'
 import { AltCoreSimpleButton } from '~core/ui/simpleButton'
 import { withLocator } from '~core/utils/locator'
+import { activateFormButton } from '~core/utils/form-button'
 
-const { disabled, href, iconLeft, iconRight, label, loading, size, variant, target, alignment, fullWidth, accessibleName } = createCoreButtonProps()
+const { disabled, href, iconLeft, iconRight, label, loading, size, variant, target, alignment, fullWidth, type, accessibleName } = createCoreButtonProps()
 
 @customElement(tagName)
 @interceptEvents()
@@ -38,6 +39,7 @@ export class AltCoreButton extends LitElement implements IAltCoreButtonProps {
   @property({ type: String }) href: IAltCoreButtonProps['href'] = href
   @property({ type: String }) target: IAltCoreButtonProps['target'] = target
   @property({ type: String, reflect: true }) alignment: IAltCoreButtonProps['alignment'] = alignment
+  @property({ type: String }) type: IAltCoreButtonProps['type'] = type
   @property({ type: Object, attribute: 'icon-left' }) iconLeft: IAltCoreButtonProps['iconLeft'] = iconLeft
   @property({ type: Object, attribute: 'icon-right' }) iconRight: IAltCoreButtonProps['iconRight'] = iconRight
   @property({ type: Boolean, reflect: true, attribute: 'full-width', converter: booleanConverter }) fullWidth: IAltCoreButtonProps['fullWidth'] = fullWidth
@@ -77,6 +79,11 @@ export class AltCoreButton extends LitElement implements IAltCoreButtonProps {
   }
 
 
+  // The inner button is in shadow DOM, so the button acts on the form around it itself
+  private readonly handleClick = () => {
+    activateFormButton(this)
+  }
+
   protected firstUpdated(): void {
     defineCustomElement(AltCoreSimpleButtonTagName, AltCoreSimpleButton)
   }
@@ -94,6 +101,7 @@ export class AltCoreButton extends LitElement implements IAltCoreButtonProps {
         .loading=${this.loading}
         .fullWidth=${this.fullWidth}
         .accessibleName=${this.accessibleName}
+        @click=${this.handleClick}
       >
         ${renderIcon({ icon: this.iconLeft, size: this.computedIconSize, className: `${this.baseClass}__icon-left` })}
 
