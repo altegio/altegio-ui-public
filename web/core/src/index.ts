@@ -83,6 +83,8 @@ export * from './ui/breadcrumbs'
 export * from './ui/breadcrumbsItem'
 export * from './ui/stepper'
 export * from './ui/step'
+export * from './ui/scrollArea'
+export * from './ui/virtualScroll'
 export * from './ui/countField'
 export * from './ui/modal'
 export * from './ui/functionalModal'
@@ -186,6 +188,8 @@ import type {
   AltCoreBreadcrumbsItemTagName,
   AltCoreStepperTagName,
   AltCoreStepTagName,
+  AltCoreScrollAreaTagName,
+  AltCoreVirtualScrollTagName,
 } from '../../shared/constants'
 
 import type {
@@ -278,6 +282,8 @@ import type {
   AltCoreBreadcrumbsItem,
   AltCoreStepper,
   AltCoreStep,
+  AltCoreScrollArea,
+  AltCoreVirtualScroll,
 } from '../../core/src/'
 
 declare global {
@@ -374,5 +380,7 @@ declare global {
     [AltCoreBreadcrumbsItemTagName]: AltCoreBreadcrumbsItem
     [AltCoreStepperTagName]: AltCoreStepper
     [AltCoreStepTagName]: AltCoreStep
+    [AltCoreScrollAreaTagName]: AltCoreScrollArea
+    [AltCoreVirtualScrollTagName]: AltCoreVirtualScroll
   }
 }

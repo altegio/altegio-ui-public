@@ -1,0 +1,35 @@
+@import url('../../../assets/css/mixins/a11y.css');
+@import url('../../../assets/css/mixins/scrollbar.css');
+
+$component: $AltCoreScrollAreaTagName;
+
+:host {
+  display: var(--alt-core-scroll-area-display);
+  min-height: 0;
+}
+
+.$(component) {
+  @mixin alt-scrollbar;
+
+  box-sizing: border-box;
+  height: 100%;
+  max-height: inherit;
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+  outline: none;
+  border-radius: var(--alt-core-scroll-area-border-radius);
+
+  &:focus-visible {
+    @mixin alt-focus-ring;
+
+    outline-offset: calc(var(--alt-core-focus-ring-width, 2px) * -1);
+  }
+}
+
+:host([orientation='horizontal']) .$(component) {
+  overflow: auto hidden;
+}
+
+:host([orientation='both']) .$(component) {
+  overflow: auto;
+}

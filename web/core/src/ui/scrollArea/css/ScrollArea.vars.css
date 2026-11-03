@@ -1,0 +1,5 @@
+:host {
+  /* General */
+  --alt-core-scroll-area-display: block;
+  --alt-core-scroll-area-border-radius: var(--alt-core-size-radius-x);
+}

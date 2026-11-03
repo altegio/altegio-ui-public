@@ -54,5 +54,7 @@ export * from './ui/breadcrumbs'
 export * from './ui/breadcrumbsItem'
 export * from './ui/stepper'
 export * from './ui/step'
+export * from './ui/scrollArea'
+export * from './ui/virtualScroll'
 
 export { BREAKPOINTS } from '~shared/constants/breakpoints'
