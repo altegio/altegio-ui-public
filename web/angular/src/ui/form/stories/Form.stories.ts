@@ -12,7 +12,8 @@ import altCoreFormStoryMeta from '~core/ui/form/stories/Form.stories'
  *
  * `(formSubmit)` emits `{ formData, submitter }` after a valid submit, `(validationError)` the invalid fields in
  * `controls`, `(formReset)` fires after a reset. Use `validate()` (a promise of a boolean), `resetValidation()`,
- * `submit()` and `reset()` through a `@ViewChild`. Give `AltButton` `type="submit"` or `type="reset"`.
+ * `submit()` and `reset()` through a `@ViewChild`.
+ * Give `AltButton`, `AltIconButton` or `AltBrandButton` `type="submit"` or `type="reset"`.
  * Keep `[formGroup]` off `<AltForm>`: put Angular forms directives on the fields.
  */
 const meta: Meta<AltForm> = {

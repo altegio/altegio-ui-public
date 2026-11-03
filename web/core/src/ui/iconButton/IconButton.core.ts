@@ -19,8 +19,9 @@ import '~core/ui/simpleButton'
 import { interceptEvents } from '~core/utils/event-interceptor'
 import { booleanConverter } from '~core/utils/converters'
 import { withLocator } from '~core/utils/locator'
+import { activateFormButton } from '~core/utils/form-button'
 
-const { disabled, href, icon, loading, size, variant, target, fullWidth, accessibleName } = createCoreIconButtonProps()
+const { disabled, href, icon, loading, size, variant, target, fullWidth, type, accessibleName } = createCoreIconButtonProps()
 
 @customElement(tagName)
 @interceptEvents()
@@ -32,6 +33,7 @@ export class AltCoreIconButton extends LitElement implements IAltCoreIconButtonP
   @property({ type: Boolean, reflect: true, converter: booleanConverter }) loading: IAltCoreIconButtonProps['loading'] = loading
   @property({ type: String }) href: IAltCoreIconButtonProps['href'] = href
   @property({ type: String }) target: IAltCoreIconButtonProps['target'] = target
+  @property({ type: String }) type: IAltCoreIconButtonProps['type'] = type
   @property({ type: Object }) icon: IAltCoreIconButtonProps['icon'] = icon
   @property({ type: Boolean, attribute: 'full-width' }) fullWidth: IAltCoreIconButtonProps['fullWidth'] = fullWidth
   @property({ type: String, attribute: 'accessible-name' }) accessibleName: IAltCoreIconButtonProps['accessibleName'] = accessibleName
@@ -54,6 +56,10 @@ export class AltCoreIconButton extends LitElement implements IAltCoreIconButtonP
       : '16px'
   }
 
+  // The inner button is in shadow DOM, so the button acts on the form around it itself
+  private readonly handleClick = () => {
+    activateFormButton(this)
+  }
 
   protected render() {
     return html`
@@ -68,6 +74,7 @@ export class AltCoreIconButton extends LitElement implements IAltCoreIconButtonP
         .accessibleName=${this.accessibleName}
         .hostStyles=${AltCoreIconButtonVarsCSS}
         class=${this.baseClass}
+        @click=${this.handleClick}
       >
         ${renderIcon({ icon: this.icon, size: this.computedIconSize })}
       </alt-core-simple-button>

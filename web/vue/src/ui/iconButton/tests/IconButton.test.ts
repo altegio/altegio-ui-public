@@ -34,6 +34,21 @@ describe(
           },
         )
 
+        it.each([
+          { case: 'submit', value: 'submit' as const, expected: 'submit' },
+          { case: 'undefined', value: undefined, expected: 'button' },
+        ])(
+          'Prop type ($case) should set type on the core component',
+          ({ value, expected }) => {
+            const wrapper = mount(
+              AltIconButton,
+              { props: { icon: altRocket, type: value } },
+            )
+
+            expect(wrapper.find(tagName).element.type).toBe(expected)
+          },
+        )
+
         it(
           'Changing prop icon should update CoreIconButton',
           () => {

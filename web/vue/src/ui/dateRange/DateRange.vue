@@ -1,5 +1,6 @@
 <template>
   <alt-core-date-range
+    ref="coreDateRange"
     v-bind="coreProps"
     :from="props.modelValue?.from ?? undefined"
     :to="props.modelValue?.to ?? undefined"
@@ -9,8 +10,9 @@
 
 <script lang="ts" setup>
   import { omit } from 'radash'
-  import { computed } from 'vue'
+  import { computed, useTemplateRef } from 'vue'
   import '~core/ui/dateRange'
+  import type { AltCoreDateRange } from '~core/ui/dateRange'
   import type { DateRangeChangeEvent } from '~core/ui/dateRange/models/types'
   import {
     createVueDateRangeProps,
@@ -34,4 +36,8 @@
     event.stopPropagation()
     emit('update:modelValue', { ...(event as DateRangeChangeEvent).detail })
   }
+
+  const coreDateRange = useTemplateRef<AltCoreDateRange>('coreDateRange')
+
+  defineExpose({ focus: () => { coreDateRange.value?.focus() } })
 </script>

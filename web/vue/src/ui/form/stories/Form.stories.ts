@@ -13,7 +13,8 @@ import altCoreFormStoryMeta from '~core/ui/form/stories/Form.stories'
  *
  * `@submit` gets the event with `detail.formData` after a valid submit, `@validation-error` the invalid fields in
  * `detail.controls`, `@reset` fires after a reset. The component exposes `validate()` (a promise of a boolean),
- * `resetValidation()`, `submit()` and `reset()`. Give `AltButton` `type="submit"` or `type="reset"`.
+ * `resetValidation()`, `submit()` and `reset()`.
+ * Give `AltButton`, `AltIconButton` or `AltBrandButton` `type="submit"` or `type="reset"`.
  */
 const meta: Meta<IAltVueFormProps> = {
   title: '✅ Form',

@@ -7,7 +7,7 @@ import {
 } from './models/types'
 import { DefaultValue } from '~ng/utils/default-value.decorator'
 
-const { variant, text, disabled, loading, size } = createNgBrandButtonProps()
+const { variant, text, disabled, loading, size, type } = createNgBrandButtonProps()
 
 @Component({
   selector: 'AltBrandButton',
@@ -20,6 +20,7 @@ const { variant, text, disabled, loading, size } = createNgBrandButtonProps()
       [disabled]="disabled"
       [loading]="loading"
       [size]="size"
+      [type]="type"
     >
     </alt-core-brand-button>
   `,
@@ -31,4 +32,5 @@ export class AltBrandButton implements IAltNgBrandButtonProps {
   @Input() @DefaultValue(disabled) disabled: IAltNgBrandButtonProps['disabled'] = disabled
   @Input() @DefaultValue(loading) loading: IAltNgBrandButtonProps['loading'] = loading
   @Input() @DefaultValue(size) size: IAltNgBrandButtonProps['size'] = size
+  @Input() @DefaultValue(type) type: IAltNgBrandButtonProps['type'] = type
 }

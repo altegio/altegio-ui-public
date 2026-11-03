@@ -28,7 +28,8 @@ const { noErrorFocus } = createCoreFormProps()
  * - Submitting with invalid fields shows each message in its field, moves focus to the first one and fires `form-invalid`.
  *   The messages follow the value as the user corrects it.
  * - A valid submit fires `form-submit` with `{ formData, submitter }`; the page does not navigate.
- * - Enter in a single-line field submits. An Altegio UI button with `type="submit"` or `type="reset"` submits or resets the form.
+ * - Enter in a single-line field submits. `AltButton`, `AltSimpleButton`, `AltIconButton` and `AltBrandButton` with `type="submit"`
+ *   or `type="reset"` submit or reset the form.
  * - `validate()`, `resetValidation()`, `submit()` and `reset()` do the same from code.
  */
 const meta: Meta<TAltCoreFormStoryMeta> = {

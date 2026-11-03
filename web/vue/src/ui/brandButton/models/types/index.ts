@@ -11,6 +11,7 @@ export interface IAltVueBrandButtonProps {
   size?: IAltCoreBrandButtonProps['size']
   disabled?: IAltCoreBrandButtonProps['disabled']
   loading?: IAltCoreBrandButtonProps['loading']
+  type?: IAltCoreBrandButtonProps['type']
 }
 
 export type TAltVueBrandButtonClickEvent = ClickEvent
@@ -20,12 +21,13 @@ export interface IAltVueBrandButtonEmits {
 }
 
 export const createVueBrandButtonProps = (): TDefinedVueProps<IAltVueBrandButtonProps> => {
-  const { variant, size, disabled, loading, text } = createCoreBrandButtonProps()
+  const { variant, size, disabled, loading, type, text } = createCoreBrandButtonProps()
   return {
     variant,
     size,
     disabled,
     loading,
+    type,
     text,
   }
 }

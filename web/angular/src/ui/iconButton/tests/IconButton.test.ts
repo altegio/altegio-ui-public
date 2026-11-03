@@ -25,6 +25,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
         [target]="target"
         [icon]="icon"
         [accessibleName]="accessibleName"
+        [type]="type"
       />`,
     imports: [AltIconButton],
     standalone: true,
@@ -38,6 +39,7 @@ const createComponent = async({ props }: ICreateComponentArgs) => {
     target = props?.target
     icon = props?.icon
     accessibleName = props?.accessibleName
+    type = props?.type
   }
   return TestComponent
 }
@@ -61,6 +63,23 @@ describe(
 
             const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
             expect(coreElement?.accessibleName).toBe('Search')
+          },
+        )
+
+        it.each([
+          { case: 'submit', value: 'submit' as const, expected: 'submit' },
+          { case: 'without a value', value: undefined, expected: 'button' },
+        ])(
+          'Prop type ($case) should set type on the core component',
+          async({ value, expected }) => {
+            const component = await createComponent({ props: { icon: altRocket, type: value } })
+            const fixture = TestBed.createComponent(component)
+            fixture.detectChanges()
+
+            await fixture.whenStable()
+
+            const coreElement = (fixture.nativeElement as HTMLElement).querySelector(tagName)
+            expect(coreElement?.type).toBe(expected)
           },
         )
 

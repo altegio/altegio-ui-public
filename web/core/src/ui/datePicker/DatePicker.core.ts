@@ -4,7 +4,7 @@ import { classMap } from 'lit/directives/class-map.js'
 import { Maskito, maskitoTransform } from '@maskito/core'
 import { maskitoDateOptionsGenerator, maskitoDateRangeOptionsGenerator, type MaskitoDateParams } from '@maskito/kit'
 import { autoPlacement as autoPlacementMiddleware } from '@floating-ui/dom'
-import { provide } from '@lit/context'
+import { ContextProvider, provide } from '@lit/context'
 
 import { disabledContextCreated, readonlyContextCreated, errorContextCreated, sizeContextCreated } from '~core/ui/fieldWrapper/providers'
 
@@ -81,7 +81,6 @@ const isSameDate = (first: IAltCoreDatePickerProps['date'], second: IAltCoreDate
 export class AltCoreDatePicker
   extends FormAssociated(LocalizedElement)
   implements IAltCoreDatePickerProps {
-  @provide({ context: disabledContextCreated })
   @property({ type: Boolean }) disabled: IAltCoreDatePickerExternalProps['disabled'] = disabled
   @provide({ context: readonlyContextCreated })
   @property({ type: Boolean }) readonly: IAltCoreDatePickerExternalProps['readonly'] = readonly
@@ -102,6 +101,9 @@ export class AltCoreDatePicker
   @property({ type: String, attribute: 'min-date' }) minDate: IAltCoreDatePickerExternalProps['minDate'] = minDate
   @property({ type: String, attribute: 'max-date' }) maxDate: IAltCoreDatePickerExternalProps['maxDate'] = maxDate
 
+  /** Disabled state of the parts of the field, also set by a disabled fieldset around it */
+  private readonly disabledProvider = new ContextProvider(this, { context: disabledContextCreated, initialValue: disabled })
+
   @state() private isOpened = false
   @state() private hasAnnotationSlot = false
 
@@ -109,7 +111,7 @@ export class AltCoreDatePicker
   @query(AltCoreCalendarTagName) public readonly calendar?: AltCoreCalendar
   @query(`.${tagName}__calendar`) private readonly dialogElement?: HTMLElement
 
-  /** Focus returns to the input from the calendar without opening it again */
+  /** Focus moves to the input without opening the calendar: back from the calendar or through `focus()` */
   private isReturningFocus = false
 
   @bubblingEvent(
@@ -186,8 +188,13 @@ export class AltCoreDatePicker
     this._pick({ detail: { value: this.date } })
   }
 
+  /** A disabled fieldset around the field disables it like its own disabled property */
+  private get isFormControlDisabled() {
+    return Boolean(this.disabled) || this.formDisabled
+  }
+
   private get computedDisabledOrReadonly() {
-    return this.disabled || this.readonly
+    return this.isFormControlDisabled || this.readonly
   }
   private get hasAnnotation() {
     return this.annotationText || this.hasAnnotationSlot
@@ -220,7 +227,7 @@ export class AltCoreDatePicker
   }
 
   private get isDeleteIcon() {
-    return Boolean(this.date && !this.disabled && !this.readonly)
+    return Boolean(this.date && !this.computedDisabledOrReadonly)
   }
 
   private get maskedValue() {
@@ -299,7 +306,7 @@ export class AltCoreDatePicker
   }
 
   private handleFocus = (): void => {
-    if (this.disabled || this.readonly) return
+    if (this.computedDisabledOrReadonly) return
 
     if (this.isReturningFocus) {
       this.isReturningFocus = false
@@ -311,7 +318,7 @@ export class AltCoreDatePicker
   }
 
   private handleBlur = (event: Event): void => {
-    if (this.disabled || this.readonly || this.isFocusMovingIntoCalendar(event)) return
+    if (this.computedDisabledOrReadonly || this.isFocusMovingIntoCalendar(event)) return
 
     this.close()
   }
@@ -480,8 +487,25 @@ export class AltCoreDatePicker
     this.applyMask()
   }
 
+  /**
+   * Moves focus to the input. The calendar stays closed, so it does not cover the validation message
+   * @param options - Focus options
+   */
+  focus(options?: FocusOptions) {
+    this.isReturningFocus = true
+    this.fieldInput?.inputElement?.focus(options)
+    // An input that is focused already or cannot take focus fires no `focus`
+    this.isReturningFocus = false
+  }
+
   protected firstUpdated() {
     this.defaultDate = this.date
+  }
+
+  protected willUpdate(changedProperties: PropertyValues<this>) {
+    super.willUpdate(changedProperties)
+
+    this.disabledProvider.setValue(this.isFormControlDisabled)
   }
 
   /** The input controls the calendar dialog, which renders only while open */
@@ -500,7 +524,7 @@ export class AltCoreDatePicker
     return html`
       <alt-core-field-wrapper
         slot="activator"
-        .disabled=${this.disabled}
+        .disabled=${this.isFormControlDisabled}
         .readonly=${this.readonly}
         .error=${Boolean(this.shownErrors?.length) || this.error}
         .size=${this.size}
@@ -575,7 +599,7 @@ export class AltCoreDatePicker
           text: this.labelText,
           tooltipText: this.labelTooltipText,
           debounce: this.labelDebounce,
-          tooltipActive: !this.disabled,
+          tooltipActive: !this.isFormControlDisabled,
           required: this.required,
           disabled: this.computedDisabledOrReadonly,
           handleMouseDown: this.handleLabelMouseDown,
@@ -588,7 +612,7 @@ export class AltCoreDatePicker
           .placement=${EAltCoreDropdownPlacement.BOTTOM_START}
           .offset=${{ mainAxis: 4 }}
           .middlewares=${this.dropdownMiddlewares}
-          .disabled=${this.disabled || this.readonly}
+          .disabled=${this.computedDisabledOrReadonly}
         >
           ${this.renderDropdownActivator()}
 

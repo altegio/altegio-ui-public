@@ -11,6 +11,7 @@ const {
   size,
   disabled,
   loading,
+  type,
 } = createCoreBrandButtonProps()
 
 export const propSizeTestCases: TPropTestCase<IAltNgBrandButtonProps, 'size'>[] = [
@@ -36,4 +37,9 @@ export const propLoadingTestCases: TPropTestCase<IAltNgBrandButtonProps, 'loadin
 export const propTextTestCases: TPropTestCase<IAltNgBrandButtonProps, 'text'>[] = [
   { prop: 'text', case: 'with text', value: text, expected: text },
   { prop: 'text', case: 'empty string', value: empty, expected: empty },
+]
+
+export const propTypeTestCases: TPropTestCase<IAltNgBrandButtonProps, 'type'>[] = [
+  { prop: 'type', case: 'submit', value: 'submit', expected: 'submit' },
+  { prop: 'type', case: 'without a value', value: undefined, expected: type },
 ]

@@ -8,6 +8,9 @@ import { getNativeKeyboardEvent } from '~core/utils/a11y/focus-target'
  */
 interface IEventInterceptorHost extends ReactiveControllerHost {
   disabled?: boolean
+
+  /** Set by a disabled fieldset around a form-associated element */
+  formDisabled?: boolean
   loading?: boolean
   readonly?: boolean
   addEventListener: (type: string, listener: EventListener, options?: boolean | AddEventListenerOptions) => void
@@ -27,7 +30,7 @@ type TEventInterceptorElement = IEventInterceptorHost & {
 /**
  * Controller that intercepts and blocks DOM events.
  * Implements lit's ReactiveController interface.
- * Blocks event handling while the element is disabled, loading or readonly.
+ * Blocks event handling while the element is disabled (also by a disabled fieldset), loading or readonly.
  */
 class EventInterceptorController implements ReactiveController {
   private disabledOrLoadingEvents = [
@@ -196,7 +199,7 @@ class EventInterceptorController implements ReactiveController {
    * Syncs the listeners with the host properties.
    */
   private setupListeners() {
-    const isDisabledOrLoading = Boolean(this.host.disabled) || Boolean(this.host.loading)
+    const isDisabledOrLoading = Boolean(this.host.disabled) || Boolean(this.host.formDisabled) || Boolean(this.host.loading)
     const isReadonly = Boolean(this.host.readonly)
 
     this.setupReadonlyListeners(isReadonly && !isDisabledOrLoading)

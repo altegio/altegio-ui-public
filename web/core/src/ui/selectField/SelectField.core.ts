@@ -3,7 +3,7 @@ import { html, LitElement, css, unsafeCSS, nothing } from 'lit'
 import { customElement, property, state, query, queryAll } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { repeat } from 'lit/directives/repeat.js'
-import { provide } from '@lit/context'
+import { ContextProvider, provide } from '@lit/context'
 import { autoPlacement as autoPlacementMiddleware } from '@floating-ui/dom'
 
 import { type TDispatcher, bubblingEvent } from '~core/utils/event-decorator'
@@ -61,7 +61,6 @@ const { value, placeholder, autofocus, disabled, readonly, error, errors, size, 
 @interceptEvents()
 @withLocator(tagName)
 export class AltCoreSelectField extends FormAssociated(LitElement) {
-  @provide({ context: disabledContextCreated })
   @property({ type: Boolean }) disabled: IAltCoreSelectFieldExternalProps['disabled'] = disabled
   @provide({ context: readonlyContextCreated })
   @property({ type: Boolean }) readonly: IAltCoreSelectFieldExternalProps['readonly'] = readonly
@@ -88,6 +87,9 @@ export class AltCoreSelectField extends FormAssociated(LitElement) {
   @property({ type: Boolean, attribute: 'is-filterable' }) isFilterable: IAltCoreSelectFieldExternalProps['isFilterable'] = isFilterable
   @property({ attribute: 'filter-callback' }) filterCallback: IAltCoreSelectFieldExternalProps['filterCallback'] = filterCallback
   @property({ type: String, attribute: 'accessible-name' }) accessibleName: IAltCoreSelectFieldExternalProps['accessibleName'] = accessibleName
+
+  /** Disabled state of the parts of the field, also set by a disabled fieldset around it */
+  private readonly disabledProvider = new ContextProvider(this, { context: disabledContextCreated, initialValue: disabled })
 
   @bubblingEvent(
     FocusEvent,
@@ -119,6 +121,9 @@ export class AltCoreSelectField extends FormAssociated(LitElement) {
   @state() private hasAnnotationSlot = false
   @state() private hasBeforeSlot = false
   @state() private lastFocusTime = 0
+
+  /** Focus from `focus()` does not open the list */
+  private isFocusingFromCode = false
 
   @query(`.${tagName}__list-items`) private listbox?: HTMLElement
   @queryAll(`.${tagName}__list-item`) private optionElements!: NodeListOf<HTMLElement>
@@ -181,7 +186,7 @@ export class AltCoreSelectField extends FormAssociated(LitElement) {
     return {
       [this.baseDropdownActivatorClass]: true,
       [`${this.baseDropdownActivatorClass}_readonly`]: Boolean(this.readonly),
-      [`${this.baseDropdownActivatorClass}_disabled`]: Boolean(this.disabled),
+      [`${this.baseDropdownActivatorClass}_disabled`]: this.isFormControlDisabled,
       [`${this.baseDropdownActivatorClass}_hide-before`]: !this.hasBeforeSlot,
     }
   }
@@ -194,7 +199,7 @@ export class AltCoreSelectField extends FormAssociated(LitElement) {
   private get computedInputClasses() {
     return {
       [this.baseInputClass]: true,
-      [`${this.baseInputClass}_disabled`]: Boolean(this.disabled),
+      [`${this.baseInputClass}_disabled`]: this.isFormControlDisabled,
       [`${this.baseInputClass}_readonly`]: Boolean(this.readonly),
     }
   }
@@ -225,8 +230,13 @@ export class AltCoreSelectField extends FormAssociated(LitElement) {
     this._select({ detail: { value: this.value, item: this.selectedItemByValue, event: new Event('reset') } })
   }
 
+  /** A disabled fieldset around the field disables it like its own disabled property */
+  private get isFormControlDisabled() {
+    return Boolean(this.disabled) || this.formDisabled
+  }
+
   private get computedDisabledOrReadonly() {
-    return this.disabled || this.readonly
+    return this.isFormControlDisabled || this.readonly
   }
   private get isDropdownOpened() {
     if (this.computedDisabledOrReadonly) return false
@@ -358,6 +368,22 @@ export class AltCoreSelectField extends FormAssociated(LitElement) {
     this._select({ detail: { value: this.value, item, event } })
   }
 
+  /**
+   * Moves focus to the input. The list stays closed, so it does not cover the validation message
+   * @param options - Focus options
+   */
+  focus(options?: FocusOptions) {
+    this.isFocusingFromCode = true
+    this.fieldInput?.inputElement?.focus(options)
+    this.isFocusingFromCode = false
+  }
+
+  protected willUpdate(changedProperties: PropertyValues<this>) {
+    super.willUpdate(changedProperties)
+
+    this.disabledProvider.setValue(this.isFormControlDisabled)
+  }
+
   protected updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties)
 
@@ -432,7 +458,7 @@ export class AltCoreSelectField extends FormAssociated(LitElement) {
     if (this.computedDisabledOrReadonly) return
 
     this.lastFocusTime = event.timeStamp
-    this.changeDropdownVisible(true)
+    if (!this.isFocusingFromCode) this.changeDropdownVisible(true)
 
     this._focus({ detail: { event } })
   }
@@ -449,7 +475,7 @@ export class AltCoreSelectField extends FormAssociated(LitElement) {
   private handleInput = (event: InputEvent) => {
     event.stopPropagation()
 
-    if (this.disabled || this.readonly) return
+    if (this.computedDisabledOrReadonly) return
 
     if (!this.isCustomFilter) {
       this.setFilterValue(event.detail.value)
@@ -554,7 +580,7 @@ export class AltCoreSelectField extends FormAssociated(LitElement) {
   protected renderDropdownActivator() {
     return html`
       <alt-core-field-wrapper
-        .disabled=${this.disabled}
+        .disabled=${this.isFormControlDisabled}
         .readonly=${this.readonly}
         .error=${Boolean(this.shownErrors?.length) || this.error}
         .size=${this.size}
@@ -633,7 +659,7 @@ export class AltCoreSelectField extends FormAssociated(LitElement) {
           text: this.labelText,
           tooltipText: this.labelTooltipText,
           debounce: this.labelDebounce,
-          tooltipActive: !this.disabled,
+          tooltipActive: !this.isFormControlDisabled,
           required: this.required,
           disabled: this.computedDisabledOrReadonly,
           handleClick: this.handleLabelClick,

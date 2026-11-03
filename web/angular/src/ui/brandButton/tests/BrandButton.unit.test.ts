@@ -9,6 +9,7 @@ import {
   propDisabledTestCases,
   propLoadingTestCases,
   propTextTestCases,
+  propTypeTestCases,
 } from './cases/props'
 import { dispatchEvent } from '~shared/tests/utils'
 
@@ -31,6 +32,7 @@ const createComponent = async({ props, onClick }: ICreateComponentArgs) => {
         [disabled]="disabled"
         [loading]="loading"
         [size]="size"
+        [type]="type"
         (click)="onClick($event)"
       ></AltBrandButton>
     `,
@@ -43,6 +45,7 @@ const createComponent = async({ props, onClick }: ICreateComponentArgs) => {
     disabled = props?.disabled
     loading = props?.loading
     size = props?.size
+    type = props?.type
     onClick = onClick ?? (() => ({}))
   }
 
@@ -58,6 +61,7 @@ describe('Angular/AltBrandButton', () => {
         ...propDisabledTestCases,
         ...propLoadingTestCases,
         ...propTextTestCases,
+        ...propTypeTestCases,
       ]) {
         it(
           `Prop "${testCase.prop}" should be "${testCase.case}"`,

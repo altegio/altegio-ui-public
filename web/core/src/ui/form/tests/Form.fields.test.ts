@@ -1,12 +1,13 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { AltCoreFormTagName as tagName } from '~shared/constants'
-import { waitForLitTree } from '~shared/tests/a11y'
+import { getDeepActiveElement, waitForLitTree } from '~shared/tests/a11y'
 import type { FormInvalidEvent, FormSubmitEvent } from '~core/ui/form/models/types'
 import type { AltCoreSelectField } from '~core/ui/selectField'
 import type { AltCoreMultipleSelectField } from '~core/ui/multipleSelectField'
 import type { AltCoreDatePicker } from '~core/ui/datePicker'
 import type { AltCoreDateRange } from '~core/ui/dateRange'
 import type { AltCoreToggle } from '~core/ui/toggle'
+import type { AltCoreFieldInput } from '~core/ui/fieldInput'
 import '~core/ui/form'
 import '~core/ui/selectField'
 import '~core/ui/multipleSelectField'
@@ -57,6 +58,8 @@ const mountForm = async() => {
   return { altForm, select, multipleSelect, datePicker, dateRange, toggle, onSubmit, onInvalid }
 }
 
+type TFields = Awaited<ReturnType<typeof mountForm>>
+
 const getErrorText = (field: Element): string => {
   const error = field.shadowRoot?.querySelector('alt-core-error')
   if (error) return error.shadowRoot?.textContent.trim() ?? ''
@@ -66,7 +69,15 @@ const getErrorText = (field: Element): string => {
   return innerField ? getErrorText(innerField) : ''
 }
 
-const fill = async(fields: Awaited<ReturnType<typeof mountForm>>) => {
+/** The input of a select or a date field; AltDateRange renders it in its date picker */
+const getInput = (field: Element): HTMLInputElement | undefined => {
+  const innerField = field.shadowRoot?.querySelector('alt-core-date-picker')
+  if (innerField) return getInput(innerField)
+
+  return field.shadowRoot?.querySelector<AltCoreFieldInput>('alt-core-field-input')?.inputElement
+}
+
+const fill = async(fields: TFields) => {
   const { altForm, select, multipleSelect, datePicker, dateRange, toggle } = fields
   select.value = ITEMS[1]
   multipleSelect.value = [ITEMS[0], ITEMS[2]]
@@ -160,5 +171,56 @@ describe('Core/AltCoreForm/Fields', () => {
     await waitForLitTree(altForm)
 
     expect(getErrorText(select)).toBe('Choose another city')
+  })
+
+  it.each([
+    { case: 'AltSelectField', clear: (fields: TFields) => { fields.select.value = undefined }, getField: (fields: TFields) => fields.select },
+    { case: 'AltMultipleSelectField', clear: (fields: TFields) => { fields.multipleSelect.value = [] }, getField: (fields: TFields) => fields.multipleSelect },
+    { case: 'AltDatePicker', clear: (fields: TFields) => { fields.datePicker.date = '' }, getField: (fields: TFields) => fields.datePicker },
+    { case: 'AltDateRange', clear: (fields: TFields) => { fields.dateRange.from = undefined }, getField: (fields: TFields) => fields.dateRange },
+  ])('focuses the input of an invalid $case without opening it', async({ clear, getField }) => {
+    const fields = await mountForm()
+    await fill(fields)
+    clear(fields)
+    await waitForLitTree(fields.altForm)
+
+    expect(await fields.altForm.validate()).toBe(false)
+    await waitForLitTree(fields.altForm)
+
+    const input = getInput(getField(fields))
+    expect(getDeepActiveElement()).toBe(input)
+    expect(input?.getAttribute('aria-invalid')).toBe('true')
+    expect(input?.getAttribute('aria-expanded')).toBe('false')
+  })
+
+  it('disables the selects and the dates in a disabled fieldset', async() => {
+    const { altForm, select, multipleSelect, datePicker, dateRange, toggle, onInvalid } = await mountForm()
+    const fields = [select, multipleSelect, datePicker, dateRange]
+    const fieldset = document.createElement('fieldset')
+    fieldset.append(...fields)
+    altForm.form!.prepend(fieldset)
+    fieldset.disabled = true
+    await waitForLitTree(altForm)
+    // A disabled select stops its events, as a disabled native control fires none
+    const onSelectClick = vi.fn()
+    select.addEventListener('click', onSelectClick)
+
+    for (const field of fields) {
+      field.shadowRoot?.querySelector('alt-core-field-wrapper')?.click()
+      field.focus()
+      await waitForLitTree(altForm)
+
+      expect(getInput(field)?.disabled).toBe(true)
+      expect(getInput(field)?.getAttribute('aria-expanded')).not.toBe('true')
+      expect(getDeepActiveElement()).not.toBe(getInput(field))
+    }
+    expect(onSelectClick).not.toHaveBeenCalled()
+    expect(await altForm.validate()).toBe(false)
+    expect((onInvalid.mock.lastCall?.[0] as FormInvalidEvent).detail.controls).toEqual([toggle])
+
+    fieldset.disabled = false
+    await waitForLitTree(altForm)
+
+    for (const field of fields) expect(getInput(field)?.disabled).toBe(false)
   })
 })

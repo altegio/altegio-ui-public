@@ -18,6 +18,7 @@ import '~core/ui/simpleButton'
 
 import BrandButtonVarsCSS from '~core/ui/brandButton/css/BrandButton.vars.css?inline'
 import { withLocator } from '~core/utils/locator'
+import { activateFormButton } from '~core/utils/form-button'
 
 const BRAND_CONFIG = {
   [EAltCoreBrandButtonVariant.WhatsApp]: {
@@ -33,7 +34,7 @@ const ICON_SIZES = {
   [EAltSizes.LARGE]: '22px',
 }
 
-const { variant, size, loading, disabled, text }: IAltCoreBrandButtonProps = createCoreBrandButtonProps()
+const { variant, size, loading, disabled, type, text }: IAltCoreBrandButtonProps = createCoreBrandButtonProps()
 
 @customElement(tagName)
 @withLocator(tagName)
@@ -42,7 +43,13 @@ export class AltCoreBrandButton extends LitElement implements IAltCoreBrandButto
   @property({ type: String }) size: IAltCoreBrandButtonProps['size'] = size
   @property({ type: Boolean }) disabled: IAltCoreBrandButtonProps['disabled'] = disabled
   @property({ type: Boolean }) loading: IAltCoreBrandButtonProps['loading'] = loading
+  @property({ type: String }) type: IAltCoreBrandButtonProps['type'] = type
   @property({ type: String }) text: IAltCoreBrandButtonProps['text'] = text
+
+  // The inner button is in shadow DOM, so the button acts on the form around it itself
+  private readonly handleClick = () => {
+    activateFormButton(this)
+  }
 
   render() {
     const config = BRAND_CONFIG[this.variant]
@@ -57,6 +64,7 @@ export class AltCoreBrandButton extends LitElement implements IAltCoreBrandButto
         .hostStyles=${BrandButtonVarsCSS}
         .loaderVariant=${config.loaderVariant}
         data-variant=${this.variant}
+        @click=${this.handleClick}
       >
         ${renderIcon({ icon: config.icon, size: iconSize })}
         ${this.text}

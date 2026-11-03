@@ -2,6 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { AltCoreSelectFieldTagName as tagName } from '~shared/constants'
 import { AltSelectField } from '~vue/ui/selectField'
+import { getDeepActiveElement, waitForLitTree } from '~shared/tests/a11y'
 import { AltCoreSelectField } from '~core/ui/selectField'
 
 import { vueInputEvents } from './cases/events'
@@ -167,3 +168,16 @@ describe(
     )
   },
 )
+
+describe('Vue/AltSelectField/focus', () => {
+  it('Exposes focus(), which moves focus to the input', async() => {
+    const wrapper = mount(AltSelectField, { attachTo: document.body })
+    await waitForLitTree(wrapper.element as HTMLElement)
+
+    wrapper.vm.focus()
+
+    expect(getDeepActiveElement()?.localName).toBe('input')
+    expect(wrapper.element.contains(document.activeElement)).toBe(true)
+    wrapper.unmount()
+  })
+})

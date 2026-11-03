@@ -34,7 +34,7 @@ const meta: TIconButtonStoryMeta = {
   parameters,
   component: tagName,
   tags: ['core', 'autodocs'],
-  render: ({ href, target, variant, size, disabled, loading, fullWidth, icon, accessibleName }) => {
+  render: ({ href, target, variant, size, disabled, loading, fullWidth, type, icon, accessibleName }) => {
     const handlers = { onClick: () => { action('onClick')() } }
 
     return html`
@@ -47,6 +47,7 @@ const meta: TIconButtonStoryMeta = {
       .disabled=${disabled}
       .loading=${loading}
       .fullWidth=${fullWidth}
+      .type=${type}
       .icon=${icon}
       @click=${handlers.onClick}
     ></alt-core-icon-button>

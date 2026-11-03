@@ -11,6 +11,7 @@ const {
   size,
   variant,
   disabled,
+  type,
 } = createCoreBrandButtonProps()
 
 export const propSizeTestCases: TPropTestCase<IAltVueBrandButtonProps, 'size'>[] = [
@@ -33,4 +34,9 @@ export const propDisabledTestCases: TPropTestCase<IAltVueBrandButtonProps, 'disa
 export const propTextTestCases: TPropTestCase<IAltVueBrandButtonProps, 'text'>[] = [
   { prop: 'text', case: 'with text', value: text, expected: text },
   { prop: 'text', case: 'empty string', value: empty, expected: empty },
+]
+
+export const propTypeTestCases: TPropTestCase<IAltVueBrandButtonProps, 'type'>[] = [
+  { prop: 'type', case: 'submit', value: 'submit', expected: 'submit' },
+  { prop: 'type', case: 'undefined', value: undefined, expected: type },
 ]

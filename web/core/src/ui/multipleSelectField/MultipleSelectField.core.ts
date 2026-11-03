@@ -4,7 +4,7 @@ import { customElement, property, state, query, queryAll } from 'lit/decorators.
 import { interceptEvents } from '~core/utils/event-interceptor'
 import { classMap } from 'lit/directives/class-map.js'
 import { repeat } from 'lit/directives/repeat.js'
-import { provide } from '@lit/context'
+import { ContextProvider, provide } from '@lit/context'
 
 import { autoPlacement as autoPlacementMiddleware } from '@floating-ui/dom'
 
@@ -77,7 +77,6 @@ const CLICK_OUTSIDE_DELAY = 150
 @interceptEvents()
 @withLocator(tagName)
 export class AltCoreMultipleSelectField extends FormAssociated(LitElement) implements IAltCoreMultipleSelectFieldProps {
-  @provide({ context: disabledContextCreated })
   @property({ type: Boolean }) disabled: IAltCoreMultipleSelectFieldProps['disabled'] = disabled
   @provide({ context: readonlyContextCreated })
   @property({ type: Boolean }) readonly: IAltCoreMultipleSelectFieldProps['readonly'] = readonly
@@ -104,6 +103,9 @@ export class AltCoreMultipleSelectField extends FormAssociated(LitElement) imple
   @property({ type: Boolean, attribute: 'is-filterable' }) isFilterable: IAltCoreMultipleSelectFieldProps['isFilterable'] = isFilterable
   @property({ attribute: 'filter-callback' }) filterCallback: IAltCoreMultipleSelectFieldProps['filterCallback'] = filterCallback
   @property({ type: String, attribute: 'accessible-name' }) accessibleName: IAltCoreMultipleSelectFieldProps['accessibleName'] = accessibleName
+
+  /** Disabled state of the parts of the field, also set by a disabled fieldset around it */
+  private readonly disabledProvider = new ContextProvider(this, { context: disabledContextCreated, initialValue: disabled })
 
   @bubblingEvent(
     FocusEvent,
@@ -132,6 +134,9 @@ export class AltCoreMultipleSelectField extends FormAssociated(LitElement) imple
   @state() private isOpened = false
   @state() private hasAnnotationSlot = false
   @state() private lastFocusTime = 0
+
+  /** Focus from `focus()` does not open the list */
+  private isFocusingFromCode = false
 
   @query(AltCoreFieldWrapperTagName) public readonly fieldWrapper?: AltCoreFieldWrapper
   @query(AltCoreFieldInputTagName) public readonly fieldInput?: AltCoreFieldInput
@@ -236,8 +241,13 @@ export class AltCoreMultipleSelectField extends FormAssociated(LitElement) imple
     this._select({ detail: { value: this.value } })
   }
 
+  /** A disabled fieldset around the field disables it like its own disabled property */
+  private get isFormControlDisabled() {
+    return Boolean(this.disabled) || this.formDisabled
+  }
+
   private get computedDisabledOrReadonly() {
-    return this.disabled || this.readonly
+    return this.isFormControlDisabled || this.readonly
   }
 
   private get hasAnnotation() {
@@ -346,7 +356,7 @@ export class AltCoreMultipleSelectField extends FormAssociated(LitElement) imple
   }
 
   private deleteItemFromValue = (item: IAltCoreSelectListItem) => (event: ClickIconEmitEvent) => {
-    if (this.readonly || !this.value) return
+    if (this.computedDisabledOrReadonly || !this.value) return
 
     event.detail.stopPropagation()
 
@@ -415,6 +425,22 @@ export class AltCoreMultipleSelectField extends FormAssociated(LitElement) imple
     this.defaultValue = this.value && [...this.value]
   }
 
+  /**
+   * Moves focus to the input. The list stays closed, so it does not cover the validation message
+   * @param options - Focus options
+   */
+  focus(options?: FocusOptions) {
+    this.isFocusingFromCode = true
+    this.fieldInput?.inputElement?.focus(options)
+    this.isFocusingFromCode = false
+  }
+
+  protected willUpdate(changedProperties: PropertyValues<this>) {
+    super.willUpdate(changedProperties)
+
+    this.disabledProvider.setValue(this.isFormControlDisabled)
+  }
+
   protected updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties)
 
@@ -465,7 +491,7 @@ export class AltCoreMultipleSelectField extends FormAssociated(LitElement) imple
     if (this.computedDisabledOrReadonly) return
 
     this.lastFocusTime = event.timeStamp
-    this.changeDropdownVisible(true)
+    if (!this.isFocusingFromCode) this.changeDropdownVisible(true)
 
     this._focus()
   }
@@ -598,7 +624,7 @@ export class AltCoreMultipleSelectField extends FormAssociated(LitElement) imple
           variant=${EAltCoreSimpleChipVariant.MUTED} 
           class=${classMap(this.computedChipClasses)}
           .size=${this.size === 'large' ? EAltSizes.MEDIUM : EAltSizes.SMALL}
-          .disabled=${this.disabled}
+          .disabled=${this.isFormControlDisabled}
           .readonly=${this.readonly}
           @click-icon=${this.deleteItemFromValue(item)}
           @click=${this.handleChipClick}
@@ -610,7 +636,7 @@ export class AltCoreMultipleSelectField extends FormAssociated(LitElement) imple
   protected renderDropdownActivator() {
     return html`
       <alt-core-field-wrapper
-        .disabled=${this.disabled}
+        .disabled=${this.isFormControlDisabled}
         .readonly=${this.readonly}
         .error=${Boolean(this.shownErrors?.length) || this.error}
         .size=${this.size}
@@ -696,7 +722,7 @@ export class AltCoreMultipleSelectField extends FormAssociated(LitElement) imple
           text: this.labelText,
           tooltipText: this.labelTooltipText,
           debounce: this.labelDebounce,
-          tooltipActive: !this.disabled,
+          tooltipActive: !this.isFormControlDisabled,
           required: this.required,
           disabled: this.computedDisabledOrReadonly,
           handleClick: this.handleLabelClick,

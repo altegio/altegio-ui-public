@@ -47,7 +47,7 @@ const submitsWithEnter = (origin: EventTarget | undefined) => origin instanceof 
 const isNativeFormControl = (element: Element) => element instanceof HTMLButtonElement || element instanceof HTMLInputElement
 
 /**
- * Whether the element submits or resets the form itself on click: AltButton and AltSimpleButton with a `type`
+ * Whether the element submits or resets the form itself on click: an Altegio UI button with a `type`
  * @param element - Element on the click path
  * @returns {boolean} Whether the form should leave the click to the element
  */
@@ -62,7 +62,7 @@ const hasTypeAttribute = (target: EventTarget): target is Element => target inst
   !isNativeFormControl(target)
 
 /**
- * Finds the button the form submits or resets for: an Altegio UI button with only the `type` attribute
+ * Finds the element the form submits or resets for: one with only the `type` attribute, such as AltCardButton
  * @param path - Path of the click
  * @returns {Element | undefined} The button, unless it acted on the form itself or is disabled or loading
  */
@@ -103,9 +103,9 @@ const isValid = (control: IFormControl) => {
  * A submit with invalid fields moves focus to the first one and fires `form-invalid`; a valid one fires
  * `form-submit` with the `FormData` instead of navigating. Resetting the form restores the values and hides the messages.
  *
- * As in a native form, Enter in a single-line field submits, and `AltButton` / `AltSimpleButton` with
- * `type="submit"` or `type="reset"` submit or reset it. Other Altegio UI buttons, such as `AltIconButton`, do the same
- * through the form when they have the `type` attribute.
+ * As in a native form, Enter in a single-line field submits, and `AltButton`, `AltSimpleButton`, `AltIconButton` and
+ * `AltBrandButton` with `type="submit"` or `type="reset"` submit or reset it. Another element with the `type` attribute,
+ * such as `AltCardButton`, does the same on click through the form.
  */
 @customElement(tagName)
 @withLocator(tagName)

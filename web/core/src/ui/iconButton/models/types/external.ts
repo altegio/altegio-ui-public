@@ -5,12 +5,12 @@ import {
   createCoreSimpleButtonExternalProps,
 } from '~core/ui/simpleButton/models/types'
 
-export interface IAltCoreIconButtonExternalProps extends Omit<IAltCoreSimpleButtonExternalProps, 'hostStyles' | 'alignment' | 'type'> {
+export interface IAltCoreIconButtonExternalProps extends Omit<IAltCoreSimpleButtonExternalProps, 'hostStyles' | 'alignment'> {
   icon: IAltIcon | undefined
 }
 
 export const createCoreIconButtonExternalProps = (): IAltCoreIconButtonExternalProps => {
-  const { disabled, loading, size, href, target, variant, fullWidth, accessibleName } = createCoreSimpleButtonExternalProps()
+  const { disabled, loading, size, href, target, variant, fullWidth, type, accessibleName } = createCoreSimpleButtonExternalProps()
   return {
     disabled,
     loading,
@@ -19,6 +19,7 @@ export const createCoreIconButtonExternalProps = (): IAltCoreIconButtonExternalP
     href,
     target,
     fullWidth,
+    type,
     accessibleName,
     icon: undefined,
   }

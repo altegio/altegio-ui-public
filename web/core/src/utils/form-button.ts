@@ -3,7 +3,7 @@ interface IFormButton extends HTMLElement {
   type: string | undefined
   disabled: boolean | undefined
   loading: boolean | undefined
-  href: string | undefined
+  href?: string | undefined
 }
 
 const FORM_ACTIONS: Partial<Record<string, (form: HTMLFormElement) => void>> = {

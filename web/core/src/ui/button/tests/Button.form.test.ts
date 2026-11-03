@@ -1,11 +1,27 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { AltCoreButtonTagName, AltCoreSimpleButtonTagName } from '~shared/constants'
+import {
+  AltCoreBrandButtonTagName,
+  AltCoreButtonTagName,
+  AltCoreIconButtonTagName,
+  AltCoreSimpleButtonTagName,
+} from '~shared/constants'
 import { waitForLitTree } from '~shared/tests/a11y'
 import type { AltCoreButton } from '~core/ui/button'
 import type { AltCoreSimpleButton } from '~core/ui/simpleButton'
+import type { AltCoreIconButton } from '~core/ui/iconButton'
+import type { AltCoreBrandButton } from '~core/ui/brandButton'
 import '~core/ui/button'
+import '~core/ui/iconButton'
+import '~core/ui/brandButton'
 
-type TFormButton = AltCoreButton | AltCoreSimpleButton
+type TFormButton = AltCoreButton | AltCoreSimpleButton | AltCoreIconButton | AltCoreBrandButton
+
+const INACTIVE_CASES = [
+  { case: 'disabled', props: { disabled: true } },
+  { case: 'loading', props: { loading: true } },
+]
+
+const LINK_CASE = { case: 'a link', props: { href: '#' } }
 
 const mountInForm = async(tagName: string, props: Partial<TFormButton>) => {
   const form = document.createElement('form')
@@ -39,7 +55,13 @@ afterEach(() => {
   document.body.replaceChildren()
 })
 
-describe.each([AltCoreButtonTagName, AltCoreSimpleButtonTagName])('Core/%s/Form', (tagName) => {
+describe.each([
+  { tagName: AltCoreButtonTagName, inactiveCases: [...INACTIVE_CASES, LINK_CASE] },
+  { tagName: AltCoreSimpleButtonTagName, inactiveCases: [...INACTIVE_CASES, LINK_CASE] },
+  { tagName: AltCoreIconButtonTagName, inactiveCases: [...INACTIVE_CASES, LINK_CASE] },
+  // AltBrandButton has no link mode
+  { tagName: AltCoreBrandButtonTagName, inactiveCases: INACTIVE_CASES },
+])('Core/$tagName/Form', ({ tagName, inactiveCases }) => {
   it('does nothing in a form by default', async() => {
     const { button, onSubmit, onReset } = await mountInForm(tagName, {})
 
@@ -68,11 +90,7 @@ describe.each([AltCoreButtonTagName, AltCoreSimpleButtonTagName])('Core/%s/Form'
     expect(input.value).toBe('Anna')
   })
 
-  it.each([
-    { case: 'disabled', props: { disabled: true } },
-    { case: 'loading', props: { loading: true } },
-    { case: 'a link', props: { href: '#' } },
-  ])('does not submit the form when $case', async({ props }) => {
+  it.each(inactiveCases)('does not submit the form when $case', async({ props }) => {
     const { button, onSubmit } = await mountInForm(tagName, { type: 'submit', ...props })
 
     getNativeButton(button)?.click()

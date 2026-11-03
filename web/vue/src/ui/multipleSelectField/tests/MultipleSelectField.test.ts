@@ -26,6 +26,7 @@ propAnnotationTextTestCases,
   propValueTestCases,
 } from '~vue/ui/multipleSelectField/tests/cases/props'
 import { AltMultipleSelectField } from '~web/vue/src'
+import { getDeepActiveElement, waitForLitTree } from '~shared/tests/a11y'
 import {
   slotAnnotationTestCases, slotDropdownListBottomTestCases,
   slotDropdownListTopTestCases,
@@ -168,3 +169,16 @@ describe(
     )
   },
 )
+
+describe('Vue/AltMultipleSelectField/focus', () => {
+  it('Exposes focus(), which moves focus to the input', async() => {
+    const wrapper = mount(AltMultipleSelectField, { attachTo: document.body })
+    await waitForLitTree(wrapper.element as HTMLElement)
+
+    wrapper.vm.focus()
+
+    expect(getDeepActiveElement()?.localName).toBe('input')
+    expect(wrapper.element.contains(document.activeElement)).toBe(true)
+    wrapper.unmount()
+  })
+})

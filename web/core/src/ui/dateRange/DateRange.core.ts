@@ -90,6 +90,11 @@ export class AltCoreDateRange
     `,
   ]
 
+  /** A disabled fieldset around the field disables it like its own disabled property */
+  private get isFormControlDisabled() {
+    return Boolean(this.disabled) || this.formDisabled
+  }
+
   private get formDates() {
     return [this.from, this.to].map(toIsoDate).filter((isoDate) => isoDate !== null)
   }
@@ -117,6 +122,14 @@ export class AltCoreDateRange
     this.from = defaultFrom ?? undefined
     this.to = defaultTo ?? undefined
     this._change({ detail: { ...this.defaultRange } })
+  }
+
+  /**
+   * Moves focus to the input. The calendar stays closed, so it does not cover the validation message
+   * @param options - Focus options
+   */
+  focus(options?: FocusOptions) {
+    this.datePicker?.focus(options)
   }
 
   protected firstUpdated() {
@@ -157,7 +170,7 @@ export class AltCoreDateRange
         .name=${this.name}
         .placeholder=${this.placeholder}
         .required=${this.required}
-        .disabled=${this.disabled}
+        .disabled=${this.isFormControlDisabled}
         .readonly=${this.readonly}
         .error=${this.error}
         .errors=${this.withValidationError(this.errors)}

@@ -6,11 +6,18 @@ import type { AltCoreForm } from '~core/ui/form'
 import type { FormInvalidEvent, FormSubmitEvent } from '~core/ui/form/models/types'
 import type { AltCoreTextField } from '~core/ui/textField'
 import type { AltCoreCheckbox } from '~core/ui/checkbox'
+import type { AltCoreSelectField } from '~core/ui/selectField'
+import type { AltCoreDateRange } from '~core/ui/dateRange'
+import type { AltCoreFieldInput } from '~core/ui/fieldInput'
 import '~core/ui/form'
 import '~core/ui/textField'
 import '~core/ui/checkbox'
 import '~core/ui/button'
 import '~core/ui/iconButton'
+import '~core/ui/brandButton'
+import '~core/ui/cardButton'
+import '~core/ui/selectField'
+import '~core/ui/dateRange'
 
 const FIELDS = `
   <alt-core-text-field name="name" required></alt-core-text-field>
@@ -122,21 +129,79 @@ describe('Core/AltCoreForm/Accessibility', () => {
     expect(onInvalid).not.toHaveBeenCalled()
   })
 
-  it('submits once through a button with the type attribute only', async() => {
+  it.each(['alt-core-icon-button', 'alt-core-brand-button'])('submits once through %s with type="submit"', async(buttonTagName) => {
     const { altForm, name, terms, onSubmit } = await mountForm()
     name.value = 'Anna'
     terms.checked = true
-    const iconButton = document.createElement('alt-core-icon-button')
-    Object.assign(iconButton, { accessibleName: 'Send' })
-    iconButton.setAttribute('type', 'submit')
-    altForm.form!.append(iconButton)
+    const button = document.createElement(buttonTagName)
+    Object.assign(button, { accessibleName: 'Send', text: 'Send' })
+    button.setAttribute('type', 'submit')
+    altForm.form!.append(button)
     await waitForLitTree(altForm)
 
-    await clickButton(iconButton)
+    await clickButton(button)
     await vi.waitFor(() => { expect(onSubmit).toHaveBeenCalledTimes(1) })
     await waitForLitTree(altForm)
 
     expect(onSubmit).toHaveBeenCalledTimes(1)
+  })
+
+  it('submits once through another element with the type attribute', async() => {
+    const { altForm, name, terms, onSubmit } = await mountForm()
+    name.value = 'Anna'
+    terms.checked = true
+    const cardButton = document.createElement('alt-core-card-button')
+    Object.assign(cardButton, { headerText: 'Send' })
+    cardButton.setAttribute('type', 'submit')
+    altForm.form!.append(cardButton)
+    await waitForLitTree(altForm)
+
+    cardButton.click()
+    await vi.waitFor(() => { expect(onSubmit).toHaveBeenCalledTimes(1) })
+    await waitForLitTree(altForm)
+
+    expect(onSubmit).toHaveBeenCalledTimes(1)
+  })
+
+  it('focuses the input of the first invalid select or date field', async() => {
+    const altForm = document.createElement(tagName)
+    altForm.innerHTML = `
+      <form>
+        <alt-core-select-field name="city" required></alt-core-select-field>
+        
+        <alt-core-date-range name="period" required></alt-core-date-range>
+        
+        <alt-core-button type="submit"></alt-core-button>
+      </form>
+    `
+    document.body.append(altForm)
+    const select = altForm.querySelector<AltCoreSelectField>('alt-core-select-field')!
+    const dateRange = altForm.querySelector<AltCoreDateRange>('alt-core-date-range')!
+    const submitButton = altForm.querySelector<HTMLElement>('alt-core-button')!
+    Object.assign(select, { items: [{ id: 1, label: 'Kyiv' }], itemLabel: 'label', labelText: 'City' })
+    Object.assign(dateRange, { labelText: 'Period' })
+    Object.assign(submitButton, { label: 'Send' })
+    await waitForLitTree(altForm)
+    const onInvalid = vi.fn()
+    altForm.addEventListener('form-invalid', onInvalid)
+    const getInput = (root: ParentNode | null | undefined) => root?.querySelector<AltCoreFieldInput>('alt-core-field-input')?.inputElement
+
+    await clickButton(submitButton)
+    await vi.waitFor(() => { expect(onInvalid).toHaveBeenCalledTimes(1) })
+    await waitForLitTree(altForm)
+
+    expect(getDeepActiveElement()).toBe(getInput(select.shadowRoot))
+    expect(getDeepActiveElement()?.getAttribute('aria-invalid')).toBe('true')
+    await expectNoAxeViolations(altForm, PATTERN_AXE_OPTIONS)
+
+    select.value = { id: 1, label: 'Kyiv' }
+    await clickButton(submitButton)
+    await vi.waitFor(() => { expect(onInvalid).toHaveBeenCalledTimes(2) })
+    await waitForLitTree(altForm)
+
+    expect(getDeepActiveElement()).toBe(getInput(dateRange.shadowRoot?.querySelector('alt-core-date-picker')?.shadowRoot))
+    expect(getDeepActiveElement()?.getAttribute('aria-invalid')).toBe('true')
+    expect(getDeepActiveElement()?.getAttribute('aria-expanded')).toBe('false')
   })
 
   it('counts a field with its own errors as invalid', async() => {

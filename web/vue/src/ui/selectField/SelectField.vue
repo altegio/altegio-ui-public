@@ -1,5 +1,6 @@
 <template>
   <alt-core-select-field
+    ref="coreSelectField"
     v-bind="props"
     :value="modelValue"
     @select="$emit('update:modelValue', $event.detail.value)"
@@ -49,7 +50,9 @@
 </template>
 
 <script setup lang="ts">
+  import { useTemplateRef } from 'vue'
   import '~core/ui/selectField'
+  import type { AltCoreSelectField } from '~core/ui/selectField'
   import {
     createVueSelectFieldProps,
     type IAltVueSelectFieldProps,
@@ -72,4 +75,8 @@
   )
 
   defineEmits<IAltVueSelectFieldEmits>()
+
+  const coreSelectField = useTemplateRef<AltCoreSelectField>('coreSelectField')
+
+  defineExpose({ focus: () => { coreSelectField.value?.focus() } })
 </script>

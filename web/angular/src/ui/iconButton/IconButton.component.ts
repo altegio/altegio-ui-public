@@ -7,7 +7,7 @@ import {
   type IAltNgIconButtonProps,
 } from '~ng/ui/iconButton/models/types'
 
-const { disabled, loading, size, variant, href, target, fullWidth, accessibleName } = createNgIconButtonProps()
+const { disabled, loading, size, variant, href, target, fullWidth, type, accessibleName } = createNgIconButtonProps()
 
 @Component({
   selector: 'AltIconButton',
@@ -24,6 +24,7 @@ const { disabled, loading, size, variant, href, target, fullWidth, accessibleNam
       [href]="href"
       [target]="target"
       [fullWidth]="fullWidth"
+      [type]="type"
     >
     </alt-core-icon-button>
   `,
@@ -38,4 +39,5 @@ export class AltIconButton implements IAltNgIconButtonProps {
   @Input() @DefaultValue(href) href: IAltNgIconButtonProps['href'] = href
   @Input() @DefaultValue(target) target: IAltNgIconButtonProps['target'] = target
   @Input() @DefaultValue(fullWidth) fullWidth: IAltNgIconButtonProps['fullWidth'] = fullWidth
+  @Input() @DefaultValue(type) type: IAltNgIconButtonProps['type'] = type
 }

@@ -4,6 +4,7 @@ import { mount } from '@vue/test-utils'
 import { AltCoreDatePickerTagName } from '~shared/constants'
 
 import { AltDatePicker } from '~vue/ui/datePicker'
+import { getDeepActiveElement, waitForLitTree } from '~shared/tests/a11y'
 import { AltCoreDatePicker } from '~core/ui/datePicker'
 
 import {
@@ -127,3 +128,16 @@ describe(
     )
   },
 )
+
+describe('Vue/AltDatePicker/focus', () => {
+  it('Exposes focus(), which moves focus to the input', async() => {
+    const wrapper = mount(AltDatePicker, { attachTo: document.body })
+    await waitForLitTree(wrapper.element as HTMLElement)
+
+    wrapper.vm.focus()
+
+    expect(getDeepActiveElement()?.localName).toBe('input')
+    expect(wrapper.element.contains(document.activeElement)).toBe(true)
+    wrapper.unmount()
+  })
+})

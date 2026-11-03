@@ -15,11 +15,12 @@ export interface IAltVueIconButtonProps {
   href?: IAltVueCoreIconButtonProps['href']
   target?: IAltVueCoreIconButtonProps['target']
   fullWidth?: IAltVueCoreIconButtonProps['fullWidth']
+  type?: IAltVueCoreIconButtonProps['type']
   accessibleName?: IAltVueCoreIconButtonProps['accessibleName']
 }
 
 export const createVueIconButtonProps = (): TDefinedVueProps<IAltVueIconButtonProps> => {
-  const { size, variant, disabled, loading, href, target, fullWidth, accessibleName } = createCoreIconButtonProps()
+  const { size, variant, disabled, loading, href, target, fullWidth, type, accessibleName } = createCoreIconButtonProps()
 
   return {
     size,
@@ -29,6 +30,7 @@ export const createVueIconButtonProps = (): TDefinedVueProps<IAltVueIconButtonPr
     href,
     target,
     fullWidth,
+    type,
     accessibleName,
   }
 }

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { AltCoreDateRangeTagName as tagName } from '~shared/constants'
 import { AltDateRange } from '~vue/ui/dateRange'
+import { getDeepActiveElement, waitForLitTree } from '~shared/tests/a11y'
 import type { IAltVueDateRangeProps } from '~vue/ui/dateRange/models/types'
 import type { AltCoreDateRange } from '~core/ui/dateRange'
 import { EAltSizes } from '~shared/types/global'
@@ -78,3 +79,16 @@ describe(
     )
   },
 )
+
+describe('Vue/AltDateRange/focus', () => {
+  it('Exposes focus(), which moves focus to the input', async() => {
+    const wrapper = mount(AltDateRange, { attachTo: document.body })
+    await waitForLitTree(wrapper.element as HTMLElement)
+
+    wrapper.vm.focus()
+
+    expect(getDeepActiveElement()?.localName).toBe('input')
+    expect(wrapper.element.contains(document.activeElement)).toBe(true)
+    wrapper.unmount()
+  })
+})

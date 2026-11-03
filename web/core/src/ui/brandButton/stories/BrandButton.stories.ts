@@ -37,6 +37,7 @@ const meta: Meta = {
         .size=${args.size}
         .disabled=${args.disabled}
         .loading=${args.loading}
+        .type=${args.type}
         .text=${args.text}
         @click=${args.onClick}
       >
@@ -64,6 +65,7 @@ const meta: Meta = {
     },
     disabled: { ...simpleButtonStoryMeta.argTypes.disabled },
     loading: { ...simpleButtonStoryMeta.argTypes.loading },
+    type: { ...simpleButtonStoryMeta.argTypes.type },
     text: {
       type: 'string',
       description: '**Button text**\n\nText displayed in the component.',
@@ -82,6 +84,7 @@ const meta: Meta = {
     size: simpleButtonStoryMeta.args.size || EAltSizes.SMALL,
     disabled: simpleButtonStoryMeta.args.disabled || false,
     loading: simpleButtonStoryMeta.args.loading || false,
+    type: simpleButtonStoryMeta.args.type,
     text: 'Sign in with WhatsApp',
   },
 }

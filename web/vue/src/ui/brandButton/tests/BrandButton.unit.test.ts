@@ -8,6 +8,7 @@ import {
   propVariantTestCases,
   propDisabledTestCases,
   propTextTestCases,
+  propTypeTestCases,
 } from './cases/props'
 
 describe('Vue/AltBrandButton', () => {
@@ -23,6 +24,7 @@ describe('Vue/AltBrandButton', () => {
       ...propVariantTestCases,
       ...propDisabledTestCases,
       ...propTextTestCases,
+      ...propTypeTestCases,
     ]) {
       it(`Prop "${testCase.prop}" (${testCase.case}) should set ${testCase.prop} on the core component to "${String(testCase.expected)}"`, () => {
         const wrapper = mount(AltBrandButton, { props: { [testCase.prop]: testCase.value } })
