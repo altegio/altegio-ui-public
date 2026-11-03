@@ -1,0 +1,19 @@
+:host {
+  /* General */
+  --alt-core-linear-progress-display: block;
+  --alt-core-linear-progress-track-background-color: var(--alt-core-color-surface-tertiary);
+  --alt-core-linear-progress-border-radius: var(--alt-core-size-radius-x);
+
+  /* Sizes */
+  --alt-core-linear-progress-small-height: var(--alt-core-size-spacing-x);
+  --alt-core-linear-progress-medium-height: var(--alt-core-size-spacing-2-x);
+
+  /* Variants */
+  --alt-core-linear-progress-accent-background-color: var(--alt-core-color-surface-accent);
+  --alt-core-linear-progress-positive-background-color: var(--alt-core-color-surface-positive);
+  --alt-core-linear-progress-negative-background-color: var(--alt-core-color-surface-negative);
+
+  /* Animation */
+  --alt-core-linear-progress-transition-duration: 0.2s;
+  --alt-core-linear-progress-indeterminate-duration: 1.5s;
+}

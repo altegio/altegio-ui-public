@@ -1,0 +1,60 @@
+@import url('../../../assets/css/mixins/a11y.css');
+
+$component: $AltCoreLinearProgressTagName;
+
+@mixin alt-reduced-motion;
+
+:host {
+  --alt-core-linear-progress-height: var(--alt-core-linear-progress-small-height);
+  --alt-core-linear-progress-bar-background-color: var(--alt-core-linear-progress-accent-background-color);
+
+  display: var(--alt-core-linear-progress-display);
+}
+
+:host([size='medium']) {
+  --alt-core-linear-progress-height: var(--alt-core-linear-progress-medium-height);
+}
+
+:host([variant='positive']) {
+  --alt-core-linear-progress-bar-background-color: var(--alt-core-linear-progress-positive-background-color);
+}
+
+:host([variant='negative']) {
+  --alt-core-linear-progress-bar-background-color: var(--alt-core-linear-progress-negative-background-color);
+}
+
+.$(component) {
+  position: relative;
+  width: 100%;
+  height: var(--alt-core-linear-progress-height);
+  overflow: hidden;
+  background-color: var(--alt-core-linear-progress-track-background-color);
+  border-radius: var(--alt-core-linear-progress-border-radius);
+
+  &__bar {
+    height: 100%;
+    background-color: var(--alt-core-linear-progress-bar-background-color);
+    border-radius: inherit;
+    transition: width var(--alt-core-linear-progress-transition-duration) ease-out;
+  }
+}
+
+:host([indeterminate]) .$(component)__bar {
+  width: 40%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :host([indeterminate]) .$(component)__bar {
+    animation: alt-core-linear-progress-indeterminate var(--alt-core-linear-progress-indeterminate-duration) ease-in-out infinite;
+  }
+}
+
+@keyframes alt-core-linear-progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(250%);
+  }
+}

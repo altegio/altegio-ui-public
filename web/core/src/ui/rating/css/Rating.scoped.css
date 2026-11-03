@@ -1,0 +1,54 @@
+@import url('../../../assets/css/mixins/a11y.css');
+
+$component: $AltCoreRatingTagName;
+
+:host {
+  display: var(--alt-core-rating-display);
+  vertical-align: middle;
+}
+
+:host([disabled]) {
+  opacity: var(--alt-core-rating-disabled-opacity);
+}
+
+.$(component) {
+  display: inline-flex;
+  gap: var(--alt-core-rating-gap);
+  align-items: center;
+
+  &__star {
+    display: inline-flex;
+    outline: none;
+    border-radius: var(--alt-core-rating-star-border-radius);
+
+    &:focus-visible {
+      @mixin alt-focus-ring;
+    }
+  }
+
+  &_interactive &__star {
+    cursor: pointer;
+  }
+
+  &__icon {
+    position: relative;
+    display: inline-flex;
+  }
+
+  &__empty {
+    color: var(--alt-core-rating-empty-color);
+  }
+
+  &__fill {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    display: inline-flex;
+    overflow: hidden;
+    color: var(--alt-core-rating-filled-color);
+
+    & > * {
+      flex-shrink: 0;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+:host {
+  /* General */
+  --alt-core-rating-display: inline-flex;
+  --alt-core-rating-gap: var(--alt-core-size-spacing-0-5-x);
+  --alt-core-rating-star-border-radius: var(--alt-core-size-radius-x);
+
+  /* Colors */
+  --alt-core-rating-filled-color: var(--alt-core-color-icon-warning);
+  --alt-core-rating-empty-color: var(--alt-core-color-icon-tertiary);
+  --alt-core-rating-disabled-opacity: 0.5;
+}

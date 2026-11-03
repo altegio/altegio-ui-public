@@ -47,5 +47,7 @@ export * from './ui/listItem'
 export * from './ui/tabPanels'
 export * from './ui/tabPanel'
 export * from './ui/dateRange'
+export * from './ui/linearProgress'
+export * from './ui/rating'
 
 export { BREAKPOINTS } from '~shared/constants/breakpoints'
