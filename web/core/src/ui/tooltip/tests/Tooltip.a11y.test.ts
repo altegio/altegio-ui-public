@@ -124,6 +124,7 @@ describe('Core/AltCoreTooltip/Accessibility', () => {
 
       await userEvent.keyboard('{Escape}')
       expect(onWindowKeydown).not.toHaveBeenCalled()
+      await vi.waitFor(() => { expect(isContentShown(tooltip)).toBe(false) })
 
       await userEvent.keyboard('{Escape}')
       expect(onWindowKeydown).toHaveBeenCalledTimes(1)
