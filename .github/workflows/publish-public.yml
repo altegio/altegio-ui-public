@@ -26,6 +26,8 @@ jobs:
       RELEASE_VERSION: ${{ inputs.version }}
       RELEASE_CONFIRMATION: ${{ inputs.confirmation }}
       NODE_OPTIONS: --max-old-space-size=3072
+      # Match the home directory to the container user for Firefox consumers.
+      HOME: /root
     steps:
       - uses: actions/checkout@v4
       - name: Check reviewed release identity

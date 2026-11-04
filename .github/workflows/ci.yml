@@ -74,6 +74,8 @@ jobs:
       CI: 'true'
       TEST_BROWSER: ${{ matrix.browser }}
       NODE_OPTIONS: --max-old-space-size=2048
+      # The container runs as root; Firefox rejects GitHub's UID-1001 home.
+      HOME: /root
     steps:
       - uses: actions/checkout@v4
       - run: corepack enable
@@ -122,6 +124,7 @@ jobs:
     timeout-minutes: 25
     env:
       NODE_OPTIONS: --max-old-space-size=3072
+      HOME: /root
     steps:
       - uses: actions/checkout@v4
       - run: corepack enable
