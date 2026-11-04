@@ -49,8 +49,24 @@ describe('Core/AltCoreDropdownList/Accessibility', () => {
   })
 
   it('adds no tab stop when its owner manages scrolling', async() => {
-    const list = await mountList({ items, managedScroll: true })
+    const list = await mountList({ managedScroll: true })
+    const before = document.createElement('button')
+    const after = document.createElement('button')
+    before.setAttribute('role', 'combobox')
+    before.setAttribute('aria-label', 'Items')
+    before.setAttribute('aria-expanded', 'true')
+    before.setAttribute('aria-controls', 'managed-items')
+    const options = items.map((item) => `<div role="option" aria-selected="false" style="height:40px">${item.label}</div>`).join('')
+    list.innerHTML = `<div slot="list" id="managed-items" role="listbox" tabindex="-1" aria-label="Items">${options}</div>`
+    list.before(before)
+    list.after(after)
+    await waitForLitTree(list)
+    const listbox = list.querySelector<HTMLElement>('[role="listbox"]')!
+    expect(listbox.scrollHeight).toBeGreaterThan(listbox.clientHeight)
+    before.focus()
 
-    expect(getScrollContainer(list)?.hasAttribute('tabindex')).toBe(false)
+    await userEvent.tab()
+    expect(getDeepActiveElement()).toBe(after)
+    await expectNoAxeViolations(list)
   })
 })

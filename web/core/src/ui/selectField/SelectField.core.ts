@@ -638,6 +638,7 @@ export class AltCoreSelectField extends FormAssociated(LitElement) {
           class=${this.baseDropdownListItemsClass}
           slot="list"
           role="listbox"
+          tabindex="-1"
           aria-label=${this.computedAccessibleName || nothing}
         >
           <slot name="list">

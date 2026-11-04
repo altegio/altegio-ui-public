@@ -2,7 +2,7 @@
   <alt-core-text-field
     ref="textField"
     v-bind="props"
-    :value="modelValue"
+    :value="modelValue ?? ''"
     clearable="true"
     @input="$emit('update:modelValue', $event?.detail?.value)"
     @blur="$emit('blur', $event)"

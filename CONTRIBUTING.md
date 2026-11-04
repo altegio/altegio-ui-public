@@ -43,9 +43,13 @@ Follow the [quick start](./README.md#quick-start) to install dependencies and ru
 Run the checks that GitHub Actions runs on every pull request:
 
 ```bash
+pnpm typecheck
 make lint
-pnpm exec playwright install chromium
+pnpm test-token-compat
+pnpm exec playwright install chromium firefox webkit
 pnpm test-unit
+TEST_BROWSER=firefox pnpm test-unit
+TEST_BROWSER=webkit pnpm test-unit
 ```
 
 When you change the build or the package entry points, also run:
@@ -53,7 +57,15 @@ When you change the build or the package entry points, also run:
 ```bash
 make lib-build
 pnpm test-package-compat
+pnpm test-dist-compat
+pnpm public:build
+pnpm test-public-package
+pnpm test-public-consumers
+pnpm audit-dependencies
+pnpm test-public-export
 ```
+
+The package identity is `@altegio/ui`; source snapshots keep their development manifest private. Only `public:build` creates a publishable local tarball. Publication is a separate maintainer-approved process in [PUBLICATION.md](./docs/PUBLICATION.md). Public package releases must include English notes in PUBLIC_CHANGELOG.md. Never merge a community pull request directly into the snapshot repository.
 
 In the pull request, describe the problem, the change, and how you tested it. Screenshots help for visual changes.
 

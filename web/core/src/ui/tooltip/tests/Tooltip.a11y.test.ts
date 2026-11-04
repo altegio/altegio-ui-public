@@ -84,6 +84,10 @@ describe('Core/AltCoreTooltip/Accessibility', () => {
 
   it('shows on keyboard focus, hides on blur and on Escape', async() => {
     const { tooltip, activator } = await mountTooltip()
+    const previous = document.createElement('button')
+    previous.textContent = 'Previous control'
+    tooltip.before(previous)
+    previous.focus()
 
     await userEvent.tab()
     await waitForLitTree(tooltip)
@@ -96,8 +100,10 @@ describe('Core/AltCoreTooltip/Accessibility', () => {
     expect(getDeepActiveElement()).toBe(activator)
 
     await userEvent.tab({ shift: true })
+    expect(getDeepActiveElement()).toBe(previous)
     await userEvent.tab()
     await waitForLitTree(tooltip)
+    expect(getDeepActiveElement()).toBe(activator)
     expect(isContentShown(tooltip)).toBe(true)
 
     activator?.blur()

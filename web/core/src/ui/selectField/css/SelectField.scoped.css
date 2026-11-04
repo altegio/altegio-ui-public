@@ -2,6 +2,7 @@ $component: $AltCoreSelectFieldTagName;
 
 :host {
   display: block;
+  min-width: 0;
 }
 
 .$(component) {
@@ -26,6 +27,10 @@ $component: $AltCoreSelectFieldTagName;
         display: none;
       }
     }
+  }
+
+  &__label {
+    max-width: 100%;
   }
 
   &__input {

@@ -26,7 +26,7 @@ const { max, name, readonly, disabled, required, size, accessibleName } = create
       [max]="max"
       [name]="name"
       [attr.readonly]="readonly ? '' : null"
-      [disabled]="disabled"
+      [disabled]="disabled || controlDisabled()"
       [required]="required"
       [size]="size"
       [accessibleName]="accessibleName"
@@ -67,10 +67,6 @@ export class AltRating extends ControlValueAccessorBase<number | null> implement
     this.modelValue.set(value ?? 0)
   }
 
-  setDisabledState(isDisabled: boolean) {
-    this.disabled = isDisabled
-  }
-
   handleChange(event: Event) {
     // The output replaces the native event, which would otherwise reach a (change) listener on the host as well
     event.stopPropagation()
@@ -80,6 +76,5 @@ export class AltRating extends ControlValueAccessorBase<number | null> implement
     this.modelValue.set(value)
     this.valueChange.emit(value)
     this.onChange(value)
-    this.onTouched()
   }
 }

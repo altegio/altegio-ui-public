@@ -1,5 +1,6 @@
-import type { OnInit, OnChanges, SimpleChanges, TemplateRef } from '@angular/core'
-import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output, ContentChild, signal, computed, Optional, Self, Inject, ChangeDetectionStrategy } from '@angular/core'
+import type { OnInit, OnChanges, DoCheck, SimpleChanges, TemplateRef } from '@angular/core'
+import { observeControlEvents } from '~ng/utils/control-events'
+import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output, ContentChild, signal, computed, Optional, Self, Inject, ChangeDetectionStrategy, DestroyRef, inject } from '@angular/core'
 import type { ValidatorFn } from '@angular/forms'
 import { UntypedFormControl, Validators, NgControl } from '@angular/forms'
 import { FormsModule } from '@angular/forms'
@@ -43,7 +44,7 @@ defineCustomElement(AltCoreTextFieldTagName, AltCoreTextField)
       [placeholder]="placeholder"
       [autofocus]="autofocus"
       [type]="type"
-      [disabled]="disabled"
+      [disabled]="disabled || controlDisabled()"
       [accessibleName]="accessibleName"
       [attr.readonly]="readonly ? '' : null"
       [maxlength]="maxlength"
@@ -107,7 +108,7 @@ defineCustomElement(AltCoreTextFieldTagName, AltCoreTextField)
  * // With ngModel
  * <AltTextField [(ngModel)]="name" [required]="true" [errors]="['This field is required']" />
  */
-export class AltTextField extends ControlValueAccessorBase<TAltNgTextFieldModel> implements IAltNgTextFieldProps, OnInit, OnChanges {
+export class AltTextField extends ControlValueAccessorBase<TAltNgTextFieldModel> implements IAltNgTextFieldProps, OnInit, OnChanges, DoCheck {
   @Input() @DefaultValue(name) name: IAltNgTextFieldProps['name'] = name
   @Input() @DefaultValue(placeholder) placeholder: IAltNgTextFieldProps['placeholder'] = placeholder
   @Input() @DefaultValue(autofocus) autofocus: IAltNgTextFieldProps['autofocus'] = autofocus
@@ -146,6 +147,11 @@ export class AltTextField extends ControlValueAccessorBase<TAltNgTextFieldModel>
   private errorsSignal = signal<IAltNgTextFieldProps['errors']>(undefined)
   private requiredExplicitlySet = signal(false)
   private controlStatusChanged = signal(0)
+  private readonly observeControl = observeControlEvents(
+    () => this.ngControl?.control,
+    () => { this.controlStatusChanged.update((value) => value + 1) },
+    inject(DestroyRef),
+  )
 
   private hasCustomRequiredValidator(control: NonNullable<typeof this.ngControl>['control']): boolean {
     if (!control?.validator) return false
@@ -184,6 +190,7 @@ export class AltTextField extends ControlValueAccessorBase<TAltNgTextFieldModel>
    * 3. Otherwise `false`
   */
   computedRequired = computed<boolean>(() => {
+    this.controlStatusChanged()
     if (this.requiredExplicitlySet()) {
       return this.required ?? false
     }
@@ -209,6 +216,7 @@ export class AltTextField extends ControlValueAccessorBase<TAltNgTextFieldModel>
   }
 
   hasFormErrors = computed<boolean>(() => {
+    this.controlStatusChanged()
     return !!this.computedErrors() || !!this.error
   })
 
@@ -221,6 +229,7 @@ export class AltTextField extends ControlValueAccessorBase<TAltNgTextFieldModel>
    *
    */
   computedErrors = computed<string[] | null>(() => {
+    this.controlStatusChanged()
     const errors = this.resolveErrors()
     const shouldShowErrors = this.shouldShowErrors()
 
@@ -257,6 +266,7 @@ export class AltTextField extends ControlValueAccessorBase<TAltNgTextFieldModel>
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    this.controlStatusChanged.update((value) => value + 1)
     if ('errors' in changes) {
       this.errorsSignal.set(this.errors)
     }
@@ -268,13 +278,10 @@ export class AltTextField extends ControlValueAccessorBase<TAltNgTextFieldModel>
   ngOnInit() {
     this.setFormControlValidators()
     this.errorsSignal.set(this.errors)
+  }
 
-    // Track status changes of an external FormControl
-    if (this.ngControl?.control) {
-      this.ngControl.control.statusChanges.subscribe(() => {
-        this.controlStatusChanged.update((v) => v + 1)
-      })
-    }
+  ngDoCheck() {
+    this.observeControl()
   }
 
   private setFormControlValidators() {
@@ -306,7 +313,6 @@ export class AltTextField extends ControlValueAccessorBase<TAltNgTextFieldModel>
     preventAndStopEvent(event)
     this.blur.emit(event as BlurEvent)
 
-    this.onTouched()
 
     const control = this.ngControl?.control || this.formControl()
     control.markAsTouched()
@@ -321,9 +327,11 @@ export class AltTextField extends ControlValueAccessorBase<TAltNgTextFieldModel>
     this.clear.emit(event as ClearEvent)
   }
 
-  writeValue(value: TAltNgTextFieldModel) {
-    this.textFieldValue.set(value)
-    this.formControl().setValue(value, { emitEvent: false })
+  writeValue(value: TAltNgTextFieldModel | null) {
+    this.observeControl()
+    const normalized = value ?? ''
+    this.textFieldValue.set(normalized)
+    this.formControl().setValue(normalized, { emitEvent: false })
   }
 
   handleInputEvent(event: Event): void {
@@ -333,7 +341,6 @@ export class AltTextField extends ControlValueAccessorBase<TAltNgTextFieldModel>
     this.textFieldValue.set(value)
     this.formControl().setValue(value, { emitEvent: false })
     this.onChange(value)
-    this.onTouched()
 
     const control = this.ngControl?.control || this.formControl()
     this.isInvalid.set(control.invalid)

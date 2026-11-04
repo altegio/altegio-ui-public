@@ -69,6 +69,7 @@ export class AltCoreDropdownList
     return {
       [this.baseClass]: true,
       [`${this.baseClass}_no-max-height`]: Boolean(this.noMaxHeight),
+      [`${this.baseClass}_managed-scroll`]: this.managedScroll,
       'alt-scrollbar': true,
     }
   }

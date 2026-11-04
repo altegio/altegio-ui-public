@@ -1,6 +1,8 @@
 import type { LitElement, PropertyValues } from 'lit'
 import { property, state } from 'lit/decorators.js'
 import { getElementMessage } from '~core/i18n/messages'
+import { createFormInternals, LegacyFormInternals, type TFormInternals } from './legacy-form-internals'
+import { whenRendered } from './focus-target'
 
 // Mixin constructors must accept any arguments (TS2545)
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -15,6 +17,20 @@ export interface IFormControlValidity {
 const VALID: IFormControlValidity = {
   flags: {},
   message: '',
+}
+
+const FORM_RESET_HANDLER = Symbol.for('@altegio/ui/form-reset-handler')
+type TFormResetElement = HTMLElement & { [FORM_RESET_HANDLER]?: () => boolean }
+
+/** An adapter with its own form model can supply the value restored by a native form reset. */
+export const registerFormResetHandler = (element: HTMLElement, reset: () => boolean) => {
+  // A registered custom element can come from another entry point's copy of core.
+  Object.defineProperty(element, FORM_RESET_HANDLER, { value: reset, configurable: true })
+
+  return () => {
+    const control = element as TFormResetElement
+    if (control[FORM_RESET_HANDLER] === reset) delete control[FORM_RESET_HANDLER]
+  }
 }
 
 /**
@@ -34,7 +50,7 @@ export declare class FormAssociatedElementInterface {
   resetValidation(): void
   formDisabledCallback(disabled: boolean): void
   formResetCallback(): void
-  protected readonly internals: ElementInternals
+  protected readonly internals: TFormInternals
   protected formDisabled: boolean
   protected validationError: string | undefined
   protected withValidationError(errors: string[] | undefined): string[] | undefined
@@ -71,7 +87,17 @@ export const FormAssociated = <T extends TConstructor<LitElement>>(superClass: T
     /** Whether `validate()` ran since the last `resetValidation()` */
     private validationShown = false
 
-    protected readonly internals: ElementInternals = this.attachInternals()
+    protected readonly internals: TFormInternals = createFormInternals(this)
+
+    connectedCallback() {
+      super.connectedCallback()
+      if (this.internals instanceof LegacyFormInternals) this.internals.connect()
+    }
+
+    disconnectedCallback() {
+      if (this.internals instanceof LegacyFormInternals) this.internals.disconnect()
+      super.disconnectedCallback()
+    }
 
     get form() {
       return this.internals.form
@@ -90,7 +116,7 @@ export const FormAssociated = <T extends TConstructor<LitElement>>(superClass: T
     }
 
     get willValidate() {
-      return this.internals.willValidate
+      return Boolean(this.name) && !this.isBarredFromValidation && this.internals.willValidate
     }
 
     checkValidity() {
@@ -123,7 +149,8 @@ export const FormAssociated = <T extends TConstructor<LitElement>>(superClass: T
     }
 
     formResetCallback() {
-      this.resetFormControl()
+      this.resetValidation()
+      if (!(this as TFormResetElement)[FORM_RESET_HANDLER]?.()) this.resetFormControl()
     }
 
     /**
@@ -159,11 +186,13 @@ export const FormAssociated = <T extends TConstructor<LitElement>>(superClass: T
 
     /** A disabled control is valid, like a disabled native input */
     private get isBarredFromValidation() {
-      return this.formDisabled || (this as { disabled?: unknown }).disabled === true
+      const control = this as { disabled?: unknown; readonly?: unknown }
+
+      return this.formDisabled || control.disabled === true || control.readonly === true
     }
 
     private get currentValidity() {
-      return this.name && !this.isBarredFromValidation
+      return this.willValidate
         ? this.formValidity
         : VALID
     }
@@ -181,6 +210,7 @@ export const FormAssociated = <T extends TConstructor<LitElement>>(superClass: T
 
     protected willUpdate(changedProperties: PropertyValues) {
       super.willUpdate(changedProperties)
+      if (this.internals instanceof LegacyFormInternals) this.internals.sync()
 
       if (this.validationShown) this.validationError = this.getValidationError()
     }
@@ -188,12 +218,18 @@ export const FormAssociated = <T extends TConstructor<LitElement>>(superClass: T
     protected updated(changedProperties: PropertyValues) {
       super.updated(changedProperties)
 
-      const participates = Boolean(this.name)
-      const { flags, message, anchor } = participates && !this.isBarredFromValidation
-        ? this.formValidity
-        : VALID
+      if (this.syncFormInternals()) return
 
-      this.internals.setFormValue(participates
+      // Nested native inputs finish rendering after their parent. Read the validation anchor then.
+      void whenRendered(this).then(() => { this.syncFormInternals() })
+    }
+
+    private syncFormInternals() {
+      const participates = Boolean(this.name)
+      const { flags, message, anchor } = this.currentValidity
+
+      const disabled = this.formDisabled || (this as { disabled?: unknown }).disabled === true
+      this.internals.setFormValue(participates && !disabled
         ? this.formValue
         : null)
       // The anchor renders in shadow DOM and may not exist yet; the browser rejects a missing one
@@ -209,6 +245,8 @@ export const FormAssociated = <T extends TConstructor<LitElement>>(superClass: T
           message,
         )
       }
+
+      return Boolean(anchor) || !message
     }
   }
 

@@ -41,12 +41,12 @@
   --alt-core-simple-button-variant-primary-disabled-color: var(--alt-core-color-text-tertiary);
   --alt-core-simple-button-variant-primary-disabled-border: transparent;
   --alt-core-simple-button-variant-primary-disabled-background-color: var(--alt-core-color-surface-accent-low);
-  --alt-core-simple-button-variant-primary-loading-color: var(--alt-core-color-icon-primary);
+  --alt-core-simple-button-variant-primary-loading-color: var(--alt-core-color-icon-on-accent);
   --alt-core-simple-button-variant-primary-hover-background-color: var(--alt-core-color-surface-accent-high);
 
   /* Outline */
   --alt-core-simple-button-variant-outline-color: var(--alt-core-color-text-primary);
-  --alt-core-simple-button-variant-outline-border: var(--alt-core-color-stroke-primary);
+  --alt-core-simple-button-variant-outline-border: var(--alt-core-color-stroke-control);
   --alt-core-simple-button-variant-outline-background-color: transparent;
   --alt-core-simple-button-variant-outline-disabled-color: var(--alt-core-color-text-tertiary);
   --alt-core-simple-button-variant-outline-disabled-border: var(--alt-core-color-stroke-primary);
@@ -56,7 +56,7 @@
 
   /* Outline-filled */
   --alt-core-simple-button-variant-outline-filled-color: var(--alt-core-color-text-primary);
-  --alt-core-simple-button-variant-outline-filled-border: var(--alt-core-color-stroke-primary);
+  --alt-core-simple-button-variant-outline-filled-border: var(--alt-core-color-stroke-control);
   --alt-core-simple-button-variant-outline-filled-background-color: var(--alt-core-color-surface-primary);
   --alt-core-simple-button-variant-outline-filled-disabled-color: var(--alt-core-color-text-tertiary);
   --alt-core-simple-button-variant-outline-filled-disabled-border: var(--alt-core-color-stroke-primary);

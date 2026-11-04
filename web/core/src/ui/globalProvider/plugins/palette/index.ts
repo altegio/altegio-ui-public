@@ -34,8 +34,9 @@ export class PalettePlugin implements IGlobalProviderPlugin {
    *
    * @param accentColor - Accent color the palette is generated from
    * @param useDarkTheme - Enables the dark theme
+   * @param target - Theme boundary; defaults to document.documentElement. Nested/sibling themes use separate targets.
    */
-  constructor(private accentColor: string, private useDarkTheme = false) {}
+  constructor(private accentColor: string, private useDarkTheme = false, private target?: HTMLElement) {}
 
   /**
    * Sets up the palette in the global context
@@ -52,6 +53,7 @@ export class PalettePlugin implements IGlobalProviderPlugin {
       id: PALETTE_MODULE_ID,
       accentColor: colord(this.accentColor),
       useDarkTheme: this.useDarkTheme,
+      target: this.target,
     })
 
     this.context.putModule(this.paletteModule)

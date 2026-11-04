@@ -1,5 +1,5 @@
 {
-  "name": "@platform/altegio-ui",
+  "name": "@altegio/ui",
   "description": "Altegio design system (UIKit)",
   "author": "Altegio Platform Team",
   "version": "3.17.0",
@@ -21,10 +21,14 @@
   "main": "dist/web/core/index.mjs",
   "module": "dist/web/core/index.mjs",
   "files": [
-    "dist/"
+    "dist/",
+    "licenses/",
+    "THIRD_PARTY_NOTICES.md"
   ],
   "sideEffects": [
     "*.css",
+    "./dist/entries/**",
+    "./dist/web/runtime/**",
     "./dist/web/core/**",
     "./dist/web/vue/**",
     "./dist/web/angular/**",
@@ -60,73 +64,21 @@
     },
     "./assets/*": "./dist/web/assets/*",
     "./package.json": "./package.json",
-    "./ng/global-provider": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
+    "./core/*": {
+      "types": "./dist/entries/core/*.d.ts",
+      "import": "./dist/entries/core/*.mjs"
     },
-    "./ng/loader": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
+    "./vue/*": {
+      "types": "./dist/entries/vue/*.d.ts",
+      "import": "./dist/entries/vue/*.mjs"
     },
-    "./ng/icons": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
+    "./angular/*": {
+      "types": "./dist/entries/angular/*.d.ts",
+      "import": "./dist/entries/angular/*.mjs"
     },
-    "./ng/icon": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
-    },
-    "./ng/checkbox": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
-    },
-    "./ng/tag": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
-    },
-    "./ng/simple-button": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
-    },
-    "./ng/button": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
-    },
-    "./ng/icon-button": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
-    },
-    "./ng/radio-button": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
-    },
-    "./ng/text-field": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
-    },
-    "./ng/textarea": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
-    },
-    "./ng/search-field": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
-    },
-    "./ng/toggle": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
-    },
-    "./ng/count-field": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
-    },
-    "./ng/modal": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
-    },
-    "./ng/functional-modal": {
-      "types": "./dist/web/angular/types/altegio-ui-workspace.d.ts",
-      "import": "./dist/web/angular/fesm2022/altegio-ui-workspace.mjs"
+    "./assets/css/*": {
+      "types": "./dist/web/assets/css/style.d.ts",
+      "default": "./dist/web/assets/css/*"
     }
   },
   "typesVersions": {
@@ -146,56 +98,17 @@
       "tokens": [
         "./dist/web/assets/tokens/index.d.ts"
       ],
-      "ng/global-provider": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
+      "core/*": [
+        "./dist/entries/core/*.d.ts"
       ],
-      "ng/loader": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
+      "vue/*": [
+        "./dist/entries/vue/*.d.ts"
       ],
-      "ng/icons": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
+      "angular/*": [
+        "./dist/entries/angular/*.d.ts"
       ],
-      "ng/icon": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
-      ],
-      "ng/checkbox": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
-      ],
-      "ng/tag": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
-      ],
-      "ng/simple-button": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
-      ],
-      "ng/button": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
-      ],
-      "ng/icon-button": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
-      ],
-      "ng/radio-button": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
-      ],
-      "ng/text-field": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
-      ],
-      "ng/textarea": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
-      ],
-      "ng/search-field": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
-      ],
-      "ng/toggle": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
-      ],
-      "ng/count-field": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
-      ],
-      "ng/modal": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
-      ],
-      "ng/functional-modal": [
-        "./dist/web/angular/types/altegio-ui-workspace.d.ts"
+      "assets/css/*": [
+        "./dist/web/assets/css/style.d.ts"
       ]
     }
   },
@@ -209,7 +122,7 @@
     "lib-build-core": "vite build -c ./configs/vite/lib/core.vite.config.ts",
     "lib-build-vue": "vite build -c ./configs/vite/lib/vue.vite.config.ts",
     "lib-build-ng": "vite build -c ./configs/vite/lib/ng.vite.config.ts",
-    "ng-build": "ng-packagr -p workspace/angular/ng-package.json --config workspace/angular/tsconfig.lib.json && node ./scripts/minify-ng-dist.mjs",
+    "ng-build": "node scripts/build-angular-runtime.mjs",
     "ng-build:raw": "ng-packagr -p workspace/angular/ng-package.json --config workspace/angular/tsconfig.lib.json",
     "build-with-workspace": "node scripts/build-with-workspace.js",
     "lint-commit": "commitlint -g ./configs/commitlint.config.ts --from HEAD~1 --to HEAD --verbose",
@@ -239,7 +152,7 @@
     "test-unit-core": "vitest run --c ./configs/vitest/vitest.config.ts --project core",
     "test-token-compat": "node --test scripts/token-compat.test.mjs",
     "test-package-compat": "node --test scripts/package-compat.test.mjs",
-    "test-dist-compat": "eslint -c ./configs/eslint.dist.config.mjs ./dist/web/core ./dist/web/vue ./dist/web/assets",
+    "test-dist-compat": "eslint -c ./configs/eslint.dist.config.mjs ./dist/web/core ./dist/web/vue ./dist/web/angular ./dist/web/runtime ./dist/web/assets ./dist/entries",
     "test-unit-vue": "vitest run --c ./configs/vitest/vitest.config.ts --project vue",
     "test-unit-ng": "vitest run --c ./configs/vitest/vitest.config.ts --project angular",
     "test-unit-a11y": "vitest run --c ./configs/vitest/vitest.config.ts --project a11y",
@@ -248,10 +161,18 @@
     "test-coverage": "vitest --ui --c ./configs/vitest/vitest.config.ts --coverage",
     "extract-ts-from-vue": "node ./tools/vue-ts-extract.js",
     "check-types": "pnpm run extract-ts-from-vue && type-coverage --project tsconfig.json",
-    "check-types-report": "pnpm run extract-ts-from-vue && typescript-coverage-report --project tsconfig.json"
+    "check-types-report": "pnpm run extract-ts-from-vue && typescript-coverage-report --project tsconfig.json",
+    "typecheck": "tsc --noEmit && vue-tsc --noEmit",
+    "public:build": "make public-build",
+    "test-public-package": "node --test scripts/public-package.test.mjs && node scripts/public-export.mjs scan artifacts/public/package",
+    "test-public-consumers": "node scripts/test-public-consumers.mjs",
+    "test-public-export": "node --test scripts/public-export.test.mjs && node scripts/public-export.mjs check",
+    "audit-dependencies": "node scripts/audit-dependencies.mjs"
   },
   "peerDependencies": {
+    "@angular/common": "^22",
     "@angular/core": "^22",
+    "@angular/forms": "^22",
     "vue": "^3"
   },
   "peerDependenciesMeta": {
@@ -259,6 +180,12 @@
       "optional": true
     },
     "@angular/core": {
+      "optional": true
+    },
+    "@angular/common": {
+      "optional": true
+    },
+    "@angular/forms": {
       "optional": true
     }
   },
@@ -320,11 +247,12 @@
     "eslint-plugin-lit": "^2.3.1",
     "eslint-plugin-sonarjs": "^4.2.2",
     "eslint-plugin-vue": "^10.11.1",
-    "glob": "^13.0.6",
+    "glob": "^14.0.3",
     "happy-dom": "^21.0.4",
     "jsdom": "^26.1.0",
     "lefthook": "^1.13.6",
     "lit-analyzer": "^2.0.3",
+    "magic-string": "0.30.21",
     "ng-packagr": "^22.2.5",
     "playwright": "^1.64.1",
     "postcss": "^8.5.31",
@@ -355,7 +283,7 @@
     "vue": "^3.5.44",
     "vue-eslint-parser": "^10.4.1",
     "vue-tsc": "^3.3.13",
-    "wait-on": "^8.0.5",
+    "wait-on": "^9.5.1",
     "webpack": "^5.112.2",
     "zone.js": "^0.15.1"
   },
@@ -392,5 +320,6 @@
     "radash": "^12.1.1",
     "tslib": "^2.8.1"
   },
+  "types": "./dist/web/core/index.d.ts",
   "private": true
 }

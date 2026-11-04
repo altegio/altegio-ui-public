@@ -1,0 +1,14 @@
+{
+  "core": {
+    "maxGzipBytes": 38000,
+    "maxFractionOfBarrel": 0.25
+  },
+  "vue": {
+    "maxGzipBytes": 68000,
+    "maxFractionOfBarrel": 0.35
+  },
+  "angular": {
+    "maxGzipBytes": 156000,
+    "maxFractionOfBarrel": 0.6
+  }
+}

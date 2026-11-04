@@ -579,6 +579,7 @@ export class AltCoreAutocompleteField extends FormAssociated(LitElement) impleme
           class=${this.baseDropdownListItemsClass}
           slot="list"
           role=${ifDefined(this.listboxAttributes.role)}
+          tabindex="-1"
           aria-label=${ifDefined(this.listboxAttributes.label)}
           aria-busy=${ifDefined(this.listboxAttributes.busy)}
         >

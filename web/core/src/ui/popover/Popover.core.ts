@@ -127,7 +127,7 @@ export class AltCorePopover extends LitElement implements IAltCorePopoverProps {
     const content = this.contentElement
     if (!content) return
 
-    const target = getFocusableElements(content).at(0) ?? content
+    const target = getFocusableElements(content)[0] ?? content
     target.focus()
   }
 
@@ -140,7 +140,7 @@ export class AltCorePopover extends LitElement implements IAltCorePopoverProps {
     const { hasFocusInside } = this
     this.isContentVisible = false
 
-    const activator = this.activators.at(0)
+    const activator = this.activators.length ? this.activators[0] : undefined
     if (hasFocusInside && activator) (getFocusTarget(activator) as HTMLElement).focus()
   }
 

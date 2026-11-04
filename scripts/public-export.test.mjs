@@ -17,6 +17,8 @@ test('public snapshots preserve code and remove private delivery credentials and
     writeFileSync(join(directory, 'release.config.mjs'), 'export default { branches: [] }\n');
     writeFileSync(join(directory, 'package.json'), JSON.stringify({ name: '@platform/altegio-ui', repository: 'internal', scripts: { build: 'vite build', 'cleanup-prereleases': 'node scripts/cleanup-prereleases.js' } }));
     writeFileSync(join(directory, 'CHANGELOG.md'), '# Changes\nВнутреннее изменение INTERNAL-123\n');
+    const publicNotes = '# Public package changelog\n\n## Candidate 3.17.0\n\nPending publication. Follow [public snapshots](https://github.com/altegio/altegio-ui-public/commits/main/).\n';
+    writeFileSync(join(directory, 'PUBLIC_CHANGELOG.md'), publicNotes);
     writeFileSync(join(directory, 'README.md'), '[Component](https://gitlab.altegio.dev/project/commit/123)\n[Docs](https://example.com/docs)\n');
     mkdirSync(join(directory, 'web'));
     writeFileSync(join(directory, 'web', 'component.ts'), 'export const value = 42;\n');
@@ -32,10 +34,12 @@ test('public snapshots preserve code and remove private delivery credentials and
     }
     const pkg = JSON.parse(readFileSync(join(directory, 'package.json'), 'utf8'));
     assert.equal(pkg.private, true);
+    assert.equal(pkg.name, '@altegio/ui');
     assert.equal(pkg.repository.url, `git+${target}`);
     assert.deepEqual(pkg.scripts, { build: 'vite build' });
     assert.equal(readFileSync(join(directory, 'README.md'), 'utf8'), 'Component\n[Docs](https://example.com/docs)\n');
     const changelog = readFileSync(join(directory, 'CHANGELOG.md'), 'utf8');
+    assert.equal(changelog, publicNotes);
     assert.match(changelog, /public snapshots/);
     assert.match(changelog, /https:\/\/github\.com\/altegio\/altegio-ui-public\/commits\/main\//);
     assert.doesNotMatch(changelog, /[А-Яа-яЁё]|INTERNAL-123/);

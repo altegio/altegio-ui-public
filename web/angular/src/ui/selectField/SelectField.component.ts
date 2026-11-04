@@ -1,4 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output } from '@angular/core'
+import { forwardRef, Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output } from '@angular/core'
+import { NG_VALUE_ACCESSOR } from '@angular/forms'
+import { ControlValueAccessorBase } from '~ng/types/ControlValueAccessorBase'
 
 import '~core/ui/selectField'
 import {
@@ -17,6 +19,7 @@ const { value, name, placeholder, autofocus, disabled, readonly, error, errors, 
 @Component({
   selector: 'AltSelectField',
   standalone: true,
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AltSelectField), multi: true }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <alt-core-select-field
@@ -24,7 +27,7 @@ const { value, name, placeholder, autofocus, disabled, readonly, error, errors, 
       [name]="name"
       [placeholder]="placeholder"
       [autofocus]="autofocus"
-      [disabled]="disabled"
+      [disabled]="disabled || controlDisabled()"
       [attr.readonly]="readonly ? '' : null"
       [required]="required"
       [errors]="errors"
@@ -97,7 +100,7 @@ const { value, name, placeholder, autofocus, disabled, readonly, error, errors, 
   `,
 })
 
-export class AltSelectField implements IAltNgSelectFieldProps {
+export class AltSelectField extends ControlValueAccessorBase<IAltNgSelectFieldProps['value'] | null> implements IAltNgSelectFieldProps {
   @Input() @DefaultValue(value) value: IAltNgSelectFieldProps['value'] = value
   @Input() @DefaultValue(name) name: IAltNgSelectFieldProps['name'] = name
   @Input() @DefaultValue(placeholder) placeholder: IAltNgSelectFieldProps['placeholder'] = placeholder
@@ -122,6 +125,11 @@ export class AltSelectField implements IAltNgSelectFieldProps {
   @Input() @DefaultValue(isFilterable) isFilterable: IAltNgSelectFieldProps['isFilterable'] = isFilterable
   @Input() @DefaultValue(filterCallback) filterCallback: IAltNgSelectFieldProps['filterCallback'] = filterCallback
 
+  writeValue(value: IAltNgSelectFieldProps['value'] | null) {
+    this.value = value ?? undefined
+    this.changeDetector.markForCheck()
+  }
+
   @Output() focus = new EventEmitter<AltNgSelectFieldFocusEvent>()
   handleFocusEvent(event: Event) {
     this.focus.emit(event as AltNgSelectFieldFocusEvent)
@@ -129,6 +137,11 @@ export class AltSelectField implements IAltNgSelectFieldProps {
 
   @Output() select = new EventEmitter<AltNgSelectFieldSelectEvent>()
   handleSelectEvent(event: Event) {
+    const detail = (event as Partial<AltNgSelectFieldSelectEvent>).detail
+    if (detail) {
+      this.value = detail.value
+      this.onChange(detail.value)
+    }
     this.select.emit(event as AltNgSelectFieldSelectEvent)
   }
 

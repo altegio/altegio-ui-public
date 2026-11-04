@@ -354,7 +354,7 @@ export class AltCoreCollapse
   private moveToNeighbourGroup(item: AltCoreCollapseItem, node: Element, group: AltCoreCollapse, step: -1 | 1) {
     const groups = group.allowCrossLevelMove ? this.getLevelGroups(group) : []
     const neighbourIndex = groups.indexOf(group) + step
-    const neighbour = neighbourIndex >= 0 ? groups.at(neighbourIndex) : undefined
+    const neighbour = neighbourIndex >= 0 ? groups[neighbourIndex] : undefined
     if (!neighbour) return
 
     this.insertAtGroupEdge(node, neighbour, step < 0 ? 'end' : 'start')
@@ -363,7 +363,7 @@ export class AltCoreCollapse
 
   private insertAtGroupEdge(node: Element, group: AltCoreCollapse, edge: 'start' | 'end') {
     const nodes = this.getMovableNodes(group)
-    const anchor = edge === 'end' ? nodes.at(-1) : nodes.at(0)
+    const anchor = nodes.length ? nodes[edge === 'end' ? nodes.length - 1 : 0] : undefined
 
     if (!anchor) group.append(node)
     else if (edge === 'end') anchor.after(node)

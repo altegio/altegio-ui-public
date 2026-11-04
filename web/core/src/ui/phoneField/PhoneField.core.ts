@@ -893,6 +893,7 @@ export class AltCorePhoneField extends FormAssociated(LocalizedElement) implemen
           slot="list"
           id=${this.countriesListboxId}
           role="listbox"
+          tabindex="-1"
           aria-label=${getElementMessage('countryCode', this)}
         >
           ${
@@ -970,6 +971,7 @@ export class AltCorePhoneField extends FormAssociated(LocalizedElement) implemen
           style=${styleMap(this.computedDropdownListStyles)} 
           slot="list"
           role=${ifDefined(this.suggestionsListboxAttributes.role)}
+          tabindex="-1"
           aria-label=${ifDefined(this.suggestionsListboxAttributes.label)}
           aria-busy=${ifDefined(this.suggestionsListboxAttributes.busy)}
         >

@@ -2,12 +2,14 @@ $component: $AltCoreTextFieldTagName;
 
 :host {
   display: var(--alt-core-text-field-display);
+  min-width: 0;
 }
 
 .$(component) {
   display: flex;
   flex-direction: column;
   gap: var(--alt-core-text-field-gap);
+  min-width: 0;
   max-width: 100%;
 
   &__annotation {

@@ -5,10 +5,12 @@ $component: $AltCoreFieldInputTagName;
 :host {
   display: inline-flex;
   flex-grow: 1;
+  min-width: 0;
 
   input:-webkit-autofill {
     padding: 1px 0;
-    margin: 1px 10px 1px 0;
+    margin-block: 1px;
+    margin-inline: 0 10px;
   }
 
   input:-webkit-autofill,
@@ -30,6 +32,7 @@ $component: $AltCoreFieldInputTagName;
 .$(component) {
   display: inline-flex;
   width: 100%;
+  min-width: 0;
   font-family: var(--alt-core-font-family);
   color: var(--alt-core-field-input-default-color);
   cursor: var(--alt-core-field-input-cursor);
@@ -39,11 +42,16 @@ $component: $AltCoreFieldInputTagName;
 
   &::placeholder {
     color: var(--alt-core-field-input-placeholder-color);
+    opacity: 1;
   }
 
   &:disabled,
   &_disabled {
     color: var(--alt-core-field-input-disabled-color);
+
+    &::placeholder {
+      color: var(--alt-core-field-input-disabled-color);
+    }
   }
 
   &_size {
@@ -74,11 +82,11 @@ $component: $AltCoreFieldInputTagName;
 
   &_hide-space {
     &-left {
-      padding-left: 0;
+      padding-inline-start: 0;
     }
 
     &-right {
-      padding-right: 0;
+      padding-inline-end: 0;
     }
   }
 }

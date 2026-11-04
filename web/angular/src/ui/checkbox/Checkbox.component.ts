@@ -43,7 +43,7 @@ defineCustomElement(AltCoreCheckboxTagName, AltCoreCheckbox)
       [annotationText]="annotationText"
       [size]="size"
       [checked]="modelValue()"
-      [disabled]="disabled"
+      [disabled]="disabled || controlDisabled()"
       [name]="name"
       [value]="value"
       [accessibleName]="accessibleName"
@@ -103,8 +103,8 @@ export class AltCheckbox extends ControlValueAccessorBase<TAltNgCheckboxModel> i
 
   modelValue = signal<TAltNgCheckboxModel>(false)
 
-  writeValue(value: boolean) {
-    this.modelValue.set(value)
+  writeValue(value: boolean | null | undefined) {
+    this.modelValue.set(Boolean(value))
   }
 
   handleCheckedEvent(event: Event) {
@@ -115,6 +115,5 @@ export class AltCheckbox extends ControlValueAccessorBase<TAltNgCheckboxModel> i
 
     this.modelValue.set(checked)
     this.onChange(checked)
-    this.onTouched()
   }
 }

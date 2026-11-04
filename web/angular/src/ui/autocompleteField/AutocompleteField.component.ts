@@ -1,4 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core'
+import { forwardRef, Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core'
+import { NG_VALUE_ACCESSOR } from '@angular/forms'
+import { ControlValueAccessorBase } from '~ng/types/ControlValueAccessorBase'
 
 import '~core/ui/autocompleteField'
 import {
@@ -39,6 +41,7 @@ const {
 @Component({
   selector: 'AltAutocompleteField',
   standalone: true,
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AltAutocompleteField), multi: true }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <alt-core-autocomplete-field
@@ -46,9 +49,10 @@ const {
       [name]="name"
       [placeholder]="placeholder"
       [autofocus]="autofocus"
-      [disabled]="disabled"
+      [disabled]="disabled || controlDisabled()"
       [accessibleName]="accessibleName"
       [errors]="errors"
+      [error]="error"
       [size]="size"
       [required]="required"
       [labelText]="labelText"
@@ -89,7 +93,7 @@ const {
     </alt-core-autocomplete-field>
   `,
 })
-export class AltAutocompleteField implements IAltNgAutocompleteFieldProps {
+export class AltAutocompleteField extends ControlValueAccessorBase<IAltNgAutocompleteFieldProps['value'] | null> implements IAltNgAutocompleteFieldProps {
   @Input() @DefaultValue(value) value: IAltNgAutocompleteFieldProps['value'] = value
   @Input() @DefaultValue(name) name: IAltNgAutocompleteFieldProps['name'] = name
   @Input() @DefaultValue(placeholder) placeholder: IAltNgAutocompleteFieldProps['placeholder'] = placeholder
@@ -111,6 +115,11 @@ export class AltAutocompleteField implements IAltNgAutocompleteFieldProps {
   @Input() @DefaultValue(emptyStateDescription) emptyStateDescription: IAltNgAutocompleteFieldProps['emptyStateDescription'] = emptyStateDescription
   @Input() @DefaultValue(accessibleName) accessibleName: IAltNgAutocompleteFieldProps['accessibleName'] = accessibleName
 
+  writeValue(value: IAltNgAutocompleteFieldProps['value'] | null) {
+    this.value = value ?? ''
+    this.changeDetector.markForCheck()
+  }
+
   @Output() focus = new EventEmitter<AutocompleteFieldFocusEvent>()
   handleFocusEvent(event: Event) {
     this.focus.emit(event as AutocompleteFieldFocusEvent)
@@ -123,6 +132,11 @@ export class AltAutocompleteField implements IAltNgAutocompleteFieldProps {
 
   @Output() change = new EventEmitter<AutocompleteFieldChangeEvent>()
   handleChangeEvent(event: Event) {
+    const detail = (event as Partial<AutocompleteFieldChangeEvent>).detail
+    if (detail) {
+      this.value = detail.value
+      this.onChange(detail.value)
+    }
     this.change.emit(event as AutocompleteFieldChangeEvent)
   }
 

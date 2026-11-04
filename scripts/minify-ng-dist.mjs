@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { transform } from 'esbuild';
+import browserslistToEsbuild from 'browserslist-to-esbuild';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,7 +26,7 @@ async function minifyFile(filePath) {
   const result = await transform(code, {
     minify: true,
     format: 'esm',
-    target: 'es2022',
+    target: browserslistToEsbuild(undefined, { path: path.resolve(__dirname, '..') }),
     legalComments: 'none',
     charset: 'utf8',
   });

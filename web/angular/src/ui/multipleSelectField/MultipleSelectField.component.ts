@@ -1,4 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output } from '@angular/core'
+import { forwardRef, Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output } from '@angular/core'
+import { NG_VALUE_ACCESSOR } from '@angular/forms'
+import { ControlValueAccessorBase } from '~ng/types/ControlValueAccessorBase'
 
 import '~core/ui/multipleSelectField'
 import {
@@ -16,6 +18,7 @@ const { value, name, placeholder, autofocus, disabled, readonly, error, errors, 
 @Component({
   selector: 'AltMultipleSelectField',
   standalone: true,
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AltMultipleSelectField), multi: true }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <alt-core-multiple-select-field
@@ -23,7 +26,7 @@ const { value, name, placeholder, autofocus, disabled, readonly, error, errors, 
       [name]="name"
       [placeholder]="placeholder"
       [autofocus]="autofocus"
-      [disabled]="disabled"
+      [disabled]="disabled || controlDisabled()"
       [attr.readonly]="readonly ? '' : null"
       [required]="required"
       [errors]="errors"
@@ -93,7 +96,7 @@ const { value, name, placeholder, autofocus, disabled, readonly, error, errors, 
   `,
 })
 
-export class AltMultipleSelectField implements IAltNgMultipleSelectFieldProps {
+export class AltMultipleSelectField extends ControlValueAccessorBase<IAltNgMultipleSelectFieldProps['value'] | null> implements IAltNgMultipleSelectFieldProps {
   @Input() @DefaultValue(value) value: IAltNgMultipleSelectFieldProps['value'] = value
   @Input() @DefaultValue(name) name: IAltNgMultipleSelectFieldProps['name'] = name
   @Input() @DefaultValue(placeholder) placeholder: IAltNgMultipleSelectFieldProps['placeholder'] = placeholder
@@ -118,6 +121,11 @@ export class AltMultipleSelectField implements IAltNgMultipleSelectFieldProps {
   @Input() @DefaultValue(filterValue) filterValue: IAltNgMultipleSelectFieldProps['filterValue'] = filterValue
   @Input() @DefaultValue(filterCallback) filterCallback: IAltNgMultipleSelectFieldProps['filterCallback'] = filterCallback
 
+  writeValue(value: IAltNgMultipleSelectFieldProps['value'] | null) {
+    this.value = value ?? undefined
+    this.changeDetector.markForCheck()
+  }
+
   @Output() focus = new EventEmitter<AltNgMultipleSelectFieldFocusEvent>()
   handleFocusEvent(event: Event) {
     this.focus.emit(event as AltNgMultipleSelectFieldFocusEvent)
@@ -125,6 +133,11 @@ export class AltMultipleSelectField implements IAltNgMultipleSelectFieldProps {
 
   @Output() select = new EventEmitter<AltNgMultipleSelectFieldSelectEvent>()
   handleSelectEvent(event: Event) {
+    const detail = (event as Partial<AltNgMultipleSelectFieldSelectEvent>).detail
+    if (detail) {
+      this.value = detail.value
+      this.onChange(detail.value)
+    }
     this.select.emit(event as AltNgMultipleSelectFieldSelectEvent)
   }
 

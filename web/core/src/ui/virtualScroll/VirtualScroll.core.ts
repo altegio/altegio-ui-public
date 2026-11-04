@@ -107,6 +107,15 @@ export class AltCoreVirtualScroll
     this.updateRange()
   }
 
+  private handleKeydown = (event: KeyboardEvent) => {
+    const ignored = [event.defaultPrevented, event.isComposing, event.altKey, event.ctrlKey, event.metaKey, event.shiftKey].some(Boolean)
+    if (ignored || event.composedPath()[0] !== this.viewport || !['Home', 'End'].includes(event.key)) return
+
+    // Recycling rows can interrupt WebKit's native keyboard scroll animation.
+    event.preventDefault()
+    this.scrollToIndex(event.key === 'Home' ? 0 : this.computedItemCount - 1)
+  }
+
   protected firstUpdated() {
     this.resizeObserver.observe(this.viewport)
   }
@@ -138,6 +147,7 @@ export class AltCoreVirtualScroll
         class=${this.baseClass}
         tabindex=${ifDefined(this.isScrollable ? 0 : undefined)}
         @scroll=${this.handleScroll}
+        @keydown=${this.handleKeydown}
       >
         <div class="${this.baseClass}__spacer" style=${styleMap({ height: `${this.computedItemCount * size}px` })}>
           <div

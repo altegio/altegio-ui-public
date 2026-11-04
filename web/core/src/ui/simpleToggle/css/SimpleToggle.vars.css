@@ -18,6 +18,9 @@
   --alt-core-simple-toggle-size-medium-thumb-size: 24px;
 
   /* State colors */
+  --alt-core-simple-toggle-border-color: var(--alt-core-color-stroke-control);
+  --alt-core-simple-toggle-thumb-border-color: var(--alt-core-color-stroke-control);
+  --alt-core-simple-toggle-checked-thumb-border-color: var(--alt-core-color-icon-on-accent);
 
   /* Unchecked */
   --alt-core-simple-toggle-unchecked-bg-default: var(--alt-core-color-surface-tertiary);

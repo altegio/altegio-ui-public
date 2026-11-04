@@ -17,7 +17,7 @@ export const CSSVariablesHostToRootCases = [
   { host: '--alt-core-calendar-range-day-background-hover', root: '--alt-core-color-surface-tertiary-high' },
   { host: '--alt-core-calendar-range-day-background-disabled', root: '--alt-core-color-surface-tertiary-low' },
   { host: '--alt-core-calendar-day-today-line-color', root: '--alt-core-color-icon-accent' },
-  { host: '--alt-core-calendar-day-today-line-color-on-selected', root: '--alt-core-color-icon-primary' },
+  { host: '--alt-core-calendar-day-today-line-color-on-selected', root: '--alt-core-color-icon-on-accent' },
 ]
 
 export const CSSVariablesHostToValueCases = [
@@ -36,5 +36,5 @@ export const CSSVariablesHostToValueCases = [
   { host: '--alt-core-calendar-range-day-background-hover', value: COLORS.surface_tertiary_high.cssValue },
   { host: '--alt-core-calendar-range-day-background-disabled', value: COLORS.surface_tertiary_low.cssValue },
   { host: '--alt-core-calendar-day-today-line-color', value: COLORS.icon_accent.cssValue },
-  { host: '--alt-core-calendar-day-today-line-color-on-selected', value: COLORS.icon_primary.cssValue },
+  { host: '--alt-core-calendar-day-today-line-color-on-selected', value: COLORS.icon_on_accent.cssValue },
 ]

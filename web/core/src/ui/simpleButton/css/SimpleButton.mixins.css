@@ -22,6 +22,10 @@ $component: $AltCoreSimpleButtonTagName;
   color: var($color);
   background-color: var($bg-color);
   box-shadow: var(--alt-core-simple-button-box-shadow-override, inset 0 0 0 var(--alt-core-simple-button-border-size) var($border));
+
+  .$(component)__loader alt-core-loader {
+    --alt-core-loader-color-black: var($loading-color);
+  }
   
   &.$(component)_disabled {
     color: var($disabled-color);

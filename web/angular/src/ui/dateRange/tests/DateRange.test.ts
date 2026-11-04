@@ -162,6 +162,8 @@ describe(
         dispatchChange(coreElement, { from: '2025-08-01', to: '2025-08-10' })
 
         expect(fixture.componentInstance.control.value).toEqual({ from: '2025-08-01', to: '2025-08-10' })
+        expect(fixture.componentInstance.control.touched).toBe(false)
+        coreElement.dispatchEvent(new FocusEvent('focusout', { bubbles: true, composed: true }))
         expect(fixture.componentInstance.control.touched).toBe(true)
 
         fixture.componentInstance.control.disable()

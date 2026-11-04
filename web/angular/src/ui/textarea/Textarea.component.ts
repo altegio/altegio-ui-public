@@ -1,5 +1,6 @@
-import type { OnInit, OnChanges, SimpleChanges, TemplateRef } from '@angular/core'
-import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output, ContentChild, signal, computed, Optional, Self, Inject, ChangeDetectionStrategy } from '@angular/core'
+import type { OnInit, OnChanges, DoCheck, SimpleChanges, TemplateRef } from '@angular/core'
+import { observeControlEvents } from '~ng/utils/control-events'
+import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output, ContentChild, signal, computed, Optional, Self, Inject, ChangeDetectionStrategy, DestroyRef, inject } from '@angular/core'
 import type { ValidatorFn } from '@angular/forms'
 import { UntypedFormControl, Validators, NgControl } from '@angular/forms'
 import { FormsModule } from '@angular/forms'
@@ -69,7 +70,7 @@ defineCustomElement(AltCoreTextareaTagName, AltCoreTextarea)
       [clearable]="clearable"
       [rows]="rows"
       [resize]="resize"
-      [disabled]="disabled"
+      [disabled]="disabled || controlDisabled()"
       [accessibleName]="accessibleName"
       [size]="size"
       [attr.readonly]="readonly ? '' : null"
@@ -117,7 +118,7 @@ defineCustomElement(AltCoreTextareaTagName, AltCoreTextarea)
  * // With ngModel
  * <AltTextarea [(ngModel)]="description" [required]="true" [errors]="['This field is required']" />
  */
-export class AltTextarea extends ControlValueAccessorBase<TAltNgTextareaModel> implements IAltNgTextareaProps, OnInit, OnChanges {
+export class AltTextarea extends ControlValueAccessorBase<TAltNgTextareaModel> implements IAltNgTextareaProps, OnInit, OnChanges, DoCheck {
   @Input() @DefaultValue(name) name: IAltNgTextareaProps['name'] = name
   @Input() @DefaultValue(placeholder) placeholder: IAltNgTextareaProps['placeholder'] = placeholder
   @Input() @DefaultValue(required) required: IAltNgTextareaProps['required'] = required
@@ -159,6 +160,11 @@ export class AltTextarea extends ControlValueAccessorBase<TAltNgTextareaModel> i
   private errorsSignal = signal<IAltNgTextareaProps['errors']>(undefined)
   private requiredExplicitlySet = signal(false)
   private controlStatusChanged = signal(0)
+  private readonly observeControl = observeControlEvents(
+    () => this.ngControl?.control,
+    () => { this.controlStatusChanged.update((value) => value + 1) },
+    inject(DestroyRef),
+  )
 
   private hasCustomRequiredValidator(control: NonNullable<typeof this.ngControl>['control']): boolean {
     if (!control?.validator) return false
@@ -197,6 +203,7 @@ export class AltTextarea extends ControlValueAccessorBase<TAltNgTextareaModel> i
    * 3. Otherwise `false`
   */
   computedRequired = computed<boolean>(() => {
+    this.controlStatusChanged()
     if (this.requiredExplicitlySet()) {
       return this.required ?? false
     }
@@ -222,10 +229,12 @@ export class AltTextarea extends ControlValueAccessorBase<TAltNgTextareaModel> i
   }
 
   hasFormErrors = computed<boolean>(() => {
+    this.controlStatusChanged()
     return Boolean(this.computedErrors() || this.error)
   })
 
   computedErrors = computed<string[] | null>(() => {
+    this.controlStatusChanged()
     const errors = this.resolveErrors()
     const shouldShowErrors = this.shouldShowErrors()
 
@@ -262,6 +271,7 @@ export class AltTextarea extends ControlValueAccessorBase<TAltNgTextareaModel> i
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    this.controlStatusChanged.update((value) => value + 1)
     if ('errors' in changes) {
       this.errorsSignal.set(this.errors)
     }
@@ -273,13 +283,10 @@ export class AltTextarea extends ControlValueAccessorBase<TAltNgTextareaModel> i
   ngOnInit() {
     this.setFormControlValidators()
     this.errorsSignal.set(this.errors)
+  }
 
-    // Track status changes of an external FormControl
-    if (this.ngControl?.control) {
-      this.ngControl.control.statusChanges.subscribe(() => {
-        this.controlStatusChanged.update((v) => v + 1)
-      })
-    }
+  ngDoCheck() {
+    this.observeControl()
   }
 
   private setFormControlValidators() {
@@ -311,7 +318,6 @@ export class AltTextarea extends ControlValueAccessorBase<TAltNgTextareaModel> i
     preventAndStopEvent(event)
     this.blur.emit(event as BlurEvent)
 
-    this.onTouched()
 
     const control = this.ngControl?.control || this.formControl()
     control.markAsTouched()
@@ -351,9 +357,11 @@ export class AltTextarea extends ControlValueAccessorBase<TAltNgTextareaModel> i
     this.renderTextarea.emit(event as RenderEvent)
   }
 
-  writeValue(value: TAltNgTextareaModel) {
-    this.textareaValue.set(value)
-    this.formControl().setValue(value, { emitEvent: false })
+  writeValue(value: TAltNgTextareaModel | null) {
+    this.observeControl()
+    const normalized = value ?? ''
+    this.textareaValue.set(normalized)
+    this.formControl().setValue(normalized, { emitEvent: false })
   }
 
   handleInputEvent(event: Event): void {
@@ -363,7 +371,6 @@ export class AltTextarea extends ControlValueAccessorBase<TAltNgTextareaModel> i
     this.textareaValue.set(value)
     this.formControl().setValue(value, { emitEvent: false })
     this.onChange(value)
-    this.onTouched()
 
     const control = this.ngControl?.control || this.formControl()
     this.isInvalid.set(control.invalid)

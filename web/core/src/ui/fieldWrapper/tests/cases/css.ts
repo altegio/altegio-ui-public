@@ -1,15 +1,15 @@
 import { SIZES, COLORS, TYPOGRAPHY } from '~root/tokens'
 
 export const CSSVariablesHostToRootCases = [
-  { host: '--alt-core-field-wrapper-border-color', root: '--alt-core-color-stroke-primary' },
-  { host: '--alt-core-field-wrapper-default-hover-border-color', root: '--alt-core-color-stroke-primary-high' },
+  { host: '--alt-core-field-wrapper-border-color', root: '--alt-core-color-stroke-control' },
+  { host: '--alt-core-field-wrapper-default-hover-border-color', root: '--alt-core-color-icon-secondary' },
   { host: '--alt-core-field-wrapper-default-background-color', root: '--alt-core-color-surface-primary' },
   { host: '--alt-core-field-wrapper-default-color', root: '--alt-core-color-text-primary' },
   { host: '--alt-core-field-wrapper-disabled-border-color', root: '--alt-core-color-stroke-primary' },
   { host: '--alt-core-field-wrapper-disabled-background-color', root: '--alt-core-color-surface-primary-high' },
   { host: '--alt-core-field-wrapper-disabled-color', root: '--alt-core-color-text-tertiary' },
   { host: '--alt-core-field-wrapper-readonly-background-color', root: '--alt-core-color-surface-primary-high' },
-  { host: '--alt-core-field-wrapper-focused-border-color', root: '--alt-core-color-stroke-accent' },
+  { host: '--alt-core-field-wrapper-focused-border-color', root: '--alt-core-color-focus-ring' },
   { host: '--alt-core-field-wrapper-error-border-color', root: '--alt-core-color-stroke-negative' },
   { host: '--alt-core-field-wrapper-size-small-font-size', root: '--alt-core-typography-paragraph-p-2-regular-font-size' },
   { host: '--alt-core-field-wrapper-size-small-line-height', root: '--alt-core-typography-paragraph-p-2-regular-line-height' },
@@ -23,15 +23,15 @@ export const CSSVariablesHostToRootCases = [
 ]
 
 export const CSSVariablesHostToValueCases = [
-  { host: '--alt-core-field-wrapper-border-color', value: COLORS.stroke_primary.cssValue },
-  { host: '--alt-core-field-wrapper-default-hover-border-color', value: COLORS.stroke_primary_high.cssValue },
+  { host: '--alt-core-field-wrapper-border-color', value: COLORS.stroke_control.cssValue },
+  { host: '--alt-core-field-wrapper-default-hover-border-color', value: COLORS.icon_secondary.cssValue },
   { host: '--alt-core-field-wrapper-default-background-color', value: COLORS.surface_primary.cssValue },
   { host: '--alt-core-field-wrapper-default-color', value: COLORS.text_primary.cssValue },
   { host: '--alt-core-field-wrapper-disabled-border-color', value: COLORS.stroke_primary.cssValue },
   { host: '--alt-core-field-wrapper-disabled-background-color', value: COLORS.surface_primary_high.cssValue },
   { host: '--alt-core-field-wrapper-disabled-color', value: COLORS.text_tertiary.cssValue },
   { host: '--alt-core-field-wrapper-readonly-background-color', value: COLORS.surface_primary_high.cssValue },
-  { host: '--alt-core-field-wrapper-focused-border-color', value: COLORS.stroke_accent.cssValue },
+  { host: '--alt-core-field-wrapper-focused-border-color', value: COLORS.focus_ring.cssValue },
   { host: '--alt-core-field-wrapper-error-border-color', value: COLORS.stroke_negative.cssValue },
   { host: '--alt-core-field-wrapper-size-small-font-size', value: TYPOGRAPHY.paragraph_p_2_regular_font_size.cssValue },
   { host: '--alt-core-field-wrapper-size-small-line-height', value: TYPOGRAPHY.paragraph_p_2_regular_line_height.cssValue },

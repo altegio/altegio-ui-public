@@ -20,6 +20,16 @@ $component: $AltCoreDropdownListTagName;
   &_no-max-height {
     max-height: unset;
   }
+
+  /* The controlled listbox owns scrolling; its combobox keeps keyboard focus. */
+  &_managed-scroll {
+    overflow-y: visible;
+  }
+}
+
+.$(component)_managed-scroll ::slotted([role='listbox']) {
+  min-height: 0;
+  overflow-y: auto;
 }
 
 /* A list that scrolls is a tab stop when no item inside takes focus */

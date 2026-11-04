@@ -2,6 +2,8 @@ $component: $AltCoreLabelTagName;
 
 :host {
   display: flex;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .$(component) {
@@ -23,6 +25,7 @@ $component: $AltCoreLabelTagName;
   }
 
   &_disabled {
+    color: var(--alt-core-label-color-text-disabled);
     cursor: not-allowed;
 
     .$(component)__tooltip {
@@ -31,22 +34,24 @@ $component: $AltCoreLabelTagName;
   }
 
   &__container {
+    min-width: 0;
     max-width: 100%;
   }
 
   &__content {
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: left;
+    text-align: start;
     white-space: nowrap;
   }
 
   &__asterisk {
-    margin-left: 4px;
+    margin-inline-start: 4px;
   }
 
   &__tooltip {
-    margin-left: var(--alt-core-label-margin-left-tooltip);
+    flex-shrink: 0;
+    margin-inline-start: var(--alt-core-label-margin-left-tooltip);
     color: var(--alt-core-label-color-tooltip);
 
     &_hidden {

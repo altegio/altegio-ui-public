@@ -1,24 +1,27 @@
-# Checks the public snapshots and the pull requests proposed against them.
-# Snapshots come from the source repository; see CONTRIBUTING.md.
+# Public snapshots and community proposals; accepted changes are imported through internal main.
 name: CI
-
 on:
   push:
     branches: [main]
   pull_request:
-
 permissions:
   contents: read
-
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
+    name: ESLint (${{ matrix.target }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        target: [web/angular, web/cli, web/core, web/shared, web/vue]
+    env:
+      NODE_OPTIONS: --max-old-space-size=2048
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,27 +30,130 @@ jobs:
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
       - run: pnpm vars-build
-      - run: make lint
+      - run: pnpm exec eslint "${{ matrix.target }}" -c configs/eslint.config.mjs
+
+  quality:
+    name: Types, styles, tokens, audit and public export
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      NODE_OPTIONS: --max-old-space-size=3072
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm vars-build
+      - run: pnpm typecheck
+      - run: pnpm test-token-compat
+      - run: pnpm exec stylelint 'web/**/*.css' -c configs/.stylelintrc.json -i configs/.stylelintignore
+      - run: pnpm wc-analyze --strict
+      - run: pnpm audit-dependencies
+      - run: pnpm test-public-export
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dependency-audits
+          path: artifacts/validation/audit-*.json
+          if-no-files-found: ignore
 
   test:
-    name: Unit tests
-    runs-on: ubuntu-latest
-    # The Linux screenshot references are rendered in this image, the one the source
-    # repository tests in; the Ubuntu runner itself draws text slightly differently.
-    # Keep it on the .nvmrc version.
-    container: node:24.20.0
-    timeout-minutes: 30
+    name: ${{ matrix.project }} (${{ matrix.browser }})
+    runs-on: ubuntu-24.04
+    container: node:24.20.0@sha256:be23f54a88d34e8824c741b19b91064094f92c1c97b194144bfc8b50d67258e2
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        project: [core, vue, angular, a11y]
+        browser: [chromium, firefox, webkit]
+    env:
+      CI: 'true'
+      TEST_BROWSER: ${{ matrix.browser }}
+      NODE_OPTIONS: --max-old-space-size=2048
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm vars-build
+      - run: pnpm exec playwright install --with-deps "$TEST_BROWSER"
+      - run: node scripts/test-browser-ci.mjs "${{ matrix.project }}"
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: failures-${{ matrix.project }}-${{ matrix.browser }}
+          path: .vitest/attachments/
+          if-no-files-found: ignore
+
+  visual:
+    name: Linux Chromium visual references
+    runs-on: ubuntu-24.04
+    # Keep the digest and Playwright lockfile identical to the source visual job.
+    container: node:24.20.0@sha256:be23f54a88d34e8824c741b19b91064094f92c1c97b194144bfc8b50d67258e2
+    timeout-minutes: 15
+    env:
+      CI: 'true'
+      TEST_BROWSER: chromium
+      NODE_OPTIONS: --max-old-space-size=2048
     steps:
       - uses: actions/checkout@v4
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
       - run: pnpm vars-build
       - run: pnpm exec playwright install --with-deps chromium
-      - run: pnpm test-unit
-      - name: Upload screenshot diffs
+      - run: pnpm test-unit --project visual
+      - uses: actions/upload-artifact@v4
         if: failure()
-        uses: actions/upload-artifact@v4
         with:
-          name: screenshot-diffs
-          path: .vitest/attachments/
+          name: visual-diffs
+          path: |
+            .vitest/attachments/
+            web/core/src/visual/tests/__screenshots__/
+            web/core/src/ui/button/tests/__screenshots__/
           if-no-files-found: ignore
+
+  package:
+    name: Public tarball and external consumers
+    runs-on: ubuntu-24.04
+    container: node:24.20.0@sha256:be23f54a88d34e8824c741b19b91064094f92c1c97b194144bfc8b50d67258e2
+    timeout-minutes: 25
+    env:
+      NODE_OPTIONS: --max-old-space-size=3072
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm public:build
+      - run: pnpm test-package-compat
+      - run: pnpm test-dist-compat
+      - run: pnpm test-public-package
+      - run: pnpm exec playwright install --with-deps chromium firefox webkit
+      - run: pnpm test-public-consumers
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-package-validation
+          path: |
+            artifacts/public/*.tgz
+            artifacts/public/package-info.json
+            artifacts/consumers/bundle-sizes.json
+          if-no-files-found: ignore
+
+  storybook:
+    name: Public Storybook build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      NODE_OPTIONS: --max-old-space-size=3072
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm vars-build
+      - run: make storybook-public-build

@@ -46,7 +46,7 @@ const {
       [size]="size"
       [checked]="isChecked"
       [value]="value"
-      [disabled]="disabled"
+      [disabled]="disabled || controlDisabled()"
       [accessibleName]="accessibleName"
       [required]="required"
       [name]="name"
@@ -89,8 +89,9 @@ export class AltRadioButton extends ControlValueAccessorBase<TAltNgRadioButtonMo
 
   isChecked: TAltNgRadioButtonModel = DEFAULT_CHECKED_VALUE
 
-  writeValue(value: TAltNgRadioButtonModel) {
-    this.isChecked = value
+  writeValue(value: TAltNgRadioButtonModel | null) {
+    this.isChecked = Boolean(value)
+    this.changeDetector.markForCheck()
   }
 
   handleCheckedEvent(event: Event) {
@@ -101,6 +102,5 @@ export class AltRadioButton extends ControlValueAccessorBase<TAltNgRadioButtonMo
     this.isChecked = checked
 
     this.onChange(checked)
-    this.onTouched()
   }
 }

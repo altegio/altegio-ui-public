@@ -1,3 +1,5 @@
+import { requestFormSubmit } from './form-submit'
+
 /** A button whose `type` submits or resets the `<form>` around it */
 interface IFormButton extends HTMLElement {
   type: string | undefined
@@ -7,8 +9,8 @@ interface IFormButton extends HTMLElement {
 }
 
 const FORM_ACTIONS: Partial<Record<string, (form: HTMLFormElement) => void>> = {
-  submit: (form) => { form.requestSubmit() },
-  reset: (form) => { form.reset() },
+  submit: requestFormSubmit,
+  reset: (form) => { HTMLFormElement.prototype.reset.call(form) },
 }
 
 /** Types of a button that act on its form */

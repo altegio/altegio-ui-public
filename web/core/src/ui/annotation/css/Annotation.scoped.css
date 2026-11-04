@@ -3,5 +3,9 @@ $component: $AltCoreAnnotationTagName;
 .$(component) {
   &_disabled {
     cursor: not-allowed;
+
+    alt-core-text {
+      --alt-core-color-text-tertiary: var(--alt-core-color-text-secondary);
+    }
   }
 }

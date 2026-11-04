@@ -699,6 +699,7 @@ export class AltCoreMultipleSelectField extends FormAssociated(LitElement) imple
           class=${this.baseDropdownListItemsClass}
           slot="list"
           role="listbox"
+          tabindex="-1"
           aria-multiselectable="true"
           aria-label=${this.computedAccessibleName || nothing}
         >

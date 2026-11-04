@@ -1,10 +1,6 @@
 import type { Colord } from 'colord'
-import { colord } from 'colord'
-import { EColorTheme } from '../types/color'
 import type { IModule } from '../types/module'
-import { getColorType } from '../utils/wcag'
-import { generateTransformersFromJson } from '../utils/color'
-import { colorTokenTransformersRaw } from '../constants/color-token-transformers'
+import { generatePalette } from '~tokens/palette'
 
 /**
  * Palette module interface
@@ -20,6 +16,9 @@ export interface IPaletteModule extends IModule {
    * Enables the dark theme
    */
   useDarkTheme: boolean
+
+  /** Explicit theme boundary. Omitting it preserves document-wide theming in a browser. */
+  readonly target?: HTMLElement
 }
 
 /**
@@ -30,23 +29,18 @@ export class PaletteModule implements IPaletteModule {
   id: string
   accentColor: Colord
   useDarkTheme: boolean
+  readonly target?: HTMLElement
 
-  constructor({ id, accentColor, useDarkTheme }: { id: string; accentColor: Colord; useDarkTheme: boolean }) {
+  constructor({ id, accentColor, useDarkTheme, target }: { id: string; accentColor: Colord; useDarkTheme: boolean; target?: HTMLElement }) {
     this.id = id
     this.accentColor = accentColor
     this.useDarkTheme = useDarkTheme
+    this.target = target ?? (typeof document === 'undefined' ? undefined : document.documentElement)
 
-    const accentColorObj = colord(this.accentColor)
-    const colorType = getColorType(accentColorObj.toRgb())
-    const hslaAccentColor = accentColorObj.toHsl()
-    const colorTheme = this.useDarkTheme ? EColorTheme.dark : EColorTheme.light
-    const colorTokenTransformers = generateTransformersFromJson(colorTokenTransformersRaw)
-    Object.keys(colorTokenTransformers).forEach((colorToken) => {
-      const transformedColor = colorTokenTransformers[colorToken][colorTheme][colorType](hslaAccentColor)
-      document.documentElement.style.setProperty(
-        colorToken,
-        colord(transformedColor).toRgbString(),
-      )
-    })
+    if (!accentColor.isValid()) throw new TypeError('Invalid accent color')
+    const palette = generatePalette(this.accentColor.toRgbString(), this.useDarkTheme)
+    for (const [name, value] of Object.entries(palette)) {
+      this.target?.style.setProperty(`--alt-core-color-${name.split('_').join('-')}`, value)
+    }
   }
 }

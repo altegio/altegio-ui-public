@@ -27,7 +27,11 @@ lint:
 	pnpm exec stylelint ./web/**/*.css -c ./configs/.stylelintrc.json -i ./configs/.stylelintignore
 	pnpm exec lit-analyzer 'web/core/**/*.{js,ts}' --strict
 
-lib-build:
+lib-build: lib-build-canonical
+	# Private release compatibility is deliberately separate from public assembly.
+	@if [ -d scripts/private-compat ]; then node scripts/private-compat/apply.mjs; fi
+
+lib-build-canonical:
 	# Start from a clean output directory
 	rm -rf ./dist
 
@@ -37,9 +41,8 @@ lib-build:
 	pnpm build-with-workspace
 	pnpm cli-build:bundle
 	# Append the web component tag-name types to the core, Vue and Angular type declarations
-	cat $$WC_TYPES >> $$CORE_TYPES
-	cat $$WC_TYPES >> $$VUE_TYPES
-	cat $$WC_TYPES >> $$NG_TYPES
+	node scripts/append-shared-types.mjs
+	node scripts/share-core-types.mjs
 
 	# Copy shared static assets (fonts, icons, tokens, SCSS breakpoints) into the package
 	mkdir -p $$WEB_ASSETS_PATH/fonts $$WEB_ASSETS_PATH/css $$WEB_ASSETS_PATH/icons $$WEB_ASSETS_PATH/scss $$WEB_ASSETS_PATH/tokens
@@ -50,12 +53,17 @@ lib-build:
 	# Package assets expose JavaScript and declarations to NodeNext consumers.
 	pnpm exec tsc --ignoreConfig --module nodenext --moduleResolution nodenext --target es2022 --declaration --skipLibCheck --rootDir web/shared/constants/tokens --outDir $$WEB_ASSETS_PATH/tokens web/shared/constants/tokens/index.ts
 	pnpm build-icons-dist
+	printf 'export {}\n' > $$WEB_ASSETS_PATH/css/style.d.ts
 	cp -r $$CORE_CSS $$WEB_ASSETS_PATH/css
 	echo $$FONTS_IMPORTS >> $$WEB_ASSETS_PATH/css/altegio-ui-with-fonts.css
 	cat $$CORE_CSS >> $$WEB_ASSETS_PATH/css/altegio-ui-with-fonts.css
 	rm -rf $$CORE_CSS $$FONTS_PATH
-	# The private package keeps the 2.x names working; public code snapshots omit this step.
-	@if [ -d scripts/private-compat ]; then node scripts/private-compat/apply.mjs; fi
+	node scripts/component-entries.mjs build
+	node scripts/public-package.mjs notices
+	cp licenses/inter-OFL.txt $$WEB_ASSETS_PATH/fonts/inter/OFL.txt
+
+public-build: lib-build-canonical
+	node scripts/public-package.mjs
 
 publish: init lint lib-build
 	pnpm publish

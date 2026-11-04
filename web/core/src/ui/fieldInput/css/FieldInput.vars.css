@@ -5,7 +5,7 @@
   /* Colors */
   --alt-core-field-input-default-color: var(--alt-core-color-text-primary);
   --alt-core-field-input-disabled-color: var(--alt-core-color-text-tertiary);
-  --alt-core-field-input-placeholder-color: var(--alt-core-color-text-tertiary);
+  --alt-core-field-input-placeholder-color: var(--alt-core-color-text-secondary);
 
   /* Sizes */
 

@@ -1,8 +1,8 @@
 <template>
   <alt-core-text-field
-    ref="textField"
+    ref="coreTextFieldRef"
     v-bind="props"
-    :value="modelValue"
+    :value="modelValue ?? ''"
     @input="$emit('update:modelValue', $event?.detail?.value)"
     @blur="$emit('blur', $event)"
     @focus="$emit('focus', $event)"

@@ -14,7 +14,7 @@ await build({
   external: Object.keys(dependencies),
   platform: 'node',
   format: 'esm',
-  target: 'node24',
+  target: 'node22.15',
   sourcemap: true,
   // commander is CommonJS: the ESM bundle needs require() for its Node.js built-ins
   banner: { js: "#!/usr/bin/env node\nimport { createRequire } from 'node:module'\nconst require = createRequire(import.meta.url)" },

@@ -49,7 +49,7 @@ defineCustomElement(AltCoreTextFieldTagName, AltCoreTextField)
       [value]="searchFieldValue()"
       [placeholder]="placeholder"
       [autofocus]="autofocus"
-      [disabled]="disabled"
+      [disabled]="disabled || controlDisabled()"
       [accessibleName]="accessibleName"
       [error]="error"
       [errors]="errors"
@@ -93,8 +93,8 @@ export class AltSearchField extends ControlValueAccessorBase<TAltNgSearchFieldMo
 
   searchFieldValue = signal<TAltNgSearchFieldModel>('')
 
-  writeValue(value: TAltNgSearchFieldModel) {
-    this.searchFieldValue.set(value)
+  writeValue(value: TAltNgSearchFieldModel | null) {
+    this.searchFieldValue.set(value ?? '')
   }
 
   handleInputEvent(event: Event) {
@@ -104,7 +104,6 @@ export class AltSearchField extends ControlValueAccessorBase<TAltNgSearchFieldMo
     this.searchFieldValue.set(value)
 
     this.onChange(value)
-    this.onTouched()
   }
 
   handleFocusEvent(event: Event) {

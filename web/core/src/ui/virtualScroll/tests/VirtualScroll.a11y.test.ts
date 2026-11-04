@@ -82,6 +82,20 @@ describe('Core/AltCoreVirtualScroll/Accessibility', () => {
     expect(getDeepActiveElement()).toBe(viewport)
     await userEvent.keyboard('{End}')
     await vi.waitFor(() => { expect(virtualScroll.end).toBe(1000) })
+    await userEvent.keyboard('{Home}')
+    await vi.waitFor(() => { expect(virtualScroll.start).toBe(0) })
+  })
+
+  it('leaves editing keys inside a row to the focused control', async() => {
+    const { virtualScroll } = await mountVirtualScroll()
+    const input = document.createElement('input')
+    virtualScroll.firstElementChild!.append(input)
+    const event = new KeyboardEvent('keydown', { key: 'End', bubbles: true, composed: true, cancelable: true })
+
+    input.dispatchEvent(event)
+
+    expect(event.defaultPrevented).toBe(false)
+    expect(getViewport(virtualScroll).scrollTop).toBe(0)
   })
 
   it('shrinks the range when the item count drops', async() => {

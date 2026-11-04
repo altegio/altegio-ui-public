@@ -1,6 +1,10 @@
 import { defineConfig, mergeConfig } from 'vitest/config'
 import { playwright } from '@vitest/browser-playwright'
 import commonViteConfig from '../../vite/shared/common.vite.config.ts'
+const browser = process.env.TEST_BROWSER ?? 'chromium'
+if (browser !== 'chromium' && browser !== 'firefox' && browser !== 'webkit') {
+  throw new Error(`Unsupported TEST_BROWSER: ${browser}`)
+}
 
 export default mergeConfig(
   commonViteConfig,
@@ -24,7 +28,7 @@ export default mergeConfig(
         headless: true,
         instances: [
           {
-            browser: 'chromium',
+            browser,
           }
         ]
       },

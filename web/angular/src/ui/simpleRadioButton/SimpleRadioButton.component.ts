@@ -28,7 +28,7 @@ const { size, name, error, disabled, hovered, accessibleName } = createNgSimpleR
       [checked]="isChecked"
       [name]="name"
       [error]="error"
-      [disabled]="disabled"
+      [disabled]="disabled || controlDisabled()"
       [accessibleName]="accessibleName"
       [hovered]="hovered"
       (checked)="handleCheckedEvent($event)"
@@ -46,8 +46,9 @@ export class AltSimpleRadioButton extends ControlValueAccessorBase<TAltNgSimpleR
 
   isChecked: TAltNgSimpleRadioButtonModel = DEFAULT_CHECKED_VALUE
 
-  writeValue(value: TAltNgSimpleRadioButtonModel) {
-    this.isChecked = value
+  writeValue(value: TAltNgSimpleRadioButtonModel | null) {
+    this.isChecked = Boolean(value)
+    this.changeDetector.markForCheck()
   }
 
   handleCheckedEvent(event: Event) {
@@ -58,6 +59,5 @@ export class AltSimpleRadioButton extends ControlValueAccessorBase<TAltNgSimpleR
     this.isChecked = checked
 
     this.onChange(checked)
-    this.onTouched()
   }
 }

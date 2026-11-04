@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import path from 'path'
 import baseConfig from '../shared/base.vite.config.ts'
 import { getRollupOptionsInput } from '../utils/helpers.ts'
+import { canonicalRuntimeEntries } from '../../../scripts/canonical-runtime.mjs'
 
 export const CORE_PATH = 'web/core'
 const LIB_ENTRY_PATH = path.resolve(import.meta.dirname, `../../../${CORE_PATH}/src/index.ts`)
@@ -22,7 +23,7 @@ export default defineConfig(
     basePath: CORE_PATH,
     libEntryPath: LIB_ENTRY_PATH,
     devEntryPath: DEV_ENTRY_PATH,
-    rollupOptionsInput,
+    rollupOptionsInput: { ...rollupOptionsInput, ...Object.fromEntries([...canonicalRuntimeEntries()].map(([input, entry]) => [entry, input])) },
     dtsExclude: [
       'web/**/*.stories.ts',
       'web/**/*.test.ts',

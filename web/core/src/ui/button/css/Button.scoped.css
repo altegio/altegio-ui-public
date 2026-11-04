@@ -3,6 +3,8 @@ $component: $AltCoreButtonTagName;
 :host {
   display: inline-block !important;
   width: fit-content !important;
+  min-width: 0;
+  max-width: 100%;
 }
 
 :host([full-width]) {
@@ -33,6 +35,10 @@ $component: $AltCoreButtonTagName;
   
   &__text {
     flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &_align-start {
       text-align: start;

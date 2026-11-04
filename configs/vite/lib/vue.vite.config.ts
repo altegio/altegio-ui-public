@@ -3,6 +3,7 @@ import path from 'path'
 import baseConfig from '../shared/base.vite.config.ts'
 import commonVueViteConfig from '../shared/commonVue.vite.config.ts'
 import { getRollupOptionsInput } from '../utils/helpers.ts'
+import { canonicalRuntimePlugin } from '../../../scripts/canonical-runtime.mjs'
 
 export const VUE_PATH = 'web/vue'
 const LIB_ENTRY_PATH = path.resolve(import.meta.dirname, `../../../${VUE_PATH}/src/index.ts`)
@@ -31,5 +32,5 @@ export default defineConfig(mergeConfig(
       'web/angular/**/*',
     ],
   }),
-  commonVueViteConfig,
+  mergeConfig(commonVueViteConfig, { plugins: [canonicalRuntimePlugin()] }),
 ))

@@ -15,6 +15,7 @@ import { bubblingEvent } from '~core/utils/event-decorator'
 import type { TColorThemeRaw, TColorToken, TColorTokenTransformers, TColorTokenTransformersRaw, TColorTypeRaw } from '../context/types/color'
 import { colorTokens, EColorTheme, EColorType, InputTransformersEvent, rawColorTypes } from '../context/types/color'
 import { generateTransformersFromJson } from '../context/utils/color'
+import { resolveColorTokenTransformersRaw } from '../context/constants/color-token-transformers'
 import { getColorType } from '../context/utils/wcag'
 
 const tagName = 'alt-color-table'
@@ -75,16 +76,23 @@ export class AltColorTable extends LitElement {
   }
 
   private updateTransformers(changedProperties: PropertyValues): void {
-    if (!changedProperties.has('transformers')) return
+    if (!changedProperties.has('transformers') && !changedProperties.has('accentColor')) return
 
-    if (!this.transformers) {
+    const transformers = this.resolvedTransformers
+    if (!transformers) {
       this.colorTokenTransformers = null
       this.extendedTransformers = null
       return
     }
 
-    this.colorTokenTransformers = generateTransformersFromJson(this.transformers)
-    this.extendedTransformers = this.convertTransformersToExtended(this.transformers)
+    this.colorTokenTransformers = generateTransformersFromJson(transformers)
+    this.extendedTransformers = this.convertTransformersToExtended(transformers)
+  }
+
+  private get resolvedTransformers() {
+    if (!this.transformers) return null
+    const accent = this.accentColor && colord(this.accentColor).isValid() ? this.accentColor : undefined
+    return resolveColorTokenTransformersRaw(this.transformers, accent)
   }
 
   private updateAccentColor(changedProperties: PropertyValues): void {
@@ -147,7 +155,7 @@ export class AltColorTable extends LitElement {
   }
 
   private exportJson() {
-    const json = JSON.stringify(this.transformers, null, 2) // pretty-printed JSON
+    const json = JSON.stringify(this.resolvedTransformers, null, 2) // pretty-printed JSON
     const blob = new Blob([json], { type: 'application/json' })
     const url = URL.createObjectURL(blob)
 

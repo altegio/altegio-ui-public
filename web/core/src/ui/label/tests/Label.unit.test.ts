@@ -366,7 +366,7 @@ describe(
                   rootSizeSelector,
                 )
 
-                expect(rootSizeStyles.style.marginLeft).toBe(`var(${varMarginLeftName})`)
+                expect(rootSizeStyles.style.marginInlineStart).toBe(`var(${varMarginLeftName})`)
               },
             )
 

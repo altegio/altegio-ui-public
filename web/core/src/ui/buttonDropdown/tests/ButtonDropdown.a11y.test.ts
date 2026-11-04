@@ -139,15 +139,27 @@ describe('Core/AltCoreButtonDropdown/Accessibility', () => {
     await expectNoAxeViolations(dropdown, PATTERN_AXE_OPTIONS)
   })
 
-  it('closes with Escape and returns focus to the button', async() => {
+  it.each([
+    { phase: 'immediately', waitForEnter: false },
+    { phase: 'after entry', waitForEnter: true },
+  ])('closes with Escape $phase and returns focus to the button', async({ waitForEnter }) => {
     const dropdown = await mountButtonDropdown()
 
     await openWithKeyboard(dropdown)
+    const innerDropdown = dropdown.shadowRoot?.querySelector('alt-core-dropdown')
+    const content = innerDropdown?.shadowRoot?.querySelector('.alt-core-dropdown__content')
+    expect(content).toBeInstanceOf(HTMLElement)
+    if (waitForEnter) {
+      await vi.waitFor(() => { expect(content?.classList.contains('fade-active')).toBe(false) })
+    }
     await userEvent.keyboard('{Escape}')
-    await waitForLitTree(dropdown)
 
-    expect(getActivator(dropdown)?.getAttribute('aria-expanded')).toBe('false')
-    expect(getDeepActiveElement()).toBe(getActivator(dropdown))
+    // Lit rendering can finish before the CSS leave transition closes the menu.
+    await vi.waitFor(() => {
+      expect(getActivator(dropdown)?.getAttribute('aria-expanded')).toBe('false')
+      expect(getDeepActiveElement()).toBe(getActivator(dropdown))
+      expect(innerDropdown?.shadowRoot?.querySelector('.alt-core-dropdown__content')).toBeNull()
+    })
   })
 
   it('makes no menu of custom content', async() => {

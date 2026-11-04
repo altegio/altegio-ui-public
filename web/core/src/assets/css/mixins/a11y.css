@@ -5,7 +5,7 @@
  *   &:focus-visible { @mixin alt-focus-ring; }
  */
 @define-mixin alt-focus-ring {
-  outline: var(--alt-core-focus-ring-width, 2px) solid var(--alt-core-focus-ring-color, var(--alt-core-color-stroke-accent));
+  outline: var(--alt-core-focus-ring-width, 2px) solid var(--alt-core-focus-ring-color, var(--alt-core-color-focus-ring));
   outline-offset: var(--alt-core-focus-ring-offset, 2px);
 }
 

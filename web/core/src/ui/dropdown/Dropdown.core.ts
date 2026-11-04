@@ -81,6 +81,8 @@ export class AltCoreDropdown extends LitElement implements IAltCoreDropdownProps
   @query(`.${tagName}__content`) private content?: HTMLElement
 
   private cleanup?: () => void
+  private requestedVisible = false
+  private visibilityRevision = 0
 
   static readonly styles = [
     css`
@@ -109,10 +111,17 @@ export class AltCoreDropdown extends LitElement implements IAltCoreDropdownProps
   }
 
   private changeContentVisible = (visible: boolean) => {
-    if (this.isContentVisible === visible) return
+    if (this.requestedVisible === visible) return
 
-    if (this.animation && !visible) {
+    this.requestedVisible = visible
+    const revision = ++this.visibilityRevision
+    if (visible) {
+      this.animation?.abortLeave()
+    } else if (this.animation) {
       this.animation.leave().then(() => {
+        // A later open request or disconnect supersedes this leave completion.
+        if (revision !== this.visibilityRevision) return
+
         this.isContentVisible = visible
         this.handleVisibilityChange(visible)
         this.animation = undefined
@@ -121,6 +130,7 @@ export class AltCoreDropdown extends LitElement implements IAltCoreDropdownProps
       return
     }
 
+    if (this.isContentVisible === visible) return
     this.isContentVisible = visible
     this.handleVisibilityChange(visible)
   }
@@ -148,7 +158,7 @@ export class AltCoreDropdown extends LitElement implements IAltCoreDropdownProps
 
   private handleActivatorClick = () => {
     if (this.disabled || !this.isTriggerType(EAltCoreDropdownTrigger.CLICK)) return
-    this.changeContentVisible(!this.isContentVisible)
+    this.changeContentVisible(!this.requestedVisible)
   }
 
   private handleMouseEnter = (event: Event) => {
@@ -213,7 +223,7 @@ export class AltCoreDropdown extends LitElement implements IAltCoreDropdownProps
 
   private focusActivator() {
     const activatorSlot = this.activator?.querySelector('slot')
-    const firstElement = activatorSlot?.assignedElements({ flatten: true }).at(0)
+    const firstElement = activatorSlot?.assignedElements({ flatten: true })[0]
 
     if (firstElement) (getFocusTarget(firstElement) as HTMLElement).focus()
   }
@@ -230,6 +240,7 @@ export class AltCoreDropdown extends LitElement implements IAltCoreDropdownProps
   private setAnimationAndEnter = () => {
     if (!this.transition || !this.content) return
 
+    const revision = this.visibilityRevision
     const animation = createTransition(
       this.content,
       {
@@ -244,7 +255,7 @@ export class AltCoreDropdown extends LitElement implements IAltCoreDropdownProps
     )
 
     animation.enter().then(() => {
-      this.animation = animation
+      if (revision === this.visibilityRevision && this.requestedVisible) this.animation = animation
     })
   }
 
@@ -311,6 +322,8 @@ export class AltCoreDropdown extends LitElement implements IAltCoreDropdownProps
 
     if (visible) {
       requestAnimationFrame(() => {
+        if (!this.isConnected || !this.requestedVisible) return
+
         this.setMinMaxContentWidth()
         this.updatePosition()
 
@@ -336,6 +349,9 @@ export class AltCoreDropdown extends LitElement implements IAltCoreDropdownProps
   }
 
   private resetComponent(): void {
+    this.requestedVisible = false
+    this.visibilityRevision += 1
+
     // Cancel running animations
     this.animation?.abortEnter()
     this.animation?.abortLeave()

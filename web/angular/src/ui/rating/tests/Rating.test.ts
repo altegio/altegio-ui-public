@@ -137,6 +137,8 @@ describe(
         dispatchChange(coreElement, 5)
 
         expect(fixture.componentInstance.control.value).toBe(5)
+        expect(fixture.componentInstance.control.touched).toBe(false)
+        coreElement.dispatchEvent(new FocusEvent('focusout', { bubbles: true, composed: true }))
         expect(fixture.componentInstance.control.touched).toBe(true)
 
         fixture.componentInstance.control.disable()

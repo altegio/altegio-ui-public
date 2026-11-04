@@ -48,7 +48,7 @@ const EMPTY_VALUE: TAltNgDateRangeValue = { from: null, to: null }
       [name]="name"
       [placeholder]="placeholder"
       [required]="required"
-      [disabled]="disabled"
+      [disabled]="disabled || controlDisabled()"
       [attr.readonly]="readonly ? '' : null"
       [autofocus]="autofocus"
       [error]="error"
@@ -109,10 +109,6 @@ export class AltDateRange extends ControlValueAccessorBase<TAltNgDateRangeValue 
     this.modelValue.set(value ?? EMPTY_VALUE)
   }
 
-  setDisabledState(isDisabled: boolean) {
-    this.disabled = isDisabled
-  }
-
   handleChange(event: Event) {
     // The output replaces the native event, which would otherwise reach a (change) listener on the host as well
     event.stopPropagation()
@@ -122,6 +118,5 @@ export class AltDateRange extends ControlValueAccessorBase<TAltNgDateRangeValue 
     this.modelValue.set(value)
     this.valueChange.emit(value)
     this.onChange(value)
-    this.onTouched()
   }
 }

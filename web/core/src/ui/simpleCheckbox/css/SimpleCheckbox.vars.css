@@ -19,10 +19,10 @@
 
   /* Default */
   --alt-core-simple-checkbox-default-background-color: var(--alt-core-color-surface-primary);
-  --alt-core-simple-checkbox-default-border-color: var(--alt-core-color-stroke-primary);
+  --alt-core-simple-checkbox-default-border-color: var(--alt-core-color-stroke-control);
   --alt-core-simple-checkbox-default-icon-color: var(--alt-core-color-icon-on-accent);
   --alt-core-simple-checkbox-default-hover-background-color: var(--alt-core-color-surface-primary-high);
-  --alt-core-simple-checkbox-default-hover-border-color: var(--alt-core-color-stroke-primary-high);
+  --alt-core-simple-checkbox-default-hover-border-color: var(--alt-core-color-icon-secondary);
 
   /* Checked */
   --alt-core-simple-checkbox-checked-background-color: var(--alt-core-color-surface-accent);
@@ -34,8 +34,8 @@
   /* Indeterminate */
   --alt-core-simple-checkbox-indeterminate-icon-color: var(--alt-core-color-icon-accent);
   --alt-core-simple-checkbox-indeterminate-hover-background-color: var(--alt-core-color-surface-primary-high);
-  --alt-core-simple-checkbox-indeterminate-hover-border-color: var(--alt-core-color-stroke-primary-high);
-  --alt-core-simple-checkbox-indeterminate-hover-icon-color: var(--alt-core-color-surface-accent-high);
+  --alt-core-simple-checkbox-indeterminate-hover-border-color: var(--alt-core-color-icon-secondary);
+  --alt-core-simple-checkbox-indeterminate-hover-icon-color: var(--alt-core-color-icon-primary);
 
   /* Error */
   --alt-core-simple-checkbox-error-background-color: var(--alt-core-color-surface-negative);

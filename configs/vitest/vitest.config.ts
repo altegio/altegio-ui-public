@@ -15,6 +15,7 @@ export default defineConfig({
       './configs/vitest/vitest.vue.config.ts',
       './configs/vitest/vitest.ng.config.ts',
       './configs/vitest/vitest.a11y.config.ts',
+      './configs/vitest/vitest.visual.config.ts',
     ],
   },
 });

@@ -95,6 +95,9 @@ describe(
 
                   if (value === undefined || !attribute) {
                     expect(rootElement?.hasAttribute(prop)).toBe(false)
+                  } else if (prop === 'autocomplete') {
+                    // Firefox normalizes the IDL getter when autofill is disabled; the token must still reach the input.
+                    expect(rootElement?.getAttribute(prop)).toBe(value)
                   } else {
                     expect(rootElement?.[attribute]).toBe(value)
                   }

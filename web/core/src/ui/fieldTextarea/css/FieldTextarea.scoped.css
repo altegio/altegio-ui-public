@@ -20,11 +20,16 @@ $component: $AltCoreFieldTextareaTagName;
 
   &::placeholder {
     color: var(--alt-core-field-textarea-placeholder-color);
+    opacity: 1;
   }
 
   &:disabled,
   &_disabled {
     color: var(--alt-core-field-textarea-disabled-color);
+
+    &::placeholder {
+      color: var(--alt-core-field-textarea-disabled-color);
+    }
   }
 
   &_size {
@@ -55,11 +60,11 @@ $component: $AltCoreFieldTextareaTagName;
 
   &_hide-space {
     &-left {
-      padding-left: 0;
+      padding-inline-start: 0;
     }
 
     &-right {
-      padding-right: 0;
+      padding-inline-end: 0;
     }
   }
 

@@ -17,5 +17,5 @@
   --alt-core-calendar-range-day-background-hover: var(--alt-core-color-surface-tertiary-high);
   --alt-core-calendar-range-day-background-disabled: var(--alt-core-color-surface-tertiary-low);
   --alt-core-calendar-day-today-line-color: var(--alt-core-color-icon-accent);
-  --alt-core-calendar-day-today-line-color-on-selected: var(--alt-core-color-icon-primary);
+  --alt-core-calendar-day-today-line-color-on-selected: var(--alt-core-color-icon-on-accent);
 }

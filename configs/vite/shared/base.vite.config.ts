@@ -40,6 +40,8 @@ export default ({
       lib: {
         entry: libEntryPath,
         formats: ['es'],
+        // The public package has a different name; keep the documented asset path stable.
+        cssFileName: 'altegio-ui',
       },
       emptyOutDir: false,
       rolldownOptions: {

@@ -15,15 +15,15 @@
 
   /* Default */
   --alt-core-simple-radio-button-default-background-color: var(--alt-core-color-surface-primary);
-  --alt-core-simple-radio-button-default-border-color: var(--alt-core-color-stroke-primary);
+  --alt-core-simple-radio-button-default-border-color: var(--alt-core-color-stroke-control);
   --alt-core-simple-radio-button-default-hover-background-color: var(--alt-core-color-surface-primary-high);
-  --alt-core-simple-radio-button-default-hover-border-color: var(--alt-core-color-stroke-primary-high);
+  --alt-core-simple-radio-button-default-hover-border-color: var(--alt-core-color-icon-secondary);
 
   /* Checked */
   --alt-core-simple-radio-button-checked-background-color: var(--alt-core-color-surface-accent);
-  --alt-core-simple-radio-button-checked-border-color: var(--alt-core-color-stroke-primary);
+  --alt-core-simple-radio-button-checked-border-color: var(--alt-core-color-stroke-control);
   --alt-core-simple-radio-button-checked-hover-background-color: var(--alt-core-color-surface-accent-high);
-  --alt-core-simple-radio-button-checked-hover-border-color: var(--alt-core-color-stroke-primary-high);
+  --alt-core-simple-radio-button-checked-hover-border-color: var(--alt-core-color-icon-secondary);
 
   /* Error */
   --alt-core-simple-radio-button-error-background-color: var(--alt-core-color-surface-negative);

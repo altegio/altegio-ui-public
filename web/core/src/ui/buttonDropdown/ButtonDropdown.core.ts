@@ -264,7 +264,7 @@ export class AltCoreButtonDropdown extends LitElement implements IAltCoreButtonD
 
   /** Picking an item from the keyboard returns focus to the activator, as the menu closes */
   private focusActivator() {
-    const activator = this.activatorSlot?.assignedElements({ flatten: true }).at(0)
+    const activator = this.activatorSlot?.assignedElements({ flatten: true })[0]
     if (activator) (getFocusTarget(activator) as HTMLElement).focus()
   }
 

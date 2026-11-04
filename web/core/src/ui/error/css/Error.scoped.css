@@ -2,7 +2,7 @@ $component: $AltCoreErrorTagName;
 
 .$(component) {
   &__list {
-    padding-left: var(--alt-core-error-list-padding-left);
+    padding-inline-start: var(--alt-core-error-list-padding-left);
     margin: 0;
   }
 }

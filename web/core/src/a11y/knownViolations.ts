@@ -1,47 +1,6 @@
 /**
- * Axe rules that a story still fails, by story id. Stories.a11y.test.ts fails on any other
- * violation and on a listed rule that no longer fails, so remove entries as components get fixed.
- *
- * color-contrast entries come from palette tokens (for example --alt-core-color-text-secondary on white is 4.11:1,
- * --alt-core-color-text-negative 3.91:1). Fixing them changes the visual design, so they are left to a token update.
+ * Axe rules that a story still fails, by story id. Stories.a11y.test.ts also rejects stale entries.
+ * Active text/status labels now use accessible foreground roles. Native disabled controls retain
+ * tertiary colors, which are exempt from WCAG contrast; informational tag labels remain readable.
  */
-export const knownViolations: Partial<Record<string, string[]>> = {
-  'autocompletefield--default': ['color-contrast'],
-  'brand-button--playground': ['color-contrast'],
-  'brand-button--sizes': ['color-contrast'],
-  'brand-button--states': ['color-contrast'],
-  'brand-button--variants': ['color-contrast'],
-  'calendar--date-range': ['color-contrast'],
-  'calendar--disabled': ['color-contrast'],
-  'calendar--english-locale': ['color-contrast'],
-  'calendar--playground': ['color-contrast'],
-  'calendar--range-selection': ['color-contrast'],
-  'calendar--russian-locale': ['color-contrast'],
-  'checkbox--playground': ['color-contrast'],
-  'collapseitem--playground': ['color-contrast'],
-  'datepicker--playground': ['color-contrast'],
-  'daterange--past-period': ['color-contrast'],
-  'daterange--playground': ['color-contrast'],
-  'daterange--with-errors': ['color-contrast'],
-  'error--playground': ['color-contrast'],
-  'form--playground': ['color-contrast'],
-  'list--playground': ['color-contrast'],
-  'list--static-content': ['color-contrast'],
-  'listitem--playground': ['color-contrast'],
-  'multipleselectfield--default': ['color-contrast'],
-  'phonefield--default': ['color-contrast'],
-  'radiobutton--playground': ['color-contrast'],
-  'selectfield--default': ['color-contrast'],
-  'state--playground': ['color-contrast'],
-  'tab--playground': ['color-contrast'],
-  'tablepagination--playground': ['color-contrast'],
-  'tabpanels--playground': ['color-contrast'],
-  'tabpanels--story-tabs': ['color-contrast'],
-  'tabs--playground': ['color-contrast'],
-  'tag--all-variants': ['color-contrast'],
-  'tag--disabled': ['color-contrast'],
-  'tag--examples': ['color-contrast'],
-  'textarea--playground': ['color-contrast'],
-  'textarea--with-maxlength': ['color-contrast'],
-  'textfield--playground': ['color-contrast'],
-}
+export const knownViolations: Partial<Record<string, string[]>> = {}

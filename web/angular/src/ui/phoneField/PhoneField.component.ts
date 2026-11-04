@@ -1,4 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output } from '@angular/core'
+import { forwardRef, Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output } from '@angular/core'
+import { NG_VALUE_ACCESSOR } from '@angular/forms'
+import { ControlValueAccessorBase } from '~ng/types/ControlValueAccessorBase'
 
 import '~core/ui/phoneField'
 import {
@@ -42,6 +44,7 @@ const {
 @Component({
   selector: 'AltPhoneField',
   standalone: true,
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AltPhoneField), multi: true }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <alt-core-phone-field
@@ -49,9 +52,10 @@ const {
       [name]="name"
       [placeholder]="placeholder"
       [autofocus]="autofocus"
-      [disabled]="disabled"
+      [disabled]="disabled || controlDisabled()"
       [attr.readonly]="readonly ? '' : null"
       [errors]="errors"
+      [error]="error"
       [size]="size"
       [required]="required"
       [labelText]="labelText"
@@ -96,7 +100,7 @@ const {
     </alt-core-phone-field>
   `,
 })
-export class AltPhoneField implements IAltNgPhoneFieldProps {
+export class AltPhoneField extends ControlValueAccessorBase<IAltNgPhoneFieldProps['value'] | null> implements IAltNgPhoneFieldProps {
   @Input() @DefaultValue(value) value: IAltNgPhoneFieldProps['value'] = value
   @Input() @DefaultValue(name) name: IAltNgPhoneFieldProps['name'] = name
   @Input() @DefaultValue(placeholder) placeholder: IAltNgPhoneFieldProps['placeholder'] = placeholder
@@ -122,6 +126,11 @@ export class AltPhoneField implements IAltNgPhoneFieldProps {
   @Input() @DefaultValue(emptyStateDescription) emptyStateDescription: IAltNgPhoneFieldProps['emptyStateDescription'] = emptyStateDescription
   @Input() @DefaultValue(optionPhonePrivacyEnabled) optionPhonePrivacyEnabled: IAltNgPhoneFieldProps['optionPhonePrivacyEnabled'] = optionPhonePrivacyEnabled
 
+  writeValue(value: IAltNgPhoneFieldProps['value'] | null) {
+    this.value = value ?? ''
+    this.changeDetector.markForCheck()
+  }
+
   @Output() focus = new EventEmitter<AltNgPhoneFieldFocusEvent>()
   handleFocusEvent(event: Event) {
     this.focus.emit(event as AltNgPhoneFieldFocusEvent)
@@ -134,6 +143,11 @@ export class AltPhoneField implements IAltNgPhoneFieldProps {
 
   @Output() change = new EventEmitter<AltNgPhoneFieldChangeEvent>()
   handleChangeEvent(event: Event) {
+    const detail = (event as Partial<AltNgPhoneFieldChangeEvent>).detail
+    if (detail) {
+      this.value = detail.phone
+      this.onChange(detail.phone)
+    }
     this.change.emit(event as AltNgPhoneFieldChangeEvent)
   }
 

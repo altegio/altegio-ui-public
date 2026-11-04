@@ -78,6 +78,8 @@ $component: $AltCoreCalendarTagName;
     }
     
     &_selected {
+      --alt-core-text-color-primary: var(--alt-core-color-text-on-accent);
+
       background-color: var(--alt-core-calendar-selected-day-background);
 
       @media (hover: hover) {
@@ -97,7 +99,7 @@ $component: $AltCoreCalendarTagName;
       border-radius: unset;
 
       &::before {
-        background-color: var(--alt-core-calendar-day-today-line-color-on-selected);
+        background-color: var(--alt-core-calendar-day-today-line-color);
       }
 
       @media (hover: hover) {
@@ -108,6 +110,8 @@ $component: $AltCoreCalendarTagName;
     }
     
     &_range-start, &_range-end {
+      --alt-core-text-color-primary: var(--alt-core-color-text-on-accent);
+
       background-color: var(--alt-core-calendar-selected-day-background);
       border-radius: unset;
 

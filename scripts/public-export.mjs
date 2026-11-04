@@ -45,21 +45,21 @@ export function sanitize(directory) {
   if (existsSync(npmrc)) writeFileSync(npmrc, 'registry=https://registry.npmjs.org/\n');
   for (const path of internalPaths) rmSync(join(directory, path), { recursive: true, force: true });
   const changelog = join(directory, 'CHANGELOG.md');
-  if (existsSync(changelog)) {
-    writeFileSync(changelog, `# Changelog
-
-This repository publishes the current Altegio UI code as public snapshots.
-
-Each update is recorded in the [public commit history](https://github.com/altegio/altegio-ui-public/commits/main/). Snapshot commits describe the public code state; they do not represent package releases.
-
-See the [README](./README.md) for setup, build, test, and component development instructions.
-`);
-  }
+  const publicNotes = join(directory, 'PUBLIC_CHANGELOG.md');
+  if (existsSync(changelog)) writeFileSync(changelog, existsSync(publicNotes)
+    ? readFileSync(publicNotes, 'utf8')
+    : '# Changelog\n\nThis repository receives public snapshots, not npm releases. See the [snapshot history](https://github.com/altegio/altegio-ui-public/commits/main/).\n');
   const packagePath = join(directory, 'package.json');
   if (existsSync(packagePath)) {
     const pkg = JSON.parse(readFileSync(packagePath, 'utf8'));
     pkg.repository = { type: 'git', url: `git+${target}` };
+    pkg.name = '@altegio/ui';
+    // Source snapshots contain development tooling. Only the assembled tarball is publishable.
     pkg.private = true;
+    for (const key of Object.keys(pkg.exports ?? {})) if (key.startsWith('./ng/')) delete pkg.exports[key];
+    for (const mapping of Object.values(pkg.typesVersions ?? {})) {
+      for (const key of Object.keys(mapping)) if (key.startsWith('ng/')) delete mapping[key];
+    }
     if (pkg.scripts) delete pkg.scripts['cleanup-prereleases'];
     writeFileSync(packagePath, `${JSON.stringify(pkg, null, 2)}\n`);
   }
@@ -178,9 +178,14 @@ function publish(directory, scratch) {
 
 async function main() {
   const mode = process.argv[2];
-  if (!['check', 'publish', 'prepare'].includes(mode)) throw new Error('Usage: public-export.mjs check|publish|prepare [output-directory]');
+  if (!['check', 'publish', 'prepare', 'scan'].includes(mode)) throw new Error('Usage: public-export.mjs check|publish|prepare|scan [directory]');
   const scratch = mkdtempSync(join(tmpdir(), 'altegio-ui-export-'));
   try {
+    if (mode === 'scan') {
+      if (!process.argv[3]) throw new Error('scan requires a directory');
+      await scan(resolve(process.argv[3]), scratch);
+      return;
+    }
     const directory = mode === 'prepare' ? resolve(process.argv[3]) : join(scratch, 'snapshot');
     if (mode !== 'prepare') run('mkdir', ['-p', directory]);
     prepare(directory);

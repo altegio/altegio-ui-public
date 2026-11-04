@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { randomUUID } from 'node:crypto'
-import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { existsSync, globSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
 import { matchesGlob } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -25,8 +25,7 @@ const hasSideEffects = file => packageJson.sideEffects.some(pattern => (
 test('published entry points and CLI resolve to files in the package', () => {
   for (const [name, target] of exportTargets()) {
     // A subpath pattern maps to a directory; its files are checked by the assets test
-    const path = target.endsWith('/*') ? target.slice(0, -1) : target
-    assert.ok(existsSync(new URL(`../${path}`, import.meta.url)), `${name}: ${target}`)
+    assert.ok(target.includes('*') ? globSync(target, { cwd: root }).length : existsSync(new URL(`../${target}`, import.meta.url)), `${name}: ${target}`)
   }
   const cli = new URL(`../${packageJson.bin['alt-ds']}`, import.meta.url)
   assert.ok(existsSync(cli), packageJson.bin['alt-ds'])
@@ -38,7 +37,7 @@ test('npm pack includes every public entry point', () => {
   const files = new Set(pack.files.map(({ path }) => path))
   for (const [name, target] of exportTargets()) {
     const path = target.replace(/^\.\//, '')
-    assert.ok(path.endsWith('/*') ? [...files].some(file => file.startsWith(path.slice(0, -1))) : files.has(path), `${name}: ${target}`)
+    assert.ok(path.includes('*') ? [...files].some(file => matchesGlob(file, path) || path.endsWith('/*') && file.startsWith(path.slice(0, -1))) : files.has(path), `${name}: ${target}`)
   }
   assert.ok(files.has(packageJson.bin['alt-ds'].replace(/^\.\//, '')), packageJson.bin['alt-ds'])
 })
@@ -50,9 +49,9 @@ test('the exports map uses only patterns that modern Node.js and bundlers suppor
       assert.equal(Object.keys(exportValue)[0], 'types', `${name}: "types" must be the first condition`)
     }
   }
-  assert.equal(import.meta.resolve('@platform/altegio-ui/assets/css/altegio-ui.css'), new URL('../dist/web/assets/css/altegio-ui.css', import.meta.url).href)
-  assert.equal(import.meta.resolve('@platform/altegio-ui/assets/scss/breakpoints.scss'), new URL('../dist/web/assets/scss/breakpoints.scss', import.meta.url).href)
-  assert.equal(import.meta.resolve('@platform/altegio-ui/package.json'), new URL('../package.json', import.meta.url).href)
+  assert.equal(import.meta.resolve(`${packageJson.name}/assets/css/altegio-ui.css`), new URL('../dist/web/assets/css/altegio-ui.css', import.meta.url).href)
+  assert.equal(import.meta.resolve(`${packageJson.name}/assets/scss/breakpoints.scss`), new URL('../dist/web/assets/scss/breakpoints.scss', import.meta.url).href)
+  assert.equal(import.meta.resolve(`${packageJson.name}/package.json`), new URL('../package.json', import.meta.url).href)
 })
 
 test('the canonical Angular entry point and its deprecated aliases resolve to the same bundle', () => {
@@ -60,10 +59,10 @@ test('the canonical Angular entry point and its deprecated aliases resolve to th
     types: './dist/web/angular/types/altegio-ui-workspace.d.ts',
     import: './dist/web/angular/fesm2022/altegio-ui-workspace.mjs',
   })
-  assert.equal(deprecatedAngularEntries.length, 17)
+  assert.equal(deprecatedAngularEntries.length, hasPrivateAliases ? 17 : 0)
   for (const name of deprecatedAngularEntries) {
     assert.deepEqual(packageJson.exports[name], angularEntry, name)
-    assert.equal(import.meta.resolve(`@platform/altegio-ui/${name.slice(2)}`), import.meta.resolve('@platform/altegio-ui/angular'), name)
+    assert.equal(import.meta.resolve(`${packageJson.name}/${name.slice(2)}`), import.meta.resolve(`${packageJson.name}/angular`), name)
   }
   // Consumers on the legacy node10 resolution see the subpaths through typesVersions
   for (const name of Object.keys(packageJson.exports).filter(name => !['.', './assets/*', './package.json'].includes(name))) {
@@ -109,7 +108,7 @@ test('sideEffects keeps custom element registration and lets bundlers drop unuse
 test('Vue and Angular entry points export Pagination for NodeNext consumers', () => {
   const consumer = new URL(`../.package-compat-${randomUUID()}.mts`, import.meta.url)
   try {
-    writeFileSync(consumer, "import { AltPagination, type TVuePaginationChangePageEvent } from '@platform/altegio-ui/vue'\nimport { AltPagination as AltNgPagination } from '@platform/altegio-ui/angular'\nimport { AltButton } from '@platform/altegio-ui/ng/button'\nconst handler = (event: TVuePaginationChangePageEvent): number => event.detail.page\nconsole.log(AltPagination, AltNgPagination, AltButton, handler)\n")
+    writeFileSync(consumer, `import { AltPagination, type TVuePaginationChangePageEvent } from '${packageJson.name}/vue'\nimport { AltPagination as AltNgPagination } from '${packageJson.name}/angular'\nimport { AltButton } from '${packageJson.name}/${hasPrivateAliases ? 'ng/button' : 'angular/button'}'\nconst handler = (event: TVuePaginationChangePageEvent): number => event.detail.page\nconsole.log(AltPagination, AltNgPagination, AltButton, handler)\n`)
     const program = ts.createProgram([fileURLToPath(consumer)], {
       module: ts.ModuleKind.NodeNext,
       moduleResolution: ts.ModuleResolutionKind.NodeNext,
@@ -126,7 +125,7 @@ test('Vue and Angular entry points export Pagination for NodeNext consumers', ()
 test('Vue declarations preserve the Maskito number API for NodeNext consumers', () => {
   const consumer = new URL(`../.package-compat-${randomUUID()}.mts`, import.meta.url)
   try {
-    writeFileSync(consumer, "import { AltButton, maskitoNumberOptionsGenerator } from '@platform/altegio-ui/vue'\nimport { maskitoNumberOptionsGenerator as directMaskitoNumber } from '@maskito/kit'\ntype Button = typeof AltButton\nmaskitoNumberOptionsGenerator({ thousandSeparator: ' ', precision: 2, max: 1000 })\ndirectMaskitoNumber({ thousandSeparator: ' ', precision: 2, max: 1000 })\n")
+    writeFileSync(consumer, `import { AltButton, maskitoNumberOptionsGenerator } from '${packageJson.name}/vue'\nimport { maskitoNumberOptionsGenerator as directMaskitoNumber } from '@maskito/kit'\ntype Button = typeof AltButton\nmaskitoNumberOptionsGenerator({ thousandSeparator: ' ', precision: 2, max: 1000 })\ndirectMaskitoNumber({ thousandSeparator: ' ', precision: 2, max: 1000 })\n`)
     const program = ts.createProgram([fileURLToPath(consumer)], {
       module: ts.ModuleKind.NodeNext,
       moduleResolution: ts.ModuleResolutionKind.NodeNext,
@@ -141,13 +140,13 @@ test('Vue declarations preserve the Maskito number API for NodeNext consumers', 
 })
 
 test('published tokens use the ALT_ prefix and resolve for NodeNext consumers', async () => {
-  const tokens = await import('@platform/altegio-ui/tokens')
+  const tokens = await import(`${packageJson.name}/tokens`)
   assert.ok(Object.keys(tokens).length >= 355)
   assert.deepEqual(Object.keys(tokens).filter(name => !name.startsWith('ALT_')), [])
 
   const consumer = new URL(`../.package-compat-${randomUUID()}.mts`, import.meta.url)
   try {
-    writeFileSync(consumer, "import { ALT_TEXT_PRIMARY } from '@platform/altegio-ui/tokens'\nconsole.log(ALT_TEXT_PRIMARY)\n")
+    writeFileSync(consumer, `import { ALT_TEXT_PRIMARY } from '${packageJson.name}/tokens'\nconsole.log(ALT_TEXT_PRIMARY)\n`)
     const options = {
       module: ts.ModuleKind.NodeNext,
       moduleResolution: ts.ModuleResolutionKind.NodeNext,
@@ -166,10 +165,10 @@ test('published tokens use the ALT_ prefix and resolve for NodeNext consumers', 
 test('published icons keep the consumer names supported by this build', async () => {
   const names = ['altClientGroup', 'altServiceClient']
   if (hasPrivateAliases) names.push('y' + 'Clients', 'y' + 'ClientService')
-  const directImport = await import('@platform/altegio-ui/icons')
+  const directImport = await import(`${packageJson.name}/icons`)
   const { outputFiles } = await build({
     stdin: {
-      contents: `export { ${names.join(', ')} } from '@platform/altegio-ui/icons'`,
+      contents: `export { ${names.join(', ')} } from '${packageJson.name}/icons'`,
       resolveDir: root,
       sourcefile: 'consumer.ts',
     },
@@ -190,7 +189,7 @@ test('published icons keep the consumer names supported by this build', async ()
 
   const consumer = new URL(`../.package-compat-${randomUUID()}.mts`, import.meta.url)
   try {
-    writeFileSync(consumer, "import { altClientGroup } from '@platform/altegio-ui/icons'\nconsole.log(altClientGroup.name)\n")
+    writeFileSync(consumer, `import { altClientGroup } from '${packageJson.name}/icons'\nconsole.log(altClientGroup.name)\n`)
     const program = ts.createProgram([fileURLToPath(consumer)], {
       module: ts.ModuleKind.NodeNext,
       moduleResolution: ts.ModuleResolutionKind.NodeNext,

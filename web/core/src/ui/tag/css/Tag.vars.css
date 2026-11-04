@@ -22,21 +22,23 @@
   --alt-core-tag-border-radius-large: var(--alt-core-size-radius-2-x);
 
 
+  /* Status labels stay readable even when their optional icon action is disabled. */
+
   /* Text colors */
   --alt-core-tag-color-accent: var(--alt-core-color-text-primary);
-  --alt-core-tag-color-accent-disabled: var(--alt-core-color-text-tertiary);
+  --alt-core-tag-color-accent-disabled: var(--alt-core-color-text-secondary);
   --alt-core-tag-color-muted: var(--alt-core-color-text-primary);
-  --alt-core-tag-color-muted-disabled: var(--alt-core-color-text-tertiary);
+  --alt-core-tag-color-muted-disabled: var(--alt-core-color-text-secondary);
   --alt-core-tag-color-danger: var(--alt-core-color-calm-text-red);
-  --alt-core-tag-color-danger-disabled: var(--alt-core-color-calm-text-red-low);
+  --alt-core-tag-color-danger-disabled: var(--alt-core-color-calm-text-red);
   --alt-core-tag-color-success: var(--alt-core-color-calm-text-green);
-  --alt-core-tag-color-success-disabled: var(--alt-core-color-calm-text-green-low);
+  --alt-core-tag-color-success-disabled: var(--alt-core-color-calm-text-green);
   --alt-core-tag-color-warning: var(--alt-core-color-calm-text-orange);
-  --alt-core-tag-color-warning-disabled: var(--alt-core-color-calm-text-orange-low);
+  --alt-core-tag-color-warning-disabled: var(--alt-core-color-calm-text-orange);
   --alt-core-tag-color-information: var(--alt-core-color-calm-text-blue);
-  --alt-core-tag-color-information-disabled: var(--alt-core-color-calm-text-blue-low);
+  --alt-core-tag-color-information-disabled: var(--alt-core-color-calm-text-blue);
   --alt-core-tag-color-discovery: var(--alt-core-color-calm-text-purple);
-  --alt-core-tag-color-discovery-disabled: var(--alt-core-color-calm-text-purple-low);
+  --alt-core-tag-color-discovery-disabled: var(--alt-core-color-calm-text-purple);
 
   /* Background colors */
   --alt-core-tag-bg-accent: var(--alt-core-color-calm-surface-yellow-low);

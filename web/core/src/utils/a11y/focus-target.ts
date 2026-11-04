@@ -34,10 +34,9 @@ type TUpdatingElement = Element & { updateComplete: Promise<unknown> }
  * @returns {Promise<unknown>} Resolves once the elements have rendered
  */
 export const whenRendered = (element: Element): Promise<unknown> => {
-  const updating = [element, ...Array.from(element.querySelectorAll('*'))]
-    .filter((node): node is TUpdatingElement => 'updateComplete' in node)
+  const updated = 'updateComplete' in element ? (element as TUpdatingElement).updateComplete : Promise.resolve()
 
-  return Promise.all(updating.map((node) => node.updateComplete))
+  return updated.then(() => Promise.all(getRenderedChildren(element).map(whenRendered)))
 }
 
 /**

@@ -3,4 +3,5 @@
   --alt-core-label-margin-left-tooltip: var(--alt-core-size-spacing-x);
   --alt-core-label-color-tooltip: var(--alt-core-color-icon-secondary);
   --alt-core-label-color-tooltip-disabled: var(--alt-core-color-icon-tertiary);
+  --alt-core-label-color-text-disabled: var(--alt-core-color-text-secondary);
 }

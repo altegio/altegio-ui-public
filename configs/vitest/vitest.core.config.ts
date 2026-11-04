@@ -11,6 +11,8 @@ export default mergeConfig(
       exclude: [
         ...configDefaults.exclude,
         'web/core/src/a11y/**',
+        'web/core/src/visual/**',
+        'web/**/*.visual.test.ts',
       ],
     },
   }),

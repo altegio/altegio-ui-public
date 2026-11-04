@@ -141,7 +141,8 @@ export class AltCoreRadioButton extends FormAssociated(LitElement) implements Om
 
   /** Errors to render; the message from `validate()` shows once, under the last radio button of the group */
   private get shownErrors() {
-    return this.relatedRadioButtons.at(-1) === this
+    const related = this.relatedRadioButtons
+    return related[related.length - 1] === this
       ? this.withValidationError(this.errors)
       : this.errors
   }

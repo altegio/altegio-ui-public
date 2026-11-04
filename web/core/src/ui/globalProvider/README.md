@@ -1,5 +1,27 @@
 # GlobalProvider
 
+## Palette scope and semantic roles
+
+Static tokens and `PalettePlugin` share `tokens/palette.ts`. Brand accent fills retain the supplied
+color; active text is corrected to at least 4.5:1, and essential control borders/focus to 3:1 on the
+built-in neutral surfaces. `text-tertiary`, `icon-tertiary` and low-opacity foregrounds are for disabled
+controls or decoration. Placeholders and informational status labels use active foregrounds.
+
+The existing two-argument `new PalettePlugin(accent, dark)` themes `document.documentElement`.
+Pass an element as the third argument to theme only that element and its descendants:
+
+```ts
+const panel = document.querySelector<HTMLElement>('#customer-panel')!
+const palette = new PalettePlugin('#6644e0', true, panel)
+```
+
+`PaletteModule` accepts the same boundary as its optional `target` option. Sibling/nested targets
+can use different themes. Tokens inherit through Shadow DOM; overlays must stay within their
+intended boundary. Applying another palette to the same target replaces its color tokens. Removing
+an element removes that scope; removing a context module does not undo styles on a retained target.
+The expression editor derives samples from the current accent and semantic palette, preserves explicit
+expression overrides, and keeps its arithmetic parser available for custom editors.
+
 ## Core
 The root provider for components that share global state.
 

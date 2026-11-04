@@ -1,0 +1,78 @@
+name: Publish approved public package
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Reviewed source/package version
+        required: true
+        type: string
+      confirmation:
+        description: 'Exact phrase: publish @altegio/ui VERSION'
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: npm-publication
+  cancel-in-progress: false
+jobs:
+  verify:
+    # Intentionally unavailable until maintainers configure the external publication gates.
+    if: vars.ALTEGIO_UI_PUBLIC_PUBLISH_ENABLED == 'true' && github.repository == 'altegio/altegio-ui-public' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    container: node:24.20.0@sha256:be23f54a88d34e8824c741b19b91064094f92c1c97b194144bfc8b50d67258e2
+    timeout-minutes: 30
+    env:
+      RELEASE_VERSION: ${{ inputs.version }}
+      RELEASE_CONFIRMATION: ${{ inputs.confirmation }}
+      NODE_OPTIONS: --max-old-space-size=3072
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check reviewed release identity
+        run: |
+          node --input-type=module -e 'import assert from "node:assert/strict"; import fs from "node:fs"; const p=JSON.parse(fs.readFileSync("package.json")); assert.equal(p.name,"@altegio/ui"); assert.equal(p.version,process.env.RELEASE_VERSION); assert.equal(process.env.RELEASE_CONFIRMATION,`publish @altegio/ui ${p.version}`)'
+      - name: Require an unused public version
+        run: |
+          node --input-type=module -e 'const r=await fetch(`https://registry.npmjs.org/@altegio%2fui/${encodeURIComponent(process.env.RELEASE_VERSION)}`,{signal:AbortSignal.timeout(15000)});if(r.status!==404)throw new Error(r.ok?"Version already exists on npm":`Registry check failed: ${r.status}`)'
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm public:build
+      - run: pnpm typecheck
+      - run: pnpm test-token-compat
+      - run: pnpm test-package-compat
+      - run: pnpm test-dist-compat
+      - run: pnpm test-public-package
+      - run: pnpm audit-dependencies
+      - run: pnpm test-public-export
+      - run: pnpm exec playwright install --with-deps chromium firefox webkit
+      - run: pnpm test-unit
+      - run: pnpm test-public-consumers
+      - uses: actions/upload-artifact@v4
+        with:
+          name: approved-public-tarball
+          path: |
+            artifacts/public/*.tgz
+            artifacts/public/package-info.json
+          retention-days: 7
+  publish:
+    needs: verify
+    runs-on: ubuntu-24.04
+    environment: npm-public
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.20.0
+          registry-url: https://registry.npmjs.org/
+      - uses: actions/download-artifact@v4
+        with:
+          name: approved-public-tarball
+          path: candidate
+      - name: Verify approved tarball integrity and publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLIC_TOKEN }}
+        run: |
+          node --input-type=module -e 'import assert from "node:assert/strict";import fs from "node:fs";import{createHash}from"node:crypto";const p=JSON.parse(fs.readFileSync("candidate/package-info.json"));assert.equal(createHash("sha256").update(fs.readFileSync(`candidate/${p.filename}`)).digest("hex"),p.sha256)'
+          npm publish candidate/*.tgz --access public --provenance

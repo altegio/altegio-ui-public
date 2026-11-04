@@ -78,6 +78,8 @@ export class ListboxController implements ReactiveController {
   }
 
   handleKeydown(event: KeyboardEvent) {
+    if (event.isComposing || event.defaultPrevented) return
+
     this.keyHandlers[event.key]?.(event)
   }
 

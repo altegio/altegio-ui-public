@@ -2,7 +2,7 @@
   /* Colors */
   --alt-core-field-textarea-default-color: var(--alt-core-color-text-primary);
   --alt-core-field-textarea-disabled-color: var(--alt-core-color-text-tertiary);
-  --alt-core-field-textarea-placeholder-color: var(--alt-core-color-text-tertiary);
+  --alt-core-field-textarea-placeholder-color: var(--alt-core-color-text-secondary);
 
   /* Sizes */
 

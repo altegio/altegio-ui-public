@@ -5,8 +5,8 @@
   /* State colors */
 
   /* Default */
-  --alt-core-field-wrapper-border-color: var(--alt-core-color-stroke-primary);
-  --alt-core-field-wrapper-default-hover-border-color: var(--alt-core-color-stroke-primary-high);
+  --alt-core-field-wrapper-border-color: var(--alt-core-color-stroke-control);
+  --alt-core-field-wrapper-default-hover-border-color: var(--alt-core-color-icon-secondary);
   --alt-core-field-wrapper-default-background-color: var(--alt-core-color-surface-primary);
   --alt-core-field-wrapper-default-color: var(--alt-core-color-text-primary);
 
@@ -19,7 +19,7 @@
   --alt-core-field-wrapper-readonly-background-color: var(--alt-core-color-surface-primary-high);
 
   /* Focused */
-  --alt-core-field-wrapper-focused-border-color: var(--alt-core-color-stroke-accent);
+  --alt-core-field-wrapper-focused-border-color: var(--alt-core-color-focus-ring);
 
   /* Error */
   --alt-core-field-wrapper-error-border-color: var(--alt-core-color-stroke-negative);

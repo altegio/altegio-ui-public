@@ -61,7 +61,7 @@ export class AltCoreStepper
 
   /** The step named by `value`, or else the first step */
   private get activeStep(): AltCoreStep | undefined {
-    return this.steps.find((step) => isSameStep(step, this.value)) ?? this.steps.at(0)
+    return this.steps.find((step) => isSameStep(step, this.value)) ?? this.steps[0]
   }
 
   /** Opens the next step that is not disabled */

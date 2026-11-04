@@ -11,7 +11,7 @@ export const CSSVariablesHostToRootCases = [
   },
   {
     host: '--alt-core-field-input-placeholder-color',
-    root: '--alt-core-color-text-tertiary',
+    root: '--alt-core-color-text-secondary',
   },
   {
     host: '--alt-core-field-input-size-small-padding-x',
@@ -74,7 +74,7 @@ export const CSSVariablesHostToValueCases = [
   },
   {
     host: '--alt-core-field-input-placeholder-color',
-    value: COLORS.text_tertiary.cssValue,
+    value: COLORS.text_secondary.cssValue,
   },
   {
     host: '--alt-core-field-input-size-small-padding-x',

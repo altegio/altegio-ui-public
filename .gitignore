@@ -19,6 +19,7 @@ web/shared/assets/css/build
 web/shared/assets/scss/build
 web/cli/build
 publish-dir
+artifacts/
 
 # Workspace for cloned repositories
 workspace/

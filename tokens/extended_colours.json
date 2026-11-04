@@ -1,13 +1,13 @@
 {
   "calm_text_green": {
     "type": "COLOR",
-    "value": "#219464",
-    "cssValue": "#219464"
+    "value": "#166444",
+    "cssValue": "#166444"
   },
   "calm_icon_green": {
     "type": "COLOR",
-    "value": "#219464",
-    "cssValue": "#219464"
+    "value": "#166444",
+    "cssValue": "#166444"
   },
   "calm_stroke_green": {
     "type": "COLOR",
@@ -236,8 +236,8 @@
   },
   "calm_icon_blue": {
     "type": "COLOR",
-    "value": "#2f53e3",
-    "cssValue": "#2f53e3"
+    "value": "#2349e1",
+    "cssValue": "#2349e1"
   },
   "calm_icon_blue_low": {
     "type": "COLOR",
@@ -246,8 +246,8 @@
   },
   "calm_icon_orange": {
     "type": "COLOR",
-    "value": "#df7800",
-    "cssValue": "#df7800"
+    "value": "#804d00",
+    "cssValue": "#804d00"
   },
   "calm_icon_orange_low": {
     "type": "COLOR",
@@ -256,8 +256,8 @@
   },
   "calm_icon_yellow": {
     "type": "COLOR",
-    "value": "#f8bc3b",
-    "cssValue": "#f8bc3b"
+    "value": "#765204",
+    "cssValue": "#765204"
   },
   "calm_icon_yellow_low": {
     "type": "COLOR",
@@ -266,8 +266,8 @@
   },
   "calm_icon_red": {
     "type": "COLOR",
-    "value": "#e34f2f",
-    "cssValue": "#e34f2f"
+    "value": "#a63117",
+    "cssValue": "#a63117"
   },
   "calm_icon_red_low": {
     "type": "COLOR",
@@ -276,8 +276,8 @@
   },
   "calm_icon_purple": {
     "type": "COLOR",
-    "value": "#6644e0",
-    "cssValue": "#6644e0"
+    "value": "#5a35de",
+    "cssValue": "#5a35de"
   },
   "calm_icon_purple_low": {
     "type": "COLOR",
@@ -286,8 +286,8 @@
   },
   "calm_icon_teal": {
     "type": "COLOR",
-    "value": "#5bb7af",
-    "cssValue": "#5bb7af"
+    "value": "#2c635f",
+    "cssValue": "#2c635f"
   },
   "calm_icon_teal_low": {
     "type": "COLOR",
@@ -296,8 +296,8 @@
   },
   "calm_icon_pearl": {
     "type": "COLOR",
-    "value": "#ffb27a",
-    "cssValue": "#ffb27a"
+    "value": "#994000",
+    "cssValue": "#994000"
   },
   "calm_icon_pearl_low": {
     "type": "COLOR",
@@ -306,8 +306,8 @@
   },
   "calm_icon_plum": {
     "type": "COLOR",
-    "value": "#b2596e",
-    "cssValue": "#b2596e"
+    "value": "#8f4254",
+    "cssValue": "#8f4254"
   },
   "calm_icon_plum_low": {
     "type": "COLOR",
@@ -316,8 +316,8 @@
   },
   "calm_icon_cerulean": {
     "type": "COLOR",
-    "value": "#0d7ea0",
-    "cssValue": "#0d7ea0"
+    "value": "#0a607b",
+    "cssValue": "#0a607b"
   },
   "calm_icon_cerulean_low": {
     "type": "COLOR",
@@ -326,8 +326,8 @@
   },
   "calm_icon_aqua": {
     "type": "COLOR",
-    "value": "#72bef4",
-    "cssValue": "#72bef4"
+    "value": "#0b5d98",
+    "cssValue": "#0b5d98"
   },
   "calm_icon_aqua_low": {
     "type": "COLOR",
@@ -341,8 +341,8 @@
   },
   "calm_text_blue": {
     "type": "COLOR",
-    "value": "#2f53e3",
-    "cssValue": "#2f53e3"
+    "value": "#2349e1",
+    "cssValue": "#2349e1"
   },
   "calm_text_blue_low": {
     "type": "COLOR",
@@ -351,8 +351,8 @@
   },
   "calm_text_orange": {
     "type": "COLOR",
-    "value": "#cc7a00",
-    "cssValue": "#cc7a00"
+    "value": "#804d00",
+    "cssValue": "#804d00"
   },
   "calm_text_orange_low": {
     "type": "COLOR",
@@ -361,8 +361,8 @@
   },
   "calm_text_yellow": {
     "type": "COLOR",
-    "value": "#f8bc3b",
-    "cssValue": "#f8bc3b"
+    "value": "#765204",
+    "cssValue": "#765204"
   },
   "calm_text_yellow_low": {
     "type": "COLOR",
@@ -371,8 +371,8 @@
   },
   "calm_text_red": {
     "type": "COLOR",
-    "value": "#e34f2f",
-    "cssValue": "#e34f2f"
+    "value": "#a63117",
+    "cssValue": "#a63117"
   },
   "calm_text_red_low": {
     "type": "COLOR",
@@ -381,8 +381,8 @@
   },
   "calm_text_purple": {
     "type": "COLOR",
-    "value": "#6644e0",
-    "cssValue": "#6644e0"
+    "value": "#5a35de",
+    "cssValue": "#5a35de"
   },
   "calm_text_purple_low": {
     "type": "COLOR",
@@ -391,8 +391,8 @@
   },
   "calm_text_teal": {
     "type": "COLOR",
-    "value": "#5bb7af",
-    "cssValue": "#5bb7af"
+    "value": "#2c635f",
+    "cssValue": "#2c635f"
   },
   "calm_text_teal_low": {
     "type": "COLOR",
@@ -401,8 +401,8 @@
   },
   "calm_text_pearl": {
     "type": "COLOR",
-    "value": "#ffb27a",
-    "cssValue": "#ffb27a"
+    "value": "#994000",
+    "cssValue": "#994000"
   },
   "calm_text_pearl_low": {
     "type": "COLOR",
@@ -411,8 +411,8 @@
   },
   "calm_text_plum": {
     "type": "COLOR",
-    "value": "#b2596e",
-    "cssValue": "#b2596e"
+    "value": "#8f4254",
+    "cssValue": "#8f4254"
   },
   "calm_text_plum_low": {
     "type": "COLOR",
@@ -421,8 +421,8 @@
   },
   "calm_text_cerulean": {
     "type": "COLOR",
-    "value": "#0d7ea0",
-    "cssValue": "#0d7ea0"
+    "value": "#0a607b",
+    "cssValue": "#0a607b"
   },
   "calm_text_cerulean_low": {
     "type": "COLOR",
@@ -431,8 +431,8 @@
   },
   "calm_text_aqua": {
     "type": "COLOR",
-    "value": "#72bef4",
-    "cssValue": "#72bef4"
+    "value": "#0b5d98",
+    "cssValue": "#0b5d98"
   },
   "calm_text_aqua_low": {
     "type": "COLOR",

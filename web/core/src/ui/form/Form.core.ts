@@ -13,6 +13,8 @@ import { bubblingEvent, type TDispatcher } from '~core/utils/event-decorator'
 import { withLocator } from '~core/utils/locator'
 import { booleanConverter } from '~core/utils/converters'
 import { FORM_BUTTON_TYPES } from '~core/utils/form-button'
+import { createFormData, isImplicitSubmitter, requestFormSubmit } from '~core/utils/form-submit'
+import { getAssociatedControl } from '~core/utils/a11y/legacy-form-internals'
 
 import AltCoreFormVarsCss from '~core/ui/form/css/Form.vars.css?inline'
 import AltCoreFormScopedCss from '~core/ui/form/css/Form.scoped.css?inline'
@@ -25,6 +27,7 @@ interface IFormControl extends HTMLElement {
   resetValidation?: () => void
   checkValidity?: () => boolean
   reportValidity?: () => boolean
+  readonly willValidate?: boolean
   error?: boolean
   errors?: string[]
   updateComplete?: Promise<boolean>
@@ -89,11 +92,11 @@ const getNativeKeydown = (event: Event): KeyboardEvent | undefined => {
 
 const hasOwnErrors = (control: IFormControl) => control.error === true || Boolean(control.errors?.length)
 
-const isValid = (control: IFormControl) => {
-  const valid = control.validate?.() ?? control.checkValidity?.() ?? true
+const checkControl = (control: IFormControl) => control.validate?.() ?? control.checkValidity?.() ?? true
 
-  return valid && !hasOwnErrors(control)
-}
+const isValid = (control: IFormControl) => control.willValidate === false || checkControl(control) && !hasOwnErrors(control)
+
+const isNativeSubmitter = (element: EventTarget): element is HTMLButtonElement | HTMLInputElement => isNativeFormControl(element as Element) && (/^(submit|image)$/).test((element as HTMLButtonElement).type)
 
 /**
  * Validates the fields of the native `<form>` it wraps, on submit or through `validate()`.
@@ -137,7 +140,7 @@ export class AltCoreForm
 
   private get controls(): IFormControl[] {
     // Form-associated fields are listed in `elements` with the native controls, in document order
-    return Array.from(this.form?.elements ?? []) as IFormControl[]
+    return [...new Set(Array.from(this.form?.elements ?? [], getAssociatedControl))] as IFormControl[]
   }
 
   /**
@@ -164,12 +167,12 @@ export class AltCoreForm
 
   /** Validates and submits the form, as a submit button does */
   submit() {
-    this.form?.requestSubmit()
+    if (this.form) requestFormSubmit(this.form)
   }
 
   /** Restores the initial values and hides the validation messages */
   reset() {
-    this.form?.reset()
+    if (this.form) HTMLFormElement.prototype.reset.call(this.form)
   }
 
   connectedCallback() {
@@ -179,6 +182,7 @@ export class AltCoreForm
     this.addEventListener('reset', this.handleReset)
     this.addEventListener('click', this.handleClick)
     this.addEventListener('keydown', this.handleKeydown)
+    this.ownerDocument.addEventListener('click', this.rememberSubmitter, true)
   }
 
   disconnectedCallback() {
@@ -188,6 +192,7 @@ export class AltCoreForm
     this.removeEventListener('reset', this.handleReset)
     this.removeEventListener('click', this.handleClick)
     this.removeEventListener('keydown', this.handleKeydown)
+    this.ownerDocument.removeEventListener('click', this.rememberSubmitter, true)
   }
 
   private focusControl(control: IFormControl) {
@@ -207,22 +212,36 @@ export class AltCoreForm
     event.preventDefault()
     event.stopPropagation()
 
-    void this.submitValid(form, (event as SubmitEvent).submitter)
+    const { submitter = this.clickedSubmitter } = event as Partial<SubmitEvent>
+    void this.submitValid(form, isImplicitSubmitter(submitter) ? null : submitter)
   }
 
   private async submitValid(form: HTMLFormElement, submitter: HTMLElement | null) {
     if (!await this.validate()) return
 
-    this._formSubmit({ detail: { formData: new FormData(form, submitter), submitter } })
+    this._formSubmit({ detail: { formData: createFormData(form, submitter), submitter } })
   }
 
   private readonly handleReset = (event: Event) => {
     if (event.target !== this.form) return
 
     event.stopPropagation()
-    this.resetValidation()
     // The fields restore their values after the `reset` event
-    queueMicrotask(() => { this._formReset() })
+    queueMicrotask(() => {
+      if (event.defaultPrevented) return
+
+      this.resetValidation()
+      this._formReset()
+    })
+  }
+
+  private readonly rememberSubmitter = (event: MouseEvent) => {
+    const nativeButton = event.composedPath().find((element) => isNativeSubmitter(element) && element.form === this.form) as HTMLButtonElement | HTMLInputElement | undefined
+    if (nativeButton) {
+      // SubmitEvent.submitter is missing in Safari 14.1. Click's default action submits synchronously.
+      this.clickedSubmitter = nativeButton
+      queueMicrotask(() => { this.clickedSubmitter = null })
+    }
   }
 
   private readonly handleClick = (event: MouseEvent) => {
@@ -235,6 +254,8 @@ export class AltCoreForm
       this.reset()
     }
   }
+
+  private clickedSubmitter: HTMLElement | null = null
 
   private readonly handleKeydown = (event: Event) => {
     const keydown = getNativeKeydown(event)

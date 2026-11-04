@@ -1,4 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, EventEmitter, Output } from '@angular/core'
+import { forwardRef, Component, CUSTOM_ELEMENTS_SCHEMA, Input, EventEmitter, Output } from '@angular/core'
+import { NG_VALUE_ACCESSOR } from '@angular/forms'
+import { ControlValueAccessorBase } from '~ng/types/ControlValueAccessorBase'
 
 import '~core/ui/datePicker'
 import {
@@ -33,6 +35,7 @@ const {
 @Component({
   selector: 'AltDatePicker',
   standalone: true,
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AltDatePicker), multi: true }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <alt-core-date-picker
@@ -40,7 +43,7 @@ const {
       [isRange]="isRange"
       [minDate]="minDate"
       [maxDate]="maxDate"
-      [disabled]="disabled"
+      [disabled]="disabled || controlDisabled()"
       [calendarHeaderSelectors]="calendarHeaderSelectors"
       [annotationText]="annotationText"
       [name]="name"
@@ -60,7 +63,7 @@ const {
   `,
 })
 
-export class AltDatePicker implements IAltNgDatePickerProps {
+export class AltDatePicker extends ControlValueAccessorBase<IAltNgDatePickerProps['date'] | null> implements IAltNgDatePickerProps {
   @Input() @DefaultValue(date) date: IAltNgDatePickerProps['date'] = date
   @Input() @DefaultValue(isRange) isRange: IAltNgDatePickerProps['isRange'] = isRange
   @Input() @DefaultValue(minDate) minDate: IAltNgDatePickerProps['minDate'] = minDate
@@ -81,9 +84,17 @@ export class AltDatePicker implements IAltNgDatePickerProps {
   @Input() @DefaultValue(errors) errors: IAltNgDatePickerProps['errors'] = errors
   @Input() @DefaultValue(locale) locale: IAltNgDatePickerProps['locale'] = locale
 
+  writeValue(value: IAltNgDatePickerProps['date'] | null) {
+    this.date = value ?? undefined
+    this.changeDetector.markForCheck()
+  }
+
   @Output() pick = new EventEmitter<PickEvent['detail']['value']>()
 
   handlePickEvent(event: Event) {
+    const value = (event as PickEvent).detail.value
+    this.date = value
+    this.onChange(value)
     const pickEvent = event as PickEvent
     this.pick.emit(pickEvent.detail.value)
   }

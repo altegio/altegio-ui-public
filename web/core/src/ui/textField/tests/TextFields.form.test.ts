@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { userEvent } from 'vitest/browser'
 import {
   AltCoreAutocompleteFieldTagName,
@@ -7,7 +7,7 @@ import {
   AltCoreTextareaTagName,
   AltCoreTextFieldTagName,
 } from '~shared/constants'
-import { waitForLitTree } from '~shared/tests/a11y'
+import { getDeepActiveElement, waitForLitTree } from '~shared/tests/a11y'
 import '~core/ui/textField'
 import '~core/ui/textarea'
 import '~core/ui/countField'
@@ -41,11 +41,17 @@ const mountInForm = async(tagName: string, props: Partial<TFormField>) => {
   return { form, field }
 }
 
+const nativeAttachInternals = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'attachInternals')!
+
 afterEach(() => {
   document.body.replaceChildren()
+  Object.defineProperty(HTMLElement.prototype, 'attachInternals', nativeAttachInternals)
 })
 
-describe('Core/text fields/Form', () => {
+describe.each(['native', 'legacy'])('Core/text fields/Form/%s', (mode) => {
+  beforeEach(() => {
+    if (mode === 'legacy') Object.defineProperty(HTMLElement.prototype, 'attachInternals', { configurable: true, value: undefined })
+  })
   for (const [
     name,
     tagName,
@@ -79,6 +85,13 @@ describe('Core/text fields/Form', () => {
         field.value = '5'
         await waitForLitTree(form)
         expect(form.checkValidity()).toBe(true)
+      })
+
+      it('focuses its visible input when a native form reports initial invalidity', async() => {
+        const { form } = await mountInForm(tagName, { name: 'field', required: true, value: '' })
+
+        expect(form.reportValidity()).toBe(false)
+        expect(getDeepActiveElement()?.tagName).toMatch(/^(INPUT|TEXTAREA)$/)
       })
 
       it('restores its initial value on form reset', async() => {

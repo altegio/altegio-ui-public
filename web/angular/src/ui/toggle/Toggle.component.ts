@@ -49,7 +49,7 @@ const {
       [labelTooltipText]="labelTooltipText"
       [labelOverflowDebounce]="labelOverflowDebounce"
       [annotationText]="annotationText"
-      [disabled]="disabled"
+      [disabled]="disabled || controlDisabled()"
       [required]="required"
       [errors]="errors"
       [name]="name"
@@ -99,8 +99,9 @@ export class AltToggle extends ControlValueAccessorBase<TAltNgToggleModel> imple
 
   isChecked: boolean = DEFAULT_CHECKED_VALUE
 
-  writeValue(value: boolean) {
-    this.isChecked = value
+  writeValue(value: boolean | null) {
+    this.isChecked = Boolean(value)
+    this.changeDetector.markForCheck()
   }
 
   handleCheckedEvent(event: Event) {
@@ -111,6 +112,5 @@ export class AltToggle extends ControlValueAccessorBase<TAltNgToggleModel> imple
 
     this.isChecked = checked
     this.onChange(checked)
-    this.onTouched()
   }
 }

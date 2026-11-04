@@ -6,6 +6,7 @@ import sizes from './sizes.json' with { type: 'json' }
 import typography from './typography.json' with { type: 'json' }
 import effects from './effects.json' with { type: 'json' }
 import avatar from './avatar.json' with { type: 'json' }
+import { generatePalette } from './palette'
 
 type TTokenValue = string | number
 
@@ -50,8 +51,11 @@ const extractStylesFromJsonTokens = (tokens: TTokensJSON, prefix: string) => {
     .join('\n')
 }
 
-export const COLORS = colors as TTokensJSON
-export const EXTENDED_COLORS = extendedColors as TTokensJSON
+const defaultPalette = generatePalette()
+const resolveColors = (tokens: TTokensJSON): TTokensJSON => Object.fromEntries(Object.entries(tokens).map(([key, token]) => [key, { ...token, value: defaultPalette[key], cssValue: defaultPalette[key] }]))
+
+export const COLORS = resolveColors(colors as TTokensJSON)
+export const EXTENDED_COLORS = resolveColors(extendedColors as TTokensJSON)
 export const SIZES = sizes as TTokensJSON
 export const TYPOGRAPHY = typography as TTokensJSON
 export const EFFECTS = effects as TTokensJSON
@@ -60,7 +64,7 @@ export const AVATAR = avatar as TTokensJSON
 export const ALL_COLORS = {
   ...COLORS,
   ...EXTENDED_COLORS,
-} as TTokensJSON
+}
 
 export const cssContent = (() => {
   return `:root{\n${

@@ -60,7 +60,8 @@ const {
     <alt-core-count-field
       [min]="min"
       [max]="max"
-      [disabled]="disabled"
+      [disabled]="disabled || controlDisabled()"
+      [attr.readonly]="readonly ? '' : null"
       [accessibleName]="accessibleName"
       [error]="error"
       [size]="size"
@@ -115,8 +116,8 @@ export class AltCountField extends ControlValueAccessorBase<TAltNgCountFieldMode
     return String(value)
   })
 
-  writeValue(value: number) {
-    this.modelValue.set(value)
+  writeValue(value: number | null) {
+    this.modelValue.set(value ?? DEFAULT_NUMBER_VALUE)
   }
 
   handleChangedValueEvent(event: Event) {
@@ -126,7 +127,6 @@ export class AltCountField extends ControlValueAccessorBase<TAltNgCountFieldMode
     this.modelValue.set(newValue)
 
     this.onChange(newValue)
-    this.onTouched()
   }
 
   @Output() focus = new EventEmitter<FocusEvent>()
