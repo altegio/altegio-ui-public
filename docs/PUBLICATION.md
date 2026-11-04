@@ -48,7 +48,7 @@ The public repository's `npm-public` environment requires approval from `petroff
 
 The Inter v3.19 notice matches upstream byte for byte. The assembly verifies notices for bundled code against installed versions and copies font assets unchanged. The authorized owner explicitly approved redistribution of the font/icon assets and the release notes in PUBLIC_CHANGELOG.md on November 4, 2026. Source CI and the corresponding public-snapshot CI passed for the package and component changes. Review the final workflow artifact and its recorded integrity before approving publication; the tarball includes these release documents, so documentation edits also change its digest.
 
-Historical Safari 14.1 and iOS 16 validation is tracked separately in [HISTORICAL_BROWSER_VALIDATION.md](./HISTORICAL_BROWSER_VALIDATION.md). The maintainer confirmed that neither an existing target nor an authorized testing service is available. Both historical targets remain unverified; current Playwright WebKit is not evidence for either target.
+Historical Safari 14.1 and iOS 16 validation is tracked separately in [HISTORICAL_BROWSER_VALIDATION.md](./HISTORICAL_BROWSER_VALIDATION.md). The maintainer confirmed that neither an existing target nor an authorized testing service is available and explicitly chose to proceed with this release without historical Safari validation on November 4, 2026. Both historical targets remain unverified; current Playwright WebKit is not evidence for either target.
 
 ## Import migration
 

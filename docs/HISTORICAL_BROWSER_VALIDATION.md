@@ -14,6 +14,11 @@ Both historical targets therefore remain unverified. An existing authorized Mac
 with Safari 14.1 and an iOS 16 device/simulator, or an already authorized service
 session providing those exact versions, is required. No paid session was created.
 
+The maintainer explicitly chose to proceed with the first public release without
+historical Safari validation on November 4, 2026. This release decision does not
+change the browser baseline or mark either historical target as verified. The
+checklist below remains available for future validation.
+
 ## Runnable validation preparation
 
 Use the committed Node/pnpm versions and a clean checkout:

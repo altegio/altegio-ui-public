@@ -132,6 +132,7 @@
     "lint-style-fix": "stylelint ./web/**/*.css --ignore-path ./configs/.stylelintignore -c ./configs/.stylelintrc.json --fix",
     "lint-code": "pnpm lint-es && pnpm lint-style",
     "lint-code-fix": "pnpm lint-es-fix && pnpm lint-style-fix",
+    "story-dev:public": "STORYBOOK_PUBLIC_BUILD=1 pnpm story-dev",
     "story-dev": "pnpm -r run story-dev-core --no-open & pnpm -r run story-dev-vue --no-open & pnpm -r run story-dev-ng --no-open & wait-on http://localhost:6006 http://localhost:6007 http://localhost:6008 && pnpm run story-dev-web",
     "story-dev-web": "storybook dev -c ./web/.storybook -p 6005",
     "story-dev-core": "storybook dev -c ./web/core/.storybook -p 6006",

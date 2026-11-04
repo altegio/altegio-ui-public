@@ -72,12 +72,12 @@ Use Node.js **24.20.0** and pnpm **10.34.5** to build this repository. The packa
 git clone https://github.com/altegio/altegio-ui-public.git
 cd altegio-ui-public
 make init
-pnpm story-dev
+pnpm story-dev:public
 ```
 
 `make init` enables Corepack, installs dependencies from the lockfile, installs Git hooks, and generates design tokens and shared constants.
 
-`pnpm story-dev` starts the Storybook entry point at **http://localhost:6005** and its component catalogs:
+`pnpm story-dev:public` starts the public Storybook entry point at **http://localhost:6005** and its component catalogs. It removes internal design links; the overview and changelog use public documentation:
 
 | Catalog | URL | Standalone command |
 | --- | --- | --- |
