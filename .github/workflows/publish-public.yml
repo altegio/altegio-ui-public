@@ -80,4 +80,4 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLIC_TOKEN }}
         run: |
           node --input-type=module -e 'import assert from "node:assert/strict";import fs from "node:fs";import{createHash}from"node:crypto";const p=JSON.parse(fs.readFileSync("candidate/package-info.json"));assert.equal(createHash("sha256").update(fs.readFileSync(`candidate/${p.filename}`)).digest("hex"),p.sha256)'
-          npm publish candidate/*.tgz --access public --provenance
+          npm publish ./candidate/*.tgz --access public --provenance
