@@ -18,7 +18,7 @@ concurrency:
 jobs:
   verify:
     # Intentionally unavailable until maintainers configure the external publication gates.
-    if: vars.ALTEGIO_UI_PUBLIC_PUBLISH_ENABLED == 'true' && github.repository == 'altegio/altegio-ui-public' && github.ref == 'refs/heads/main'
+    if: vars.ALTEGIO_UI_PUBLIC_PUBLISH_ENABLED == 'true' && github.repository == 'altegio/altegio-ui-public' && github.ref == 'refs/heads/main' && github.ref_protected
     runs-on: ubuntu-24.04
     container: node:24.20.0@sha256:be23f54a88d34e8824c741b19b91064094f92c1c97b194144bfc8b50d67258e2
     timeout-minutes: 30

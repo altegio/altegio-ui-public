@@ -15,12 +15,33 @@ for (const [path, from] of [
   const source = ts.createSourceFile(path, text, ts.ScriptTarget.Latest, true)
   const classes = source.statements.filter(statement => ts.isClassDeclaration(statement) && statement.name && exports.has(statement.name.text))
   for (const statement of [...classes].reverse()) text = text.slice(0, statement.pos) + text.slice(statement.end)
-  const names = classes.map(statement => statement.name.text)
-  if (names.length) {
+  const names = new Set(classes.map(statement => statement.name.text))
+  const localNames = new Set()
+  for (const statement of source.statements) {
+    if (statement.name && ts.isIdentifier(statement.name)) localNames.add(statement.name.text)
+    if (ts.isVariableStatement(statement)) {
+      for (const declaration of statement.declarationList.declarations) {
+        if (ts.isIdentifier(declaration.name)) localNames.add(declaration.name.text)
+      }
+    }
+    if (ts.isImportDeclaration(statement) && statement.importClause?.namedBindings && ts.isNamedImports(statement.importClause.namedBindings)) {
+      for (const specifier of statement.importClause.namedBindings.elements) localNames.add(specifier.name.text)
+    }
+  }
+  // Newer declaration emitters preserve ambient tag maps without emitting the
+  // referenced Core classes. Import those references from the same canonical module.
+  function collectAmbientReferences(node) {
+    if (ts.isIdentifier(node) && exports.has(node.text) && !localNames.has(node.text)) names.add(node.text)
+    ts.forEachChild(node, collectAmbientReferences)
+  }
+  for (const statement of source.statements) {
+    if (ts.isModuleDeclaration(statement) && statement.flags & ts.NodeFlags.GlobalAugmentation) collectAmbientReferences(statement)
+  }
+  if (names.size) {
     const publicNames = classes.filter(statement => ts.getModifiers(statement)?.some(modifier => modifier.kind === ts.SyntaxKind.ExportKeyword)).map(statement => statement.name.text)
-    text = `import { ${names.join(', ')} } from '${from}'\n${text}`
+    text = `import { ${[...names].join(', ')} } from '${from}'\n${text}`
     if (publicNames.length) text += `\nexport { ${publicNames.join(', ')} }\n`
     writeFileSync(path, text)
   }
-  console.log(`${path}: ${names.length} canonical Core class references`)
+  console.log(`${path}: ${names.size} canonical Core references`)
 }

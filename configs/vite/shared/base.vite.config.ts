@@ -64,10 +64,22 @@ export default ({
       }),
       dts({
         root: dtsRoot,
-        outDir: path.resolve(import.meta.dirname, '../../../dist', basePath),
-        rollupTypes: true,
-        include: dtsRoot && dtsInclude ? [dtsInclude].flat().map(glob => path.resolve(import.meta.dirname, '../../../', glob)) : dtsInclude,
-        exclude: dtsRoot && dtsExclude ? [dtsExclude].flat().map(glob => path.resolve(import.meta.dirname, '../../../', glob)) : dtsExclude,
+        entryRoot: path.resolve(import.meta.dirname, '../../../'),
+        outDirs: path.resolve(import.meta.dirname, '../../../dist', basePath),
+        bundleTypes: {
+          extractorConfig: {
+            compiler: {
+              overrideTsconfig: {
+                // The synthetic Vue package root has no sources; bundle the emitted entry.
+                files: [path.resolve(import.meta.dirname, '../../../dist', basePath, 'index.d.ts')],
+                include: [],
+              },
+            },
+          },
+        },
+        processor: basePath === 'web/vue' ? 'vue' : 'ts',
+        include: [dtsInclude ?? [`${basePath}/src/**/*`, 'web/core/src/**/*', 'web/shared/**/*', 'tokens/**/*']].flat(2).map(glob => path.resolve(import.meta.dirname, '../../../', glob)),
+        exclude: [...[dtsExclude ?? []].flat(), 'web/**/stories/**', 'web/**/tests/**', 'web/**/test/**'].map(glob => path.resolve(import.meta.dirname, '../../../', glob)),
         pathsToAliases: false,
         tsconfigPath: path.resolve(import.meta.dirname, '../../../tsconfig.json'),
         insertTypesEntry: true,

@@ -1,4 +1,5 @@
 {
+  "name": "altegio-ui-vue-types",
   "private": true,
   "type": "module",
   "types": "../../../dist/web/vue/index.d.ts"
