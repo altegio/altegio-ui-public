@@ -1,4 +1,4 @@
-# Contributing to Altegio UI
+# Contributing to Altegio UI · Beta
 
 Thank you for helping to improve Altegio UI. This guide explains how contributions reach the code, since this repository works differently from most open-source projects.
 
@@ -27,14 +27,14 @@ Do not report security vulnerabilities in public issues; follow the [security po
 
 ## Setting up
 
-Follow the [quick start](./README.md#quick-start) to install dependencies and run Storybook. The [README](./README.md) also describes the repository layout, the builds, and the component CLI.
+Follow the [local development guide](./README.md#develop-locally) to install dependencies and run Storybook. The [README](./README.md) also describes the repository layout, the builds, and the component CLI.
 
 ## Making a change
 
 - Implement component behavior in the Lit web component under `web/core`, then update the Vue and Angular wrappers under `web/vue` and `web/angular` so that all three integrations stay in sync.
 - Use the `Alt` prefix for public names: `AltButton`, `alt-core-button`, `--alt-core-*`.
 - Add or update the unit tests next to the component (`tests/`) and its Storybook stories (`stories/`).
-- Keep public API changes backward compatible. When something must change, keep the old name as a deprecated alias and describe the change in the pull request.
+- The project is under active development and the public API may change before 1.0. Prefer compatible changes; describe any breaking change in the pull request and public release notes.
 - Write code, comments, and documentation in English.
 - Write commit messages in the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format, for example `fix(vue): forward the disabled prop to AltButton`. The commit message hook checks the format.
 

@@ -3,18 +3,22 @@ import { execFileSync } from 'node:child_process'
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { readPublicRelease } from './public-release.mjs'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 export const publicDirectory = resolve(root, 'artifacts/public/package')
 export const publicName = '@altegio/ui'
 
 export function publicManifest(source) {
+  const release = readPublicRelease()
+  if (source.name === publicName && source.version !== release.version) throw new Error('Public snapshot version does not match public-release.json')
   const keys = ['description', 'author', 'version', 'license', 'homepage', 'bugs', 'keywords', 'type', 'main', 'module', 'types', 'bin', 'sideEffects', 'exports', 'typesVersions', 'peerDependencies', 'peerDependenciesMeta', 'dependencies', 'engines']
   const manifest = Object.fromEntries(keys.filter(key => source[key] !== undefined).map(key => [key, structuredClone(source[key])]))
   manifest.name = publicName
+  manifest.version = release.version
   manifest.repository = { type: 'git', url: 'git+https://github.com/altegio/altegio-ui-public.git' }
-  manifest.files = ['dist/', 'licenses/', 'THIRD_PARTY_NOTICES.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'SECURITY.md', 'CODE_OF_CONDUCT.md', 'docs/PUBLICATION.md', 'docs/CONSUMER_VALIDATION.md', 'docs/DEPENDENCY_AUDIT.md', 'PUBLIC_CHANGELOG.md']
-  manifest.publishConfig = { access: 'public', registry: 'https://registry.npmjs.org/' }
+  manifest.files = ['dist/', 'licenses/', 'THIRD_PARTY_NOTICES.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'SECURITY.md', 'CODE_OF_CONDUCT.md', 'docs/PUBLICATION.md', 'docs/CONSUMER_VALIDATION.md', 'docs/DEPENDENCY_AUDIT.md', 'docs/HISTORICAL_BROWSER_VALIDATION.md', 'PUBLIC_CHANGELOG.md']
+  manifest.publishConfig = { access: 'public', registry: 'https://registry.npmjs.org/', tag: release.channel }
   for (const key of Object.keys(manifest.exports ?? {})) if (key.startsWith('./ng/')) delete manifest.exports[key]
   for (const mapping of Object.values(manifest.typesVersions ?? {})) {
     for (const key of Object.keys(mapping)) if (key.startsWith('ng/')) delete mapping[key]
@@ -94,7 +98,7 @@ export function assemblePublicPackage() {
   rmSync(publicDirectory, { recursive: true, force: true })
   mkdirSync(publicDirectory, { recursive: true })
   cpSync(resolve(root, 'dist'), join(publicDirectory, 'dist'), { recursive: true, filter: path => !path.endsWith('.map') && (!path.endsWith('.ts') || path.endsWith('.d.ts')) })
-  for (const file of ['LICENSE', 'README.md', 'CONTRIBUTING.md', 'SECURITY.md', 'CODE_OF_CONDUCT.md', 'THIRD_PARTY_NOTICES.md', 'licenses', 'docs/PUBLICATION.md', 'docs/CONSUMER_VALIDATION.md', 'docs/DEPENDENCY_AUDIT.md', 'PUBLIC_CHANGELOG.md']) {
+  for (const file of ['LICENSE', 'README.md', 'CONTRIBUTING.md', 'SECURITY.md', 'CODE_OF_CONDUCT.md', 'THIRD_PARTY_NOTICES.md', 'licenses', 'docs/PUBLICATION.md', 'docs/CONSUMER_VALIDATION.md', 'docs/DEPENDENCY_AUDIT.md', 'docs/HISTORICAL_BROWSER_VALIDATION.md', 'PUBLIC_CHANGELOG.md']) {
     mkdirSync(dirname(join(publicDirectory, file)), { recursive: true })
     cpSync(resolve(root, file), join(publicDirectory, file), { recursive: true })
   }

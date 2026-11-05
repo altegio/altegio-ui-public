@@ -23,21 +23,33 @@ const scratch = resolve(root, 'artifacts/consumers')
 const info = JSON.parse(await readFile(resolve(root, 'artifacts/public/package-info.json'), 'utf8'))
 const locked = name => JSON.parse(require('node:fs').readFileSync(require.resolve(`${name}/package.json`), 'utf8')).version
 const tarball = resolve(root, 'artifacts/public', info.filename)
+const packageSource = process.env.PUBLIC_CONSUMER_SOURCE ?? 'tarball'
+assert.ok(['tarball', 'registry'].includes(packageSource), 'PUBLIC_CONSUMER_SOURCE must be tarball or registry')
 await rm(scratch, { recursive: true, force: true })
 await mkdir(scratch, { recursive: true })
 await writeFile(join(scratch, 'package.json'), JSON.stringify({
   name: 'altegio-public-consumer', private: true, type: 'module',
   dependencies: {
-    '@altegio/ui': `file:${tarball}`, vue: locked('vue'),
+    '@altegio/ui': packageSource === 'registry' ? info.version : `file:${tarball}`, vue: locked('vue'),
     '@angular/core': locked('@angular/core'), '@angular/common': locked('@angular/common'),
     '@angular/compiler': locked('@angular/compiler'), '@angular/forms': locked('@angular/forms'),
     '@angular/platform-browser': locked('@angular/platform-browser'), rxjs: '7.8.2', tslib: locked('tslib'),
   },
 }, null, 2))
 await writeFile(join(scratch, '.npmrc'), 'registry=https://registry.npmjs.org/\n')
-await run('npm', ['install', '--ignore-scripts', '--no-audit', '--no-fund'], { cwd: scratch, timeout: 180000, maxBuffer: 4 * 1024 * 1024 })
+await writeFile(join(scratch, 'npm-globalrc'), '')
+await run('npm', ['install', '--ignore-scripts', '--no-audit', '--no-fund'], {
+  cwd: scratch, timeout: 180000, maxBuffer: 4 * 1024 * 1024,
+  env: { ...process.env, NPM_CONFIG_USERCONFIG: join(scratch, '.npmrc'), NPM_CONFIG_GLOBALCONFIG: join(scratch, 'npm-globalrc') },
+})
 const consumerRequire = createRequire(join(scratch, 'package.json'))
-assert.ok(consumerRequire.resolve('@altegio/ui/package.json').startsWith(join(scratch, 'node_modules') + sep), 'the installed tarball must supply the package')
+assert.ok(consumerRequire.resolve('@altegio/ui/package.json').startsWith(join(scratch, 'node_modules') + sep), 'the isolated installation must supply the package')
+const installed = consumerRequire('@altegio/ui/package.json')
+assert.equal(installed.name, info.name)
+assert.equal(installed.version, info.version)
+const installedLock = JSON.parse(await readFile(join(scratch, 'package-lock.json'), 'utf8'))
+assert.equal(installedLock.packages['node_modules/@altegio/ui'].integrity, info.integrity, 'installed bytes must match the reviewed tarball')
+console.log(`Installed ${installed.name}@${installed.version} from ${packageSource} without npm user credentials; integrity matches.`)
 
 // Compile every supported entry from the installed package, including its exported types.
 const imports = ['core', 'vue', 'angular'].flatMap(framework => componentEntries(framework)

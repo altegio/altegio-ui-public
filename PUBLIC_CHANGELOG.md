@@ -1,16 +1,19 @@
-# Public package changelog
+# Altegio UI beta changelog
 
-## 3.18.1 — First public release
+Altegio UI is beta and under active development. The public API may change before 1.0.
 
-These release notes were approved on November 4, 2026 for the first publication of `@altegio/ui`. Version 3.18.1 is shared with the private package to identify the source API; it does not imply that earlier versions of `@altegio/ui` were published. Publication requires the gates in [PUBLICATION.md](./docs/PUBLICATION.md); verify availability in the [npm registry](https://www.npmjs.com/package/@altegio/ui/v/3.18.1).
+## 0.3.18 — Beta
 
-- Provide a separate `@altegio/ui` tarball with canonical Alt-prefixed exports, types, assets and license notices.
-- Provide supported per-component entry points for Core, Vue and Angular, with consumer and bundle-size checks.
-- Share canonical Core classes, contexts and registration across mixed framework/catalog/component imports, with installed-tarball composition regressions.
-- Preserve the separate private release and its deprecated compatibility aliases.
-- Support native and legacy form paths with disabled state, external errors, reset behavior and Angular ControlValueAccessor integration.
-- Include accessibility, token contrast and right-to-left layout fixes with browser and visual regression coverage.
+- Start the independent public 0.x beta series with consistent package metadata, README and Storybook branding.
+- Simplify installation and onboarding around the current Core, Vue 3 and Angular 22 APIs.
+- Publish the current beta on both `beta` and `latest` so the default npm install selects it.
+- Preserve component behavior, supported imports, types, accessibility checks, browser baseline and bundled license notices.
 
-The authorized asset owner approved redistribution of the included fonts/icons and these notes. The browser baseline remains Safari 14.1 and iOS 16, with historical-device verification still pending because no suitable device, simulator or authorized testing service is available.
+The earlier 3.18.1 package remains available. Existing version ranges and lockfiles are unchanged; adopting 0.x requires explicitly selecting it. See the [release process](./docs/PUBLICATION.md) and [npm registry](https://www.npmjs.com/package/@altegio/ui) for publication status.
 
-Public source updates are recorded in the [snapshot history](https://github.com/altegio/altegio-ui-public/commits/main/). A snapshot commit is not an npm release. Maintainers must add reviewed release notes here when approving an external version; internal release notes and issue links are not copied into the public package.
+## 3.18.1 — First public release · November 4, 2026
+
+- Introduced the public package with web components, Vue and Angular integrations, component entry points, design tokens, icons and shared styles.
+- Included canonical shared runtime modules, strict consumer type checks, browser rendering, accessibility and visual regression coverage.
+
+Public source changes are recorded in the [snapshot history](https://github.com/altegio/altegio-ui-public/commits/main/). Source snapshots and npm releases have separate publication schedules.

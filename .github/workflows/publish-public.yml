@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: Reviewed source/package version
+        description: Reviewed 0.x public beta version
         required: true
         type: string
       confirmation:
@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   verify:
-    # Intentionally unavailable until maintainers configure the external publication gates.
+    # Require the configured publication gates and protected main.
     if: vars.ALTEGIO_UI_PUBLIC_PUBLISH_ENABLED == 'true' && github.repository == 'altegio/altegio-ui-public' && github.ref == 'refs/heads/main' && github.ref_protected
     runs-on: ubuntu-24.04
     container: node:24.20.0@sha256:be23f54a88d34e8824c741b19b91064094f92c1c97b194144bfc8b50d67258e2
@@ -35,7 +35,7 @@ jobs:
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Check reviewed release identity
         run: |
-          node --input-type=module -e 'import assert from "node:assert/strict"; import fs from "node:fs"; const p=JSON.parse(fs.readFileSync("package.json")); assert.equal(p.name,"@altegio/ui"); assert.equal(p.version,process.env.RELEASE_VERSION); assert.equal(process.env.RELEASE_CONFIRMATION,`publish @altegio/ui ${p.version}`)'
+          node scripts/public-release.mjs "$RELEASE_VERSION" "$RELEASE_CONFIRMATION"
       - name: Require an unused public version
         run: |
           node --input-type=module -e 'const r=await fetch(`https://registry.npmjs.org/@altegio%2fui/${encodeURIComponent(process.env.RELEASE_VERSION)}`,{signal:AbortSignal.timeout(15000)});if(r.status!==404)throw new Error(r.ok?"Version already exists on npm":`Registry check failed: ${r.status}`)'
@@ -78,6 +78,32 @@ jobs:
       - name: Verify approved tarball integrity and publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLIC_TOKEN }}
+          RELEASE_VERSION: ${{ inputs.version }}
         run: |
-          node --input-type=module -e 'import assert from "node:assert/strict";import fs from "node:fs";import{createHash}from"node:crypto";const p=JSON.parse(fs.readFileSync("candidate/package-info.json"));assert.equal(createHash("sha256").update(fs.readFileSync(`candidate/${p.filename}`)).digest("hex"),p.sha256)'
-          npm publish ./candidate/*.tgz --access public --provenance
+          node --input-type=module -e 'import assert from "node:assert/strict";import fs from "node:fs";import{createHash}from"node:crypto";const p=JSON.parse(fs.readFileSync("candidate/package-info.json"));assert.equal(p.name,"@altegio/ui");assert.equal(p.version,process.env.RELEASE_VERSION);assert.match(p.version,/^0\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/);assert.equal(p.filename,`altegio-ui-${p.version}.tgz`);assert.equal(createHash("sha256").update(fs.readFileSync(`candidate/${p.filename}`)).digest("hex"),p.sha256)'
+          npm publish ./candidate/*.tgz --access public --provenance --tag beta
+      - name: Verify registry artifact and promote the beta to the default install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLIC_TOKEN }}
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict'
+          import fs from 'node:fs'
+          const info = JSON.parse(fs.readFileSync('candidate/package-info.json'))
+          const response = await fetch(`https://registry.npmjs.org/@altegio%2fui/${info.version}`, { signal: AbortSignal.timeout(15000) })
+          assert.ok(response.ok, `Registry returned ${response.status}`)
+          const published = await response.json()
+          assert.equal(published.name, info.name)
+          assert.equal(published.version, info.version)
+          assert.equal(published.dist.integrity, info.integrity)
+          assert.ok(published.dist.attestations?.provenance, 'npm provenance is required')
+          NODE
+          npm dist-tag add "@altegio/ui@$RELEASE_VERSION" latest
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict'
+          import { execFileSync } from 'node:child_process'
+          const tags = JSON.parse(execFileSync('npm', ['view', '@altegio/ui', 'dist-tags', '--json', '--registry=https://registry.npmjs.org/'], { encoding: 'utf8' }))
+          assert.equal(tags.beta, process.env.RELEASE_VERSION)
+          assert.equal(tags.latest, process.env.RELEASE_VERSION)
+          NODE

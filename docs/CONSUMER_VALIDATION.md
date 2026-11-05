@@ -4,6 +4,8 @@ Run `pnpm public:build`, `pnpm test-public-package` and `pnpm test-public-consum
 
 All supported component declarations are checked together under strict NodeNext resolution with `skipLibCheck: false` and `noUncheckedSideEffectImports: true`. Angular consumer applications are AOT-compiled using Angular 22's compiler; its partial library declarations pass through the official Angular Babel linker before esbuild. Vue uses the production Vue runtime. The harness also checks the CLI, font assets, side-effect-only Core registration and the absence of unrelated calendar/table/form modules in small consumer graphs.
 
+For post-publication validation, run `PUBLIC_CONSUMER_SOURCE=registry pnpm test-public-consumers`. This installs the exact version recorded in `artifacts/public/package-info.json` from npm without user registry credentials and requires the installed package integrity to match the reviewed tarball. The same type, build, bundle and browser checks run in both modes.
+
 ## Bundle budgets
 
 Measured on Node 24.20.0 with the committed lockfile, esbuild 0.28.2, Vue 3.5.44 and Angular 22.2.3. Figures are minified JavaScript compressed with gzip level 9; CSS/font assets are validated separately. The Angular measurements include the Angular runtime and bootstrap code. These are consumer builds, not source-file sizes.

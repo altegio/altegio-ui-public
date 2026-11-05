@@ -1,8 +1,8 @@
 {
   "name": "@altegio/ui",
-  "description": "Altegio design system (UIKit)",
+  "description": "Altegio UI: beta design system with web components, Vue and Angular integrations",
   "author": "Altegio Platform Team",
-  "version": "3.18.1",
+  "version": "0.3.18",
   "license": "MIT",
   "homepage": "https://github.com/altegio/altegio-ui-public#readme",
   "bugs": {
@@ -15,7 +15,8 @@
     "lit",
     "vue",
     "angular",
-    "altegio"
+    "altegio",
+    "beta"
   ],
   "type": "module",
   "main": "dist/web/core/index.mjs",
@@ -167,7 +168,7 @@
     "public:build": "make public-build",
     "test-public-package": "node --test scripts/public-package.test.mjs && node scripts/public-export.mjs scan artifacts/public/package",
     "test-public-consumers": "node scripts/test-public-consumers.mjs",
-    "test-public-export": "node --test scripts/public-export.test.mjs && node scripts/public-export.mjs check",
+    "test-public-export": "node --test scripts/public-release.test.mjs scripts/public-export.test.mjs && node scripts/public-export.mjs check",
     "audit-dependencies": "node --test scripts/audit-dependencies.test.mjs && node scripts/audit-dependencies.mjs"
   },
   "peerDependencies": {

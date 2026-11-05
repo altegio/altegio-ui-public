@@ -1,21 +1,20 @@
-# Altegio UI
+# Altegio UI · Beta
+
+[![Status: beta](https://img.shields.io/badge/status-beta-orange)](https://www.npmjs.com/package/@altegio/ui) [![npm beta](https://img.shields.io/npm/v/@altegio/ui/beta)](https://www.npmjs.com/package/@altegio/ui)
+
+**Beta · under active development.** The public API may change before 1.0.
 
 Altegio UI is Altegio’s design system for web applications. It provides Lit-based web components, Vue and Angular integrations, design tokens, icons, and shared styles. Storybook contains interactive component examples and API documentation.
 
-The [public repository](https://github.com/altegio/altegio-ui-public) receives code snapshots from the source project’s `main` branch. Source snapshots are not npm releases. The external package identity is `@altegio/ui`; this change prepares its first publication. Until maintainers approve publication, install the locally built tarball described below. Public candidate notes are in [PUBLIC_CHANGELOG.md](./PUBLIC_CHANGELOG.md).
+Install the public package from npm. `latest` and `beta` both track the current 0.x beta release; use an exact version for reproducible application builds. See the [public changelog](./PUBLIC_CHANGELOG.md) for release notes.
 
-## Use the external package
-
-Build a reproducible candidate from a source checkout:
+## Install
 
 ```sh
-pnpm install --frozen-lockfile
-pnpm public:build
-pnpm test-public-package
-pnpm test-public-consumers
+npm install @altegio/ui
+# Explicit beta channel:
+npm install @altegio/ui@beta
 ```
-
-In your application, install the resulting tarball with `npm install /absolute/path/to/artifacts/public/altegio-ui-VERSION.tgz`. After the first approved npm release, `npm install @altegio/ui` will be the registry installation path. This README does not claim that it is already published.
 
 Load shared CSS once in the application entry point. Use the font variant only when you want the included Inter fonts:
 
@@ -32,7 +31,7 @@ import '@altegio/ui/core/button'
 </alt-core-global-provider>
 ```
 
-For Vue 3, install `vue` alongside the tarball and import the wrappers in a Vue application:
+For Vue 3, install `vue` alongside `@altegio/ui` and import the wrappers in a Vue application:
 
 ```ts
 import { createApp, h } from 'vue'
@@ -64,7 +63,7 @@ bootstrapApplication(App)
 
 Add `@altegio/ui/assets/css/altegio-ui-with-fonts.css` to the Angular application's global styles. The wrappers register their required custom elements; importing a separate Core catalog is unnecessary. These integrations render browser custom elements; server-side rendering is not currently a supported consumer path.
 
-## Quick start
+## Develop locally
 
 Use Node.js **24.20.0** and pnpm **10.34.5** to build this repository. The package runtime supports Node.js `22.15.x`–`22.x` and `24.15.x`–`24.x`. Its Vue and Angular peers are optional; the Angular integration requires Angular 22. Git and Make are required for the commands below.
 
@@ -77,7 +76,7 @@ pnpm story-dev:public
 
 `make init` enables Corepack, installs dependencies from the lockfile, installs Git hooks, and generates design tokens and shared constants.
 
-`pnpm story-dev:public` starts the public Storybook entry point at **http://localhost:6005** and its component catalogs. It removes internal design links; the overview and changelog use public documentation:
+`pnpm story-dev:public` starts the public Storybook entry point at **http://localhost:6005** and its component catalogs. The overview links to the component catalogs and public release notes:
 
 | Catalog | URL | Standalone command |
 | --- | --- | --- |
@@ -98,41 +97,17 @@ pnpm story-dev:public
 
 Use `@altegio/ui/core/button`, `@altegio/ui/vue/button` and `@altegio/ui/angular/button` for a single component. Multiword subpaths use kebab-case, for example `text-field` and `global-provider`. Only components exported by the corresponding framework catalog are supported; wrappers that have not been released for a framework do not acquire a subpath.
 
-The private `@platform/altegio-ui` package keeps its existing identity and deprecated `ng/*` aliases. Those aliases load the full private Angular catalog. They are absent from the external package. See [PUBLICATION.md](./docs/PUBLICATION.md) for migration and the explicit first-publication gates.
+See [PUBLICATION.md](./docs/PUBLICATION.md) for candidate builds and the release process.
 
 Bundle measurements and test methodology are recorded in [CONSUMER_VALIDATION.md](./docs/CONSUMER_VALIDATION.md).
 
 Core, Vue and Angular entries share the canonical Core runtime; component and catalog imports can be composed in one application. Importing a component module registers its custom elements, so the package marks the component bundles and stylesheets as side effects. Icons and tokens are side-effect free and tree-shake normally.
 
-## Migrating from 2.x
+## Browser support and accessibility
 
-Version 3.0 replaces the `Y` and `y-` prefixes inherited from the retired brand with `Alt` and `alt-` across the whole public API. Component behavior, props, events, and slots are unchanged, so migrating is a rename:
+The browser baseline is Safari 14.1, iOS 16, Chrome 109 and Firefox 115. CI exercises current Chromium, Firefox and WebKit, with separate accessibility and Linux visual regression checks. Exact historical Safari/iOS device coverage remains [unverified](./docs/HISTORICAL_BROWSER_VALIDATION.md).
 
-<!-- legacy-names:start -->
-| Area | 2.x | 3.0 |
-| --- | --- | --- |
-| Vue and Angular components | `YButton` | `AltButton` |
-| Angular element selectors | `<YButton>` | `<AltButton>` |
-| Web component classes | `YCoreButton` | `AltCoreButton` |
-| Tag name constants | `YCoreButtonTagName` | `AltCoreButtonTagName` |
-| Tags, default `data-locator` values, and BEM classes | `y-core-button` | `alt-core-button` |
-| Interfaces, types, and enums | `IYVueButtonProps`, `TYIcons`, `EYSizes` | `IAltVueButtonProps`, `TAltIcons`, `EAltSizes` |
-| Type guards | `isYCoreTableRow` | `isAltCoreTableRow` |
-| Icons | `yArrowLeft`, `y3Dots` | `altArrowLeft`, `alt3Dots` |
-| Icon modules | `assets/icons/build/y-arrow-left.icon` | `assets/icons/build/alt-arrow-left.icon` |
-| CSS custom properties | `--y-core-color-text-primary`, `--y-core-text-color-primary` | `--alt-core-color-text-primary`, `--alt-core-text-color-primary` |
-| Scrollbar utility class and mixin | `.y-scrollbar`, `@mixin y-scrollbar` | `.alt-scrollbar`, `@mixin alt-scrollbar` |
-| Token constants | `YC_TEXT_PRIMARY` (deprecated in 2.x, removed) | `ALT_TEXT_PRIMARY` |
-| Component CLI | `yds` | `alt-ds` |
-<!-- legacy-names:end -->
-
-Default `data-locator` values follow the tag names, so autotest selectors that rely on the defaults need the new names. If your Vue build marks custom elements by prefix, match `alt-core-` rather than `alt-`, so that `<alt-button>` still resolves to the Vue component.
-
-Private package builds of 3.x keep the 2.x names working as deprecated aliases for existing products; public code snapshots omit them.
-
-## Migrating from 1.x
-
-The modernized package keeps Maskito 3, so Vue consumers can continue using `maskitoNumberOptionsGenerator` with `precision`. Angular consumers must upgrade from Angular 18 to Angular 22 before moving to the new major version. Node 20 consumers must move to Node 22.15+ or 24.15+.
+Components include keyboard and focus behavior, accessible labels and form semantics. Applications still need to provide meaningful labels and validate accessibility in their own context.
 
 ## Repository layout
 
@@ -212,7 +187,7 @@ Set `STORYBOOK_BASE_URL` when hosting under a URL prefix. Individual builds are 
 
 ## Develop components
 
-Build the [component CLI](./web/cli/README.md) to scaffold or update components:
+Build the [component CLI](https://github.com/altegio/altegio-ui-public/blob/main/web/cli/README.md) to scaffold or update components:
 
 ```bash
 pnpm cli-build
@@ -223,8 +198,8 @@ The CLI build also links the `alt-ds` command globally. Run it from the reposito
 
 Additional guides:
 
-- [GlobalProvider context and queue modules](./web/core/src/ui/globalProvider/README.md)
-- [Vue table mapping utilities](./web/vue/src/ui/simpleTable/examples.md)
+- [GlobalProvider context and queue modules](https://github.com/altegio/altegio-ui-public/blob/main/web/core/src/ui/globalProvider/README.md)
+- [Vue table mapping utilities](https://github.com/altegio/altegio-ui-public/blob/main/web/vue/src/ui/simpleTable/examples.md)
 
 ## Contributing
 

@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-Security fixes target the latest source major, currently 3.x, and reach this repository with the next public snapshot. The external `@altegio/ui` package is a first-publication candidate; a source version or snapshot does not assert an npm release. Once published, report the installed npm version as well as the snapshot commit when possible.
+Security fixes target the current public 0.x beta release of `@altegio/ui` and reach source users through the next snapshot. The project is under active development; the public API may change before 1.0. Report the installed npm version and, for source builds, the snapshot commit.
 
 Dependency audit verification and the narrowly scoped development-tool exceptions are recorded in [DEPENDENCY_AUDIT.md](./docs/DEPENDENCY_AUDIT.md). Production audit findings are not accepted by that gate.
 

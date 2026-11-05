@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { readPublicRelease } from './public-release.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const target = 'https://github.com/altegio/altegio-ui-public.git';
@@ -14,7 +15,7 @@ const scannerChecksums = {
   darwin_arm64: 'b40ab0ae55c505963e365f271a8d3846efbc170aa17f2607f13df610a9aeb6a5',
 };
 const retiredBrand = new RegExp('yc' + 'lients', 'i');
-// Names that still carry the pre-3.0 prefix: components, types, icons, tags, custom properties, the old CLI and the old token aliases.
+// Reject retired public names in components, types, icons, tags, styles and tooling.
 const legacyPrefix = new RegExp([
   '(?<!\\w)(?:I|T|E|is|TE)?Y(?=[A-Z][a-z0-9])',
   '(?<![\\w$])y(?=[A-Z]|\\d[A-Za-z])',
@@ -24,8 +25,6 @@ const legacyPrefix = new RegExp([
 ].join('|'));
 // Binary assets and the lockfile (integrity hashes, third-party names) are not scanned for names.
 const unscannedFile = /\.(png|jpe?g|gif|ico|webp|woff2?|ttf|otf|eot|pdf|zip|gz)$|^pnpm-lock\.yaml$/i;
-// Markdown migration notes may list the old names between these comments.
-const migrationNotes = /<!-- legacy-names:start -->[\s\S]*?<!-- legacy-names:end -->/g;
 // Internal delivery: GitLab CI, the private registry release and prerelease cleanup, the private 2.x aliases,
 // and migration notes for Altegio's own products.
 const internalPaths = ['.gitlab-ci.yml', '.gitlab', 'release.config.mjs', 'scripts/cleanup-prereleases.js', 'scripts/private-compat', 'docs/internal'];
@@ -54,6 +53,7 @@ export function sanitize(directory) {
     const pkg = JSON.parse(readFileSync(packagePath, 'utf8'));
     pkg.repository = { type: 'git', url: `git+${target}` };
     pkg.name = '@altegio/ui';
+    pkg.version = readPublicRelease(directory).version;
     // Source snapshots contain development tooling. Only the assembled tarball is publishable.
     pkg.private = true;
     for (const key of Object.keys(pkg.exports ?? {})) if (key.startsWith('./ng/')) delete pkg.exports[key];
@@ -92,7 +92,7 @@ export function sanitize(directory) {
       const file = join(path, entry.name);
       const content = entry.isFile() && !unscannedFile.test(entry.name) ? readFileSync(file, 'utf8') : '';
       const match = entry.name.match(legacyPrefix)
-        ?? (entry.name.endsWith('.md') ? content.replace(migrationNotes, '') : content).match(legacyPrefix);
+        ?? content.match(legacyPrefix);
       if (match) {
         const context = match.input.slice(match.index, match.index + 40).split(/\s/)[0];
         throw new Error(`Public export blocked: legacy Y prefix "${context}" found in ${file}.`);

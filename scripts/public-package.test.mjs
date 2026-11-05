@@ -17,10 +17,13 @@ const files = [...walk(publicDirectory)].map(path => relative(publicDirectory, p
 
 test('public assembly has a separate identity and an allowlisted consumer manifest', () => {
   assert.equal(manifest.name, '@altegio/ui')
-  assert.equal(manifest.version, source.version)
+  assert.equal(manifest.version, JSON.parse(readFileSync(resolve(root, 'public-release.json'), 'utf8')).version)
+  assert.match(manifest.version, /^0\./)
+  assert.match(manifest.description, /beta/)
+  assert.ok(manifest.keywords.includes('beta'))
   assert.notEqual(manifest.private, true)
   assert.equal(manifest.license, 'MIT')
-  assert.deepEqual(manifest.publishConfig, { access: 'public', registry: 'https://registry.npmjs.org/' })
+  assert.deepEqual(manifest.publishConfig, { access: 'public', registry: 'https://registry.npmjs.org/', tag: 'beta' })
   assert.equal(manifest.devDependencies, undefined)
   assert.equal(manifest.scripts, undefined)
   assert.deepEqual(manifest, publicManifest(source))
@@ -39,6 +42,15 @@ test('every documented framework component has runtime and declaration exports',
   }
   assert.ok(manifest.sideEffects.includes('./dist/web/runtime/**'), 'canonical registration modules keep side effects')
   assert.ok(manifest.sideEffects.includes('./dist/entries/**'), 'registration-only imports must remain side effects')
+})
+
+test('public onboarding carries beta status without obsolete migration instructions', () => {
+  for (const file of ['README.md', 'PUBLIC_CHANGELOG.md', 'docs/PUBLICATION.md']) {
+    const content = readFileSync(resolve(publicDirectory, file), 'utf8')
+    assert.match(content, /beta/i, file)
+    assert.match(content, /public API may change before 1\.0/, file)
+    assert.doesNotMatch(content, /Migrating from|legacy-names:start|first-publication candidate|not claim that it is already published/, file)
+  }
 })
 
 test('tarball contains declarations, CLI, all required assets and their notices', () => {

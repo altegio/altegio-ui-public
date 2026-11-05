@@ -15,9 +15,10 @@ test('public snapshots preserve code and remove private delivery credentials and
     mkdirSync(join(directory, '.gitlab'));
     writeFileSync(join(directory, '.gitlab', 'public-export.yml'), 'export:\n  script: publish-to-private-service\n');
     writeFileSync(join(directory, 'release.config.mjs'), 'export default { branches: [] }\n');
-    writeFileSync(join(directory, 'package.json'), JSON.stringify({ name: '@platform/altegio-ui', repository: 'internal', scripts: { build: 'vite build', 'cleanup-prereleases': 'node scripts/cleanup-prereleases.js' } }));
+    writeFileSync(join(directory, 'package.json'), JSON.stringify({ name: '@platform/altegio-ui', version: '3.99.0', repository: 'internal', scripts: { build: 'vite build', 'cleanup-prereleases': 'node scripts/cleanup-prereleases.js' } }));
+    writeFileSync(join(directory, 'public-release.json'), JSON.stringify({ version: '0.3.18', channel: 'beta' }));
     writeFileSync(join(directory, 'CHANGELOG.md'), '# Changes\nВнутреннее изменение INTERNAL-123\n');
-    const publicNotes = '# Public package changelog\n\n## Candidate 3.17.0\n\nPending publication. Follow [public snapshots](https://github.com/altegio/altegio-ui-public/commits/main/).\n';
+    const publicNotes = '# Public package changelog\n\n## 0.3.18 — Beta\n\nFollow [public snapshots](https://github.com/altegio/altegio-ui-public/commits/main/).\n';
     writeFileSync(join(directory, 'PUBLIC_CHANGELOG.md'), publicNotes);
     writeFileSync(join(directory, 'README.md'), '[Component](https://gitlab.altegio.dev/project/commit/123)\n[Docs](https://example.com/docs)\n');
     mkdirSync(join(directory, 'web'));
@@ -35,6 +36,7 @@ test('public snapshots preserve code and remove private delivery credentials and
     const pkg = JSON.parse(readFileSync(join(directory, 'package.json'), 'utf8'));
     assert.equal(pkg.private, true);
     assert.equal(pkg.name, '@altegio/ui');
+    assert.equal(pkg.version, '0.3.18');
     assert.equal(pkg.repository.url, `git+${target}`);
     assert.deepEqual(pkg.scripts, { build: 'vite build' });
     assert.equal(readFileSync(join(directory, 'README.md'), 'utf8'), 'Component\n[Docs](https://example.com/docs)\n');
@@ -99,7 +101,7 @@ test('public snapshots reject retired brand text and filenames', () => {
   } finally { rmSync(directory, { recursive: true, force: true }); }
 });
 
-test('public snapshots reject names with the pre-3.0 prefix', () => {
+test('public snapshots reject retired names, including marked migration notes', () => {
   const directory = mkdtempSync(join(tmpdir(), 'public-export-prefix-test-'));
   const component = join(directory, 'component.ts');
   const legacyNames = ['Y' + 'Button', 'IY' + 'VueButtonProps', 'EY' + 'Sizes', 'isY' + 'CoreTableRow', 'y' + 'ArrowLeft', 'y' + '3Dots', '<y' + '-core-button>', 'var(--y' + '-core-color-text-primary)', '@mixin y' + '-scrollbar', 'y' + 'ds create', 'Y' + 'C_TEXT_PRIMARY'];
@@ -116,7 +118,7 @@ test('public snapshots reject names with the pre-3.0 prefix', () => {
     rmSync(oldFile);
     const notes = `# Migration\n<!-- legacy-names:start -->\n| \`${'Y' + 'Button'}\` | \`AltButton\` |\n<!-- legacy-names:end -->\n`;
     writeFileSync(join(directory, 'README.md'), notes);
-    sanitize(directory);
+    assert.throws(() => sanitize(directory), /legacy Y prefix/);
     writeFileSync(join(directory, 'README.md'), `${notes}Use \`${'Y' + 'Button'}\`.\n`);
     assert.throws(() => sanitize(directory), /legacy Y prefix/);
   } finally { rmSync(directory, { recursive: true, force: true }); }
